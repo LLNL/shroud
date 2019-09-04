@@ -31,15 +31,15 @@ namespace example {
     }
 }
 extern PyTypeObject PP_ExClass1_Type;
-// splicer begin class.ExClass1.C_declaration
-// splicer end class.ExClass1.C_declaration
+// splicer begin namespace.example::nested.class.ExClass1.C_declaration
+// splicer end namespace.example::nested.class.ExClass1.C_declaration
 
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass1 * obj;
     int idtor;
-    // splicer begin class.ExClass1.C_object
-    // splicer end class.ExClass1.C_object
+    // splicer begin namespace.example::nested.class.ExClass1.C_object
+    // splicer end namespace.example::nested.class.ExClass1.C_object
 } PP_ExClass1;
 
 extern const char *PY_ExClass1_capsule_name;
@@ -53,15 +53,15 @@ namespace example {
     }
 }
 extern PyTypeObject PP_ExClass2_Type;
-// splicer begin class.ExClass2.C_declaration
-// splicer end class.ExClass2.C_declaration
+// splicer begin namespace.example::nested.class.ExClass2.C_declaration
+// splicer end namespace.example::nested.class.ExClass2.C_declaration
 
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass2 * obj;
     int idtor;
-    // splicer begin class.ExClass2.C_object
-    // splicer end class.ExClass2.C_object
+    // splicer begin namespace.example::nested.class.ExClass2.C_object
+    // splicer end namespace.example::nested.class.ExClass2.C_object
 } PP_ExClass2;
 
 extern const char *PY_ExClass2_capsule_name;

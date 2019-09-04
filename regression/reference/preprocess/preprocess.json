@@ -8,11 +8,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser1.h",
                     "C_impl_filename": "wrapUser1.cpp",
-                    "C_type_name": "PRE_user1",
+                    "C_name_scope": "User1_",
+                    "C_type_name": "PRE_User1",
                     "F_capsule_data_type": "SHROUD_user1_capsule",
                     "F_derived_name": "user1",
-                    "F_impl_filename": "wrapfUser1.f",
-                    "F_module_name": "user1_mod",
+                    "F_name_scope": "user1_",
                     "PY_PyObject": "PY_User1",
                     "PY_PyTypeObject": "PY_User1_Type",
                     "PY_capsule_name": "PY_User1_capsule_name",
@@ -20,10 +20,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_User1_to_Object",
                     "PY_type_filename": "pyUser1type.cpp",
-                    "class_lower": "user1",
-                    "class_prefix": "user1_",
                     "class_scope": "User1::",
-                    "class_upper": "USER1",
                     "cxx_class": "User1",
                     "cxx_type": "User1"
                 },
@@ -45,9 +42,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->method1(\t);",
                             "C_call_list": "",
-                            "C_name": "PRE_user1_method1",
+                            "C_name": "PRE_User1_method1",
                             "C_pre_call": "User1 *SH_this =\t static_cast<User1 *>(self->addr);",
-                            "C_prototype": "PRE_user1 * self",
+                            "C_prototype": "PRE_User1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user1_method1",
@@ -59,7 +56,7 @@
                             "F_name_generic": "method1",
                             "F_name_impl": "user1_method1",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user1_method1",
+                            "PY_name_impl": "PY_method1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -67,7 +64,7 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 30,
+                        "linenumber": 29,
                         "options": {}
                     },
                     {
@@ -87,9 +84,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->method2(\t);",
                             "C_call_list": "",
-                            "C_name": "PRE_user1_method2",
+                            "C_name": "PRE_User1_method2",
                             "C_pre_call": "User1 *SH_this =\t static_cast<User1 *>(self->addr);",
-                            "C_prototype": "PRE_user1 * self",
+                            "C_prototype": "PRE_User1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user1_method2",
@@ -101,7 +98,7 @@
                             "F_name_generic": "method2",
                             "F_name_impl": "user1_method2",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user1_method2",
+                            "PY_name_impl": "PY_method2",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -109,7 +106,7 @@
                             "function_name": "method2",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 31,
+                        "linenumber": 30,
                         "options": {}
                     },
                     {
@@ -131,9 +128,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->method3def(\t);",
                             "C_call_list": "",
-                            "C_name": "PRE_user1_method3def_0",
+                            "C_name": "PRE_User1_method3def_0",
                             "C_pre_call": "User1 *SH_this =\t static_cast<User1 *>(self->addr);",
-                            "C_prototype": "PRE_user1 * self",
+                            "C_prototype": "PRE_User1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user1_method3def_0",
@@ -153,7 +150,7 @@
                             "function_suffix": "_0",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 33,
+                        "linenumber": 32,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -238,9 +235,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->method3def(\ti);",
                             "C_call_list": "i",
-                            "C_name": "PRE_user1_method3def_1",
+                            "C_name": "PRE_User1_method3def_1",
                             "C_pre_call": "User1 *SH_this =\t static_cast<User1 *>(self->addr);",
-                            "C_prototype": "PRE_user1 * self,\t int i",
+                            "C_prototype": "PRE_User1 * self,\t int i",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user1_method3def_1",
@@ -252,7 +249,7 @@
                             "F_name_generic": "method3def",
                             "F_name_impl": "user1_method3def_1",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user1_method3def_1",
+                            "PY_name_impl": "PY_method3def_1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -261,11 +258,11 @@
                             "function_suffix": "_1",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 33,
+                        "linenumber": 32,
                         "options": {}
                     }
                 ],
-                "linenumber": 28,
+                "linenumber": 27,
                 "name": "User1",
                 "options": {},
                 "scope": "User1::",
@@ -277,11 +274,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser2.h",
                     "C_impl_filename": "wrapUser2.cpp",
-                    "C_type_name": "PRE_user2",
+                    "C_name_scope": "User2_",
+                    "C_type_name": "PRE_User2",
                     "F_capsule_data_type": "SHROUD_user2_capsule",
                     "F_derived_name": "user2",
-                    "F_impl_filename": "wrapfUser2.f",
-                    "F_module_name": "user2_mod",
+                    "F_name_scope": "user2_",
                     "PY_PyObject": "PY_User2",
                     "PY_PyTypeObject": "PY_User2_Type",
                     "PY_capsule_name": "PY_User2_capsule_name",
@@ -289,10 +286,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_User2_to_Object",
                     "PY_type_filename": "pyUser2type.cpp",
-                    "class_lower": "user2",
-                    "class_prefix": "user2_",
                     "class_scope": "User2::",
-                    "class_upper": "USER2",
                     "cxx_class": "User2",
                     "cxx_type": "User2"
                 },
@@ -315,9 +309,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->exfunc(\t);",
                             "C_call_list": "",
-                            "C_name": "PRE_user2_exfunc_0",
+                            "C_name": "PRE_User2_exfunc_0",
                             "C_pre_call": "User2 *SH_this =\t static_cast<User2 *>(self->addr);",
-                            "C_prototype": "PRE_user2 * self",
+                            "C_prototype": "PRE_User2 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user2_exfunc_0",
@@ -329,7 +323,7 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_0",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user2_exfunc_0",
+                            "PY_name_impl": "PY_exfunc_0",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -338,7 +332,7 @@
                             "function_suffix": "_0",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 42,
+                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -409,9 +403,9 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->exfunc(\tflag);",
                             "C_call_list": "flag",
-                            "C_name": "PRE_user2_exfunc_1",
+                            "C_name": "PRE_User2_exfunc_1",
                             "C_pre_call": "User2 *SH_this =\t static_cast<User2 *>(self->addr);",
-                            "C_prototype": "PRE_user2 * self,\t int flag",
+                            "C_prototype": "PRE_User2 * self,\t int flag",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_user2_exfunc_1",
@@ -423,7 +417,7 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_1",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user2_exfunc_1",
+                            "PY_name_impl": "PY_exfunc_1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -432,11 +426,11 @@
                             "function_suffix": "_1",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 44,
+                        "linenumber": 43,
                         "options": {}
                     }
                 ],
-                "linenumber": 37,
+                "linenumber": 36,
                 "name": "User2",
                 "options": {},
                 "scope": "User2::",
@@ -477,6 +471,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "PRE_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "PRE_",
@@ -499,6 +494,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -524,7 +520,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pypreprocessmodule.cpp",
+            "PY_module_init": "preprocess",
             "PY_module_name": "preprocess",
+            "PY_module_scope": "preprocess",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -548,9 +546,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "preprocess",
             "function_suffix": "",
             "library": "preprocess",
             "library_lower": "preprocess",
@@ -565,38 +563,40 @@
         },
         "language": "cxx",
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": true,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -607,7 +607,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -621,8 +621,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
@@ -634,10 +634,10 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 22,
-            "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -646,7 +646,10 @@
             "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": true
-        }
+        },
+        "scope_file": [
+            "preprocess"
+        ]
     },
     "types": {
         "MPI_Comm": {
@@ -689,7 +692,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}User1 *>({c_var}{c_member}addr)",
-            "c_type": "PRE_user1",
+            "c_type": "PRE_User1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User1",
             "f_c_module": {
@@ -701,11 +704,11 @@
             "f_capsule_data_type": "SHROUD_user1_capsule",
             "f_derived_type": "user1",
             "f_module": {
-                "user1_mod": [
+                "preprocess_mod": [
                     "user1"
                 ]
             },
-            "f_module_name": "user1_mod",
+            "f_module_name": "preprocess_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -777,7 +780,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}User2 *>({c_var}{c_member}addr)",
-            "c_type": "PRE_user2",
+            "c_type": "PRE_User2",
             "cxx_header": "User2.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User2",
@@ -790,11 +793,11 @@
             "f_capsule_data_type": "SHROUD_user2_capsule",
             "f_derived_type": "user2",
             "f_module": {
-                "user2_mod": [
+                "preprocess_mod": [
                     "user2"
                 ]
             },
-            "f_module_name": "user2_mod",
+            "f_module_name": "preprocess_mod",
             "f_statements": {
                 "result": {
                     "call": [

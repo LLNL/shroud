@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- A C++ namespace corresponds to a module in Fortran and Python.
+  Options *flatten_namespace* and *F_flatten_namespace* can be used
+  to reproduce the previous behavior.
 - Added format dictionary field template_suffix.
 - Added the **F_create_bufferify_function** option.
 - Support `true` and `false` with implied attribute.
@@ -28,9 +31,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Replaces any language directive in the YAML file.
 
 ### Changed
+- Default of library name from *default_library* to *library*.
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.
   Renamed option *PY_helper_filename_template* to *PY_utililty_filename_template*.
   This is to avoid confusion with helper functions which have file static scope.
+- Changed C_name_template to use *C_name_scope* instead of *class_prefix*.
+  *C_name_scope* is case sensitive while *class_prefix* was lower case.
 - Changed how the *fortran_generic* arguments are specified to allow multiple arguments
   and to associate attributes with arguments.
   previous format:
@@ -61,6 +67,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed enum option templates to include namespace as well as class name.
   Non-scoped enums only use *C_prefix* on enum member names.
 - Passing a struct by value in Fortran wrapper for C library.
+
+### Removed
+- Format field *class_prefix*. Replace with *C_name_scope* or *F_name_scope*
+  which includes the namespace.
+- Option F_module_per_class. Now a namespace corresponds to a Fortran module.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

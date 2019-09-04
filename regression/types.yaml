@@ -21,7 +21,6 @@ cxx_header: types.hpp
 
 options:
   debug: True
-  F_module_per_class: False
   wrap_python: True
 #  wrap_lua: True
 

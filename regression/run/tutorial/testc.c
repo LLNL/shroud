@@ -1,17 +1,8 @@
-/*
- * Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+/* Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+ * other Shroud Project Developers.
+ * See the top-level COPYRIGHT file for details.
  *
- * Produced at the Lawrence Livermore National Laboratory
- *
- * LLNL-CODE-738041.
- *
- * All rights reserved.
- *
- * This file is part of Shroud.
- *
- * For details about use and distribution, please read LICENSE.
- *
- * Test C interface for tutorial.yaml
+ * SPDX-License-Identifier: (BSD-3-Clause)
  */
 
 #include <stdbool.h>  // This should not be necessary
@@ -23,12 +14,12 @@
 void test_class(void)
 {
   int flag;
-  TUT_class1 c1_buf, *c1;
+  TUT_Class1 c1_buf, *c1;
 
-  c1 = TUT_class1_new_default(&c1_buf);
+  c1 = TUT_Class1_new_default(&c1_buf);
   assert(c1 == &c1_buf && "TUT_class1_new_default");
 
-  flag = TUT_class1_method1(c1);
+  flag = TUT_Class1_method1(c1);
   assert(flag == 0 && "TUT_class1_method1");
 
 }

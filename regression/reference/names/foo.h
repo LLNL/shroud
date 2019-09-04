@@ -25,19 +25,19 @@
 
 #include "typestestnames.hh"
 
-// splicer begin class.Names.CXX_declarations
-// splicer end class.Names.CXX_declarations
+// splicer begin namespace.ns0.class.Names.CXX_declarations
+// splicer end namespace.ns0.class.Names.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin class.Names.C_declarations
-// splicer end class.Names.C_declarations
+// splicer begin namespace.ns0.class.Names.C_declarations
+// splicer end namespace.ns0.class.Names.C_declarations
 
-void XXX_TES_names_method1(TES_names * self);
+void XXX_TES_ns0_Names_method1(TES_ns0_Names * self);
 
-void XXX_TES_names_method2(TES_names * self2);
+void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2);
 
 #ifdef __cplusplus
 }

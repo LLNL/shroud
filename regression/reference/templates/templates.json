@@ -3,1047 +3,16 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "<vector>",
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapvector_int.h",
-                    "C_impl_filename": "wrapvectorforint.cpp",
-                    "C_type_name": "TEM_vector_int",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
-                    "F_derived_name": "vector_int",
-                    "F_impl_filename": "wrapfvector_int.f",
-                    "F_module_name": "vector_int_mod",
-                    "PY_PyObject": "PY_vector_int",
-                    "PY_PyTypeObject": "PY_vector_int_Type",
-                    "PY_capsule_name": "PY_vector_int_capsule_name",
-                    "PY_from_object_func": "PP_vector_int_from_Object",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_vector_int_to_Object",
-                    "PY_type_filename": "pyvector_inttype.cpp",
-                    "__line__": 20,
-                    "class_lower": "vector_int",
-                    "class_prefix": "vector_int_",
-                    "class_scope": "vector_int::",
-                    "class_upper": "VECTOR_INT",
-                    "cxx_class": "vector_int",
-                    "cxx_type": "vector<int>",
-                    "fmtsample": "one"
-                },
-                "functions": [
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_type": "TEM_vector_int",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_type": "std::vector<int>",
-                                "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
-                            },
-                            "fmtf": {
-                                "cxx_type": "std::vector<int>",
-                                "f_var": "SHT_rv"
-                            },
-                            "fmtpy": {
-                                "PY_build_format": "O",
-                                "PyObject": "PY_vector_int",
-                                "PyTypeObject": "PY_vector_int_Type",
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv",
-                                "numpy_type": null,
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "vargs": "SHCXX_rv"
-                            }
-                        },
-                        "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "vector"
-                            ],
-                            "typemap_name": "std::vector_int"
-                        },
-                        "decl": "vector()",
-                        "declgen": "vector()",
-                        "fmtdict": {
-                            "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();",
-                            "C_call_list": "",
-                            "C_name": "TEM_vector_int_ctor",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_prototype": "TEM_vector_int * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TEM_vector_int *",
-                            "F_C_call": "c_vector_int_ctor",
-                            "F_C_name": "c_vector_int_ctor",
-                            "F_arg_c_call": "SHT_rv%cxxmem",
-                            "F_arguments": "",
-                            "F_call_code": "SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)",
-                            "F_name_function": "ctor",
-                            "F_name_generic": "ctor",
-                            "F_name_impl": "vector_int_ctor",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "PY_name_impl": "PY_vector_int_tp_init",
-                            "PY_type_impl": "PY_vector_int_tp_init",
-                            "PY_type_method": "tp_init",
-                            "c_const": "",
-                            "c_rv_decl": "TEM_vector_int *SHC_rv",
-                            "cxx_rv_decl": "std::vector<int> *SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
-                        },
-                        "linenumber": 32,
-                        "options": {}
-                    },
-                    {
-                        "ast": {
-                            "attrs": {
-                                "_destructor": true,
-                                "_name": "dtor"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "vector"
-                            ],
-                            "typemap_name": "std::vector"
-                        },
-                        "decl": "~vector()",
-                        "declgen": "~vector()",
-                        "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
-                            "C_call_list": "",
-                            "C_name": "TEM_vector_int_dtor",
-                            "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
-                            "C_prototype": "TEM_vector_int * self",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_vector_int_dtor",
-                            "F_C_name": "c_vector_int_dtor",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
-                            "F_call_code": "call c_vector_int_dtor(obj%cxxmem)",
-                            "F_name_function": "dtor",
-                            "F_name_generic": "dtor",
-                            "F_name_impl": "vector_int_dtor",
-                            "F_subprogram": "subroutine",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "dtor",
-                            "underscore_name": "dtor"
-                        },
-                        "linenumber": 33,
-                        "options": {}
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "push_back",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": false
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "value",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "T"
-                                    ],
-                                    "typemap_name": "std::vector::T"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void push_back( const T& value+intent(in) )",
-                        "declgen": "void push_back(const T & value +intent(in))",
-                        "fmtdict": {
-                            "function_name": "push_back",
-                            "underscore_name": "push_back"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 34,
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        }
-                    },
-                    {
-                        "_fmtargs": {
-                            "value": {
-                                "fmtc": {
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "value",
-                                    "cxx_addr": "",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(value))",
-                                    "cxx_member": "->",
-                                    "cxx_type": "int",
-                                    "cxx_var": "value",
-                                    "idtor": "0"
-                                },
-                                "fmtf": {
-                                    "c_var": "value",
-                                    "f_var": "value"
-                                },
-                                "fmtpy": {
-                                    "c_const": "const ",
-                                    "c_decl": "int value",
-                                    "c_deref": "",
-                                    "c_type": "int",
-                                    "c_var": "value",
-                                    "cxx_addr": "&",
-                                    "cxx_decl": "int value",
-                                    "cxx_member": ".",
-                                    "cxx_type": "int",
-                                    "cxx_var": "value",
-                                    "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_value",
-                                    "size_var": "SHSize_value"
-                                }
-                            }
-                        },
-                        "_generated": "cxx_template",
-                        "ast": {
-                            "declarator": {
-                                "name": "push_back",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": false
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "value",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void push_back( const T& value+intent(in) )",
-                        "declgen": "void push_back(const int & value +intent(in))",
-                        "fmtdict": {
-                            "C_call_code": "SH_this->push_back(\t*value);",
-                            "C_call_list": "*value",
-                            "C_name": "TEM_vector_int_push_back",
-                            "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
-                            "C_prototype": "TEM_vector_int * self,\t const int * value",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_vector_int_push_back",
-                            "F_C_name": "c_vector_int_push_back",
-                            "F_arg_c_call": "obj%cxxmem,\t value",
-                            "F_arguments": "obj,\t value",
-                            "F_call_code": "call c_vector_int_push_back(obj%cxxmem,\t value)",
-                            "F_name_function": "push_back",
-                            "F_name_generic": "push_back",
-                            "F_name_impl": "vector_int_push_back",
-                            "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_vector_int_push_back",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "push_back",
-                            "underscore_name": "push_back"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 34,
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": true,
-                            "wrap_lua": false,
-                            "wrap_python": true
-                        }
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "at",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n",
-                                        "pointer": []
-                                    },
-                                    "specifier": [
-                                        "size_type"
-                                    ],
-                                    "typemap_name": "std::vector::size_type"
-                                }
-                            ],
-                            "return_pointer_as": "pointer",
-                            "specifier": [
-                                "T"
-                            ],
-                            "typemap_name": "std::vector::T"
-                        },
-                        "decl": "T & at(size_type n)",
-                        "declgen": "T & at(size_type n +intent(in)+value)",
-                        "fmtdict": {
-                            "function_name": "at",
-                            "underscore_name": "at"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 35,
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        }
-                    },
-                    {
-                        "_CXX_return_templated": true,
-                        "_fmtargs": {
-                            "n": {
-                                "fmtc": {
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "n",
-                                    "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
-                                    "cxx_member": ".",
-                                    "cxx_type": "std::vector::size_type",
-                                    "cxx_var": "n",
-                                    "idtor": "0"
-                                },
-                                "fmtf": {
-                                    "c_var": "n",
-                                    "f_var": "n"
-                                },
-                                "fmtpy": {
-                                    "c_const": "",
-                                    "c_decl": "size_t n",
-                                    "c_deref": "",
-                                    "c_type": "size_t",
-                                    "c_var": "n",
-                                    "cxx_addr": "&",
-                                    "cxx_decl": "std::vector::size_type n",
-                                    "cxx_member": ".",
-                                    "cxx_type": "std::vector::size_type",
-                                    "cxx_var": "n",
-                                    "numpy_type": null,
-                                    "py_var": "SHPy_n",
-                                    "size_var": "SHSize_n"
-                                }
-                            }
-                        },
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "idtor": "0"
-                            },
-                            "fmtf": {
-                                "cxx_type": "int",
-                                "f_var": "SHT_rv"
-                            },
-                            "fmtpy": {
-                                "c_deref": "",
-                                "c_var": "rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_var": "rv",
-                                "numpy_type": "NPY_INT",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
-                            }
-                        },
-                        "_generated": "cxx_template",
-                        "ast": {
-                            "declarator": {
-                                "name": "at",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n",
-                                        "pointer": []
-                                    },
-                                    "specifier": [
-                                        "size_type"
-                                    ],
-                                    "typemap_name": "std::vector::size_type"
-                                }
-                            ],
-                            "return_pointer_as": "pointer",
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "T & at(size_type n)",
-                        "declgen": "int & at(size_type n +intent(in)+value)",
-                        "fmtdict": {
-                            "C_call_code": "int & SHC_rv =\t SH_this->at(\tn);",
-                            "C_call_list": "n",
-                            "C_name": "TEM_vector_int_at",
-                            "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
-                            "C_prototype": "TEM_vector_int * self,\t size_t n",
-                            "C_return_code": "return &SHC_rv;",
-                            "C_return_type": "int *",
-                            "F_C_call": "c_vector_int_at",
-                            "F_C_name": "c_vector_int_at",
-                            "F_arg_c_call": "obj%cxxmem,\t n",
-                            "F_arguments": "obj,\t n",
-                            "F_call_code": "SHT_ptr = c_vector_int_at(obj%cxxmem,\t n)",
-                            "F_name_function": "at",
-                            "F_name_generic": "at",
-                            "F_name_impl": "vector_int_at",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "PY_name_impl": "PY_vector_int_at",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "cxx_rv_decl": "int & SHC_rv",
-                            "function_name": "at",
-                            "underscore_name": "at"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 35,
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": true,
-                            "wrap_lua": false,
-                            "wrap_python": true
-                        }
-                    }
-                ],
-                "linenumber": 15,
-                "name": "vector",
-                "options": {
-                    "__line__": 23,
-                    "optsample": "two"
-                },
-                "scope": "std::vector::",
-                "template_arguments": [
-                    {
-                        "asts": [
-                            {
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "fmtdict": {
-                            "C_impl_filename": "wrapvectorforint.cpp",
-                            "__line__": 20,
-                            "fmtsample": "one"
-                        },
-                        "instantiation": "<int>",
-                        "options": {
-                            "__line__": 23,
-                            "optsample": "two"
-                        }
-                    },
-                    {
-                        "asts": [
-                            {
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "instantiation": "<double>"
-                    }
-                ],
-                "template_parameters": [
-                    "T"
-                ],
-                "typemap_name": "std::vector_int"
-            },
-            {
-                "cxx_header": "<vector>",
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapvector_double.h",
-                    "C_impl_filename": "wrapvector_double.cpp",
-                    "C_type_name": "TEM_vector_double",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
-                    "F_derived_name": "vector_double",
-                    "F_impl_filename": "wrapfvector_double.f",
-                    "F_module_name": "vector_double_mod",
-                    "PY_PyObject": "PY_vector_double",
-                    "PY_PyTypeObject": "PY_vector_double_Type",
-                    "PY_capsule_name": "PY_vector_double_capsule_name",
-                    "PY_from_object_func": "PP_vector_double_from_Object",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_vector_double_to_Object",
-                    "PY_type_filename": "pyvector_doubletype.cpp",
-                    "class_lower": "vector_double",
-                    "class_prefix": "vector_double_",
-                    "class_scope": "vector_double::",
-                    "class_upper": "VECTOR_DOUBLE",
-                    "cxx_class": "vector_double",
-                    "cxx_type": "vector<double>"
-                },
-                "functions": [
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_type": "TEM_vector_double",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_type": "std::vector<double>",
-                                "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
-                            },
-                            "fmtf": {
-                                "cxx_type": "std::vector<double>",
-                                "f_var": "SHT_rv"
-                            },
-                            "fmtpy": {
-                                "PY_build_format": "O",
-                                "PyObject": "PY_vector_double",
-                                "PyTypeObject": "PY_vector_double_Type",
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv",
-                                "numpy_type": null,
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "vargs": "SHCXX_rv"
-                            }
-                        },
-                        "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "vector"
-                            ],
-                            "typemap_name": "std::vector_double"
-                        },
-                        "decl": "vector()",
-                        "declgen": "vector()",
-                        "fmtdict": {
-                            "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();",
-                            "C_call_list": "",
-                            "C_name": "TEM_vector_double_ctor",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_prototype": "TEM_vector_double * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TEM_vector_double *",
-                            "F_C_call": "c_vector_double_ctor",
-                            "F_C_name": "c_vector_double_ctor",
-                            "F_arg_c_call": "SHT_rv%cxxmem",
-                            "F_arguments": "",
-                            "F_call_code": "SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)",
-                            "F_name_function": "ctor",
-                            "F_name_generic": "ctor",
-                            "F_name_impl": "vector_double_ctor",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "PY_name_impl": "PY_vector_double_tp_init",
-                            "PY_type_impl": "PY_vector_double_tp_init",
-                            "PY_type_method": "tp_init",
-                            "c_const": "",
-                            "c_rv_decl": "TEM_vector_double *SHC_rv",
-                            "cxx_rv_decl": "std::vector<double> *SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
-                        },
-                        "linenumber": 32,
-                        "options": {}
-                    },
-                    {
-                        "ast": {
-                            "attrs": {
-                                "_destructor": true,
-                                "_name": "dtor"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "vector"
-                            ],
-                            "typemap_name": "std::vector"
-                        },
-                        "decl": "~vector()",
-                        "declgen": "~vector()",
-                        "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
-                            "C_call_list": "",
-                            "C_name": "TEM_vector_double_dtor",
-                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
-                            "C_prototype": "TEM_vector_double * self",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_vector_double_dtor",
-                            "F_C_name": "c_vector_double_dtor",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
-                            "F_call_code": "call c_vector_double_dtor(obj%cxxmem)",
-                            "F_name_function": "dtor",
-                            "F_name_generic": "dtor",
-                            "F_name_impl": "vector_double_dtor",
-                            "F_subprogram": "subroutine",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "dtor",
-                            "underscore_name": "dtor"
-                        },
-                        "linenumber": 33,
-                        "options": {}
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "push_back",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": false
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "value",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "T"
-                                    ],
-                                    "typemap_name": "std::vector::T"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void push_back( const T& value+intent(in) )",
-                        "declgen": "void push_back(const T & value +intent(in))",
-                        "fmtdict": {
-                            "function_name": "push_back",
-                            "underscore_name": "push_back"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 34,
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        }
-                    },
-                    {
-                        "_fmtargs": {
-                            "value": {
-                                "fmtc": {
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "value",
-                                    "cxx_addr": "",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<double *>\t(value))",
-                                    "cxx_member": "->",
-                                    "cxx_type": "double",
-                                    "cxx_var": "value",
-                                    "idtor": "0"
-                                },
-                                "fmtf": {
-                                    "c_var": "value",
-                                    "f_var": "value"
-                                },
-                                "fmtpy": {
-                                    "c_const": "const ",
-                                    "c_decl": "double value",
-                                    "c_deref": "",
-                                    "c_type": "double",
-                                    "c_var": "value",
-                                    "cxx_addr": "&",
-                                    "cxx_decl": "double value",
-                                    "cxx_member": ".",
-                                    "cxx_type": "double",
-                                    "cxx_var": "value",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHPy_value",
-                                    "size_var": "SHSize_value"
-                                }
-                            }
-                        },
-                        "_generated": "cxx_template",
-                        "ast": {
-                            "declarator": {
-                                "name": "push_back",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": false
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "value",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void push_back( const T& value+intent(in) )",
-                        "declgen": "void push_back(const double & value +intent(in))",
-                        "fmtdict": {
-                            "C_call_code": "SH_this->push_back(\t*value);",
-                            "C_call_list": "*value",
-                            "C_name": "TEM_vector_double_push_back",
-                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
-                            "C_prototype": "TEM_vector_double * self,\t const double * value",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_vector_double_push_back",
-                            "F_C_name": "c_vector_double_push_back",
-                            "F_arg_c_call": "obj%cxxmem,\t value",
-                            "F_arguments": "obj,\t value",
-                            "F_call_code": "call c_vector_double_push_back(obj%cxxmem,\t value)",
-                            "F_name_function": "push_back",
-                            "F_name_generic": "push_back",
-                            "F_name_impl": "vector_double_push_back",
-                            "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_vector_double_push_back",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "push_back",
-                            "underscore_name": "push_back"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 34,
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": true,
-                            "wrap_lua": false,
-                            "wrap_python": true
-                        }
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "at",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n",
-                                        "pointer": []
-                                    },
-                                    "specifier": [
-                                        "size_type"
-                                    ],
-                                    "typemap_name": "std::vector::size_type"
-                                }
-                            ],
-                            "return_pointer_as": "pointer",
-                            "specifier": [
-                                "T"
-                            ],
-                            "typemap_name": "std::vector::T"
-                        },
-                        "decl": "T & at(size_type n)",
-                        "declgen": "T & at(size_type n +intent(in)+value)",
-                        "fmtdict": {
-                            "function_name": "at",
-                            "underscore_name": "at"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 35,
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        }
-                    },
-                    {
-                        "_CXX_return_templated": true,
-                        "_fmtargs": {
-                            "n": {
-                                "fmtc": {
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "n",
-                                    "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
-                                    "cxx_member": ".",
-                                    "cxx_type": "std::vector::size_type",
-                                    "cxx_var": "n",
-                                    "idtor": "0"
-                                },
-                                "fmtf": {
-                                    "c_var": "n",
-                                    "f_var": "n"
-                                },
-                                "fmtpy": {
-                                    "c_const": "",
-                                    "c_decl": "size_t n",
-                                    "c_deref": "",
-                                    "c_type": "size_t",
-                                    "c_var": "n",
-                                    "cxx_addr": "&",
-                                    "cxx_decl": "std::vector::size_type n",
-                                    "cxx_member": ".",
-                                    "cxx_type": "std::vector::size_type",
-                                    "cxx_var": "n",
-                                    "numpy_type": null,
-                                    "py_var": "SHPy_n",
-                                    "size_var": "SHSize_n"
-                                }
-                            }
-                        },
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "double",
-                                "cxx_var": "SHC_rv",
-                                "idtor": "0"
-                            },
-                            "fmtf": {
-                                "cxx_type": "double",
-                                "f_var": "SHT_rv"
-                            },
-                            "fmtpy": {
-                                "c_deref": "",
-                                "c_var": "rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_var": "rv",
-                                "numpy_type": "NPY_DOUBLE",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
-                            }
-                        },
-                        "_generated": "cxx_template",
-                        "ast": {
-                            "declarator": {
-                                "name": "at",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n",
-                                        "pointer": []
-                                    },
-                                    "specifier": [
-                                        "size_type"
-                                    ],
-                                    "typemap_name": "std::vector::size_type"
-                                }
-                            ],
-                            "return_pointer_as": "pointer",
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "decl": "T & at(size_type n)",
-                        "declgen": "double & at(size_type n +intent(in)+value)",
-                        "fmtdict": {
-                            "C_call_code": "double & SHC_rv =\t SH_this->at(\tn);",
-                            "C_call_list": "n",
-                            "C_name": "TEM_vector_double_at",
-                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
-                            "C_prototype": "TEM_vector_double * self,\t size_t n",
-                            "C_return_code": "return &SHC_rv;",
-                            "C_return_type": "double *",
-                            "F_C_call": "c_vector_double_at",
-                            "F_C_name": "c_vector_double_at",
-                            "F_arg_c_call": "obj%cxxmem,\t n",
-                            "F_arguments": "obj,\t n",
-                            "F_call_code": "SHT_ptr = c_vector_double_at(obj%cxxmem,\t n)",
-                            "F_name_function": "at",
-                            "F_name_generic": "at",
-                            "F_name_impl": "vector_double_at",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "PY_name_impl": "PY_vector_double_at",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "cxx_rv_decl": "double & SHC_rv",
-                            "function_name": "at",
-                            "underscore_name": "at"
-                        },
-                        "have_template_args": true,
-                        "linenumber": 35,
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": true,
-                            "wrap_lua": false,
-                            "wrap_python": true
-                        }
-                    }
-                ],
-                "linenumber": 15,
-                "name": "vector",
-                "options": {},
-                "scope": "std::vector::",
-                "template_arguments": [
-                    {
-                        "asts": [
-                            {
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "fmtdict": {
-                            "C_impl_filename": "wrapvectorforint.cpp",
-                            "__line__": 20,
-                            "fmtsample": "one"
-                        },
-                        "instantiation": "<int>",
-                        "options": {
-                            "__line__": 23,
-                            "optsample": "two"
-                        }
-                    },
-                    {
-                        "asts": [
-                            {
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "instantiation": "<double>"
-                    }
-                ],
-                "template_parameters": [
-                    "T"
-                ],
-                "typemap_name": "std::vector_double"
-            },
-            {
                 "cxx_header": "",
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapWorker.h",
                     "C_impl_filename": "wrapWorker.cpp",
-                    "C_type_name": "TEM_worker",
+                    "C_name_scope": "Worker_",
+                    "C_type_name": "TEM_Worker",
                     "F_capsule_data_type": "SHROUD_worker_capsule",
                     "F_derived_name": "worker",
-                    "F_impl_filename": "wrapfWorker.f",
-                    "F_module_name": "worker_mod",
+                    "F_name_scope": "worker_",
                     "PY_PyObject": "PY_Worker",
                     "PY_PyTypeObject": "PY_Worker_Type",
                     "PY_capsule_name": "PY_Worker_capsule_name",
@@ -1051,14 +20,11 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Worker_to_Object",
                     "PY_type_filename": "pyWorkertype.cpp",
-                    "class_lower": "worker",
-                    "class_prefix": "worker_",
                     "class_scope": "Worker::",
-                    "class_upper": "WORKER",
                     "cxx_class": "Worker",
                     "cxx_type": "Worker"
                 },
-                "linenumber": 41,
+                "linenumber": 45,
                 "name": "Worker",
                 "options": {},
                 "scope": "Worker::",
@@ -1068,47 +34,13 @@
                 "cxx_header": "",
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapImplWorker1.h",
-                    "C_impl_filename": "wrapImplWorker1.cpp",
-                    "C_type_name": "TEM_implworker1",
-                    "F_capsule_data_type": "SHROUD_implworker1_capsule",
-                    "F_derived_name": "implworker1",
-                    "F_impl_filename": "wrapfImplWorker1.f",
-                    "F_module_name": "implworker1_mod",
-                    "PY_PyObject": "PY_ImplWorker1",
-                    "PY_PyTypeObject": "PY_ImplWorker1_Type",
-                    "PY_capsule_name": "PY_ImplWorker1_capsule_name",
-                    "PY_from_object_func": "PP_ImplWorker1_from_Object",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_ImplWorker1_to_Object",
-                    "PY_type_filename": "pyImplWorker1type.cpp",
-                    "class_lower": "implworker1",
-                    "class_prefix": "implworker1_",
-                    "class_scope": "ImplWorker1::",
-                    "class_upper": "IMPLWORKER1",
-                    "cxx_class": "ImplWorker1",
-                    "cxx_type": "ImplWorker1"
-                },
-                "linenumber": 47,
-                "name": "ImplWorker1",
-                "options": {
-                    "__line__": 48,
-                    "wrap_fortran": false
-                },
-                "scope": "internal::ImplWorker1::",
-                "typemap_name": "internal::ImplWorker1"
-            },
-            {
-                "cxx_header": "",
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapuser_int.h",
                     "C_impl_filename": "wrapuser_int.cpp",
+                    "C_name_scope": "user_int_",
                     "C_type_name": "TEM_user_int",
-                    "F_capsule_data_type": "SHROUD_user_capsule",
+                    "F_capsule_data_type": "SHROUD_user_int_capsule",
                     "F_derived_name": "user_int",
-                    "F_impl_filename": "wrapfuser_int.f",
-                    "F_module_name": "user_int_mod",
+                    "F_name_scope": "user_int_",
                     "PY_PyObject": "PY_user_int",
                     "PY_PyTypeObject": "PY_user_int_Type",
                     "PY_capsule_name": "PY_user_int_capsule_name",
@@ -1116,10 +48,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_user_int_to_Object",
                     "PY_type_filename": "pyuser_inttype.cpp",
-                    "class_lower": "user_int",
-                    "class_prefix": "user_int_",
                     "class_scope": "user_int::",
-                    "class_upper": "USER_INT",
                     "cxx_class": "user_int",
                     "cxx_type": "user<int>"
                 },
@@ -1178,7 +107,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 56,
+                        "linenumber": 62,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1333,7 +262,7 @@
                             "F_name_generic": "nested",
                             "F_name_impl": "user_int_nested_double",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_user_int_nested_double",
+                            "PY_name_impl": "PY_nested_double",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1343,7 +272,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 56,
+                        "linenumber": 62,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -1368,7 +297,7 @@
                         ]
                     }
                 ],
-                "linenumber": 51,
+                "linenumber": 57,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -1409,6 +338,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "TEM_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "TEM_",
@@ -1431,6 +361,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -1456,7 +387,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pytemplatesmodule.cpp",
+            "PY_module_init": "templates",
             "PY_module_name": "templates",
+            "PY_module_scope": "templates",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -1480,9 +413,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "templates",
             "function_suffix": "",
             "library": "templates",
             "library_lower": "templates",
@@ -1547,7 +480,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 83,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1555,7 +488,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 82,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1717,7 +650,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 83,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1744,7 +677,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 82,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1906,7 +839,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 83,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1933,7 +866,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 82,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2002,14 +935,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 91,
+                    "__line__": 97,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 90,
+                "linenumber": 96,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -2074,7 +1007,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 91,
+                    "__line__": 97,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -2102,7 +1035,7 @@
                     "template_suffix": "_internal_ImplWorker1",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 90,
+                "linenumber": 96,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2128,39 +1061,1159 @@
             }
         ],
         "language": "cxx",
+        "namespaces": [
+            {
+                "classes": [
+                    {
+                        "cxx_header": "<vector>",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapvector_int.h",
+                            "C_impl_filename": "wrapvectorforint.cpp",
+                            "C_name_scope": "vector_int_",
+                            "C_type_name": "TEM_vector_int",
+                            "F_capsule_data_type": "SHROUD_vector_int_capsule",
+                            "F_derived_name": "vector_int",
+                            "F_name_scope": "vector_int_",
+                            "PY_PyObject": "PY_vector_int",
+                            "PY_PyTypeObject": "PY_vector_int_Type",
+                            "PY_capsule_name": "PY_vector_int_capsule_name",
+                            "PY_from_object_func": "PP_vector_int_from_Object",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_vector_int_to_Object",
+                            "PY_type_filename": "pyvector_inttype.cpp",
+                            "__line__": 24,
+                            "class_scope": "vector_int::",
+                            "cxx_class": "vector_int",
+                            "cxx_type": "vector<int>",
+                            "fmtsample": "one"
+                        },
+                        "functions": [
+                            {
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_type": "TEM_vector_int",
+                                        "c_val": "static_cast<void *>(\tSHCXX_rv)",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_type": "std::vector<int>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "idtor": "0"
+                                    },
+                                    "fmtf": {
+                                        "cxx_type": "std::vector<int>",
+                                        "f_var": "SHT_rv"
+                                    },
+                                    "fmtpy": {
+                                        "PY_build_format": "O",
+                                        "PyObject": "PY_vector_int",
+                                        "PyTypeObject": "PY_vector_int_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "vargs": "SHCXX_rv"
+                                    }
+                                },
+                                "ast": {
+                                    "attrs": {
+                                        "_constructor": true,
+                                        "_name": "ctor"
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "vector"
+                                    ],
+                                    "typemap_name": "std::vector_int"
+                                },
+                                "decl": "vector()",
+                                "declgen": "vector()",
+                                "fmtdict": {
+                                    "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();",
+                                    "C_call_list": "",
+                                    "C_name": "TEM_vector_int_ctor",
+                                    "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
+                                    "C_prototype": "TEM_vector_int * SHC_rv",
+                                    "C_return_code": "return SHC_rv;",
+                                    "C_return_type": "TEM_vector_int *",
+                                    "F_C_call": "c_vector_int_ctor",
+                                    "F_C_name": "c_vector_int_ctor",
+                                    "F_arg_c_call": "SHT_rv%cxxmem",
+                                    "F_arguments": "",
+                                    "F_call_code": "SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)",
+                                    "F_name_function": "ctor",
+                                    "F_name_generic": "ctor",
+                                    "F_name_impl": "vector_int_ctor",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "PY_name_impl": "PY_vector_int_tp_init",
+                                    "PY_type_impl": "PY_vector_int_tp_init",
+                                    "PY_type_method": "tp_init",
+                                    "c_const": "",
+                                    "c_rv_decl": "TEM_vector_int *SHC_rv",
+                                    "cxx_rv_decl": "std::vector<int> *SHCXX_rv",
+                                    "function_name": "ctor",
+                                    "underscore_name": "ctor"
+                                },
+                                "linenumber": 36,
+                                "options": {}
+                            },
+                            {
+                                "ast": {
+                                    "attrs": {
+                                        "_destructor": true,
+                                        "_name": "dtor"
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "vector"
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "decl": "~vector()",
+                                "declgen": "~vector()",
+                                "fmtdict": {
+                                    "C_call_code": "delete SH_this;\nself->addr = NULL;",
+                                    "C_call_list": "",
+                                    "C_name": "TEM_vector_int_dtor",
+                                    "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_int * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_vector_int_dtor",
+                                    "F_C_name": "c_vector_int_dtor",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_vector_int_dtor(obj%cxxmem)",
+                                    "F_name_function": "dtor",
+                                    "F_name_generic": "dtor",
+                                    "F_name_impl": "vector_int_dtor",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "dtor",
+                                    "underscore_name": "dtor"
+                                },
+                                "linenumber": 37,
+                                "options": {}
+                            },
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "push_back",
+                                        "pointer": []
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": false
+                                            },
+                                            "const": true,
+                                            "declarator": {
+                                                "name": "value",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ]
+                                            },
+                                            "specifier": [
+                                                "T"
+                                            ],
+                                            "typemap_name": "std::vector::T"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void push_back( const T& value+intent(in) )",
+                                "declgen": "void push_back(const T & value +intent(in))",
+                                "fmtdict": {
+                                    "function_name": "push_back",
+                                    "underscore_name": "push_back"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 38,
+                                "options": {
+                                    "wrap_c": false,
+                                    "wrap_fortran": false,
+                                    "wrap_lua": false,
+                                    "wrap_python": false
+                                }
+                            },
+                            {
+                                "_fmtargs": {
+                                    "value": {
+                                        "fmtc": {
+                                            "c_const": "const ",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_var": "value",
+                                            "cxx_addr": "",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(value))",
+                                            "cxx_member": "->",
+                                            "cxx_type": "int",
+                                            "cxx_var": "value",
+                                            "idtor": "0"
+                                        },
+                                        "fmtf": {
+                                            "c_var": "value",
+                                            "f_var": "value"
+                                        },
+                                        "fmtpy": {
+                                            "c_const": "const ",
+                                            "c_decl": "int value",
+                                            "c_deref": "",
+                                            "c_type": "int",
+                                            "c_var": "value",
+                                            "cxx_addr": "&",
+                                            "cxx_decl": "int value",
+                                            "cxx_member": ".",
+                                            "cxx_type": "int",
+                                            "cxx_var": "value",
+                                            "numpy_type": "NPY_INT",
+                                            "py_var": "SHPy_value",
+                                            "size_var": "SHSize_value"
+                                        }
+                                    }
+                                },
+                                "_generated": "cxx_template",
+                                "ast": {
+                                    "declarator": {
+                                        "name": "push_back",
+                                        "pointer": []
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": false
+                                            },
+                                            "const": true,
+                                            "declarator": {
+                                                "name": "value",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ]
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void push_back( const T& value+intent(in) )",
+                                "declgen": "void push_back(const int & value +intent(in))",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->push_back(\t*value);",
+                                    "C_call_list": "*value",
+                                    "C_name": "TEM_vector_int_push_back",
+                                    "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_int * self,\t const int * value",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_vector_int_push_back",
+                                    "F_C_name": "c_vector_int_push_back",
+                                    "F_arg_c_call": "obj%cxxmem,\t value",
+                                    "F_arguments": "obj,\t value",
+                                    "F_call_code": "call c_vector_int_push_back(obj%cxxmem,\t value)",
+                                    "F_name_function": "push_back",
+                                    "F_name_generic": "push_back",
+                                    "F_name_impl": "vector_int_push_back",
+                                    "F_subprogram": "subroutine",
+                                    "PY_name_impl": "PY_push_back",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "push_back",
+                                    "underscore_name": "push_back"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 38,
+                                "options": {
+                                    "wrap_c": true,
+                                    "wrap_fortran": true,
+                                    "wrap_lua": false,
+                                    "wrap_python": true
+                                }
+                            },
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "return_pointer_as": "pointer",
+                                    "specifier": [
+                                        "T"
+                                    ],
+                                    "typemap_name": "std::vector::T"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "fmtdict": {
+                                    "function_name": "at",
+                                    "underscore_name": "at"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 39,
+                                "options": {
+                                    "wrap_c": false,
+                                    "wrap_fortran": false,
+                                    "wrap_lua": false,
+                                    "wrap_python": false
+                                }
+                            },
+                            {
+                                "_CXX_return_templated": true,
+                                "_fmtargs": {
+                                    "n": {
+                                        "fmtc": {
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
+                                            "cxx_member": ".",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0"
+                                        },
+                                        "fmtf": {
+                                            "c_var": "n",
+                                            "f_var": "n"
+                                        },
+                                        "fmtpy": {
+                                            "c_const": "",
+                                            "c_decl": "size_t n",
+                                            "c_deref": "",
+                                            "c_type": "size_t",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_decl": "std::vector::size_type n",
+                                            "cxx_member": ".",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "numpy_type": null,
+                                            "py_var": "SHPy_n",
+                                            "size_var": "SHSize_n"
+                                        }
+                                    }
+                                },
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0"
+                                    },
+                                    "fmtf": {
+                                        "cxx_type": "int",
+                                        "f_var": "SHT_rv"
+                                    },
+                                    "fmtpy": {
+                                        "c_deref": "",
+                                        "c_var": "rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "rv",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv"
+                                    }
+                                },
+                                "_generated": "cxx_template",
+                                "ast": {
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "return_pointer_as": "pointer",
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "int & at(size_type n +intent(in)+value)",
+                                "fmtdict": {
+                                    "C_call_code": "int & SHC_rv =\t SH_this->at(\tn);",
+                                    "C_call_list": "n",
+                                    "C_name": "TEM_vector_int_at",
+                                    "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_int * self,\t size_t n",
+                                    "C_return_code": "return &SHC_rv;",
+                                    "C_return_type": "int *",
+                                    "F_C_call": "c_vector_int_at",
+                                    "F_C_name": "c_vector_int_at",
+                                    "F_arg_c_call": "obj%cxxmem,\t n",
+                                    "F_arguments": "obj,\t n",
+                                    "F_call_code": "SHT_ptr = c_vector_int_at(obj%cxxmem,\t n)",
+                                    "F_name_function": "at",
+                                    "F_name_generic": "at",
+                                    "F_name_impl": "vector_int_at",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "PY_name_impl": "PY_at",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "cxx_rv_decl": "int & SHC_rv",
+                                    "function_name": "at",
+                                    "underscore_name": "at"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 39,
+                                "options": {
+                                    "wrap_c": true,
+                                    "wrap_fortran": true,
+                                    "wrap_lua": false,
+                                    "wrap_python": true
+                                }
+                            }
+                        ],
+                        "linenumber": 19,
+                        "name": "vector",
+                        "options": {
+                            "__line__": 27,
+                            "optsample": "two"
+                        },
+                        "scope": "std::vector::",
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "fmtdict": {
+                                    "C_impl_filename": "wrapvectorforint.cpp",
+                                    "__line__": 24,
+                                    "fmtsample": "one"
+                                },
+                                "instantiation": "<int>",
+                                "options": {
+                                    "__line__": 27,
+                                    "optsample": "two"
+                                }
+                            },
+                            {
+                                "asts": [
+                                    {
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "instantiation": "<double>"
+                            }
+                        ],
+                        "template_parameters": [
+                            "T"
+                        ],
+                        "typemap_name": "std::vector_int"
+                    },
+                    {
+                        "cxx_header": "<vector>",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapvector_double.h",
+                            "C_impl_filename": "wrapvector_double.cpp",
+                            "C_name_scope": "vector_double_",
+                            "C_type_name": "TEM_vector_double",
+                            "F_capsule_data_type": "SHROUD_vector_double_capsule",
+                            "F_derived_name": "vector_double",
+                            "F_name_scope": "vector_double_",
+                            "PY_PyObject": "PY_vector_double",
+                            "PY_PyTypeObject": "PY_vector_double_Type",
+                            "PY_capsule_name": "PY_vector_double_capsule_name",
+                            "PY_from_object_func": "PP_vector_double_from_Object",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_vector_double_to_Object",
+                            "PY_type_filename": "pyvector_doubletype.cpp",
+                            "class_scope": "vector_double::",
+                            "cxx_class": "vector_double",
+                            "cxx_type": "vector<double>"
+                        },
+                        "functions": [
+                            {
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_type": "TEM_vector_double",
+                                        "c_val": "static_cast<void *>(\tSHCXX_rv)",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_type": "std::vector<double>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "idtor": "0"
+                                    },
+                                    "fmtf": {
+                                        "cxx_type": "std::vector<double>",
+                                        "f_var": "SHT_rv"
+                                    },
+                                    "fmtpy": {
+                                        "PY_build_format": "O",
+                                        "PyObject": "PY_vector_double",
+                                        "PyTypeObject": "PY_vector_double_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "vargs": "SHCXX_rv"
+                                    }
+                                },
+                                "ast": {
+                                    "attrs": {
+                                        "_constructor": true,
+                                        "_name": "ctor"
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "vector"
+                                    ],
+                                    "typemap_name": "std::vector_double"
+                                },
+                                "decl": "vector()",
+                                "declgen": "vector()",
+                                "fmtdict": {
+                                    "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();",
+                                    "C_call_list": "",
+                                    "C_name": "TEM_vector_double_ctor",
+                                    "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
+                                    "C_prototype": "TEM_vector_double * SHC_rv",
+                                    "C_return_code": "return SHC_rv;",
+                                    "C_return_type": "TEM_vector_double *",
+                                    "F_C_call": "c_vector_double_ctor",
+                                    "F_C_name": "c_vector_double_ctor",
+                                    "F_arg_c_call": "SHT_rv%cxxmem",
+                                    "F_arguments": "",
+                                    "F_call_code": "SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)",
+                                    "F_name_function": "ctor",
+                                    "F_name_generic": "ctor",
+                                    "F_name_impl": "vector_double_ctor",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "PY_name_impl": "PY_vector_double_tp_init",
+                                    "PY_type_impl": "PY_vector_double_tp_init",
+                                    "PY_type_method": "tp_init",
+                                    "c_const": "",
+                                    "c_rv_decl": "TEM_vector_double *SHC_rv",
+                                    "cxx_rv_decl": "std::vector<double> *SHCXX_rv",
+                                    "function_name": "ctor",
+                                    "underscore_name": "ctor"
+                                },
+                                "linenumber": 36,
+                                "options": {}
+                            },
+                            {
+                                "ast": {
+                                    "attrs": {
+                                        "_destructor": true,
+                                        "_name": "dtor"
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "vector"
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "decl": "~vector()",
+                                "declgen": "~vector()",
+                                "fmtdict": {
+                                    "C_call_code": "delete SH_this;\nself->addr = NULL;",
+                                    "C_call_list": "",
+                                    "C_name": "TEM_vector_double_dtor",
+                                    "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_double * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_vector_double_dtor",
+                                    "F_C_name": "c_vector_double_dtor",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_vector_double_dtor(obj%cxxmem)",
+                                    "F_name_function": "dtor",
+                                    "F_name_generic": "dtor",
+                                    "F_name_impl": "vector_double_dtor",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "dtor",
+                                    "underscore_name": "dtor"
+                                },
+                                "linenumber": 37,
+                                "options": {}
+                            },
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "push_back",
+                                        "pointer": []
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": false
+                                            },
+                                            "const": true,
+                                            "declarator": {
+                                                "name": "value",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ]
+                                            },
+                                            "specifier": [
+                                                "T"
+                                            ],
+                                            "typemap_name": "std::vector::T"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void push_back( const T& value+intent(in) )",
+                                "declgen": "void push_back(const T & value +intent(in))",
+                                "fmtdict": {
+                                    "function_name": "push_back",
+                                    "underscore_name": "push_back"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 38,
+                                "options": {
+                                    "wrap_c": false,
+                                    "wrap_fortran": false,
+                                    "wrap_lua": false,
+                                    "wrap_python": false
+                                }
+                            },
+                            {
+                                "_fmtargs": {
+                                    "value": {
+                                        "fmtc": {
+                                            "c_const": "const ",
+                                            "c_deref": "*",
+                                            "c_member": "->",
+                                            "c_var": "value",
+                                            "cxx_addr": "",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<double *>\t(value))",
+                                            "cxx_member": "->",
+                                            "cxx_type": "double",
+                                            "cxx_var": "value",
+                                            "idtor": "0"
+                                        },
+                                        "fmtf": {
+                                            "c_var": "value",
+                                            "f_var": "value"
+                                        },
+                                        "fmtpy": {
+                                            "c_const": "const ",
+                                            "c_decl": "double value",
+                                            "c_deref": "",
+                                            "c_type": "double",
+                                            "c_var": "value",
+                                            "cxx_addr": "&",
+                                            "cxx_decl": "double value",
+                                            "cxx_member": ".",
+                                            "cxx_type": "double",
+                                            "cxx_var": "value",
+                                            "numpy_type": "NPY_DOUBLE",
+                                            "py_var": "SHPy_value",
+                                            "size_var": "SHSize_value"
+                                        }
+                                    }
+                                },
+                                "_generated": "cxx_template",
+                                "ast": {
+                                    "declarator": {
+                                        "name": "push_back",
+                                        "pointer": []
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": false
+                                            },
+                                            "const": true,
+                                            "declarator": {
+                                                "name": "value",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "&"
+                                                    }
+                                                ]
+                                            },
+                                            "specifier": [
+                                                "double"
+                                            ],
+                                            "typemap_name": "double"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void push_back( const T& value+intent(in) )",
+                                "declgen": "void push_back(const double & value +intent(in))",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->push_back(\t*value);",
+                                    "C_call_list": "*value",
+                                    "C_name": "TEM_vector_double_push_back",
+                                    "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_double * self,\t const double * value",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_vector_double_push_back",
+                                    "F_C_name": "c_vector_double_push_back",
+                                    "F_arg_c_call": "obj%cxxmem,\t value",
+                                    "F_arguments": "obj,\t value",
+                                    "F_call_code": "call c_vector_double_push_back(obj%cxxmem,\t value)",
+                                    "F_name_function": "push_back",
+                                    "F_name_generic": "push_back",
+                                    "F_name_impl": "vector_double_push_back",
+                                    "F_subprogram": "subroutine",
+                                    "PY_name_impl": "PY_push_back",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "push_back",
+                                    "underscore_name": "push_back"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 38,
+                                "options": {
+                                    "wrap_c": true,
+                                    "wrap_fortran": true,
+                                    "wrap_lua": false,
+                                    "wrap_python": true
+                                }
+                            },
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "return_pointer_as": "pointer",
+                                    "specifier": [
+                                        "T"
+                                    ],
+                                    "typemap_name": "std::vector::T"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "fmtdict": {
+                                    "function_name": "at",
+                                    "underscore_name": "at"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 39,
+                                "options": {
+                                    "wrap_c": false,
+                                    "wrap_fortran": false,
+                                    "wrap_lua": false,
+                                    "wrap_python": false
+                                }
+                            },
+                            {
+                                "_CXX_return_templated": true,
+                                "_fmtargs": {
+                                    "n": {
+                                        "fmtc": {
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
+                                            "cxx_member": ".",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0"
+                                        },
+                                        "fmtf": {
+                                            "c_var": "n",
+                                            "f_var": "n"
+                                        },
+                                        "fmtpy": {
+                                            "c_const": "",
+                                            "c_decl": "size_t n",
+                                            "c_deref": "",
+                                            "c_type": "size_t",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_decl": "std::vector::size_type n",
+                                            "cxx_member": ".",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "numpy_type": null,
+                                            "py_var": "SHPy_n",
+                                            "size_var": "SHSize_n"
+                                        }
+                                    }
+                                },
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "double",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0"
+                                    },
+                                    "fmtf": {
+                                        "cxx_type": "double",
+                                        "f_var": "SHT_rv"
+                                    },
+                                    "fmtpy": {
+                                        "c_deref": "",
+                                        "c_var": "rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "rv",
+                                        "numpy_type": "NPY_DOUBLE",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv"
+                                    }
+                                },
+                                "_generated": "cxx_template",
+                                "ast": {
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "return_pointer_as": "pointer",
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "double & at(size_type n +intent(in)+value)",
+                                "fmtdict": {
+                                    "C_call_code": "double & SHC_rv =\t SH_this->at(\tn);",
+                                    "C_call_list": "n",
+                                    "C_name": "TEM_vector_double_at",
+                                    "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);",
+                                    "C_prototype": "TEM_vector_double * self,\t size_t n",
+                                    "C_return_code": "return &SHC_rv;",
+                                    "C_return_type": "double *",
+                                    "F_C_call": "c_vector_double_at",
+                                    "F_C_name": "c_vector_double_at",
+                                    "F_arg_c_call": "obj%cxxmem,\t n",
+                                    "F_arguments": "obj,\t n",
+                                    "F_call_code": "SHT_ptr = c_vector_double_at(obj%cxxmem,\t n)",
+                                    "F_name_function": "at",
+                                    "F_name_generic": "at",
+                                    "F_name_impl": "vector_double_at",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "PY_name_impl": "PY_at",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "cxx_rv_decl": "double & SHC_rv",
+                                    "function_name": "at",
+                                    "underscore_name": "at"
+                                },
+                                "have_template_args": true,
+                                "linenumber": 39,
+                                "options": {
+                                    "wrap_c": true,
+                                    "wrap_fortran": true,
+                                    "wrap_lua": false,
+                                    "wrap_python": true
+                                }
+                            }
+                        ],
+                        "linenumber": 19,
+                        "name": "vector",
+                        "options": {},
+                        "scope": "std::vector::",
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "fmtdict": {
+                                    "C_impl_filename": "wrapvectorforint.cpp",
+                                    "__line__": 24,
+                                    "fmtsample": "one"
+                                },
+                                "instantiation": "<int>",
+                                "options": {
+                                    "__line__": 27,
+                                    "optsample": "two"
+                                }
+                            },
+                            {
+                                "asts": [
+                                    {
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "instantiation": "<double>"
+                            }
+                        ],
+                        "template_parameters": [
+                            "T"
+                        ],
+                        "typemap_name": "std::vector_double"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "std::",
+                    "C_header_filename": "wraptemplates_std.h",
+                    "C_impl_filename": "wraptemplates_std.cpp",
+                    "C_name_scope": "",
+                    "F_impl_filename": "wrapftemplates_std.f",
+                    "F_module_name": "templates_std_mod",
+                    "LUA_this_call": "std::",
+                    "PY_library_doc": "library documentation",
+                    "PY_module_filename": "pytemplates_stdmodule.cpp",
+                    "PY_module_init": "templates_std",
+                    "PY_module_name": "std",
+                    "PY_module_scope": "templates",
+                    "PY_this_call": "std::",
+                    "__line__": 14,
+                    "file_scope": "templates_std",
+                    "namespace_scope": "std::"
+                },
+                "linenumber": 13,
+                "name": "std",
+                "options": {},
+                "scope": "std::",
+                "scope_file": [
+                    "templates",
+                    "std"
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapImplWorker1.h",
+                            "C_impl_filename": "wrapImplWorker1.cpp",
+                            "C_name_scope": "internal_ImplWorker1_",
+                            "C_type_name": "TEM_internal_ImplWorker1",
+                            "F_capsule_data_type": "SHROUD_implworker1_capsule",
+                            "F_derived_name": "implworker1",
+                            "F_name_scope": "implworker1_",
+                            "PY_PyObject": "PY_ImplWorker1",
+                            "PY_PyTypeObject": "PY_ImplWorker1_Type",
+                            "PY_capsule_name": "PY_ImplWorker1_capsule_name",
+                            "PY_from_object_func": "PP_ImplWorker1_from_Object",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_ImplWorker1_to_Object",
+                            "PY_type_filename": "pyImplWorker1type.cpp",
+                            "class_scope": "ImplWorker1::",
+                            "cxx_class": "ImplWorker1",
+                            "cxx_type": "ImplWorker1"
+                        },
+                        "linenumber": 53,
+                        "name": "ImplWorker1",
+                        "options": {
+                            "__line__": 54,
+                            "wrap_fortran": false
+                        },
+                        "scope": "internal::ImplWorker1::",
+                        "typemap_name": "internal::ImplWorker1"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "internal::",
+                    "C_header_filename": "wraptemplates_internal.h",
+                    "C_impl_filename": "wraptemplates_internal.cpp",
+                    "C_name_scope": "internal_",
+                    "F_impl_filename": "wrapftemplates_internal.f",
+                    "F_module_name": "templates_internal_mod",
+                    "LUA_this_call": "internal::",
+                    "PY_library_doc": "library documentation",
+                    "PY_module_filename": "pytemplates_internalmodule.cpp",
+                    "PY_module_init": "templates_internal",
+                    "PY_module_name": "internal",
+                    "PY_module_scope": "templates",
+                    "PY_this_call": "internal::",
+                    "__line__": 48,
+                    "file_scope": "templates_internal",
+                    "namespace_scope": "internal::"
+                },
+                "linenumber": 47,
+                "name": "internal",
+                "options": {},
+                "scope": "internal::",
+                "scope_file": [
+                    "templates",
+                    "internal"
+                ]
+            }
+        ],
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": true,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -2171,7 +2224,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -2185,8 +2238,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
@@ -2198,10 +2251,10 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 9,
-            "class_prefix_template": "{class_lower}_",
             "debug": false,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -2210,7 +2263,10 @@
             "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": true
-        }
+        },
+        "scope_file": [
+            "templates"
+        ]
     },
     "types": {
         "MPI_Comm": {
@@ -2253,7 +2309,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}Worker *>({c_var}{c_member}addr)",
-            "c_type": "TEM_worker",
+            "c_type": "TEM_Worker",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Worker",
             "f_c_module": {
@@ -2265,11 +2321,11 @@
             "f_capsule_data_type": "SHROUD_worker_capsule",
             "f_derived_type": "worker",
             "f_module": {
-                "worker_mod": [
+                "templates_mod": [
                     "worker"
                 ]
             },
-            "f_module_name": "worker_mod",
+            "f_module_name": "templates_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -2734,7 +2790,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
-            "c_type": "TEM_implworker1",
+            "c_type": "TEM_internal_ImplWorker1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
             "f_c_module": {
@@ -2746,11 +2802,11 @@
             "f_capsule_data_type": "SHROUD_implworker1_capsule",
             "f_derived_type": "implworker1",
             "f_module": {
-                "implworker1_mod": [
+                "templates_internal_mod": [
                     "implworker1"
                 ]
             },
-            "f_module_name": "implworker1_mod",
+            "f_module_name": "templates_internal_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -3040,11 +3096,11 @@
             "f_capsule_data_type": "SHROUD_vector_capsule",
             "f_derived_type": "vector",
             "f_module": {
-                "vector_mod": [
+                "templates_std_mod": [
                     "vector"
                 ]
             },
-            "f_module_name": "vector_mod",
+            "f_module_name": "templates_std_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -3148,18 +3204,18 @@
             "cxx_type": "std::vector<double>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vector_double_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vector_double_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_double_capsule",
             "f_derived_type": "vector_double",
             "f_module": {
-                "vector_double_mod": [
+                "templates_std_mod": [
                     "vector_double"
                 ]
             },
-            "f_module_name": "vector_double_mod",
+            "f_module_name": "templates_std_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -3238,18 +3294,18 @@
             "cxx_type": "std::vector<int>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vector_int_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vector_int_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_int_capsule",
             "f_derived_type": "vector_int",
             "f_module": {
-                "vector_int_mod": [
+                "templates_std_mod": [
                     "vector_int"
                 ]
             },
-            "f_module_name": "vector_int_mod",
+            "f_module_name": "templates_std_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -3545,11 +3601,11 @@
             "f_capsule_data_type": "SHROUD_user_capsule",
             "f_derived_type": "user",
             "f_module": {
-                "user_mod": [
+                "templates_mod": [
                     "user"
                 ]
             },
-            "f_module_name": "user_mod",
+            "f_module_name": "templates_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -3633,18 +3689,18 @@
             "cxx_type": "user<int>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_user_capsule"
+                    "SHROUD_user_int_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_user_capsule)",
-            "f_capsule_data_type": "SHROUD_user_capsule",
+            "f_c_type": "type(SHROUD_user_int_capsule)",
+            "f_capsule_data_type": "SHROUD_user_int_capsule",
             "f_derived_type": "user_int",
             "f_module": {
-                "user_int_mod": [
+                "templates_mod": [
                     "user_int"
                 ]
             },
-            "f_module_name": "user_int_mod",
+            "f_module_name": "templates_mod",
             "f_statements": {
                 "result": {
                     "call": [

@@ -36,19 +36,20 @@ PY_Singleton_tp_del (PY_Singleton *self)
 // splicer end class.Singleton.type.del
 }
 
-static char PY_singleton_getReference__doc__[] =
+static char PY_getReference__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_singleton_getReference(
+PY_getReference(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // static Singleton & getReference()
 // splicer begin class.Singleton.method.get_reference
-    Singleton & SHCXX_rv = Singleton::getReference();
+    tutorial::Singleton & SHCXX_rv =
+        tutorial::Singleton::getReference();
 
     // post_call
     PY_Singleton * SHTPy_rv =
@@ -61,8 +62,8 @@ PY_singleton_getReference(
 // splicer begin class.Singleton.impl.after_methods
 // splicer end class.Singleton.impl.after_methods
 static PyMethodDef PY_Singleton_methods[] = {
-    {"getReference", (PyCFunction)PY_singleton_getReference,
-        METH_STATIC|METH_NOARGS, PY_singleton_getReference__doc__},
+    {"getReference", (PyCFunction)PY_getReference,
+        METH_STATIC|METH_NOARGS, PY_getReference__doc__},
     // splicer begin class.Singleton.PyMethodDef
     // splicer end class.Singleton.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

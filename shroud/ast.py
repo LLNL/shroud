@@ -180,22 +180,34 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, name, **kwargs):
-        """Add an namespace
+    def add_namespace(self, name, expose=True, **kwargs):
+        """Add a namespace.
+
+        Args:
+            name - name of namespace
+            expose - If True, will be wrapped.
+                     Otherwise, only used for lookup while parsing.
         """
         node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
+        if not node.options.flatten_namespace and expose:
+            self.namespaces.append(node)
         return node
 
-    def add_namespaces(self, names):
+    def add_namespaces(self, names, expose=True):
         """Create nested namespaces from list of names.
+
+        Args:
+            name - list of names for namespaces.
+            expose - If True, will be wrapped.
+                     Otherwise, only used for lookup while parsing.
         """
         ns = self
         for name in names:
             if name in ns.symbols:
                 ns = ns.symbols[name]
             else:
-                ns = ns.add_namespace(name)
+                ns = ns.add_namespace(name, expose)
         return ns
 
     def add_struct(self, decl, ast=None, **kwargs):
@@ -239,9 +251,10 @@ class LibraryNode(AstNode, NamespaceMixin):
     def __init__(
         self,
         cxx_header="",
+        namespace=None,
         format=None,
         language="c++",
-        library="default_library",
+        library="library",
         options=None,
         **kwargs
     ):
@@ -249,10 +262,19 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         cxx_header = blank delimited list of headers for C++ or C library.
 
+        Args:
+            namespace - blank delimited list of initial namespaces.
+
         fields = value
         options:
         classes:
         functions:
+
+        wrap_namespace - Node to start wrapping.  This is the current node but 
+            will be changed if the top level "namespace" variable is set.
+
+        symbols - used to look up symbols in nametable.  This includes items which
+            are not wrapped such as the std namespace and types from other files.
 
         """
         # From arguments
@@ -264,13 +286,24 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Use a form which can be used as a variable name
             self.language = "cxx"
         self.library = library
+        self.name = library
+        self.nodename = "library"
+        self.wrap_namespace = self
 
         self.classes = []
         self.enums = []
         self.functions = []
+        self.namespaces = []
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+
+        # namespace
+        self.scope = ""
+        self.scope_file = [library]
+        self.symbols = {}
+        self.using = []
+
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
@@ -285,12 +318,19 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.default_format(format, kwargs)
 
-        # namespace
-        self.scope = ""
-        self.symbols = {}
-        self.using = []
+        # Create default namespace
+        if namespace:
+            ns = self
+            for name in namespace.split():
+                ns = ns.add_namespace(name, skip=True)
+            # Any namespaces listed in the "namespace" field are not wrapped.
+            self.wrap_namespace = ns
+
         declast.global_namespace = self
         self.create_std_names()
+        if self.language == "cxx":
+            create_std_namespace(self)  # add 'std::' to library
+            self.using_directive("std")
 
     def get_LibraryNode(self):
         """Return top of AST tree."""
@@ -310,8 +350,6 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.add_typedef("uint32_t")
         self.add_typedef("uint64_t")
         self.add_typedef("MPI_Comm")
-        create_std_namespace(self)  # add 'std::' to library
-        self.using_directive("std")
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -347,7 +385,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         """
         names = ntypemap.name.split("::")
         cxx_name = names.pop()
-        ns = self.add_namespaces(names)
+        ns = self.add_namespaces(names, expose=False)
 
         node = ClassNode(cxx_name, ns, ntypemap=ntypemap)
         # node is not added to self.classes
@@ -362,9 +400,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
             # They change when a function is inserted.
+            flatten_namespace=False,
             C_line_length=72,
+            F_flatten_namespace=False,
             F_line_length=72,
-            F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
@@ -381,17 +420,22 @@ class LibraryNode(AstNode, NamespaceMixin):
             return_scalar_pointer="pointer",
             show_splicer_comments=True,
             # blank for functions, set in classes.
-            class_prefix_template="{class_lower}_",
             YAML_type_filename_template="{library_lower}_types.yaml",
+
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
+
+            C_header_filename_namespace_template="wrap{file_scope}.{C_header_filename_suffix}",
+            C_impl_filename_namespace_template="wrap{file_scope}.{C_impl_filename_suffix}",
+
             C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
+
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
-            C_enum_template="{C_prefix}{flat_name}",
-            C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
+            C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
+            C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -403,21 +447,21 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
             # Fortran's names for C functions
             F_C_name_template=(
-                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
-                "{F_scope_name}{enum_member_lower}"
+                "{F_name_scope}{enum_member_lower}"
             ),
             F_name_impl_template=(
-                "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
+            F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
-            F_capsule_data_type_class_template="SHROUD_{class_lower}_capsule",
-            F_module_name_class_template="{class_lower}_mod",
-            F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
+            F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
+            F_capsule_data_type_class_template="SHROUD_{F_name_scope}capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
 
@@ -435,10 +479,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_metadata_template="{cxx_class}.metatable",
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
-            LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
+            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
 
             PY_module_filename_template=(
-                "py{library}module.{PY_impl_filename_suffix}"
+                "py{file_scope}module.{PY_impl_filename_suffix}"
             ),
             PY_header_filename_template=(
                 "py{library}module.{PY_header_filename_suffix}"
@@ -452,7 +496,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "py{cxx_class}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
-                "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}"
+                "{PY_prefix}{function_name}{function_suffix}{template_suffix}"
             ),
             # names for type methods (tp_init)
             PY_type_impl_template=(
@@ -491,7 +535,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
         )
-
         return def_options
 
     def default_format(self, fmtdict, kwargs):
@@ -510,12 +553,14 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_argument="SH_",
             c_temp="SHT_",
             C_local="SHC_",
+            C_name_scope = "",
             C_this="self",
             C_custom_return_type="",  # assume no value
             CXX_this="SH_this",
             CXX_local="SHCXX_",
             cxx_class="",  # Assume no class
             class_scope="",
+            file_scope = "_".join(self.scope_file),
             F_C_prefix="c_",
             F_derived_member="cxxmem",
             F_name_assign="assign",
@@ -526,6 +571,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_result="SHT_rv",
             F_result_ptr="SHT_prv",
             F_result_capsule="SHT_crv",
+            F_name_scope = "",
             F_pointer="SHT_ptr",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
@@ -551,7 +597,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
             # set default values for fields which may be unset.
-            class_prefix="",  # expand to blanks for library
             # c_ptr='',
             # c_const='',
             CXX_this_call="",
@@ -639,8 +684,14 @@ class LibraryNode(AstNode, NamespaceMixin):
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template("F_module_name", "_library")
+        fmt_library.F_module_name = fmt_library.F_module_name.lower()
         self.eval_template("F_impl_filename", "_library")
 
+        # If user changes PY_module_name, reflect change in PY_module_scope.
+        self.set_fmt_default(
+            "PY_module_init", fmt_library.PY_module_name, fmt_library)
+        self.set_fmt_default(
+            "PY_module_scope", fmt_library.PY_module_name, fmt_library)
         self.eval_template("PY_numpy_array_capsule_name")
         self.eval_template("PY_dtor_context_array")
         self.eval_template("PY_dtor_context_typedef")
@@ -666,9 +717,10 @@ class BlockNode(AstNode, NamespaceMixin):
         # From arguments
         self.parent = parent
 
+        self.classes = parent.classes
         self.enums = parent.enums
         self.functions = parent.functions
-        self.classes = parent.classes
+        self.namespaces = parent.namespaces
         self.variables = parent.variables
 
         self.options = util.Scope(parent=parent.options)
@@ -688,39 +740,51 @@ class BlockNode(AstNode, NamespaceMixin):
 
 
 class NamespaceNode(AstNode, NamespaceMixin):
-    def __init__(self, name, parent, format=None, options=None, **kwargs):
+    def __init__(self, name, parent, cxx_header="",
+                 format=None, options=None, skip=False, **kwargs):
         """Create NamespaceNode.
 
         parent may be LibraryNode or NamespaceNode.
+
+        Args:
+            skip - skip when generating scope_file and format names since
+                   it is part of the initial namespace, not a namespace
+                   within a declaration.
         """
         # From arguments
         self.name = name
         self.parent = parent
+        self.cxx_header = cxx_header
+        self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
-
-        # Namespaces do not own enums, functions or classes directly.
-        # Find their owner up the parent chain.
-        owner = parent
-        while owner:
-            if isinstance(owner, NamespaceNode):
-                # skip over nested namespaces
-                owner = owner.parent
-            self.enums = owner.enums
-            self.functions = owner.functions
-            self.classes = owner.classes
-            self.variables = owner.variables
-            break
 
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
 
-        self.default_format(parent, format)
+        if self.options.flatten_namespace:
+            self.classes = parent.classes
+            self.enums = parent.enums
+            self.functions = parent.functions
+            self.namespaces = parent.namespaces
+            self.variables = parent.variables
+        else:
+            self.classes = []
+            self.enums = []
+            self.functions = []
+            self.namespaces = []
+            self.variables = []
 
         # add to symbol table
         self.scope = self.parent.scope + self.name + "::"
+        if skip:
+            self.scope_file = self.parent.scope_file
+        else:
+            self.scope_file = self.parent.scope_file + [self.name]
         self.symbols = {}
         self.using = []
+
+        self.default_format(parent, format, skip)
 
     # # # # # namespace behavior
 
@@ -751,21 +815,57 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
     #####
 
-    def default_format(self, parent, format):
+    def default_format(self, parent, format, skip=False):
         """Set format dictionary."""
 
+        options = self.options
         self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         fmt_ns = self.fmtdict
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
+        if not skip:
+            fmt_ns.C_name_scope = (
+                parent.fmtdict.C_name_scope + self.name + "_"
+            )
+            if options.flatten_namespace or options.F_flatten_namespace:
+                fmt_ns.F_name_scope = (
+                    parent.fmtdict.F_name_scope + self.name.lower() + "_"
+                )
+        fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
+        if not skip:
+            fmt_ns.PY_module_name = self.name
+
+        self.eval_template("C_header_filename", "_namespace")
+        self.eval_template("C_impl_filename", "_namespace")
+        if skip:
+            # No module will be created for this namespace, use library template.
+            self.eval_template("F_impl_filename", "_library")
+            self.eval_template("F_module_name", "_library")
+        else:
+            self.eval_template("F_impl_filename", "_namespace")
+            self.eval_template("F_module_name", "_namespace")
+        fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
 
         if format:
             fmt_ns.update(format, replace=True)
+
+        # If user changes PY_module_name, reflect change in PY_module_scope.
+        if not skip:
+            self.set_fmt_default(
+                "PY_module_init",
+                parent.fmtdict.PY_module_init + "_" + fmt_ns.PY_module_name,
+                fmt_ns
+            )
+            self.set_fmt_default(
+                "PY_module_scope",
+                parent.fmtdict.PY_module_scope + "." + fmt_ns.PY_module_name,
+                fmt_ns
+            )
 
 
 ######################################################################
@@ -803,10 +903,13 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
+        self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
 
+        self.classes = []
         self.enums = []
         self.functions = []
+        self.namespaces = []
         self.variables = []
         self.as_struct = (
             as_struct
@@ -922,9 +1025,10 @@ class ClassNode(AstNode, NamespaceMixin):
             parent=parent.fmtdict,
             cxx_type=self.name,
             cxx_class=self.name,
-            class_lower=self.name.lower(),
-            class_upper=self.name.upper(),
             class_scope=self.name + "::",
+#            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
+            F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
         )
 
@@ -940,16 +1044,11 @@ class ClassNode(AstNode, NamespaceMixin):
         Call delete_format_template to remove previous values to
         force them to be recomputed during class template instantiation.
         """
-        self.eval_template("class_prefix")
-
         # Only one file per class for C.
         self.eval_template("C_header_filename", "_class")
         self.eval_template("C_impl_filename", "_class")
 
         self.eval_template("F_capsule_data_type", "_class")
-        if self.options.F_module_per_class:
-            self.eval_template("F_module_name", "_class")
-            self.eval_template("F_impl_filename", "_class")
 
         # As PyArray_Descr
         if self.as_struct:
@@ -963,11 +1062,11 @@ class ClassNode(AstNode, NamespaceMixin):
         """
         self.fmtdict.delattrs(
             [
-                "class_prefix",
                 "C_header_filename",
                 "C_impl_filename",
                 "F_module_name",
                 "F_impl_filename",
+                "F_capsule_data_type",
                 "PY_struct_array_descr_create",
                 "PY_struct_array_descr_variable",
                 "PY_struct_array_descr_name",
@@ -1320,11 +1419,18 @@ class EnumNode(AstNode):
         # format for each enum member
         fmtmembers = {}
         evalue = 0
+        if ast.scope is not None:
+            # members of 'class enum' must be qualified, add to scope.
+            C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
+            F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
         for member in ast.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
             fmt.enum_member_lower = member.name.lower()
             fmt.enum_member_upper = member.name.upper()
+            if ast.scope is not None:
+                fmt.C_name_scope = C_name_scope
+                fmt.F_name_scope = F_name_scope
 
             # evaluate value
             if member.value is not None:
@@ -1340,22 +1446,6 @@ class EnumNode(AstNode):
         self.scope = self.parent.scope + self.name + "::"
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
-
-        fmt_enum.flat_name = self.typemap.flat_name
-        if fmt_enum.flat_name == self.typemap.name and \
-           ast.scope is None:
-            # enum Color { RED };
-            # {C_prefix}_RED
-            fmt_enum.C_scope_name = ""
-        else:
-            # enum class Color { RED };
-            # {C_prefix}_Color_RED
-            fmt_enum.C_scope_name = self.typemap.flat_name + "_"
-
-        # XXX - fortran should not include scope levels which relate to 
-        # the namespace for the module
-        fmt_enum.F_scope_name = fmt_enum.C_scope_name.lower()
-
 
 ######################################################################
 
@@ -1494,8 +1584,11 @@ class FortranGeneric(object):
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     (string and vector)
+
+    Args:
+        glb: ast.LibraryNode
     """
-    std = glb.add_namespace("std")
+    std = glb.add_namespace("std", expose=False)
     std.add_typedef("string")
     std.add_typedef("vector")
     return std
@@ -1657,12 +1750,6 @@ def create_library_from_dictionary(node):
 
     clean_dictionary(node)
     library = LibraryNode(**node)
-    ns = library
-
-    # Create default namespace
-    if "namespace" in node:
-        for name in node["namespace"].split():
-            ns = ns.add_namespace(name)
 
     if "typemap" in node:
         # list of dictionaries
@@ -1684,6 +1771,6 @@ def create_library_from_dictionary(node):
                 else:
                     raise RuntimeError("base must be 'shadow'")
 
-    add_declarations(ns, node)
+    add_declarations(library.wrap_namespace, node)
 
     return library

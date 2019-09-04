@@ -400,7 +400,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.enums), 0)
 
         ns.add_enum("enum Color{RED=1,BLUE,WHITE}")
-        self.assertEqual(len(library.enums), 1)
+        self.assertEqual(len(ns.enums), 1)
 
         # parse global function which use the enum
         library.add_function("ns::Color directionFunc(ns::Color arg);")

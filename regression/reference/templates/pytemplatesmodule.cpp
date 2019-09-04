@@ -24,6 +24,8 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyObject *PY_init_templates_std(void);
+PyObject *PY_init_templates_internal(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -225,21 +227,21 @@ inittemplates(void)
 
     import_array();
 
-    // vector_int
-    PY_vector_int_Type.tp_new   = PyType_GenericNew;
-    PY_vector_int_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_vector_int_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_vector_int_Type);
-    PyModule_AddObject(m, "vector_int", (PyObject *)&PY_vector_int_Type);
+    {
+        PyObject *submodule = PY_init_templates_std();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "std", submodule);
+    }
 
-    // vector_double
-    PY_vector_double_Type.tp_new   = PyType_GenericNew;
-    PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_vector_double_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_vector_double_Type);
-    PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
+    {
+        PyObject *submodule = PY_init_templates_internal();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "internal", submodule);
+    }
 
     // Worker
     PY_Worker_Type.tp_new   = PyType_GenericNew;
@@ -248,14 +250,6 @@ inittemplates(void)
         return RETVAL;
     Py_INCREF(&PY_Worker_Type);
     PyModule_AddObject(m, "Worker", (PyObject *)&PY_Worker_Type);
-
-    // ImplWorker1
-    PY_ImplWorker1_Type.tp_new   = PyType_GenericNew;
-    PY_ImplWorker1_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_ImplWorker1_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_ImplWorker1_Type);
-    PyModule_AddObject(m, "ImplWorker1", (PyObject *)&PY_ImplWorker1_Type);
 
     // user_int
     PY_user_int_Type.tp_new   = PyType_GenericNew;

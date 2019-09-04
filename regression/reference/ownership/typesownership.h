@@ -43,11 +43,11 @@ struct s_OWN_SHROUD_array {
 };
 typedef struct s_OWN_SHROUD_array OWN_SHROUD_array;
 
-struct s_OWN_class1 {
+struct s_OWN_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_OWN_class1 OWN_class1;
+typedef struct s_OWN_Class1 OWN_Class1;
 
 void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap);
 

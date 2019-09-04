@@ -8,9 +8,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
-                    "C_type_name": "OWN_class1",
+                    "C_name_scope": "Class1_",
+                    "C_type_name": "OWN_Class1",
                     "F_capsule_data_type": "SHROUD_class1_capsule",
                     "F_derived_name": "class1",
+                    "F_name_scope": "class1_",
                     "LUA_class_reg": "l_Class1_Reg",
                     "LUA_ctor_name": "Class1",
                     "LUA_metadata": "Class1.metatable",
@@ -25,10 +27,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class1_to_Object",
                     "PY_type_filename": "pyClass1type.cpp",
-                    "class_lower": "class1",
-                    "class_prefix": "class1_",
                     "class_scope": "Class1::",
-                    "class_upper": "CLASS1",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1"
                 },
@@ -50,9 +49,9 @@
                         "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
-                            "C_name": "OWN_class1_dtor",
+                            "C_name": "OWN_Class1_dtor",
                             "C_pre_call": "Class1 *SH_this =\t static_cast<Class1 *>(self->addr);",
-                            "C_prototype": "OWN_class1 * self",
+                            "C_prototype": "OWN_Class1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_dtor",
@@ -65,7 +64,7 @@
                             "F_name_impl": "class1_dtor",
                             "F_subprogram": "subroutine",
                             "LUA_name": "dtor",
-                            "LUA_name_impl": "l_class1_dtor",
+                            "LUA_name_impl": "l_Class1_dtor",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -73,7 +72,7 @@
                             "function_name": "dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 31,
+                        "linenumber": 30,
                         "options": {}
                     },
                     {
@@ -108,9 +107,9 @@
                             "C_call_code": "int SHC_rv =\t SH_this->getFlag(\t);",
                             "C_call_list": "",
                             "C_code": "{C_pre_call}\nreturn SH_this->m_flag;",
-                            "C_name": "OWN_class1_get_flag",
+                            "C_name": "OWN_Class1_get_flag",
                             "C_pre_call": "Class1 *SH_this =\t static_cast<Class1 *>(self->addr);",
-                            "C_prototype": "OWN_class1 * self",
+                            "C_prototype": "OWN_Class1 * self",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_get_flag",
@@ -138,7 +137,7 @@
                         }
                     }
                 ],
-                "linenumber": 28,
+                "linenumber": 27,
                 "name": "Class1",
                 "options": {},
                 "scope": "Class1::",
@@ -167,7 +166,7 @@
                             "variable_name": "flag",
                             "variable_upper": "FLAG"
                         },
-                        "linenumber": 30,
+                        "linenumber": 29,
                         "name": "flag",
                         "options": {}
                     }
@@ -208,6 +207,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "OWN_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "OWN_",
@@ -230,6 +230,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -262,7 +263,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pyownershipmodule.cpp",
+            "PY_module_init": "ownership",
             "PY_module_name": "ownership",
+            "PY_module_scope": "ownership",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -286,9 +289,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "ownership",
             "function_suffix": "",
             "library": "ownership",
             "library_lower": "ownership",
@@ -315,7 +318,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 42,
+                        "__line__": 41,
                         "deref": "raw"
                     },
                     "declarator": {
@@ -348,9 +351,9 @@
                     "function_name": "ReturnIntPtrRaw",
                     "underscore_name": "return_int_ptr_raw"
                 },
-                "linenumber": 41,
+                "linenumber": 40,
                 "options": {
-                    "__line__": 45,
+                    "__line__": 44,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -383,7 +386,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 51,
+                        "__line__": 50,
                         "deref": "scalar"
                     },
                     "declarator": {
@@ -426,9 +429,9 @@
                     "function_name": "ReturnIntPtrScalar",
                     "underscore_name": "return_int_ptr_scalar"
                 },
-                "linenumber": 50,
+                "linenumber": 49,
                 "options": {
-                    "__line__": 53,
+                    "__line__": 52,
                     "wrap_lua": false
                 }
             },
@@ -459,7 +462,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 58,
+                        "__line__": 57,
                         "deref": "pointer"
                     },
                     "declarator": {
@@ -502,9 +505,9 @@
                     "function_name": "ReturnIntPtrPointer",
                     "underscore_name": "return_int_ptr_pointer"
                 },
-                "linenumber": 57,
+                "linenumber": 56,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 60,
                     "wrap_lua": false
                 }
             },
@@ -537,7 +540,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 71,
+                        "__line__": 70,
                         "deref": "raw"
                     },
                     "declarator": {
@@ -589,9 +592,9 @@
                     "function_name": "ReturnIntPtrDimRaw",
                     "underscore_name": "return_int_ptr_dim_raw"
                 },
-                "linenumber": 70,
+                "linenumber": 69,
                 "options": {
-                    "__line__": 74,
+                    "__line__": 73,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -664,7 +667,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 80,
+                        "__line__": 79,
                         "deref": "pointer",
                         "dimension": "len"
                     },
@@ -728,9 +731,9 @@
                     "function_name": "ReturnIntPtrDimPointer",
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
-                "linenumber": 79,
+                "linenumber": 78,
                 "options": {
-                    "__line__": 83,
+                    "__line__": 82,
                     "wrap_lua": false
                 }
             },
@@ -799,7 +802,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 87,
+                        "__line__": 86,
                         "deref": "allocatable",
                         "dimension": "len"
                     },
@@ -863,9 +866,9 @@
                     "function_name": "ReturnIntPtrDimAlloc",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
-                "linenumber": 86,
+                "linenumber": 85,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 89,
                     "wrap_lua": false
                 }
             },
@@ -905,7 +908,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "__line__": 87,
+                        "__line__": 86,
                         "context": "DSHC_rv",
                         "deref": "allocatable",
                         "dimension": "len"
@@ -962,9 +965,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
-                "linenumber": 86,
+                "linenumber": 85,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 89,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1067,7 +1070,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 94,
+                        "__line__": 93,
                         "dimension": "len"
                     },
                     "declarator": {
@@ -1130,9 +1133,9 @@
                     "function_name": "ReturnIntPtrDimDefault",
                     "underscore_name": "return_int_ptr_dim_default"
                 },
-                "linenumber": 93,
+                "linenumber": 92,
                 "options": {
-                    "__line__": 96,
+                    "__line__": 95,
                     "wrap_lua": false
                 }
             },
@@ -1165,7 +1168,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 105,
+                        "__line__": 104,
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -1219,9 +1222,9 @@
                     "function_name": "ReturnIntPtrDimRawNew",
                     "underscore_name": "return_int_ptr_dim_raw_new"
                 },
-                "linenumber": 104,
+                "linenumber": 103,
                 "options": {
-                    "__line__": 110,
+                    "__line__": 109,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1294,7 +1297,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 116,
+                        "__line__": 115,
                         "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
@@ -1359,9 +1362,9 @@
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 },
-                "linenumber": 115,
+                "linenumber": 114,
                 "options": {
-                    "__line__": 121,
+                    "__line__": 120,
                     "wrap_lua": false
                 }
             },
@@ -1423,7 +1426,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 125,
+                        "__line__": 124,
                         "deref": "allocatable",
                         "dimension": "len",
                         "owner": "caller"
@@ -1479,9 +1482,9 @@
                     "function_name": "ReturnIntPtrDimAllocNew",
                     "underscore_name": "return_int_ptr_dim_alloc_new"
                 },
-                "linenumber": 124,
+                "linenumber": 123,
                 "options": {
-                    "__line__": 130,
+                    "__line__": 129,
                     "wrap_fortran": false,
                     "wrap_lua": false
                 }
@@ -1553,7 +1556,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 135,
+                        "__line__": 134,
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -1617,9 +1620,9 @@
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
-                "linenumber": 134,
+                "linenumber": 133,
                 "options": {
-                    "__line__": 139,
+                    "__line__": 138,
                     "wrap_lua": false
                 }
             },
@@ -1632,7 +1635,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 151,
+                                "__line__": 150,
                                 "deref": "raw",
                                 "intent": "out",
                                 "owner": "library",
@@ -1684,9 +1687,9 @@
                     "function_name": "IntPtrDimRaw",
                     "underscore_name": "int_ptr_dim_raw"
                 },
-                "linenumber": 149,
+                "linenumber": 148,
                 "options": {
-                    "__line__": 155,
+                    "__line__": 154,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1702,7 +1705,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 163,
+                                "__line__": 162,
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
@@ -1756,9 +1759,9 @@
                     "function_name": "IntPtrDimPointer",
                     "underscore_name": "int_ptr_dim_pointer"
                 },
-                "linenumber": 161,
+                "linenumber": 160,
                 "options": {
-                    "__line__": 168,
+                    "__line__": 167,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1774,7 +1777,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 176,
+                                "__line__": 175,
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
@@ -1828,9 +1831,9 @@
                     "function_name": "IntPtrDimAlloc",
                     "underscore_name": "int_ptr_dim_alloc"
                 },
-                "linenumber": 174,
+                "linenumber": 173,
                 "options": {
-                    "__line__": 181,
+                    "__line__": 180,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1846,7 +1849,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 189,
+                                "__line__": 188,
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "library",
@@ -1899,9 +1902,9 @@
                     "function_name": "IntPtrDimDefault",
                     "underscore_name": "int_ptr_dim_default"
                 },
-                "linenumber": 187,
+                "linenumber": 186,
                 "options": {
-                    "__line__": 193,
+                    "__line__": 192,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1917,7 +1920,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 206,
+                                "__line__": 205,
                                 "deref": "raw",
                                 "intent": "out",
                                 "owner": "caller",
@@ -1970,9 +1973,9 @@
                     "function_name": "IntPtrDimRawNew",
                     "underscore_name": "int_ptr_dim_raw_new"
                 },
-                "linenumber": 204,
+                "linenumber": 203,
                 "options": {
-                    "__line__": 211,
+                    "__line__": 210,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1988,7 +1991,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 219,
+                                "__line__": 218,
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
@@ -2042,9 +2045,9 @@
                     "function_name": "IntPtrDimPointerNew",
                     "underscore_name": "int_ptr_dim_pointer_new"
                 },
-                "linenumber": 217,
+                "linenumber": 216,
                 "options": {
-                    "__line__": 225,
+                    "__line__": 224,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2060,7 +2063,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 233,
+                                "__line__": 232,
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
@@ -2114,9 +2117,9 @@
                     "function_name": "IntPtrDimAllocNew",
                     "underscore_name": "int_ptr_dim_alloc_new"
                 },
-                "linenumber": 231,
+                "linenumber": 230,
                 "options": {
-                    "__line__": 239,
+                    "__line__": 238,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2132,7 +2135,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 247,
+                                "__line__": 246,
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "caller",
@@ -2185,9 +2188,9 @@
                     "function_name": "IntPtrDimDefaultNew",
                     "underscore_name": "int_ptr_dim_default_new"
                 },
-                "linenumber": 245,
+                "linenumber": 244,
                 "options": {
-                    "__line__": 252,
+                    "__line__": 251,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2279,9 +2282,9 @@
                     "function_name": "createClassStatic",
                     "underscore_name": "create_class_static"
                 },
-                "linenumber": 261,
+                "linenumber": 260,
                 "options": {
-                    "__line__": 262,
+                    "__line__": 261,
                     "wrap_lua": false
                 }
             },
@@ -2338,9 +2341,9 @@
                     "C_call_list": "",
                     "C_name": "OWN_get_class_static",
                     "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                    "C_prototype": "OWN_class1 * SHC_rv",
+                    "C_prototype": "OWN_Class1 * SHC_rv",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "OWN_class1 *",
+                    "C_return_type": "OWN_Class1 *",
                     "F_C_call": "c_get_class_static",
                     "F_C_name": "c_get_class_static",
                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -2357,9 +2360,9 @@
                     "function_name": "getClassStatic",
                     "underscore_name": "get_class_static"
                 },
-                "linenumber": 266,
+                "linenumber": 265,
                 "options": {
-                    "__line__": 267,
+                    "__line__": 266,
                     "wrap_lua": false
                 }
             },
@@ -2462,7 +2465,7 @@
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
                 "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)",
                 "doxygen": {
-                    "__line__": 272,
+                    "__line__": 271,
                     "brief": "Return pointer to new Class1 instance."
                 },
                 "fmtdict": {
@@ -2470,9 +2473,9 @@
                     "C_call_list": "flag",
                     "C_name": "OWN_get_class_new",
                     "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;",
-                    "C_prototype": "int flag,\t OWN_class1 * SHC_rv",
+                    "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "OWN_class1 *",
+                    "C_return_type": "OWN_Class1 *",
                     "F_C_call": "c_get_class_new",
                     "F_C_name": "c_get_class_new",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
@@ -2489,47 +2492,49 @@
                     "function_name": "getClassNew",
                     "underscore_name": "get_class_new"
                 },
-                "linenumber": 271,
+                "linenumber": 270,
                 "options": {
-                    "__line__": 274,
+                    "__line__": 273,
                     "wrap_lua": false
                 }
             }
         ],
         "language": "cxx",
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": false,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -2540,7 +2545,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -2554,8 +2559,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
@@ -2567,10 +2572,10 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 21,
-            "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -2579,7 +2584,10 @@
             "wrap_fortran": true,
             "wrap_lua": true,
             "wrap_python": true
-        }
+        },
+        "scope_file": [
+            "ownership"
+        ]
     },
     "types": {
         "Class1": {
@@ -2606,7 +2614,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}Class1 *>({c_var}{c_member}addr)",
-            "c_type": "OWN_class1",
+            "c_type": "OWN_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
             "f_c_module": {

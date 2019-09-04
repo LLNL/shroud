@@ -19,11 +19,10 @@ C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()
 C-interface, Fortran method void method3def()
 C-interface, Fortran method void method3def(int i=0 +intent(in)+value)
-Close wrapfUser1.f
 class User2
 C-interface, Fortran method void exfunc()
 C-interface, Fortran method void exfunc(int flag +intent(in)+value)
-Close wrapfUser2.f
+Close wrapfpreprocess.f
 class User1
 Python method void method1()
 Python method void method2()
@@ -33,6 +32,6 @@ class User2
 Python method void exfunc()
 Python method void exfunc(int flag +intent(in)+value)
 Close pyUser2type.cpp
+Close pypreprocessmodule.cpp
 Close pypreprocessutil.cpp
 Close pypreprocessmodule.hpp
-Close pypreprocessmodule.cpp

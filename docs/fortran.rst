@@ -442,7 +442,7 @@ Two predicate function are generated to compare derived types:
 
     contains
 
-        function {class_lower}_eq(a,b) result (rv)
+        function {F_name_scope}eq(a,b) result (rv)
             use iso_c_binding, only: c_associated
             type({F_derived_name}), intent(IN) ::a,b
             logical :: rv
@@ -451,9 +451,9 @@ Two predicate function are generated to compare derived types:
             else
                 rv = .false.
             endif
-        end function {class_lower}_eq
+        end function {F_name_scope}eq
 
-        function {class_lower}_ne(a,b) result (rv)
+        function {F_name_scope}ne(a,b) result (rv)
             use iso_c_binding, only: c_associated
             type({F_derived_name}), intent(IN) ::a,b
             logical :: rv
@@ -462,5 +462,5 @@ Two predicate function are generated to compare derived types:
             else
                 rv = .false.
             endif
-        end function {class_lower}_ne
+        end function {F_name_scope}ne
  

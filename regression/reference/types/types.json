@@ -35,6 +35,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "TYP_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "TYP_",
@@ -57,6 +58,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -82,7 +84,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pytypesmodule.cpp",
+            "PY_module_init": "types",
             "PY_module_name": "types",
+            "PY_module_scope": "types",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -106,9 +110,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "types",
             "function_suffix": "",
             "library": "types",
             "library_lower": "types",
@@ -233,7 +237,7 @@
                     "function_name": "short_func",
                     "underscore_name": "short_func"
                 },
-                "linenumber": 32,
+                "linenumber": 31,
                 "options": {}
             },
             {
@@ -347,7 +351,7 @@
                     "function_name": "int_func",
                     "underscore_name": "int_func"
                 },
-                "linenumber": 33,
+                "linenumber": 32,
                 "options": {}
             },
             {
@@ -461,7 +465,7 @@
                     "function_name": "long_func",
                     "underscore_name": "long_func"
                 },
-                "linenumber": 34,
+                "linenumber": 33,
                 "options": {}
             },
             {
@@ -579,7 +583,7 @@
                     "function_name": "long_long_func",
                     "underscore_name": "long_long_func"
                 },
-                "linenumber": 35,
+                "linenumber": 34,
                 "options": {}
             },
             {
@@ -695,7 +699,7 @@
                     "function_name": "short_int_func",
                     "underscore_name": "short_int_func"
                 },
-                "linenumber": 38,
+                "linenumber": 37,
                 "options": {}
             },
             {
@@ -811,7 +815,7 @@
                     "function_name": "long_int_func",
                     "underscore_name": "long_int_func"
                 },
-                "linenumber": 39,
+                "linenumber": 38,
                 "options": {}
             },
             {
@@ -931,7 +935,7 @@
                     "function_name": "long_long_int_func",
                     "underscore_name": "long_long_int_func"
                 },
-                "linenumber": 40,
+                "linenumber": 39,
                 "options": {}
             },
             {
@@ -1045,7 +1049,7 @@
                     "function_name": "unsigned_func",
                     "underscore_name": "unsigned_func"
                 },
-                "linenumber": 43,
+                "linenumber": 42,
                 "options": {}
             },
             {
@@ -1161,7 +1165,7 @@
                     "function_name": "ushort_func",
                     "underscore_name": "ushort_func"
                 },
-                "linenumber": 45,
+                "linenumber": 44,
                 "options": {}
             },
             {
@@ -1277,7 +1281,7 @@
                     "function_name": "uint_func",
                     "underscore_name": "uint_func"
                 },
-                "linenumber": 46,
+                "linenumber": 45,
                 "options": {}
             },
             {
@@ -1393,7 +1397,7 @@
                     "function_name": "ulong_func",
                     "underscore_name": "ulong_func"
                 },
-                "linenumber": 47,
+                "linenumber": 46,
                 "options": {}
             },
             {
@@ -1513,7 +1517,7 @@
                     "function_name": "ulong_long_func",
                     "underscore_name": "ulong_long_func"
                 },
-                "linenumber": 48,
+                "linenumber": 47,
                 "options": {}
             },
             {
@@ -1631,7 +1635,7 @@
                     "function_name": "ulong_int_func",
                     "underscore_name": "ulong_int_func"
                 },
-                "linenumber": 49,
+                "linenumber": 48,
                 "options": {}
             },
             {
@@ -1745,7 +1749,7 @@
                     "function_name": "int8_func",
                     "underscore_name": "int8_func"
                 },
-                "linenumber": 51,
+                "linenumber": 50,
                 "options": {}
             },
             {
@@ -1859,7 +1863,7 @@
                     "function_name": "int16_func",
                     "underscore_name": "int16_func"
                 },
-                "linenumber": 52,
+                "linenumber": 51,
                 "options": {}
             },
             {
@@ -1973,7 +1977,7 @@
                     "function_name": "int32_func",
                     "underscore_name": "int32_func"
                 },
-                "linenumber": 53,
+                "linenumber": 52,
                 "options": {}
             },
             {
@@ -2087,7 +2091,7 @@
                     "function_name": "int64_func",
                     "underscore_name": "int64_func"
                 },
-                "linenumber": 54,
+                "linenumber": 53,
                 "options": {}
             },
             {
@@ -2201,7 +2205,7 @@
                     "function_name": "uint8_func",
                     "underscore_name": "uint8_func"
                 },
-                "linenumber": 56,
+                "linenumber": 55,
                 "options": {}
             },
             {
@@ -2315,7 +2319,7 @@
                     "function_name": "uint16_func",
                     "underscore_name": "uint16_func"
                 },
-                "linenumber": 57,
+                "linenumber": 56,
                 "options": {}
             },
             {
@@ -2429,7 +2433,7 @@
                     "function_name": "uint32_func",
                     "underscore_name": "uint32_func"
                 },
-                "linenumber": 58,
+                "linenumber": 57,
                 "options": {}
             },
             {
@@ -2543,7 +2547,7 @@
                     "function_name": "uint64_func",
                     "underscore_name": "uint64_func"
                 },
-                "linenumber": 59,
+                "linenumber": 58,
                 "options": {}
             },
             {
@@ -2657,7 +2661,7 @@
                     "function_name": "size_func",
                     "underscore_name": "size_func"
                 },
-                "linenumber": 61,
+                "linenumber": 60,
                 "options": {}
             },
             {
@@ -2774,7 +2778,7 @@
                     "function_name": "bool_func",
                     "underscore_name": "bool_func"
                 },
-                "linenumber": 63,
+                "linenumber": 62,
                 "options": {}
             },
             {
@@ -2871,7 +2875,7 @@
                 "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
                 "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
                 "doxygen": {
-                    "__line__": 66,
+                    "__line__": 65,
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
@@ -2898,44 +2902,46 @@
                     "function_name": "returnBoolAndOthers",
                     "underscore_name": "return_bool_and_others"
                 },
-                "linenumber": 65,
+                "linenumber": 64,
                 "options": {}
             }
         ],
         "language": "cxx",
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": false,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -2946,7 +2952,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -2960,8 +2966,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
@@ -2973,10 +2979,10 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 22,
-            "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -2985,7 +2991,10 @@
             "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": true
-        }
+        },
+        "scope_file": [
+            "types"
+        ]
     },
     "types": {
         "MPI_Comm": {

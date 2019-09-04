@@ -79,7 +79,7 @@ library
   The name of the library.
   Used to name output files and modules.
   The first three letters are used as the default for **C_prefix** option.
-  Defaults to *default_library*.
+  Defaults to *library*.
   Each YAML file is intended to wrap a single library.
 
 options
@@ -337,12 +337,11 @@ dictionary.
 
 C_enum_template
     Name of enumeration in C wrapper.
-    ``{C_prefix}{flat_name}``
-    *flat_name* is taken from the typedef for the enumeration.
+    ``{C_prefix}{C_name_scope}{enum_name}``
 
 C_enum_member_template
     Name of enumeration member in C wrapper.
-    ``{C_prefix}{scope_name}{enum_member_name}``
+    ``{C_prefix}{C_name_scope}{enum_member_name}``
 
 C_header_filename_class_template
     ``wrap{cxx_class}.{C_header_filename_suffix}``
@@ -350,18 +349,24 @@ C_header_filename_class_template
 C_header_filename_library_template
    ``wrap{library}.{C_header_filename_suffix}``
 
+C_header_filename_namespace_template
+   ``wrap{scope_file}.{C_header_filename_suffix}``
+
 C_impl_filename_class_template
     ``wrap{cxx_class}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``
 
+C_impl_filename_namespace_template
+    ``wrap{scope_file}.{C_impl_filename_suffix}``
+
 C_memory_dtor_function_template
     Name of function used to delete memory allocated by C or C++.
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 C_var_len_template
     Format for variable created with *len* annotation.
@@ -375,13 +380,8 @@ C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
 
-class_prefix_template
-    Class component for function names.
-    Will be blank if the function is not in a class.
-    ``{class_lower}_``
-
 F_C_name_template
-    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
@@ -399,31 +399,28 @@ F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
     struct used to implement a shadow class.
     Each class must have a unique name.
-    Defaults to ``SHROUD_{class_lower}_capsule``.
+    Defaults to ``SHROUD_{F_name_scope}capsule``.
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
-    ``{class_prefix}{enum_lower}_{enum_member_lower}``
-    Note that there is not F_enum_template since only the members are 
-    in the Fortran code, not the enum itself.
+    ``{F_name_scope}{enum_member_lower}``
+    Note that *F_enum_template* does not exist since only the members are 
+    in the Fortran code, not the enum name itself.
 
 F_name_generic_template
     ``{underscore_name}``
-
-F_impl_filename_class_template
-    ``wrapf{cxx_class}.{F_filename_suffix}``
 
 F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
-
-F_module_name_class_template
-    ``{class_lower}_mod``
+    ``{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 F_module_name_library_template
     ``{library_lower}_mod``
+
+F_module_name_namespace_template
+    ``{file_scope}_mod``
 
 F_name_function_template
     ``{underscore_name}{function_suffix}{template_suffix}``
@@ -455,7 +452,7 @@ LUA_name_impl_template
     Name of implementation function.
     All overloaded function use the same Lua wrapper so 
     *function_suffix* is not needed.
-    ``{LUA_prefix}{class_prefix}{underscore_name}``
+    ``{LUA_prefix}{C_name_scope}{underscore_name}``
 
 LUA_name_template
     Name of function as know by Lua.
@@ -498,7 +495,7 @@ PY_member_setter_template
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
 PY_name_impl_template
-    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}``
+    ``{PY_prefix}{function_name}{function_suffix}{template_suffix}``
 
 PY_numpy_array_capsule_name_template
     Name of ``PyCapsule object`` used as base object of NumPy arrays.
@@ -599,6 +596,10 @@ C_local
 C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
 
+C_name_scope
+   Underscore delimited name of namespace, class, enumeration.
+   Used with creating names in C.
+
 C_result
     The name of the C wrapper's result variable.
     It must not be the same as any of the routines arguments.
@@ -662,12 +663,11 @@ F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*
     which is **{library_lower}_mod**.
+    Then converted to lower case.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
-    If option *F_module_per_class* is false, then all derived types
-    generated for each class will also be in this file.
 
 F_pointer
     The name of Fortran wrapper local variable to save result of a 
@@ -705,6 +705,9 @@ F_this
    It must not be the same as any of the routines arguments.
    Defaults to ``obj``.
 
+file_scope
+   Used in filename creation to identify library, namespace, class.
+
 library
     The value of global **field** *library*.
 
@@ -739,7 +742,8 @@ LUA_state_var
     Name of argument in Lua wrapper functions for lua_State pointer.
 
 namespace_scope
-    The current namespace delimited with ``::`` and a trailing ``::``.
+    The current C++ namespace delimited with ``::`` and a trailing ``::``.
+    Used when referencing identifiers: ``{namespace_scope}id``.
 
 PY_header_filename_suffix
    Suffix added to Python header files.
@@ -751,13 +755,26 @@ PY_impl_filename_suffix
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
+PY_module_init
+    Name of module and submodule initialization routine.
+    library and namespaces delimited by ``_``.
+    Setting *PY_module_name* will update *PY_module_init*.
+
 PY_module_name
-    Name of wrapper Python module.
-    Defaults to library name.
+    Name of generated Python module.
+    Defaults to library name or namespace name.
+
+PY_module_scope
+    Name of module and submodule initialization routine.
+    library and namespaces delimited by ``.``.
+    Setting *PY_module_name* will update *PY_module_scope*.
 
 PY_name_impl
     Name of Python wrapper implemenation function.
-    Defaults to *{PY_prefix}{class_prefix}{function_name}{function_suffix}*.
+    Each class and namespace is implemented in its own function with file
+    static functions.  There is no need to include the class or namespace in
+    this name.
+    Defaults to *{PY_prefix}{function_name}{function_suffix}*.
 
 PY_prefix
     Prefix added to Python wrapper functions.
@@ -768,6 +785,12 @@ PY_result
     If the function returns multiple values (due to *intent(out)*)
     and the function result is already an object (for example, a NumPy array)
     then **PY_result** will be **SHResult**.
+
+file_scope
+    library plus any namespaces.
+    The namespaces listed in the top level variable *namespace* is not included in the value.
+    It is assumed that *library* will be used to generate unique names.
+    Used in creating a filename.
 
 stdlib
     Name of C++ standard library prefix.
@@ -827,18 +850,8 @@ C_impl_file
 
 F_derived_name
    Name of Fortran derived type for this class.
-   Defaults to the C++ class name.
-
-F_impl_filename
-    Name of generated Fortran implementation file for the library.
-    Defaulted from expansion of option *F_impl_filename_class_template*.
-    Only defined if *F_module_per_class* is true.
-
-F_module_name
-    Name of module for Fortran interface for the class.
-    Defaulted from expansion of option *F_module_name_class_template*
-    which is **{class_lower}_mod**.
-    Only defined if *F_module_per_class* is true.
+   Defaults to the value *cxx_class* (usually the C++ class name) converted
+   to lowercase.
 
 F_name_assign
     Name of method that controls assignment of shadow types.
@@ -863,28 +876,23 @@ F_name_instance_set
 
 cxx_class
     The name of the C++ class from the YAML input file.
-    ex. ``std::vector``.
+    ex. ``std::string``.
     Used in generating names for C and Fortran and filenames.
+    When the class is templated, it willl be converted to a legal identifier
+    by adding the *template_suffix* or a sequence number.
+
+    When *cxx_class* is set in the YAML file for a class, its value will be
+    used in *class_scope*, *C_name_scope*, *F_name_scope* and *F_derived_name*.
 
 cxx_type
-    The name of the C++ class, including information
+    The namespace qualified name of the C++ class, including information
     from *template_arguments*, ex. ``std::vector<int>``.
     Same as *cxx_class* if *template_arguments* is not defined.
     Used in generating C++ code.
 
-class_lower
-    Lowercase version of *cxx_class*.
-
-class_upper
-    Uppercase version of *cxx_class*.
-
-class_prefix
-    Variable which may be used in creating function names.
-    Defaults to evaluation of *class_prefix_template*.
-    Outside of a class, set to empty string.
-
 class_scope
-    Use with name resolution or blank if not in a class.
+    Used to to access class static functions.
+    Blank when not in a class.
     ``{cxx_class}::``
 
 C_prefix

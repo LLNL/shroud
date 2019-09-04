@@ -4,6 +4,6 @@ Wrote wrapstruct.cpp
 Wrote typesstruct.h
 Wrote wrapfstruct.f
 Wrote pyCstruct1type.cpp
+Wrote pystructmodule.cpp
 Wrote pystructutil.cpp
 Wrote pystructmodule.hpp
-Wrote pystructmodule.cpp

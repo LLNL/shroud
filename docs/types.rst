@@ -407,7 +407,7 @@ C and Fortran
 Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
 **F_capsule_data_type**. Their names default to
-``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{class_lower}_capsule``.
+``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{F_name_scope}capsule``.
 In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
 .. literalinclude:: ../regression/reference/tutorial/typesTutorial.h

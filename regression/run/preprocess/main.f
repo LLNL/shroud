@@ -18,7 +18,7 @@
 program tester
   use fruit
   use iso_c_binding
-  use user1_mod
+  use preprocess_mod
   implicit none
   logical ok
 

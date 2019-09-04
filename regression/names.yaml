@@ -55,28 +55,34 @@ declarations:
      baz: 4  
 
 
-
-- decl: class Names
-  options:
-    none: foo
-    C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
-    F_C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
+- decl: namespace ns0
   format:
-    C_header_filename: foo.h
-    C_impl_filename: foo.cpp
+    # C_header_filename is not created.
+    C_header_filename: foons0.h
+    C_impl_filename: foons0.cpp
     F_module_name: name_module
     F_impl_filename: foo.f
-    F_derived_name: FNames
-
   declarations:
-  - decl: void method1()
+  - decl: namespace inner
+  - decl: class Names
+    options:
+      none: foo
+      C_name_template: XXX_{C_prefix}{C_name_scope}{underscore_name}{function_suffix}
+      F_C_name_template: XXX_{C_prefix}{F_name_scope}{underscore_name}{function_suffix}
     format:
-      F_name_function: type_method1
-  - decl: void method2()
-    format:
-      C_this: self2
-      CXX_this: SH_this2
-      F_this:  obj2
+      C_header_filename: foo.h
+      C_impl_filename: foo.cpp
+      F_derived_name: FNames
+  
+    declarations:
+    - decl: void method1()
+      format:
+        F_name_function: type_method1
+    - decl: void method2()
+      format:
+        C_this: self2
+        CXX_this: SH_this2
+        F_this:  obj2
 
 # test file suffix
 - decl: class Names2
@@ -86,7 +92,7 @@ declarations:
   options:
     C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
     F_C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
-    F_name_impl_template: "{library}_{class_prefix}{underscore_name}{function_suffix}"
+    F_name_impl_template: "{library}_{F_name_scope}{underscore_name}{function_suffix}"
   declarations:
   - decl: void function1()
   - decl: void function2()
@@ -114,7 +120,7 @@ declarations:
 - decl: namespace ns1
   options:
     # test options in namespace
-    F_name_impl_template: "{library_lower}_{class_prefix}{underscore_name}{function_suffix}"
+    F_name_impl_template: "{library_lower}_{F_name_scope}{underscore_name}{function_suffix}"
   declarations:
   - decl: void init_ns1()
 
@@ -163,9 +169,9 @@ declarations:
         # Explicit class name.
         # XXX - Necessary to specify lower and upper.
         cxx_class: Vvv1
-        class_lower: vvv1
-        class_upper: VVV1
-        class_scope: 'VvV1::'
+#        class_lower: vvv1     # automatically set from cxx_class
+#        class_upper: VVV1     # automatically set from cxx_class
+#        class_scope: 'VvV1::' # automatically set from cxx_class
         F_derived_name: FFvvv1
     - instantiation: <double>
       # Based on template typename.   vector_double
@@ -201,7 +207,23 @@ splicer_code:
      CXX_definitions:
        - // Add some text from splicer
        - // And another line
+     namespace:
+       ns0:
+         CXX_definitions:
+         - // lines from explict splicer - namespace ns0
+         class:
+           Names:
+             CXX_definitions:
+             - // CXX_definitions for ns0 class Names
+       ns0::inner:
+          CXX_definitions:
+          - // CXX_definitions for ns0::inner
      class:
        Names2:
          C_definitions:
            - int write_file;
+   f:
+     namespace:
+       ns0::inner:
+          file_top:
+          -  "! top of ns0::inner"

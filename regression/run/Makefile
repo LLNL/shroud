@@ -29,6 +29,7 @@ test-fortran-% : fortran-%
 test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-namespace \
   test-fortran-pointers \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
@@ -66,9 +67,14 @@ cpp-% : $(tempdir)/run/%/.. phony_explicit
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) maincpp
 
+# Run a C++ test
+test-cpp-% : cpp-%
+	$(tempdir)/run/$*/maincpp
+
 test-cpp : \
   cpp-tutorial \
-  cpp-templates
+  cpp-templates \
+  test-cpp-scope
 
 ######################################################################
 # Compile the generated Python wrapper
@@ -85,6 +91,7 @@ test-python-% : pymod-%
 
 test-python : \
   test-python-tutorial \
+  test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cpp \
   test-python-pointers-list-cpp \
@@ -94,6 +101,8 @@ test-python : \
   test-python-struct-c \
   test-python-struct-cxx \
   test-python-ownership
+
+# test-python-templates
 
 ######################################################################
 # Compile the geneated Lua wrapper
@@ -122,11 +131,14 @@ test-all : test-c test-fortran test-python test-lua
 phony_explicit: 
 
 # Avoid deleting directories created to run tests.
+# They are created via pattern rules.
 .SECONDARY: \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/generic/.. \
+    $(tempdir)/run/namespace/.. \
+    $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
     $(tempdir)/run/pointers/..\
@@ -137,10 +149,11 @@ phony_explicit:
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
+    $(tempdir)/run/scope/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
-    $(tempdir)/run/struct/.. \
-    $(tempdir)/run/struct/python/.. \
+    $(tempdir)/run/struct-c/.. \
+    $(tempdir)/run/struct-c/python/.. \
     $(tempdir)/run/struct-cxx/.. \
     $(tempdir)/run/struct-cxx/python/.. \
     $(tempdir)/run/templates/.. \

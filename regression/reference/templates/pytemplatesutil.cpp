@@ -5,14 +5,14 @@
 
 const char *PY_vector_int_capsule_name = "vector_int";
 const char *PY_vector_double_capsule_name = "vector_double";
-const char *PY_Worker_capsule_name = "Worker";
 const char *PY_ImplWorker1_capsule_name = "ImplWorker1";
+const char *PY_Worker_capsule_name = "Worker";
 const char *PY_user_int_capsule_name = "user_int";
 
 
 PyObject *PP_vector_int_to_Object(std::vector_int *addr)
 {
-    // splicer begin class.vector.utility.to_object
+    // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -23,12 +23,12 @@ PyObject *PP_vector_int_to_Object(std::vector_int *addr)
     rv = PyObject_Call((PyObject *) &PY_vector_int_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.utility.to_object
+    // splicer end namespace.std.class.vector.utility.to_object
 }
 
 int PP_vector_int_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.utility.from_object
+    // splicer begin namespace.std.class.vector.utility.from_object
     if (obj->ob_type != &PY_vector_int_Type) {
         // raise exception
         return 0;
@@ -36,12 +36,12 @@ int PP_vector_int_from_Object(PyObject *obj, void **addr)
     PY_vector_int * self = (PY_vector_int *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.utility.from_object
+    // splicer end namespace.std.class.vector.utility.from_object
 }
 
 PyObject *PP_vector_double_to_Object(std::vector_double *addr)
 {
-    // splicer begin class.vector.utility.to_object
+    // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -52,12 +52,12 @@ PyObject *PP_vector_double_to_Object(std::vector_double *addr)
     rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.utility.to_object
+    // splicer end namespace.std.class.vector.utility.to_object
 }
 
 int PP_vector_double_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.utility.from_object
+    // splicer begin namespace.std.class.vector.utility.from_object
     if (obj->ob_type != &PY_vector_double_Type) {
         // raise exception
         return 0;
@@ -65,7 +65,36 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
     PY_vector_double * self = (PY_vector_double *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.utility.from_object
+    // splicer end namespace.std.class.vector.utility.from_object
+}
+
+PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr)
+{
+    // splicer begin namespace.internal.class.ImplWorker1.utility.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_ImplWorker1_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_ImplWorker1_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end namespace.internal.class.ImplWorker1.utility.to_object
+}
+
+int PP_ImplWorker1_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin namespace.internal.class.ImplWorker1.utility.from_object
+    if (obj->ob_type != &PY_ImplWorker1_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_ImplWorker1 * self = (PY_ImplWorker1 *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end namespace.internal.class.ImplWorker1.utility.from_object
 }
 
 PyObject *PP_Worker_to_Object(Worker *addr)
@@ -95,35 +124,6 @@ int PP_Worker_from_Object(PyObject *obj, void **addr)
     *addr = self->obj;
     return 1;
     // splicer end class.Worker.utility.from_object
-}
-
-PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr)
-{
-    // splicer begin class.ImplWorker1.utility.to_object
-    PyObject *voidobj;
-    PyObject *args;
-    PyObject *rv;
-
-    voidobj = PyCapsule_New(addr, PY_ImplWorker1_capsule_name, NULL);
-    args = PyTuple_New(1);
-    PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_ImplWorker1_Type, args, NULL);
-    Py_DECREF(args);
-    return rv;
-    // splicer end class.ImplWorker1.utility.to_object
-}
-
-int PP_ImplWorker1_from_Object(PyObject *obj, void **addr)
-{
-    // splicer begin class.ImplWorker1.utility.from_object
-    if (obj->ob_type != &PY_ImplWorker1_Type) {
-        // raise exception
-        return 0;
-    }
-    PY_ImplWorker1 * self = (PY_ImplWorker1 *) obj;
-    *addr = self->obj;
-    return 1;
-    // splicer end class.ImplWorker1.utility.from_object
 }
 
 PyObject *PP_user_int_to_Object(user_int *addr)

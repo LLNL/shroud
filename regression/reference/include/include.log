@@ -1,5 +1,8 @@
 Read yaml include.yaml
-Close default_library_types.yaml
+Close library_types.yaml
+C function void function1()
+Close wraplibrary_one_two.h
+Close wraplibrary_one_two.cpp
 class Class1
 C method void method1(CustomType arg1 +intent(in)+value)
 Close wrapClass1.h
@@ -9,16 +12,15 @@ C method void method1(MPI_Comm comm +intent(in)+value)
 C method void method2(three::Class1 * c2 +intent(in))
 Close wrapClass2.h
 Close wrapClass2.cpp
-C function void function1()
-Close wrapdefault_library.h
-Close wrapdefault_library.cpp
-Close typesdefault_library.h
-class Class1
-C-interface, Fortran method void method1(CustomType arg1 +intent(in)+value)
-Close wrapfClass1.f
+Close wraplibrary.cpp
+Close typeslibrary.h
 class Class2
 C-interface, Fortran method void method1(MPI_Comm comm +intent(in)+value)
 C-interface, Fortran method void method2(three::Class1 * c2 +intent(in))
-Close wrapfClass2.f
 C-interface, Fortran function void function1()
-Close wrapfdefault_library.f
+Close wrapflibrary_one_two.f
+Close wrapflibrary_one.f
+class Class1
+C-interface, Fortran method void method1(CustomType arg1 +intent(in)+value)
+Close wrapflibrary_three.f
+Close wrapflibrary.f

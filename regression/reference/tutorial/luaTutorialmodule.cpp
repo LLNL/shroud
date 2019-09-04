@@ -22,7 +22,7 @@ extern "C" {
 
 // Class1() +name(new)
 // Class1(int flag +intent(in)+value) +name(new)
-static int l_class1_new(lua_State *L)
+static int l_Class1_new(lua_State *L)
 {
     // splicer begin class.Class1.method.new
     int SH_nresult = 0;
@@ -66,7 +66,7 @@ static int l_class1_new(lua_State *L)
 }
 
 // ~Class1() +name(delete)
-static int l_class1_delete(lua_State *L)
+static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
@@ -82,7 +82,7 @@ static int l_class1_delete(lua_State *L)
  * \brief returns the value of flag member
  *
  */
-static int l_class1_method1(lua_State *L)
+static int l_Class1_method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
@@ -94,7 +94,7 @@ static int l_class1_method1(lua_State *L)
 }
 
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
-static int l_class1_direction_func(lua_State *L)
+static int l_Class1_direction_func(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
     tutorial::Class1::DIRECTION arg =
@@ -112,9 +112,9 @@ static int l_class1_direction_func(lua_State *L)
 // splicer end class.Class1.additional_functions
 
 static const struct luaL_Reg l_Class1_Reg [] = {
-    {"__gc", l_class1_delete},
-    {"Method1", l_class1_method1},
-    {"directionFunc", l_class1_direction_func},
+    {"__gc", l_Class1_delete},
+    {"Method1", l_Class1_method1},
+    {"directionFunc", l_Class1_direction_func},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register
     {NULL, NULL}   /*sentinel */
@@ -484,7 +484,7 @@ static int l_last_function_called(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
-    {"Class1", l_class1_new},
+    {"Class1", l_Class1_new},
     {"NoReturnNoArguments", l_no_return_no_arguments},
     {"PassByValue", l_pass_by_value},
     {"ConcatenateStrings", l_concatenate_strings},

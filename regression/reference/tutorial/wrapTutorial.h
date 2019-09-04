@@ -8,7 +8,7 @@
 //
 /**
  * \file wrapTutorial.h
- * \brief Shroud generated wrapper for Tutorial library
+ * \brief Shroud generated wrapper for tutorial namespace
  */
 // For C users and C++ implementation
 
@@ -25,10 +25,10 @@ extern "C" {
 #endif
 
 //  tutorial::Color
-enum TUT_tutorial_Color {
-    TUT_tutorial_Color_RED,
-    TUT_tutorial_Color_BLUE,
-    TUT_tutorial_Color_WHITE
+enum TUT_Color {
+    TUT_RED,
+    TUT_BLUE,
+    TUT_WHITE
 };
 
 // splicer begin C_declarations
@@ -93,15 +93,15 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_direction_func(int arg);
 
-void TUT_pass_class_by_value(TUT_class1 arg);
+void TUT_pass_class_by_value(TUT_Class1 arg);
 
-int TUT_useclass(const TUT_class1 * arg);
+int TUT_useclass(const TUT_Class1 * arg);
 
-TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv);
 
-TUT_class1 * TUT_getclass3(TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv);
 
-TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv);
 
 int TUT_callback1(int in, int ( * incr)(int));
 

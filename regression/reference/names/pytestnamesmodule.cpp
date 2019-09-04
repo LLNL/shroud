@@ -35,6 +35,11 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyObject *PY_init_testnames_ns0_inner(void);
+PyObject *PY_init_testnames_ns0(void);
+PyObject *PY_init_testnames_ns1(void);
+PyObject *PY_init_testnames_internal(void);
+PyObject *PY_init_testnames_std(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -165,23 +170,6 @@ PY_fiveplus(
     fiveplus();
     Py_RETURN_NONE;
 // splicer end function.fiveplus
-}
-
-static char PY_init_ns1__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_init_ns1(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// void init_ns1()
-// splicer begin function.init_ns1
-    ns1::init_ns1();
-    Py_RETURN_NONE;
-// splicer end function.init_ns1
 }
 
 /**
@@ -350,7 +338,6 @@ static PyMethodDef PY_methods[] = {
 {"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS,
     PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
-{"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
 {"UseImplWorker_instantiation3",
     (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
     PY_UseImplWorker_instantiation3__doc__},
@@ -436,13 +423,37 @@ inittestnames(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    // Names
-    PY_Names_Type.tp_new   = PyType_GenericNew;
-    PY_Names_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Names_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Names_Type);
-    PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
+    {
+        PyObject *submodule = PY_init_testnames_ns0();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "ns0", submodule);
+    }
+
+    {
+        PyObject *submodule = PY_init_testnames_ns1();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "ns1", submodule);
+    }
+
+    {
+        PyObject *submodule = PY_init_testnames_internal();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "internal", submodule);
+    }
+
+    {
+        PyObject *submodule = PY_init_testnames_std();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "std", submodule);
+    }
 
     // Names2
     PY_Names2_Type.tp_new   = PyType_GenericNew;
@@ -451,38 +462,6 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_Names2_Type);
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
-
-    // Vvv1
-    PY_Vvv1_Type.tp_new   = PyType_GenericNew;
-    PY_Vvv1_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Vvv1_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Vvv1_Type);
-    PyModule_AddObject(m, "Vvv1", (PyObject *)&PY_Vvv1_Type);
-
-    // vector_double
-    PY_vector_double_Type.tp_new   = PyType_GenericNew;
-    PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_vector_double_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_vector_double_Type);
-    PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
-
-    // vector_instantiation5
-    PY_vector_instantiation5_Type.tp_new   = PyType_GenericNew;
-    PY_vector_instantiation5_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_vector_instantiation5_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_vector_instantiation5_Type);
-    PyModule_AddObject(m, "vector_instantiation5", (PyObject *)&PY_vector_instantiation5_Type);
-
-    // vector_instantiation3
-    PY_vector_instantiation3_Type.tp_new   = PyType_GenericNew;
-    PY_vector_instantiation3_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_vector_instantiation3_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_vector_instantiation3_Type);
-    PyModule_AddObject(m, "vector_instantiation3", (PyObject *)&PY_vector_instantiation3_Type);
 
     // twoTs_0
     PY_twoTs_0_Type.tp_new   = PyType_GenericNew;

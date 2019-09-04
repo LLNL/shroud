@@ -13,10 +13,12 @@ import json
 
 from . import visitor
 
-
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
+
+    def visit_str(self, node):
+        return str(node)
 
     def visit_list(self, node):
         return [self.visit(n) for n in node]
@@ -152,7 +154,10 @@ class ToDict(visitor.Visitor):
 
     def visit_LibraryNode(self, node):
         d = dict()
-        add_true_fields(node, d, ["copyright", "cxx_header", "language"])
+        add_true_fields(node, d, ["copyright", "cxx_header", "language", "scope"])
+        self.add_visit_fields( # TEMP  deal with wrap_namespace
+            node, d, [ "fmtdict", "options", "scope_file", ])
+        node = node.wrap_namespace   # XXXX TEMP kludge
         self.add_visit_fields(
             node,
             d,
@@ -160,9 +165,11 @@ class ToDict(visitor.Visitor):
                 "classes",
                 "enums",
                 "functions",
+                "namespaces",
                 "variables",
-                "fmtdict",
-                "options",
+#                "fmtdict",
+#                "options",
+#                "scope_file",
             ],
         )
         return d
@@ -266,8 +273,12 @@ class ToDict(visitor.Visitor):
 
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
-        self.add_visit_fields(node, d, ["fmtdict", "options"])
+        self.add_visit_fields(node, d, [
+            "classes", "enums", "functions", "namespaces", "variables",
+            "fmtdict", "options"])
         add_non_none_fields(node, d, ["linenumber"])
+        self.add_visit_fields(node, d, ["scope_file"])
+        add_non_none_fields(node, d, ["scope"])
         return d
 
     def visit_VariableNode(self, node):

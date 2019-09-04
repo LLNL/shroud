@@ -1,14 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# SPDX-License-Identifier: (BSD-3-Clause)
 #
 # #######################################################################
 #
@@ -32,8 +26,6 @@ VPATH = \
 
 OBJS = \
     scope.o \
-    wrapfcls1_enum.o \
-    wrapfcls2_enum.o \
     wrapfscope.o \
     wrapscope.o \
     fruit.o \
@@ -50,13 +42,9 @@ wrapScope.o : wrapscope.h scope.hpp
 main.o : wrapfscope.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapscope.o scope.o
+maincpp : maincpp.o wrapscope.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapscope.h scope.hpp
 testc : testc.o wrapscope.o scope.o
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
-
-testscope.o : scope.hpp
-testscope: testscope.o
-	$(CXX) $^ -o $@

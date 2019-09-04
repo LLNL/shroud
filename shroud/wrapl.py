@@ -68,28 +68,38 @@ class Wrapl(util.WrapperMixin):
         self.class_lines = []
         self.lua_type_structs = []
 
+        self.wrap_namespace(newlibrary.wrap_namespace)
+        self.write_header(newlibrary)
+        self.write_module(newlibrary)
+    #        self.write_helper()
+
+    def wrap_namespace(self, node):
+        """Wrap a library or namespace.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
         self._push_splicer("class")
-        for node in newlibrary.classes:
-            if not node.options.wrap_lua:
+        for cls in node.classes:
+            if not cls.options.wrap_lua:
                 continue
-            name = node.name
+            name = cls.name
             self.reset_file()
             self._push_splicer(name)
-            self.wrap_class(node)
-            #            self.write_extension_type(node)
+            self.wrap_class(cls)
+            #            self.write_extension_type(cls)
             self._pop_splicer(name)
         self._pop_splicer("class")
 
         self.reset_file()
-        if newlibrary.functions:
+        if node.functions:
             self._push_splicer("function")
-            self.wrap_functions(None, newlibrary.functions)
+            self.wrap_functions(None, node.functions)
             self._pop_splicer("function")
 
-        self.write_header(newlibrary)
-        self.write_module(newlibrary)
-
-    #        self.write_helper()
+        for ns in node.namespaces:
+            if ns.options.wrap_lua:
+                self.wrap_namespace(ns)
 
     def wrap_class(self, node):
         """

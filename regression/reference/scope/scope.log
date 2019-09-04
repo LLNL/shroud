@@ -1,14 +1,16 @@
 Read yaml scope.yaml
 Close scope_types.yaml
-class cls1Enum
-Close wrapcls1Enum.h
-class cls2Enum
-Close wrapcls2Enum.h
+Close wrapscope_ns1.h
+Close wrapscope_ns2.h
+class Class1
+Close wrapClass1.h
+class Class2
+Close wrapClass2.h
 Close wrapscope.h
 Close wrapscope.cpp
 Close typesscope.h
-class cls1Enum
-Close wrapfcls1Enum.f
-class cls2Enum
-Close wrapfcls2Enum.f
+class Class1
+class Class2
+Close wrapfscope_ns1.f
+Close wrapfscope_ns2.f
 Close wrapfscope.f

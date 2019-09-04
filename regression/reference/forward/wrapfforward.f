@@ -16,7 +16,7 @@
 ! #######################################################################
 !>
 !! \file wrapfforward.f
-!! \brief Shroud generated wrapper for forward library
+!! \brief Shroud generated wrapper for tutorial namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top
@@ -28,9 +28,6 @@ module forward_mod
 
     ! splicer begin module_top
     ! splicer end module_top
-
-    ! splicer begin class.Class3.module_top
-    ! splicer end class.Class3.module_top
 
     type, bind(C) :: SHROUD_class3_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -48,9 +45,6 @@ module forward_mod
         ! splicer begin class.Class3.type_bound_procedure_part
         ! splicer end class.Class3.type_bound_procedure_part
     end type class3
-
-    ! splicer begin class.Class2.module_top
-    ! splicer end class.Class2.module_top
 
     type, bind(C) :: SHROUD_class2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -89,7 +83,7 @@ module forward_mod
 
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="FOR_class2_ctor")
+                bind(C, name="FOR_Class2_ctor")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_class2_capsule
             implicit none
@@ -98,14 +92,14 @@ module forward_mod
         end function c_class2_ctor
 
         subroutine c_class2_dtor(self) &
-                bind(C, name="FOR_class2_dtor")
+                bind(C, name="FOR_Class2_dtor")
             import :: SHROUD_class2_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
         end subroutine c_class2_dtor
 
         subroutine c_class2_func1(self, arg) &
-                bind(C, name="FOR_class2_func1")
+                bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : custom_capsule
             import :: SHROUD_class2_capsule
             implicit none
@@ -114,7 +108,7 @@ module forward_mod
         end subroutine c_class2_func1
 
         subroutine c_class2_accept_class3(self, arg) &
-                bind(C, name="FOR_class2_accept_class3")
+                bind(C, name="FOR_Class2_accept_class3")
             import :: SHROUD_class2_capsule, SHROUD_class3_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
@@ -123,6 +117,9 @@ module forward_mod
 
         ! splicer begin class.Class2.additional_interfaces
         ! splicer end class.Class2.additional_interfaces
+
+        ! splicer begin additional_interfaces
+        ! splicer end additional_interfaces
     end interface
 
 contains
@@ -216,6 +213,9 @@ contains
 
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
+
+    ! splicer begin additional_functions
+    ! splicer end additional_functions
 
     function class3_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

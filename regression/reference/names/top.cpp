@@ -94,15 +94,6 @@ void YYY_TES_fiveplus()
 // splicer end function.fiveplus
 }
 
-// void init_ns1()
-void TES_init_ns1()
-{
-// splicer begin function.init_ns1
-    ns1::init_ns1();
-    return;
-// splicer end function.init_ns1
-}
-
 // void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 /**
  * \brief Function template with two template parameters.

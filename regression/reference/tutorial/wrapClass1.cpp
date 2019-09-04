@@ -20,8 +20,8 @@ extern "C" {
 // splicer end class.Class1.C_definitions
 
 // Class1() +name(new)
-// start TUT_class1_new_default
-TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv)
+// start TUT_Class1_new_default
+TUT_Class1 * TUT_Class1_new_default(TUT_Class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.new_default
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
@@ -30,11 +30,11 @@ TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv)
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
-// end TUT_class1_new_default
+// end TUT_Class1_new_default
 
 // Class1(int flag +intent(in)+value) +name(new)
-// start TUT_class1_new_flag
-TUT_class1 * TUT_class1_new_flag(int flag, TUT_class1 * SHC_rv)
+// start TUT_Class1_new_flag
+TUT_Class1 * TUT_Class1_new_flag(int flag, TUT_Class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.new_flag
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1(flag);
@@ -43,11 +43,11 @@ TUT_class1 * TUT_class1_new_flag(int flag, TUT_class1 * SHC_rv)
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
-// end TUT_class1_new_flag
+// end TUT_Class1_new_flag
 
 // ~Class1() +name(delete)
-// start TUT_class1_delete
-void TUT_class1_delete(TUT_class1 * self)
+// start TUT_Class1_delete
+void TUT_Class1_delete(TUT_Class1 * self)
 {
 // splicer begin class.Class1.method.delete
     tutorial::Class1 *SH_this =
@@ -57,15 +57,15 @@ void TUT_class1_delete(TUT_class1 * self)
     return;
 // splicer end class.Class1.method.delete
 }
-// end TUT_class1_delete
+// end TUT_Class1_delete
 
 // int Method1()
 /**
  * \brief returns the value of flag member
  *
  */
-// start TUT_class1_method1
-int TUT_class1_method1(TUT_class1 * self)
+// start TUT_Class1_method1
+int TUT_Class1_method1(TUT_Class1 * self)
 {
 // splicer begin class.Class1.method.method1
     tutorial::Class1 *SH_this =
@@ -74,16 +74,16 @@ int TUT_class1_method1(TUT_class1 * self)
     return SHC_rv;
 // splicer end class.Class1.method.method1
 }
-// end TUT_class1_method1
+// end TUT_Class1_method1
 
 // bool equivalent(const Class1 & obj2 +intent(in)) const
 /**
  * \brief Pass in reference to instance
  *
  */
-// start TUT_class1_equivalent
-bool TUT_class1_equivalent(const TUT_class1 * self,
-    const TUT_class1 * obj2)
+// start TUT_Class1_equivalent
+bool TUT_Class1_equivalent(const TUT_Class1 * self,
+    const TUT_Class1 * obj2)
 {
 // splicer begin class.Class1.method.equivalent
     const tutorial::Class1 *SH_this =
@@ -94,15 +94,15 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
     return SHC_rv;
 // splicer end class.Class1.method.equivalent
 }
-// end TUT_class1_equivalent
+// end TUT_Class1_equivalent
 
 // Class1 * returnThis()
 /**
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
-// start TUT_class1_return_this
-void TUT_class1_return_this(TUT_class1 * self)
+// start TUT_Class1_return_this
+void TUT_Class1_return_this(TUT_Class1 * self)
 {
 // splicer begin class.Class1.method.return_this
     tutorial::Class1 *SH_this =
@@ -111,16 +111,16 @@ void TUT_class1_return_this(TUT_class1 * self)
     return;
 // splicer end class.Class1.method.return_this
 }
-// end TUT_class1_return_this
+// end TUT_Class1_return_this
 
 // Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 /**
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
-// start TUT_class1_return_this_buffer
-TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
-    char * name, bool flag, TUT_class1 * SHC_rv)
+// start TUT_Class1_return_this_buffer
+TUT_Class1 * TUT_Class1_return_this_buffer(TUT_Class1 * self,
+    char * name, bool flag, TUT_Class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.return_this_buffer
     tutorial::Class1 *SH_this =
@@ -133,16 +133,16 @@ TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer
 }
-// end TUT_class1_return_this_buffer
+// end TUT_Class1_return_this_buffer
 
 // Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
 /**
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
-// start TUT_class1_return_this_buffer_bufferify
-TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
-    char * name, int Lname, bool flag, TUT_class1 * SHC_rv)
+// start TUT_Class1_return_this_buffer_bufferify
+TUT_Class1 * TUT_Class1_return_this_buffer_bufferify(TUT_Class1 * self,
+    char * name, int Lname, bool flag, TUT_Class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.return_this_buffer_bufferify
     tutorial::Class1 *SH_this =
@@ -155,16 +155,16 @@ TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer_bufferify
 }
-// end TUT_class1_return_this_buffer_bufferify
+// end TUT_Class1_return_this_buffer_bufferify
 
 // Class1 * getclass3() const
 /**
  * \brief Test const method
  *
  */
-// start TUT_class1_getclass3
-TUT_class1 * TUT_class1_getclass3(const TUT_class1 * self,
-    TUT_class1 * SHC_rv)
+// start TUT_Class1_getclass3
+TUT_Class1 * TUT_Class1_getclass3(const TUT_Class1 * self,
+    TUT_Class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.getclass3
     const tutorial::Class1 *SH_this =
@@ -175,11 +175,11 @@ TUT_class1 * TUT_class1_getclass3(const TUT_class1 * self,
     return SHC_rv;
 // splicer end class.Class1.method.getclass3
 }
-// end TUT_class1_getclass3
+// end TUT_Class1_getclass3
 
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
-// start TUT_class1_direction_func
-int TUT_class1_direction_func(TUT_class1 * self, int arg)
+// start TUT_Class1_direction_func
+int TUT_Class1_direction_func(TUT_Class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func
     tutorial::Class1 *SH_this =
@@ -192,11 +192,11 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
     return SHC_rv;
 // splicer end class.Class1.method.direction_func
 }
-// end TUT_class1_direction_func
+// end TUT_Class1_direction_func
 
 // int getM_flag()
-// start TUT_class1_get_m_flag
-int TUT_class1_get_m_flag(TUT_class1 * self)
+// start TUT_Class1_get_m_flag
+int TUT_Class1_get_m_flag(TUT_Class1 * self)
 {
 // splicer begin class.Class1.method.get_m_flag
     tutorial::Class1 *SH_this =
@@ -204,11 +204,11 @@ int TUT_class1_get_m_flag(TUT_class1 * self)
     return SH_this->m_flag;
 // splicer end class.Class1.method.get_m_flag
 }
-// end TUT_class1_get_m_flag
+// end TUT_Class1_get_m_flag
 
 // int getTest()
-// start TUT_class1_get_test
-int TUT_class1_get_test(TUT_class1 * self)
+// start TUT_Class1_get_test
+int TUT_Class1_get_test(TUT_Class1 * self)
 {
 // splicer begin class.Class1.method.get_test
     tutorial::Class1 *SH_this =
@@ -216,11 +216,11 @@ int TUT_class1_get_test(TUT_class1 * self)
     return SH_this->m_test;
 // splicer end class.Class1.method.get_test
 }
-// end TUT_class1_get_test
+// end TUT_Class1_get_test
 
 // void setTest(int val +intent(in)+value)
-// start TUT_class1_set_test
-void TUT_class1_set_test(TUT_class1 * self, int val)
+// start TUT_Class1_set_test
+void TUT_Class1_set_test(TUT_Class1 * self, int val)
 {
 // splicer begin class.Class1.method.set_test
     tutorial::Class1 *SH_this =
@@ -229,6 +229,6 @@ void TUT_class1_set_test(TUT_class1 * self, int val)
     return;
 // splicer end class.Class1.method.set_test
 }
-// end TUT_class1_set_test
+// end TUT_Class1_set_test
 
 }  // extern "C"

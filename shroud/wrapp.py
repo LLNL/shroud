@@ -47,6 +47,16 @@ from .util import wformat, append_format
 # ctorvar  - Variable created by ctor
 BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk ctorvar")
 
+# type_object_creation - code to add variables to module.
+ModuleTuple = collections.namedtuple(
+    "ModuleTuple",
+    "type_object_creation"
+)
+
+# Info used per file.  Each library, namespace and class create a file.
+FileTuple = collections.namedtuple(
+    "FileTuple", "MethodBody MethodDef GetSetBody GetSetDef")
+
 
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
@@ -73,6 +83,7 @@ class Wrapp(util.WrapperMixin):
         self.doxygen_end = " */"
         self.need_numpy = False
         self.enum_impl = []
+        self.module_init_decls = []
         self.arraydescr = []  # Create PyArray_Descr for struct
         self.decl_arraydescr = []
         self.define_arraydescr = []
@@ -92,10 +103,6 @@ class Wrapp(util.WrapperMixin):
 
     def reset_file(self):
         """Start a new output file"""
-        self.PyMethodBody = []
-        self.PyMethodDef = []
-        self.PyGetSetBody = []
-        self.PyGetSetDef = []
         self.header_impl_include = {}  # header files in implementation file
         self.c_helper = {}
 #        self.c_helper_include = {}  # include files in generated C header
@@ -114,7 +121,6 @@ class Wrapp(util.WrapperMixin):
             fmt_library.PY_extern_C_begin = 'extern "C" '
 
         # Format variables
-        newlibrary.eval_template("PY_module_filename")
         newlibrary.eval_template("PY_header_filename")
         newlibrary.eval_template("PY_utility_filename")
         fmt_library.PY_PyObject = "PyObject"
@@ -131,32 +137,65 @@ class Wrapp(util.WrapperMixin):
         fmt_library.npy_intp = ""     # shape array definition
 
         # Variables to accumulate output lines
-        self.py_type_object_creation = []
-        self.py_class_decl = []
+        self.py_class_decl = []  # code for header file
         self.py_utility_definition = []
         self.py_utility_declaration = []
         self.py_utility_functions = []
+        append_format(self.module_init_decls,
+                      "PyObject *{PY_prefix}error_obj;", fmt_library)
 
         # reserved the 0 slot of capsule_order
         self.add_capsule_code('--none--', ['// Do not release'])
         fmt_library.capsule_order = "0"
         self.need_blah = False  # Not needed if no there gc routines are added.
 
+        self.wrap_namespace(newlibrary.wrap_namespace, top=True)
+        self.write_utility()
+        self.write_header(newlibrary)
+
+    def wrap_namespace(self, node, top=False):
+        """Wrap a library or namespace.
+
+        Each class is written into its own file.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+            top  - True if top level module, else submodule.
+        """
+        node.eval_template("PY_module_filename")
+        modinfo = ModuleTuple([])
+        fileinfo = FileTuple([], [], [], [])
+
+        if top:
+            # have one namespace level, then replace name each time
+            self._push_splicer("namespace")
+            self._push_splicer("XXX") # placer holder
+        for ns in node.namespaces:
+            if ns.options.wrap_python:
+                self.wrap_namespace(ns)
+                self.register_submodule(ns, modinfo)
+        if top:
+            self._pop_splicer("XXX")  # This name will not match since it is replaced.
+            self._pop_splicer("namespace")
+        else:
+            # Skip file component in scope_file for splicer name.
+            self._update_splicer_top("::".join(node.scope_file[1:]))
+
         # preprocess all classes first to allow them to reference each other
-        for node in newlibrary.classes:
-            if not node.options.wrap_python:
+        for cls in node.classes:
+            if not cls.options.wrap_python:
                 continue
 
             # XXX - classes and structs as classes
-            ntypemap = node.typemap
-            fmt = node.fmtdict
+            ntypemap = cls.typemap
+            fmt = cls.fmtdict
             ntypemap.PY_format = "O"
 
             # PyTypeObject for class
-            node.eval_template("PY_PyTypeObject")
+            cls.eval_template("PY_PyTypeObject")
 
             # PyObject for class
-            node.eval_template("PY_PyObject")
+            cls.eval_template("PY_PyObject")
 
             fmt.PY_to_object_func = wformat("PP_{cxx_class}_to_Object", fmt)
             fmt.PY_from_object_func = wformat("PP_{cxx_class}_from_Object", fmt)
@@ -167,52 +206,72 @@ class Wrapp(util.WrapperMixin):
             ntypemap.PY_from_object = fmt.PY_from_object_func
 
         self._push_splicer("class")
-        for node in newlibrary.classes:
-            if not node.options.wrap_python:
+        for cls in node.classes:
+            if not cls.options.wrap_python:
                 continue
-            name = node.name
+            name = cls.name
             self.reset_file()
             self._push_splicer(name)
-            if node.as_struct and node.options.PY_struct_arg != "class":
-                self.create_arraydescr(node)
+            if cls.as_struct and cls.options.PY_struct_arg != "class":
+                self.create_arraydescr(cls)
             else:
                 self.need_blah = True
-                self.wrap_class(node)
-                self.write_extension_type(newlibrary, node)
+                self.wrap_class(cls, modinfo)
             self._pop_splicer(name)
         self._pop_splicer("class")
 
         self.reset_file()
-        self.wrap_enums(None)
+        self.wrap_enums(node)
 
-        if newlibrary.functions:
+        if node.functions:
             self._push_splicer("function")
             #            self._begin_class()
-            self.wrap_functions(None, newlibrary.functions)
+            self.wrap_functions(None, node.functions, fileinfo)
             self._pop_splicer("function")
 
-        self.write_utility()
-        self.write_header(newlibrary)
-        self.write_module(newlibrary)
+        self.write_module(node, modinfo, fileinfo, top)
 
-    def wrap_enums(self, cls):
-        """Wrap enums for library or cls
+    def register_submodule(self, ns, modinfo):
+        """Create code to add submodule to a module.
 
         Args:
-            cls - ast.ClassNode.
+            ns - ast.NamespaceNode
+            modinfo - ModuleTuple
         """
-        if cls is None:
-            enums = self.newlibrary.enums
-        else:
-            enums = cls.enums
+        fmt_ns = ns.fmtdict
+
+        self.module_init_decls.append(
+            wformat("PyObject *{PY_prefix}init_{PY_module_init}(void);", fmt_ns))
+
+        output = modinfo.type_object_creation
+        output.append(
+            wformat("""
+{{+
+PyObject *submodule = {PY_prefix}init_{PY_module_init}();
+if (submodule == NULL)
++INITERROR;-
+Py_INCREF(submodule);
+PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
+-}}""",
+                    fmt_ns,
+                )
+        )
+
+    def wrap_enums(self, node):
+        """Wrap enums for library, namespace or class.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
+        """
+        enums = node.enums
         if not enums:
             return
         self._push_splicer("enums")
         for enum in enums:
-            self.wrap_enum(enum, cls)
+            self.wrap_enum(enum)
         self._pop_splicer("enums")
 
-    def wrap_enum(self, node, cls):
+    def wrap_enum(self, node):
         """Wrap an enumeration.
         If module, use PyModule_AddIntConstant.
         If class, create a descriptor.
@@ -220,14 +279,13 @@ class Wrapp(util.WrapperMixin):
 
         Args:
             node -
-            cls -
         """
         fmtmembers = node._fmtmembers
 
         ast = node.ast
         output = self.enum_impl
-        if cls is None:
-            # library enumerations
+        if node.parent.nodename != "class":
+            # library/namespace enumerations
             # m is module pointer from module_middle
             output.append("")
             append_format(output, "// enum {namespace_scope}{enum_name}",
@@ -258,18 +316,24 @@ class Wrapp(util.WrapperMixin):
                 )
             output.append("-}")
 
-    def wrap_class(self, node):
-        """
+    def wrap_class(self, node, modinfo):
+        """Create an extension type for a C++ class.
+
+        Wrapper code added to py_type_object_creation.
+
         Args:
             node - ast.ClassNode.
+            modinfo - ModuleTuple
         """
         self.log.write("class {1.name}\n".format(self, node))
+        fileinfo = FileTuple([], [], [], [])
         fmt_class = node.fmtdict
 
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
 
-        output = self.py_type_object_creation
+        # Create code for module to add type to module
+        output = modinfo.type_object_creation
         output.append("")
         if node.cpp_if:
             output.append("#" + node.cpp_if)
@@ -321,13 +385,15 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self.wrap_enums(node)
 
         for var in node.variables:
-            self.wrap_class_variable(var)
+            self.wrap_class_variable(var, fileinfo)
 
         # wrap methods
         self.tp_init_default = "0"
         self._push_splicer("method")
-        self.wrap_functions(node, node.functions)
+        self.wrap_functions(node, node.functions, fileinfo)
         self._pop_splicer("method")
+
+        self.write_extension_type(node, fileinfo)
 
     def create_class_utility_functions(self, node):
         """Create some utility functions to convert to and from a PyObject.
@@ -556,11 +622,12 @@ return 1;""",
         output.append(-1)
         output.append("}")
 
-    def wrap_class_variable(self, node):
+    def wrap_class_variable(self, node, fileinfo):
         """Wrap a VariableNode in a class with descriptors.
 
         Args:
             node - ast.VariableNode.
+            fileinfo - FileTuple
         """
         options = node.options
         fmt_var = node.fmtdict
@@ -581,7 +648,7 @@ return 1;""",
             fmt.ctor = "UUUctor"
         fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
 
-        output = self.PyGetSetBody
+        output = fileinfo.GetSetBody
         append_format(
             output,
             "\nstatic PyObject *{PY_getter}("
@@ -616,7 +683,7 @@ return 1;""",
             output.append("return 0;\n-}")
 
         # Set pointers to functions
-        self.PyGetSetDef.append(
+        fileinfo.GetSetDef.append(
             # XXX - the (char *) only needed for C++
             wformat(
                 '{{(char *)"{variable_name}",\t '
@@ -777,13 +844,14 @@ return 1;""",
 
         return BuildTuple(build_format, vargs, blk, ctorvar)
 
-    def wrap_functions(self, cls, functions):
+    def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
         Compute overloading map.
 
         Args:
             cls - ast.ClassNode
             functions -
+            fileinfo - FileTuple
         """
         overloaded_methods = {}
         for function in functions:
@@ -794,16 +862,17 @@ return 1;""",
         self.overloaded_methods = overloaded_methods
 
         for function in functions:
-            self.wrap_function(cls, function)
+            self.wrap_function(cls, function, fileinfo)
 
-        self.multi_dispatch(functions)
+        self.multi_dispatch(functions, fileinfo)
 
-    def wrap_function(self, cls, node):
+    def wrap_function(self, cls, node, fileinfo):
         """Write a Python wrapper for a C or C++ function.
 
         Args:
             cls  - ast.ClassNode or None for functions
             node - ast.FunctionNode.
+            fileinfo - FileTuple
 
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
         fmt.cxx_var - name of variable in c++ call.
@@ -1466,9 +1535,9 @@ return 1;""",
             fmt.function_suffix = ""
 
         fmt.PY_ml_flags = "|".join(ml_flags)
-        self.create_method(node, expose, is_ctor, fmt, PY_impl)
+        self.create_method(node, expose, is_ctor, fmt, PY_impl, fileinfo)
 
-    def create_method(self, node, expose, is_ctor, fmt, PY_impl):
+    def create_method(self, node, expose, is_ctor, fmt, PY_impl, fileinfo):
         """Format the function.
 
         Args:
@@ -1478,13 +1547,14 @@ return 1;""",
             is_ctor - True if this is a constructor.
             fmt     - dictionary of format values.
             PY_impl - list of implementation lines.
+            fileinfo - FileTuple
         """
         if node:
             cpp_if = node.cpp_if
         else:
             cpp_if = False
 
-        body = self.PyMethodBody
+        body = fileinfo.MethodBody
         body.append("")
         if cpp_if:
             body.append("#" + node.cpp_if)
@@ -1528,26 +1598,26 @@ return 1;""",
         # use function_suffix in splicer name since a single C++ function may
         # produce several methods.
         # XXX - make splicer name customizable?
-        #        self._create_splicer(fmt.function_name, self.PyMethodBody, PY_impl)
+        #        self._create_splicer(fmt.function_name, body, PY_impl)
         if node and node.options.debug:
-            self.PyMethodBody.append("// " + node.declgen)
+            body.append("// " + node.declgen)
         self._create_splicer(
             fmt.underscore_name +
             fmt.function_suffix +
             fmt.template_suffix,
-            self.PyMethodBody,
+            body,
             PY_impl,
         )
-        self.PyMethodBody.append("}")
+        body.append("}")
         if cpp_if:
             body.append("#endif // " + cpp_if)
 
         if expose is True:
             if cpp_if:
-                self.PyMethodDef.append("#" + cpp_if)
+                fileinfo.MethodDef.append("#" + cpp_if)
             # default name
             append_format(
-                self.PyMethodDef,
+                fileinfo.MethodDef,
                 '{{"{function_name}{function_suffix}{template_suffix}",\t '
                 "(PyCFunction){PY_name_impl},\t "
                 "{PY_ml_flags},\t "
@@ -1555,13 +1625,13 @@ return 1;""",
                 fmt,
             )
             if cpp_if:
-                self.PyMethodDef.append("#endif // " + cpp_if)
+                fileinfo.MethodDef.append("#endif // " + cpp_if)
 
     #        elif expose is not False:
     #            # override name
     #            fmt = util.Scope(fmt)
     #            fmt.expose = expose
-    #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
+    #            fileinfo.MethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
     def create_ctor_function(self, cls, node, code, fmt):
         """
@@ -1584,7 +1654,7 @@ return 1;""",
 
         if cls.as_struct and cls.options.PY_struct_arg == "class":
             code.append("// initialize fields")
-            append_format(code, "{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
+            append_format(code, "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
 
@@ -1749,11 +1819,11 @@ return 1;""",
             self._gather_helper_code(name, done)
 ######
 
-    def write_extension_type(self, library, node):
+    def write_extension_type(self, node, fileinfo):
         """
         Args:
-            library - ast.LibraryNode.
             node - ast.ClassNode
+            fileinfo - FileTuple
         """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
@@ -1779,7 +1849,7 @@ return 1;""",
             for include in node.cxx_header.split():
                 header_impl_include[include] = True
         else:
-            for include in library.cxx_header.split():
+            for include in self.newlibrary.cxx_header.split():
                 header_impl_include[include] = True
         header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
@@ -1793,7 +1863,7 @@ return 1;""",
         self._pop_splicer("impl")
 
         fmt_type = dict(
-            PY_module_name=fmt.PY_module_name,
+            PY_module_scope=fmt.PY_module_scope,
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
@@ -1801,21 +1871,21 @@ return 1;""",
         )
         self.write_tp_func(node, fmt_type, output)
 
-        output.extend(self.PyMethodBody)
+        output.extend(fileinfo.MethodBody)
 
         self._push_splicer("impl")
         self._create_splicer("after_methods", output)
         self._pop_splicer("impl")
 
-        output.extend(self.PyGetSetBody)
-        if self.PyGetSetDef:
+        output.extend(fileinfo.GetSetBody)
+        if fileinfo.GetSetDef:
             fmt_type["tp_getset"] = wformat(
                 "{PY_prefix}{cxx_class}_getset", fmt
             )
             append_format(
                 output, "\nstatic PyGetSetDef {tp_getset}[] = {{+", fmt_type
             )
-            output.extend(self.PyGetSetDef)
+            output.extend(fileinfo.GetSetDef)
             self._create_splicer("PyGetSetDef", output)
             output.append("{NULL}            /* sentinel */")
             output.append("-};")
@@ -1826,7 +1896,7 @@ return 1;""",
         append_format(
             output, "static PyMethodDef {tp_methods}[] = {{+", fmt_type
         )
-        output.extend(self.PyMethodDef)
+        output.extend(fileinfo.MethodDef)
         self._create_splicer("PyMethodDef", output)
         output.append(
             "{NULL,   (PyCFunction)NULL, 0, NULL}" "            /* sentinel */"
@@ -1840,14 +1910,15 @@ return 1;""",
         self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def multi_dispatch(self, functions):
+    def multi_dispatch(self, functions, fileinfo):
         """Look for overloaded methods.
         When found, create a method which will call each of the
         overloaded methods looking for the one which will accept
         the given arguments.
 
         Args:
-            functions -
+            functions - list of ast.FunctionNode
+            fileinfo - FileTuple
         """
         mdone = {}
         for function in functions:
@@ -1940,7 +2011,7 @@ return 1;""",
             append_format(body, "return {PY_error_return};", fmt)
             body.append(-1)
 
-            self.create_method(None, expose, is_ctor, fmt, body)
+            self.create_method(None, expose, is_ctor, fmt, body, fileinfo)
 
     def write_header(self, node):
         """
@@ -1982,9 +2053,9 @@ return 1;""",
 extern PyObject *{PY_prefix}error_obj;
 
 #if PY_MAJOR_VERSION >= 3
-{PY_extern_C_begin}PyMODINIT_FUNC PyInit_{PY_module_name}(void);
+{PY_extern_C_begin}PyMODINIT_FUNC PyInit_{PY_module_init}(void);
 #else
-{PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_name}(void);
+{PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_init}(void);
 #endif
 """,
             fmt,
@@ -1994,12 +2065,16 @@ extern PyObject *{PY_prefix}error_obj;
         #            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def write_module(self, node):
+    def write_module(self, node, modinfo, fileinfo, top):
         """
         Write the Python extension module.
+        Used with a Library or Namespace node
 
         Args:
-            node - ast.LibraryNode.
+            node - ast.LibraryNode
+            modinfo - ModuleTuple
+            fileinfo - FileTuple
+            top - True = top module, else submodule.
         """
         fmt = node.fmtdict
         fname = fmt.PY_module_filename
@@ -2014,11 +2089,17 @@ extern PyObject *{PY_prefix}error_obj;
         output = []
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if self.need_numpy:
+        if top and self.need_numpy:
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
-        for include in node.cxx_header.split():
-            output.append('#include "%s"' % include)
+
+        if node.cxx_header:
+            for include in node.cxx_header.split():
+                output.append('#include "%s"' % include)
+        else:
+            for include in self.newlibrary.cxx_header.split():
+                output.append('#include "%s"' % include)
+
         self.header_impl_include.update(self.helper_header["file"])
         self.write_headers(self.header_impl_include, output)
         output.append("")
@@ -2029,16 +2110,17 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         self._create_splicer("C_definition", output)
 
-        append_format(output, "PyObject *{PY_prefix}error_obj;", fmt)
+        if top:
+            output.extend(self.module_init_decls)
         output.extend(self.define_arraydescr)
 
         self._create_splicer("additional_functions", output)
-        output.extend(self.PyMethodBody)
+        output.extend(fileinfo.MethodBody)
 
         append_format(
             output, "static PyMethodDef {PY_prefix}methods[] = {{", fmt
         )
-        output.extend(self.PyMethodDef)
+        output.extend(fileinfo.MethodDef)
         output.append(
             "{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */"
         )
@@ -2046,13 +2128,27 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.extend(self.arraydescr)
 
+        if top:
+            self.write_init_module(fmt, output, modinfo)
+        else:
+            self.write_init_submodule(fmt, output, modinfo)
+
+        self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
+        self.write_output_file(fname, self.config.python_dir, output)
+
+    def write_init_module(self, fmt, output, modinfo):
+        """Initialize the top level module.
+
+        Uses Python's API for importing a module from a shared library.
+        Deal with numpy initialization.
+        """
         append_format(output, module_begin, fmt)
         self._create_splicer("C_init_locals", output)
         append_format(output, module_middle, fmt)
         if self.need_numpy:
             output.append("")
             output.append("import_array();")
-        output.extend(self.py_type_object_creation)
+        output.extend(modinfo.type_object_creation)
         output.extend(self.enum_impl)
         if self.call_arraydescr:
             output.append("")
@@ -2062,8 +2158,15 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer("C_init_body", output)
         append_format(output, module_end, fmt)
 
-        self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
-        self.write_output_file(fname, self.config.python_dir, output)
+    def write_init_submodule(self, fmt, output, modinfo):
+        """Initialize namespace module.
+
+        Always return a PyObject.
+        """
+        append_format(output, submodule_begin, fmt)
+        output.extend(modinfo.type_object_creation)
+#        output.extend(self.enum_impl)
+        append_format(output, submodule_end, fmt)
 
     def write_utility(self):
         node = self.newlibrary
@@ -2331,7 +2434,7 @@ static char {cxx_class}__doc__[] =
 /* static */
 PyTypeObject {PY_PyTypeObject} = {{+
 PyVarObject_HEAD_INIT(NULL, 0)
-"{PY_module_name}.{cxx_class}",                       /* tp_name */
+"{PY_module_scope}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
 {nullptr},                              /* tp_itemsize */
 /* Methods to implement standard operations */
@@ -2453,9 +2556,9 @@ static struct PyModuleDef moduledef = {{
 
 {PY_extern_C_begin}PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_{PY_module_name}(void)
+PyInit_{PY_module_init}(void)
 #else
-init{PY_module_name}(void)
+init{PY_module_init}(void)
 #endif
 {{+
 PyObject *m = NULL;
@@ -2476,6 +2579,7 @@ m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,\t
 +return RETVAL;-
 struct module_state *st = GETSTATE(m);"""
 
+# XXX - +INITERROR;-
 module_middle2 = """
 {PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
 if ({PY_prefix}error_obj == NULL)
@@ -2489,6 +2593,41 @@ module_end = """
 if (PyErr_Occurred())
 +Py_FatalError("can't initialize module {PY_module_name}");-
 return RETVAL;
+-}}
+"""
+
+# A submodule always returns a PyObject.
+submodule_begin = """
+#if PY_MAJOR_VERSION >= 3
+static struct PyModuleDef moduledef = {{
+    PyModuleDef_HEAD_INIT,
+    "{PY_module_scope}", /* m_name */
+    {PY_prefix}_doc__, /* m_doc */
+    sizeof(struct module_state), /* m_size */
+    {PY_prefix}methods, /* m_methods */
+    NULL, /* m_reload */
+//    {library_lower}_traverse, /* m_traverse */
+//    {library_lower}_clear, /* m_clear */
+    NULL, /* m_traverse */
+    NULL, /* m_clear */
+    NULL  /* m_free */
+}};
+#endif
+#define RETVAL NULL
+
+PyObject *{PY_prefix}init_{PY_module_init}(void)
+{{+
+PyObject *m;
+#if PY_MAJOR_VERSION >= 3
+m = PyModule_Create(&moduledef);
+#else
+m = Py_InitModule3((char *) "{PY_module_scope}", {PY_prefix}methods, NULL);
+#endif
+if (m == NULL)
++return NULL;-
+"""
+submodule_end = """
+return m;
 -}}
 """
 

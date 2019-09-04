@@ -36,7 +36,7 @@ declarations:
 
 ########################################
 # Same enum in two namespaces
-- decl: namespace ns1Enum
+- decl: namespace ns1
   declarations:
   - decl: |
         enum Color {
@@ -44,7 +44,7 @@ declarations:
           BLUE,
           WHITE
         };
-- decl: namespace ns2Enum
+- decl: namespace ns2
   declarations:
   - decl: |
         enum Color {
@@ -52,10 +52,20 @@ declarations:
           BLUE,
           WHITE
         };
+- decl: namespace ns3
+  options:
+    flatten_namespace: True
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 70,
+          BLUE,
+          WHITE
+        };
 
 ########################################
 # Same enum in two classes
-- decl: class cls1Enum
+- decl: class Class1
   declarations:
   - decl: |
         enum Color {
@@ -63,7 +73,7 @@ declarations:
           BLUE,
           WHITE
         };
-- decl: class cls2Enum
+- decl: class Class2
   declarations:
   - decl: |
         enum Color {

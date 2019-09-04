@@ -170,7 +170,7 @@ def add_external_helpers(fmtin, literalinclude):
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        cxx_header="<string> <cstddef>",
+        cxx_header="<cstring> <cstddef>",
         # XXX - mangle name
         source=wformat(
             """
@@ -181,7 +181,7 @@ void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->len < n) n = data->len;
-strncpy(c_var, cxx_var, n);
+{stdlib}strncpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}
 """,

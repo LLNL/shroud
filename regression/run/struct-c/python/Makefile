@@ -11,14 +11,14 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/struct \
-    -I$(top)/regression/run/struct \
+    -I$(top)/regression/reference/struct-c \
+    -I$(top)/regression/run/struct-c \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/struct \
-    $(top)/regression/run/struct \
-    $(top)/regression/run/struct/python
+    $(top)/regression/reference/struct-c \
+    $(top)/regression/run/struct-c \
+    $(top)/regression/run/struct-c/python
 
 OBJS = \
     struct.o \

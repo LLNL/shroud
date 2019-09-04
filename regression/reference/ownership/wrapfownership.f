@@ -41,9 +41,6 @@ module ownership_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
 
-    ! splicer begin class.Class1.module_top
-    ! splicer end class.Class1.module_top
-
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -74,7 +71,7 @@ module ownership_mod
     interface
 
         subroutine c_class1_dtor(self) &
-                bind(C, name="OWN_class1_dtor")
+                bind(C, name="OWN_Class1_dtor")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
@@ -82,7 +79,7 @@ module ownership_mod
 
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
-                bind(C, name="OWN_class1_get_flag")
+                bind(C, name="OWN_Class1_get_flag")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none

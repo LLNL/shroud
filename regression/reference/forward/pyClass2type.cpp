@@ -62,12 +62,12 @@ PY_Class2_tp_init(
 // splicer end class.Class2.method.ctor
 }
 
-static char PY_class2_func1__doc__[] =
+static char PY_func1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_class2_func1(
+PY_func1(
   PY_Class2 *self,
   PyObject *args,
   PyObject *kwds)
@@ -91,12 +91,12 @@ PY_class2_func1(
 // splicer end class.Class2.method.func1
 }
 
-static char PY_class2_acceptClass3__doc__[] =
+static char PY_acceptClass3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_class2_acceptClass3(
+PY_acceptClass3(
   PY_Class2 *self,
   PyObject *args,
   PyObject *kwds)
@@ -122,10 +122,10 @@ PY_class2_acceptClass3(
 // splicer begin class.Class2.impl.after_methods
 // splicer end class.Class2.impl.after_methods
 static PyMethodDef PY_Class2_methods[] = {
-    {"func1", (PyCFunction)PY_class2_func1, METH_VARARGS|METH_KEYWORDS,
-        PY_class2_func1__doc__},
-    {"acceptClass3", (PyCFunction)PY_class2_acceptClass3,
-        METH_VARARGS|METH_KEYWORDS, PY_class2_acceptClass3__doc__},
+    {"func1", (PyCFunction)PY_func1, METH_VARARGS|METH_KEYWORDS,
+        PY_func1__doc__},
+    {"acceptClass3", (PyCFunction)PY_acceptClass3,
+        METH_VARARGS|METH_KEYWORDS, PY_acceptClass3__doc__},
     // splicer begin class.Class2.PyMethodDef
     // splicer end class.Class2.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

@@ -143,6 +143,6 @@ Python function void returnStrings(std::string & arg1 +intent(out), std::string 
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
 Python function void CpassChar(char status +intent(in)+value)
 Python function char CreturnChar()
+Close pystringsmodule.cpp
 Close pystringsutil.cpp
 Close pystringsmodule.hpp
-Close pystringsmodule.cpp

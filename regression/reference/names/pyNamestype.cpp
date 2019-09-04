@@ -15,8 +15,8 @@
 //
 // #######################################################################
 #include "pytestnamesmodule.hpp"
-// splicer begin class.Names.impl.include
-// splicer end class.Names.impl.include
+// splicer begin namespace.ns0.class.Names.impl.include
+// splicer end namespace.ns0.class.Names.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -30,61 +30,61 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.Names.impl.C_definition
-// splicer end class.Names.impl.C_definition
-// splicer begin class.Names.impl.additional_methods
-// splicer end class.Names.impl.additional_methods
+// splicer begin namespace.ns0.class.Names.impl.C_definition
+// splicer end namespace.ns0.class.Names.impl.C_definition
+// splicer begin namespace.ns0.class.Names.impl.additional_methods
+// splicer end namespace.ns0.class.Names.impl.additional_methods
 static void
 PY_Names_tp_del (PY_Names *self)
 {
-// splicer begin class.Names.type.del
+// splicer begin namespace.ns0.class.Names.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
     self->myobj = NULL;
-// splicer end class.Names.type.del
+// splicer end namespace.ns0.class.Names.type.del
 }
 
-static char PY_names_method1__doc__[] =
+static char PY_method1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_names_method1(
+PY_method1(
   PY_Names *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void method1()
-// splicer begin class.Names.method.method1
+// splicer begin namespace.ns0.class.Names.method.method1
     self->myobj->method1();
     Py_RETURN_NONE;
-// splicer end class.Names.method.method1
+// splicer end namespace.ns0.class.Names.method.method1
 }
 
-static char PY_names_method2__doc__[] =
+static char PY_method2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_names_method2(
+PY_method2(
   PY_Names *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void method2()
-// splicer begin class.Names.method.method2
+// splicer begin namespace.ns0.class.Names.method.method2
     self->myobj->method2();
     Py_RETURN_NONE;
-// splicer end class.Names.method.method2
+// splicer end namespace.ns0.class.Names.method.method2
 }
-// splicer begin class.Names.impl.after_methods
-// splicer end class.Names.impl.after_methods
+// splicer begin namespace.ns0.class.Names.impl.after_methods
+// splicer end namespace.ns0.class.Names.impl.after_methods
 static PyMethodDef PY_Names_methods[] = {
-    {"method1", (PyCFunction)PY_names_method1, METH_NOARGS,
-        PY_names_method1__doc__},
-    {"method2", (PyCFunction)PY_names_method2, METH_NOARGS,
-        PY_names_method2__doc__},
-    // splicer begin class.Names.PyMethodDef
-    // splicer end class.Names.PyMethodDef
+    {"method1", (PyCFunction)PY_method1, METH_NOARGS,
+        PY_method1__doc__},
+    {"method2", (PyCFunction)PY_method2, METH_NOARGS,
+        PY_method2__doc__},
+    // splicer begin namespace.ns0.class.Names.PyMethodDef
+    // splicer end namespace.ns0.class.Names.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -95,7 +95,7 @@ static char Names__doc__[] =
 /* static */
 PyTypeObject PY_Names_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.Names",                       /* tp_name */
+    "testnames.ns0.Names",                       /* tp_name */
     sizeof(PY_Names),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

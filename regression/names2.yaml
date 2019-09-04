@@ -1,0 +1,19 @@
+copyright:
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test name generation when there is a top level namespace
+
+library: Names
+namespace: ignore1 ignore2
+
+options:
+  debug: True
+  F_module_name_library_template: worker_{library_lower}
+
+declarations:
+- decl: void AFunction()

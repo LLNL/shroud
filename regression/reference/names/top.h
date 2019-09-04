@@ -56,8 +56,6 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
 void YYY_TES_fiveplus();
 
-void TES_init_ns1();
-
 void c_name_instantiation1(int arg1, long arg2);
 
 void TES_function_tu_instantiation2(float arg1, double arg2);

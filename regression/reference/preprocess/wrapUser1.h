@@ -35,18 +35,18 @@ extern "C" {
 // splicer begin class.User1.C_declarations
 // splicer end class.User1.C_declarations
 
-void PRE_user1_method1(PRE_user1 * self);
+void PRE_User1_method1(PRE_User1 * self);
 
 #if defined(USE_TWO)
-void PRE_user1_method2(PRE_user1 * self);
+void PRE_User1_method2(PRE_User1 * self);
 #endif
 
 #if defined(USE_THREE)
-void PRE_user1_method3def_0(PRE_user1 * self);
+void PRE_User1_method3def_0(PRE_User1 * self);
 #endif
 
 #if defined(USE_THREE)
-void PRE_user1_method3def_1(PRE_user1 * self, int i);
+void PRE_User1_method3def_1(PRE_User1 * self, int i);
 #endif
 
 #ifdef __cplusplus

@@ -22,8 +22,9 @@
 #include "ExClass2.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
 
-// splicer begin class.ExClass2.CXX_definitions
-// splicer end class.ExClass2.CXX_definitions
+// splicer begin namespace.example::nested.class.ExClass2.CXX_definitions
+//   namespace.example::nested.class.ExClass2.CXX_definitions
+// splicer end namespace.example::nested.class.ExClass2.CXX_definitions
 
 extern "C" {
 
@@ -51,28 +52,29 @@ void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
-    strncpy(c_var, cxx_var, n);
+    std::strncpy(c_var, cxx_var, n);
     AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
-// splicer begin class.ExClass2.C_definitions
-// splicer end class.ExClass2.C_definitions
+// splicer begin namespace.example::nested.class.ExClass2.C_definitions
+// splicer end namespace.example::nested.class.ExClass2.C_definitions
 
 // ExClass2(const string * name +intent(in)+len_trim(trim_name))
 /**
  * \brief constructor
  *
  */
-AA_exclass2 * AA_exclass2_ctor(const char * name, AA_exclass2 * SHC_rv)
+AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
+    const char * name, AA_example_nested_ExClass2 * SHC_rv)
 {
-// splicer begin class.ExClass2.method.ctor
+// splicer begin namespace.example::nested.class.ExClass2.method.ctor
     const std::string SH_name(name);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SH_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-// splicer end class.ExClass2.method.ctor
+// splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
 
 // ExClass2(const string * name +intent(in)+len_trim(trim_name))
@@ -80,17 +82,18 @@ AA_exclass2 * AA_exclass2_ctor(const char * name, AA_exclass2 * SHC_rv)
  * \brief constructor
  *
  */
-AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
-    int trim_name, AA_exclass2 * SHC_rv)
+AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
+    const char * name, int trim_name,
+    AA_example_nested_ExClass2 * SHC_rv)
 {
-// splicer begin class.ExClass2.method.ctor_bufferify
+// splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
     const std::string SH_name(name, trim_name);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SH_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-// splicer end class.ExClass2.method.ctor_bufferify
+// splicer end namespace.example::nested.class.ExClass2.method.ctor_bufferify
 }
 
 // ~ExClass2()
@@ -98,34 +101,35 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
  * \brief destructor
  *
  */
-void AA_exclass2_dtor(AA_exclass2 * self)
+void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.dtor
+// splicer begin namespace.example::nested.class.ExClass2.method.dtor
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     delete SH_this;
     self->addr = NULL;
     return;
-// splicer end class.ExClass2.method.dtor
+// splicer end namespace.example::nested.class.ExClass2.method.dtor
 }
 
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-const char * AA_exclass2_get_name(const AA_exclass2 * self)
+const char * AA_example_nested_ExClass2_get_name(
+    const AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_name
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_name
+// splicer end namespace.example::nested.class.ExClass2.method.get_name
 }
 
 // void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-void AA_exclass2_get_name_bufferify(const AA_exclass2 * self,
-    char * SHF_rv, int NSHF_rv)
+void AA_example_nested_ExClass2_get_name_bufferify(
+    const AA_example_nested_ExClass2 * self, char * SHF_rv, int NSHF_rv)
 {
-// splicer begin class.ExClass2.method.get_name_bufferify
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name_bufferify
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getName();
@@ -136,26 +140,27 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self,
             SHCXX_rv.size());
     }
     return;
-// splicer end class.ExClass2.method.get_name_bufferify
+// splicer end namespace.example::nested.class.ExClass2.method.get_name_bufferify
 }
 
 // const string & getName2() +deref(allocatable)
-const char * AA_exclass2_get_name2(AA_exclass2 * self)
+const char * AA_example_nested_ExClass2_get_name2(
+    AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_name2
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name2
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getName2();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_name2
+// splicer end namespace.example::nested.class.ExClass2.method.get_name2
 }
 
 // void getName2(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
-void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
-    AA_SHROUD_array *DSHF_rv)
+void AA_example_nested_ExClass2_get_name2_bufferify(
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
-// splicer begin class.ExClass2.method.get_name2_bufferify
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name2_bufferify
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getName2();
@@ -171,26 +176,27 @@ void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
     }
     DSHF_rv->size = 1;
     return;
-// splicer end class.ExClass2.method.get_name2_bufferify
+// splicer end namespace.example::nested.class.ExClass2.method.get_name2_bufferify
 }
 
 // string & getName3() const +deref(allocatable)
-char * AA_exclass2_get_name3(const AA_exclass2 * self)
+char * AA_example_nested_ExClass2_get_name3(
+    const AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_name3
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name3
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     std::string & SHCXX_rv = SH_this->getName3();
     char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_name3
+// splicer end namespace.example::nested.class.ExClass2.method.get_name3
 }
 
 // void getName3(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
-void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
-    AA_SHROUD_array *DSHF_rv)
+void AA_example_nested_ExClass2_get_name3_bufferify(
+    const AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
-// splicer begin class.ExClass2.method.get_name3_bufferify
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name3_bufferify
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     std::string & SHCXX_rv = SH_this->getName3();
@@ -205,26 +211,27 @@ void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
     }
     DSHF_rv->size = 1;
     return;
-// splicer end class.ExClass2.method.get_name3_bufferify
+// splicer end namespace.example::nested.class.ExClass2.method.get_name3_bufferify
 }
 
 // string & getName4() +deref(allocatable)
-char * AA_exclass2_get_name4(AA_exclass2 * self)
+char * AA_example_nested_ExClass2_get_name4(
+    AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_name4
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name4
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     std::string & SHCXX_rv = SH_this->getName4();
     char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_name4
+// splicer end namespace.example::nested.class.ExClass2.method.get_name4
 }
 
 // void getName4(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
-void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
-    AA_SHROUD_array *DSHF_rv)
+void AA_example_nested_ExClass2_get_name4_bufferify(
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
-// splicer begin class.ExClass2.method.get_name4_bufferify
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name4_bufferify
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     std::string & SHCXX_rv = SH_this->getName4();
@@ -239,7 +246,7 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
     }
     DSHF_rv->size = 1;
     return;
-// splicer end class.ExClass2.method.get_name4_bufferify
+// splicer end namespace.example::nested.class.ExClass2.method.get_name4_bufferify
 }
 
 // int GetNameLength() const
@@ -247,21 +254,24 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
  * \brief helper function for Fortran
  *
  */
-int AA_exclass2_get_name_length(const AA_exclass2 * self)
+int AA_example_nested_ExClass2_get_name_length(
+    const AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_name_length
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     return SH_this->getName().length();
 
-// splicer end class.ExClass2.method.get_name_length
+// splicer end namespace.example::nested.class.ExClass2.method.get_name_length
 }
 
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
-AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
-    const AA_exclass1 * in, AA_exclass1 * SHC_rv)
+AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
+    AA_example_nested_ExClass2 * self,
+    const AA_example_nested_ExClass1 * in,
+    AA_example_nested_ExClass1 * SHC_rv)
 {
-// splicer begin class.ExClass2.method.get_class1
+// splicer begin namespace.example::nested.class.ExClass2.method.get_class1
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     const example::nested::ExClass1 * SHCXX_in =
@@ -271,121 +281,130 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-// splicer end class.ExClass2.method.get_class1
+// splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
 
 // void * declare(TypeID type +intent(in)+value)
-void AA_exclass2_declare_0(AA_exclass2 * self, int type)
+void AA_example_nested_ExClass2_declare_0(
+    AA_example_nested_ExClass2 * self, int type)
 {
-// splicer begin class.ExClass2.method.declare_0
+// splicer begin namespace.example::nested.class.ExClass2.method.declare_0
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     TypeID SHCXX_type = getTypeID(type);
     SH_this->declare(SHCXX_type);
     return;
-// splicer end class.ExClass2.method.declare_0
+// splicer end namespace.example::nested.class.ExClass2.method.declare_0
 }
 
 // void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
-void AA_exclass2_declare_1(AA_exclass2 * self, int type,
-    SIDRE_SidreLength len)
+void AA_example_nested_ExClass2_declare_1(
+    AA_example_nested_ExClass2 * self, int type, SIDRE_SidreLength len)
 {
-// splicer begin class.ExClass2.method.declare_1
+// splicer begin namespace.example::nested.class.ExClass2.method.declare_1
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     TypeID SHCXX_type = getTypeID(type);
     SH_this->declare(SHCXX_type, len);
     return;
-// splicer end class.ExClass2.method.declare_1
+// splicer end namespace.example::nested.class.ExClass2.method.declare_1
 }
 
 // void destroyall()
-void AA_exclass2_destroyall(AA_exclass2 * self)
+void AA_example_nested_ExClass2_destroyall(
+    AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.destroyall
+// splicer begin namespace.example::nested.class.ExClass2.method.destroyall
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     SH_this->destroyall();
     return;
-// splicer end class.ExClass2.method.destroyall
+// splicer end namespace.example::nested.class.ExClass2.method.destroyall
 }
 
 // TypeID getTypeID() const
-int AA_exclass2_get_type_id(const AA_exclass2 * self)
+int AA_example_nested_ExClass2_get_type_id(
+    const AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_type_id
+// splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     TypeID SHCXX_rv = SH_this->getTypeID();
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
-// splicer end class.ExClass2.method.get_type_id
+// splicer end namespace.example::nested.class.ExClass2.method.get_type_id
 }
 
 // void setValue(int value +intent(in)+value)
-void AA_exclass2_set_value_int(AA_exclass2 * self, int value)
+void AA_example_nested_ExClass2_set_value_int(
+    AA_example_nested_ExClass2 * self, int value)
 {
-// splicer begin class.ExClass2.method.set_value_int
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     SH_this->setValue<int>(value);
     return;
-// splicer end class.ExClass2.method.set_value_int
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_int
 }
 
 // void setValue(long value +intent(in)+value)
-void AA_exclass2_set_value_long(AA_exclass2 * self, long value)
+void AA_example_nested_ExClass2_set_value_long(
+    AA_example_nested_ExClass2 * self, long value)
 {
-// splicer begin class.ExClass2.method.set_value_long
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     SH_this->setValue<long>(value);
     return;
-// splicer end class.ExClass2.method.set_value_long
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_long
 }
 
 // void setValue(float value +intent(in)+value)
-void AA_exclass2_set_value_float(AA_exclass2 * self, float value)
+void AA_example_nested_ExClass2_set_value_float(
+    AA_example_nested_ExClass2 * self, float value)
 {
-// splicer begin class.ExClass2.method.set_value_float
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     SH_this->setValue<float>(value);
     return;
-// splicer end class.ExClass2.method.set_value_float
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_float
 }
 
 // void setValue(double value +intent(in)+value)
-void AA_exclass2_set_value_double(AA_exclass2 * self, double value)
+void AA_example_nested_ExClass2_set_value_double(
+    AA_example_nested_ExClass2 * self, double value)
 {
-// splicer begin class.ExClass2.method.set_value_double
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     SH_this->setValue<double>(value);
     return;
-// splicer end class.ExClass2.method.set_value_double
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_double
 }
 
 // int getValue()
-int AA_exclass2_get_value_int(AA_exclass2 * self)
+int AA_example_nested_ExClass2_get_value_int(
+    AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_value_int
+// splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     int SHC_rv = SH_this->getValue<int>();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_value_int
+// splicer end namespace.example::nested.class.ExClass2.method.get_value_int
 }
 
 // double getValue()
-double AA_exclass2_get_value_double(AA_exclass2 * self)
+double AA_example_nested_ExClass2_get_value_double(
+    AA_example_nested_ExClass2 * self)
 {
-// splicer begin class.ExClass2.method.get_value_double
+// splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     double SHC_rv = SH_this->getValue<double>();
     return SHC_rv;
-// splicer end class.ExClass2.method.get_value_double
+// splicer end namespace.example::nested.class.ExClass2.method.get_value_double
 }
 
 }  // extern "C"

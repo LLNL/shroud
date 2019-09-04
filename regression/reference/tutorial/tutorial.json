@@ -8,16 +8,16 @@
                     {
                         "_fmtmembers": {
                             "DOWN": {
-                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_DOWN",
-                                "F_enum_member": "tutorial_class1_direction_down",
+                                "C_enum_member": "TUT_Class1_DOWN",
+                                "F_enum_member": "class1_down",
                                 "enum_member_lower": "down",
                                 "enum_member_name": "DOWN",
                                 "enum_member_upper": "DOWN",
                                 "evalue": 3
                             },
                             "LEFT": {
-                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_LEFT",
-                                "F_enum_member": "tutorial_class1_direction_left",
+                                "C_enum_member": "TUT_Class1_LEFT",
+                                "F_enum_member": "class1_left",
                                 "cxx_value": "100",
                                 "enum_member_lower": "left",
                                 "enum_member_name": "LEFT",
@@ -25,16 +25,16 @@
                                 "evalue": 100
                             },
                             "RIGHT": {
-                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_RIGHT",
-                                "F_enum_member": "tutorial_class1_direction_right",
+                                "C_enum_member": "TUT_Class1_RIGHT",
+                                "F_enum_member": "class1_right",
                                 "enum_member_lower": "right",
                                 "enum_member_name": "RIGHT",
                                 "enum_member_upper": "RIGHT",
                                 "evalue": 101
                             },
                             "UP": {
-                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_UP",
-                                "F_enum_member": "tutorial_class1_direction_up",
+                                "C_enum_member": "TUT_Class1_UP",
+                                "F_enum_member": "class1_up",
                                 "cxx_value": "2",
                                 "enum_member_lower": "up",
                                 "enum_member_name": "UP",
@@ -67,16 +67,13 @@
                         },
                         "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };",
                         "fmtdict": {
-                            "C_enum": "TUT_tutorial_Class1_DIRECTION",
-                            "C_scope_name": "tutorial_Class1_DIRECTION_",
-                            "F_scope_name": "tutorial_class1_direction_",
+                            "C_enum": "TUT_Class1_DIRECTION",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",
-                            "flat_name": "tutorial_Class1_DIRECTION",
                             "namespace_scope": "tutorial::Class1::"
                         },
-                        "linenumber": 210,
+                        "linenumber": 208,
                         "name": "DIRECTION",
                         "options": {},
                         "typemap_name": "tutorial::Class1::DIRECTION"
@@ -86,9 +83,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
-                    "C_type_name": "TUT_class1",
+                    "C_name_scope": "Class1_",
+                    "C_type_name": "TUT_Class1",
                     "F_capsule_data_type": "SHROUD_class1_capsule",
                     "F_derived_name": "class1",
+                    "F_name_scope": "class1_",
                     "LUA_class_reg": "l_Class1_Reg",
                     "LUA_ctor_name": "Class1",
                     "LUA_metadata": "Class1.metatable",
@@ -103,10 +102,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class1_to_Object",
                     "PY_type_filename": "pyClass1type.cpp",
-                    "class_lower": "class1",
-                    "class_prefix": "class1_",
                     "class_scope": "Class1::",
-                    "class_upper": "CLASS1",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1"
                 },
@@ -114,7 +110,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_type": "TUT_class1",
+                                "c_type": "TUT_Class1",
                                 "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -166,11 +162,11 @@
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();",
                             "C_call_list": "",
-                            "C_name": "TUT_class1_new_default",
+                            "C_name": "TUT_Class1_new_default",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_prototype": "TUT_class1 * SHC_rv",
+                            "C_prototype": "TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_class1 *",
+                            "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_new_default",
                             "F_C_name": "c_class1_new_default",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -182,19 +178,19 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "new",
-                            "LUA_name_impl": "l_class1_new",
+                            "LUA_name_impl": "l_Class1_new",
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
-                            "__line__": 161,
+                            "__line__": 159,
                             "c_const": "",
-                            "c_rv_decl": "TUT_class1 *SHC_rv",
+                            "c_rv_decl": "TUT_Class1 *SHC_rv",
                             "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_default",
                             "underscore_name": "new"
                         },
-                        "linenumber": 160,
+                        "linenumber": 158,
                         "options": {}
                     },
                     {
@@ -246,7 +242,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
-                                "c_type": "TUT_class1",
+                                "c_type": "TUT_Class1",
                                 "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -313,11 +309,11 @@
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);",
                             "C_call_list": "flag",
-                            "C_name": "TUT_class1_new_flag",
+                            "C_name": "TUT_Class1_new_flag",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_prototype": "int flag,\t TUT_class1 * SHC_rv",
+                            "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_class1 *",
+                            "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_new_flag",
                             "F_C_name": "c_class1_new_flag",
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
@@ -331,15 +327,15 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
-                            "__line__": 164,
+                            "__line__": 162,
                             "c_const": "",
-                            "c_rv_decl": "TUT_class1 *SHC_rv",
+                            "c_rv_decl": "TUT_Class1 *SHC_rv",
                             "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_flag",
                             "underscore_name": "new"
                         },
-                        "linenumber": 163,
+                        "linenumber": 161,
                         "options": {}
                     },
                     {
@@ -360,9 +356,9 @@
                         "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
-                            "C_name": "TUT_class1_delete",
+                            "C_name": "TUT_Class1_delete",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self",
+                            "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_delete",
@@ -375,7 +371,7 @@
                             "F_name_impl": "class1_delete",
                             "F_subprogram": "subroutine",
                             "LUA_name": "delete",
-                            "LUA_name_impl": "l_class1_delete",
+                            "LUA_name_impl": "l_Class1_delete",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -383,7 +379,7 @@
                             "function_name": "delete",
                             "underscore_name": "delete"
                         },
-                        "linenumber": 166,
+                        "linenumber": 164,
                         "options": {}
                     },
                     {
@@ -431,15 +427,15 @@
                         "decl": "int Method1()",
                         "declgen": "int Method1()",
                         "doxygen": {
-                            "__line__": 168,
+                            "__line__": 166,
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
                             "C_call_code": "int SHC_rv =\t SH_this->Method1(\t);",
                             "C_call_list": "",
-                            "C_name": "TUT_class1_method1",
+                            "C_name": "TUT_Class1_method1",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self",
+                            "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_method1",
@@ -453,8 +449,8 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "Method1",
-                            "LUA_name_impl": "l_class1_method1",
-                            "PY_name_impl": "PY_class1_Method1",
+                            "LUA_name_impl": "l_Class1_method1",
+                            "PY_name_impl": "PY_Method1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -463,7 +459,7 @@
                             "function_name": "Method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 167,
+                        "linenumber": 165,
                         "options": {}
                     },
                     {
@@ -491,9 +487,9 @@
                                     "PyObject": "PY_Class1",
                                     "PyTypeObject": "PY_Class1_Type",
                                     "c_const": "const ",
-                                    "c_decl": "TUT_class1 obj2",
+                                    "c_decl": "TUT_Class1 obj2",
                                     "c_deref": "",
-                                    "c_type": "TUT_class1",
+                                    "c_type": "TUT_Class1",
                                     "c_var": "obj2",
                                     "cxx_addr": "&",
                                     "cxx_decl": "tutorial::Class1 obj2",
@@ -567,15 +563,15 @@
                         "decl": "bool equivalent(Class1 const &obj2) const;",
                         "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const",
                         "doxygen": {
-                            "__line__": 173,
+                            "__line__": 171,
                             "brief": "Pass in reference to instance"
                         },
                         "fmtdict": {
                             "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);",
                             "C_call_list": "*SHCXX_obj2",
-                            "C_name": "TUT_class1_equivalent",
+                            "C_name": "TUT_Class1_equivalent",
                             "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);\nconst tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>(obj2->addr);",
-                            "C_prototype": "const TUT_class1 * self,\t const TUT_class1 * obj2",
+                            "C_prototype": "const TUT_Class1 * self,\t const TUT_Class1 * obj2",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "bool",
                             "F_C_call": "c_class1_equivalent",
@@ -588,7 +584,7 @@
                             "F_name_impl": "class1_equivalent",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
-                            "PY_name_impl": "PY_class1_equivalent",
+                            "PY_name_impl": "PY_equivalent",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -597,9 +593,9 @@
                             "function_name": "equivalent",
                             "underscore_name": "equivalent"
                         },
-                        "linenumber": 171,
+                        "linenumber": 169,
                         "options": {
-                            "__line__": 175,
+                            "__line__": 173,
                             "wrap_lua": false
                         }
                     },
@@ -622,15 +618,15 @@
                         "decl": "Class1 * returnThis();",
                         "declgen": "Class1 * returnThis()",
                         "doxygen": {
-                            "__line__": 181,
+                            "__line__": 179,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
                             "C_call_code": "SH_this->returnThis(\t);",
                             "C_call_list": "",
-                            "C_name": "TUT_class1_return_this",
+                            "C_name": "TUT_Class1_return_this",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self",
+                            "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_return_this",
@@ -649,9 +645,9 @@
                             "function_name": "returnThis",
                             "underscore_name": "return_this"
                         },
-                        "linenumber": 179,
+                        "linenumber": 177,
                         "options": {
-                            "__line__": 183,
+                            "__line__": 181,
                             "wrap_lua": false,
                             "wrap_python": false
                         },
@@ -754,18 +750,18 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 196,
+                            "__line__": 194,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);",
                             "C_call_list": "SH_name,\t flag",
-                            "C_name": "TUT_class1_return_this_buffer",
+                            "C_name": "TUT_Class1_return_this_buffer",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name);",
-                            "C_prototype": "TUT_class1 * self,\t char * name,\t bool flag,\t TUT_class1 * SHC_rv",
+                            "C_prototype": "TUT_Class1 * self,\t char * name,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_class1 *",
+                            "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_return_this_buffer_bufferify",
                             "F_C_name": "c_class1_return_this_buffer",
                             "F_arg_c_call": "obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag,\t SHT_rv%cxxmem",
@@ -784,9 +780,9 @@
                             "function_name": "returnThisBuffer",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 187,
+                        "linenumber": 185,
                         "options": {
-                            "__line__": 198,
+                            "__line__": 196,
                             "wrap_lua": false,
                             "wrap_python": false
                         }
@@ -896,18 +892,18 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 196,
+                            "__line__": 194,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);",
                             "C_call_list": "SH_name,\t flag",
-                            "C_name": "TUT_class1_return_this_buffer_bufferify",
+                            "C_name": "TUT_Class1_return_this_buffer_bufferify",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name, Lname);",
-                            "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname,\t bool flag,\t TUT_class1 * SHC_rv",
+                            "C_prototype": "TUT_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_class1 *",
+                            "C_return_type": "TUT_Class1 *",
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
                             "c_const": "",
                             "c_deref": "*",
@@ -918,9 +914,9 @@
                             "function_suffix": "_bufferify",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 187,
+                        "linenumber": 185,
                         "options": {
-                            "__line__": 198,
+                            "__line__": 196,
                             "wrap_c": true,
                             "wrap_fortran": false,
                             "wrap_lua": false,
@@ -974,18 +970,18 @@
                         "decl": "Class1 *getclass3() const",
                         "declgen": "Class1 * getclass3() const",
                         "doxygen": {
-                            "__line__": 203,
+                            "__line__": 201,
                             "brief": "Test const method"
                         },
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->getclass3(\t);",
                             "C_call_list": "",
-                            "C_name": "TUT_class1_getclass3",
+                            "C_name": "TUT_Class1_getclass3",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "const TUT_class1 * self,\t TUT_class1 * SHC_rv",
+                            "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_class1 *",
+                            "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_getclass3",
                             "F_C_name": "c_class1_getclass3",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
@@ -996,7 +992,7 @@
                             "F_name_impl": "class1_getclass3",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
-                            "PY_name_impl": "PY_class1_getclass3",
+                            "PY_name_impl": "PY_getclass3",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1005,9 +1001,9 @@
                             "function_name": "getclass3",
                             "underscore_name": "getclass3"
                         },
-                        "linenumber": 202,
+                        "linenumber": 200,
                         "options": {
-                            "__line__": 206,
+                            "__line__": 204,
                             "wrap_lua": false
                         }
                     },
@@ -1124,10 +1120,10 @@
                         "fmtdict": {
                             "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "TUT_class1_direction_func",
+                            "C_name": "TUT_Class1_direction_func",
                             "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\ntutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
-                            "C_prototype": "TUT_class1 * self,\t int arg",
+                            "C_prototype": "TUT_Class1 * self,\t int arg",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_direction_func",
@@ -1141,8 +1137,8 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "directionFunc",
-                            "LUA_name_impl": "l_class1_direction_func",
-                            "PY_name_impl": "PY_class1_directionFunc",
+                            "LUA_name_impl": "l_Class1_direction_func",
+                            "PY_name_impl": "PY_directionFunc",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1151,7 +1147,7 @@
                             "function_name": "directionFunc",
                             "underscore_name": "direction_func"
                         },
-                        "linenumber": 212,
+                        "linenumber": 210,
                         "options": {}
                     },
                     {
@@ -1186,9 +1182,9 @@
                             "C_call_code": "int SHC_rv =\t SH_this->getM_flag(\t);",
                             "C_call_list": "",
                             "C_code": "{C_pre_call}\nreturn SH_this->m_flag;",
-                            "C_name": "TUT_class1_get_m_flag",
+                            "C_name": "TUT_Class1_get_m_flag",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self",
+                            "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_get_m_flag",
@@ -1247,9 +1243,9 @@
                             "C_call_code": "int SHC_rv =\t SH_this->getTest(\t);",
                             "C_call_list": "",
                             "C_code": "{C_pre_call}\nreturn SH_this->m_test;",
-                            "C_name": "TUT_class1_get_test",
+                            "C_name": "TUT_Class1_get_test",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self",
+                            "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_get_test",
@@ -1329,9 +1325,9 @@
                             "C_call_code": "SH_this->setTest(\tval);",
                             "C_call_list": "val",
                             "C_code": "{C_pre_call}\nSH_this->m_test = val;\nreturn;",
-                            "C_name": "TUT_class1_set_test",
+                            "C_name": "TUT_Class1_set_test",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
-                            "C_prototype": "TUT_class1 * self,\t int val",
+                            "C_prototype": "TUT_Class1 * self,\t int val",
                             "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_set_test",
@@ -1357,10 +1353,10 @@
                         }
                     }
                 ],
-                "linenumber": 154,
+                "linenumber": 152,
                 "name": "Class1",
                 "options": {
-                    "__line__": 155,
+                    "__line__": 153,
                     "literalinclude": true
                 },
                 "scope": "tutorial::Class1::",
@@ -1388,7 +1384,7 @@
                             "variable_name": "m_flag",
                             "variable_upper": "M_FLAG"
                         },
-                        "linenumber": 158,
+                        "linenumber": 156,
                         "name": "m_flag",
                         "options": {}
                     },
@@ -1414,7 +1410,7 @@
                             "variable_name": "test",
                             "variable_upper": "TEST"
                         },
-                        "linenumber": 159,
+                        "linenumber": 157,
                         "name": "test",
                         "options": {}
                     }
@@ -1426,9 +1422,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapSingleton.h",
                     "C_impl_filename": "wrapSingleton.cpp",
-                    "C_type_name": "TUT_singleton",
+                    "C_name_scope": "Singleton_",
+                    "C_type_name": "TUT_Singleton",
                     "F_capsule_data_type": "SHROUD_singleton_capsule",
                     "F_derived_name": "singleton",
+                    "F_name_scope": "singleton_",
                     "PY_PyObject": "PY_Singleton",
                     "PY_PyTypeObject": "PY_Singleton_Type",
                     "PY_capsule_name": "PY_Singleton_capsule_name",
@@ -1436,10 +1434,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Singleton_to_Object",
                     "PY_type_filename": "pySingletontype.cpp",
-                    "class_lower": "singleton",
-                    "class_prefix": "singleton_",
                     "class_scope": "Singleton::",
-                    "class_upper": "SINGLETON",
                     "cxx_class": "Singleton",
                     "cxx_type": "Singleton"
                 },
@@ -1451,12 +1446,12 @@
                                 "cxx_addr": "&",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)",
                                 "cxx_member": ".",
-                                "cxx_type": "Singleton",
+                                "cxx_type": "tutorial::Singleton",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0"
                             },
                             "fmtf": {
-                                "cxx_type": "Singleton",
+                                "cxx_type": "tutorial::Singleton",
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
@@ -1488,19 +1483,19 @@
                             "storage": [
                                 "static"
                             ],
-                            "typemap_name": "Singleton"
+                            "typemap_name": "tutorial::Singleton"
                         },
                         "decl": "static Singleton& getReference()",
                         "declgen": "static Singleton & getReference()",
                         "fmtdict": {
-                            "CXX_this_call": "Singleton::",
-                            "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);",
+                            "CXX_this_call": "tutorial::Singleton::",
+                            "C_call_code": "tutorial::Singleton & SHCXX_rv =\t tutorial::Singleton::getReference(\t);",
                             "C_call_list": "",
-                            "C_name": "TUT_singleton_get_reference",
+                            "C_name": "TUT_Singleton_get_reference",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_prototype": "TUT_singleton * SHC_rv",
+                            "C_prototype": "TUT_Singleton * SHC_rv",
                             "C_return_code": "return SHC_rv;",
-                            "C_return_type": "TUT_singleton *",
+                            "C_return_type": "TUT_Singleton *",
                             "F_C_call": "c_singleton_get_reference",
                             "F_C_name": "c_singleton_get_reference",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -1511,28 +1506,28 @@
                             "F_name_impl": "singleton_get_reference",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
-                            "PY_name_impl": "PY_singleton_getReference",
-                            "PY_this_call": "Singleton::",
+                            "PY_name_impl": "PY_getReference",
+                            "PY_this_call": "tutorial::Singleton::",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "Singleton & SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Singleton & SHCXX_rv",
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
-                        "linenumber": 276,
+                        "linenumber": 274,
                         "options": {}
                     }
                 ],
-                "linenumber": 271,
+                "linenumber": 269,
                 "name": "Singleton",
                 "options": {
-                    "__line__": 272,
+                    "__line__": 270,
                     "wrap_lua": false
                 },
-                "scope": "Singleton::",
-                "typemap_name": "Singleton"
+                "scope": "tutorial::Singleton::",
+                "typemap_name": "tutorial::Singleton"
             }
         ],
         "copyright": [
@@ -1548,24 +1543,24 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "TUT_tutorial_Color_BLUE",
-                        "F_enum_member": "tutorial_color_blue",
+                        "C_enum_member": "TUT_BLUE",
+                        "F_enum_member": "blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 1
                     },
                     "RED": {
-                        "C_enum_member": "TUT_tutorial_Color_RED",
-                        "F_enum_member": "tutorial_color_red",
+                        "C_enum_member": "TUT_RED",
+                        "F_enum_member": "red",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
                         "evalue": 0
                     },
                     "WHITE": {
-                        "C_enum_member": "TUT_tutorial_Color_WHITE",
-                        "F_enum_member": "tutorial_color_white",
+                        "C_enum_member": "TUT_WHITE",
+                        "F_enum_member": "white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -1588,18 +1583,15 @@
                 },
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
-                    "C_enum": "TUT_tutorial_Color",
-                    "C_scope_name": "tutorial_Color_",
-                    "F_scope_name": "tutorial_color_",
+                    "C_enum": "TUT_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "tutorial_Color"
+                    "enum_upper": "COLOR"
                 },
-                "linenumber": 34,
+                "linenumber": 32,
                 "name": "Color",
                 "options": {
-                    "__line__": 40,
+                    "__line__": 38,
                     "bar": 4
                 },
                 "typemap_name": "tutorial::Color"
@@ -1622,6 +1614,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "TUT_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "TUT_",
@@ -1644,6 +1637,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -1674,9 +1668,9 @@
             "PY_header_filename": "pyTutorialmodule.hpp",
             "PY_header_filename_suffix": "hpp",
             "PY_impl_filename_suffix": "cpp",
-            "PY_library_doc": "library documentation",
-            "PY_module_filename": "pyTutorialmodule.cpp",
+            "PY_module_init": "tutorial",
             "PY_module_name": "tutorial",
+            "PY_module_scope": "tutorial",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -1700,9 +1694,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "Tutorial",
             "function_suffix": "",
             "library": "Tutorial",
             "library_lower": "tutorial",
@@ -1753,9 +1747,9 @@
                     "function_name": "NoReturnNoArguments",
                     "underscore_name": "no_return_no_arguments"
                 },
-                "linenumber": 47,
+                "linenumber": 45,
                 "options": {
-                    "__line__": 49,
+                    "__line__": 47,
                     "literalinclude": true
                 }
             },
@@ -1947,7 +1941,7 @@
                     "function_name": "PassByValue",
                     "underscore_name": "pass_by_value"
                 },
-                "linenumber": 52,
+                "linenumber": 50,
                 "options": {}
             },
             {
@@ -2089,7 +2083,7 @@
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
                 "declgen": "const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)",
                 "doxygen": {
-                    "__line__": 58,
+                    "__line__": 56,
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
@@ -2108,7 +2102,7 @@
                     "function_name": "ConcatenateStrings",
                     "underscore_name": "concatenate_strings"
                 },
-                "linenumber": 55,
+                "linenumber": 53,
                 "options": {
                     "wrap_c": false
                 }
@@ -2264,7 +2258,7 @@
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
                 "declgen": "void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
-                    "__line__": 58,
+                    "__line__": 56,
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
@@ -2283,7 +2277,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "concatenate_strings"
                 },
-                "linenumber": 55,
+                "linenumber": 53,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2349,9 +2343,9 @@
                     "function_suffix": "",
                     "underscore_name": "use_default_arguments"
                 },
-                "linenumber": 63,
+                "linenumber": 61,
                 "options": {
-                    "__line__": 68,
+                    "__line__": 66,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2453,9 +2447,9 @@
                     "function_suffix": "_arg1",
                     "underscore_name": "use_default_arguments"
                 },
-                "linenumber": 63,
+                "linenumber": 61,
                 "options": {
-                    "__line__": 68,
+                    "__line__": 66,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2671,9 +2665,9 @@
                     "function_suffix": "_arg1_arg2",
                     "underscore_name": "use_default_arguments"
                 },
-                "linenumber": 63,
+                "linenumber": 61,
                 "options": {
-                    "__line__": 68,
+                    "__line__": 66,
                     "literalinclude": true
                 }
             },
@@ -2774,13 +2768,13 @@
                     "LUA_name": "OverloadedFunction",
                     "LUA_name_impl": "l_overloaded_function",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
-                    "__line__": 73,
+                    "__line__": 71,
                     "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
                     "underscore_name": "overloaded_function"
                 },
-                "linenumber": 72,
+                "linenumber": 70,
                 "options": {}
             },
             {
@@ -2851,13 +2845,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
-                    "__line__": 73,
+                    "__line__": 71,
                     "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name_bufferify",
                     "underscore_name": "overloaded_function"
                 },
-                "linenumber": 72,
+                "linenumber": 70,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2958,13 +2952,13 @@
                     "F_name_impl": "overloaded_function_from_index",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
-                    "__line__": 76,
+                    "__line__": 74,
                     "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_index",
                     "underscore_name": "overloaded_function"
                 },
-                "linenumber": 75,
+                "linenumber": 73,
                 "options": {}
             },
             {
@@ -3008,7 +3002,7 @@
                     "underscore_name": "template_argument"
                 },
                 "have_template_args": true,
-                "linenumber": 79,
+                "linenumber": 77,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3146,7 +3140,7 @@
                     "underscore_name": "template_argument"
                 },
                 "have_template_args": true,
-                "linenumber": 79,
+                "linenumber": 77,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -3282,7 +3276,7 @@
                     "underscore_name": "template_argument"
                 },
                 "have_template_args": true,
-                "linenumber": 79,
+                "linenumber": 77,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -3343,9 +3337,9 @@
                     "underscore_name": "template_return"
                 },
                 "have_template_args": true,
-                "linenumber": 86,
+                "linenumber": 84,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 88,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3435,9 +3429,9 @@
                     "underscore_name": "template_return"
                 },
                 "have_template_args": true,
-                "linenumber": 86,
+                "linenumber": 84,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 88,
                     "wrap_c": true,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -3527,9 +3521,9 @@
                     "underscore_name": "template_return"
                 },
                 "have_template_args": true,
-                "linenumber": 86,
+                "linenumber": 84,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 88,
                     "wrap_c": true,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -3602,7 +3596,7 @@
                     "function_suffix": "_0",
                     "underscore_name": "fortran_generic_overloaded"
                 },
-                "linenumber": 112,
+                "linenumber": 110,
                 "options": {}
             },
             {
@@ -3831,10 +3825,10 @@
                         "generic": "(double arg2)"
                     }
                 ],
-                "linenumber": 113,
+                "linenumber": 111,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 114,
+                    "__line__": 112,
                     "wrap_fortran": false
                 }
             },
@@ -3901,10 +3895,10 @@
                     "function_suffix": "_1_float",
                     "underscore_name": "fortran_generic_overloaded"
                 },
-                "linenumber": 113,
+                "linenumber": 111,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 114,
+                    "__line__": 112,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -3974,10 +3968,10 @@
                     "function_suffix": "_1_double",
                     "underscore_name": "fortran_generic_overloaded"
                 },
-                "linenumber": 113,
+                "linenumber": 111,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 114,
+                    "__line__": 112,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -4169,10 +4163,10 @@
                         "generic": "(double arg2)"
                     }
                 ],
-                "linenumber": 113,
+                "linenumber": 111,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 114,
+                    "__line__": 112,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -4272,7 +4266,7 @@
                     "function_suffix": "_num",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 126,
+                "linenumber": 124,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -4406,7 +4400,7 @@
                     "function_suffix": "_num_offset",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 126,
+                "linenumber": 124,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -4678,7 +4672,7 @@
                     "function_suffix": "_num_offset_stride",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 126,
+                "linenumber": 124,
                 "options": {}
             },
             {
@@ -4801,7 +4795,7 @@
                     "function_suffix": "_3",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 132,
+                "linenumber": 130,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -4962,7 +4956,7 @@
                     "function_suffix": "_4",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 132,
+                "linenumber": 130,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -5285,7 +5279,7 @@
                     "function_suffix": "_5",
                     "underscore_name": "use_default_overload"
                 },
-                "linenumber": 132,
+                "linenumber": 130,
                 "options": {}
             },
             {
@@ -5418,7 +5412,7 @@
                     "function_name": "typefunc",
                     "underscore_name": "typefunc"
                 },
-                "linenumber": 141,
+                "linenumber": 139,
                 "options": {}
             },
             {
@@ -5558,7 +5552,7 @@
                     "function_name": "enumfunc",
                     "underscore_name": "enumfunc"
                 },
-                "linenumber": 142,
+                "linenumber": 140,
                 "options": {}
             },
             {
@@ -5698,7 +5692,7 @@
                     "function_name": "colorfunc",
                     "underscore_name": "colorfunc"
                 },
-                "linenumber": 143,
+                "linenumber": 141,
                 "options": {}
             },
             {
@@ -5821,7 +5815,7 @@
                 "decl": "void getMinMax(int &min +intent(out), int &max +intent(out))",
                 "declgen": "void getMinMax(int & min +intent(out), int & max +intent(out))",
                 "doxygen": {
-                    "__line__": 146,
+                    "__line__": 144,
                     "brief": "Pass in reference to scalar"
                 },
                 "fmtdict": {
@@ -5845,9 +5839,9 @@
                     "function_name": "getMinMax",
                     "underscore_name": "get_min_max"
                 },
-                "linenumber": 145,
+                "linenumber": 143,
                 "options": {
-                    "__line__": 148,
+                    "__line__": 146,
                     "literalinclude": true,
                     "wrap_lua": false
                 }
@@ -5989,7 +5983,7 @@
                     "function_name": "directionFunc",
                     "underscore_name": "direction_func"
                 },
-                "linenumber": 216,
+                "linenumber": 214,
                 "options": {}
             },
             {
@@ -6017,9 +6011,9 @@
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
                             "c_const": "",
-                            "c_decl": "TUT_class1 arg",
+                            "c_decl": "TUT_Class1 arg",
                             "c_deref": "",
-                            "c_type": "TUT_class1",
+                            "c_type": "TUT_Class1",
                             "c_var": "arg",
                             "cxx_addr": "&",
                             "cxx_decl": "tutorial::Class1 arg",
@@ -6062,7 +6056,7 @@
                 "decl": "void passClassByValue(Class1 arg)",
                 "declgen": "void passClassByValue(Class1 arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 219,
+                    "__line__": 217,
                     "brief": "Pass arguments to a function."
                 },
                 "fmtdict": {
@@ -6070,7 +6064,7 @@
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "TUT_pass_class_by_value",
                     "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg.addr);",
-                    "C_prototype": "TUT_class1 arg",
+                    "C_prototype": "TUT_Class1 arg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_pass_class_by_value",
@@ -6087,9 +6081,9 @@
                     "function_name": "passClassByValue",
                     "underscore_name": "pass_class_by_value"
                 },
-                "linenumber": 218,
+                "linenumber": 216,
                 "options": {
-                    "__line__": 221,
+                    "__line__": 219,
                     "wrap_lua": false
                 }
             },
@@ -6118,9 +6112,9 @@
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
                             "c_const": "const ",
-                            "c_decl": "TUT_class1 arg",
+                            "c_decl": "TUT_Class1 arg",
                             "c_deref": "",
-                            "c_type": "TUT_class1",
+                            "c_type": "TUT_Class1",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_decl": "tutorial::Class1 arg",
@@ -6196,7 +6190,7 @@
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_useclass",
                     "C_pre_call": "const tutorial::Class1 * SHCXX_arg =\t static_cast<const tutorial::Class1 *>(arg->addr);",
-                    "C_prototype": "const TUT_class1 * arg",
+                    "C_prototype": "const TUT_Class1 * arg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_useclass",
@@ -6215,9 +6209,9 @@
                     "function_name": "useclass",
                     "underscore_name": "useclass"
                 },
-                "linenumber": 224,
+                "linenumber": 222,
                 "options": {
-                    "__line__": 225,
+                    "__line__": 223,
                     "wrap_lua": false
                 }
             },
@@ -6260,9 +6254,9 @@
                     "C_call_list": "",
                     "C_name": "TUT_getclass2",
                     "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;",
-                    "C_prototype": "TUT_class1 * SHC_rv",
+                    "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "TUT_class1 *",
+                    "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass2",
                     "F_C_name": "c_getclass2",
                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -6278,9 +6272,9 @@
                     "function_name": "getclass2",
                     "underscore_name": "getclass2"
                 },
-                "linenumber": 234,
+                "linenumber": 232,
                 "options": {
-                    "__line__": 235,
+                    "__line__": 233,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -6335,9 +6329,9 @@
                     "C_call_list": "",
                     "C_name": "TUT_getclass3",
                     "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                    "C_prototype": "TUT_class1 * SHC_rv",
+                    "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "TUT_class1 *",
+                    "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass3",
                     "F_C_name": "c_getclass3",
                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -6354,9 +6348,9 @@
                     "function_name": "getclass3",
                     "underscore_name": "getclass3"
                 },
-                "linenumber": 240,
+                "linenumber": 238,
                 "options": {
-                    "__line__": 241,
+                    "__line__": 239,
                     "wrap_lua": false
                 }
             },
@@ -6425,7 +6419,7 @@
                 "decl": "Class1 getClassCopy(int flag)",
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 246,
+                    "__line__": 244,
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
@@ -6434,9 +6428,9 @@
                     "C_name": "TUT_get_class_copy",
                     "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;",
                     "C_pre_call": "tutorial::Class1 * SHCXX_rv = new tutorial::Class1;",
-                    "C_prototype": "int flag,\t TUT_class1 * SHC_rv",
+                    "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "TUT_class1 *",
+                    "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_class_copy",
                     "F_C_name": "c_get_class_copy",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
@@ -6452,9 +6446,9 @@
                     "function_name": "getClassCopy",
                     "underscore_name": "get_class_copy"
                 },
-                "linenumber": 245,
+                "linenumber": 243,
                 "options": {
-                    "__line__": 248,
+                    "__line__": 246,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -6573,7 +6567,7 @@
                 "decl": "int callback1(int in, int (*incr)(int));",
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 256,
+                    "__line__": 254,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -6598,9 +6592,9 @@
                     "function_name": "callback1",
                     "underscore_name": "callback1"
                 },
-                "linenumber": 255,
+                "linenumber": 253,
                 "options": {
-                    "__line__": 258,
+                    "__line__": 256,
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -6704,7 +6698,7 @@
                     "function_name": "set_global_flag",
                     "underscore_name": "set_global_flag"
                 },
-                "linenumber": 265,
+                "linenumber": 263,
                 "options": {}
             },
             {
@@ -6776,7 +6770,7 @@
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
                 },
-                "linenumber": 266,
+                "linenumber": 264,
                 "options": {}
             },
             {
@@ -6861,7 +6855,7 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 267,
+                "linenumber": 265,
                 "options": {}
             },
             {
@@ -6949,7 +6943,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 267,
+                "linenumber": 265,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -6960,38 +6954,40 @@
         ],
         "language": "cxx",
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": false,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -7002,7 +6998,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -7016,8 +7012,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
@@ -7028,11 +7024,11 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 14,
-            "class_prefix_template": "{class_lower}_",
+            "__line__": 15,
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": true,
             "return_scalar_pointer": "pointer",
@@ -7042,6 +7038,9 @@
             "wrap_lua": true,
             "wrap_python": true
         },
+        "scope_file": [
+            "Tutorial"
+        ],
         "variables": [
             {
                 "ast": {
@@ -7087,7 +7086,7 @@
                     "variable_name": "tutorial_flag",
                     "variable_upper": "TUTORIAL_FLAG"
                 },
-                "linenumber": 45,
+                "linenumber": 43,
                 "name": "tutorial_flag",
                 "options": {}
             }
@@ -7109,94 +7108,6 @@
             "f_kind": "C_INT",
             "f_type": "integer",
             "flat_name": "MPI_Comm"
-        },
-        "Singleton": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "PY_PyObject": "PY_Singleton",
-            "PY_PyTypeObject": "PY_Singleton_Type",
-            "PY_from_object": "PP_Singleton_from_Object",
-            "PY_to_object": "PP_Singleton_to_Object",
-            "base": "shadow",
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                },
-                "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
-                    "post_call": [
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
-                        "{c_var}->idtor = {idtor};"
-                    ]
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}Singleton *>({c_var}{c_member}addr)",
-            "c_type": "TUT_singleton",
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "Singleton",
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_singleton_capsule"
-                ]
-            },
-            "f_c_type": "type(SHROUD_singleton_capsule)",
-            "f_capsule_data_type": "SHROUD_singleton_capsule",
-            "f_derived_type": "singleton",
-            "f_module": {
-                "tutorial_mod": [
-                    "singleton"
-                ]
-            },
-            "f_module_name": "tutorial_mod",
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-                    ],
-                    "need_wrapper": true
-                }
-            },
-            "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(singleton)",
-            "flat_name": "Singleton",
-            "forward": "Singleton",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} *{py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                },
-                "result": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
@@ -8074,7 +7985,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}tutorial::Class1 *>({c_var}{c_member}addr)",
-            "c_type": "TUT_class1",
+            "c_type": "TUT_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "tutorial::Class1",
             "f_c_module": {
@@ -8191,7 +8102,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "__line__": 30,
+            "__line__": 28,
             "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
@@ -8206,6 +8117,94 @@
             "f_type": "integer(C_INT)",
             "flat_name": "tutorial_EnumTypeID",
             "typedef": "int"
+        },
+        "tutorial::Singleton": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Singleton",
+            "PY_PyTypeObject": "PY_Singleton_Type",
+            "PY_from_object": "PP_Singleton_from_Object",
+            "PY_to_object": "PP_Singleton_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}tutorial::Singleton *>({c_var}{c_member}addr)",
+            "c_type": "TUT_Singleton",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "tutorial::Singleton",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_singleton_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_singleton_capsule)",
+            "f_capsule_data_type": "SHROUD_singleton_capsule",
+            "f_derived_type": "singleton",
+            "f_module": {
+                "tutorial_mod": [
+                    "singleton"
+                ]
+            },
+            "f_module_name": "tutorial_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(singleton)",
+            "flat_name": "tutorial_Singleton",
+            "forward": "tutorial::Singleton",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}tutorial::Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}tutorial::Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "tutorial::TypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

@@ -2,8 +2,8 @@
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
 #include <vector>
-// splicer begin class.vector.impl.include
-// splicer end class.vector.impl.include
+// splicer begin namespace.std.class.vector.impl.include
+// splicer end namespace.std.class.vector.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -17,17 +17,17 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.vector.impl.C_definition
-// splicer end class.vector.impl.C_definition
-// splicer begin class.vector.impl.additional_methods
-// splicer end class.vector.impl.additional_methods
+// splicer begin namespace.std.class.vector.impl.C_definition
+// splicer end namespace.std.class.vector.impl.C_definition
+// splicer begin namespace.std.class.vector.impl.additional_methods
+// splicer end namespace.std.class.vector.impl.additional_methods
 static void
 PY_vector_double_tp_del (PY_vector_double *self)
 {
-// splicer begin class.vector.type.del
+// splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end class.vector.type.del
+// splicer end namespace.std.class.vector.type.del
 }
 
 static int
@@ -36,7 +36,7 @@ PY_vector_double_tp_init(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.vector.method.ctor
+// splicer begin namespace.std.class.vector.method.ctor
     self->obj = new std::vector<double>();
     if (self->obj == NULL) {
         PyErr_NoMemory();
@@ -44,20 +44,20 @@ PY_vector_double_tp_init(
     }
     self->idtor = 2;
     return 0;
-// splicer end class.vector.method.ctor
+// splicer end namespace.std.class.vector.method.ctor
 }
 
-static char PY_vector_double_push_back__doc__[] =
+static char PY_push_back__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_vector_double_push_back(
+PY_push_back(
   PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.vector.method.push_back
+// splicer begin namespace.std.class.vector.method.push_back
     double value;
     const char *SHT_kwlist[] = {
         "value",
@@ -68,20 +68,20 @@ PY_vector_double_push_back(
         return NULL;
     self->obj->push_back(value);
     Py_RETURN_NONE;
-// splicer end class.vector.method.push_back
+// splicer end namespace.std.class.vector.method.push_back
 }
 
-static char PY_vector_double_at__doc__[] =
+static char PY_at__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_vector_double_at(
+PY_at(
   PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.vector.method.at
+// splicer begin namespace.std.class.vector.method.at
     size_t n;
     const char *SHT_kwlist[] = {
         "n",
@@ -99,17 +99,17 @@ PY_vector_double_at(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end class.vector.method.at
+// splicer end namespace.std.class.vector.method.at
 }
-// splicer begin class.vector.impl.after_methods
-// splicer end class.vector.impl.after_methods
+// splicer begin namespace.std.class.vector.impl.after_methods
+// splicer end namespace.std.class.vector.impl.after_methods
 static PyMethodDef PY_vector_double_methods[] = {
-    {"push_back", (PyCFunction)PY_vector_double_push_back,
-        METH_VARARGS|METH_KEYWORDS, PY_vector_double_push_back__doc__},
-    {"at", (PyCFunction)PY_vector_double_at, METH_VARARGS|METH_KEYWORDS,
-        PY_vector_double_at__doc__},
-    // splicer begin class.vector.PyMethodDef
-    // splicer end class.vector.PyMethodDef
+    {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
+        PY_push_back__doc__},
+    {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
+        PY_at__doc__},
+    // splicer begin namespace.std.class.vector.PyMethodDef
+    // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

@@ -15,8 +15,8 @@
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
 #include "ExClass1.hpp"
-// splicer begin class.ExClass1.impl.include
-// splicer end class.ExClass1.impl.include
+// splicer begin namespace.example::nested.class.ExClass1.impl.include
+// splicer end namespace.example::nested.class.ExClass1.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -30,32 +30,33 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.ExClass1.impl.C_definition
-// splicer end class.ExClass1.impl.C_definition
-// splicer begin class.ExClass1.impl.additional_methods
-// splicer end class.ExClass1.impl.additional_methods
+// splicer begin namespace.example::nested.class.ExClass1.impl.C_definition
+// splicer end namespace.example::nested.class.ExClass1.impl.C_definition
+// splicer begin namespace.example::nested.class.ExClass1.impl.additional_methods
+// splicer end namespace.example::nested.class.ExClass1.impl.additional_methods
 static PyObject *
 PP_ExClass1_tp_repr (PP_ExClass1 *self)
 {
-// splicer begin class.ExClass1.type.repr
-    repr code
-// splicer end class.ExClass1.type.repr
+// splicer begin namespace.example::nested.class.ExClass1.type.repr
+    PyErr_SetString(PyExc_NotImplementedError, "repr");
+    return NULL;
+// splicer end namespace.example::nested.class.ExClass1.type.repr
 }
 static void
 PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
-// splicer begin class.ExClass1.type.del
+// splicer begin namespace.example::nested.class.ExClass1.type.del
     PP_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end class.ExClass1.type.del
+// splicer end namespace.example::nested.class.ExClass1.type.del
 }
 static PyObject *
 PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 {
-// splicer begin class.ExClass1.type.richcompare
+// splicer begin namespace.example::nested.class.ExClass1.type.richcompare
     Py_INCREF(Py_NotImplemented);
     return Py_NotImplemented;
-// splicer end class.ExClass1.type.richcompare
+// splicer end namespace.example::nested.class.ExClass1.type.richcompare
 }
 
 static int
@@ -65,7 +66,7 @@ PP_ExClass1_tp_init_0(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // ExClass1()
-// splicer begin class.ExClass1.method.ctor_0
+// splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
     self->obj = new example::nested::ExClass1();
     if (self->obj == NULL) {
         PyErr_NoMemory();
@@ -73,7 +74,7 @@ PP_ExClass1_tp_init_0(
     }
     self->idtor = 1;
     return 0;
-// splicer end class.ExClass1.method.ctor_0
+// splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
 
 /**
@@ -91,7 +92,7 @@ PP_ExClass1_tp_init_1(
   PyObject *kwds)
 {
 // ExClass1(const string * name +intent(in))
-// splicer begin class.ExClass1.method.ctor_1
+// splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
@@ -111,21 +112,21 @@ PP_ExClass1_tp_init_1(
     }
     self->idtor = 1;
     return 0;
-// splicer end class.ExClass1.method.ctor_1
+// splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
 
-static char PP_exclass1_incrementCount__doc__[] =
+static char PP_incrementCount__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_incrementCount(
+PP_incrementCount(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
 {
 // int incrementCount(int incr +intent(in)+value)
-// splicer begin class.ExClass1.method.increment_count
+// splicer begin namespace.example::nested.class.ExClass1.method.increment_count
     int incr;
     const char *SHT_kwlist[] = {
         "incr",
@@ -142,21 +143,21 @@ PP_exclass1_incrementCount(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.increment_count
+// splicer end namespace.example::nested.class.ExClass1.method.increment_count
 }
 
-static char PP_exclass1_getNameErrorPattern__doc__[] =
+static char PP_getNameErrorPattern__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameErrorPattern(
+PP_getNameErrorPattern(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-// splicer begin class.ExClass1.method.get_name_error_pattern
+// splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern
     PyObject * SHTPy_rv = NULL;
 
     const std::string & SHCXX_rv = self->obj->getNameErrorPattern();
@@ -171,10 +172,10 @@ PP_exclass1_getNameErrorPattern(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_name_error_pattern
+// splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern
 }
 
-static char PP_exclass1_GetNameLength__doc__[] =
+static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
 
@@ -183,13 +184,13 @@ static char PP_exclass1_GetNameLength__doc__[] =
  *
  */
 static PyObject *
-PP_exclass1_GetNameLength(
+PP_GetNameLength(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // int GetNameLength() const
-// splicer begin class.ExClass1.method.get_name_length
+// splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
     PyObject * SHTPy_rv = NULL;
 
     int rv = self->obj->GetNameLength();
@@ -198,21 +199,21 @@ PP_exclass1_GetNameLength(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_name_length
+// splicer end namespace.example::nested.class.ExClass1.method.get_name_length
 }
 
-static char PP_exclass1_getNameErrorCheck__doc__[] =
+static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameErrorCheck(
+PP_getNameErrorCheck(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // const string & getNameErrorCheck() const +deref(allocatable)
-// splicer begin class.ExClass1.method.get_name_error_check
+// splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
     PyObject * SHTPy_rv = NULL;
 
     const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
@@ -222,21 +223,21 @@ PP_exclass1_getNameErrorCheck(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_name_error_check
+// splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
 }
 
-static char PP_exclass1_getNameArg__doc__[] =
+static char PP_getNameArg__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameArg(
+PP_getNameArg(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // const string & getNameArg() const +deref(result_as_arg)
-// splicer begin class.ExClass1.method.get_name_arg
+// splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
     PyObject * SHTPy_rv = NULL;
 
     const std::string & SHCXX_rv = self->obj->getNameArg();
@@ -246,21 +247,21 @@ PP_exclass1_getNameArg(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_name_arg
+// splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
 }
 
-static char PP_exclass1_getRoot__doc__[] =
+static char PP_getRoot__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getRoot(
+PP_getRoot(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void * getRoot()
-// splicer begin class.ExClass1.method.get_root
+// splicer begin namespace.example::nested.class.ExClass1.method.get_root
     PyObject * SHTPy_rv = NULL;
 
     void * rv = self->obj->getRoot();
@@ -269,17 +270,17 @@ PP_exclass1_getRoot(
     SHTPy_rv = PyCapsule_New(rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_root
+// splicer end namespace.example::nested.class.ExClass1.method.get_root
 }
 
 static PyObject *
-PP_exclass1_getValue_from_int(
+PP_getValue_from_int(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
 {
 // int getValue(int value +intent(in)+value)
-// splicer begin class.ExClass1.method.get_value_from_int
+// splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
     int value;
     const char *SHT_kwlist[] = {
         "value",
@@ -296,17 +297,17 @@ PP_exclass1_getValue_from_int(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_value_from_int
+// splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
 }
 
 static PyObject *
-PP_exclass1_getValue_1(
+PP_getValue_1(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
 {
 // long getValue(long value +intent(in)+value)
-// splicer begin class.ExClass1.method.get_value_1
+// splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
     long value;
     const char *SHT_kwlist[] = {
         "value",
@@ -323,21 +324,21 @@ PP_exclass1_getValue_1(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_value_1
+// splicer end namespace.example::nested.class.ExClass1.method.get_value_1
 }
 
-static char PP_exclass1_getAddr__doc__[] =
+static char PP_getAddr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getAddr(
+PP_getAddr(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void * getAddr()
-// splicer begin class.ExClass1.method.get_addr
+// splicer begin namespace.example::nested.class.ExClass1.method.get_addr
     PyObject * SHTPy_rv = NULL;
 
     void * rv = self->obj->getAddr();
@@ -346,21 +347,21 @@ PP_exclass1_getAddr(
     SHTPy_rv = PyCapsule_New(rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_addr
+// splicer end namespace.example::nested.class.ExClass1.method.get_addr
 }
 
-static char PP_exclass1_hasAddr__doc__[] =
+static char PP_hasAddr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_hasAddr(
+PP_hasAddr(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
 {
 // bool hasAddr(bool in +intent(in)+value)
-// splicer begin class.ExClass1.method.has_addr
+// splicer begin namespace.example::nested.class.ExClass1.method.has_addr
     PyObject * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
@@ -385,24 +386,24 @@ PP_exclass1_hasAddr(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end class.ExClass1.method.has_addr
+// splicer end namespace.example::nested.class.ExClass1.method.has_addr
 }
 
-static char PP_exclass1_SplicerSpecial__doc__[] =
+static char PP_SplicerSpecial__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_SplicerSpecial(
+PP_SplicerSpecial(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void SplicerSpecial()
-// splicer begin class.ExClass1.method.splicer_special
+// splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
     self->obj->SplicerSpecial();
     Py_RETURN_NONE;
-// splicer end class.ExClass1.method.splicer_special
+// splicer end namespace.example::nested.class.ExClass1.method.splicer_special
 }
 
 static int
@@ -411,7 +412,7 @@ PP_ExClass1_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ExClass1.method.ctor
+// splicer begin namespace.example::nested.class.ExClass1.method.ctor
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
@@ -436,26 +437,26 @@ PP_ExClass1_tp_init(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return -1;
-// splicer end class.ExClass1.method.ctor
+// splicer end namespace.example::nested.class.ExClass1.method.ctor
 }
 
-static char PP_exclass1_getValue__doc__[] =
+static char PP_getValue__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getValue(
+PP_getValue(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ExClass1.method.get_value
+// splicer begin namespace.example::nested.class.ExClass1.method.get_value
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PP_exclass1_getValue_from_int(self, args, kwds);
+        rvobj = PP_getValue_from_int(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -464,7 +465,7 @@ PP_exclass1_getValue(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PP_exclass1_getValue_1(self, args, kwds);
+        rvobj = PP_getValue_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -474,34 +475,33 @@ PP_exclass1_getValue(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end class.ExClass1.method.get_value
+// splicer end namespace.example::nested.class.ExClass1.method.get_value
 }
-// splicer begin class.ExClass1.impl.after_methods
-// splicer end class.ExClass1.impl.after_methods
+// splicer begin namespace.example::nested.class.ExClass1.impl.after_methods
+// splicer end namespace.example::nested.class.ExClass1.impl.after_methods
 static PyMethodDef PP_ExClass1_methods[] = {
-    {"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
-    {"getNameErrorPattern",
-        (PyCFunction)PP_exclass1_getNameErrorPattern, METH_NOARGS,
-        PP_exclass1_getNameErrorPattern__doc__},
-    {"GetNameLength", (PyCFunction)PP_exclass1_GetNameLength,
-        METH_NOARGS, PP_exclass1_GetNameLength__doc__},
-    {"getNameErrorCheck", (PyCFunction)PP_exclass1_getNameErrorCheck,
-        METH_NOARGS, PP_exclass1_getNameErrorCheck__doc__},
-    {"getNameArg", (PyCFunction)PP_exclass1_getNameArg, METH_NOARGS,
-        PP_exclass1_getNameArg__doc__},
-    {"getRoot", (PyCFunction)PP_exclass1_getRoot, METH_NOARGS,
-        PP_exclass1_getRoot__doc__},
-    {"getAddr", (PyCFunction)PP_exclass1_getAddr, METH_NOARGS,
-        PP_exclass1_getAddr__doc__},
-    {"hasAddr", (PyCFunction)PP_exclass1_hasAddr,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_hasAddr__doc__},
-    {"SplicerSpecial", (PyCFunction)PP_exclass1_SplicerSpecial,
-        METH_NOARGS, PP_exclass1_SplicerSpecial__doc__},
-    {"getValue", (PyCFunction)PP_exclass1_getValue,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_getValue__doc__},
-    // splicer begin class.ExClass1.PyMethodDef
-    // splicer end class.ExClass1.PyMethodDef
+    {"incrementCount", (PyCFunction)PP_incrementCount,
+        METH_VARARGS|METH_KEYWORDS, PP_incrementCount__doc__},
+    {"getNameErrorPattern", (PyCFunction)PP_getNameErrorPattern,
+        METH_NOARGS, PP_getNameErrorPattern__doc__},
+    {"GetNameLength", (PyCFunction)PP_GetNameLength, METH_NOARGS,
+        PP_GetNameLength__doc__},
+    {"getNameErrorCheck", (PyCFunction)PP_getNameErrorCheck,
+        METH_NOARGS, PP_getNameErrorCheck__doc__},
+    {"getNameArg", (PyCFunction)PP_getNameArg, METH_NOARGS,
+        PP_getNameArg__doc__},
+    {"getRoot", (PyCFunction)PP_getRoot, METH_NOARGS,
+        PP_getRoot__doc__},
+    {"getAddr", (PyCFunction)PP_getAddr, METH_NOARGS,
+        PP_getAddr__doc__},
+    {"hasAddr", (PyCFunction)PP_hasAddr, METH_VARARGS|METH_KEYWORDS,
+        PP_hasAddr__doc__},
+    {"SplicerSpecial", (PyCFunction)PP_SplicerSpecial, METH_NOARGS,
+        PP_SplicerSpecial__doc__},
+    {"getValue", (PyCFunction)PP_getValue, METH_VARARGS|METH_KEYWORDS,
+        PP_getValue__doc__},
+    // splicer begin namespace.example::nested.class.ExClass1.PyMethodDef
+    // splicer end namespace.example::nested.class.ExClass1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -512,7 +512,7 @@ static char ExClass1__doc__[] =
 /* static */
 PyTypeObject PP_ExClass1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "userlibrary.ExClass1",                       /* tp_name */
+    "userlibrary.example.nested.ExClass1",                       /* tp_name */
     sizeof(PP_ExClass1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

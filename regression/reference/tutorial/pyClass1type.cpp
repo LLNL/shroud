@@ -81,7 +81,7 @@ PY_Class1_tp_init_flag(
 // splicer end class.Class1.method.new_flag
 }
 
-static char PY_class1_Method1__doc__[] =
+static char PY_Method1__doc__[] =
 "documentation"
 ;
 
@@ -90,7 +90,7 @@ static char PY_class1_Method1__doc__[] =
  *
  */
 static PyObject *
-PY_class1_Method1(
+PY_Method1(
   PY_Class1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -108,7 +108,7 @@ PY_class1_Method1(
 // splicer end class.Class1.method.method1
 }
 
-static char PY_class1_equivalent__doc__[] =
+static char PY_equivalent__doc__[] =
 "documentation"
 ;
 
@@ -117,7 +117,7 @@ static char PY_class1_equivalent__doc__[] =
  *
  */
 static PyObject *
-PY_class1_equivalent(
+PY_equivalent(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -151,7 +151,7 @@ fail:
 // splicer end class.Class1.method.equivalent
 }
 
-static char PY_class1_getclass3__doc__[] =
+static char PY_getclass3__doc__[] =
 "documentation"
 ;
 
@@ -160,7 +160,7 @@ static char PY_class1_getclass3__doc__[] =
  *
  */
 static PyObject *
-PY_class1_getclass3(
+PY_getclass3(
   PY_Class1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -177,12 +177,12 @@ PY_class1_getclass3(
 // splicer end class.Class1.method.getclass3
 }
 
-static char PY_class1_directionFunc__doc__[] =
+static char PY_directionFunc__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_class1_directionFunc(
+PY_directionFunc(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -284,14 +284,14 @@ static PyGetSetDef PY_Class1_getset[] = {
     {NULL}            /* sentinel */
 };
 static PyMethodDef PY_Class1_methods[] = {
-    {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
-        PY_class1_Method1__doc__},
-    {"equivalent", (PyCFunction)PY_class1_equivalent,
-        METH_VARARGS|METH_KEYWORDS, PY_class1_equivalent__doc__},
-    {"getclass3", (PyCFunction)PY_class1_getclass3, METH_NOARGS,
-        PY_class1_getclass3__doc__},
-    {"directionFunc", (PyCFunction)PY_class1_directionFunc,
-        METH_VARARGS|METH_KEYWORDS, PY_class1_directionFunc__doc__},
+    {"Method1", (PyCFunction)PY_Method1, METH_NOARGS,
+        PY_Method1__doc__},
+    {"equivalent", (PyCFunction)PY_equivalent,
+        METH_VARARGS|METH_KEYWORDS, PY_equivalent__doc__},
+    {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
+        PY_getclass3__doc__},
+    {"directionFunc", (PyCFunction)PY_directionFunc,
+        METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

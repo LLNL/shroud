@@ -11,6 +11,10 @@ options:
 
 declarations:
 - decl: namespace std
+  format:
+    # Do not put 'std' into names
+    C_name_scope: ""
+    PY_module_scope: templates
   declarations:
   - decl: template<typename T> class vector
     # std::vector class
@@ -41,6 +45,8 @@ declarations:
 - decl: class Worker
 
 - decl: namespace internal
+  format:
+    PY_module_scope: templates
   declarations:
 # Class which is used to instantiate the C++ template.
 # It is not part of the Fortran API.

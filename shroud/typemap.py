@@ -41,7 +41,7 @@ class Typemap(object):
         ("typedef", None),  # Initialize from existing type
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
-        ("cxx_type", None),  # Name of type in C++
+        ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
         (
@@ -1313,7 +1313,7 @@ def create_class_typemap(node, fields=None):
     ntypemap = lookup_type(cxx_name)
     # unname = util.un_camel(name)
     f_name = fmt_class.cxx_class.lower()
-    c_name = fmt_class.C_prefix + f_name
+    c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
     ntypemap = Typemap(
         cxx_name,
         base="shadow",

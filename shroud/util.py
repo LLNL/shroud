@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 from __future__ import print_function
 from __future__ import absolute_import
 
@@ -19,7 +12,6 @@ import os
 import string
 
 fmt = string.Formatter()
-
 
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat
@@ -205,6 +197,14 @@ class WrapperMixin(object):
             self.splicer_path = ".".join(self.splicer_names) + "."
         else:
             self.splicer_path = ""
+
+    def _update_splicer_top(self, name):
+        """Replace name on the top of the splicer stack.
+        """
+        level = self.splicer_stack[-2].setdefault(name, {})
+        self.splicer_stack[-1] = level
+        self.splicer_names[-1] = name
+        self.splicer_path = ".".join(self.splicer_names) + "."
 
     def _create_splicer(self, name, out, default=[]):
         """Insert a splicer with *name* into list *out*.
@@ -476,26 +476,22 @@ class WrapperMixin(object):
                         else:
                             self.write_continue(fp, subline, spaces)
 
-    def write_doxygen_file(self, output, fname, library, cls):
+    def write_doxygen_file(self, output, fname, node):
         """ Write a doxygen comment block for a file.
+
+        Args:
+            output - list of output lines which will be append to.
+            fname  - file name.
+            node   - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
-        node = cls or library
         output.append(self.doxygen_begin)
         output.append(self.doxygen_cont + " \\file %s" % fname)
-        if cls:
-            output.append(
-                self.doxygen_cont
-                + " \\brief Shroud generated wrapper for {} class".format(
-                    node.name
-                )
+        output.append(
+            self.doxygen_cont
+            + " \\brief Shroud generated wrapper for {} {}".format(
+                node.name, node.nodename
             )
-        else:
-            output.append(
-                self.doxygen_cont
-                + " \\brief Shroud generated wrapper for {} library".format(
-                    node.library
-                )
-            )
+        )
         output.append(self.doxygen_end)
 
     def write_doxygen(self, output, docs):

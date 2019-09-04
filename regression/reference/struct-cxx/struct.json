@@ -8,9 +8,11 @@
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
                     "C_impl_filename": "wrapCstruct1.cpp",
+                    "C_name_scope": "Cstruct1_",
                     "C_type_name": "STR_cstruct1",
                     "F_capsule_data_type": "SHROUD_cstruct1_capsule",
                     "F_derived_name": "cstruct1",
+                    "F_name_scope": "cstruct1_",
                     "PY_PyObject": "PY_Cstruct1",
                     "PY_PyTypeObject": "PY_Cstruct1_Type",
                     "PY_capsule_name": "PY_Cstruct1_capsule_name",
@@ -21,10 +23,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Cstruct1_to_Object",
                     "PY_type_filename": "pyCstruct1type.cpp",
-                    "class_lower": "cstruct1",
-                    "class_prefix": "cstruct1_",
                     "class_scope": "Cstruct1::",
-                    "class_upper": "CSTRUCT1",
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1"
                 },
@@ -138,7 +137,7 @@
                         }
                     }
                 ],
-                "linenumber": 34,
+                "linenumber": 33,
                 "name": "Cstruct1",
                 "options": {},
                 "scope": "Cstruct1::",
@@ -219,6 +218,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "STR_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "STR_",
@@ -241,6 +241,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -266,7 +267,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pystructmodule.cpp",
+            "PY_module_init": "cstruct",
             "PY_module_name": "cstruct",
+            "PY_module_scope": "cstruct",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -283,7 +286,7 @@
             "PY_utility_filename": "pystructutil.cpp",
             "PyObject": "PyObject",
             "YAML_type_filename": "struct_types.yaml",
-            "__line__": 28,
+            "__line__": 27,
             "c_temp": "SHT_",
             "capsule_order": "0",
             "cast1": ">\t(",
@@ -291,9 +294,9 @@
             "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
-            "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "struct",
             "function_suffix": "",
             "library": "struct",
             "library_lower": "struct",
@@ -425,9 +428,9 @@
                     "function_name": "passStructByValue",
                     "underscore_name": "pass_struct_by_value"
                 },
-                "linenumber": 39,
+                "linenumber": 38,
                 "options": {
-                    "__line__": 40,
+                    "__line__": 39,
                     "literalinclude": true
                 }
             },
@@ -553,9 +556,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 43,
+                "linenumber": 42,
                 "options": {
-                    "__line__": 44,
+                    "__line__": 43,
                     "literalinclude": true
                 }
             },
@@ -703,7 +706,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 48,
+                    "__line__": 47,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -730,7 +733,7 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 47,
+                "linenumber": 46,
                 "options": {}
             },
             {
@@ -840,7 +843,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 48,
+                    "__line__": 47,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -859,7 +862,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 47,
+                "linenumber": 46,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -959,9 +962,9 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "linenumber": 52,
+                "linenumber": 51,
                 "options": {
-                    "__line__": 53,
+                    "__line__": 52,
                     "wrap_python": false
                 }
             },
@@ -1133,7 +1136,7 @@
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 57,
+                    "__line__": 56,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -1158,7 +1161,7 @@
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
                 },
-                "linenumber": 56,
+                "linenumber": 55,
                 "options": {}
             },
             {
@@ -1257,7 +1260,7 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "linenumber": 61,
+                "linenumber": 60,
                 "options": {}
             },
             {
@@ -1423,7 +1426,7 @@
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
-                "linenumber": 64,
+                "linenumber": 63,
                 "options": {}
             },
             {
@@ -1572,7 +1575,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 67,
+                    "__line__": 66,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1600,7 +1603,7 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 66,
+                "linenumber": 65,
                 "options": {}
             },
             {
@@ -1790,7 +1793,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 74,
+                    "__line__": 73,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1818,7 +1821,7 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 72,
+                "linenumber": 71,
                 "options": {}
             },
             {
@@ -1961,7 +1964,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 74,
+                    "__line__": 73,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1980,7 +1983,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 72,
+                "linenumber": 71,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1991,38 +1994,40 @@
         ],
         "language": "cxx",
         "options": {
-            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
-            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
-            "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
-            "F_module_per_class": false,
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
@@ -2033,7 +2038,7 @@
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}",
             "LUA_module_name_template": "{library_lower}",
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg",
-            "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}",
+            "LUA_name_impl_template": "{LUA_prefix}{C_name_scope}{underscore_name}",
             "LUA_name_template": "{function_name}",
             "LUA_userdata_member_template": "self",
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
@@ -2047,8 +2052,8 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
-            "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
+            "PY_module_filename_template": "py{file_scope}module.{PY_impl_filename_suffix}",
+            "PY_name_impl_template": "{PY_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "class",
@@ -2060,10 +2065,10 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 23,
-            "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -2072,7 +2077,10 @@
             "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": true
-        }
+        },
+        "scope_file": [
+            "struct"
+        ]
     },
     "types": {
         "Cstruct1": {

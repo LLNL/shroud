@@ -12,15 +12,15 @@
 #include <stddef.h>
 #include "typestemplates.h"
 
-// splicer begin class.vector.CXX_declarations
-// splicer end class.vector.CXX_declarations
+// splicer begin namespace.std.class.vector.CXX_declarations
+// splicer end namespace.std.class.vector.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin class.vector.C_declarations
-// splicer end class.vector.C_declarations
+// splicer begin namespace.std.class.vector.C_declarations
+// splicer end namespace.std.class.vector.C_declarations
 
 TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv);
 
