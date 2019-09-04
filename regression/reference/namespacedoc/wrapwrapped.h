@@ -1,4 +1,4 @@
-// wrapns.h
+// wrapwrapped.h
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
@@ -7,15 +7,15 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 /**
- * \file wrapns.h
- * \brief Shroud generated wrapper for ns library
+ * \file wrapwrapped.h
+ * \brief Shroud generated wrapper for outer namespace
  */
 // For C users and C++ implementation
 
-#ifndef WRAPNS_H
-#define WRAPNS_H
+#ifndef WRAPWRAPPED_H
+#define WRAPWRAPPED_H
 
-#include "typesns.h"
+#include "typeswrapped.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -27,14 +27,12 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-const char * NS_last_function_called();
+void WWW_inner3_worker3();
 
-void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv);
-
-void NS_one();
+void WWW_worker();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPNS_H
+#endif  // WRAPWRAPPED_H

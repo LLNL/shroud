@@ -597,8 +597,9 @@ C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
 
 C_name_scope
-   Underscore delimited name of namespace, class, enumeration.
-   Used with creating names in C.
+    Underscore delimited name of namespace, class, enumeration.
+    Used with creating names in C.
+    Does not include toplevel *namespace*.
 
 C_result
     The name of the C wrapper's result variable.
@@ -654,16 +655,21 @@ F_derived_member
     A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
 
-F_filename_suffix:
-   Suffix added to Fortran files.
-   Defaults to ``f``.
-   Other useful values might be ``F`` or ``f90``.
+F_filename_suffix
+    Suffix added to Fortran files.
+    Defaults to ``f``.
+    Other useful values might be ``F`` or ``f90``.
 
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*
     which is **{library_lower}_mod**.
     Then converted to lower case.
+
+F_name_scope
+    Underscore delimited name of namespace, class, enumeration.
+    Used with creating names in Fortran.
+    Does not include toplevel *namespace*.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.
@@ -876,7 +882,6 @@ F_name_instance_set
 
 cxx_class
     The name of the C++ class from the YAML input file.
-    ex. ``std::string``.
     Used in generating names for C and Fortran and filenames.
     When the class is templated, it willl be converted to a legal identifier
     by adding the *template_suffix* or a sequence number.

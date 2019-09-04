@@ -1,4 +1,4 @@
-// pynsmodule.cpp
+// pywrappedmodule.cpp
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
@@ -6,8 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pynsmodule.hpp"
-#include "namespace.hpp"
+#include "pywrappedmodule.hpp"
 
 // splicer begin include
 // splicer end include
@@ -28,61 +27,54 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyObject *PY_init_ns_outer(void);
-PyObject *PY_init_ns_nswork(void);
+PyObject *PY_init_wrapped_inner1(void);
+PyObject *PY_init_wrapped_inner2(void);
+PyObject *PY_init_wrapped_inner4(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_LastFunctionCalled__doc__[] =
+static char PY_worker3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_LastFunctionCalled(
+PY_worker3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +deref(allocatable)
-// splicer begin function.last_function_called
-    PyObject * SHTPy_rv = NULL;
-
-    const std::string & SHCXX_rv = LastFunctionCalled();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.last_function_called
+// void worker3()
+// splicer begin function.worker3
+    outer::inner3::worker3();
+    Py_RETURN_NONE;
+// splicer end function.worker3
 }
 
-static char PY_One__doc__[] =
+static char PY_worker__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_One(
+PY_worker(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void One()
-// splicer begin function.one
-    One();
+// void worker()
+// splicer begin function.worker
+    outer::worker();
     Py_RETURN_NONE;
-// splicer end function.one
+// splicer end function.worker
 }
 static PyMethodDef PY_methods[] = {
-{"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
-    PY_LastFunctionCalled__doc__},
-{"One", (PyCFunction)PY_One, METH_NOARGS, PY_One__doc__},
+{"worker3", (PyCFunction)PY_worker3, METH_NOARGS, PY_worker3__doc__},
+{"worker", (PyCFunction)PY_worker, METH_NOARGS, PY_worker__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 /*
- * initns - Initialization function for the module
- * *must* be called initns
+ * initwrapped - Initialization function for the module
+ * *must* be called initwrapped
  */
 static char PY__doc__[] =
 "library documentation"
@@ -100,25 +92,25 @@ static struct module_state _state;
 #endif
 
 #if PY_MAJOR_VERSION >= 3
-static int ns_traverse(PyObject *m, visitproc visit, void *arg) {
+static int wrapped_traverse(PyObject *m, visitproc visit, void *arg) {
     Py_VISIT(GETSTATE(m)->error);
     return 0;
 }
 
-static int ns_clear(PyObject *m) {
+static int wrapped_clear(PyObject *m) {
     Py_CLEAR(GETSTATE(m)->error);
     return 0;
 }
 
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "ns", /* m_name */
+    "wrapped", /* m_name */
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
     NULL, /* m_reload */
-    ns_traverse, /* m_traverse */
-    ns_clear, /* m_clear */
+    wrapped_traverse, /* m_traverse */
+    wrapped_clear, /* m_clear */
     NULL  /* m_free */
 };
 
@@ -131,13 +123,13 @@ static struct PyModuleDef moduledef = {
 
 extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_ns(void)
+PyInit_wrapped(void)
 #else
-initns(void)
+initwrapped(void)
 #endif
 {
     PyObject *m = NULL;
-    const char * error_name = "ns.Error";
+    const char * error_name = "wrapped.Error";
 
     // splicer begin C_init_locals
     // splicer end C_init_locals
@@ -147,7 +139,7 @@ initns(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule4("ns", PY_methods,
+    m = Py_InitModule4("wrapped", PY_methods,
         PY__doc__,
         (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
@@ -156,19 +148,27 @@ initns(void)
     struct module_state *st = GETSTATE(m);
 
     {
-        PyObject *submodule = PY_init_ns_outer();
+        PyObject *submodule = PY_init_wrapped_inner1();
         if (submodule == NULL)
             INITERROR;
         Py_INCREF(submodule);
-        PyModule_AddObject(m, (char *) "outer", submodule);
+        PyModule_AddObject(m, (char *) "inner1", submodule);
     }
 
     {
-        PyObject *submodule = PY_init_ns_nswork();
+        PyObject *submodule = PY_init_wrapped_inner2();
         if (submodule == NULL)
             INITERROR;
         Py_INCREF(submodule);
-        PyModule_AddObject(m, (char *) "nswork", submodule);
+        PyModule_AddObject(m, (char *) "inner2", submodule);
+    }
+
+    {
+        PyObject *submodule = PY_init_wrapped_inner4();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "inner4", submodule);
     }
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
@@ -182,7 +182,7 @@ initns(void)
 
     /* Check for errors */
     if (PyErr_Occurred())
-        Py_FatalError("can't initialize module ns");
+        Py_FatalError("can't initialize module wrapped");
     return RETVAL;
 }
 
