@@ -23,8 +23,10 @@ module library_one_mod
 
 
     interface
+
     end interface
 
 contains
+
 
 end module library_one_mod

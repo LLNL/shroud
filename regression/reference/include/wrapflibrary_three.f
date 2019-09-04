@@ -56,6 +56,7 @@ module library_three_mod
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 
+
     end interface
 
 contains
@@ -89,6 +90,7 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
+
 
 
     function class1_eq(a,b) result (rv)

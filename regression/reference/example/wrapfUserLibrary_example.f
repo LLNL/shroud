@@ -29,8 +29,14 @@ module userlibrary_example_mod
     ! splicer end namespace.example.module_top
 
     interface
+
+        ! splicer begin namespace.example.additional_interfaces
+        ! splicer end namespace.example.additional_interfaces
     end interface
 
 contains
+
+    ! splicer begin namespace.example.additional_functions
+    ! splicer end namespace.example.additional_functions
 
 end module userlibrary_example_mod

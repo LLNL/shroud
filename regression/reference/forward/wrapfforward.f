@@ -117,6 +117,9 @@ module forward_mod
 
         ! splicer begin class.Class2.additional_interfaces
         ! splicer end class.Class2.additional_interfaces
+
+        ! splicer begin additional_interfaces
+        ! splicer end additional_interfaces
     end interface
 
 contains
@@ -210,6 +213,9 @@ contains
 
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
+
+    ! splicer begin additional_functions
+    ! splicer end additional_functions
 
     function class3_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

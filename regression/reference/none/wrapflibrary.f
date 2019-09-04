@@ -29,8 +29,14 @@ module library_mod
     ! splicer end module_top
 
     interface
+
+        ! splicer begin additional_interfaces
+        ! splicer end additional_interfaces
     end interface
 
 contains
+
+    ! splicer begin additional_functions
+    ! splicer end additional_functions
 
 end module library_mod

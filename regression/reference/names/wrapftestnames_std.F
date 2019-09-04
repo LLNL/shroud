@@ -124,6 +124,9 @@ module testnames_std_mod
 
         ! splicer begin namespace.std.class.vector_instantiation3.additional_interfaces
         ! splicer end namespace.std.class.vector_instantiation3.additional_interfaces
+
+        ! splicer begin namespace.std.additional_interfaces
+        ! splicer end namespace.std.additional_interfaces
     end interface
 
 contains
@@ -231,6 +234,9 @@ contains
 
     ! splicer begin namespace.std.class.vector_instantiation3.additional_functions
     ! splicer end namespace.std.class.vector_instantiation3.additional_functions
+
+    ! splicer begin namespace.std.additional_functions
+    ! splicer end namespace.std.additional_functions
 
     function vvv1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

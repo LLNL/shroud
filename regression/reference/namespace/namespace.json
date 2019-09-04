@@ -183,7 +183,7 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 11,
+                "linenumber": 23,
                 "options": {}
             },
             {
@@ -271,7 +271,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 11,
+                "linenumber": 23,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -314,12 +314,85 @@
                     "function_name": "One",
                     "underscore_name": "one"
                 },
-                "linenumber": 20,
+                "linenumber": 32,
                 "options": {}
             }
         ],
         "language": "cxx",
         "namespaces": [
+            {
+                "enums": [
+                    {
+                        "_fmtmembers": {
+                            "ERROR": {
+                                "C_enum_member": "NS_upper_ERROR",
+                                "F_enum_member": "error",
+                                "enum_member_lower": "error",
+                                "enum_member_name": "ERROR",
+                                "enum_member_upper": "ERROR",
+                                "evalue": 0
+                            },
+                            "WARN": {
+                                "C_enum_member": "NS_upper_WARN",
+                                "F_enum_member": "warn",
+                                "enum_member_lower": "warn",
+                                "enum_member_name": "WARN",
+                                "enum_member_upper": "WARN",
+                                "evalue": 1
+                            }
+                        },
+                        "ast": {
+                            "members": [
+                                {
+                                    "name": "ERROR"
+                                },
+                                {
+                                    "name": "WARN"
+                                }
+                            ],
+                            "name": "Color"
+                        },
+                        "decl": "enum Color {\n  ERROR,\n  WARN,\n};\n",
+                        "fmtdict": {
+                            "C_enum": "NS_upper_Color",
+                            "enum_lower": "color",
+                            "enum_name": "Color",
+                            "enum_upper": "COLOR"
+                        },
+                        "linenumber": 17,
+                        "name": "Color",
+                        "options": {},
+                        "typemap_name": "upper::Color"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "upper::",
+                    "C_header_filename": "wrapns_upper.h",
+                    "C_impl_filename": "wrapns_upper.cpp",
+                    "C_name_scope": "upper_",
+                    "F_impl_filename": "wrapfns_upper.f",
+                    "F_module_name": "ns_upper_mod",
+                    "LUA_this_call": "upper::",
+                    "PY_module_init": "ns_upper",
+                    "PY_module_name": "upper",
+                    "PY_module_scope": "ns.upper",
+                    "PY_this_call": "upper::",
+                    "file_scope": "ns_upper",
+                    "namespace_scope": "upper::"
+                },
+                "linenumber": 11,
+                "name": "upper",
+                "options": {
+                    "F_flatten_namespace": true,
+                    "__line__": 13,
+                    "wrap_python": false
+                },
+                "scope": "upper::",
+                "scope_file": [
+                    "ns",
+                    "upper"
+                ]
+            },
             {
                 "classes": [
                     {
@@ -457,7 +530,7 @@
                                 }
                             }
                         ],
-                        "linenumber": 15,
+                        "linenumber": 27,
                         "name": "Cstruct1",
                         "options": {},
                         "scope": "outer::Cstruct1::",
@@ -565,11 +638,11 @@
                             "function_name": "One",
                             "underscore_name": "one"
                         },
-                        "linenumber": 19,
+                        "linenumber": 31,
                         "options": {}
                     }
                 ],
-                "linenumber": 13,
+                "linenumber": 25,
                 "name": "outer",
                 "options": {},
                 "scope": "outer::",
@@ -602,7 +675,7 @@
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork"
                         },
-                        "linenumber": 26,
+                        "linenumber": 38,
                         "name": "ClassWork",
                         "options": {},
                         "scope": "nswork::ClassWork::",
@@ -626,11 +699,11 @@
                     "file_scope": "ns_nswork",
                     "namespace_scope": "nswork::"
                 },
-                "linenumber": 22,
+                "linenumber": 34,
                 "name": "nswork",
                 "options": {
                     "F_flatten_namespace": true,
-                    "__line__": 23
+                    "__line__": 35
                 },
                 "scope": "nswork::",
                 "scope_file": [
@@ -1874,6 +1947,28 @@
             },
             "f_type": "integer(C_SHORT)",
             "flat_name": "unsigned_short"
+        },
+        "upper::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<upper::Color>({c_var})",
+            "c_type": "int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "upper::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "upper_Color"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",

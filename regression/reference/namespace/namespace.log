@@ -1,5 +1,6 @@
 Read yaml namespace.yaml
 Close ns_types.yaml
+Close wrapns_upper.h
 struct Cstruct1
 C function void One()
 Close wrapns_outer.h

@@ -15,8 +15,14 @@ module templates_internal_mod
     ! splicer end namespace.internal.module_top
 
     interface
+
+        ! splicer begin namespace.internal.additional_interfaces
+        ! splicer end namespace.internal.additional_interfaces
     end interface
 
 contains
+
+    ! splicer begin namespace.internal.additional_functions
+    ! splicer end namespace.internal.additional_functions
 
 end module templates_internal_mod

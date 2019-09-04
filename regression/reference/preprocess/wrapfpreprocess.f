@@ -172,6 +172,9 @@ module preprocess_mod
 
         ! splicer begin class.User2.additional_interfaces
         ! splicer end class.User2.additional_interfaces
+
+        ! splicer begin additional_interfaces
+        ! splicer end additional_interfaces
     end interface
 
 contains
@@ -292,6 +295,9 @@ contains
     ! splicer begin class.User2.additional_functions
     ! splicer end class.User2.additional_functions
 #endif
+
+    ! splicer begin additional_functions
+    ! splicer end additional_functions
 
     function user1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

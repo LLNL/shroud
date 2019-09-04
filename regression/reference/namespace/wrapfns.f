@@ -27,6 +27,10 @@ module ns_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
 
+    !  enum upper::Color
+    integer(C_INT), parameter :: error = 0
+    integer(C_INT), parameter :: warn = 1
+
     type, bind(C) :: SHROUD_classwork_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

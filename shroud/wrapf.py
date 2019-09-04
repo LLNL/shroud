@@ -93,6 +93,8 @@ class Wrapf(util.WrapperMixin):
                 self.wrap_function(None, function, fileinfo)
             self._pop_splicer("function")
 
+        do_write = top or not node.options.F_flatten_namespace
+        if do_write:
             c_interface = fileinfo.c_interface
             c_interface.append("")
             if self.newlibrary.options.literalinclude2:
@@ -122,7 +124,7 @@ class Wrapf(util.WrapperMixin):
             # restore namespace splicer
             self._update_splicer_top("::".join(node.scope_file[1:]))
 
-        if not node.options.F_flatten_namespace:
+        if do_write:
             self.write_module(fileinfo)
 
     def wrap_struct(self, node, fileinfo):

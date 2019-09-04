@@ -74,6 +74,9 @@ module name_module
 
         ! splicer begin namespace.ns0.class.Names.additional_interfaces
         ! splicer end namespace.ns0.class.Names.additional_interfaces
+
+        ! splicer begin namespace.ns0.additional_interfaces
+        ! splicer end namespace.ns0.additional_interfaces
     end interface
 
 contains
@@ -119,6 +122,9 @@ contains
 
     ! splicer begin namespace.ns0.class.Names.additional_functions
     ! splicer end namespace.ns0.class.Names.additional_functions
+
+    ! splicer begin namespace.ns0.additional_functions
+    ! splicer end namespace.ns0.additional_functions
 
     function names_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

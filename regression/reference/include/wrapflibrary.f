@@ -65,6 +65,7 @@ module library_mod
             type(SHROUD_class1_capsule), intent(IN) :: c2
         end subroutine c_class2_method2
 
+
     end interface
 
 contains
@@ -104,6 +105,7 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
+
 
 
     function class2_eq(a,b) result (rv)
