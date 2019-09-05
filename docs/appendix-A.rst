@@ -1406,6 +1406,9 @@ Fortran usage:
 Struct
 ------
 
+Struct creating is described in :ref:`Fortran Structs <struct_fortran>`.
+
+
 .. ############################################################
 
 .. _example_passStruct1:
@@ -1530,18 +1533,18 @@ The C wrappers:
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_new_default
-   :end-before: end TUT_class1_new_default
+   :start-after: start TUT_Class1_new_default
+   :end-before: end TUT_Class1_new_default
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_new_flag
-   :end-before: end TUT_class1_new_flag
+   :start-after: start TUT_Class1_new_flag
+   :end-before: end TUT_Class1_new_flag
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_delete
-   :end-before: end TUT_class1_delete
+   :start-after: start TUT_Class1_delete
+   :end-before: end TUT_Class1_delete
 
 The corresponding Fortran interfaces:
 
@@ -1664,18 +1667,18 @@ The C wrappers:
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_get_m_flag
-   :end-before: end TUT_class1_get_m_flag
+   :start-after: start TUT_Class1_get_m_flag
+   :end-before: end TUT_Class1_get_m_flag
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_get_test
-   :end-before: end TUT_class1_get_test
+   :start-after: start TUT_Class1_get_test
+   :end-before: end TUT_Class1_get_test
 
 .. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_class1_set_test
-   :end-before: end TUT_class1_set_test
+   :start-after: start TUT_Class1_set_test
+   :end-before: end TUT_Class1_set_test
 
 The corresponding Fortran interfaces:
 

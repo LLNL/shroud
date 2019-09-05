@@ -504,6 +504,7 @@ return 1;""",
         Args:
             node - ast.ClassNode
         """
+        options = node.options
         fmt = node.fmtdict
 
         self.need_numpy = True
@@ -525,6 +526,8 @@ return 1;""",
         )
         output = self.arraydescr
         output.append("")
+        if options.literalinclude:
+            output.append("// start " + fmt.PY_struct_array_descr_create)
         append_format(
             output,
             "// Create PyArray_Descr for {cxx_class}\n"
@@ -621,6 +624,8 @@ return 1;""",
 
         output.append(-1)
         output.append("}")
+        if options.literalinclude:
+            output.append("// end " + fmt.PY_struct_array_descr_create)
 
     def wrap_class_variable(self, node, fileinfo):
         """Wrap a VariableNode in a class with descriptors.

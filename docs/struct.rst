@@ -13,9 +13,9 @@ Shroud supports both structs and classes. But it treats them much
 differently.  Whereas in C++ a struct and class are essentially the
 same thing, Shroud treats structs as a C style struct.  They do not
 have associated methods.  This allows them to be mapped to a Fortran
-derived type with the ``bind(C)`` attribute.  Classes are wrapped by a
-shadow derived-type with methods implemented as type-bound procedures
-in Fortran.
+derived type with the ``bind(C)`` attribute and a Python NumPy array.
+Classes are wrapped by a shadow derived-type with methods implemented
+as type-bound procedures in Fortran and an extension type in Python.
 
 Struct
 ------
@@ -26,7 +26,10 @@ A struct is defined in a single ``decl`` in the YAML file.
 
     - decl: struct Cstruct1 {
               int ifield;
+              double dfield;
             };
+
+.. _struct_fortran:
 
 Fortran
 ^^^^^^^
@@ -34,10 +37,23 @@ Fortran
 This is translated directly into a Fortran derived type with the
 ``bind(C)`` attribute.
 
-.. example here
-
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start derived-type cstruct1
+   :end-before: end derived-type cstruct1
+   :dedent: 4
 
 All creation and access of members can be done using Fortran.
+
+.. code-block:: fortran
+
+    type(cstruct1) st(2)
+
+    st(1)%ifield = 1_C_INT
+    st(1)%dfield = 1.5_C_DOUBLE
+    st(2)%ifield = 2_C_INT
+    st(2)%dfield = 2.6_C_DOUBLE
+
 
 Python
 ^^^^^^
@@ -48,7 +64,22 @@ descriptors for the field methods. Second, as a numpy descriptor.
 This allows an array of structs to be used easily.
 Finally, as a tuple of Python types.
 
-PY_struct_arg
+PY_struct_arg *class*, *numpy*, *list*
+
+
+.. regression/run/struct-c/python/test.py
+
+As a NumPy array:
+
+.. code-block:: python
+
+    import cstruct
+    dt = cstruct.Cstruct1_dtype
+    a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
+
+The descriptor is created in the wrapper
+:ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
+
 
 
 Class
@@ -84,9 +115,10 @@ And is wrapped in the YAML as:
       - decl: int Method1()
 
 The Fortran interface will create two derived types.  The first is
-used to interact with the C wrapper. The C wrapper creates a
-corresponding struct.  It contains a pointer to an instance of the
-class and index used to release the instance.
+used to interact with the C wrapper and uses ``bind(C)``. The C
+wrapper creates a corresponding struct.  It contains a pointer to an
+instance of the class and index used to release the instance.
+The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
 
 :file:`wrapftutorial.f`
 
@@ -100,9 +132,8 @@ class and index used to release the instance.
 
 .. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
    :language: c
-   :start-after: start struct TUT_class1
-   :end-before: end struct TUT_class1
-
+   :start-after: start struct TUT_Class1
+   :end-before: end struct TUT_Class1
 
 The capsule is added to the Fortran shadow class.  This derived type
 can contain type-bound procedures and may not use the ``bind(C)``
@@ -116,6 +147,16 @@ attribute.
         procedure :: method1 => class1_method1
     end type class1
 
+A function which returns a class, including constructors, is passed a
+pointer to a *F_capsule_data_type*.  The argument's members are filled
+in by the function.  The function will return a ``type(C_PTR)`` which
+contains the address of the *F_capsule_data_type* argument.  The
+interface/prototype for the C wrapper function allows it to be used in
+expressions similar to the way that ``strcpy`` returns its destination
+argument.
+
+A full example is at 
+:ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 
 ..
  The *f_to_c* field uses the
@@ -126,6 +167,9 @@ attribute.
  In C an opaque typedef for a struct is created as the type for the C++
  instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
  pointer to C++ and back to C.
+
+..       final! :: {F_name_final}
+
 
 Forward Declaration
 ^^^^^^^^^^^^^^^^^^^

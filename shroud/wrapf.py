@@ -138,6 +138,7 @@ class Wrapf(util.WrapperMixin):
         self.log.write("class {0.name}\n".format(node))
         ntypemap = node.typemap
 
+        options = node.options
         fmt_class = node.fmtdict
 
         fmt_class.F_derived_name = ntypemap.f_derived_type
@@ -146,7 +147,12 @@ class Wrapf(util.WrapperMixin):
         output = fileinfo.f_type_decl
         output.append("")
         self._push_splicer(fmt_class.cxx_class)
-        append_format(output, "\ntype, bind(C) :: {F_derived_name}+", fmt_class)
+
+        output.append("")
+        if options.literalinclude:
+            output.append("! start derived-type " +
+                          fmt_class.F_derived_name)
+        append_format(output, "type, bind(C) :: {F_derived_name}+", fmt_class)
         for var in node.variables:
             ast = var.ast
             ntypemap = ast.typemap
@@ -155,6 +161,9 @@ class Wrapf(util.WrapperMixin):
                 fileinfo.module_use, {}, ntypemap.f_module
             )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
+        if options.literalinclude:
+            output.append("! end derived-type " +
+                          fmt_class.F_derived_name)
         self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node, fileinfo):
@@ -167,6 +176,7 @@ class Wrapf(util.WrapperMixin):
 
         self.log.write("class {1.name}\n".format(self, node))
 
+        options = node.options
         fmt_class = node.fmtdict
 
         fmt_class.F_derived_name = node.typemap.f_derived_type
@@ -203,7 +213,7 @@ class Wrapf(util.WrapperMixin):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        if node.options.literalinclude:
+        if options.literalinclude:
             f_type_decl.append("! start derived-type " +
                                fmt_class.F_capsule_data_type)
         append_format(
@@ -214,7 +224,7 @@ class Wrapf(util.WrapperMixin):
             "-end type {F_capsule_data_type}",
             fmt_class,
         )
-        if node.options.literalinclude:
+        if options.literalinclude:
             f_type_decl.append("! end derived-type " +
                                fmt_class.F_capsule_data_type)
         self.set_f_module(

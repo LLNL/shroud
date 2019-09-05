@@ -49,6 +49,7 @@ Contents
    pypreviouswork
    futurework
    appendix-A
+   appendix-PY
 
 
 Indices and tables

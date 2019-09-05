@@ -23,10 +23,12 @@ module struct_mod
     ! splicer end module_top
 
 
+    ! start derived-type cstruct1
     type, bind(C) :: cstruct1
         integer(C_INT) :: ifield
         real(C_DOUBLE) :: dfield
     end type cstruct1
+    ! end derived-type cstruct1
 
     ! start pass_struct_by_value
     interface

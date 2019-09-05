@@ -59,6 +59,29 @@ be controlled directly by the input YAML file:
     end module {F_module_name}
 
 
+Class
+-----
+
+Use of format fields for creating class wrappers.
+
+.. code-block:: text
+
+    type, bind(C) :: {F_capsule_data_type}
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type {F_capsule_data_type}
+
+    type {F_derived_name}
+        type({F_capsule_data_type}) :: {F_derived_member}
+    contains
+        procedure :: {F_name_function} => {F_name_impl}
+        generic :: {F_name_generic} => {F_name_function}, ...
+
+        ! F_name_getter, F_name_setter, F_name_instance_get as underscore_name
+        procedure :: [F_name_function_template] => [F_name_impl_template]
+
+    end type {F_derived_name}
+
 Types
 -----
 
@@ -315,102 +338,6 @@ Fortran argument as assumed-type: ``type(*)``.
             integer(C_INT) :: SHT_rv
         end function pass_assumed_type
 
-
-Struct Types
-------------
-
-A struct in a YAML file creates a ``bind(C)`` derived type for the struct.
-A struct may not contain any methods which would cause a v-table to be created.
-This will cause an array of structs to be identical in C and C++.
-
-If you want methods on a struct, then use the class keyword.
-
-
-Class Types
------------
-
-Fortran uses the derived type *F_capsule_data_type* to save pointers
-to C++ classes. The derived type also contains information about how
-to delete the class.  The derived type corresponds to
-*C_capsule_data_type* in the C wrapper.  A derived type is created for
-each class which contains a *F_capsule_data_type*
-member. *F_capsule_data_type* is ``BIND(C)`` which allows it to be
-passed to the C wrapper:
-
-.. code-block:: text
-
-    type, bind(C) :: {F_capsule_data_type}
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type {F_capsule_data_type}
-
-    type {F_derived_name}
-        type({F_capsule_data_type}) :: {F_derived_member}
-    contains
-        procedure :: {F_name_function} => {F_name_impl}
-        generic :: {F_name_generic} => {F_name_function}, ...
-
-        ! F_name_getter, F_name_setter, F_name_instance_get as underscore_name
-        procedure :: [F_name_function_template] => [F_name_impl_template]
-
-    end type {F_derived_name}
-
-The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
-
-A function which returns a class, including constructors, is passed a
-*F_capsule_data_type* argument as the last argument.  The argument's
-members are filled in by the function.  The function will return a
-``type(C_PTR)`` which contains the address of the
-*F_capsule_data_type* argument.  The interface/prototype for the C
-wrapper function allows it to be used in expressions similar to the
-way that ``strcpy`` returns its destination argument.
-
-For example, the YAML file:
-
-.. code-block:: yaml
-
-  - decl: const Class1 *getclass2() 
-
-produces the code:
-
-.. code-block:: text
-
-    interface
-        function c_getclass2({F_result_capsule}) &
-                result({F_result}) &
-                bind(C, name="TUT_getclass2")
-            use iso_c_binding, only : C_PTR
-            import :: {F_capsule_data_type}
-            implicit none
-            type({F_capsule_data_type}) :: {F_result_capsule}
-            type(C_PTR) {F_result}
-        end function c_getclass2
-    end interface
-
-    function getclass2() &
-            result({F_result})
-        use iso_c_binding, only : C_PTR
-        type(C_PTR) :: {F_result_ptr}
-        type(class1) :: {F_result}
-        {F_result_ptr} = c_getclass2({F_result}%{F_derived_member})
-    end function getclass2
-
-The C wrappers appears as:
-
-.. code-block:: c++
-
-    TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv)
-    {
-        const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
-        SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>(SHCXX_rv));
-        SHC_rv->idtor = 0;
-        return SHC_rv;
-    }
-
-
-Some actual variable names have been replace with their format names.
-
-..        final! :: {F_name_final}
 
 Standard type-bound procedures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

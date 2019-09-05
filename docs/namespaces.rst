@@ -103,7 +103,7 @@ Each namespace creates a Python module.
 .. These fields are also in reference.rst
 
 Several fields in the format dictionary are updated for each namespace:
-namespace_scope, C_name_scope, F_name_scope.
+*namespace_scope*, *C_name_scope*, *F_name_scope*.
 
 
 std namespace
