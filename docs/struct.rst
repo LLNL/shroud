@@ -69,7 +69,8 @@ PY_struct_arg *class*, *numpy*, *list*
 
 .. regression/run/struct-c/python/test.py
 
-As a NumPy array:
+When treated as a NumPy array no memory will be copied since the
+NumPy array contains a pointer to the C++ memory.
 
 .. code-block:: python
 
@@ -85,14 +86,14 @@ The descriptor is created in the wrapper
 Class
 -----
 
-Each class in the input file will create a Fortran derived type which
-acts as a shadow class for the C++ class.  A pointer to an instance is
-saved as a ``type(C_PTR)`` value. This pointer is then passed down to
-the C++ routines to be used as the *this* instance.
-
     All problems in computer science can be solved by
     another level of indirection.
     --- David Wheeler
+
+Each class in the input file will create a struct which acts as a
+shadow class for the C++ class.  A pointer to an instance is saved in
+the shadow class. This pointer is then passed down to the C++ routines
+to be used as the *this* instance.
 
 Using the tutorial as an example, a simple class is defined in the C++
 header as:
@@ -113,6 +114,9 @@ And is wrapped in the YAML as:
     - decl: class Class1
       declarations:
       - decl: int Method1()
+
+Fortran
+^^^^^^^
 
 The Fortran interface will create two derived types.  The first is
 used to interact with the C wrapper and uses ``bind(C)``. The C
@@ -170,6 +174,19 @@ A full example is at
 
 ..       final! :: {F_name_final}
 
+Python
+^^^^^^
+
+An struct is created for each C++ class.
+
+.. literalinclude:: ../regression/reference/tutorial/pyTutorialmodule.hpp
+   :language: c
+   :start-after: start object PY_Class1
+   :end-before: end object PY_Class1
+
+The ``idtor`` aregument is used to release memory and described at
+:ref:`MemoryManagementAnchor`.  The splicer allows additional fields
+to be added by the developer which may be used in function wrappers.
 
 Forward Declaration
 ^^^^^^^^^^^^^^^^^^^

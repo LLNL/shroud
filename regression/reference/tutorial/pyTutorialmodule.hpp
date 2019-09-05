@@ -25,6 +25,7 @@ extern PyTypeObject PY_Class1_Type;
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
 
+// start object PY_Class1
 typedef struct {
 PyObject_HEAD
     tutorial::Class1 * obj;
@@ -32,6 +33,7 @@ PyObject_HEAD
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;
+// end object PY_Class1
 
 extern const char *PY_Class1_capsule_name;
 PyObject *PP_Class1_to_Object(tutorial::Class1 *addr);

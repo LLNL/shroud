@@ -23,6 +23,7 @@ extern PyTypeObject PY_Cstruct1_Type;
 // splicer begin class.Cstruct1.C_declaration
 // splicer end class.Cstruct1.C_declaration
 
+// start object PY_Cstruct1
 typedef struct {
 PyObject_HEAD
     Cstruct1 * obj;
@@ -30,6 +31,7 @@ PyObject_HEAD
     // splicer begin class.Cstruct1.C_object
     // splicer end class.Cstruct1.C_object
 } PY_Cstruct1;
+// end object PY_Cstruct1
 
 extern const char *PY_Cstruct1_capsule_name;
 PyObject *PP_Cstruct1_to_Object(Cstruct1 *addr);
