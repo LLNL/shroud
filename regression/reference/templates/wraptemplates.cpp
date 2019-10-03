@@ -6,6 +6,8 @@
 #include "templates.hpp"
 #include "typestemplates.h"
 
+#include "implworker1.hpp"
+
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 

@@ -4881,6 +4881,12 @@
                                             "template_suffix": "_double",
                                             "underscore_name": "set_value"
                                         },
+                                        "gen_headers_typedef": [
+                                            "double",
+                                            "float",
+                                            "int",
+                                            "long"
+                                        ],
                                         "have_template_args": true,
                                         "linenumber": 212,
                                         "options": {
@@ -5190,6 +5196,10 @@
                                             "template_suffix": "_double",
                                             "underscore_name": "get_value"
                                         },
+                                        "gen_headers_typedef": [
+                                            "double",
+                                            "int"
+                                        ],
                                         "have_template_args": true,
                                         "linenumber": 219,
                                         "options": {
