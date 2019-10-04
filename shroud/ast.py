@@ -297,6 +297,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
         # namespace
         self.scope = ""
@@ -775,6 +777,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.namespaces = []
             self.variables = []
 
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
+
         # add to symbol table
         self.scope = self.parent.scope + self.name + "::"
         if skip:
@@ -959,6 +964,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.template_arguments = cxx_template
         for args in cxx_template:
             args.parse_instantiation(namespace=self)
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
     # # # # # namespace behavior
 
@@ -1218,6 +1225,9 @@ class FunctionNode(AstNode):
         # possible values are '', '_buf'
         self.generated_suffix = ""
 
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
+
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
 
@@ -1441,6 +1451,8 @@ class EnumNode(AstNode):
 
             fmtmembers[member.name] = fmt
         self._fmtmembers = fmtmembers
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"

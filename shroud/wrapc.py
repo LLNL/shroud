@@ -370,7 +370,7 @@ class Wrapc(util.WrapperMixin):
 
     def write_impl(self, ns, cls, hname, fname):
         """Write implementation.
-        Writ struct, function, enum for a
+        Write struct, function, enum for a
         namespace or class.
 
         Args:
@@ -403,6 +403,17 @@ class Wrapc(util.WrapperMixin):
         if self.header_impl_include:
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
+
+        # Headers required by implementations,
+        # for example template instantiation.
+        if self.header_typedef_nodes:
+            self.write_headers_nodes(
+                "cxx_header",
+                self.header_typedef_nodes,
+                [],
+                output,
+                self.header_impl_include,
+            )
 
         if self.language == "cxx":
             output.append("")
@@ -715,6 +726,7 @@ class Wrapc(util.WrapperMixin):
         is_union_scalar = False
         shadow_arg_decl = None
 
+        self.header_typedef_nodes.update(node.gen_headers_typedef)
         if result_typemap.c_header:
             # include any dependent header in generated header
             self.header_typedef_nodes[result_typemap.name] = result_typemap

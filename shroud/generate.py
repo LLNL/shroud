@@ -774,7 +774,9 @@ class GenFunctions(object):
             ordered_functions -
         """
         oldoptions = node.options
+        headers_typedef = {}
 
+        # targs - ast.TemplateArgument
         for iargs, targs in enumerate(node.template_arguments):
             new = node.clone()
             ordered_functions.append(new)
@@ -809,6 +811,11 @@ class GenFunctions(object):
             options.wrap_lua = oldoptions.wrap_lua
             fmt.CXX_template = targs.instantiation  # ex. <int>
 
+            # Gather headers required by template arguments.
+            for targ in targs.asts:
+                ntypemap = targ.typemap
+                headers_typedef[ntypemap.name] = ntypemap
+
             self.push_instantiate_scope(new, targs)
 
             if new.ast.typemap.base == "template":
@@ -817,6 +824,7 @@ class GenFunctions(object):
                 new._CXX_return_templated = True
 
             # Replace templated arguments.
+            # arg - declast.Declaration
             newparams = []
             for arg in new.ast.params:
                 if arg.typemap.base == "template":
@@ -827,6 +835,7 @@ class GenFunctions(object):
             new.ast.params = newparams
             self.pop_instantiate_scope()
 
+        new.gen_headers_typedef = headers_typedef
         # Do not process templated node, instead process
         # generated functions above.
         options = node.options

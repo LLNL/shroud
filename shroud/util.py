@@ -287,17 +287,17 @@ class WrapperMixin(object):
             else:
                 output.append('#include "%s"' % header)
 
-    def write_headers_nodes(self, lang_header, types, hlist, output):
+    def write_headers_nodes(self, lang_header, types, hlist,
+                            output, skip={}):
         """Write out headers required by types
 
         lang_header - "c_header"
         types - dictionary of Typemap nodes.
-        hlist -
-        output - append lines of code.
-
-        types - dictionary[typedef.name] = typedef
+                types[typedef.name] = typedef
         hlist - list of headers to include
                 From helper routines
+        output - append lines of code.
+        skip - dictionary of headers to ignore.
 
         headers[hdr] [ typedef, None, ... ]
         None from helper files
@@ -312,12 +312,16 @@ class WrapperMixin(object):
             if hdr:
                 headers.setdefault(hdr, []).append(typedef)
 
-        if headers:
-            output.append("")
+        need_blank = True
         for hdr in sorted(headers):
+            if hdr in skip:
+                continue
+            if need_blank:
+                output.append("")
+                need_blank = False
             if len(headers[hdr]) == 1:
-                # Only one type uses the include, check for if_cpp
-                # For example, add conditional around mpi.h
+                # Only one type uses the include, check for if_cpp.
+                # For example, add conditional around mpi.h.
                 typedef = headers[hdr][0]
                 if typedef and typedef.cpp_if:
                     output.append("#" + typedef.cpp_if)

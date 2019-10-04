@@ -107,7 +107,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 62,
+                        "linenumber": 63,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -271,8 +271,11 @@
                             "template_suffix": "_double",
                             "underscore_name": "nested"
                         },
+                        "gen_headers_typedef": [
+                            "double"
+                        ],
                         "have_template_args": true,
-                        "linenumber": 62,
+                        "linenumber": 63,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -297,7 +300,7 @@
                         ]
                     }
                 ],
-                "linenumber": 57,
+                "linenumber": 58,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -480,7 +483,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 84,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -488,7 +491,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 82,
+                "linenumber": 83,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -650,7 +653,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 84,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -677,7 +680,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 82,
+                "linenumber": 83,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -839,7 +842,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 84,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -865,8 +868,14 @@
                     "template_suffix": "_1",
                     "underscore_name": "function_tu"
                 },
+                "gen_headers_typedef": [
+                    "double",
+                    "float",
+                    "int",
+                    "long"
+                ],
                 "have_template_args": true,
-                "linenumber": 82,
+                "linenumber": 83,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -935,14 +944,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 97,
+                    "__line__": 98,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 96,
+                "linenumber": 97,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1007,7 +1016,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 97,
+                    "__line__": 98,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -1035,7 +1044,10 @@
                     "template_suffix": "_internal_ImplWorker1",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 96,
+                "gen_headers_typedef": [
+                    "internal::ImplWorker1"
+                ],
+                "linenumber": 97,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2120,7 +2132,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": "implworker1.hpp",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapImplWorker1.h",
@@ -2144,7 +2156,7 @@
                         "linenumber": 53,
                         "name": "ImplWorker1",
                         "options": {
-                            "__line__": 54,
+                            "__line__": 55,
                             "wrap_fortran": false
                         },
                         "scope": "internal::ImplWorker1::",
@@ -2791,6 +2803,7 @@
             },
             "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
             "c_type": "TEM_internal_ImplWorker1",
+            "cxx_header": "implworker1.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
             "f_c_module": {

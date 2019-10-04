@@ -1,7 +1,7 @@
 // pyImplWorker1type.cpp
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
-#include "templates.hpp"
+#include "implworker1.hpp"
 // splicer begin namespace.internal.class.ImplWorker1.impl.include
 // splicer end namespace.internal.class.ImplWorker1.impl.include
 

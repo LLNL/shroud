@@ -51,6 +51,7 @@ declarations:
 # Class which is used to instantiate the C++ template.
 # It is not part of the Fortran API.
   - decl: class ImplWorker1
+    cxx_header: implworker1.hpp
     options:
       wrap_fortran: false
 

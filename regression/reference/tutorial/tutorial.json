@@ -3275,6 +3275,10 @@
                     "template_suffix": "_double",
                     "underscore_name": "template_argument"
                 },
+                "gen_headers_typedef": [
+                    "double",
+                    "int"
+                ],
                 "have_template_args": true,
                 "linenumber": 77,
                 "options": {
@@ -3520,6 +3524,10 @@
                     "template_suffix": "_double",
                     "underscore_name": "template_return"
                 },
+                "gen_headers_typedef": [
+                    "double",
+                    "int"
+                ],
                 "have_template_args": true,
                 "linenumber": 84,
                 "options": {

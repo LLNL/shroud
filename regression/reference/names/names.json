@@ -1328,6 +1328,12 @@
                     "template_suffix": "_instantiation2",
                     "underscore_name": "function_tu"
                 },
+                "gen_headers_typedef": [
+                    "double",
+                    "float",
+                    "int",
+                    "long"
+                ],
                 "have_template_args": true,
                 "linenumber": 145,
                 "options": {
@@ -1509,6 +1515,9 @@
                     "template_suffix": "_instantiation3",
                     "underscore_name": "use_impl_worker"
                 },
+                "gen_headers_typedef": [
+                    "internal::ImplWorker1"
+                ],
                 "linenumber": 196,
                 "options": {
                     "wrap_c": true,
