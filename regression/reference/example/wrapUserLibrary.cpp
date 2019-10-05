@@ -13,7 +13,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include <stdlib.h>
+#include <cstdlib>
 #include "ExClass1.hpp"
 #include "ExClass2.hpp"
 #include "typesUserLibrary.h"

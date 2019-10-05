@@ -1,7 +1,7 @@
 // wraptemplates.cpp
 // This is generated code, do not edit
 #include "wraptemplates.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <vector>
 #include "templates.hpp"
 #include "typestemplates.h"

@@ -18,7 +18,6 @@
 #include <cstddef>
 #include <cstdlib>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
 #include "strings.hpp"
 #include "typesstrings.h"

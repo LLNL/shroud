@@ -1437,7 +1437,6 @@ class Wrapc(util.WrapperMixin):
 
         if len(self.capsule_order) > 1:
             # If more than slot 0 is added, create switch statement
-            self.header_impl_include["<stdlib.h>"] = True  # for free
             append_format(
                 output, "void *ptr = cap->addr;\n" "switch (cap->idtor) {{", fmt
             )
@@ -1456,7 +1455,11 @@ class Wrapc(util.WrapperMixin):
             )
 
         # Add header for NULL.
-        self.header_impl_include["<stdlib.h>"] = True
+        if self.language == "cxx":
+            self.header_impl_include["<cstdlib>"] = True
+            # XXXX nullptr
+        else:
+            self.header_impl_include["<stdlib.h>"] = True
         output.append(
             "cap->addr = NULL;\n"
             "cap->idtor = 0;  // avoid deleting again\n"

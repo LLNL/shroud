@@ -15,7 +15,7 @@
 //
 // #######################################################################
 #include "wrappointers.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "pointers.hpp"
 #include "typespointers.h"
 

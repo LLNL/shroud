@@ -14,7 +14,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include <stdlib.h>
+#include <cstdlib>
 #include "typeslibrary.h"
 
 // splicer begin CXX_definitions

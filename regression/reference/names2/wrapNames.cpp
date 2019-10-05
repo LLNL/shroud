@@ -7,7 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapNames.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "typesNames.h"
 
 // splicer begin CXX_definitions

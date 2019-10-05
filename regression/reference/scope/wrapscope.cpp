@@ -15,7 +15,7 @@
 //
 // #######################################################################
 #include "wrapscope.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "typesscope.h"
 
 // splicer begin CXX_definitions

@@ -15,7 +15,7 @@
 //
 // #######################################################################
 #include "top.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 #include "typestestnames.hh"
 

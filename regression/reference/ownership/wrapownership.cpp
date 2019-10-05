@@ -15,8 +15,8 @@
 //
 // #######################################################################
 #include "wrapownership.h"
+#include <cstdlib>
 #include <cstring>
-#include <stdlib.h>
 #include "ownership.hpp"
 #include "typesownership.h"
 
