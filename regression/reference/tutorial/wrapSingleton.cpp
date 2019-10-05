@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapSingleton.h"
-#include <stdlib.h>
 #include "tutorial.hpp"
 
 // splicer begin class.Singleton.CXX_definitions

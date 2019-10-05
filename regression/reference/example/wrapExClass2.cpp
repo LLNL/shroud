@@ -16,11 +16,8 @@
 #include "wrapExClass2.h"
 #include <cstddef>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
-#include "ExClass1.hpp"
 #include "ExClass2.hpp"
-#include "sidre/SidreWrapperHelpers.hpp"
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_definitions
 //   namespace.example::nested.class.ExClass2.CXX_definitions

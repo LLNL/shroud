@@ -24,10 +24,17 @@ except:
         return name.replace("::","_").translate(flat_trantab)
 
 class Typemap(object):
-    """ Collect fields for an argument.
+    """Collect fields for an argument.
     This used to be a dict but a class has better access semantics:
        i.attr vs d['attr']
     It also initializes default values to avoid  d.get('attr', default)
+
+    c_header and cxx_header are used for interface. For example,
+    size_t uses <stddef.h> and <cstddef>.
+
+    c_statements.cxx_header is used for implementation.  For example,
+    std::string uses <string>. <string> should not be in the interface
+    since the wrapper is a C API.
     """
 
     # Array of known keys with default values
@@ -395,6 +402,7 @@ def initialize():
             c_type="size_t",
             cxx_type="size_t",
             c_header="<stddef.h>",
+            cxx_header="<cstddef>",
             f_cast="int({f_var}, C_SIZE_T)",
             f_type="integer(C_SIZE_T)",
             f_kind="C_SIZE_T",
@@ -410,7 +418,7 @@ def initialize():
             c_type="int8_t",
             cxx_type="int8_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT8_t)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
@@ -428,7 +436,7 @@ def initialize():
             c_type="int16_t",
             cxx_type="int16_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT16_t)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
@@ -446,7 +454,7 @@ def initialize():
             c_type="int32_t",
             cxx_type="int32_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT32_t)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
@@ -464,7 +472,7 @@ def initialize():
             c_type="int64_t",
             cxx_type="int64_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT64_t)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
@@ -483,7 +491,7 @@ def initialize():
             c_type="uint8_t",
             cxx_type="uint8_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT8_t)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
@@ -501,7 +509,7 @@ def initialize():
             c_type="uint16_t",
             cxx_type="uint16_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT16_t)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
@@ -519,7 +527,7 @@ def initialize():
             c_type="uint32_t",
             cxx_type="uint32_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT32_t)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
@@ -537,7 +545,7 @@ def initialize():
             c_type="uint64_t",
             cxx_type="uint64_t",
             c_header="<stdint.h>",
-            #            cxx_header='<cstdint>',
+            cxx_header="<cstdint>",
             f_cast="int({f_var}, C_INT64_t)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
@@ -586,6 +594,7 @@ def initialize():
             "bool",
             c_type="bool",
             cxx_type="bool",
+            c_header="<stdbool.h>",
             f_type="logical",
             f_kind="C_BOOL",
             f_c_type="logical(C_BOOL)",
@@ -765,10 +774,10 @@ def initialize():
         string=Typemap(
             "std::string",
             cxx_type="std::string",
-            cxx_header="<string>",
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
             c_statements=dict(
+                cxx_header="<string>",
                 intent_in=dict(
                     cxx_local_var="scalar",
                     pre_call=["{c_const}std::string {cxx_var}({c_var});"],
@@ -885,10 +894,10 @@ def initialize():
         stringout=Typemap(
             "stringout",
             cxx_type="std::string",
-            cxx_header="<string>",
             cxx_to_c="static_cast<void *>({cxx_var})",
             c_type="void",
             c_statements=dict(
+                cxx_header="<string>",
                 intent_out_buf=dict(
                     buf_args=["arg", "lenout"],
                     c_helper="copy_string",
@@ -1216,6 +1225,7 @@ def initialize():
             "MPI_Comm",
             cxx_type="MPI_Comm",
             c_header="mpi.h",
+            cxx_header="mpi.h",
             c_type="MPI_Fint",
             # usually, MPI_Fint will be equivalent to int
             f_type="integer",
@@ -1371,8 +1381,6 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.c_statements = dict(
         intent_in=dict(buf_args=["shadow"]),
         result=dict(
-            c_header="<stdlib.h>",
-            cxx_header="<stdlib.h>",
             post_call=[
                 "{c_var}->addr = {cxx_cast_to_void_ptr};",
                 "{c_var}->idtor = {idtor};",

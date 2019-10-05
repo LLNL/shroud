@@ -16,6 +16,9 @@
 #define WRAPCLASS1_H
 
 #include "typesTutorial.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin class.Class1.CXX_declarations
 // splicer end class.Class1.CXX_declarations

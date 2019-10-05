@@ -17,7 +17,6 @@
 #include "wrapvectors.h"
 #include <cstring>
 #include <stdlib.h>
-#include <string>
 #include "typesvectors.h"
 #include "vectors.hpp"
 

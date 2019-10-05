@@ -15,7 +15,6 @@
 //
 // #######################################################################
 #include "wrapClass2.h"
-#include <stdlib.h>
 #include "tutorial.hpp"
 
 // splicer begin class.Class2.CXX_definitions

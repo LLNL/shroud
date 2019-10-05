@@ -23,6 +23,11 @@
 #define WRAPEXCLASS1_H
 
 #include "typesUserLibrary.h"
+#ifdef __cplusplus
+#include "ExClass1.hpp"
+#else
+#include <stdbool.h>
+#endif
 
 // splicer begin namespace.example::nested.class.ExClass1.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass1.CXX_declarations

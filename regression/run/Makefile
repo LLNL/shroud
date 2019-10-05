@@ -57,6 +57,7 @@ test-c-% : c-%
 # Compile C tests
 test-c : \
   test-c-tutorial \
+  test-c-types \
   test-c-templates
 
 ######################################################################
