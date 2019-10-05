@@ -1602,7 +1602,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}three::Class1 *>({c_var}{c_member}addr)",
             "c_type": "LIB_three_Class1",
-            "cxx_header": "class_header.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "three::Class1",
             "f_c_module": {
@@ -1631,6 +1630,7 @@
             "f_type": "type(class1)",
             "flat_name": "three_Class1",
             "forward": "three::Class1",
+            "impl_header": "class_header.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",

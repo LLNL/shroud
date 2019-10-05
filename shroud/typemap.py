@@ -218,6 +218,7 @@ class Typemap(object):
             self,
             [
                 "base",
+                "impl_header",
                 "cxx_header",
                 "cxx_type",
                 "c_type",
@@ -1328,7 +1329,8 @@ def create_class_typemap(node, fields=None):
         cxx_name,
         base="shadow",
         cxx_type=cxx_type,
-        cxx_header=node.cxx_header or None,
+        # XXX - look up scope for header...
+        impl_header=node.cxx_header or None,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,

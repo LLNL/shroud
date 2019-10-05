@@ -2,10 +2,10 @@
 // This is generated code, do not edit
 #include "wraptemplates.h"
 #include <cstdlib>
-#include <vector>
 #include "templates.hpp"
 #include "typestemplates.h"
 
+#include <vector>
 #include "implworker1.hpp"
 
 // splicer begin CXX_definitions

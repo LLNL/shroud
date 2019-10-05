@@ -17,6 +17,7 @@
 #include <cstddef>
 #include <cstring>
 #include <string>
+#include "ExClass1.hpp"
 #include "ExClass2.hpp"
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_definitions

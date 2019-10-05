@@ -24,8 +24,6 @@
 
 #include "typesUserLibrary.h"
 #ifdef __cplusplus
-#include "ExClass1.hpp"
-#include "ExClass2.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
 #else
 #include "sidre/SidreTypes.h"

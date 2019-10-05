@@ -52,7 +52,7 @@ declarations:
     - type: Vvv1
       fields:
         base: shadow
-        cxx_header: <vector>
+        impl_header: <vector>
         cxx_type: std::vector<int>
         c_type: TES_std_Vvv1
         f_module_name: testnames_std_mod
@@ -62,7 +62,7 @@ declarations:
     - type: vector_double
       fields:
         base: shadow
-        cxx_header: <vector>
+        impl_header: <vector>
         cxx_type: std::vector<double>
         c_type: TES_std_vector_double
         f_module_name: testnames_std_mod
@@ -72,7 +72,7 @@ declarations:
     - type: vector_instantiation3
       fields:
         base: shadow
-        cxx_header: <vector>
+        impl_header: <vector>
         cxx_type: std::vector<internal::ImplWorker1>
         c_type: TES_std_vector_instantiation3
         f_module_name: testnames_std_mod
@@ -82,7 +82,7 @@ declarations:
     - type: vector_instantiation5
       fields:
         base: shadow
-        cxx_header: <vector>
+        impl_header: <vector>
         cxx_type: std::vector<long>
         c_type: TES_std_vector_instantiation5
         f_module_name: testnames_std_mod

@@ -778,7 +778,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}User2 *>({c_var}{c_member}addr)",
             "c_type": "PRE_User2",
-            "cxx_header": "User2.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "User2",
             "f_c_module": {
@@ -807,6 +806,7 @@
             "f_type": "type(user2)",
             "flat_name": "User2",
             "forward": "User2",
+            "impl_header": "User2.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",

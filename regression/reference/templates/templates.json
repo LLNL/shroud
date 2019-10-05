@@ -2805,7 +2805,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
             "c_type": "TEM_internal_ImplWorker1",
-            "cxx_header": "implworker1.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
             "f_c_module": {
@@ -2834,6 +2833,7 @@
             "f_type": "type(implworker1)",
             "flat_name": "internal_ImplWorker1",
             "forward": "internal::ImplWorker1",
+            "impl_header": "implworker1.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3098,7 +3098,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
             "f_c_module": {
@@ -3127,6 +3126,7 @@
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "forward": "std::vector",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3212,7 +3212,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<double> *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector_double",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<double>",
             "f_c_module": {
@@ -3242,6 +3241,7 @@
             "flat_name": "std_vector_double",
             "forward": "std::vector<double>",
             "idtor": "2",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3300,7 +3300,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<int> *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector_int",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<int>",
             "f_c_module": {
@@ -3330,6 +3329,7 @@
             "flat_name": "std_vector_int",
             "forward": "std::vector<int>",
             "idtor": "1",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",

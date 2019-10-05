@@ -22,7 +22,7 @@ declarations:
       - type: ExClass1
         fields:
           base: shadow
-          cxx_header: ExClass1.hpp
+          impl_header: ExClass1.hpp
           cxx_type: example::nested::ExClass1
           c_type: AA_example_nested_ExClass1
           f_module_name: userlibrary_example_nested_mod
@@ -32,7 +32,7 @@ declarations:
       - type: ExClass2
         fields:
           base: shadow
-          cxx_header: ExClass2.hpp
+          impl_header: ExClass2.hpp
           cxx_type: example::nested::ExClass2
           c_type: AA_example_nested_ExClass2
           f_module_name: userlibrary_example_nested_mod

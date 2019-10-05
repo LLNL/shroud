@@ -57,6 +57,8 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_end = " */"
         self.shared_helper = {}  # All accumulated helpers
         self.shared_proto_c = []
+        # Include files required by wrapper implementations.
+        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
 
     _default_buf_args = ["arg"]
 
@@ -150,6 +152,7 @@ class Wrapc(util.WrapperMixin):
             self.wrap_functions(ns)
             if top:
                 self.write_capsule_code()
+                self.impl_typedef_nodes.update(self.capsule_typedef_nodes)
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -415,7 +418,7 @@ class Wrapc(util.WrapperMixin):
         # for example template instantiation.
         if self.impl_typedef_nodes:
             self.write_headers_nodes(
-                self.lang_header,
+                "impl_header",
                 self.impl_typedef_nodes,
                 [],
                 output,
@@ -554,6 +557,7 @@ class Wrapc(util.WrapperMixin):
             ntypemap.idtor = self.add_capsule_code(
                 cxx_type, ntypemap, del_lines
             )
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
         else:
             ntypemap.idtor = "0"
 

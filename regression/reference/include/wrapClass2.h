@@ -25,9 +25,6 @@
 
 #include "mpi.h"
 #include "typeslibrary.h"
-#ifdef __cplusplus
-#include "class_header.hpp"
-#endif
 
 
 #ifdef __cplusplus

@@ -32,7 +32,7 @@ declarations:
     - type: Class1
       fields:
         base: shadow
-        cxx_header: class_header.hpp
+        impl_header: class_header.hpp
         cxx_type: three::Class1
         c_type: LIB_three_Class1
         f_module_name: library_three_mod

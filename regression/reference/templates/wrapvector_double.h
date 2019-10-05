@@ -12,7 +12,6 @@
 #include "typestemplates.h"
 #ifdef __cplusplus
 #include <cstddef>
-#include <vector>
 #else
 #include <stddef.h>
 #endif

@@ -9675,7 +9675,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}example::nested::ExClass1 *>({c_var}{c_member}addr)",
             "c_type": "AA_example_nested_ExClass1",
-            "cxx_header": "ExClass1.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "example::nested::ExClass1",
             "f_c_module": {
@@ -9705,6 +9704,7 @@
             "flat_name": "example_nested_ExClass1",
             "forward": "example::nested::ExClass1",
             "idtor": "1",
+            "impl_header": "ExClass1.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -9763,7 +9763,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}example::nested::ExClass2 *>({c_var}{c_member}addr)",
             "c_type": "AA_example_nested_ExClass2",
-            "cxx_header": "ExClass2.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "example::nested::ExClass2",
             "f_c_module": {
@@ -9793,6 +9792,7 @@
             "flat_name": "example_nested_ExClass2",
             "forward": "example::nested::ExClass2",
             "idtor": "2",
+            "impl_header": "ExClass2.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",

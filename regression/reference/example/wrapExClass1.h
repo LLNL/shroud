@@ -23,9 +23,7 @@
 #define WRAPEXCLASS1_H
 
 #include "typesUserLibrary.h"
-#ifdef __cplusplus
-#include "ExClass1.hpp"
-#else
+#ifndef __cplusplus
 #include <stdbool.h>
 #endif
 
