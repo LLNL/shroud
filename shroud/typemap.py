@@ -32,9 +32,10 @@ class Typemap(object):
     c_header and cxx_header are used for interface. For example,
     size_t uses <stddef.h> and <cstddef>.
 
-    c_statements.cxx_header is used for implementation.  For example,
-    std::string uses <string>. <string> should not be in the interface
-    since the wrapper is a C API.
+    impl_header is used for implementation.  For example, std::string
+    uses <string>. <string> should not be in the interface since the
+    wrapper is a C API.
+
     """
 
     # Array of known keys with default values
@@ -89,10 +90,9 @@ class Typemap(object):
                                      # dict(is_target=True)
         # e.g. intrinsics such as int and real
         ("f_statements", {}),
-        (
-            "result_as_arg",
-            None,
-        ),  # override fields when result should be treated as an argument
+        # override fields when result should be treated as an argument
+        ("result_as_arg", None),
+        ("impl_header", None), # implementation header
         # Python
         ("PY_format", "O"),  # 'format unit' for PyArg_Parse
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
@@ -776,8 +776,8 @@ def initialize():
             cxx_type="std::string",
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
+            impl_header="<string>",
             c_statements=dict(
-                cxx_header="<string>",
                 intent_in=dict(
                     cxx_local_var="scalar",
                     pre_call=["{c_const}std::string {cxx_var}({c_var});"],
@@ -896,8 +896,8 @@ def initialize():
             cxx_type="std::string",
             cxx_to_c="static_cast<void *>({cxx_var})",
             c_type="void",
+            impl_header="<string>",
             c_statements=dict(
-                cxx_header="<string>",
                 intent_out_buf=dict(
                     buf_args=["arg", "lenout"],
                     c_helper="copy_string",

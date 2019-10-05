@@ -1210,7 +1210,6 @@
             "PY_format": "s",
             "base": "string",
             "c_statements": {
-                "cxx_header": "<string>",
                 "intent_in": {
                     "cxx_local_var": "scalar",
                     "pre_call": [
@@ -1312,6 +1311,7 @@
             },
             "f_type": "character(*)",
             "flat_name": "std_string",
+            "impl_header": "<string>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -1533,7 +1533,6 @@
         "stringout": {
             "base": "string",
             "c_statements": {
-                "cxx_header": "<string>",
                 "intent_out_buf": {
                     "buf_args": [
                         "arg",
@@ -1581,7 +1580,8 @@
                 }
             },
             "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string"
+            "flat_name": "std_string",
+            "impl_header": "<string>"
         },
         "three::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

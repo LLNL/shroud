@@ -906,10 +906,9 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
+            if arg_typemap.impl_header:
+                self.header_impl_include[arg_typemap.impl_header] = True
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
-            if self.lang_header in c_statements:
-                for hdr in c_statements[self.lang_header].split():
-                    self.header_impl_include[hdr] = True
             self.header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
@@ -1258,10 +1257,9 @@ class Wrapc(util.WrapperMixin):
                         post_call, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
+                if result_typemap.impl_header:
+                    self.header_impl_include[result_typemap.impl_header] = True
                 c_statements = result_typemap.c_statements
-                if self.lang_header in c_statements:
-                    for hdr in c_statements[self.lang_header].split():
-                        self.header_impl_include[hdr] = True
 
                 intent_blk = c_statements.get("result" + ast.stmts_suffix, {})
                 self.add_statements_headers(intent_blk)
