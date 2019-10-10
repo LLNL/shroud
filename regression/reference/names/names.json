@@ -1415,14 +1415,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 197,
+                    "__line__": 210,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 196,
+                "linenumber": 209,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1487,7 +1487,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 197,
+                    "__line__": 210,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -1518,7 +1518,7 @@
                 "gen_headers_typedef": [
                     "internal::ImplWorker1"
                 ],
-                "linenumber": 196,
+                "linenumber": 209,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2231,9 +2231,144 @@
                     "testnames",
                     "std"
                 ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapClass1.hh",
+                            "C_impl_filename": "wrapClass1.cc",
+                            "C_name_scope": "capi_class1_",
+                            "C_type_name": "TES_capi_class1",
+                            "F_capsule_data_type": "SHROUD_class1_capsule",
+                            "F_derived_name": "class1",
+                            "F_name_scope": "class1_",
+                            "class_scope": "Class1::",
+                            "cxx_class": "Class1",
+                            "cxx_type": "Class1"
+                        },
+                        "functions": [
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "Member1",
+                                        "pointer": []
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void Member1()",
+                                "declgen": "void Member1()",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->Member1(\t);",
+                                    "C_call_list": "",
+                                    "C_name": "TES_capi_class1_member1",
+                                    "C_pre_call": "CAPI::Class1 *SH_this =\t static_cast<CAPI::Class1 *>(self->addr);",
+                                    "C_prototype": "TES_capi_class1 * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_class1_member1",
+                                    "F_C_name": "c_class1_member1",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_class1_member1(obj%cxxmem)",
+                                    "F_name_function": "member1",
+                                    "F_name_generic": "member1",
+                                    "F_name_impl": "class1_member1",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "Member1",
+                                    "underscore_name": "member1"
+                                },
+                                "linenumber": 205,
+                                "options": {}
+                            }
+                        ],
+                        "linenumber": 203,
+                        "name": "Class1",
+                        "options": {},
+                        "scope": "CAPI::Class1::",
+                        "typemap_name": "CAPI::Class1"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "CAPI::",
+                    "C_header_filename": "wraptestnames_CAPI.hh",
+                    "C_impl_filename": "wraptestnames_CAPI.cc",
+                    "C_name_scope": "capi_",
+                    "F_impl_filename": "wrapftestnames_CAPI.F",
+                    "F_module_name": "testnames_capi_mod",
+                    "LUA_this_call": "CAPI::",
+                    "PY_module_init": "testnames_CAPI",
+                    "PY_module_name": "CAPI",
+                    "PY_module_scope": "testnames.CAPI",
+                    "PY_this_call": "CAPI::",
+                    "file_scope": "testnames_CAPI",
+                    "namespace_scope": "CAPI::"
+                },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "Worker1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void Worker1()",
+                        "declgen": "void Worker1()",
+                        "fmtdict": {
+                            "C_call_code": "CAPI::Worker1(\t);",
+                            "C_call_list": "",
+                            "C_name": "TES_capi_worker1",
+                            "C_prototype": "",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_worker1",
+                            "F_C_name": "c_worker1",
+                            "F_arg_c_call": "",
+                            "F_arguments": "",
+                            "F_call_code": "call c_worker1()",
+                            "F_name_function": "worker1",
+                            "F_name_generic": "worker1",
+                            "F_name_impl": "worker1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "function_name": "Worker1",
+                            "underscore_name": "worker1"
+                        },
+                        "linenumber": 202,
+                        "options": {}
+                    }
+                ],
+                "linenumber": 197,
+                "name": "CAPI",
+                "options": {
+                    "C_API_case": "lower",
+                    "__line__": 198,
+                    "wrap_python": false
+                },
+                "scope": "CAPI::",
+                "scope_file": [
+                    "testnames",
+                    "CAPI"
+                ]
             }
         ],
         "options": {
+            "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
@@ -2323,6 +2458,90 @@
         ]
     },
     "types": {
+        "CAPI::Class1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}CAPI::Class1 *>({c_var}{c_member}addr)",
+            "c_type": "TES_capi_class1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "CAPI::Class1",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_class1_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_class1_capsule)",
+            "f_capsule_data_type": "SHROUD_class1_capsule",
+            "f_derived_type": "class1",
+            "f_module": {
+                "testnames_capi_mod": [
+                    "class1"
+                ]
+            },
+            "f_module_name": "testnames_capi_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class1)",
+            "flat_name": "CAPI_Class1",
+            "forward": "CAPI::Class1",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}CAPI::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}CAPI::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
