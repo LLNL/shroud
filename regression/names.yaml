@@ -192,6 +192,19 @@ declarations:
       template_suffix: _instantiation4
 
 ########################################
+# Teset option C_API_case
+#
+- decl: namespace CAPI
+  options:
+    wrap_python: False
+    C_API_case: lower
+  declarations:
+  - decl: void Worker1()
+  - decl: class Class1
+    declarations:
+    - decl: void Member1()
+    
+########################################
 # Copied from templates.yaml
 - decl: template<typename T> int UseImplWorker()
   doxygen:

@@ -202,6 +202,11 @@ return_this
 Options
 -------
 
+C_API_case
+   Control case of *C_name_scope*.
+   Possible values are 'lower' or 'upper'.
+   Any other value will have no effect.
+
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
