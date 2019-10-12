@@ -2469,8 +2469,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"

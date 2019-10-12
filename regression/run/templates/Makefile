@@ -33,7 +33,7 @@ F_OBJS = \
     main.o
 
 
-templates : $(C_OBJS)
+templates : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
