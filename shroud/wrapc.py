@@ -400,14 +400,9 @@ class Wrapc(util.WrapperMixin):
         if hname:
             output.append('#include "%s"' % hname)
 
-        # Use headers from class if they exist or else library
+        # Use headers from implementation
+        self.find_header(node)
         self.header_impl_include.update(self.helper_header["file"])
-        if cls and cls.cxx_header:
-            for include in cls.cxx_header.split():
-                self.header_impl_include[include] = True
-        else:
-            for include in self.newlibrary.cxx_header.split():
-                self.header_impl_include[include] = True
 
         # headers required by implementation
         if self.header_impl_include:

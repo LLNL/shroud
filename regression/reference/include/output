@@ -3,6 +3,14 @@ Wrote wraplibrary_one_two.h
 Wrote wraplibrary_one_two.cpp
 Wrote wrapClass1.h
 Wrote wrapClass1.cpp
+Wrote wrapclass0.h
+Wrote wrapclass0.cpp
+Wrote wraplibrary_outer1.h
+Wrote wraplibrary_outer1.cpp
+Wrote wrapclassA.h
+Wrote wrapclassA.cpp
+Wrote wraplibrary_outer2.h
+Wrote wraplibrary_outer2.cpp
 Wrote wrapClass2.h
 Wrote wrapClass2.cpp
 Wrote wraplibrary.cpp
@@ -10,4 +18,6 @@ Wrote typeslibrary.h
 Wrote wrapflibrary_one_two.f
 Wrote wrapflibrary_one.f
 Wrote wrapflibrary_three.f
+Wrote wrapflibrary_outer1.f
+Wrote wrapflibrary_outer2.f
 Wrote wrapflibrary.f
