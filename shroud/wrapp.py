@@ -1843,14 +1843,9 @@ return 1;""",
         #            output.append('#include "numpy/arrayobject.h"')
         self._push_splicer("impl")
 
-        # Use headers from class if they exist or else library
+        # Use headers from implementation
         header_impl_include = self.header_impl_include
-        if node and node.cxx_header:
-            for include in node.cxx_header.split():
-                header_impl_include[include] = True
-        else:
-            for include in self.newlibrary.cxx_header.split():
-                header_impl_include[include] = True
+        self.find_header(node)
         header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
 

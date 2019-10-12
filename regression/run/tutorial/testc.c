@@ -5,7 +5,6 @@
  * SPDX-License-Identifier: (BSD-3-Clause)
  */
 
-#include <stdbool.h>  // This should not be necessary
 #include <wrapTutorial.h>
 #include <wrapClass1.h>
 

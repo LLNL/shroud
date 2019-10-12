@@ -20,11 +20,12 @@ VPATH = \
     $(top)/regression/run/templates \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     wraptemplates.o \
     wrapvectorforint.o \
     wrapuser_int.o \
-    wrapvector_double.o \
+    wrapvector_double.o
+F_OBJS = \
     wrapftemplates.o \
     wrapftemplates_internal.o \
     wrapftemplates_std.o \
@@ -32,7 +33,7 @@ OBJS = \
     main.o
 
 
-templates : $(OBJS)
+templates : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
@@ -50,5 +51,5 @@ maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapvector_int.h
-testc : testc.o wrapvectorforint.o
+testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

@@ -287,6 +287,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         """
         # From arguments
+        self.parent = None
         self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ["c", "c++"]:

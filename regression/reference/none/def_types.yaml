@@ -24,7 +24,7 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   c_type: MPI_Fint
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: mpi.h
   cxx_to_c: MPI_Comm_c2f({cxx_var})
   cxx_type: MPI_Comm
   f_args: null
@@ -47,6 +47,7 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   format: &id004 {}
   forward: null
   idtor: '0'
+  impl_header: null
   name: MPI_Comm
   py_statements: &id005 {}
   result_as_arg: null
@@ -70,7 +71,7 @@ bool: !!python/object:shroud.typemap.Typemap
   PY_to_object: null
   __line__: null
   base: unknown
-  c_header: null
+  c_header: <stdbool.h>
   c_return_code: null
   c_statements: *id002
   c_templates: *id003
@@ -117,6 +118,7 @@ bool: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: bool
   py_statements:
     intent_in:
@@ -242,6 +244,7 @@ char: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: char
   py_statements: *id005
   result_as_arg: null
@@ -305,6 +308,7 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: char_scalar
   py_statements: *id005
   result_as_arg: null
@@ -383,6 +387,7 @@ charout: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: charout
   py_statements: *id005
   result_as_arg: null
@@ -437,6 +442,7 @@ double: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: double
   py_statements: *id005
   result_as_arg: null
@@ -491,6 +497,7 @@ float: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: float
   py_statements: *id005
   result_as_arg: null
@@ -545,6 +552,7 @@ int: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: int
   py_statements: *id005
   result_as_arg: null
@@ -576,7 +584,7 @@ int16_t: !!python/object:shroud.typemap.Typemap
   c_type: int16_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: int16_t
   f_args: null
@@ -599,6 +607,7 @@ int16_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: int16_t
   py_statements: *id005
   result_as_arg: null
@@ -630,7 +639,7 @@ int32_t: !!python/object:shroud.typemap.Typemap
   c_type: int32_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: int32_t
   f_args: null
@@ -653,6 +662,7 @@ int32_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: int32_t
   py_statements: *id005
   result_as_arg: null
@@ -684,7 +694,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   c_type: int64_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: int64_t
   f_args: null
@@ -707,6 +717,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: int64_t
   py_statements: *id005
   result_as_arg: null
@@ -738,7 +749,7 @@ int8_t: !!python/object:shroud.typemap.Typemap
   c_type: int8_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: int8_t
   f_args: null
@@ -761,6 +772,7 @@ int8_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: int8_t
   py_statements: *id005
   result_as_arg: null
@@ -815,6 +827,7 @@ long: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: long
   py_statements: *id005
   result_as_arg: null
@@ -869,6 +882,7 @@ long_long: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: long_long
   py_statements: *id005
   result_as_arg: null
@@ -923,6 +937,7 @@ short: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: short
   py_statements: *id005
   result_as_arg: null
@@ -954,7 +969,7 @@ size_t: !!python/object:shroud.typemap.Typemap
   c_type: size_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstddef>
   cxx_to_c: null
   cxx_type: size_t
   f_args: null
@@ -977,6 +992,7 @@ size_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: size_t
   py_statements: *id005
   result_as_arg: null
@@ -1065,7 +1081,7 @@ std::string: !!python/object:shroud.typemap.Typemap
   c_type: char
   c_union: null
   cpp_if: null
-  cxx_header: <string>
+  cxx_header: null
   cxx_to_c: '{cxx_var}{cxx_member}c_str()'
   cxx_type: std::string
   f_args: null
@@ -1093,6 +1109,7 @@ std::string: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: <string>
   name: std::string
   py_statements:
     intent_in:
@@ -1302,6 +1319,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: std::vector
   py_statements: *id005
   result_as_arg: null
@@ -1358,7 +1376,7 @@ stringout: !!python/object:shroud.typemap.Typemap
   c_type: void
   c_union: null
   cpp_if: null
-  cxx_header: <string>
+  cxx_header: null
   cxx_to_c: static_cast<void *>({cxx_var})
   cxx_type: std::string
   f_args: null
@@ -1385,6 +1403,7 @@ stringout: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: <string>
   name: stringout
   py_statements: *id005
   result_as_arg: null
@@ -1416,7 +1435,7 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   c_type: uint16_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: uint16_t
   f_args: null
@@ -1439,6 +1458,7 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: uint16_t
   py_statements: *id005
   result_as_arg: null
@@ -1470,7 +1490,7 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   c_type: uint32_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: uint32_t
   f_args: null
@@ -1493,6 +1513,7 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: uint32_t
   py_statements: *id005
   result_as_arg: null
@@ -1524,7 +1545,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   c_type: uint64_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: uint64_t
   f_args: null
@@ -1547,6 +1568,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: uint64_t
   py_statements: *id005
   result_as_arg: null
@@ -1578,7 +1600,7 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   c_type: uint8_t
   c_union: null
   cpp_if: null
-  cxx_header: null
+  cxx_header: <cstdint>
   cxx_to_c: null
   cxx_type: uint8_t
   f_args: null
@@ -1601,6 +1623,7 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: uint8_t
   py_statements: *id005
   result_as_arg: null
@@ -1655,6 +1678,7 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: unsigned_int
   py_statements: *id005
   result_as_arg: null
@@ -1709,6 +1733,7 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: unsigned_long
   py_statements: *id005
   result_as_arg: null
@@ -1763,6 +1788,7 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: unsigned_long_long
   py_statements: *id005
   result_as_arg: null
@@ -1817,6 +1843,7 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: unsigned_short
   py_statements: *id005
   result_as_arg: null
@@ -1874,6 +1901,7 @@ void: !!python/object:shroud.typemap.Typemap
   format: *id004
   forward: null
   idtor: '0'
+  impl_header: null
   name: void
   py_statements: *id005
   result_as_arg: null

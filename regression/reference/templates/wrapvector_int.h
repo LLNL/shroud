@@ -9,8 +9,12 @@
 #ifndef WRAPVECTOR_INT_H
 #define WRAPVECTOR_INT_H
 
-#include <stddef.h>
 #include "typestemplates.h"
+#ifdef __cplusplus
+#include <cstddef>
+#else
+#include <stddef.h>
+#endif
 
 // splicer begin namespace.std.class.vector.CXX_declarations
 // splicer end namespace.std.class.vector.CXX_declarations

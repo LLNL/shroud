@@ -16,7 +16,6 @@
 #include "wrapExClass1.h"
 #include <cstddef>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
 #include "ExClass1.hpp"
 

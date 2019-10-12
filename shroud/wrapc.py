@@ -42,6 +42,10 @@ class Wrapc(util.WrapperMixin):
         self.newlibrary = newlibrary
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
+        if self.language == "c":
+            self.lang_header = "c_header"
+        else:
+            self.lang_header = "cxx_header"
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -53,6 +57,8 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_end = " */"
         self.shared_helper = {}  # All accumulated helpers
         self.shared_proto_c = []
+        # Include files required by wrapper implementations.
+        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
 
     _default_buf_args = ["arg"]
 
@@ -60,10 +66,12 @@ class Wrapc(util.WrapperMixin):
         """Start a new class for output"""
         #        # forward declarations of C++ class as opaque C struct.
         #        self.header_forward = {}
-        # include files required by typedefs
-        self.header_typedef_nodes = {}  # [arg_typedef.name] = arg_typedef
-        # headers needed by implementation, i.e. helper functions
-        self.header_impl_include = {}  # header files in implementation file
+        # Include files required by wrapper prototypes
+        self.header_typedef_nodes = {}  # [typemap.name] = typemap
+        # Include files required by wrapper implementations.
+        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
+        # Headers needed by implementation, i.e. helper functions.
+        self.header_impl_include = {}
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
@@ -144,6 +152,7 @@ class Wrapc(util.WrapperMixin):
             self.wrap_functions(ns)
             if top:
                 self.write_capsule_code()
+                self.impl_typedef_nodes.update(self.capsule_typedef_nodes)
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -283,7 +292,8 @@ class Wrapc(util.WrapperMixin):
         self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_header(self, library, cls, fname):
-        """ Write header file for a library node or a class node.
+        """ Write header file for a library or class node.
+        The header file can be used by C or C++.
 
         Args:
             library - ast.LibraryNode.
@@ -313,7 +323,7 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        self.write_headers_nodes(
+        self.write_includes_for_header(
             "c_header",
             self.header_typedef_nodes,
             self.c_helper_include.keys(),
@@ -390,14 +400,9 @@ class Wrapc(util.WrapperMixin):
         if hname:
             output.append('#include "%s"' % hname)
 
-        # Use headers from class if they exist or else library
+        # Use headers from implementation
+        self.find_header(node)
         self.header_impl_include.update(self.helper_header["file"])
-        if cls and cls.cxx_header:
-            for include in cls.cxx_header.split():
-                self.header_impl_include[include] = True
-        else:
-            for include in self.newlibrary.cxx_header.split():
-                self.header_impl_include[include] = True
 
         # headers required by implementation
         if self.header_impl_include:
@@ -406,10 +411,10 @@ class Wrapc(util.WrapperMixin):
 
         # Headers required by implementations,
         # for example template instantiation.
-        if self.header_typedef_nodes:
+        if self.impl_typedef_nodes:
             self.write_headers_nodes(
-                "cxx_header",
-                self.header_typedef_nodes,
+                "impl_header",
+                self.impl_typedef_nodes,
                 [],
                 output,
                 self.header_impl_include,
@@ -547,6 +552,7 @@ class Wrapc(util.WrapperMixin):
             ntypemap.idtor = self.add_capsule_code(
                 cxx_type, ntypemap, del_lines
             )
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
         else:
             ntypemap.idtor = "0"
 
@@ -726,13 +732,8 @@ class Wrapc(util.WrapperMixin):
         is_union_scalar = False
         shadow_arg_decl = None
 
-        self.header_typedef_nodes.update(node.gen_headers_typedef)
-        if result_typemap.c_header:
-            # include any dependent header in generated header
-            self.header_typedef_nodes[result_typemap.name] = result_typemap
-        if result_typemap.cxx_header:
-            # include any dependent header in generated source
-            self.header_impl_include[result_typemap.cxx_header] = True
+        self.impl_typedef_nodes.update(node.gen_headers_typedef)
+        self.header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
         #            # i.e. This method returns a wrapped type
@@ -904,7 +905,10 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
+            if arg_typemap.impl_header:
+                self.header_impl_include[arg_typemap.impl_header] = True
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            self.header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
 
@@ -1127,12 +1131,6 @@ class Wrapc(util.WrapperMixin):
                 else:
                     call_list.append(fmt_arg.cxx_var)
 
-            if arg_typemap.c_header:
-                # include any dependent header in generated header
-                self.header_typedef_nodes[arg_typemap.name] = arg_typemap
-            if arg_typemap.cxx_header:
-                # include any dependent header in generated source
-                self.header_impl_include[arg_typemap.cxx_header] = True
         #            if arg_typemap.forward:
         #                # create forward references for other types being wrapped
         #                # i.e. This argument is another wrapped type
@@ -1200,7 +1198,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
             fmt_result.c_type = result_typemap.c_type
             fmt_result.idtor = "0"
-            self.header_impl_include["<stdlib.h>"] = True  # for malloc
             # XXX - similar to c_statements.result
             append_format(
                 post_call,
@@ -1259,7 +1256,10 @@ class Wrapc(util.WrapperMixin):
                         post_call, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
+                if result_typemap.impl_header:
+                    self.header_impl_include[result_typemap.impl_header] = True
                 c_statements = result_typemap.c_statements
+
                 intent_blk = c_statements.get("result" + ast.stmts_suffix, {})
                 self.add_statements_headers(intent_blk)
 
@@ -1434,7 +1434,6 @@ class Wrapc(util.WrapperMixin):
 
         if len(self.capsule_order) > 1:
             # If more than slot 0 is added, create switch statement
-            self.header_impl_include["<stdlib.h>"] = True  # for free
             append_format(
                 output, "void *ptr = cap->addr;\n" "switch (cap->idtor) {{", fmt
             )
@@ -1453,7 +1452,11 @@ class Wrapc(util.WrapperMixin):
             )
 
         # Add header for NULL.
-        self.header_impl_include["<stdlib.h>"] = True
+        if self.language == "cxx":
+            self.header_impl_include["<cstdlib>"] = True
+            # XXXX nullptr
+        else:
+            self.header_impl_include["<stdlib.h>"] = True
         output.append(
             "cap->addr = NULL;\n"
             "cap->idtor = 0;  // avoid deleting again\n"

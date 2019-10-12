@@ -23,8 +23,12 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
-#include "type_header.h"
 #include "typeslibrary.h"
+#ifdef __cplusplus
+#include "type_header.hpp"
+#else
+#include "type_header.h"
+#endif
 
 
 #ifdef __cplusplus

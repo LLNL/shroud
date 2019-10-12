@@ -13,10 +13,11 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include <stdlib.h>
+#include <cstdlib>
+#include "typesUserLibrary.h"
+
 #include "ExClass1.hpp"
 #include "ExClass2.hpp"
-#include "typesUserLibrary.h"
 
 // splicer begin CXX_definitions
 //   CXX_definitions

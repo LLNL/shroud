@@ -16,6 +16,9 @@
 #define WRAPTUTORIAL_H
 
 #include "typesTutorial.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

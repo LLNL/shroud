@@ -510,6 +510,266 @@
                     "library",
                     "three"
                 ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapclass0.h",
+                            "C_impl_filename": "wrapclass0.cpp",
+                            "C_name_scope": "outer1_class0_",
+                            "C_type_name": "LIB_outer1_class0",
+                            "F_capsule_data_type": "SHROUD_class0_capsule",
+                            "F_derived_name": "class0",
+                            "F_name_scope": "class0_",
+                            "class_scope": "class0::",
+                            "cxx_class": "class0",
+                            "cxx_type": "class0"
+                        },
+                        "functions": [
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "method",
+                                        "pointer": []
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void method()",
+                                "declgen": "void method()",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->method(\t);",
+                                    "C_call_list": "",
+                                    "C_name": "LIB_outer1_class0_method",
+                                    "C_pre_call": "outer1::class0 *SH_this =\t static_cast<outer1::class0 *>(self->addr);",
+                                    "C_prototype": "LIB_outer1_class0 * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_class0_method",
+                                    "F_C_name": "c_class0_method",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_class0_method(obj%cxxmem)",
+                                    "F_name_function": "method",
+                                    "F_name_generic": "method",
+                                    "F_name_impl": "class0_method",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "method",
+                                    "underscore_name": "method"
+                                },
+                                "linenumber": 62,
+                                "options": {}
+                            }
+                        ],
+                        "linenumber": 60,
+                        "name": "class0",
+                        "options": {},
+                        "scope": "outer1::class0::",
+                        "typemap_name": "outer1::class0"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "outer1::",
+                    "C_header_filename": "wraplibrary_outer1.h",
+                    "C_impl_filename": "wraplibrary_outer1.cpp",
+                    "C_name_scope": "outer1_",
+                    "F_impl_filename": "wrapflibrary_outer1.f",
+                    "F_module_name": "library_outer1_mod",
+                    "LUA_this_call": "outer1::",
+                    "PY_module_init": "library_outer1",
+                    "PY_module_name": "outer1",
+                    "PY_module_scope": "library.outer1",
+                    "PY_this_call": "outer1::",
+                    "file_scope": "library_outer1",
+                    "namespace_scope": "outer1::"
+                },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "outer_func",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void outer_func()",
+                        "declgen": "void outer_func()",
+                        "fmtdict": {
+                            "C_call_code": "outer1::outer_func(\t);",
+                            "C_call_list": "",
+                            "C_name": "LIB_outer1_outer_func",
+                            "C_prototype": "",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_outer_func",
+                            "F_C_name": "outer_func",
+                            "F_arg_c_call": "",
+                            "F_arguments": "",
+                            "F_call_code": "call c_outer_func()",
+                            "F_name_function": "outer_func",
+                            "F_name_generic": "outer_func",
+                            "F_name_impl": "outer_func",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "function_name": "outer_func",
+                            "underscore_name": "outer_func"
+                        },
+                        "linenumber": 57,
+                        "options": {}
+                    }
+                ],
+                "linenumber": 54,
+                "name": "outer1",
+                "options": {},
+                "scope": "outer1::",
+                "scope_file": [
+                    "library",
+                    "outer1"
+                ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "classA.hpp classAb.hpp",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapclassA.h",
+                            "C_impl_filename": "wrapclassA.cpp",
+                            "C_name_scope": "outer2_classA_",
+                            "C_type_name": "LIB_outer2_classA",
+                            "F_capsule_data_type": "SHROUD_classa_capsule",
+                            "F_derived_name": "classa",
+                            "F_name_scope": "classa_",
+                            "class_scope": "classA::",
+                            "cxx_class": "classA",
+                            "cxx_type": "classA"
+                        },
+                        "functions": [
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "method",
+                                        "pointer": []
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void method()",
+                                "declgen": "void method()",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->method(\t);",
+                                    "C_call_list": "",
+                                    "C_name": "LIB_outer2_classA_method",
+                                    "C_pre_call": "outer2::classA *SH_this =\t static_cast<outer2::classA *>(self->addr);",
+                                    "C_prototype": "LIB_outer2_classA * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_classa_method",
+                                    "F_C_name": "c_classa_method",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_classa_method(obj%cxxmem)",
+                                    "F_name_function": "method",
+                                    "F_name_generic": "method",
+                                    "F_name_impl": "classa_method",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "method",
+                                    "underscore_name": "method"
+                                },
+                                "linenumber": 73,
+                                "options": {}
+                            }
+                        ],
+                        "linenumber": 70,
+                        "name": "classA",
+                        "options": {},
+                        "scope": "outer2::classA::",
+                        "typemap_name": "outer2::classA"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "outer2::",
+                    "C_header_filename": "wraplibrary_outer2.h",
+                    "C_impl_filename": "wraplibrary_outer2.cpp",
+                    "C_name_scope": "outer2_",
+                    "F_impl_filename": "wrapflibrary_outer2.f",
+                    "F_module_name": "library_outer2_mod",
+                    "LUA_this_call": "outer2::",
+                    "PY_module_init": "library_outer2",
+                    "PY_module_name": "outer2",
+                    "PY_module_scope": "library.outer2",
+                    "PY_this_call": "outer2::",
+                    "file_scope": "library_outer2",
+                    "namespace_scope": "outer2::"
+                },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "outer_func",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void outer_func()",
+                        "declgen": "void outer_func()",
+                        "fmtdict": {
+                            "C_call_code": "outer2::outer_func(\t);",
+                            "C_call_list": "",
+                            "C_name": "LIB_outer2_outer_func",
+                            "C_prototype": "",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_outer_func",
+                            "F_C_name": "outer_func",
+                            "F_arg_c_call": "",
+                            "F_arguments": "",
+                            "F_call_code": "call c_outer_func()",
+                            "F_name_function": "outer_func",
+                            "F_name_generic": "outer_func",
+                            "F_name_impl": "outer_func",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "function_name": "outer_func",
+                            "underscore_name": "outer_func"
+                        },
+                        "linenumber": 67,
+                        "options": {}
+                    }
+                ],
+                "linenumber": 64,
+                "name": "outer2",
+                "options": {},
+                "scope": "outer2::",
+                "scope_file": [
+                    "library",
+                    "outer2"
+                ]
             }
         ],
         "options": {
@@ -614,8 +874,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -715,6 +973,7 @@
             "c_header": "mpi.h",
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
             "c_type": "MPI_Fint",
+            "cxx_header": "mpi.h",
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_c_module": {
@@ -733,6 +992,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
@@ -1046,6 +1306,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -1067,6 +1328,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -1088,6 +1350,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -1109,6 +1372,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -1158,6 +1422,171 @@
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long"
         },
+        "outer1::class0": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}outer1::class0 *>({c_var}{c_member}addr)",
+            "c_type": "LIB_outer1_class0",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "outer1::class0",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_class0_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_class0_capsule)",
+            "f_capsule_data_type": "SHROUD_class0_capsule",
+            "f_derived_type": "class0",
+            "f_module": {
+                "library_outer1_mod": [
+                    "class0"
+                ]
+            },
+            "f_module_name": "library_outer1_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class0)",
+            "flat_name": "outer1_class0",
+            "forward": "outer1::class0",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}outer1::class0 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}outer1::class0 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
+        "outer2::classA": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}outer2::classA *>({c_var}{c_member}addr)",
+            "c_type": "LIB_outer2_classA",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "outer2::classA",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_classa_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_classa_capsule)",
+            "f_capsule_data_type": "SHROUD_classa_capsule",
+            "f_derived_type": "classa",
+            "f_module": {
+                "library_outer2_mod": [
+                    "classa"
+                ]
+            },
+            "f_module_name": "library_outer2_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(classa)",
+            "flat_name": "outer2_classA",
+            "forward": "outer2::classA",
+            "impl_header": "classA.hpp classAb.hpp",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}outer2::classA * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}outer2::classA * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
@@ -1185,6 +1614,7 @@
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
+            "cxx_header": "<cstddef>",
             "cxx_type": "size_t",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -1287,7 +1717,6 @@
                 }
             },
             "c_type": "char",
-            "cxx_header": "<string>",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
             "f_c_module": {
@@ -1308,6 +1737,7 @@
             },
             "f_type": "character(*)",
             "flat_name": "std_string",
+            "impl_header": "<string>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -1563,7 +1993,6 @@
                 }
             },
             "c_type": "void",
-            "cxx_header": "<string>",
             "cxx_to_c": "static_cast<void *>({cxx_var})",
             "cxx_type": "std::string",
             "f_statements": {
@@ -1577,7 +2006,8 @@
                 }
             },
             "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string"
+            "flat_name": "std_string",
+            "impl_header": "<string>"
         },
         "three::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -1590,8 +2020,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -1600,7 +2028,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}three::Class1 *>({c_var}{c_member}addr)",
             "c_type": "LIB_three_Class1",
-            "cxx_header": "class_header.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "three::Class1",
             "f_c_module": {
@@ -1629,6 +2056,7 @@
             "f_type": "type(class1)",
             "flat_name": "three_Class1",
             "forward": "three::Class1",
+            "impl_header": "class_header.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -1674,6 +2102,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -1695,6 +2124,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -1716,6 +2146,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -1737,6 +2168,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",

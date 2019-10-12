@@ -2,8 +2,8 @@
 // This is generated code, do not edit
 #include "wrapns.h"
 #include <cstddef>
+#include <cstdlib>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
 #include "namespace.hpp"
 #include "typesns.h"

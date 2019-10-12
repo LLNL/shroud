@@ -2286,6 +2286,7 @@
             "c_header": "mpi.h",
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
             "c_type": "MPI_Fint",
+            "cxx_header": "mpi.h",
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_c_module": {
@@ -2313,8 +2314,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -2392,6 +2391,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
@@ -2705,6 +2705,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -2726,6 +2727,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -2747,6 +2749,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -2768,6 +2771,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -2794,8 +2798,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -2804,7 +2806,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
             "c_type": "TEM_internal_ImplWorker1",
-            "cxx_header": "implworker1.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
             "f_c_module": {
@@ -2833,6 +2834,7 @@
             "f_type": "type(implworker1)",
             "flat_name": "internal_ImplWorker1",
             "forward": "internal::ImplWorker1",
+            "impl_header": "implworker1.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -2933,6 +2935,7 @@
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
+            "cxx_header": "<cstddef>",
             "cxx_type": "size_t",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -3035,7 +3038,6 @@
                 }
             },
             "c_type": "char",
-            "cxx_header": "<string>",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
             "f_c_module": {
@@ -3056,6 +3058,7 @@
             },
             "f_type": "character(*)",
             "flat_name": "std_string",
+            "impl_header": "<string>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -3088,8 +3091,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3098,7 +3099,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
             "f_c_module": {
@@ -3127,6 +3127,7 @@
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "forward": "std::vector",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3176,6 +3177,7 @@
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
+            "cxx_header": "<cstddef>",
             "cxx_type": "std::vector::size_type",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -3203,8 +3205,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3213,7 +3213,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<double> *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector_double",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<double>",
             "f_c_module": {
@@ -3243,6 +3242,7 @@
             "flat_name": "std_vector_double",
             "forward": "std::vector<double>",
             "idtor": "2",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3293,8 +3293,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3303,7 +3301,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<int> *>({c_var}{c_member}addr)",
             "c_type": "TEM_vector_int",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<int>",
             "f_c_module": {
@@ -3333,6 +3330,7 @@
             "flat_name": "std_vector_int",
             "forward": "std::vector<int>",
             "idtor": "1",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3405,7 +3403,6 @@
                 }
             },
             "c_type": "void",
-            "cxx_header": "<string>",
             "cxx_to_c": "static_cast<void *>({cxx_var})",
             "cxx_type": "std::string",
             "f_statements": {
@@ -3419,7 +3416,8 @@
                 }
             },
             "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string"
+            "flat_name": "std_string",
+            "impl_header": "<string>"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3431,6 +3429,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -3452,6 +3451,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -3473,6 +3473,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -3494,6 +3495,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -3594,8 +3596,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3689,8 +3689,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"

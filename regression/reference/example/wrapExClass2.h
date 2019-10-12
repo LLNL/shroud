@@ -22,8 +22,12 @@
 #ifndef WRAPEXCLASS2_H
 #define WRAPEXCLASS2_H
 
-#include "sidre/SidreTypes.h"
 #include "typesUserLibrary.h"
+#ifdef __cplusplus
+#include "sidre/SidreWrapperHelpers.hpp"
+#else
+#include "sidre/SidreTypes.h"
+#endif
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass2.CXX_declarations

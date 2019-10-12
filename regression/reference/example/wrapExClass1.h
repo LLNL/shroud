@@ -23,6 +23,9 @@
 #define WRAPEXCLASS1_H
 
 #include "typesUserLibrary.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin namespace.example::nested.class.ExClass1.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass1.CXX_declarations

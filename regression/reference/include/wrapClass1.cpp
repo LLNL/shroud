@@ -16,7 +16,6 @@
 // #######################################################################
 #include "wrapClass1.h"
 #include "class_header.hpp"
-#include "type_header.hpp"
 
 
 extern "C" {

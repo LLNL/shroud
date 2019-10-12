@@ -14,7 +14,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include <stdlib.h>
+#include <cstdlib>
 #include "tutorial.hpp"
 #include "typesforward.h"
 
