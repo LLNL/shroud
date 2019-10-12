@@ -240,6 +240,15 @@ class NamespaceMixin(object):
         self.variables.append(node)
         return node
 
+    def apply_case_option(self, name):
+        """Apply option.C_API_case to name"""
+        if self.options.C_API_case == 'lower':
+            return name.lower()
+        elif self.options.C_API_case == 'upper':
+            return name.upper()
+        else:
+            return name
+
 
 ######################################################################
 
@@ -425,6 +434,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # blank for functions, set in classes.
             YAML_type_filename_template="{library_lower}_types.yaml",
 
+            C_API_case="native",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -833,7 +843,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         )
         if not skip:
             fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.name + "_"
+                parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_"
             )
             if options.flatten_namespace or options.F_flatten_namespace:
                 fmt_ns.F_name_scope = (
@@ -1035,7 +1045,7 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_class=self.name,
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
         )

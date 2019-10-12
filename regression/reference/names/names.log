@@ -15,6 +15,13 @@ class vector
 class vector
 class vector
 class vector
+class Class1
+C method void Member1()
+Close wrapClass1.hh
+Close wrapClass1.cc
+C function void Worker1()
+Close wraptestnames_CAPI.hh
+Close wraptestnames_CAPI.cc
 class Names2
 Close wrapNames2.cc
 class twoTs
@@ -58,6 +65,10 @@ class vector
 class vector
 class vector
 Close wrapftestnames_std.F
+class Class1
+C-interface, Fortran method void Member1()
+C-interface, Fortran function void Worker1()
+Close wrapftestnames_CAPI.F
 Close top.f
 Close pytestnames_ns0_innermodule.cpp
 class Names

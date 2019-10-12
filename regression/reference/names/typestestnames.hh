@@ -30,6 +30,12 @@ struct s_TES_Names2 {
 };
 typedef struct s_TES_Names2 TES_Names2;
 
+struct s_TES_capi_class1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_capi_class1 TES_capi_class1;
+
 struct s_TES_internal_ImplWorker1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
