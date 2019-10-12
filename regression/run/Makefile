@@ -58,7 +58,24 @@ test-c-% : c-%
 test-c : \
   test-c-tutorial \
   test-c-types \
+  test-c-namespace \
   test-c-templates
+
+
+##  test-c-tutorial 
+##  test-c-types 
+##  test-c-namespace 
+#  test-c-pointers 
+#  test-c-struct-c 
+#  test-c-struct-cxx 
+#  test-c-vectors 
+#  test-c-preprocess 
+#  test-c-strings 
+#  test-c-clibrary 
+#  test-c-ownership 
+#  test-c-generic 
+##  test-c-templates
+
 
 ######################################################################
 # Compile a C++ test
