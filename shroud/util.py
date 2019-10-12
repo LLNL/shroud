@@ -376,11 +376,14 @@ class WrapperMixin(object):
                 cxx_headers.setdefault(hdr, []).append(typedef)
 
         # Find which headers are always included.
+        both = {}
         for hdr in c_headers.keys():
             if hdr in cxx_headers:
-                always[hdr] = c_headers[hdr]
-                del c_headers[hdr]
-                del cxx_headers[hdr]
+                both[hdr] = True
+        for hdr in both:
+            always[hdr] = c_headers[hdr]
+            del c_headers[hdr]
+            del cxx_headers[hdr]
 
         lines = []
         self.write_include_group(always, lines)

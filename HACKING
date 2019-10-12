@@ -1,4 +1,15 @@
 
+Create development environment
+------------------------------
+
+    make virtualenv
+    make develop
+
+
+
+    make venv=/usr/tce/packages/python/python-3.7.2/bin/virtualenv virtualenv
+    make develop
+
 Run unittest
 ------------
 
