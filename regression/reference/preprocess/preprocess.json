@@ -22,7 +22,8 @@
                     "PY_type_filename": "pyUser1type.cpp",
                     "class_scope": "User1::",
                     "cxx_class": "User1",
-                    "cxx_type": "User1"
+                    "cxx_type": "User1",
+                    "file_scope": "User1"
                 },
                 "functions": [
                     {
@@ -288,7 +289,8 @@
                     "PY_type_filename": "pyUser2type.cpp",
                     "class_scope": "User2::",
                     "cxx_class": "User2",
-                    "cxx_type": "User2"
+                    "cxx_type": "User2",
+                    "file_scope": "User2"
                 },
                 "functions": [
                     {
@@ -566,11 +568,11 @@
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,

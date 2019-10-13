@@ -5,15 +5,15 @@ C method vector()
 C method ~vector()
 C method void push_back(const int & value +intent(in))
 C method int & at(size_type n +intent(in)+value)
-Close wrapvector_int.h
+Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector
 C method vector()
 C method ~vector()
 C method void push_back(const double & value +intent(in))
 C method double & at(size_type n +intent(in)+value)
-Close wrapvector_double.h
-Close wrapvector_double.cpp
+Close wrapstd_vector_double.h
+Close wrapstd_vector_double.cpp
 class ImplWorker1
 class Worker
 class user

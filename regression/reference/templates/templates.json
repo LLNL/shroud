@@ -22,7 +22,8 @@
                     "PY_type_filename": "pyWorkertype.cpp",
                     "class_scope": "Worker::",
                     "cxx_class": "Worker",
-                    "cxx_type": "Worker"
+                    "cxx_type": "Worker",
+                    "file_scope": "Worker"
                 },
                 "linenumber": 45,
                 "name": "Worker",
@@ -50,7 +51,8 @@
                     "PY_type_filename": "pyuser_inttype.cpp",
                     "class_scope": "user_int::",
                     "cxx_class": "user_int",
-                    "cxx_type": "user<int>"
+                    "cxx_type": "user<int>",
+                    "file_scope": "user_int"
                 },
                 "functions": [
                     {
@@ -1080,7 +1082,7 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_int.h",
+                            "C_header_filename": "wrapstd_vector_int.h",
                             "C_impl_filename": "wrapvectorforint.cpp",
                             "C_name_scope": "vector_int_",
                             "C_type_name": "TEM_vector_int",
@@ -1098,6 +1100,7 @@
                             "class_scope": "vector_int::",
                             "cxx_class": "vector_int",
                             "cxx_type": "vector<int>",
+                            "file_scope": "std_vector_int",
                             "fmtsample": "one"
                         },
                         "functions": [
@@ -1595,8 +1598,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_double.h",
-                            "C_impl_filename": "wrapvector_double.cpp",
+                            "C_header_filename": "wrapstd_vector_double.h",
+                            "C_impl_filename": "wrapstd_vector_double.cpp",
                             "C_name_scope": "vector_double_",
                             "C_type_name": "TEM_vector_double",
                             "F_capsule_data_type": "SHROUD_vector_double_capsule",
@@ -1611,7 +1614,8 @@
                             "PY_type_filename": "pyvector_doubletype.cpp",
                             "class_scope": "vector_double::",
                             "cxx_class": "vector_double",
-                            "cxx_type": "vector<double>"
+                            "cxx_type": "vector<double>",
+                            "file_scope": "std_vector_double"
                         },
                         "functions": [
                             {
@@ -2135,8 +2139,8 @@
                         "cxx_header": "implworker1.hpp",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapImplWorker1.h",
-                            "C_impl_filename": "wrapImplWorker1.cpp",
+                            "C_header_filename": "wrapinternal_ImplWorker1.h",
+                            "C_impl_filename": "wrapinternal_ImplWorker1.cpp",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TEM_internal_ImplWorker1",
                             "F_capsule_data_type": "SHROUD_implworker1_capsule",
@@ -2151,7 +2155,8 @@
                             "PY_type_filename": "pyImplWorker1type.cpp",
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
-                            "cxx_type": "ImplWorker1"
+                            "cxx_type": "ImplWorker1",
+                            "file_scope": "internal_ImplWorker1"
                         },
                         "linenumber": 53,
                         "name": "ImplWorker1",
@@ -2195,11 +2200,11 @@
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,

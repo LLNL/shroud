@@ -17,8 +17,8 @@ class vector
 class vector
 class Class1
 C method void Member1()
-Close wrapClass1.hh
-Close wrapClass1.cc
+Close wrapCAPI_Class1.hh
+Close wrapCAPI_Class1.cc
 C function void Worker1()
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc

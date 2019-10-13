@@ -1,4 +1,4 @@
-// wrapClass1.cc
+// wrapCAPI_Class1.cc
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,7 +14,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wrapClass1.hh"
+#include "wrapCAPI_Class1.hh"
 
 // splicer begin namespace.CAPI.class.Class1.CXX_definitions
 // splicer end namespace.CAPI.class.Class1.CXX_definitions

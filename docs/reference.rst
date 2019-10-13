@@ -349,7 +349,7 @@ C_enum_member_template
     ``{C_prefix}{C_name_scope}{enum_member_name}``
 
 C_header_filename_class_template
-    ``wrap{cxx_class}.{C_header_filename_suffix}``
+    ``wrap{file_scope}.{C_header_filename_suffix}``
 
 C_header_filename_library_template
    ``wrap{library}.{C_header_filename_suffix}``
@@ -358,7 +358,7 @@ C_header_filename_namespace_template
    ``wrap{scope_file}.{C_header_filename_suffix}``
 
 C_impl_filename_class_template
-    ``wrap{cxx_class}.{C_impl_filename_suffix}``
+    ``wrap{file_scope}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``

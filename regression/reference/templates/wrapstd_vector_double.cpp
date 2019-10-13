@@ -1,6 +1,6 @@
-// wrapvector_double.cpp
+// wrapstd_vector_double.cpp
 // This is generated code, do not edit
-#include "wrapvector_double.h"
+#include "wrapstd_vector_double.h"
 #include <vector>
 
 // splicer begin namespace.std.class.vector.CXX_definitions

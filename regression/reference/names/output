@@ -5,8 +5,8 @@ Wrote foo.cpp
 Wrote foons0.cpp
 Wrote wraptestnames_ns1.hh
 Wrote wraptestnames_ns1.cc
-Wrote wrapClass1.hh
-Wrote wrapClass1.cc
+Wrote wrapCAPI_Class1.hh
+Wrote wrapCAPI_Class1.cc
 Wrote wraptestnames_CAPI.hh
 Wrote wraptestnames_CAPI.cc
 Wrote wrapNames2.cc

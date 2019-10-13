@@ -22,7 +22,8 @@
                     "PY_type_filename": "pyNames2type.cpp",
                     "class_scope": "Names2::",
                     "cxx_class": "Names2",
-                    "cxx_type": "Names2"
+                    "cxx_type": "Names2",
+                    "file_scope": "Names2"
                 },
                 "linenumber": 88,
                 "name": "Names2",
@@ -50,7 +51,8 @@
                     "PY_type_filename": "pytwoTs_0type.cpp",
                     "class_scope": "twoTs_0::",
                     "cxx_class": "twoTs_0",
-                    "cxx_type": "twoTs<int, long>"
+                    "cxx_type": "twoTs<int, long>",
+                    "file_scope": "twoTs_0"
                 },
                 "linenumber": 186,
                 "name": "twoTs",
@@ -124,6 +126,7 @@
                     "class_scope": "twoTs_instantiation4::",
                     "cxx_class": "twoTs_instantiation4",
                     "cxx_type": "twoTs<float, double>",
+                    "file_scope": "twoTs_instantiation4",
                     "template_suffix": "_instantiation4"
                 },
                 "linenumber": 186,
@@ -1568,7 +1571,8 @@
                             "__line__": 72,
                             "class_scope": "Names::",
                             "cxx_class": "Names",
-                            "cxx_type": "Names"
+                            "cxx_type": "Names",
+                            "file_scope": "ns0_Names"
                         },
                         "functions": [
                             {
@@ -1806,8 +1810,8 @@
                         "cxx_header": "",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapImplWorker1.hh",
-                            "C_impl_filename": "wrapImplWorker1.cc",
+                            "C_header_filename": "wrapinternal_ImplWorker1.hh",
+                            "C_impl_filename": "wrapinternal_ImplWorker1.cc",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TES_internal_ImplWorker1",
                             "F_capsule_data_type": "SHROUD_implworker1_capsule",
@@ -1817,6 +1821,7 @@
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
+                            "file_scope": "internal_ImplWorker1",
                             "template_suffix": "_instantiation3"
                         },
                         "linenumber": 134,
@@ -1862,8 +1867,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapVvv1.hh",
-                            "C_impl_filename": "wrapVvv1.cc",
+                            "C_header_filename": "wrapstd_vector_int.hh",
+                            "C_impl_filename": "wrapstd_vector_int.cc",
                             "C_name_scope": "std_Vvv1_",
                             "C_type_name": "TES_std_Vvv1",
                             "F_capsule_data_type": "SHROUD_vvv1_capsule",
@@ -1879,7 +1884,8 @@
                             "__line__": 168,
                             "class_scope": "Vvv1::",
                             "cxx_class": "Vvv1",
-                            "cxx_type": "vector<int>"
+                            "cxx_type": "vector<int>",
+                            "file_scope": "std_vector_int"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -1949,8 +1955,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_double.hh",
-                            "C_impl_filename": "wrapvector_double.cc",
+                            "C_header_filename": "wrapstd_vector_double.hh",
+                            "C_impl_filename": "wrapstd_vector_double.cc",
                             "C_name_scope": "std_vector_double_",
                             "C_type_name": "TES_std_vector_double",
                             "F_capsule_data_type": "SHROUD_vector_double_capsule",
@@ -1965,7 +1971,8 @@
                             "PY_type_filename": "pyvector_doubletype.cpp",
                             "class_scope": "vector_double::",
                             "cxx_class": "vector_double",
-                            "cxx_type": "vector<double>"
+                            "cxx_type": "vector<double>",
+                            "file_scope": "std_vector_double"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -2035,8 +2042,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_instantiation5.hh",
-                            "C_impl_filename": "wrapvector_instantiation5.cc",
+                            "C_header_filename": "wrapstd_vector_instantiation5.hh",
+                            "C_impl_filename": "wrapstd_vector_instantiation5.cc",
                             "C_name_scope": "std_vector_instantiation5_",
                             "C_type_name": "TES_std_vector_instantiation5",
                             "F_capsule_data_type": "SHROUD_vector_instantiation5_capsule",
@@ -2053,6 +2060,7 @@
                             "class_scope": "vector_instantiation5::",
                             "cxx_class": "vector_instantiation5",
                             "cxx_type": "vector<long>",
+                            "file_scope": "std_vector_instantiation5",
                             "template_suffix": "_instantiation5"
                         },
                         "linenumber": 163,
@@ -2123,8 +2131,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_instantiation3.hh",
-                            "C_impl_filename": "wrapvector_instantiation3.cc",
+                            "C_header_filename": "wrapstd_vector_instantiation3.hh",
+                            "C_impl_filename": "wrapstd_vector_instantiation3.cc",
                             "C_name_scope": "std_vector_instantiation3_",
                             "C_type_name": "TES_std_vector_instantiation3",
                             "F_capsule_data_type": "SHROUD_vector_instantiation3_capsule",
@@ -2139,7 +2147,8 @@
                             "PY_type_filename": "pyvector_instantiation3type.cpp",
                             "class_scope": "vector_instantiation3::",
                             "cxx_class": "vector_instantiation3",
-                            "cxx_type": "vector<internal::ImplWorker1>"
+                            "cxx_type": "vector<internal::ImplWorker1>",
+                            "file_scope": "std_vector_instantiation3"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -2238,8 +2247,8 @@
                         "cxx_header": "",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapClass1.hh",
-                            "C_impl_filename": "wrapClass1.cc",
+                            "C_header_filename": "wrapCAPI_Class1.hh",
+                            "C_impl_filename": "wrapCAPI_Class1.cc",
                             "C_name_scope": "capi_class1_",
                             "C_type_name": "TES_capi_class1",
                             "F_capsule_data_type": "SHROUD_class1_capsule",
@@ -2247,7 +2256,8 @@
                             "F_name_scope": "class1_",
                             "class_scope": "Class1::",
                             "cxx_class": "Class1",
-                            "cxx_type": "Class1"
+                            "cxx_type": "Class1",
+                            "file_scope": "CAPI_Class1"
                         },
                         "functions": [
                             {
@@ -2371,11 +2381,11 @@
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,

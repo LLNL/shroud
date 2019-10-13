@@ -1,4 +1,4 @@
-// wrapClass1.h
+// wrapouter2_classA.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,32 +14,19 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-/**
- * \file wrapClass1.h
- * \brief Shroud generated wrapper for Class1 class
- */
-// For C users and C++ implementation
-
-#ifndef WRAPCLASS1_H
-#define WRAPCLASS1_H
-
-#include "typeslibrary.h"
-#ifdef __cplusplus
-#include "type_header.hpp"
-#else
-#include "type_header.h"
-#endif
+#include "wrapouter2_classA.h"
+#include "classA.hpp"
+#include "classAb.hpp"
 
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 
 
-void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1);
-
-#ifdef __cplusplus
+void LIB_outer2_classA_method(LIB_outer2_classA * self)
+{
+    outer2::classA *SH_this = static_cast<outer2::classA *>(self->addr);
+    SH_this->method();
+    return;
 }
-#endif
 
-#endif  // WRAPCLASS1_H
+}  // extern "C"

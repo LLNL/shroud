@@ -1,4 +1,4 @@
-// wrapclassA.h
+// wrapouter2_classA.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,13 +15,13 @@
 //
 // #######################################################################
 /**
- * \file wrapclassA.h
+ * \file wrapouter2_classA.h
  * \brief Shroud generated wrapper for classA class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLASSA_H
-#define WRAPCLASSA_H
+#ifndef WRAPOUTER2_CLASSA_H
+#define WRAPOUTER2_CLASSA_H
 
 #include "typeslibrary.h"
 
@@ -37,4 +37,4 @@ void LIB_outer2_classA_method(LIB_outer2_classA * self);
 }
 #endif
 
-#endif  // WRAPCLASSA_H
+#endif  // WRAPOUTER2_CLASSA_H

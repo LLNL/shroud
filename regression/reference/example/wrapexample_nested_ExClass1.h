@@ -1,4 +1,4 @@
-// wrapExClass1.h
+// wrapexample_nested_ExClass1.h
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 //
@@ -14,13 +14,13 @@
 //
 // #######################################################################
 /**
- * \file wrapExClass1.h
+ * \file wrapexample_nested_ExClass1.h
  * \brief Shroud generated wrapper for ExClass1 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPEXCLASS1_H
-#define WRAPEXCLASS1_H
+#ifndef WRAPEXAMPLE_NESTED_EXCLASS1_H
+#define WRAPEXAMPLE_NESTED_EXCLASS1_H
 
 #include "typesUserLibrary.h"
 #ifndef __cplusplus
@@ -95,4 +95,4 @@ void AA_example_nested_ExClass1_splicer_special(
 }
 #endif
 
-#endif  // WRAPEXCLASS1_H
+#endif  // WRAPEXAMPLE_NESTED_EXCLASS1_H

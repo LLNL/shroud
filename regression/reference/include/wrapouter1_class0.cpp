@@ -1,4 +1,4 @@
-// wrapclass0.cpp
+// wrapouter1_class0.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,7 +14,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wrapclass0.h"
+#include "wrapouter1_class0.h"
 #include "outer1.hpp"
 
 
