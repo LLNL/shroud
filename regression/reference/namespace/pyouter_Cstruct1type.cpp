@@ -1,9 +1,9 @@
-// pyvector_doubletype.cpp
+// pyouter_Cstruct1type.cpp
 // This is generated code, do not edit
-#include "pytemplatesmodule.hpp"
-#include <vector>
-// splicer begin namespace.std.class.vector.impl.include
-// splicer end namespace.std.class.vector.impl.include
+#include "pynsmodule.hpp"
+#include "namespace.hpp"
+// splicer begin namespace.outer.class.Cstruct1.impl.include
+// splicer end namespace.outer.class.Cstruct1.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -17,111 +17,114 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin namespace.std.class.vector.impl.C_definition
-// splicer end namespace.std.class.vector.impl.C_definition
-// splicer begin namespace.std.class.vector.impl.additional_methods
-// splicer end namespace.std.class.vector.impl.additional_methods
+// splicer begin namespace.outer.class.Cstruct1.impl.C_definition
+// splicer end namespace.outer.class.Cstruct1.impl.C_definition
+// splicer begin namespace.outer.class.Cstruct1.impl.additional_methods
+// splicer end namespace.outer.class.Cstruct1.impl.additional_methods
 static void
-PY_vector_double_tp_del (PY_vector_double *self)
+PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 {
-// splicer begin namespace.std.class.vector.type.del
+// splicer begin namespace.outer.class.Cstruct1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end namespace.std.class.vector.type.del
+// splicer end namespace.outer.class.Cstruct1.type.del
 }
 
 static int
-PY_vector_double_tp_init(
-  PY_vector_double *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
+PY_Cstruct1_tp_init(
+  PY_Cstruct1 *self,
+  PyObject *args,
+  PyObject *kwds)
 {
-// splicer begin namespace.std.class.vector.method.ctor
-    self->obj = new std::vector<double>();
+// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+// splicer begin namespace.outer.class.Cstruct1.method.cstruct1_ctor
+    int ifield;
+    double dfield;
+    const char *SHT_kwlist[] = {
+        "ifield",
+        "dfield",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:Cstruct1_ctor",
+        const_cast<char **>(SHT_kwlist), &ifield, &dfield))
+        return -1;
+
+    self->obj = new outer::Cstruct1;
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 2;
+    self->idtor = 1;
+    // initialize fields
+    outer::Cstruct1 *SH_obj = self->obj;
+    SH_obj->ifield = ifield;
+    SH_obj->dfield = dfield;
     return 0;
-// splicer end namespace.std.class.vector.method.ctor
+// splicer end namespace.outer.class.Cstruct1.method.cstruct1_ctor
 }
+// splicer begin namespace.outer.class.Cstruct1.impl.after_methods
+// splicer end namespace.outer.class.Cstruct1.impl.after_methods
 
-static char PY_push_back__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_push_back(
-  PY_vector_double *self,
-  PyObject *args,
-  PyObject *kwds)
+static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
+    void *SHROUD_UNUSED(closure))
 {
-// splicer begin namespace.std.class.vector.method.push_back
-    double value;
-    const char *SHT_kwlist[] = {
-        "value",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:push_back",
-        const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
-    self->obj->push_back(value);
-    Py_RETURN_NONE;
-// splicer end namespace.std.class.vector.method.push_back
+    PyObject * rv = PyInt_FromLong(self->obj->ifield);
+    return rv;
 }
 
-static char PY_at__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_at(
-  PY_vector_double *self,
-  PyObject *args,
-  PyObject *kwds)
+static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
 {
-// splicer begin namespace.std.class.vector.method.at
-    size_t n;
-    const char *SHT_kwlist[] = {
-        "n",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
-        const_cast<char **>(SHT_kwlist), &n))
-        return NULL;
-    double & rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, rv);
-    if (SHTPy_rv == NULL) goto fail;
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return NULL;
-// splicer end namespace.std.class.vector.method.at
+    int rv = PyInt_AsLong(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->ifield = rv;
+    return 0;
 }
-// splicer begin namespace.std.class.vector.impl.after_methods
-// splicer end namespace.std.class.vector.impl.after_methods
-static PyMethodDef PY_vector_double_methods[] = {
-    {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
-        PY_push_back__doc__},
-    {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
-        PY_at__doc__},
-    // splicer begin namespace.std.class.vector.PyMethodDef
-    // splicer end namespace.std.class.vector.PyMethodDef
+
+static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
+    void *SHROUD_UNUSED(closure))
+{
+    PyObject * rv = PyFloat_FromDouble(self->obj->dfield);
+    return rv;
+}
+
+static int PY_Cstruct1_dfield_setter(PY_Cstruct1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    double rv = PyFloat_AsDouble(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->dfield = rv;
+    return 0;
+}
+
+static PyGetSetDef PY_Cstruct1_getset[] = {
+    {(char *)"ifield", (getter)PY_Cstruct1_ifield_getter,
+        (setter)PY_Cstruct1_ifield_setter, NULL, NULL},
+    {(char *)"dfield", (getter)PY_Cstruct1_dfield_getter,
+        (setter)PY_Cstruct1_dfield_setter, NULL, NULL},
+    // splicer begin namespace.outer.class.Cstruct1.PyGetSetDef
+    // splicer end namespace.outer.class.Cstruct1.PyGetSetDef
+    {NULL}            /* sentinel */
+};
+static PyMethodDef PY_Cstruct1_methods[] = {
+    // splicer begin namespace.outer.class.Cstruct1.PyMethodDef
+    // splicer end namespace.outer.class.Cstruct1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char vector_double__doc__[] =
+static char Cstruct1__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_vector_double_Type = {
+PyTypeObject PY_Cstruct1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "templates.vector_double",                       /* tp_name */
-    sizeof(PY_vector_double),         /* tp_basicsize */
+    "ns.outer.Cstruct1",                       /* tp_name */
+    sizeof(PY_Cstruct1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -148,7 +151,7 @@ PyTypeObject PY_vector_double_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    vector_double__doc__,         /* tp_doc */
+    Cstruct1__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -164,15 +167,15 @@ PyTypeObject PY_vector_double_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_vector_double_methods,                             /* tp_methods */
+    PY_Cstruct1_methods,                             /* tp_methods */
     0,                              /* tp_members */
-    0,                             /* tp_getset */
+    PY_Cstruct1_getset,                             /* tp_getset */
     0,                              /* tp_base */
     0,                              /* tp_dict */
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)PY_vector_double_tp_init,                   /* tp_init */
+    (initproc)PY_Cstruct1_tp_init,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
@@ -182,7 +185,7 @@ PyTypeObject PY_vector_double_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_vector_double_tp_del,                 /* tp_del */
+    (destructor)PY_Cstruct1_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

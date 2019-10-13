@@ -168,7 +168,7 @@ Python method long getValue(long value +intent(in)+value)
 Python method void * getAddr()
 Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
-Close pyExClass1type.cpp
+Close pyexample_nested_ExClass1type.cpp
 class ExClass2
 Python method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Python method ~ExClass2()
@@ -187,7 +187,7 @@ Python method void setValue(float value +intent(in)+value)
 Python method void setValue(double value +intent(in)+value)
 Python method int getValue()
 Python method double getValue()
-Close pyExClass2type.cpp
+Close pyexample_nested_ExClass2type.cpp
 Python function void local_function1()
 Python function bool isNameValid(const std::string & name +intent(in))
 Python function bool isInitialized()

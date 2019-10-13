@@ -1,4 +1,4 @@
-// pyvector_instantiation5type.cpp
+// pystd_vector_doubletype.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -36,7 +36,7 @@
 // splicer begin namespace.std.class.vector.impl.additional_methods
 // splicer end namespace.std.class.vector.impl.additional_methods
 static void
-PY_vector_instantiation5_tp_del_instantiation5 (PY_vector_instantiation5 *self)
+PY_vector_double_tp_del (PY_vector_double *self)
 {
 // splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
@@ -45,21 +45,21 @@ PY_vector_instantiation5_tp_del_instantiation5 (PY_vector_instantiation5 *self)
 }
 // splicer begin namespace.std.class.vector.impl.after_methods
 // splicer end namespace.std.class.vector.impl.after_methods
-static PyMethodDef PY_vector_instantiation5_methods[] = {
+static PyMethodDef PY_vector_double_methods[] = {
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char vector_instantiation5__doc__[] =
+static char vector_double__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_vector_instantiation5_Type = {
+PyTypeObject PY_vector_double_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.std.vector_instantiation5",                       /* tp_name */
-    sizeof(PY_vector_instantiation5),         /* tp_basicsize */
+    "testnames.std.vector_double",                       /* tp_name */
+    sizeof(PY_vector_double),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -86,7 +86,7 @@ PyTypeObject PY_vector_instantiation5_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    vector_instantiation5__doc__,         /* tp_doc */
+    vector_double__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -102,7 +102,7 @@ PyTypeObject PY_vector_instantiation5_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_vector_instantiation5_methods,                             /* tp_methods */
+    PY_vector_double_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -120,7 +120,7 @@ PyTypeObject PY_vector_instantiation5_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_vector_instantiation5_tp_del_instantiation5,                 /* tp_del */
+    (destructor)PY_vector_double_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

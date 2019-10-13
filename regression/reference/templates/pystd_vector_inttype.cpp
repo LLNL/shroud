@@ -1,4 +1,4 @@
-// pyvector_inttype.cpp
+// pystd_vector_inttype.cpp
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
 #include <vector>

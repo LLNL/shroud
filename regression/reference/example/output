@@ -10,8 +10,8 @@ Wrote typesUserLibrary.h
 Wrote wrapfUserLibrary_example_nested.f
 Wrote wrapfUserLibrary_example.f
 Wrote wrapfuserlibrary.f
-Wrote pyExClass1type.cpp
-Wrote pyExClass2type.cpp
+Wrote pyexample_nested_ExClass1type.cpp
+Wrote pyexample_nested_ExClass2type.cpp
 Wrote pyUserLibrary_example_nestedmodule.cpp
 Wrote pyUserLibrary_examplemodule.cpp
 Wrote pyUserLibrarymodule.cpp

@@ -506,7 +506,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
-                "py{cxx_class}type.{PY_impl_filename_suffix}"
+                "py{file_scope}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
                 "{PY_prefix}{function_name}{function_suffix}{template_suffix}"

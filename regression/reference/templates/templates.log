@@ -50,16 +50,16 @@ Python method vector()
 Python method ~vector()
 Python method void push_back(const int & value +intent(in))
 Python method int & at(size_type n +intent(in)+value)
-Close pyvector_inttype.cpp
+Close pystd_vector_inttype.cpp
 class vector
 Python method vector()
 Python method ~vector()
 Python method void push_back(const double & value +intent(in))
 Python method double & at(size_type n +intent(in)+value)
-Close pyvector_doubletype.cpp
+Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1
-Close pyImplWorker1type.cpp
+Close pyinternal_ImplWorker1type.cpp
 Close pytemplates_internalmodule.cpp
 class Worker
 Close pyWorkertype.cpp

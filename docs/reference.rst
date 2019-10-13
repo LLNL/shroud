@@ -537,7 +537,7 @@ PY_struct_array_descr_name_template
 
 
 PY_type_filename_template
-    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+    ``py{file_scope}type.{PY_impl_filename_suffix}``
 
 PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.

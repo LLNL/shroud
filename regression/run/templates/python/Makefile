@@ -21,15 +21,15 @@ VPATH = \
     $(top)/regression/run/templates/python
 
 OBJS = \
-    pyImplWorker1type.o \
+    pyinternal_ImplWorker1type.o \
     pyWorkertype.o \
     pytemplatesutil.o \
     pytemplatesmodule.o \
     pytemplates_internalmodule.o \
     pytemplates_stdmodule.o \
     pyuser_inttype.o \
-    pyvector_doubletype.o \
-    pyvector_inttype.o
+    pystd_vector_doubletype.o \
+    pystd_vector_inttype.o
 
 
 CXXFLAGS += $(SHARED)
