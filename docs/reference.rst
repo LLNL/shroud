@@ -236,7 +236,6 @@ doxygen
   If True, create doxygen comments.
 
 F_create_bufferify_function
-
   Controls creation of a *bufferify* function.
   If *true*, an additional C function is created which receives
   *bufferified* arguments - i.e. the len, len_trim, and size may be
@@ -244,6 +243,16 @@ F_create_bufferify_function
   avoid passing this information.  This will avoid a copy of
   ``CHARACTER`` arguments required to append a trailing null.
   Defaults to *true*.
+
+F_create_generic
+  Controls creation of a generic interface.  It defaults to *true* for
+  most cases but will be set to *False* if a function is templated on
+  the return type since Fortran does not distiuguish generics based on
+  return type (similar to overloaded functions based on return type in
+  C++).
+
+.. should also be set to false when the templated argument in
+   cxx_template is part of the implementation and not the interface.
 
 F_line_length
   Control length of output line for generated Fortran.

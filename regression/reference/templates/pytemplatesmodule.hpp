@@ -72,6 +72,26 @@ PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr);
 int PP_ImplWorker1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
+namespace internal {
+    class ImplWorker2;  // forward declare
+}
+extern PyTypeObject PY_ImplWorker2_Type;
+// splicer begin namespace.internal.class.ImplWorker2.C_declaration
+// splicer end namespace.internal.class.ImplWorker2.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    internal::ImplWorker2 * obj;
+    int idtor;
+    // splicer begin namespace.internal.class.ImplWorker2.C_object
+    // splicer end namespace.internal.class.ImplWorker2.C_object
+} PY_ImplWorker2;
+
+extern const char *PY_ImplWorker2_capsule_name;
+PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr);
+int PP_ImplWorker2_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
 class Worker;  // forward declare
 extern PyTypeObject PY_Worker_Type;
 // splicer begin class.Worker.C_declaration

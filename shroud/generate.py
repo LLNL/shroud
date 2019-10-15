@@ -706,6 +706,7 @@ class GenFunctions(object):
                 method._overloaded = True
                 self.template_function(method, ordered_functions)
             elif method.have_template_args:
+                # have_template_args is True if result/argument is templated.
                 #                method._overloaded = True
                 self.template_function2(method, ordered_functions)
 
@@ -715,6 +716,8 @@ class GenFunctions(object):
             # if not function.options.wrap_c:
             #     continue
             if function.cxx_template:
+                continue
+            if function.template_arguments:
                 continue
             if function.have_template_args:
                 # Stuff like push_back which is in a templated class, is not an overload
@@ -821,7 +824,8 @@ class GenFunctions(object):
             if new.ast.typemap.base == "template":
                 iast = getattr(self.instantiate_scope, new.ast.typemap.name)
                 new.ast = new.ast.instantiate(node.ast.instantiate(iast))
-                new._CXX_return_templated = True
+                # Generics cannot differentiate on return type
+                options.F_create_generic = False
 
             # Replace templated arguments.
             # arg - declast.Declaration
@@ -888,7 +892,8 @@ class GenFunctions(object):
         if new.ast.typemap.base == "template":
             iast = getattr(self.instantiate_scope, new.ast.typemap.name)
             new.ast = new.ast.instantiate(node.ast.instantiate(iast))
-            new._CXX_return_templated = True
+            # Generics cannot differentiate on return type
+            options.F_create_generic = False
 
         # Replace templated arguments.
         newparams = []

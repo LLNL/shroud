@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "implworker1.hpp"
+#include "implworker2.hpp"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -50,6 +51,18 @@ int TEM_use_impl_worker_internal_ImplWorker1()
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
     return SHC_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
+}
+
+/**
+ * \brief Function which uses a templated T in the implemetation.
+ *
+ */
+int TEM_use_impl_worker_internal_ImplWorker2()
+{
+// splicer begin function.use_impl_worker_internal_ImplWorker2
+    int SHC_rv = UseImplWorker<internal::ImplWorker2>();
+    return SHC_rv;
+// splicer end function.use_impl_worker_internal_ImplWorker2
 }
 
 // Release library allocated memory.

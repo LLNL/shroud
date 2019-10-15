@@ -15,6 +15,7 @@ Wrote pyvector_inttype.cpp
 Wrote pyvector_doubletype.cpp
 Wrote pytemplates_stdmodule.cpp
 Wrote pyImplWorker1type.cpp
+Wrote pyImplWorker2type.cpp
 Wrote pytemplates_internalmodule.cpp
 Wrote pyWorkertype.cpp
 Wrote pyuser_inttype.cpp

@@ -22,6 +22,12 @@ struct s_TEM_internal_ImplWorker1 {
 };
 typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
 
+struct s_TEM_internal_ImplWorker2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
+
 struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
