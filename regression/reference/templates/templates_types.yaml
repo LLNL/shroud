@@ -23,6 +23,16 @@ declarations:
         f_derived_type: implworker1
         f_capsule_data_type: SHROUD_implworker1_capsule
         f_to_c: "{f_var}%cxxmem"
+    - type: ImplWorker2
+      fields:
+        base: shadow
+        impl_header: implworker2.hpp
+        cxx_type: internal::ImplWorker2
+        c_type: TEM_internal_ImplWorker2
+        f_module_name: templates_internal_mod
+        f_derived_type: implworker2
+        f_capsule_data_type: SHROUD_implworker2_capsule
+        f_to_c: "{f_var}%cxxmem"
   - namespace: std
     declarations: std
     - type: vector_double

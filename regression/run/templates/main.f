@@ -85,6 +85,9 @@ contains
     rv_int = use_impl_worker_internal_implworker1()
     call assert_equals(1, rv_int)
 
+    rv_int = use_impl_worker_internal_implworker2()
+    call assert_equals(1, rv_int)
+
   end subroutine function_templates
 
 end program tester

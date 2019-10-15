@@ -229,7 +229,6 @@ class ToDict(visitor.Visitor):
                 "template_parameters",
                 "C_error_pattern",
                 "PY_error_pattern",
-                "_CXX_return_templated",
                 "_default_funcs",
                 "_generated",
                 "_has_default_arg",
