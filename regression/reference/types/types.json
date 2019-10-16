@@ -2932,6 +2932,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
+            "F_create_generic": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,

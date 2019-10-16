@@ -3380,7 +3380,6 @@
                 ]
             },
             {
-                "_CXX_return_templated": true,
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv",
@@ -3437,6 +3436,7 @@
                 "have_template_args": true,
                 "linenumber": 84,
                 "options": {
+                    "F_create_generic": false,
                     "__line__": 88,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -3472,7 +3472,6 @@
                 ]
             },
             {
-                "_CXX_return_templated": true,
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv",
@@ -3533,6 +3532,7 @@
                 "have_template_args": true,
                 "linenumber": 84,
                 "options": {
+                    "F_create_generic": false,
                     "__line__": 88,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6988,6 +6988,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
+            "F_create_generic": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,

@@ -422,6 +422,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_standard=2003,
             F_auto_reference_count=False,
             F_create_bufferify_function=True,
+            F_create_generic=True,
             wrap_c=True,
             wrap_fortran=True,
             wrap_python=False,
@@ -1202,7 +1203,6 @@ class FunctionNode(AstNode):
         self.default_format(parent, format, kwargs)
 
         # working variables
-        self._CXX_return_templated = False
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None

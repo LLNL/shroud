@@ -27,6 +27,8 @@ void TEM_function_tu_1(float arg1, double arg2);
 
 int TEM_use_impl_worker_internal_ImplWorker1();
 
+int TEM_use_impl_worker_internal_ImplWorker2();
+
 #ifdef __cplusplus
 }
 #endif

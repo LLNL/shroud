@@ -6,6 +6,7 @@
 const char *PY_vector_int_capsule_name = "vector_int";
 const char *PY_vector_double_capsule_name = "vector_double";
 const char *PY_ImplWorker1_capsule_name = "ImplWorker1";
+const char *PY_ImplWorker2_capsule_name = "ImplWorker2";
 const char *PY_Worker_capsule_name = "Worker";
 const char *PY_user_int_capsule_name = "user_int";
 
@@ -95,6 +96,35 @@ int PP_ImplWorker1_from_Object(PyObject *obj, void **addr)
     *addr = self->obj;
     return 1;
     // splicer end namespace.internal.class.ImplWorker1.utility.from_object
+}
+
+PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr)
+{
+    // splicer begin namespace.internal.class.ImplWorker2.utility.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_ImplWorker2_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_ImplWorker2_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end namespace.internal.class.ImplWorker2.utility.to_object
+}
+
+int PP_ImplWorker2_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin namespace.internal.class.ImplWorker2.utility.from_object
+    if (obj->ob_type != &PY_ImplWorker2_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_ImplWorker2 * self = (PY_ImplWorker2 *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end namespace.internal.class.ImplWorker2.utility.from_object
 }
 
 PyObject *PP_Worker_to_Object(Worker *addr)

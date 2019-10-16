@@ -14,7 +14,12 @@ Wrote wrapftemplates.f
 Wrote pystd_vector_inttype.cpp
 Wrote pystd_vector_doubletype.cpp
 Wrote pytemplates_stdmodule.cpp
+<<<<<<< HEAD
 Wrote pyinternal_ImplWorker1type.cpp
+=======
+Wrote pyImplWorker1type.cpp
+Wrote pyImplWorker2type.cpp
+>>>>>>> develop
 Wrote pytemplates_internalmodule.cpp
 Wrote pyWorkertype.cpp
 Wrote pyuser_inttype.cpp

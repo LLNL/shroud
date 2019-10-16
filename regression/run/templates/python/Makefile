@@ -22,6 +22,7 @@ VPATH = \
 
 OBJS = \
     pyinternal_ImplWorker1type.o \
+    pyinternal_ImplWorker2type.o \
     pyWorkertype.o \
     pytemplatesutil.o \
     pytemplatesmodule.o \

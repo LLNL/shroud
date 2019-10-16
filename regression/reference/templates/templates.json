@@ -109,7 +109,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 63,
+                        "linenumber": 67,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -277,7 +277,7 @@
                             "double"
                         ],
                         "have_template_args": true,
-                        "linenumber": 63,
+                        "linenumber": 67,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -302,7 +302,7 @@
                         ]
                     }
                 ],
-                "linenumber": 58,
+                "linenumber": 62,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -485,7 +485,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 84,
+                    "__line__": 88,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -493,7 +493,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 83,
+                "linenumber": 87,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -655,7 +655,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 84,
+                    "__line__": 88,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -682,7 +682,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 83,
+                "linenumber": 87,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -844,7 +844,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 84,
+                    "__line__": 88,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -877,7 +877,7 @@
                     "long"
                 ],
                 "have_template_args": true,
-                "linenumber": 83,
+                "linenumber": 87,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -940,21 +940,24 @@
                 },
                 "cxx_template": {
                     "T": [
-                        "internal::ImplWorker1"
+                        "internal::ImplWorker1",
+                        "internal::ImplWorker2"
                     ]
                 },
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 98,
+                    "__line__": 102,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 97,
+                "linenumber": 101,
                 "options": {
+                    "F_create_generic": false,
+                    "__line__": 104,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -971,6 +974,17 @@
                             }
                         ],
                         "instantiation": "<internal::ImplWorker1>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker2"
+                                ],
+                                "typemap_name": "internal::ImplWorker2"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker2>"
                     }
                 ],
                 "template_parameters": [
@@ -1018,7 +1032,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 98,
+                    "__line__": 102,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -1046,11 +1060,10 @@
                     "template_suffix": "_internal_ImplWorker1",
                     "underscore_name": "use_impl_worker"
                 },
-                "gen_headers_typedef": [
-                    "internal::ImplWorker1"
-                ],
-                "linenumber": 97,
+                "linenumber": 101,
                 "options": {
+                    "F_create_generic": false,
+                    "__line__": 104,
                     "wrap_c": true,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -1067,6 +1080,127 @@
                             }
                         ],
                         "instantiation": "<internal::ImplWorker1>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker2"
+                                ],
+                                "typemap_name": "internal::ImplWorker2"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker2>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ]
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "_generated": "cxx_template",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "UseImplWorker",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "template<typename T> int UseImplWorker()",
+                "declgen": "int UseImplWorker()",
+                "doxygen": {
+                    "__line__": 102,
+                    "brief": "Function which uses a templated T in the implemetation."
+                },
+                "fmtdict": {
+                    "CXX_template": "<internal::ImplWorker2>",
+                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker2>(\t);",
+                    "C_call_list": "",
+                    "C_name": "TEM_use_impl_worker_internal_ImplWorker2",
+                    "C_prototype": "",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_call": "c_use_impl_worker_internal_implworker2",
+                    "F_C_name": "c_use_impl_worker_internal_implworker2",
+                    "F_arg_c_call": "",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_rv = c_use_impl_worker_internal_implworker2()",
+                    "F_name_function": "use_impl_worker_internal_ImplWorker2",
+                    "F_name_generic": "use_impl_worker",
+                    "F_name_impl": "use_impl_worker_internal_ImplWorker2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker2",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "UseImplWorker",
+                    "template_suffix": "_internal_ImplWorker2",
+                    "underscore_name": "use_impl_worker"
+                },
+                "gen_headers_typedef": [
+                    "internal::ImplWorker1",
+                    "internal::ImplWorker2"
+                ],
+                "linenumber": 101,
+                "options": {
+                    "F_create_generic": false,
+                    "__line__": 104,
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": true
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker1"
+                                ],
+                                "typemap_name": "internal::ImplWorker1"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker1>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker2"
+                                ],
+                                "typemap_name": "internal::ImplWorker2"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker2>"
                     }
                 ],
                 "template_parameters": [
@@ -1418,7 +1552,6 @@
                                 }
                             },
                             {
-                                "_CXX_return_templated": true,
                                 "_fmtargs": {
                                     "n": {
                                         "fmtc": {
@@ -1542,6 +1675,7 @@
                                 "have_template_args": true,
                                 "linenumber": 39,
                                 "options": {
+                                    "F_create_generic": false,
                                     "wrap_c": true,
                                     "wrap_fortran": true,
                                     "wrap_lua": false,
@@ -1932,7 +2066,6 @@
                                 }
                             },
                             {
-                                "_CXX_return_templated": true,
                                 "_fmtargs": {
                                     "n": {
                                         "fmtc": {
@@ -2056,6 +2189,7 @@
                                 "have_template_args": true,
                                 "linenumber": 39,
                                 "options": {
+                                    "F_create_generic": false,
                                     "wrap_c": true,
                                     "wrap_fortran": true,
                                     "wrap_lua": false,
@@ -2166,6 +2300,37 @@
                         },
                         "scope": "internal::ImplWorker1::",
                         "typemap_name": "internal::ImplWorker1"
+                    },
+                    {
+                        "cxx_header": "implworker2.hpp",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapImplWorker2.h",
+                            "C_impl_filename": "wrapImplWorker2.cpp",
+                            "C_name_scope": "internal_ImplWorker2_",
+                            "C_type_name": "TEM_internal_ImplWorker2",
+                            "F_capsule_data_type": "SHROUD_implworker2_capsule",
+                            "F_derived_name": "implworker2",
+                            "F_name_scope": "implworker2_",
+                            "PY_PyObject": "PY_ImplWorker2",
+                            "PY_PyTypeObject": "PY_ImplWorker2_Type",
+                            "PY_capsule_name": "PY_ImplWorker2_capsule_name",
+                            "PY_from_object_func": "PP_ImplWorker2_from_Object",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_ImplWorker2_to_Object",
+                            "PY_type_filename": "pyImplWorker2type.cpp",
+                            "class_scope": "ImplWorker2::",
+                            "cxx_class": "ImplWorker2",
+                            "cxx_type": "ImplWorker2"
+                        },
+                        "linenumber": 57,
+                        "name": "ImplWorker2",
+                        "options": {
+                            "__line__": 59,
+                            "wrap_fortran": false
+                        },
+                        "scope": "internal::ImplWorker2::",
+                        "typemap_name": "internal::ImplWorker2"
                     }
                 ],
                 "fmtdict": {
@@ -2221,6 +2386,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
+            "F_create_generic": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,
@@ -2851,6 +3017,93 @@
                     "cxx_local_var": "pointer",
                     "post_parse": [
                         "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
+        "internal::ImplWorker2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_ImplWorker2",
+            "PY_PyTypeObject": "PY_ImplWorker2_Type",
+            "PY_from_object": "PP_ImplWorker2_from_Object",
+            "PY_to_object": "PP_ImplWorker2_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}internal::ImplWorker2 *>({c_var}{c_member}addr)",
+            "c_type": "TEM_internal_ImplWorker2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "internal::ImplWorker2",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_implworker2_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_implworker2_capsule)",
+            "f_capsule_data_type": "SHROUD_implworker2_capsule",
+            "f_derived_type": "implworker2",
+            "f_module": {
+                "templates_internal_mod": [
+                    "implworker2"
+                ]
+            },
+            "f_module_name": "templates_internal_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(implworker2)",
+            "flat_name": "internal_ImplWorker2",
+            "forward": "internal::ImplWorker2",
+            "impl_header": "implworker2.hpp",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
