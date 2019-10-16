@@ -2305,8 +2305,8 @@
                         "cxx_header": "implworker2.hpp",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapImplWorker2.h",
-                            "C_impl_filename": "wrapImplWorker2.cpp",
+                            "C_header_filename": "wrapinternal_ImplWorker2.h",
+                            "C_impl_filename": "wrapinternal_ImplWorker2.cpp",
                             "C_name_scope": "internal_ImplWorker2_",
                             "C_type_name": "TEM_internal_ImplWorker2",
                             "F_capsule_data_type": "SHROUD_implworker2_capsule",
@@ -2318,10 +2318,11 @@
                             "PY_from_object_func": "PP_ImplWorker2_from_Object",
                             "PY_this_call": "self->obj->",
                             "PY_to_object_func": "PP_ImplWorker2_to_Object",
-                            "PY_type_filename": "pyImplWorker2type.cpp",
+                            "PY_type_filename": "pyinternal_ImplWorker2type.cpp",
                             "class_scope": "ImplWorker2::",
                             "cxx_class": "ImplWorker2",
-                            "cxx_type": "ImplWorker2"
+                            "cxx_type": "ImplWorker2",
+                            "file_scope": "internal_ImplWorker2"
                         },
                         "linenumber": 57,
                         "name": "ImplWorker2",

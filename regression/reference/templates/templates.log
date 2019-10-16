@@ -62,13 +62,9 @@ Python method double & at(size_type n +intent(in)+value)
 Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1
-<<<<<<< HEAD
 Close pyinternal_ImplWorker1type.cpp
-=======
-Close pyImplWorker1type.cpp
 class ImplWorker2
-Close pyImplWorker2type.cpp
->>>>>>> develop
+Close pyinternal_ImplWorker2type.cpp
 Close pytemplates_internalmodule.cpp
 class Worker
 Close pyWorkertype.cpp

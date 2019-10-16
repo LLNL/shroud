@@ -1,4 +1,4 @@
-// pyImplWorker2type.cpp
+// pyinternal_ImplWorker2type.cpp
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
 #include "implworker2.hpp"
