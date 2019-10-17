@@ -650,17 +650,17 @@
                         "cxx_header": "classA.hpp classAb.hpp",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapouter2_classA.h",
-                            "C_impl_filename": "wrapouter2_classA.cpp",
-                            "C_name_scope": "outer2_classA_",
-                            "C_type_name": "LIB_outer2_classA",
-                            "F_capsule_data_type": "SHROUD_classa_capsule",
-                            "F_derived_name": "classa",
-                            "F_name_scope": "classa_",
-                            "class_scope": "classA::",
-                            "cxx_class": "classA",
-                            "cxx_type": "classA",
-                            "file_scope": "outer2_classA"
+                            "C_header_filename": "wrapouter2_class0.h",
+                            "C_impl_filename": "wrapouter2_class0.cpp",
+                            "C_name_scope": "outer2_class0_",
+                            "C_type_name": "LIB_outer2_class0",
+                            "F_capsule_data_type": "SHROUD_class0_capsule",
+                            "F_derived_name": "class0",
+                            "F_name_scope": "class0_",
+                            "class_scope": "class0::",
+                            "cxx_class": "class0",
+                            "cxx_type": "class0",
+                            "file_scope": "outer2_class0"
                         },
                         "functions": [
                             {
@@ -680,19 +680,19 @@
                                 "fmtdict": {
                                     "C_call_code": "SH_this->method(\t);",
                                     "C_call_list": "",
-                                    "C_name": "LIB_outer2_classA_method",
-                                    "C_pre_call": "outer2::classA *SH_this =\t static_cast<outer2::classA *>(self->addr);",
-                                    "C_prototype": "LIB_outer2_classA * self",
+                                    "C_name": "LIB_outer2_class0_method",
+                                    "C_pre_call": "outer2::class0 *SH_this =\t static_cast<outer2::class0 *>(self->addr);",
+                                    "C_prototype": "LIB_outer2_class0 * self",
                                     "C_return_code": "return;",
                                     "C_return_type": "void",
-                                    "F_C_call": "c_classa_method",
-                                    "F_C_name": "c_classa_method",
+                                    "F_C_call": "c_class0_method",
+                                    "F_C_name": "c_class0_method",
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
-                                    "F_call_code": "call c_classa_method(obj%cxxmem)",
+                                    "F_call_code": "call c_class0_method(obj%cxxmem)",
                                     "F_name_function": "method",
                                     "F_name_generic": "method",
-                                    "F_name_impl": "classa_method",
+                                    "F_name_impl": "class0_method",
                                     "F_subprogram": "subroutine",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -701,15 +701,15 @@
                                     "function_name": "method",
                                     "underscore_name": "method"
                                 },
-                                "linenumber": 73,
+                                "linenumber": 74,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 70,
-                        "name": "classA",
+                        "linenumber": 71,
+                        "name": "class0",
                         "options": {},
-                        "scope": "outer2::classA::",
-                        "typemap_name": "outer2::classA"
+                        "scope": "outer2::class0::",
+                        "typemap_name": "outer2::class0"
                     }
                 ],
                 "fmtdict": {
@@ -1509,7 +1509,7 @@
                 }
             }
         },
-        "outer2::classA": {
+        "outer2::class0": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",
@@ -1526,21 +1526,21 @@
                     ]
                 }
             },
-            "c_to_cxx": "static_cast<{c_const}outer2::classA *>({c_var}{c_member}addr)",
-            "c_type": "LIB_outer2_classA",
+            "c_to_cxx": "static_cast<{c_const}outer2::class0 *>({c_var}{c_member}addr)",
+            "c_type": "LIB_outer2_class0",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "outer2::classA",
+            "cxx_type": "outer2::class0",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_classa_capsule"
+                    "SHROUD_class0_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_classa_capsule)",
-            "f_capsule_data_type": "SHROUD_classa_capsule",
-            "f_derived_type": "classa",
+            "f_c_type": "type(SHROUD_class0_capsule)",
+            "f_capsule_data_type": "SHROUD_class0_capsule",
+            "f_derived_type": "class0",
             "f_module": {
                 "library_outer2_mod": [
-                    "classa"
+                    "class0"
                 ]
             },
             "f_module_name": "library_outer2_mod",
@@ -1553,21 +1553,21 @@
                 }
             },
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(classa)",
-            "flat_name": "outer2_classA",
-            "forward": "outer2::classA",
+            "f_type": "type(class0)",
+            "flat_name": "outer2_class0",
+            "forward": "outer2::class0",
             "impl_header": "classA.hpp classAb.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}outer2::classA * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                        "{c_const}outer2::class0 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}outer2::classA * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                        "{c_const}outer2::class0 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {

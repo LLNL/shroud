@@ -23,36 +23,36 @@ module library_outer2_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_classa_capsule
+    type, bind(C) :: SHROUD_class0_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_classa_capsule
+    end type SHROUD_class0_capsule
 
-    type classa
-        type(SHROUD_classa_capsule) :: cxxmem
+    type class0
+        type(SHROUD_class0_capsule) :: cxxmem
     contains
-        procedure :: method => classa_method
-        procedure :: get_instance => classa_get_instance
-        procedure :: set_instance => classa_set_instance
-        procedure :: associated => classa_associated
-    end type classa
+        procedure :: method => class0_method
+        procedure :: get_instance => class0_get_instance
+        procedure :: set_instance => class0_set_instance
+        procedure :: associated => class0_associated
+    end type class0
 
     interface operator (.eq.)
-        module procedure classa_eq
+        module procedure class0_eq
     end interface
 
     interface operator (.ne.)
-        module procedure classa_ne
+        module procedure class0_ne
     end interface
 
     interface
 
-        subroutine c_classa_method(self) &
-                bind(C, name="LIB_outer2_classA_method")
-            import :: SHROUD_classa_capsule
+        subroutine c_class0_method(self) &
+                bind(C, name="LIB_outer2_class0_method")
+            import :: SHROUD_class0_capsule
             implicit none
-            type(SHROUD_classa_capsule), intent(IN) :: self
-        end subroutine c_classa_method
+            type(SHROUD_class0_capsule), intent(IN) :: self
+        end subroutine c_class0_method
 
 
         subroutine outer_func() &
@@ -64,56 +64,56 @@ module library_outer2_mod
 
 contains
 
-    subroutine classa_method(obj)
-        class(classa) :: obj
-        call c_classa_method(obj%cxxmem)
-    end subroutine classa_method
+    subroutine class0_method(obj)
+        class(class0) :: obj
+        call c_class0_method(obj%cxxmem)
+    end subroutine class0_method
 
     ! Return pointer to C++ memory.
-    function classa_get_instance(obj) result (cxxptr)
+    function class0_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(classa), intent(IN) :: obj
+        class(class0), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function classa_get_instance
+    end function class0_get_instance
 
-    subroutine classa_set_instance(obj, cxxmem)
+    subroutine class0_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(classa), intent(INOUT) :: obj
+        class(class0), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine classa_set_instance
+    end subroutine class0_set_instance
 
-    function classa_associated(obj) result (rv)
+    function class0_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(classa), intent(IN) :: obj
+        class(class0), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function classa_associated
+    end function class0_associated
 
 
 
-    function classa_eq(a,b) result (rv)
+    function class0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classa), intent(IN) ::a,b
+        type(class0), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function classa_eq
+    end function class0_eq
 
-    function classa_ne(a,b) result (rv)
+    function class0_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classa), intent(IN) ::a,b
+        type(class0), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function classa_ne
+    end function class0_ne
 
 end module library_outer2_mod

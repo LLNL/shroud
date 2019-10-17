@@ -40,15 +40,15 @@ declarations:
         f_to_c: "{f_var}%cxxmem"
   - namespace: outer2
     declarations: outer2
-    - type: classA
+    - type: class0
       fields:
         base: shadow
         impl_header: classA.hpp classAb.hpp
-        cxx_type: outer2::classA
-        c_type: LIB_outer2_classA
+        cxx_type: outer2::class0
+        c_type: LIB_outer2_class0
         f_module_name: library_outer2_mod
-        f_derived_type: classa
-        f_capsule_data_type: SHROUD_classa_capsule
+        f_derived_type: class0
+        f_capsule_data_type: SHROUD_class0_capsule
         f_to_c: "{f_var}%cxxmem"
   - namespace: three
     declarations: three

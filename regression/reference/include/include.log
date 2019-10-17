@@ -14,10 +14,10 @@ Close wrapouter1_class0.cpp
 C function void outer_func()
 Close wraplibrary_outer1.h
 Close wraplibrary_outer1.cpp
-class classA
+class class0
 C method void method()
-Close wrapouter2_classA.h
-Close wrapouter2_classA.cpp
+Close wrapouter2_class0.h
+Close wrapouter2_class0.cpp
 C function void outer_func()
 Close wraplibrary_outer2.h
 Close wraplibrary_outer2.cpp
@@ -41,7 +41,7 @@ class class0
 C-interface, Fortran method void method()
 C-interface, Fortran function void outer_func()
 Close wrapflibrary_outer1.f
-class classA
+class class0
 C-interface, Fortran method void method()
 C-interface, Fortran function void outer_func()
 Close wrapflibrary_outer2.f

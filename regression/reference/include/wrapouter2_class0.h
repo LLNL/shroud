@@ -1,4 +1,4 @@
-// wrapouter2_classA.cpp
+// wrapouter2_class0.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,19 +14,27 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wrapouter2_classA.h"
-#include "classA.hpp"
-#include "classAb.hpp"
+/**
+ * \file wrapouter2_class0.h
+ * \brief Shroud generated wrapper for class0 class
+ */
+// For C users and C++ implementation
+
+#ifndef WRAPOUTER2_CLASS0_H
+#define WRAPOUTER2_CLASS0_H
+
+#include "typeslibrary.h"
 
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
 
-void LIB_outer2_classA_method(LIB_outer2_classA * self)
-{
-    outer2::classA *SH_this = static_cast<outer2::classA *>(self->addr);
-    SH_this->method();
-    return;
+void LIB_outer2_class0_method(LIB_outer2_class0 * self);
+
+#ifdef __cplusplus
 }
+#endif
 
-}  // extern "C"
+#endif  // WRAPOUTER2_CLASS0_H
