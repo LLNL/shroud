@@ -400,8 +400,8 @@
                         "as_struct": true,
                         "cxx_header": "",
                         "fmtdict": {
-                            "C_header_filename": "wrapCstruct1.h",
-                            "C_impl_filename": "wrapCstruct1.cpp",
+                            "C_header_filename": "wrapouter_Cstruct1.h",
+                            "C_impl_filename": "wrapouter_Cstruct1.cpp",
                             "C_name_scope": "outer_Cstruct1_",
                             "C_type_name": "NS_cstruct1",
                             "F_capsule_data_type": "SHROUD_cstruct1_capsule",
@@ -416,10 +416,11 @@
                             "PY_struct_array_descr_variable": "PY_Cstruct1_array_descr",
                             "PY_this_call": "self->obj->",
                             "PY_to_object_func": "PP_Cstruct1_to_Object",
-                            "PY_type_filename": "pyCstruct1type.cpp",
+                            "PY_type_filename": "pyouter_Cstruct1type.cpp",
                             "class_scope": "Cstruct1::",
                             "cxx_class": "Cstruct1",
-                            "cxx_type": "Cstruct1"
+                            "cxx_type": "Cstruct1",
+                            "file_scope": "outer_Cstruct1"
                         },
                         "functions": [
                             {
@@ -658,8 +659,8 @@
                         "cxx_header": "",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapClassWork.h",
-                            "C_impl_filename": "wrapClassWork.cpp",
+                            "C_header_filename": "wrapnswork_ClassWork.h",
+                            "C_impl_filename": "wrapnswork_ClassWork.cpp",
                             "C_name_scope": "nswork_ClassWork_",
                             "C_type_name": "NS_nswork_ClassWork",
                             "F_capsule_data_type": "SHROUD_nswork_classwork_capsule",
@@ -671,10 +672,11 @@
                             "PY_from_object_func": "PP_ClassWork_from_Object",
                             "PY_this_call": "self->obj->",
                             "PY_to_object_func": "PP_ClassWork_to_Object",
-                            "PY_type_filename": "pyClassWorktype.cpp",
+                            "PY_type_filename": "pynswork_ClassWorktype.cpp",
                             "class_scope": "ClassWork::",
                             "cxx_class": "ClassWork",
-                            "cxx_type": "ClassWork"
+                            "cxx_type": "ClassWork",
+                            "file_scope": "nswork_ClassWork"
                         },
                         "linenumber": 38,
                         "name": "ClassWork",
@@ -718,11 +720,11 @@
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
@@ -783,7 +785,7 @@
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
-            "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
+            "PY_type_filename_template": "py{file_scope}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",

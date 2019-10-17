@@ -442,8 +442,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_filename_namespace_template="wrap{file_scope}.{C_header_filename_suffix}",
             C_impl_filename_namespace_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
-            C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
-            C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
+            C_header_filename_class_template="wrap{file_scope}.{C_header_filename_suffix}",
+            C_impl_filename_class_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
@@ -507,7 +507,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
-                "py{cxx_class}type.{PY_impl_filename_suffix}"
+                "py{file_scope}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
                 "{PY_prefix}{function_name}{function_suffix}{template_suffix}"
@@ -939,10 +939,12 @@ class ClassNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
+        self.scope = self.parent.scope + self.name + "::"
+        self.scope_file = self.parent.scope_file + [self.name]
+
         self.default_format(parent, format, kwargs)
 
         # Add to namespace.
-        self.scope = self.parent.scope + self.name + "::"
         self.symbols = {}
 
         fields = kwargs.get("fields", None)
@@ -1049,6 +1051,7 @@ class ClassNode(AstNode, NamespaceMixin):
             C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
+            file_scope="_".join(self.scope_file[1:]),
         )
 
         fmt_class = self.fmtdict
@@ -1110,6 +1113,7 @@ class ClassNode(AstNode, NamespaceMixin):
         # Add new format and options Scope.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.scope_file = self.scope_file[:]
 
         # Clone all functions.
         newfcns = []

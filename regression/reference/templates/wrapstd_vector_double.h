@@ -1,13 +1,13 @@
-// wrapvector_double.h
+// wrapstd_vector_double.h
 // This is generated code, do not edit
 /**
- * \file wrapvector_double.h
+ * \file wrapstd_vector_double.h
  * \brief Shroud generated wrapper for vector class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPVECTOR_DOUBLE_H
-#define WRAPVECTOR_DOUBLE_H
+#ifndef WRAPSTD_VECTOR_DOUBLE_H
+#define WRAPSTD_VECTOR_DOUBLE_H
 
 #include "typestemplates.h"
 #ifdef __cplusplus
@@ -39,4 +39,4 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n);
 }
 #endif
 
-#endif  // WRAPVECTOR_DOUBLE_H
+#endif  // WRAPSTD_VECTOR_DOUBLE_H

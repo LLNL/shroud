@@ -1,6 +1,20 @@
-// pyvector_doubletype.cpp
+// pystd_vector_instantiation5type.cpp
 // This is generated code, do not edit
-#include "pytemplatesmodule.hpp"
+// #######################################################################
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+//
+// Produced at the Lawrence Livermore National Laboratory
+//
+// LLNL-CODE-738041.
+//
+// All rights reserved.
+//
+// This file is part of Shroud.
+//
+// For details about use and distribution, please read LICENSE.
+//
+// #######################################################################
+#include "pytestnamesmodule.hpp"
 #include <vector>
 // splicer begin namespace.std.class.vector.impl.include
 // splicer end namespace.std.class.vector.impl.include
@@ -22,106 +36,30 @@
 // splicer begin namespace.std.class.vector.impl.additional_methods
 // splicer end namespace.std.class.vector.impl.additional_methods
 static void
-PY_vector_double_tp_del (PY_vector_double *self)
+PY_vector_instantiation5_tp_del_instantiation5 (PY_vector_instantiation5 *self)
 {
 // splicer begin namespace.std.class.vector.type.del
-    PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
+    self->myobj = NULL;
 // splicer end namespace.std.class.vector.type.del
-}
-
-static int
-PY_vector_double_tp_init(
-  PY_vector_double *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin namespace.std.class.vector.method.ctor
-    self->obj = new std::vector<double>();
-    if (self->obj == NULL) {
-        PyErr_NoMemory();
-        return -1;
-    }
-    self->idtor = 2;
-    return 0;
-// splicer end namespace.std.class.vector.method.ctor
-}
-
-static char PY_push_back__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_push_back(
-  PY_vector_double *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin namespace.std.class.vector.method.push_back
-    double value;
-    const char *SHT_kwlist[] = {
-        "value",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:push_back",
-        const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
-    self->obj->push_back(value);
-    Py_RETURN_NONE;
-// splicer end namespace.std.class.vector.method.push_back
-}
-
-static char PY_at__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_at(
-  PY_vector_double *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin namespace.std.class.vector.method.at
-    size_t n;
-    const char *SHT_kwlist[] = {
-        "n",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
-        const_cast<char **>(SHT_kwlist), &n))
-        return NULL;
-    double & rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, rv);
-    if (SHTPy_rv == NULL) goto fail;
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return NULL;
-// splicer end namespace.std.class.vector.method.at
 }
 // splicer begin namespace.std.class.vector.impl.after_methods
 // splicer end namespace.std.class.vector.impl.after_methods
-static PyMethodDef PY_vector_double_methods[] = {
-    {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
-        PY_push_back__doc__},
-    {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
-        PY_at__doc__},
+static PyMethodDef PY_vector_instantiation5_methods[] = {
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char vector_double__doc__[] =
+static char vector_instantiation5__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_vector_double_Type = {
+PyTypeObject PY_vector_instantiation5_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "templates.vector_double",                       /* tp_name */
-    sizeof(PY_vector_double),         /* tp_basicsize */
+    "testnames.std.vector_instantiation5",                       /* tp_name */
+    sizeof(PY_vector_instantiation5),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -148,7 +86,7 @@ PyTypeObject PY_vector_double_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    vector_double__doc__,         /* tp_doc */
+    vector_instantiation5__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -164,7 +102,7 @@ PyTypeObject PY_vector_double_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_vector_double_methods,                             /* tp_methods */
+    PY_vector_instantiation5_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -172,7 +110,7 @@ PyTypeObject PY_vector_double_Type = {
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)PY_vector_double_tp_init,                   /* tp_init */
+    (initproc)0,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
@@ -182,7 +120,7 @@ PyTypeObject PY_vector_double_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_vector_double_tp_del,                 /* tp_del */
+    (destructor)PY_vector_instantiation5_tp_del_instantiation5,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

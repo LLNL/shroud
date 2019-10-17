@@ -593,6 +593,7 @@ class GenFunctions(object):
                         # Check if user has changed cxx_class.
                         cxx_class = targs.fmtdict["cxx_class"]
 
+                    newcls.scope_file[-1] += class_suffix
                     # Add default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
@@ -602,6 +603,7 @@ class GenFunctions(object):
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
                             F_derived_name=cxx_class.lower(),
+                            file_scope="_".join(newcls.scope_file[1:]),
                         )
                     )
                     # Add user specified values to format dictionary.

@@ -1,4 +1,4 @@
-// wrapclass0.h
+// wrapCAPI_Class1.hh
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,26 +15,30 @@
 //
 // #######################################################################
 /**
- * \file wrapclass0.h
- * \brief Shroud generated wrapper for class0 class
+ * \file wrapCAPI_Class1.hh
+ * \brief Shroud generated wrapper for Class1 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLASS0_H
-#define WRAPCLASS0_H
+#ifndef WRAPCAPI_CLASS1_HH
+#define WRAPCAPI_CLASS1_HH
 
-#include "typeslibrary.h"
+#include "typestestnames.hh"
 
+// splicer begin namespace.CAPI.class.Class1.CXX_declarations
+// splicer end namespace.CAPI.class.Class1.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+// splicer begin namespace.CAPI.class.Class1.C_declarations
+// splicer end namespace.CAPI.class.Class1.C_declarations
 
-void LIB_outer1_class0_method(LIB_outer1_class0 * self);
+void TES_capi_class1_member1(TES_capi_class1 * self);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPCLASS0_H
+#endif  // WRAPCAPI_CLASS1_HH

@@ -1,13 +1,13 @@
-// wrapvector_int.h
+// wrapstd_vector_int.h
 // This is generated code, do not edit
 /**
- * \file wrapvector_int.h
+ * \file wrapstd_vector_int.h
  * \brief Shroud generated wrapper for vector class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPVECTOR_INT_H
-#define WRAPVECTOR_INT_H
+#ifndef WRAPSTD_VECTOR_INT_H
+#define WRAPSTD_VECTOR_INT_H
 
 #include "typestemplates.h"
 #ifdef __cplusplus
@@ -38,4 +38,4 @@ int * TEM_vector_int_at(TEM_vector_int * self, size_t n);
 }
 #endif
 
-#endif  // WRAPVECTOR_INT_H
+#endif  // WRAPSTD_VECTOR_INT_H

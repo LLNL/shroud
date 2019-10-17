@@ -67,7 +67,8 @@ declarations:
   - decl: void outer_func()
 
   # Use headers from this class, not from namespace
-  - decl: class classA
+  # Same name as a class in another namespace
+  - decl: class class0
     cxx_header: classA.hpp classAb.hpp
     declarations:
     - decl: void method()

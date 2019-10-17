@@ -1,4 +1,4 @@
-// pyCstruct1type.cpp
+// pyouter_Cstruct1type.cpp
 // This is generated code, do not edit
 #include "pynsmodule.hpp"
 #include "namespace.hpp"

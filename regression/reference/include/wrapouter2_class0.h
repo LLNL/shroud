@@ -1,4 +1,4 @@
-// wrapClass1.h
+// wrapouter2_class0.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,20 +15,15 @@
 //
 // #######################################################################
 /**
- * \file wrapClass1.h
- * \brief Shroud generated wrapper for Class1 class
+ * \file wrapouter2_class0.h
+ * \brief Shroud generated wrapper for class0 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLASS1_H
-#define WRAPCLASS1_H
+#ifndef WRAPOUTER2_CLASS0_H
+#define WRAPOUTER2_CLASS0_H
 
 #include "typeslibrary.h"
-#ifdef __cplusplus
-#include "type_header.hpp"
-#else
-#include "type_header.h"
-#endif
 
 
 #ifdef __cplusplus
@@ -36,10 +31,10 @@ extern "C" {
 #endif
 
 
-void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1);
+void LIB_outer2_class0_method(LIB_outer2_class0 * self);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPCLASS1_H
+#endif  // WRAPOUTER2_CLASS0_H

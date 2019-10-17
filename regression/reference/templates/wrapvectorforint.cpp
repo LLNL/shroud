@@ -1,6 +1,6 @@
 // wrapvectorforint.cpp
 // This is generated code, do not edit
-#include "wrapvector_int.h"
+#include "wrapstd_vector_int.h"
 #include <vector>
 
 // splicer begin namespace.std.class.vector.CXX_definitions

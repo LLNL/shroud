@@ -37,6 +37,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This is to avoid confusion with helper functions which have file static scope.
 - Changed C_name_template to use *C_name_scope* instead of *class_prefix*.
   *C_name_scope* is case sensitive while *class_prefix* was lower case.
+  Option C_API_case can be set to *lower* to reproduce previous behavior.
+  C_name_scope will also contain internal namespaces.
+- Changed filename templates to use *C_file_scope* instead of *class_class*.
+  This will include internal namespaces in the file name.
 - Changed how the *fortran_generic* arguments are specified to allow multiple arguments
   and to associate attributes with arguments.
   previous format:
