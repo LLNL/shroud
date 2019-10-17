@@ -11,7 +11,7 @@
 # For details about use and distribution, please read LICENSE.
 #
 ########################################################################
-dist: trusty
+dist: xenial 
 sudo: false
 
 language: python
