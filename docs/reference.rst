@@ -202,6 +202,11 @@ return_this
 Options
 -------
 
+C_API_case
+   Control case of *C_name_scope*.
+   Possible values are 'lower' or 'upper'.
+   Any other value will have no effect.
+
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
@@ -231,7 +236,6 @@ doxygen
   If True, create doxygen comments.
 
 F_create_bufferify_function
-
   Controls creation of a *bufferify* function.
   If *true*, an additional C function is created which receives
   *bufferified* arguments - i.e. the len, len_trim, and size may be
@@ -239,6 +243,16 @@ F_create_bufferify_function
   avoid passing this information.  This will avoid a copy of
   ``CHARACTER`` arguments required to append a trailing null.
   Defaults to *true*.
+
+F_create_generic
+  Controls creation of a generic interface.  It defaults to *true* for
+  most cases but will be set to *False* if a function is templated on
+  the return type since Fortran does not distiuguish generics based on
+  return type (similar to overloaded functions based on return type in
+  C++).
+
+.. should also be set to false when the templated argument in
+   cxx_template is part of the implementation and not the interface.
 
 F_line_length
   Control length of output line for generated Fortran.
@@ -344,7 +358,7 @@ C_enum_member_template
     ``{C_prefix}{C_name_scope}{enum_member_name}``
 
 C_header_filename_class_template
-    ``wrap{cxx_class}.{C_header_filename_suffix}``
+    ``wrap{file_scope}.{C_header_filename_suffix}``
 
 C_header_filename_library_template
    ``wrap{library}.{C_header_filename_suffix}``
@@ -353,7 +367,7 @@ C_header_filename_namespace_template
    ``wrap{scope_file}.{C_header_filename_suffix}``
 
 C_impl_filename_class_template
-    ``wrap{cxx_class}.{C_impl_filename_suffix}``
+    ``wrap{file_scope}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``
@@ -532,7 +546,7 @@ PY_struct_array_descr_name_template
 
 
 PY_type_filename_template
-    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+    ``py{file_scope}type.{PY_impl_filename_suffix}``
 
 PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.

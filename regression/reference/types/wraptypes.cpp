@@ -15,7 +15,7 @@
 //
 // #######################################################################
 #include "wraptypes.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "types.hpp"
 #include "typestypes.h"
 

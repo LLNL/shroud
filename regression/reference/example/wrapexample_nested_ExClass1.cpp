@@ -1,4 +1,4 @@
-// wrapExClass1.cpp
+// wrapexample_nested_ExClass1.cpp
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 //
@@ -13,10 +13,9 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wrapExClass1.h"
+#include "wrapexample_nested_ExClass1.h"
 #include <cstddef>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
 #include "ExClass1.hpp"
 

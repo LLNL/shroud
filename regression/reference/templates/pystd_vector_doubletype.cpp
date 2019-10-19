@@ -1,4 +1,4 @@
-// pyvector_inttype.cpp
+// pystd_vector_doubletype.cpp
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
 #include <vector>
@@ -22,7 +22,7 @@
 // splicer begin namespace.std.class.vector.impl.additional_methods
 // splicer end namespace.std.class.vector.impl.additional_methods
 static void
-PY_vector_int_tp_del (PY_vector_int *self)
+PY_vector_double_tp_del (PY_vector_double *self)
 {
 // splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
@@ -31,18 +31,18 @@ PY_vector_int_tp_del (PY_vector_int *self)
 }
 
 static int
-PY_vector_int_tp_init(
-  PY_vector_int *self,
+PY_vector_double_tp_init(
+  PY_vector_double *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin namespace.std.class.vector.method.ctor
-    self->obj = new std::vector<int>();
+    self->obj = new std::vector<double>();
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 1;
+    self->idtor = 2;
     return 0;
 // splicer end namespace.std.class.vector.method.ctor
 }
@@ -53,17 +53,17 @@ static char PY_push_back__doc__[] =
 
 static PyObject *
 PY_push_back(
-  PY_vector_int *self,
+  PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
 // splicer begin namespace.std.class.vector.method.push_back
-    int value;
+    double value;
     const char *SHT_kwlist[] = {
         "value",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:push_back",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:push_back",
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
     self->obj->push_back(value);
@@ -77,7 +77,7 @@ static char PY_at__doc__[] =
 
 static PyObject *
 PY_at(
-  PY_vector_int *self,
+  PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
@@ -91,8 +91,8 @@ PY_at(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
-    int & rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, rv);
+    double & rv = self->obj->at(n);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, rv);
     if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
 
@@ -103,7 +103,7 @@ fail:
 }
 // splicer begin namespace.std.class.vector.impl.after_methods
 // splicer end namespace.std.class.vector.impl.after_methods
-static PyMethodDef PY_vector_int_methods[] = {
+static PyMethodDef PY_vector_double_methods[] = {
     {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
         PY_push_back__doc__},
     {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
@@ -113,15 +113,15 @@ static PyMethodDef PY_vector_int_methods[] = {
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char vector_int__doc__[] =
+static char vector_double__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_vector_int_Type = {
+PyTypeObject PY_vector_double_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "templates.vector_int",                       /* tp_name */
-    sizeof(PY_vector_int),         /* tp_basicsize */
+    "templates.vector_double",                       /* tp_name */
+    sizeof(PY_vector_double),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -148,7 +148,7 @@ PyTypeObject PY_vector_int_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    vector_int__doc__,         /* tp_doc */
+    vector_double__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -164,7 +164,7 @@ PyTypeObject PY_vector_int_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_vector_int_methods,                             /* tp_methods */
+    PY_vector_double_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -172,7 +172,7 @@ PyTypeObject PY_vector_int_Type = {
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)PY_vector_int_tp_init,                   /* tp_init */
+    (initproc)PY_vector_double_tp_init,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
@@ -182,7 +182,7 @@ PyTypeObject PY_vector_int_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_vector_int_tp_del,                 /* tp_del */
+    (destructor)PY_vector_double_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

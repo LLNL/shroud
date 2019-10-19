@@ -22,7 +22,8 @@
                     "PY_type_filename": "pyNames2type.cpp",
                     "class_scope": "Names2::",
                     "cxx_class": "Names2",
-                    "cxx_type": "Names2"
+                    "cxx_type": "Names2",
+                    "file_scope": "Names2"
                 },
                 "linenumber": 88,
                 "name": "Names2",
@@ -50,7 +51,8 @@
                     "PY_type_filename": "pytwoTs_0type.cpp",
                     "class_scope": "twoTs_0::",
                     "cxx_class": "twoTs_0",
-                    "cxx_type": "twoTs<int, long>"
+                    "cxx_type": "twoTs<int, long>",
+                    "file_scope": "twoTs_0"
                 },
                 "linenumber": 186,
                 "name": "twoTs",
@@ -124,6 +126,7 @@
                     "class_scope": "twoTs_instantiation4::",
                     "cxx_class": "twoTs_instantiation4",
                     "cxx_type": "twoTs<float, double>",
+                    "file_scope": "twoTs_instantiation4",
                     "template_suffix": "_instantiation4"
                 },
                 "linenumber": 186,
@@ -1328,6 +1331,12 @@
                     "template_suffix": "_instantiation2",
                     "underscore_name": "function_tu"
                 },
+                "gen_headers_typedef": [
+                    "double",
+                    "float",
+                    "int",
+                    "long"
+                ],
                 "have_template_args": true,
                 "linenumber": 145,
                 "options": {
@@ -1409,14 +1418,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 197,
+                    "__line__": 210,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 196,
+                "linenumber": 209,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1481,7 +1490,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 197,
+                    "__line__": 210,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -1509,7 +1518,10 @@
                     "template_suffix": "_instantiation3",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 196,
+                "gen_headers_typedef": [
+                    "internal::ImplWorker1"
+                ],
+                "linenumber": 209,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1555,11 +1567,12 @@
                             "PY_from_object_func": "PP_Names_from_Object",
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_Names_to_Object",
-                            "PY_type_filename": "pyNamestype.cpp",
+                            "PY_type_filename": "pyns0_Namestype.cpp",
                             "__line__": 72,
                             "class_scope": "Names::",
                             "cxx_class": "Names",
-                            "cxx_type": "Names"
+                            "cxx_type": "Names",
+                            "file_scope": "ns0_Names"
                         },
                         "functions": [
                             {
@@ -1797,8 +1810,8 @@
                         "cxx_header": "",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapImplWorker1.hh",
-                            "C_impl_filename": "wrapImplWorker1.cc",
+                            "C_header_filename": "wrapinternal_ImplWorker1.hh",
+                            "C_impl_filename": "wrapinternal_ImplWorker1.cc",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TES_internal_ImplWorker1",
                             "F_capsule_data_type": "SHROUD_implworker1_capsule",
@@ -1808,6 +1821,7 @@
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
+                            "file_scope": "internal_ImplWorker1",
                             "template_suffix": "_instantiation3"
                         },
                         "linenumber": 134,
@@ -1853,8 +1867,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapVvv1.hh",
-                            "C_impl_filename": "wrapVvv1.cc",
+                            "C_header_filename": "wrapstd_vector_int.hh",
+                            "C_impl_filename": "wrapstd_vector_int.cc",
                             "C_name_scope": "std_Vvv1_",
                             "C_type_name": "TES_std_Vvv1",
                             "F_capsule_data_type": "SHROUD_vvv1_capsule",
@@ -1866,11 +1880,12 @@
                             "PY_from_object_func": "PP_Vvv1_from_Object",
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_Vvv1_to_Object",
-                            "PY_type_filename": "pyVvv1type.cpp",
+                            "PY_type_filename": "pystd_vector_inttype.cpp",
                             "__line__": 168,
                             "class_scope": "Vvv1::",
                             "cxx_class": "Vvv1",
-                            "cxx_type": "vector<int>"
+                            "cxx_type": "vector<int>",
+                            "file_scope": "std_vector_int"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -1940,8 +1955,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_double.hh",
-                            "C_impl_filename": "wrapvector_double.cc",
+                            "C_header_filename": "wrapstd_vector_double.hh",
+                            "C_impl_filename": "wrapstd_vector_double.cc",
                             "C_name_scope": "std_vector_double_",
                             "C_type_name": "TES_std_vector_double",
                             "F_capsule_data_type": "SHROUD_vector_double_capsule",
@@ -1953,10 +1968,11 @@
                             "PY_from_object_func": "PP_vector_double_from_Object",
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_vector_double_to_Object",
-                            "PY_type_filename": "pyvector_doubletype.cpp",
+                            "PY_type_filename": "pystd_vector_doubletype.cpp",
                             "class_scope": "vector_double::",
                             "cxx_class": "vector_double",
-                            "cxx_type": "vector<double>"
+                            "cxx_type": "vector<double>",
+                            "file_scope": "std_vector_double"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -2026,8 +2042,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_instantiation5.hh",
-                            "C_impl_filename": "wrapvector_instantiation5.cc",
+                            "C_header_filename": "wrapstd_vector_instantiation5.hh",
+                            "C_impl_filename": "wrapstd_vector_instantiation5.cc",
                             "C_name_scope": "std_vector_instantiation5_",
                             "C_type_name": "TES_std_vector_instantiation5",
                             "F_capsule_data_type": "SHROUD_vector_instantiation5_capsule",
@@ -2039,11 +2055,12 @@
                             "PY_from_object_func": "PP_vector_instantiation5_from_Object",
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_vector_instantiation5_to_Object",
-                            "PY_type_filename": "pyvector_instantiation5type.cpp",
+                            "PY_type_filename": "pystd_vector_instantiation5type.cpp",
                             "__line__": 180,
                             "class_scope": "vector_instantiation5::",
                             "cxx_class": "vector_instantiation5",
                             "cxx_type": "vector<long>",
+                            "file_scope": "std_vector_instantiation5",
                             "template_suffix": "_instantiation5"
                         },
                         "linenumber": 163,
@@ -2114,8 +2131,8 @@
                         "cxx_header": "<vector>",
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
-                            "C_header_filename": "wrapvector_instantiation3.hh",
-                            "C_impl_filename": "wrapvector_instantiation3.cc",
+                            "C_header_filename": "wrapstd_vector_instantiation3.hh",
+                            "C_impl_filename": "wrapstd_vector_instantiation3.cc",
                             "C_name_scope": "std_vector_instantiation3_",
                             "C_type_name": "TES_std_vector_instantiation3",
                             "F_capsule_data_type": "SHROUD_vector_instantiation3_capsule",
@@ -2127,10 +2144,11 @@
                             "PY_from_object_func": "PP_vector_instantiation3_from_Object",
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_vector_instantiation3_to_Object",
-                            "PY_type_filename": "pyvector_instantiation3type.cpp",
+                            "PY_type_filename": "pystd_vector_instantiation3type.cpp",
                             "class_scope": "vector_instantiation3::",
                             "cxx_class": "vector_instantiation3",
-                            "cxx_type": "vector<internal::ImplWorker1>"
+                            "cxx_type": "vector<internal::ImplWorker1>",
+                            "file_scope": "std_vector_instantiation3"
                         },
                         "linenumber": 163,
                         "name": "vector",
@@ -2222,16 +2240,152 @@
                     "testnames",
                     "std"
                 ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapCAPI_Class1.hh",
+                            "C_impl_filename": "wrapCAPI_Class1.cc",
+                            "C_name_scope": "capi_class1_",
+                            "C_type_name": "TES_capi_class1",
+                            "F_capsule_data_type": "SHROUD_class1_capsule",
+                            "F_derived_name": "class1",
+                            "F_name_scope": "class1_",
+                            "class_scope": "Class1::",
+                            "cxx_class": "Class1",
+                            "cxx_type": "Class1",
+                            "file_scope": "CAPI_Class1"
+                        },
+                        "functions": [
+                            {
+                                "ast": {
+                                    "declarator": {
+                                        "name": "Member1",
+                                        "pointer": []
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void Member1()",
+                                "declgen": "void Member1()",
+                                "fmtdict": {
+                                    "C_call_code": "SH_this->Member1(\t);",
+                                    "C_call_list": "",
+                                    "C_name": "TES_capi_class1_member1",
+                                    "C_pre_call": "CAPI::Class1 *SH_this =\t static_cast<CAPI::Class1 *>(self->addr);",
+                                    "C_prototype": "TES_capi_class1 * self",
+                                    "C_return_code": "return;",
+                                    "C_return_type": "void",
+                                    "F_C_call": "c_class1_member1",
+                                    "F_C_name": "c_class1_member1",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_call_code": "call c_class1_member1(obj%cxxmem)",
+                                    "F_name_function": "member1",
+                                    "F_name_generic": "member1",
+                                    "F_name_impl": "class1_member1",
+                                    "F_subprogram": "subroutine",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "function_name": "Member1",
+                                    "underscore_name": "member1"
+                                },
+                                "linenumber": 205,
+                                "options": {}
+                            }
+                        ],
+                        "linenumber": 203,
+                        "name": "Class1",
+                        "options": {},
+                        "scope": "CAPI::Class1::",
+                        "typemap_name": "CAPI::Class1"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "CAPI::",
+                    "C_header_filename": "wraptestnames_CAPI.hh",
+                    "C_impl_filename": "wraptestnames_CAPI.cc",
+                    "C_name_scope": "capi_",
+                    "F_impl_filename": "wrapftestnames_CAPI.F",
+                    "F_module_name": "testnames_capi_mod",
+                    "LUA_this_call": "CAPI::",
+                    "PY_module_init": "testnames_CAPI",
+                    "PY_module_name": "CAPI",
+                    "PY_module_scope": "testnames.CAPI",
+                    "PY_this_call": "CAPI::",
+                    "file_scope": "testnames_CAPI",
+                    "namespace_scope": "CAPI::"
+                },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "Worker1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void Worker1()",
+                        "declgen": "void Worker1()",
+                        "fmtdict": {
+                            "C_call_code": "CAPI::Worker1(\t);",
+                            "C_call_list": "",
+                            "C_name": "TES_capi_worker1",
+                            "C_prototype": "",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_worker1",
+                            "F_C_name": "c_worker1",
+                            "F_arg_c_call": "",
+                            "F_arguments": "",
+                            "F_call_code": "call c_worker1()",
+                            "F_name_function": "worker1",
+                            "F_name_generic": "worker1",
+                            "F_name_impl": "worker1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "function_name": "Worker1",
+                            "underscore_name": "worker1"
+                        },
+                        "linenumber": 202,
+                        "options": {}
+                    }
+                ],
+                "linenumber": 197,
+                "name": "CAPI",
+                "options": {
+                    "C_API_case": "lower",
+                    "__line__": 198,
+                    "wrap_python": false
+                },
+                "scope": "CAPI::",
+                "scope_file": [
+                    "testnames",
+                    "CAPI"
+                ]
             }
         ],
         "options": {
+            "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
@@ -2248,6 +2402,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
+            "F_create_generic": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": true,
@@ -2291,7 +2446,7 @@
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
-            "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
+            "PY_type_filename_template": "py{file_scope}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
@@ -2314,6 +2469,88 @@
         ]
     },
     "types": {
+        "CAPI::Class1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}CAPI::Class1 *>({c_var}{c_member}addr)",
+            "c_type": "TES_capi_class1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "CAPI::Class1",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_class1_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_class1_capsule)",
+            "f_capsule_data_type": "SHROUD_class1_capsule",
+            "f_derived_type": "class1",
+            "f_module": {
+                "testnames_capi_mod": [
+                    "class1"
+                ]
+            },
+            "f_module_name": "testnames_capi_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class1)",
+            "flat_name": "CAPI_Class1",
+            "forward": "CAPI::Class1",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}CAPI::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}CAPI::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
@@ -2340,6 +2577,7 @@
             "c_header": "mpi.h",
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
             "c_type": "MPI_Fint",
+            "cxx_header": "mpi.h",
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_c_module": {
@@ -2367,8 +2605,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -2446,6 +2682,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
@@ -2759,6 +2996,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -2780,6 +3018,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -2801,6 +3040,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -2822,6 +3062,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -2844,8 +3085,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -2971,8 +3210,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3071,6 +3308,7 @@
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
+            "cxx_header": "<cstddef>",
             "cxx_type": "size_t",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -3097,8 +3335,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3107,7 +3343,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<int> *>({c_var}{c_member}addr)",
             "c_type": "TES_std_Vvv1",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<int>",
             "f_c_module": {
@@ -3136,6 +3371,7 @@
             "f_type": "type(FFvvv1)",
             "flat_name": "std_vector_int",
             "forward": "std::vector<int>",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3262,7 +3498,6 @@
                 }
             },
             "c_type": "char",
-            "cxx_header": "<string>",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
             "f_c_module": {
@@ -3283,6 +3518,7 @@
             },
             "f_type": "character(*)",
             "flat_name": "std_string",
+            "impl_header": "<string>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -3315,8 +3551,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3325,7 +3559,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector *>({c_var}{c_member}addr)",
             "c_type": "TES_std_vector",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
             "f_c_module": {
@@ -3354,6 +3587,7 @@
             "f_type": "type(vector)",
             "flat_name": "std_vector",
             "forward": "std::vector",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3411,8 +3645,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3421,7 +3653,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<double> *>({c_var}{c_member}addr)",
             "c_type": "TES_std_vector_double",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<double>",
             "f_c_module": {
@@ -3450,6 +3681,7 @@
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
             "forward": "std::vector<double>",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3500,8 +3732,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3510,7 +3740,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<internal::ImplWorker1> *>({c_var}{c_member}addr)",
             "c_type": "TES_std_vector_instantiation3",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<internal::ImplWorker1>",
             "f_c_module": {
@@ -3539,6 +3768,7 @@
             "f_type": "type(vector_instantiation3)",
             "flat_name": "std_vector_internal_ImplWorker1",
             "forward": "std::vector<internal::ImplWorker1>",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3589,8 +3819,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3599,7 +3827,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}std::vector<long> *>({c_var}{c_member}addr)",
             "c_type": "TES_std_vector_instantiation5",
-            "cxx_header": "<vector>",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector<long>",
             "f_c_module": {
@@ -3628,6 +3855,7 @@
             "f_type": "type(vector_instantiation5)",
             "flat_name": "std_vector_long",
             "forward": "std::vector<long>",
+            "impl_header": "<vector>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -3700,7 +3928,6 @@
                 }
             },
             "c_type": "void",
-            "cxx_header": "<string>",
             "cxx_to_c": "static_cast<void *>({cxx_var})",
             "cxx_type": "std::string",
             "f_statements": {
@@ -3714,7 +3941,8 @@
                 }
             },
             "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string"
+            "flat_name": "std_string",
+            "impl_header": "<string>"
         },
         "twoTs": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -3727,8 +3955,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3829,8 +4055,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -3917,8 +4141,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -4000,6 +4222,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -4021,6 +4244,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -4042,6 +4266,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -4063,6 +4288,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",

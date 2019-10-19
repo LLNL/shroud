@@ -8,8 +8,8 @@
 //
 #include "wrapmemdoc.h"
 #include <cstddef>
+#include <cstdlib>
 #include <cstring>
-#include <stdlib.h>
 #include <string>
 #include "typesmemdoc.h"
 

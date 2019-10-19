@@ -1,22 +1,9 @@
-// pyNamestype.cpp
+// pystd_vector_inttype.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
-//
-// Produced at the Lawrence Livermore National Laboratory
-//
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
-#include "pytestnamesmodule.hpp"
-// splicer begin namespace.ns0.class.Names.impl.include
-// splicer end namespace.ns0.class.Names.impl.include
+#include "pytemplatesmodule.hpp"
+#include <vector>
+// splicer begin namespace.std.class.vector.impl.include
+// splicer end namespace.std.class.vector.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -30,73 +17,111 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin namespace.ns0.class.Names.impl.C_definition
-// splicer end namespace.ns0.class.Names.impl.C_definition
-// splicer begin namespace.ns0.class.Names.impl.additional_methods
-// splicer end namespace.ns0.class.Names.impl.additional_methods
+// splicer begin namespace.std.class.vector.impl.C_definition
+// splicer end namespace.std.class.vector.impl.C_definition
+// splicer begin namespace.std.class.vector.impl.additional_methods
+// splicer end namespace.std.class.vector.impl.additional_methods
 static void
-PY_Names_tp_del (PY_Names *self)
+PY_vector_int_tp_del (PY_vector_int *self)
 {
-// splicer begin namespace.ns0.class.Names.type.del
-    PY_SHROUD_release_memory(self->mydtor, self->myobj);
-    self->myobj = NULL;
-// splicer end namespace.ns0.class.Names.type.del
+// splicer begin namespace.std.class.vector.type.del
+    PY_SHROUD_release_memory(self->idtor, self->obj);
+    self->obj = NULL;
+// splicer end namespace.std.class.vector.type.del
 }
 
-static char PY_method1__doc__[] =
+static int
+PY_vector_int_tp_init(
+  PY_vector_int *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin namespace.std.class.vector.method.ctor
+    self->obj = new std::vector<int>();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 1;
+    return 0;
+// splicer end namespace.std.class.vector.method.ctor
+}
+
+static char PY_push_back__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_method1(
-  PY_Names *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
+PY_push_back(
+  PY_vector_int *self,
+  PyObject *args,
+  PyObject *kwds)
 {
-// void method1()
-// splicer begin namespace.ns0.class.Names.method.method1
-    self->myobj->method1();
+// splicer begin namespace.std.class.vector.method.push_back
+    int value;
+    const char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:push_back",
+        const_cast<char **>(SHT_kwlist), &value))
+        return NULL;
+    self->obj->push_back(value);
     Py_RETURN_NONE;
-// splicer end namespace.ns0.class.Names.method.method1
+// splicer end namespace.std.class.vector.method.push_back
 }
 
-static char PY_method2__doc__[] =
+static char PY_at__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_method2(
-  PY_Names *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
+PY_at(
+  PY_vector_int *self,
+  PyObject *args,
+  PyObject *kwds)
 {
-// void method2()
-// splicer begin namespace.ns0.class.Names.method.method2
-    self->myobj->method2();
-    Py_RETURN_NONE;
-// splicer end namespace.ns0.class.Names.method.method2
+// splicer begin namespace.std.class.vector.method.at
+    size_t n;
+    const char *SHT_kwlist[] = {
+        "n",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
+        const_cast<char **>(SHT_kwlist), &n))
+        return NULL;
+    int & rv = self->obj->at(n);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, rv);
+    if (SHTPy_rv == NULL) goto fail;
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end namespace.std.class.vector.method.at
 }
-// splicer begin namespace.ns0.class.Names.impl.after_methods
-// splicer end namespace.ns0.class.Names.impl.after_methods
-static PyMethodDef PY_Names_methods[] = {
-    {"method1", (PyCFunction)PY_method1, METH_NOARGS,
-        PY_method1__doc__},
-    {"method2", (PyCFunction)PY_method2, METH_NOARGS,
-        PY_method2__doc__},
-    // splicer begin namespace.ns0.class.Names.PyMethodDef
-    // splicer end namespace.ns0.class.Names.PyMethodDef
+// splicer begin namespace.std.class.vector.impl.after_methods
+// splicer end namespace.std.class.vector.impl.after_methods
+static PyMethodDef PY_vector_int_methods[] = {
+    {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
+        PY_push_back__doc__},
+    {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
+        PY_at__doc__},
+    // splicer begin namespace.std.class.vector.PyMethodDef
+    // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char Names__doc__[] =
+static char vector_int__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_Names_Type = {
+PyTypeObject PY_vector_int_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.ns0.Names",                       /* tp_name */
-    sizeof(PY_Names),         /* tp_basicsize */
+    "templates.vector_int",                       /* tp_name */
+    sizeof(PY_vector_int),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -123,7 +148,7 @@ PyTypeObject PY_Names_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    Names__doc__,         /* tp_doc */
+    vector_int__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -139,7 +164,7 @@ PyTypeObject PY_Names_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_Names_methods,                             /* tp_methods */
+    PY_vector_int_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -147,7 +172,7 @@ PyTypeObject PY_Names_Type = {
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)0,                   /* tp_init */
+    (initproc)PY_vector_int_tp_init,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
@@ -157,7 +182,7 @@ PyTypeObject PY_Names_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_Names_tp_del,                 /* tp_del */
+    (destructor)PY_vector_int_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

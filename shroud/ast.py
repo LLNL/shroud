@@ -240,6 +240,15 @@ class NamespaceMixin(object):
         self.variables.append(node)
         return node
 
+    def apply_case_option(self, name):
+        """Apply option.C_API_case to name"""
+        if self.options.C_API_case == 'lower':
+            return name.lower()
+        elif self.options.C_API_case == 'upper':
+            return name.upper()
+        else:
+            return name
+
 
 ######################################################################
 
@@ -278,6 +287,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         """
         # From arguments
+        self.parent = None
         self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
@@ -297,6 +307,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
         # namespace
         self.scope = ""
@@ -410,6 +422,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_standard=2003,
             F_auto_reference_count=False,
             F_create_bufferify_function=True,
+            F_create_generic=True,
             wrap_c=True,
             wrap_fortran=True,
             wrap_python=False,
@@ -422,14 +435,15 @@ class LibraryNode(AstNode, NamespaceMixin):
             # blank for functions, set in classes.
             YAML_type_filename_template="{library_lower}_types.yaml",
 
+            C_API_case="native",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
             C_header_filename_namespace_template="wrap{file_scope}.{C_header_filename_suffix}",
             C_impl_filename_namespace_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
-            C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
-            C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
+            C_header_filename_class_template="wrap{file_scope}.{C_header_filename_suffix}",
+            C_impl_filename_class_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
@@ -491,7 +505,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
-                "py{cxx_class}type.{PY_impl_filename_suffix}"
+                "py{file_scope}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
                 "{PY_prefix}{function_name}{function_suffix}{template_suffix}"
@@ -773,6 +787,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.namespaces = []
             self.variables = []
 
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
+
         # add to symbol table
         self.scope = self.parent.scope + self.name + "::"
         if skip:
@@ -825,7 +842,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         )
         if not skip:
             fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.name + "_"
+                parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_"
             )
             if options.flatten_namespace or options.F_flatten_namespace:
                 fmt_ns.F_name_scope = (
@@ -920,10 +937,12 @@ class ClassNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
+        self.scope = self.parent.scope + self.name + "::"
+        self.scope_file = self.parent.scope_file + [self.name]
+
         self.default_format(parent, format, kwargs)
 
         # Add to namespace.
-        self.scope = self.parent.scope + self.name + "::"
         self.symbols = {}
 
         fields = kwargs.get("fields", None)
@@ -957,6 +976,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.template_arguments = cxx_template
         for args in cxx_template:
             args.parse_instantiation(namespace=self)
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
     # # # # # namespace behavior
 
@@ -1025,9 +1046,10 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_class=self.name,
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
+            file_scope="_".join(self.scope_file[1:]),
         )
 
         fmt_class = self.fmtdict
@@ -1089,6 +1111,7 @@ class ClassNode(AstNode, NamespaceMixin):
         # Add new format and options Scope.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.scope_file = self.scope_file[:]
 
         # Clone all functions.
         newfcns = []
@@ -1178,7 +1201,6 @@ class FunctionNode(AstNode):
         self.default_format(parent, format, kwargs)
 
         # working variables
-        self._CXX_return_templated = False
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None
@@ -1215,6 +1237,9 @@ class FunctionNode(AstNode):
         # Used with c_statements to find correct intent block
         # possible values are '', '_buf'
         self.generated_suffix = ""
+
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
@@ -1439,6 +1464,8 @@ class EnumNode(AstNode):
 
             fmtmembers[member.name] = fmt
         self._fmtmembers = fmtmembers
+        # Headers required by template arguments.
+        self.gen_headers_typedef = {}
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"

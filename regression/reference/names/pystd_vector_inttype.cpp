@@ -1,9 +1,23 @@
-// pyImplWorker1type.cpp
+// pystd_vector_inttype.cpp
 // This is generated code, do not edit
-#include "pytemplatesmodule.hpp"
-#include "templates.hpp"
-// splicer begin namespace.internal.class.ImplWorker1.impl.include
-// splicer end namespace.internal.class.ImplWorker1.impl.include
+// #######################################################################
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+//
+// Produced at the Lawrence Livermore National Laboratory
+//
+// LLNL-CODE-738041.
+//
+// All rights reserved.
+//
+// This file is part of Shroud.
+//
+// For details about use and distribution, please read LICENSE.
+//
+// #######################################################################
+#include "pytestnamesmodule.hpp"
+#include <vector>
+// splicer begin namespace.std.class.vector.impl.include
+// splicer end namespace.std.class.vector.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -17,35 +31,35 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin namespace.internal.class.ImplWorker1.impl.C_definition
-// splicer end namespace.internal.class.ImplWorker1.impl.C_definition
-// splicer begin namespace.internal.class.ImplWorker1.impl.additional_methods
-// splicer end namespace.internal.class.ImplWorker1.impl.additional_methods
+// splicer begin namespace.std.class.vector.impl.C_definition
+// splicer end namespace.std.class.vector.impl.C_definition
+// splicer begin namespace.std.class.vector.impl.additional_methods
+// splicer end namespace.std.class.vector.impl.additional_methods
 static void
-PY_ImplWorker1_tp_del (PY_ImplWorker1 *self)
+PY_Vvv1_tp_del (PY_Vvv1 *self)
 {
-// splicer begin namespace.internal.class.ImplWorker1.type.del
-    PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
-// splicer end namespace.internal.class.ImplWorker1.type.del
+// splicer begin namespace.std.class.vector.type.del
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
+    self->myobj = NULL;
+// splicer end namespace.std.class.vector.type.del
 }
-// splicer begin namespace.internal.class.ImplWorker1.impl.after_methods
-// splicer end namespace.internal.class.ImplWorker1.impl.after_methods
-static PyMethodDef PY_ImplWorker1_methods[] = {
-    // splicer begin namespace.internal.class.ImplWorker1.PyMethodDef
-    // splicer end namespace.internal.class.ImplWorker1.PyMethodDef
+// splicer begin namespace.std.class.vector.impl.after_methods
+// splicer end namespace.std.class.vector.impl.after_methods
+static PyMethodDef PY_Vvv1_methods[] = {
+    // splicer begin namespace.std.class.vector.PyMethodDef
+    // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char ImplWorker1__doc__[] =
+static char Vvv1__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_ImplWorker1_Type = {
+PyTypeObject PY_Vvv1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "templates.ImplWorker1",                       /* tp_name */
-    sizeof(PY_ImplWorker1),         /* tp_basicsize */
+    "testnames.std.Vvv1",                       /* tp_name */
+    sizeof(PY_Vvv1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -72,7 +86,7 @@ PyTypeObject PY_ImplWorker1_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    ImplWorker1__doc__,         /* tp_doc */
+    Vvv1__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -88,7 +102,7 @@ PyTypeObject PY_ImplWorker1_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_ImplWorker1_methods,                             /* tp_methods */
+    PY_Vvv1_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -106,7 +120,7 @@ PyTypeObject PY_ImplWorker1_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_ImplWorker1_tp_del,                 /* tp_del */
+    (destructor)PY_Vvv1_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

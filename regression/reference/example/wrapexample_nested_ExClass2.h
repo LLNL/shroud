@@ -1,4 +1,4 @@
-// wrapExClass2.h
+// wrapexample_nested_ExClass2.h
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 //
@@ -14,16 +14,20 @@
 //
 // #######################################################################
 /**
- * \file wrapExClass2.h
+ * \file wrapexample_nested_ExClass2.h
  * \brief Shroud generated wrapper for ExClass2 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPEXCLASS2_H
-#define WRAPEXCLASS2_H
+#ifndef WRAPEXAMPLE_NESTED_EXCLASS2_H
+#define WRAPEXAMPLE_NESTED_EXCLASS2_H
 
-#include "sidre/SidreTypes.h"
 #include "typesUserLibrary.h"
+#ifdef __cplusplus
+#include "sidre/SidreWrapperHelpers.hpp"
+#else
+#include "sidre/SidreTypes.h"
+#endif
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass2.CXX_declarations
@@ -111,4 +115,4 @@ double AA_example_nested_ExClass2_get_value_double(
 }
 #endif
 
-#endif  // WRAPEXCLASS2_H
+#endif  // WRAPEXAMPLE_NESTED_EXCLASS2_H

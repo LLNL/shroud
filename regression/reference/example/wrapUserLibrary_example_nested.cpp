@@ -15,7 +15,6 @@
 // #######################################################################
 #include "wrapUserLibrary_example_nested.h"
 #include <string>
-#include "sidre/Group.hpp"
 
 // splicer begin namespace.example::nested.CXX_definitions
 // splicer end namespace.example::nested.CXX_definitions

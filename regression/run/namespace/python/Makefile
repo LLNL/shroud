@@ -18,10 +18,10 @@ VPATH = \
 
 OBJS = \
     namespace.o \
-    pyCstruct1type.o \
+    pyouter_Cstruct1type.o \
     pynsmodule.o \
     pyns_outermodule.o \
-    pyClassWorktype.o \
+    pynswork_ClassWorktype.o \
     pyns_nsworkmodule.o \
     pynsutil.o
 

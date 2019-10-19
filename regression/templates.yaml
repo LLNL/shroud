@@ -51,6 +51,11 @@ declarations:
 # Class which is used to instantiate the C++ template.
 # It is not part of the Fortran API.
   - decl: class ImplWorker1
+    cxx_header: implworker1.hpp
+    options:
+      wrap_fortran: false
+  - decl: class ImplWorker2
+    cxx_header: implworker2.hpp
     options:
       wrap_fortran: false
 
@@ -96,5 +101,8 @@ declarations:
 - decl: template<typename T> int UseImplWorker()
   doxygen:
      brief: Function which uses a templated T in the implemetation.
+  options:
+    F_create_generic: False
   cxx_template:
   - instantiation: <internal::ImplWorker1>
+  - instantiation: <internal::ImplWorker2>

@@ -1604,7 +1604,7 @@ rv = .false.
 
             self.update_f_module(modules, imports, result_typemap.f_module)
 
-        if not node._CXX_return_templated:
+        if options.F_create_generic:
             # if return type is templated in C++,
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())

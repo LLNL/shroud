@@ -28,7 +28,7 @@ declarations:
   - type: User2
     fields:
       base: shadow
-      cxx_header: User2.hpp
+      impl_header: User2.hpp
       cxx_type: User2
       c_type: PRE_User2
       f_module_name: preprocess_mod

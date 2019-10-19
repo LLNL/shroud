@@ -1,15 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
+# SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
 # run/tutorial
@@ -30,16 +23,17 @@ VPATH = \
     $(top)/regression/run/tutorial \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     tutorial.o \
-    wrapftutorial.o \
     wrapTutorial.o \
     wrapClass1.o \
-    wrapSingleton.o \
+    wrapSingleton.o
+F_OBJS = \
+    wrapftutorial.o \
     fruit.o \
     main.o
 
-tutorial : $(OBJS)
+tutorial : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
@@ -56,5 +50,5 @@ maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
-testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

@@ -23,16 +23,17 @@ VPATH = \
     $(top)/regression/run/namespace \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     namespace.o \
-    wrapfns.f \
     wrapfns_outer.o \
     wrapns.o \
-    wrapns_outer.o \
+    wrapns_outer.o
+F_OBJS= \
+    wrapfns.f \
     fruit.o \
     main.o
 
-namespace : $(OBJS)
+namespace : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
@@ -42,3 +43,7 @@ namespace.o : namespace.hpp
 wrapns.o : namespace.hpp
 wrapns_outer.o : namespace.hpp
 main.o : wrapfns.o wrapfns_outer.o
+
+testc.o : testc.c wrapns.h wrapns_outer.h
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

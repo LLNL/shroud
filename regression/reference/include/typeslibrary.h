@@ -30,6 +30,18 @@ struct s_LIB_Class2 {
 };
 typedef struct s_LIB_Class2 LIB_Class2;
 
+struct s_LIB_outer1_class0 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_outer1_class0 LIB_outer1_class0;
+
+struct s_LIB_outer2_class0 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_outer2_class0 LIB_outer2_class0;
+
 struct s_LIB_three_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

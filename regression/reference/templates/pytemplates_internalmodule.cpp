@@ -64,6 +64,14 @@ PyObject *PY_init_templates_internal(void)
     Py_INCREF(&PY_ImplWorker1_Type);
     PyModule_AddObject(m, "ImplWorker1", (PyObject *)&PY_ImplWorker1_Type);
 
+    // ImplWorker2
+    PY_ImplWorker2_Type.tp_new   = PyType_GenericNew;
+    PY_ImplWorker2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_ImplWorker2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_ImplWorker2_Type);
+    PyModule_AddObject(m, "ImplWorker2", (PyObject *)&PY_ImplWorker2_Type);
+
     return m;
 }
 

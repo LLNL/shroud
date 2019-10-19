@@ -15,9 +15,8 @@
 //
 // #######################################################################
 #include "wrapvectors.h"
+#include <cstdlib>
 #include <cstring>
-#include <stdlib.h>
-#include <string>
 #include "typesvectors.h"
 #include "vectors.hpp"
 

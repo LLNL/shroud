@@ -1,4 +1,4 @@
-// wrapClass1.h
+// wrapthree_Class1.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,16 +15,20 @@
 //
 // #######################################################################
 /**
- * \file wrapClass1.h
+ * \file wrapthree_Class1.h
  * \brief Shroud generated wrapper for Class1 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLASS1_H
-#define WRAPCLASS1_H
+#ifndef WRAPTHREE_CLASS1_H
+#define WRAPTHREE_CLASS1_H
 
-#include "type_header.h"
 #include "typeslibrary.h"
+#ifdef __cplusplus
+#include "type_header.hpp"
+#else
+#include "type_header.h"
+#endif
 
 
 #ifdef __cplusplus
@@ -38,4 +42,4 @@ void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1);
 }
 #endif
 
-#endif  // WRAPCLASS1_H
+#endif  // WRAPTHREE_CLASS1_H

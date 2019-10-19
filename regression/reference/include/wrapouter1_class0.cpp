@@ -1,4 +1,4 @@
-// wrapClass1.cpp
+// wrapouter1_class0.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,18 +14,17 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wrapClass1.h"
-#include "class_header.hpp"
-#include "type_header.hpp"
+#include "wrapouter1_class0.h"
+#include "outer1.hpp"
 
 
 extern "C" {
 
 
-void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)
+void LIB_outer1_class0_method(LIB_outer1_class0 * self)
 {
-    three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);
-    SH_this->method1(arg1);
+    outer1::class0 *SH_this = static_cast<outer1::class0 *>(self->addr);
+    SH_this->method();
     return;
 }
 

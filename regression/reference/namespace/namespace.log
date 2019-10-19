@@ -22,11 +22,11 @@ class ClassWork
 Close wrapfns.f
 class Cstruct1
 Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
-Close pyCstruct1type.cpp
+Close pyouter_Cstruct1type.cpp
 Python function void One()
 Close pyns_outermodule.cpp
 class ClassWork
-Close pyClassWorktype.cpp
+Close pynswork_ClassWorktype.cpp
 Close pyns_nsworkmodule.cpp
 Python function const std::string & LastFunctionCalled() +deref(allocatable)
 Python function void One()

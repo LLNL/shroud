@@ -160,8 +160,8 @@
                                 "cxx_header": "ExClass1.hpp",
                                 "fmtdict": {
                                     "CXX_this_call": "SH_this->",
-                                    "C_header_filename": "wrapExClass1.h",
-                                    "C_impl_filename": "wrapExClass1.cpp",
+                                    "C_header_filename": "wrapexample_nested_ExClass1.h",
+                                    "C_impl_filename": "wrapexample_nested_ExClass1.cpp",
                                     "C_name_scope": "example_nested_ExClass1_",
                                     "C_type_name": "AA_example_nested_ExClass1",
                                     "F_capsule_data_type": "SHROUD_exclass1_capsule",
@@ -180,10 +180,11 @@
                                     "PY_from_object_func": "PP_ExClass1_from_Object",
                                     "PY_this_call": "self->obj->",
                                     "PY_to_object_func": "PP_ExClass1_to_Object",
-                                    "PY_type_filename": "pyExClass1type.cpp",
+                                    "PY_type_filename": "pyexample_nested_ExClass1type.cpp",
                                     "class_scope": "ExClass1::",
                                     "cxx_class": "ExClass1",
-                                    "cxx_type": "ExClass1"
+                                    "cxx_type": "ExClass1",
+                                    "file_scope": "example_nested_ExClass1"
                                 },
                                 "functions": [
                                     {
@@ -2051,8 +2052,8 @@
                                 "cxx_header": "ExClass2.hpp",
                                 "fmtdict": {
                                     "CXX_this_call": "SH_this->",
-                                    "C_header_filename": "wrapExClass2.h",
-                                    "C_impl_filename": "wrapExClass2.cpp",
+                                    "C_header_filename": "wrapexample_nested_ExClass2.h",
+                                    "C_impl_filename": "wrapexample_nested_ExClass2.cpp",
                                     "C_name_scope": "example_nested_ExClass2_",
                                     "C_type_name": "AA_example_nested_ExClass2",
                                     "F_capsule_data_type": "SHROUD_exclass2_capsule",
@@ -2071,10 +2072,11 @@
                                     "PY_from_object_func": "PP_ExClass2_from_Object",
                                     "PY_this_call": "self->obj->",
                                     "PY_to_object_func": "PP_ExClass2_to_Object",
-                                    "PY_type_filename": "pyExClass2type.cpp",
+                                    "PY_type_filename": "pyexample_nested_ExClass2type.cpp",
                                     "class_scope": "ExClass2::",
                                     "cxx_class": "ExClass2",
-                                    "cxx_type": "ExClass2"
+                                    "cxx_type": "ExClass2",
+                                    "file_scope": "example_nested_ExClass2"
                                 },
                                 "functions": [
                                     {
@@ -4881,6 +4883,12 @@
                                             "template_suffix": "_double",
                                             "underscore_name": "set_value"
                                         },
+                                        "gen_headers_typedef": [
+                                            "double",
+                                            "float",
+                                            "int",
+                                            "long"
+                                        ],
                                         "have_template_args": true,
                                         "linenumber": 212,
                                         "options": {
@@ -5001,7 +5009,6 @@
                                         ]
                                     },
                                     {
-                                        "_CXX_return_templated": true,
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_var": "SHC_rv",
@@ -5081,6 +5088,7 @@
                                         "have_template_args": true,
                                         "linenumber": 219,
                                         "options": {
+                                            "F_create_generic": false,
                                             "wrap_c": true,
                                             "wrap_fortran": true,
                                             "wrap_lua": true,
@@ -5115,7 +5123,6 @@
                                         ]
                                     },
                                     {
-                                        "_CXX_return_templated": true,
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_var": "SHC_rv",
@@ -5190,9 +5197,14 @@
                                             "template_suffix": "_double",
                                             "underscore_name": "get_value"
                                         },
+                                        "gen_headers_typedef": [
+                                            "double",
+                                            "int"
+                                        ],
                                         "have_template_args": true,
                                         "linenumber": 219,
                                         "options": {
+                                            "F_create_generic": false,
                                             "wrap_c": true,
                                             "wrap_fortran": true,
                                             "wrap_lua": true,
@@ -9129,13 +9141,14 @@
             }
         ],
         "options": {
+            "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
-            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
+            "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
-            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
+            "C_impl_filename_class_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
@@ -9152,6 +9165,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
+            "F_create_generic": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,
@@ -9195,7 +9209,7 @@
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
-            "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
+            "PY_type_filename_template": "py{file_scope}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
@@ -9224,6 +9238,7 @@
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
             "c_type": "MPI_Fint",
             "cpp_if": "ifdef USE_MPI",
+            "cxx_header": "mpi.h",
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_c_module": {
@@ -9299,8 +9314,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -9379,6 +9392,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
@@ -9657,8 +9671,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -9667,7 +9679,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}example::nested::ExClass1 *>({c_var}{c_member}addr)",
             "c_type": "AA_example_nested_ExClass1",
-            "cxx_header": "ExClass1.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "example::nested::ExClass1",
             "f_c_module": {
@@ -9697,6 +9708,7 @@
             "flat_name": "example_nested_ExClass1",
             "forward": "example::nested::ExClass1",
             "idtor": "1",
+            "impl_header": "ExClass1.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -9747,8 +9759,6 @@
                     ]
                 },
                 "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
                     "post_call": [
                         "{c_var}->addr = {cxx_cast_to_void_ptr};",
                         "{c_var}->idtor = {idtor};"
@@ -9757,7 +9767,6 @@
             },
             "c_to_cxx": "static_cast<{c_const}example::nested::ExClass2 *>({c_var}{c_member}addr)",
             "c_type": "AA_example_nested_ExClass2",
-            "cxx_header": "ExClass2.hpp",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "example::nested::ExClass2",
             "f_c_module": {
@@ -9787,6 +9796,7 @@
             "flat_name": "example_nested_ExClass2",
             "forward": "example::nested::ExClass2",
             "idtor": "2",
+            "impl_header": "ExClass2.hpp",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
@@ -9872,6 +9882,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -9893,6 +9904,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -9914,6 +9926,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -9935,6 +9948,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "int8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -10011,6 +10025,7 @@
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
+            "cxx_header": "<cstddef>",
             "cxx_type": "size_t",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -10113,7 +10128,6 @@
                 }
             },
             "c_type": "char",
-            "cxx_header": "<string>",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
             "f_c_module": {
@@ -10134,6 +10148,7 @@
             },
             "f_type": "character(*)",
             "flat_name": "std_string",
+            "impl_header": "<string>",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -10389,7 +10404,6 @@
                 }
             },
             "c_type": "void",
-            "cxx_header": "<string>",
             "cxx_to_c": "static_cast<void *>({cxx_var})",
             "cxx_type": "std::string",
             "f_statements": {
@@ -10403,7 +10417,8 @@
                 }
             },
             "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string"
+            "flat_name": "std_string",
+            "impl_header": "<string>"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -10415,6 +10430,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -10436,6 +10452,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -10457,6 +10474,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -10478,6 +10496,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
+            "cxx_header": "<cstdint>",
             "cxx_type": "uint8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",

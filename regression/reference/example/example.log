@@ -22,8 +22,8 @@ C method long getValue(long value +intent(in)+value)
 C method void * getAddr()
 C method bool hasAddr(bool in +intent(in)+value)
 C method void SplicerSpecial()
-Close wrapExClass1.h
-Close wrapExClass1.cpp
+Close wrapexample_nested_ExClass1.h
+Close wrapexample_nested_ExClass1.cpp
 class ExClass2
 C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
@@ -48,8 +48,8 @@ C method void setValue(float value +intent(in)+value)
 C method void setValue(double value +intent(in)+value)
 C method int getValue()
 C method double getValue()
-Close wrapExClass2.h
-Close wrapExClass2.cpp
+Close wrapexample_nested_ExClass2.h
+Close wrapexample_nested_ExClass2.cpp
 C function void local_function1()
 C function bool isNameValid(const std::string & name +intent(in))
 C function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
@@ -168,7 +168,7 @@ Python method long getValue(long value +intent(in)+value)
 Python method void * getAddr()
 Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
-Close pyExClass1type.cpp
+Close pyexample_nested_ExClass1type.cpp
 class ExClass2
 Python method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Python method ~ExClass2()
@@ -187,7 +187,7 @@ Python method void setValue(float value +intent(in)+value)
 Python method void setValue(double value +intent(in)+value)
 Python method int getValue()
 Python method double getValue()
-Close pyExClass2type.cpp
+Close pyexample_nested_ExClass2type.cpp
 Python function void local_function1()
 Python function bool isNameValid(const std::string & name +intent(in))
 Python function bool isInitialized()

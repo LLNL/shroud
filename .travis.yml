@@ -11,7 +11,7 @@
 # For details about use and distribution, please read LICENSE.
 #
 ########################################################################
-dist: trusty
+dist: xenial 
 sudo: false
 
 language: python
@@ -20,6 +20,7 @@ python:
 - "3.4"
 - "3.5"
 - "3.6"
+- "3.7"
 
 # Command to install dependencies.
 # This installs Shroud into the virtualenv.

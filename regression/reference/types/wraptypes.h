@@ -23,9 +23,15 @@
 #ifndef WRAPTYPES_H
 #define WRAPTYPES_H
 
+#include "typestypes.h"
+#ifdef __cplusplus
+#include <cstddef>
+#include <cstdint>
+#else
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "typestypes.h"
+#endif
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

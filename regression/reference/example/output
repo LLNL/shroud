@@ -1,8 +1,8 @@
 Wrote userlibrary_types.yaml
-Wrote wrapExClass1.h
-Wrote wrapExClass1.cpp
-Wrote wrapExClass2.h
-Wrote wrapExClass2.cpp
+Wrote wrapexample_nested_ExClass1.h
+Wrote wrapexample_nested_ExClass1.cpp
+Wrote wrapexample_nested_ExClass2.h
+Wrote wrapexample_nested_ExClass2.cpp
 Wrote wrapUserLibrary_example_nested.h
 Wrote wrapUserLibrary_example_nested.cpp
 Wrote wrapUserLibrary.cpp
@@ -10,8 +10,8 @@ Wrote typesUserLibrary.h
 Wrote wrapfUserLibrary_example_nested.f
 Wrote wrapfUserLibrary_example.f
 Wrote wrapfuserlibrary.f
-Wrote pyExClass1type.cpp
-Wrote pyExClass2type.cpp
+Wrote pyexample_nested_ExClass1type.cpp
+Wrote pyexample_nested_ExClass2type.cpp
 Wrote pyUserLibrary_example_nestedmodule.cpp
 Wrote pyUserLibrary_examplemodule.cpp
 Wrote pyUserLibrarymodule.cpp

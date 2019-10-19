@@ -1,0 +1,147 @@
+! wrapftestnames_CAPI.F
+! This is generated code, do not edit
+! #######################################################################
+! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+!
+! Produced at the Lawrence Livermore National Laboratory
+!
+! LLNL-CODE-738041.
+!
+! All rights reserved.
+!
+! This file is part of Shroud.
+!
+! For details about use and distribution, please read LICENSE.
+!
+! #######################################################################
+!>
+!! \file wrapftestnames_CAPI.F
+!! \brief Shroud generated wrapper for CAPI namespace
+!<
+! splicer begin namespace.CAPI.file_top
+! splicer end namespace.CAPI.file_top
+module testnames_capi_mod
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    ! splicer begin namespace.CAPI.module_use
+    ! splicer end namespace.CAPI.module_use
+    implicit none
+
+    ! splicer begin namespace.CAPI.module_top
+    ! splicer end namespace.CAPI.module_top
+
+    type, bind(C) :: SHROUD_class1_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class1_capsule
+
+    type class1
+        type(SHROUD_class1_capsule) :: cxxmem
+        ! splicer begin namespace.CAPI.class.Class1.component_part
+        ! splicer end namespace.CAPI.class.Class1.component_part
+    contains
+        procedure :: member1 => class1_member1
+        procedure :: get_instance => class1_get_instance
+        procedure :: set_instance => class1_set_instance
+        procedure :: associated => class1_associated
+        ! splicer begin namespace.CAPI.class.Class1.type_bound_procedure_part
+        ! splicer end namespace.CAPI.class.Class1.type_bound_procedure_part
+    end type class1
+
+    interface operator (.eq.)
+        module procedure class1_eq
+    end interface
+
+    interface operator (.ne.)
+        module procedure class1_ne
+    end interface
+
+    interface
+
+        subroutine c_class1_member1(self) &
+                bind(C, name="TES_capi_class1_member1")
+            import :: SHROUD_class1_capsule
+            implicit none
+            type(SHROUD_class1_capsule), intent(IN) :: self
+        end subroutine c_class1_member1
+
+        ! splicer begin namespace.CAPI.class.Class1.additional_interfaces
+        ! splicer end namespace.CAPI.class.Class1.additional_interfaces
+
+        subroutine c_worker1() &
+                bind(C, name="TES_capi_worker1")
+            implicit none
+        end subroutine c_worker1
+
+        ! splicer begin namespace.CAPI.additional_interfaces
+        ! splicer end namespace.CAPI.additional_interfaces
+    end interface
+
+contains
+
+    ! void Member1()
+    subroutine class1_member1(obj)
+        class(class1) :: obj
+        ! splicer begin namespace.CAPI.class.Class1.method.member1
+        call c_class1_member1(obj%cxxmem)
+        ! splicer end namespace.CAPI.class.Class1.method.member1
+    end subroutine class1_member1
+
+    ! Return pointer to C++ memory.
+    function class1_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(class1), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function class1_get_instance
+
+    subroutine class1_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class1), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine class1_set_instance
+
+    function class1_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class1), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function class1_associated
+
+    ! splicer begin namespace.CAPI.class.Class1.additional_functions
+    ! splicer end namespace.CAPI.class.Class1.additional_functions
+
+    ! void Worker1()
+    subroutine worker1()
+        ! splicer begin namespace.CAPI.function.worker1
+        call c_worker1()
+        ! splicer end namespace.CAPI.function.worker1
+    end subroutine worker1
+
+    ! splicer begin namespace.CAPI.additional_functions
+    ! splicer end namespace.CAPI.additional_functions
+
+    function class1_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_eq
+
+    function class1_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_ne
+
+end module testnames_capi_mod

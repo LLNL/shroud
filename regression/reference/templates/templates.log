@@ -5,16 +5,17 @@ C method vector()
 C method ~vector()
 C method void push_back(const int & value +intent(in))
 C method int & at(size_type n +intent(in)+value)
-Close wrapvector_int.h
+Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector
 C method vector()
 C method ~vector()
 C method void push_back(const double & value +intent(in))
 C method double & at(size_type n +intent(in)+value)
-Close wrapvector_double.h
-Close wrapvector_double.cpp
+Close wrapstd_vector_double.h
+Close wrapstd_vector_double.cpp
 class ImplWorker1
+class ImplWorker2
 class Worker
 class user
 C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
@@ -22,6 +23,7 @@ Close wrapuser_int.h
 Close wrapuser_int.cpp
 C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C function int UseImplWorker()
 C function int UseImplWorker()
 Close wraptemplates.h
 Close wraptemplates.cpp
@@ -31,6 +33,7 @@ class user
 C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C-interface, Fortran function int UseImplWorker()
 C-interface, Fortran function int UseImplWorker()
 class vector
 C-interface, Fortran method vector()
@@ -50,16 +53,18 @@ Python method vector()
 Python method ~vector()
 Python method void push_back(const int & value +intent(in))
 Python method int & at(size_type n +intent(in)+value)
-Close pyvector_inttype.cpp
+Close pystd_vector_inttype.cpp
 class vector
 Python method vector()
 Python method ~vector()
 Python method void push_back(const double & value +intent(in))
 Python method double & at(size_type n +intent(in)+value)
-Close pyvector_doubletype.cpp
+Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1
-Close pyImplWorker1type.cpp
+Close pyinternal_ImplWorker1type.cpp
+class ImplWorker2
+Close pyinternal_ImplWorker2type.cpp
 Close pytemplates_internalmodule.cpp
 class Worker
 Close pyWorkertype.cpp
@@ -68,6 +73,7 @@ Python method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+va
 Close pyuser_inttype.cpp
 Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Python function int UseImplWorker()
 Python function int UseImplWorker()
 Close pytemplatesmodule.cpp
 Close pytemplatesutil.cpp

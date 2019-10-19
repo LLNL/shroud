@@ -17,6 +17,9 @@ class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
 
+    def visit_bool(self, node):
+        return str(node)
+
     def visit_str(self, node):
         return str(node)
 
@@ -226,7 +229,6 @@ class ToDict(visitor.Visitor):
                 "template_parameters",
                 "C_error_pattern",
                 "PY_error_pattern",
-                "_CXX_return_templated",
                 "_default_funcs",
                 "_generated",
                 "_has_default_arg",
@@ -258,6 +260,9 @@ class ToDict(visitor.Visitor):
                 # #- 'CXX_return_type', 'C_return_type', 'F_return_type',
             ],
         )
+        if node.gen_headers_typedef:
+            d['gen_headers_typedef'] = sorted(node.gen_headers_typedef.keys())
+
         return d
 
     def visit_EnumNode(self, node):

@@ -593,6 +593,7 @@ class GenFunctions(object):
                         # Check if user has changed cxx_class.
                         cxx_class = targs.fmtdict["cxx_class"]
 
+                    newcls.scope_file[-1] += class_suffix
                     # Add default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
@@ -602,6 +603,7 @@ class GenFunctions(object):
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
                             F_derived_name=cxx_class.lower(),
+                            file_scope="_".join(newcls.scope_file[1:]),
                         )
                     )
                     # Add user specified values to format dictionary.
@@ -706,6 +708,7 @@ class GenFunctions(object):
                 method._overloaded = True
                 self.template_function(method, ordered_functions)
             elif method.have_template_args:
+                # have_template_args is True if result/argument is templated.
                 #                method._overloaded = True
                 self.template_function2(method, ordered_functions)
 
@@ -715,6 +718,8 @@ class GenFunctions(object):
             # if not function.options.wrap_c:
             #     continue
             if function.cxx_template:
+                continue
+            if function.template_arguments:
                 continue
             if function.have_template_args:
                 # Stuff like push_back which is in a templated class, is not an overload
@@ -774,7 +779,9 @@ class GenFunctions(object):
             ordered_functions -
         """
         oldoptions = node.options
+        headers_typedef = {}
 
+        # targs - ast.TemplateArgument
         for iargs, targs in enumerate(node.template_arguments):
             new = node.clone()
             ordered_functions.append(new)
@@ -809,14 +816,21 @@ class GenFunctions(object):
             options.wrap_lua = oldoptions.wrap_lua
             fmt.CXX_template = targs.instantiation  # ex. <int>
 
+            # Gather headers required by template arguments.
+            for targ in targs.asts:
+                ntypemap = targ.typemap
+                headers_typedef[ntypemap.name] = ntypemap
+
             self.push_instantiate_scope(new, targs)
 
             if new.ast.typemap.base == "template":
                 iast = getattr(self.instantiate_scope, new.ast.typemap.name)
                 new.ast = new.ast.instantiate(node.ast.instantiate(iast))
-                new._CXX_return_templated = True
+                # Generics cannot differentiate on return type
+                options.F_create_generic = False
 
             # Replace templated arguments.
+            # arg - declast.Declaration
             newparams = []
             for arg in new.ast.params:
                 if arg.typemap.base == "template":
@@ -827,6 +841,7 @@ class GenFunctions(object):
             new.ast.params = newparams
             self.pop_instantiate_scope()
 
+        new.gen_headers_typedef = headers_typedef
         # Do not process templated node, instead process
         # generated functions above.
         options = node.options
@@ -879,7 +894,8 @@ class GenFunctions(object):
         if new.ast.typemap.base == "template":
             iast = getattr(self.instantiate_scope, new.ast.typemap.name)
             new.ast = new.ast.instantiate(node.ast.instantiate(iast))
-            new._CXX_return_templated = True
+            # Generics cannot differentiate on return type
+            options.F_create_generic = False
 
         # Replace templated arguments.
         newparams = []
