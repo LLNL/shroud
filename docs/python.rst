@@ -207,17 +207,6 @@ will presumably fill the contents.  The NumPy array will be returned
 as part of the function result.  The dimension attribute must specify
 a length.
 
-Struct Types
-------------
-
-While C++ considers a struct and a class to be similar, Shroud assumes
-a struct is intended to be a C compatible data structure.
-It has no methods which will cause a v-table to be created.
-
-A NumPy dtype is create for the struct.
-This will cause an array of structs to be identical in C, C++ and Python.
-No memory is copied.
-
 
 Class Types
 -----------
