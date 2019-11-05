@@ -318,6 +318,16 @@ if __name__ == "__main__":
         TestDesc("tutorial"),
         TestDesc("types"),
 
+        # enum
+        TestDesc("enum-c", yaml="enum",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("enum-cxx", yaml="enum",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+
         # pointers
         TestDesc("pointers-numpy-cpp", yaml="pointers",
                  cmdline=[

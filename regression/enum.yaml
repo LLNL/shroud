@@ -1,0 +1,26 @@
+copyright:
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test enums
+
+library: enum
+cxx_header: enum.h
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: False
+
+declarations:
+
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };

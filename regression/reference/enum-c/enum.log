@@ -1,0 +1,8 @@
+Read yaml enum.yaml
+Close wrapenum.h
+Close wrapenum.c
+Close typesenum.h
+Close wrapfenum.f
+Close pyenummodule.c
+Close pyenumutil.c
+Close pyenummodule.h
