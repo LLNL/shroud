@@ -13,5 +13,16 @@ enum Color {
   WHITE
 };
 
+enum val {
+  a1,
+  b1 = 3,
+  c1,
+  d1 = b1 - a1,
+  e1 = d1,
+  f1,
+  g1,
+  h1 = 100,
+};
+
 #endif // ENUM_H
 

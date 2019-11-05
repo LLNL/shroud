@@ -1443,11 +1443,12 @@ class EnumNode(AstNode):
 
         # format for each enum member
         fmtmembers = {}
-        evalue = 0
         if ast.scope is not None:
             # members of 'class enum' must be qualified, add to scope.
             C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
             F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
+        evalue = 0
+        value_is_int = True
         for member in ast.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
@@ -1460,9 +1461,22 @@ class EnumNode(AstNode):
             # evaluate value
             if member.value is not None:
                 fmt.cxx_value = todict.print_node(member.value)
-                evalue = int(todict.print_node(member.value))
+                evalue = todict.print_node(member.value)
+                try:
+                    evalue = int(evalue)
+                    value_is_int = True
+                except ValueError:
+                    base = evalue
+                    incr = 0
+                    value_is_int = False
             fmt.evalue = evalue
-            evalue = evalue + 1
+
+            # prepare for next value
+            if value_is_int:
+                evalue = evalue + 1
+            else:
+                incr += 1
+                evalue = "{}+{}".format(base, incr)
 
             fmtmembers[member.name] = fmt
         self._fmtmembers = fmtmembers

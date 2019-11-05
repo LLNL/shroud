@@ -26,6 +26,16 @@ module enum_mod
     integer(C_INT), parameter :: blue = 11
     integer(C_INT), parameter :: white = 12
 
+    !  enum val
+    integer(C_INT), parameter :: a1 = 0
+    integer(C_INT), parameter :: b1 = 3
+    integer(C_INT), parameter :: c1 = 4
+    integer(C_INT), parameter :: d1 = b1-a1
+    integer(C_INT), parameter :: e1 = d1
+    integer(C_INT), parameter :: f1 = d1+1
+    integer(C_INT), parameter :: g1 = d1+2
+    integer(C_INT), parameter :: h1 = 100
+
     interface
 
         ! splicer begin additional_interfaces

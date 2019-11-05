@@ -114,6 +114,16 @@ initenum(void)
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
 
+    // enum val
+    PyModule_AddIntConstant(m, "a1", a1);
+    PyModule_AddIntConstant(m, "b1", b1);
+    PyModule_AddIntConstant(m, "c1", c1);
+    PyModule_AddIntConstant(m, "d1", d1);
+    PyModule_AddIntConstant(m, "e1", e1);
+    PyModule_AddIntConstant(m, "f1", f1);
+    PyModule_AddIntConstant(m, "g1", g1);
+    PyModule_AddIntConstant(m, "h1", h1);
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

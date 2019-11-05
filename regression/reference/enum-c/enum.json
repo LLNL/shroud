@@ -67,6 +67,136 @@
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color"
+            },
+            {
+                "_fmtmembers": {
+                    "a1": {
+                        "C_enum_member": "ENU_a1",
+                        "F_enum_member": "a1",
+                        "enum_member_lower": "a1",
+                        "enum_member_name": "a1",
+                        "enum_member_upper": "A1",
+                        "evalue": 0
+                    },
+                    "b1": {
+                        "C_enum_member": "ENU_b1",
+                        "F_enum_member": "b1",
+                        "cxx_value": "3",
+                        "enum_member_lower": "b1",
+                        "enum_member_name": "b1",
+                        "enum_member_upper": "B1",
+                        "evalue": 3
+                    },
+                    "c1": {
+                        "C_enum_member": "ENU_c1",
+                        "F_enum_member": "c1",
+                        "enum_member_lower": "c1",
+                        "enum_member_name": "c1",
+                        "enum_member_upper": "C1",
+                        "evalue": 4
+                    },
+                    "d1": {
+                        "C_enum_member": "ENU_d1",
+                        "F_enum_member": "d1",
+                        "cxx_value": "b1-a1",
+                        "enum_member_lower": "d1",
+                        "enum_member_name": "d1",
+                        "enum_member_upper": "D1",
+                        "evalue": "b1-a1"
+                    },
+                    "e1": {
+                        "C_enum_member": "ENU_e1",
+                        "F_enum_member": "e1",
+                        "cxx_value": "d1",
+                        "enum_member_lower": "e1",
+                        "enum_member_name": "e1",
+                        "enum_member_upper": "E1",
+                        "evalue": "d1"
+                    },
+                    "f1": {
+                        "C_enum_member": "ENU_f1",
+                        "F_enum_member": "f1",
+                        "enum_member_lower": "f1",
+                        "enum_member_name": "f1",
+                        "enum_member_upper": "F1",
+                        "evalue": "d1+1"
+                    },
+                    "g1": {
+                        "C_enum_member": "ENU_g1",
+                        "F_enum_member": "g1",
+                        "enum_member_lower": "g1",
+                        "enum_member_name": "g1",
+                        "enum_member_upper": "G1",
+                        "evalue": "d1+2"
+                    },
+                    "h1": {
+                        "C_enum_member": "ENU_h1",
+                        "F_enum_member": "h1",
+                        "cxx_value": "100",
+                        "enum_member_lower": "h1",
+                        "enum_member_name": "h1",
+                        "enum_member_upper": "H1",
+                        "evalue": 100
+                    }
+                },
+                "ast": {
+                    "members": [
+                        {
+                            "name": "a1"
+                        },
+                        {
+                            "name": "b1",
+                            "value": {
+                                "constant": "3"
+                            }
+                        },
+                        {
+                            "name": "c1"
+                        },
+                        {
+                            "name": "d1",
+                            "value": {
+                                "left": {
+                                    "name": "b1"
+                                },
+                                "op": "-",
+                                "right": {
+                                    "name": "a1"
+                                }
+                            }
+                        },
+                        {
+                            "name": "e1",
+                            "value": {
+                                "name": "d1"
+                            }
+                        },
+                        {
+                            "name": "f1"
+                        },
+                        {
+                            "name": "g1"
+                        },
+                        {
+                            "name": "h1",
+                            "value": {
+                                "constant": "100"
+                            }
+                        }
+                    ],
+                    "name": "val"
+                },
+                "decl": "enum val {\n  a1,\n  b1 = 3,\n  c1,\n  d1 = b1 - a1,\n  e1 = d1,\n  f1,\n  g1,\n  h1 = 100,\n};\n",
+                "fmtdict": {
+                    "C_enum": "ENU_val",
+                    "enum_lower": "val",
+                    "enum_name": "val",
+                    "enum_upper": "VAL"
+                },
+                "linenumber": 28,
+                "name": "val",
+                "options": {},
+                "typemap_name": "val"
             }
         ],
         "fmtdict": {
@@ -1331,6 +1461,28 @@
             },
             "f_type": "integer(C_SHORT)",
             "flat_name": "unsigned_short"
+        },
+        "val": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<val>({c_var})",
+            "c_type": "int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "val",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "val"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
