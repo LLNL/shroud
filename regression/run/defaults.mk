@@ -33,6 +33,8 @@ CC = gcc
 # -O3 generates additional warnings
 CXXWARNINGS = -O3
 CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
+# silence warning in enum.yaml test
+CFLAGS += -Wno-enum-compare
 CLIBS = -lstdc++
 CXX = g++
 CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
