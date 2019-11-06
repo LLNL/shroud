@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added charlen attribute to use with 'char *arg+intent(out)' argument.
   Used to tell the Python wrapper the length of the char argument.
 - Parse `enum class` and `enum struct`.
+- Allow enum values to be an expression. Useful when an enum value is
+  defined by previous enum values.
 - Add option PY_array_arg to control how arrays are represented.
   Values can be *numpy* or *list*.
 - Add option PY_struct_arg to control how structs are represented.
