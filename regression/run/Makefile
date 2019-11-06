@@ -59,6 +59,7 @@ test-c-% : c-%
 test-c : \
   test-c-tutorial \
   test-c-types \
+  test-c-enum-c \
   test-c-namespace \
   test-c-templates
 
@@ -110,6 +111,7 @@ test-python-% : pymod-%
 
 test-python : \
   test-python-tutorial \
+  test-python-enum-c \
   test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cpp \
@@ -154,6 +156,8 @@ phony_explicit:
 .SECONDARY: \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/enum-c/.. \
+    $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/generic/.. \
     $(tempdir)/run/namespace/.. \
