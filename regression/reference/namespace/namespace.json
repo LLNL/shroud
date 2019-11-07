@@ -327,18 +327,18 @@
                             "ERROR": {
                                 "C_enum_member": "NS_upper_ERROR",
                                 "F_enum_member": "upper_error",
+                                "F_value": 0,
                                 "enum_member_lower": "error",
                                 "enum_member_name": "ERROR",
-                                "enum_member_upper": "ERROR",
-                                "evalue": 0
+                                "enum_member_upper": "ERROR"
                             },
                             "WARN": {
                                 "C_enum_member": "NS_upper_WARN",
                                 "F_enum_member": "upper_warn",
+                                "F_value": 1,
                                 "enum_member_lower": "warn",
                                 "enum_member_name": "WARN",
-                                "enum_member_upper": "WARN",
-                                "evalue": 1
+                                "enum_member_upper": "WARN"
                             }
                         },
                         "ast": {

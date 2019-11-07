@@ -578,11 +578,8 @@ class Wrapc(util.WrapperMixin):
         append_format(output, "enum {C_enum} {{+", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
-            fmt_id.C_enum_member = wformat(
-                options.C_enum_member_template, fmt_id
-            )
             if member.value is not None:
-                append_format(output, "{C_enum_member} = {cxx_value},", fmt_id)
+                append_format(output, "{C_enum_member} = {C_value},", fmt_id)
             else:
                 append_format(output, "{C_enum_member},", fmt_id)
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers

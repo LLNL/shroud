@@ -351,12 +351,9 @@ class Wrapf(util.WrapperMixin):
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
-            fmt_id.F_enum_member = wformat(
-                options.F_enum_member_template, fmt_id
-            )
             append_format(
                 output,
-                "integer(C_INT), parameter :: {F_enum_member} = {evalue}",
+                "integer(C_INT), parameter :: {F_enum_member} = {F_value}",
                 fmt_id,
             )
         self.set_f_module(fileinfo.module_use, "iso_c_binding", "C_INT")
