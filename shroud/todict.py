@@ -449,6 +449,36 @@ def print_node(node):
     return visitor.visit(node)
 
 
+
+class PrintNodeIdentifier(PrintNode):
+    """Print a node but convert identifier using symbols.
+    symbols[name][key] = replacement symbol.
+
+    Used with enums when converting an enum expression.
+    Convert C++ enums in Fortran/C enum identifiers.
+    """
+    def __init__(self, symbols, key):
+        self.symbols = symbols
+        self.key = key
+        super(PrintNodeIdentifier, self).__init__()
+
+    def visit_Identifier(self, node):
+        if node.args is None:
+            if node.name in self.symbols:
+                return self.symbols[node.name][self.key]
+            return node.name
+        elif node.args:
+            return self.param_list(node)
+        else:
+            return node.name + "()"
+
+def print_node_identifier(node, symbols, key):
+    """Convert node to original string and change identifiers
+    """
+    visitor = PrintNodeIdentifier(symbols, key)
+    return visitor.visit(node)
+
+
 def print_node_as_json(node):
     """Print a node as json.
     Useful for debugging.

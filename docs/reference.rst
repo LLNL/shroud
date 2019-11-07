@@ -832,14 +832,18 @@ enum_member_name
 
 enum_member_upper
 
-evalue
-    Evalued value of enumeration.
-    If the enum do not have an explict value, it is the previous value plus one.
-
 flat_name
     Scoped name of enumeration mapped to a legal C identifier.
     Scope operator `::` replaced with `_`.
     Used with *C_enum_template*.
+
+C_enum_member
+    C name for enum member.
+    Computed from *C_enum_member_template*.
+
+C_value
+    Evalued value of enumeration.
+    If the enum does not have an explict value, it will not be present.
 
 C_scope_name
     Set to *flat_name* with a trailing undersore.
@@ -850,6 +854,14 @@ C_scope_name
 F_scope_name
    Value of *C_scope_name* converted to lower case.
    Used with *F_enum_member_template*.
+
+F_enum_member
+    Fortran name for enum member.
+    Computed from *F_enum_member_template*.
+
+F_value
+    Evalued value of enumeration.
+    If the enum does not have an explict value, it is the previous value plus one.
 
 Class
 ^^^^^

@@ -29,8 +29,8 @@ enum ENU_val {
     ENU_a1,
     ENU_b1 = 3,
     ENU_c1,
-    ENU_d1 = b1-a1,
-    ENU_e1 = d1,
+    ENU_d1 = ENU_b1-ENU_a1,
+    ENU_e1 = ENU_d1,
     ENU_f1,
     ENU_g1,
     ENU_h1 = 100

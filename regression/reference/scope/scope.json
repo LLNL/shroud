@@ -10,27 +10,27 @@
                             "BLUE": {
                                 "C_enum_member": "SCO_Class1_BLUE",
                                 "F_enum_member": "class1_blue",
+                                "F_value": 41,
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE",
-                                "evalue": 41
+                                "enum_member_upper": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_Class1_RED",
+                                "C_value": 40,
                                 "F_enum_member": "class1_red",
-                                "cxx_value": "40",
+                                "F_value": 40,
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
-                                "enum_member_upper": "RED",
-                                "evalue": 40
+                                "enum_member_upper": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_Class1_WHITE",
                                 "F_enum_member": "class1_white",
+                                "F_value": 42,
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE",
-                                "evalue": 42
+                                "enum_member_upper": "WHITE"
                             }
                         },
                         "ast": {
@@ -92,27 +92,27 @@
                             "BLUE": {
                                 "C_enum_member": "SCO_Class2_BLUE",
                                 "F_enum_member": "class2_blue",
+                                "F_value": 51,
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE",
-                                "evalue": 51
+                                "enum_member_upper": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_Class2_RED",
+                                "C_value": 50,
                                 "F_enum_member": "class2_red",
-                                "cxx_value": "50",
+                                "F_value": 50,
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
-                                "enum_member_upper": "RED",
-                                "evalue": 50
+                                "enum_member_upper": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_Class2_WHITE",
                                 "F_enum_member": "class2_white",
+                                "F_value": 52,
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE",
-                                "evalue": 52
+                                "enum_member_upper": "WHITE"
                             }
                         },
                         "ast": {
@@ -189,27 +189,27 @@
                     "BLUE": {
                         "C_enum_member": "SCO_BLUE",
                         "F_enum_member": "blue",
+                        "F_value": 11,
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 11
+                        "enum_member_upper": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_RED",
+                        "C_value": 10,
                         "F_enum_member": "red",
-                        "cxx_value": "10",
+                        "F_value": 10,
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 10
+                        "enum_member_upper": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_WHITE",
                         "F_enum_member": "white",
+                        "F_value": 12,
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 12
+                        "enum_member_upper": "WHITE"
                     }
                 },
                 "ast": {
@@ -246,27 +246,27 @@
                     "BLUE": {
                         "C_enum_member": "SCO_ns3_BLUE",
                         "F_enum_member": "ns3_blue",
+                        "F_value": 71,
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 71
+                        "enum_member_upper": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_ns3_RED",
+                        "C_value": 70,
                         "F_enum_member": "ns3_red",
-                        "cxx_value": "70",
+                        "F_value": 70,
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 70
+                        "enum_member_upper": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_ns3_WHITE",
                         "F_enum_member": "ns3_white",
+                        "F_value": 72,
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 72
+                        "enum_member_upper": "WHITE"
                     }
                 },
                 "ast": {
@@ -305,31 +305,31 @@
                         "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_blue",
                         "F_name_scope": "colorenum_",
+                        "F_value": 61,
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 61
+                        "enum_member_upper": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_ColorEnum_RED",
                         "C_name_scope": "ColorEnum_",
+                        "C_value": 60,
                         "F_enum_member": "colorenum_red",
                         "F_name_scope": "colorenum_",
-                        "cxx_value": "60",
+                        "F_value": 60,
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 60
+                        "enum_member_upper": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_ColorEnum_WHITE",
                         "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_white",
                         "F_name_scope": "colorenum_",
+                        "F_value": 62,
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 62
+                        "enum_member_upper": "WHITE"
                     }
                 },
                 "ast": {
@@ -460,27 +460,27 @@
                             "BLUE": {
                                 "C_enum_member": "SCO_ns1_BLUE",
                                 "F_enum_member": "blue",
+                                "F_value": 21,
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE",
-                                "evalue": 21
+                                "enum_member_upper": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_ns1_RED",
+                                "C_value": 20,
                                 "F_enum_member": "red",
-                                "cxx_value": "20",
+                                "F_value": 20,
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
-                                "enum_member_upper": "RED",
-                                "evalue": 20
+                                "enum_member_upper": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_ns1_WHITE",
                                 "F_enum_member": "white",
+                                "F_value": 22,
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE",
-                                "evalue": 22
+                                "enum_member_upper": "WHITE"
                             }
                         },
                         "ast": {
@@ -544,27 +544,27 @@
                             "BLUE": {
                                 "C_enum_member": "SCO_ns2_BLUE",
                                 "F_enum_member": "blue",
+                                "F_value": 31,
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE",
-                                "evalue": 31
+                                "enum_member_upper": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_ns2_RED",
+                                "C_value": 30,
                                 "F_enum_member": "red",
-                                "cxx_value": "30",
+                                "F_value": 30,
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
-                                "enum_member_upper": "RED",
-                                "evalue": 30
+                                "enum_member_upper": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_ns2_WHITE",
                                 "F_enum_member": "white",
+                                "F_value": 32,
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE",
-                                "evalue": 32
+                                "enum_member_upper": "WHITE"
                             }
                         },
                         "ast": {

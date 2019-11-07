@@ -10,36 +10,36 @@
                             "DOWN": {
                                 "C_enum_member": "TUT_Class1_DOWN",
                                 "F_enum_member": "class1_down",
+                                "F_value": 3,
                                 "enum_member_lower": "down",
                                 "enum_member_name": "DOWN",
-                                "enum_member_upper": "DOWN",
-                                "evalue": 3
+                                "enum_member_upper": "DOWN"
                             },
                             "LEFT": {
                                 "C_enum_member": "TUT_Class1_LEFT",
+                                "C_value": 100,
                                 "F_enum_member": "class1_left",
-                                "cxx_value": "100",
+                                "F_value": 100,
                                 "enum_member_lower": "left",
                                 "enum_member_name": "LEFT",
-                                "enum_member_upper": "LEFT",
-                                "evalue": 100
+                                "enum_member_upper": "LEFT"
                             },
                             "RIGHT": {
                                 "C_enum_member": "TUT_Class1_RIGHT",
                                 "F_enum_member": "class1_right",
+                                "F_value": 101,
                                 "enum_member_lower": "right",
                                 "enum_member_name": "RIGHT",
-                                "enum_member_upper": "RIGHT",
-                                "evalue": 101
+                                "enum_member_upper": "RIGHT"
                             },
                             "UP": {
                                 "C_enum_member": "TUT_Class1_UP",
+                                "C_value": 2,
                                 "F_enum_member": "class1_up",
-                                "cxx_value": "2",
+                                "F_value": 2,
                                 "enum_member_lower": "up",
                                 "enum_member_name": "UP",
-                                "enum_member_upper": "UP",
-                                "evalue": 2
+                                "enum_member_upper": "UP"
                             }
                         },
                         "ast": {
@@ -1547,26 +1547,26 @@
                     "BLUE": {
                         "C_enum_member": "TUT_BLUE",
                         "F_enum_member": "blue",
+                        "F_value": 1,
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 1
+                        "enum_member_upper": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "TUT_RED",
                         "F_enum_member": "red",
+                        "F_value": 0,
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 0
+                        "enum_member_upper": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "TUT_WHITE",
                         "F_enum_member": "white",
+                        "F_value": 2,
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 2
+                        "enum_member_upper": "WHITE"
                     }
                 },
                 "ast": {

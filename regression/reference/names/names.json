@@ -202,26 +202,26 @@
                     "BLUE": {
                         "C_enum_member": "TES_BLUE",
                         "F_enum_member": "blue",
+                        "F_value": 1,
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 1
+                        "enum_member_upper": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "TES_RED",
                         "F_enum_member": "red",
+                        "F_value": 0,
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 0
+                        "enum_member_upper": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "TES_WHITE",
                         "F_enum_member": "white",
+                        "F_value": 2,
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 2
+                        "enum_member_upper": "WHITE"
                     }
                 },
                 "ast": {
