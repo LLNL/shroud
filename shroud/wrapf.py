@@ -978,10 +978,10 @@ rv = .false.
                 args_all_in = False
 
             if attrs.get("_is_result", False):
-                c_stmts = "result" + generated_suffix
+                c_stmts = ["result", generated_suffix]
             else:
-                c_stmts = "intent_" + intent + arg.stmts_suffix
-            c_intent_blk = c_statements.get(c_stmts, {})
+                c_stmts = ["intent_" + intent, arg.stmts_suffix]
+            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt,
@@ -1389,8 +1389,8 @@ rv = .false.
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = "result" + generated_suffix
-                f_stmts = "result"  # + generated_suffix
+                c_stmts = ["result", generated_suffix]
+                f_stmts = ["result"]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1398,8 +1398,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = "intent_" + intent + c_arg.stmts_suffix  # e.g. _buf
-                f_stmts = "intent_" + intent + deref_suffix  # e.g. _allocatable
+                c_stmts = ["intent_" + intent, c_arg.stmts_suffix]  # e.g. _buf
+                f_stmts = ["intent_" + intent, deref_suffix]  # e.g. _allocatable
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1481,14 +1481,14 @@ rv = .false.
 
             f_statements = base_typemap.f_statements  # AAA - new vector
             #                f_statements = arg_typemap.f_statements
-            f_intent_blk = f_statements.get(f_stmts, {})
+            f_intent_blk = typemap.lookup_stmts(f_statements, f_stmts)
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
             arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = c_statements.get(c_stmts, {})
+            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in f_statements. 

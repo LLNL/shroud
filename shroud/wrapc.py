@@ -948,7 +948,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                stmts = "result" + generated_suffix
+                stmts = ["result", generated_suffix]
                 need_wrapper = True
                 if is_pointer:
                     fmt_arg.cxx_member = "->"
@@ -1049,9 +1049,9 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = "intent_" + c_attrs["intent"] + arg.stmts_suffix
+                stmts = ["intent_" + c_attrs["intent"], arg.stmts_suffix]
 
-            intent_blk = c_statements.get(stmts, {})
+            intent_blk = typemap.lookup_stmts(c_statements, stmts)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1132,6 +1132,7 @@ class Wrapc(util.WrapperMixin):
         #                # create forward references for other types being wrapped
         #                # i.e. This argument is another wrapped type
         #                self.header_forward[arg_typemap.c_type] = True
+        # --- End loop over function parameters
 
         if shadow_arg_decl:
             # Add argument for shadow result.

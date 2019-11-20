@@ -34,6 +34,7 @@ import re
 
 from . import declast
 from . import todict
+from . import typemap
 from . import util
 from . import whelpers
 from .util import wformat, append_format
@@ -1120,8 +1121,8 @@ return 1;""",
                 intent_blk = self.dimension_blk(arg, fmt_arg, options)
             else:
                 py_statements = arg_typemap.py_statements
-                stmts = "intent_" + intent
-                intent_blk = py_statements.get(stmts, {})
+                stmts = ["intent_" + intent]
+                intent_blk = typemap.lookup_stmts(py_statements, stmts)
 
             if "parse_as_object" in intent_blk:
                 as_object = True
