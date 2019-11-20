@@ -796,7 +796,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],

@@ -1602,16 +1602,6 @@ def lookup_stmts(stmts, path):
                 Blank entries are ignored.
     """
     work = [ part for part in path if part ] # skip empty components
-
-    # kludge to remove leading underscores
-    worka = [ part for part in path if part ] # skip empty components
-    work = []
-    for part in worka:
-        if part[0] == "_":
-            work.append(part[1:])
-        else:
-            work.append(part)
-            
     while work:
         check = '_'.join(work)
         if check in stmts:

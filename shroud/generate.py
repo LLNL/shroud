@@ -1171,7 +1171,7 @@ class GenFunctions(object):
             # set names for implied buffer arguments
             stmts = "intent_" + attrs["intent"] + "_buf"
             if stmts in c_statements:
-                arg.stmts_suffix = "_buf"
+                arg.stmts_suffix = "buf"
 
             intent_blk = c_statements.get(stmts, {})
             for buf_arg in intent_blk.get("buf_args", []):

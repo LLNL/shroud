@@ -1373,11 +1373,7 @@ rv = .false.
             allocatable = c_attrs.get("allocatable", False)
             hidden = c_attrs.get("hidden", False)
             intent = c_attrs["intent"]
-
-            if "deref" in c_attrs:
-                deref_suffix = "_" + c_attrs["deref"]
-            else:
-                deref_suffix = ""
+            deref_suffix = c_attrs.get("deref", "")
 
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
@@ -1395,8 +1391,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["intent_" + intent, c_arg.stmts_suffix]  # e.g. _buf
-                f_stmts = ["intent_" + intent, deref_suffix]  # e.g. _allocatable
+                c_stmts = ["intent_" + intent, c_arg.stmts_suffix]  # e.g. buf
+                f_stmts = ["intent_" + intent, deref_suffix]  # e.g. allocatable
 
             if is_f_arg:
                 # An argument to the C and Fortran function
