@@ -1619,6 +1619,17 @@ def lookup_stmts(stmts, path):
         work.pop()
     return empty_stmts
         
+def compute_name(path, char="_"):
+    """
+    Compute a name from a list of components.
+    Blank entries are filtered out.
+
+    Args:
+        path  - list of name components.
+    """
+    work = [ part for part in path if part ] # skip empty components
+    return char.join(work)
+
 
 def update_for_language(stmts, lang):
     """

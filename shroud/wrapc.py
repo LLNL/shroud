@@ -1164,7 +1164,8 @@ class Wrapc(util.WrapperMixin):
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = node.C_error_pattern + generated_suffix
+            C_error_pattern = typemap.compute_name(
+                [node.C_error_pattern, generated_suffix])
             if C_error_pattern in self.patterns:
                 post_call_pattern.append("// C_error_pattern")
                 append_format(
@@ -1300,10 +1301,11 @@ class Wrapc(util.WrapperMixin):
                 else:
                     C_return_code = wformat("return {c_var};", fmt_result)
 
-        if fmt_func.inlocal("C_finalize" + generated_suffix):
+        local = typemap.compute_name(["C_finalize", generated_suffix])
+        if fmt_func.inlocal(local):
             # maybe check C_finalize up chain for accumulative code
             # i.e. per class, per library.
-            finalize_line = fmt_func.get("C_finalize" + generated_suffix)
+            finalize_line = fmt_func.get(local)
             need_wrapper = True
             post_call.append("{")
             post_call.append("    // C_finalize")

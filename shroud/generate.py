@@ -1142,7 +1142,7 @@ class GenFunctions(object):
         self.append_function_index(C_new)
 
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = "_buf"  # used to lookup c_statements
+        C_new.generated_suffix = "buf"  # used to lookup c_statements
         fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
@@ -1246,7 +1246,7 @@ class GenFunctions(object):
                 )
             attrs["intent"] = "out"
             attrs["_is_result"] = True
-            attrs["_generated_suffix"] = "_buf"
+            attrs["_generated_suffix"] = "buf"
             # convert to subroutine
             C_new._subprogram = "subroutine"
         elif has_allocatable_result:

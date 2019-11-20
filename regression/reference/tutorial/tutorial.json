@@ -2231,7 +2231,7 @@
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
+                                "_generated_suffix": "buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -6912,7 +6912,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
+                                "_generated_suffix": "buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
