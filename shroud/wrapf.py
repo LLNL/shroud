@@ -1277,15 +1277,13 @@ rv = .false.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
-        if "deref" in ast.attrs:
-            result_generated_suffix = "_" + ast.attrs["deref"]
-        else:
-            result_generated_suffix = ""
+        result_generated_suffix = ast.attrs.get("deref", "")
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typemap.f_statements.get(
-            "result" + result_generated_suffix, {}
+        if typemap.lookup_stmts(
+                result_typemap.f_statements,
+                ["result", result_generated_suffix]
         ).get("need_wrapper", False):
             need_wrapper = True
 
@@ -1328,9 +1326,8 @@ rv = .false.
             if "f" in C_node.statements:
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_copy_array_helper(fmt_result)
-                iblk = C_node.statements["f"][
-                    "result" + result_generated_suffix
-                ]
+                iblk = typemap.lookup_stmts(
+                    C_node.statements["f"], ["result", result_generated_suffix])
                 need_wrapper = self.build_arg_list_impl(
                     fmt_result,
                     C_node.ast,
@@ -1640,9 +1637,8 @@ rv = .false.
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
                 f_statements = result_typemap.f_statements
-                intent_blk = f_statements.get(
-                    "result" + result_generated_suffix, {}
-                )
+                intent_blk = typemap.lookup_stmts(
+                    f_statements, ["result", result_generated_suffix])
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:
