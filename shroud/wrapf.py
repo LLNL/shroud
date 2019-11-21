@@ -985,12 +985,12 @@ rv = .false.
             intent = attrs.get("intent", "inout")
             if intent != "in":
                 args_all_in = False
-            deref_suffix = attrs.get("deref", "")
+            deref_clause = attrs.get("deref", "")
 
             if attrs.get("_is_result", False):
-                c_stmts = ["result", generated_suffix, deref_suffix]
+                c_stmts = ["result", generated_suffix, deref_clause]
             else:
-                c_stmts = ["intent_" + intent, arg.stmts_suffix, deref_suffix]
+                c_stmts = ["intent_" + intent, arg.stmts_suffix, deref_clause]
             c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1287,13 +1287,13 @@ rv = .false.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
-        result_generated_suffix = ast.attrs.get("deref", "")
+        result_deref_clause = ast.attrs.get("deref", "")
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
         if typemap.lookup_stmts(
                 result_typemap.f_statements,
-                ["result", result_generated_suffix]
+                ["result", result_deref_clause]
         ).get("need_wrapper", False):
             need_wrapper = True
 
@@ -1337,7 +1337,7 @@ rv = .false.
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_copy_array_helper(fmt_result)
                 iblk = typemap.lookup_stmts(
-                    C_node.statements["f"], ["result", result_generated_suffix])
+                    C_node.statements["f"], ["result", result_deref_clause])
                 need_wrapper = self.build_arg_list_impl(
                     fmt_result,
                     C_node.ast,
@@ -1383,7 +1383,7 @@ rv = .false.
             allocatable = c_attrs.get("allocatable", False)
             hidden = c_attrs.get("hidden", False)
             intent = c_attrs["intent"]
-            deref_suffix = c_attrs.get("deref", "")
+            deref_clause = c_attrs.get("deref", "")
 
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
@@ -1392,9 +1392,9 @@ rv = .false.
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = ["result", generated_suffix, deref_suffix]
-#XXX            f_stmts = ["result", result_generated_suffix]  # + generated_suffix
-                f_stmts = ["result", deref_suffix]  # + generated_suffix
+                c_stmts = ["result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1403,7 +1403,7 @@ rv = .false.
                     need_wrapper = True
             else:
                 c_stmts = ["intent_" + intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["intent_" + intent, deref_suffix]  # e.g. allocatable
+                f_stmts = ["intent_" + intent, deref_clause]  # e.g. allocatable
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1645,7 +1645,7 @@ rv = .false.
             elif C_subprogram == "function":
                 f_statements = result_typemap.f_statements
                 intent_blk = typemap.lookup_stmts(
-                    f_statements, ["result", result_generated_suffix])
+                    f_statements, ["result", result_deref_clause])
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:
