@@ -207,7 +207,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",

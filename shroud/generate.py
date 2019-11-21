@@ -1246,7 +1246,6 @@ class GenFunctions(object):
                 )
             attrs["intent"] = "out"
             attrs["_is_result"] = True
-            attrs["_generated_suffix"] = "buf"
             # convert to subroutine
             C_new._subprogram = "subroutine"
         elif has_allocatable_result:

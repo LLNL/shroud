@@ -853,7 +853,6 @@
                                                 {
                                                     "attrs": {
                                                         "__line__": 114,
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "NSHF_rv"
@@ -1121,7 +1120,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -1298,7 +1296,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "Nname"
@@ -1364,7 +1361,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "Nname"
@@ -2516,7 +2512,6 @@
                                                 {
                                                     "attrs": {
                                                         "__line__": 175,
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "NSHF_rv"
@@ -2699,7 +2694,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -2885,7 +2879,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -3068,7 +3061,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
