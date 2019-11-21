@@ -851,26 +851,7 @@ class CheckParse(unittest.TestCase):
 
         r.result_as_arg("output")
         s = r.gen_decl()
-        self.assertEqual("void getName(std::string & output) const", s)
-
-    def test_as_voidstar(self):
-        # Change function return to an argument
-        vtypemap = typemap.lookup_type("void")
-
-        r = declast.check_decl("const std::string& getName() const")
-
-        s = r.gen_decl()
-        self.assertEqual("const std::string & getName() const", s)
-
-        r.result_as_voidstar(vtypemap, "output", const=r.const)
-        s = r.gen_decl()
-        self.assertEqual("void getName(const void * output) const", s)
-
-        # Now without const
-        r = declast.check_decl("std::string& getName() const")
-        r.result_as_voidstar(vtypemap, "output", const=r.const)
-        s = r.gen_decl()
-        self.assertEqual("void getName(void * output) const", s)
+        self.assertEqual("void getName(const std::string & output) const", s)
 
     def test_thisarg01(self):
         """Create an argument for const this"""
