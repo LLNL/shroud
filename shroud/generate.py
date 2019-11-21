@@ -1212,6 +1212,7 @@ class GenFunctions(object):
             if "len" in ast.attrs or result_as_arg:
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
+                result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
@@ -1230,16 +1231,17 @@ class GenFunctions(object):
                 )
                 self.move_arg_attributes(attrs, node, C_new)
             elif result_is_ptr:  # 'char *'
-                result_as_string = ast.result_as_voidstar(
-                    typemap.lookup_type("charout"), result_name, const=ast.const
-                )
+                result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
                 attrs["context"] = options.C_var_context_template.format(
                     c_var=result_name
                 )
+                if "deref" not in attrs:
+                    attrs["deref"] = "allocatable"
                 self.move_arg_attributes(attrs, node, C_new)
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
+                result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name

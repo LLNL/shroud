@@ -840,10 +840,22 @@ rv = .false.
                     imports[absiface] = True
                 else:
                     arg_c_decl.append(ast.bind_c())
+                    arg_typemap = ast.typemap
+                    if ast.template_arguments:
+                        # If a template, use its type
+                        arg_typemap = ast.template_arguments[0].typemap
+                    self.update_f_module(
+                        modules, imports,
+                        arg_typemap.f_c_module or arg_typemap.f_module
+                    )
                 continue
             elif buf_arg == "shadow":
                 arg_c_names.append(ast.name)
                 arg_c_decl.append(ast.bind_c())
+                self.update_f_module(
+                    modules, imports,
+                    ast.typemap.f_c_module or ast.typemap.f_module
+                )
                 continue
 
             if buf_arg not in attrs:
@@ -872,7 +884,7 @@ rv = .false.
                     "type(%s), intent(INOUT) :: %s"
                     % (fmt.F_array_type, buf_arg_name)
                 )
-                #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
+#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":
                 arg_c_names.append(buf_arg_name)
@@ -948,7 +960,7 @@ rv = .false.
 
         if hasattr(node, "statements"):
             if "c" in node.statements:
-                iblk = node.statements["c"]["result_buf"]
+                iblk = node.statements["c"]["result_buf"]  # allocatable
                 self.build_arg_list_interface(
                     node, fileinfo,
                     fmt_func,
@@ -968,19 +980,17 @@ rv = .false.
             fmt.update(arg_typemap.format)
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
-            attrs = arg.attrs
-            self.update_f_module(
-                modules, imports, arg_typemap.f_c_module or arg_typemap.f_module
-            )
 
+            attrs = arg.attrs
             intent = attrs.get("intent", "inout")
             if intent != "in":
                 args_all_in = False
+            deref_suffix = attrs.get("deref", "")
 
             if attrs.get("_is_result", False):
-                c_stmts = ["result", generated_suffix]
+                c_stmts = ["result", generated_suffix, deref_suffix]
             else:
-                c_stmts = ["intent_" + intent, arg.stmts_suffix]
+                c_stmts = ["intent_" + intent, arg.stmts_suffix, deref_suffix]
             c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1382,8 +1392,9 @@ rv = .false.
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = ["result", generated_suffix]
-                f_stmts = ["result"]  # + generated_suffix
+                c_stmts = ["result", generated_suffix, deref_suffix]
+#XXX            f_stmts = ["result", result_generated_suffix]  # + generated_suffix
+                f_stmts = ["result", deref_suffix]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False

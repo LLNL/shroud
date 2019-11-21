@@ -948,7 +948,8 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                stmts = ["result", generated_suffix]
+                result_return_pointer_as = c_attrs.get("deref", "")
+                stmts = ["result", generated_suffix, result_return_pointer_as]
                 need_wrapper = True
                 if is_pointer:
                     fmt_arg.cxx_member = "->"
@@ -957,7 +958,6 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_member = "."
                     fmt_arg.cxx_addr = "&"
 
-                result_return_pointer_as = c_attrs.get("deref", "")
                 if result_return_pointer_as in ["pointer", "allocatable"]:
                     if not CXX_ast.is_indirect():
                         # As std::string is returned.

@@ -722,6 +722,21 @@ def initialize():
                         "\t {cxx_var},\t -1);",
                     ],
                 ),
+                result_buf_allocatable=dict(
+                    buf_args=["context"],
+                    c_helper="copy_string",
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
+                    post_call=[
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "{c_var_context}->addr.ccharp = {cxx_var};",
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
+                        "{c_var_context}->size = 1;",
+                    ],
+                ),
             ),
             f_type="character(*)",
             f_kind="C_CHAR",
@@ -732,7 +747,16 @@ def initialize():
                     need_wrapper=True,
                     f_helper="fstr_ptr",
                     call=["{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"],
-                )
+                ),
+                result_allocatable=dict(
+                    need_wrapper=True,
+                    f_helper="copy_string",
+                    post_call=[
+                        "allocate(character(len={c_var_context}%len):: {f_var})",
+                        "call SHROUD_copy_string_and_free"
+                        "({c_var_context}, {f_var}, {c_var_context}%len)",
+                    ],
+                ),
             ),
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",

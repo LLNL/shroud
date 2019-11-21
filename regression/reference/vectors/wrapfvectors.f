@@ -61,7 +61,6 @@ module vectors_mod
     interface
         subroutine c_vector_iota_out_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_out_bufferify")
-            use iso_c_binding, only : C_INT
             import :: SHROUD_array
             implicit none
             type(SHROUD_array), intent(INOUT) :: Darg
@@ -73,7 +72,6 @@ module vectors_mod
     interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_out_alloc_bufferify")
-            use iso_c_binding, only : C_INT
             import :: SHROUD_array
             implicit none
             type(SHROUD_array), intent(INOUT) :: Darg

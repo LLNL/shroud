@@ -1049,8 +1049,8 @@ class Declaration(Node):
         new = Declaration()
         new.specifier = self.specifier[:]
         new.storage = self.storage[:]
-        new.const = False
-        new.volatile = False
+        new.const = self.const
+        new.volatile = self.volatile
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
@@ -1066,6 +1066,7 @@ class Declaration(Node):
         self.specifier = ["void"]
         self.typemap = typemap.lookup_type("void")
         self.const = False
+        self.volatile = False
         self.declarator.pointer = []
 
     def result_as_arg(self, name):
