@@ -931,7 +931,7 @@ class Declaration(Node):
         self.typemap = None
 
         self.return_pointer_as = None
-        self.stmts_suffix = ''  # Used to find statements in typemap
+        self.stmts_suffix = ''  # Used to find statements in typemap (ex. buf)
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
 
     def get_name(self, use_attr=True):

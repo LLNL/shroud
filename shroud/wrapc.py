@@ -1259,7 +1259,8 @@ class Wrapc(util.WrapperMixin):
                     self.header_impl_include[result_typemap.impl_header] = True
                 c_statements = result_typemap.c_statements
 
-                intent_blk = c_statements.get("result" + ast.stmts_suffix, {})
+                intent_blk = typemap.lookup_stmts(
+                    c_statements, ["result", ast.stmts_suffix])
                 self.add_statements_headers(intent_blk)
 
                 need_wrapper = self.add_code_from_statements(

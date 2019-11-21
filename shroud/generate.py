@@ -1141,8 +1141,9 @@ class GenFunctions(object):
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
 
+        generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = "buf"  # used to lookup c_statements
+        C_new.generated_suffix = generated_suffix  # used to lookup c_statements
         fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
@@ -1169,9 +1170,10 @@ class GenFunctions(object):
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
-            stmts = "intent_" + attrs["intent"] + "_buf"
+            # Look for a specalized clause for generated_suffix.
+            stmts = "intent_" + attrs["intent"] + "_" + generated_suffix
             if stmts in c_statements:
-                arg.stmts_suffix = "buf"
+                arg.stmts_suffix = generated_suffix
 
             intent_blk = c_statements.get(stmts, {})
             for buf_arg in intent_blk.get("buf_args", []):
