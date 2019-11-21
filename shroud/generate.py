@@ -1221,23 +1221,13 @@ class GenFunctions(object):
                 )
                 # Special case for wrapf.py
                 f_attrs["deref"] = "result_as_arg"
-            elif result_typemap.cxx_type == "std::string":
+            elif (result_typemap.cxx_type == "std::string" or
+                  result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
                 attrs["context"] = options.C_var_context_template.format(
                     c_var=result_name
                 )
-                if "deref" not in attrs:
-                    attrs["deref"] = "allocatable"
-                self.move_arg_attributes(attrs, node, C_new)
-            elif result_is_ptr:  # 'char *'
-                result_as_string = ast.result_as_arg(result_name)
-                attrs = result_as_string.attrs
-                attrs["context"] = options.C_var_context_template.format(
-                    c_var=result_name
-                )
-                if "deref" not in attrs:
-                    attrs["deref"] = "allocatable"
                 self.move_arg_attributes(attrs, node, C_new)
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
