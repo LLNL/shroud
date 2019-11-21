@@ -1446,7 +1446,8 @@ return 1;""",
                 index = "result_dimension_{}".format(options.PY_array_arg)
                 result_blk = py_statements_local[index]
             else:
-                result_blk = result_typemap.py_statements.get("result", {})
+                result_blk = typemap.lookup_stmts(
+                    result_typemap.py_statements, ["result"])
 
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
             self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
