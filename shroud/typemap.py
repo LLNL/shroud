@@ -946,66 +946,6 @@ def initialize():
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
             base="string",
         ),
-        # C++ std::string
-        # Uses a two part call to copy results of std::string into a
-        # allocatable Fortran array.
-        #    c_step1(context)
-        #    allocate(character(len=context%len): Fout)
-        #    c_step2(context, Fout, context%len)
-        # only used with bufferifed routines and intent(out) or result
-        stringout=Typemap(
-            "stringout",
-            cxx_type="std::string",
-            cxx_to_c="static_cast<void *>({cxx_var})",
-            c_type="void",
-            impl_header="<string>",
-            c_statements=dict(
-                intent_out_buf=dict(
-                    buf_args=["arg", "lenout"],
-                    c_helper="copy_string",
-                    cxx_local_var="scalar",
-                    pre_call=["std::string * {cxx_var};"],
-                    post_call=[" post_call intent_out_buf"],
-                ),
-                result_buf=dict(
-                    # pass address of string and length back to Fortran
-                    buf_args=["context"],
-                    c_helper="copy_string",
-                    # Copy address of result into c_var and save length.
-                    # When returning a std::string (and not a reference or pointer)
-                    # an intermediate object is created to save the results
-                    # which will be passed to copy_string
-                    post_call=[
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;",
-                    ],
-                ),
-            ),
-            f_type="type(C_PTR)YY",
-            # #- f_kind='C_CHAR',
-            f_statements=dict(
-                result=dict(
-                    need_wrapper=True,
-                    f_helper="copy_string",
-                    post_call=[
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free("
-                        "{c_var_context}, {f_var}, {c_var_context}%len)",
-                    ],
-                )
-            ),
-            # No need for Python or Lua code since this type is not wrapped
-            # for those languages.  Only used in bufferified C wrappers.
-            base="string",
-        ),
         # C++ std::vector
         # No c_type or f_type, use attr[template]
         # C++03 "The elements of a vector are stored contiguously" (23.2.4/1).
