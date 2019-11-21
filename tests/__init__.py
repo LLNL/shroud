@@ -1,21 +1,15 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-# #######################################################################
-#
-# Shroud tests
-#
-# (from parent directory) python -m unittest test
-#
+# SPDX-License-Identifier: (BSD-3-Clause)
+
+"""
+Shroud tests
+
+ (from parent directory) python -m unittest test
+"""
+
 from __future__ import absolute_import
 
 import unittest
@@ -23,8 +17,7 @@ import unittest
 from . import test_ast
 from . import test_declast
 from . import test_generate
-
-# from . import test_typemap
+from . import test_typemap
 from . import test_util
 from . import test_wrapf
 from . import test_wrapp
@@ -35,6 +28,7 @@ from . import test_wrapp
 test_cases = (
     test_util.UtilCase,
     test_util.ScopeCase,
+    test_typemap.Typemap,
     test_ast.Namespace,
     test_declast.CheckParse,
     test_declast.CheckExpr,

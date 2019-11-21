@@ -1238,7 +1238,7 @@ class FunctionNode(AstNode):
         self.F_return_type = "--none--"
 
         # Used with c_statements to find correct intent block
-        # possible values are '', '_buf'
+        # possible values are '', 'buf'
         self.generated_suffix = ""
 
         # Headers required by template arguments.

@@ -1587,6 +1587,40 @@ def lookup_c_statements(arg):
         c_statements = base_typemap.c_templates.get(cxx_T, c_statements)
     return arg_typemap, c_statements
 
+empty_stmts = {}
+def lookup_stmts(stmts, path):
+    """
+    Lookup path in stmts.
+    Used to find specific cases first, then fall back to general.
+    ex path = ['result', 'allocatable']
+         Finds 'result_allocatable' if it exists, else 'result'.
+    If not found, return an empty dictionary.
+
+    Args:
+        stmts - dictionary
+        path  - list of name components.
+                Blank entries are ignored.
+    """
+    work = [ part for part in path if part ] # skip empty components
+    while work:
+        check = '_'.join(work)
+        if check in stmts:
+            return stmts[check]
+        work.pop()
+    return empty_stmts
+        
+def compute_name(path, char="_"):
+    """
+    Compute a name from a list of components.
+    Blank entries are filtered out.
+
+    Args:
+        path  - list of name components.
+    """
+    work = [ part for part in path if part ] # skip empty components
+    return char.join(work)
+
+
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.

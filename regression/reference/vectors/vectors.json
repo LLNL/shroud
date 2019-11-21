@@ -238,7 +238,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -401,7 +401,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -570,7 +570,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -741,7 +741,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -905,7 +905,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1084,7 +1084,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [

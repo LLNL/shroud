@@ -832,7 +832,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -1952,7 +1952,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],

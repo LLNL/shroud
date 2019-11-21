@@ -966,7 +966,7 @@
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
+                                "_generated_suffix": "buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -1257,7 +1257,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -1507,7 +1507,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         },
                         {
@@ -1528,7 +1528,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -1774,7 +1774,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         },
                         {
@@ -2705,7 +2705,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3280,7 +3280,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -4014,7 +4014,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
