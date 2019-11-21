@@ -931,7 +931,7 @@ class Declaration(Node):
         self.typemap = None
 
         self.return_pointer_as = None
-        self.stmts_suffix = ''  # Used to find statements in typemap
+        self.stmts_suffix = ''  # Used to find statements in typemap (ex. buf)
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
 
     def get_name(self, use_attr=True):
@@ -1049,8 +1049,8 @@ class Declaration(Node):
         new = Declaration()
         new.specifier = self.specifier[:]
         new.storage = self.storage[:]
-        new.const = False
-        new.volatile = False
+        new.const = self.const
+        new.volatile = self.volatile
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
@@ -1066,6 +1066,7 @@ class Declaration(Node):
         self.specifier = ["void"]
         self.typemap = typemap.lookup_type("void")
         self.const = False
+        self.volatile = False
         self.declarator.pointer = []
 
     def result_as_arg(self, name):
@@ -1073,15 +1074,6 @@ class Declaration(Node):
         Change function result to 'void'.
         """
         newarg = self._as_arg(name)
-        self.params.append(newarg)
-        self._set_to_void()
-        return newarg
-
-    def result_as_voidstar(self, ntypemap, name, const=False):
-        """Add an 'typ*' argument to return pointer to result.
-        Change function result to 'void'.
-        """
-        newarg = create_voidstar(ntypemap, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg

@@ -290,7 +290,7 @@ module clibrary_mod
         function pass_assumed_type(arg) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedType")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             implicit none
             type(*) :: arg
             integer(C_INT) :: SHT_rv
@@ -302,7 +302,6 @@ module clibrary_mod
     interface
         subroutine pass_assumed_type_dim(arg) &
                 bind(C, name="passAssumedTypeDim")
-            use iso_c_binding, only : C_PTR
             implicit none
             type(*) :: arg(*)
         end subroutine pass_assumed_type_dim
@@ -313,7 +312,7 @@ module clibrary_mod
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedTypeBuf")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             type(*) :: arg
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
@@ -325,7 +324,7 @@ module clibrary_mod
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
                 result(SHT_rv) &
                 bind(C, name="CLI_pass_assumed_type_buf_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             type(*) :: arg
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
@@ -339,7 +338,7 @@ module clibrary_mod
         function c_callback1(type, incr) &
                 result(SHT_rv) &
                 bind(C, name="callback1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: callback1_incr
             implicit none
             integer(C_INT), value, intent(IN) :: type
@@ -352,7 +351,7 @@ module clibrary_mod
     interface
         subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: callback2_incr
             implicit none
             integer(C_INT), value, intent(IN) :: type
@@ -364,7 +363,7 @@ module clibrary_mod
     interface
         subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")
-            use iso_c_binding, only : C_CHAR, C_PTR
+            use iso_c_binding, only : C_CHAR
             import :: callback3_incr
             implicit none
             character(kind=C_CHAR), intent(IN) :: type(*)
@@ -378,7 +377,7 @@ module clibrary_mod
         subroutine c_callback3_bufferify(type, in, incr, outbuf, &
                 Noutbuf) &
                 bind(C, name="CLI_callback3_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_CHAR, C_INT
             import :: callback3_incr
             implicit none
             character(kind=C_CHAR), intent(IN) :: type(*)

@@ -853,7 +853,6 @@
                                                 {
                                                     "attrs": {
                                                         "__line__": 114,
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "NSHF_rv"
@@ -1121,7 +1120,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -1132,14 +1130,14 @@
                                                         "name": "SHF_rv",
                                                         "pointer": [
                                                             {
-                                                                "ptr": "*"
+                                                                "ptr": "&"
                                                             }
                                                         ]
                                                     },
                                                     "specifier": [
-                                                        "std::string"
+                                                        "string"
                                                     ],
-                                                    "typemap_name": "stringout"
+                                                    "typemap_name": "std::string"
                                                 }
                                             ],
                                             "specifier": [
@@ -1148,7 +1146,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
-                                        "declgen": "void getNameErrorCheck(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
+                                        "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
                                         "fmtdict": {
                                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);",
                                             "C_call_list": "",
@@ -1298,7 +1296,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "Nname"
@@ -1364,7 +1361,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "Nname"
@@ -2516,7 +2512,6 @@
                                                 {
                                                     "attrs": {
                                                         "__line__": 175,
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "NSHF_rv"
@@ -2699,7 +2694,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -2710,14 +2704,14 @@
                                                         "name": "SHF_rv",
                                                         "pointer": [
                                                             {
-                                                                "ptr": "*"
+                                                                "ptr": "&"
                                                             }
                                                         ]
                                                     },
                                                     "specifier": [
-                                                        "std::string"
+                                                        "string"
                                                     ],
-                                                    "typemap_name": "stringout"
+                                                    "typemap_name": "std::string"
                                                 }
                                             ],
                                             "specifier": [
@@ -2726,7 +2720,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getName2()",
-                                        "declgen": "void getName2(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                                        "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                                         "fmtdict": {
                                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);",
                                             "C_call_list": "",
@@ -2885,7 +2879,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -2895,14 +2888,14 @@
                                                         "name": "SHF_rv",
                                                         "pointer": [
                                                             {
-                                                                "ptr": "*"
+                                                                "ptr": "&"
                                                             }
                                                         ]
                                                     },
                                                     "specifier": [
-                                                        "std::string"
+                                                        "string"
                                                     ],
-                                                    "typemap_name": "stringout"
+                                                    "typemap_name": "std::string"
                                                 }
                                             ],
                                             "specifier": [
@@ -2911,7 +2904,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName3() const",
-                                        "declgen": "void getName3(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
+                                        "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
                                         "fmtdict": {
                                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);",
                                             "C_call_list": "",
@@ -3068,7 +3061,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_generated_suffix": "buf",
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable",
@@ -3078,14 +3070,14 @@
                                                         "name": "SHF_rv",
                                                         "pointer": [
                                                             {
-                                                                "ptr": "*"
+                                                                "ptr": "&"
                                                             }
                                                         ]
                                                     },
                                                     "specifier": [
-                                                        "std::string"
+                                                        "string"
                                                     ],
-                                                    "typemap_name": "stringout"
+                                                    "typemap_name": "std::string"
                                                 }
                                             ],
                                             "specifier": [
@@ -3094,7 +3086,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName4()",
-                                        "declgen": "void getName4(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                                        "declgen": "void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                                         "fmtdict": {
                                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);",
                                             "C_call_list": "",
@@ -9534,6 +9526,19 @@
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
                     ]
+                },
+                "result_buf_allocatable": {
+                    "buf_args": [
+                        "context"
+                    ],
+                    "c_helper": "copy_string",
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "{c_var_context}->addr.ccharp = {cxx_var};",
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
+                        "{c_var_context}->size = 1;"
+                    ]
                 }
             },
             "c_type": "char",
@@ -9546,6 +9551,14 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_statements": {
+                "result_allocatable": {
+                    "f_helper": "copy_string",
+                    "need_wrapper": true,
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})",
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                },
                 "result_pure": {
                     "call": [
                         "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
@@ -9588,52 +9601,6 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_type": "character",
-            "flat_name": "char"
-        },
-        "charout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
             "flat_name": "char"
         },
         "double": {
@@ -10125,6 +10092,24 @@
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
                         "-}}"
                     ]
+                },
+                "result_buf_allocatable": {
+                    "buf_args": [
+                        "context"
+                    ],
+                    "c_helper": "copy_string",
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "if ({cxx_var}{cxx_member}empty()) {{+",
+                        "{c_var_context}->addr.ccharp = NULL;",
+                        "{c_var_context}->len = 0;",
+                        "-}} else {{+",
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
+                        "-}}",
+                        "{c_var_context}->size = 1;"
+                    ]
                 }
             },
             "c_type": "char",
@@ -10138,6 +10123,14 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_statements": {
+                "result_allocatable": {
+                    "f_helper": "copy_string",
+                    "need_wrapper": true,
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})",
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                },
                 "result_pure": {
                     "call": [
                         "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
@@ -10366,59 +10359,6 @@
                 }
             },
             "flat_name": "std_vector_{cxx_T}"
-        },
-        "stringout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "void",
-            "cxx_to_c": "static_cast<void *>({cxx_var})",
-            "cxx_type": "std::string",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string",
-            "impl_header": "<string>"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

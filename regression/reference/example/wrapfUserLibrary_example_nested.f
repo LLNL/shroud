@@ -700,7 +700,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_func_ptr1")
-            use iso_c_binding, only : C_PTR
             import :: func_ptr1_get
             implicit none
             procedure(func_ptr1_get) :: get
@@ -708,7 +707,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_func_ptr2")
-            use iso_c_binding, only : C_DOUBLE
             import :: func_ptr2_get
             implicit none
             procedure(func_ptr2_get) :: get
@@ -716,7 +714,6 @@ module userlibrary_example_nested_mod
 
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_func_ptr3")
-            use iso_c_binding, only : C_DOUBLE
             import :: func_ptr3_get
             implicit none
             procedure(func_ptr3_get) :: get
@@ -724,7 +721,6 @@ module userlibrary_example_nested_mod
 
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_func_ptr4")
-            use iso_c_binding, only : C_DOUBLE
             import :: custom_funptr
             implicit none
             procedure(custom_funptr) :: get
@@ -732,7 +728,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_func_ptr5")
-            use iso_c_binding, only : C_PTR
             import :: func_ptr5_get
             implicit none
             procedure(func_ptr5_get) :: get
