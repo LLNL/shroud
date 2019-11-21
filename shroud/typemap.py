@@ -1548,6 +1548,11 @@ def lookup_stmts(stmts, path):
          Finds 'result_allocatable' if it exists, else 'result'.
     If not found, return an empty dictionary.
 
+    path typically consists of:
+      intent_in, intent_out, intent_inout, result
+      generated_clause - buf
+      deref - allocatable
+
     Args:
         stmts - dictionary
         path  - list of name components.
