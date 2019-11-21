@@ -874,6 +874,34 @@ def initialize():
                         "-}}",
                     ],
                 ),
+
+                # Uses a two part call to copy results of std::string into a
+                # allocatable Fortran array.
+                #    c_step1(context)
+                #    allocate(character(len=context%len): Fout)
+                #    c_step2(context, Fout, context%len)
+                # only used with bufferifed routines and intent(out) or result
+                result_buf_allocatable=dict(
+                    # pass address of string and length back to Fortran
+                    buf_args=["context"],
+                    c_helper="copy_string",
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
+                    post_call=[
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "if ({cxx_var}{cxx_member}empty()) {{+",
+                        "{c_var_context}->addr.ccharp = NULL;",
+                        "{c_var_context}->len = 0;",
+                        "-}} else {{+",
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
+                        "-}}",
+                        "{c_var_context}->size = 1;",
+                    ],
+                ),
             ),
             f_type="character(*)",
             f_kind="C_CHAR",
@@ -884,7 +912,16 @@ def initialize():
                     need_wrapper=True,
                     f_helper="fstr_ptr",
                     call=["{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"],
-                )
+                ),
+                result_allocatable=dict(
+                    need_wrapper=True,
+                    f_helper="copy_string",
+                    post_call=[
+                        "allocate(character(len={c_var_context}%len):: {f_var})",
+                        "call SHROUD_copy_string_and_free("
+                        "{c_var_context}, {f_var}, {c_var_context}%len)",
+                    ],
+                ),
             ),
             py_statements=dict(
                 intent_in=dict(

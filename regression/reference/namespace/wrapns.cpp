@@ -38,7 +38,7 @@ const char * NS_last_function_called()
 // splicer end function.last_function_called
 }
 
-// void LastFunctionCalled(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.last_function_called_bufferify
