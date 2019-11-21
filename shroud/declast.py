@@ -1078,15 +1078,6 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def result_as_voidstar(self, ntypemap, name, const=False):
-        """Add an 'typ*' argument to return pointer to result.
-        Change function result to 'void'.
-        """
-        newarg = create_voidstar(ntypemap, name, const)
-        self.params.append(newarg)
-        self._set_to_void()
-        return newarg
-
     def instantiate(self, node):
         """Instantiate a template argument.
         node - Declaration node of template argument.
