@@ -931,7 +931,8 @@ class Wrapc(util.WrapperMixin):
             cxx_local_var = ""
 
             have_idtor = False
-            if c_attrs.get("_is_result", False):
+            is_result = c_attrs.get("_is_result", False)
+            if is_result:
                 # This argument is the C function result
                 arg_call = False
 
