@@ -909,7 +909,7 @@ def initialize():
                 result_buf_allocatable_scalar=dict(
                     # pass address of string and length back to Fortran
                     buf_args=["context"],
-                    cxx_local_var="pointer",
+#                    cxx_local_var="pointer",
                     c_helper="copy_string",
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)

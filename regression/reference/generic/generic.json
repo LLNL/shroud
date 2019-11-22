@@ -2454,7 +2454,6 @@
                         "context"
                     ],
                     "c_helper": "copy_string",
-                    "cxx_local_var": "pointer",
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
