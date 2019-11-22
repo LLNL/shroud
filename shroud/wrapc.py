@@ -950,7 +950,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["result", generated_suffix, result_return_pointer_as]
+                stmts = ["result", generated_suffix,
+                         result_return_pointer_as,
+                         "pointer" if CXX_ast.is_indirect() else "scalar",
+                ]
                 need_wrapper = True
                 if is_pointer:
                     fmt_arg.cxx_member = "->"
@@ -966,11 +969,6 @@ class Wrapc(util.WrapperMixin):
                         # This allows the std::string to outlast the function return.
                         fmt_arg.cxx_member = "->"
                         fmt_arg.cxx_addr = ""
-                        append_format(
-                            pre_call,  # no const
-                            "std::string * {cxx_var} = new std::string;",
-                            fmt_arg,
-                        )
                         fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
                         # XXX - delete string after copying its contents idtor=
                         fmt_arg.idtor = self.add_destructor(
