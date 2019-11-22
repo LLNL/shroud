@@ -881,6 +881,7 @@ def initialize():
                 #    allocate(character(len=context%len): Fout)
                 #    c_step2(context, Fout, context%len)
                 # only used with bufferifed routines and intent(out) or result
+                # std::string * function()
                 result_buf_allocatable=dict(
                     # pass address of string and length back to Fortran
                     buf_args=["context"],
@@ -889,6 +890,34 @@ def initialize():
                     # When returning a std::string (and not a reference or pointer)
                     # an intermediate object is created to save the results
                     # which will be passed to copy_string
+                    post_call=[
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "if ({cxx_var}{cxx_member}empty()) {{+",
+                        "{c_var_context}->addr.ccharp = NULL;",
+                        "{c_var_context}->len = 0;",
+                        "-}} else {{+",
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
+                        "-}}",
+                        "{c_var_context}->size = 1;",
+                    ],
+                ),
+                # std::string function()
+                # Must allocate the std::string then assign to it via cxx_rv_decl.
+                # This allows the std::string to outlast the function return.
+                result_buf_allocatable_scalar=dict(
+                    # pass address of string and length back to Fortran
+                    buf_args=["context"],
+                    cxx_local_var="pointer",
+                    c_helper="copy_string",
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
+                    pre_call=[
+                        "std::string * {cxx_var} = new std::string;",
+                    ],
                     post_call=[
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
