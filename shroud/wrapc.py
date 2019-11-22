@@ -930,7 +930,6 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
-            have_idtor = False
             is_result = c_attrs.get("_is_result", False)
             if is_result:
                 # This argument is the C function result
@@ -970,18 +969,6 @@ class Wrapc(util.WrapperMixin):
                         fmt_arg.cxx_member = "->"
                         fmt_arg.cxx_addr = ""
                         fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
-                        # XXX - delete string after copying its contents idtor=
-                        fmt_arg.idtor = self.add_destructor(
-                            fmt_arg,
-                            "new_string",
-                            [
-                                "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
-                                "delete cxx_ptr;",
-                            ],
-                            arg_typemap,
-                        )
-                        have_idtor = True
-
             else:
                 # regular argument (not function result)
                 arg_call = arg
@@ -1099,8 +1086,7 @@ class Wrapc(util.WrapperMixin):
                     "static_cast<void *>({cxx_addr}{cxx_var})", fmt_arg
                 )
 
-            if not have_idtor:
-                self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
+            self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
 
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper

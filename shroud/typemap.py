@@ -918,6 +918,11 @@ def initialize():
                     pre_call=[
                         "std::string * {cxx_var} = new std::string;",
                     ],
+                    destructor_name="new_string",
+                    destructor=[
+                        "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
+                        "delete cxx_ptr;",
+                    ],
                     post_call=[
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
