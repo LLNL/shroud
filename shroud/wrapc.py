@@ -964,8 +964,8 @@ class Wrapc(util.WrapperMixin):
                         # As std::string is returned.
                         # Must allocate the std::string then assign to it via cxx_rv_decl.
                         # This allows the std::string to outlast the function return.
-                        fmt_arg.cxx_addr = ""
                         fmt_arg.cxx_member = "->"
+                        fmt_arg.cxx_addr = ""
                         append_format(
                             pre_call,  # no const
                             "std::string * {cxx_var} = new std::string;",
@@ -1079,8 +1079,10 @@ class Wrapc(util.WrapperMixin):
             #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
             if cxx_local_var == "scalar":
                 fmt_arg.cxx_member = "."
+                fmt_arg.cxx_addr = "&"
             elif cxx_local_var == "pointer":
                 fmt_arg.cxx_member = "->"
+                fmt_arg.cxx_addr = ""
 
             if self.language == "c":
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
