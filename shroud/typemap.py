@@ -885,22 +885,13 @@ def initialize():
                 result_buf_allocatable=dict(
                     # pass address of string and length back to Fortran
                     buf_args=["context"],
-                    c_helper="copy_string",
+                    c_helper="copy_string ShroudStrToArray",
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)
                     # an intermediate object is created to save the results
                     # which will be passed to copy_string
                     post_call=[
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;",
+                        "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
                     ],
                 ),
                 # std::string function()

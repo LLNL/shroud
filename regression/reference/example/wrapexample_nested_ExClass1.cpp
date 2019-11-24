@@ -43,6 +43,22 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
+// Save str metadata into array to allow Fortran to access values.
+static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, int idtor)
+{
+    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.idtor = idtor;
+    if (src->empty()) {
+        array->addr.ccharp = NULL;
+        array->len = 0;
+    } else {
+        array->addr.ccharp = src->data();
+        array->len = src->size();
+    }
+    array->size = 1;
+}
+
+// helper function
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var_len) {
@@ -215,17 +231,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (&SHCXX_rv));
-    DSHF_rv->cxx.idtor = 0;
-    if (SHCXX_rv.empty()) {
-        DSHF_rv->addr.ccharp = NULL;
-        DSHF_rv->len = 0;
-    } else {
-        DSHF_rv->addr.ccharp = SHCXX_rv.data();
-        DSHF_rv->len = SHCXX_rv.size();
-    }
-    DSHF_rv->size = 1;
+    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
     return;
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }

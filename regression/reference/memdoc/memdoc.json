@@ -239,7 +239,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -912,18 +912,9 @@
                     "buf_args": [
                         "context"
                     ],
-                    "c_helper": "copy_string",
+                    "c_helper": "copy_string ShroudStrToArray",
                     "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;"
+                        "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});"
                     ]
                 },
                 "result_buf_allocatable_scalar": {
