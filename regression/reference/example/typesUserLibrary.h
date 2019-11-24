@@ -25,18 +25,6 @@
 extern "C" {
 #endif
 
-struct s_AA_example_nested_ExClass1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_AA_example_nested_ExClass1 AA_example_nested_ExClass1;
-
-struct s_AA_example_nested_ExClass2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_AA_example_nested_ExClass2 AA_example_nested_ExClass2;
-
 struct s_AA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
@@ -53,6 +41,18 @@ struct s_AA_SHROUD_array {
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_AA_SHROUD_array AA_SHROUD_array;
+
+struct s_AA_example_nested_ExClass1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_AA_example_nested_ExClass1 AA_example_nested_ExClass1;
+
+struct s_AA_example_nested_ExClass2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_AA_example_nested_ExClass2 AA_example_nested_ExClass2;
 
 void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap);
 

@@ -37,6 +37,24 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
+// start helper ShroudStrToArray
+// Save str metadata into array to allow Fortran to access values.
+static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, int idtor)
+{
+    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.idtor = idtor;
+    if (src->empty()) {
+        array->addr.ccharp = NULL;
+        array->len = 0;
+    } else {
+        array->addr.ccharp = src->data();
+        array->len = src->size();
+    }
+    array->size = 1;
+}
+// end helper ShroudStrToArray
+
+// helper function
 // start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
@@ -85,17 +103,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const std::string SH_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1, SH_arg2);
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 2;
-    if (SHCXX_rv->empty()) {
-        DSHF_rv->addr.ccharp = NULL;
-        DSHF_rv->len = 0;
-    } else {
-        DSHF_rv->addr.ccharp = SHCXX_rv->data();
-        DSHF_rv->len = SHCXX_rv->size();
-    }
-    DSHF_rv->size = 1;
+    ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);
     return;
 // splicer end function.concatenate_strings_bufferify
 }

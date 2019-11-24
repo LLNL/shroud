@@ -930,8 +930,8 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
-            have_idtor = False
-            if c_attrs.get("_is_result", False):
+            is_result = c_attrs.get("_is_result", False)
+            if is_result:
                 # This argument is the C function result
                 arg_call = False
 
@@ -949,7 +949,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["result", generated_suffix, result_return_pointer_as]
+                stmts = ["result", generated_suffix,
+                         result_return_pointer_as,
+                         "pointer" if CXX_ast.is_indirect() else "scalar",
+                ]
                 need_wrapper = True
                 if is_pointer:
                     fmt_arg.cxx_member = "->"
@@ -963,26 +966,9 @@ class Wrapc(util.WrapperMixin):
                         # As std::string is returned.
                         # Must allocate the std::string then assign to it via cxx_rv_decl.
                         # This allows the std::string to outlast the function return.
-                        fmt_arg.cxx_addr = ""
                         fmt_arg.cxx_member = "->"
-                        append_format(
-                            pre_call,  # no const
-                            "std::string * {cxx_var} = new std::string;",
-                            fmt_arg,
-                        )
+                        fmt_arg.cxx_addr = ""
                         fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
-                        # XXX - delete string after copying its contents idtor=
-                        fmt_arg.idtor = self.add_destructor(
-                            fmt_arg,
-                            "new_string",
-                            [
-                                "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
-                                "delete cxx_ptr;",
-                            ],
-                            arg_typemap,
-                        )
-                        have_idtor = True
-
             else:
                 # regular argument (not function result)
                 arg_call = arg
@@ -1078,8 +1064,10 @@ class Wrapc(util.WrapperMixin):
             #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
             if cxx_local_var == "scalar":
                 fmt_arg.cxx_member = "."
+                fmt_arg.cxx_addr = "&"
             elif cxx_local_var == "pointer":
                 fmt_arg.cxx_member = "->"
+                fmt_arg.cxx_addr = ""
 
             if self.language == "c":
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
@@ -1098,8 +1086,7 @@ class Wrapc(util.WrapperMixin):
                     "static_cast<void *>({cxx_addr}{cxx_var})", fmt_arg
                 )
 
-            if not have_idtor:
-                self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
+            self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
 
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper

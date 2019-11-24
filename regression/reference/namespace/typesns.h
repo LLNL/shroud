@@ -12,12 +12,6 @@
 extern "C" {
 #endif
 
-struct s_NS_nswork_ClassWork {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
-
 struct s_NS_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
@@ -34,6 +28,12 @@ struct s_NS_SHROUD_array {
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_NS_SHROUD_array NS_SHROUD_array;
+
+struct s_NS_nswork_ClassWork {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
 
 void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap);
 
