@@ -149,7 +149,7 @@ def add_external_helpers(fmtin, literalinclude):
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
-    F_array_type
+    F_array_type, C_array_type
 
     Some helpers are written in C, but called by Fortran.
     Since the names are external, mangle with C_prefix to avoid
@@ -208,6 +208,33 @@ integer(C_SIZE_T), value :: c_var_size
 -end interface""",
             fmt,
         ),
+    )
+    ##########
+
+    name = "ShroudStrToArray"
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
+    CHelpers[name] = dict(
+        dependent_helpers=["array_context"],
+        cxx_header="<cstring> <cstddef>",
+        source=wformat(
+            """
+// helper function
+{lstart}// Save str metadata into array to allow Fortran to access values.
+static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
+{{+
+array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+array->cxx.idtor = idtor;
+if (src->empty()) {{+
+array->addr.ccharp = NULL;
+array->len = 0;
+-}} else {{+
+array->addr.ccharp = src->data();
+array->len = src->size();
+-}}
+array->size = 1;
+-}}{lend}""", fmt),
     )
     ##########
 
