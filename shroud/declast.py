@@ -1044,7 +1044,8 @@ class Declaration(Node):
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
-        This is intended for pointer arguments, char or string.
+        This is intended for pointer arguments, char, string or vector.
+        Move template_arguments from function to argument.
         """
         new = Declaration()
         new.specifier = self.specifier[:]
@@ -1059,6 +1060,7 @@ class Declaration(Node):
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs)
         new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
         return new
 
     def _set_to_void(self):
@@ -1068,6 +1070,7 @@ class Declaration(Node):
         self.const = False
         self.volatile = False
         self.declarator.pointer = []
+        self.template_arguments = []
 
     def result_as_arg(self, name):
         """Pass the function result as an argument.
