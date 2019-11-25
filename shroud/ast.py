@@ -1170,7 +1170,7 @@ class FunctionNode(AstNode):
 
     _function_index  - sequence number function,
                        used in lieu of a pointer
-    _generated       - who generated this function
+    _generated       - which method generated this function
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
