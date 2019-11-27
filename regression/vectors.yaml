@@ -99,7 +99,9 @@ declarations:
 ########################################
 # return vectors
 
-#- decl: std::vector<int> ReturnVectorAlloc(int i)
-#  doxygen:
-#    description: |
-#      Return a vector as an ALLOCATABLE array.
+- decl: std::vector<int> ReturnVectorAlloc(int n)
+  doxygen:
+    description: |
+      Implement iota function.
+      Return a vector as an ALLOCATABLE array.
+      Copy results into the new array.

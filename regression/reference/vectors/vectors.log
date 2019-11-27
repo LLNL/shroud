@@ -1,10 +1,12 @@
 Read yaml vectors.yaml
+Skipping std::vector<{cxx_T}>, unable to create C wrapper for function returning ReturnVectorAlloc instance (must return a pointer or reference). Bufferify version will still be created.
 C function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
 C function void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 C function void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
 C function void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
 C function void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 C function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
+C function void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 Close wrapvectors.h
 Close wrapvectors.cpp
 Close typesvectors.h
@@ -20,4 +22,6 @@ Fortran function void vector_increment(std::vector<int> & arg +dimension(:)+inte
 C-interface function void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 Fortran function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
 C-interface function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
+Fortran function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+C-interface function void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 Close wrapfvectors.f

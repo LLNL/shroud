@@ -123,11 +123,11 @@ void vector_string_append(std::vector< std::string > &arg)
 
 //----------------------------------------------------------------------
 
-std::vector<int> ReturnVectorAlloc(int i)
+std::vector<int> ReturnVectorAlloc(int n)
 {
   std::vector<int> rv;
-  for (int i=0; i < 5; i++) {
-    rv.push_back(i+1);
+  for (int i=1; i <= n; i++) {
+    rv.push_back(i);
   }
   return rv;
 }

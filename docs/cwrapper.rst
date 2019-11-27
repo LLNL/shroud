@@ -179,11 +179,11 @@ The *C_code* field has a default value of::
 buf_args
 ^^^^^^^^^
 
-*buf_args* lists the arguments which are added to the wrapper.
+*buf_args* lists the arguments which are used by the wrapper.
 The default is to provide a one-for-one correspondance with the 
 arguments of the function which is being wrapped.
 However, often an additional function is created which will pass 
-additional arguments to provide meta-data about the argument.
+additional or different arguments to provide meta-data about the argument.
 
 The Fortran wrapper will call the generated 'bufferified' function
 and provide the meta-data to the C wrapper.
@@ -205,6 +205,8 @@ context
     For example, used with ``std::vector`` to hold
     address and size of data contained in the argument
     in a form which may be used directly by Fortran.
+
+    *c_var_context*
 
 len
 

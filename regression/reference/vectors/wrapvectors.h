@@ -50,6 +50,9 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg);
 
+void VEC_return_vector_alloc_bufferify(int n,
+    VEC_SHROUD_array *DSHF_rv);
+
 #ifdef __cplusplus
 }
 #endif
