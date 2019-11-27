@@ -25,3 +25,7 @@ C-interface function int vector_string_count(const std::vector<std::string> & ar
 Fortran function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
 C-interface function void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 Close wrapfvectors.f
+Python function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+Close pyvectorsmodule.cpp
+Close pyvectorsutil.cpp
+Close pyvectorsmodule.hpp

@@ -73,22 +73,38 @@
             "LUA_result": "rv",
             "LUA_state_var": "L",
             "LUA_this_call": "",
+            "PY_PyObject": "PyObject",
             "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
             "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
+            "PY_extern_C_begin": "extern \"C\" ",
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
+            "PY_header_filename": "pyvectorsmodule.hpp",
+            "PY_header_filename_suffix": "hpp",
+            "PY_impl_filename_suffix": "cpp",
+            "PY_library_doc": "library documentation",
+            "PY_module_filename": "pyvectorsmodule.cpp",
             "PY_module_init": "vectors",
             "PY_module_name": "vectors",
             "PY_module_scope": "vectors",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
+            "PY_param_args": "args",
+            "PY_param_kwds": "kwds",
+            "PY_param_self": "self",
             "PY_prefix": "PY_",
             "PY_release_memory_function": "PY_SHROUD_release_memory",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
+            "PY_used_param_args": false,
+            "PY_used_param_kwds": false,
+            "PY_used_param_self": false,
+            "PY_utility_filename": "pyvectorsutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "vectors_types.yaml",
             "c_temp": "SHT_",
+            "capsule_order": "0",
             "cast1": ">\t(",
             "cast2": ")",
             "cast_const": "const_cast<",
@@ -102,6 +118,9 @@
             "library_lower": "vectors",
             "library_upper": "VECTORS",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -169,9 +188,9 @@
                     "function_name": "vector_sum",
                     "underscore_name": "vector_sum"
                 },
-                "linenumber": 29,
+                "linenumber": 30,
                 "options": {
-                    "__line__": 30,
+                    "__line__": 31,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -272,9 +291,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_sum"
                 },
-                "linenumber": 29,
+                "linenumber": 30,
                 "options": {
-                    "__line__": 30,
+                    "__line__": 31,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -325,7 +344,7 @@
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
                 "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 36,
+                    "__line__": 37,
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
@@ -340,9 +359,9 @@
                     "function_name": "vector_iota_out",
                     "underscore_name": "vector_iota_out"
                 },
-                "linenumber": 35,
+                "linenumber": 36,
                 "options": {
-                    "__line__": 38,
+                    "__line__": 39,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -421,7 +440,7 @@
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
                 "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 36,
+                    "__line__": 37,
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
@@ -439,9 +458,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_out"
                 },
-                "linenumber": 35,
+                "linenumber": 36,
                 "options": {
-                    "__line__": 38,
+                    "__line__": 39,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -493,7 +512,7 @@
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 44,
+                    "__line__": 45,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -508,9 +527,9 @@
                     "function_name": "vector_iota_out_alloc",
                     "underscore_name": "vector_iota_out_alloc"
                 },
-                "linenumber": 43,
+                "linenumber": 44,
                 "options": {
-                    "__line__": 46,
+                    "__line__": 47,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -590,7 +609,7 @@
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 44,
+                    "__line__": 45,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -608,9 +627,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_out_alloc"
                 },
-                "linenumber": 43,
+                "linenumber": 44,
                 "options": {
-                    "__line__": 46,
+                    "__line__": 47,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -662,7 +681,7 @@
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))",
                 "doxygen": {
-                    "__line__": 52,
+                    "__line__": 53,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -677,9 +696,9 @@
                     "function_name": "vector_iota_inout_alloc",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
-                "linenumber": 51,
+                "linenumber": 52,
                 "options": {
-                    "__line__": 54,
+                    "__line__": 55,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -761,7 +780,7 @@
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))",
                 "doxygen": {
-                    "__line__": 52,
+                    "__line__": 53,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -779,9 +798,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
-                "linenumber": 51,
+                "linenumber": 52,
                 "options": {
-                    "__line__": 54,
+                    "__line__": 55,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -843,9 +862,9 @@
                     "function_name": "vector_increment",
                     "underscore_name": "vector_increment"
                 },
-                "linenumber": 60,
+                "linenumber": 61,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 62,
                     "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -939,9 +958,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_increment"
                 },
-                "linenumber": 60,
+                "linenumber": 61,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 62,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -998,7 +1017,7 @@
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))",
                 "doxygen": {
-                    "__line__": 69,
+                    "__line__": 70,
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
@@ -1015,7 +1034,7 @@
                     "function_name": "vector_string_count",
                     "underscore_name": "vector_string_count"
                 },
-                "linenumber": 68,
+                "linenumber": 69,
                 "options": {
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -1104,7 +1123,7 @@
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))",
                 "doxygen": {
-                    "__line__": 69,
+                    "__line__": 70,
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
@@ -1123,7 +1142,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_string_count"
                 },
-                "linenumber": 68,
+                "linenumber": 69,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1174,7 +1193,7 @@
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
                 "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 84,
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
@@ -1182,13 +1201,13 @@
                     "C_custom_return_type": "int",
                     "C_return_code": "return SH_arg.size();",
                     "C_return_type": "int",
-                    "__line__": 80,
+                    "__line__": 81,
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 },
-                "linenumber": 74,
+                "linenumber": 75,
                 "options": {
-                    "__line__": 75,
+                    "__line__": 76,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1238,16 +1257,16 @@
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
                 "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
                 "doxygen": {
-                    "__line__": 95,
+                    "__line__": 96,
                     "brief": "append '-like' to names."
                 },
                 "fmtdict": {
                     "function_name": "vector_string_append",
                     "underscore_name": "vector_string_append"
                 },
-                "linenumber": 89,
+                "linenumber": 90,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 91,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1255,10 +1274,39 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "n": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int n",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "n",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int n",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_n",
+                            "size_var": "SHSize_n"
+                        }
+                    }
+                },
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::vector<{cxx_T}>",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1302,7 +1350,7 @@
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
                 "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)",
                 "doxygen": {
-                    "__line__": 103,
+                    "__line__": 104,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
@@ -1315,10 +1363,11 @@
                     "F_name_impl": "return_vector_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnVectorAlloc",
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "linenumber": 102,
+                "linenumber": 103,
                 "options": {
                     "wrap_c": false
                 }
@@ -1434,7 +1483,7 @@
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
                 "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
-                    "__line__": 103,
+                    "__line__": 104,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
@@ -1453,7 +1502,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_vector_alloc"
                 },
-                "linenumber": 102,
+                "linenumber": 103,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1548,7 +1597,7 @@
             "wrap_c": true,
             "wrap_fortran": true,
             "wrap_lua": false,
-            "wrap_python": false
+            "wrap_python": true
         },
         "scope_file": [
             "vectors"
