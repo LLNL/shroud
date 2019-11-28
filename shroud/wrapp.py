@@ -710,9 +710,9 @@ return 1;""",
         (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
         """
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        index = "intent_out_allocatable_{}".format(
-            node.options.PY_array_arg)
-        blk = py_statements_local[index]
+        blk = typemap.lookup_stmts(
+            py_statements_local,
+            ["intent_out", "allocatable", node.options.PY_array_arg])
         return blk
 
     def dimension_blk(self, arg, fmt_arg, options):
@@ -742,8 +742,9 @@ return 1;""",
                 raise RuntimeError(
                     "Argument dimension must not be assumed-length")
 
-        index = "intent_{}_dimension_{}".format(intent, options.PY_array_arg)
-        blk = py_statements_local[index]
+        blk = typemap.lookup_stmts(
+            py_statements_local,
+            ["intent_" + intent, "dimension", options.PY_array_arg])
         return blk
 
     def set_fmt_fields(self, ast, fmt, is_result=False):
@@ -1115,14 +1116,14 @@ return 1;""",
                     allocatable, node, arg, fmt_arg
                 )
             elif arg_typemap.base == "struct":
-                index = "struct_intent_{}_{}".format(intent, options.PY_struct_arg)
-                intent_blk = py_statements_local[index]
+                intent_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["struct", "intent_" + intent, options.PY_struct_arg])
             elif dimension:
                 intent_blk = self.dimension_blk(arg, fmt_arg, options)
             else:
                 py_statements = arg_typemap.py_statements
-                stmts = ["intent_" + intent]
-                intent_blk = typemap.lookup_stmts(py_statements, stmts)
+                intent_blk = typemap.lookup_stmts(py_statements, ["intent_" + intent])
 
             if "parse_as_object" in intent_blk:
                 as_object = True
@@ -1437,14 +1438,16 @@ return 1;""",
                 # Code added by create_ctor_function.
                 result_blk = {}
             elif result_typemap.base == "struct":
-                index = "struct_result_{}".format(options.PY_struct_arg)
-                result_blk = py_statements_local[index]
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["struct", "result", options.PY_struct_arg])
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                index = "result_dimension_{}".format(options.PY_array_arg)
-                result_blk = py_statements_local[index]
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "dimension", options.PY_array_arg])
             else:
                 result_blk = typemap.lookup_stmts(
                     result_typemap.py_statements, ["result"])
