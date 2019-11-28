@@ -62,22 +62,42 @@ PY_ReturnVectorAlloc(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
+    std::vector<int> * rv = NULL;
     PyObject * SHTPy_rv = NULL;
+    PyObject *SHC_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ReturnVectorAlloc",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
 
-    int rv = ReturnVectorAlloc(n);
+    rv = new std::vector<int>;
+    if (rv == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
+    *rv = ReturnVectorAlloc(n);
 
     // post_call
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, None, rv);
+    npy_intp SHD_rv[1];
+    SHD_rv[0] = rv->size();
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT,
+        rv->data());
     if (SHTPy_rv == NULL) goto fail;
+    SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
+        PY_SHROUD_capsule_destructor);
+    if (SHC_rv == NULL) goto fail;
+    PyCapsule_SetContext(SHC_rv, PY_SHROUD_fetch_context(1));
+    if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
+        (SHTPy_rv), SHC_rv) < 0) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
+    if (rv != NULL) {
+        PY_SHROUD_release_memory(1, rv);
+    }
     Py_XDECREF(SHTPy_rv);
+    Py_XDECREF(SHC_rv);
     return NULL;
 // splicer end function.return_vector_alloc
 }

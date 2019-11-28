@@ -35,12 +35,11 @@ class Vectors(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_returnVectorAlloc(self):
-        rv = vectors.returnVectorAlloc(10)
+        rv = vectors.ReturnVectorAlloc(10)
 
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(10, rv.size)
-        self.assertEqual(1, rv)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7,8,9,10])))
 #        self.assertTrue(np.allclose(rv, outarray))
 

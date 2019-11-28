@@ -732,6 +732,21 @@ return 1;""",
         if typemap.PYN_descr:
             fmt.PYN_descr = typemap.PYN_descr
 
+        if typemap.base == "vector":
+            vtypemap = ast.template_arguments[0].typemap
+            fmt.numpy_type = vtypemap.PYN_typenum
+            fmt.cxx_T = ast.template_arguments[0].typemap.name
+            fmt.npy_ndims = "1"
+            if is_result:
+                fmt.npy_dims = "SHD_" + fmt.C_result
+            else:
+                fmt.npy_dims = "SHD_" + ast.name
+#            fmt.pointer_shape = dimension
+            # Dimensions must be in npy_intp type array.
+            # XXX - assumes 1-d
+            fmt.npy_intp = "npy_intp {}[1];\n".format(fmt.npy_dims)
+#            fmt.npy_intp = "npy_intp {}[1] = {{{}->size()}};\n".format(fmt.npy_dims, fmt.cxx_var)
+
         dimension = ast.attrs.get("dimension", None)
         if dimension:
             # (*), (:), (:,:)
@@ -884,7 +899,7 @@ return 1;""",
         is_dtor = ast.is_dtor()
         #        is_const = ast.const
         ml_flags = []
-        is_struct_scalar = False
+        result_typeflag = None
         need_malloc = False
         result_return_pointer_as = ast.return_pointer_as
 
@@ -924,10 +939,18 @@ return 1;""",
             )  # fmt_func
 
             CXX_result = ast
-            if result_typemap.base == "struct" and not CXX_result.is_pointer():
+            if result_typemap.base == "vector":
+                if CXX_result.is_pointer():
+                    pass
+                else:
+                    # Allocate variable to the type returned by the function.
+                    result_typeflag = "vector"
+                    result_return_pointer_as = "pointer"
+                    fmt_result.cxx_var = wformat("{C_result}", fmt_result)
+            elif result_typemap.base == "struct" and not CXX_result.is_pointer():
                 # Allocate variable to the type returned by the function.
                 # No need to convert to C.
-                is_struct_scalar = True
+                result_typeflag = "struct"
                 result_return_pointer_as = "pointer"
                 fmt_result.cxx_var = wformat("{C_result}", fmt_result)
             elif result_typemap.cxx_to_c is None:
@@ -937,7 +960,7 @@ return 1;""",
                     "{CXX_local}{C_result}", fmt_result
                 )
 
-            if is_struct_scalar:
+            if result_typeflag:
                 # Force result to be a pointer to a struct
                 need_malloc = True
                 fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
@@ -945,6 +968,7 @@ return 1;""",
                     force_ptr=True,
                     params=None,
                     continuation=True,
+                    with_template_args=True,
                 )
             else:
                 fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
@@ -1336,6 +1360,10 @@ return 1;""",
             if options.debug and need_blank:
                 PY_code.append("")
 
+            if CXX_subprogram == "function":
+                # XXX - duplicated below
+                self.set_fmt_fields(ast, fmt_result, True)
+                
             capsule_order = None
             if is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
@@ -1351,12 +1379,13 @@ return 1;""",
                 need_rv = True
                 fmt.cxx_type = result_typemap.cxx_type
                 capsule_type = CXX_result.gen_arg_as_cxx(
-                    name=None, force_ptr=True, params=None, continuation=True
+                    name=None, force_ptr=True, params=None, continuation=True,
+                    with_template_args=True,
                 )
                 append_format(decl_code, "{C_rv_decl} = NULL;", fmt_result)
                 PY_code.extend(self.allocate_memory(
                     self.language, fmt_result.cxx_var, capsule_type, fmt_result,
-                    "goto fail", True))
+                    "goto fail", result_typeflag))
                 append_format(fail_code, "if ({cxx_var} != NULL) {{+\n"
                               "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
                               "-}}",
@@ -1419,6 +1448,10 @@ return 1;""",
                 result_blk = typemap.lookup_stmts(
                     py_statements_local,
                     ["struct", "result", options.PY_struct_arg])
+            elif result_typemap.base == "vector":
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "vector", options.PY_struct_arg])
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
@@ -1629,8 +1662,12 @@ return 1;""",
         assert cls is not None
         capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
         var = "self->" + fmt.PY_type_obj
+        if cls.as_struct:
+            typeflag = "struct"
+        else:
+            typeflag = None
         code.extend(self.allocate_memory(
-            self.language, var, capsule_type, fmt, "return -1", cls.as_struct))
+            self.language, var, capsule_type, fmt, "return -1", typeflag))
         append_format(code,
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
@@ -1642,8 +1679,9 @@ return 1;""",
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
 
     def allocate_memory(self, lang, var, capsule_type, fmt,
-                       error, as_struct):
+                       error, as_type):
         """Return code to allocate an item.
+        Call PyErr_NoMemory if necessary.
         Set fmt.capsule order used to release it.
 
         Args:
@@ -1652,14 +1690,17 @@ return 1;""",
             capsule_type
             fmt
             error   - error code ex. "goto fail" or "return -1"
-            as_struct -
+            as_type - "struct", "vector", None
         """
         lines = []
         if lang == "c":
             alloc = var + " = malloc(sizeof({cxx_type}));"
             del_lines = [wformat("{stdlib}free(ptr);",fmt)]
         else:
-            if as_struct:
+            if as_type == "vector":
+                # Expand cxx_T.
+                alloc = var + " = new " + wformat(fmt.cxx_type, fmt) + ";"
+            elif as_type == "struct":
                 alloc = var + " = new {namespace_scope}{cxx_type};"
             else:
                 alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
@@ -3247,6 +3288,36 @@ py_statements_local = dict(
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
+    ),
+
+
+########################################
+# std::vector  only used with C++
+# numpy
+# cxx_var will always be a pointer since we must save it in a capsule.
+    result_vector_numpy=dict(
+        need_numpy=True,
+        decl=[
+            "PyObject * {py_var} = NULL;",
+        ],
+        pre_call=[
+            "// foo bar blat",
+        ],
+        post_call=[
+            "{npy_intp}"
+            "{npy_dims}[0] = {cxx_var}->size();",
+            "{py_var} = "
+            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "\t {numpy_type},\t {cxx_var}->data());",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+        decl_capsule=decl_capsule,
+        post_call_capsule=post_call_capsule,
+        fail_capsule=fail_capsule,
     ),
 
 )

@@ -20,6 +20,11 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

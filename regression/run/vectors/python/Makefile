@@ -27,7 +27,7 @@ OBJS = \
 
 CXXFLAGS += $(SHARED)
 
-all : vectors.so simple
+all : vectors.so #simple
 
 vectors.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
