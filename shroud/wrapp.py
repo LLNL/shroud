@@ -696,40 +696,12 @@ return 1;""",
             )
         )  # closure
 
-    def allocatable_blk(self, allocatable, node, arg, fmt_arg):
-        """Allocate NumPy Array.
-        Assumes intent(out)
-
-        Args:
-            allocatable -
-            node -
-            arg -
-            fmt_arg -
-
-        Examples:
-        (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
-        """
-        attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        blk = typemap.lookup_stmts(
-            py_statements_local,
-            ["intent_out", "allocatable", node.options.PY_array_arg])
-        return blk
-
-    def dimension_blk(self, arg, fmt_arg, options):
-        """Create code needed for a dimensioned array argument.
+    def check_dimension_blk(self, arg):
+        """Check dimension attribute.
         Convert it to use Numpy.
 
         Args:
             arg - argument node.
-            fmt_arg -
-            options - Scope
-
-        Return a dictionary which defines fields
-        of code to insert into the wrapper.
-
-        Examples:
-        ----------------------------------------
-        (int * arg1 +intent(in) +dimension(:))
         """
         intent = arg.attrs["intent"]
         whelpers.add_to_PyList_helper(arg)
@@ -741,11 +713,6 @@ return 1;""",
             if dimension == "*":
                 raise RuntimeError(
                     "Argument dimension must not be assumed-length")
-
-        blk = typemap.lookup_stmts(
-            py_statements_local,
-            ["intent_" + intent, "dimension", options.PY_array_arg])
-        return blk
 
     def set_fmt_fields(self, ast, fmt, is_result=False):
         """
@@ -1112,15 +1079,26 @@ return 1;""",
                 arg_implied.append(arg)
                 intent_blk = {}
             elif allocatable:
-                intent_blk = self.allocatable_blk(
-                    allocatable, node, arg, fmt_arg
-                )
+                # Allocate NumPy Array.
+                # Assumes intent(out)
+                # ex. (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
+                attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
+                if intent != "out":
+                    raise RuntimeError(
+                        "Argument must have intent(out)")
+                intent_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["intent_out", "allocatable", node.options.PY_array_arg])
             elif arg_typemap.base == "struct":
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
                     ["struct", "intent_" + intent, options.PY_struct_arg])
             elif dimension:
-                intent_blk = self.dimension_blk(arg, fmt_arg, options)
+                # ex. (int * arg1 +intent(in) +dimension(:))
+                self.check_dimension_blk(arg)
+                intent_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["intent_" + intent, "dimension", options.PY_array_arg])
             else:
                 py_statements = arg_typemap.py_statements
                 intent_blk = typemap.lookup_stmts(py_statements, ["intent_" + intent])
