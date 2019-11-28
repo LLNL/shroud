@@ -207,6 +207,19 @@ class CheckParse(unittest.TestCase):
                 "typemap_name": "std::vector",
             },
         )
+        # C
+        s = r.gen_arg_as_c()
+        self.assertEqual("int var1", s)
+        s = r.gen_arg_as_c(force_ptr=True)
+        self.assertEqual("int * var1", s)
+        # CXX
+        s = r.gen_arg_as_cxx()
+        self.assertEqual("int var1", s)
+        s = r.gen_arg_as_cxx(force_ptr=True)
+        self.assertEqual("int * var1", s)
+
+        s = r.gen_arg_as_cxx(force_ptr=True, with_template_args=True)
+        self.assertEqual("std::vector<int> * var1", s)
 
         r = declast.check_decl("std::vector<long long> var1")
         s = r.gen_decl()
