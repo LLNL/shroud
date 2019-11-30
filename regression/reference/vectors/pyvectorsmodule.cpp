@@ -41,6 +41,57 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+static char PY_vector_sum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_vector_sum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
+// splicer begin function.vector_sum
+    PyObject * SHTPy_arg;
+    PyArrayObject * SHPy_arg = NULL;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
+        const_cast<char **>(SHT_kwlist), &SHTPy_arg))
+        return NULL;
+
+    // post_parse
+    SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
+        SHTPy_arg, NPY_INT, NPY_ARRAY_IN_ARRAY));
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of int");
+        goto fail;
+    }
+    {
+        // pre_call
+        int * SHData_arg = static_cast<int *>(PyArray_DATA(SHPy_arg));
+        std::vector<int> SH_arg(SHData_arg,
+            SHData_arg+PyArray_SIZE(SHPy_arg));
+
+        int rv = vector_sum(SH_arg);
+
+        // post_call
+        SHTPy_rv = PyInt_FromLong(rv);
+
+        return (PyObject *) SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
+// splicer end function.vector_sum
+}
+
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -102,6 +153,8 @@ fail:
 // splicer end function.return_vector_alloc
 }
 static PyMethodDef PY_methods[] = {
+{"vector_sum", (PyCFunction)PY_vector_sum, METH_VARARGS|METH_KEYWORDS,
+    PY_vector_sum__doc__},
 {"ReturnVectorAlloc", (PyCFunction)PY_ReturnVectorAlloc,
     METH_VARARGS|METH_KEYWORDS, PY_ReturnVectorAlloc__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

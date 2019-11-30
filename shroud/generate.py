@@ -1187,7 +1187,6 @@ class GenFunctions(object):
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.options.wrap_c = False
-                node.options.wrap_python = False  # NotImplemented
                 node.options.wrap_lua = False  # NotImplemented
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 

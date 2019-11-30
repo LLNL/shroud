@@ -156,6 +156,7 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -181,6 +182,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -270,6 +272,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -295,6 +298,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -384,6 +388,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -409,6 +414,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -498,6 +504,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -524,6 +531,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
@@ -616,6 +624,7 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -641,6 +650,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -732,6 +742,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -757,6 +768,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -848,6 +860,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -874,6 +887,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
@@ -968,6 +982,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -993,6 +1008,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1082,6 +1098,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1107,6 +1124,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1198,6 +1216,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1223,6 +1242,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1314,6 +1334,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1339,6 +1360,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1430,6 +1452,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1456,6 +1479,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
@@ -1550,6 +1574,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1575,6 +1600,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1668,6 +1694,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int8_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT8",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1693,6 +1720,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1782,6 +1810,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int16_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT16",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1807,6 +1836,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1896,6 +1926,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int32_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT32",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1921,6 +1952,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2010,6 +2042,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int64_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT64",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2035,6 +2068,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2124,6 +2158,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint8_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT8",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2149,6 +2184,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2238,6 +2274,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint16_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT16",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2263,6 +2300,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2352,6 +2390,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint32_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT32",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2377,6 +2416,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2466,6 +2506,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint64_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT64",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2491,6 +2532,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2580,6 +2622,7 @@
                             "cxx_member": ".",
                             "cxx_type": "size_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2605,6 +2648,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2695,6 +2739,7 @@
                             "cxx_member": ".",
                             "cxx_type": "bool",
                             "cxx_var": "arg",
+                            "data_var": "SHData_arg",
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
                             "py_var": "SHPy_arg",
@@ -2722,6 +2767,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2811,6 +2857,7 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "flag",
+                            "data_var": "SHData_flag",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag"
@@ -2837,6 +2884,7 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"

@@ -16,11 +16,13 @@ SH_     C or C++ version of argument
 SHPy_   Python object which corresponds to the argument {py_var}
 SHTPy_  A temporary object, usually from PyArg_Parse
         to be converted to SHPy_ object. {pytmp_var}
+SHData_ Data of NumPy object (fmt.data_var} - intermediate variable
+        of PyArray_DATA cast to correct type.
 SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
-SHSize_ Size of dimension argument (size_var}
+SHSize_ Size of dimension argument (fmt.size_var}
 SHPyResult Return Python object.
         Necessary when a return object is combined with others by Py_BuildValue.
 """
@@ -985,6 +987,7 @@ return 1;""",
                 fmt_result.cxx_member = "."
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
+            fmt_result.data_var = "SHData_" + fmt_result.C_result
             fmt_result.size_var = "SHSize_" + fmt_result.C_result
             fmt_result.numpy_type = result_typemap.PYN_typenum
         #            fmt_pattern = fmt_result
@@ -1035,6 +1038,7 @@ return 1;""",
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = "SHPy_" + arg_name
+            fmt_arg.data_var = "SHData_" + arg_name
             fmt_arg.size_var = "SHSize_" + arg_name
 
             arg_typemap = arg.typemap
@@ -1067,6 +1071,17 @@ return 1;""",
                 # not sure how function pointers work with Python.
                 local_var = "funcptr"
             elif arg_typemap.base == "string":
+                charlen = arg.attrs.get("charlen", False)
+                if charlen:
+                    fmt_arg.charlen = charlen
+                    fmt_arg.c_decl = wformat("{c_const}char {c_var}[{charlen}]", fmt_arg)
+                    fmt_arg.cxx_decl = fmt_arg.c_decl
+                else:
+                    fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
+                    #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
+                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+                local_var = "pointer"
+            elif arg_typemap.base == "vectorXXX":
                 charlen = arg.attrs.get("charlen", False)
                 if charlen:
                     fmt_arg.charlen = charlen
@@ -1117,6 +1132,10 @@ return 1;""",
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
                     ["struct", "intent_" + intent, options.PY_struct_arg])
+            elif arg_typemap.base == "vector":
+                intent_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["intent_" + intent, "vector", options.PY_struct_arg])
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
@@ -1146,6 +1165,7 @@ return 1;""",
                     fmt_arg.cxx_member = "->"
 
             if implied:
+                # Argument is implied from other arguments.
                 pass
             elif intent in ["inout", "in"]:
                 # names to PyArg_ParseTupleAndKeywords
@@ -2858,6 +2878,14 @@ array_error = [
     "goto fail;",
     "-}}",
 ]
+# Use cxx_T instead of c_type for vector.
+template_array_error = [
+    "if ({py_var} == NULL) {{+",
+    "PyErr_SetString(PyExc_ValueError,"
+    '\t "{c_var} must be a 1-D array of {cxx_T}");',
+    "goto fail;",
+    "-}}",
+]
 
 malloc_error = [
     "if ({cxx_var} == NULL) {{+",
@@ -3295,13 +3323,31 @@ py_statements_local = dict(
 # std::vector  only used with C++
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
+    intent_in_vector_numpy=dict(
+        need_numpy=True,
+        cxx_local_var="scalar",
+        decl=[
+            "PyObject * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
+        ] + template_array_error,
+        pre_call=[
+            "{cxx_T} * {data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
+            "std::vector<{cxx_T}> {cxx_var}\t(\t{data_var},\t "
+            "{data_var}+PyArray_SIZE({py_var}));",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
     result_vector_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {py_var} = NULL;",
-        ],
-        pre_call=[
-            "// foo bar blat",
         ],
         post_call=[
             "{npy_intp}"

@@ -192,6 +192,7 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "i",
+                                    "data_var": "SHData_i",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_i",
                                     "size_var": "SHSize_i"
@@ -367,6 +368,7 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
+                                    "data_var": "SHData_flag",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
                                     "size_var": "SHSize_flag"

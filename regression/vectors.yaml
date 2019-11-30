@@ -29,7 +29,7 @@ declarations:
 # const implies intent(in)
 - decl: int vector_sum(const std::vector<int> &arg)
   options:
-    wrap_python: False
+#    wrap_python: False
     wrap_lua: False
     literalinclude: True
 
@@ -71,6 +71,8 @@ declarations:
     brief: count number of underscore in vector of strings
     decription: |
       The input will be copied in order to create the C++ argument
+  options:
+    wrap_python: False
  
 - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
   options:

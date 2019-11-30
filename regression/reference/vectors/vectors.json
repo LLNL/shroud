@@ -127,10 +127,46 @@
         },
         "functions": [
             {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "const ",
+                            "c_decl": "None * arg",
+                            "c_deref": "",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "std::vector<{cxx_T}> * arg",
+                            "cxx_member": ".",
+                            "cxx_type": "std::vector<{cxx_T}>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -185,6 +221,7 @@
                     "F_name_impl": "vector_sum",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum",
                     "underscore_name": "vector_sum"
                 },
@@ -193,8 +230,7 @@
                     "__line__": 31,
                     "literalinclude": true,
                     "wrap_c": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 }
             },
             {
@@ -1036,6 +1072,7 @@
                 },
                 "linenumber": 69,
                 "options": {
+                    "__line__": 74,
                     "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1144,6 +1181,7 @@
                 },
                 "linenumber": 69,
                 "options": {
+                    "__line__": 74,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1193,7 +1231,7 @@
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
                 "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 84,
+                    "__line__": 86,
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
@@ -1201,13 +1239,13 @@
                     "C_custom_return_type": "int",
                     "C_return_code": "return SH_arg.size();",
                     "C_return_type": "int",
-                    "__line__": 81,
+                    "__line__": 83,
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 },
-                "linenumber": 75,
+                "linenumber": 77,
                 "options": {
-                    "__line__": 76,
+                    "__line__": 78,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1257,16 +1295,16 @@
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
                 "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
                 "doxygen": {
-                    "__line__": 96,
+                    "__line__": 98,
                     "brief": "append '-like' to names."
                 },
                 "fmtdict": {
                     "function_name": "vector_string_append",
                     "underscore_name": "vector_string_append"
                 },
-                "linenumber": 90,
+                "linenumber": 92,
                 "options": {
-                    "__line__": 91,
+                    "__line__": 93,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1287,6 +1325,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "n",
+                            "data_var": "SHData_n",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_n",
                             "size_var": "SHSize_n"
@@ -1306,6 +1345,7 @@
                         "cxx_addr": "",
                         "cxx_member": ".",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "npy_dims": "SHD_rv",
                         "npy_intp": "npy_intp SHD_rv[1];\n",
                         "npy_ndims": "1",
@@ -1356,7 +1396,7 @@
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
                 "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)",
                 "doxygen": {
-                    "__line__": 104,
+                    "__line__": 106,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
@@ -1373,7 +1413,7 @@
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "linenumber": 103,
+                "linenumber": 105,
                 "options": {
                     "wrap_c": false
                 }
@@ -1489,7 +1529,7 @@
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
                 "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
-                    "__line__": 104,
+                    "__line__": 106,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
@@ -1508,7 +1548,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_vector_alloc"
                 },
-                "linenumber": 103,
+                "linenumber": 105,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

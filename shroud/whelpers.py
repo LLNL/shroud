@@ -491,12 +491,15 @@ integer(C_SIZE_T), value :: c_var_size
     return name
 
 def add_to_PyList_helper(arg):
-    """
+    """Add helpers to work with Python lists.
+
     Args:
         fmt -
     """
     ntypemap = arg.typemap
-
+    if ntypemap.base == "vector":
+        ntypemap = arg.template_arguments[0].typemap
+    
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
