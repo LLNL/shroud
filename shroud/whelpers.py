@@ -492,13 +492,15 @@ integer(C_SIZE_T), value :: c_var_size
 
 def add_to_PyList_helper(arg):
     """Add helpers to work with Python lists.
+    Several helpers are created based on the type of arg.
 
     Args:
-        fmt -
+        arg -
     """
     ntypemap = arg.typemap
     if ntypemap.base == "vector":
-        ntypemap = arg.template_arguments[0].typemap
+        add_to_PyList_helper_vector(arg)
+        return
     
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
@@ -624,7 +626,108 @@ return 0;
             ),
         )
         CHelpers[name] = helper
-    return name
+
+def add_to_PyList_helper_vector(arg):
+    """Add helpers to work with Python lists.
+    Several helpers are created based on the type of arg.
+
+    Args:
+        arg -
+    """
+    ntypemap = arg.typemap
+    if ntypemap.base == "vector":
+        ntypemap = arg.template_arguments[0].typemap
+    
+    # Used with intent(out)
+    name = "to_PyList_vector_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+static PyObject *SHROUD_to_PyList_vector_{c_type}(std::vector<{c_type}> & in)
+{{+
+size_t size = in.size();
+PyObject *out = PyList_New(size);
+for (size_t i = 0; i < size; ++i) {{+
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+return out;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # Used with intent(inout)
+    name = "update_PyList_vector_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{{+
+for (size_t i = 0; i < size; ++i) {{+
+PyObject *item = PyList_GET_ITEM(out, i);
+Py_DECREF(item);
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # used with intent(in)
+    # Return -1 on error.
+    # Convert an empty list into a NULL pointer.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
+    name = "from_PyObject_vector_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_get=ntypemap.PY_get.format(py_var="item"),
+        )
+        helper = dict(
+##-            cxx_header="<cstdlib>",  # malloc/free
+            cxx_source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_{c_type}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in.push_back({Py_get});
+if (PyErr_Occurred()) {{+
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+return 0;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
 
 """
 http://effbot.org/zone/python-capi-sequences.htm

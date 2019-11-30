@@ -35,6 +35,42 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int(PyObject *obj,
+    const char *name, std::vector<int> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+
+static PyObject *SHROUD_to_PyList_vector_int(std::vector<int> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
@@ -54,7 +90,6 @@ PY_vector_sum(
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 // splicer begin function.vector_sum
     PyObject * SHTPy_arg;
-    PyArrayObject * SHPy_arg = NULL;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
@@ -63,20 +98,12 @@ PY_vector_sum(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
         return NULL;
-
-    // post_parse
-    SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_arg, NPY_INT, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_arg == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of int");
-        goto fail;
-    }
     {
         // pre_call
-        int * SHData_arg = static_cast<int *>(PyArray_DATA(SHPy_arg));
-        std::vector<int> SH_arg(SHData_arg,
-            SHData_arg+PyArray_SIZE(SHPy_arg));
+        std::vector<int> SH_arg;
+        if (SHROUD_from_PyObject_vector_int(SHTPy_arg, "arg",
+            SH_arg) == -1)
+            goto fail;
 
         int rv = vector_sum(SH_arg);
 
@@ -87,7 +114,6 @@ PY_vector_sum(
     }
 
 fail:
-    Py_XDECREF(SHPy_arg);
     return NULL;
 // splicer end function.vector_sum
 }
@@ -109,33 +135,22 @@ PY_vector_iota_out(
 // void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
     PyObject * SHPy_arg = NULL;
-    PyObject *SHC_arg = NULL;
 
     {
         // pre_call
-        std::vector<int> *SH_arg = new std::vector<int>;
+        std::vector<int> SH_arg;
 
-        vector_iota_out(*SH_arg);
+        vector_iota_out(SH_arg);
 
         // post_call
-        npy_intp SHD_arg[1];
-        SHD_arg[0] = SH_arg->size();
-        SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
-            SH_arg->data());
+        SHPy_arg = SHROUD_to_PyList_vector_int(SH_arg);
         if (SHPy_arg == NULL) goto fail;
-        SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
-            PY_SHROUD_capsule_destructor);
-        if (SHC_arg == NULL) goto fail;
-        PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(1));
-        if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-            (SHPy_arg), SHC_arg) < 0) goto fail;
 
         return (PyObject *) SHPy_arg;
     }
 
 fail:
     Py_XDECREF(SHPy_arg);
-    Py_XDECREF(SHC_arg);
     return NULL;
 // splicer end function.vector_iota_out
 }

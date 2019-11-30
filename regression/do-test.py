@@ -377,7 +377,7 @@ if __name__ == "__main__":
         TestDesc("vectors-list", yaml="vectors",
                  cmdline=[
                      "--language", "c++",
-                     "--option", "PY_array_arg=numpy",
+                     "--option", "PY_array_arg=list",
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
