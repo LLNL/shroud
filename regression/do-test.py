@@ -374,6 +374,13 @@ if __name__ == "__main__":
                      "--language", "c++",
                      "--option", "PY_array_arg=numpy",
                  ]),
+        TestDesc("vectors-list", yaml="vectors",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_array_arg=numpy",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                 ]),
         
         TestDesc("forward"),
         TestDesc("example"),

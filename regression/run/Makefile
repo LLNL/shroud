@@ -186,7 +186,6 @@ phony_explicit:
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
     $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors-numpy/..\
-    $(tempdir)/run/vectors-numpy/python/.. \
-    $(tempdir)/run/vectors-numpy/lua/.. \
+    $(tempdir)/run/vectors-list/python/.. \
+    $(tempdir)/run/vectors-numpy/python/..
 
