@@ -3353,6 +3353,9 @@ py_statements_local = dict(
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
     intent_in_vector_numpy=dict(
+        # Convert input argument into a NumPy array to make sure it is contiguous,
+        # create a local std::vector which will copy the values.
+        # Pass to C++ function.
         need_numpy=True,
         cxx_local_var="scalar",
         decl=[
@@ -3374,6 +3377,8 @@ py_statements_local = dict(
         goto_fail=True,
     ),
     intent_out_vector_numpy=dict(
+        # Create a pointer a std::vector and pass to C++ function.
+        # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
         cxx_local_var="pointer",
         decl=[
