@@ -963,7 +963,7 @@ return 1;""",
                 )
 
             if result_typeflag:
-                # Force result to be a pointer to a struct
+                # Force result to be a pointer to a struct/vector
                 need_malloc = True
                 fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
                     name=fmt_result.cxx_var,
@@ -1239,6 +1239,7 @@ return 1;""",
                     )
 
             # Code to convert parsed values (C or Python) to C++.
+            self.add_stmt_capsule(intent_blk, fmt_arg)
             update_code_blocks(locals(), intent_blk, fmt_arg)
             if "c_helper" in intent_blk:
                 c_helper = wformat(intent_blk["c_helper"], fmt_arg)
@@ -1492,6 +1493,7 @@ return 1;""",
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
+            self.add_stmt_capsule(result_blk, fmt_result)
             update_code_blocks(locals(), result_blk, fmt_result)
 
         # If only one return value, return the ctor
@@ -1698,11 +1700,38 @@ return 1;""",
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
 
+    def add_stmt_capsule(self, stmts, fmt):
+        """Create code to release memory.
+
+        For example, std::vector intent(out) must eventually release
+        the vector via a capsule owned by the NumPy array.
+
+        XXX - Move update_code_blocks here....
+        """
+        # Create capsule destructor
+        capsule_type = stmts.get("capsule_type", None)
+        if capsule_type:
+            capsule_type = wformat(capsule_type, fmt)
+            fmt.capsule_type = capsule_type
+
+            del_lines = stmts.get("del_lines", [])
+            if del_lines:
+                # Expand things like {cxx_T}
+                del_work = []
+                for line in del_lines:
+                    append_format(del_work, line, fmt)
+                del_lines = del_work
+            
+            capsule_order = self.add_capsule_code(
+                self.language + " " + capsule_type, del_lines)
+            fmt.capsule_order = capsule_order
+            fmt.py_capsule = "SHC_" + fmt.c_var
+                
     def allocate_memory(self, lang, var, capsule_type, fmt,
                        error, as_type):
         """Return code to allocate an item.
         Call PyErr_NoMemory if necessary.
-        Set fmt.capsule order used to release it.
+        Set fmt.capsule_order which is used to release it.
 
         Args:
             lang   - c or c++
@@ -3327,7 +3356,7 @@ py_statements_local = dict(
         need_numpy=True,
         cxx_local_var="scalar",
         decl=[
-            "PyObject * {pytmp_var};",
+            "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
@@ -3343,6 +3372,38 @@ py_statements_local = dict(
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
+    ),
+    intent_out_vector_numpy=dict(
+        need_numpy=True,
+        cxx_local_var="pointer",
+        decl=[
+            "PyObject * {py_var} = NULL;",
+        ],
+        pre_call=[
+            "std::vector<{cxx_T}> *{cxx_var} = new std::vector<{cxx_T}>;",
+        ],
+        post_call=[
+            "{npy_intp}"
+            "{npy_dims}[0] = {cxx_var}->size();",
+            "{py_var} = "
+            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "\t {numpy_type},\t {cxx_var}->data());",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+
+        capsule_type = "std::vector<{cxx_T}> *",
+        del_lines = [
+            "{capsule_type} cxx_ptr =\t static_cast<{capsule_type}>(ptr);",
+            "delete cxx_ptr;",
+        ],
+        
+        decl_capsule=decl_capsule,
+        post_call_capsule=post_call_capsule,
+        fail_capsule=fail_capsule,
     ),
     result_vector_numpy=dict(
         need_numpy=True,

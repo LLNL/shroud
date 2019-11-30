@@ -26,6 +26,7 @@ Fortran function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +de
 C-interface function void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 Close wrapfvectors.f
 Python function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
+Python function void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 Python function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
 Close pyvectorsmodule.cpp
 Close pyvectorsutil.cpp

@@ -92,6 +92,54 @@ fail:
 // splicer end function.vector_sum
 }
 
+static char PY_vector_iota_out__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Copy vector into Fortran input array
+ *
+ */
+static PyObject *
+PY_vector_iota_out(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
+// splicer begin function.vector_iota_out
+    PyObject * SHPy_arg = NULL;
+    PyObject *SHC_arg = NULL;
+
+    {
+        // pre_call
+        std::vector<int> *SH_arg = new std::vector<int>;
+
+        vector_iota_out(*SH_arg);
+
+        // post_call
+        npy_intp SHD_arg[1];
+        SHD_arg[0] = SH_arg->size();
+        SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
+            SH_arg->data());
+        if (SHPy_arg == NULL) goto fail;
+        SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
+            PY_SHROUD_capsule_destructor);
+        if (SHC_arg == NULL) goto fail;
+        PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(1));
+        if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
+            (SHPy_arg), SHC_arg) < 0) goto fail;
+
+        return (PyObject *) SHPy_arg;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    Py_XDECREF(SHC_arg);
+    return NULL;
+// splicer end function.vector_iota_out
+}
+
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -155,6 +203,8 @@ fail:
 static PyMethodDef PY_methods[] = {
 {"vector_sum", (PyCFunction)PY_vector_sum, METH_VARARGS|METH_KEYWORDS,
     PY_vector_sum__doc__},
+{"vector_iota_out", (PyCFunction)PY_vector_iota_out, METH_NOARGS,
+    PY_vector_iota_out__doc__},
 {"ReturnVectorAlloc", (PyCFunction)PY_ReturnVectorAlloc,
     METH_VARARGS|METH_KEYWORDS, PY_ReturnVectorAlloc__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

@@ -41,11 +41,11 @@ class Vectors(unittest.TestCase):
         arg = np.array([10,20,30,40,50], dtype=np.intc)
         irv = vectors.vector_sum(arg)
         self.assertEqual(150, irv)
-        
-        
-#    intv(:) = 0
-#    call vector_iota_out(intv)
-#    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
+
+    def test_vector_iota_out(self):
+        # The intent(out) argument is returned from the function.
+        arg = vectors.vector_iota_out()
+        self.assertTrue(all(np.equal(arg, [1,2,3,4,5])))
 #
 #    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
 #    call vector_iota_out_alloc(inta)

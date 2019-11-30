@@ -37,7 +37,7 @@ declarations:
   doxygen:
     brief: Copy vector into Fortran input array
   options:
-    wrap_python: False
+#    wrap_python: False
     wrap_lua: False
     literalinclude: True
 
