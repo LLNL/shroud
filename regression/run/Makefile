@@ -118,6 +118,7 @@ test-python : \
   test-python-pointers-list-cpp \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
+  test-python-vectors-numpy \
   test-python-clibrary \
   test-python-struct-c \
   test-python-struct-cxx \
@@ -185,6 +186,7 @@ phony_explicit:
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
     $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors/python/.. \
-    $(tempdir)/run/vectors/lua/.. \
+    $(tempdir)/run/vectors-numpy/..\
+    $(tempdir)/run/vectors-numpy/python/.. \
+    $(tempdir)/run/vectors-numpy/lua/.. \
 

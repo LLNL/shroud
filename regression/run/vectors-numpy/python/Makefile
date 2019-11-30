@@ -11,14 +11,14 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/vectors \
+    -I$(top)/regression/reference/vectors-numpy \
     -I$(top)/regression/run/vectors \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/vectors \
+    $(top)/regression/reference/vectors-numpy \
     $(top)/regression/run/vectors \
-    $(top)/regression/run/vectors/python
+    $(top)/regression/run/vectors-numpy/python
 
 OBJS = \
     vectors.o \

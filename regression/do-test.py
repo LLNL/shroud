@@ -367,7 +367,14 @@ if __name__ == "__main__":
                      "--language", "c++",
                      "--option", "PY_struct_arg=class",
                  ]),
-        TestDesc("vectors"),
+
+        # vectors
+        TestDesc("vectors-numpy", yaml="vectors",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_array_arg=numpy",
+                 ]),
+        
         TestDesc("forward"),
         TestDesc("example"),
         TestDesc("include"),
