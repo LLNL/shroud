@@ -1327,6 +1327,37 @@ return 1;""",
             )
         )
 
+        # Result pre_call is added once before each default argument case.
+        if CXX_subprogram == "function":
+            # XXX - duplicated below
+            self.set_fmt_fields(ast, fmt_result, True)
+            if is_ctor:
+                # Code added by create_ctor_function.
+                result_blk = {}
+            elif result_typemap.base == "struct":
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["struct", "result", options.PY_struct_arg])
+            elif result_typemap.base == "vector":
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "vector", options.PY_struct_arg]) # XXX PY_array_arg])
+                whelpers.add_to_PyList_helper_vector(ast)
+            elif (
+                    result_return_pointer_as in ["pointer", "allocatable"]
+                    and result_typemap.base != "string"
+            ):
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "dimension", options.PY_array_arg])
+            else:
+                result_blk = typemap.lookup_stmts(
+                    result_typemap.py_statements, ["result"])
+
+            if "pre_call" in result_blk:
+                PY_code.extend(["", "// result pre_call"])
+                PY_code.extend(result_blk["pre_call"])
+
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
         if found_default:
@@ -1382,10 +1413,6 @@ return 1;""",
             if options.debug and need_blank:
                 PY_code.append("")
 
-            if CXX_subprogram == "function":
-                # XXX - duplicated below
-                self.set_fmt_fields(ast, fmt_result, True)
-                
             capsule_order = None
             if is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
@@ -1462,30 +1489,6 @@ return 1;""",
 
         # Compute return value
         if CXX_subprogram == "function":
-            self.set_fmt_fields(ast, fmt_result, True)
-            if is_ctor:
-                # Code added by create_ctor_function.
-                result_blk = {}
-            elif result_typemap.base == "struct":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["struct", "result", options.PY_struct_arg])
-            elif result_typemap.base == "vector":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["result", "vector", options.PY_struct_arg]) # XXX PY_array_arg])
-                whelpers.add_to_PyList_helper_vector(ast)
-            elif (
-                    result_return_pointer_as in ["pointer", "allocatable"]
-                    and result_typemap.base != "string"
-            ):
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["result", "dimension", options.PY_array_arg])
-            else:
-                result_blk = typemap.lookup_stmts(
-                    result_typemap.py_statements, ["result"])
-
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
             self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
             ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
