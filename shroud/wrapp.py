@@ -1149,10 +1149,8 @@ return 1;""",
 
             if "parse_as_object" in intent_blk:
                 as_object = True
-            goto_fail = goto_fail or intent_blk.get("goto_fail", False)
             cxx_local_var = intent_blk.get("cxx_local_var", "")
             create_out_decl = intent_blk.get("create_out_decl", False)
-            self.need_numpy = self.need_numpy or intent_blk.get("need_numpy", False)
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
@@ -1242,6 +1240,8 @@ return 1;""",
             # Code to convert parsed values (C or Python) to C++.
             self.add_stmt_capsule(intent_blk, fmt_arg)
             update_code_blocks(locals(), intent_blk, fmt_arg)
+            goto_fail = goto_fail or intent_blk.get("goto_fail", False)
+            self.need_numpy = self.need_numpy or intent_blk.get("need_numpy", False)
             if "c_helper" in intent_blk:
                 c_helper = wformat(intent_blk["c_helper"], fmt_arg)
                 for helper in c_helper.split():
@@ -1329,7 +1329,6 @@ return 1;""",
 
         # Result pre_call is added once before each default argument case.
         if CXX_subprogram == "function":
-            # XXX - duplicated below
             self.set_fmt_fields(ast, fmt_result, True)
             if is_ctor:
                 # Code added by create_ctor_function.
@@ -1489,8 +1488,6 @@ return 1;""",
 
         # Compute return value
         if CXX_subprogram == "function":
-            goto_fail = goto_fail or result_blk.get("goto_fail", False)
-            self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
             ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
@@ -1500,6 +1497,8 @@ return 1;""",
                 fmt.PY_result = "SHPyResult"
             self.add_stmt_capsule(result_blk, fmt_result)
             update_code_blocks(locals(), result_blk, fmt_result)
+            goto_fail = goto_fail or result_blk.get("goto_fail", False)
+            self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
