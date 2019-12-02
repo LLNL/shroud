@@ -901,9 +901,6 @@ return 1;""",
         is_dtor = ast.is_dtor()
         #        is_const = ast.const
         ml_flags = []
-        result_typeflag = None
-        need_malloc = False
-        result_return_pointer_as = ast.return_pointer_as
 
         if cls:
             if "static" in ast.storage:
@@ -935,62 +932,9 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault(
-                "fmtpy", util.Scope(fmt)
-            )  # fmt_func
-
-            CXX_result = ast
-            if result_typemap.base == "vector":
-                if CXX_result.is_pointer():
-                    pass
-                else:
-                    # Allocate variable to the type returned by the function.
-                    result_typeflag = "vector"
-                    result_return_pointer_as = "pointer"
-                    fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            elif result_typemap.base == "struct" and not CXX_result.is_pointer():
-                # Allocate variable to the type returned by the function.
-                # No need to convert to C.
-                result_typeflag = "struct"
-                result_return_pointer_as = "pointer"
-                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            elif result_typemap.cxx_to_c is None:
-                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            else:
-                fmt_result.cxx_var = wformat(
-                    "{CXX_local}{C_result}", fmt_result
-                )
-
-            if result_typeflag:
-                # Force result to be a pointer to a struct/vector
-                need_malloc = True
-                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var,
-                    force_ptr=True,
-                    params=None,
-                    continuation=True,
-                    with_template_args=True,
-                )
-            else:
-                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None, continuation=True
-                )
-
-            if CXX_result.is_pointer():
-                fmt_result.c_deref = "*"
-                fmt_result.cxx_addr = ""
-                fmt_result.cxx_member = "->"
-            else:
-                fmt_result.c_deref = ""
-                fmt_result.cxx_addr = "&"
-                fmt_result.cxx_member = "."
-            fmt_result.c_var = fmt_result.cxx_var
-            fmt_result.py_var = fmt.PY_result
-            fmt_result.data_var = "SHData_" + fmt_result.C_result
-            fmt_result.size_var = "SHSize_" + fmt_result.C_result
-            fmt_result.numpy_type = result_typemap.PYN_typenum
-        #            fmt_pattern = fmt_result
+            fmt_result, result_typeflag, need_malloc, result_blk = self.process_result(node, fmt)
+        else:
+            result_blk = {}
 
         PY_code = []
 
@@ -1327,35 +1271,10 @@ return 1;""",
             )
         )
 
-        # Result pre_call is added once before each default argument case.
-        if CXX_subprogram == "function":
-            self.set_fmt_fields(ast, fmt_result, True)
-            if is_ctor:
-                # Code added by create_ctor_function.
-                result_blk = {}
-            elif result_typemap.base == "struct":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["struct", "result", options.PY_struct_arg])
-            elif result_typemap.base == "vector":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["result", "vector", options.PY_struct_arg]) # XXX PY_array_arg])
-                whelpers.add_to_PyList_helper_vector(ast)
-            elif (
-                    result_return_pointer_as in ["pointer", "allocatable"]
-                    and result_typemap.base != "string"
-            ):
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
-                    ["result", "dimension", options.PY_array_arg])
-            else:
-                result_blk = typemap.lookup_stmts(
-                    result_typemap.py_statements, ["result"])
-
-            if "pre_call" in result_blk:
-                PY_code.extend(["", "// result pre_call"])
-                PY_code.extend(result_blk["pre_call"])
+        # Result pre_call is added once before all default argument cases.
+        if "pre_call" in result_blk:
+            PY_code.extend(["", "// result pre_call"])
+            PY_code.extend(result_blk["pre_call"])
 
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
@@ -1426,6 +1345,7 @@ return 1;""",
                 # This allows NumPy to pointer to the memory.
                 need_rv = True
                 fmt.cxx_type = result_typemap.cxx_type
+                CXX_result = node.ast
                 capsule_type = CXX_result.gen_arg_as_cxx(
                     name=None, force_ptr=True, params=None, continuation=True,
                     with_template_args=True,
@@ -1703,6 +1623,109 @@ return 1;""",
             append_format(code, "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
+
+    def process_result(self, node, fmt):
+        """Work on formatting for result values.
+
+        Return fmt_result
+        Args:
+            node    - FunctionNode to wrap.
+            fmt     - dictionary of format values.
+        """
+        options = node.options
+        ast = node.ast
+        is_ctor = ast.is_ctor()
+        CXX_subprogram = node.CXX_subprogram
+        result_typemap = node.CXX_result_typemap
+
+        result_typeflag = None
+        need_malloc = False
+        result_return_pointer_as = node.ast.return_pointer_as
+        result_blk = {}
+
+        if CXX_subprogram == "function":
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault(
+                "fmtpy", util.Scope(fmt)
+            )  # fmt_func
+
+            CXX_result = node.ast
+            if result_typemap.base == "vector" and not CXX_result.is_pointer():
+                if CXX_result.is_pointer():
+                    pass
+                else:
+                    # Allocate variable to the type returned by the function.
+                    result_typeflag = "vector"
+                    result_return_pointer_as = "pointer"
+                    fmt_result.cxx_var = wformat("{C_result}", fmt_result)
+            elif result_typemap.base == "struct" and not CXX_result.is_pointer():
+                # Allocate variable to the type returned by the function.
+                # No need to convert to C.
+                result_typeflag = "struct"
+                result_return_pointer_as = "pointer"
+                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
+            elif result_typemap.cxx_to_c is None:
+                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
+            else:
+                fmt_result.cxx_var = wformat(
+                    "{CXX_local}{C_result}", fmt_result
+                )
+
+            if result_typeflag:
+                # Force result to be a pointer to a struct/vector
+                need_malloc = True
+                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var,
+                    force_ptr=True,
+                    params=None,
+                    continuation=True,
+                    with_template_args=True,
+                )
+            else:
+                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True
+                )
+
+            if CXX_result.is_pointer():
+                fmt_result.c_deref = "*"
+                fmt_result.cxx_addr = ""
+                fmt_result.cxx_member = "->"
+            else:
+                fmt_result.c_deref = ""
+                fmt_result.cxx_addr = "&"
+                fmt_result.cxx_member = "."
+            fmt_result.c_var = fmt_result.cxx_var
+            fmt_result.py_var = fmt.PY_result
+            fmt_result.data_var = "SHData_" + fmt_result.C_result
+            fmt_result.size_var = "SHSize_" + fmt_result.C_result
+            fmt_result.numpy_type = result_typemap.PYN_typenum
+            #            fmt_pattern = fmt_result
+
+            self.set_fmt_fields(ast, fmt_result, True)
+            if is_ctor:
+                # Code added by create_ctor_function.
+                result_blk = {}
+            elif result_typemap.base == "struct":
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["struct", "result", options.PY_struct_arg])
+            elif result_typemap.base == "vector":
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "vector", options.PY_struct_arg]) # XXX PY_array_arg])
+                whelpers.add_to_PyList_helper_vector(ast)
+            elif (
+                    result_return_pointer_as in ["pointer", "allocatable"]
+                    and result_typemap.base != "string"
+            ):
+                result_blk = typemap.lookup_stmts(
+                    py_statements_local,
+                    ["result", "dimension", options.PY_array_arg])
+            else:
+                result_blk = typemap.lookup_stmts(
+                    result_typemap.py_statements, ["result"])
+            
+        return fmt_result, result_typeflag, need_malloc, result_blk
 
     def add_stmt_capsule(self, stmts, fmt):
         """Create code to release memory.
