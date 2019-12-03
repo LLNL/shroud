@@ -26,9 +26,9 @@
 extern PyObject *PY_error_obj;
 
 #if PY_MAJOR_VERSION >= 3
-extern "C" PyMODINIT_FUNC PyInit_types(void);
+extern "C" PyMODINIT_FUNC PyInit_shtypes(void);
 #else
-extern "C" PyMODINIT_FUNC inittypes(void);
+extern "C" PyMODINIT_FUNC initshtypes(void);
 #endif
 
 #endif  /* PYTYPESMODULE_HPP */

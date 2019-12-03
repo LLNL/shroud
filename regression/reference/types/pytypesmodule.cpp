@@ -553,7 +553,7 @@ PY_int64_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int64_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:int64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
@@ -677,7 +677,7 @@ PY_uint64_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint64_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:uint64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
@@ -708,7 +708,7 @@ PY_size_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:size_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:size_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
@@ -905,9 +905,9 @@ static struct PyModuleDef moduledef = {
 
 extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_types(void)
+PyInit_shtypes(void)
 #else
-inittypes(void)
+initshtypes(void)
 #endif
 {
     PyObject *m = NULL;
@@ -921,7 +921,7 @@ inittypes(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule4("types", PY_methods,
+    m = Py_InitModule4("shtypes", PY_methods,
         PY__doc__,
         (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
@@ -940,7 +940,7 @@ inittypes(void)
 
     /* Check for errors */
     if (PyErr_Occurred())
-        Py_FatalError("can't initialize module types");
+        Py_FatalError("can't initialize module shtypes");
     return RETVAL;
 }
 
