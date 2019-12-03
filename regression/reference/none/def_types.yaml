@@ -617,7 +617,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   PY_build_arg: null
   PY_build_format: null
   PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
+  PY_format: L
   PY_from_object: null
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
@@ -1439,7 +1439,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   PY_build_arg: null
   PY_build_format: null
   PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
+  PY_format: L
   PY_from_object: null
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null

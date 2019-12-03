@@ -553,7 +553,7 @@ PY_int64_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int64_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:int64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
@@ -677,7 +677,7 @@ PY_uint64_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint64_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:uint64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
