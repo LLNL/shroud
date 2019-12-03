@@ -764,6 +764,9 @@ return 1;""",
                 fmt.npy_intp = "npy_intp {}[1] = {{{}}};\n".format(
                     fmt.npy_dims, dimension)
 
+#        fmt.c_type = typemap.c_type
+        fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
+
     def implied_blk(self, node, arg, pre_call):
         """Add the implied attribute to the pre_call block.
 
@@ -989,7 +992,6 @@ return 1;""",
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typemap.c_type
-            fmt_arg.cxx_type = arg_typemap.cxx_type
             if arg.const:
                 fmt_arg.c_const = "const "
             else:
@@ -1346,7 +1348,6 @@ return 1;""",
                 # Allocate space for scalar returned by function.
                 # This allows NumPy to pointer to the memory.
                 need_rv = True
-                fmt.cxx_type = result_typemap.cxx_type
                 CXX_result = node.ast
                 capsule_type = CXX_result.gen_arg_as_cxx(
                     name=None, force_ptr=True, params=None, continuation=True,

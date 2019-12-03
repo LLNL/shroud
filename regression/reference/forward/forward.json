@@ -99,6 +99,7 @@
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
+                                "cxx_type": "tutorial::Class2",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
