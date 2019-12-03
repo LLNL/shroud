@@ -1182,7 +1182,9 @@ return 1;""",
                     )
 
             # Code to convert parsed values (C or Python) to C++.
-            self.add_stmt_capsule(intent_blk, fmt_arg)
+            allocate_local_blk = self.add_stmt_capsule(arg, intent_blk, fmt_arg)
+            if allocate_local_blk:
+                update_code_blocks(locals(), allocate_local_blk, fmt_arg)
             update_code_blocks(locals(), intent_blk, fmt_arg)
             goto_fail = goto_fail or intent_blk.get("goto_fail", False)
             self.need_numpy = self.need_numpy or intent_blk.get("need_numpy", False)
@@ -1415,7 +1417,7 @@ return 1;""",
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
-            self.add_stmt_capsule(result_blk, fmt_result)
+            self.add_stmt_capsule(ast, result_blk, fmt_result)
             update_code_blocks(locals(), result_blk, fmt_result)
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
             self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
@@ -1727,8 +1729,9 @@ return 1;""",
             
         return fmt_result, result_typeflag, need_malloc, result_blk
 
-    def add_stmt_capsule(self, stmts, fmt):
+    def XXXadd_stmt_capsule(self, stmts, fmt):
         """Create code to release memory.
+        Processes "capsule_type" and "del_lines".
 
         For example, std::vector intent(out) must eventually release
         the vector via a capsule owned by the NumPy array.
@@ -1754,6 +1757,48 @@ return 1;""",
             fmt.capsule_order = capsule_order
             fmt.py_capsule = "SHC_" + fmt.c_var
                 
+    def add_stmt_capsule(self, ast, stmts, fmt):
+        """Create code to allocate/release memory.
+
+        For example, std::vector intent(out) must allocate an vector
+        instance and eventually release it via a capsule owned by the
+        NumPy array.
+
+        XXX - Move update_code_blocks here....
+
+        The results will be processed by format so literal curly must be protected.
+
+        """
+        if ast.is_pointer():
+            return None
+        allocate_local_var = stmts.get("allocate_local_var", False)
+        if allocate_local_var:
+            fmt.cxx_alloc_decl = ast.gen_arg_as_cxx(
+                name=fmt.cxx_var, force_ptr=True, params=None,
+                with_template_args=True, continuation=True,
+            )
+            capsule_type = ast.gen_arg_as_cxx(
+                name=None, force_ptr=True, params=None,
+                with_template_args=True,
+            )
+            fmt.py_capsule = "SHC_" + fmt.c_var
+            typemap = ast.typemap
+#            result_typeflag = ast.typemap.base
+#        result_typemap = node.CXX_result_typemap
+            
+            return dict(
+                decl = ["{cxx_alloc_decl} = NULL;"],
+                pre_call = self.allocate_memory_new(
+                    fmt.cxx_var, capsule_type, fmt,
+                    "goto fail", ast.typemap.base),
+                fail = [
+                    "if ({cxx_var} != NULL) {{+\n"
+                    "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
+                    "-}}"],
+                goto_fail=True,
+                )
+        return None
+        
     def allocate_memory(self, lang, var, capsule_type, fmt,
                        error, as_type):
         """Return code to allocate an item.
@@ -1790,6 +1835,44 @@ return 1;""",
         lines.append("if ({} == NULL) {{+\n"
                      "PyErr_NoMemory();\n{};\n-}}".format(var, error))
         capsule_order = self.add_capsule_code(lang + " " + capsule_type, del_lines)
+        fmt.capsule_order = capsule_order
+        return lines
+
+    def allocate_memory_new(self, var, capsule_type, fmt,
+                       error, as_type):
+        """Return code to allocate an item.
+        Call PyErr_NoMemory if necessary.
+        Set fmt.capsule_order which is used to release it.
+
+        Args:
+            var    - Name of variable for assignment.
+            capsule_type
+            fmt
+            error   - error code ex. "goto fail" or "return -1"
+            as_type - "struct", "vector", None
+        """
+        lines = []
+        if self.language == "c":
+            alloc = "{cxx_var} = malloc(sizeof({cxx_type}));"
+            del_lines = ["{stdlib}free(ptr);"]
+        else:
+            if as_type == "vector":
+                # Expand cxx_T.
+                alloc = "{cxx_var} = new " + wformat(fmt.cxx_type, fmt) + ";"
+            elif as_type == "struct":
+                alloc = "{cxx_var} = new {namespace_scope}{cxx_type};"
+            else:
+                alloc = "{cxx_var} = new {namespace_scope}{cxx_type}({PY_call_list});"
+            del_lines = [
+                "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
+                    capsule_type, capsule_type
+                ),
+                "delete cxx_ptr;",
+            ]
+        lines.append(alloc)
+        lines.append("if ({cxx_var} == NULL) {{+\n"
+                     "PyErr_NoMemory();\ngoto fail;\n-}}")
+        capsule_order = self.add_capsule_code(self.language + " " + capsule_type, del_lines)
         fmt.capsule_order = capsule_order
         return lines
 
@@ -3463,11 +3546,9 @@ py_statements_local = dict(
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
         cxx_local_var="pointer",
+        allocate_local_var=True,
         decl=[
             "PyObject * {py_var} = NULL;",
-        ],
-        pre_call=[
-            "std::vector<{cxx_T}> *{cxx_var} = new std::vector<{cxx_T}>;",
         ],
         post_call=[
             "{npy_intp}"
@@ -3481,13 +3562,6 @@ py_statements_local = dict(
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-
-        capsule_type = "std::vector<{cxx_T}> *",
-        del_lines = [
-            "{capsule_type} cxx_ptr =\t static_cast<{capsule_type}>(ptr);",
-            "delete cxx_ptr;",
-        ],
-        
         decl_capsule=decl_capsule,
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
