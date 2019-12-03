@@ -108,12 +108,17 @@ PY_vector_iota_out(
 {
 // void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
+    std::vector<int> * SH_arg = NULL;
     PyObject * SHPy_arg = NULL;
     PyObject *SHC_arg = NULL;
 
     {
         // pre_call
-        std::vector<int> *SH_arg = new std::vector<int>;
+        SH_arg = new std::vector<int>;
+        if (SH_arg == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
 
         vector_iota_out(*SH_arg);
 
@@ -134,6 +139,9 @@ PY_vector_iota_out(
     }
 
 fail:
+    if (SH_arg != NULL) {
+        PY_SHROUD_release_memory(1, SH_arg);
+    }
     Py_XDECREF(SHPy_arg);
     Py_XDECREF(SHC_arg);
     return NULL;
