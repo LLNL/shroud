@@ -905,9 +905,9 @@ static struct PyModuleDef moduledef = {
 
 extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_types(void)
+PyInit_shtypes(void)
 #else
-inittypes(void)
+initshtypes(void)
 #endif
 {
     PyObject *m = NULL;
@@ -921,7 +921,7 @@ inittypes(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule4("types", PY_methods,
+    m = Py_InitModule4("shtypes", PY_methods,
         PY__doc__,
         (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
@@ -940,7 +940,7 @@ inittypes(void)
 
     /* Check for errors */
     if (PyErr_Occurred())
-        Py_FatalError("can't initialize module types");
+        Py_FatalError("can't initialize module shtypes");
     return RETVAL;
 }
 
