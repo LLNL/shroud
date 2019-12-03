@@ -809,6 +809,8 @@ rv = .false.
             fileinfo - ModuleInfo
             fmt -
             ast - Abstract Syntax Tree from parser
+               node.ast for subprograms
+               node.params[n] for parameters
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -879,10 +881,14 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
+                if ast.attrs.get("_is_result", False):
+                    intent = "OUT"
+                else:
+                    intent = "INOUT"
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
-                    "type(%s), intent(INOUT) :: %s"
-                    % (fmt.F_array_type, buf_arg_name)
+                    "type(%s), intent(%s) :: %s"
+                    % (fmt.F_array_type, intent, buf_arg_name)
                 )
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
@@ -1025,7 +1031,7 @@ rv = .false.
         )
 
         if fmt.F_C_subprogram == "function":
-            if result_typemap.base in ["shadow", "string"]:
+            if result_typemap.base in ["shadow", "string", "vector"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
@@ -1245,15 +1251,15 @@ rv = .false.
         options = node.options
         fmt_func = node.fmtdict
 
-        # Assume that the C function can be called directly.
+        # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
         need_wrapper = options["F_force_wrapper"]
         if node._overloaded:
             # need wrapper for generic interface
             need_wrapper = True
 
-        # Look for C routine to wrap
-        # Usually the same node unless it is a generic function
+        # Look for C routine to wrap.
+        # Usually the same node unless it is a generated.
         C_node = node
         generated = []
         if C_node._generated:
@@ -1532,6 +1538,7 @@ rv = .false.
 
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
+            # End parameters loop.
 
         if result_typemap.base == "shadow":
             # Function which return a shadow type will pass in
@@ -1550,9 +1557,9 @@ rv = .false.
             "F_arguments", ",\t ".join(arg_f_names)
         )
 
-        # declare function return value after arguments
+        # Declare function return value after arguments
         # since arguments may be used to compute return value
-        # (for example, string lengths)
+        # (for example, string lengths).
         return_pointer_as = ast.return_pointer_as
         if subprogram == "function":
             # if func_is_const:
@@ -1581,7 +1588,7 @@ rv = .false.
                         name=fmt_result.F_result, is_allocatable=True
                     )
                 )
-                if result_typemap.base != "string":
+                if result_typemap.base not in ["string", "vector"]:
                     # XXX - needed with int *, but not char *
                     arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                     self.set_f_module(modules, "iso_c_binding", "C_PTR")

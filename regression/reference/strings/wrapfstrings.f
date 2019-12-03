@@ -135,7 +135,7 @@ module strings_mod
                 bind(C, name="STR_get_char_ptr1_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_char_ptr1_bufferify
     end interface
     ! end c_get_char_ptr1_bufferify
@@ -193,7 +193,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_result_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_result_bufferify
     end interface
 
@@ -222,7 +222,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_alloc_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_alloc_bufferify
     end interface
 
@@ -244,7 +244,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_ref_pure_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ref_pure_bufferify
     end interface
     ! end c_get_const_string_ref_pure_bufferify
@@ -326,7 +326,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_ref_alloc_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
 
@@ -365,7 +365,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
 
@@ -384,7 +384,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_owns_alloc_bufferify
     end interface
 
@@ -404,7 +404,7 @@ module strings_mod
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_pattern_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify
     end interface
 

@@ -176,6 +176,26 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer end function.vector_string_count_bufferify
 }
 
+// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+/**
+ * Implement iota function.
+ * Return a vector as an ALLOCATABLE array.
+ * Copy results into the new array.
+ */
+void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
+{
+// splicer begin function.return_vector_alloc_bufferify
+    std::vector<int> *SHC_rv = new std::vector<int>;
+    *SHC_rv = ReturnVectorAlloc(n);
+    DSHF_rv->cxx.addr  = static_cast<void *>(SHC_rv);
+    DSHF_rv->cxx.idtor = 1;
+    DSHF_rv->addr.cvoidp = SHC_rv->empty() ? NULL : &SHC_rv->front();
+    DSHF_rv->len = sizeof(int);
+    DSHF_rv->size = SHC_rv->size();
+    return;
+// splicer end function.return_vector_alloc_bufferify
+}
+
 // start release allocated memory
 // Release library allocated memory.
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)

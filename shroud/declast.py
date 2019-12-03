@@ -1044,7 +1044,8 @@ class Declaration(Node):
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
-        This is intended for pointer arguments, char or string.
+        This is intended for pointer arguments, char, string or vector.
+        Move template_arguments from function to argument.
         """
         new = Declaration()
         new.specifier = self.specifier[:]
@@ -1059,6 +1060,7 @@ class Declaration(Node):
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs)
         new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
         return new
 
     def _set_to_void(self):
@@ -1068,6 +1070,7 @@ class Declaration(Node):
         self.const = False
         self.volatile = False
         self.declarator.pointer = []
+        self.template_arguments = []
 
     def result_as_arg(self, name):
         """Pass the function result as an argument.
@@ -1222,6 +1225,7 @@ class Declaration(Node):
         continuation=False,
         asgn_value=False,
         remove_const=False,
+        with_template_args=False,
         **kwargs
     ):
         """Generate an argument for the C wrapper.
@@ -1238,6 +1242,7 @@ class Declaration(Node):
             force_ptr - Change a scalar into a pointer
             as_scalar - Do not print Ptr
             params - if None, do not print function parameters.
+            with_template_args - if True, print template arguments
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1250,13 +1255,24 @@ class Declaration(Node):
             const_index = len(decl)
             decl.append("const ")
 
-        if self.template_arguments:
-            ntypemap = self.template_arguments[0].typemap
+        if with_template_args and self.template_arguments:
+            # Use template arguments from declaration
+            typ = getattr(self.typemap, lang)
+            decl.append(self.typemap.name)
+            decl.append("<")
+            for targ in self.template_arguments:
+                decl.append(str(targ))
+                decl.append(",")
+            decl[-1] = ">"
         else:
-            ntypemap = self.typemap
-
-        typ = getattr(ntypemap, lang)
-        decl.append(typ)
+            # Convert template_argument.
+            # ex vector<int> -> int
+            if self.template_arguments:
+                ntypemap = self.template_arguments[0].typemap
+            else:
+                ntypemap = self.typemap
+            typ = getattr(ntypemap, lang)
+            decl.append(typ)
 
         if self.declarator is None:
             # XXX - used with constructor but seems wrong for abstract arguments

@@ -700,8 +700,8 @@ class Wrapc(util.WrapperMixin):
             # C++ will need C wrappers to deal with name mangling.
             need_wrapper = True
 
-        # Look for C++ routine to wrap
-        # Usually the same node unless it is generated (i.e. bufferified)
+        # Look for C++ routine to call.
+        # Usually the same node unless it is generated (i.e. bufferified).
         CXX_node = node
         generated = []
         if CXX_node._generated:
@@ -807,7 +807,8 @@ class Wrapc(util.WrapperMixin):
         proto_list = []  # arguments for wrapper prototype
         call_list = []  # arguments to call function
 
-        # indicate which argument contains function result, usually none
+        # Indicate which argument contains function result, usually none.
+        # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
         pre_call = []  # list of temporary variable declarations
         call_code = []

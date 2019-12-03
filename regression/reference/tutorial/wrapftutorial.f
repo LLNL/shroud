@@ -351,7 +351,7 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
     end interface
 

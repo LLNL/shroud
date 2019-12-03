@@ -119,6 +119,17 @@ module vectors_mod
     end interface
 
     interface
+        subroutine c_return_vector_alloc_bufferify(n, DSHF_rv) &
+                bind(C, name="VEC_return_vector_alloc_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array
+            implicit none
+            integer(C_INT), value, intent(IN) :: n
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
+        end subroutine c_return_vector_alloc_bufferify
+    end interface
+
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -239,6 +250,26 @@ contains
             size(arg, kind=C_LONG), len(arg, kind=C_INT))
         ! splicer end function.vector_string_count
     end function vector_string_count
+
+    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+    ! arg_to_buffer
+    !>
+    !! Implement iota function.
+    !! Return a vector as an ALLOCATABLE array.
+    !! Copy results into the new array.
+    !<
+    function return_vector_alloc(n) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_SIZE_T
+        integer(C_INT), value, intent(IN) :: n
+        type(SHROUD_array) :: DSHF_rv
+        integer(C_INT), allocatable :: SHT_rv(:)
+        ! splicer begin function.return_vector_alloc
+        call c_return_vector_alloc_bufferify(n, DSHF_rv)
+        ! splicer end function.return_vector_alloc
+        allocate(SHT_rv(DSHF_rv%size))
+        call SHROUD_copy_array_int(DSHF_rv, SHT_rv, size(SHT_rv,kind=C_SIZE_T))
+    end function return_vector_alloc
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

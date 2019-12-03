@@ -269,7 +269,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass1_capsule
             implicit none
             type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         pure function c_exclass1_get_name_arg(self) &
@@ -420,7 +420,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name2_bufferify
 
         pure function c_exclass2_get_name3(self) &
@@ -438,7 +438,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name3_bufferify
 
         function c_exclass2_get_name4(self) &
@@ -456,7 +456,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
         pure function c_exclass2_get_name_length(self) &

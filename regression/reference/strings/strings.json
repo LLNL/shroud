@@ -156,6 +156,7 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
+                            "data_var": "SHData_status",
                             "numpy_type": null,
                             "py_var": "SHPy_status",
                             "size_var": "SHSize_status"
@@ -237,7 +238,9 @@
                         "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "char",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -406,6 +409,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
+                            "data_var": "SHData_dest",
                             "numpy_type": null,
                             "py_var": "SHPy_dest",
                             "size_var": "SHSize_dest"
@@ -435,6 +439,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
+                            "data_var": "SHData_src",
                             "numpy_type": null,
                             "py_var": "SHPy_src",
                             "size_var": "SHSize_src"
@@ -679,6 +684,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "s",
+                            "data_var": "SHData_s",
                             "numpy_type": null,
                             "py_var": "SHPy_s",
                             "size_var": "SHSize_s"
@@ -852,7 +858,9 @@
                         "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "char",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1030,7 +1038,9 @@
                         "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "char",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1205,7 +1215,9 @@
                         "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "char",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1433,7 +1445,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1590,7 +1604,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1743,7 +1759,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1954,7 +1972,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2111,7 +2131,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2293,7 +2315,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2471,7 +2495,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2710,7 +2736,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2889,7 +2917,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3057,7 +3087,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3240,7 +3272,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3410,7 +3444,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3588,7 +3624,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3778,6 +3816,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -3958,6 +3997,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4138,6 +4178,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4325,6 +4366,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4493,6 +4535,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4510,6 +4553,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
+                            "data_var": "SHData_arg2",
                             "numpy_type": null,
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2"
@@ -4662,6 +4706,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
+                            "data_var": "SHData_name",
                             "numpy_type": null,
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name"
@@ -4916,6 +4961,7 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
+                            "data_var": "SHData_status",
                             "numpy_type": null,
                             "py_var": "SHPy_status",
                             "size_var": "SHSize_status"
@@ -5000,7 +5046,9 @@
                         "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "char",
                         "cxx_var": "rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -6174,6 +6222,27 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
                     ]
+                },
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ],
+                    "c_helper": "capsule_data_helper copy_array",
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
+                        "delete cxx_ptr;"
+                    ],
+                    "destructor_name": "std_vector_{cxx_T}",
+                    "post_call": [
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
+                        "{c_var_context}->len = sizeof({cxx_T});",
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ],
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+                    ]
                 }
             },
             "c_templates": {
@@ -6300,6 +6369,29 @@
                     ]
                 },
                 "intent_out_allocatable": {
+                    "f_helper": "copy_array_{cxx_T}",
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    },
+                    "post_call": [
+                        "allocate({f_var}({c_var_context}%size))",
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                },
+                "result": {
+                    "f_helper": "copy_array_{cxx_T}",
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    },
+                    "post_call": [
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                },
+                "result_allocatable": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [

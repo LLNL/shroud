@@ -1056,7 +1056,7 @@ class GenFunctions(object):
         ast = node.ast
         result_typemap = ast.typemap
         # shadow classes have not been added yet.
-        # Only care about string here.
+        # Only care about string, vector here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
         if (
@@ -1083,6 +1083,7 @@ class GenFunctions(object):
         if options.F_string_len_trim is False:  # XXX what about vector?
             return
 
+        # Arguments.
         # Is result or any argument a string or vector?
         # If so, additional arguments will be passed down so
         # create buffer version of function.
@@ -1099,6 +1100,7 @@ class GenFunctions(object):
             elif arg_typemap.base == "vector":
                 has_buf_arg = True
                 # Create helpers for vector template.
+                # XXX - only deals with single template argument
                 cxx_T = arg.template_arguments[0].typemap.name
                 tempate_typemap = typemap.lookup_type(cxx_T)
                 whelpers.add_copy_array_helper(
@@ -1112,22 +1114,42 @@ class GenFunctions(object):
                     )
                 )
 
+        # Function Result.
         has_string_result = False
+        has_vector_result = False
         has_allocatable_result = False
-        result_as_arg = ""  # only applies to string functions
-        if result_typemap.base == "vector":
-            raise NotImplementedError("vector result")
-        elif result_typemap.base == "string":
+
+        result_as_arg = ""  # Only applies to string functions
+        # when the result is added as an argument to the Fortran api.
+
+        if result_typemap.base == "string":
             if result_typemap.name == "char" and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 ast.set_type(typemap.lookup_type("char_scalar"))
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
+        elif result_typemap.base == "vector":
+            has_vector_result = True
+            # Create helpers for vector template.
+            cxx_T = ast.template_arguments[0].typemap.name
+            tempate_typemap = typemap.lookup_type(cxx_T)
+            whelpers.add_copy_array_helper(
+                dict(
+                    cxx_type=cxx_T,
+                    f_kind=tempate_typemap.f_kind,
+                    C_prefix=fmt.C_prefix,
+                    C_array_type=fmt.C_array_type,
+                    F_array_type=fmt.F_array_type,
+                    stdlib=fmt.stdlib,
+                )
+            )
         elif result_is_ptr and attrs.get("deref", "") == "allocatable":
             has_allocatable_result = True
 
-        if not (has_string_result or has_allocatable_result or has_buf_arg):
+        # Functions with these arguments need wrappers.
+        if not (has_string_result or has_vector_result or
+                has_allocatable_result or has_buf_arg):
             return
 
         # XXX       options = node['options']
@@ -1165,7 +1187,6 @@ class GenFunctions(object):
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.options.wrap_c = False
-                node.options.wrap_python = False  # NotImplemented
                 node.options.wrap_lua = False  # NotImplemented
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 
@@ -1203,12 +1224,12 @@ class GenFunctions(object):
 
                 # base typemap
 
+        ast = C_new.ast
         if has_string_result:
             # Add additional argument to hold result.
             # Default to deref(allocatable).
             # This will allocate a new character variable to hold the
             # results of the C++ function.
-            ast = C_new.ast
             f_attrs = node.ast.attrs  # Fortran function attributes
 
             if "len" in ast.attrs or result_as_arg:
@@ -1240,6 +1261,21 @@ class GenFunctions(object):
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"
+        elif has_vector_result:
+            # Pass an argument to C wrapper for the function result.
+            # XXX - string_result -> vector_result -> result
+            vector_as_arg = fmt.F_string_result_as_arg
+            result_name = vector_as_arg or fmt.C_string_result_as_arg
+            result_as_vector = ast.result_as_arg(result_name)
+            attrs = result_as_vector.attrs
+            attrs["context"] = options.C_var_context_template.format(
+                c_var=result_name
+            )
+            self.move_arg_attributes(attrs, node, C_new)
+            attrs["intent"] = "out"
+            attrs["_is_result"] = True
+            # convert to subroutine
+            C_new._subprogram = "subroutine"
         elif has_allocatable_result:
             # Non-string and Non-char results
             self.setup_allocatable_result(C_new)
@@ -1247,6 +1283,7 @@ class GenFunctions(object):
         if result_as_arg:
             # Create Fortran function without bufferify function_suffix but
             # with len attributes on string arguments.
+            #  char *out(); ->  call out(result_as_arg)
             F_new = C_new.clone()
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
@@ -1264,7 +1301,7 @@ class GenFunctions(object):
             # Do not wrap original function (does not have result argument)
             node.options.wrap_fortran = False
         else:
-            # Fortran function may call C subroutine if string result
+            # Fortran function may call C subroutine if string/vector result
             node._PTR_F_C_index = C_new._function_index
 
     def setup_allocatable_result(self, node):
@@ -1566,7 +1603,7 @@ class Preprocess(object):
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             pass
-        elif result_typemap.base == "string":
+        elif result_typemap.base in ["string", "vector"]:
             if "deref" in attrs:
                 ast.return_pointer_as = attrs["deref"]
             else:

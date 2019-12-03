@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add command line option --options to set a top level option.
 - Add command line option --language. May be c or c++.
   Replaces any language directive in the YAML file.
+- Wrap functions which return a std::vector.
 
 ### Changed
 - Default of library name from *default_library* to *library*.

@@ -17,40 +17,42 @@
             "",
             "#######################################################################"
         ],
-        "cxx_header": "pointers.hpp",
+        "cxx_header": "vectors.hpp",
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
             "C_argument": "SH_",
-            "C_array_type": "POI_SHROUD_array",
+            "C_array_type": "VEC_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
-            "C_capsule_data_type": "POI_SHROUD_capsule_data",
+            "C_capsule_data_type": "VEC_SHROUD_capsule_data",
             "C_custom_return_type": "",
-            "C_header_filename": "wrappointers.h",
+            "C_header_filename": "wrapvectors.h",
             "C_header_filename_suffix": "h",
-            "C_header_utility": "typespointers.h",
-            "C_impl_filename": "wrappointers.c",
-            "C_impl_filename_suffix": "c",
+            "C_header_utility": "typesvectors.h",
+            "C_impl_filename": "wrapvectors.cpp",
+            "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
-            "C_memory_dtor_function": "POI_SHROUD_memory_destructor",
+            "C_memory_dtor_function": "VEC_SHROUD_memory_destructor",
             "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
-            "C_prefix": "POI_",
+            "C_prefix": "VEC_",
             "C_result": "rv",
             "C_string_result_as_arg": "SHF_rv",
             "C_this": "self",
             "F_C_prefix": "c_",
+            "F_C_pure_clause": "",
+            "F_C_result_clause": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
             "F_capsule_type": "SHROUD_capsule",
             "F_derived_member": "cxxmem",
             "F_filename_suffix": "f",
-            "F_impl_filename": "wrapfpointers.f",
-            "F_module_name": "pointers_mod",
+            "F_impl_filename": "wrapfvectors.f",
+            "F_module_name": "vectors_mod",
             "F_name_assign": "assign",
             "F_name_associated": "associated",
             "F_name_final": "final",
@@ -58,13 +60,15 @@
             "F_name_instance_set": "set_instance",
             "F_name_scope": "",
             "F_pointer": "SHT_ptr",
+            "F_pure_clause": "",
             "F_result": "SHT_rv",
             "F_result_capsule": "SHT_crv",
+            "F_result_clause": "",
             "F_result_ptr": "SHT_prv",
             "F_string_result_as_arg": "",
             "F_this": "obj",
-            "LUA_header_filename_suffix": "h",
-            "LUA_impl_filename_suffix": "c",
+            "LUA_header_filename_suffix": "hpp",
+            "LUA_impl_filename_suffix": "cpp",
             "LUA_prefix": "l_",
             "LUA_result": "rv",
             "LUA_state_var": "L",
@@ -73,16 +77,16 @@
             "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
             "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
-            "PY_extern_C_begin": "",
+            "PY_extern_C_begin": "extern \"C\" ",
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
-            "PY_header_filename": "pypointersmodule.h",
-            "PY_header_filename_suffix": "h",
-            "PY_impl_filename_suffix": "c",
+            "PY_header_filename": "pyvectorsmodule.hpp",
+            "PY_header_filename_suffix": "hpp",
+            "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
-            "PY_module_filename": "pypointersmodule.c",
-            "PY_module_init": "pointers",
-            "PY_module_name": "pointers",
-            "PY_module_scope": "pointers",
+            "PY_module_filename": "pyvectorsmodule.cpp",
+            "PY_module_init": "vectors",
+            "PY_module_name": "vectors",
+            "PY_module_scope": "vectors",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -96,855 +100,304 @@
             "PY_used_param_args": false,
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
-            "PY_utility_filename": "pypointersutil.c",
+            "PY_utility_filename": "pyvectorsutil.cpp",
             "PyObject": "PyObject",
-            "YAML_type_filename": "pointers_types.yaml",
+            "YAML_type_filename": "vectors_types.yaml",
             "c_temp": "SHT_",
             "capsule_order": "0",
-            "cast1": ") ",
-            "cast2": "",
-            "cast_const": "(",
-            "cast_reinterpret": "(",
-            "cast_static": "(",
+            "cast1": ">\t(",
+            "cast2": ")",
+            "cast_const": "const_cast<",
+            "cast_reinterpret": "reinterpret_cast<",
+            "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
-            "file_scope": "pointers",
+            "file_scope": "vectors",
             "function_suffix": "",
-            "library": "pointers",
-            "library_lower": "pointers",
-            "library_upper": "POINTERS",
+            "library": "vectors",
+            "library_lower": "vectors",
+            "library_upper": "VECTORS",
             "namespace_scope": "",
             "npy_dims": "NULL",
             "npy_intp": "",
             "npy_ndims": "0",
-            "stdlib": "",
+            "stdlib": "std::",
             "template_suffix": "",
-            "void_proto": "void"
+            "void_proto": ""
         },
         "functions": [
             {
                 "_fmtargs": {
-                    "argin": {
+                    "arg": {
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "int argin",
+                            "c_decl": "None * arg",
                             "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "argin",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "cxx_T": "int",
                             "cxx_addr": "&",
-                            "cxx_decl": "int argin",
+                            "cxx_decl": "std::vector<int> * arg",
                             "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "argin",
-                            "data_var": "SHData_argin",
+                            "cxx_type": "std::vector<int>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_argin",
-                            "size_var": "SHSize_argin"
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
                         }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
                     },
-                    "arginout": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int arginout",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "arginout",
-                            "cxx_addr": "",
-                            "cxx_decl": "int arginout",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arginout",
-                            "data_var": "SHData_arginout",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arginout",
-                            "size_var": "SHSize_arginout"
-                        }
-                    },
-                    "argout": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int argout",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "argout",
-                            "cxx_addr": "",
-                            "cxx_decl": "int argout",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "argout",
-                            "data_var": "SHData_argout",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_argout",
-                            "size_var": "SHSize_argout"
-                        }
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
                     "declarator": {
-                        "name": "intargs",
+                        "name": "vector_sum",
                         "pointer": []
                     },
                     "params": [
                         {
                             "attrs": {
+                                "dimension": ":",
                                 "intent": "in",
-                                "value": true
+                                "value": false
                             },
                             "const": true,
                             "declarator": {
-                                "name": "argin",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "inout",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arginout",
+                                "name": "arg",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
-                                "int"
+                                "std::vector"
                             ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "argout",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
                             ],
-                            "typemap_name": "int"
+                            "typemap_name": "std::vector"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
-                "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
+                "decl": "int vector_sum(const std::vector<int> &arg)",
+                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))",
                 "fmtdict": {
-                    "PY_name_impl": "PY_intargs",
-                    "function_name": "intargs",
-                    "underscore_name": "intargs"
+                    "F_C_call": "c_vector_sum_bufferify",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)",
+                    "F_arguments": "arg",
+                    "F_call_code": "SHT_rv = c_vector_sum_bufferify(arg,\t size(arg, kind=C_LONG))",
+                    "F_name_function": "vector_sum",
+                    "F_name_generic": "vector_sum",
+                    "F_name_impl": "vector_sum",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_vector_sum",
+                    "function_name": "vector_sum",
+                    "underscore_name": "vector_sum"
                 },
-                "linenumber": 31,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "in": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "double * in",
-                            "c_deref": "*",
-                            "c_type": "double",
-                            "c_var": "in",
-                            "cxx_addr": "",
-                            "cxx_decl": "double * in",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "data_var": "SHData_in",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_in",
-                            "pytmp_var": "SHTPy_in",
-                            "size_var": "SHSize_in"
-                        }
-                    },
-                    "out": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "double * out",
-                            "c_deref": "*",
-                            "c_type": "double",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_decl": "double * out",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "out",
-                            "data_var": "SHData_out",
-                            "npy_descr": "NULL",
-                            "npy_descr_code": "",
-                            "npy_order": "NPY_CORDER",
-                            "npy_prototype": "SHPy_in",
-                            "npy_subok": "0",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_out",
-                            "size_var": "SHSize_in"
-                        }
-                    },
-                    "sizein": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int sizein",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "data_var": "SHData_sizein",
-                            "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_in)",
-                            "py_var": "SHPy_sizein",
-                            "size_var": "SHSize_sizein"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "cos_doubles",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "dimension": ":",
-                                "intent": "in",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "allocatable": "mold=in",
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "out",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "size(in)",
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "sizein",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
-                "doxygen": {
-                    "__line__": 38,
-                    "brief": "compute cos of IN and save in OUT",
-                    "description": "allocate OUT same type as IN implied size of array"
-                },
-                "fmtdict": {
-                    "PY_name_impl": "PY_cos_doubles",
-                    "function_name": "cos_doubles",
-                    "underscore_name": "cos_doubles"
-                },
-                "linenumber": 35,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "in": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "double * in",
-                            "c_deref": "*",
-                            "c_type": "double",
-                            "c_var": "in",
-                            "cxx_addr": "",
-                            "cxx_decl": "double * in",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "data_var": "SHData_in",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_in",
-                            "pytmp_var": "SHTPy_in",
-                            "size_var": "SHSize_in"
-                        }
-                    },
-                    "out": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * out",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * out",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "out",
-                            "data_var": "SHData_out",
-                            "npy_descr": "SHDPy_out",
-                            "npy_descr_code": "PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);\n",
-                            "npy_order": "NPY_CORDER",
-                            "npy_prototype": "SHPy_in",
-                            "npy_subok": "0",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_out",
-                            "size_var": "SHSize_in"
-                        }
-                    },
-                    "sizein": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int sizein",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "data_var": "SHData_sizein",
-                            "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_in)",
-                            "py_var": "SHPy_sizein",
-                            "size_var": "SHSize_sizein"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "truncate_to_int",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "dimension": ":",
-                                "intent": "in",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "allocatable": "mold=in",
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "out",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "size(in)",
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "sizein",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
-                "doxygen": {
-                    "__line__": 47,
-                    "brief": "truncate IN argument and save in OUT",
-                    "description": "allocate OUT different type as IN\nimplied size of array\n"
-                },
-                "fmtdict": {
-                    "PY_name_impl": "PY_truncate_to_int",
-                    "function_name": "truncate_to_int",
-                    "underscore_name": "truncate_to_int"
-                },
-                "linenumber": 44,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "nvalues": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int nvalues",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "nvalues",
-                            "cxx_addr": "",
-                            "cxx_decl": "int nvalues",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "nvalues",
-                            "data_var": "SHData_nvalues",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_nvalues",
-                            "size_var": "SHSize_nvalues"
-                        }
-                    },
-                    "values": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * values",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * values",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "data_var": "SHData_values",
-                            "npy_dims": "SHD_values",
-                            "npy_intp": "npy_intp SHD_values[1] = {3};\n",
-                            "npy_ndims": "1",
-                            "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
-                            "py_var": "SHPy_values",
-                            "size_var": "SHSize_values"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "get_values",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "nvalues",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "dimension": "3",
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
-                "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))",
-                "doxygen": {
-                    "__line__": 54,
-                    "brief": "fill values into array",
-                    "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
-                },
-                "fmtdict": {
-                    "PY_name_impl": "PY_get_values",
-                    "function_name": "get_values",
-                    "underscore_name": "get_values"
-                },
-                "linenumber": 53,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * arg1",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * arg1",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "npy_dims": "SHD_arg1",
-                            "npy_intp": "npy_intp SHD_arg1[1] = {3};\n",
-                            "npy_ndims": "1",
-                            "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
-                        }
-                    },
-                    "arg2": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * arg2",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "arg2",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * arg2",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arg2",
-                            "data_var": "SHData_arg2",
-                            "npy_dims": "SHD_arg2",
-                            "npy_intp": "npy_intp SHD_arg2[1] = {3};\n",
-                            "npy_ndims": "1",
-                            "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
-                            "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "get_values2",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "dimension": "3",
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "dimension": "3",
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void get_values2(int *arg1 +intent(out)+dimension(3), int *arg2 +intent(out)+dimension(3))",
-                "declgen": "void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))",
-                "doxygen": {
-                    "__line__": 64,
-                    "brief": "fill values into two arrays",
-                    "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
-                },
-                "fmtdict": {
-                    "PY_name_impl": "PY_get_values2",
-                    "function_name": "get_values2",
-                    "underscore_name": "get_values2"
-                },
-                "linenumber": 62,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "len": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int len",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "len",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int len",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "data_var": "SHData_len",
-                            "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_values)",
-                            "py_var": "SHPy_len",
-                            "size_var": "SHSize_len"
-                        }
-                    },
-                    "result": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int result",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "result",
-                            "cxx_addr": "",
-                            "cxx_decl": "int result",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "result",
-                            "data_var": "SHData_result",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_result",
-                            "size_var": "SHSize_result"
-                        }
-                    },
-                    "values": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * values",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * values",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "data_var": "SHData_values",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_values",
-                            "pytmp_var": "SHTPy_values",
-                            "size_var": "SHSize_values"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "Sum",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "implied": "size(values)",
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "dimension": ":",
-                                "intent": "in",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "result",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
-                "fmtdict": {
-                    "PY_name_impl": "PY_Sum",
-                    "function_name": "Sum",
-                    "underscore_name": "sum"
-                },
-                "linenumber": 75,
+                "linenumber": 30,
                 "options": {
-                    "__line__": 78,
+                    "__line__": 31,
                     "literalinclude": true,
+                    "wrap_c": false,
                     "wrap_lua": false
                 }
             },
             {
                 "_fmtargs": {
-                    "out": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int * out",
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "const ",
                             "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_decl": "int * out",
-                            "cxx_member": "->",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&SH_arg))",
+                            "cxx_member": ".",
                             "cxx_type": "int",
-                            "cxx_var": "out",
-                            "data_var": "SHData_out",
-                            "npy_dims": "SHD_out",
-                            "npy_intp": "npy_intp SHD_out[1] = {3};\n",
-                            "npy_ndims": "1",
-                            "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
-                            "py_var": "SHPy_out",
-                            "size_var": "SHSize_out"
+                            "cxx_var": "SH_arg",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "cxx_T": "int",
+                            "f_var": "arg"
                         }
                     }
                 },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "fillIntArray",
+                        "name": "vector_sum",
                         "pointer": []
                     },
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "3",
-                                "intent": "out",
+                                "dimension": ":",
+                                "intent": "in",
+                                "size": "Sarg",
                                 "value": false
                             },
+                            "const": true,
                             "declarator": {
-                                "name": "out",
+                                "name": "arg",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
-                                "int"
+                                "std::vector"
                             ],
-                            "typemap_name": "int"
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int vector_sum(const std::vector<int> &arg)",
+                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))",
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t vector_sum(\tSH_arg);",
+                    "C_call_list": "SH_arg",
+                    "C_name": "VEC_vector_sum_bufferify",
+                    "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);",
+                    "C_prototype": "const int * arg,\t long Sarg",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_name": "c_vector_sum_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "vector_sum",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_sum"
+                },
+                "linenumber": 30,
+                "options": {
+                    "__line__": 31,
+                    "literalinclude": true,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "None * arg",
+                            "c_deref": "",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "capsule_order": "1",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_alloc_decl": "std::vector<int> * SH_arg",
+                            "cxx_decl": "std::vector<int> * arg",
+                            "cxx_member": "->",
+                            "cxx_type": "std::vector<int>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_capsule": "SHC_arg",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_out",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     ],
                     "specifier": [
@@ -952,64 +405,477 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
-                "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 84,
-                    "description": "Return three values into memory the user provides.\n"
+                    "__line__": 37,
+                    "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
-                    "PY_name_impl": "PY_fillIntArray",
-                    "function_name": "fillIntArray",
-                    "underscore_name": "fill_int_array"
+                    "F_C_call": "c_vector_iota_out_bufferify",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_call_code": "call c_vector_iota_out_bufferify(Darg)",
+                    "F_name_function": "vector_iota_out",
+                    "F_name_generic": "vector_iota_out",
+                    "F_name_impl": "vector_iota_out",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_vector_iota_out",
+                    "function_name": "vector_iota_out",
+                    "underscore_name": "vector_iota_out"
                 },
-                "linenumber": 83,
-                "options": {}
+                "linenumber": 36,
+                "options": {
+                    "__line__": 39,
+                    "literalinclude": true,
+                    "wrap_c": false,
+                    "wrap_lua": false
+                }
             },
             {
                 "_fmtargs": {
-                    "array": {
-                        "fmtpy": {
+                    "arg": {
+                        "fmtc": {
                             "c_const": "",
-                            "c_decl": "int * array",
                             "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "array",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
                             "cxx_addr": "",
-                            "cxx_decl": "int * array",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "array",
-                            "data_var": "SHData_array",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_array",
-                            "pytmp_var": "SHTPy_array",
-                            "size_var": "SHSize_array"
-                        }
-                    },
-                    "sizein": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int sizein",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "data_var": "SHData_sizein",
-                            "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_array)",
-                            "py_var": "SHPy_sizein",
-                            "size_var": "SHSize_sizein"
+                            "cxx_var": "SH_arg",
+                            "idtor": "1"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
+                            "f_var": "arg"
                         }
                     }
                 },
+                "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "incrementIntArray",
+                        "name": "vector_iota_out",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Darg",
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 37,
+                    "brief": "Copy vector into Fortran input array"
+                },
+                "fmtdict": {
+                    "C_call_code": "vector_iota_out(\t*SH_arg);",
+                    "C_call_list": "*SH_arg",
+                    "C_name": "VEC_vector_iota_out_bufferify",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
+                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;",
+                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_vector_iota_out_bufferify",
+                    "c_const": "",
+                    "function_name": "vector_iota_out",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_iota_out"
+                },
+                "linenumber": 36,
+                "options": {
+                    "__line__": 39,
+                    "literalinclude": true,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_out_alloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 45,
+                    "brief": "Copy vector into Fortran allocatable array"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_vector_iota_out_alloc_bufferify",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_call_code": "call c_vector_iota_out_alloc_bufferify(Darg)",
+                    "F_name_function": "vector_iota_out_alloc",
+                    "F_name_generic": "vector_iota_out_alloc",
+                    "F_name_impl": "vector_iota_out_alloc",
+                    "F_subprogram": "subroutine",
+                    "function_name": "vector_iota_out_alloc",
+                    "underscore_name": "vector_iota_out_alloc"
+                },
+                "linenumber": 44,
+                "options": {
+                    "__line__": 47,
+                    "literalinclude": true,
+                    "wrap_c": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "SH_arg",
+                            "idtor": "1"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
+                            "f_var": "arg"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_out_alloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Darg",
+                                "deref": "allocatable",
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 45,
+                    "brief": "Copy vector into Fortran allocatable array"
+                },
+                "fmtdict": {
+                    "C_call_code": "vector_iota_out_alloc(\t*SH_arg);",
+                    "C_call_list": "*SH_arg",
+                    "C_name": "VEC_vector_iota_out_alloc_bufferify",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
+                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;",
+                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_vector_iota_out_alloc_bufferify",
+                    "c_const": "",
+                    "function_name": "vector_iota_out_alloc",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_iota_out_alloc"
+                },
+                "linenumber": 44,
+                "options": {
+                    "__line__": 47,
+                    "literalinclude": true,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_inout_alloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": ":",
+                                "intent": "inout",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))",
+                "doxygen": {
+                    "__line__": 53,
+                    "brief": "Copy vector into Fortran allocatable array"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_vector_iota_inout_alloc_bufferify",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
+                    "F_arguments": "arg",
+                    "F_call_code": "call c_vector_iota_inout_alloc_bufferify(arg,\t size(arg, kind=C_LONG),\t Darg)",
+                    "F_name_function": "vector_iota_inout_alloc",
+                    "F_name_generic": "vector_iota_inout_alloc",
+                    "F_name_impl": "vector_iota_inout_alloc",
+                    "F_subprogram": "subroutine",
+                    "function_name": "vector_iota_inout_alloc",
+                    "underscore_name": "vector_iota_inout_alloc"
+                },
+                "linenumber": 52,
+                "options": {
+                    "__line__": 55,
+                    "literalinclude": true,
+                    "wrap_c": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "SH_arg",
+                            "idtor": "1"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
+                            "f_var": "arg"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_inout_alloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Darg",
+                                "deref": "allocatable",
+                                "dimension": ":",
+                                "intent": "inout",
+                                "size": "Sarg",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))",
+                "doxygen": {
+                    "__line__": 53,
+                    "brief": "Copy vector into Fortran allocatable array"
+                },
+                "fmtdict": {
+                    "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);",
+                    "C_call_list": "*SH_arg",
+                    "C_name": "VEC_vector_iota_inout_alloc_bufferify",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
+                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
+                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_vector_iota_inout_alloc_bufferify",
+                    "c_const": "",
+                    "function_name": "vector_iota_inout_alloc",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_iota_inout_alloc"
+                },
+                "linenumber": 52,
+                "options": {
+                    "__line__": 55,
+                    "literalinclude": true,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "vector_increment",
                         "pointer": []
                     },
                     "params": [
@@ -1020,26 +886,521 @@
                                 "value": false
                             },
                             "declarator": {
-                                "name": "array",
+                                "name": "arg",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
-                                "int"
+                                "std::vector"
                             ],
-                            "typemap_name": "int"
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_increment(std::vector<int> &arg)",
+                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))",
+                "fmtdict": {
+                    "F_C_call": "c_vector_increment_bufferify",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
+                    "F_arguments": "arg",
+                    "F_call_code": "call c_vector_increment_bufferify(arg,\t size(arg, kind=C_LONG),\t Darg)",
+                    "F_name_function": "vector_increment",
+                    "F_name_generic": "vector_increment",
+                    "F_name_impl": "vector_increment",
+                    "F_subprogram": "subroutine",
+                    "function_name": "vector_increment",
+                    "underscore_name": "vector_increment"
+                },
+                "linenumber": 61,
+                "options": {
+                    "__line__": 62,
+                    "wrap_c": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "SH_arg",
+                            "idtor": "1"
                         },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "int",
+                            "f_var": "arg"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_increment",
+                        "pointer": []
+                    },
+                    "params": [
                         {
                             "attrs": {
-                                "implied": "size(array)",
+                                "context": "Darg",
+                                "dimension": ":",
+                                "intent": "inout",
+                                "size": "Sarg",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_increment(std::vector<int> &arg)",
+                "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))",
+                "fmtdict": {
+                    "C_call_code": "vector_increment(\t*SH_arg);",
+                    "C_call_list": "*SH_arg",
+                    "C_name": "VEC_vector_increment_bufferify",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
+                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
+                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_vector_increment_bufferify",
+                    "c_const": "",
+                    "function_name": "vector_increment",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_increment"
+                },
+                "linenumber": 61,
+                "options": {
+                    "__line__": 62,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "vector_string_count",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ],
+                                    "typemap_name": "std::string"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int vector_string_count(const std::vector< std::string > &arg)",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))",
+                "doxygen": {
+                    "__line__": 70,
+                    "brief": "count number of underscore in vector of strings",
+                    "decription": "The input will be copied in order to create the C++ argument\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_vector_string_count_bufferify",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)",
+                    "F_arguments": "arg",
+                    "F_call_code": "SHT_rv = c_vector_string_count_bufferify(arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT))",
+                    "F_name_function": "vector_string_count",
+                    "F_name_generic": "vector_string_count",
+                    "F_name_impl": "vector_string_count",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "vector_string_count",
+                    "underscore_name": "vector_string_count"
+                },
+                "linenumber": 69,
+                "options": {
+                    "__line__": 74,
+                    "wrap_c": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_len": "Narg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_arg))",
+                            "cxx_member": ".",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_arg",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "cxx_T": "std::string",
+                            "f_var": "arg"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_string_count",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in",
+                                "len": "Narg",
+                                "size": "Sarg",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ],
+                                    "typemap_name": "std::string"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int vector_string_count(const std::vector< std::string > &arg)",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))",
+                "doxygen": {
+                    "__line__": 70,
+                    "brief": "count number of underscore in vector of strings",
+                    "decription": "The input will be copied in order to create the C++ argument\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t vector_string_count(\tSH_arg);",
+                    "C_call_list": "SH_arg",
+                    "C_name": "VEC_vector_string_count_bufferify",
+                    "C_pre_call": "std::vector<std::string> SH_arg;\n{+\nconst char * BBB = arg;\nstd::vector<std::string>::size_type\n+SHT_i = 0,\nSHT_n = Sarg;\n-for(; SHT_i < SHT_n; SHT_i++) {+\nSH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\nBBB += Narg;\n-}\n-}",
+                    "C_prototype": "const char * arg,\t long Sarg,\t int Narg",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_name": "c_vector_string_count_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "vector_string_count",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_string_count"
+                },
+                "linenumber": 69,
+                "options": {
+                    "__line__": 74,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "vector_string_fill",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ],
+                                    "typemap_name": "std::string"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 86,
+                    "brief": "Fill in arg with some animal names",
+                    "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+                },
+                "fmtdict": {
+                    "C_custom_return_type": "int",
+                    "C_return_code": "return SH_arg.size();",
+                    "C_return_type": "int",
+                    "__line__": 83,
+                    "function_name": "vector_string_fill",
+                    "underscore_name": "vector_string_fill"
+                },
+                "linenumber": 77,
+                "options": {
+                    "__line__": 78,
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "vector_string_append",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "inout",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ],
+                                    "typemap_name": "std::string"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
+                "doxygen": {
+                    "__line__": 98,
+                    "brief": "append '-like' to names."
+                },
+                "fmtdict": {
+                    "function_name": "vector_string_append",
+                    "underscore_name": "vector_string_append"
+                },
+                "linenumber": 92,
+                "options": {
+                    "__line__": 93,
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "n": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int n",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "n",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int n",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "data_var": "SHData_n",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_n",
+                            "size_var": "SHSize_n"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "std::vector<{cxx_T}>",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "capsule_order": "1",
+                        "cxx_T": "int",
+                        "cxx_addr": "&",
+                        "cxx_alloc_decl": "std::vector<int> * rv",
+                        "cxx_member": ".",
+                        "cxx_type": "std::vector<int>",
+                        "cxx_var": "rv",
+                        "data_var": "SHData_rv",
+                        "npy_dims": "SHD_rv",
+                        "npy_intp": "npy_intp SHD_rv[1];\n",
+                        "npy_ndims": "1",
+                        "numpy_type": "NPY_INT",
+                        "py_capsule": "SHC_rv",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable"
+                    },
+                    "declarator": {
+                        "name": "ReturnVectorAlloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
                                 "intent": "in",
                                 "value": true
                             },
                             "declarator": {
-                                "name": "sizein",
+                                "name": "n",
                                 "pointer": []
                             },
                             "specifier": [
@@ -1048,27 +1409,185 @@
                             "typemap_name": "int"
                         }
                     ],
+                    "return_pointer_as": "allocatable",
+                    "specifier": [
+                        "std::vector"
+                    ],
+                    "template_arguments": [
+                        {
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "typemap_name": "std::vector"
+                },
+                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)",
+                "doxygen": {
+                    "__line__": 106,
+                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_return_vector_alloc_bufferify",
+                    "F_arg_c_call": "n,\t DSHF_rv",
+                    "F_arguments": "n",
+                    "F_call_code": "call c_return_vector_alloc_bufferify(n,\t DSHF_rv)",
+                    "F_name_function": "return_vector_alloc",
+                    "F_name_generic": "return_vector_alloc",
+                    "F_name_impl": "return_vector_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnVectorAlloc",
+                    "function_name": "ReturnVectorAlloc",
+                    "underscore_name": "return_vector_alloc"
+                },
+                "linenumber": 105,
+                "options": {
+                    "wrap_c": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "SHF_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "1"
+                        },
+                        "fmtf": {
+                            "c_var": "SHT_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_T": "int",
+                            "f_var": "SHT_rv"
+                        }
+                    },
+                    "n": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "n",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "n",
+                            "f_var": "n"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "void",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "ReturnVectorAlloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "n",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "_is_result": true,
+                                "context": "DSHF_rv",
+                                "deref": "allocatable",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "SHF_rv",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
                     "specifier": [
                         "void"
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
+                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
+                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
-                    "__line__": 90,
-                    "description": "Increment array in place using intent(INOUT).\n"
+                    "__line__": 106,
+                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
-                    "PY_name_impl": "PY_incrementIntArray",
-                    "function_name": "incrementIntArray",
-                    "underscore_name": "increment_int_array"
+                    "C_call_code": "*SHC_rv =\t ReturnVectorAlloc(\tn);",
+                    "C_call_list": "n",
+                    "C_name": "VEC_return_vector_alloc_bufferify",
+                    "C_post_call": "DSHF_rv->cxx.addr  = static_cast<void *>(SHC_rv);\nDSHF_rv->cxx.idtor = 1;\nDSHF_rv->addr.cvoidp = SHC_rv->empty() ? NULL : &SHC_rv->front();\nDSHF_rv->len = sizeof(int);\nDSHF_rv->size = SHC_rv->size();",
+                    "C_pre_call": "std::vector<int>\t *SHC_rv = new std::vector<int>;",
+                    "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_return_vector_alloc_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "*SHC_rv",
+                    "function_name": "ReturnVectorAlloc",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_vector_alloc"
                 },
-                "linenumber": 88,
-                "options": {}
+                "linenumber": 105,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
             }
         ],
-        "language": "c",
+        "language": "cxx",
         "options": {
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
@@ -1142,22 +1661,22 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 24,
+            "__line__": 22,
             "debug": true,
             "debug_index": false,
             "doxygen": true,
             "flatten_namespace": false,
             "literalinclude": false,
-            "literalinclude2": false,
+            "literalinclude2": true,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
-            "wrap_c": false,
-            "wrap_fortran": false,
+            "wrap_c": true,
+            "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": true
         },
         "scope_file": [
-            "pointers"
+            "vectors"
         ]
     },
     "types": {

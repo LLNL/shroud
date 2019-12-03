@@ -6,6 +6,8 @@
 
 """
 Create and manage typemaps used to convert between languages.
+
+buf_args documented in cwrapper.rst.
 """
 
 from . import util
@@ -1030,6 +1032,31 @@ def initialize():
                         "delete cxx_ptr;",
                     ],
                 ),
+                # Same as intent_out_buf.
+                result_buf=dict(
+                    buf_args=["context"],
+#                    cxx_local_var="pointer",
+                    c_helper="capsule_data_helper copy_array",
+                    pre_call=[
+                        "{c_const}std::vector<{cxx_T}>"
+                        "\t *{cxx_var} = new std::vector<{cxx_T}>;"
+                    ],
+                    post_call=[
+                        # Return address and size of vector data.
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+                        "{c_var_context}->cxx.idtor = {idtor};",
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+                        " ? NULL : &{cxx_var}->front();",
+                        "{c_var_context}->len = sizeof({cxx_T});",
+                        "{c_var_context}->size = {cxx_var}->size();",
+                    ],
+                    destructor_name="std_vector_{cxx_T}",
+                    destructor=[
+                        "std::vector<{cxx_T}> *cxx_ptr ="
+                        " \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
+                        "delete cxx_ptr;",
+                    ],
+                ),
                 #                result_buf=dict(
                 #                    buf_args=['arg', 'size'],
                 #                    c_helper='ShroudStrCopy',
@@ -1063,6 +1090,14 @@ def initialize():
                         "{f_var}, size({f_var},kind=C_SIZE_T))"
                     ],
                 ),
+                result=dict(
+                    f_helper="copy_array_{cxx_T}",
+                    f_module=dict(iso_c_binding=["C_SIZE_T"]),
+                    post_call=[
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
+                        "{f_var}, size({f_var},kind=C_SIZE_T))"
+                    ],
+                ),
                 # copy into allocated array
                 intent_out_allocatable=dict(
                     f_helper="copy_array_{cxx_T}",
@@ -1078,6 +1113,15 @@ def initialize():
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
                         "if (allocated({f_var})) deallocate({f_var})",
+                        "allocate({f_var}({c_var_context}%size))",
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
+                        "{f_var}, size({f_var},kind=C_SIZE_T))",
+                    ],
+                ),
+                result_allocatable=dict(   # same as intent_out
+                    f_helper="copy_array_{cxx_T}",
+                    f_module=dict(iso_c_binding=["C_SIZE_T"]),
+                    post_call=[
                         "allocate({f_var}({c_var_context}%size))",
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
                         "{f_var}, size({f_var},kind=C_SIZE_T))",

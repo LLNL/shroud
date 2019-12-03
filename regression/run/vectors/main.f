@@ -20,6 +20,7 @@ program tester
   call init_fruit
 
   call test_vector
+  call test_return
 
   call fruit_summary
   call fruit_finalize
@@ -89,5 +90,15 @@ contains
 !    call assert_true( names(3) == "-like")
  
   end subroutine test_vector
+
+  ! Test returning a vector as a function result
+  subroutine test_return
+
+    integer(C_INT), allocatable :: rv1(:)
+
+    rv1 = return_vector_alloc(10)
+    call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]))
+    
+  end subroutine test_return
 
 end program tester

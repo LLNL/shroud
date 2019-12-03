@@ -118,11 +118,13 @@ The template for a function is:
             return NULL;
         }
 
+        // result pre_call
+        
         // Create C from Python objects
         // Create C++ from C
         {post_parse}
         {               create scope before fail
-          {pre_call}    pre_call declares variables
+          {pre_call}    pre_call declares variables for arguments
 
           call
 

@@ -70,7 +70,7 @@ module ns_mod
                 bind(C, name="NS_last_function_called_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_last_function_called_bufferify
 
         subroutine one() &
