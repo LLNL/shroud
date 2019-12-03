@@ -1027,17 +1027,6 @@ return 1;""",
                     #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
                 local_var = "pointer"
-            elif arg_typemap.base == "vectorXXX":
-                charlen = arg.attrs.get("charlen", False)
-                if charlen:
-                    fmt_arg.charlen = charlen
-                    fmt_arg.c_decl = wformat("{c_const}char {c_var}[{charlen}]", fmt_arg)
-                    fmt_arg.cxx_decl = fmt_arg.c_decl
-                else:
-                    fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
-                    #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
-                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                local_var = "pointer"
             elif arg.attrs.get("allocatable", False):
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
@@ -1744,6 +1733,7 @@ return 1;""",
         For example, std::vector intent(out) must eventually release
         the vector via a capsule owned by the NumPy array.
 
+        XXX - Remove ability to set capsule_type in statements.
         XXX - Move update_code_blocks here....
         """
         # Create capsule destructor
