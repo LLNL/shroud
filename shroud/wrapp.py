@@ -1275,20 +1275,33 @@ return 1;""",
             )
         )
 
-        # Result pre_call is added once before all default argument cases.
+        # Add function pre_call code.
+        need_blank0 = True
+        pre_call_deref = ""
+        if CXX_subprogram == "function":
+            allocate_result_blk = self.add_stmt_capsule(ast, result_blk, fmt_result)
+            # Result pre_call is added once before all default argument cases.
+            if "pre_call" in allocate_result_blk:
+                PY_code.extend(["", "// result pre_call"])
+                util.append_format_cmds(PY_code, allocate_result_blk, "pre_call", fmt_result)
+                need_blank0 = False
+                pre_call_deref = "*"
         if "pre_call" in result_blk:
-            PY_code.extend(["", "// result pre_call"])
+            if need_blank0:
+                PY_code.extend(["", "// result pre_call"])
             PY_code.extend(result_blk["pre_call"])
 
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
-        if found_default:
-            if CXX_subprogram == "function":
-                fmt.PY_rv_asgn = fmt_result.cxx_var + " =\t "
-            PY_code.append("switch (SH_nargs) {")
-        else:
-            if CXX_subprogram == "function":
+        if CXX_subprogram == "function":
+            if found_default:
+                fmt.PY_rv_asgn = pre_call_deref + fmt_result.cxx_var + " =\t "
+            elif allocate_result_blk:
+                fmt.PY_rv_asgn = "*" + fmt_result.cxx_var + " =\t "
+            else:
                 fmt.PY_rv_asgn = fmt.C_rv_decl + " =\t "
+        if found_default:
+            PY_code.append("switch (SH_nargs) {")
         need_rv = False
 
         # build up code for a function
@@ -1418,7 +1431,8 @@ return 1;""",
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
-            self.add_stmt_capsule(ast, result_blk, fmt_result)
+            if allocate_result_blk:
+                update_code_blocks(locals(), allocate_result_blk, fmt_result)
             update_code_blocks(locals(), result_blk, fmt_result)
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
             self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
@@ -1653,15 +1667,7 @@ return 1;""",
             )  # fmt_func
 
             CXX_result = node.ast
-            if result_typemap.base == "vector" and not CXX_result.is_pointer():
-                if CXX_result.is_pointer():
-                    pass
-                else:
-                    # Allocate variable to the type returned by the function.
-                    result_typeflag = "vector"
-                    result_return_pointer_as = "pointer"
-                    fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            elif result_typemap.base == "struct" and not CXX_result.is_pointer():
+            if result_typemap.base == "struct" and not CXX_result.is_pointer():
                 # Allocate variable to the type returned by the function.
                 # No need to convert to C.
                 result_typeflag = "struct"
@@ -1771,7 +1777,7 @@ return 1;""",
 
         """
         if ast.is_pointer():
-            return None
+            return {}
         allocate_local_var = stmts.get("allocate_local_var", False)
         if allocate_local_var:
             fmt.cxx_alloc_decl = ast.gen_arg_as_cxx(
@@ -1798,7 +1804,7 @@ return 1;""",
                     "-}}"],
                 goto_fail=True,
                 )
-        return None
+        return {}
         
     def allocate_memory(self, lang, var, capsule_type, fmt,
                        error, as_type):
@@ -1858,8 +1864,7 @@ return 1;""",
             del_lines = ["{stdlib}free(ptr);"]
         else:
             if as_type == "vector":
-                # Expand cxx_T.
-                alloc = "{cxx_var} = new " + wformat(fmt.cxx_type, fmt) + ";"
+                alloc = "{cxx_var} = new {cxx_type};"
             elif as_type == "struct":
                 alloc = "{cxx_var} = new {namespace_scope}{cxx_type};"
             else:
@@ -3569,6 +3574,7 @@ py_statements_local = dict(
     ),
     result_vector_numpy=dict(
         need_numpy=True,
+        allocate_local_var=True,
         decl=[
             "PyObject * {py_var} = NULL;",
         ],

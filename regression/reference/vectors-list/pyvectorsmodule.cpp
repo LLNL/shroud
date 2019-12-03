@@ -184,11 +184,13 @@ PY_ReturnVectorAlloc(
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
 
+    // result pre_call
     rv = new std::vector<int>;
     if (rv == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
+
     *rv = ReturnVectorAlloc(n);
 
     // post_call
