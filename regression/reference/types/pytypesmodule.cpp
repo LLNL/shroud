@@ -708,7 +708,7 @@ PY_size_func(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:size_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:size_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 

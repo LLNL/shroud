@@ -88,7 +88,7 @@ PY_at(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:at",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
     int & rv = self->obj->at(n);

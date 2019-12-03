@@ -410,6 +410,7 @@ def initialize():
             f_type="integer(C_SIZE_T)",
             f_kind="C_SIZE_T",
             f_module=dict(iso_c_binding=["C_SIZE_T"]),
+            PY_format="n",
             PY_ctor="PyInt_FromSize_t({c_deref}{c_var})",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",

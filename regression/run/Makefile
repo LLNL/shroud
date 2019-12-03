@@ -111,6 +111,7 @@ test-python-% : pymod-%
 
 test-python : \
   test-python-tutorial \
+  test-python-types \
   test-python-enum-c \
   test-python-namespace \
   test-python-strings \
@@ -185,6 +186,7 @@ phony_explicit:
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
+    $(tempdir)/run/types/python/..\
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors-list/python/.. \
     $(tempdir)/run/vectors-numpy/python/..
