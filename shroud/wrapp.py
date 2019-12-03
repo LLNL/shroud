@@ -1692,7 +1692,8 @@ return 1;""",
                 )
             else:
                 fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None, continuation=True
+                    name=fmt_result.cxx_var, params=None,
+                    with_template_args=True, continuation=True
                 )
 
             if CXX_result.is_pointer():
@@ -1721,7 +1722,7 @@ return 1;""",
             elif result_typemap.base == "vector":
                 result_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["result", "vector", options.PY_struct_arg]) # XXX PY_array_arg])
+                    ["result", "vector", options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]

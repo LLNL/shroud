@@ -15,8 +15,6 @@
 //
 // #######################################################################
 #include "pyvectorsmodule.hpp"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "vectors.hpp"
 
 // splicer begin include
@@ -176,44 +174,22 @@ PY_ReturnVectorAlloc(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
-    std::vector<int> * rv = NULL;
     PyObject * SHTPy_rv = NULL;
-    PyObject *SHC_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ReturnVectorAlloc",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
 
-    // result pre_call
-    rv = new std::vector<int>;
-    if (rv == NULL) {
-        PyErr_NoMemory();
-        goto fail;
-    }
-
-    *rv = ReturnVectorAlloc(n);
+    std::vector<int> rv = ReturnVectorAlloc(n);
 
     // post_call
-    npy_intp SHD_rv[1];
-    SHD_rv[0] = rv->size();
-    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT,
-        rv->data());
+    SHTPy_rv = SHROUD_to_PyList_vector_int(rv);
     if (SHTPy_rv == NULL) goto fail;
-    SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
-        PY_SHROUD_capsule_destructor);
-    if (SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_rv, PY_SHROUD_fetch_context(1));
-    if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-        (SHTPy_rv), SHC_rv) < 0) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (rv != NULL) {
-        PY_SHROUD_release_memory(1, rv);
-    }
     Py_XDECREF(SHTPy_rv);
-    Py_XDECREF(SHC_rv);
     return NULL;
 // splicer end function.return_vector_alloc
 }
@@ -301,8 +277,6 @@ initvectors(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
-
-    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

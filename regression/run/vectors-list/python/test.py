@@ -45,8 +45,8 @@ class Vectors(unittest.TestCase):
     def test_vector_iota_out(self):
         # The intent(out) argument is returned from the function.
         arg = vectors.vector_iota_out()
-        self.assertTrue(all(np.equal(arg, [1,2,3,4,5])))
-#
+        self.assertEqual([1,2,3,4,5], arg)
+
 #    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
 #    call vector_iota_out_alloc(inta)
 #    call assert_true(allocated(inta))
@@ -70,10 +70,9 @@ class Vectors(unittest.TestCase):
     def test_returnVectorAlloc(self):
         rv = vectors.ReturnVectorAlloc(10)
 
-        self.assertIsInstance(rv, np.ndarray)
-        self.assertEqual('int32', rv.dtype.name)
-        self.assertEqual(10, rv.size)
-        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7,8,9,10])))
+        self.assertIsInstance(rv, list)
+        self.assertEqual(10, len(rv))
+        self.assertEqual([1,2,3,4,5,6,7,8,9,10], rv)
 #        self.assertTrue(np.allclose(rv, outarray))
 
 
