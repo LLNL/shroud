@@ -67,6 +67,12 @@ class Vectors(unittest.TestCase):
 #    call vector_increment(intv)
 #    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
 
+    def test_vector_iota_out_d(self):
+        # The intent(out) argument is returned from the function.
+        # As double.
+        arg = vectors.vector_iota_out_d()
+        self.assertTrue(np.allclose(arg, [1,2,3,4,5]))
+
     def test_returnVectorAlloc(self):
         rv = vectors.ReturnVectorAlloc(10)
 

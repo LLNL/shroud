@@ -81,6 +81,19 @@ void vector_increment(std::vector<int> &arg)
 }
 
 //----------------------------------------------------------------------
+// vector reference as argument.
+// arg+intent(out)
+// Start with empty vector and fill in values
+
+void vector_iota_out_d(std::vector<double> &arg)
+{
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 1.0);
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
 // count underscore in strings
 // arg+intent(in)
 

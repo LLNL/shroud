@@ -151,6 +151,25 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 // splicer end function.vector_increment_bufferify
 }
 
+// void vector_iota_out_d(std::vector<double> & arg +context(Darg)+dimension(:)+intent(out))
+/**
+ * \brief Copy vector into Fortran input array
+ *
+ */
+void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
+{
+// splicer begin function.vector_iota_out_d_bufferify
+    std::vector<double> *SH_arg = new std::vector<double>;
+    vector_iota_out_d(*SH_arg);
+    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    Darg->cxx.idtor = 2;
+    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(double);
+    Darg->size = SH_arg->size();
+    return;
+// splicer end function.vector_iota_out_d_bufferify
+}
+
 // int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 /**
  * \brief count number of underscore in vector of strings
@@ -211,6 +230,13 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
     {
         std::vector<int> *cxx_ptr = 
             reinterpret_cast<std::vector<int> *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // std_vector_double
+    {
+        std::vector<double> *cxx_ptr = 
+            reinterpret_cast<std::vector<double> *>(ptr);
         delete cxx_ptr;
         break;
     }

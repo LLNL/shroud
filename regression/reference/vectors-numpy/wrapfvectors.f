@@ -106,6 +106,15 @@ module vectors_mod
     end interface
 
     interface
+        subroutine c_vector_iota_out_d_bufferify(Darg) &
+                bind(C, name="VEC_vector_iota_out_d_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+        end subroutine c_vector_iota_out_d_bufferify
+    end interface
+
+    interface
         function c_vector_string_count_bufferify(arg, Sarg, Narg) &
                 result(SHT_rv) &
                 bind(C, name="VEC_vector_string_count_bufferify")
@@ -132,6 +141,19 @@ module vectors_mod
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
+    end interface
+
+    interface
+        ! helper function
+        ! Copy contents of context into c_var.
+        subroutine SHROUD_copy_array_double(context, c_var, c_var_size) &
+            bind(C, name="VEC_ShroudCopyArray")
+            use iso_c_binding, only : C_DOUBLE, C_SIZE_T
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
+            real(C_DOUBLE), intent(OUT) :: c_var(*)
+            integer(C_SIZE_T), value :: c_var_size
+        end subroutine SHROUD_copy_array_double
     end interface
 
     interface
@@ -233,6 +255,22 @@ contains
         ! splicer end function.vector_increment
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_increment
+
+    ! void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
+    ! arg_to_buffer
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !<
+    subroutine vector_iota_out_d(arg)
+        use iso_c_binding, only : C_DOUBLE, C_SIZE_T
+        real(C_DOUBLE), intent(OUT) :: arg(:)
+        type(SHROUD_array) :: Darg
+        ! splicer begin function.vector_iota_out_d
+        call c_vector_iota_out_d_bufferify(Darg)
+        ! splicer end function.vector_iota_out_d
+        call SHROUD_copy_array_double(Darg, arg, size(arg,kind=C_SIZE_T))
+    end subroutine vector_iota_out_d
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
     ! arg_to_buffer

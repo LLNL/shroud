@@ -480,7 +480,7 @@ bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
-integer({f_kind}), intent(OUT) :: c_var(*)
+{f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_copy_array_{cxx_type}
 -end interface""",

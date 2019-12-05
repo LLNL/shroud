@@ -1107,6 +1107,7 @@ class GenFunctions(object):
                     dict(
                         cxx_type=cxx_T,
                         f_kind=tempate_typemap.f_kind,
+                        f_type=tempate_typemap.f_type,
                         C_prefix=fmt.C_prefix,
                         C_array_type=fmt.C_array_type,
                         F_array_type=fmt.F_array_type,
