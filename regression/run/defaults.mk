@@ -48,7 +48,7 @@ endif
 
 ifeq ($(compiler),intel)
 CC = icc
-CFLAGS = -g
+CFLAGS = -g -std=c99
 CLIBS = -lstdc++
 CXX = icpc
 CXXFLAGS = -g -std=c++11
@@ -73,14 +73,16 @@ LD_SHARED = -shared
 endif
 
 ifeq ($(compiler),ibm)
+# rzansel
+TCE = /usr/tce/packages/xl/xl-2019.08.20/
 CC = xlc
 CFLAGS = -g
 CXX = xlc
 CXXFLAGS = -g -std=c++0x 
 FC = xlf2003
-FFLAGS = -g -qfree=f90
-#LIBS = -lstdc++ -L/opt/ibmcmp/lib64/bg -libmc++
-LIBS = -lstdc++
+FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
+# -qlanglvl=2003std
+FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
