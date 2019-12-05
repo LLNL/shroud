@@ -45,6 +45,9 @@ class Vectors(unittest.TestCase):
     def test_vector_iota_out(self):
         # The intent(out) argument is returned from the function.
         arg = vectors.vector_iota_out()
+        self.assertIsInstance(arg, list)
+        self.assertTrue(len(arg), 5)
+        self.assertIsInstance(arg[0], int)
         self.assertEqual([1,2,3,4,5], arg)
 
 #    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
@@ -66,6 +69,14 @@ class Vectors(unittest.TestCase):
 #    intv = [1,2,3,4,5]
 #    call vector_increment(intv)
 #    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+
+    def test_vector_iota_out_d(self):
+        # The intent(out) argument is returned from the function.
+        arg = vectors.vector_iota_out_d()
+        self.assertIsInstance(arg, list)
+        self.assertTrue(len(arg), 5)
+        self.assertIsInstance(arg[0], float)
+        self.assertTrue(np.allclose(arg, [1,2,3,4,5]))
 
     def test_returnVectorAlloc(self):
         rv = vectors.ReturnVectorAlloc(10)

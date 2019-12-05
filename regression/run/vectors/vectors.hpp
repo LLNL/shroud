@@ -27,6 +27,8 @@ void vector_iota_out_alloc(std::vector<int> &arg);
 void vector_iota_inout_alloc(std::vector<int> &arg);
 void vector_increment(std::vector<int> &arg);
 
+void vector_iota_out_d(std::vector<double> &arg);
+
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);

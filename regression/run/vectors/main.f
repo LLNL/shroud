@@ -19,7 +19,9 @@ program tester
 
   call init_fruit
 
-  call test_vector
+  call test_vector_int
+  call test_vector_double
+  call test_vector_string
   call test_return
 
   call fruit_summary
@@ -32,13 +34,12 @@ program tester
 
 contains
 
-  subroutine test_vector
+  subroutine test_vector_int
     integer(C_INT) intv(5)
     integer(C_INT), allocatable :: inta(:)
-    character(10) :: names(3)
     integer irv
 
-    call set_case_name("test_vector")
+    call set_case_name("test_vector_int")
 
     intv = [1,2,3,4,5]
     irv = vector_sum(intv)
@@ -67,6 +68,49 @@ contains
     intv = [1,2,3,4,5]
     call vector_increment(intv)
     call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+  end subroutine test_vector_int
+
+  subroutine test_vector_double
+    real(C_DOUBLE) intv(5)
+    real(C_DOUBLE), allocatable :: inta(:)
+    integer irv
+
+    call set_case_name("test_vector_double")
+
+!    intv = [1.0, 2.0, 3.0, 4.0, 5.0]
+!    irv = vector_sum(intv)
+!    call assert_true(irv .eq. 15)
+
+    intv(:) = 0
+    call vector_iota_out_d(intv)
+    call assert_true(all(intv(:) .eq. [1.,2.,3.,4.,5.]))
+
+    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
+!    call vector_iota_out_alloc(inta)
+!    call assert_true(allocated(inta))
+!    call assert_equals(5 , size(inta))
+!    call assert_true( all(inta == [1,2,3,4,5]), &
+!         "vector_iota_out_alloc value")
+
+    ! inta is intent(inout), so it will NOT be deallocated upon entry to vector_iota_inout_alloc
+    ! Use previous value to append
+!    call vector_iota_inout_alloc(inta)
+!    call assert_true(allocated(inta))
+!    call assert_equals(10 , size(inta))
+!    call assert_true( all(inta == [1,2,3,4,5,11,12,13,14,15]), &
+!         "vector_iota_inout_alloc value")
+!    deallocate(inta)
+
+!    intv = [1,2,3,4,5]
+!    call vector_increment(intv)
+!    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+  end subroutine test_vector_double
+
+  subroutine test_vector_string
+    integer irv
+    character(10) :: names(3)
+
+    call set_case_name("test_vector_string")
 
     ! count number of underscores
     names = [ "dog_cat   ", "bird_mouse", "__        " ]
@@ -89,7 +133,7 @@ contains
 !    call assert_true( names(2) == "toolong-li")
 !    call assert_true( names(3) == "-like")
  
-  end subroutine test_vector
+  end subroutine test_vector_string
 
   ! Test returning a vector as a function result
   subroutine test_return

@@ -26,6 +26,9 @@ options:
 
 declarations:
 
+##################################################
+# int
+
 # const implies intent(in)
 - decl: int vector_sum(const std::vector<int> &arg)
   options:
@@ -65,6 +68,17 @@ declarations:
   
 # does multidimensional make sense?  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
+
+##################################################
+# double
+
+- decl: void vector_iota_out_d(std::vector<double> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
+  options:
+    wrap_lua: False
+
+##################################################
   
 - decl: int vector_string_count(const std::vector< std::string > &arg)
   doxygen:
@@ -73,7 +87,7 @@ declarations:
       The input will be copied in order to create the C++ argument
   options:
     wrap_python: False
- 
+
 - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
   options:
     wrap_c: False

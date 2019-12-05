@@ -1341,6 +1341,7 @@ rv = .false.
             # function result
             if "f" in C_node.statements:
                 fmt_result.f_kind = result_typemap.f_kind
+                fmt_result.f_type = result_typemap.f_type
                 whelpers.add_copy_array_helper(fmt_result)
                 iblk = typemap.lookup_stmts(
                     C_node.statements["f"], ["result", result_deref_clause])
