@@ -1592,7 +1592,7 @@ return 1;""",
             typeflag = None
         util.append_format_lst(
             code,
-            self.allocate_memory_new(
+            self.allocate_memory(
                 var, capsule_type, fmt, "return -1", typeflag),
             fmt
         )
@@ -1747,7 +1747,7 @@ return 1;""",
             
             return dict(
                 decl = ["{cxx_alloc_decl} = NULL;"],
-                pre_call = self.allocate_memory_new(
+                pre_call = self.allocate_memory(
                     fmt.cxx_var, capsule_type, fmt,
                     "goto fail", ast.typemap.base),
                 fail = [
@@ -1758,47 +1758,8 @@ return 1;""",
                 )
         return {}
         
-    def allocate_memory(self, lang, var, capsule_type, fmt,
-                       error, as_type):
-        """Return code to allocate an item.
-        Call PyErr_NoMemory if necessary.
-        Set fmt.capsule_order which is used to release it.
-
-        Args:
-            lang   - c or c++
-            var    - Name of variable for assignment.
-            capsule_type
-            fmt
-            error   - error code ex. "goto fail" or "return -1"
-            as_type - "struct", "vector", None
-        """
-        lines = []
-        if lang == "c":
-            alloc = var + " = malloc(sizeof({cxx_type}));"
-            del_lines = [wformat("{stdlib}free(ptr);",fmt)]
-        else:
-            if as_type == "vector":
-                # Expand cxx_T.
-                alloc = var + " = new " + wformat(fmt.cxx_type, fmt) + ";"
-            elif as_type == "struct":
-                alloc = var + " = new {namespace_scope}{cxx_type};"
-            else:
-                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
-            del_lines = [
-                "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
-                    capsule_type, capsule_type
-                ),
-                "delete cxx_ptr;",
-            ]
-        append_format(lines, alloc, fmt)
-        lines.append("if ({} == NULL) {{+\n"
-                     "PyErr_NoMemory();\n{};\n-}}".format(var, error))
-        capsule_order = self.add_capsule_code(lang + " " + capsule_type, del_lines)
-        fmt.capsule_order = capsule_order
-        return lines
-
-    def allocate_memory_new(self, var, capsule_type, fmt,
-                       error, as_type):
+    def allocate_memory(self, var, capsule_type, fmt,
+                        error, as_type):
         """Return code to allocate an item.
         Call PyErr_NoMemory if necessary.
         Set fmt.capsule_order which is used to release it.
