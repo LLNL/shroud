@@ -1628,14 +1628,12 @@ return 1;""",
             fmt_result = fmt_result0.setdefault(
                 "fmtpy", util.Scope(fmt)
             )  # fmt_func
-
             CXX_result = node.ast
-            if result_typemap.cxx_to_c is None:
-                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            else:
-                fmt_result.cxx_var = wformat(
-                    "{CXX_local}{C_result}", fmt_result
-                )
+
+            # Mangle result variable name to avoid possible conflict with arguments.
+            fmt_result.cxx_var = wformat(
+                "{CXX_local}{C_result}", fmt_result
+            )
 
             fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None,

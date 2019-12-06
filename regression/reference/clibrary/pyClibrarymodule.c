@@ -72,10 +72,10 @@ PY_PassByValue(
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    double rv = PassByValue(arg1, arg2);
+    double SHCXX_rv = PassByValue(arg1, arg2);
 
     // post_call
-    SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_by_value
@@ -191,10 +191,10 @@ PY_Function4a(
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    char * rv = Function4a(arg1, arg2);
+    char * SHCXX_rv = Function4a(arg1, arg2);
 
     // post_call
-    SHTPy_rv = PyString_FromString(rv);
+    SHTPy_rv = PyString_FromString(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
@@ -356,10 +356,10 @@ PY_ImpliedLen(
     int ltext = strlen(text);
     bool flag = false;
 
-    int rv = ImpliedLen(text, ltext, flag);
+    int SHCXX_rv = ImpliedLen(text, ltext, flag);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len
@@ -397,10 +397,10 @@ PY_ImpliedLenTrim(
     int ltext = strlen(text);
     bool flag = true;
 
-    int rv = ImpliedLenTrim(text, ltext, flag);
+    int SHCXX_rv = ImpliedLenTrim(text, ltext, flag);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len_trim
@@ -427,10 +427,10 @@ PY_ImpliedBoolTrue(
     // pre_call
     bool flag = true;
 
-    bool rv = ImpliedBoolTrue(flag);
+    bool SHCXX_rv = ImpliedBoolTrue(flag);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
@@ -462,10 +462,10 @@ PY_ImpliedBoolFalse(
     // pre_call
     bool flag = false;
 
-    bool rv = ImpliedBoolFalse(flag);
+    bool SHCXX_rv = ImpliedBoolFalse(flag);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;

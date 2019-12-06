@@ -72,10 +72,10 @@ PY_PassByValue(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double rv = tutorial::PassByValue(arg1, arg2);
+    double SHCXX_rv = tutorial::PassByValue(arg1, arg2);
 
     // post_call
-    SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_by_value
@@ -144,7 +144,7 @@ PY_UseDefaultArguments_arg1_arg2(
         "arg1",
         "arg2",
         NULL };
-    double rv;
+    double SHCXX_rv;
     PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -155,17 +155,17 @@ PY_UseDefaultArguments_arg1_arg2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        rv = tutorial::UseDefaultArguments();
+        SHCXX_rv = tutorial::UseDefaultArguments();
         break;
     case 1:
-        rv = tutorial::UseDefaultArguments(arg1);
+        SHCXX_rv = tutorial::UseDefaultArguments(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            rv = tutorial::UseDefaultArguments(arg1, arg2);
+            SHCXX_rv = tutorial::UseDefaultArguments(arg1, arg2);
             break;
         }
     default:
@@ -174,7 +174,7 @@ PY_UseDefaultArguments_arg1_arg2(
     }
 
     // post_call
-    SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_default_arguments
@@ -329,7 +329,7 @@ PY_UseDefaultOverload_num_offset_stride(
         "offset",
         "stride",
         NULL };
-    int rv;
+    int SHCXX_rv;
     PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -340,13 +340,13 @@ PY_UseDefaultOverload_num_offset_stride(
         return NULL;
     switch (SH_nargs) {
     case 1:
-        rv = tutorial::UseDefaultOverload(num);
+        SHCXX_rv = tutorial::UseDefaultOverload(num);
         break;
     case 2:
-        rv = tutorial::UseDefaultOverload(num, offset);
+        SHCXX_rv = tutorial::UseDefaultOverload(num, offset);
         break;
     case 3:
-        rv = tutorial::UseDefaultOverload(num, offset, stride);
+        SHCXX_rv = tutorial::UseDefaultOverload(num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -354,7 +354,7 @@ PY_UseDefaultOverload_num_offset_stride(
     }
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_default_overload_num_offset_stride
@@ -379,7 +379,7 @@ PY_UseDefaultOverload_5(
         "offset",
         "stride",
         NULL };
-    int rv;
+    int SHCXX_rv;
     PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -390,13 +390,14 @@ PY_UseDefaultOverload_5(
         return NULL;
     switch (SH_nargs) {
     case 2:
-        rv = tutorial::UseDefaultOverload(type, num);
+        SHCXX_rv = tutorial::UseDefaultOverload(type, num);
         break;
     case 3:
-        rv = tutorial::UseDefaultOverload(type, num, offset);
+        SHCXX_rv = tutorial::UseDefaultOverload(type, num, offset);
         break;
     case 4:
-        rv = tutorial::UseDefaultOverload(type, num, offset, stride);
+        SHCXX_rv = tutorial::UseDefaultOverload(type, num, offset,
+            stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -404,7 +405,7 @@ PY_UseDefaultOverload_5(
     }
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_default_overload_5
@@ -432,10 +433,10 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::TypeID rv = tutorial::typefunc(arg);
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
@@ -635,10 +636,10 @@ PY_useclass(
     // post_parse
     const tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int rv = tutorial::useclass(arg);
+    int SHCXX_rv = tutorial::useclass(arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.useclass
@@ -706,10 +707,10 @@ PY_get_global_flag(
 // splicer begin function.get_global_flag
     PyObject * SHTPy_rv = NULL;
 
-    int rv = tutorial::get_global_flag();
+    int SHCXX_rv = tutorial::get_global_flag();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_global_flag

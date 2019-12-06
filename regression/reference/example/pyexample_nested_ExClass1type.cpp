@@ -137,10 +137,10 @@ PP_incrementCount(
         const_cast<char **>(SHT_kwlist), &incr))
         return NULL;
 
-    int rv = self->obj->incrementCount(incr);
+    int SHCXX_rv = self->obj->incrementCount(incr);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.increment_count
@@ -193,10 +193,10 @@ PP_GetNameLength(
 // splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
     PyObject * SHTPy_rv = NULL;
 
-    int rv = self->obj->GetNameLength();
+    int SHCXX_rv = self->obj->GetNameLength();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_length
@@ -264,10 +264,10 @@ PP_getRoot(
 // splicer begin namespace.example::nested.class.ExClass1.method.get_root
     PyObject * SHTPy_rv = NULL;
 
-    void * rv = self->obj->getRoot();
+    void * SHCXX_rv = self->obj->getRoot();
 
     // post_call
-    SHTPy_rv = PyCapsule_New(rv, NULL, NULL);
+    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_root
@@ -291,10 +291,10 @@ PP_getValue_from_int(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    int rv = self->obj->getValue(value);
+    int SHCXX_rv = self->obj->getValue(value);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
@@ -318,10 +318,10 @@ PP_getValue_1(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    long rv = self->obj->getValue(value);
+    long SHCXX_rv = self->obj->getValue(value);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
@@ -341,10 +341,10 @@ PP_getAddr(
 // splicer begin namespace.example::nested.class.ExClass1.method.get_addr
     PyObject * SHTPy_rv = NULL;
 
-    void * rv = self->obj->getAddr();
+    void * SHCXX_rv = self->obj->getAddr();
 
     // post_call
-    SHTPy_rv = PyCapsule_New(rv, NULL, NULL);
+    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_addr
@@ -375,10 +375,10 @@ PP_hasAddr(
     // pre_call
     bool in = PyObject_IsTrue(SHPy_in);
 
-    bool rv = self->obj->hasAddr(in);
+    bool SHCXX_rv = self->obj->hasAddr(in);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
