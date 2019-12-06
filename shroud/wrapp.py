@@ -1590,8 +1590,12 @@ return 1;""",
             typeflag = "struct"
         else:
             typeflag = None
-        code.extend(self.allocate_memory(
-            self.language, var, capsule_type, fmt, "return -1", typeflag))
+        util.append_format_lst(
+            code,
+            self.allocate_memory_new(
+                var, capsule_type, fmt, "return -1", typeflag),
+            fmt
+        )
         append_format(code,
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
@@ -1799,6 +1803,9 @@ return 1;""",
         Call PyErr_NoMemory if necessary.
         Set fmt.capsule_order which is used to release it.
 
+        When called from create_ctor_function var and error
+        will be different than when called for arguments.
+
         Args:
             var    - Name of variable for assignment.
             capsule_type
@@ -1808,15 +1815,15 @@ return 1;""",
         """
         lines = []
         if self.language == "c":
-            alloc = "{cxx_var} = malloc(sizeof({cxx_type}));"
+            alloc = var + " = malloc(sizeof({cxx_type}));"
             del_lines = ["free(ptr);"]
         else:
             if as_type == "vector":
-                alloc = "{cxx_var} = new {cxx_type};"
+                alloc = var + " = new {cxx_type};"
             elif as_type == "struct":
-                alloc = "{cxx_var} = new {namespace_scope}{cxx_type};"
+                alloc = var + " = new {namespace_scope}{cxx_type};"
             else:
-                alloc = "{cxx_var} = new {namespace_scope}{cxx_type}({PY_call_list});"
+                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
             del_lines = [
                 "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
                     capsule_type, capsule_type
@@ -1824,8 +1831,9 @@ return 1;""",
                 "delete cxx_ptr;",
             ]
         lines.append(alloc)
-        lines.append("if ({cxx_var} == NULL) {{+\n"
-                     "PyErr_NoMemory();\ngoto fail;\n-}}")
+        # This line is formatted later, thus {{{{ for a single {.
+        lines.append("if ({} == NULL) {{{{+\n"
+                     "PyErr_NoMemory();\n{};\n-}}}}".format(var, error))
         capsule_order = self.add_capsule_code(self.language + " " + capsule_type, del_lines)
         fmt.capsule_order = capsule_order
         return lines
