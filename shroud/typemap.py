@@ -1658,6 +1658,36 @@ def compute_name(path, char="_"):
     return char.join(work)
 
 
+def create_buf_variable_names(options, blk, attrs, c_var):
+    """Define variable names for buffer arguments.
+    If user has not explicitly set, then compute from option template.
+    """
+    for buf_arg in blk.get("buf_args", []):
+        if buf_arg in attrs:
+            # do not override user specified variable name
+            continue
+        if buf_arg == "size":
+            attrs["size"] = options.C_var_size_template.format(
+                c_var=c_var
+            )
+        elif buf_arg == "capsule":
+            attrs["capsule"] = options.C_var_capsule_template.format(
+                c_var=c_var
+            )
+        elif buf_arg == "context":
+            attrs["context"] = options.C_var_context_template.format(
+                c_var=c_var
+            )
+        elif buf_arg == "len_trim":
+            attrs["len_trim"] = options.C_var_trim_template.format(
+                c_var=c_var
+            )
+        elif buf_arg == "len":
+            attrs["len"] = options.C_var_len_template.format(
+                c_var=c_var
+            )
+
+
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
