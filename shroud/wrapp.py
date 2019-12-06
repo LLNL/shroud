@@ -879,9 +879,6 @@ return 1;""",
         #           The simplest case is to assign to rv as part of calling function.
         #           When default arguments are present, a switch statement is create
         #           so set need_rv = True to declare variable once, then call several time
-        # need_malloc - Result is a scalar but we need to put it into a NumPy array,
-        #           so allocate memory.
-
         options = node.options
         if not options.wrap_python:
             return
@@ -935,7 +932,7 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result, result_typeflag, need_malloc, result_blk = self.process_result(node, fmt)
+            fmt_result, result_blk = self.process_result(node, fmt)
         else:
             result_blk = {}
 
@@ -1346,31 +1343,6 @@ return 1;""",
                     "{PY_this_call}{function_name}({PY_call_list});",
                     fmt,
                 )
-            elif need_malloc:
-                # Allocate space for scalar returned by function.
-                # This allows NumPy to pointer to the memory.
-                need_rv = True
-                CXX_result = node.ast
-                capsule_type = CXX_result.gen_arg_as_cxx(
-                    name=None, force_ptr=True, params=None, continuation=True,
-                    with_template_args=True,
-                )
-                append_format(decl_code, "{C_rv_decl} = NULL;", fmt_result)
-                PY_code.extend(self.allocate_memory(
-                    self.language, fmt_result.cxx_var, capsule_type, fmt_result,
-                    "goto fail", result_typeflag))
-                append_format(fail_code, "if ({cxx_var} != NULL) {{+\n"
-                              "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
-                              "-}}",
-                              fmt_result)
-                goto_fail = True
-                fmt_result.py_capsule = "SHC_" + fmt_result.c_var
-                fmt_result.cxx_addr = ""
-                append_format(
-                    PY_code,
-                    "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
-                    fmt_result,
-                )
             else:
                 need_rv = True
                 append_format(
@@ -1618,8 +1590,12 @@ return 1;""",
             typeflag = "struct"
         else:
             typeflag = None
-        code.extend(self.allocate_memory(
-            self.language, var, capsule_type, fmt, "return -1", typeflag))
+        util.append_format_lst(
+            code,
+            self.allocate_memory(
+                var, capsule_type, fmt, "return -1", typeflag),
+            fmt
+        )
         append_format(code,
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
@@ -1644,8 +1620,6 @@ return 1;""",
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
 
-        result_typeflag = None
-        need_malloc = False
         result_return_pointer_as = node.ast.return_pointer_as
         result_blk = {}
 
@@ -1654,36 +1628,17 @@ return 1;""",
             fmt_result = fmt_result0.setdefault(
                 "fmtpy", util.Scope(fmt)
             )  # fmt_func
-
             CXX_result = node.ast
-            if result_typemap.base == "struct" and not CXX_result.is_pointer():
-                # Allocate variable to the type returned by the function.
-                # No need to convert to C.
-                result_typeflag = "struct"
-                result_return_pointer_as = "pointer"
-                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            elif result_typemap.cxx_to_c is None:
-                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
-            else:
-                fmt_result.cxx_var = wformat(
-                    "{CXX_local}{C_result}", fmt_result
-                )
 
-            if result_typeflag:
-                # Force result to be a pointer to a struct/vector
-                need_malloc = True
-                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var,
-                    force_ptr=True,
-                    params=None,
-                    continuation=True,
-                    with_template_args=True,
-                )
-            else:
-                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None,
-                    with_template_args=True, continuation=True
-                )
+            # Mangle result variable name to avoid possible conflict with arguments.
+            fmt_result.cxx_var = wformat(
+                "{CXX_local}{C_result}", fmt_result
+            )
+
+            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None,
+                with_template_args=True, continuation=True
+            )
 
             if CXX_result.is_pointer():
                 fmt_result.c_deref = "*"
@@ -1724,7 +1679,7 @@ return 1;""",
                 result_blk = typemap.lookup_stmts(
                     result_typemap.py_statements, ["result"])
             
-        return fmt_result, result_typeflag, need_malloc, result_blk
+        return fmt_result, result_blk
 
     def XXXadd_stmt_capsule(self, stmts, fmt):
         """Create code to release memory.
@@ -1780,13 +1735,17 @@ return 1;""",
                 with_template_args=True,
             )
             fmt.py_capsule = "SHC_" + fmt.c_var
+            # A pointer is always created by allocate_result_blk.
+            fmt.c_deref = "*"
+            fmt.cxx_addr = ""
+            fmt.cxx_member = "->"
             typemap = ast.typemap
 #            result_typeflag = ast.typemap.base
 #        result_typemap = node.CXX_result_typemap
             
             return dict(
                 decl = ["{cxx_alloc_decl} = NULL;"],
-                pre_call = self.allocate_memory_new(
+                pre_call = self.allocate_memory(
                     fmt.cxx_var, capsule_type, fmt,
                     "goto fail", ast.typemap.base),
                 fail = [
@@ -1797,50 +1756,14 @@ return 1;""",
                 )
         return {}
         
-    def allocate_memory(self, lang, var, capsule_type, fmt,
-                       error, as_type):
+    def allocate_memory(self, var, capsule_type, fmt,
+                        error, as_type):
         """Return code to allocate an item.
         Call PyErr_NoMemory if necessary.
         Set fmt.capsule_order which is used to release it.
 
-        Args:
-            lang   - c or c++
-            var    - Name of variable for assignment.
-            capsule_type
-            fmt
-            error   - error code ex. "goto fail" or "return -1"
-            as_type - "struct", "vector", None
-        """
-        lines = []
-        if lang == "c":
-            alloc = var + " = malloc(sizeof({cxx_type}));"
-            del_lines = [wformat("{stdlib}free(ptr);",fmt)]
-        else:
-            if as_type == "vector":
-                # Expand cxx_T.
-                alloc = var + " = new " + wformat(fmt.cxx_type, fmt) + ";"
-            elif as_type == "struct":
-                alloc = var + " = new {namespace_scope}{cxx_type};"
-            else:
-                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
-            del_lines = [
-                "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
-                    capsule_type, capsule_type
-                ),
-                "delete cxx_ptr;",
-            ]
-        append_format(lines, alloc, fmt)
-        lines.append("if ({} == NULL) {{+\n"
-                     "PyErr_NoMemory();\n{};\n-}}".format(var, error))
-        capsule_order = self.add_capsule_code(lang + " " + capsule_type, del_lines)
-        fmt.capsule_order = capsule_order
-        return lines
-
-    def allocate_memory_new(self, var, capsule_type, fmt,
-                       error, as_type):
-        """Return code to allocate an item.
-        Call PyErr_NoMemory if necessary.
-        Set fmt.capsule_order which is used to release it.
+        When called from create_ctor_function var and error
+        will be different than when called for arguments.
 
         Args:
             var    - Name of variable for assignment.
@@ -1851,15 +1774,15 @@ return 1;""",
         """
         lines = []
         if self.language == "c":
-            alloc = "{cxx_var} = malloc(sizeof({cxx_type}));"
-            del_lines = ["{stdlib}free(ptr);"]
+            alloc = var + " = malloc(sizeof({cxx_type}));"
+            del_lines = ["free(ptr);"]
         else:
             if as_type == "vector":
-                alloc = "{cxx_var} = new {cxx_type};"
+                alloc = var + " = new {cxx_type};"
             elif as_type == "struct":
-                alloc = "{cxx_var} = new {namespace_scope}{cxx_type};"
+                alloc = var + " = new {namespace_scope}{cxx_type};"
             else:
-                alloc = "{cxx_var} = new {namespace_scope}{cxx_type}({PY_call_list});"
+                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
             del_lines = [
                 "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
                     capsule_type, capsule_type
@@ -1867,8 +1790,9 @@ return 1;""",
                 "delete cxx_ptr;",
             ]
         lines.append(alloc)
-        lines.append("if ({cxx_var} == NULL) {{+\n"
-                     "PyErr_NoMemory();\ngoto fail;\n-}}")
+        # This line is formatted later, thus {{{{ for a single {.
+        lines.append("if ({} == NULL) {{{{+\n"
+                     "PyErr_NoMemory();\n{};\n-}}}}".format(var, error))
         capsule_order = self.add_capsule_code(self.language + " " + capsule_type, del_lines)
         fmt.capsule_order = capsule_order
         return lines
@@ -3341,6 +3265,7 @@ py_statements_local = dict(
     struct_intent_out_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
+#        allocate_local_var=True,  # needed to release memory
         create_out_decl=True,
         cxx_local_var="pointer",
         decl=[
@@ -3370,6 +3295,7 @@ py_statements_local = dict(
     struct_result_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
+        allocate_local_var=True,
         decl=[
             "PyObject * {py_var} = NULL;",
         ],
@@ -3408,6 +3334,7 @@ py_statements_local = dict(
     ),
     struct_intent_out_class=dict(
         create_out_decl=True,
+#        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         decl=[
             "{PyObject} * {py_var} = NULL;",
@@ -3438,6 +3365,7 @@ py_statements_local = dict(
     ),
     struct_result_class=dict(
         cxx_local_var="pointer",
+        allocate_local_var=True,
         decl=[
             "{PyObject} *{py_var} = NULL;  // struct_result_class",
         ],

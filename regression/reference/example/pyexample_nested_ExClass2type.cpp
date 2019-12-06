@@ -303,10 +303,10 @@ PP_GetNameLength(
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
     PyObject * SHTPy_rv = NULL;
 
-    int rv = self->obj->GetNameLength();
+    int SHCXX_rv = self->obj->GetNameLength();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass2.method.get_name_length
@@ -536,10 +536,10 @@ PP_getValue_int(
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
     PyObject * SHTPy_rv = NULL;
 
-    int rv = self->obj->getValue();
+    int SHCXX_rv = self->obj->getValue();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass2.method.get_value_int
@@ -555,10 +555,10 @@ PP_getValue_double(
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
     PyObject * SHTPy_rv = NULL;
 
-    double rv = self->obj->getValue();
+    double SHCXX_rv = self->obj->getValue();
 
     // post_call
-    SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass2.method.get_value_double

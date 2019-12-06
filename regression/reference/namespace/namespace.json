@@ -470,16 +470,16 @@
                                         "PyObject": "PY_Cstruct1",
                                         "PyTypeObject": "PY_Cstruct1_Type",
                                         "c_deref": "",
-                                        "c_var": "rv",
+                                        "c_var": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_type": "outer::Cstruct1",
-                                        "cxx_var": "rv",
+                                        "cxx_var": "SHCXX_rv",
                                         "data_var": "SHData_rv",
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "vargs": "rv"
+                                        "vargs": "SHCXX_rv"
                                     }
                                 },
                                 "ast": {

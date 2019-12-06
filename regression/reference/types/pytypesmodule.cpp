@@ -61,10 +61,10 @@ PY_short_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    short rv = short_func(arg1);
+    short SHCXX_rv = short_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.short_func
@@ -92,10 +92,10 @@ PY_int_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    int rv = int_func(arg1);
+    int SHCXX_rv = int_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.int_func
@@ -123,10 +123,10 @@ PY_long_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long rv = long_func(arg1);
+    long SHCXX_rv = long_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.long_func
@@ -154,10 +154,10 @@ PY_long_long_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long long rv = long_long_func(arg1);
+    long long SHCXX_rv = long_long_func(arg1);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("L", rv);
+    SHTPy_rv = Py_BuildValue("L", SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.long_long_func
@@ -185,10 +185,10 @@ PY_short_int_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    short rv = short_int_func(arg1);
+    short SHCXX_rv = short_int_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.short_int_func
@@ -216,10 +216,10 @@ PY_long_int_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long rv = long_int_func(arg1);
+    long SHCXX_rv = long_int_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.long_int_func
@@ -247,10 +247,10 @@ PY_long_long_int_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long long rv = long_long_int_func(arg1);
+    long long SHCXX_rv = long_long_int_func(arg1);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("L", rv);
+    SHTPy_rv = Py_BuildValue("L", SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.long_long_int_func
@@ -278,10 +278,10 @@ PY_unsigned_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned int rv = unsigned_func(arg1);
+    unsigned int SHCXX_rv = unsigned_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.unsigned_func
@@ -309,10 +309,10 @@ PY_ushort_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned short rv = ushort_func(arg1);
+    unsigned short SHCXX_rv = ushort_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.ushort_func
@@ -340,10 +340,10 @@ PY_uint_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned int rv = uint_func(arg1);
+    unsigned int SHCXX_rv = uint_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint_func
@@ -371,10 +371,10 @@ PY_ulong_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned long rv = ulong_func(arg1);
+    unsigned long SHCXX_rv = ulong_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.ulong_func
@@ -402,10 +402,10 @@ PY_ulong_long_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned long long rv = ulong_long_func(arg1);
+    unsigned long long SHCXX_rv = ulong_long_func(arg1);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("L", rv);
+    SHTPy_rv = Py_BuildValue("L", SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.ulong_long_func
@@ -433,10 +433,10 @@ PY_ulong_int_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    unsigned long rv = ulong_int_func(arg1);
+    unsigned long SHCXX_rv = ulong_int_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.ulong_int_func
@@ -464,10 +464,10 @@ PY_int8_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    int8_t rv = int8_func(arg1);
+    int8_t SHCXX_rv = int8_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.int8_func
@@ -495,10 +495,10 @@ PY_int16_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    int16_t rv = int16_func(arg1);
+    int16_t SHCXX_rv = int16_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.int16_func
@@ -526,10 +526,10 @@ PY_int32_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    int32_t rv = int32_func(arg1);
+    int32_t SHCXX_rv = int32_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.int32_func
@@ -557,10 +557,10 @@ PY_int64_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    int64_t rv = int64_func(arg1);
+    int64_t SHCXX_rv = int64_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.int64_func
@@ -588,10 +588,10 @@ PY_uint8_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    uint8_t rv = uint8_func(arg1);
+    uint8_t SHCXX_rv = uint8_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint8_func
@@ -619,10 +619,10 @@ PY_uint16_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    uint16_t rv = uint16_func(arg1);
+    uint16_t SHCXX_rv = uint16_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint16_func
@@ -650,10 +650,10 @@ PY_uint32_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    uint32_t rv = uint32_func(arg1);
+    uint32_t SHCXX_rv = uint32_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint32_func
@@ -681,10 +681,10 @@ PY_uint64_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    uint64_t rv = uint64_func(arg1);
+    uint64_t SHCXX_rv = uint64_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint64_func
@@ -712,10 +712,10 @@ PY_size_func(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    size_t rv = size_func(arg1);
+    size_t SHCXX_rv = size_func(arg1);
 
     // post_call
-    SHTPy_rv = PyInt_FromSize_t(rv);
+    SHTPy_rv = PyInt_FromSize_t(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.size_func
@@ -746,10 +746,10 @@ PY_bool_func(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool rv = bool_func(arg);
+    bool SHCXX_rv = bool_func(arg);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
@@ -788,10 +788,10 @@ PY_returnBoolAndOthers(
     // pre_call
     int flag;  // intent(out)
 
-    bool rv = returnBoolAndOthers(&flag);
+    bool SHCXX_rv = returnBoolAndOthers(&flag);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
     SHPyResult = Py_BuildValue("Oi", SHTPy_rv, flag);
 

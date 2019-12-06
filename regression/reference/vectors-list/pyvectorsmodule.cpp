@@ -113,10 +113,10 @@ PY_vector_sum(
             SH_arg) == -1)
             goto fail;
 
-        int rv = vector_sum(SH_arg);
+        int SHCXX_rv = vector_sum(SH_arg);
 
         // post_call
-        SHTPy_rv = PyInt_FromLong(rv);
+        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
         return (PyObject *) SHTPy_rv;
     }
@@ -227,10 +227,10 @@ PY_ReturnVectorAlloc(
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
 
-    std::vector<int> rv = ReturnVectorAlloc(n);
+    std::vector<int> SHCXX_rv = ReturnVectorAlloc(n);
 
     // post_call
-    SHTPy_rv = SHROUD_to_PyList_vector_int(rv);
+    SHTPy_rv = SHROUD_to_PyList_vector_int(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
