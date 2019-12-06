@@ -235,7 +235,7 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
-    Cstruct1 * rv = NULL;
+    Cstruct1 * SHCXX_rv = NULL;
     PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -243,24 +243,26 @@ PY_returnStructByValue(
         &d))
         return NULL;
 
-    rv = new Cstruct1;
-    if (rv == NULL) {
+    // result pre_call
+    SHCXX_rv = new Cstruct1;
+    if (SHCXX_rv == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
-    *rv = returnStructByValue(i, d);
+
+    *SHCXX_rv = returnStructByValue(i, d);
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
-    SHTPy_rv->obj = rv;
+    SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 1;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (rv != NULL) {
-        PY_SHROUD_release_memory(1, rv);
+    if (SHCXX_rv != NULL) {
+        PY_SHROUD_release_memory(1, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
     return NULL;

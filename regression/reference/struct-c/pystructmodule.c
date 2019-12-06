@@ -313,11 +313,13 @@ PY_returnStructByValue(
         "id:returnStructByValue", SHT_kwlist, &i, &d))
         return NULL;
 
+    // result pre_call
     rv = malloc(sizeof(Cstruct1));
     if (rv == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
+
     *rv = returnStructByValue(i, d);
 
     // post_call

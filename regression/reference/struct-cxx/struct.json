@@ -75,16 +75,16 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "c_deref": "",
-                                "c_var": "rv",
+                                "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "Cstruct1",
-                                "cxx_var": "rv",
+                                "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "vargs": "rv"
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "ast": {
@@ -1370,16 +1370,17 @@
                         "PYN_descr": "PY_Cstruct1_array_descr",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
-                        "c_deref": "",
-                        "c_var": "rv",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
                         "capsule_order": "1",
                         "cxx_addr": "",
-                        "cxx_member": ".",
+                        "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
+                        "cxx_member": "->",
                         "cxx_type": "Cstruct1",
-                        "cxx_var": "rv",
+                        "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
                         "numpy_type": null,
-                        "py_capsule": "SHC_rv",
+                        "py_capsule": "SHC_SHCXX_rv",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
                     }
