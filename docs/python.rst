@@ -142,6 +142,14 @@ The template for a function is:
           Py_XDECREF(arr_x);
     }
 
+allocate_local_var
+^^^^^^^^^^^^^^^^^^
+
+Functions which return a struct/class instance (such as std::vector)
+need to allocate a local variable which will be used to store the result.
+The Python object will maintain a pointer to the instance until it is
+deleted.
+
 decl
 ^^^^
 

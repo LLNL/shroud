@@ -46,6 +46,7 @@ int ShroudLenTrim(const char *src, int nsrc) {
 // start helper copy_array
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
+// Called from Fortran.
 void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {

@@ -289,6 +289,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         int=Typemap(
             "int",
@@ -305,6 +306,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         long=Typemap(
             "long",
@@ -321,6 +323,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         long_long=Typemap(
             "long_long",
@@ -336,6 +339,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         unsigned_short=Typemap(
             "unsigned_short",
@@ -352,6 +356,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         unsigned_int=Typemap(
             "unsigned_int",
@@ -368,6 +373,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         unsigned_long=Typemap(
             "unsigned_long",
@@ -384,6 +390,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         unsigned_long_long=Typemap(
             "unsigned_long_long",
@@ -399,6 +406,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         size_t=Typemap(
             "size_t",
@@ -415,6 +423,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         # XXX- sized based types for Python
         int8_t=Typemap(
@@ -434,6 +443,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         int16_t=Typemap(
             "int16_t",
@@ -452,6 +462,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         int32_t=Typemap(
             "int32_t",
@@ -470,6 +481,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         int64_t=Typemap(
             "int64_t",
@@ -488,6 +500,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         # XXX- sized based types for Python
         uint8_t=Typemap(
@@ -507,6 +520,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         uint16_t=Typemap(
             "uint16_t",
@@ -525,6 +539,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         uint32_t=Typemap(
             "uint32_t",
@@ -543,6 +558,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         uint64_t=Typemap(
             "uint64_t",
@@ -561,6 +577,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            base="native",
         ),
         float=Typemap(
             "float",
@@ -577,6 +594,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            base="native",
         ),
         double=Typemap(
             "double",
@@ -593,6 +611,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            base="native",
         ),
         bool=Typemap(
             "bool",
@@ -1659,3 +1678,39 @@ def update_for_language(stmts, lang):
             specific = lang + "_" + clause
             if specific in item:
                 item[clause] = item[specific]
+
+
+statements_local = dict(
+    # Function has a result with deref(allocatable).
+    #
+    #    C wrapper:
+    #       Add context argument for result
+    #       Fill in values to describe array.
+    #
+    #    Fortran:
+    #        c_step1(context)
+    #        allocate(Fout(len))
+    #        c_step2(context, Fout, size(len))
+    c_native_result_buf=dict(
+        buf_args=["context"],
+        c_helper="array_context copy_array",
+        post_call=[
+            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.cvoidp = {cxx_var};",
+            "{c_var_context}->len = sizeof({cxx_type});",
+            "{c_var_context}->size = *{c_var_dimension};",
+        ],
+    ),
+    f_native_result_allocatable=dict(
+        buf_args=["context"],
+        f_helper="array_context copy_array_{cxx_type}",
+        post_call=[
+            # XXX - allocate scalar
+            "allocate({f_var}({c_var_dimension}))",
+            "call SHROUD_copy_array_{cxx_type}"
+            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+        ],
+    ),
+)
+                

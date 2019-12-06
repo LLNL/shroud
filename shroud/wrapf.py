@@ -964,9 +964,11 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
 
-        if hasattr(node, "statements"):
-            if "c" in node.statements:
-                iblk = node.statements["c"]["result_buf"]  # allocatable
+        if ast.is_indirect():
+            iblk = typemap.lookup_stmts(
+                typemap.statements_local,
+                ["c", result_typemap.base, "result", node.generated_suffix])
+            if iblk:
                 self.build_arg_list_interface(
                     node, fileinfo,
                     fmt_func,
@@ -1337,14 +1339,13 @@ rv = .false.
                     wformat("{F_this}%{F_derived_member}", fmt_func)
                 )
 
-        if hasattr(C_node, "statements"):
-            # function result
-            if "f" in C_node.statements:
-                fmt_result.f_kind = result_typemap.f_kind
-                fmt_result.f_type = result_typemap.f_type
-                whelpers.add_copy_array_helper(fmt_result)
-                iblk = typemap.lookup_stmts(
-                    C_node.statements["f"], ["result", result_deref_clause])
+        if ast.is_indirect():
+            # Function result.
+            iblk = typemap.lookup_stmts(
+                typemap.statements_local,
+                ["f", result_typemap.base, "result", result_deref_clause])
+            if iblk:
+                whelpers.add_copy_array_helper(fmt_result, ast)
                 need_wrapper = self.build_arg_list_impl(
                     fmt_result,
                     C_node.ast,

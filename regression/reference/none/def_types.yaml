@@ -347,7 +347,7 @@ double: !!python/object:shroud.typemap.Typemap
   PY_get: PyFloat_AsDouble({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -402,7 +402,7 @@ float: !!python/object:shroud.typemap.Typemap
   PY_get: PyFloat_AsDouble({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -457,7 +457,7 @@ int: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -512,7 +512,7 @@ int16_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -567,7 +567,7 @@ int32_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -622,7 +622,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -677,7 +677,7 @@ int8_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -732,7 +732,7 @@ long: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -787,7 +787,7 @@ long_long: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -842,7 +842,7 @@ short: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -897,7 +897,7 @@ size_t: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stddef.h>
   c_return_code: null
   c_statements: *id002
@@ -1334,7 +1334,7 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -1389,7 +1389,7 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -1444,7 +1444,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -1499,7 +1499,7 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: <stdint.h>
   c_return_code: null
   c_statements: *id002
@@ -1554,7 +1554,7 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -1609,7 +1609,7 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -1664,7 +1664,7 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002
@@ -1719,7 +1719,7 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: native
   c_header: null
   c_return_code: null
   c_statements: *id002

@@ -419,6 +419,9 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
 def add_copy_array_helper_c(fmtin):
     """Create function to copy contents of a vector.
 
+    The function has C_prefix in the name since it is not file static.
+    This allows multiple wrapped libraries to coexist.
+
     Args:
         fmtin - format dictionary from the library.
     """
@@ -442,6 +445,7 @@ def add_copy_array_helper_c(fmtin):
 // helper function
 {lstart}// Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
+// Called from Fortran.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.cvoidp;
@@ -456,16 +460,28 @@ n *= data->len;
         CHelpers[name] = helper
 
 
-def add_copy_array_helper(fmt):
-    """
-    Create Fortran interface to helper function
-    which copies an array based on cxx_type.
+def add_copy_array_helper(fmtin, ast):
+    """Create Fortran interface to helper function
+    which copies an array based on c_type.
     Each interface calls the same C helper.
 
+    The function has C_prefix in the name since it is not file static.
+    This allows multiple wrapped libraries to coexist.
+
     Args:
-        fmt -
+        fmtin -
+        ast -
     """
-    name = wformat("copy_array_{cxx_type}", fmt)
+    fmt = util.Scope(fmtin)
+    ntypemap = ast.typemap
+    if ntypemap.base == "vector":
+        ntypemap = ast.template_arguments[0].typemap
+
+    fmt.c_type = ntypemap.c_type
+    fmt.f_kind = ntypemap.f_kind
+    fmt.f_type = ntypemap.f_type
+
+    name = wformat("copy_array_{c_type}", fmt)
     if name not in FHelpers:
         helper = dict(
             # XXX when f_kind == C_SIZE_T
@@ -475,14 +491,14 @@ def add_copy_array_helper(fmt):
 interface+
 ! helper function
 ! Copy contents of context into c_var.
-subroutine SHROUD_copy_array_{cxx_type}(context, c_var, c_var_size) &+
+subroutine SHROUD_copy_array_{c_type}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_array_{cxx_type}
+-end subroutine SHROUD_copy_array_{c_type}
 -end interface""",
                 fmt,
             ),
