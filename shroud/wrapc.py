@@ -857,10 +857,11 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
-        if hasattr(node, "statements"):
-            # Statements added to node in setup_allocatable_result.
-            if "c" in node.statements:
-                iblk = node.statements["c"]["result_buf"]
+        if ast.is_indirect():
+            iblk = typemap.lookup_stmts(
+                typemap.statements_local,
+                ["c", result_typemap.base, "result", generated_suffix])
+            if iblk:
                 need_wrapper = self.build_proto_list(
                     fmt_result,
                     ast,

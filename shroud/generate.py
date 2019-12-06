@@ -1279,7 +1279,11 @@ class GenFunctions(object):
             C_new._subprogram = "subroutine"
         elif has_allocatable_result:
             # Non-string and Non-char results
-            self.setup_allocatable_result(C_new)
+            # XXX - c_var is duplicated in wrapc.py wrap_function
+            fmt_func = C_new.fmtdict
+            attrs = C_new.ast.attrs
+            c_var = fmt_func.C_local + fmt_func.C_result
+            attrs["context"] = options.C_var_context_template.format(c_var=c_var)
 
         if result_as_arg:
             # Create Fortran function without bufferify function_suffix but
@@ -1304,56 +1308,6 @@ class GenFunctions(object):
         else:
             # Fortran function may call C subroutine if string/vector result
             node._PTR_F_C_index = C_new._function_index
-
-    def setup_allocatable_result(self, node):
-        """node has a result with deref(allocatable).
-
-        C wrapper:
-           Add context argument for result
-           Fill in values to describe array.
-
-        Fortran:
-            c_step1(context)
-            allocate(Fout(len))
-            c_step2(context, Fout, size(len))
-
-        Args:
-            node -
-        """
-        options = node.options
-        fmt_func = node.fmtdict
-        attrs = node.ast.attrs
-
-        # XXX - c_var is duplicated in wrapc.py wrap_function
-        c_var = fmt_func.C_local + fmt_func.C_result
-        attrs["context"] = options.C_var_context_template.format(c_var=c_var)
-
-        node.statements = {}
-        node.statements["c"] = dict(
-            result_buf=dict(
-                buf_args=["context"],
-                c_helper="array_context copy_array",
-                post_call=[
-                    "{c_var_context}->cxx.addr  = {cxx_var};",
-                    "{c_var_context}->cxx.idtor = {idtor};",
-                    "{c_var_context}->addr.cvoidp = {cxx_var};",
-                    "{c_var_context}->len = sizeof({cxx_type});",
-                    "{c_var_context}->size = *{c_var_dimension};",
-                ],
-            )
-        )
-        node.statements["f"] = dict(
-            result_allocatable=dict(
-                buf_args=["context"],
-                f_helper="array_context copy_array_{cxx_type}",
-                post_call=[
-                    # XXX - allocate scalar
-                    "allocate({f_var}({c_var_dimension}))",
-                    "call SHROUD_copy_array_{cxx_type}"
-                    "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
-                ],
-            )
-        )
 
     def XXXcheck_class_dependencies(self, node):
         """
