@@ -249,11 +249,6 @@ char: !!python/object:shroud.typemap.Typemap
       post_call:
       - 'allocate(character(len={c_var_context}%len):: {f_var})'
       - call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)
-    result_pure:
-      call:
-      - '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))'
-      f_helper: fstr_ptr
-      need_wrapper: true
   f_to_c: null
   f_type: character(*)
   flat_name: char
@@ -1059,11 +1054,6 @@ std::string: !!python/object:shroud.typemap.Typemap
       post_call:
       - 'allocate(character(len={c_var_context}%len):: {f_var})'
       - call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)
-    result_pure:
-      call:
-      - '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))'
-      f_helper: fstr_ptr
-      need_wrapper: true
   f_to_c: null
   f_type: character(*)
   flat_name: std_string

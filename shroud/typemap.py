@@ -765,11 +765,6 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             f_statements=dict(
-                result_pure=dict(
-                    need_wrapper=True,
-                    f_helper="fstr_ptr",
-                    call=["{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"],
-                ),
                 result_allocatable=dict(
                     need_wrapper=True,
                     f_helper="copy_string",
@@ -946,11 +941,6 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             f_statements=dict(
-                result_pure=dict(
-                    need_wrapper=True,
-                    f_helper="fstr_ptr",
-                    call=["{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"],
-                ),
                 result_allocatable=dict(
                     need_wrapper=True,
                     f_helper="copy_string",
