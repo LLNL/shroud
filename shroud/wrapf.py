@@ -1345,9 +1345,7 @@ rv = .false.
                 typemap.statements_local,
                 ["f", result_typemap.base, "result", result_deref_clause])
             if iblk:
-                fmt_result.f_kind = result_typemap.f_kind
-                fmt_result.f_type = result_typemap.f_type
-                whelpers.add_copy_array_helper(fmt_result)
+                whelpers.add_copy_array_helper(fmt_result, ast)
                 need_wrapper = self.build_arg_list_impl(
                     fmt_result,
                     C_node.ast,

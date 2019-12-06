@@ -456,15 +456,25 @@ n *= data->len;
         CHelpers[name] = helper
 
 
-def add_copy_array_helper(fmt):
+def add_copy_array_helper(fmtin, ast):
     """
     Create Fortran interface to helper function
     which copies an array based on cxx_type.
     Each interface calls the same C helper.
 
     Args:
-        fmt -
+        fmtin -
+        ast -
     """
+    fmt = util.Scope(fmtin)
+    ntypemap = ast.typemap
+    if ntypemap.base == "vector":
+        ntypemap = ast.template_arguments[0].typemap
+
+    fmt.cxx_type = ntypemap.cxx_type
+    fmt.f_kind = ntypemap.f_kind
+    fmt.f_type = ntypemap.f_type
+
     name = wformat("copy_array_{cxx_type}", fmt)
     if name not in FHelpers:
         helper = dict(

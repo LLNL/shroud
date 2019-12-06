@@ -791,8 +791,6 @@
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "len",
                         "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
