@@ -1641,6 +1641,8 @@ def compute_name(path, char="_"):
     Compute a name from a list of components.
     Blank entries are filtered out.
 
+    Used to find C_error_pattern.
+    
     Args:
         path  - list of name components.
     """
@@ -1711,7 +1713,7 @@ statements_local = dict(
     #        c_step1(context)
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
-    c_native_result_buf=dict(
+    c_native_pointer_result_buf=dict(
         buf_args=["context"],
         c_helper="array_context copy_array",
         post_call=[
@@ -1722,7 +1724,7 @@ statements_local = dict(
             "{c_var_context}->size = *{c_var_dimension};",
         ],
     ),
-    f_native_result_allocatable=dict(
+    f_native_pointer_result_allocatable=dict(
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
         post_call=[

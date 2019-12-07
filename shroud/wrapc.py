@@ -858,20 +858,24 @@ class Wrapc(util.WrapperMixin):
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
         if ast.is_indirect():
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["c", result_typemap.base, "result", generated_suffix])
-            if iblk:
-                need_wrapper = self.build_proto_list(
-                    fmt_result,
-                    ast,
-                    iblk.get("buf_args", []),
-                    proto_list,
-                    need_wrapper,
-                )
-                need_wrapper = self.add_code_from_statements(
-                    fmt_result, iblk, pre_call, post_call, need_wrapper
-                )
+            spointer = "pointer"
+        else:
+            spointer = ""
+
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["c", result_typemap.base, spointer, "result", generated_suffix])
+        if iblk:
+            need_wrapper = self.build_proto_list(
+                fmt_result,
+                ast,
+                iblk.get("buf_args", []),
+                proto_list,
+                need_wrapper,
+            )
+            need_wrapper = self.add_code_from_statements(
+                fmt_result, iblk, pre_call, post_call, need_wrapper
+            )
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.

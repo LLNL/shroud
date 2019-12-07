@@ -965,20 +965,24 @@ rv = .false.
                 imports[fmt.F_capsule_data_type] = True
 
         if ast.is_indirect():
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["c", result_typemap.base, "result", node.generated_suffix])
-            if iblk:
-                self.build_arg_list_interface(
-                    node, fileinfo,
-                    fmt_func,
-                    ast,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_c_names,
-                    arg_c_decl,
-                )
+            spointer = "pointer"
+        else:
+            spointer = "scalar"
+
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["c", result_typemap.base, spointer, "result", node.generated_suffix])
+        if iblk:
+            self.build_arg_list_interface(
+                node, fileinfo,
+                fmt_func,
+                ast,
+                iblk.get("buf_args", []),
+                modules,
+                imports,
+                arg_c_names,
+                arg_c_decl,
+            )
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
@@ -1340,34 +1344,37 @@ rv = .false.
                 )
 
         if ast.is_indirect():
-            # Function result.
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["f", result_typemap.base, "result", result_deref_clause])
-            if iblk:
-                whelpers.add_copy_array_helper(fmt_result, ast)
-                need_wrapper = self.build_arg_list_impl(
-                    fmt_result,
-                    C_node.ast,
-                    ast,
-                    result_typemap,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    arg_c_call,
-                    need_wrapper,
-                )
-                need_wrapper = self.add_code_from_statements(
-                    need_wrapper, fileinfo,
-                    fmt_result,
-                    iblk,
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    pre_call,
-                    post_call,
-                )
+            spointer = "pointer"
+        else:
+            spointer = ""
+        # Function result.
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["f", result_typemap.base, spointer, "result", result_deref_clause])
+        if iblk:
+            whelpers.add_copy_array_helper(fmt_result, ast)
+            need_wrapper = self.build_arg_list_impl(
+                fmt_result,
+                C_node.ast,
+                ast,
+                result_typemap,
+                iblk.get("buf_args", []),
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
+            )
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                iblk,
+                modules,
+                imports,
+                arg_f_decl,
+                pre_call,
+                post_call,
+            )
 
         # Fortran and C arguments may have different types (fortran generic)
         #
