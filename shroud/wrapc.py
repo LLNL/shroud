@@ -955,7 +955,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["result", generated_suffix,
+                stmts = ["c", "result", generated_suffix,
                          result_return_pointer_as,
                          "pointer" if CXX_ast.is_indirect() else "scalar",
                 ]
@@ -1041,7 +1041,7 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["intent_" + c_attrs["intent"], arg.stmts_suffix]
+                stmts = ["c", c_attrs["intent"], arg.stmts_suffix]
 
             intent_blk = typemap.lookup_stmts(c_statements, stmts)
 
@@ -1253,7 +1253,7 @@ class Wrapc(util.WrapperMixin):
                 c_statements = result_typemap.c_statements
 
                 intent_blk = typemap.lookup_stmts(
-                    c_statements, ["result", ast.stmts_suffix])
+                    c_statements, ["c", "result", ast.stmts_suffix])
                 self.add_statements_headers(intent_blk)
 
                 need_wrapper = self.add_code_from_statements(

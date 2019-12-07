@@ -1169,7 +1169,7 @@ class GenFunctions(object):
 
             # set names for implied buffer arguments
             # Look for a specalized clause for generated_suffix.
-            stmts = "intent_" + attrs["intent"] + "_" + generated_suffix
+            stmts = "c_" + attrs["intent"] + "_" + generated_suffix
             if stmts in c_statements:
                 arg.stmts_suffix = generated_suffix
 

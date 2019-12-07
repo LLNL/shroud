@@ -624,20 +624,20 @@ def initialize():
             f_c_type="logical(C_BOOL)",
             f_module=dict(iso_c_binding=["C_BOOL"]),
             f_statements=dict(
-                intent_in=dict(
+                f_in=dict(
                     c_local_var=True,
                     pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
                 ),
-                intent_out=dict(
+                f_out=dict(
                     c_local_var=True,
                     post_call=["{f_var} = {c_var}  ! coerce to logical"],
                 ),
-                intent_inout=dict(
+                f_inout=dict(
                     c_local_var=True,
                     pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
                     post_call=["{f_var} = {c_var}  ! coerce to logical"],
                 ),
-                result=dict(
+                f_result=dict(
                     # The wrapper is needed to convert bool to logical
                     need_wrapper=True
                 ),
@@ -702,7 +702,7 @@ def initialize():
             cxx_type="char",
             c_type="char",  # XXX - char *
             c_statements=dict(
-                intent_in_buf=dict(
+                c_in_buf=dict(
                     buf_args=["arg", "len_trim"],
                     cxx_local_var="pointer",
                     c_helper="ShroudStrAlloc ShroudStrFree",
@@ -714,14 +714,14 @@ def initialize():
                         "ShroudStrFree({cxx_var});"
                     ],
                 ),
-                intent_out_buf=dict(
+                c_out_buf=dict(
                     buf_args=["arg", "len"],
                     c_helper="ShroudStrBlankFill",
                     post_call=[
                         "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ],
                 ),
-                intent_inout_buf=dict(
+                c_inout_buf=dict(
                     buf_args=["arg", "len_trim", "len"],
                     cxx_local_var="pointer",
                     c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -736,7 +736,7 @@ def initialize():
                         "ShroudStrFree({cxx_var});",
                     ],
                 ),
-                result_buf=dict(
+                c_result_buf=dict(
                     buf_args=["arg", "len"],
                     c_helper="ShroudStrCopy",
                     post_call=[
@@ -745,7 +745,7 @@ def initialize():
                         "\t {cxx_var},\t -1);",
                     ],
                 ),
-                result_buf_allocatable=dict(
+                c_result_buf_allocatable=dict(
                     buf_args=["context"],
                     c_helper="copy_string",
                     # Copy address of result into c_var and save length.
@@ -766,7 +766,7 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             f_statements=dict(
-                result_allocatable=dict(
+                f_result_allocatable=dict(
                     need_wrapper=True,
                     f_helper="copy_string",
                     post_call=[
@@ -790,7 +790,7 @@ def initialize():
             cxx_type="char",
             c_type="char",  # XXX - char *
             c_statements=dict(
-                result_buf=dict(
+                c_result_buf=dict(
                     buf_args=["arg", "len"],
                     c_header="<string.h>",
                     cxx_header="<cstring>",
@@ -823,11 +823,11 @@ def initialize():
             c_type="char",  # XXX - char *
             impl_header="<string>",
             c_statements=dict(
-                intent_in=dict(
+                c_in=dict(
                     cxx_local_var="scalar",
                     pre_call=["{c_const}std::string {cxx_var}({c_var});"],
                 ),
-                intent_out=dict(
+                c_out=dict(
                     cxx_header="<cstring>",
                     # #- pre_call=[
                     # #-     'int {c_var_trim} = strlen({c_var});',
@@ -839,7 +839,7 @@ def initialize():
                         "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ],
                 ),
-                intent_inout=dict(
+                c_inout=dict(
                     cxx_header="<cstring>",
                     cxx_local_var="scalar",
                     pre_call=["{c_const}std::string {cxx_var}({c_var});"],
@@ -848,7 +848,7 @@ def initialize():
                         "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ],
                 ),
-                intent_in_buf=dict(
+                c_in_buf=dict(
                     buf_args=["arg", "len_trim"],
                     cxx_local_var="scalar",
                     pre_call=[
@@ -858,7 +858,7 @@ def initialize():
                         )
                     ],
                 ),
-                intent_out_buf=dict(
+                c_out_buf=dict(
                     buf_args=["arg", "len"],
                     c_helper="ShroudStrCopy",
                     cxx_local_var="scalar",
@@ -869,7 +869,7 @@ def initialize():
                         "\t {cxx_var}{cxx_member}size());"
                     ],
                 ),
-                intent_inout_buf=dict(
+                c_inout_buf=dict(
                     buf_args=["arg", "len_trim", "len"],
                     c_helper="ShroudStrCopy",
                     cxx_local_var="scalar",
@@ -880,7 +880,7 @@ def initialize():
                         "\t {cxx_var}{cxx_member}size());"
                     ],
                 ),
-                result_buf=dict(
+                c_result_buf=dict(
                     buf_args=["arg", "len"],
                     c_helper="ShroudStrCopy",
                     post_call=[
@@ -902,7 +902,7 @@ def initialize():
                 #    c_step2(context, Fout, context%len)
                 # only used with bufferifed routines and intent(out) or result
                 # std::string * function()
-                result_buf_allocatable=dict(
+                c_result_buf_allocatable=dict(
                     # pass address of string and length back to Fortran
                     buf_args=["context"],
                     c_helper="copy_string ShroudStrToArray",
@@ -917,7 +917,7 @@ def initialize():
                 # std::string function()
                 # Must allocate the std::string then assign to it via cxx_rv_decl.
                 # This allows the std::string to outlast the function return.
-                result_buf_allocatable_scalar=dict(
+                c_result_buf_allocatable_scalar=dict(
                     # pass address of string and length back to Fortran
                     buf_args=["context"],
 #                    cxx_local_var="pointer",
@@ -944,7 +944,7 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             f_statements=dict(
-                result_allocatable=dict(
+                f_result_allocatable=dict(
                     need_wrapper=True,
                     f_helper="copy_string",
                     post_call=[
@@ -988,7 +988,7 @@ def initialize():
             # #- cxx_to_c='{cxx_var}.data()',  # C++11
             # #- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
             c_statements=dict(
-                intent_in_buf=dict(
+                c_in_buf=dict(
                     buf_args=["arg", "size"],
                     cxx_local_var="scalar",
                     pre_call=[
@@ -999,7 +999,7 @@ def initialize():
                     ],
                 ),
                 # cxx_var is always a pointer to a vector
-                intent_out_buf=dict(
+                c_out_buf=dict(
                     buf_args=["context"],
                     cxx_local_var="pointer",
                     c_helper="capsule_data_helper copy_array",
@@ -1023,7 +1023,7 @@ def initialize():
                         "delete cxx_ptr;",
                     ],
                 ),
-                intent_inout_buf=dict(
+                c_inout_buf=dict(
                     buf_args=["arg", "size", "context"],
                     cxx_local_var="pointer",
                     pre_call=[
@@ -1047,7 +1047,7 @@ def initialize():
                     ],
                 ),
                 # Same as intent_out_buf.
-                result_buf=dict(
+                c_result_buf=dict(
                     buf_args=["context"],
 #                    cxx_local_var="pointer",
                     c_helper="capsule_data_helper copy_array",
@@ -1088,7 +1088,7 @@ def initialize():
             ),
             f_statements=dict(
                 # copy into user's existing array
-                intent_out=dict(
+                f_out=dict(
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1096,7 +1096,7 @@ def initialize():
                         "{f_var}, size({f_var},kind=C_SIZE_T))"
                     ],
                 ),
-                intent_inout=dict(
+                f_inout=dict(
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1104,7 +1104,7 @@ def initialize():
                         "{f_var}, size({f_var},kind=C_SIZE_T))"
                     ],
                 ),
-                result=dict(
+                f_result=dict(
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1113,7 +1113,7 @@ def initialize():
                     ],
                 ),
                 # copy into allocated array
-                intent_out_allocatable=dict(
+                f_out_allocatable=dict(
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1122,7 +1122,7 @@ def initialize():
                         "{f_var}, size({f_var},kind=C_SIZE_T))",
                     ],
                 ),
-                intent_inout_allocatable=dict(
+                f_inout_allocatable=dict(
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1132,7 +1132,7 @@ def initialize():
                         "{f_var}, size({f_var},kind=C_SIZE_T))",
                     ],
                 ),
-                result_allocatable=dict(   # same as intent_out
+                f_result_allocatable=dict(   # same as intent_out
                     f_helper="copy_array_{cxx_T}",
                     f_module=dict(iso_c_binding=["C_SIZE_T"]),
                     post_call=[
@@ -1145,7 +1145,7 @@ def initialize():
             # custom code for templates
             c_templates={
                 "std::string": dict(
-                    intent_in_buf=dict(
+                    c_in_buf=dict(
                         buf_args=["arg", "size", "len"],
                         c_helper="ShroudLenTrim",
                         cxx_local_var="scalar",
@@ -1164,7 +1164,7 @@ def initialize():
                             "-}}",
                         ],
                     ),
-                    intent_out_buf=dict(
+                    c_out_buf=dict(
                         buf_args=["arg", "size", "len"],
                         c_helper="ShroudLenTrim",
                         cxx_local_var="scalar",
@@ -1186,7 +1186,7 @@ def initialize():
                             "-}}",
                         ],
                     ),
-                    intent_inout_buf=dict(
+                    c_inout_buf=dict(
                         buf_args=["arg", "size", "len"],
                         cxx_local_var="scalar",
                         pre_call=[
@@ -1408,8 +1408,8 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 
     # Return a C_capsule_data_type
     ntypemap.c_statements = dict(
-        intent_in=dict(buf_args=["shadow"]),
-        result=dict(
+        c_in=dict(buf_args=["shadow"]),
+        c_result=dict(
             post_call=[
                 "{c_var}->addr = {cxx_cast_to_void_ptr};",
                 "{c_var}->idtor = {idtor};",
@@ -1420,7 +1420,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
     ntypemap.f_statements = dict(
-        result=dict(
+        f_result=dict(
             need_wrapper=True,
             call=[
                 # The c Function returns a pointer.
@@ -1580,7 +1580,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # XXX module name may not conflict with type name
     # #-    ntypemap.f_module = {fmt_class.F_module_name:[unname]}
 
-    ntypemap.c_statements = dict(result=dict(c_helper=helper))
+    ntypemap.c_statements = dict(c_result=dict(c_helper=helper))
 
     # #-    ntypemap.PYN_typenum = 'NPY_VOID'
     # #-    if not ntypemap.PY_PyTypeObject:
