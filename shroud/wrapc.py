@@ -864,7 +864,7 @@ class Wrapc(util.WrapperMixin):
 
         iblk = typemap.lookup_stmts(
             typemap.statements_local,
-            ["c", result_typemap.base, spointer, "result", generated_suffix])
+            ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
         if iblk:
             need_wrapper = self.build_proto_list(
                 fmt_result,

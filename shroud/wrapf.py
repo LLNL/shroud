@@ -971,7 +971,7 @@ rv = .false.
 
         iblk = typemap.lookup_stmts(
             typemap.statements_local,
-            ["c", result_typemap.base, spointer, "result", node.generated_suffix])
+            ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
         if iblk:
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1350,7 +1350,7 @@ rv = .false.
         # Function result.
         iblk = typemap.lookup_stmts(
             typemap.statements_local,
-            ["f", result_typemap.base, spointer, "result", result_deref_clause])
+            ["f", result_typemap.sgroup, spointer, "result", result_deref_clause])
         if iblk:
             whelpers.add_copy_array_helper(fmt_result, ast)
             need_wrapper = self.build_arg_list_impl(

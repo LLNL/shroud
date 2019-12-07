@@ -120,6 +120,7 @@ class Typemap(object):
         ("LUA_pop", "POP"),
         ("LUA_push", "PUSH"),
         ("LUA_statements", {}),
+        ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("__line__", None),
     )
 
@@ -289,7 +290,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         int=Typemap(
             "int",
@@ -306,7 +307,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         long=Typemap(
             "long",
@@ -323,7 +324,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         long_long=Typemap(
             "long_long",
@@ -339,7 +340,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         unsigned_short=Typemap(
             "unsigned_short",
@@ -356,7 +357,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         unsigned_int=Typemap(
             "unsigned_int",
@@ -373,7 +374,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         unsigned_long=Typemap(
             "unsigned_long",
@@ -390,7 +391,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         unsigned_long_long=Typemap(
             "unsigned_long_long",
@@ -406,7 +407,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         size_t=Typemap(
             "size_t",
@@ -423,7 +424,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         # XXX- sized based types for Python
         int8_t=Typemap(
@@ -443,7 +444,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         int16_t=Typemap(
             "int16_t",
@@ -462,7 +463,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         int32_t=Typemap(
             "int32_t",
@@ -481,7 +482,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         int64_t=Typemap(
             "int64_t",
@@ -500,7 +501,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         # XXX- sized based types for Python
         uint8_t=Typemap(
@@ -520,7 +521,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         uint16_t=Typemap(
             "uint16_t",
@@ -539,7 +540,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         uint32_t=Typemap(
             "uint32_t",
@@ -558,7 +559,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         uint64_t=Typemap(
             "uint64_t",
@@ -577,7 +578,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         float=Typemap(
             "float",
@@ -594,7 +595,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         double=Typemap(
             "double",
@@ -611,7 +612,7 @@ def initialize():
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
-            base="native",
+            sgroup="native",
         ),
         bool=Typemap(
             "bool",
@@ -781,6 +782,7 @@ def initialize():
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
             base="string",
+            sgroup="char",
         ),
         # char scalar
         char_scalar=Typemap(
@@ -811,6 +813,7 @@ def initialize():
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
             # # base='string',
+            sgroup='char',
         ),
         # C++ std::string
         string=Typemap(
@@ -973,6 +976,7 @@ def initialize():
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
             base="string",
+            sgroup="string",
         ),
         # C++ std::vector
         # No c_type or f_type, use attr[template]
@@ -1243,6 +1247,7 @@ def initialize():
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             #            LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
             base="vector",
+            sgroup="vector",
         ),
         MPI_Comm=Typemap(
             "MPI_Comm",

@@ -397,7 +397,8 @@
                 }
             },
             "f_type": "character(*)",
-            "flat_name": "char"
+            "flat_name": "char",
+            "sgroup": "char"
         },
         "char_scalar": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -430,7 +431,8 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_type": "character",
-            "flat_name": "char"
+            "flat_name": "char",
+            "sgroup": "char"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -440,7 +442,6 @@
             "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
-            "base": "native",
             "c_type": "double",
             "cxx_type": "double",
             "f_cast": "real({f_var}, C_DOUBLE)",
@@ -451,7 +452,8 @@
                 ]
             },
             "f_type": "real(C_DOUBLE)",
-            "flat_name": "double"
+            "flat_name": "double",
+            "sgroup": "native"
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -461,7 +463,6 @@
             "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
             "PY_format": "f",
             "PY_get": "PyFloat_AsDouble({py_var})",
-            "base": "native",
             "c_type": "float",
             "cxx_type": "float",
             "f_cast": "real({f_var}, C_FLOAT)",
@@ -472,7 +473,8 @@
                 ]
             },
             "f_type": "real(C_FLOAT)",
-            "flat_name": "float"
+            "flat_name": "float",
+            "sgroup": "native"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -482,7 +484,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "int",
             "cxx_type": "int",
             "f_cast": "int({f_var}, C_INT)",
@@ -493,7 +494,8 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int"
+            "flat_name": "int",
+            "sgroup": "native"
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -503,7 +505,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
             "cxx_header": "<cstdint>",
@@ -516,7 +517,8 @@
                 ]
             },
             "f_type": "integer(C_INT16_T)",
-            "flat_name": "int16_t"
+            "flat_name": "int16_t",
+            "sgroup": "native"
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -526,7 +528,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
             "cxx_header": "<cstdint>",
@@ -539,7 +540,8 @@
                 ]
             },
             "f_type": "integer(C_INT32_T)",
-            "flat_name": "int32_t"
+            "flat_name": "int32_t",
+            "sgroup": "native"
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -549,7 +551,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
             "cxx_header": "<cstdint>",
@@ -562,7 +563,8 @@
                 ]
             },
             "f_type": "integer(C_INT64_T)",
-            "flat_name": "int64_t"
+            "flat_name": "int64_t",
+            "sgroup": "native"
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -572,7 +574,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
             "cxx_header": "<cstdint>",
@@ -585,7 +586,8 @@
                 ]
             },
             "f_type": "integer(C_INT8_T)",
-            "flat_name": "int8_t"
+            "flat_name": "int8_t",
+            "sgroup": "native"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -595,7 +597,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "long",
             "cxx_type": "long",
             "f_cast": "int({f_var}, C_LONG)",
@@ -606,7 +607,8 @@
                 ]
             },
             "f_type": "integer(C_LONG)",
-            "flat_name": "long"
+            "flat_name": "long",
+            "sgroup": "native"
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -614,7 +616,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
-            "base": "native",
             "c_type": "long long",
             "cxx_type": "long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
@@ -625,7 +626,8 @@
                 ]
             },
             "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "long_long"
+            "flat_name": "long_long",
+            "sgroup": "native"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -635,7 +637,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "short",
             "cxx_type": "short",
             "f_cast": "int({f_var}, C_SHORT)",
@@ -646,7 +647,8 @@
                 ]
             },
             "f_type": "integer(C_SHORT)",
-            "flat_name": "short"
+            "flat_name": "short",
+            "sgroup": "native"
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -654,7 +656,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "PY_format": "n",
-            "base": "native",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
             "cxx_header": "<cstddef>",
@@ -667,7 +668,8 @@
                 ]
             },
             "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t"
+            "flat_name": "size_t",
+            "sgroup": "native"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -827,7 +829,8 @@
                         "{c_const}std::string {cxx_var};"
                     ]
                 }
-            }
+            },
+            "sgroup": "string"
         },
         "std::vector": {
             "base": "vector",
@@ -1068,7 +1071,8 @@
                     ]
                 }
             },
-            "flat_name": "std_vector_{cxx_T}"
+            "flat_name": "std_vector_{cxx_T}",
+            "sgroup": "vector"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1078,7 +1082,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
             "cxx_header": "<cstdint>",
@@ -1091,7 +1094,8 @@
                 ]
             },
             "f_type": "integer(C_INT16_T)",
-            "flat_name": "uint16_t"
+            "flat_name": "uint16_t",
+            "sgroup": "native"
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1101,7 +1105,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
             "cxx_header": "<cstdint>",
@@ -1114,7 +1117,8 @@
                 ]
             },
             "f_type": "integer(C_INT32_T)",
-            "flat_name": "uint32_t"
+            "flat_name": "uint32_t",
+            "sgroup": "native"
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1124,7 +1128,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
             "cxx_header": "<cstdint>",
@@ -1137,7 +1140,8 @@
                 ]
             },
             "f_type": "integer(C_INT64_T)",
-            "flat_name": "uint64_t"
+            "flat_name": "uint64_t",
+            "sgroup": "native"
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1147,7 +1151,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
             "cxx_header": "<cstdint>",
@@ -1160,7 +1163,8 @@
                 ]
             },
             "f_type": "integer(C_INT8_T)",
-            "flat_name": "uint8_t"
+            "flat_name": "uint8_t",
+            "sgroup": "native"
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1170,7 +1174,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned int",
             "cxx_type": "unsigned int",
             "f_cast": "int({f_var}, C_INT)",
@@ -1181,7 +1184,8 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "unsigned_int"
+            "flat_name": "unsigned_int",
+            "sgroup": "native"
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1191,7 +1195,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned long",
             "cxx_type": "unsigned long",
             "f_cast": "int({f_var}, C_LONG)",
@@ -1202,7 +1205,8 @@
                 ]
             },
             "f_type": "integer(C_LONG)",
-            "flat_name": "unsigned_long"
+            "flat_name": "unsigned_long",
+            "sgroup": "native"
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1210,7 +1214,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
-            "base": "native",
             "c_type": "unsigned long long",
             "cxx_type": "unsigned long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
@@ -1221,7 +1224,8 @@
                 ]
             },
             "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "unsigned_long_long"
+            "flat_name": "unsigned_long_long",
+            "sgroup": "native"
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1231,7 +1235,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned short",
             "cxx_type": "unsigned short",
             "f_cast": "int({f_var}, C_SHORT)",
@@ -1242,7 +1245,8 @@
                 ]
             },
             "f_type": "integer(C_SHORT)",
-            "flat_name": "unsigned_short"
+            "flat_name": "unsigned_short",
+            "sgroup": "native"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
