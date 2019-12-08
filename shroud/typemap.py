@@ -9,6 +9,7 @@ Create and manage typemaps used to convert between languages.
 
 buf_args documented in cwrapper.rst.
 """
+from __future__ import print_function
 
 from . import util
 from . import whelpers
@@ -64,7 +65,6 @@ class Typemap(object):
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_statements", {}),
-        ("c_templates", {}),  # c_statements for cxx_T
         ("c_return_code", None),
         (
             "c_union",
@@ -1085,6 +1085,94 @@ def initialize():
                 #                        '-}}',
                 #                    ],
                 #                ),
+
+                # Specialize for vector<string>.
+                c_in_buf_string=dict(
+                    buf_args=["arg", "size", "len"],
+                    c_helper="ShroudLenTrim",
+                    cxx_local_var="scalar",
+                    pre_call=[
+                        "std::vector<{cxx_T}> {cxx_var};",
+                        "{{+",
+                        "{c_const}char * BBB = {c_var};",
+                        "std::vector<{cxx_T}>::size_type",
+                        "+{c_temp}i = 0,",
+                        "{c_temp}n = {c_var_size};",
+                        "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+                        "{cxx_var}.push_back("
+                        "std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
+                        "BBB += {c_var_len};",
+                        "-}}",
+                        "-}}",
+                    ],
+                ),
+                c_out_buf_string=dict(
+                    buf_args=["arg", "size", "len"],
+                    c_helper="ShroudLenTrim",
+                    cxx_local_var="scalar",
+                    pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
+                    post_call=[
+                        "{{+",
+                        "char * BBB = {c_var};",
+                        "std::vector<{cxx_T}>::size_type",
+                        "+{c_temp}i = 0,",
+                        "{c_temp}n = {c_var_size};",
+                        "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
+                        "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+                        "ShroudStrCopy("
+                        "BBB, {c_var_len},"
+                        "\t {cxx_var}[{c_temp}i].data(),"
+                        "\t {cxx_var}[{c_temp}i].size());",
+                        "BBB += {c_var_len};",
+                        "-}}",
+                        "-}}",
+                    ],
+                ),
+                c_inout_buf_string=dict(
+                    buf_args=["arg", "size", "len"],
+                    cxx_local_var="scalar",
+                    pre_call=[
+                        "std::vector<{cxx_T}> {cxx_var};",
+                        "{{+",
+                        "{c_const}char * BBB = {c_var};",
+                        "std::vector<{cxx_T}>::size_type",
+                        "+{c_temp}i = 0,",
+                        "{c_temp}n = {c_var_size};",
+                        "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+                        "{cxx_var}.push_back"
+                        "(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
+                        "BBB += {c_var_len};",
+                        "-}}",
+                        "-}}",
+                    ],
+                    post_call=[
+                        "{{+",
+                        "char * BBB = {c_var};",
+                        "std::vector<{cxx_T}>::size_type",
+                        "+{c_temp}i = 0,",
+                        "{c_temp}n = {c_var_size};",
+                        "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
+                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+                        "ShroudStrCopy(BBB, {c_var_len},"
+                        "\t {cxx_var}[{c_temp}i].data(),"
+                        "\t {cxx_var}[{c_temp}i].size());",
+                        "BBB += {c_var_len};",
+                        "-}}",
+                        "-}}",
+                    ],
+                ),
+                #                    c_result_buf_string=dict(
+                #                        c_helper='ShroudStrCopy',
+                #                        post_call=[
+                #                            'if ({cxx_var}.empty()) {{+',
+                #                            'std::memset({c_var}, \' \', {c_var_len});',
+                #                            '-}} else {{+',
+                #                            'ShroudStrCopy({c_var}, {c_var_len}, '
+                #                            '\t {cxx_var}{cxx_member}data(),'
+                #                            '\t {cxx_var}{cxx_member}size());',
+                #                            '-}}',
+                #                        ],
+                #                    ),
             ),
             f_statements=dict(
                 # copy into user's existing array
@@ -1143,96 +1231,6 @@ def initialize():
                 ),
             ),
             # custom code for templates
-            c_templates={
-                "std::string": dict(
-                    c_in_buf=dict(
-                        buf_args=["arg", "size", "len"],
-                        c_helper="ShroudLenTrim",
-                        cxx_local_var="scalar",
-                        pre_call=[
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back("
-                            "std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}",
-                        ],
-                    ),
-                    c_out_buf=dict(
-                        buf_args=["arg", "size", "len"],
-                        c_helper="ShroudLenTrim",
-                        cxx_local_var="scalar",
-                        pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
-                        post_call=[
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy("
-                            "BBB, {c_var_len},"
-                            "\t {cxx_var}[{c_temp}i].data(),"
-                            "\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}",
-                        ],
-                    ),
-                    c_inout_buf=dict(
-                        buf_args=["arg", "size", "len"],
-                        cxx_local_var="scalar",
-                        pre_call=[
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back"
-                            "(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}",
-                        ],
-                        post_call=[
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},"
-                            "\t {cxx_var}[{c_temp}i].data(),"
-                            "\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}",
-                        ],
-                    ),
-                    #                    result_buf=dict(
-                    #                        c_helper='ShroudStrCopy',
-                    #                        post_call=[
-                    #                            'if ({cxx_var}.empty()) {{+',
-                    #                            'std::memset({c_var}, \' \', {c_var_len});',
-                    #                            '-}} else {{+',
-                    #                            'ShroudStrCopy({c_var}, {c_var_len}, '
-                    #                            '\t {cxx_var}{cxx_member}data(),'
-                    #                            '\t {cxx_var}{cxx_member}size());',
-                    #                            '-}}',
-                    #                        ],
-                    #                    ),
-                )
-            },
             #            py_statements=dict(
             #                intent_in=dict(
             #                    cxx_local_var=True,
@@ -1599,7 +1597,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
-    template specific c_statements.
+    template specialization.
 
     Args:
         arg -
@@ -1607,12 +1605,11 @@ def lookup_c_statements(arg):
     arg_typemap = arg.typemap
 
     c_statements = arg_typemap.c_statements
+    specialize = []
     if arg.template_arguments:
-        base_typemap = arg_typemap
         arg_typemap = arg.template_arguments[0].typemap
-        cxx_T = arg_typemap.name
-        c_statements = base_typemap.c_templates.get(cxx_T, c_statements)
-    return arg_typemap, c_statements
+        specialize.append(arg_typemap.sgroup)
+    return arg_typemap, c_statements, specialize
 
 empty_stmts = {}
 def lookup_stmts(stmts, path):

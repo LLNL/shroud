@@ -910,7 +910,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_typemap.impl_header:
                 self.header_impl_include[arg_typemap.impl_header] = True
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(arg)
             self.header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
@@ -1041,7 +1041,7 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["c", c_attrs["intent"], arg.stmts_suffix]
+                stmts = ["c", c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_stmts(c_statements, stmts)
 

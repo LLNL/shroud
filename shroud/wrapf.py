@@ -755,7 +755,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, c_statements = typemap.lookup_c_statements(
+                    arg_typemap, c_statements, specialize = typemap.lookup_c_statements(
                         param
                     )
                     self.update_f_module(
@@ -990,7 +990,7 @@ rv = .false.
             # XXX look at const, ptr
             arg_typemap = arg.typemap
             fmt.update(arg_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
 
             attrs = arg.attrs
@@ -1003,6 +1003,7 @@ rv = .false.
                 c_stmts = ["c", "result", generated_suffix, deref_clause]
             else:
                 c_stmts = ["c", intent, arg.stmts_suffix, deref_clause]
+            c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1400,6 +1401,11 @@ rv = .false.
             intent = c_attrs["intent"]
             deref_clause = c_attrs.get("deref", "")
 
+            if c_arg.template_arguments:
+                specialize = [c_arg.template_arguments[0].typemap.sgroup]
+            else:
+                specialize = []
+            
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
@@ -1419,6 +1425,8 @@ rv = .false.
             else:
                 c_stmts = ["c", intent, c_arg.stmts_suffix]  # e.g. buf
                 f_stmts = ["f", intent, deref_clause]  # e.g. allocatable
+            c_stmts.extend(specialize)
+            f_stmts.extend(specialize)
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1506,7 +1514,7 @@ rv = .false.
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
+            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(c_arg)
             c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
 
             # Create a local variable for C if necessary.

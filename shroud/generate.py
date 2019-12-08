@@ -1158,6 +1158,7 @@ class GenFunctions(object):
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
+            specialize = ""
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -1165,14 +1166,15 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+                specialize = arg.template_arguments[0].typemap.sgroup
+            arg_typemap, c_statements, sp = typemap.lookup_c_statements(arg)
 
-            # set names for implied buffer arguments
-            # Look for a specalized clause for generated_suffix.
-            stmts = "c_" + attrs["intent"] + "_" + generated_suffix
+            # Set names for implied buffer arguments.
+            # This filters out "buf" for ftrim_char_in
             arg.stmts_suffix = generated_suffix
 
-            intent_blk = c_statements.get(stmts, {})
+            c_stmts = ["c", attrs["intent"], generated_suffix, specialize]
+            intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
                 # base typemap
 
