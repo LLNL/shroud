@@ -1712,6 +1712,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {

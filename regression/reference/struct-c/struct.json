@@ -694,6 +694,7 @@
                             "specifier": [
                                 "Cstruct1"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "Cstruct1"
                         },
                         {
@@ -1800,6 +1801,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -1814,6 +1816,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         },
                         {

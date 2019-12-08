@@ -1170,8 +1170,7 @@ class GenFunctions(object):
             # set names for implied buffer arguments
             # Look for a specalized clause for generated_suffix.
             stmts = "c_" + attrs["intent"] + "_" + generated_suffix
-            if stmts in c_statements:
-                arg.stmts_suffix = generated_suffix
+            arg.stmts_suffix = generated_suffix
 
             intent_blk = c_statements.get(stmts, {})
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)

@@ -892,6 +892,7 @@
                                     "specifier": [
                                         "bool"
                                     ],
+                                    "stmts_suffix": "buf",
                                     "typemap_name": "bool"
                                 }
                             ],
@@ -4103,6 +4104,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         }
                     ],

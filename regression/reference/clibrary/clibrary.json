@@ -1808,6 +1808,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -3295,6 +3296,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -3989,6 +3991,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -4029,6 +4032,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
