@@ -694,7 +694,7 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == "c" or options.get("C_extern_C", False):
             # Fortran can call C directly and only needs wrappers when code is
-            # inserted. For example, precall or postcall.
+            # inserted. For example, pre_call or post_call.
             need_wrapper = False
         else:
             # C++ will need C wrappers to deal with name mangling.
@@ -903,6 +903,7 @@ class Wrapc(util.WrapperMixin):
             c_attrs = arg.attrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
+            sgroup = arg_typemap.sgroup
             fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == "vector":
@@ -955,8 +956,8 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["c", "result", generated_suffix,
-                         result_return_pointer_as,
+                stmts = ["c", sgroup, "result",
+                         generated_suffix, result_return_pointer_as,
                          "pointer" if CXX_ast.is_indirect() else "scalar",
                 ]
                 need_wrapper = True
@@ -1041,7 +1042,7 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["c", c_attrs["intent"], arg.stmts_suffix] + specialize
+                stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_stmts(c_statements, stmts)
 
@@ -1253,7 +1254,8 @@ class Wrapc(util.WrapperMixin):
                 c_statements = result_typemap.c_statements
 
                 intent_blk = typemap.lookup_stmts(
-                    c_statements, ["c", "result", ast.stmts_suffix])
+                    c_statements, ["c", result_typemap.sgroup,
+                                   "result", ast.stmts_suffix])
                 self.add_statements_headers(intent_blk)
 
                 need_wrapper = self.add_code_from_statements(

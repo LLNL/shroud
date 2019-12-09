@@ -70,7 +70,7 @@ bool: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: bool
   c_header: <stdbool.h>
   c_return_code: null
   c_statements: *id002
@@ -95,21 +95,21 @@ bool: !!python/object:shroud.typemap.Typemap
     - C_BOOL
   f_module_name: null
   f_statements:
-    f_in:
+    f_bool_in:
       c_local_var: true
       pre_call:
       - '{c_var} = {f_var}  ! coerce to C_BOOL'
-    f_inout:
+    f_bool_inout:
       c_local_var: true
       post_call:
       - '{f_var} = {c_var}  ! coerce to logical'
       pre_call:
       - '{c_var} = {f_var}  ! coerce to C_BOOL'
-    f_out:
+    f_bool_out:
       c_local_var: true
       post_call:
       - '{f_var} = {c_var}  ! coerce to logical'
-    f_result:
+    f_bool_result:
       need_wrapper: true
   f_to_c: null
   f_type: logical
@@ -151,7 +151,7 @@ bool: !!python/object:shroud.typemap.Typemap
       - '{py_var} = PyBool_FromLong({c_var});'
       - if ({py_var} == NULL) goto fail;
   result_as_arg: null
-  sgroup: unknown
+  sgroup: bool
   template_suffix: null
   typedef: null
 char: !!python/object:shroud.typemap.Typemap
@@ -175,7 +175,7 @@ char: !!python/object:shroud.typemap.Typemap
   c_header: null
   c_return_code: null
   c_statements:
-    c_in_buf:
+    c_char_in_buf:
       buf_args:
       - arg
       - len_trim
@@ -185,7 +185,7 @@ char: !!python/object:shroud.typemap.Typemap
       - ShroudStrFree({cxx_var});
       pre_call:
       - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-    c_inout_buf:
+    c_char_inout_buf:
       buf_args:
       - arg
       - len_trim
@@ -197,21 +197,21 @@ char: !!python/object:shroud.typemap.Typemap
       - ShroudStrFree({cxx_var});
       pre_call:
       - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-    c_out_buf:
+    c_char_out_buf:
       buf_args:
       - arg
       - len
       c_helper: ShroudStrBlankFill
       post_call:
       - ShroudStrBlankFill({c_var}, {c_var_len});
-    c_result_buf:
+    c_char_result_buf:
       buf_args:
       - arg
       - len
       c_helper: ShroudStrCopy
       post_call:
       - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-    c_result_buf_allocatable:
+    c_char_result_buf_allocatable:
       buf_args:
       - context
       c_helper: copy_string
@@ -242,7 +242,7 @@ char: !!python/object:shroud.typemap.Typemap
   f_module: null
   f_module_name: null
   f_statements:
-    f_result_allocatable:
+    f_char_result_allocatable:
       f_helper: copy_string
       need_wrapper: true
       post_call:
@@ -282,7 +282,7 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   c_header: null
   c_return_code: null
   c_statements:
-    c_result_buf:
+    c_schar_result_buf:
       buf_args:
       - arg
       - len
@@ -322,7 +322,7 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   name: char_scalar
   py_statements: *id004
   result_as_arg: null
-  sgroup: char
+  sgroup: schar
   template_suffix: null
   typedef: null
 double: !!python/object:shroud.typemap.Typemap
@@ -951,25 +951,25 @@ std::string: !!python/object:shroud.typemap.Typemap
   c_header: null
   c_return_code: null
   c_statements:
-    c_in:
+    c_string_in:
       cxx_local_var: scalar
       pre_call:
       - '{c_const}std::string {cxx_var}({c_var});'
-    c_in_buf:
+    c_string_in_buf:
       buf_args:
       - arg
       - len_trim
       cxx_local_var: scalar
       pre_call:
       - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
-    c_inout:
+    c_string_inout:
       cxx_header: <cstring>
       cxx_local_var: scalar
       post_call:
       - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
       pre_call:
       - '{c_const}std::string {cxx_var}({c_var});'
-    c_inout_buf:
+    c_string_inout_buf:
       buf_args:
       - arg
       - len_trim
@@ -980,14 +980,14 @@ std::string: !!python/object:shroud.typemap.Typemap
       - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
       pre_call:
       - std::string {cxx_var}({c_var}, {c_var_trim});
-    c_out:
+    c_string_out:
       cxx_header: <cstring>
       cxx_local_var: scalar
       post_call:
       - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
       pre_call:
       - '{c_const}std::string {cxx_var};'
-    c_out_buf:
+    c_string_out_buf:
       buf_args:
       - arg
       - len
@@ -997,7 +997,7 @@ std::string: !!python/object:shroud.typemap.Typemap
       - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
       pre_call:
       - std::string {cxx_var};
-    c_result_buf:
+    c_string_result_buf:
       buf_args:
       - arg
       - len
@@ -1008,13 +1008,13 @@ std::string: !!python/object:shroud.typemap.Typemap
       - -}} else {{+
       - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
       - -}}
-    c_result_buf_allocatable:
+    c_string_result_buf_allocatable:
       buf_args:
       - context
       c_helper: copy_string ShroudStrToArray
       post_call:
       - ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});
-    c_result_buf_allocatable_scalar:
+    c_string_result_buf_allocatable_scalar:
       buf_args:
       - context
       c_helper: copy_string ShroudStrToArray
@@ -1047,7 +1047,7 @@ std::string: !!python/object:shroud.typemap.Typemap
   f_module: null
   f_module_name: null
   f_statements:
-    f_result_allocatable:
+    f_string_result_allocatable:
       f_helper: copy_string
       need_wrapper: true
       post_call:
@@ -1099,14 +1099,14 @@ std::vector: !!python/object:shroud.typemap.Typemap
   c_header: null
   c_return_code: null
   c_statements:
-    c_in_buf:
+    c_vector_in_buf:
       buf_args:
       - arg
       - size
       cxx_local_var: scalar
       pre_call:
       - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-    c_in_buf_string:
+    c_vector_in_buf_string:
       buf_args:
       - arg
       - size
@@ -1125,7 +1125,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - BBB += {c_var_len};
       - -}}
       - -}}
-    c_inout_buf:
+    c_vector_inout_buf:
       buf_args:
       - arg
       - size
@@ -1144,7 +1144,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
       pre_call:
       - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
         \ {c_var} + {c_var_size});"
-    c_inout_buf_string:
+    c_vector_inout_buf_string:
       buf_args:
       - arg
       - size
@@ -1174,7 +1174,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - BBB += {c_var_len};
       - -}}
       - -}}
-    c_out_buf:
+    c_vector_out_buf:
       buf_args:
       - context
       c_helper: capsule_data_helper copy_array
@@ -1191,7 +1191,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - '{c_var_context}->size = {cxx_var}->size();'
       pre_call:
       - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-    c_out_buf_string:
+    c_vector_out_buf_string:
       buf_args:
       - arg
       - size
@@ -1212,7 +1212,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - -}}
       pre_call:
       - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-    c_result_buf:
+    c_vector_result_buf:
       buf_args:
       - context
       c_helper: capsule_data_helper copy_array
@@ -1247,14 +1247,14 @@ std::vector: !!python/object:shroud.typemap.Typemap
   f_module: null
   f_module_name: null
   f_statements:
-    f_inout:
+    f_vector_inout:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:
         - C_SIZE_T
       post_call:
       - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    f_inout_allocatable:
+    f_vector_inout_allocatable:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:
@@ -1263,14 +1263,14 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - if (allocated({f_var})) deallocate({f_var})
       - allocate({f_var}({c_var_context}%size))
       - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    f_out:
+    f_vector_out:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:
         - C_SIZE_T
       post_call:
       - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    f_out_allocatable:
+    f_vector_out_allocatable:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:
@@ -1278,14 +1278,14 @@ std::vector: !!python/object:shroud.typemap.Typemap
       post_call:
       - allocate({f_var}({c_var_context}%size))
       - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    f_result:
+    f_vector_result:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:
         - C_SIZE_T
       post_call:
       - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    f_result_allocatable:
+    f_vector_result_allocatable:
       f_helper: copy_array_{cxx_T}
       f_module:
         iso_c_binding:

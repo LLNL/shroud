@@ -989,6 +989,7 @@ rv = .false.
             # default argument's intent
             # XXX look at const, ptr
             arg_typemap = arg.typemap
+            sgroup = arg_typemap.sgroup
             fmt.update(arg_typemap.format)
             arg_typemap, c_statements, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
@@ -1000,9 +1001,11 @@ rv = .false.
             deref_clause = attrs.get("deref", "")
 
             if attrs.get("_is_result", False):
-                c_stmts = ["c", "result", generated_suffix, deref_clause]
+                c_stmts = ["c", sgroup, "result",
+                           generated_suffix, deref_clause]
             else:
-                c_stmts = ["c", intent, arg.stmts_suffix, deref_clause]
+                c_stmts = ["c", sgroup, intent,
+                           arg.stmts_suffix, deref_clause]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             self.build_arg_list_interface(
@@ -1306,7 +1309,7 @@ rv = .false.
         # requires the wrapper
         if typemap.lookup_stmts(
                 result_typemap.f_statements,
-                ["f", "result", result_deref_clause]
+                ["f", result_typemap.sgroup, "result", result_deref_clause]
         ).get("need_wrapper", False):
             need_wrapper = True
 
@@ -1401,6 +1404,7 @@ rv = .false.
             intent = c_attrs["intent"]
             deref_clause = c_attrs.get("deref", "")
 
+            sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]
             else:
@@ -1413,9 +1417,9 @@ rv = .false.
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = ["c", "result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["f", "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", "result", deref_clause]  # + generated_suffix
+                c_stmts = ["c", sgroup, "result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["f", sgroup, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", sgroup, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1423,8 +1427,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["c", intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["f", intent, deref_clause]  # e.g. allocatable
+                c_stmts = ["c", sgroup, intent, c_arg.stmts_suffix]  # e.g. buf
+                f_stmts = ["f", sgroup, intent, deref_clause]  # e.g. allocatable
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
@@ -1669,7 +1673,8 @@ rv = .false.
             elif C_subprogram == "function":
                 f_statements = result_typemap.f_statements
                 intent_blk = typemap.lookup_stmts(
-                    f_statements, ["f", "result", result_deref_clause])
+                    f_statements, ["f", result_typemap.sgroup, "result",
+                                   result_deref_clause])
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:

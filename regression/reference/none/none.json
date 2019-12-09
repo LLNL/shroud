@@ -220,6 +220,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "base": "bool",
             "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
@@ -231,13 +232,13 @@
                 ]
             },
             "f_statements": {
-                "f_in": {
+                "f_bool_in": {
                     "c_local_var": true,
                     "pre_call": [
                         "{c_var} = {f_var}  ! coerce to C_BOOL"
                     ]
                 },
-                "f_inout": {
+                "f_bool_inout": {
                     "c_local_var": true,
                     "post_call": [
                         "{f_var} = {c_var}  ! coerce to logical"
@@ -246,13 +247,13 @@
                         "{c_var} = {f_var}  ! coerce to C_BOOL"
                     ]
                 },
-                "f_out": {
+                "f_bool_out": {
                     "c_local_var": true,
                     "post_call": [
                         "{f_var} = {c_var}  ! coerce to logical"
                     ]
                 },
-                "f_result": {
+                "f_bool_result": {
                     "need_wrapper": true
                 }
             },
@@ -303,7 +304,8 @@
                         "if ({py_var} == NULL) goto fail;"
                     ]
                 }
-            }
+            },
+            "sgroup": "bool"
         },
         "char": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -313,7 +315,7 @@
             "PY_format": "s",
             "base": "string",
             "c_statements": {
-                "c_in_buf": {
+                "c_char_in_buf": {
                     "buf_args": [
                         "arg",
                         "len_trim"
@@ -327,7 +329,7 @@
                         "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
                     ]
                 },
-                "c_inout_buf": {
+                "c_char_inout_buf": {
                     "buf_args": [
                         "arg",
                         "len_trim",
@@ -343,7 +345,7 @@
                         "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
                     ]
                 },
-                "c_out_buf": {
+                "c_char_out_buf": {
                     "buf_args": [
                         "arg",
                         "len"
@@ -353,7 +355,7 @@
                         "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ]
                 },
-                "c_result_buf": {
+                "c_char_result_buf": {
                     "buf_args": [
                         "arg",
                         "len"
@@ -363,7 +365,7 @@
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
                     ]
                 },
-                "c_result_buf_allocatable": {
+                "c_char_result_buf_allocatable": {
                     "buf_args": [
                         "context"
                     ],
@@ -387,7 +389,7 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_statements": {
-                "f_result_allocatable": {
+                "f_char_result_allocatable": {
                     "f_helper": "copy_string",
                     "need_wrapper": true,
                     "post_call": [
@@ -408,7 +410,7 @@
             "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
             "PY_format": "c",
             "c_statements": {
-                "c_result_buf": {
+                "c_schar_result_buf": {
                     "buf_args": [
                         "arg",
                         "len"
@@ -432,7 +434,7 @@
             "f_kind": "C_CHAR",
             "f_type": "character",
             "flat_name": "char",
-            "sgroup": "char"
+            "sgroup": "schar"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -681,13 +683,13 @@
             "PY_format": "s",
             "base": "string",
             "c_statements": {
-                "c_in": {
+                "c_string_in": {
                     "cxx_local_var": "scalar",
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 },
-                "c_in_buf": {
+                "c_string_in_buf": {
                     "buf_args": [
                         "arg",
                         "len_trim"
@@ -697,7 +699,7 @@
                         "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 },
-                "c_inout": {
+                "c_string_inout": {
                     "cxx_header": "<cstring>",
                     "cxx_local_var": "scalar",
                     "post_call": [
@@ -707,7 +709,7 @@
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 },
-                "c_inout_buf": {
+                "c_string_inout_buf": {
                     "buf_args": [
                         "arg",
                         "len_trim",
@@ -722,7 +724,7 @@
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 },
-                "c_out": {
+                "c_string_out": {
                     "cxx_header": "<cstring>",
                     "cxx_local_var": "scalar",
                     "post_call": [
@@ -732,7 +734,7 @@
                         "{c_const}std::string {cxx_var};"
                     ]
                 },
-                "c_out_buf": {
+                "c_string_out_buf": {
                     "buf_args": [
                         "arg",
                         "len"
@@ -746,7 +748,7 @@
                         "std::string {cxx_var};"
                     ]
                 },
-                "c_result_buf": {
+                "c_string_result_buf": {
                     "buf_args": [
                         "arg",
                         "len"
@@ -760,7 +762,7 @@
                         "-}}"
                     ]
                 },
-                "c_result_buf_allocatable": {
+                "c_string_result_buf_allocatable": {
                     "buf_args": [
                         "context"
                     ],
@@ -769,7 +771,7 @@
                         "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});"
                     ]
                 },
-                "c_result_buf_allocatable_scalar": {
+                "c_string_result_buf_allocatable_scalar": {
                     "buf_args": [
                         "context"
                     ],
@@ -798,7 +800,7 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_statements": {
-                "f_result_allocatable": {
+                "f_string_result_allocatable": {
                     "f_helper": "copy_string",
                     "need_wrapper": true,
                     "post_call": [
@@ -835,7 +837,7 @@
         "std::vector": {
             "base": "vector",
             "c_statements": {
-                "c_in_buf": {
+                "c_vector_in_buf": {
                     "buf_args": [
                         "arg",
                         "size"
@@ -845,7 +847,7 @@
                         "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 },
-                "c_in_buf_string": {
+                "c_vector_in_buf_string": {
                     "buf_args": [
                         "arg",
                         "size",
@@ -867,7 +869,7 @@
                         "-}}"
                     ]
                 },
-                "c_inout_buf": {
+                "c_vector_inout_buf": {
                     "buf_args": [
                         "arg",
                         "size",
@@ -890,7 +892,7 @@
                         "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 },
-                "c_inout_buf_string": {
+                "c_vector_inout_buf_string": {
                     "buf_args": [
                         "arg",
                         "size",
@@ -924,7 +926,7 @@
                         "-}}"
                     ]
                 },
-                "c_out_buf": {
+                "c_vector_out_buf": {
                     "buf_args": [
                         "context"
                     ],
@@ -946,7 +948,7 @@
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
                     ]
                 },
-                "c_out_buf_string": {
+                "c_vector_out_buf_string": {
                     "buf_args": [
                         "arg",
                         "size",
@@ -971,7 +973,7 @@
                         "{c_const}std::vector<{cxx_T}> {cxx_var};"
                     ]
                 },
-                "c_result_buf": {
+                "c_vector_result_buf": {
                     "buf_args": [
                         "context"
                     ],
@@ -996,7 +998,7 @@
             "cxx_header": "<vector>",
             "cxx_type": "std::vector<{cxx_T}>",
             "f_statements": {
-                "f_inout": {
+                "f_vector_inout": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [
@@ -1007,7 +1009,7 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 },
-                "f_inout_allocatable": {
+                "f_vector_inout_allocatable": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [
@@ -1020,7 +1022,7 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 },
-                "f_out": {
+                "f_vector_out": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [
@@ -1031,7 +1033,7 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 },
-                "f_out_allocatable": {
+                "f_vector_out_allocatable": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [
@@ -1043,7 +1045,7 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 },
-                "f_result": {
+                "f_vector_result": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [
@@ -1054,7 +1056,7 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 },
-                "f_result_allocatable": {
+                "f_vector_result_allocatable": {
                     "f_helper": "copy_array_{cxx_T}",
                     "f_module": {
                         "iso_c_binding": [

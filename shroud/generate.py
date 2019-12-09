@@ -1158,6 +1158,7 @@ class GenFunctions(object):
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
+            sgroup = arg_typemap.sgroup
             specialize = ""
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
@@ -1173,7 +1174,7 @@ class GenFunctions(object):
             # This filters out "buf" for ftrim_char_in
             arg.stmts_suffix = generated_suffix
 
-            c_stmts = ["c", attrs["intent"], generated_suffix, specialize]
+            c_stmts = ["c", sgroup, attrs["intent"], generated_suffix, specialize]
             intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
                 # base typemap
