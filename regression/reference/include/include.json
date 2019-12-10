@@ -23,6 +23,7 @@
                         "_fmtargs": {
                             "comm": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -101,6 +102,7 @@
                         "_fmtargs": {
                             "c2": {
                                 "fmtc": {
+                                    "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -209,7 +211,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "LIB_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "LIB_SHROUD_capsule_data",
@@ -409,6 +410,7 @@
                                 "_fmtargs": {
                                     "arg1": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",

@@ -63,8 +63,8 @@ bool AA_example_nested_is_initialized()
 void AA_example_nested_test_names(const char * name)
 {
 // splicer begin namespace.example::nested.function.test_names
-    const std::string SH_name(name);
-    example::nested::test_names(SH_name);
+    const std::string SHCXX_name(name);
+    example::nested::test_names(SHCXX_name);
     return;
 // splicer end namespace.example::nested.function.test_names
 }
@@ -74,8 +74,8 @@ void AA_example_nested_test_names_bufferify(const char * name,
     int Lname)
 {
 // splicer begin namespace.example::nested.function.test_names_bufferify
-    const std::string SH_name(name, Lname);
-    example::nested::test_names(SH_name);
+    const std::string SHCXX_name(name, Lname);
+    example::nested::test_names(SHCXX_name);
     return;
 // splicer end namespace.example::nested.function.test_names_bufferify
 }
@@ -84,8 +84,8 @@ void AA_example_nested_test_names_bufferify(const char * name,
 void AA_example_nested_test_names_flag(const char * name, int flag)
 {
 // splicer begin namespace.example::nested.function.test_names_flag
-    const std::string SH_name(name);
-    example::nested::test_names(SH_name, flag);
+    const std::string SHCXX_name(name);
+    example::nested::test_names(SHCXX_name, flag);
     return;
 // splicer end namespace.example::nested.function.test_names_flag
 }
@@ -95,8 +95,8 @@ void AA_example_nested_test_names_flag_bufferify(const char * name,
     int Lname, int flag)
 {
 // splicer begin namespace.example::nested.function.test_names_flag_bufferify
-    const std::string SH_name(name, Lname);
-    example::nested::test_names(SH_name, flag);
+    const std::string SHCXX_name(name, Lname);
+    example::nested::test_names(SHCXX_name, flag);
     return;
 // splicer end namespace.example::nested.function.test_names_flag_bufferify
 }

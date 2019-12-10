@@ -200,6 +200,7 @@
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -391,6 +392,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -474,6 +476,7 @@
                         "_fmtargs": {
                             "obj2": {
                                 "fmtc": {
+                                    "c_addr": "",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -514,6 +517,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "bool",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -668,6 +672,7 @@
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -682,21 +687,23 @@
                             },
                             "name": {
                                 "fmtc": {
+                                    "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "name",
                                     "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SH_name)",
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_name)",
                                     "cxx_member": ".",
                                     "cxx_type": "std::string",
-                                    "cxx_var": "SH_name",
+                                    "cxx_var": "SHCXX_name",
                                     "idtor": "0"
                                 }
                             }
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -765,11 +772,11 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);",
-                            "C_call_list": "SH_name,\t flag",
+                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
+                            "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name);",
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SHCXX_name(name);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -802,6 +809,7 @@
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -820,16 +828,17 @@
                             },
                             "name": {
                                 "fmtc": {
+                                    "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "name",
                                     "c_var_trim": "Lname",
                                     "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SH_name)",
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_name)",
                                     "cxx_member": ".",
                                     "cxx_type": "std::string",
-                                    "cxx_var": "SH_name",
+                                    "cxx_var": "SHCXX_name",
                                     "idtor": "0"
                                 },
                                 "fmtf": {
@@ -840,6 +849,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -908,11 +918,11 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);",
-                            "C_call_list": "SH_name,\t flag",
+                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
+                            "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer_bufferify",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name, Lname);",
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SHCXX_name(name, Lname);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -938,6 +948,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -1025,6 +1036,7 @@
                         "_fmtargs": {
                             "arg": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -1075,6 +1087,7 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "int SHC_rv",
+                                "c_type": "int",
                                 "c_val": "static_cast<int>(SHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1170,6 +1183,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -1231,6 +1245,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -1293,6 +1308,7 @@
                         "_fmtargs": {
                             "val": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -1460,6 +1476,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_type": "TUT_Singleton",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)",
@@ -1622,7 +1639,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "TUT_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "TUT_SHROUD_capsule_data",
@@ -1777,6 +1793,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1822,6 +1839,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1868,6 +1886,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2139,6 +2158,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2159,16 +2179,17 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_arg1))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_arg1))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
+                            "cxx_var": "SHCXX_arg1",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -2178,16 +2199,17 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg2",
                             "c_var_trim": "Larg2",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_arg2))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_arg2))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg2",
+                            "cxx_var": "SHCXX_arg2",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -2198,6 +2220,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2289,11 +2312,11 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::ConcatenateStrings(\tSH_arg1,\t SH_arg2);",
-                    "C_call_list": "SH_arg1,\t SH_arg2",
+                    "C_call_code": "*SHCXX_rv =\t tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2);",
+                    "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
                     "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);",
-                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);\nstd::string * SHCXX_rv = new std::string;",
+                    "C_pre_call": "const std::string SHCXX_arg1(arg1, Larg1);\nconst std::string SHCXX_arg2(arg2, Larg2);\nstd::string * SHCXX_rv = new std::string;",
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2315,6 +2338,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2384,6 +2408,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2403,6 +2428,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2492,6 +2518,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2537,6 +2564,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2585,6 +2613,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2706,15 +2735,16 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_name",
+                            "cxx_var": "SHCXX_name",
                             "idtor": "0"
                         },
                         "fmtl": {
@@ -2781,10 +2811,10 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSH_name);",
-                    "C_call_list": "SH_name",
+                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
+                    "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name",
-                    "C_pre_call": "const std::string SH_name(name);",
+                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2813,16 +2843,17 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
                             "c_var_trim": "Lname",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_name",
+                            "cxx_var": "SHCXX_name",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -2869,10 +2900,10 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSH_name);",
-                    "C_call_list": "SH_name",
+                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
+                    "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
-                    "C_pre_call": "const std::string SH_name(name, Lname);",
+                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2895,6 +2926,7 @@
                 "_fmtargs": {
                     "indx": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3074,6 +3106,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3213,6 +3246,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3415,6 +3449,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3507,6 +3542,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3646,6 +3682,7 @@
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3687,15 +3724,16 @@
                     },
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_name",
+                            "cxx_var": "SHCXX_name",
                             "idtor": "0"
                         },
                         "fmtl": {
@@ -3776,10 +3814,10 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSH_name,\t arg2);",
-                    "C_call_list": "SH_name,\t arg2",
+                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
+                    "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1",
-                    "C_pre_call": "const std::string SH_name(name);",
+                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name,\t double arg2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4027,6 +4065,7 @@
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4045,16 +4084,17 @@
                     },
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
                             "c_var_trim": "Lname",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_name",
+                            "cxx_var": "SHCXX_name",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -4116,10 +4156,10 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSH_name,\t arg2);",
-                    "C_call_list": "SH_name,\t arg2",
+                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
+                    "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
-                    "C_pre_call": "const std::string SH_name(name, Lname);",
+                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4223,6 +4263,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4242,6 +4283,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -4324,6 +4366,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4342,6 +4385,7 @@
                     },
                     "offset": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4361,6 +4405,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -4462,6 +4507,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4507,6 +4553,7 @@
                     },
                     "offset": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4552,6 +4599,7 @@
                     },
                     "stride": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4598,6 +4646,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -4730,6 +4779,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4748,6 +4798,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4767,6 +4818,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -4858,6 +4910,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4876,6 +4929,7 @@
                     },
                     "offset": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4894,6 +4948,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4913,6 +4968,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -5023,6 +5079,7 @@
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5068,6 +5125,7 @@
                     },
                     "offset": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5113,6 +5171,7 @@
                     },
                     "stride": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5158,6 +5217,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5204,6 +5264,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -5343,6 +5404,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5389,6 +5451,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -5479,6 +5542,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5529,6 +5593,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "int SHC_rv",
+                        "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -5622,6 +5687,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5672,6 +5738,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "int SHC_rv",
+                        "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -5765,6 +5832,7 @@
                 "_fmtargs": {
                     "max": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5799,6 +5867,7 @@
                     },
                     "min": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5918,6 +5987,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -5968,6 +6038,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "int SHC_rv",
+                        "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6061,6 +6132,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -6163,6 +6235,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6203,6 +6276,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -6293,6 +6367,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv))",
@@ -6357,6 +6432,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -6435,6 +6511,7 @@
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -6454,6 +6531,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -6534,6 +6612,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -6552,6 +6631,7 @@
                     },
                     "incr": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -6571,6 +6651,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -6681,6 +6762,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -6782,6 +6864,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -6857,6 +6940,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6944,6 +7028,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6964,6 +7049,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",

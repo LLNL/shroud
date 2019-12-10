@@ -565,7 +565,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_bufferify_suffix="_bufferify",
             C_prefix=C_prefix,
             C_result="rv",  # return value
-            C_argument="SH_",
             c_temp="SHT_",
             C_local="SHC_",
             C_name_scope = "",
