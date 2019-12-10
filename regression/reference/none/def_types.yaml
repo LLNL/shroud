@@ -21,7 +21,6 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   c_statements: &id002 {}
   c_to_cxx: MPI_Comm_f2c({c_var})
   c_type: MPI_Fint
-  c_union: null
   cpp_if: null
   cxx_header: mpi.h
   cxx_to_c: MPI_Comm_c2f({cxx_var})
@@ -76,7 +75,6 @@ bool: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: bool
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -223,7 +221,6 @@ char: !!python/object:shroud.typemap.Typemap
       - '{c_var_context}->size = 1;'
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -293,7 +290,6 @@ char_scalar: !!python/object:shroud.typemap.Typemap
       - '{c_var}[0] = {cxx_var};'
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -348,7 +344,6 @@ double: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: double
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -403,7 +398,6 @@ float: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: float
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -458,7 +452,6 @@ int: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: int
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -513,7 +506,6 @@ int16_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: int16_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -568,7 +560,6 @@ int32_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: int32_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -623,7 +614,6 @@ int64_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: int64_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -678,7 +668,6 @@ int8_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: int8_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -733,7 +722,6 @@ long: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -788,7 +776,6 @@ long_long: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: long long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -843,7 +830,6 @@ short: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: short
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -898,7 +884,6 @@ size_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: size_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstddef>
   cxx_to_c: null
@@ -1028,7 +1013,6 @@ std::string: !!python/object:shroud.typemap.Typemap
       - std::string * {cxx_var} = new std::string;
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: '{cxx_var}{cxx_member}c_str()'
@@ -1230,7 +1214,6 @@ std::vector: !!python/object:shroud.typemap.Typemap
       - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   c_to_cxx: null
   c_type: null
-  c_union: null
   cpp_if: null
   cxx_header: <vector>
   cxx_to_c: null
@@ -1329,7 +1312,6 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: uint16_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1384,7 +1366,6 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: uint32_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1439,7 +1420,6 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: uint64_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1494,7 +1474,6 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: uint8_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1549,7 +1528,6 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: unsigned int
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1604,7 +1582,6 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: unsigned long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1659,7 +1636,6 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: unsigned long long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1714,7 +1690,6 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: unsigned short
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1769,7 +1744,6 @@ void: !!python/object:shroud.typemap.Typemap
   c_statements: *id002
   c_to_cxx: null
   c_type: void
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null

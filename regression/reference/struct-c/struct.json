@@ -292,8 +292,8 @@
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStructByValue(\t*arg);",
-                    "C_call_list": "*arg",
+                    "C_call_code": "int SHC_rv =\t passStructByValue(\targ);",
+                    "C_call_list": "arg",
                     "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
                     "C_return_code": "return SHC_rv;",
@@ -1311,11 +1311,11 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {returnStructByValue(\ti,\t d)};",
+                    "C_call_code": "Cstruct1 SHC_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv.c;",
+                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1",
                     "F_C_call": "c_return_struct_by_value",
                     "F_C_name": "return_struct_by_value",
@@ -1329,7 +1329,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnStructByValue",
                     "c_const": "",
-                    "cxx_rv_decl": "SH_union_0_t SHC_rv",
+                    "cxx_rv_decl": "Cstruct1 SHC_rv",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },

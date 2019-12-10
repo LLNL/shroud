@@ -67,10 +67,6 @@ class Typemap(object):
         ("c_statements", {}),
         ("c_return_code", None),
         (
-            "c_union",
-            None,
-        ),  # Union of C++ and C type (used with structs and complex)
-        (
             "f_c_module",
             None,
         ),  # Fortran modules needed for interface  (dictionary)
@@ -1276,6 +1272,11 @@ def initialize():
 
     return def_types
 
+def update_typemap_for_language(language):
+    for ntypemap in shared_typedict.items():
+        if 'c_statements' in ntypemap:
+            update_for_language(ntypemap["c_statements"], langage)
+
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
@@ -1549,25 +1550,22 @@ def fill_struct_typemap_defaults(node, ntypemap):
     if ntypemap.base != "struct":
         return
 
-    helper = whelpers.add_union_helper(ntypemap.cxx_type, ntypemap.c_type)
-
-    ntypemap.c_union = helper
-
     libnode = node.get_LibraryNode()
     language = libnode.language
     if language == "cxx":
+        # Convert to C is done via pre_call.
+        pass
         # C++ pointer -> void pointer -> C pointer
-        ntypemap.cxx_to_c = (
-            "static_cast<{c_const}%s *>("
-            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
-            % ntypemap.c_type
-        )
-
-        # C pointer -> void pointer -> C++ pointer
-        ntypemap.c_to_cxx = (
-            "static_cast<{c_const}%s *>("
-            "\tstatic_cast<{c_const}void *>(\t{c_var}))" % ntypemap.cxx_type
-        )
+#        ntypemap.cxx_to_c = (
+#            "static_cast<{c_const}%s *>("
+#            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
+#            % ntypemap.c_type
+#        )
+#        # C pointer -> void pointer -> C++ pointer
+#        ntypemap.c_to_cxx = (
+#            "static_cast<{c_const}%s *>("
+#            "\tstatic_cast<{c_const}void *>(\t{c_var}))" % ntypemap.cxx_type
+#        )
     else:  # language == "c"
         # The struct from the user's library is used.
         ntypemap.c_header = libnode.cxx_header
@@ -1582,7 +1580,34 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # XXX module name may not conflict with type name
     # #-    ntypemap.f_module = {fmt_class.F_module_name:[unname]}
 
-    ntypemap.c_statements = dict(c_struct_result=dict(c_helper=helper))
+    ntypemap.c_statements = dict(
+        c_struct_in=dict(
+            cxx_local_var="pointer",
+            cxx_pre_call=[
+                "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            ],
+        ),
+        c_struct_out=dict(
+            cxx_local_var="pointer",
+            cxx_pre_call=[
+                "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            ],
+        ),
+        c_struct_inout=dict(
+            cxx_local_var="pointer",
+            cxx_pre_call=[
+                "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            ],
+        ),
+        c_struct_result=dict(
+            c_local_var="pointer",
+            cxx_post_call=[
+                "{c_type} * {c_var} = \tstatic_cast<{c_type} *>(\tstatic_cast<void *>(\t{cxx_addr}{cxx_var}));",
+            ],
+        ),
+    )
+    update_for_language(ntypemap.c_statements, language)
+    
 
     # #-    ntypemap.PYN_typenum = 'NPY_VOID'
     # #-    if not ntypemap.PY_PyTypeObject:
@@ -1705,6 +1730,7 @@ def update_for_language(stmts, lang):
                        "cleanup", "fail"]:
             specific = lang + "_" + clause
             if specific in item:
+                # XXX - maybe make sure clause does not already exist.
                 item[clause] = item[specific]
 
 

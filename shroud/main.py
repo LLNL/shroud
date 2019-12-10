@@ -393,6 +393,7 @@ def main_with_args(args):
         print("Wrote", config.yaml_types)
 
     newlibrary = ast.create_library_from_dictionary(allinput)
+    typemap.update_typemap_for_language(newlibrary.language)
 
     try:
         generate.generate_functions(newlibrary, config)
