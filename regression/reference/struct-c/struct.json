@@ -237,6 +237,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -363,6 +364,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -521,6 +523,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -671,6 +674,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -786,6 +790,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -1231,6 +1236,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -1405,6 +1411,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1610,6 +1617,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1798,6 +1806,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",

@@ -392,6 +392,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -517,6 +518,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "bool",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -703,6 +705,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -849,6 +852,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -948,6 +952,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -1086,6 +1091,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_rv_decl": "int SHC_rv",
                                 "c_type": "int",
                                 "c_val": "static_cast<int>(SHCXX_rv)",
@@ -1183,6 +1189,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1245,6 +1252,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1886,6 +1894,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2338,6 +2347,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2428,6 +2438,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2613,6 +2624,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -3449,6 +3461,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -3542,6 +3555,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -4283,6 +4297,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -4405,6 +4420,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -4646,6 +4662,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -4818,6 +4835,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -4968,6 +4986,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -5264,6 +5283,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -5451,6 +5471,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -5592,6 +5613,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
@@ -5737,6 +5759,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
@@ -6037,6 +6060,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
                         "c_val": "static_cast<int>(SHCXX_rv)",
@@ -6276,6 +6300,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6367,6 +6392,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -6432,6 +6458,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -6531,6 +6558,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -6651,6 +6679,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6864,6 +6893,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",

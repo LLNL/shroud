@@ -79,6 +79,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -309,6 +310,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -364,6 +366,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -443,6 +446,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -539,6 +543,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -650,6 +655,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -788,6 +794,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -915,6 +922,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "c_var_context": "DSHC_rv",
@@ -1036,6 +1044,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1157,6 +1166,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1270,6 +1280,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1409,6 +1420,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1539,6 +1551,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2308,6 +2321,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2426,6 +2440,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",

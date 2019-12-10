@@ -222,6 +222,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -851,6 +852,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1034,6 +1036,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1218,6 +1221,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -3110,6 +3114,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -3298,6 +3303,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -3473,6 +3479,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -3656,6 +3663,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -5095,6 +5103,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",

@@ -360,6 +360,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -489,6 +490,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -650,6 +652,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -803,6 +806,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -921,6 +925,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -1373,6 +1378,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -1547,6 +1553,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "STR_cstruct1 * SHC_rv",
                         "c_type": "STR_cstruct1",
                         "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
@@ -1755,6 +1762,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "STR_cstruct1 * SHC_rv",
                         "c_type": "STR_cstruct1",
                         "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
@@ -1946,6 +1954,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "STR_cstruct1 * SHC_rv",
                         "c_type": "STR_cstruct1",
                         "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",

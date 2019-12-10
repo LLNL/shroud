@@ -186,6 +186,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",

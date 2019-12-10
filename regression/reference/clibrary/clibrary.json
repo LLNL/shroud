@@ -233,6 +233,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -755,6 +756,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1987,6 +1989,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2225,6 +2228,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2391,6 +2395,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2519,6 +2524,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2970,6 +2976,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -3172,6 +3179,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -3313,6 +3321,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -3449,6 +3458,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",

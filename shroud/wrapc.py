@@ -752,6 +752,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
+            c_local_var = ""
             if result_typemap.c_union and not is_pointer:
                 # 'convert' via fields of a union
                 # used with structs where casting will not work
@@ -1298,6 +1299,7 @@ class Wrapc(util.WrapperMixin):
                         # Return address of reference i.e. a pointer.
                         C_return_code = wformat("return &{c_var};", fmt_result)
                 else:
+                    fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
                     C_return_code = wformat("return {c_var};", fmt_result)
 
         local = typemap.compute_name(["C_finalize", generated_suffix])
