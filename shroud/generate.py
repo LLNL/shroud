@@ -1142,7 +1142,7 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = generated_suffix  # used to lookup c_statements
+        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
         fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
@@ -1168,14 +1168,14 @@ class GenFunctions(object):
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
-            arg_typemap, c_statements, sp = typemap.lookup_c_statements(arg)
+            arg_typemap, sp = typemap.lookup_c_statements(arg)
 
             # Set names for implied buffer arguments.
             # This filters out "buf" for ftrim_char_in
             arg.stmts_suffix = generated_suffix
 
             c_stmts = ["c", sgroup, attrs["intent"], generated_suffix, specialize]
-            intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
+            intent_blk = typemap.lookup_fc_stmts(c_stmts)
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
                 # base typemap
 

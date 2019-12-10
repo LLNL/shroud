@@ -755,7 +755,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, c_statements, specialize = typemap.lookup_c_statements(
+                    arg_typemap, specialize = typemap.lookup_c_statements(
                         param
                     )
                     self.update_f_module(
@@ -991,7 +991,7 @@ rv = .false.
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             fmt.update(arg_typemap.format)
-            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
 
             attrs = arg.attrs
@@ -1509,19 +1509,17 @@ rv = .false.
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
-            f_statements = base_typemap.f_statements  # AAA - new vector
-            #                f_statements = arg_typemap.f_statements
             f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
-            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(c_arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
             # Create a local variable for C if necessary.
-            # The local variable c_var is used in f_statements. 
+            # The local variable c_var is used in fc_statements. 
             have_c_local_var = f_intent_blk.get("c_local_var", False)
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
@@ -1670,7 +1668,6 @@ rv = .false.
                 )
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
-                f_statements = result_typemap.f_statements
                 intent_blk = typemap.lookup_fc_stmts(
                     ["f", result_typemap.sgroup, "result", result_deref_clause])
                 if "call" in intent_blk:
@@ -1702,7 +1699,7 @@ rv = .false.
             if return_pointer_as == "allocatable":
                 # Copy into allocatable array.
                 # Processed by types stringout and charout in
-                # f_statements.result.post_call.
+                # fc_statements.result.post_call.
                 pass
             #                dim = ast.attrs.get('dimension', None)
             #                if dim:

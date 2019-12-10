@@ -586,7 +586,7 @@ class Wrapc(util.WrapperMixin):
         append_format(output, "-}};", fmt_enum)
 
     def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
-        """Find prototype based on buf_args in c_statements.
+        """Find prototype based on buf_args in fc_statements.
 
         Args:
             fmt - Format dictionary (fmt_arg or fmt_result).
@@ -748,7 +748,6 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            c_statements = result_typemap.c_statements
             result_blk = typemap.lookup_fc_stmts(
                 ["c", result_typemap.sgroup, "result", ast.stmts_suffix])
 
@@ -911,7 +910,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_typemap.impl_header:
                 self.header_impl_include[arg_typemap.impl_header] = True
-            arg_typemap, c_statements, specialize = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
             self.header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
