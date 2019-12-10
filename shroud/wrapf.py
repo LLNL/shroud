@@ -1007,7 +1007,7 @@ rv = .false.
                 c_stmts = ["c", sgroup, intent,
                            arg.stmts_suffix, deref_clause]
             c_stmts.extend(specialize)
-            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt,
@@ -1307,8 +1307,7 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if typemap.lookup_stmts(
-                result_typemap.f_statements,
+        if typemap.lookup_fc_stmts(
                 ["f", result_typemap.sgroup, "result", result_deref_clause]
         ).get("need_wrapper", False):
             need_wrapper = True
@@ -1512,14 +1511,14 @@ rv = .false.
 
             f_statements = base_typemap.f_statements  # AAA - new vector
             #                f_statements = arg_typemap.f_statements
-            f_intent_blk = typemap.lookup_stmts(f_statements, f_stmts)
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
             arg_typemap, c_statements, specialize = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in f_statements. 
@@ -1672,9 +1671,8 @@ rv = .false.
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
                 f_statements = result_typemap.f_statements
-                intent_blk = typemap.lookup_stmts(
-                    f_statements, ["f", result_typemap.sgroup, "result",
-                                   result_deref_clause])
+                intent_blk = typemap.lookup_fc_stmts(
+                    ["f", result_typemap.sgroup, "result", result_deref_clause])
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:

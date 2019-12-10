@@ -749,9 +749,8 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             c_statements = result_typemap.c_statements
-            result_blk = typemap.lookup_stmts(
-                c_statements, ["c", result_typemap.sgroup,
-                               "result", ast.stmts_suffix])
+            result_blk = typemap.lookup_fc_stmts(
+                ["c", result_typemap.sgroup, "result", ast.stmts_suffix])
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -1019,7 +1018,7 @@ class Wrapc(util.WrapperMixin):
 
                 stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
 
-            intent_blk = typemap.lookup_stmts(c_statements, stmts)
+            intent_blk = typemap.lookup_fc_stmts(stmts)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
