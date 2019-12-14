@@ -1046,6 +1046,7 @@ return 1;""",
             hidden = attrs.get("hidden", False)
             implied = attrs.get("implied", False)
             intent = attrs["intent"]
+            sgroup = arg_typemap.sgroup
             if implied:
                 arg_implied.append(arg)
                 intent_blk = {}
@@ -1059,22 +1060,22 @@ return 1;""",
                         "Argument must have intent(out)")
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["intent_out", "allocatable", node.options.PY_array_arg])
+                    [sgroup, "out", "allocatable", node.options.PY_array_arg])
             elif arg_typemap.base == "struct":
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["struct", "intent_" + intent, options.PY_struct_arg])
+                    [sgroup, intent, options.PY_struct_arg])
             elif arg_typemap.base == "vector":
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["intent_" + intent, "vector", options.PY_array_arg])
+                    [sgroup, intent, options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
                 intent_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["intent_" + intent, "dimension", options.PY_array_arg])
+                    [sgroup, intent, "dimension", options.PY_array_arg])
             else:
                 py_statements = arg_typemap.py_statements
                 intent_blk = typemap.lookup_stmts(py_statements, [arg_typemap.sgroup, intent])
@@ -1656,17 +1657,18 @@ return 1;""",
             #            fmt_pattern = fmt_result
 
             self.set_fmt_fields(ast, fmt_result, True)
+            sgroup = result_typemap.sgroup
             if is_ctor:
                 # Code added by create_ctor_function.
                 result_blk = {}
             elif result_typemap.base == "struct":
                 result_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["struct", "result", options.PY_struct_arg])
+                    [sgroup, "result", options.PY_struct_arg])
             elif result_typemap.base == "vector":
                 result_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["result", "vector", options.PY_array_arg])
+                    [sgroup, "result", options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
@@ -1674,10 +1676,10 @@ return 1;""",
             ):
                 result_blk = typemap.lookup_stmts(
                     py_statements_local,
-                    ["result", "dimension", options.PY_array_arg])
+                    [sgroup, "result", "dimension", options.PY_array_arg])
             else:
                 result_blk = typemap.lookup_stmts(
-                    result_typemap.py_statements, [result_typemap.sgroup, "result"])
+                    result_typemap.py_statements, [sgroup, "result"])
             
         return fmt_result, result_blk
 
@@ -2984,7 +2986,7 @@ fail_capsule=[
 py_statements_local = dict(
 ####################
 ## numpy
-    intent_in_dimension_numpy=dict(
+    native_in_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {pytmp_var};",
@@ -3009,7 +3011,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_inout_dimension_numpy=dict(
+    native_inout_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {pytmp_var};",
@@ -3032,7 +3034,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_out_dimension_numpy=dict(
+    native_out_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{npy_intp}"
@@ -3055,7 +3057,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    result_dimension_numpy=dict(
+    native_result_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {py_var} = NULL;",
@@ -3078,7 +3080,7 @@ py_statements_local = dict(
 
 ########################################
 ## allocatable
-    intent_out_allocatable_numpy=dict(
+    native_out_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
@@ -3096,7 +3098,7 @@ py_statements_local = dict(
 
 ########################################
 ## list
-    intent_in_dimension_list=dict(
+    native_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
@@ -3117,7 +3119,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_inout_dimension_list=dict(
+    native_inout_dimension_list=dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
         decl=[
@@ -3144,7 +3146,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_out_dimension_list=dict(
+    native_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header="<stdlib.h>",  # malloc/free
         cxx_header="<cstdlib>",  # malloc/free
@@ -3177,7 +3179,7 @@ py_statements_local = dict(
 
 ########################################
 ## allocatable
-    intent_out_allocatable_list=dict(
+    native_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header="<stdlib.h>",  # malloc/free
         cxx_header="<cstdlib>",  # malloc/free
@@ -3206,7 +3208,7 @@ py_statements_local = dict(
 ########################################
 # struct
 # numpy
-    struct_intent_in_numpy=dict(
+    struct_in_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3237,7 +3239,7 @@ py_statements_local = dict(
         ],
         goto_fail=True,
     ),
-    struct_intent_inout_numpy=dict(
+    struct_inout_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3266,7 +3268,7 @@ py_statements_local = dict(
         ],
         goto_fail=True,
     ),
-    struct_intent_out_numpy=dict(
+    struct_out_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -3321,14 +3323,14 @@ py_statements_local = dict(
     ),
 
 ##########
-    struct_intent_in_class=dict(
+    struct_in_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
     ),
-    struct_intent_inout_class=dict(
+    struct_inout_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
@@ -3336,7 +3338,7 @@ py_statements_local = dict(
         ],
         post_call=None,  # Object was passed in
     ),
-    struct_intent_out_class=dict(
+    struct_out_class=dict(
         create_out_decl=True,
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
@@ -3390,7 +3392,7 @@ py_statements_local = dict(
 ########################################
 # std::vector  only used with C++
 # list
-    intent_in_vector_list=dict(
+    vector_in_list=dict(
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
@@ -3407,7 +3409,7 @@ py_statements_local = dict(
         ],
         goto_fail=True,
     ),
-    intent_out_vector_list=dict(
+    vector_out_list=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
@@ -3429,7 +3431,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
     # XXX - must release after copying result.
-    result_vector_list=dict(
+    vector_result_list=dict(
         decl=[
             "PyObject * {py_var} = NULL;",
         ],
@@ -3446,7 +3448,7 @@ py_statements_local = dict(
 ##########
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
-    intent_in_vector_numpy=dict(
+    vector_in_numpy=dict(
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
@@ -3470,7 +3472,7 @@ py_statements_local = dict(
         ],
         goto_fail=True,
     ),
-    intent_out_vector_numpy=dict(
+    vector_out_numpy=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
@@ -3495,7 +3497,7 @@ py_statements_local = dict(
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
     ),
-    result_vector_numpy=dict(
+    vector_result_numpy=dict(
         need_numpy=True,
         allocate_local_var=True,
         decl=[
