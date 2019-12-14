@@ -61,6 +61,7 @@ declarations:
 
 ######################################################################
 - decl: Cstruct1 returnStructByValue(int i, double d);
+- decl: const Cstruct1 returnConstStructByValue(int i, double d);
 
 - decl: Cstruct1 *returnStructPtr1(int i, double d)
   doxygen:

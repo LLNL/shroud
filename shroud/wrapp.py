@@ -1726,8 +1726,12 @@ return 1;""",
             return {}
         allocate_local_var = stmts.get("allocate_local_var", False)
         if allocate_local_var:
+            # We're creating a pointer to a struct which will later then be assigned to.
+            # Have to discard constness or the assignment will produce a compile error.
+            #  *result = returnConstStructByValue()
             fmt.cxx_alloc_decl = ast.gen_arg_as_cxx(
                 name=fmt.cxx_var, force_ptr=True, params=None,
+                remove_const=True,
                 with_template_args=True, continuation=True,
             )
             capsule_type = ast.gen_arg_as_cxx(

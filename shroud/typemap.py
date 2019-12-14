@@ -1055,21 +1055,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
 
     libnode = node.get_LibraryNode()
     language = libnode.language
-    if language == "cxx":
-        # Convert to C is done via pre_call.
-        pass
-        # C++ pointer -> void pointer -> C pointer
-#        ntypemap.cxx_to_c = (
-#            "static_cast<{c_const}%s *>("
-#            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
-#            % ntypemap.c_type
-#        )
-#        # C pointer -> void pointer -> C++ pointer
-#        ntypemap.c_to_cxx = (
-#            "static_cast<{c_const}%s *>("
-#            "\tstatic_cast<{c_const}void *>(\t{c_var}))" % ntypemap.cxx_type
-#        )
-    else:  # language == "c"
+    if language == "c":
         # The struct from the user's library is used.
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
@@ -1706,27 +1692,29 @@ fc_statements = dict(
     ),
 
     c_struct_in=dict(
+        # C pointer -> void pointer -> C++ pointer
         cxx_local_var="pointer",
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],
     ),
     c_struct_out=dict(
         cxx_local_var="pointer",
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],
     ),
     c_struct_inout=dict(
         cxx_local_var="pointer",
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = \tstatic_cast<{cxx_type} *>\t(static_cast<void *>(\t{c_addr}{c_var}));",
+            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],
     ),
     c_struct_result=dict(
+        # C++ pointer -> void pointer -> C pointer
         c_local_var="pointer",
         cxx_post_call=[
-            "{c_type} * {c_var} = \tstatic_cast<{c_type} *>(\tstatic_cast<void *>(\t{cxx_addr}{cxx_var}));",
+            "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
     ),
 )

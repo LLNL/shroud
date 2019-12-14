@@ -51,6 +51,8 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg);
 
 STR_cstruct1 STR_return_struct_by_value(int i, double d);
 
+const STR_cstruct1 STR_return_const_struct_by_value(int i, double d);
+
 STR_cstruct1 * STR_return_struct_ptr1(int i, double d);
 
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf);

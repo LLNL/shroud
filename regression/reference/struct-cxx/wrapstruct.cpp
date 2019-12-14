@@ -131,6 +131,17 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
 // splicer end function.return_struct_by_value
 }
 
+// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
+{
+// splicer begin function.return_const_struct_by_value
+    const Cstruct1 SHCXX_rv = returnConstStructByValue(i, d);
+    const STR_cstruct1 * SHC_rv = static_cast<const STR_cstruct1 *>(
+        static_cast<const void *>(&SHCXX_rv));
+    return *SHC_rv;
+// splicer end function.return_const_struct_by_value
+}
+
 // Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 /**
  * \brief Return a pointer to a struct
