@@ -618,10 +618,10 @@ def initialize():
             f_c_type="logical(C_BOOL)",
             f_module=dict(iso_c_binding=["C_BOOL"]),
             py_statements=dict(
-                intent_in=dict(
+                bool_in=dict(
                     pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
                 ),
-                intent_inout=dict(
+                bool_inout=dict(
                     pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
                     # py_var is already declared for inout
                     post_call=[
@@ -633,7 +633,7 @@ def initialize():
                     ],
                     goto_fail=True,
                 ),
-                intent_out=dict(
+                bool_out=dict(
                     decl=[
                         "{PyObject} * {py_var} = NULL;",
                     ],
@@ -646,7 +646,7 @@ def initialize():
                     ],
                     goto_fail=True,
                 ),
-                result=dict(
+                bool_result=dict(
                     decl=[
                         "{PyObject} * {py_var} = NULL;",
                     ],
@@ -722,15 +722,15 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             py_statements=dict(
-                intent_in=dict(
+                string_in=dict(
                     cxx_local_var="scalar",
                     post_parse=["{c_const}std::string {cxx_var}({c_var});"],
                 ),
-                intent_inout=dict(
+                string_inout=dict(
                     cxx_local_var="scalar",
                     post_parse=["{c_const}std::string {cxx_var}({c_var});"],
                 ),
-                intent_out=dict(
+                string_out=dict(
                     cxx_local_var="scalar",
                     post_parse=["{c_const}std::string {cxx_var};"],
                 ),
@@ -756,7 +756,7 @@ def initialize():
             # #- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
             # custom code for templates
             #            py_statements=dict(
-            #                intent_in=dict(
+            #                vector_in=dict(
             #                    cxx_local_var=True,
             #                    post_parse=[
             #                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var});'
@@ -939,21 +939,21 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     #    ntypemap.f_c_module={ '-import-': ['F_capsule_data_type']}
 
     ntypemap.py_statements = dict(
-        intent_in=dict(
+        shadow_in=dict(
             cxx_local_var="pointer",
             post_parse=[
                 "{c_const}%s * {cxx_var} ="
                 "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
             ],
         ),
-        intent_inout=dict(
+        shadow_inout=dict(
             cxx_local_var="pointer",
             post_parse=[
                 "{c_const}%s * {cxx_var} ="
                 "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
             ],
         ),
-        intent_out=dict(
+        shadow_out=dict(
             decl=[
                 "{PyObject} *{py_var} = NULL;"
             ],
@@ -971,7 +971,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
             ],
             goto_fail=True,
         ),
-        result=dict(
+        shadow_result=dict(
 #            decl=[
 #                "{PyObject} *{py_var} = NULL;"
 #            ],

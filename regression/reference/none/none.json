@@ -233,12 +233,12 @@
             "f_type": "logical",
             "flat_name": "bool",
             "py_statements": {
-                "intent_in": {
+                "bool_in": {
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 },
-                "intent_inout": {
+                "bool_inout": {
                     "fail": [
                         "Py_XDECREF({py_var});"
                     ],
@@ -251,7 +251,7 @@
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 },
-                "intent_out": {
+                "bool_out": {
                     "decl": [
                         "{PyObject} * {py_var} = NULL;"
                     ],
@@ -264,7 +264,7 @@
                         "if ({py_var} == NULL) goto fail;"
                     ]
                 },
-                "result": {
+                "bool_result": {
                     "decl": [
                         "{PyObject} * {py_var} = NULL;"
                     ],
@@ -580,19 +580,19 @@
             "flat_name": "std_string",
             "impl_header": "<string>",
             "py_statements": {
-                "intent_in": {
+                "string_in": {
                     "cxx_local_var": "scalar",
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 },
-                "intent_inout": {
+                "string_inout": {
                     "cxx_local_var": "scalar",
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 },
-                "intent_out": {
+                "string_out": {
                     "cxx_local_var": "scalar",
                     "post_parse": [
                         "{c_const}std::string {cxx_var};"

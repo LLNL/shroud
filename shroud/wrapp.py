@@ -1077,7 +1077,7 @@ return 1;""",
                     ["intent_" + intent, "dimension", options.PY_array_arg])
             else:
                 py_statements = arg_typemap.py_statements
-                intent_blk = typemap.lookup_stmts(py_statements, ["intent_" + intent])
+                intent_blk = typemap.lookup_stmts(py_statements, [arg_typemap.sgroup, intent])
 
             if "parse_as_object" in intent_blk:
                 as_object = True
@@ -1677,7 +1677,7 @@ return 1;""",
                     ["result", "dimension", options.PY_array_arg])
             else:
                 result_blk = typemap.lookup_stmts(
-                    result_typemap.py_statements, ["result"])
+                    result_typemap.py_statements, [result_typemap.sgroup, "result"])
             
         return fmt_result, result_blk
 
