@@ -1058,26 +1058,22 @@ return 1;""",
                 if intent != "out":
                     raise RuntimeError(
                         "Argument must have intent(out)")
-                intent_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                intent_blk = lookup_stmts(
                     [sgroup, "out", "allocatable", node.options.PY_array_arg])
             elif arg_typemap.base == "struct":
-                intent_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                intent_blk = lookup_stmts(
                     [sgroup, intent, options.PY_struct_arg])
             elif arg_typemap.base == "vector":
-                intent_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                intent_blk = lookup_stmts(
                     [sgroup, intent, options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
-                intent_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                intent_blk = lookup_stmts(
                     [sgroup, intent, "dimension", options.PY_array_arg])
             else:
-                intent_blk = typemap.lookup_stmts(py_statements_local, [arg_typemap.sgroup, intent])
+                intent_blk = lookup_stmts([arg_typemap.sgroup, intent])
 
             if "parse_as_object" in intent_blk:
                 as_object = True
@@ -1661,24 +1657,20 @@ return 1;""",
                 # Code added by create_ctor_function.
                 result_blk = {}
             elif result_typemap.base == "struct":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                result_blk = lookup_stmts(
                     [sgroup, "result", options.PY_struct_arg])
             elif result_typemap.base == "vector":
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                result_blk = lookup_stmts(
                     [sgroup, "result", options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local,
+                result_blk = lookup_stmts(
                     [sgroup, "result", "dimension", options.PY_array_arg])
             else:
-                result_blk = typemap.lookup_stmts(
-                    py_statements_local, [sgroup, "result"])
+                result_blk = lookup_stmts([sgroup, "result"])
             
         return fmt_result, result_blk
 
@@ -2928,12 +2920,16 @@ def update_for_language(lang):
     For lang==c,
       foo_bar["decl"] = foo_bar["c_decl"]
     """
-    for item in py_statements_local.values():
+    for item in py_statements.values():
         for clause in ["decl", "post_parse", "pre_call", "post_call",
                        "cleanup", "fail"]:
             specific = lang + "_" + clause
             if specific in item:
                 item[clause] = item[specific]
+
+def lookup_stmts(path):
+    return typemap.lookup_stmts(py_statements, path)
+                
 
 # put into list to avoid duplicating text below
 array_error = [
@@ -2982,7 +2978,7 @@ fail_capsule=[
 # Language specific clauses are used in update_for_language.
 # Function calls which return 'void *', do not require casts in C.
 # It doesn't hurt to add them, but I dislike the clutter.
-py_statements_local = dict(
+py_statements = dict(
 
 ########################################
 # bool
