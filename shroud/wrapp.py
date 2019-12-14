@@ -1077,8 +1077,7 @@ return 1;""",
                     py_statements_local,
                     [sgroup, intent, "dimension", options.PY_array_arg])
             else:
-                py_statements = arg_typemap.py_statements
-                intent_blk = typemap.lookup_stmts(py_statements, [arg_typemap.sgroup, intent])
+                intent_blk = typemap.lookup_stmts(py_statements_local, [arg_typemap.sgroup, intent])
 
             if "parse_as_object" in intent_blk:
                 as_object = True
@@ -1679,7 +1678,7 @@ return 1;""",
                     [sgroup, "result", "dimension", options.PY_array_arg])
             else:
                 result_blk = typemap.lookup_stmts(
-                    result_typemap.py_statements, [sgroup, "result"])
+                    py_statements_local, [sgroup, "result"])
             
         return fmt_result, result_blk
 
@@ -2984,6 +2983,51 @@ fail_capsule=[
 # Function calls which return 'void *', do not require casts in C.
 # It doesn't hurt to add them, but I dislike the clutter.
 py_statements_local = dict(
+
+########################################
+# bool
+    bool_in=dict(
+        pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
+    ),
+    bool_inout=dict(
+        pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
+        # py_var is already declared for inout
+        post_call=[
+            "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    bool_out=dict(
+        decl=[
+            "{PyObject} * {py_var} = NULL;",
+        ],
+        post_call=[
+            "{py_var} = PyBool_FromLong({c_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    bool_result=dict(
+        decl=[
+            "{PyObject} * {py_var} = NULL;",
+        ],
+        post_call=[
+            "{py_var} = PyBool_FromLong({c_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    
 ####################
 ## numpy
     native_in_dimension_numpy=dict(
@@ -3206,6 +3250,21 @@ py_statements_local = dict(
     ),
 
 ########################################
+# string
+    string_in=dict(
+        cxx_local_var="scalar",
+        post_parse=["{c_const}std::string {cxx_var}({c_var});"],
+    ),
+    string_inout=dict(
+        cxx_local_var="scalar",
+        post_parse=["{c_const}std::string {cxx_var}({c_var});"],
+    ),
+    string_out=dict(
+        cxx_local_var="scalar",
+        post_parse=["{c_const}std::string {cxx_var};"],
+    ),
+
+########################################
 # struct
 # numpy
     struct_in_numpy=dict(
@@ -3389,6 +3448,59 @@ py_statements_local = dict(
     ),
 
 
+########################################
+# shadow
+    shadow_in=dict(
+        cxx_local_var="pointer",
+        post_parse=[
+            "{c_const}{cxx_type} * {cxx_var} ="
+            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+        ],
+    ),
+    shadow_inout=dict(
+        cxx_local_var="pointer",
+        post_parse=[
+            "{c_const}{cxx_type} * {cxx_var} ="
+            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+        ],
+    ),
+    shadow_out=dict(
+        decl=[
+            "{PyObject} *{py_var} = NULL;"
+        ],
+        post_call=[
+            "{py_var} ="
+            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "if ({py_var} == NULL) goto fail;",
+            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+        ],
+#            post_call_capsule=[
+#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    shadow_result=dict(
+#            decl=[
+#                "{PyObject} *{py_var} = NULL;"
+#            ],
+        post_call=[
+            "{PyObject} * {py_var} ="
+            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+#                "if ({py_var} == NULL) goto fail;",
+            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+        ],
+#            post_call_capsule=[
+#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+#            fail=[
+#                "Py_XDECREF({py_var});",
+#            ],
+#            goto_fail=True,
+    ),
+    
 ########################################
 # std::vector  only used with C++
 # list

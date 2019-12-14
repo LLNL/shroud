@@ -45,7 +45,6 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: MPI_Comm
-  py_statements: &id003 {}
   result_as_arg: null
   sgroup: unknown
   template_suffix: null
@@ -97,37 +96,6 @@ bool: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: bool
-  py_statements:
-    bool_in:
-      pre_call:
-      - bool {cxx_var} = PyObject_IsTrue({py_var});
-    bool_inout:
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_deref}{c_var});'
-      - if ({py_var} == NULL) goto fail;
-      pre_call:
-      - bool {cxx_var} = PyObject_IsTrue({py_var});
-    bool_out:
-      decl:
-      - '{PyObject} * {py_var} = NULL;'
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_var});'
-      - if ({py_var} == NULL) goto fail;
-    bool_result:
-      decl:
-      - '{PyObject} * {py_var} = NULL;'
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_var});'
-      - if ({py_var} == NULL) goto fail;
   result_as_arg: null
   sgroup: bool
   template_suffix: null
@@ -179,7 +147,6 @@ char: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: char
-  py_statements: *id003
   result_as_arg: null
   sgroup: char
   template_suffix: null
@@ -231,7 +198,6 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: char_scalar
-  py_statements: *id003
   result_as_arg: null
   sgroup: schar
   template_suffix: null
@@ -283,7 +249,6 @@ double: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: double
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -335,7 +300,6 @@ float: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: float
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -387,7 +351,6 @@ int: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: int
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -439,7 +402,6 @@ int16_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: int16_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -491,7 +453,6 @@ int32_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: int32_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -543,7 +504,6 @@ int64_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: int64_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -595,7 +555,6 @@ int8_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: int8_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -647,7 +606,6 @@ long: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: long
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -699,7 +657,6 @@ long_long: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: long_long
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -751,7 +708,6 @@ short: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: short
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -803,7 +759,6 @@ size_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: size_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -855,19 +810,6 @@ std::string: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: <string>
   name: std::string
-  py_statements:
-    string_in:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    string_inout:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    string_out:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var};'
   result_as_arg: null
   sgroup: string
   template_suffix: null
@@ -917,7 +859,6 @@ std::vector: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: std::vector
-  py_statements: *id003
   result_as_arg: null
   sgroup: vector
   template_suffix: null
@@ -969,7 +910,6 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: uint16_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1021,7 +961,6 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: uint32_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1073,7 +1012,6 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: uint64_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1125,7 +1063,6 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: uint8_t
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1177,7 +1114,6 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: unsigned_int
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1229,7 +1165,6 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: unsigned_long
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1281,7 +1216,6 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: unsigned_long_long
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1333,7 +1267,6 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: unsigned_short
-  py_statements: *id003
   result_as_arg: null
   sgroup: native
   template_suffix: null
@@ -1388,7 +1321,6 @@ void: !!python/object:shroud.typemap.Typemap
   idtor: '0'
   impl_header: null
   name: void
-  py_statements: *id003
   result_as_arg: null
   sgroup: unknown
   template_suffix: null

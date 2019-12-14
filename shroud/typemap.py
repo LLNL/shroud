@@ -108,7 +108,6 @@ class Typemap(object):
             "PYN_descr",
             None,
         ),  # Name of PyArray_Descr variable to describe type (for structs)
-        ("py_statements", {}),
         # Lua
         ("LUA_type", "LUA_TNONE"),
         ("LUA_pop", "POP"),
@@ -617,49 +616,6 @@ def initialize():
             f_kind="C_BOOL",
             f_c_type="logical(C_BOOL)",
             f_module=dict(iso_c_binding=["C_BOOL"]),
-            py_statements=dict(
-                bool_in=dict(
-                    pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
-                ),
-                bool_inout=dict(
-                    pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
-                    # py_var is already declared for inout
-                    post_call=[
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-                        "if ({py_var} == NULL) goto fail;",
-                    ],
-                    fail=[
-                        "Py_XDECREF({py_var});",
-                    ],
-                    goto_fail=True,
-                ),
-                bool_out=dict(
-                    decl=[
-                        "{PyObject} * {py_var} = NULL;",
-                    ],
-                    post_call=[
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;",
-                    ],
-                    fail=[
-                        "Py_XDECREF({py_var});",
-                    ],
-                    goto_fail=True,
-                ),
-                bool_result=dict(
-                    decl=[
-                        "{PyObject} * {py_var} = NULL;",
-                    ],
-                    post_call=[
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;",
-                    ],
-                    fail=[
-                        "Py_XDECREF({py_var});",
-                    ],
-                    goto_fail=True,
-                ),
-            ),
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
             # added.  Older version of Python can not create a bool directly from
@@ -721,20 +677,6 @@ def initialize():
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
-            py_statements=dict(
-                string_in=dict(
-                    cxx_local_var="scalar",
-                    post_parse=["{c_const}std::string {cxx_var}({c_var});"],
-                ),
-                string_inout=dict(
-                    cxx_local_var="scalar",
-                    post_parse=["{c_const}std::string {cxx_var}({c_var});"],
-                ),
-                string_out=dict(
-                    cxx_local_var="scalar",
-                    post_parse=["{c_const}std::string {cxx_var};"],
-                ),
-            ),
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
             PY_build_format="s#",
@@ -755,14 +697,6 @@ def initialize():
             # #- cxx_to_c='{cxx_var}.data()',  # C++11
             # #- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
             # custom code for templates
-            #            py_statements=dict(
-            #                vector_in=dict(
-            #                    cxx_local_var=True,
-            #                    post_parse=[
-            #                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var});'
-            #                        ],
-            #                    ),
-            #                ),
             #            PY_format='s',
             #            PY_ctor='PyString_FromString({c_var})',
             #            LUA_type='LUA_TSTRING',
@@ -938,58 +872,6 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     # The import is added in wrapf.py
     #    ntypemap.f_c_module={ '-import-': ['F_capsule_data_type']}
 
-    ntypemap.py_statements = dict(
-        shadow_in=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        shadow_inout=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        shadow_out=dict(
-            decl=[
-                "{PyObject} *{py_var} = NULL;"
-            ],
-            post_call=[
-                "{py_var} ="
-                "\t PyObject_New({PyObject}, &{PyTypeObject});",
-                "if ({py_var} == NULL) goto fail;",
-                "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            ],
-#            post_call_capsule=[
-#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
-#            ],
-            fail=[
-                "Py_XDECREF({py_var});",
-            ],
-            goto_fail=True,
-        ),
-        shadow_result=dict(
-#            decl=[
-#                "{PyObject} *{py_var} = NULL;"
-#            ],
-            post_call=[
-                "{PyObject} * {py_var} ="
-                "\t PyObject_New({PyObject}, &{PyTypeObject});",
-#                "if ({py_var} == NULL) goto fail;",
-                "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            ],
-#            post_call_capsule=[
-#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
-#            ],
-#            fail=[
-#                "Py_XDECREF({py_var});",
-#            ],
-#            goto_fail=True,
-        ),
-    )
     # #-    if not ntypemap.PY_PyTypeObject:
     # #-        ntypemap.PY_PyTypeObject = 'UUU'
     # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
