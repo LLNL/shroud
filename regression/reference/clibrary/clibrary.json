@@ -15,7 +15,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "CLI_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "CLI_SHROUD_capsule_data",
@@ -163,6 +162,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -197,6 +197,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -232,6 +233,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "double",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -331,6 +334,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -365,6 +369,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -479,6 +484,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_member": ".",
@@ -515,6 +521,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -550,6 +557,7 @@
                     },
                     "arg3": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -685,6 +693,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -715,6 +724,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -746,6 +756,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -863,6 +875,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -882,6 +895,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -900,6 +914,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -919,6 +934,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1031,6 +1047,7 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1129,6 +1146,7 @@
                 "_fmtargs": {
                     "name1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1228,6 +1246,7 @@
                 "_fmtargs": {
                     "name1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1315,6 +1334,7 @@
                 "_fmtargs": {
                     "name1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1346,6 +1366,7 @@
                     },
                     "name2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1461,6 +1482,7 @@
                 "_fmtargs": {
                     "name1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1480,6 +1502,7 @@
                     },
                     "name2": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1586,6 +1609,7 @@
                 "_fmtargs": {
                     "ltext": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1617,6 +1641,7 @@
                     },
                     "text": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1730,6 +1755,7 @@
                 "_fmtargs": {
                     "ltext": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1749,6 +1775,7 @@
                     },
                     "text": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1808,6 +1835,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -1850,6 +1878,7 @@
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1887,6 +1916,7 @@
                     },
                     "ltext": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1923,6 +1953,7 @@
                     },
                     "text": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1958,6 +1989,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2084,6 +2117,7 @@
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2121,6 +2155,7 @@
                     },
                     "ltext": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2157,6 +2192,7 @@
                     },
                     "text": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2192,6 +2228,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2318,6 +2356,7 @@
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2356,6 +2395,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2444,6 +2485,7 @@
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2482,6 +2524,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -2616,6 +2660,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2697,6 +2742,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2784,6 +2830,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2802,6 +2849,7 @@
                     },
                     "out": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2908,6 +2956,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2927,6 +2976,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3010,6 +3061,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3096,6 +3148,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3110,6 +3163,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3125,6 +3179,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3225,6 +3281,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3243,6 +3300,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3263,6 +3321,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3295,6 +3355,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -3358,6 +3419,7 @@
                 "_fmtargs": {
                     "incr": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3376,6 +3438,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3395,6 +3458,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -3496,6 +3561,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3514,6 +3580,7 @@
                     },
                     "incr": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3532,6 +3599,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3671,6 +3739,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3685,6 +3754,7 @@
                     },
                     "incr": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3699,6 +3769,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3713,6 +3784,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3873,6 +3945,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3891,6 +3964,7 @@
                     },
                     "incr": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -3909,6 +3983,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3928,6 +4003,7 @@
                     },
                     "type": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3989,6 +4065,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -4029,6 +4106,7 @@
                             "specifier": [
                                 "void"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {

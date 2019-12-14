@@ -209,10 +209,10 @@ void STR_pass_char_ptr_in_out(char * s)
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
 // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SH_s = ShroudStrAlloc(s, Ns, Ls);
-    passCharPtrInOut(SH_s);
-    ShroudStrCopy(s, Ns, SH_s, -1);
-    ShroudStrFree(SH_s);
+    char * SHCXX_s = ShroudStrAlloc(s, Ns, Ls);
+    passCharPtrInOut(SHCXX_s);
+    ShroudStrCopy(s, Ns, SHCXX_s, -1);
+    ShroudStrFree(SHCXX_s);
     return;
 // splicer end function.pass_char_ptr_in_out_bufferify
 }
@@ -694,8 +694,8 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
 void STR_accept_string_const_reference(const char * arg1)
 {
 // splicer begin function.accept_string_const_reference
-    const std::string SH_arg1(arg1);
-    acceptStringConstReference(SH_arg1);
+    const std::string SHCXX_arg1(arg1);
+    acceptStringConstReference(SHCXX_arg1);
     return;
 // splicer end function.accept_string_const_reference
 }
@@ -712,8 +712,8 @@ void STR_accept_string_const_reference_bufferify(const char * arg1,
     int Larg1)
 {
 // splicer begin function.accept_string_const_reference_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    acceptStringConstReference(SH_arg1);
+    const std::string SHCXX_arg1(arg1, Larg1);
+    acceptStringConstReference(SHCXX_arg1);
     return;
 // splicer end function.accept_string_const_reference_bufferify
 }
@@ -729,9 +729,9 @@ void STR_accept_string_const_reference_bufferify(const char * arg1,
 void STR_accept_string_reference_out(char * arg1)
 {
 // splicer begin function.accept_string_reference_out
-    std::string SH_arg1;
-    acceptStringReferenceOut(SH_arg1);
-    strcpy(arg1, SH_arg1.c_str());
+    std::string SHCXX_arg1;
+    acceptStringReferenceOut(SHCXX_arg1);
+    strcpy(arg1, SHCXX_arg1.c_str());
     return;
 // splicer end function.accept_string_reference_out
 }
@@ -747,9 +747,9 @@ void STR_accept_string_reference_out(char * arg1)
 void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 {
 // splicer begin function.accept_string_reference_out_bufferify
-    std::string SH_arg1;
-    acceptStringReferenceOut(SH_arg1);
-    ShroudStrCopy(arg1, Narg1, SH_arg1.data(), SH_arg1.size());
+    std::string SHCXX_arg1;
+    acceptStringReferenceOut(SHCXX_arg1);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
     return;
 // splicer end function.accept_string_reference_out_bufferify
 }
@@ -766,9 +766,9 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 void STR_accept_string_reference(char * arg1)
 {
 // splicer begin function.accept_string_reference
-    std::string SH_arg1(arg1);
-    acceptStringReference(SH_arg1);
-    strcpy(arg1, SH_arg1.c_str());
+    std::string SHCXX_arg1(arg1);
+    acceptStringReference(SHCXX_arg1);
+    strcpy(arg1, SHCXX_arg1.c_str());
     return;
 // splicer end function.accept_string_reference
 }
@@ -787,9 +787,9 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
     int Narg1)
 {
 // splicer begin function.accept_string_reference_bufferify
-    std::string SH_arg1(arg1, Larg1);
-    acceptStringReference(SH_arg1);
-    ShroudStrCopy(arg1, Narg1, SH_arg1.data(), SH_arg1.size());
+    std::string SHCXX_arg1(arg1, Larg1);
+    acceptStringReference(SHCXX_arg1);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
     return;
 // splicer end function.accept_string_reference_bufferify
 }
@@ -803,9 +803,9 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
 void STR_accept_string_pointer(char * arg1)
 {
 // splicer begin function.accept_string_pointer
-    std::string SH_arg1(arg1);
-    acceptStringPointer(&SH_arg1);
-    strcpy(arg1, SH_arg1.c_str());
+    std::string SHCXX_arg1(arg1);
+    acceptStringPointer(&SHCXX_arg1);
+    strcpy(arg1, SHCXX_arg1.c_str());
     return;
 // splicer end function.accept_string_pointer
 }
@@ -819,9 +819,9 @@ void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
     int Narg1)
 {
 // splicer begin function.accept_string_pointer_bufferify
-    std::string SH_arg1(arg1, Larg1);
-    acceptStringPointer(&SH_arg1);
-    ShroudStrCopy(arg1, Narg1, SH_arg1.data(), SH_arg1.size());
+    std::string SHCXX_arg1(arg1, Larg1);
+    acceptStringPointer(&SHCXX_arg1);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
     return;
 // splicer end function.accept_string_pointer_bufferify
 }

@@ -18,11 +18,8 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   base: unknown
   c_header: mpi.h
   c_return_code: null
-  c_statements: &id002 {}
-  c_templates: &id003 {}
   c_to_cxx: MPI_Comm_f2c({c_var})
   c_type: MPI_Fint
-  c_union: null
   cpp_if: null
   cxx_header: mpi.h
   cxx_to_c: MPI_Comm_c2f({cxx_var})
@@ -40,17 +37,16 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   f_kind: C_INT
   f_module: null
   f_module_name: null
-  f_statements: &id006 {}
   f_to_c: null
   f_type: integer
   flat_name: MPI_Comm
-  format: &id004 {}
+  format: &id002 {}
   forward: null
   idtor: '0'
   impl_header: null
   name: MPI_Comm
-  py_statements: &id005 {}
   result_as_arg: null
+  sgroup: unknown
   template_suffix: null
   typedef: null
 bool: !!python/object:shroud.typemap.Typemap
@@ -70,14 +66,11 @@ bool: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: unknown
+  base: bool
   c_header: <stdbool.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: bool
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -95,63 +88,16 @@ bool: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_BOOL
   f_module_name: null
-  f_statements:
-    intent_in:
-      c_local_var: true
-      pre_call:
-      - '{c_var} = {f_var}  ! coerce to C_BOOL'
-    intent_inout:
-      c_local_var: true
-      post_call:
-      - '{f_var} = {c_var}  ! coerce to logical'
-      pre_call:
-      - '{c_var} = {f_var}  ! coerce to C_BOOL'
-    intent_out:
-      c_local_var: true
-      post_call:
-      - '{f_var} = {c_var}  ! coerce to logical'
-    result:
-      need_wrapper: true
   f_to_c: null
   f_type: logical
   flat_name: bool
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: bool
-  py_statements:
-    intent_in:
-      pre_call:
-      - bool {cxx_var} = PyObject_IsTrue({py_var});
-    intent_inout:
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_deref}{c_var});'
-      - if ({py_var} == NULL) goto fail;
-      pre_call:
-      - bool {cxx_var} = PyObject_IsTrue({py_var});
-    intent_out:
-      decl:
-      - '{PyObject} * {py_var} = NULL;'
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_var});'
-      - if ({py_var} == NULL) goto fail;
-    result:
-      decl:
-      - '{PyObject} * {py_var} = NULL;'
-      fail:
-      - Py_XDECREF({py_var});
-      goto_fail: true
-      post_call:
-      - '{py_var} = PyBool_FromLong({c_var});'
-      - if ({py_var} == NULL) goto fail;
   result_as_arg: null
+  sgroup: bool
   template_suffix: null
   typedef: null
 char: !!python/object:shroud.typemap.Typemap
@@ -174,57 +120,8 @@ char: !!python/object:shroud.typemap.Typemap
   base: string
   c_header: null
   c_return_code: null
-  c_statements:
-    intent_in_buf:
-      buf_args:
-      - arg
-      - len_trim
-      c_helper: ShroudStrAlloc ShroudStrFree
-      cxx_local_var: pointer
-      post_call:
-      - ShroudStrFree({cxx_var});
-      pre_call:
-      - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-    intent_inout_buf:
-      buf_args:
-      - arg
-      - len_trim
-      - len
-      c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
-      cxx_local_var: pointer
-      post_call:
-      - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-      - ShroudStrFree({cxx_var});
-      pre_call:
-      - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-    intent_out_buf:
-      buf_args:
-      - arg
-      - len
-      c_helper: ShroudStrBlankFill
-      post_call:
-      - ShroudStrBlankFill({c_var}, {c_var_len});
-    result_buf:
-      buf_args:
-      - arg
-      - len
-      c_helper: ShroudStrCopy
-      post_call:
-      - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-    result_buf_allocatable:
-      buf_args:
-      - context
-      c_helper: copy_string
-      post_call:
-      - '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};'
-      - '{c_var_context}->cxx.idtor = {idtor};'
-      - '{c_var_context}->addr.ccharp = {cxx_var};'
-      - '{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});'
-      - '{c_var_context}->size = 1;'
-  c_templates: *id003
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -242,28 +139,16 @@ char: !!python/object:shroud.typemap.Typemap
   f_kind: C_CHAR
   f_module: null
   f_module_name: null
-  f_statements:
-    result_allocatable:
-      f_helper: copy_string
-      need_wrapper: true
-      post_call:
-      - 'allocate(character(len={c_var_context}%len):: {f_var})'
-      - call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)
-    result_pure:
-      call:
-      - '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))'
-      f_helper: fstr_ptr
-      need_wrapper: true
   f_to_c: null
   f_type: character(*)
   flat_name: char
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: char
-  py_statements: *id005
   result_as_arg: null
+  sgroup: char
   template_suffix: null
   typedef: null
 char_scalar: !!python/object:shroud.typemap.Typemap
@@ -286,20 +171,8 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   base: unknown
   c_header: null
   c_return_code: null
-  c_statements:
-    result_buf:
-      buf_args:
-      - arg
-      - len
-      c_header: <string.h>
-      cxx_header: <cstring>
-      post_call:
-      - '{stdlib}memset({c_var}, '' '', {c_var_len});'
-      - '{c_var}[0] = {cxx_var};'
-  c_templates: *id003
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -317,17 +190,16 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   f_kind: C_CHAR
   f_module: null
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: character
   flat_name: char
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: char_scalar
-  py_statements: *id005
   result_as_arg: null
+  sgroup: schar
   template_suffix: null
   typedef: null
 double: !!python/object:shroud.typemap.Typemap
@@ -347,14 +219,11 @@ double: !!python/object:shroud.typemap.Typemap
   PY_get: PyFloat_AsDouble({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: double
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -372,17 +241,16 @@ double: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_DOUBLE
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: real(C_DOUBLE)
   flat_name: double
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: double
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 float: !!python/object:shroud.typemap.Typemap
@@ -402,14 +270,11 @@ float: !!python/object:shroud.typemap.Typemap
   PY_get: PyFloat_AsDouble({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: float
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -427,17 +292,16 @@ float: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_FLOAT
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: real(C_FLOAT)
   flat_name: float
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: float
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 int: !!python/object:shroud.typemap.Typemap
@@ -457,14 +321,11 @@ int: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: int
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -482,17 +343,16 @@ int: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT)
   flat_name: int
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: int
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 int16_t: !!python/object:shroud.typemap.Typemap
@@ -512,14 +372,11 @@ int16_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: int16_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -537,17 +394,16 @@ int16_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT16_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT16_T)
   flat_name: int16_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: int16_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 int32_t: !!python/object:shroud.typemap.Typemap
@@ -567,14 +423,11 @@ int32_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: int32_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -592,17 +445,16 @@ int32_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT32_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT32_T)
   flat_name: int32_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: int32_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 int64_t: !!python/object:shroud.typemap.Typemap
@@ -622,14 +474,11 @@ int64_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: int64_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -647,17 +496,16 @@ int64_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT64_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT64_T)
   flat_name: int64_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: int64_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 int8_t: !!python/object:shroud.typemap.Typemap
@@ -677,14 +525,11 @@ int8_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: int8_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -702,17 +547,16 @@ int8_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT8_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT8_T)
   flat_name: int8_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: int8_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 long: !!python/object:shroud.typemap.Typemap
@@ -732,14 +576,11 @@ long: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -757,17 +598,16 @@ long: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_LONG
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG)
   flat_name: long
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: long
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 long_long: !!python/object:shroud.typemap.Typemap
@@ -787,14 +627,11 @@ long_long: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: long long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -812,17 +649,16 @@ long_long: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_LONG_LONG
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG_LONG)
   flat_name: long_long
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: long_long
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 short: !!python/object:shroud.typemap.Typemap
@@ -842,14 +678,11 @@ short: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: short
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -867,17 +700,16 @@ short: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_SHORT
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_SHORT)
   flat_name: short
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: short
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 size_t: !!python/object:shroud.typemap.Typemap
@@ -897,14 +729,11 @@ size_t: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stddef.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: size_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstddef>
   cxx_to_c: null
@@ -922,17 +751,16 @@ size_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_SIZE_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_SIZE_T)
   flat_name: size_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: size_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 std::string: !!python/object:shroud.typemap.Typemap
@@ -955,86 +783,8 @@ std::string: !!python/object:shroud.typemap.Typemap
   base: string
   c_header: null
   c_return_code: null
-  c_statements:
-    intent_in:
-      cxx_local_var: scalar
-      pre_call:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    intent_in_buf:
-      buf_args:
-      - arg
-      - len_trim
-      cxx_local_var: scalar
-      pre_call:
-      - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
-    intent_inout:
-      cxx_header: <cstring>
-      cxx_local_var: scalar
-      post_call:
-      - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
-      pre_call:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    intent_inout_buf:
-      buf_args:
-      - arg
-      - len_trim
-      - len
-      c_helper: ShroudStrCopy
-      cxx_local_var: scalar
-      post_call:
-      - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-      pre_call:
-      - std::string {cxx_var}({c_var}, {c_var_trim});
-    intent_out:
-      cxx_header: <cstring>
-      cxx_local_var: scalar
-      post_call:
-      - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
-      pre_call:
-      - '{c_const}std::string {cxx_var};'
-    intent_out_buf:
-      buf_args:
-      - arg
-      - len
-      c_helper: ShroudStrCopy
-      cxx_local_var: scalar
-      post_call:
-      - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-      pre_call:
-      - std::string {cxx_var};
-    result_buf:
-      buf_args:
-      - arg
-      - len
-      c_helper: ShroudStrCopy
-      post_call:
-      - if ({cxx_var}{cxx_member}empty()) {{+
-      - "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);"
-      - -}} else {{+
-      - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-      - -}}
-    result_buf_allocatable:
-      buf_args:
-      - context
-      c_helper: copy_string ShroudStrToArray
-      post_call:
-      - ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});
-    result_buf_allocatable_scalar:
-      buf_args:
-      - context
-      c_helper: copy_string ShroudStrToArray
-      destructor:
-      - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
-      - delete cxx_ptr;
-      destructor_name: new_string
-      post_call:
-      - ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});
-      pre_call:
-      - std::string * {cxx_var} = new std::string;
-  c_templates: *id003
   c_to_cxx: null
   c_type: char
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: '{cxx_var}{cxx_member}c_str()'
@@ -1052,40 +802,16 @@ std::string: !!python/object:shroud.typemap.Typemap
   f_kind: C_CHAR
   f_module: null
   f_module_name: null
-  f_statements:
-    result_allocatable:
-      f_helper: copy_string
-      need_wrapper: true
-      post_call:
-      - 'allocate(character(len={c_var_context}%len):: {f_var})'
-      - call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)
-    result_pure:
-      call:
-      - '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))'
-      f_helper: fstr_ptr
-      need_wrapper: true
   f_to_c: null
   f_type: character(*)
   flat_name: std_string
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: <string>
   name: std::string
-  py_statements:
-    intent_in:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    intent_inout:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var}({c_var});'
-    intent_out:
-      cxx_local_var: scalar
-      post_parse:
-      - '{c_const}std::string {cxx_var};'
   result_as_arg: null
+  sgroup: string
   template_suffix: null
   typedef: null
 std::vector: !!python/object:shroud.typemap.Typemap
@@ -1108,141 +834,8 @@ std::vector: !!python/object:shroud.typemap.Typemap
   base: vector
   c_header: null
   c_return_code: null
-  c_statements:
-    intent_in_buf:
-      buf_args:
-      - arg
-      - size
-      cxx_local_var: scalar
-      pre_call:
-      - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-    intent_inout_buf:
-      buf_args:
-      - arg
-      - size
-      - context
-      cxx_local_var: pointer
-      destructor:
-      - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-      - delete cxx_ptr;
-      destructor_name: std_vector_{cxx_T}
-      post_call:
-      - '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});'
-      - '{c_var_context}->cxx.idtor = {idtor};'
-      - '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();'
-      - '{c_var_context}->len = sizeof({cxx_T});'
-      - '{c_var_context}->size = {cxx_var}->size();'
-      pre_call:
-      - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
-        \ {c_var} + {c_var_size});"
-    intent_out_buf:
-      buf_args:
-      - context
-      c_helper: capsule_data_helper copy_array
-      cxx_local_var: pointer
-      destructor:
-      - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-      - delete cxx_ptr;
-      destructor_name: std_vector_{cxx_T}
-      post_call:
-      - '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});'
-      - '{c_var_context}->cxx.idtor = {idtor};'
-      - '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();'
-      - '{c_var_context}->len = sizeof({cxx_T});'
-      - '{c_var_context}->size = {cxx_var}->size();'
-      pre_call:
-      - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-    result_buf:
-      buf_args:
-      - context
-      c_helper: capsule_data_helper copy_array
-      destructor:
-      - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-      - delete cxx_ptr;
-      destructor_name: std_vector_{cxx_T}
-      post_call:
-      - '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});'
-      - '{c_var_context}->cxx.idtor = {idtor};'
-      - '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();'
-      - '{c_var_context}->len = sizeof({cxx_T});'
-      - '{c_var_context}->size = {cxx_var}->size();'
-      pre_call:
-      - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_templates:
-    std::string:
-      intent_in_buf:
-        buf_args:
-        - arg
-        - size
-        - len
-        c_helper: ShroudLenTrim
-        cxx_local_var: scalar
-        pre_call:
-        - std::vector<{cxx_T}> {cxx_var};
-        - '{{+'
-        - '{c_const}char * BBB = {c_var};'
-        - std::vector<{cxx_T}>::size_type
-        - +{c_temp}i = 0,
-        - '{c_temp}n = {c_var_size};'
-        - -for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-        - '{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));'
-        - BBB += {c_var_len};
-        - -}}
-        - -}}
-      intent_inout_buf:
-        buf_args:
-        - arg
-        - size
-        - len
-        cxx_local_var: scalar
-        post_call:
-        - '{{+'
-        - char * BBB = {c_var};
-        - std::vector<{cxx_T}>::size_type
-        - +{c_temp}i = 0,
-        - '{c_temp}n = {c_var_size};'
-        - -{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);
-        - for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-        - "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
-        - BBB += {c_var_len};
-        - -}}
-        - -}}
-        pre_call:
-        - std::vector<{cxx_T}> {cxx_var};
-        - '{{+'
-        - '{c_const}char * BBB = {c_var};'
-        - std::vector<{cxx_T}>::size_type
-        - +{c_temp}i = 0,
-        - '{c_temp}n = {c_var_size};'
-        - -for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-        - '{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));'
-        - BBB += {c_var_len};
-        - -}}
-        - -}}
-      intent_out_buf:
-        buf_args:
-        - arg
-        - size
-        - len
-        c_helper: ShroudLenTrim
-        cxx_local_var: scalar
-        post_call:
-        - '{{+'
-        - char * BBB = {c_var};
-        - std::vector<{cxx_T}>::size_type
-        - +{c_temp}i = 0,
-        - '{c_temp}n = {c_var_size};'
-        - '{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);'
-        - -for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-        - "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
-        - BBB += {c_var_len};
-        - -}}
-        - -}}
-        pre_call:
-        - '{c_const}std::vector<{cxx_T}> {cxx_var};'
   c_to_cxx: null
   c_type: null
-  c_union: null
   cpp_if: null
   cxx_header: <vector>
   cxx_to_c: null
@@ -1258,63 +851,16 @@ std::vector: !!python/object:shroud.typemap.Typemap
   f_kind: null
   f_module: null
   f_module_name: null
-  f_statements:
-    intent_inout:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    intent_inout_allocatable:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - if (allocated({f_var})) deallocate({f_var})
-      - allocate({f_var}({c_var_context}%size))
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    intent_out:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    intent_out_allocatable:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - allocate({f_var}({c_var_context}%size))
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    result:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
-    result_allocatable:
-      f_helper: copy_array_{cxx_T}
-      f_module:
-        iso_c_binding:
-        - C_SIZE_T
-      post_call:
-      - allocate({f_var}({c_var_context}%size))
-      - call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))
   f_to_c: null
   f_type: null
   flat_name: std_vector_{cxx_T}
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: std::vector
-  py_statements: *id005
   result_as_arg: null
+  sgroup: vector
   template_suffix: null
   typedef: null
 uint16_t: !!python/object:shroud.typemap.Typemap
@@ -1334,14 +880,11 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: uint16_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1359,17 +902,16 @@ uint16_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT16_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT16_T)
   flat_name: uint16_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: uint16_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 uint32_t: !!python/object:shroud.typemap.Typemap
@@ -1389,14 +931,11 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: uint32_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1414,17 +953,16 @@ uint32_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT32_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT32_T)
   flat_name: uint32_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: uint32_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 uint64_t: !!python/object:shroud.typemap.Typemap
@@ -1444,14 +982,11 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: uint64_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1469,17 +1004,16 @@ uint64_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT64_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT64_T)
   flat_name: uint64_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: uint64_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 uint8_t: !!python/object:shroud.typemap.Typemap
@@ -1499,14 +1033,11 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: <stdint.h>
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: uint8_t
-  c_union: null
   cpp_if: null
   cxx_header: <cstdint>
   cxx_to_c: null
@@ -1524,17 +1055,16 @@ uint8_t: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT8_T
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT8_T)
   flat_name: uint8_t
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: uint8_t
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 unsigned_int: !!python/object:shroud.typemap.Typemap
@@ -1554,14 +1084,11 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: unsigned int
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1579,17 +1106,16 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT)
   flat_name: unsigned_int
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: unsigned_int
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 unsigned_long: !!python/object:shroud.typemap.Typemap
@@ -1609,14 +1135,11 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: unsigned long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1634,17 +1157,16 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_LONG
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG)
   flat_name: unsigned_long
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: unsigned_long
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 unsigned_long_long: !!python/object:shroud.typemap.Typemap
@@ -1664,14 +1186,11 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   PY_get: null
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: unsigned long long
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1689,17 +1208,16 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_LONG_LONG
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG_LONG)
   flat_name: unsigned_long_long
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: unsigned_long_long
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 unsigned_short: !!python/object:shroud.typemap.Typemap
@@ -1719,14 +1237,11 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   PY_get: PyInt_AsLong({py_var})
   PY_to_object: null
   __line__: null
-  base: native
+  base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: unsigned short
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1744,17 +1259,16 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_SHORT
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: integer(C_SHORT)
   flat_name: unsigned_short
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: unsigned_short
-  py_statements: *id005
   result_as_arg: null
+  sgroup: native
   template_suffix: null
   typedef: null
 void: !!python/object:shroud.typemap.Typemap
@@ -1777,11 +1291,8 @@ void: !!python/object:shroud.typemap.Typemap
   base: unknown
   c_header: null
   c_return_code: null
-  c_statements: *id002
-  c_templates: *id003
   c_to_cxx: null
   c_type: void
-  c_union: null
   cpp_if: null
   cxx_header: null
   cxx_to_c: null
@@ -1802,16 +1313,15 @@ void: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_PTR
   f_module_name: null
-  f_statements: *id006
   f_to_c: null
   f_type: type(C_PTR)
   flat_name: void
-  format: *id004
+  format: *id002
   forward: null
   idtor: '0'
   impl_header: null
   name: void
-  py_statements: *id005
   result_as_arg: null
+  sgroup: unknown
   template_suffix: null
   typedef: null

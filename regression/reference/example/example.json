@@ -21,7 +21,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "AA_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "AA_SHROUD_capsule_data",
@@ -277,15 +276,16 @@
                                         "_fmtargs": {
                                             "name": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
                                                     "c_var": "name",
                                                     "cxx_addr": "&",
-                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                                     "cxx_member": ".",
                                                     "cxx_type": "std::string",
-                                                    "cxx_var": "SH_name",
+                                                    "cxx_var": "SHCXX_name",
                                                     "idtor": "0"
                                                 },
                                                 "fmtl": {
@@ -396,11 +396,11 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);",
-                                            "C_call_list": "&SH_name",
+                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);",
+                                            "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
                                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                                            "C_pre_call": "const std::string SH_name(name);",
+                                            "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
@@ -431,16 +431,17 @@
                                         "_fmtargs": {
                                             "name": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
                                                     "c_var": "name",
                                                     "c_var_trim": "Lname",
                                                     "cxx_addr": "&",
-                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                                     "cxx_member": ".",
                                                     "cxx_type": "std::string",
-                                                    "cxx_var": "SH_name",
+                                                    "cxx_var": "SHCXX_name",
                                                     "idtor": "0"
                                                 },
                                                 "fmtf": {
@@ -505,11 +506,11 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);",
-                                            "C_call_list": "&SH_name",
+                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);",
+                                            "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
                                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                                            "C_pre_call": "const std::string SH_name(name, Lname);",
+                                            "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
@@ -582,6 +583,7 @@
                                         "_fmtargs": {
                                             "incr": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -628,6 +630,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "int",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -724,6 +728,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "const char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -820,6 +825,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -840,6 +846,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -918,6 +925,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "int",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -1004,6 +1013,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "const char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -1095,6 +1105,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -1116,6 +1127,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -1192,6 +1204,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "const char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -1274,6 +1287,7 @@
                                         "_fmtargs": {
                                             "name": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -1294,6 +1308,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -1428,6 +1443,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
@@ -1511,6 +1528,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -1557,6 +1575,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "int",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -1654,6 +1674,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -1700,6 +1721,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "long",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -1793,6 +1816,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
@@ -1876,6 +1901,7 @@
                                         "_fmtargs": {
                                             "in": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -1924,6 +1950,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "bool",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -2108,15 +2136,16 @@
                                         "_fmtargs": {
                                             "name": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
                                                     "c_var": "name",
                                                     "cxx_addr": "&",
-                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                                     "cxx_member": ".",
                                                     "cxx_type": "std::string",
-                                                    "cxx_var": "SH_name",
+                                                    "cxx_var": "SHCXX_name",
                                                     "idtor": "0"
                                                 },
                                                 "fmtl": {
@@ -2226,11 +2255,11 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);",
-                                            "C_call_list": "&SH_name",
+                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);",
+                                            "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor",
                                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                                            "C_pre_call": "const std::string SH_name(name);",
+                                            "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
@@ -2262,16 +2291,17 @@
                                         "_fmtargs": {
                                             "name": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
                                                     "c_var": "name",
                                                     "c_var_trim": "trim_name",
                                                     "cxx_addr": "&",
-                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                                     "cxx_member": ".",
                                                     "cxx_type": "std::string",
-                                                    "cxx_var": "SH_name",
+                                                    "cxx_var": "SHCXX_name",
                                                     "idtor": "0"
                                                 },
                                                 "fmtf": {
@@ -2334,11 +2364,11 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);",
-                                            "C_call_list": "&SH_name",
+                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);",
+                                            "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
                                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                                            "C_pre_call": "const std::string SH_name(name, trim_name);",
+                                            "C_pre_call": "const std::string SHCXX_name(name, trim_name);",
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
@@ -2410,6 +2440,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "const char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2503,6 +2534,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -2523,6 +2555,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -2602,6 +2635,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "const char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2692,6 +2726,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -2713,6 +2748,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -2788,6 +2824,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2878,6 +2915,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -2899,6 +2937,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -2974,6 +3013,7 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_rv_decl": "char * SHC_rv",
+                                                "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -3063,6 +3103,7 @@
                                         "_fmtargs": {
                                             "SHF_rv": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -3084,6 +3125,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -3157,6 +3199,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "int",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -3243,6 +3287,7 @@
                                         "_fmtargs": {
                                             "in": {
                                                 "fmtc": {
+                                                    "c_addr": "",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
@@ -3294,6 +3339,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
@@ -3401,6 +3448,7 @@
                                         "_fmtargs": {
                                             "type": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -3703,6 +3751,7 @@
                                         "_fmtargs": {
                                             "len": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -3748,6 +3797,7 @@
                                             },
                                             "type": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -4153,7 +4203,9 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
                                                 "c_rv_decl": "int SHC_rv",
+                                                "c_type": "int",
                                                 "c_val": "static_cast<int>(SHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -4336,6 +4388,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -4501,6 +4554,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -4664,6 +4718,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -4827,6 +4882,7 @@
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
+                                                    "c_addr": "&",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
@@ -5056,6 +5112,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "int",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -5172,6 +5230,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_get_value": "",
+                                                "c_type": "double",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -5378,15 +5438,16 @@
                                 "_fmtargs": {
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtl": {
@@ -5420,6 +5481,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_get_value": "",
+                                        "c_type": "bool",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -5485,11 +5548,11 @@
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSH_name);",
-                                    "C_call_list": "SH_name",
+                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
+                                    "C_call_list": "SHCXX_name",
                                     "C_code": "return name != NULL;",
                                     "C_name": "AA_example_nested_is_name_valid",
-                                    "C_pre_call": "const std::string SH_name(name);",
+                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name",
                                     "C_return_code": "return SHC_rv;",
                                     "C_return_type": "bool",
@@ -5519,16 +5582,17 @@
                                 "_fmtargs": {
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtf": {
@@ -5539,6 +5603,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_get_value": "",
+                                        "c_type": "bool",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -5584,11 +5650,11 @@
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))",
                                 "fmtdict": {
-                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSH_name);",
-                                    "C_call_list": "SH_name",
+                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
+                                    "C_call_list": "SHCXX_name",
                                     "C_code": "return name != NULL;",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
-                                    "C_pre_call": "const std::string SH_name(name, Lname);",
+                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_code": "return SHC_rv;",
                                     "C_return_type": "bool",
@@ -5612,6 +5678,8 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_get_value": "",
+                                        "c_type": "bool",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -5688,15 +5756,16 @@
                                 "_fmtargs": {
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtl": {
@@ -5763,10 +5832,10 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSH_name);",
-                                    "C_call_list": "SH_name",
+                                    "C_call_code": "example::nested::test_names(\tSHCXX_name);",
+                                    "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names",
-                                    "C_pre_call": "const std::string SH_name(name);",
+                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name",
                                     "C_return_code": "return;",
                                     "C_return_type": "void",
@@ -5795,16 +5864,17 @@
                                 "_fmtargs": {
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtf": {
@@ -5851,10 +5921,10 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSH_name);",
-                                    "C_call_list": "SH_name",
+                                    "C_call_code": "example::nested::test_names(\tSHCXX_name);",
+                                    "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
-                                    "C_pre_call": "const std::string SH_name(name, Lname);",
+                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_code": "return;",
                                     "C_return_type": "void",
@@ -5877,6 +5947,7 @@
                                 "_fmtargs": {
                                     "flag": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -5918,15 +5989,16 @@
                                     },
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtl": {
@@ -6007,10 +6079,10 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSH_name,\t flag);",
-                                    "C_call_list": "SH_name,\t flag",
+                                    "C_call_code": "example::nested::test_names(\tSHCXX_name,\t flag);",
+                                    "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag",
-                                    "C_pre_call": "const std::string SH_name(name);",
+                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name,\t int flag",
                                     "C_return_code": "return;",
                                     "C_return_type": "void",
@@ -6037,6 +6109,7 @@
                                 "_fmtargs": {
                                     "flag": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -6055,16 +6128,17 @@
                                     },
                                     "name": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
                                             "cxx_addr": "&",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SH_name))",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_name))",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
-                                            "cxx_var": "SH_name",
+                                            "cxx_var": "SHCXX_name",
                                             "idtor": "0"
                                         },
                                         "fmtf": {
@@ -6114,6 +6188,7 @@
                                             "specifier": [
                                                 "int"
                                             ],
+                                            "stmts_suffix": "buf",
                                             "typemap_name": "int"
                                         }
                                     ],
@@ -6125,10 +6200,10 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSH_name,\t flag);",
-                                    "C_call_list": "SH_name,\t flag",
+                                    "C_call_code": "example::nested::test_names(\tSHCXX_name,\t flag);",
+                                    "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
-                                    "C_pre_call": "const std::string SH_name(name, Lname);",
+                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname,\t int flag",
                                     "C_return_code": "return;",
                                     "C_return_type": "void",
@@ -6196,6 +6271,7 @@
                                 "_fmtargs": {
                                     "i": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -6281,6 +6357,7 @@
                                 "_fmtargs": {
                                     "i": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -6326,6 +6403,7 @@
                                     },
                                     "j": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -6450,6 +6528,8 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_get_value": "",
+                                        "c_type": "size_t",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -6525,6 +6605,7 @@
                                 "_fmtargs": {
                                     "comm": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -6675,6 +6756,7 @@
                                 "_fmtargs": {
                                     "grp": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -6786,6 +6868,7 @@
                                 "_fmtargs": {
                                     "grp": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -6898,6 +6981,7 @@
                                 "_fmtargs": {
                                     "get": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -7012,6 +7096,7 @@
                                 "_fmtargs": {
                                     "get": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7130,6 +7215,7 @@
                                 "_fmtargs": {
                                     "get": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -7270,6 +7356,7 @@
                                 "_fmtargs": {
                                     "get": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -7380,6 +7467,7 @@
                                 "_fmtargs": {
                                     "get": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -7621,6 +7709,7 @@
                                 "_fmtargs": {
                                     "verylongname1": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7666,6 +7755,7 @@
                                     },
                                     "verylongname10": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7711,6 +7801,7 @@
                                     },
                                     "verylongname2": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7756,6 +7847,7 @@
                                     },
                                     "verylongname3": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7801,6 +7893,7 @@
                                     },
                                     "verylongname4": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7846,6 +7939,7 @@
                                     },
                                     "verylongname5": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7891,6 +7985,7 @@
                                     },
                                     "verylongname6": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7936,6 +8031,7 @@
                                     },
                                     "verylongname7": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -7981,6 +8077,7 @@
                                     },
                                     "verylongname8": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -8026,6 +8123,7 @@
                                     },
                                     "verylongname9": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -8297,6 +8395,7 @@
                                 "_fmtargs": {
                                     "verylongname1": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8342,6 +8441,7 @@
                                     },
                                     "verylongname10": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8387,6 +8487,7 @@
                                     },
                                     "verylongname2": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8432,6 +8533,7 @@
                                     },
                                     "verylongname3": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8477,6 +8579,7 @@
                                     },
                                     "verylongname4": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8522,6 +8625,7 @@
                                     },
                                     "verylongname5": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8567,6 +8671,7 @@
                                     },
                                     "verylongname6": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8612,6 +8717,7 @@
                                     },
                                     "verylongname7": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8657,6 +8763,7 @@
                                     },
                                     "verylongname8": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8702,6 +8809,7 @@
                                     },
                                     "verylongname9": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
@@ -8748,6 +8856,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_get_value": "",
+                                        "c_type": "int",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -8969,6 +9079,7 @@
                                 "_fmtargs": {
                                     "in": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -9015,6 +9126,7 @@
                                     },
                                     "out": {
                                         "fmtc": {
+                                            "c_addr": "",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -9066,6 +9178,7 @@
                                     },
                                     "sizein": {
                                         "fmtc": {
+                                            "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",

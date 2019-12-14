@@ -211,7 +211,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
@@ -319,16 +318,15 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
                             "c_var": "arg",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)",
-                            "cxx_decl": "Cstruct1 * SHCXX_arg",
-                            "cxx_member": ".",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
+                            "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\t&arg))",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0"
                         },
@@ -360,6 +358,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -416,7 +416,7 @@
                     "C_call_code": "int SHC_rv =\t passStructByValue(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "STR_pass_struct_by_value",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\t&arg));",
+                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\t&arg));",
                     "C_prototype": "STR_cstruct1 arg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -446,16 +446,15 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "Cstruct1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ))",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0"
                         },
@@ -487,6 +486,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -547,7 +548,7 @@
                     "C_call_code": "int SHC_rv =\t passStruct1(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_pass_struct1",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ));",
+                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -577,6 +578,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -608,16 +610,15 @@
                     },
                     "s1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s1",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_s1)",
-                            "cxx_decl": "Cstruct1 * SHCXX_s1",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1))",
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0"
                         },
@@ -645,6 +646,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -728,7 +731,7 @@
                     "C_call_code": "int SHC_rv =\t passStruct2(\tSHCXX_s1,\t outbuf);",
                     "C_call_list": "SHCXX_s1,\t outbuf",
                     "C_name": "STR_pass_struct2",
-                    "C_pre_call": "Cstruct1 * SHCXX_s1 =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1));",
+                    "C_pre_call": "Cstruct1 * SHCXX_s1 = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\ts1));",
                     "C_prototype": "STR_cstruct1 * s1,\t char * outbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -755,6 +758,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -774,16 +778,15 @@
                     },
                     "s1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s1",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_s1)",
-                            "cxx_decl": "Cstruct1 * SHCXX_s1",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1))",
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0"
                         },
@@ -795,6 +798,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -826,6 +831,7 @@
                             "specifier": [
                                 "Cstruct1"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "Cstruct1"
                         },
                         {
@@ -866,7 +872,7 @@
                     "C_call_list": "SHCXX_s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
                     "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
-                    "C_pre_call": "Cstruct1 * SHCXX_s1 =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1));",
+                    "C_pre_call": "Cstruct1 * SHCXX_s1 = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\ts1));",
                     "C_prototype": "STR_cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -889,16 +895,15 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "Cstruct1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ))",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0"
                         },
@@ -910,6 +915,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -958,7 +965,7 @@
                     "C_call_code": "int SHC_rv =\t acceptStructInPtr(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_accept_struct_in_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ));",
+                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -987,16 +994,15 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "Cstruct1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ))",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0"
                         },
@@ -1026,6 +1032,7 @@
                     },
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1060,6 +1067,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1161,7 +1169,7 @@
                     "C_call_code": "acceptStructOutPtr(\tSHCXX_arg,\t i,\t d);",
                     "C_call_list": "SHCXX_arg,\t i,\t d",
                     "C_name": "STR_accept_struct_out_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ));",
+                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg,\t int i,\t double d",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -1186,16 +1194,15 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "Cstruct1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ))",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0"
                         },
@@ -1261,7 +1268,7 @@
                     "C_call_code": "acceptStructInOutPtr(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_accept_struct_in_out_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\targ));",
+                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -1286,6 +1293,7 @@
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1320,6 +1328,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1355,11 +1364,13 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "*",
+                        "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "Cstruct1",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0"
                     },
                     "fmtf": {
@@ -1428,11 +1439,12 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {returnStructByValue(\ti,\t d)};",
+                    "C_call_code": "Cstruct1 SHCXX_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "STR_return_struct_by_value",
+                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\t&SHCXX_rv));",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv.c;",
+                    "C_return_code": "return *SHC_rv;",
                     "C_return_type": "STR_cstruct1",
                     "F_C_call": "c_return_struct_by_value",
                     "F_C_name": "return_struct_by_value",
@@ -1446,7 +1458,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnStructByValue",
                     "c_const": "",
-                    "cxx_rv_decl": "SH_union_0_t SHC_rv",
+                    "cxx_rv_decl": "Cstruct1 SHCXX_rv",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
@@ -1457,6 +1469,7 @@
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1491,6 +1504,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1526,8 +1540,185 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "STR_cstruct1 * SHC_rv",
-                        "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
+                        "c_get_value": "*",
+                        "c_type": "STR_cstruct1",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct1",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PYN_descr": "PY_Cstruct1_array_descr",
+                        "PyObject": "PY_Cstruct1",
+                        "PyTypeObject": "PY_Cstruct1_Type",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "capsule_order": "2",
+                        "cxx_addr": "",
+                        "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_capsule": "SHC_SHCXX_rv",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "returnConstStructByValue",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "i",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "d",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "const Cstruct1 returnConstStructByValue(int i, double d);",
+                "declgen": "const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_code": "const Cstruct1 SHCXX_rv =\t returnConstStructByValue(\ti,\t d);",
+                    "C_call_list": "i,\t d",
+                    "C_name": "STR_return_const_struct_by_value",
+                    "C_post_call": "const STR_cstruct1 * SHC_rv = \tstatic_cast<const STR_cstruct1 *>(\tstatic_cast<const void *>(\t&SHCXX_rv));",
+                    "C_prototype": "int i,\t double d",
+                    "C_return_code": "return *SHC_rv;",
+                    "C_return_type": "const STR_cstruct1",
+                    "F_C_call": "c_return_const_struct_by_value",
+                    "F_C_name": "return_const_struct_by_value",
+                    "F_arg_c_call": "i,\t d",
+                    "F_arguments": "i,\t d",
+                    "F_call_code": "SHT_rv = c_return_const_struct_by_value(i,\t d)",
+                    "F_name_function": "return_const_struct_by_value",
+                    "F_name_generic": "return_const_struct_by_value",
+                    "F_name_impl": "return_const_struct_by_value",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_returnConstStructByValue",
+                    "c_const": "const ",
+                    "cxx_rv_decl": "const Cstruct1 SHCXX_rv",
+                    "function_name": "returnConstStructByValue",
+                    "underscore_name": "return_const_struct_by_value"
+                },
+                "linenumber": 64,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "d": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&d)",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "d",
+                            "f_var": "d"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double d",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "data_var": "SHData_d",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_d",
+                            "size_var": "SHSize_d"
+                        }
+                    },
+                    "i": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "i",
+                            "f_var": "i"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int i",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "data_var": "SHData_i",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1603,7 +1794,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 66,
+                    "__line__": 67,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1611,7 +1802,7 @@
                     "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr1(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "STR_return_struct_ptr1",
-                    "C_post_call": "STR_cstruct1 * SHC_rv =\t static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
+                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "STR_cstruct1 *",
@@ -1631,13 +1822,14 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 65,
+                "linenumber": 66,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1668,6 +1860,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1698,6 +1891,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1730,8 +1924,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "STR_cstruct1 * SHC_rv",
-                        "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
+                        "c_get_value": "",
+                        "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1826,7 +2020,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 73,
+                    "__line__": 74,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1834,7 +2028,7 @@
                     "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2",
-                    "C_post_call": "STR_cstruct1 * SHC_rv =\t static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
+                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d,\t char * outbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "STR_cstruct1 *",
@@ -1854,13 +2048,14 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 71,
+                "linenumber": 72,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1879,6 +2074,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1897,6 +2093,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1917,8 +2114,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "STR_cstruct1 * SHC_rv",
-                        "c_val": "static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
+                        "c_get_value": "",
+                        "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1950,6 +2147,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -1964,6 +2162,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         },
                         {
@@ -1997,7 +2196,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 73,
+                    "__line__": 74,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -2005,7 +2204,7 @@
                     "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);\nSTR_cstruct1 * SHC_rv =\t static_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);\nSTR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "STR_cstruct1 *",
@@ -2016,7 +2215,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 71,
+                "linenumber": 72,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

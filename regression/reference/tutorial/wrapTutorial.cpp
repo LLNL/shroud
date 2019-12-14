@@ -99,10 +99,10 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.concatenate_strings_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
+    const std::string SHCXX_arg1(arg1, Larg1);
+    const std::string SHCXX_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1, SH_arg2);
+    *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
     ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);
     return;
 // splicer end function.concatenate_strings_bufferify
@@ -145,8 +145,8 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 void TUT_overloaded_function_from_name(const char * name)
 {
 // splicer begin function.overloaded_function_from_name
-    const std::string SH_name(name);
-    tutorial::OverloadedFunction(SH_name);
+    const std::string SHCXX_name(name);
+    tutorial::OverloadedFunction(SHCXX_name);
     return;
 // splicer end function.overloaded_function_from_name
 }
@@ -156,8 +156,8 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
 {
 // splicer begin function.overloaded_function_from_name_bufferify
-    const std::string SH_name(name, Lname);
-    tutorial::OverloadedFunction(SH_name);
+    const std::string SHCXX_name(name, Lname);
+    tutorial::OverloadedFunction(SHCXX_name);
     return;
 // splicer end function.overloaded_function_from_name_bufferify
 }
@@ -220,8 +220,8 @@ void TUT_fortran_generic_overloaded_0()
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 {
 // splicer begin function.fortran_generic_overloaded_1
-    const std::string SH_name(name);
-    tutorial::FortranGenericOverloaded(SH_name, arg2);
+    const std::string SHCXX_name(name);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     return;
 // splicer end function.fortran_generic_overloaded_1
 }
@@ -231,8 +231,8 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     int Lname, double arg2)
 {
 // splicer begin function.fortran_generic_overloaded_1_bufferify
-    const std::string SH_name(name, Lname);
-    tutorial::FortranGenericOverloaded(SH_name, arg2);
+    const std::string SHCXX_name(name, Lname);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     return;
 // splicer end function.fortran_generic_overloaded_1_bufferify
 }

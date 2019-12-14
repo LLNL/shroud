@@ -586,7 +586,7 @@ class Wrapc(util.WrapperMixin):
         append_format(output, "-}};", fmt_enum)
 
     def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
-        """Find prototype based on buf_args in c_statements.
+        """Find prototype based on buf_args in fc_statements.
 
         Args:
             fmt - Format dictionary (fmt_arg or fmt_result).
@@ -694,7 +694,7 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == "c" or options.get("C_extern_C", False):
             # Fortran can call C directly and only needs wrappers when code is
-            # inserted. For example, precall or postcall.
+            # inserted. For example, pre_call or post_call.
             need_wrapper = False
         else:
             # C++ will need C wrappers to deal with name mangling.
@@ -726,7 +726,6 @@ class Wrapc(util.WrapperMixin):
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
         is_shadow_scalar = False
-        is_union_scalar = False
         shadow_arg_decl = None
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
@@ -748,15 +747,19 @@ class Wrapc(util.WrapperMixin):
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
+
+            result_blk = typemap.lookup_fc_stmts(
+                ["c", result_typemap.sgroup, "result", ast.stmts_suffix])
+
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+            fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
-            if result_typemap.c_union and not is_pointer:
-                # 'convert' via fields of a union
-                # used with structs where casting will not work
-                # XXX - maybe change to convert to pointer to C++ struct.
-                is_union_scalar = True
-                fmt_result.cxx_var = fmt_result.c_var
+            c_local_var = ""
+            if self.language == "cxx" and "c_local_var" in result_blk:
+                c_local_var = result_blk["c_local_var"]
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif result_typemap.cxx_to_c is None:
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
@@ -775,10 +778,6 @@ class Wrapc(util.WrapperMixin):
                     params=None,
                     continuation=True,
                     force_ptr=True,
-                )
-            elif is_union_scalar:
-                fmt_func.cxx_rv_decl = (
-                    result_typemap.c_union + " " + fmt_result.cxx_var
                 )
             else:
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
@@ -858,20 +857,24 @@ class Wrapc(util.WrapperMixin):
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
         if ast.is_indirect():
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["c", result_typemap.base, "result", generated_suffix])
-            if iblk:
-                need_wrapper = self.build_proto_list(
-                    fmt_result,
-                    ast,
-                    iblk.get("buf_args", []),
-                    proto_list,
-                    need_wrapper,
-                )
-                need_wrapper = self.add_code_from_statements(
-                    fmt_result, iblk, pre_call, post_call, need_wrapper
-                )
+            spointer = "pointer"
+        else:
+            spointer = ""
+
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
+        if iblk:
+            need_wrapper = self.build_proto_list(
+                fmt_result,
+                ast,
+                iblk.get("buf_args", []),
+                proto_list,
+                need_wrapper,
+            )
+            need_wrapper = self.add_code_from_statements(
+                fmt_result, iblk, pre_call, post_call, need_wrapper
+            )
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
@@ -899,6 +902,7 @@ class Wrapc(util.WrapperMixin):
             c_attrs = arg.attrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
+            sgroup = arg_typemap.sgroup
             fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == "vector":
@@ -906,7 +910,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_typemap.impl_header:
                 self.header_impl_include[arg_typemap.impl_header] = True
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
             self.header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
@@ -915,19 +919,18 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = "const "
             else:
                 fmt_arg.c_const = ""
-            arg_is_union_scalar = False
             if arg.is_indirect():  # is_pointer?
                 fmt_arg.c_deref = "*"
                 fmt_arg.c_member = "->"
+                fmt_arg.c_addr = ""
                 fmt_arg.cxx_member = "->"
                 fmt_arg.cxx_addr = ""
             else:
                 fmt_arg.c_deref = ""
                 fmt_arg.c_member = "."
+                fmt_arg.c_addr = "&"
                 fmt_arg.cxx_member = "."
                 fmt_arg.cxx_addr = "&"
-                if arg_typemap.c_union:
-                    arg_is_union_scalar = True
             fmt_arg.cxx_type = arg_typemap.cxx_type
             fmt_arg.idtor = "0"
             cxx_local_var = ""
@@ -951,8 +954,8 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["result", generated_suffix,
-                         result_return_pointer_as,
+                stmts = ["c", sgroup, "result",
+                         generated_suffix, result_return_pointer_as,
                          "pointer" if CXX_ast.is_indirect() else "scalar",
                 ]
                 need_wrapper = True
@@ -974,32 +977,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 # regular argument (not function result)
                 arg_call = arg
-                if arg_is_union_scalar and arg_typemap.c_to_cxx is not None:
-                    # Argument is passed from Fortran to C by value.
-                    # Take address of argument for cxx_var.
-                    # It is dereferenced when passed to C++ to pass the value.
-                    # This avoids copying the struct since only the pointer is cast.
-                    #  tutorial::struct1 * SHCXX_arg =
-                    #    static_cast<tutorial::struct1 *>
-                    #      (static_cast<void *>(&arg));
-                    # Preserves call-by-value semantics to allow C++ routine
-                    # to change the value.
-                    tmp = fmt_arg.c_var
-                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-                    fmt_arg.c_var = "&" + tmp
-                    fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                    fmt_arg.c_var = tmp
-                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                        name=fmt_arg.cxx_var,
-                        params=None,
-                        as_ptr=True,
-                        force_ptr=True,
-                        continuation=True,
-                    )
-                    append_format(
-                        pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
-                    )
-                elif arg_typemap.c_to_cxx is None:
+                if arg_typemap.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var  # compatible
                 else:
                     # convert C argument to C++
@@ -1037,9 +1015,9 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["intent_" + c_attrs["intent"], arg.stmts_suffix]
+                stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
 
-            intent_blk = typemap.lookup_stmts(c_statements, stmts)
+            intent_blk = typemap.lookup_fc_stmts(stmts)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1053,9 +1031,9 @@ class Wrapc(util.WrapperMixin):
             # Usually to convert types.
             # For example, convert char * to std::string
             # Skip input arguments generated by F_string_result_as_arg
-            if "cxx_local_var" in intent_blk:
+            if self.language == "cxx" and "cxx_local_var" in intent_blk:
                 cxx_local_var = intent_blk["cxx_local_var"]
-                fmt_arg.cxx_var = fmt_arg.C_argument + fmt_arg.c_var
+                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             #                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             # This uses C_local or CXX_local for arguments.
             #                if 'cxx_T' in fmt_arg:
@@ -1098,10 +1076,7 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if arg_is_union_scalar:
-                    # Pass by value
-                    call_list.append("*" + fmt_arg.cxx_var)
-                elif cxx_local_var == "scalar":
+                if cxx_local_var == "scalar":
                     if arg.is_pointer():
                         call_list.append("&" + fmt_arg.cxx_var)
                     else:
@@ -1229,8 +1204,6 @@ class Wrapc(util.WrapperMixin):
                             "static_cast<void *>({cxx_addr}{cxx_var})",
                             fmt_result,
                         )
-                elif is_union_scalar:
-                    pass
                 elif result_typemap.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
@@ -1246,38 +1219,26 @@ class Wrapc(util.WrapperMixin):
 
                 if result_typemap.impl_header:
                     self.header_impl_include[result_typemap.impl_header] = True
-                c_statements = result_typemap.c_statements
 
-                intent_blk = typemap.lookup_stmts(
-                    c_statements, ["result", ast.stmts_suffix])
-                self.add_statements_headers(intent_blk)
+                self.add_statements_headers(result_blk)
 
                 need_wrapper = self.add_code_from_statements(
-                    fmt_result, intent_blk, pre_call, post_call, need_wrapper
+                    fmt_result, result_blk, pre_call, post_call, need_wrapper
                 )
                 if util.append_format_cmds(
-                    call_code, intent_blk, "call", fmt_result
+                    call_code, result_blk, "call", fmt_result
                 ):
                     need_wrapper = True
                     added_call_code = True
                 # XXX release rv if necessary
 
             if not added_call_code:
-                if is_union_scalar:
-                    # Call function within {}'s to assign to first field of union.
-                    append_format(
-                        call_code,
-                        "{cxx_rv_decl} =\t {{{CXX_this_call}{function_name}"
-                        "{CXX_template}(\t{C_call_list})}};",
-                        fmt_func,
-                    )
-                else:
-                    append_format(
-                        call_code,
-                        "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
-                        "{CXX_template}(\t{C_call_list});",
-                        fmt_func,
-                    )
+                append_format(
+                    call_code,
+                    "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
+                    "{CXX_template}(\t{C_call_list});",
+                    fmt_func,
+                )
 
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
@@ -1289,7 +1250,8 @@ class Wrapc(util.WrapperMixin):
                         # Return address of reference i.e. a pointer.
                         C_return_code = wformat("return &{c_var};", fmt_result)
                 else:
-                    C_return_code = wformat("return {c_var};", fmt_result)
+                    fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+                    C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
 
         local = typemap.compute_name(["C_finalize", generated_suffix])
         if fmt_func.inlocal(local):
@@ -1305,8 +1267,6 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal("C_return_code"):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
-        elif is_union_scalar:
-            fmt_func.C_return_code = wformat("return {cxx_var}.c;", fmt_result)
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
             fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
@@ -1569,3 +1529,22 @@ class Wrapc(util.WrapperMixin):
                 atypemap,
             )
             atypemap.idtor = fmt.idtor
+
+
+def compute_return_prefix(arg, cxx_local_var):
+    """Compute if how to access variable: dereference, address, as-is"""
+    if cxx_local_var == "scalar":
+        if arg.is_pointer():
+            return "&"
+        else:
+            return ""
+    elif cxx_local_var == "pointer":
+        if arg.is_pointer():
+            return ""
+        else:
+            return "*"
+    elif arg.is_reference():
+        # reference to scalar  i.e. double &max
+        return "*"
+    else:
+        return ""

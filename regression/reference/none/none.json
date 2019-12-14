@@ -22,7 +22,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "LIB_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "LIB_SHROUD_capsule_data",
@@ -220,6 +219,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "base": "bool",
             "c_header": "<stdbool.h>",
             "c_type": "bool",
             "cxx_type": "bool",
@@ -230,80 +230,9 @@
                     "C_BOOL"
                 ]
             },
-            "f_statements": {
-                "intent_in": {
-                    "c_local_var": true,
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_inout": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ],
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_out": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ]
-                },
-                "result": {
-                    "need_wrapper": true
-                }
-            },
             "f_type": "logical",
             "flat_name": "bool",
-            "py_statements": {
-                "intent_in": {
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ],
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                },
-                "result": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                }
-            }
+            "sgroup": "bool"
         },
         "char": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -312,71 +241,6 @@
             "PY_ctor": "PyString_FromString({c_var})",
             "PY_format": "s",
             "base": "string",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrBlankFill",
-                    "post_call": [
-                        "ShroudStrBlankFill({c_var}, {c_var_len});"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-                    ]
-                },
-                "result_buf_allocatable": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
             "c_type": "char",
             "cxx_type": "char",
             "f_c_module": {
@@ -386,25 +250,9 @@
             },
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_allocatable": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                },
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
             "f_type": "character(*)",
-            "flat_name": "char"
+            "flat_name": "char",
+            "sgroup": "char"
         },
         "char_scalar": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -413,20 +261,6 @@
             "PY_build_arg": "(int) {cxx_var}",
             "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
             "PY_format": "c",
-            "c_statements": {
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_header": "<string.h>",
-                    "cxx_header": "<cstring>",
-                    "post_call": [
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
-                        "{c_var}[0] = {cxx_var};"
-                    ]
-                }
-            },
             "c_type": "char",
             "cxx_type": "char",
             "f_c_module": {
@@ -437,7 +271,8 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_type": "character",
-            "flat_name": "char"
+            "flat_name": "char",
+            "sgroup": "schar"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -447,7 +282,6 @@
             "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
-            "base": "native",
             "c_type": "double",
             "cxx_type": "double",
             "f_cast": "real({f_var}, C_DOUBLE)",
@@ -458,7 +292,8 @@
                 ]
             },
             "f_type": "real(C_DOUBLE)",
-            "flat_name": "double"
+            "flat_name": "double",
+            "sgroup": "native"
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -468,7 +303,6 @@
             "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
             "PY_format": "f",
             "PY_get": "PyFloat_AsDouble({py_var})",
-            "base": "native",
             "c_type": "float",
             "cxx_type": "float",
             "f_cast": "real({f_var}, C_FLOAT)",
@@ -479,7 +313,8 @@
                 ]
             },
             "f_type": "real(C_FLOAT)",
-            "flat_name": "float"
+            "flat_name": "float",
+            "sgroup": "native"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -489,7 +324,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "int",
             "cxx_type": "int",
             "f_cast": "int({f_var}, C_INT)",
@@ -500,7 +334,8 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int"
+            "flat_name": "int",
+            "sgroup": "native"
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -510,7 +345,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int16_t",
             "cxx_header": "<cstdint>",
@@ -523,7 +357,8 @@
                 ]
             },
             "f_type": "integer(C_INT16_T)",
-            "flat_name": "int16_t"
+            "flat_name": "int16_t",
+            "sgroup": "native"
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -533,7 +368,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int32_t",
             "cxx_header": "<cstdint>",
@@ -546,7 +380,8 @@
                 ]
             },
             "f_type": "integer(C_INT32_T)",
-            "flat_name": "int32_t"
+            "flat_name": "int32_t",
+            "sgroup": "native"
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -556,7 +391,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int64_t",
             "cxx_header": "<cstdint>",
@@ -569,7 +403,8 @@
                 ]
             },
             "f_type": "integer(C_INT64_T)",
-            "flat_name": "int64_t"
+            "flat_name": "int64_t",
+            "sgroup": "native"
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -579,7 +414,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "int8_t",
             "cxx_header": "<cstdint>",
@@ -592,7 +426,8 @@
                 ]
             },
             "f_type": "integer(C_INT8_T)",
-            "flat_name": "int8_t"
+            "flat_name": "int8_t",
+            "sgroup": "native"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -602,7 +437,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "long",
             "cxx_type": "long",
             "f_cast": "int({f_var}, C_LONG)",
@@ -613,7 +447,8 @@
                 ]
             },
             "f_type": "integer(C_LONG)",
-            "flat_name": "long"
+            "flat_name": "long",
+            "sgroup": "native"
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -621,7 +456,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
-            "base": "native",
             "c_type": "long long",
             "cxx_type": "long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
@@ -632,7 +466,8 @@
                 ]
             },
             "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "long_long"
+            "flat_name": "long_long",
+            "sgroup": "native"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -642,7 +477,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "short",
             "cxx_type": "short",
             "f_cast": "int({f_var}, C_SHORT)",
@@ -653,7 +487,8 @@
                 ]
             },
             "f_type": "integer(C_SHORT)",
-            "flat_name": "short"
+            "flat_name": "short",
+            "sgroup": "native"
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -661,7 +496,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "PY_format": "n",
-            "base": "native",
             "c_header": "<stddef.h>",
             "c_type": "size_t",
             "cxx_header": "<cstddef>",
@@ -674,7 +508,8 @@
                 ]
             },
             "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t"
+            "flat_name": "size_t",
+            "sgroup": "native"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -685,113 +520,6 @@
             "PY_ctor": "PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
             "PY_format": "s",
             "base": "string",
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);",
-                        "-}} else {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
-                        "-}}"
-                    ]
-                },
-                "result_buf_allocatable": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string ShroudStrToArray",
-                    "post_call": [
-                        "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});"
-                    ]
-                },
-                "result_buf_allocatable_scalar": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string ShroudStrToArray",
-                    "destructor": [
-                        "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "new_string",
-                    "post_call": [
-                        "ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var} = new std::string;"
-                    ]
-                }
-            },
             "c_type": "char",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
@@ -802,287 +530,17 @@
             },
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_allocatable": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                },
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
             "f_type": "character(*)",
             "flat_name": "std_string",
             "impl_header": "<string>",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                }
-            }
+            "sgroup": "string"
         },
         "std::vector": {
             "base": "vector",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size",
-                        "context"
-                    ],
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-                    ]
-                }
-            },
-            "c_templates": {
-                "std::string": {
-                    "intent_in_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_inout_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_out_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
-                        ]
-                    }
-                }
-            },
             "cxx_header": "<vector>",
             "cxx_type": "std::vector<{cxx_T}>",
-            "f_statements": {
-                "intent_inout": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_inout_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "if (allocated({f_var})) deallocate({f_var})",
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "result": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "result_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                }
-            },
-            "flat_name": "std_vector_{cxx_T}"
+            "flat_name": "std_vector_{cxx_T}",
+            "sgroup": "vector"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1092,7 +550,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint16_t",
             "cxx_header": "<cstdint>",
@@ -1105,7 +562,8 @@
                 ]
             },
             "f_type": "integer(C_INT16_T)",
-            "flat_name": "uint16_t"
+            "flat_name": "uint16_t",
+            "sgroup": "native"
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1115,7 +573,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint32_t",
             "cxx_header": "<cstdint>",
@@ -1128,7 +585,8 @@
                 ]
             },
             "f_type": "integer(C_INT32_T)",
-            "flat_name": "uint32_t"
+            "flat_name": "uint32_t",
+            "sgroup": "native"
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1138,7 +596,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint64_t",
             "cxx_header": "<cstdint>",
@@ -1151,7 +608,8 @@
                 ]
             },
             "f_type": "integer(C_INT64_T)",
-            "flat_name": "uint64_t"
+            "flat_name": "uint64_t",
+            "sgroup": "native"
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1161,7 +619,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_header": "<stdint.h>",
             "c_type": "uint8_t",
             "cxx_header": "<cstdint>",
@@ -1174,7 +631,8 @@
                 ]
             },
             "f_type": "integer(C_INT8_T)",
-            "flat_name": "uint8_t"
+            "flat_name": "uint8_t",
+            "sgroup": "native"
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1184,7 +642,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned int",
             "cxx_type": "unsigned int",
             "f_cast": "int({f_var}, C_INT)",
@@ -1195,7 +652,8 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "unsigned_int"
+            "flat_name": "unsigned_int",
+            "sgroup": "native"
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1205,7 +663,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned long",
             "cxx_type": "unsigned long",
             "f_cast": "int({f_var}, C_LONG)",
@@ -1216,7 +673,8 @@
                 ]
             },
             "f_type": "integer(C_LONG)",
-            "flat_name": "unsigned_long"
+            "flat_name": "unsigned_long",
+            "sgroup": "native"
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1224,7 +682,6 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
-            "base": "native",
             "c_type": "unsigned long long",
             "cxx_type": "unsigned long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
@@ -1235,7 +692,8 @@
                 ]
             },
             "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "unsigned_long_long"
+            "flat_name": "unsigned_long_long",
+            "sgroup": "native"
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1245,7 +703,6 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
-            "base": "native",
             "c_type": "unsigned short",
             "cxx_type": "unsigned short",
             "f_cast": "int({f_var}, C_SHORT)",
@@ -1256,7 +713,8 @@
                 ]
             },
             "f_type": "integer(C_SHORT)",
-            "flat_name": "unsigned_short"
+            "flat_name": "unsigned_short",
+            "sgroup": "native"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",

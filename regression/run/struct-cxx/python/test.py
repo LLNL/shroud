@@ -75,6 +75,12 @@ class Struct(unittest.TestCase):
         self.assertEqual(1,   out.ifield)
         self.assertEqual(2.5, out.dfield)
 
+    def test_returnConstStructByValue(self):
+        out = cstruct.returnStructByValue(1, 2.5)
+        self.assertTrue(isinstance(out, cstruct.Cstruct1))
+        self.assertEqual(1,   out.ifield)
+        self.assertEqual(2.5, out.dfield)
+
     def test_returnStructPtr1(self):
         out = cstruct.returnStructPtr1(33, 33.5)
         self.assertTrue(isinstance(out, cstruct.Cstruct1))

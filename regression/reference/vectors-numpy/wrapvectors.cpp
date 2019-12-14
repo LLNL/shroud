@@ -65,8 +65,8 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
-    const std::vector<int> SH_arg(arg, arg + Sarg);
-    int SHC_rv = vector_sum(SH_arg);
+    const std::vector<int> SHCXX_arg(arg, arg + Sarg);
+    int SHC_rv = vector_sum(SHCXX_arg);
     return SHC_rv;
 // splicer end function.vector_sum_bufferify
 }
@@ -81,13 +81,13 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_bufferify
-    std::vector<int> *SH_arg = new std::vector<int>;
-    vector_iota_out(*SH_arg);
-    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    std::vector<int> *SHCXX_arg = new std::vector<int>;
+    vector_iota_out(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
     Darg->len = sizeof(int);
-    Darg->size = SH_arg->size();
+    Darg->size = SHCXX_arg->size();
     return;
 // splicer end function.vector_iota_out_bufferify
 }
@@ -102,13 +102,13 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_alloc_bufferify
-    std::vector<int> *SH_arg = new std::vector<int>;
-    vector_iota_out_alloc(*SH_arg);
-    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    std::vector<int> *SHCXX_arg = new std::vector<int>;
+    vector_iota_out_alloc(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
     Darg->len = sizeof(int);
-    Darg->size = SH_arg->size();
+    Darg->size = SHCXX_arg->size();
     return;
 // splicer end function.vector_iota_out_alloc_bufferify
 }
@@ -124,13 +124,13 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_inout_alloc_bufferify
-    std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
-    vector_iota_inout_alloc(*SH_arg);
-    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    std::vector<int> *SHCXX_arg = new std::vector<int>(arg, arg + Sarg);
+    vector_iota_inout_alloc(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
     Darg->len = sizeof(int);
-    Darg->size = SH_arg->size();
+    Darg->size = SHCXX_arg->size();
     return;
 // splicer end function.vector_iota_inout_alloc_bufferify
 }
@@ -141,13 +141,13 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_increment_bufferify
-    std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
-    vector_increment(*SH_arg);
-    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    std::vector<int> *SHCXX_arg = new std::vector<int>(arg, arg + Sarg);
+    vector_increment(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
     Darg->len = sizeof(int);
-    Darg->size = SH_arg->size();
+    Darg->size = SHCXX_arg->size();
     return;
 // splicer end function.vector_increment_bufferify
 }
@@ -160,13 +160,13 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_d_bufferify
-    std::vector<double> *SH_arg = new std::vector<double>;
-    vector_iota_out_d(*SH_arg);
-    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    std::vector<double> *SHCXX_arg = new std::vector<double>;
+    vector_iota_out_d(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 2;
-    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
     Darg->len = sizeof(double);
-    Darg->size = SH_arg->size();
+    Darg->size = SHCXX_arg->size();
     return;
 // splicer end function.vector_iota_out_d_bufferify
 }
@@ -180,18 +180,18 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg)
 {
 // splicer begin function.vector_string_count_bufferify
-    std::vector<std::string> SH_arg;
+    std::vector<std::string> SHCXX_arg;
     {
         const char * BBB = arg;
         std::vector<std::string>::size_type
             SHT_i = 0,
             SHT_n = Sarg;
         for(; SHT_i < SHT_n; SHT_i++) {
-            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
+            SHCXX_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
             BBB += Narg;
         }
     }
-    int SHC_rv = vector_string_count(SH_arg);
+    int SHC_rv = vector_string_count(SHCXX_arg);
     return SHC_rv;
 // splicer end function.vector_string_count_bufferify
 }

@@ -229,13 +229,25 @@ shadow
 
 
 
+c_local_var
+^^^^^^^^^^^
+
+If a local C variable is created for the return value by post_call, *c_local_var*
+indicates if the local variable is a **pointer** or **scalar**.
+For example, when a structure is returned by a C++ function, the C wrapper creates
+a local variable which contains a pointer to the C type of the struct.
+
+
 cxx_local_var
 ^^^^^^^^^^^^^
 
-If a local C++ variable must be created from the C argument, *cxx_local_var*
+If a local C++ variable is created for an argument by pre_call, *cxx_local_var*
 indicates if the local variable is a **pointer** or **scalar**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
 This in turns will set the format fields *cxx_member*.
+For example, a ``std::string`` argument is created for the C++ function
+from the ``char *`` argument passed into the C API wrapper.
+passed 
 
 c_header
 ^^^^^^^^
@@ -310,7 +322,7 @@ Code used with *intent(in)* arguments to convert from C to C++.
 post_call
 ^^^^^^^^^
 
-Code used with *intent(out)* arguments.
+Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
 
 .. Includes any code from **C_finalize**.

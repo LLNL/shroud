@@ -204,7 +204,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "ENU_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "ENU_SHROUD_capsule_data",

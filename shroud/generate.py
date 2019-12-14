@@ -1142,7 +1142,7 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = generated_suffix  # used to lookup c_statements
+        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
         fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
@@ -1158,6 +1158,8 @@ class GenFunctions(object):
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
+            sgroup = arg_typemap.sgroup
+            specialize = ""
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -1165,40 +1167,16 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+                specialize = arg.template_arguments[0].typemap.sgroup
+            arg_typemap, sp = typemap.lookup_c_statements(arg)
 
-            # set names for implied buffer arguments
-            # Look for a specalized clause for generated_suffix.
-            stmts = "intent_" + attrs["intent"] + "_" + generated_suffix
-            if stmts in c_statements:
-                arg.stmts_suffix = generated_suffix
+            # Set names for implied buffer arguments.
+            # This filters out "buf" for ftrim_char_in
+            arg.stmts_suffix = generated_suffix
 
-            intent_blk = c_statements.get(stmts, {})
-            for buf_arg in intent_blk.get("buf_args", []):
-                if buf_arg in attrs:
-                    # do not override user specified variable name
-                    continue
-                if buf_arg == "size":
-                    attrs["size"] = options.C_var_size_template.format(
-                        c_var=arg.name
-                    )
-                elif buf_arg == "capsule":
-                    attrs["capsule"] = options.C_var_capsule_template.format(
-                        c_var=arg.name
-                    )
-                elif buf_arg == "context":
-                    attrs["context"] = options.C_var_context_template.format(
-                        c_var=arg.name
-                    )
-                elif buf_arg == "len_trim":
-                    attrs["len_trim"] = options.C_var_trim_template.format(
-                        c_var=arg.name
-                    )
-                elif buf_arg == "len":
-                    attrs["len"] = options.C_var_len_template.format(
-                        c_var=arg.name
-                    )
-
+            c_stmts = ["c", sgroup, attrs["intent"], generated_suffix, specialize]
+            intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
                 # base typemap
 
         ast = C_new.ast
@@ -1258,8 +1236,9 @@ class GenFunctions(object):
             # XXX - c_var is duplicated in wrapc.py wrap_function
             fmt_func = C_new.fmtdict
             attrs = C_new.ast.attrs
-            c_var = fmt_func.C_local + fmt_func.C_result
-            attrs["context"] = options.C_var_context_template.format(c_var=c_var)
+            result_name = fmt_func.C_local + fmt_func.C_result
+            attrs["context"] = options.C_var_context_template.format(
+                c_var=result_name)
 
         if result_as_arg:
             # Create Fortran function without bufferify function_suffix but

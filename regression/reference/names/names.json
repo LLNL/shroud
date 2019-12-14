@@ -255,11 +255,10 @@
             }
         ],
         "fmtdict": {
-            "CXX_local": "SHCXX_",
+            "CXX_local": "ARG_",
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "ARG_",
             "C_array_type": "TES_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "TES_SHROUD_capsule_data",
@@ -445,6 +444,7 @@
                 "_fmtargs": {
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -537,6 +537,7 @@
                 "_fmtargs": {
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -629,6 +630,7 @@
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -660,6 +662,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -673,11 +677,11 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHCXX_rv",
+                        "c_var": "ARG_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
+                        "cxx_var": "ARG_rv",
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
@@ -748,6 +752,7 @@
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -768,6 +773,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -998,6 +1005,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1032,6 +1040,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1201,6 +1210,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1235,6 +1245,7 @@
                     },
                     "arg2": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1461,6 +1472,8 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -1474,11 +1487,11 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHCXX_rv",
+                        "c_var": "ARG_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
+                        "cxx_var": "ARG_rv",
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",

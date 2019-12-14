@@ -166,6 +166,7 @@
                         "_fmtargs": {
                             "i": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -342,6 +343,7 @@
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
+                                    "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
@@ -463,7 +465,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "PRE_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "PRE_SHROUD_capsule_data",

@@ -755,7 +755,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, c_statements = typemap.lookup_c_statements(
+                    arg_typemap, specialize = typemap.lookup_c_statements(
                         param
                     )
                     self.update_f_module(
@@ -965,28 +965,33 @@ rv = .false.
                 imports[fmt.F_capsule_data_type] = True
 
         if ast.is_indirect():
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["c", result_typemap.base, "result", node.generated_suffix])
-            if iblk:
-                self.build_arg_list_interface(
-                    node, fileinfo,
-                    fmt_func,
-                    ast,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_c_names,
-                    arg_c_decl,
-                )
+            spointer = "pointer"
+        else:
+            spointer = "scalar"
+
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
+        if iblk:
+            self.build_arg_list_interface(
+                node, fileinfo,
+                fmt_func,
+                ast,
+                iblk.get("buf_args", []),
+                modules,
+                imports,
+                arg_c_names,
+                arg_c_decl,
+            )
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
             arg_typemap = arg.typemap
+            sgroup = arg_typemap.sgroup
             fmt.update(arg_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
 
             attrs = arg.attrs
@@ -996,10 +1001,13 @@ rv = .false.
             deref_clause = attrs.get("deref", "")
 
             if attrs.get("_is_result", False):
-                c_stmts = ["result", generated_suffix, deref_clause]
+                c_stmts = ["c", sgroup, "result",
+                           generated_suffix, deref_clause]
             else:
-                c_stmts = ["intent_" + intent, arg.stmts_suffix, deref_clause]
-            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
+                c_stmts = ["c", sgroup, intent,
+                           arg.stmts_suffix, deref_clause]
+            c_stmts.extend(specialize)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt,
@@ -1299,9 +1307,8 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if typemap.lookup_stmts(
-                result_typemap.f_statements,
-                ["result", result_deref_clause]
+        if typemap.lookup_fc_stmts(
+                ["f", result_typemap.sgroup, "result", result_deref_clause]
         ).get("need_wrapper", False):
             need_wrapper = True
 
@@ -1340,34 +1347,37 @@ rv = .false.
                 )
 
         if ast.is_indirect():
-            # Function result.
-            iblk = typemap.lookup_stmts(
-                typemap.statements_local,
-                ["f", result_typemap.base, "result", result_deref_clause])
-            if iblk:
-                whelpers.add_copy_array_helper(fmt_result, ast)
-                need_wrapper = self.build_arg_list_impl(
-                    fmt_result,
-                    C_node.ast,
-                    ast,
-                    result_typemap,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    arg_c_call,
-                    need_wrapper,
-                )
-                need_wrapper = self.add_code_from_statements(
-                    need_wrapper, fileinfo,
-                    fmt_result,
-                    iblk,
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    pre_call,
-                    post_call,
-                )
+            spointer = "pointer"
+        else:
+            spointer = ""
+        # Function result.
+        iblk = typemap.lookup_stmts(
+            typemap.statements_local,
+            ["f", result_typemap.sgroup, spointer, "result", result_deref_clause])
+        if iblk:
+            whelpers.add_copy_array_helper(fmt_result, ast)
+            need_wrapper = self.build_arg_list_impl(
+                fmt_result,
+                C_node.ast,
+                ast,
+                result_typemap,
+                iblk.get("buf_args", []),
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
+            )
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                iblk,
+                modules,
+                imports,
+                arg_f_decl,
+                pre_call,
+                post_call,
+            )
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1393,6 +1403,12 @@ rv = .false.
             intent = c_attrs["intent"]
             deref_clause = c_attrs.get("deref", "")
 
+            sgroup = c_arg.typemap.sgroup
+            if c_arg.template_arguments:
+                specialize = [c_arg.template_arguments[0].typemap.sgroup]
+            else:
+                specialize = []
+            
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
@@ -1400,9 +1416,9 @@ rv = .false.
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = ["result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["result", deref_clause]  # + generated_suffix
+                c_stmts = ["c", sgroup, "result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["f", sgroup, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", sgroup, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1410,8 +1426,10 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["intent_" + intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["intent_" + intent, deref_clause]  # e.g. allocatable
+                c_stmts = ["c", sgroup, intent, c_arg.stmts_suffix]  # e.g. buf
+                f_stmts = ["f", sgroup, intent, deref_clause]  # e.g. allocatable
+            c_stmts.extend(specialize)
+            f_stmts.extend(specialize)
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1491,19 +1509,17 @@ rv = .false.
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
-            f_statements = base_typemap.f_statements  # AAA - new vector
-            #                f_statements = arg_typemap.f_statements
-            f_intent_blk = typemap.lookup_stmts(f_statements, f_stmts)
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = typemap.lookup_stmts(c_statements, c_stmts)
+            arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
             # Create a local variable for C if necessary.
-            # The local variable c_var is used in f_statements. 
+            # The local variable c_var is used in fc_statements. 
             have_c_local_var = f_intent_blk.get("c_local_var", False)
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
@@ -1652,9 +1668,8 @@ rv = .false.
                 )
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
-                f_statements = result_typemap.f_statements
-                intent_blk = typemap.lookup_stmts(
-                    f_statements, ["result", result_deref_clause])
+                intent_blk = typemap.lookup_fc_stmts(
+                    ["f", result_typemap.sgroup, "result", result_deref_clause])
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:
@@ -1684,7 +1699,7 @@ rv = .false.
             if return_pointer_as == "allocatable":
                 # Copy into allocatable array.
                 # Processed by types stringout and charout in
-                # f_statements.result.post_call.
+                # fc_statements.result.post_call.
                 pass
             #                dim = ast.attrs.get('dimension', None)
             #                if dim:

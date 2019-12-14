@@ -90,7 +90,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
@@ -198,6 +197,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -237,6 +237,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -290,8 +292,8 @@
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStructByValue(\t*arg);",
-                    "C_call_list": "*arg",
+                    "C_call_code": "int SHC_rv =\t passStructByValue(\targ);",
+                    "C_call_list": "arg",
                     "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
                     "C_return_code": "return SHC_rv;",
@@ -322,6 +324,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -361,6 +364,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -450,6 +455,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -481,6 +487,7 @@
                     },
                     "s1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -516,6 +523,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -625,6 +634,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -644,6 +654,7 @@
                     },
                     "s1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -663,6 +674,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -694,6 +707,7 @@
                             "specifier": [
                                 "Cstruct1"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "Cstruct1"
                         },
                         {
@@ -756,6 +770,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -775,6 +790,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -851,6 +868,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -888,6 +906,7 @@
                     },
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -922,6 +941,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1047,6 +1067,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1144,6 +1165,7 @@
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1178,6 +1200,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1213,6 +1236,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
@@ -1286,11 +1311,11 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {returnStructByValue(\ti,\t d)};",
+                    "C_call_code": "Cstruct1 SHC_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv.c;",
+                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1",
                     "F_C_call": "c_return_struct_by_value",
                     "F_C_name": "return_struct_by_value",
@@ -1304,7 +1329,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnStructByValue",
                     "c_const": "",
-                    "cxx_rv_decl": "SH_union_0_t SHC_rv",
+                    "cxx_rv_decl": "Cstruct1 SHC_rv",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
@@ -1315,6 +1340,7 @@
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1349,6 +1375,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1384,6 +1411,184 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct1",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct1",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PYN_descr": "PY_Cstruct1_array_descr",
+                        "PyObject": "PY_Cstruct1",
+                        "PyTypeObject": "PY_Cstruct1_Type",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "capsule_order": "2",
+                        "cxx_addr": "",
+                        "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_capsule": "SHC_SHCXX_rv",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "returnConstStructByValue",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "i",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "d",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "const Cstruct1 returnConstStructByValue(int i, double d);",
+                "declgen": "const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_code": "const Cstruct1 SHC_rv =\t returnConstStructByValue(\ti,\t d);",
+                    "C_call_list": "i,\t d",
+                    "C_name": "returnConstStructByValue",
+                    "C_prototype": "int i,\t double d",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "const Cstruct1",
+                    "F_C_call": "c_return_const_struct_by_value",
+                    "F_C_name": "return_const_struct_by_value",
+                    "F_arg_c_call": "i,\t d",
+                    "F_arguments": "i,\t d",
+                    "F_call_code": "SHT_rv = c_return_const_struct_by_value(i,\t d)",
+                    "F_name_function": "return_const_struct_by_value",
+                    "F_name_generic": "return_const_struct_by_value",
+                    "F_name_impl": "return_const_struct_by_value",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_returnConstStructByValue",
+                    "c_const": "const ",
+                    "cxx_rv_decl": "const Cstruct1 SHC_rv",
+                    "function_name": "returnConstStructByValue",
+                    "underscore_name": "return_const_struct_by_value"
+                },
+                "linenumber": 64,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "d": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "d",
+                            "f_var": "d"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double d",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "data_var": "SHData_d",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_d",
+                            "size_var": "SHSize_d"
+                        }
+                    },
+                    "i": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "i",
+                            "f_var": "i"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int i",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "data_var": "SHData_i",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1459,7 +1664,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 66,
+                    "__line__": 67,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1486,13 +1691,14 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 65,
+                "linenumber": 66,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1523,6 +1729,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1553,6 +1760,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1585,6 +1793,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1679,7 +1889,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 73,
+                    "__line__": 74,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1706,13 +1916,14 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 71,
+                "linenumber": 72,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "d": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1731,6 +1942,7 @@
                     },
                     "i": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1749,6 +1961,7 @@
                     },
                     "outbuf": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1769,6 +1982,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -1800,6 +2015,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -1814,6 +2030,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         },
                         {
@@ -1847,7 +2064,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 73,
+                    "__line__": 74,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1866,7 +2083,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 71,
+                "linenumber": 72,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
