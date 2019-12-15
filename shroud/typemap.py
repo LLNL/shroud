@@ -26,6 +26,11 @@ except:
     def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
         return name.replace("::","_").translate(flat_trantab)
 
+# The tree of c and fortran statements.
+cf_tree = {}
+# Always return the same empty statements.
+empty_stmts = {}
+
 class Typemap(object):
     """Collect fields for an argument.
     This used to be a dict but a class has better access semantics:
@@ -733,8 +738,13 @@ def initialize():
     return def_types
 
 def update_typemap_for_language(language):
-    update_for_language(fc_statements, language)
+    """Preprocess statements for lookup.
 
+    Update statements for c or c++.
+    Fill in cf_tree.
+    """
+    update_for_language(fc_statements, language)
+    update_stmt_tree(fc_statements, cf_tree)
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
@@ -981,7 +991,6 @@ def lookup_c_statements(arg):
         specialize.append(arg_typemap.sgroup)
     return arg_typemap, specialize
 
-empty_stmts = {}
 def lookup_stmts(stmts, path):
     """
     Lookup path in stmts.
@@ -1009,7 +1018,7 @@ def lookup_stmts(stmts, path):
     return empty_stmts
         
 def lookup_fc_stmts(path):
-    return lookup_stmts(fc_statements, path)
+    return lookup_stmts_tree(cf_tree, path)
         
 def compute_name(path, char="_"):
     """
@@ -1077,6 +1086,86 @@ def update_for_language(stmts, lang):
                 # XXX - maybe make sure clause does not already exist.
                 item[clause] = item[specific]
 
+
+def update_stmt_tree(stmts, tree):
+    """Update tree by adding stmts.  Each key in stmts is split by
+    underscore then inserted into tree to form nested dictionaries to
+    the values from stmts.  The end key is named _node, since it is
+    impossible to have an intermediate element with that name (since
+    they're split on underscore).
+
+    Implement "alias" field.
+
+    Add "key" to node and "_key" to tree to aid debugging.
+
+    stmts = {"c_native_in":1,
+             "c_native_out":2,
+             "c_native_pointer_out":3,
+             "c_string_in":4}
+    tree = {
+      "c": {
+         "native": {
+           "in": {"_node":1},
+           "out":{"_node":2},
+           "pointer":{
+             "out":{"_node":3},
+           },
+         },
+         "string":{
+           "in": {"_node":4},
+         },
+      },
+    }
+    """
+    for key, node in stmts.items():
+        step = tree
+        steps = key.split("_")
+        label = []
+        for part in steps:
+            step = step.setdefault(part, {})
+            label.append(part)
+            step["_key"] = "_".join(label)
+        if "alias" in node:
+            step['_node'] = stmts[node["alias"]]
+        else:
+            step['_node'] = node
+        node["key"] = key  # useful for debugging/testing
+
+
+def lookup_stmts_tree(tree, path):
+    """
+    Lookup path in statements tree.
+    Look for longest path which matches.
+    Used to find specific cases first, then fall back to general.
+    ex path = ['result', 'allocatable']
+         Finds 'result_allocatable' if it exists, else 'result'.
+    If not found, return an empty dictionary.
+
+    path typically consists of:
+      in, out, inout, result
+      generated_clause - buf
+      deref - allocatable
+
+    Args:
+        tree  - dictionary of nested dictionaries
+        path  - list of name components.
+                Blank entries are ignored.
+    """
+    found = empty_stmts
+    work = []
+    step = tree
+    for part in path:
+        if not part:
+            # skip empty parts
+            continue
+        if part not in step:
+            continue
+        step = step[part]
+        found = step.get("_node", found)  # check if path ends here
+    return found
+
+
+                
 # language   "c"    
 # sgroup     "native", "string", "char"
 # spointer   "pointer" ""
@@ -1107,6 +1196,38 @@ fc_statements = dict(
     f_bool_result=dict(
         # The wrapper is needed to convert bool to logical
         need_wrapper=True
+    ),
+
+    # Function has a result with deref(allocatable).
+    #
+    #    C wrapper:
+    #       Add context argument for result
+    #       Fill in values to describe array.
+    #
+    #    Fortran:
+    #        c_step1(context)
+    #        allocate(Fout(len))
+    #        c_step2(context, Fout, size(len))
+    c_native_pointer_result_buf=dict(
+        buf_args=["context"],
+        c_helper="array_context copy_array",
+        post_call=[
+            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.cvoidp = {cxx_var};",
+            "{c_var_context}->len = sizeof({cxx_type});",
+            "{c_var_context}->size = *{c_var_dimension};",
+        ],
+    ),
+    f_native_pointer_result_allocatable=dict(
+        buf_args=["context"],
+        f_helper="array_context copy_array_{cxx_type}",
+        post_call=[
+            # XXX - allocate scalar
+            "allocate({f_var}({c_var_dimension}))",
+            "call SHROUD_copy_array_{cxx_type}"
+            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+        ],
     ),
 
     c_char_in_buf=dict(
@@ -1278,10 +1399,20 @@ fc_statements = dict(
             "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
         ],
     ),
+
+    # Since 'c_string_scalar_result_buf_allocatable' exists,
+    # must set an alias for c_string_scalar.
+    # No need to allocate a local copy since the string is copied
+    # into a Fortran variable before the string is deleted.
+    c_string_scalar_result_buf=dict(
+        alias="c_string_result_buf",
+    ),
+    
     # std::string function()
     # Must allocate the std::string then assign to it via cxx_rv_decl.
     # This allows the std::string to outlast the function return.
-    c_string_result_buf_allocatable_scalar=dict(
+    # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
+    c_string_scalar_result_buf_allocatable=dict(
         # pass address of string and length back to Fortran
         buf_args=["context"],
         #                    cxx_local_var="pointer",
@@ -1372,7 +1503,7 @@ fc_statements = dict(
             "delete cxx_ptr;",
         ],
     ),
-    # Same as intent_out_buf.
+    # Almost same as intent_out_buf.
     c_vector_result_buf=dict(
         buf_args=["context"],
         #                    cxx_local_var="pointer",
@@ -1544,14 +1675,8 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))",
         ],
     ),
-    f_vector_result_allocatable=dict(   # same as intent_out
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        post_call=[
-            "allocate({f_var}({c_var_context}%size))",
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))",
-        ],
+    f_vector_result_allocatable=dict(
+        alias="f_vector_out_allocatable",
     ),
 
     # Return a C_capsule_data_type
@@ -1573,20 +1698,9 @@ fc_statements = dict(
         ],
     ),
 
-    c_struct_in=dict(
+    c_struct=dict(
+        # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
-        cxx_local_var="pointer",
-        cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-        ],
-    ),
-    c_struct_out=dict(
-        cxx_local_var="pointer",
-        cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-        ],
-    ),
-    c_struct_inout=dict(
         cxx_local_var="pointer",
         cxx_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
@@ -1600,38 +1714,3 @@ fc_statements = dict(
         ],
     ),
 )
-
-statements_local = dict(
-    # Function has a result with deref(allocatable).
-    #
-    #    C wrapper:
-    #       Add context argument for result
-    #       Fill in values to describe array.
-    #
-    #    Fortran:
-    #        c_step1(context)
-    #        allocate(Fout(len))
-    #        c_step2(context, Fout, size(len))
-    c_native_pointer_result_buf=dict(
-        buf_args=["context"],
-        c_helper="array_context copy_array",
-        post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var};",
-            "{c_var_context}->len = sizeof({cxx_type});",
-            "{c_var_context}->size = *{c_var_dimension};",
-        ],
-    ),
-    f_native_pointer_result_allocatable=dict(
-        buf_args=["context"],
-        f_helper="array_context copy_array_{cxx_type}",
-        post_call=[
-            # XXX - allocate scalar
-            "allocate({f_var}({c_var_dimension}))",
-            "call SHROUD_copy_array_{cxx_type}"
-            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
-        ],
-    ),
-)
-                

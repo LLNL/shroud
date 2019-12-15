@@ -212,11 +212,14 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_val": "static_cast<tutorial::Class1 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_shadow_pointer_in_",
+                                    "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
-                                    "f_var": "arg"
+                                    "f_var": "arg",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -325,11 +328,14 @@
                                     "cxx_type": "tutorial::Class3",
                                     "cxx_val": "static_cast<tutorial::Class3 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_shadow_pointer_in_",
+                                    "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
-                                    "f_var": "arg"
+                                    "f_var": "arg",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,

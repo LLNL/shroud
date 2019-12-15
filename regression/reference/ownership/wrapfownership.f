@@ -325,9 +325,9 @@ contains
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_alloc
         SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
-        ! splicer end function.return_int_ptr_dim_alloc
         allocate(SHT_rv(len))
         call SHROUD_copy_array_int(DSHC_rv, SHT_rv, size(SHT_rv, kind=C_SIZE_T))
+        ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc
 
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)

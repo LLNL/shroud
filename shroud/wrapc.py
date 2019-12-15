@@ -743,13 +743,15 @@ class Wrapc(util.WrapperMixin):
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
+            result_blk = None
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
+            spointer = "pointer" if ast.is_indirect() else "scalar"
             result_blk = typemap.lookup_fc_stmts(
-                ["c", result_typemap.sgroup, "result", ast.stmts_suffix])
+                ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -856,24 +858,13 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
-        if ast.is_indirect():
-            spointer = "pointer"
-        else:
-            spointer = ""
-
-        iblk = typemap.lookup_stmts(
-            typemap.statements_local,
-            ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
-        if iblk:
+        if result_blk:
             need_wrapper = self.build_proto_list(
                 fmt_result,
                 ast,
-                iblk.get("buf_args", []),
+                result_blk.get("buf_args", []),
                 proto_list,
                 need_wrapper,
-            )
-            need_wrapper = self.add_code_from_statements(
-                fmt_result, iblk, pre_call, post_call, need_wrapper
             )
 
         if is_shadow_scalar:
@@ -954,9 +945,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["c", sgroup, "result",
-                         generated_suffix, result_return_pointer_as,
-                         "pointer" if CXX_ast.is_indirect() else "scalar",
+                spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
+                stmts = [
+                    "c", sgroup, spointer, "result",
+                    generated_suffix, result_return_pointer_as,
                 ]
                 need_wrapper = True
                 if is_pointer:
@@ -1015,9 +1007,15 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
+                spointer = "pointer" if arg.is_indirect() else "scalar"
+                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_fc_stmts(stmts)
+
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = "_".join(stmts)
+            if intent_blk:
+                fmt_arg.stmt1 = intent_blk["key"]
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,

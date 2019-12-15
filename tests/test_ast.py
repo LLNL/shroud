@@ -153,6 +153,8 @@ class Namespace(unittest.TestCase):
 
 class CheckAst(unittest.TestCase):
     #    maxDiff = None
+    def setUp(self):
+        typemap.initialize()
 
     def test_a_library1(self):
         """Test LibraryNode"""
@@ -337,7 +339,7 @@ class CheckAst(unittest.TestCase):
 
     def test_d_generate1(self):
         """char bufferify
-        Geneate an additional function with len and len_trim attributes.
+        Generate an additional function with len and len_trim attributes.
         """
         library = ast.LibraryNode()
         self.assertEqual(len(library.functions), 0)
@@ -345,6 +347,11 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.functions), 1)
 
         generate.generate_functions(library, None)
+#        import json
+#        from shroud import todict
+#        print(json.dumps(todict.to_dict(library),
+#                         indent=4, sort_keys=True, separators=(',', ': ')))
+        
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(
             library.functions[0].declgen,
@@ -354,10 +361,6 @@ class CheckAst(unittest.TestCase):
             library.functions[1].declgen,
             "void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))",
         )
-
-    #        import json
-    #        from shroud import util
-    #        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
 
     def test_function_template1(self):
         """Test function templates.
@@ -434,3 +437,11 @@ class CheckAst(unittest.TestCase):
         self.assertTrue(
             "Declaration is not an enumeration" in str(context.exception)
         )
+
+if __name__ == "__main__":
+    # Run a single test.
+    suite = unittest.TestSuite()
+    suite.addTest(CheckAst("test_d_generate1"))
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
+        

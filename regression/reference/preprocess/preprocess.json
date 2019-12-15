@@ -176,11 +176,13 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "i",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_native_scalar_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "i",
-                                    "f_var": "i"
+                                    "f_var": "i",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -353,11 +355,13 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_native_scalar_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
-                                    "f_var": "flag"
+                                    "f_var": "flag",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtpy": {
                                     "c_const": "",

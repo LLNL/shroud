@@ -176,6 +176,11 @@ The *C_code* field has a default value of::
     }
 
 
+alias
+^^^^^
+
+Names another node which will be used for its contents.
+
 buf_args
 ^^^^^^^^^
 

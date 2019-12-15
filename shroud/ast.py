@@ -345,6 +345,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             create_std_namespace(self)  # add 'std::' to library
             self.using_directive("std")
 
+        typemap.update_typemap_for_language(self.language)
+
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self
@@ -621,6 +623,16 @@ class LibraryNode(AstNode, NamespaceMixin):
             template_suffix="",  # assume no suffix
             namespace_scope="",
         )
+
+        if False:
+            # Add default values to format to aid debugging.
+            # Avoids exception from wformat for non-existent fields.
+            fmt_library.update(dict(
+                c_var_context="XXXc_var_context",
+                c_var_dimension="XXXc_var_dimension",
+                cxx_type="XXXcxx_type",
+                f_var="XXXf_var",
+            ))
 
         fmt_library.F_filename_suffix = "f"
 

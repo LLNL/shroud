@@ -35,11 +35,13 @@
                                     "cxx_type": "MPI_Comm",
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_unknown_scalar_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
-                                    "f_var": "comm"
+                                    "f_var": "comm",
+                                    "stmt0": "f_unknown_scalar_in_"
                                 }
                             }
                         },
@@ -114,11 +116,14 @@
                                     "cxx_type": "three::Class1",
                                     "cxx_val": "static_cast<three::Class1 *>(c2->addr)",
                                     "cxx_var": "SHCXX_c2",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_shadow_pointer_in_",
+                                    "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
                                     "c_var": "c2",
-                                    "f_var": "c2"
+                                    "f_var": "c2",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 }
                             }
                         },
@@ -420,11 +425,13 @@
                                             "cxx_member": ".",
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
-                                            "idtor": "0"
+                                            "idtor": "0",
+                                            "stmt0": "c_native_scalar_in_"
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",
-                                            "f_var": "arg1"
+                                            "f_var": "arg1",
+                                            "stmt0": "f_native_scalar_in_"
                                         }
                                     }
                                 },
