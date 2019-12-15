@@ -970,7 +970,7 @@ rv = .false.
             spointer = "scalar"
 
         result_blk = typemap.lookup_fc_stmts(
-            ["c", result_typemap.sgroup, "result", node.generated_suffix, spointer])
+            ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
         if result_blk:
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1349,9 +1349,9 @@ rv = .false.
         if C_node.ast.is_indirect():
             spointer = "pointer"
         else:
-            spointer = ""
+            spointer = "scalar"
         result_blk = typemap.lookup_fc_stmts(
-            ["f", result_typemap.sgroup, "result", result_deref_clause, spointer])
+            ["f", result_typemap.sgroup, spointer, "result", result_deref_clause])
         if result_blk:
             whelpers.add_copy_array_helper(fmt_result, ast)
             need_wrapper = self.build_arg_list_impl(

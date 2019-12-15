@@ -1196,7 +1196,7 @@ fc_statements = dict(
     #        c_step1(context)
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
-    c_native_result_buf_pointer=dict(
+    c_native_pointer_result_buf=dict(
         buf_args=["context"],
         c_helper="array_context copy_array",
         post_call=[
@@ -1207,7 +1207,7 @@ fc_statements = dict(
             "{c_var_context}->size = *{c_var_dimension};",
         ],
     ),
-    f_native_result_allocatable_pointer=dict(
+    f_native_pointer_result_allocatable=dict(
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
         post_call=[

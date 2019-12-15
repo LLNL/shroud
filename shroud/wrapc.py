@@ -752,10 +752,10 @@ class Wrapc(util.WrapperMixin):
             if ast.is_indirect():
                 spointer = "pointer"
             else:
-                spointer = ""
+                spointer = "scalar"
 
             result_blk = typemap.lookup_fc_stmts(
-                ["c", result_typemap.sgroup, "result", generated_suffix, spointer])
+                ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
