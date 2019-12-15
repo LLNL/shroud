@@ -107,8 +107,6 @@ extern "C" {
 #endif
 /* *INDENT-ON* */"""
 
-num_union_helpers = 0
-
 
 def add_external_helpers(fmtin, literalinclude):
     """Create helper which have generated names.
