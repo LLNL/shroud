@@ -949,9 +949,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs.get("deref", "")
-                stmts = ["c", sgroup, "result",
-                         generated_suffix, result_return_pointer_as,
-                         "pointer" if CXX_ast.is_indirect() else "scalar",
+                spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
+                stmts = [
+                    "c", sgroup, spointer, "result",
+                    generated_suffix, result_return_pointer_as,
                 ]
                 need_wrapper = True
                 if is_pointer:
@@ -1013,6 +1014,9 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_fc_stmts(stmts)
+#            fmt_arg.stmt0 = "_".join(stmts)
+#            if intent_blk:
+#                fmt_arg.stmt1 = intent_blk["key"]
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,

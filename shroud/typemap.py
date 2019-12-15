@@ -26,8 +26,10 @@ except:
     def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
         return name.replace("::","_").translate(flat_trantab)
 
-# The tree of c and fortran statements
+# The tree of c and fortran statements.
 cf_tree = {}
+# Always return the same empty statements.
+empty_stmts = {}
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -989,7 +991,6 @@ def lookup_c_statements(arg):
         specialize.append(arg_typemap.sgroup)
     return arg_typemap, specialize
 
-empty_stmts = {}
 def lookup_stmts(stmts, path):
     """
     Lookup path in stmts.
@@ -1093,6 +1094,10 @@ def update_stmt_tree(stmts, tree):
     impossible to have an intermediate element with that name (since
     they're split on underscore).
 
+    Implement "alias" field.
+
+    Add "key" to node and "_key" to tree to aid debugging.
+
     stmts = {"c_native_in":1,
              "c_native_out":2,
              "c_native_pointer_out":3,
@@ -1115,9 +1120,15 @@ def update_stmt_tree(stmts, tree):
     for key, node in stmts.items():
         step = tree
         steps = key.split("_")
+        label = []
         for part in steps:
             step = step.setdefault(part, {})
-        step['_node'] = node
+            label.append(part)
+            step["_key"] = "_".join(label)
+        if "alias" in node:
+            step['_node'] = stmts[node["alias"]]
+        else:
+            step['_node'] = node
         node["key"] = key  # useful for debugging
 
 
@@ -1147,9 +1158,10 @@ def lookup_stmts_tree(tree, path):
         if not part:
             # skip empty parts
             continue
-        if part in step:
-            step = step[part]
-            found = step.get("_node", found)
+        if part not in step:
+            continue
+        step = step[part]
+        found = step.get("_node", found)  # check if path ends here
     return found
 
 
@@ -1387,10 +1399,20 @@ fc_statements = dict(
             "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
         ],
     ),
+
+    # Since 'c_string_scalar_result_buf_allocatable' exists,
+    # must set an alias for c_string_scalar.
+    # No need to allocate a local copy since the string is copied
+    # into a Fortran variable before the string is deleted.
+    c_string_scalar_result_buf=dict(
+        alias="c_string_result_buf",
+    ),
+    
     # std::string function()
     # Must allocate the std::string then assign to it via cxx_rv_decl.
     # This allows the std::string to outlast the function return.
-    c_string_result_buf_allocatable_scalar=dict(
+    # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
+    c_string_scalar_result_buf_allocatable=dict(
         # pass address of string and length back to Fortran
         buf_args=["context"],
         #                    cxx_local_var="pointer",
@@ -1709,4 +1731,3 @@ fc_statements = dict(
         ],
     ),
 )
-                
