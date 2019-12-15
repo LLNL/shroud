@@ -36,7 +36,7 @@
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
-                                    "stmt0": "c_unknown_in_"
+                                    "stmt0": "c_unknown_scalar_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
@@ -116,7 +116,7 @@
                                     "cxx_val": "static_cast<three::Class1 *>(c2->addr)",
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
-                                    "stmt0": "c_shadow_in_",
+                                    "stmt0": "c_shadow_pointer_in_",
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
@@ -424,7 +424,7 @@
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
                                             "idtor": "0",
-                                            "stmt0": "c_native_in_"
+                                            "stmt0": "c_native_scalar_in_"
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",

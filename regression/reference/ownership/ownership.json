@@ -538,7 +538,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         }
                     }
                 },
@@ -631,7 +631,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -775,7 +775,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -916,7 +916,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_buf"
+                            "stmt0": "c_native_pointer_out_buf"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1023,7 +1023,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1166,7 +1166,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         }
                     }
                 },
@@ -1261,7 +1261,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1406,7 +1406,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1534,7 +1534,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
-                            "stmt0": "c_native_out_"
+                            "stmt0": "c_native_pointer_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -2249,7 +2249,7 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "idtor": "0",
-                            "stmt0": "c_native_in_"
+                            "stmt0": "c_native_scalar_in_"
                         },
                         "fmtf": {
                             "c_var": "flag",
@@ -2425,7 +2425,7 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "idtor": "0",
-                            "stmt0": "c_native_in_"
+                            "stmt0": "c_native_scalar_in_"
                         },
                         "fmtf": {
                             "c_var": "flag",

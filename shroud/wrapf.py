@@ -999,11 +999,12 @@ rv = .false.
                 args_all_in = False
             deref_clause = attrs.get("deref", "")
 
+            spointer = "pointer" if arg.is_indirect() else "scalar"
             if attrs.get("_is_result", False):
-                c_stmts = ["c", sgroup, "result",
+                c_stmts = ["c", sgroup, spointer, "result",
                            generated_suffix, deref_clause]
             else:
-                c_stmts = ["c", sgroup, intent,
+                c_stmts = ["c", sgroup, spointer, intent,
                            arg.stmts_suffix, deref_clause]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
@@ -1306,8 +1307,9 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
+        spointer = "pointer" if ast.is_indirect() else "scalar"
         if typemap.lookup_fc_stmts(
-                ["f", result_typemap.sgroup, "result", result_deref_clause]
+                ["f", result_typemap.sgroup, spointer, "result", result_deref_clause]
         ).get("need_wrapper", False):
             need_wrapper = True
 
@@ -1346,10 +1348,7 @@ rv = .false.
                 )
 
         # Function result.
-        if C_node.ast.is_indirect():
-            spointer = "pointer"
-        else:
-            spointer = "scalar"
+        spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
         result_blk = typemap.lookup_fc_stmts(
             ["f", result_typemap.sgroup, spointer, "result", result_deref_clause])
         if result_blk:
@@ -1401,12 +1400,13 @@ rv = .false.
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
+            spointer = "pointer" if c_arg.is_indirect() else "scalar"
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = ["c", sgroup, "result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["f", sgroup, "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", sgroup, "result", deref_clause]  # + generated_suffix
+                c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", sgroup, spointer, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1414,8 +1414,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["c", sgroup, intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["f", sgroup, intent, deref_clause]  # e.g. allocatable
+                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix]  # e.g. buf
+                f_stmts = ["f", sgroup, spointer, intent, deref_clause]  # e.g. allocatable
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

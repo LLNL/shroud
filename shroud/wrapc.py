@@ -749,11 +749,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            if ast.is_indirect():
-                spointer = "pointer"
-            else:
-                spointer = "scalar"
-
+            spointer = "pointer" if ast.is_indirect() else "scalar"
             result_blk = typemap.lookup_fc_stmts(
                 ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
 
@@ -1011,7 +1007,8 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
+                spointer = "pointer" if arg.is_indirect() else "scalar"
+                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_fc_stmts(stmts)
 
