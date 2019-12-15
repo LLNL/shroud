@@ -218,7 +218,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
-                                    "f_var": "arg"
+                                    "f_var": "arg",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -333,7 +334,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
-                                    "f_var": "arg"
+                                    "f_var": "arg",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,

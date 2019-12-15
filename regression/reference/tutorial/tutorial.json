@@ -215,7 +215,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
-                                    "f_var": "flag"
+                                    "f_var": "flag",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -496,7 +497,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "obj2",
-                                    "f_var": "obj2"
+                                    "f_var": "obj2",
+                                    "stmt0": "f_shadow_pointer_in_"
                                 },
                                 "fmtpy": {
                                     "PyObject": "PY_Class1",
@@ -833,7 +835,9 @@
                                 },
                                 "fmtf": {
                                     "c_var": "SH_flag",
-                                    "f_var": "flag"
+                                    "f_var": "flag",
+                                    "stmt0": "f_bool_scalar_in_",
+                                    "stmt1": "f_bool_in"
                                 }
                             },
                             "name": {
@@ -855,7 +859,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "name",
-                                    "f_var": "name"
+                                    "f_var": "name",
+                                    "stmt0": "f_string_pointer_in_"
                                 }
                             }
                         },
@@ -1067,7 +1072,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
-                                    "f_var": "arg"
+                                    "f_var": "arg",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -1341,7 +1347,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "val",
-                                    "f_var": "val"
+                                    "f_var": "val",
+                                    "stmt0": "f_native_scalar_in_"
                                 }
                             }
                         },
@@ -1827,7 +1834,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1874,7 +1882,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2198,7 +2207,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     },
                     "arg1": {
@@ -2220,7 +2231,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_in_"
                         }
                     },
                     "arg2": {
@@ -2242,7 +2254,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_string_pointer_in_"
                         }
                     }
                 },
@@ -2452,7 +2465,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -2564,7 +2578,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2611,7 +2626,9 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_bool_scalar_in_",
+                            "stmt1": "f_bool_in"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2896,7 +2913,8 @@
                         },
                         "fmtf": {
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_var": "name",
+                            "stmt0": "f_string_pointer_in_"
                         }
                     }
                 },
@@ -2979,7 +2997,8 @@
                         },
                         "fmtf": {
                             "c_var": "indx",
-                            "f_var": "indx"
+                            "f_var": "indx",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3160,7 +3179,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3301,7 +3321,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -4126,7 +4147,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "name": {
@@ -4148,7 +4170,8 @@
                         },
                         "fmtf": {
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_var": "name",
+                            "stmt0": "f_string_pointer_in_"
                         }
                     }
                 },
@@ -4327,7 +4350,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -4432,7 +4456,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "offset": {
@@ -4452,7 +4477,8 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
-                            "f_var": "offset"
+                            "f_var": "offset",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -4576,7 +4602,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -4623,7 +4650,8 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
-                            "f_var": "offset"
+                            "f_var": "offset",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -4670,7 +4698,8 @@
                         },
                         "fmtf": {
                             "c_var": "stride",
-                            "f_var": "stride"
+                            "f_var": "stride",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -4852,7 +4881,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "type": {
@@ -4872,7 +4902,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -4986,7 +5017,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "offset": {
@@ -5006,7 +5038,8 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
-                            "f_var": "offset"
+                            "f_var": "offset",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "type": {
@@ -5026,7 +5059,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -5159,7 +5193,8 @@
                         },
                         "fmtf": {
                             "c_var": "num",
-                            "f_var": "num"
+                            "f_var": "num",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -5206,7 +5241,8 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
-                            "f_var": "offset"
+                            "f_var": "offset",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -5253,7 +5289,8 @@
                         },
                         "fmtf": {
                             "c_var": "stride",
-                            "f_var": "stride"
+                            "f_var": "stride",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 4,
@@ -5300,7 +5337,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5489,7 +5527,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5631,7 +5670,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5778,7 +5818,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5923,7 +5964,8 @@
                         },
                         "fmtf": {
                             "c_var": "max",
-                            "f_var": "max"
+                            "f_var": "max",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -5959,7 +6001,8 @@
                         },
                         "fmtf": {
                             "c_var": "min",
-                            "f_var": "min"
+                            "f_var": "min",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6082,7 +6125,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -6230,7 +6274,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_shadow_scalar_in_"
                         },
                         "fmtpy": {
                             "PyObject": "PY_Class1",
@@ -6335,7 +6380,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_shadow_pointer_in_"
                         },
                         "fmtpy": {
                             "PyObject": "PY_Class1",
@@ -6613,7 +6659,8 @@
                         },
                         "fmtf": {
                             "c_var": "flag",
-                            "f_var": "flag"
+                            "f_var": "flag",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -6716,7 +6763,8 @@
                         },
                         "fmtf": {
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_var": "in",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "incr": {
@@ -6869,7 +6917,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -7139,7 +7188,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },

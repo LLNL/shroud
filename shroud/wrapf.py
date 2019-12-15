@@ -1499,6 +1499,11 @@ rv = .false.
 
             f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
 
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = "_".join(f_stmts)
+            if f_intent_blk:
+                fmt_arg.stmt1 = f_intent_blk["key"]
+
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args

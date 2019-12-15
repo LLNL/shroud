@@ -172,7 +172,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -405,7 +406,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "arg2": {
@@ -425,7 +427,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -752,7 +755,8 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
-                            "f_var": "addr"
+                            "f_var": "addr",
+                            "stmt0": "f_unknown_pointer_in_"
                         }
                     },
                     "size": {
@@ -1182,7 +1186,8 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
-                            "f_var": "addr"
+                            "f_var": "addr",
+                            "stmt0": "f_unknown_pointer_out_"
                         }
                     },
                     "size": {
@@ -1202,7 +1207,8 @@
                         },
                         "fmtf": {
                             "c_var": "size",
-                            "f_var": "size"
+                            "f_var": "size",
+                            "stmt0": "f_native_pointer_out_"
                         }
                     },
                     "type": {
@@ -1222,7 +1228,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_pointer_out_"
                         }
                     }
                 },
@@ -1339,7 +1346,8 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
-                            "f_var": "addr"
+                            "f_var": "addr",
+                            "stmt0": "f_unknown_pointer_out_"
                         }
                     },
                     "size": {
@@ -1359,7 +1367,8 @@
                         },
                         "fmtf": {
                             "c_var": "size",
-                            "f_var": "size"
+                            "f_var": "size",
+                            "stmt0": "f_native_pointer_out_"
                         }
                     },
                     "type": {
@@ -1379,7 +1388,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_pointer_out_"
                         }
                     }
                 },

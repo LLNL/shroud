@@ -188,7 +188,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },

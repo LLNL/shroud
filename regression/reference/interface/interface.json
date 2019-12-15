@@ -162,7 +162,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     },
                     "arg2": {
@@ -182,7 +183,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },

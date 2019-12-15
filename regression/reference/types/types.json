@@ -145,7 +145,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -266,7 +267,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -387,7 +389,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -508,7 +511,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -633,7 +637,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -756,7 +761,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -879,7 +885,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1006,7 +1013,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1127,7 +1135,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1250,7 +1259,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1373,7 +1383,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1496,7 +1507,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1623,7 +1635,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1748,7 +1761,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1869,7 +1883,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1990,7 +2005,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2111,7 +2127,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2232,7 +2249,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2353,7 +2371,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2474,7 +2493,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2595,7 +2615,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2716,7 +2737,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2837,7 +2859,9 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg",
-                            "f_var": "arg"
+                            "f_var": "arg",
+                            "stmt0": "f_bool_scalar_in_",
+                            "stmt1": "f_bool_in"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2961,7 +2985,8 @@
                         },
                         "fmtf": {
                             "c_var": "flag",
-                            "f_var": "flag"
+                            "f_var": "flag",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",

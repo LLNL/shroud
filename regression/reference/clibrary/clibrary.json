@@ -177,7 +177,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -213,7 +214,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -351,7 +353,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_pointer_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -387,7 +390,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -503,7 +507,9 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_bool_scalar_in_",
+                            "stmt1": "f_bool_in"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -541,7 +547,9 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_bool_pointer_out_",
+                            "stmt1": "f_bool_out"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -578,7 +586,9 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg3",
-                            "f_var": "arg3"
+                            "f_var": "arg3",
+                            "stmt0": "f_bool_pointer_inout_",
+                            "stmt1": "f_bool_inout"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -901,7 +911,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_char_pointer_result_"
                         }
                     },
                     "arg1": {
@@ -1278,7 +1289,8 @@
                         },
                         "fmtf": {
                             "c_var": "name1",
-                            "f_var": "name1"
+                            "f_var": "name1",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -1518,7 +1530,8 @@
                         },
                         "fmtf": {
                             "c_var": "name1",
-                            "f_var": "name1"
+                            "f_var": "name1",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     },
                     "name2": {
@@ -1540,7 +1553,8 @@
                         },
                         "fmtf": {
                             "c_var": "name2",
-                            "f_var": "name2"
+                            "f_var": "name2",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -1818,7 +1832,8 @@
                         },
                         "fmtf": {
                             "c_var": "text",
-                            "f_var": "text"
+                            "f_var": "text",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -2796,7 +2811,8 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
-                            "f_var": "outbuf"
+                            "f_var": "outbuf",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -2884,7 +2900,8 @@
                         },
                         "fmtf": {
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_var": "in",
+                            "stmt0": "f_unknown_pointer_in_"
                         }
                     },
                     "out": {
@@ -2904,7 +2921,8 @@
                         },
                         "fmtf": {
                             "c_var": "out",
-                            "f_var": "out"
+                            "f_var": "out",
+                            "stmt0": "f_unknown_pointer_out_"
                         }
                     }
                 },
@@ -3363,7 +3381,8 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
-                            "f_var": "outbuf"
+                            "f_var": "outbuf",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -3502,7 +3521,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -3666,7 +3686,8 @@
                         },
                         "fmtf": {
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_var": "type",
+                            "stmt0": "f_native_scalar_in_"
                         }
                     }
                 },
@@ -4059,7 +4080,8 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
-                            "f_var": "outbuf"
+                            "f_var": "outbuf",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     },
                     "type": {

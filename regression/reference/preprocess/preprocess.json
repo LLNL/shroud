@@ -181,7 +181,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "i",
-                                    "f_var": "i"
+                                    "f_var": "i",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -359,7 +360,8 @@
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
-                                    "f_var": "flag"
+                                    "f_var": "flag",
+                                    "stmt0": "f_native_scalar_in_"
                                 },
                                 "fmtpy": {
                                     "c_const": "",

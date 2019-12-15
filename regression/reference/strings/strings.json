@@ -144,7 +144,8 @@
                         },
                         "fmtf": {
                             "c_var": "status",
-                            "f_var": "status"
+                            "f_var": "status",
+                            "stmt0": "f_schar_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -313,7 +314,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_schar_pointer_result_"
                         }
                     }
                 },
@@ -564,7 +566,8 @@
                         },
                         "fmtf": {
                             "c_var": "dest",
-                            "f_var": "dest"
+                            "f_var": "dest",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     },
                     "src": {
@@ -792,7 +795,8 @@
                         },
                         "fmtf": {
                             "c_var": "s",
-                            "f_var": "s"
+                            "f_var": "s",
+                            "stmt0": "f_char_pointer_inout_"
                         }
                     }
                 },
@@ -966,7 +970,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_char_pointer_result_allocatable",
+                            "stmt1": "f_char_result_allocatable"
                         }
                     }
                 },
@@ -1152,7 +1158,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_char_pointer_result_"
                         }
                     }
                 },
@@ -1328,7 +1335,8 @@
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_var": "output",
+                            "stmt0": "f_char_pointer_result_"
                         }
                     }
                 },
@@ -1556,7 +1564,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -1719,7 +1729,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -1871,7 +1882,8 @@
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_var": "output",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -2090,7 +2102,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -2273,7 +2287,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -2462,7 +2478,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -2641,7 +2658,8 @@
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_var": "output",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -2892,7 +2910,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -3072,7 +3091,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -3255,7 +3276,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_"
                         }
                     }
                 },
@@ -3440,7 +3462,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -3622,7 +3646,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -3810,7 +3836,9 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable"
                         }
                     }
                 },
@@ -4014,7 +4042,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_in_"
                         }
                     }
                 },
@@ -4201,7 +4230,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_out_"
                         }
                     }
                 },
@@ -4392,7 +4422,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_inout_"
                         }
                     }
                 },
@@ -4582,7 +4613,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_inout_"
                         }
                     }
                 },
@@ -5003,7 +5035,8 @@
                         },
                         "fmtf": {
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_var": "name",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     }
                 },
@@ -5085,7 +5118,8 @@
                         },
                         "fmtf": {
                             "c_var": "status",
-                            "f_var": "status"
+                            "f_var": "status",
+                            "stmt0": "f_schar_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -5260,7 +5294,8 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_schar_pointer_result_"
                         }
                     }
                 },
@@ -5479,7 +5514,8 @@
                         },
                         "fmtf": {
                             "c_var": "dest",
-                            "f_var": "dest"
+                            "f_var": "dest",
+                            "stmt0": "f_char_pointer_out_"
                         }
                     },
                     "src": {

@@ -144,7 +144,8 @@
                         },
                         "fmtf": {
                             "c_var": "argin",
-                            "f_var": "argin"
+                            "f_var": "argin",
+                            "stmt0": "f_native_scalar_in_"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -180,7 +181,8 @@
                         },
                         "fmtf": {
                             "c_var": "arginout",
-                            "f_var": "arginout"
+                            "f_var": "arginout",
+                            "stmt0": "f_native_pointer_inout_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -216,7 +218,8 @@
                         },
                         "fmtf": {
                             "c_var": "argout",
-                            "f_var": "argout"
+                            "f_var": "argout",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -344,7 +347,8 @@
                         },
                         "fmtf": {
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_var": "in",
+                            "stmt0": "f_native_pointer_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -382,7 +386,8 @@
                         "fmtf": {
                             "c_var": "out",
                             "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)"
+                            "mold": "lbound(in,1):ubound(in,1)",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -560,7 +565,8 @@
                         },
                         "fmtf": {
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_var": "in",
+                            "stmt0": "f_native_pointer_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -598,7 +604,8 @@
                         "fmtf": {
                             "c_var": "out",
                             "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)"
+                            "mold": "lbound(in,1):ubound(in,1)",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -776,7 +783,8 @@
                         },
                         "fmtf": {
                             "c_var": "nvalues",
-                            "f_var": "nvalues"
+                            "f_var": "nvalues",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -812,7 +820,8 @@
                         },
                         "fmtf": {
                             "c_var": "values",
-                            "f_var": "values"
+                            "f_var": "values",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -935,7 +944,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_var": "arg1",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -975,7 +985,8 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_var": "arg2",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1137,7 +1148,8 @@
                         },
                         "fmtf": {
                             "c_var": "result",
-                            "f_var": "result"
+                            "f_var": "result",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1173,7 +1185,8 @@
                         },
                         "fmtf": {
                             "c_var": "values",
-                            "f_var": "values"
+                            "f_var": "values",
+                            "stmt0": "f_native_pointer_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1307,7 +1320,8 @@
                         },
                         "fmtf": {
                             "c_var": "out",
-                            "f_var": "out"
+                            "f_var": "out",
+                            "stmt0": "f_native_pointer_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1411,7 +1425,8 @@
                         },
                         "fmtf": {
                             "c_var": "array",
-                            "f_var": "array"
+                            "f_var": "array",
+                            "stmt0": "f_native_pointer_inout_"
                         },
                         "fmtpy": {
                             "c_const": "",
