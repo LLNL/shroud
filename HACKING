@@ -34,6 +34,11 @@ Running a single test
 
     make do-test test-args=tutorial
 
+
+Running a single Python test
+
+    python -m unittest test_ast.CheckAst.test_d_generate1
+
 Test generated code
 -------------------
 

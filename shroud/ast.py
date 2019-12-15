@@ -345,6 +345,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             create_std_namespace(self)  # add 'std::' to library
             self.using_directive("std")
 
+        typemap.update_typemap_for_language(self.language)
+
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self
