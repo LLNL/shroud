@@ -1704,20 +1704,9 @@ fc_statements = dict(
         ],
     ),
 
-    c_struct_in=dict(
+    c_struct=dict(
+        # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
-        cxx_local_var="pointer",
-        cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-        ],
-    ),
-    c_struct_out=dict(
-        cxx_local_var="pointer",
-        cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
-        ],
-    ),
-    c_struct_inout=dict(
         cxx_local_var="pointer",
         cxx_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",

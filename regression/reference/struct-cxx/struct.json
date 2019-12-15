@@ -330,7 +330,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_struct_scalar_in_",
-                            "stmt1": "c_struct_in"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -460,7 +460,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_in_",
-                            "stmt1": "c_struct_in"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -627,7 +627,7 @@
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_in_",
-                            "stmt1": "c_struct_in"
+                            "stmt1": "c_struct"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -799,7 +799,7 @@
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_in_buf",
-                            "stmt1": "c_struct_in"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "s1",
@@ -918,7 +918,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_in_",
-                            "stmt1": "c_struct_in"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1019,7 +1019,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_out_",
-                            "stmt1": "c_struct_out"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1223,7 +1223,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_struct_pointer_inout_",
-                            "stmt1": "c_struct_inout"
+                            "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "c_var": "arg",
