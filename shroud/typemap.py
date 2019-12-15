@@ -26,6 +26,9 @@ except:
     def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
         return name.replace("::","_").translate(flat_trantab)
 
+# The tree of c and fortran statements
+cf_tree = {}
+
 class Typemap(object):
     """Collect fields for an argument.
     This used to be a dict but a class has better access semantics:
@@ -733,8 +736,13 @@ def initialize():
     return def_types
 
 def update_typemap_for_language(language):
-    update_for_language(fc_statements, language)
+    """Preprocess statements for lookup.
 
+    Update statements for c or c++.
+    Fill in cf_tree.
+    """
+    update_for_language(fc_statements, language)
+    update_stmt_tree(fc_statements, cf_tree)
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
@@ -1009,7 +1017,7 @@ def lookup_stmts(stmts, path):
     return empty_stmts
         
 def lookup_fc_stmts(path):
-    return lookup_stmts(fc_statements, path)
+    return lookup_stmts_tree(cf_tree, path)
         
 def compute_name(path, char="_"):
     """
@@ -1069,8 +1077,6 @@ def update_for_language(stmts, lang):
     For lang==c,
       foo_bar["decl"] = foo_bar["c_decl"]
     """
-    for key, value in stmts.items():
-        value["key"] = key  # useful for debugging
     for item in stmts.values():
         for clause in ["decl", "post_parse", "pre_call", "post_call",
                        "cleanup", "fail"]:
@@ -1079,6 +1085,75 @@ def update_for_language(stmts, lang):
                 # XXX - maybe make sure clause does not already exist.
                 item[clause] = item[specific]
 
+
+def update_stmt_tree(stmts, tree):
+    """Update tree by adding stmts.  Each key in stmts is split by
+    underscore then inserted into tree to form nested dictionaries to
+    the values from stmts.  The end key is named _node, since it is
+    impossible to have an intermediate element with that name (since
+    they're split on underscore).
+
+    stmts = {"c_native_in":1,
+             "c_native_out":2,
+             "c_native_pointer_out":3,
+             "c_string_in":4}
+    tree = {
+      "c": {
+         "native": {
+           "in": {"_node":1},
+           "out":{"_node":2},
+           "pointer":{
+             "out":{"_node":3},
+           },
+         },
+         "string":{
+           "in": {"_node":4},
+         },
+      },
+    }
+    """
+    for key, node in stmts.items():
+        step = tree
+        steps = key.split("_")
+        for part in steps:
+            step = step.setdefault(part, {})
+        step['_node'] = node
+        node["key"] = key  # useful for debugging
+
+
+def lookup_stmts_tree(tree, path):
+    """
+    Lookup path in statements tree.
+    Look for longest path which matches.
+    Used to find specific cases first, then fall back to general.
+    ex path = ['result', 'allocatable']
+         Finds 'result_allocatable' if it exists, else 'result'.
+    If not found, return an empty dictionary.
+
+    path typically consists of:
+      in, out, inout, result
+      generated_clause - buf
+      deref - allocatable
+
+    Args:
+        tree  - dictionary of nested dictionaries
+        path  - list of name components.
+                Blank entries are ignored.
+    """
+    found = empty_stmts
+    work = []
+    step = tree
+    for part in path:
+        if not part:
+            # skip empty parts
+            continue
+        if part in step:
+            step = step[part]
+            found = step.get("_node", found)
+    return found
+
+
+                
 # language   "c"    
 # sgroup     "native", "string", "char"
 # spointer   "pointer" ""
