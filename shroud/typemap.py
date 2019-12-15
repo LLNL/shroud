@@ -1129,7 +1129,7 @@ def update_stmt_tree(stmts, tree):
             step['_node'] = stmts[node["alias"]]
         else:
             step['_node'] = node
-        node["key"] = key  # useful for debugging
+        node["key"] = key  # useful for debugging/testing
 
 
 def lookup_stmts_tree(tree, path):
