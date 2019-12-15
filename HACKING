@@ -91,6 +91,9 @@ debugging
 ---------
 
 ```
+import yaml
+print(yaml.dump(cf_tree, default_flow_style=False))
+
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint( dict or tuple )
