@@ -1069,6 +1069,8 @@ def update_for_language(stmts, lang):
     For lang==c,
       foo_bar["decl"] = foo_bar["c_decl"]
     """
+    for key, value in stmts.items():
+        value["key"] = key  # useful for debugging
     for item in stmts.values():
         for clause in ["decl", "post_parse", "pre_call", "post_call",
                        "cleanup", "fail"]:
@@ -1107,6 +1109,38 @@ fc_statements = dict(
     f_bool_result=dict(
         # The wrapper is needed to convert bool to logical
         need_wrapper=True
+    ),
+
+    # Function has a result with deref(allocatable).
+    #
+    #    C wrapper:
+    #       Add context argument for result
+    #       Fill in values to describe array.
+    #
+    #    Fortran:
+    #        c_step1(context)
+    #        allocate(Fout(len))
+    #        c_step2(context, Fout, size(len))
+    c_native_result_buf_pointer=dict(
+        buf_args=["context"],
+        c_helper="array_context copy_array",
+        post_call=[
+            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.cvoidp = {cxx_var};",
+            "{c_var_context}->len = sizeof({cxx_type});",
+            "{c_var_context}->size = *{c_var_dimension};",
+        ],
+    ),
+    f_native_result_allocatable_pointer=dict(
+        buf_args=["context"],
+        f_helper="array_context copy_array_{cxx_type}",
+        post_call=[
+            # XXX - allocate scalar
+            "allocate({f_var}({c_var_dimension}))",
+            "call SHROUD_copy_array_{cxx_type}"
+            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+        ],
     ),
 
     c_char_in_buf=dict(
@@ -1597,40 +1631,6 @@ fc_statements = dict(
         c_local_var="pointer",
         cxx_post_call=[
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
-        ],
-    ),
-)
-
-statements_local = dict(
-    # Function has a result with deref(allocatable).
-    #
-    #    C wrapper:
-    #       Add context argument for result
-    #       Fill in values to describe array.
-    #
-    #    Fortran:
-    #        c_step1(context)
-    #        allocate(Fout(len))
-    #        c_step2(context, Fout, size(len))
-    c_native_pointer_result_buf=dict(
-        buf_args=["context"],
-        c_helper="array_context copy_array",
-        post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var};",
-            "{c_var_context}->len = sizeof({cxx_type});",
-            "{c_var_context}->size = *{c_var_dimension};",
-        ],
-    ),
-    f_native_pointer_result_allocatable=dict(
-        buf_args=["context"],
-        f_helper="array_context copy_array_{cxx_type}",
-        post_call=[
-            # XXX - allocate scalar
-            "allocate({f_var}({c_var_dimension}))",
-            "call SHROUD_copy_array_{cxx_type}"
-            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
         ],
     ),
 )

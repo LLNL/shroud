@@ -743,13 +743,19 @@ class Wrapc(util.WrapperMixin):
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
+            result_blk = None
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
+            if ast.is_indirect():
+                spointer = "pointer"
+            else:
+                spointer = ""
+
             result_blk = typemap.lookup_fc_stmts(
-                ["c", result_typemap.sgroup, "result", ast.stmts_suffix])
+                ["c", result_typemap.sgroup, "result", generated_suffix, spointer])
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -856,24 +862,13 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
-        if ast.is_indirect():
-            spointer = "pointer"
-        else:
-            spointer = ""
-
-        iblk = typemap.lookup_stmts(
-            typemap.statements_local,
-            ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
-        if iblk:
+        if result_blk:
             need_wrapper = self.build_proto_list(
                 fmt_result,
                 ast,
-                iblk.get("buf_args", []),
+                result_blk.get("buf_args", []),
                 proto_list,
                 need_wrapper,
-            )
-            need_wrapper = self.add_code_from_statements(
-                fmt_result, iblk, pre_call, post_call, need_wrapper
             )
 
         if is_shadow_scalar:
