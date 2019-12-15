@@ -328,7 +328,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_in_",
+                            "stmt1": "c_struct_in"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -456,7 +458,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_in_",
+                            "stmt1": "c_struct_in"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -588,7 +592,8 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -620,7 +625,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_s1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_in_",
+                            "stmt1": "c_struct_in"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -769,7 +776,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_out_buf",
+                            "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
                             "c_var": "outbuf",
@@ -788,7 +797,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_s1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_in_buf",
+                            "stmt1": "c_struct_in"
                         },
                         "fmtf": {
                             "c_var": "s1",
@@ -905,7 +916,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_in_",
+                            "stmt1": "c_struct_in"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1004,7 +1017,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_out_",
+                            "stmt1": "c_struct_out"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1042,7 +1057,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "d",
@@ -1077,7 +1093,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -1204,7 +1221,9 @@
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_struct_inout_",
+                            "stmt1": "c_struct_inout"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1303,7 +1322,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "d",
@@ -1338,7 +1358,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -1479,7 +1500,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "d",
@@ -1514,7 +1536,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -1656,7 +1679,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "d",
@@ -1691,7 +1715,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -1839,7 +1864,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1870,7 +1896,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1901,7 +1928,8 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2065,7 +2093,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "d",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_buf"
                         },
                         "fmtf": {
                             "c_var": "d",
@@ -2084,7 +2113,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_buf"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -2104,7 +2134,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_out_buf",
+                            "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
                             "c_var": "outbuf",

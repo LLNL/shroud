@@ -454,7 +454,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -547,7 +548,8 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "i",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "i",
@@ -640,7 +642,9 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "ARG_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_in_",
+                            "stmt1": "c_string_in"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -763,7 +767,9 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "ARG_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_in_buf",
+                            "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
                             "c_var": "rv",
@@ -1015,7 +1021,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg1",
@@ -1050,7 +1057,8 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg2",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg2",
@@ -1220,7 +1228,8 @@
                             "cxx_member": ".",
                             "cxx_type": "float",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg1",
@@ -1255,7 +1264,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "arg2",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg2",

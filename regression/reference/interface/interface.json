@@ -157,7 +157,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg1",
@@ -176,7 +177,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg2",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg2",

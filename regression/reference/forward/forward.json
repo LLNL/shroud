@@ -212,7 +212,9 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_val": "static_cast<tutorial::Class1 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_shadow_in_",
+                                    "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
@@ -325,7 +327,9 @@
                                     "cxx_type": "tutorial::Class3",
                                     "cxx_val": "static_cast<tutorial::Class3 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_shadow_in_",
+                                    "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
                                     "c_var": "arg",

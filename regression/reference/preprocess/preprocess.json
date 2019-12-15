@@ -176,7 +176,8 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "i",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_native_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "i",
@@ -353,7 +354,8 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
-                                    "idtor": "0"
+                                    "idtor": "0",
+                                    "stmt0": "c_native_in_"
                                 },
                                 "fmtf": {
                                     "c_var": "flag",

@@ -249,7 +249,9 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_vector_in_buf_native",
+                            "stmt1": "c_vector_in_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -451,7 +453,9 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_vector_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -620,7 +624,9 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_vector_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -791,7 +797,9 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_vector_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -957,7 +965,9 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_vector_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1147,7 +1157,9 @@
                             "cxx_member": "->",
                             "cxx_type": "double",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "2"
+                            "idtor": "2",
+                            "stmt0": "c_vector_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1322,7 +1334,9 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_vector_in_buf_string",
+                            "stmt1": "c_vector_in_buf_string"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -1666,7 +1680,9 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_vector_scalar_result_buf_allocatable",
+                            "stmt1": "c_vector_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
@@ -1687,7 +1703,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "n",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_buf"
                         },
                         "fmtf": {
                             "c_var": "n",

@@ -181,7 +181,9 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",

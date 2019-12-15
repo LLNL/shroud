@@ -167,7 +167,8 @@
                             "cxx_member": ".",
                             "cxx_type": "double",
                             "cxx_var": "arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg",
@@ -399,7 +400,8 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg1",
@@ -418,7 +420,8 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg2",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "arg2",
@@ -744,7 +747,8 @@
                             "cxx_member": "->",
                             "cxx_type": "void",
                             "cxx_var": "addr",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_unknown_in_"
                         },
                         "fmtf": {
                             "c_var": "addr",
@@ -763,7 +767,8 @@
                             "cxx_member": ".",
                             "cxx_type": "size_t",
                             "cxx_var": "size",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "SH_size",
@@ -783,7 +788,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "type",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "SH_type",
@@ -1171,7 +1177,8 @@
                             "cxx_member": "->",
                             "cxx_type": "void",
                             "cxx_var": "addr",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_unknown_out_"
                         },
                         "fmtf": {
                             "c_var": "addr",
@@ -1190,7 +1197,8 @@
                             "cxx_member": "->",
                             "cxx_type": "size_t",
                             "cxx_var": "size",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "size",
@@ -1209,7 +1217,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "type",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "type",
@@ -1325,7 +1334,8 @@
                             "cxx_member": "->",
                             "cxx_type": "void",
                             "cxx_var": "addr",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_unknown_out_"
                         },
                         "fmtf": {
                             "c_var": "addr",
@@ -1344,7 +1354,8 @@
                             "cxx_member": "->",
                             "cxx_type": "size_t",
                             "cxx_var": "size",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "size",
@@ -1363,7 +1374,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "type",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "type",

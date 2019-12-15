@@ -1014,9 +1014,11 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", sgroup, c_attrs["intent"], arg.stmts_suffix] + specialize
 
             intent_blk = typemap.lookup_fc_stmts(stmts)
-#            fmt_arg.stmt0 = "_".join(stmts)
-#            if intent_blk:
-#                fmt_arg.stmt1 = intent_blk["key"]
+
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = "_".join(stmts)
+            if intent_blk:
+                fmt_arg.stmt1 = intent_blk["key"]
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,

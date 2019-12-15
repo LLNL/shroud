@@ -537,7 +537,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         }
                     }
                 },
@@ -629,7 +630,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -772,7 +774,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -912,7 +915,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_buf"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1018,7 +1022,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1160,7 +1165,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         }
                     }
                 },
@@ -1254,7 +1260,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -1398,7 +1405,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1525,7 +1533,8 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "len",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_out_"
                         },
                         "fmtf": {
                             "c_var": "len",
@@ -2239,7 +2248,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "flag",
@@ -2414,7 +2424,8 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_in_"
                         },
                         "fmtf": {
                             "c_var": "flag",
