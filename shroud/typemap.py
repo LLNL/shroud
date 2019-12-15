@@ -1503,7 +1503,7 @@ fc_statements = dict(
             "delete cxx_ptr;",
         ],
     ),
-    # Same as intent_out_buf.
+    # Almost same as intent_out_buf.
     c_vector_result_buf=dict(
         buf_args=["context"],
         #                    cxx_local_var="pointer",
@@ -1675,14 +1675,8 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))",
         ],
     ),
-    f_vector_result_allocatable=dict(   # same as intent_out
-        f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        post_call=[
-            "allocate({f_var}({c_var_context}%size))",
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))",
-        ],
+    f_vector_result_allocatable=dict(
+        alias="f_vector_out_allocatable",
     ),
 
     # Return a C_capsule_data_type
