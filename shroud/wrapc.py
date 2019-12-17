@@ -585,7 +585,8 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
+    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper,
+                         name=None):
         """Find prototype based on buf_args in fc_statements.
 
         Args:
@@ -594,6 +595,7 @@ class Wrapc(util.WrapperMixin):
             buf_args - List of arguments/metadata to add.
             proto_list - Prototypes are appended to list.
             need_wrapper -
+            name - name to override ast.name (with shadow only).
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
@@ -609,7 +611,8 @@ class Wrapc(util.WrapperMixin):
             elif buf_arg == "shadow":
                 # Always pass a pointer to capsule.
                 # Do not use const in declaration.
-                proto_list.append( "{} * {}".format(ast.typemap.c_type, ast.name))
+                proto_list.append( "{} * {}".format(ast.typemap.c_type,
+                                                    name or ast.name))
                 continue
 
             need_wrapper = True
@@ -728,7 +731,6 @@ class Wrapc(util.WrapperMixin):
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
         is_shadow_scalar = False
-        shadow_arg_decl = None
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
         self.header_typedef_nodes[result_typemap.name] = result_typemap
@@ -792,16 +794,6 @@ class Wrapc(util.WrapperMixin):
                     name=fmt_result.cxx_var, params=None, continuation=True
                 )
 
-            if result_typemap.base == "shadow":
-                # Add an extra argument if function returns a shadow class
-                shadow_arg_decl = ast.gen_arg_as_c(
-                    name=fmt_result.c_var,
-                    continuation=True,
-                    params=None,
-                    force_ptr=True,
-                    remove_const=True,
-                )
-
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new instance in the ctor.
                 fmt_result.cxx_member = "->"
@@ -812,6 +804,7 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_result
 
         proto_list = []  # arguments for wrapper prototype
+        proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
 
         # Indicate which argument contains function result, usually none.
@@ -840,25 +833,21 @@ class Wrapc(util.WrapperMixin):
                         fmt_func.namespace_scope + fmt_func.class_scope
                     )
                 else:
-                    # 'this' argument
-                    rvast = declast.create_this_arg(
-                        fmt_func.C_this, cls.typemap, is_const
-                    )
-                    arg = rvast.gen_arg_as_c(continuation=True)
-                    proto_list.append(arg)
+                    # 'this' argument, always a pointer to a shadow type.
+                    proto_list.append( "{}{} * {}".format(
+                        "const " if is_const else "",
+                        cls.typemap.c_type, fmt_func.C_this))
 
                     # LHS is class' cxx_to_c
                     cls_typemap = cls.typemap
-                    if cls_typemap.c_to_cxx is None:
-                        # This should be set in typemap.fill_shadow_typemap_defaults
+                    if cls_typemap.base != "shadow":
                         raise RuntimeError(
-                            "Wappped class does not have c_to_cxx set"
+                            "Wappped class is not a shadow type"
                         )
                     append_format(
                         pre_call,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
-                        + cls_typemap.c_to_cxx
-                        + ";",
+                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}{c_member}addr);",
                         fmt_func,
                     )
 
@@ -1102,20 +1091,30 @@ class Wrapc(util.WrapperMixin):
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
-        if shadow_arg_decl:
-            # Add argument for shadow result.
-            proto_list.append(shadow_arg_decl)
+        if result_blk:
+            # Add extra arguments to end of prototype for result.
+            need_wrapper = self.build_proto_list(
+                fmt_result,
+                ast,
+                result_blk.get("buf_extra", []),
+                proto_tail,
+                need_wrapper,
+                name=fmt_result.c_var,
+            )
 
         fmt_func.C_call_list = ",\t ".join(call_list)
 
         fmt_func.C_prototype = options.get(
-            "C_prototype", ",\t ".join(proto_list)
+            "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
         if node.return_this:
             fmt_func.C_return_type = "void"
         elif is_dtor:
             fmt_func.C_return_type = "void"
+        elif is_ctor:
+            # Return pointer to capsule_data. It contains pointer to results.
+            fmt_func.C_return_type = result_typemap.c_type + " *"
         elif result_typemap.base == "shadow":
             # Return pointer to capsule_data. It contains pointer to results.
             fmt_func.C_return_type = result_typemap.c_type + " *"

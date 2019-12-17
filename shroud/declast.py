@@ -1318,6 +1318,8 @@ class Declaration(Node):
         Args:
             intent - Explicit intent 'in', 'inout', 'out'.
                      Defaults to None to use intent from attrs.
+
+            name   - Set name explicitly, else self.name.
         """
         t = []
         attrs = self.attrs
@@ -1567,20 +1569,6 @@ def check_decl(decl, namespace=None, template_types=None, trace=False):
     else:
         a = Parser(decl, namespace, trace).decl_statement()
     return a
-
-
-def create_this_arg(name, arg_typemap, const=True):
-    """Create a Declaration for an argument for the 'this' argument
-    as 'typ *name'
-    """
-    arg = Declaration()
-    arg.const = const
-    arg.declarator = Declarator()
-    arg.declarator.name = name
-    arg.declarator.pointer = [Ptr("*")]
-    arg.specifier = arg_typemap.cxx_type.split()
-    arg.typemap = arg_typemap
-    return arg
 
 
 def create_voidstar(ntypemap, name, const=False):

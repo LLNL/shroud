@@ -1681,9 +1681,10 @@ fc_statements = dict(
 
     # Return a C_capsule_data_type
     c_shadow_in=dict(
-        buf_args=["shadow"]
+        buf_args=["shadow"],
     ),
     c_shadow_result=dict(
+        buf_extra=["shadow"],
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
