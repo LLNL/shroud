@@ -852,8 +852,13 @@ rv = .false.
                     )
                 continue
             elif buf_arg == "shadow":
+                # Always pass a pointer to capsule.
+                # Do not use const or value in declaration
                 arg_c_names.append(ast.name)
-                arg_c_decl.append(ast.bind_c())
+                arg_c_decl.append("{}, intent({}) :: {}".format(
+                    ast.typemap.f_c_type,
+                    ast.attrs["intent"].upper(),
+                    ast.name))
                 self.update_f_module(
                     modules, imports,
                     ast.typemap.f_c_module or ast.typemap.f_module

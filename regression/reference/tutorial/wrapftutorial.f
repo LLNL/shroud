@@ -627,7 +627,7 @@ module tutorial_mod
                 bind(C, name="TUT_pass_class_by_value")
             import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), value, intent(IN) :: arg
+            type(SHROUD_class1_capsule), intent(IN) :: arg
         end subroutine c_pass_class_by_value
     end interface
 

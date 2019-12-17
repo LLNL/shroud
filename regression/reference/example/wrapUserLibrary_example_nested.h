@@ -82,7 +82,7 @@ void AA_example_nested_testmpi_serial();
 
 void AA_example_nested_testgroup1(SIDRE_group * grp);
 
-void AA_example_nested_testgroup2(const SIDRE_group * grp);
+void AA_example_nested_testgroup2(SIDRE_group * grp);
 
 void AA_example_nested_func_ptr1(void ( * get)());
 

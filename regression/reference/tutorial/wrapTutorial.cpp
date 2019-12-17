@@ -359,18 +359,18 @@ int TUT_direction_func(int arg)
  * \brief Pass arguments to a function.
  *
  */
-void TUT_pass_class_by_value(TUT_Class1 arg)
+void TUT_pass_class_by_value(TUT_Class1 * arg)
 {
 // splicer begin function.pass_class_by_value
     tutorial::Class1 * SHCXX_arg =
-        static_cast<tutorial::Class1 *>(arg.addr);
+        static_cast<tutorial::Class1 *>(arg->addr);
     tutorial::passClassByValue(*SHCXX_arg);
     return;
 // splicer end function.pass_class_by_value
 }
 
 // int useclass(const Class1 * arg +intent(in))
-int TUT_useclass(const TUT_Class1 * arg)
+int TUT_useclass(TUT_Class1 * arg)
 {
 // splicer begin function.useclass
     const tutorial::Class1 * SHCXX_arg =

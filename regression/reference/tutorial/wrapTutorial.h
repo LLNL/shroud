@@ -96,9 +96,9 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_direction_func(int arg);
 
-void TUT_pass_class_by_value(TUT_Class1 arg);
+void TUT_pass_class_by_value(TUT_Class1 * arg);
 
-int TUT_useclass(const TUT_Class1 * arg);
+int TUT_useclass(TUT_Class1 * arg);
 
 TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv);
 

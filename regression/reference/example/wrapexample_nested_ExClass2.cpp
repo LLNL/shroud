@@ -253,8 +253,7 @@ int AA_example_nested_ExClass2_get_name_length(
 
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
-    AA_example_nested_ExClass2 * self,
-    const AA_example_nested_ExClass1 * in,
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv)
 {
 // splicer begin namespace.example::nested.class.ExClass2.method.get_class1

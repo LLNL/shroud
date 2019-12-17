@@ -866,7 +866,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 
     # void pointer in struct -> class instance pointer
     ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>({c_var}{c_member}addr)" % ntypemap.cxx_type
+        "static_cast<{c_const}%s *>({c_var}->addr)" % ntypemap.cxx_type
     )
 
     # some default for ntypemap.f_capsule_data_type

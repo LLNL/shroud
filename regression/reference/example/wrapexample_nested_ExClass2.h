@@ -77,8 +77,7 @@ int AA_example_nested_ExClass2_get_name_length(
     const AA_example_nested_ExClass2 * self);
 
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
-    AA_example_nested_ExClass2 * self,
-    const AA_example_nested_ExClass1 * in,
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv);
 
 void AA_example_nested_ExClass2_declare_0(
