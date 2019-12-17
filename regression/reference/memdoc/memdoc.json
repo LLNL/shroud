@@ -110,7 +110,8 @@
                         "cxx_member": "->",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
@@ -202,7 +203,8 @@
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",

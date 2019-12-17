@@ -247,7 +247,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -377,7 +378,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -539,7 +541,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -696,7 +699,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -815,7 +819,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -1275,7 +1280,9 @@
                         "cxx_member": ".",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_struct_scalar_result_",
+                        "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
@@ -1454,7 +1461,9 @@
                         "cxx_member": ".",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_struct_scalar_result_",
+                        "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
@@ -1634,7 +1643,9 @@
                         "cxx_member": "->",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_struct_pointer_result_",
+                        "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
@@ -1843,7 +1854,9 @@
                         "cxx_member": "->",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_struct_pointer_result_",
+                        "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
@@ -2039,7 +2052,9 @@
                         "cxx_member": "->",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_struct_pointer_result_buf",
+                        "stmt1": "c_struct_result"
                     }
                 },
                 "_generated": "arg_to_buffer",

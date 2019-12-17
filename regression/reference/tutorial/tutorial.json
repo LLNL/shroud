@@ -118,7 +118,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_scalar_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -256,7 +258,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_scalar_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -401,7 +405,8 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -530,7 +535,8 @@
                                 "cxx_member": ".",
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_bool_scalar_result_"
                             },
                             "fmtf": {
                                 "cxx_type": "bool",
@@ -721,7 +727,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -874,7 +882,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_buf",
+                                "stmt1": "c_shadow_result"
                             }
                         },
                         "_generated": "arg_to_buffer",
@@ -974,7 +984,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -1116,7 +1128,8 @@
                                 "cxx_member": ".",
                                 "cxx_type": "tutorial::Class1::DIRECTION",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1::DIRECTION",
@@ -1212,7 +1225,8 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -1275,7 +1289,8 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -1509,7 +1524,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "tutorial::Singleton",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Singleton",
@@ -1923,7 +1940,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2267,7 +2285,8 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2386,7 +2405,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2479,7 +2499,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2670,7 +2691,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -3518,7 +3540,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -3612,7 +3635,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -4364,7 +4388,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4491,7 +4516,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4739,7 +4765,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4916,7 +4943,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5073,7 +5101,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5378,7 +5407,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5568,7 +5598,8 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::TypeID",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::TypeID",
@@ -5714,7 +5745,8 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::EnumTypeID",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::EnumTypeID",
@@ -5862,7 +5894,8 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::Color",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Color",
@@ -6169,7 +6202,8 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::Class1::DIRECTION",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1::DIRECTION",
@@ -6413,7 +6447,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -6506,7 +6541,9 @@
                         "cxx_member": "->",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6572,7 +6609,9 @@
                         "cxx_member": "->",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6674,7 +6713,9 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "1"
+                        "idtor": "1",
+                        "stmt0": "c_shadow_scalar_result_",
+                        "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6797,7 +6838,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -7013,7 +7055,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -7090,7 +7133,8 @@
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
@@ -7201,7 +7245,8 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",

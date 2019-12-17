@@ -270,7 +270,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1366,7 +1367,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1735,7 +1737,8 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf"
                     }
                 },
                 "_generated": "arg_to_buffer",

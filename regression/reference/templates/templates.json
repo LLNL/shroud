@@ -1024,7 +1024,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -1134,7 +1135,8 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -1279,7 +1281,9 @@
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<int>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_shadow_scalar_result_",
+                                        "stmt1": "c_shadow_result"
                                     },
                                     "fmtf": {
                                         "cxx_type": "std::vector<int>",
@@ -1636,7 +1640,8 @@
                                         "cxx_member": ".",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_native_pointer_result_"
                                     },
                                     "fmtf": {
                                         "cxx_type": "int",
@@ -1806,7 +1811,9 @@
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<double>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_shadow_scalar_result_",
+                                        "stmt1": "c_shadow_result"
                                     },
                                     "fmtf": {
                                         "cxx_type": "std::vector<double>",
@@ -2163,7 +2170,8 @@
                                         "cxx_member": ".",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_native_pointer_result_"
                                     },
                                     "fmtf": {
                                         "cxx_type": "double",

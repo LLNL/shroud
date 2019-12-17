@@ -752,8 +752,12 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = "pointer" if ast.is_indirect() else "scalar"
-            result_blk = typemap.lookup_fc_stmts(
-                ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
+            stmts = ["c", result_typemap.sgroup, spointer, "result", generated_suffix]
+            result_blk = typemap.lookup_fc_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_result.stmt0 = "_".join(stmts)
+            if result_blk:
+                fmt_result.stmt1 = result_blk["key"]
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result

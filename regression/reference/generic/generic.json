@@ -108,7 +108,8 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -441,7 +442,8 @@
                         "cxx_member": ".",
                         "cxx_type": "long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_"
                     }
                 },
                 "_overloaded": true,
