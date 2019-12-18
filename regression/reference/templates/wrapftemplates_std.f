@@ -96,7 +96,7 @@ module templates_std_mod
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
-            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import :: SHROUD_vector_int_capsule
             implicit none
             type(SHROUD_vector_int_capsule), intent(IN) :: self
@@ -136,7 +136,7 @@ module templates_std_mod
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
-            use iso_c_binding, only : C_DOUBLE, C_PTR, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import :: SHROUD_vector_double_capsule
             implicit none
             type(SHROUD_vector_double_capsule), intent(IN) :: self

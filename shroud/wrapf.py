@@ -1056,13 +1056,11 @@ rv = .false.
             if result_typemap.base in ["shadow", "string", "vector"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif return_pointer_as in ["pointer", "allocatable", "raw"]:
+                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                # XXX - make sure ptr is set to avoid VALUE
-                if return_pointer_as in ["pointer", "allocatable", "raw"]:
-                    arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                else:
-                    arg_c_decl.append(ast.bind_c(name=fmt.F_result))
+                arg_c_decl.append(ast.bind_c(name=fmt.F_result))
                 self.update_f_module(
                     modules,
                     imports,

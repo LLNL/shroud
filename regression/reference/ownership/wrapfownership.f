@@ -93,7 +93,7 @@ module ownership_mod
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_raw")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_raw
@@ -109,7 +109,7 @@ module ownership_mod
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_pointer")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_pointer
