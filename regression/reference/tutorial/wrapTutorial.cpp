@@ -362,8 +362,8 @@ int TUT_direction_func(int arg)
 void TUT_pass_class_by_value(TUT_Class1 * arg)
 {
 // splicer begin function.pass_class_by_value
-    tutorial::Class1 * SHCXX_arg =
-        static_cast<tutorial::Class1 *>(arg->addr);
+    tutorial::Class1 * SHCXX_arg = static_cast<tutorial::Class1 *>
+        (arg->addr);
     tutorial::passClassByValue(*SHCXX_arg);
     return;
 // splicer end function.pass_class_by_value

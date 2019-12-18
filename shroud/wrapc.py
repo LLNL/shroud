@@ -842,12 +842,12 @@ class Wrapc(util.WrapperMixin):
                     cls_typemap = cls.typemap
                     if cls_typemap.base != "shadow":
                         raise RuntimeError(
-                            "Wappped class is not a shadow type"
+                            "Wapped class is not a shadow type"
                         )
                     append_format(
                         pre_call,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
-                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}{c_member}addr);",
+                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
                         fmt_func,
                     )
 
@@ -945,6 +945,7 @@ class Wrapc(util.WrapperMixin):
                     "c", sgroup, spointer, "result",
                     generated_suffix, result_return_pointer_as,
                 ]
+                intent_blk = typemap.lookup_fc_stmts(stmts)
                 need_wrapper = True
                 if is_pointer:
                     fmt_arg.cxx_member = "->"
@@ -964,29 +965,24 @@ class Wrapc(util.WrapperMixin):
             else:
                 # regular argument (not function result)
                 arg_call = arg
-                if arg_typemap.c_to_cxx is None:
-                    fmt_arg.cxx_var = fmt_arg.c_var  # compatible
+                spointer = "pointer" if arg.is_indirect() else "scalar"
+                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
+                intent_blk = typemap.lookup_fc_stmts(stmts)
+
+                if "pre_call" in intent_blk:
+                    # Explicit conversion must be in pre_call.
+                    pass
+                elif arg_typemap.c_to_cxx is None:
+                    # Compatible
+                    fmt_arg.cxx_var = fmt_arg.c_var
                 else:
                     # convert C argument to C++
-                    if arg_typemap.base == 'shadow':
-                        # When a shadow class is passed by value, the shadow
-                        # class is passed by value and it contains a pointer
-                        # to the actual class. Set force_ptr to get a pointer
-                        # in the declaration.
-                        # In addition, set cxx_local_var = "pointer" below
-                        # in order to pass the value of the class, and not the
-                        # pointer.
-                        # See tutorial passClassByValue.
-                        force_ptr = True
-                    else:
-                        force_ptr = False
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var,
                         params=None,
                         as_ptr=True,
-                        force_ptr=force_ptr,
                         continuation=True,
                     )
                     append_format(
@@ -1002,10 +998,6 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                spointer = "pointer" if arg.is_indirect() else "scalar"
-                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
-
-            intent_blk = typemap.lookup_fc_stmts(stmts)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(stmts)

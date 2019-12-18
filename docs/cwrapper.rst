@@ -318,6 +318,8 @@ pre_call
 
 Code used with *intent(in)* arguments to convert from C to C++.
 
+.. the typemap.c_to_cxx field will not be used.
+
 .. * **C_call_code** code used to call the function.
    Constructor and destructor will use ``new`` and ``delete``.
 

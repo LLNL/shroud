@@ -866,7 +866,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 
     # void pointer in struct -> class instance pointer
     ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>({c_var}->addr)" % ntypemap.cxx_type
+        "static_cast<{c_const}%s *>\t({c_var}->addr)" % ntypemap.cxx_type
     )
 
     # some default for ntypemap.f_capsule_data_type
@@ -1679,10 +1679,17 @@ fc_statements = dict(
         alias="f_vector_out_allocatable",
     ),
 
-    # Return a C_capsule_data_type
+    # Pass in a pointer to a shadow object via buf_args.
+    # Extract pointer to C++ instance.
+    # convert C argument into a pointer to C++ type.
     c_shadow_in=dict(
         buf_args=["shadow"],
+        cxx_local_var="pointer",
+        pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
+        ],
     ),
+    # Return a C_capsule_data_type
     c_shadow_result=dict(
         buf_extra=["shadow"],
         post_call=[
