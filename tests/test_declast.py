@@ -866,20 +866,6 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void getName(const std::string & output) const", s)
 
-    def test_thisarg01(self):
-        """Create an argument for const this"""
-        class_typemap = self.class1.typemap
-        r = declast.create_this_arg("self", class_typemap, const=True)
-        s = r.gen_decl()
-        self.assertEqual("const Class1 * self", s)
-
-    def test_thisarg02(self):
-        """Create an argument for this"""
-        class_typemap = self.class1.typemap
-        r = declast.create_this_arg("self", class_typemap, const=False)
-        s = r.gen_decl()
-        self.assertEqual("Class1 * self", s)
-
     def test_copy01(self):
         """Test copy"""
         r = declast.check_decl(
