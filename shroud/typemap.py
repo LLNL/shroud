@@ -861,7 +861,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     if ntypemap.base != "shadow":
         return
 
-    # Convert to void * to add to struct
+    # Convert to void * to add to context struct
     ntypemap.cxx_to_c = "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})"
 
     # void pointer in struct -> class instance pointer
@@ -1703,6 +1703,23 @@ fc_statements = dict(
             # The c Function returns a pointer.
             # Save in a type(C_PTR) variable.
             "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+        ],
+    ),
+    c_shadow_ctor=dict(
+        buf_extra=["shadow"],
+        call=[
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+        ],
+        ret=[
+            "return {c_var};",
+        ],
+    ),
+    c_shadow_dtor=dict(
+        call=[
+            "delete {CXX_this};",
+            "{C_this}->addr = NULL;",
         ],
     ),
 

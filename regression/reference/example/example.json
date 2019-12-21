@@ -190,15 +190,14 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_type": "AA_example_nested_ExClass1",
-                                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
-                                                "stmt0": "c_shadow_scalar_result_",
-                                                "stmt1": "c_shadow_result"
+                                                "stmt0": "c_shadow_scalar_ctor_",
+                                                "stmt1": "c_shadow_ctor"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
@@ -242,10 +241,9 @@
                                         "decl": "ExClass1()",
                                         "declgen": "ExClass1()",
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1();",
+                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_ctor_0",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
@@ -265,8 +263,7 @@
                                             "PY_type_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_method": "tp_init",
                                             "c_const": "",
-                                            "c_rv_decl": "AA_example_nested_ExClass1 *SHC_rv",
-                                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv",
+                                            "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_0",
                                             "underscore_name": "ctor"
@@ -324,15 +321,14 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_type": "AA_example_nested_ExClass1",
-                                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
-                                                "stmt0": "c_shadow_scalar_result_",
-                                                "stmt1": "c_shadow_result"
+                                                "stmt0": "c_shadow_scalar_ctor_",
+                                                "stmt1": "c_shadow_ctor"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
@@ -402,10 +398,9 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);",
+                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
@@ -424,8 +419,7 @@
                                             "PY_type_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_method": "tp_init",
                                             "c_const": "",
-                                            "c_rv_decl": "AA_example_nested_ExClass1 *SHC_rv",
-                                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv",
+                                            "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1",
                                             "underscore_name": "ctor"
@@ -462,15 +456,14 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_type": "AA_example_nested_ExClass1",
-                                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_type": "example::nested::ExClass1",
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
-                                                "stmt0": "c_shadow_scalar_result_buf",
-                                                "stmt1": "c_shadow_result"
+                                                "stmt0": "c_shadow_scalar_ctor_buf",
+                                                "stmt1": "c_shadow_ctor"
                                             }
                                         },
                                         "_generated": "arg_to_buffer",
@@ -517,18 +510,16 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);",
+                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
                                             "c_const": "",
-                                            "c_rv_decl": "AA_example_nested_ExClass1 *SHC_rv",
-                                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv",
+                                            "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1_bufferify",
                                             "underscore_name": "ctor"
@@ -2225,15 +2216,14 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_type": "AA_example_nested_ExClass2",
-                                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
-                                                "stmt0": "c_shadow_scalar_result_",
-                                                "stmt1": "c_shadow_result"
+                                                "stmt0": "c_shadow_scalar_ctor_",
+                                                "stmt1": "c_shadow_ctor"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass2",
@@ -2302,10 +2292,9 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);",
+                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
@@ -2326,8 +2315,7 @@
                                             "PY_type_impl": "PP_ExClass2_tp_init",
                                             "PY_type_method": "tp_init",
                                             "c_const": "",
-                                            "c_rv_decl": "AA_example_nested_ExClass2 *SHC_rv",
-                                            "cxx_rv_decl": "example::nested::ExClass2 *SHCXX_rv",
+                                            "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "underscore_name": "ctor"
                                         },
@@ -2363,15 +2351,14 @@
                                         "_fmtresult": {
                                             "fmtc": {
                                                 "c_type": "AA_example_nested_ExClass2",
-                                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_type": "example::nested::ExClass2",
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
-                                                "stmt0": "c_shadow_scalar_result_buf",
-                                                "stmt1": "c_shadow_result"
+                                                "stmt0": "c_shadow_scalar_ctor_buf",
+                                                "stmt1": "c_shadow_ctor"
                                             }
                                         },
                                         "_generated": "arg_to_buffer",
@@ -2416,18 +2403,16 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);",
+                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_pre_call": "const std::string SHCXX_name(name, trim_name);",
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_code": "return SHC_rv;",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
                                             "c_const": "",
-                                            "c_rv_decl": "AA_example_nested_ExClass2 *SHC_rv",
-                                            "cxx_rv_decl": "example::nested::ExClass2 *SHCXX_rv",
+                                            "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "ctor"

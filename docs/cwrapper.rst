@@ -242,6 +242,12 @@ indicates if the local variable is a **pointer** or **scalar**.
 For example, when a structure is returned by a C++ function, the C wrapper creates
 a local variable which contains a pointer to the C type of the struct.
 
+call
+^^^^
+
+Code to call function.  This is usually generated.
+An exception which require explicit call code are constructors
+and destructors for shadow types.
 
 cxx_local_var
 ^^^^^^^^^^^^^
@@ -337,6 +343,15 @@ Can be used to convert results from C++ to C.
 * **C_return_code** returns a value from the wrapper.
 
 
+ret
+---
+
+Code for return statement.
+Usually generated but can be replaced.
+For example, with constructors.
+
+.. return is a reserved word so it's not possible to do dict(return=[])
+  
 Predefined types
 ----------------
 

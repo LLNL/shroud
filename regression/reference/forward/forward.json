@@ -73,15 +73,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "FOR_Class2",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class2",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
-                                "stmt0": "c_shadow_scalar_result_",
-                                "stmt1": "c_shadow_result"
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class2",
@@ -124,10 +123,9 @@
                         "decl": "Class2()",
                         "declgen": "Class2()",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();",
+                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "FOR_Class2_ctor",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "FOR_Class2 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "FOR_Class2 *",
@@ -147,8 +145,7 @@
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
                             "c_const": "",
-                            "c_rv_decl": "FOR_Class2 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class2 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class2 SHCXX_rv",
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },

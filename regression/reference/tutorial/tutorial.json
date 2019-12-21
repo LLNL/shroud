@@ -112,15 +112,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "TUT_Class1",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
-                                "stmt0": "c_shadow_scalar_result_",
-                                "stmt1": "c_shadow_result"
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -165,10 +164,9 @@
                         "decl": "Class1()         +name(new)",
                         "declgen": "Class1() +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();",
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_new_default",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -189,8 +187,7 @@
                             "PY_type_method": "tp_init",
                             "__line__": 159,
                             "c_const": "",
-                            "c_rv_decl": "TUT_Class1 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_default",
                             "underscore_name": "new"
@@ -252,15 +249,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "TUT_Class1",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
-                                "stmt0": "c_shadow_scalar_result_",
-                                "stmt1": "c_shadow_result"
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -320,10 +316,9 @@
                         "decl": "Class1(int flag) +name(new)",
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);",
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "flag",
                             "C_name": "TUT_Class1_new_flag",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -342,8 +337,7 @@
                             "PY_type_method": "tp_init",
                             "__line__": 162,
                             "c_const": "",
-                            "c_rv_decl": "TUT_Class1 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_flag",
                             "underscore_name": "new"

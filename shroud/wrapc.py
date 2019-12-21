@@ -748,13 +748,20 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
             result_blk = None
+            if is_dtor:
+                stmts = ["c", "shadow", "dtor"]
+                result_blk = typemap.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = "pointer" if ast.is_indirect() else "scalar"
-            stmts = ["c", result_typemap.sgroup, spointer, "result", generated_suffix]
+            if is_ctor:
+                sintent = "ctor"
+            else:
+                sintent = "result"
+            stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
             result_blk = typemap.lookup_fc_stmts(stmts)
             # Useful for debugging.  Requested and found path.
             fmt_result.stmt0 = "_".join(stmts)
@@ -1138,37 +1145,9 @@ class Wrapc(util.WrapperMixin):
 
         # generate the C body
         C_return_code = "return;"
-        if is_ctor:
-            # Always create a pointer to the instance.
-            fmt_func.cxx_rv_decl = (
-                result_typemap.cxx_type + " *" + fmt_result.cxx_var
-            )
-            append_format(
-                call_code,
-                "{cxx_rv_decl} =\t new {namespace_scope}"
-                "{cxx_type}({C_call_list});",
-                fmt_func,
-            )
-            if result_typemap.cxx_to_c is not None:
-                fmt_func.c_rv_decl = (
-                    result_typemap.c_type + " *" + fmt_result.c_var
-                )
-                fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
-            fmt_result.c_type = result_typemap.c_type
-            fmt_result.idtor = "0"
-            # XXX - similar to c_statements.result
-            append_format(
-                post_call,
-                "{c_var}->addr = {c_val};\n" "{c_var}->idtor = {idtor};",
-                fmt_result,
-            )
-            C_return_code = wformat("return {c_var};", fmt_result)
-        elif is_dtor:
-            append_format(
-                call_code,
-                "delete {CXX_this};\n" "{C_this}->addr = NULL;",
-                fmt_func,
-            )
+        if result_blk and "call" in result_blk:
+            for line in result_blk["call"]:
+                append_format(call_code, line, fmt_result)
         elif CXX_subprogram == "subroutine":
             append_format(
                 call_code,
@@ -1262,6 +1241,9 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal("C_return_code"):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        elif result_blk and "ret" in result_blk:
+            # XXX - Only first line for now
+            fmt_func.C_return_code = wformat(result_blk["ret"][0], fmt_result)
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
             fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
