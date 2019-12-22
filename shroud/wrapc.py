@@ -750,7 +750,9 @@ class Wrapc(util.WrapperMixin):
             result_blk = None
             if is_dtor:
                 stmts = ["c", "shadow", "dtor"]
-                result_blk = typemap.lookup_fc_stmts(stmts)
+            else:
+                stmts = ["c"]
+            result_blk = typemap.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
@@ -765,8 +767,7 @@ class Wrapc(util.WrapperMixin):
             result_blk = typemap.lookup_fc_stmts(stmts)
             # Useful for debugging.  Requested and found path.
             fmt_result.stmt0 = "_".join(stmts)
-            if result_blk:
-                fmt_result.stmt1 = result_blk["key"]
+            fmt_result.stmt1 = result_blk["key"]
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -858,16 +859,15 @@ class Wrapc(util.WrapperMixin):
                         fmt_func,
                     )
 
-        self.find_idtor(node.ast, result_typemap, fmt_result, None)
+        self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
-        if result_blk:
-            need_wrapper = self.build_proto_list(
-                fmt_result,
-                ast,
-                result_blk.get("buf_args", []),
-                proto_list,
-                need_wrapper,
-            )
+        need_wrapper = self.build_proto_list(
+            fmt_result,
+            ast,
+            result_blk.get("buf_args", []),
+            proto_list,
+            need_wrapper,
+        )
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
@@ -1008,8 +1008,7 @@ class Wrapc(util.WrapperMixin):
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(stmts)
-            if intent_blk:
-                fmt_arg.stmt1 = intent_blk["key"]
+            fmt_arg.stmt1 = intent_blk["key"]
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1090,7 +1089,7 @@ class Wrapc(util.WrapperMixin):
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
-        if result_blk:
+        if CXX_subprogram == "function":
             # Add extra arguments to end of prototype for result.
             need_wrapper = self.build_proto_list(
                 fmt_result,
@@ -1447,23 +1446,22 @@ class Wrapc(util.WrapperMixin):
             intent_blk -
         """
 
-        if intent_blk:
-            destructor_name = intent_blk.get("destructor_name", None)
-            if destructor_name:
-                # Use destructor in typemap to remove intermediate objects
-                # e.g. std::vector
-                destructor_name = wformat(destructor_name, fmt)
-                if destructor_name not in self.capsule_code:
-                    del_lines = []
-                    util.append_format_cmds(
-                        del_lines, intent_blk, "destructor", fmt
-                    )
-                    fmt.idtor = self.add_capsule_code(
-                        destructor_name, atypemap, del_lines
-                    )
-                else:
-                    fmt.idtor = self.capsule_code[destructor_name][0]
-                return
+        destructor_name = intent_blk.get("destructor_name", None)
+        if destructor_name:
+            # Use destructor in typemap to remove intermediate objects
+            # e.g. std::vector
+            destructor_name = wformat(destructor_name, fmt)
+            if destructor_name not in self.capsule_code:
+                del_lines = []
+                util.append_format_cmds(
+                    del_lines, intent_blk, "destructor", fmt
+                )
+                fmt.idtor = self.add_capsule_code(
+                    destructor_name, atypemap, del_lines
+                )
+            else:
+                fmt.idtor = self.capsule_code[destructor_name][0]
+            return
 
         owner = ast.attrs.get("owner", default_owner)
         free_pattern = ast.attrs.get("free_pattern", None)

@@ -980,17 +980,16 @@ rv = .false.
 
         result_blk = typemap.lookup_fc_stmts(
             ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
-        if result_blk:
-            self.build_arg_list_interface(
-                node, fileinfo,
-                fmt_func,
-                ast,
-                result_blk.get("buf_args", []),
-                modules,
-                imports,
-                arg_c_names,
-                arg_c_decl,
-            )
+        self.build_arg_list_interface(
+            node, fileinfo,
+            fmt_func,
+            ast,
+            result_blk.get("buf_args", []),
+            modules,
+            imports,
+            arg_c_names,
+            arg_c_decl,
+        )
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
@@ -1028,7 +1027,7 @@ rv = .false.
                 arg_c_decl,
             )
 
-        if result_blk:
+        if subprogram == "function":
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_func,
@@ -1508,8 +1507,7 @@ rv = .false.
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(f_stmts)
-            if f_intent_blk:
-                fmt_arg.stmt1 = f_intent_blk["key"]
+            fmt_arg.stmt1 = f_intent_blk["key"]
 
             # Now C function arguments
             # May have different types, like generic
