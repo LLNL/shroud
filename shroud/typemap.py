@@ -30,6 +30,14 @@ except:
 cf_tree = {}
 # Always return the same empty statements.
 empty_stmts = {}
+default_stmts = dict(
+    c=dict(
+        key="c_default",
+    ),
+    f=dict(
+        key="f_default",
+    ),
+)
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -1151,7 +1159,7 @@ def lookup_stmts_tree(tree, path):
         path  - list of name components.
                 Blank entries are ignored.
     """
-    found = empty_stmts
+    found = default_stmts[path[0]]
     work = []
     step = tree
     for part in path:

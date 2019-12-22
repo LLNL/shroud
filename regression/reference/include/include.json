@@ -36,12 +36,14 @@
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
-                                    "stmt0": "c_unknown_scalar_in_"
+                                    "stmt0": "c_unknown_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
                                     "f_var": "comm",
-                                    "stmt0": "f_unknown_scalar_in_"
+                                    "stmt0": "f_unknown_scalar_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -121,7 +123,8 @@
                                 "fmtf": {
                                     "c_var": "c2",
                                     "f_var": "c2",
-                                    "stmt0": "f_shadow_pointer_in_"
+                                    "stmt0": "f_shadow_pointer_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -424,12 +427,14 @@
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
                                             "idtor": "0",
-                                            "stmt0": "c_native_scalar_in_"
+                                            "stmt0": "c_native_scalar_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",
                                             "f_var": "arg1",
-                                            "stmt0": "f_native_scalar_in_"
+                                            "stmt0": "f_native_scalar_in_",
+                                            "stmt1": "f_default"
                                         }
                                     }
                                 },
