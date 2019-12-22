@@ -1108,14 +1108,9 @@ class Wrapc(util.WrapperMixin):
 
         if node.return_this:
             fmt_func.C_return_type = "void"
-        elif is_dtor:
-            fmt_func.C_return_type = "void"
-        elif is_ctor:
-            # Return pointer to capsule_data. It contains pointer to results.
-            fmt_func.C_return_type = result_typemap.c_type + " *"
-        elif result_typemap.base == "shadow":
-            # Return pointer to capsule_data. It contains pointer to results.
-            fmt_func.C_return_type = result_typemap.c_type + " *"
+        elif "return_type" in result_blk:
+            fmt_func.C_return_type = wformat(
+                result_blk["return_type"], fmt_result)
         elif fmt_func.C_custom_return_type:
             pass  # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == "scalar":

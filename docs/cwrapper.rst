@@ -351,6 +351,13 @@ Usually generated but can be replaced.
 For example, with constructors.
 
 .. return is a reserved word so it's not possible to do dict(return=[])
+
+return_type
+-----------
+
+Explicit return type when it is different than the
+functions return type.
+For example, with shadow types.
   
 Predefined types
 ----------------

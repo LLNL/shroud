@@ -33,6 +33,7 @@ empty_stmts = {}
 default_stmts = dict(
     c=dict(
         key="c_default",
+#        return_type=None,
     ),
     f=dict(
         key="f_default",
@@ -1697,9 +1698,10 @@ fc_statements = dict(
             "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
         ],
     ),
-    # Return a C_capsule_data_type
+    # Return a C_capsule_data_type.
     c_shadow_result=dict(
         buf_extra=["shadow"],
+        return_type="{c_type} *",
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -1715,6 +1717,7 @@ fc_statements = dict(
     ),
     c_shadow_ctor=dict(
         buf_extra=["shadow"],
+        return_type="{c_type} *",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
@@ -1725,6 +1728,7 @@ fc_statements = dict(
         ],
     ),
     c_shadow_dtor=dict(
+        return_type="void",
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",
