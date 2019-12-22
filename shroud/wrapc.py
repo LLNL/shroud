@@ -870,14 +870,7 @@ class Wrapc(util.WrapperMixin):
         )
 
         if is_shadow_scalar:
-            # Allocate a new instance, then assign pointer to dereferenced cxx_var.
-            append_format(
-                pre_call,
-                "{cxx_rv_decl} = new %s;" % result_typemap.cxx_type,
-                fmt_func,
-            )
             fmt_result.cxx_addr = ""
-            fmt_result.idtor = result_typemap.idtor
             fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
 
         #    c_var      - argument to C function  (wrapper function)
@@ -1443,6 +1436,7 @@ class Wrapc(util.WrapperMixin):
 
         destructor_name = intent_blk.get("destructor_name", None)
         if destructor_name:
+            # Custom destructor from statements.
             # Use destructor in typemap to remove intermediate objects
             # e.g. std::vector
             destructor_name = wformat(destructor_name, fmt)
@@ -1458,12 +1452,20 @@ class Wrapc(util.WrapperMixin):
                 fmt.idtor = self.capsule_code[destructor_name][0]
             return
 
-        owner = ast.attrs.get("owner", default_owner)
+        from_stmt = False
+        if "owner" in ast.attrs:
+            owner = ast.attrs["owner"]
+        elif "owner" in intent_blk:
+            owner = intent_blk["owner"]
+            from_stmt = True
+        else:
+            owner = default_owner
+
         free_pattern = ast.attrs.get("free_pattern", None)
         if owner == "library":
             # Library owns memory, do not let user release.
             pass
-        elif not ast.is_pointer():
+        elif not ast.is_pointer() and not from_stmt:
             # Non-pointers do not return dynamic memory.
             pass
         elif free_pattern is not None:

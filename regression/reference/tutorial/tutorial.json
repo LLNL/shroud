@@ -6804,7 +6804,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
                         "stmt0": "c_shadow_scalar_result_",
-                        "stmt1": "c_shadow_result"
+                        "stmt1": "c_shadow_scalar_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",

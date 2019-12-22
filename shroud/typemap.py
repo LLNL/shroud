@@ -1698,10 +1698,29 @@ fc_statements = dict(
             "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
         ],
     ),
+    c_shadow_scalar_in=dict(
+        alias="c_shadow_in",
+    ),
     # Return a C_capsule_data_type.
     c_shadow_result=dict(
         buf_extra=["shadow"],
         return_type="{c_type} *",
+        post_call=[
+            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->idtor = {idtor};",
+        ],
+    ),
+    c_shadow_scalar_result=dict(
+        # Return a instance by value.
+        # Create memory in pre_call so it will survive the return.
+        # owner="caller" sets idtor flag to release the memory.
+        buf_extra=["shadow"],
+        return_type="{c_type} *",
+        cxx_local_var="pointer",
+        owner="caller",
+        pre_call=[
+            "{cxx_type} * {cxx_var} = new {cxx_type};",
+        ],
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -1726,6 +1745,9 @@ fc_statements = dict(
         ret=[
             "return {c_var};",
         ],
+    ),
+    c_shadow_scalar_ctor=dict(
+        alias="c_shadow_ctor",
     ),
     c_shadow_dtor=dict(
         return_type="void",
