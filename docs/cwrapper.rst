@@ -242,6 +242,8 @@ indicates if the local variable is a **pointer** or **scalar**.
 For example, when a structure is returned by a C++ function, the C wrapper creates
 a local variable which contains a pointer to the C type of the struct.
 
+The local variable can be passed in when buf_args is *shadow*.
+
 call
 ^^^^
 
@@ -258,7 +260,6 @@ indicates if the local variable is a **pointer** or **scalar**.
 This in turns will set the format fields *cxx_member*.
 For example, a ``std::string`` argument is created for the C++ function
 from the ``char *`` argument passed into the C API wrapper.
-passed 
 
 c_header
 ^^^^^^^^

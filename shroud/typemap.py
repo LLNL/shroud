@@ -1424,7 +1424,7 @@ fc_statements = dict(
     c_string_scalar_result_buf_allocatable=dict(
         # pass address of string and length back to Fortran
         buf_args=["context"],
-        #                    cxx_local_var="pointer",
+        cxx_local_var="pointer",
         c_helper="copy_string ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -1515,7 +1515,7 @@ fc_statements = dict(
     # Almost same as intent_out_buf.
     c_vector_result_buf=dict(
         buf_args=["context"],
-        #                    cxx_local_var="pointer",
+        cxx_local_var="pointer",
         c_helper="capsule_data_helper copy_array",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"

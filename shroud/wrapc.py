@@ -915,9 +915,8 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = True
                 cxx_local_var = intent_blk.get("cxx_local_var", None)
 
-                if result_return_pointer_as in ["pointer", "allocatable"]:
-                    if not CXX_ast.is_indirect():
-                        fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
+                if cxx_local_var:
+                    fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
                 compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
                 # regular argument (not function result)
