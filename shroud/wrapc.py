@@ -1143,8 +1143,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_func,
             )
         else:
-            added_call_code = False
-
             if result_arg is None:
                 # Return result from function
                 # (It was not passed back in an argument)
@@ -1186,20 +1184,13 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, result_blk, pre_call, post_call, need_wrapper
                 )
-                if util.append_format_cmds(
-                    call_code, result_blk, "call", fmt_result
-                ):
-                    need_wrapper = True
-                    added_call_code = True
-                # XXX release rv if necessary
 
-            if not added_call_code:
-                append_format(
-                    call_code,
-                    "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
-                    "{CXX_template}(\t{C_call_list});",
-                    fmt_func,
-                )
+            append_format(
+                call_code,
+                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
+                "{CXX_template}(\t{C_call_list});",
+                fmt_func,
+            )
 
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
