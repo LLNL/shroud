@@ -1145,8 +1145,10 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
-                elif result_typemap.base == "shadow":
-                    # c_statements.post_call creates return value
+                elif "c_local_var" in result_blk:
+                    # c_var is created by the post_call clause or
+                    # it may be passed in as an argument.
+                    # For example, with struct and shadow.
                     if result_is_const:
                         # cast away constness
                         fmt_result.cxx_type = result_typemap.cxx_type
@@ -1492,14 +1494,14 @@ class Wrapc(util.WrapperMixin):
             atypemap.idtor = fmt.idtor
 
 
-def compute_return_prefix(arg, cxx_local_var):
-    """Compute if how to access variable: dereference, address, as-is"""
-    if cxx_local_var == "scalar":
+def compute_return_prefix(arg, local_var):
+    """Compute how to access variable: dereference, address, as-is"""
+    if local_var == "scalar":
         if arg.is_pointer():
             return "&"
         else:
             return ""
-    elif cxx_local_var == "pointer":
+    elif local_var == "pointer":
         if arg.is_pointer():
             return ""
         else:

@@ -6941,7 +6941,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "",
+                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
