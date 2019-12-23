@@ -30,6 +30,15 @@ except:
 cf_tree = {}
 # Always return the same empty statements.
 empty_stmts = {}
+default_stmts = dict(
+    c=dict(
+        key="c_default",
+#        return_type=None,
+    ),
+    f=dict(
+        key="f_default",
+    ),
+)
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -861,12 +870,12 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     if ntypemap.base != "shadow":
         return
 
-    # Convert to void * to add to struct
+    # Convert to void * to add to context struct
     ntypemap.cxx_to_c = "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})"
 
     # void pointer in struct -> class instance pointer
     ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>({c_var}{c_member}addr)" % ntypemap.cxx_type
+        "static_cast<{c_const}%s *>\t({c_var}->addr)" % ntypemap.cxx_type
     )
 
     # some default for ntypemap.f_capsule_data_type
@@ -1151,7 +1160,7 @@ def lookup_stmts_tree(tree, path):
         path  - list of name components.
                 Blank entries are ignored.
     """
-    found = empty_stmts
+    found = default_stmts[path[0]]
     work = []
     step = tree
     for part in path:
@@ -1415,7 +1424,7 @@ fc_statements = dict(
     c_string_scalar_result_buf_allocatable=dict(
         # pass address of string and length back to Fortran
         buf_args=["context"],
-        #                    cxx_local_var="pointer",
+        cxx_local_var="pointer",
         c_helper="copy_string ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -1506,7 +1515,7 @@ fc_statements = dict(
     # Almost same as intent_out_buf.
     c_vector_result_buf=dict(
         buf_args=["context"],
-        #                    cxx_local_var="pointer",
+        cxx_local_var="pointer",
         c_helper="capsule_data_helper copy_array",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
@@ -1679,14 +1688,51 @@ fc_statements = dict(
         alias="f_vector_out_allocatable",
     ),
 
-    # Return a C_capsule_data_type
+    # Pass in a pointer to a shadow object via buf_args.
+    # Extract pointer to C++ instance.
+    # convert C argument into a pointer to C++ type.
     c_shadow_in=dict(
-        buf_args=["shadow"]
+        buf_args=["shadow"],
+        cxx_local_var="pointer",
+        pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
+        ],
     ),
+    c_shadow_scalar_in=dict(
+        alias="c_shadow_in",
+    ),
+    # Return a C_capsule_data_type.
     c_shadow_result=dict(
+        buf_extra=["shadow"],
+        return_type="{c_type} *",
+        c_local_var="pointer",
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
+        ],
+        ret=[
+            "return {c_var};",
+        ],
+    ),
+    c_shadow_scalar_result=dict(
+        # Return a instance by value.
+        # Create memory in pre_call so it will survive the return.
+        # owner="caller" sets idtor flag to release the memory.
+        # c_local_var is passed in via buf_extra=shadow.
+        buf_extra=["shadow"],
+        return_type="{c_type} *",
+        cxx_local_var="pointer",
+        c_local_var="pointer",
+        owner="caller",
+        pre_call=[
+            "{cxx_type} * {cxx_var} = new {cxx_type};",
+        ],
+        post_call=[
+            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->idtor = {idtor};",
+        ],
+        ret=[
+            "return {c_var};",
         ],
     ),
     f_shadow_result=dict(
@@ -1695,6 +1741,29 @@ fc_statements = dict(
             # The c Function returns a pointer.
             # Save in a type(C_PTR) variable.
             "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+        ],
+    ),
+    c_shadow_ctor=dict(
+        buf_extra=["shadow"],
+        return_type="{c_type} *",
+        cxx_local_var="pointer",
+        call=[
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+        ],
+        ret=[
+            "return {c_var};",
+        ],
+    ),
+    c_shadow_scalar_ctor=dict(
+        alias="c_shadow_ctor",
+    ),
+    c_shadow_dtor=dict(
+        return_type="void",
+        call=[
+            "delete {CXX_this};",
+            "{C_this}->addr = NULL;",
         ],
     ),
 

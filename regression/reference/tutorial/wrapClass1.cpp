@@ -81,8 +81,7 @@ int TUT_Class1_method1(TUT_Class1 * self)
  *
  */
 // start TUT_Class1_equivalent
-bool TUT_Class1_equivalent(const TUT_Class1 * self,
-    const TUT_Class1 * obj2)
+bool TUT_Class1_equivalent(const TUT_Class1 * self, TUT_Class1 * obj2)
 {
 // splicer begin class.Class1.method.equivalent
     const tutorial::Class1 *SH_this =

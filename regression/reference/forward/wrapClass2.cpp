@@ -54,8 +54,8 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_class1 * arg)
 // splicer begin class.Class2.method.func1
     tutorial::Class2 *SH_this =
         static_cast<tutorial::Class2 *>(self->addr);
-    tutorial::Class1 * SHCXX_arg =
-        static_cast<tutorial::Class1 *>(arg->addr);
+    tutorial::Class1 * SHCXX_arg = static_cast<tutorial::Class1 *>
+        (arg->addr);
     SH_this->func1(SHCXX_arg);
     return;
 // splicer end class.Class2.method.func1
@@ -67,8 +67,8 @@ void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
 // splicer begin class.Class2.method.accept_class3
     tutorial::Class2 *SH_this =
         static_cast<tutorial::Class2 *>(self->addr);
-    tutorial::Class3 * SHCXX_arg =
-        static_cast<tutorial::Class3 *>(arg->addr);
+    tutorial::Class3 * SHCXX_arg = static_cast<tutorial::Class3 *>
+        (arg->addr);
     SH_this->acceptClass3(SHCXX_arg);
     return;
 // splicer end class.Class2.method.accept_class3

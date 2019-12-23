@@ -585,7 +585,8 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
+    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper,
+                         name=None):
         """Find prototype based on buf_args in fc_statements.
 
         Args:
@@ -594,6 +595,7 @@ class Wrapc(util.WrapperMixin):
             buf_args - List of arguments/metadata to add.
             proto_list - Prototypes are appended to list.
             need_wrapper -
+            name - name to override ast.name (with shadow only).
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
@@ -607,7 +609,10 @@ class Wrapc(util.WrapperMixin):
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
             elif buf_arg == "shadow":
-                proto_list.append(ast.gen_arg_as_c(continuation=True))
+                # Always pass a pointer to capsule.
+                # Do not use const in declaration.
+                proto_list.append( "{} * {}".format(ast.typemap.c_type,
+                                                    name or ast.name))
                 continue
 
             need_wrapper = True
@@ -725,8 +730,6 @@ class Wrapc(util.WrapperMixin):
         is_static = False
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
-        is_shadow_scalar = False
-        shadow_arg_decl = None
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
         self.header_typedef_nodes[result_typemap.name] = result_typemap
@@ -744,21 +747,35 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
             result_blk = None
+            if is_dtor:
+                stmts = ["c", "shadow", "dtor"]
+            else:
+                stmts = ["c"]
+            result_blk = typemap.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = "pointer" if ast.is_indirect() else "scalar"
-            result_blk = typemap.lookup_fc_stmts(
-                ["c", result_typemap.sgroup, spointer, "result", generated_suffix])
+            if is_ctor:
+                sintent = "ctor"
+            else:
+                sintent = "result"
+            stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
+            result_blk = typemap.lookup_fc_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_result.stmt0 = "_".join(stmts)
+            fmt_result.stmt1 = result_blk["key"]
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
             c_local_var = ""
-            if self.language == "cxx" and "c_local_var" in result_blk:
+            if self.language == "c":
+                fmt_result.cxx_var = fmt_result.c_var
+            elif "c_local_var" in result_blk:
                 c_local_var = result_blk["c_local_var"]
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
@@ -768,51 +785,22 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if (
-                result_typemap.base == "shadow"
-                and not CXX_ast.is_indirect()
-                and not is_ctor
-            ):
-                # decl: Class1 getClassNew()
-                is_shadow_scalar = True
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var,
-                    params=None,
-                    continuation=True,
-                    force_ptr=True,
-                )
-            else:
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None, continuation=True
-                )
+            fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True
+            )
 
-            if result_typemap.base == "shadow":
-                # Add an extra argument if function returns a shadow class
-                shadow_arg_decl = ast.gen_arg_as_c(
-                    name=fmt_result.c_var,
-                    continuation=True,
-                    params=None,
-                    force_ptr=True,
-                    remove_const=True,
-                )
-
-            if is_ctor or is_pointer:
-                # The C wrapper always creates a pointer to the new instance in the ctor.
-                fmt_result.cxx_member = "->"
-                fmt_result.cxx_addr = ""
-            else:
-                fmt_result.cxx_member = "."
-                fmt_result.cxx_addr = "&"
+            compute_cxx_deref(
+                CXX_ast, result_blk.get("cxx_local_var", None), fmt_result)
             fmt_pattern = fmt_result
 
         proto_list = []  # arguments for wrapper prototype
+        proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
 
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
         pre_call = []  # list of temporary variable declarations
-        call_code = []
         post_call = []
 
         if cls:
@@ -834,49 +822,33 @@ class Wrapc(util.WrapperMixin):
                         fmt_func.namespace_scope + fmt_func.class_scope
                     )
                 else:
-                    # 'this' argument
-                    rvast = declast.create_this_arg(
-                        fmt_func.C_this, cls.typemap, is_const
-                    )
-                    arg = rvast.gen_arg_as_c(continuation=True)
-                    proto_list.append(arg)
+                    # 'this' argument, always a pointer to a shadow type.
+                    proto_list.append( "{}{} * {}".format(
+                        fmt_func.c_const,
+                        cls.typemap.c_type, fmt_func.C_this))
 
                     # LHS is class' cxx_to_c
                     cls_typemap = cls.typemap
-                    if cls_typemap.c_to_cxx is None:
-                        # This should be set in typemap.fill_shadow_typemap_defaults
+                    if cls_typemap.base != "shadow":
                         raise RuntimeError(
-                            "Wappped class does not have c_to_cxx set"
+                            "Wapped class is not a shadow type"
                         )
                     append_format(
                         pre_call,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
-                        + cls_typemap.c_to_cxx
-                        + ";",
+                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
                         fmt_func,
                     )
 
-        self.find_idtor(node.ast, result_typemap, fmt_result, None)
+        self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
-        if result_blk:
-            need_wrapper = self.build_proto_list(
-                fmt_result,
-                ast,
-                result_blk.get("buf_args", []),
-                proto_list,
-                need_wrapper,
-            )
-
-        if is_shadow_scalar:
-            # Allocate a new instance, then assign pointer to dereferenced cxx_var.
-            append_format(
-                pre_call,
-                "{cxx_rv_decl} = new %s;" % result_typemap.cxx_type,
-                fmt_func,
-            )
-            fmt_result.cxx_addr = ""
-            fmt_result.idtor = result_typemap.idtor
-            fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
+        need_wrapper = self.build_proto_list(
+            fmt_result,
+            ast,
+            result_blk.get("buf_args", []),
+            proto_list,
+            need_wrapper,
+        )
 
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
@@ -910,18 +882,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = "const "
             else:
                 fmt_arg.c_const = ""
-            if arg.is_indirect():  # is_pointer?
-                fmt_arg.c_deref = "*"
-                fmt_arg.c_member = "->"
-                fmt_arg.c_addr = ""
-                fmt_arg.cxx_member = "->"
-                fmt_arg.cxx_addr = ""
-            else:
-                fmt_arg.c_deref = ""
-                fmt_arg.c_member = "."
-                fmt_arg.c_addr = "&"
-                fmt_arg.cxx_member = "."
-                fmt_arg.cxx_addr = "&"
+            compute_c_deref(arg, None, fmt_arg)
             fmt_arg.cxx_type = arg_typemap.cxx_type
             fmt_arg.idtor = "0"
             cxx_local_var = ""
@@ -950,72 +911,47 @@ class Wrapc(util.WrapperMixin):
                     "c", sgroup, spointer, "result",
                     generated_suffix, result_return_pointer_as,
                 ]
+                intent_blk = typemap.lookup_fc_stmts(stmts)
                 need_wrapper = True
-                if is_pointer:
-                    fmt_arg.cxx_member = "->"
-                    fmt_arg.cxx_addr = ""
-                else:
-                    fmt_arg.cxx_member = "."
-                    fmt_arg.cxx_addr = "&"
+                cxx_local_var = intent_blk.get("cxx_local_var", None)
 
-                if result_return_pointer_as in ["pointer", "allocatable"]:
-                    if not CXX_ast.is_indirect():
-                        # As std::string is returned.
-                        # Must allocate the std::string then assign to it via cxx_rv_decl.
-                        # This allows the std::string to outlast the function return.
-                        fmt_arg.cxx_member = "->"
-                        fmt_arg.cxx_addr = ""
-                        fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
+                if cxx_local_var:
+                    fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
+                compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
                 # regular argument (not function result)
                 arg_call = arg
-                if arg_typemap.c_to_cxx is None:
-                    fmt_arg.cxx_var = fmt_arg.c_var  # compatible
+                spointer = "pointer" if arg.is_indirect() else "scalar"
+                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
+                intent_blk = typemap.lookup_fc_stmts(stmts)
+
+                if self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
+                elif "cxx_local_var" in intent_blk:
+                    # Explicit conversion must be in pre_call.
+                    cxx_local_var = intent_blk["cxx_local_var"]
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                elif arg_typemap.c_to_cxx is None:
+                    # Compatible
+                    fmt_arg.cxx_var = fmt_arg.c_var
                 else:
                     # convert C argument to C++
-                    if arg_typemap.base == 'shadow':
-                        # When a shadow class is passed by value, the shadow
-                        # class is passed by value and it contains a pointer
-                        # to the actual class. Set force_ptr to get a pointer
-                        # in the declaration.
-                        # In addition, set cxx_local_var = "pointer" below
-                        # in order to pass the value of the class, and not the
-                        # pointer.
-                        # See tutorial passClassByValue.
-                        force_ptr = True
-                    else:
-                        force_ptr = False
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var,
                         params=None,
                         as_ptr=True,
-                        force_ptr=force_ptr,
                         continuation=True,
                     )
                     append_format(
                         pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                     )
-
-                    if arg.is_indirect():
-                        # Only pointers can be passed in and must cast to another pointer.
-                        # By setting cxx_local_var=pointer, it will be dereferenced
-                        # correctly when passed to C++.
-                        # base==string will have a pre_call block which sets cxx_local_var
-                        cxx_local_var = "pointer"
-                    elif arg_typemap.base == 'shadow':
-                        cxx_local_var = "pointer"
-
-                spointer = "pointer" if arg.is_indirect() else "scalar"
-                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
-
-            intent_blk = typemap.lookup_fc_stmts(stmts)
+                compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(stmts)
-            if intent_blk:
-                fmt_arg.stmt1 = intent_blk["key"]
+            fmt_arg.stmt1 = intent_blk["key"]
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1024,28 +960,6 @@ class Wrapc(util.WrapperMixin):
                 proto_list,
                 need_wrapper,
             )
-
-            # Add any code needed for intent(IN).
-            # Usually to convert types.
-            # For example, convert char * to std::string
-            # Skip input arguments generated by F_string_result_as_arg
-            if self.language == "cxx" and "cxx_local_var" in intent_blk:
-                cxx_local_var = intent_blk["cxx_local_var"]
-                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-            #                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-            # This uses C_local or CXX_local for arguments.
-            #                if 'cxx_T' in fmt_arg:
-            #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
-            #                elif arg_typemap.cxx_to_c is None:
-            #                    fmt_arg.cxx_var = fmt_func.C_local + fmt_arg.c_var
-            #                else:
-            #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
-            if cxx_local_var == "scalar":
-                fmt_arg.cxx_member = "."
-                fmt_arg.cxx_addr = "&"
-            elif cxx_local_var == "pointer":
-                fmt_arg.cxx_member = "->"
-                fmt_arg.cxx_addr = ""
 
             if self.language == "c":
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
@@ -1096,23 +1010,28 @@ class Wrapc(util.WrapperMixin):
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
-        if shadow_arg_decl:
-            # Add argument for shadow result.
-            proto_list.append(shadow_arg_decl)
+        if CXX_subprogram == "function":
+            # Add extra arguments to end of prototype for result.
+            need_wrapper = self.build_proto_list(
+                fmt_result,
+                ast,
+                result_blk.get("buf_extra", []),
+                proto_tail,
+                need_wrapper,
+                name=fmt_result.c_var,
+            )
 
         fmt_func.C_call_list = ",\t ".join(call_list)
 
         fmt_func.C_prototype = options.get(
-            "C_prototype", ",\t ".join(proto_list)
+            "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
         if node.return_this:
             fmt_func.C_return_type = "void"
-        elif is_dtor:
-            fmt_func.C_return_type = "void"
-        elif result_typemap.base == "shadow":
-            # Return pointer to capsule_data. It contains pointer to results.
-            fmt_func.C_return_type = result_typemap.c_type + " *"
+        elif "return_type" in result_blk:
+            fmt_func.C_return_type = wformat(
+                result_blk["return_type"], fmt_result)
         elif fmt_func.C_custom_return_type:
             pass  # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == "scalar":
@@ -1124,6 +1043,8 @@ class Wrapc(util.WrapperMixin):
                 name=None, params=None, continuation=True
             )
 
+        # generate the C body
+        C_return_code = "return;"
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = typemap.compute_name(
@@ -1135,60 +1056,34 @@ class Wrapc(util.WrapperMixin):
                     self.patterns[C_error_pattern],
                     fmt_pattern,
                 )
-        if post_call_pattern:
-            need_wrapper = True
-            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
-
-        # generate the C body
-        C_return_code = "return;"
-        if is_ctor:
-            # Always create a pointer to the instance.
-            fmt_func.cxx_rv_decl = (
-                result_typemap.cxx_type + " *" + fmt_result.cxx_var
-            )
-            append_format(
-                call_code,
-                "{cxx_rv_decl} =\t new {namespace_scope}"
-                "{cxx_type}({C_call_list});",
-                fmt_func,
-            )
-            if result_typemap.cxx_to_c is not None:
-                fmt_func.c_rv_decl = (
-                    result_typemap.c_type + " *" + fmt_result.c_var
-                )
-                fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
-            fmt_result.c_type = result_typemap.c_type
-            fmt_result.idtor = "0"
-            # XXX - similar to c_statements.result
-            append_format(
-                post_call,
-                "{c_var}->addr = {c_val};\n" "{c_var}->idtor = {idtor};",
-                fmt_result,
-            )
-            C_return_code = wformat("return {c_var};", fmt_result)
-        elif is_dtor:
-            append_format(
-                call_code,
-                "delete {CXX_this};\n" "{C_this}->addr = NULL;",
-                fmt_func,
-            )
+        
+        if result_blk and "call" in result_blk:
+            raw_call_code = result_blk["call"]
         elif CXX_subprogram == "subroutine":
-            append_format(
-                call_code,
+            raw_call_code = [
                 "{CXX_this_call}{function_name}"
                 "{CXX_template}(\t{C_call_list});",
-                fmt_func,
-            )
+            ]
         else:
-            added_call_code = False
-
+            if "cxx_local_var" in result_blk:
+                # A C++ var is created by pre_call.
+                # Assign to it directly. ex c_shadow_scalar_result
+                fmt_result.cxx_addr = ""
+                fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
+            
+            raw_call_code = [
+                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
+                "{CXX_template}(\t{C_call_list});",
+            ]
             if result_arg is None:
                 # Return result from function
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
-                elif result_typemap.base == "shadow":
-                    # c_statements.post_call creates return value
+                elif "c_local_var" in result_blk:
+                    # c_var is created by the post_call clause or
+                    # it may be passed in as an argument.
+                    # For example, with struct and shadow.
                     if result_is_const:
                         # cast away constness
                         fmt_result.cxx_type = result_typemap.cxx_type
@@ -1212,7 +1107,7 @@ class Wrapc(util.WrapperMixin):
                         result_typemap.cxx_to_c, fmt_result
                     )
                     append_format(
-                        post_call, "{c_rv_decl} =\t {c_val};", fmt_result
+                        post_call_pattern, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
                 if result_typemap.impl_header:
@@ -1223,26 +1118,12 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, result_blk, pre_call, post_call, need_wrapper
                 )
-                if util.append_format_cmds(
-                    call_code, result_blk, "call", fmt_result
-                ):
-                    need_wrapper = True
-                    added_call_code = True
-                # XXX release rv if necessary
-
-            if not added_call_code:
-                append_format(
-                    call_code,
-                    "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
-                    "{CXX_template}(\t{C_call_list});",
-                    fmt_func,
-                )
 
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
                 if node.ast.is_reference():
-                    if result_typemap.base in ["shadow", "string"]:
+                    if result_typemap.base in ["string"]:
                         C_return_code = wformat("return {c_var};", fmt_result)
                     else:
                         # Return address of reference i.e. a pointer.
@@ -1250,6 +1131,14 @@ class Wrapc(util.WrapperMixin):
                 else:
                     fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
                     C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
+
+        call_code = []
+        for line in raw_call_code:
+            append_format(call_code, line, fmt_result)
+
+        if post_call_pattern:
+            need_wrapper = True
+            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
 
         local = typemap.compute_name(["C_finalize", generated_suffix])
         if fmt_func.inlocal(local):
@@ -1265,6 +1154,9 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal("C_return_code"):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        elif result_blk and "ret" in result_blk:
+            # XXX - Only first line for now
+            fmt_func.C_return_code = wformat(result_blk["ret"][0], fmt_result)
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
             fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
@@ -1468,30 +1360,38 @@ class Wrapc(util.WrapperMixin):
             intent_blk -
         """
 
-        if intent_blk:
-            destructor_name = intent_blk.get("destructor_name", None)
-            if destructor_name:
-                # Use destructor in typemap to remove intermediate objects
-                # e.g. std::vector
-                destructor_name = wformat(destructor_name, fmt)
-                if destructor_name not in self.capsule_code:
-                    del_lines = []
-                    util.append_format_cmds(
-                        del_lines, intent_blk, "destructor", fmt
-                    )
-                    fmt.idtor = self.add_capsule_code(
-                        destructor_name, atypemap, del_lines
-                    )
-                else:
-                    fmt.idtor = self.capsule_code[destructor_name][0]
-                return
+        destructor_name = intent_blk.get("destructor_name", None)
+        if destructor_name:
+            # Custom destructor from statements.
+            # Use destructor in typemap to remove intermediate objects
+            # e.g. std::vector
+            destructor_name = wformat(destructor_name, fmt)
+            if destructor_name not in self.capsule_code:
+                del_lines = []
+                util.append_format_cmds(
+                    del_lines, intent_blk, "destructor", fmt
+                )
+                fmt.idtor = self.add_capsule_code(
+                    destructor_name, atypemap, del_lines
+                )
+            else:
+                fmt.idtor = self.capsule_code[destructor_name][0]
+            return
 
-        owner = ast.attrs.get("owner", default_owner)
+        from_stmt = False
+        if "owner" in ast.attrs:
+            owner = ast.attrs["owner"]
+        elif "owner" in intent_blk:
+            owner = intent_blk["owner"]
+            from_stmt = True
+        else:
+            owner = default_owner
+
         free_pattern = ast.attrs.get("free_pattern", None)
         if owner == "library":
             # Library owns memory, do not let user release.
             pass
-        elif not ast.is_pointer():
+        elif not ast.is_pointer() and not from_stmt:
             # Non-pointers do not return dynamic memory.
             pass
         elif free_pattern is not None:
@@ -1529,14 +1429,52 @@ class Wrapc(util.WrapperMixin):
             atypemap.idtor = fmt.idtor
 
 
-def compute_return_prefix(arg, cxx_local_var):
-    """Compute if how to access variable: dereference, address, as-is"""
-    if cxx_local_var == "scalar":
+def compute_c_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C argument."""
+    if local_var == "scalar":
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+    elif local_var == "pointer":
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    elif arg.is_indirect(): #pointer():
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    else:
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+
+def compute_cxx_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C++ variable."""
+    if local_var == "scalar":
+#        fmt.cxx_deref = ""
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"
+    elif local_var == "pointer":
+#        fmt.cxx_deref = "*"
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    elif arg.is_pointer():
+#        fmt.cxx_deref = "*"
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    else:
+#        fmt.cxx_deref = ""
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"
+
+def compute_return_prefix(arg, local_var):
+    """Compute how to access variable: dereference, address, as-is"""
+    if local_var == "scalar":
         if arg.is_pointer():
             return "&"
         else:
             return ""
-    elif cxx_local_var == "pointer":
+    elif local_var == "pointer":
         if arg.is_pointer():
             return ""
         else:

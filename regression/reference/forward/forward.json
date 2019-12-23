@@ -73,13 +73,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "FOR_Class2",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class2",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class2",
@@ -122,10 +123,9 @@
                         "decl": "Class2()",
                         "declgen": "Class2()",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();",
+                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "FOR_Class2_ctor",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "FOR_Class2 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "FOR_Class2 *",
@@ -145,8 +145,7 @@
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
                             "c_const": "",
-                            "c_rv_decl": "FOR_Class2 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class2 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class2 SHCXX_rv",
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
@@ -207,10 +206,8 @@
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                                    "cxx_decl": "tutorial::Class1 * SHCXX_arg",
                                     "cxx_member": "->",
                                     "cxx_type": "tutorial::Class1",
-                                    "cxx_val": "static_cast<tutorial::Class1 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "stmt0": "c_shadow_pointer_in_",
@@ -219,7 +216,8 @@
                                 "fmtf": {
                                     "c_var": "arg",
                                     "f_var": "arg",
-                                    "stmt0": "f_shadow_pointer_in_"
+                                    "stmt0": "f_shadow_pointer_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -286,7 +284,7 @@
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
-                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg->addr);",
+                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>\t(arg->addr);",
                             "C_prototype": "FOR_Class2 * self,\t TUT_class1 * arg",
                             "C_return_code": "return;",
                             "C_return_type": "void",
@@ -323,10 +321,8 @@
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                                    "cxx_decl": "tutorial::Class3 * SHCXX_arg",
                                     "cxx_member": "->",
                                     "cxx_type": "tutorial::Class3",
-                                    "cxx_val": "static_cast<tutorial::Class3 *>(arg->addr)",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "stmt0": "c_shadow_pointer_in_",
@@ -335,7 +331,8 @@
                                 "fmtf": {
                                     "c_var": "arg",
                                     "f_var": "arg",
-                                    "stmt0": "f_shadow_pointer_in_"
+                                    "stmt0": "f_shadow_pointer_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -405,7 +402,7 @@
                             "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_accept_class3",
-                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>(arg->addr);",
+                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>\t(arg->addr);",
                             "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                             "C_return_code": "return;",
                             "C_return_type": "void",

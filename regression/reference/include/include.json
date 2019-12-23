@@ -36,12 +36,14 @@
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
-                                    "stmt0": "c_unknown_scalar_in_"
+                                    "stmt0": "c_unknown_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
                                     "f_var": "comm",
-                                    "stmt0": "f_unknown_scalar_in_"
+                                    "stmt0": "f_unknown_scalar_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -111,10 +113,8 @@
                                     "c_var": "c2",
                                     "cxx_addr": "",
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_c2)",
-                                    "cxx_decl": "three::Class1 * SHCXX_c2",
                                     "cxx_member": "->",
                                     "cxx_type": "three::Class1",
-                                    "cxx_val": "static_cast<three::Class1 *>(c2->addr)",
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "stmt0": "c_shadow_pointer_in_",
@@ -123,7 +123,8 @@
                                 "fmtf": {
                                     "c_var": "c2",
                                     "f_var": "c2",
-                                    "stmt0": "f_shadow_pointer_in_"
+                                    "stmt0": "f_shadow_pointer_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -163,7 +164,7 @@
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);",
                             "C_call_list": "SHCXX_c2",
                             "C_name": "LIB_Class2_method2",
-                            "C_pre_call": "Class2 *SH_this =\t static_cast<Class2 *>(self->addr);\nthree::Class1 * SHCXX_c2 =\t static_cast<three::Class1 *>(c2->addr);",
+                            "C_pre_call": "Class2 *SH_this =\t static_cast<Class2 *>(self->addr);\nthree::Class1 * SHCXX_c2 =\t static_cast<three::Class1 *>\t(c2->addr);",
                             "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                             "C_return_code": "return;",
                             "C_return_type": "void",
@@ -426,12 +427,14 @@
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
                                             "idtor": "0",
-                                            "stmt0": "c_native_scalar_in_"
+                                            "stmt0": "c_native_scalar_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",
                                             "f_var": "arg1",
-                                            "stmt0": "f_native_scalar_in_"
+                                            "stmt0": "f_native_scalar_in_",
+                                            "stmt1": "f_default"
                                         }
                                     }
                                 },

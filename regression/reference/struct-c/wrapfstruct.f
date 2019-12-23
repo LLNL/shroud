@@ -147,7 +147,6 @@ module struct_mod
                 result(SHT_rv) &
                 bind(C, name="returnStructPtr1")
             use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
@@ -160,7 +159,6 @@ module struct_mod
                 result(SHT_rv) &
                 bind(C, name="returnStructPtr2")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
@@ -174,7 +172,6 @@ module struct_mod
                 result(SHT_rv) &
                 bind(C, name="STR_return_struct_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d

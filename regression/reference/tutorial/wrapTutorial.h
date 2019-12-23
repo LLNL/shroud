@@ -96,13 +96,17 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_direction_func(int arg);
 
-void TUT_pass_class_by_value(TUT_Class1 arg);
+void TUT_pass_class_by_value(TUT_Class1 * arg);
 
-int TUT_useclass(const TUT_Class1 * arg);
+int TUT_useclass(TUT_Class1 * arg);
 
 TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv);
 
 TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv);
+
+TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv);
+
+TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv);
 
 TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv);
 

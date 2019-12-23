@@ -667,6 +667,28 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
+static char PY_getClassReference__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getClassReference(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1 & getClassReference()
+// splicer begin function.get_class_reference
+    tutorial::Class1 & SHCXX_rv = tutorial::getClassReference();
+
+    // post_call
+    PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
+    SHTPy_rv->obj = &SHCXX_rv;
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_class_reference
+}
+
 static char PY_set_global_flag__doc__[] =
 "documentation"
 ;
@@ -917,6 +939,8 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
+{"getClassReference", (PyCFunction)PY_getClassReference, METH_NOARGS,
+    PY_getClassReference__doc__},
 {"set_global_flag", (PyCFunction)PY_set_global_flag,
     METH_VARARGS|METH_KEYWORDS, PY_set_global_flag__doc__},
 {"get_global_flag", (PyCFunction)PY_get_global_flag, METH_NOARGS,

@@ -257,7 +257,8 @@
                             "c_var": "arg",
                             "cxx_T": "int",
                             "f_var": "arg",
-                            "stmt0": "f_vector_pointer_in__native"
+                            "stmt0": "f_vector_pointer_in__native",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -270,7 +271,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1353,7 +1356,8 @@
                             "c_var": "arg",
                             "cxx_T": "std::string",
                             "f_var": "arg",
-                            "stmt0": "f_vector_pointer_in__string"
+                            "stmt0": "f_vector_pointer_in__string",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -1366,7 +1370,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1718,12 +1724,14 @@
                             "cxx_type": "int",
                             "cxx_var": "n",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_buf"
+                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "n",
                             "f_var": "n",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -1735,7 +1743,9 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",

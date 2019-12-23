@@ -112,13 +112,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "TUT_Class1",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -163,10 +164,9 @@
                         "decl": "Class1()         +name(new)",
                         "declgen": "Class1() +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();",
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_new_default",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -187,8 +187,7 @@
                             "PY_type_method": "tp_init",
                             "__line__": 159,
                             "c_const": "",
-                            "c_rv_decl": "TUT_Class1 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_default",
                             "underscore_name": "new"
@@ -211,12 +210,14 @@
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "idtor": "0",
-                                    "stmt0": "c_native_scalar_in_"
+                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
                                     "f_var": "flag",
-                                    "stmt0": "f_native_scalar_in_"
+                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -250,13 +251,14 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "TUT_Class1",
-                                "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_scalar_ctor_",
+                                "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -316,10 +318,9 @@
                         "decl": "Class1(int flag) +name(new)",
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);",
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "flag",
                             "C_name": "TUT_Class1_new_flag",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
@@ -338,8 +339,7 @@
                             "PY_type_method": "tp_init",
                             "__line__": 162,
                             "c_const": "",
-                            "c_rv_decl": "TUT_Class1 *SHC_rv",
-                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_flag",
                             "underscore_name": "new"
@@ -401,7 +401,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_",
+                                "stmt1": "c_default"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -486,10 +488,8 @@
                                     "c_var": "obj2",
                                     "cxx_addr": "",
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_obj2))",
-                                    "cxx_decl": "const tutorial::Class1 * SHCXX_obj2",
                                     "cxx_member": "->",
                                     "cxx_type": "tutorial::Class1",
-                                    "cxx_val": "static_cast<const tutorial::Class1 *>(obj2->addr)",
                                     "cxx_var": "SHCXX_obj2",
                                     "idtor": "0",
                                     "stmt0": "c_shadow_pointer_in_",
@@ -498,7 +498,8 @@
                                 "fmtf": {
                                     "c_var": "obj2",
                                     "f_var": "obj2",
-                                    "stmt0": "f_shadow_pointer_in_"
+                                    "stmt0": "f_shadow_pointer_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtpy": {
                                     "PyObject": "PY_Class1",
@@ -530,7 +531,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_bool_scalar_result_",
+                                "stmt1": "c_default"
                             },
                             "fmtf": {
                                 "cxx_type": "bool",
@@ -592,8 +595,8 @@
                             "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);",
                             "C_call_list": "*SHCXX_obj2",
                             "C_name": "TUT_Class1_equivalent",
-                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);\nconst tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>(obj2->addr);",
-                            "C_prototype": "const TUT_Class1 * self,\t const TUT_Class1 * obj2",
+                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);\nconst tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>\t(obj2->addr);",
+                            "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * obj2",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "bool",
                             "F_C_call": "c_class1_equivalent",
@@ -690,7 +693,8 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "idtor": "0",
-                                    "stmt0": "c_bool_scalar_in_"
+                                    "stmt0": "c_bool_scalar_in_",
+                                    "stmt1": "c_default"
                                 }
                             },
                             "name": {
@@ -721,7 +725,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -831,7 +837,8 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "idtor": "0",
-                                    "stmt0": "c_bool_scalar_in_buf"
+                                    "stmt0": "c_bool_scalar_in_buf",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "SH_flag",
@@ -860,7 +867,8 @@
                                 "fmtf": {
                                     "c_var": "name",
                                     "f_var": "name",
-                                    "stmt0": "f_string_pointer_in_"
+                                    "stmt0": "f_string_pointer_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -874,7 +882,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_buf",
+                                "stmt1": "c_shadow_result"
                             }
                         },
                         "_generated": "arg_to_buffer",
@@ -974,7 +984,9 @@
                                 "cxx_member": "->",
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1",
@@ -1068,12 +1080,14 @@
                                     "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
-                                    "stmt0": "c_native_scalar_in_"
+                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
                                     "f_var": "arg",
-                                    "stmt0": "f_native_scalar_in_"
+                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -1116,7 +1130,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "tutorial::Class1::DIRECTION",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_",
+                                "stmt1": "c_default"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class1::DIRECTION",
@@ -1173,7 +1189,7 @@
                             "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "TUT_Class1_direction_func",
-                            "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
+                            "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                             "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\ntutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                             "C_prototype": "TUT_Class1 * self,\t int arg",
                             "C_return_code": "return SHC_rv;",
@@ -1212,7 +1228,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_",
+                                "stmt1": "c_default"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -1275,7 +1293,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_native_scalar_result_",
+                                "stmt1": "c_default"
                             },
                             "fmtf": {
                                 "cxx_type": "int",
@@ -1343,12 +1363,14 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "idtor": "0",
-                                    "stmt0": "c_native_scalar_in_"
+                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "val",
                                     "f_var": "val",
-                                    "stmt0": "f_native_scalar_in_"
+                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt1": "f_default"
                                 }
                             }
                         },
@@ -1509,7 +1531,9 @@
                                 "cxx_member": ".",
                                 "cxx_type": "tutorial::Singleton",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0"
+                                "idtor": "0",
+                                "stmt0": "c_shadow_pointer_result_",
+                                "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Singleton",
@@ -1579,14 +1603,14 @@
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
-                        "linenumber": 274,
+                        "linenumber": 285,
                         "options": {}
                     }
                 ],
-                "linenumber": 269,
+                "linenumber": 280,
                 "name": "Singleton",
                 "options": {
-                    "__line__": 270,
+                    "__line__": 281,
                     "wrap_lua": false
                 },
                 "scope": "tutorial::Singleton::",
@@ -1830,12 +1854,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1878,12 +1904,14 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg2",
                             "f_var": "arg2",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -1923,7 +1951,9 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2232,7 +2262,8 @@
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_string_pointer_in_"
+                            "stmt0": "f_string_pointer_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "arg2": {
@@ -2255,7 +2286,8 @@
                         "fmtf": {
                             "c_var": "arg2",
                             "f_var": "arg2",
-                            "stmt0": "f_string_pointer_in_"
+                            "stmt0": "f_string_pointer_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -2267,7 +2299,9 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2386,7 +2420,9 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2461,12 +2497,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -2479,7 +2517,9 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2557,8 +2597,8 @@
             },
             {
                 "_default_funcs": [
-                    40,
-                    41
+                    42,
+                    43
                 ],
                 "_fmtargs": {
                     "arg1": {
@@ -2574,12 +2614,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2622,7 +2664,8 @@
                             "cxx_type": "bool",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_bool_scalar_in_"
+                            "stmt0": "c_bool_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "SH_arg2",
@@ -2670,7 +2713,9 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -2914,7 +2959,8 @@
                         "fmtf": {
                             "c_var": "name",
                             "f_var": "name",
-                            "stmt0": "f_string_pointer_in_"
+                            "stmt0": "f_string_pointer_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -2993,12 +3039,14 @@
                             "cxx_type": "int",
                             "cxx_var": "indx",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "indx",
                             "f_var": "indx",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3175,12 +3223,14 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3317,12 +3367,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -3518,7 +3570,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -3612,7 +3666,9 @@
                         "cxx_member": ".",
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "double",
@@ -3757,7 +3813,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -4143,12 +4200,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_buf"
+                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg2",
                             "f_var": "arg2",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "name": {
@@ -4171,7 +4230,8 @@
                         "fmtf": {
                             "c_var": "name",
                             "f_var": "name",
-                            "stmt0": "f_string_pointer_in_"
+                            "stmt0": "f_string_pointer_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -4346,12 +4406,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -4364,7 +4426,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4452,12 +4516,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "offset": {
@@ -4473,12 +4539,14 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "offset",
                             "f_var": "offset",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -4491,7 +4559,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4581,8 +4651,8 @@
             },
             {
                 "_default_funcs": [
-                    46,
-                    47
+                    48,
+                    49
                 ],
                 "_fmtargs": {
                     "num": {
@@ -4598,12 +4668,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -4646,12 +4718,14 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "offset",
                             "f_var": "offset",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -4694,12 +4768,14 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "stride",
                             "f_var": "stride",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -4739,7 +4815,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -4877,12 +4955,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "type": {
@@ -4898,12 +4978,14 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "type",
                             "f_var": "type",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -4916,7 +4998,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5013,12 +5097,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "offset": {
@@ -5034,12 +5120,14 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "offset",
                             "f_var": "offset",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "type": {
@@ -5055,12 +5143,14 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "type",
                             "f_var": "type",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -5073,7 +5163,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5172,8 +5264,8 @@
             },
             {
                 "_default_funcs": [
-                    48,
-                    49
+                    50,
+                    51
                 ],
                 "_fmtargs": {
                     "num": {
@@ -5189,12 +5281,14 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "num",
                             "f_var": "num",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -5237,12 +5331,14 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "offset",
                             "f_var": "offset",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 3,
@@ -5285,12 +5381,14 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "stride",
                             "f_var": "stride",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 4,
@@ -5333,12 +5431,14 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "type",
                             "f_var": "type",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5378,7 +5478,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -5523,12 +5625,14 @@
                             "cxx_type": "tutorial::TypeID",
                             "cxx_var": "arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5568,7 +5672,9 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::TypeID",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::TypeID",
@@ -5666,12 +5772,14 @@
                             "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5714,7 +5822,9 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::EnumTypeID",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::EnumTypeID",
@@ -5771,7 +5881,7 @@
                     "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::enumfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
-                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
+                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_pre_call": "tutorial::EnumTypeID SHCXX_arg =\t static_cast<tutorial::EnumTypeID>(arg);",
                     "C_prototype": "int arg",
                     "C_return_code": "return SHC_rv;",
@@ -5814,12 +5924,14 @@
                             "cxx_val": "static_cast<tutorial::Color>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5862,7 +5974,9 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::Color",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Color",
@@ -5919,7 +6033,7 @@
                     "C_call_code": "tutorial::Color SHCXX_rv =\t tutorial::colorfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
-                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
+                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_pre_call": "tutorial::Color SHCXX_arg =\t static_cast<tutorial::Color>(arg);",
                     "C_prototype": "int arg",
                     "C_return_code": "return SHC_rv;",
@@ -5954,18 +6068,20 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "max",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(max)",
-                            "cxx_member": "->",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&max)",
+                            "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "max",
                             "idtor": "0",
-                            "stmt0": "c_native_pointer_out_"
+                            "stmt0": "c_native_pointer_out_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "max",
                             "f_var": "max",
-                            "stmt0": "f_native_pointer_out_"
+                            "stmt0": "f_native_pointer_out_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -5991,18 +6107,20 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "min",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(min)",
-                            "cxx_member": "->",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&min)",
+                            "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "min",
                             "idtor": "0",
-                            "stmt0": "c_native_pointer_out_"
+                            "stmt0": "c_native_pointer_out_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "min",
                             "f_var": "min",
-                            "stmt0": "f_native_pointer_out_"
+                            "stmt0": "f_native_pointer_out_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6121,12 +6239,14 @@
                             "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -6169,7 +6289,9 @@
                         "cxx_member": ".",
                         "cxx_type": "tutorial::Class1::DIRECTION",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1::DIRECTION",
@@ -6226,7 +6348,7 @@
                     "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t tutorial::directionFunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_direction_func",
-                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
+                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_pre_call": "tutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                     "C_prototype": "int arg",
                     "C_return_code": "return SHC_rv;",
@@ -6263,10 +6385,8 @@
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "tutorial::Class1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "tutorial::Class1",
-                            "cxx_val": "static_cast<tutorial::Class1 *>(arg.addr)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_shadow_scalar_in_",
@@ -6275,7 +6395,8 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_shadow_scalar_in_"
+                            "stmt0": "f_shadow_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "PyObject": "PY_Class1",
@@ -6334,8 +6455,8 @@
                     "C_call_code": "tutorial::passClassByValue(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "TUT_pass_class_by_value",
-                    "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg.addr);",
-                    "C_prototype": "TUT_Class1 arg",
+                    "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>\t(arg->addr);",
+                    "C_prototype": "TUT_Class1 * arg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_pass_class_by_value",
@@ -6369,10 +6490,8 @@
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_arg))",
-                            "cxx_decl": "const tutorial::Class1 * SHCXX_arg",
                             "cxx_member": "->",
                             "cxx_type": "tutorial::Class1",
-                            "cxx_val": "static_cast<const tutorial::Class1 *>(arg->addr)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "stmt0": "c_shadow_pointer_in_",
@@ -6381,7 +6500,8 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_shadow_pointer_in_"
+                            "stmt0": "f_shadow_pointer_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "PyObject": "PY_Class1",
@@ -6413,7 +6533,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -6469,8 +6591,8 @@
                     "C_call_code": "int SHC_rv =\t tutorial::useclass(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_useclass",
-                    "C_pre_call": "const tutorial::Class1 * SHCXX_arg =\t static_cast<const tutorial::Class1 *>(arg->addr);",
-                    "C_prototype": "const TUT_Class1 * arg",
+                    "C_pre_call": "const tutorial::Class1 * SHCXX_arg =\t static_cast<const tutorial::Class1 *>\t(arg->addr);",
+                    "C_prototype": "TUT_Class1 * arg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_useclass",
@@ -6506,7 +6628,9 @@
                         "cxx_member": "->",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6572,7 +6696,9 @@
                         "cxx_member": "->",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6641,6 +6767,153 @@
                 }
             },
             {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_type": "TUT_Class1",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(&SHCXX_rv))",
+                        "cxx_member": ".",
+                        "cxx_type": "tutorial::Class1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "tutorial::Class1",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "getConstClassReference",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "tutorial::Class1"
+                },
+                "decl": "const Class1 &getConstClassReference()",
+                "declgen": "const Class1 & getConstClassReference()",
+                "fmtdict": {
+                    "C_call_code": "const tutorial::Class1 & SHCXX_rv =\t tutorial::getConstClassReference(\t);",
+                    "C_call_list": "",
+                    "C_name": "TUT_get_const_class_reference",
+                    "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(&SHCXX_rv));\nSHC_rv->idtor = 0;",
+                    "C_prototype": "TUT_Class1 * SHC_rv",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "TUT_Class1 *",
+                    "F_C_call": "c_get_const_class_reference",
+                    "F_C_name": "c_get_const_class_reference",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)",
+                    "F_name_function": "get_const_class_reference",
+                    "F_name_generic": "get_const_class_reference",
+                    "F_name_impl": "get_const_class_reference",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "const ",
+                    "cxx_rv_decl": "const tutorial::Class1 & SHCXX_rv",
+                    "function_name": "getConstClassReference",
+                    "underscore_name": "get_const_class_reference"
+                },
+                "linenumber": 243,
+                "options": {
+                    "__line__": 244,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_type": "TUT_Class1",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)",
+                        "cxx_member": ".",
+                        "cxx_type": "tutorial::Class1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "stmt0": "c_shadow_pointer_result_",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "tutorial::Class1",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PY_Class1",
+                        "PyTypeObject": "PY_Class1_Type",
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "tutorial::Class1",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getClassReference",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "tutorial::Class1"
+                },
+                "decl": "Class1 &getClassReference()",
+                "declgen": "Class1 & getClassReference()",
+                "fmtdict": {
+                    "C_call_code": "tutorial::Class1 & SHCXX_rv =\t tutorial::getClassReference(\t);",
+                    "C_call_list": "",
+                    "C_name": "TUT_get_class_reference",
+                    "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
+                    "C_prototype": "TUT_Class1 * SHC_rv",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "TUT_Class1 *",
+                    "F_C_call": "c_get_class_reference",
+                    "F_C_name": "c_get_class_reference",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_prv = c_get_class_reference(SHT_rv%cxxmem)",
+                    "F_name_function": "get_class_reference",
+                    "F_name_generic": "get_class_reference",
+                    "F_name_impl": "get_class_reference",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_getClassReference",
+                    "c_const": "",
+                    "cxx_rv_decl": "tutorial::Class1 & SHCXX_rv",
+                    "function_name": "getClassReference",
+                    "underscore_name": "get_class_reference"
+                },
+                "linenumber": 249,
+                "options": {
+                    "__line__": 250,
+                    "wrap_lua": false
+                }
+            },
+            {
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -6655,26 +6928,30 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "flag",
                             "f_var": "flag",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "",
+                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)",
-                        "cxx_member": ".",
+                        "cxx_member": "->",
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "1"
+                        "idtor": "1",
+                        "stmt0": "c_shadow_scalar_result_",
+                        "stmt1": "c_shadow_scalar_result"
                     },
                     "fmtf": {
                         "cxx_type": "tutorial::Class1",
@@ -6710,7 +6987,7 @@
                 "decl": "Class1 getClassCopy(int flag)",
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 244,
+                    "__line__": 255,
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
@@ -6737,9 +7014,9 @@
                     "function_name": "getClassCopy",
                     "underscore_name": "get_class_copy"
                 },
-                "linenumber": 243,
+                "linenumber": 254,
                 "options": {
-                    "__line__": 246,
+                    "__line__": 257,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -6759,12 +7036,14 @@
                             "cxx_type": "int",
                             "cxx_var": "in",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "in",
                             "f_var": "in",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         }
                     },
                     "incr": {
@@ -6780,7 +7059,8 @@
                             "cxx_type": "int",
                             "cxx_var": "incr",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "incr",
@@ -6797,7 +7077,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -6865,7 +7147,7 @@
                 "decl": "int callback1(int in, int (*incr)(int));",
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 254,
+                    "__line__": 265,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -6890,9 +7172,9 @@
                     "function_name": "callback1",
                     "underscore_name": "callback1"
                 },
-                "linenumber": 253,
+                "linenumber": 264,
                 "options": {
-                    "__line__": 256,
+                    "__line__": 267,
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -6913,12 +7195,14 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -7000,7 +7284,7 @@
                     "function_name": "set_global_flag",
                     "underscore_name": "set_global_flag"
                 },
-                "linenumber": 263,
+                "linenumber": 274,
                 "options": {}
             },
             {
@@ -7013,7 +7297,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -7076,7 +7362,7 @@
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
                 },
-                "linenumber": 264,
+                "linenumber": 275,
                 "options": {}
             },
             {
@@ -7090,7 +7376,9 @@
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
@@ -7142,7 +7430,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_last_function_called",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -7164,7 +7452,7 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 265,
+                "linenumber": 276,
                 "options": {}
             },
             {
@@ -7189,7 +7477,8 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_"
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default"
                         }
                     }
                 },
@@ -7201,7 +7490,9 @@
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -7256,7 +7547,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 265,
+                "linenumber": 276,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

@@ -148,12 +148,14 @@
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
                                     "idtor": "0",
-                                    "stmt0": "c_native_scalar_in_"
+                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "arg1",
                                     "f_var": "arg1",
-                                    "stmt0": "f_native_scalar_in_"
+                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -185,12 +187,14 @@
                                     "cxx_type": "double",
                                     "cxx_var": "arg2",
                                     "idtor": "0",
-                                    "stmt0": "c_native_scalar_in_"
+                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "arg2",
                                     "f_var": "arg2",
-                                    "stmt0": "f_native_scalar_in_"
+                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt1": "f_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -563,12 +567,14 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -600,12 +606,14 @@
                             "cxx_type": "long",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg2",
                             "f_var": "arg2",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -760,12 +768,14 @@
                             "cxx_type": "float",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_var": "arg1",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -797,12 +807,14 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "stmt0": "c_native_scalar_in_"
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg2",
                             "f_var": "arg2",
-                            "stmt0": "f_native_scalar_in_"
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1024,7 +1036,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -1134,7 +1148,9 @@
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
@@ -1273,13 +1289,14 @@
                                 "_fmtresult": {
                                     "fmtc": {
                                         "c_type": "TEM_vector_int",
-                                        "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "",
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<int>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_shadow_scalar_ctor_",
+                                        "stmt1": "c_shadow_ctor"
                                     },
                                     "fmtf": {
                                         "cxx_type": "std::vector<int>",
@@ -1316,10 +1333,9 @@
                                 "decl": "vector()",
                                 "declgen": "vector()",
                                 "fmtdict": {
-                                    "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();",
+                                    "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_int_ctor",
-                                    "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_prototype": "TEM_vector_int * SHC_rv",
                                     "C_return_code": "return SHC_rv;",
                                     "C_return_type": "TEM_vector_int *",
@@ -1337,8 +1353,7 @@
                                     "PY_type_impl": "PY_vector_int_tp_init",
                                     "PY_type_method": "tp_init",
                                     "c_const": "",
-                                    "c_rv_decl": "TEM_vector_int *SHC_rv",
-                                    "cxx_rv_decl": "std::vector<int> *SHCXX_rv",
+                                    "cxx_rv_decl": "std::vector<int> SHCXX_rv",
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
                                 },
@@ -1442,18 +1457,20 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "value",
-                                            "cxx_addr": "",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(value))",
-                                            "cxx_member": "->",
+                                            "cxx_addr": "&",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&value))",
+                                            "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "value",
                                             "idtor": "0",
-                                            "stmt0": "c_native_pointer_in_"
+                                            "stmt0": "c_native_pointer_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "value",
                                             "f_var": "value",
-                                            "stmt0": "f_native_pointer_in_"
+                                            "stmt0": "f_native_pointer_in_",
+                                            "stmt1": "f_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "const ",
@@ -1603,12 +1620,14 @@
                                             "cxx_type": "std::vector::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
-                                            "stmt0": "c_native_scalar_in_"
+                                            "stmt0": "c_native_scalar_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "n",
                                             "f_var": "n",
-                                            "stmt0": "f_native_scalar_in_"
+                                            "stmt0": "f_native_scalar_in_",
+                                            "stmt1": "f_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -1636,7 +1655,9 @@
                                         "cxx_member": ".",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_native_pointer_result_",
+                                        "stmt1": "c_default"
                                     },
                                     "fmtf": {
                                         "cxx_type": "int",
@@ -1800,13 +1821,14 @@
                                 "_fmtresult": {
                                     "fmtc": {
                                         "c_type": "TEM_vector_double",
-                                        "c_val": "static_cast<void *>(\tSHCXX_rv)",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "",
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<double>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_shadow_scalar_ctor_",
+                                        "stmt1": "c_shadow_ctor"
                                     },
                                     "fmtf": {
                                         "cxx_type": "std::vector<double>",
@@ -1843,10 +1865,9 @@
                                 "decl": "vector()",
                                 "declgen": "vector()",
                                 "fmtdict": {
-                                    "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();",
+                                    "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_double_ctor",
-                                    "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_prototype": "TEM_vector_double * SHC_rv",
                                     "C_return_code": "return SHC_rv;",
                                     "C_return_type": "TEM_vector_double *",
@@ -1864,8 +1885,7 @@
                                     "PY_type_impl": "PY_vector_double_tp_init",
                                     "PY_type_method": "tp_init",
                                     "c_const": "",
-                                    "c_rv_decl": "TEM_vector_double *SHC_rv",
-                                    "cxx_rv_decl": "std::vector<double> *SHCXX_rv",
+                                    "cxx_rv_decl": "std::vector<double> SHCXX_rv",
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
                                 },
@@ -1969,18 +1989,20 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "value",
-                                            "cxx_addr": "",
-                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<double *>\t(value))",
-                                            "cxx_member": "->",
+                                            "cxx_addr": "&",
+                                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<double *>\t(&value))",
+                                            "cxx_member": ".",
                                             "cxx_type": "double",
                                             "cxx_var": "value",
                                             "idtor": "0",
-                                            "stmt0": "c_native_pointer_in_"
+                                            "stmt0": "c_native_pointer_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "value",
                                             "f_var": "value",
-                                            "stmt0": "f_native_pointer_in_"
+                                            "stmt0": "f_native_pointer_in_",
+                                            "stmt1": "f_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "const ",
@@ -2130,12 +2152,14 @@
                                             "cxx_type": "std::vector::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
-                                            "stmt0": "c_native_scalar_in_"
+                                            "stmt0": "c_native_scalar_in_",
+                                            "stmt1": "c_default"
                                         },
                                         "fmtf": {
                                             "c_var": "n",
                                             "f_var": "n",
-                                            "stmt0": "f_native_scalar_in_"
+                                            "stmt0": "f_native_scalar_in_",
+                                            "stmt1": "f_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -2163,7 +2187,9 @@
                                         "cxx_member": ".",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "idtor": "0"
+                                        "idtor": "0",
+                                        "stmt0": "c_native_pointer_result_",
+                                        "stmt1": "c_default"
                                     },
                                     "fmtf": {
                                         "cxx_type": "double",

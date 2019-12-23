@@ -801,6 +801,8 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
+        name=None,
+        intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
 
@@ -816,6 +818,8 @@ rv = .false.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
+            name    - name to override ast.name (shadow only).
+            intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
 
@@ -852,8 +856,13 @@ rv = .false.
                     )
                 continue
             elif buf_arg == "shadow":
-                arg_c_names.append(ast.name)
-                arg_c_decl.append(ast.bind_c())
+                # Always pass a pointer to capsule.
+                # Do not use const or value in declaration
+                arg_c_names.append(name or ast.name)
+                arg_c_decl.append("{}, intent({}) :: {}".format(
+                    ast.typemap.f_c_type,
+                    (intent or ast.attrs["intent"]).upper(),
+                    name or ast.name))
                 self.update_f_module(
                     modules, imports,
                     ast.typemap.f_c_module or ast.typemap.f_module
@@ -971,17 +980,16 @@ rv = .false.
 
         result_blk = typemap.lookup_fc_stmts(
             ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
-        if result_blk:
-            self.build_arg_list_interface(
-                node, fileinfo,
-                fmt_func,
-                ast,
-                result_blk.get("buf_args", []),
-                modules,
-                imports,
-                arg_c_names,
-                arg_c_decl,
-            )
+        self.build_arg_list_interface(
+            node, fileinfo,
+            fmt_func,
+            ast,
+            result_blk.get("buf_args", []),
+            modules,
+            imports,
+            arg_c_names,
+            arg_c_decl,
+        )
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
@@ -1019,19 +1027,22 @@ rv = .false.
                 arg_c_decl,
             )
 
-        if result_typemap.base == "shadow":
-            arg_c_names.append(fmt_func.F_result_capsule)
-            arg_c_decl.append(
-                ast.bind_c(name=fmt_func.F_result_capsule, intent="out")
-            )
-            self.update_f_module(
+        if subprogram == "function":
+            self.build_arg_list_interface(
+                node, fileinfo,
+                fmt_func,
+                ast,
+                result_blk.get("buf_extra", []),
                 modules,
                 imports,
-                result_typemap.f_c_module or result_typemap.f_module,
+                arg_c_names,
+                arg_c_decl,
+                name=fmt_func.F_result_capsule,
+                intent="out",
             )
-            # Functions which return shadow classes are not pure
-            # since the result argument will be assigned to.
-        elif subprogram == "function" and (
+        # Functions which return shadow classes are not pure
+        # since the result argument will be assigned to.
+        if result_typemap.base != "shadow" and subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
             fmt.F_C_pure_clause = "pure "
@@ -1044,16 +1055,11 @@ rv = .false.
             if result_typemap.base in ["shadow", "string", "vector"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif return_pointer_as in ["pointer", "allocatable", "raw"]:
+                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                # XXX - make sure ptr is set to avoid VALUE
-                rvast = declast.create_this_arg(
-                    fmt.F_result, result_typemap, False
-                )
-                if return_pointer_as in ["pointer", "allocatable", "raw"]:
-                    arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                else:
-                    arg_c_decl.append(rvast.bind_c())
+                arg_c_decl.append(ast.bind_c(name=fmt.F_result))
                 self.update_f_module(
                     modules,
                     imports,
@@ -1501,8 +1507,7 @@ rv = .false.
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(f_stmts)
-            if f_intent_blk:
-                fmt_arg.stmt1 = f_intent_blk["key"]
+            fmt_arg.stmt1 = f_intent_blk["key"]
 
             # Now C function arguments
             # May have different types, like generic

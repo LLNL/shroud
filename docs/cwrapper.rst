@@ -242,6 +242,14 @@ indicates if the local variable is a **pointer** or **scalar**.
 For example, when a structure is returned by a C++ function, the C wrapper creates
 a local variable which contains a pointer to the C type of the struct.
 
+The local variable can be passed in when buf_args is *shadow*.
+
+call
+^^^^
+
+Code to call function.  This is usually generated.
+An exception which require explicit call code are constructors
+and destructors for shadow types.
 
 cxx_local_var
 ^^^^^^^^^^^^^
@@ -252,7 +260,6 @@ indicates if the local variable is a **pointer** or **scalar**.
 This in turns will set the format fields *cxx_member*.
 For example, a ``std::string`` argument is created for the C++ function
 from the ``char *`` argument passed into the C API wrapper.
-passed 
 
 c_header
 ^^^^^^^^
@@ -318,6 +325,8 @@ pre_call
 
 Code used with *intent(in)* arguments to convert from C to C++.
 
+.. the typemap.c_to_cxx field will not be used.
+
 .. * **C_call_code** code used to call the function.
    Constructor and destructor will use ``new`` and ``delete``.
 
@@ -335,6 +344,22 @@ Can be used to convert results from C++ to C.
 * **C_return_code** returns a value from the wrapper.
 
 
+ret
+---
+
+Code for return statement.
+Usually generated but can be replaced.
+For example, with constructors.
+
+.. return is a reserved word so it's not possible to do dict(return=[])
+
+return_type
+-----------
+
+Explicit return type when it is different than the
+functions return type.
+For example, with shadow types.
+  
 Predefined types
 ----------------
 
