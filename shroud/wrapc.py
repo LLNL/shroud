@@ -882,18 +882,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = "const "
             else:
                 fmt_arg.c_const = ""
-            if arg.is_indirect():  # is_pointer?
-                fmt_arg.c_deref = "*"
-                fmt_arg.c_member = "->"
-                fmt_arg.c_addr = ""
-                fmt_arg.cxx_member = "->"
-                fmt_arg.cxx_addr = ""
-            else:
-                fmt_arg.c_deref = ""
-                fmt_arg.c_member = "."
-                fmt_arg.c_addr = "&"
-                fmt_arg.cxx_member = "."
-                fmt_arg.cxx_addr = "&"
+            compute_c_deref(arg, None, fmt_arg)
             fmt_arg.cxx_type = arg_typemap.cxx_type
             fmt_arg.idtor = "0"
             cxx_local_var = ""
@@ -924,21 +913,12 @@ class Wrapc(util.WrapperMixin):
                 ]
                 intent_blk = typemap.lookup_fc_stmts(stmts)
                 need_wrapper = True
-                if is_pointer:
-                    fmt_arg.cxx_member = "->"
-                    fmt_arg.cxx_addr = ""
-                else:
-                    fmt_arg.cxx_member = "."
-                    fmt_arg.cxx_addr = "&"
+                cxx_local_var = intent_blk.get("cxx_local_var", None)
 
                 if result_return_pointer_as in ["pointer", "allocatable"]:
                     if not CXX_ast.is_indirect():
-                        # As std::string is returned.
-                        # Must allocate the std::string then assign to it via cxx_rv_decl.
-                        # This allows the std::string to outlast the function return.
-                        fmt_arg.cxx_member = "->"
-                        fmt_arg.cxx_addr = ""
                         fmt_func.cxx_rv_decl = wformat("*{cxx_var}", fmt_arg)
+                compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
                 # regular argument (not function result)
                 arg_call = arg
@@ -968,6 +948,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(
                         pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                     )
+                compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(stmts)
@@ -980,13 +961,6 @@ class Wrapc(util.WrapperMixin):
                 proto_list,
                 need_wrapper,
             )
-
-            if cxx_local_var == "scalar":
-                fmt_arg.cxx_member = "."
-                fmt_arg.cxx_addr = "&"
-            elif cxx_local_var == "pointer":
-                fmt_arg.cxx_member = "->"
-                fmt_arg.cxx_addr = ""
 
             if self.language == "c":
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
@@ -1456,18 +1430,41 @@ class Wrapc(util.WrapperMixin):
             atypemap.idtor = fmt.idtor
 
 
-def compute_cxx_deref(arg, local_var, fmt):
-    """Compute how to dereference variable"""
+def compute_c_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C argument."""
     if local_var == "scalar":
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+    elif local_var == "pointer":
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    elif arg.is_indirect(): #pointer():
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    else:
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+
+def compute_cxx_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C++ variable."""
+    if local_var == "scalar":
+#        fmt.cxx_deref = ""
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
     elif local_var == "pointer":
+#        fmt.cxx_deref = "*"
         fmt.cxx_member = "->"
         fmt.cxx_addr = ""
     elif arg.is_pointer():
+#        fmt.cxx_deref = "*"
         fmt.cxx_member = "->"
         fmt.cxx_addr = ""
     else:
+#        fmt.cxx_deref = ""
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
 
