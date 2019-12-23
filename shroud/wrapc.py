@@ -819,7 +819,6 @@ class Wrapc(util.WrapperMixin):
         # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
         pre_call = []  # list of temporary variable declarations
-        call_code = []
         post_call = []
 
         if cls:
@@ -1115,6 +1114,8 @@ class Wrapc(util.WrapperMixin):
                 name=None, params=None, continuation=True
             )
 
+        # generate the C body
+        C_return_code = "return;"
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = typemap.compute_name(
@@ -1126,23 +1127,19 @@ class Wrapc(util.WrapperMixin):
                     self.patterns[C_error_pattern],
                     fmt_pattern,
                 )
-        if post_call_pattern:
-            need_wrapper = True
-            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
-
-        # generate the C body
-        C_return_code = "return;"
+        
         if result_blk and "call" in result_blk:
-            for line in result_blk["call"]:
-                append_format(call_code, line, fmt_result)
+            raw_call_code = result_blk["call"]
         elif CXX_subprogram == "subroutine":
-            append_format(
-                call_code,
+            raw_call_code = [
                 "{CXX_this_call}{function_name}"
                 "{CXX_template}(\t{C_call_list});",
-                fmt_func,
-            )
+            ]
         else:
+            raw_call_code = [
+                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
+                "{CXX_template}(\t{C_call_list});",
+            ]
             if result_arg is None:
                 # Return result from function
                 # (It was not passed back in an argument)
@@ -1173,7 +1170,7 @@ class Wrapc(util.WrapperMixin):
                         result_typemap.cxx_to_c, fmt_result
                     )
                     append_format(
-                        post_call, "{c_rv_decl} =\t {c_val};", fmt_result
+                        post_call_pattern, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
                 if result_typemap.impl_header:
@@ -1184,13 +1181,6 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, result_blk, pre_call, post_call, need_wrapper
                 )
-
-            append_format(
-                call_code,
-                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
-                "{CXX_template}(\t{C_call_list});",
-                fmt_func,
-            )
 
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
@@ -1204,6 +1194,14 @@ class Wrapc(util.WrapperMixin):
                 else:
                     fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
                     C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
+
+        call_code = []
+        for line in raw_call_code:
+            append_format(call_code, line, fmt_result)
+
+        if post_call_pattern:
+            need_wrapper = True
+            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
 
         local = typemap.compute_name(["C_finalize", generated_suffix])
         if fmt_func.inlocal(local):

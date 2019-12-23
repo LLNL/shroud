@@ -146,7 +146,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
