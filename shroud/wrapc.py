@@ -824,7 +824,7 @@ class Wrapc(util.WrapperMixin):
                 else:
                     # 'this' argument, always a pointer to a shadow type.
                     proto_list.append( "{}{} * {}".format(
-                        "const " if is_const else "",
+                        fmt_func.c_const,
                         cls.typemap.c_type, fmt_func.C_this))
 
                     # LHS is class' cxx_to_c
