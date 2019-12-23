@@ -283,7 +283,22 @@ contains
     obj0a = getclass2()
     ptr = obj0a%get_instance()
     call assert_true(c_associated(ptr), "getclass2 obj0a")
-    call assert_true(obj0 .eq. obj0a, "obj0 .eq. obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass2 - obj0 .eq. obj0a")
+
+    obj0a = getclass3()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass3 obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass3 - obj0 .eq. obj0a")
+
+    obj0a = get_const_class_reference()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getConstClassReference obj0a")
+    call assert_true(obj0 .eq. obj0a, "getConstClassReference - obj0 .eq. obj0a")
+
+    obj0a = get_class_reference()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getClassReference obj0a")
+    call assert_true(obj0 .eq. obj0a, "getClassReference - obj0 .eq. obj0a")
 
     call obj0%delete
     ptr = obj0%get_instance()

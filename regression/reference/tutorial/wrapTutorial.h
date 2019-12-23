@@ -104,6 +104,10 @@ TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv);
 
 TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv);
 
+TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv);
+
+TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv);
+
 TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv);
 
 int TUT_callback1(int in, int ( * incr)(int));

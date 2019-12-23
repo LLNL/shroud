@@ -403,6 +403,30 @@ TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv)
 // splicer end function.getclass3
 }
 
+// const Class1 & getConstClassReference()
+TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv)
+{
+// splicer begin function.get_const_class_reference
+    const tutorial::Class1 & SHCXX_rv =
+        tutorial::getConstClassReference();
+    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
+        (&SHCXX_rv));
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+// splicer end function.get_const_class_reference
+}
+
+// Class1 & getClassReference()
+TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv)
+{
+// splicer begin function.get_class_reference
+    tutorial::Class1 & SHCXX_rv = tutorial::getClassReference();
+    SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+// splicer end function.get_class_reference
+}
+
 // Class1 getClassCopy(int flag +intent(in)+value)
 /**
  * \brief Return Class1 instance by value, uses copy constructor

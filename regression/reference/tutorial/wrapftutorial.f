@@ -668,6 +668,30 @@ module tutorial_mod
     end interface
 
     interface
+        function c_get_const_class_reference(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="TUT_get_const_class_reference")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_class1_capsule
+            implicit none
+            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_class_reference
+    end interface
+
+    interface
+        function c_get_class_reference(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="TUT_get_class_reference")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_class1_capsule
+            implicit none
+            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_class_reference
+    end interface
+
+    interface
         function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_class_copy")
@@ -1323,6 +1347,28 @@ contains
         SHT_prv = c_getclass3(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
+
+    ! const Class1 & getConstClassReference()
+    function get_const_class_reference() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
+        type(class1) :: SHT_rv
+        ! splicer begin function.get_const_class_reference
+        SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)
+        ! splicer end function.get_const_class_reference
+    end function get_const_class_reference
+
+    ! Class1 & getClassReference()
+    function get_class_reference() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
+        type(class1) :: SHT_rv
+        ! splicer begin function.get_class_reference
+        SHT_prv = c_get_class_reference(SHT_rv%cxxmem)
+        ! splicer end function.get_class_reference
+    end function get_class_reference
 
     ! Class1 getClassCopy(int flag +intent(in)+value)
     !>
