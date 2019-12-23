@@ -868,10 +868,6 @@ class Wrapc(util.WrapperMixin):
             need_wrapper,
         )
 
-        if is_shadow_scalar:
-            fmt_result.cxx_addr = ""
-            fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
-
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
         #    c_var_len  - variable with length of c_var
@@ -1114,6 +1110,10 @@ class Wrapc(util.WrapperMixin):
                 "{CXX_template}(\t{C_call_list});",
             ]
         else:
+            if is_shadow_scalar:
+                fmt_result.cxx_addr = ""
+                fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
+            
             raw_call_code = [
                 "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
                 "{CXX_template}(\t{C_call_list});",
