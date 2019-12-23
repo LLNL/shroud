@@ -1718,6 +1718,7 @@ fc_statements = dict(
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
+        # c_local_var is passed in via buf_extra=shadow.
         buf_extra=["shadow"],
         return_type="{c_type} *",
         cxx_local_var="pointer",
@@ -1745,6 +1746,7 @@ fc_statements = dict(
     c_shadow_ctor=dict(
         buf_extra=["shadow"],
         return_type="{c_type} *",
+        cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",

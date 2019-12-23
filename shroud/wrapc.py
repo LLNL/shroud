@@ -789,13 +789,8 @@ class Wrapc(util.WrapperMixin):
                 name=fmt_result.cxx_var, params=None, continuation=True
             )
 
-            if is_ctor or is_pointer:
-                # The C wrapper always creates a pointer to the new instance in the ctor.
-                fmt_result.cxx_member = "->"
-                fmt_result.cxx_addr = ""
-            else:
-                fmt_result.cxx_member = "."
-                fmt_result.cxx_addr = "&"
+            compute_cxx_deref(
+                CXX_ast, result_blk.get("cxx_local_var", None), fmt_result)
             fmt_pattern = fmt_result
 
         proto_list = []  # arguments for wrapper prototype
@@ -1460,6 +1455,21 @@ class Wrapc(util.WrapperMixin):
             )
             atypemap.idtor = fmt.idtor
 
+
+def compute_cxx_deref(arg, local_var, fmt):
+    """Compute how to dereference variable"""
+    if local_var == "scalar":
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"
+    elif local_var == "pointer":
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    elif arg.is_pointer():
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    else:
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"
 
 def compute_return_prefix(arg, local_var):
     """Compute how to access variable: dereference, address, as-is"""
