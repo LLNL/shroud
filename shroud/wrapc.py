@@ -1205,7 +1205,7 @@ class Wrapc(util.WrapperMixin):
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
                 if node.ast.is_reference():
-                    if result_typemap.base in ["shadow", "string"]:
+                    if result_typemap.base in ["string"]:
                         C_return_code = wformat("return {c_var};", fmt_result)
                     else:
                         # Return address of reference i.e. a pointer.

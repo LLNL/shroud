@@ -1709,6 +1709,9 @@ fc_statements = dict(
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
+        ret=[
+            "return {c_var};",
+        ],
     ),
     c_shadow_scalar_result=dict(
         # Return a instance by value.
@@ -1724,6 +1727,9 @@ fc_statements = dict(
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
             "{c_var}->idtor = {idtor};",
+        ],
+        ret=[
+            "return {c_var};",
         ],
     ),
     f_shadow_result=dict(
