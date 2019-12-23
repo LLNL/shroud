@@ -730,7 +730,6 @@ class Wrapc(util.WrapperMixin):
         is_static = False
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
-        is_shadow_scalar = False
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
         self.header_typedef_nodes[result_typemap.name] = result_typemap
@@ -774,7 +773,9 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
             c_local_var = ""
-            if self.language == "cxx" and "c_local_var" in result_blk:
+            if self.language == "c":
+                fmt_result.cxx_var = fmt_result.c_var
+            elif "c_local_var" in result_blk:
                 c_local_var = result_blk["c_local_var"]
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
@@ -784,23 +785,9 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if (
-                result_typemap.base == "shadow"
-                and not CXX_ast.is_indirect()
-                and not is_ctor
-            ):
-                # decl: Class1 getClassNew()
-                is_shadow_scalar = True
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var,
-                    params=None,
-                    continuation=True,
-                    force_ptr=True,
-                )
-            else:
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None, continuation=True
-                )
+            fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True
+            )
 
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new instance in the ctor.
@@ -1110,7 +1097,9 @@ class Wrapc(util.WrapperMixin):
                 "{CXX_template}(\t{C_call_list});",
             ]
         else:
-            if is_shadow_scalar:
+            if "cxx_local_var" in result_blk:
+                # A C++ var is created by pre_call.
+                # Assign to it directly. ex c_shadow_scalar_result
                 fmt_result.cxx_addr = ""
                 fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
             
