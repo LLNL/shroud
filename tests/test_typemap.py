@@ -34,20 +34,21 @@ class Typemap(unittest.TestCase):
         self.assertEqual(rv, {})
 
     def test_alias(self):
+        # Prefix names with "c" to work with typemap.default_stmts.
         cf_tree = {}
         stmts = dict(
-            a=dict(
+            c_a=dict(
                 name="a"
             ),
-            b=dict(
+            c_b=dict(
                 name="b",
-                alias="a",
+                alias="c_a",
             ),
         )
         typemap.update_stmt_tree(stmts, cf_tree)
 
-        rv = typemap.lookup_stmts_tree(cf_tree, ["b"])
-        self.assertIs(rv, stmts["a"])
+        rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
+        self.assertIs(rv, stmts["c_a"])
         
     def test_lookup_tree1(self):
         cf_tree = {}
