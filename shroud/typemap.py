@@ -33,12 +33,36 @@ empty_stmts = {}
 default_stmts = dict(
     c=dict(
         key="c_default",
-#        return_type=None,
+        buf_args=[],
+        buf_extra=[],
+        c_helper="",
+        c_local_var=None,
+        cxx_local_var=None,
+
+        pre_call=[],
+        call=[],
+        post_call=[],
+        ret=[],
+
+        destructor_name=None,
+        owner="library",
+        return_type=None,
     ),
     f=dict(
         key="f_default",
+
+        buf_args=[],
+        c_local_var=None,
+        f_helper="",
+        f_module=None,
+
+        declare=[],
+        pre_call=[],
+        call=[],
+        post_call=[],
     ),
 )
+default_scopes = dict()
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -1047,7 +1071,7 @@ def create_buf_variable_names(options, blk, attrs, c_var):
     """Define variable names for buffer arguments.
     If user has not explicitly set, then compute from option template.
     """
-    for buf_arg in blk.get("buf_args", []):
+    for buf_arg in blk.buf_args:
         if buf_arg in attrs:
             # do not override user specified variable name
             continue
@@ -1107,6 +1131,10 @@ def update_stmt_tree(stmts, tree):
 
     Add "key" to node and "_key" to tree to aid debugging.
 
+    Each typemap is converted into a Scope instance with the parent
+    based based on the language (c or f) and added as "scope" field.
+    This additional layer of indirection is needed to implement alias.
+
     stmts = {"c_native_in":1,
              "c_native_out":2,
              "c_native_pointer_out":3,
@@ -1125,7 +1153,13 @@ def update_stmt_tree(stmts, tree):
          },
       },
     }
+
     """
+    # Convert defaults into Scope nodes.
+    for key, node in default_stmts.items():
+        default_scopes[key] = util.Scope(None)
+        default_scopes[key].update(node)
+
     for key, node in stmts.items():
         step = tree
         steps = key.split("_")
@@ -1134,11 +1168,14 @@ def update_stmt_tree(stmts, tree):
             step = step.setdefault(part, {})
             label.append(part)
             step["_key"] = "_".join(label)
+        node["key"] = key  # useful for debugging/testing
         if "alias" in node:
             step['_node'] = stmts[node["alias"]]
         else:
             step['_node'] = node
-        node["key"] = key  # useful for debugging/testing
+            scope = util.Scope(default_scopes[steps[0]])
+            scope.update(node)
+            node["scope"] = scope
 
 
 def lookup_stmts_tree(tree, path):
@@ -1160,7 +1197,7 @@ def lookup_stmts_tree(tree, path):
         path  - list of name components.
                 Blank entries are ignored.
     """
-    found = default_stmts[path[0]]
+    found = default_scopes[path[0]]
     work = []
     step = tree
     for part in path:
@@ -1170,12 +1207,16 @@ def lookup_stmts_tree(tree, path):
         if part not in step:
             continue
         step = step[part]
-        found = step.get("_node", found)  # check if path ends here
+#        found = step.get("_node", found)  # check if path ends here
+        if "_node" in step:
+            found = step["_node"]["scope"]
+    if not isinstance(found, util.Scope):
+        raise RuntimeError
     return found
 
 
                 
-# language   "c"    
+# language   "c" 
 # sgroup     "native", "string", "char"
 # spointer   "pointer" ""
 # intent     "in", "out", "inout", "result"

@@ -984,7 +984,7 @@ rv = .false.
             node, fileinfo,
             fmt_func,
             ast,
-            result_blk.get("buf_args", []),
+            result_blk.buf_args,
             modules,
             imports,
             arg_c_names,
@@ -1020,7 +1020,7 @@ rv = .false.
                 node, fileinfo,
                 fmt,
                 arg,
-                c_intent_blk.get("buf_args", self._default_buf_args),
+                c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
                 arg_c_names,
@@ -1032,7 +1032,7 @@ rv = .false.
                 node, fileinfo,
                 fmt_func,
                 ast,
-                result_blk.get("buf_extra", []),
+                result_blk.buf_extra,
                 modules,
                 imports,
                 arg_c_names,
@@ -1232,26 +1232,25 @@ rv = .false.
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        if "f_module" in intent_blk:
-            self.update_f_module(modules, imports, intent_blk["f_module"])
+        self.update_f_module(modules, imports, intent_blk.f_module)
 
-        if arg_f_decl is not None and "declare" in intent_blk:
+        if arg_f_decl is not None and intent_blk.declare:
             need_wrapper = True
-            for line in intent_blk["declare"]:
+            for line in intent_blk.declare:
                 append_format(arg_f_decl, line, fmt)
 
-        if pre_call is not None and "pre_call" in intent_blk:
+        if pre_call is not None and intent_blk.pre_call:
             need_wrapper = True
-            for line in intent_blk["pre_call"]:
+            for line in intent_blk.pre_call:
                 append_format(pre_call, line, fmt)
 
-        if post_call is not None and "post_call" in intent_blk:
+        if post_call is not None and intent_blk.post_call:
             need_wrapper = True
-            for line in intent_blk["post_call"]:
+            for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
-        if "f_helper" in intent_blk:
-            f_helper = wformat(intent_blk["f_helper"], fmt)
+        if intent_blk.f_helper:
+            f_helper = wformat(intent_blk.f_helper, fmt)
             for helper in f_helper.split():
                 fileinfo.f_helper[helper] = True
         return need_wrapper
@@ -1364,7 +1363,7 @@ rv = .false.
                 C_node.ast,
                 ast,
                 result_typemap,
-                result_blk.get("buf_args", []),
+                result_blk.buf_args,
                 modules,
                 imports,
                 arg_f_decl,
@@ -1507,7 +1506,7 @@ rv = .false.
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(f_stmts)
-            fmt_arg.stmt1 = f_intent_blk["key"]
+            fmt_arg.stmt1 = f_intent_blk.key
 
             # Now C function arguments
             # May have different types, like generic
@@ -1518,7 +1517,7 @@ rv = .false.
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 
-            have_c_local_var = f_intent_blk.get("c_local_var", False)
+            have_c_local_var = f_intent_blk.c_local_var
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 arg_f_decl.append(
@@ -1533,7 +1532,7 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
-                c_intent_blk.get("buf_args", self._default_buf_args),
+                c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
                 arg_f_decl,
@@ -1666,8 +1665,8 @@ rv = .false.
                 )
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
-                if "call" in result_blk:
-                    cmd_list = result_blk["call"]
+                if result_blk.call:
+                    cmd_list = result_blk.call
                 elif return_pointer_as in ["pointer", "allocatable"]:
                     cmd_list = ["{F_pointer} = {F_C_call}({F_arg_c_call})"]
                 else:
