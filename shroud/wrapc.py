@@ -1000,6 +1000,10 @@ class Wrapc(util.WrapperMixin):
                         call_list.append("*" + fmt_arg.cxx_var)
                 elif arg.is_reference():
                     # reference to scalar  i.e. double &max
+                    # void tutorial::getMinMax(int &min);
+                    # wrapper(int *min) {
+                    #   tutorial::getMinMax(*min);
+                    #}
                     call_list.append("*" + fmt_arg.cxx_var)
                 else:
                     call_list.append(fmt_arg.cxx_var)
@@ -1122,15 +1126,8 @@ class Wrapc(util.WrapperMixin):
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
-                if node.ast.is_reference():
-                    if result_typemap.base in ["string"]:
-                        C_return_code = wformat("return {c_var};", fmt_result)
-                    else:
-                        # Return address of reference i.e. a pointer.
-                        C_return_code = wformat("return &{c_var};", fmt_result)
-                else:
-                    fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
-                    C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
+                fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+                C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
 
         call_code = []
         for line in raw_call_code:
@@ -1480,7 +1477,7 @@ def compute_return_prefix(arg, local_var):
         else:
             return "*"
     elif arg.is_reference():
-        # reference to scalar  i.e. double &max
-        return "*"
+        # Convert a return reference into a pointer.
+        return "&"
     else:
         return ""

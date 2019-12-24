@@ -1524,6 +1524,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_get_value": "*",
                                 "c_type": "TUT_Singleton",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -6769,6 +6770,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6836,6 +6838,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -7368,6 +7371,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -7378,7 +7382,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "stmt0": "c_string_pointer_result_",
-                        "stmt1": "c_default"
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",

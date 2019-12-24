@@ -1207,8 +1207,8 @@ def lookup_stmts_tree(tree, path):
         if part not in step:
             continue
         step = step[part]
-#        found = step.get("_node", found)  # check if path ends here
         if "_node" in step:
+            # Path ends here.
             found = step["_node"]["scope"]
     if not isinstance(found, util.Scope):
         raise RuntimeError
@@ -1413,6 +1413,13 @@ fc_statements = dict(
             "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
+        ],
+    ),
+    c_string_result=dict(
+        # cxx_to_c creates a pointer from a value via c_str()
+        # The default behavior will dereference the value.
+        ret=[
+            "return {c_var};",
         ],
     ),
     c_string_result_buf=dict(
