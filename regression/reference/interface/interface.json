@@ -138,6 +138,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "Function1",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "function1"
                 },
                 "linenumber": 28,
@@ -165,7 +169,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         }
                     },
                     "arg2": {
@@ -188,7 +194,9 @@
                             "c_var": "arg2",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -207,7 +215,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "double",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {

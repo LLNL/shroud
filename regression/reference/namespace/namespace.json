@@ -127,7 +127,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -215,7 +219,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -324,6 +330,10 @@
                     "PY_name_impl": "PY_One",
                     "c_const": "",
                     "function_name": "One",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "one"
                 },
                 "linenumber": 32,
@@ -654,6 +664,10 @@
                             "PY_name_impl": "PY_One",
                             "c_const": "",
                             "function_name": "One",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "one"
                         },
                         "linenumber": 31,

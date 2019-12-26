@@ -1354,22 +1354,30 @@ rv = .false.
 
         # Function result.
         spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-        result_blk = typemap.lookup_fc_stmts(
-            ["f", result_typemap.sgroup, spointer, "result", result_deref_clause])
-        if result_blk:
-            whelpers.add_copy_array_helper(fmt_result, ast)
-            need_wrapper = self.build_arg_list_impl(
-                fmt_result,
-                C_node.ast,
-                ast,
-                result_typemap,
-                result_blk.buf_args,
-                modules,
-                imports,
-                arg_f_decl,
-                arg_c_call,
-                need_wrapper,
-            )
+        f_stmts = ["f", result_typemap.sgroup, spointer, "result", result_deref_clause]
+        c_stmts = ["c", result_typemap.sgroup, spointer, "result", generated_suffix]
+        result_blk = typemap.lookup_fc_stmts(f_stmts)
+        # Useful for debugging.  Requested and found path.
+        fmt_result.stmt0 = "_".join(f_stmts)
+        fmt_result.stmt1 = result_blk.key
+
+        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        fmt_result.stmtc0 = "_".join(c_stmts)
+        fmt_result.stmtc1 = c_result_blk.key
+        
+        whelpers.add_copy_array_helper(fmt_result, ast)
+        need_wrapper = self.build_arg_list_impl(
+            fmt_result,
+            C_node.ast,
+            ast,
+            result_typemap,
+            result_blk.buf_args,
+            modules,
+            imports,
+            arg_f_decl,
+            arg_c_call,
+            need_wrapper,
+        )
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1514,6 +1522,8 @@ rv = .false.
             fmt_arg.update(base_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            fmt_arg.stmtc0 = "_".join(c_stmts)
+            fmt_arg.stmtc1 = c_intent_blk.key
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 

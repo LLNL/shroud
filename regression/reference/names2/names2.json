@@ -129,6 +129,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "AFunction",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "afunction"
                 },
                 "linenumber": 19,

@@ -84,7 +84,11 @@
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class2",
-                                "f_var": "SHT_rv"
+                                "f_var": "SHT_rv",
+                                "stmt0": "f_shadow_scalar_result_",
+                                "stmt1": "f_shadow_result",
+                                "stmtc0": "c_shadow_scalar_result_",
+                                "stmtc1": "c_shadow_scalar_result"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -190,6 +194,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "dtor"
                         },
                         "linenumber": 49,
@@ -217,7 +225,9 @@
                                     "c_var": "arg",
                                     "f_var": "arg",
                                     "stmt0": "f_shadow_pointer_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_shadow_pointer_in_",
+                                    "stmtc1": "c_shadow_in"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -305,6 +315,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
                         "linenumber": 50,
@@ -332,7 +346,9 @@
                                     "c_var": "arg",
                                     "f_var": "arg",
                                     "stmt0": "f_shadow_pointer_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_shadow_pointer_in_",
+                                    "stmtc1": "c_shadow_in"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -423,6 +439,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
                         "linenumber": 51,

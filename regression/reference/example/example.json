@@ -201,7 +201,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_shadow_scalar_result_",
+                                                "stmt1": "f_shadow_result",
+                                                "stmtc0": "c_shadow_scalar_result_",
+                                                "stmtc1": "c_shadow_scalar_result"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -332,7 +336,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_shadow_scalar_result_",
+                                                "stmt1": "f_shadow_result",
+                                                "stmtc0": "c_shadow_scalar_result_buf",
+                                                "stmtc1": "c_shadow_scalar_result"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -450,7 +458,9 @@
                                                     "c_var": "name",
                                                     "f_var": "name",
                                                     "stmt0": "f_string_pointer_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_string_pointer_in_buf",
+                                                    "stmtc1": "c_string_in_buf"
                                                 }
                                             }
                                         },
@@ -577,6 +587,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "dtor",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "dtor"
                                         },
                                         "linenumber": 102,
@@ -604,7 +618,9 @@
                                                     "c_var": "incr",
                                                     "f_var": "incr",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -650,7 +666,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -751,7 +771,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_result_as_arg",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -855,7 +879,9 @@
                                                     "c_var": "SHT_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_string_pointer_result_buf_",
+                                                    "stmtc1": "c_string_result_buf"
                                                 }
                                             }
                                         },
@@ -955,7 +981,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -1046,7 +1076,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_allocatable",
+                                                "stmt1": "f_string_result_allocatable",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -1147,7 +1181,9 @@
                                                     "c_var_context": "DSHF_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_allocatable",
-                                                    "stmt1": "f_string_result_allocatable"
+                                                    "stmt1": "f_string_result_allocatable",
+                                                    "stmtc0": "c_string_pointer_result_buf_allocatable",
+                                                    "stmtc1": "c_string_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -1337,7 +1373,9 @@
                                                     "c_var": "name",
                                                     "f_var": "name",
                                                     "stmt0": "f_string_pointer_result_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_string_pointer_result_buf_",
+                                                    "stmtc1": "c_string_result_buf"
                                                 }
                                             }
                                         },
@@ -1467,6 +1505,10 @@
                                             "__line__": 131,
                                             "function_name": "getNameArg",
                                             "function_suffix": "",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_buf",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "get_name_arg"
                                         },
                                         "linenumber": 129,
@@ -1493,7 +1535,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "void",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_unknown_pointer_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_unknown_pointer_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -1585,7 +1631,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -1631,7 +1679,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -1737,7 +1789,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -1783,7 +1837,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "long",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -1880,7 +1938,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "void",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_unknown_pointer_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_unknown_pointer_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -1972,7 +2034,9 @@
                                                     "c_var": "SH_in",
                                                     "f_var": "in",
                                                     "stmt0": "f_bool_scalar_in_",
-                                                    "stmt1": "f_bool_in"
+                                                    "stmt1": "f_bool_in",
+                                                    "stmtc0": "c_bool_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -2020,7 +2084,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "bool",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_bool_scalar_result_",
+                                                "stmt1": "f_bool_result",
+                                                "stmtc0": "c_bool_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -2140,6 +2208,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "SplicerSpecial",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "splicer_special"
                                         },
                                         "linenumber": 146,
@@ -2252,7 +2324,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass2",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_shadow_scalar_result_",
+                                                "stmt1": "f_shadow_result",
+                                                "stmtc0": "c_shadow_scalar_result_buf",
+                                                "stmtc1": "c_shadow_scalar_result"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -2370,7 +2446,9 @@
                                                     "c_var": "name",
                                                     "f_var": "name",
                                                     "stmt0": "f_string_pointer_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_string_pointer_in_buf",
+                                                    "stmtc1": "c_string_in_buf"
                                                 }
                                             }
                                         },
@@ -2494,6 +2572,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "dtor",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "dtor"
                                         },
                                         "linenumber": 167,
@@ -2517,7 +2599,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_result_as_arg",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2619,7 +2705,9 @@
                                                     "c_var": "SHT_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_string_pointer_result_buf_",
+                                                    "stmtc1": "c_string_result_buf"
                                                 }
                                             }
                                         },
@@ -2721,7 +2809,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_allocatable",
+                                                "stmt1": "f_string_result_allocatable",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2821,7 +2913,9 @@
                                                     "c_var_context": "DSHF_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_allocatable",
-                                                    "stmt1": "f_string_result_allocatable"
+                                                    "stmt1": "f_string_result_allocatable",
+                                                    "stmtc0": "c_string_pointer_result_buf_allocatable",
+                                                    "stmtc1": "c_string_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -2919,7 +3013,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_allocatable",
+                                                "stmt1": "f_string_result_allocatable",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3019,7 +3117,9 @@
                                                     "c_var_context": "DSHF_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_allocatable",
-                                                    "stmt1": "f_string_result_allocatable"
+                                                    "stmt1": "f_string_result_allocatable",
+                                                    "stmtc0": "c_string_pointer_result_buf_allocatable",
+                                                    "stmtc1": "c_string_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -3117,7 +3217,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_string_scalar_result_allocatable",
+                                                "stmt1": "f_string_result_allocatable",
+                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc1": "c_string_result_buf"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3216,7 +3320,9 @@
                                                     "c_var_context": "DSHF_rv",
                                                     "f_var": "SHT_rv",
                                                     "stmt0": "f_string_pointer_result_allocatable",
-                                                    "stmt1": "f_string_result_allocatable"
+                                                    "stmt1": "f_string_result_allocatable",
+                                                    "stmtc0": "c_string_pointer_result_buf_allocatable",
+                                                    "stmtc1": "c_string_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -3311,7 +3417,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -3406,7 +3516,9 @@
                                                     "c_var": "in",
                                                     "f_var": "in",
                                                     "stmt0": "f_shadow_pointer_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_shadow_pointer_in_",
+                                                    "stmtc1": "c_shadow_in"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -3456,7 +3568,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_shadow_pointer_result_",
+                                                "stmt1": "f_shadow_result",
+                                                "stmtc0": "c_shadow_pointer_result_",
+                                                "stmtc1": "c_shadow_result"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",
@@ -3573,7 +3689,9 @@
                                                     "c_var": "type",
                                                     "f_var": "type",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 }
                                             }
                                         },
@@ -3770,6 +3888,10 @@
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
                                             "function_suffix": "_0_int",
+                                            "stmt0": "f_unknown_pointer_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_pointer_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "linenumber": 196,
@@ -3842,6 +3964,10 @@
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
                                             "function_suffix": "_0_long",
+                                            "stmt0": "f_unknown_pointer_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_pointer_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "linenumber": 196,
@@ -3878,7 +4004,9 @@
                                                     "c_var": "len",
                                                     "f_var": "len",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 2,
@@ -3930,7 +4058,9 @@
                                                     "c_var": "type",
                                                     "f_var": "type",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -4182,6 +4312,10 @@
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
                                             "function_suffix": "_1_int",
+                                            "stmt0": "f_unknown_pointer_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_pointer_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "linenumber": 196,
@@ -4262,6 +4396,10 @@
                                             "F_subprogram": "subroutine",
                                             "function_name": "declare",
                                             "function_suffix": "_1_long",
+                                            "stmt0": "f_unknown_pointer_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_pointer_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "linenumber": 196,
@@ -4312,6 +4450,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "destroyall",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "underscore_name": "destroyall"
                                         },
                                         "linenumber": 207,
@@ -4335,7 +4477,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "TypeID",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<int>(SHCXX_rv)",
@@ -4525,7 +4671,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -4612,6 +4760,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "template_suffix": "_int",
                                             "underscore_name": "set_value"
                                         },
@@ -4695,7 +4847,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -4780,6 +4934,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "template_suffix": "_long",
                                             "underscore_name": "set_value"
                                         },
@@ -4863,7 +5021,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -4948,6 +5108,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "template_suffix": "_float",
                                             "underscore_name": "set_value"
                                         },
@@ -5031,7 +5195,9 @@
                                                     "c_var": "value",
                                                     "f_var": "value",
                                                     "stmt0": "f_native_scalar_in_",
-                                                    "stmt1": "f_default"
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in_",
+                                                    "stmtc1": "c_default"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -5116,6 +5282,10 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
+                                            "stmt0": "f_unknown_scalar_result_",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_result_",
+                                            "stmtc1": "c_default",
                                             "template_suffix": "_double",
                                             "underscore_name": "set_value"
                                         },
@@ -5260,7 +5430,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -5380,7 +5554,11 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "double",
-                                                "f_var": "SHT_rv"
+                                                "f_var": "SHT_rv",
+                                                "stmt0": "f_native_scalar_result_",
+                                                "stmt1": "f_default",
+                                                "stmtc0": "c_native_scalar_result_",
+                                                "stmtc1": "c_default"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv",
@@ -5568,6 +5746,10 @@
                                     "PY_name_impl": "PP_local_function1",
                                     "c_const": "",
                                     "function_name": "local_function1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "local_function1"
                                 },
                                 "linenumber": 227,
@@ -5635,7 +5817,11 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "bool",
-                                        "f_var": "SHT_rv"
+                                        "f_var": "SHT_rv",
+                                        "stmt0": "f_bool_scalar_result_",
+                                        "stmt1": "f_bool_result",
+                                        "stmtc0": "c_bool_scalar_result_buf",
+                                        "stmtc1": "c_default"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -5744,7 +5930,9 @@
                                             "c_var": "name",
                                             "f_var": "name",
                                             "stmt0": "f_string_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_string_pointer_in_buf",
+                                            "stmtc1": "c_string_in_buf"
                                         }
                                     }
                                 },
@@ -5840,7 +6028,11 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "bool",
-                                        "f_var": "SHT_rv"
+                                        "f_var": "SHT_rv",
+                                        "stmt0": "f_bool_scalar_result_",
+                                        "stmt1": "f_bool_result",
+                                        "stmtc0": "c_bool_scalar_result_",
+                                        "stmtc1": "c_default"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -6008,6 +6200,10 @@
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_buf",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "test_names"
                                 },
                                 "linenumber": 241,
@@ -6036,7 +6232,9 @@
                                             "c_var": "name",
                                             "f_var": "name",
                                             "stmt0": "f_string_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_string_pointer_in_buf",
+                                            "stmtc1": "c_string_in_buf"
                                         }
                                     }
                                 },
@@ -6261,6 +6459,10 @@
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_buf",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "test_names"
                                 },
                                 "linenumber": 245,
@@ -6288,7 +6490,9 @@
                                             "c_var": "flag",
                                             "f_var": "flag",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc1": "c_default"
                                         }
                                     },
                                     "name": {
@@ -6312,7 +6516,9 @@
                                             "c_var": "name",
                                             "f_var": "name",
                                             "stmt0": "f_string_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_string_pointer_in_buf",
+                                            "stmtc1": "c_string_in_buf"
                                         }
                                     }
                                 },
@@ -6426,6 +6632,10 @@
                                     "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_0",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
                                 "linenumber": 249,
@@ -6458,7 +6668,9 @@
                                             "c_var": "i",
                                             "f_var": "i",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         }
                                     }
                                 },
@@ -6512,6 +6724,10 @@
                                     "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
                                 "linenumber": 249,
@@ -6548,7 +6764,9 @@
                                             "c_var": "i",
                                             "f_var": "i",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6598,7 +6816,9 @@
                                             "c_var": "j",
                                             "f_var": "j",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -6701,6 +6921,10 @@
                                     "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_2",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
                                 "linenumber": 249,
@@ -6722,7 +6946,11 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "size_t",
-                                        "f_var": "SHT_rv"
+                                        "f_var": "SHT_rv",
+                                        "stmt0": "f_native_scalar_result_",
+                                        "stmt1": "f_default",
+                                        "stmtc0": "c_native_scalar_result_",
+                                        "stmtc1": "c_default"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -6808,7 +7036,9 @@
                                             "c_var": "comm",
                                             "f_var": "comm",
                                             "stmt0": "f_unknown_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_unknown_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6893,6 +7123,10 @@
                                     "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_mpi",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testmpi"
                                 },
                                 "linenumber": 267,
@@ -6934,6 +7168,10 @@
                                     "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_serial",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testmpi"
                                 },
                                 "linenumber": 271,
@@ -6961,7 +7199,9 @@
                                             "c_var": "grp",
                                             "f_var": "grp",
                                             "stmt0": "f_shadow_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_shadow_pointer_in_",
+                                            "stmtc1": "c_shadow_in"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7048,6 +7288,10 @@
                                     "PY_name_impl": "PP_testgroup1",
                                     "c_const": "",
                                     "function_name": "testgroup1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testgroup1"
                                 },
                                 "linenumber": 276,
@@ -7075,7 +7319,9 @@
                                             "c_var": "grp",
                                             "f_var": "grp",
                                             "stmt0": "f_shadow_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_shadow_pointer_in_",
+                                            "stmtc1": "c_shadow_in"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7163,6 +7409,10 @@
                                     "PY_name_impl": "PP_testgroup2",
                                     "c_const": "",
                                     "function_name": "testgroup2",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "testgroup2"
                                 },
                                 "linenumber": 277,
@@ -7280,6 +7530,10 @@
                                     "PY_name_impl": "PP_FuncPtr1",
                                     "c_const": "",
                                     "function_name": "FuncPtr1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "func_ptr1"
                                 },
                                 "linenumber": 280,
@@ -7401,6 +7655,10 @@
                                     "PY_name_impl": "PP_FuncPtr2",
                                     "c_const": "",
                                     "function_name": "FuncPtr2",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "func_ptr2"
                                 },
                                 "linenumber": 283,
@@ -7541,6 +7799,10 @@
                                     "PY_name_impl": "PP_FuncPtr3",
                                     "c_const": "",
                                     "function_name": "FuncPtr3",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "func_ptr3"
                                 },
                                 "linenumber": 286,
@@ -7650,6 +7912,10 @@
                                     "F_subprogram": "subroutine",
                                     "c_const": "",
                                     "function_name": "FuncPtr4",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "func_ptr4"
                                 },
                                 "linenumber": 291,
@@ -7901,6 +8167,10 @@
                                     "PY_name_impl": "PP_FuncPtr5",
                                     "c_const": "",
                                     "function_name": "FuncPtr5",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "func_ptr5"
                                 },
                                 "linenumber": 300,
@@ -7928,7 +8198,9 @@
                                             "c_var": "verylongname1",
                                             "f_var": "verylongname1",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7978,7 +8250,9 @@
                                             "c_var": "verylongname10",
                                             "f_var": "verylongname10",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 10,
@@ -8028,7 +8302,9 @@
                                             "c_var": "verylongname2",
                                             "f_var": "verylongname2",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -8078,7 +8354,9 @@
                                             "c_var": "verylongname3",
                                             "f_var": "verylongname3",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 3,
@@ -8128,7 +8406,9 @@
                                             "c_var": "verylongname4",
                                             "f_var": "verylongname4",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 4,
@@ -8178,7 +8458,9 @@
                                             "c_var": "verylongname5",
                                             "f_var": "verylongname5",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 5,
@@ -8228,7 +8510,9 @@
                                             "c_var": "verylongname6",
                                             "f_var": "verylongname6",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 6,
@@ -8278,7 +8562,9 @@
                                             "c_var": "verylongname7",
                                             "f_var": "verylongname7",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 7,
@@ -8328,7 +8614,9 @@
                                             "c_var": "verylongname8",
                                             "f_var": "verylongname8",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 8,
@@ -8378,7 +8666,9 @@
                                             "c_var": "verylongname9",
                                             "f_var": "verylongname9",
                                             "stmt0": "f_native_pointer_inout_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_inout_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 9,
@@ -8624,6 +8914,10 @@
                                     "PY_name_impl": "PP_verylongfunctionname1",
                                     "c_const": "",
                                     "function_name": "verylongfunctionname1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "verylongfunctionname1"
                                 },
                                 "linenumber": 311,
@@ -8654,7 +8948,9 @@
                                             "c_var": "verylongname1",
                                             "f_var": "verylongname1",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -8704,7 +9000,9 @@
                                             "c_var": "verylongname10",
                                             "f_var": "verylongname10",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 10,
@@ -8754,7 +9052,9 @@
                                             "c_var": "verylongname2",
                                             "f_var": "verylongname2",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -8804,7 +9104,9 @@
                                             "c_var": "verylongname3",
                                             "f_var": "verylongname3",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 3,
@@ -8854,7 +9156,9 @@
                                             "c_var": "verylongname4",
                                             "f_var": "verylongname4",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 4,
@@ -8904,7 +9208,9 @@
                                             "c_var": "verylongname5",
                                             "f_var": "verylongname5",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 5,
@@ -8954,7 +9260,9 @@
                                             "c_var": "verylongname6",
                                             "f_var": "verylongname6",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 6,
@@ -9004,7 +9312,9 @@
                                             "c_var": "verylongname7",
                                             "f_var": "verylongname7",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 7,
@@ -9054,7 +9364,9 @@
                                             "c_var": "verylongname8",
                                             "f_var": "verylongname8",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 8,
@@ -9104,7 +9416,9 @@
                                             "c_var": "verylongname9",
                                             "f_var": "verylongname9",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 9,
@@ -9150,7 +9464,11 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "int",
-                                        "f_var": "SHT_rv"
+                                        "f_var": "SHT_rv",
+                                        "stmt0": "f_native_scalar_result_",
+                                        "stmt1": "f_default",
+                                        "stmtc0": "c_native_scalar_result_",
+                                        "stmtc1": "c_default"
                                     },
                                     "fmtl": {
                                         "c_var": "SHCXX_rv",
@@ -9380,7 +9698,9 @@
                                             "c_var": "in",
                                             "f_var": "in",
                                             "stmt0": "f_native_pointer_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_in_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -9432,7 +9752,9 @@
                                             "f_var": "out",
                                             "mold": "mold=in",
                                             "stmt0": "f_native_pointer_out_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_pointer_out_",
+                                            "stmtc1": "c_default"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -9611,6 +9933,10 @@
                                     "PY_name_impl": "PP_cos_doubles",
                                     "c_const": "",
                                     "function_name": "cos_doubles",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "cos_doubles"
                                 },
                                 "linenumber": 341,

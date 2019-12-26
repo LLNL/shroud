@@ -396,6 +396,10 @@
                     "PY_name_impl": "PY_function1",
                     "c_const": "",
                     "function_name": "function1",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "function1"
                 },
                 "linenumber": 97,
@@ -435,6 +439,10 @@
                     "__line__": 99,
                     "c_const": "",
                     "function_name": "function2",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "function2"
                 },
                 "linenumber": 98,
@@ -462,7 +470,9 @@
                             "c_var": "i",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -532,6 +542,10 @@
                     "c_const": "",
                     "function_name": "function3a",
                     "function_suffix": "_0",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "function3a"
                 },
                 "linenumber": 105,
@@ -559,7 +573,9 @@
                             "c_var": "i",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -629,6 +645,10 @@
                     "c_const": "",
                     "function_name": "function3a",
                     "function_suffix": "_1",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "function3a"
                 },
                 "linenumber": 109,
@@ -685,7 +705,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -783,7 +807,9 @@
                             "c_var": "rv",
                             "f_var": "rv",
                             "stmt0": "f_string_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_in_buf",
+                            "stmtc1": "c_string_in_buf"
                         }
                     }
                 },
@@ -896,6 +922,10 @@
                     "PY_name_impl": "PY_fiveplus",
                     "c_const": "",
                     "function_name": "fiveplus",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "fiveplus"
                 },
                 "linenumber": 118,
@@ -1041,7 +1071,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1080,7 +1112,9 @@
                             "c_var": "arg2",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1169,6 +1203,10 @@
                     "__line__": 150,
                     "c_const": "",
                     "function_name": "FunctionTU",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "template_suffix": "_0",
                     "underscore_name": "function_tu"
                 },
@@ -1254,7 +1292,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1293,7 +1333,9 @@
                             "c_var": "arg2",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1382,6 +1424,10 @@
                     "__line__": 156,
                     "c_const": "",
                     "function_name": "FunctionTU",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "template_suffix": "_instantiation2",
                     "underscore_name": "function_tu"
                 },
@@ -1519,7 +1565,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1673,6 +1723,10 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "method1"
                                 },
                                 "linenumber": 78,
@@ -1719,6 +1773,10 @@
                                     "c_member": "->",
                                     "c_var": "self2",
                                     "function_name": "method2",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "method2"
                                 },
                                 "linenumber": 81,
@@ -1846,6 +1904,10 @@
                             "PY_name_impl": "PY_init_ns1",
                             "c_const": "",
                             "function_name": "init_ns1",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "init_ns1"
                         },
                         "linenumber": 125,
@@ -2356,6 +2418,10 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "Member1",
+                                    "stmt0": "f_unknown_scalar_result_",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_result_",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "member1"
                                 },
                                 "linenumber": 205,
@@ -2417,6 +2483,10 @@
                             "F_subprogram": "subroutine",
                             "c_const": "",
                             "function_name": "Worker1",
+                            "stmt0": "f_unknown_scalar_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_scalar_result_",
+                            "stmtc1": "c_default",
                             "underscore_name": "worker1"
                         },
                         "linenumber": 202,

@@ -147,7 +147,9 @@
                             "c_var": "status",
                             "f_var": "status",
                             "stmt0": "f_schar_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -218,6 +220,10 @@
                     "PY_name_impl": "PY_passChar",
                     "c_const": "",
                     "function_name": "passChar",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char"
                 },
                 "linenumber": 30,
@@ -239,7 +245,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_schar_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_schar_scalar_result_buf",
+                        "stmtc1": "c_schar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -320,7 +330,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_schar_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc1": "c_schar_result_buf"
                         }
                     }
                 },
@@ -545,6 +557,10 @@
                     "PY_name_impl": "PY_passCharPtr",
                     "c_const": "",
                     "function_name": "passCharPtr",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr"
                 },
                 "linenumber": 41,
@@ -577,7 +593,9 @@
                             "c_var": "dest",
                             "f_var": "dest",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "src": {
@@ -780,6 +798,10 @@
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "c_const": "",
                     "function_name": "passCharPtrInOut",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
                 "linenumber": 55,
@@ -809,7 +831,9 @@
                             "c_var": "s",
                             "f_var": "s",
                             "stmt0": "f_char_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_inout_buf",
+                            "stmtc1": "c_char_inout_buf"
                         }
                     }
                 },
@@ -893,7 +917,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_char_scalar_result_allocatable",
+                        "stmt1": "f_char_result_allocatable",
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -987,7 +1015,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_char_pointer_result_allocatable",
-                            "stmt1": "f_char_result_allocatable"
+                            "stmt1": "f_char_result_allocatable",
+                            "stmtc0": "c_char_pointer_result_buf_allocatable",
+                            "stmtc1": "c_char_result_buf_allocatable"
                         }
                     }
                 },
@@ -1085,7 +1115,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_char_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -1179,7 +1213,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_char_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc1": "c_char_result_buf"
                         }
                     }
                 },
@@ -1361,7 +1397,9 @@
                             "c_var": "output",
                             "f_var": "output",
                             "stmt0": "f_char_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc1": "c_char_result_buf"
                         }
                     }
                 },
@@ -1495,6 +1533,10 @@
                     "__line__": 84,
                     "function_name": "getCharPtr3",
                     "function_suffix": "",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_char_ptr3"
                 },
                 "linenumber": 78,
@@ -1512,7 +1554,11 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1593,7 +1639,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -1679,7 +1727,11 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1760,7 +1812,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -1916,7 +1970,9 @@
                             "c_var": "output",
                             "f_var": "output",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -2049,6 +2105,10 @@
                     "__line__": 104,
                     "function_name": "getConstStringAsArg",
                     "function_suffix": "",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_const_string_as_arg"
                 },
                 "linenumber": 100,
@@ -2063,7 +2123,11 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2139,7 +2203,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -2234,7 +2300,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2329,7 +2399,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -2430,7 +2502,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2524,7 +2600,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -2709,7 +2787,9 @@
                             "c_var": "output",
                             "f_var": "output",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -2844,6 +2924,10 @@
                     "__line__": 138,
                     "function_name": "getConstStringRefAsArg",
                     "function_suffix": "",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
                 "linenumber": 131,
@@ -2873,7 +2957,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2966,7 +3054,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -3065,7 +3155,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3153,7 +3247,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -3247,7 +3343,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -3342,7 +3442,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -3444,7 +3546,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -3533,7 +3639,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -3628,7 +3736,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -3721,7 +3833,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -3820,7 +3934,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -3915,7 +4033,9 @@
                             "c_var_context": "DSHF_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -4095,6 +4215,10 @@
                     "PY_name_impl": "PY_acceptStringConstReference",
                     "c_const": "",
                     "function_name": "acceptStringConstReference",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_const_reference"
                 },
                 "linenumber": 184,
@@ -4123,7 +4247,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_in_buf",
+                            "stmtc1": "c_string_in_buf"
                         }
                     }
                 },
@@ -4284,6 +4410,10 @@
                     "PY_name_impl": "PY_acceptStringReferenceOut",
                     "c_const": "",
                     "function_name": "acceptStringReferenceOut",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_reference_out"
                 },
                 "linenumber": 192,
@@ -4312,7 +4442,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_out_buf",
+                            "stmtc1": "c_string_out_buf"
                         }
                     }
                 },
@@ -4473,6 +4605,10 @@
                     "PY_name_impl": "PY_acceptStringReference",
                     "c_const": "",
                     "function_name": "acceptStringReference",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_reference"
                 },
                 "linenumber": 200,
@@ -4505,7 +4641,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
                         }
                     }
                 },
@@ -4668,6 +4806,10 @@
                     "PY_name_impl": "PY_acceptStringPointer",
                     "c_const": "",
                     "function_name": "acceptStringPointer",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_pointer"
                 },
                 "linenumber": 210,
@@ -4697,7 +4839,9 @@
                             "c_var": "arg1",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
                         }
                     }
                 },
@@ -5014,6 +5158,10 @@
                     "__line__": 241,
                     "c_const": "",
                     "function_name": "explicit1",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "explicit1"
                 },
                 "linenumber": 240,
@@ -5090,6 +5238,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "explicit2",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "explicit2"
                 },
                 "linenumber": 245,
@@ -5122,7 +5274,9 @@
                             "c_var": "name",
                             "f_var": "name",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -5207,7 +5361,9 @@
                             "c_var": "status",
                             "f_var": "status",
                             "stmt0": "f_schar_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -5278,6 +5434,10 @@
                     "PY_name_impl": "PY_CpassChar",
                     "c_const": "",
                     "function_name": "CpassChar",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_",
+                    "stmtc1": "c_default",
                     "underscore_name": "cpass_char"
                 },
                 "linenumber": 259,
@@ -5302,7 +5462,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_schar_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_schar_scalar_result_buf",
+                        "stmtc1": "c_schar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -5386,7 +5550,9 @@
                             "c_var": "SHT_rv",
                             "f_var": "SHT_rv",
                             "stmt0": "f_schar_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc1": "c_schar_result_buf"
                         }
                     }
                 },
@@ -5578,6 +5744,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "CpassCharPtr",
+                    "stmt0": "f_unknown_scalar_result_",
+                    "stmt1": "f_default",
+                    "stmtc0": "c_unknown_scalar_result_buf",
+                    "stmtc1": "c_default",
                     "underscore_name": "cpass_char_ptr"
                 },
                 "linenumber": 274,
@@ -5611,7 +5781,9 @@
                             "c_var": "dest",
                             "f_var": "dest",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "src": {
