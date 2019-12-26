@@ -1320,26 +1320,29 @@ rv = .false.
         if subprogram == "subroutine":
             fmt_result = fmt_func
             if is_dtor:
-                sintent = "dtor"
+                f_stmts = ["f", "shadow", "dtor"]
+                c_stmts = ["c", "shadow", "dtor"]
             else:
-                sintent = "subroutine"
+                f_stmts = ["f", "subroutine"]
+                c_stmts = ["c"]
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            sgroup = result_typemap.sgroup
+            spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
+            result_deref_clause = ast.attrs.get("deref", "")
             if is_ctor:
-                sintent = "ctor"
+                f_stmts = ["f", "shadow", "ctor"]
+                c_stmts = ["c", "shadow", "ctor"]
             else:
                 sintent = "result"
+                f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]
+                c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
-        sgroup = result_typemap.sgroup
-        spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-        result_deref_clause = ast.attrs.get("deref", "")
-        f_stmts = ["f", sgroup, spointer, sintent, result_deref_clause]
-        c_stmts = ["c", sgroup, spointer, sintent, generated_suffix]
         result_blk = typemap.lookup_fc_stmts(f_stmts)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = "_".join(f_stmts)

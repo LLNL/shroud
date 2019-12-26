@@ -330,9 +330,9 @@
                     "PY_name_impl": "PY_One",
                     "c_const": "",
                     "function_name": "One",
-                    "stmt0": "f_unknown_scalar_subroutine_",
+                    "stmt0": "f_subroutine",
                     "stmt1": "f_default",
-                    "stmtc0": "c_unknown_scalar_subroutine_",
+                    "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "one"
                 },
@@ -664,9 +664,9 @@
                             "PY_name_impl": "PY_One",
                             "c_const": "",
                             "function_name": "One",
-                            "stmt0": "f_unknown_scalar_subroutine_",
+                            "stmt0": "f_subroutine",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_scalar_subroutine_",
+                            "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "one"
                         },

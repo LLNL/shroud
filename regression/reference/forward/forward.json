@@ -85,9 +85,9 @@
                             "fmtf": {
                                 "cxx_type": "tutorial::Class2",
                                 "f_var": "SHT_rv",
-                                "stmt0": "f_shadow_scalar_ctor_",
+                                "stmt0": "f_shadow_ctor",
                                 "stmt1": "f_shadow_result",
-                                "stmtc0": "c_shadow_scalar_ctor_",
+                                "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
                             },
                             "fmtl": {
@@ -194,10 +194,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
-                            "stmt0": "f_unknown_scalar_dtor_",
+                            "stmt0": "f_shadow_dtor",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_scalar_dtor_",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_shadow_dtor",
+                            "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
                         "linenumber": 49,
@@ -315,9 +315,9 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
-                            "stmt0": "f_unknown_scalar_subroutine_",
+                            "stmt0": "f_subroutine",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_scalar_subroutine_",
+                            "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
@@ -439,9 +439,9 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
-                            "stmt0": "f_unknown_scalar_subroutine_",
+                            "stmt0": "f_subroutine",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_scalar_subroutine_",
+                            "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
