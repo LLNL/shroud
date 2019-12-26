@@ -597,6 +597,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             F_array_type="SHROUD_array",
 
+            f_pointer_shape="",  # scalar
+            f_var_shape="",      # scalar
+
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
@@ -636,6 +639,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_member="XXXcxx_member",
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
+                f_type="XXXf_type",
                 f_var="XXXf_var",
             ))
 

@@ -86,6 +86,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "Names",
             "function_suffix": "",
             "library": "Names",

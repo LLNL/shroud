@@ -349,6 +349,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "testnames",
             "function_suffix": "",
             "library": "testnames",
@@ -705,6 +707,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -1565,6 +1568,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",

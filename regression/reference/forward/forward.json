@@ -84,6 +84,7 @@
                             },
                             "fmtf": {
                                 "cxx_type": "tutorial::Class2",
+                                "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
                                 "stmt0": "f_shadow_ctor",
                                 "stmt1": "f_shadow_result",
@@ -571,6 +572,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "forward",
             "function_suffix": "",
             "library": "forward",

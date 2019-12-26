@@ -111,6 +111,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "strings",
             "function_suffix": "",
             "library": "strings",
@@ -245,6 +247,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
+                        "f_type": "character",
                         "f_var": "SHT_rv",
                         "stmt0": "f_schar_scalar_result_",
                         "stmt1": "f_default",
@@ -917,6 +920,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_char_scalar_result_allocatable",
                         "stmt1": "f_char_result_allocatable",
@@ -1115,6 +1119,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_char_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -1554,6 +1559,7 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -1727,6 +1733,7 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -2123,6 +2130,7 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -2300,6 +2308,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -2502,6 +2511,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -2957,6 +2967,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -3155,6 +3166,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -3343,6 +3355,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -3546,6 +3559,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -3736,6 +3750,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -3934,6 +3949,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
@@ -5462,6 +5478,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
+                        "f_type": "character",
                         "f_var": "SHT_rv",
                         "stmt0": "f_schar_scalar_result_",
                         "stmt1": "f_default",

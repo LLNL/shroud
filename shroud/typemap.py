@@ -1281,6 +1281,30 @@ fc_statements = dict(
         ],
     ),
 
+    f_native_pointer_result=dict(
+        alias="f_native_pointer_result_pointer",
+    ),
+
+    f_native_pointer_result_scalar=dict(
+        # avoid catching f_native_pointer_result
+    ),
+
+    # f_pointer_shape may be blank for a scalar, otherwise it
+    # includes a leading comma.
+    f_native_pointer_result_pointer=dict(
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        declare=[
+            "{f_type}, pointer :: {f_var}{f_var_shape}",
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {F_result}{f_pointer_shape})",
+        ],
+    ),
+    
     c_char_in_buf=dict(
         buf_args=["arg", "len_trim"],
         cxx_local_var="pointer",
@@ -1837,5 +1861,11 @@ fc_statements = dict(
         cxx_post_call=[
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
+    ),
+    f_struct_scalar_result=dict(
+        # Needed to differentiate from f_struct_pointer_result.
+    ),
+    f_struct_pointer_result=dict(
+        alias="f_native_pointer_result_pointer",
     ),
 )

@@ -103,6 +103,8 @@
             "cast_static": "(",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "Clibrary",
             "function_suffix": "",
             "library": "Clibrary",
@@ -262,6 +264,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "double",
+                        "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -833,6 +836,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "char",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_char_scalar_result_result_as_arg",
                         "stmt1": "f_default",
@@ -2144,6 +2148,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -2395,6 +2400,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -2570,6 +2576,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "bool",
+                        "f_type": "logical",
                         "f_var": "SHT_rv",
                         "stmt0": "f_bool_scalar_result_",
                         "stmt1": "f_bool_result",
@@ -2707,6 +2714,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "bool",
+                        "f_type": "logical",
                         "f_var": "SHT_rv",
                         "stmt0": "f_bool_scalar_result_",
                         "stmt1": "f_bool_result",
@@ -3199,6 +3207,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -3418,6 +3427,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",
@@ -3721,6 +3731,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "stmt0": "f_native_scalar_result_",
                         "stmt1": "f_default",

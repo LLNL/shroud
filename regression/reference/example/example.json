@@ -117,6 +117,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "UserLibrary",
             "function_suffix": "",
             "library": "UserLibrary",
@@ -201,6 +203,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_shadow_ctor",
                                                 "stmt1": "f_shadow_result",
@@ -336,6 +339,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_shadow_ctor",
                                                 "stmt1": "f_shadow_result",
@@ -666,6 +670,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -771,6 +776,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_result_as_arg",
                                                 "stmt1": "f_default",
@@ -981,6 +987,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -1076,6 +1083,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_allocatable",
                                                 "stmt1": "f_string_result_allocatable",
@@ -1535,6 +1543,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "void",
+                                                "f_type": "type(C_PTR)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_unknown_pointer_result_",
                                                 "stmt1": "f_default",
@@ -1679,6 +1688,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -1837,6 +1847,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "long",
+                                                "f_type": "integer(C_LONG)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -1938,6 +1949,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "void",
+                                                "f_type": "type(C_PTR)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_unknown_pointer_result_",
                                                 "stmt1": "f_default",
@@ -2084,6 +2096,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "bool",
+                                                "f_type": "logical",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_bool_scalar_result_",
                                                 "stmt1": "f_bool_result",
@@ -2324,6 +2337,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass2",
+                                                "f_type": "type(exclass2)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_shadow_ctor",
                                                 "stmt1": "f_shadow_result",
@@ -2599,6 +2613,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_result_as_arg",
                                                 "stmt1": "f_default",
@@ -2809,6 +2824,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_allocatable",
                                                 "stmt1": "f_string_result_allocatable",
@@ -3013,6 +3029,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_allocatable",
                                                 "stmt1": "f_string_result_allocatable",
@@ -3217,6 +3234,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
+                                                "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_string_scalar_result_allocatable",
                                                 "stmt1": "f_string_result_allocatable",
@@ -3417,6 +3435,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -3568,6 +3587,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_shadow_pointer_result_",
                                                 "stmt1": "f_shadow_result",
@@ -4477,6 +4497,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "TypeID",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -5430,6 +5451,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "int",
+                                                "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -5554,6 +5576,7 @@
                                             },
                                             "fmtf": {
                                                 "cxx_type": "double",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_var": "SHT_rv",
                                                 "stmt0": "f_native_scalar_result_",
                                                 "stmt1": "f_default",
@@ -5817,6 +5840,7 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "bool",
+                                        "f_type": "logical",
                                         "f_var": "SHT_rv",
                                         "stmt0": "f_bool_scalar_result_",
                                         "stmt1": "f_bool_result",
@@ -6028,6 +6052,7 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "bool",
+                                        "f_type": "logical",
                                         "f_var": "SHT_rv",
                                         "stmt0": "f_bool_scalar_result_",
                                         "stmt1": "f_bool_result",
@@ -6946,6 +6971,7 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "size_t",
+                                        "f_type": "integer(C_SIZE_T)",
                                         "f_var": "SHT_rv",
                                         "stmt0": "f_native_scalar_result_",
                                         "stmt1": "f_default",
@@ -9464,6 +9490,7 @@
                                     },
                                     "fmtf": {
                                         "cxx_type": "int",
+                                        "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
                                         "stmt0": "f_native_scalar_result_",
                                         "stmt1": "f_default",

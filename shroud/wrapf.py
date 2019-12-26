@@ -1329,7 +1329,8 @@ rv = .false.
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
-            fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
+            fmt_result.f_type = result_typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
@@ -1609,14 +1610,11 @@ rv = .false.
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_pointer_as == "pointer":
-                need_wrapper = True
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_pointer=True
-                    )
-                )
-                arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+                dim = ast.attrs.get("dimension", None)
+                if dim:
+                    # XXX - Assume 1-d
+                    fmt_result.f_var_shape = "(:)"
+                    fmt_result.f_pointer_shape = ", [{}]".format(dim)
             elif return_pointer_as == "allocatable":
                 need_wrapper = True
                 arg_f_decl.append(
@@ -1683,7 +1681,7 @@ rv = .false.
             if C_subprogram == "function":
                 if result_blk.call:
                     cmd_list = result_blk.call
-                elif return_pointer_as in ["pointer", "allocatable"]:
+                elif return_pointer_as == "allocatable":
                     cmd_list = ["{F_pointer} = {F_C_call}({F_arg_c_call})"]
                 else:
                     cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
@@ -1706,44 +1704,6 @@ rv = .false.
                     "call {F_C_call}({F_arg_c_call})", fmt_func
                 )
                 F_code.append(fmt_func.F_call_code)
-
-            if return_pointer_as == "allocatable":
-                # Copy into allocatable array.
-                # Processed by types stringout and charout in
-                # fc_statements.result.post_call.
-                pass
-            #                dim = ast.attrs.get('dimension', None)
-            #                if dim:
-            #                    fmt_result.pointer_shape = dim
-            #                    F_code.append(wformat('allocate({F_result}({pointer_shape}))',
-            #                                          fmt_result))
-            #                else:
-            #                    F_code.append(wformat('allocate({F_result})', fmt_result))
-            # #               fmt_result.c_var_context = 'aaaa'
-            #                F_code.append(wformat(
-            #                    'call copy_array({c_var_context}, {F_pointer}, '
-            #                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
-            elif return_pointer_as == "pointer":
-                # Put C pointer into Fortran pointer.
-                # Used with pointer to struct.
-                dim = ast.attrs.get("dimension", None)
-                if dim:
-                    fmt_result.pointer_shape = dim
-                    F_code.append(
-                        wformat(
-                            "call c_f_pointer({F_pointer}, {F_result}, "
-                            "[{pointer_shape}])",
-                            fmt_result,
-                        )
-                    )
-                else:
-                    F_code.append(
-                        wformat(
-                            "call c_f_pointer({F_pointer}, {F_result})",
-                            fmt_result,
-                        )
-                    )
-                self.set_f_module(modules, "iso_c_binding", "c_f_pointer")
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
