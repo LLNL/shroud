@@ -1786,8 +1786,12 @@ fc_statements = dict(
     ),
     f_shadow_result=dict(
         need_wrapper=True,
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        declare=[
+            "type(C_PTR) :: {F_result_ptr}",
+        ],
         call=[
-            # The c Function returns a pointer.
+            # The C function returns a pointer.
             # Save in a type(C_PTR) variable.
             "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
         ],
@@ -1807,6 +1811,9 @@ fc_statements = dict(
     ),
     c_shadow_scalar_ctor=dict(
         alias="c_shadow_ctor",
+    ),
+    f_shadow_ctor=dict(
+        alias="f_shadow_result",
     ),
     c_shadow_dtor=dict(
         return_type="void",

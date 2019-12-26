@@ -830,8 +830,8 @@ contains
     function exclass1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
         SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
@@ -851,8 +851,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         SHT_prv = c_exclass1_ctor_1_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
@@ -1036,8 +1036,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(C_PTR) :: SHT_prv
         type(exclass2) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         SHT_prv = c_exclass2_ctor_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
@@ -1132,8 +1132,8 @@ contains
         use iso_c_binding, only : C_PTR
         class(exclass2) :: obj
         type(exclass1), intent(IN) :: in
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
         SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
             SHT_rv%cxxmem)

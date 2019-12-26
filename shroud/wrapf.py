@@ -1298,6 +1298,7 @@ rv = .false.
         generated_suffix = C_node.generated_suffix
         ast = node.ast
         is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
         is_static = False
 
         if fmt_func.C_custom_return_type:
@@ -1318,19 +1319,27 @@ rv = .false.
 
         if subprogram == "subroutine":
             fmt_result = fmt_func
+            if is_dtor:
+                sintent = "dtor"
+            else:
+                sintent = "subroutine"
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            if is_ctor:
+                sintent = "ctor"
+            else:
+                sintent = "result"
         fmt_func.F_subprogram = subprogram
 
         sgroup = result_typemap.sgroup
         spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
         result_deref_clause = ast.attrs.get("deref", "")
-        f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]
-        c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
+        f_stmts = ["f", sgroup, spointer, sintent, result_deref_clause]
+        c_stmts = ["c", sgroup, spointer, sintent, generated_suffix]
         result_blk = typemap.lookup_fc_stmts(f_stmts)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = "_".join(f_stmts)
@@ -1561,15 +1570,18 @@ rv = .false.
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
             # End parameters loop.
 
-        if result_typemap.base == "shadow":
-            # Function which return a shadow type will pass in
-            # the capsule_data_type and return a type(C_PTR).
-            arg_f_decl.append(
-                wformat("type(C_PTR) :: {F_result_ptr}", fmt_func)
-            )
-            self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            arg_c_call.append(
-                wformat("{F_result}%{F_derived_member}", fmt_func)
+        if subprogram == "function":
+            need_wrapper = self.build_arg_list_impl(
+                fmt_result,
+                C_node.ast, #c_arg,
+                ast, # f_arg,
+                result_typemap,
+                c_result_blk.buf_extra,
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
             )
 
         # use tabs to insert continuations
@@ -1665,12 +1677,7 @@ rv = .false.
             F_code = splicer_code
         else:
             F_code = []
-            if is_ctor:
-                fmt_func.F_call_code = wformat(
-                    "{F_result_ptr} = {F_C_call}({F_arg_c_call})", fmt_func
-                )
-                F_code.append(fmt_func.F_call_code)
-            elif C_subprogram == "function":
+            if C_subprogram == "function":
                 if result_blk.call:
                     cmd_list = result_blk.call
                 elif return_pointer_as in ["pointer", "allocatable"]:
