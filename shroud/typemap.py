@@ -56,6 +56,7 @@ default_stmts = dict(
         f_helper="",
         f_module=None,
 
+        need_wrapper=False,
         declare=[],
         pre_call=[],
         call=[],

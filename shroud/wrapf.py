@@ -1308,16 +1308,6 @@ rv = .false.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
-        result_deref_clause = ast.attrs.get("deref", "")
-
-        # this catches stuff like a bool to logical conversion which
-        # requires the wrapper
-        spointer = "pointer" if ast.is_indirect() else "scalar"
-        if typemap.lookup_fc_stmts(
-                ["f", result_typemap.sgroup, spointer, "result", result_deref_clause]
-        ).get("need_wrapper", False):
-            need_wrapper = True
-
         arg_c_call = []  # arguments to C function
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations
@@ -1336,6 +1326,24 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
+        sgroup = result_typemap.sgroup
+        spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
+        result_deref_clause = ast.attrs.get("deref", "")
+        f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]
+        c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
+        result_blk = typemap.lookup_fc_stmts(f_stmts)
+        # Useful for debugging.  Requested and found path.
+        fmt_result.stmt0 = "_".join(f_stmts)
+        fmt_result.stmt1 = result_blk.key
+
+        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        fmt_result.stmtc0 = "_".join(c_stmts)
+        fmt_result.stmtc1 = c_result_blk.key
+
+        # this catches stuff like a bool to logical conversion which
+        # requires the wrapper
+        need_wrapper = need_wrapper or result_blk.need_wrapper
+        
         if cls:
             need_wrapper = True
             is_static = "static" in ast.storage
@@ -1353,18 +1361,6 @@ rv = .false.
                 )
 
         # Function result.
-        spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-        f_stmts = ["f", result_typemap.sgroup, spointer, "result", result_deref_clause]
-        c_stmts = ["c", result_typemap.sgroup, spointer, "result", generated_suffix]
-        result_blk = typemap.lookup_fc_stmts(f_stmts)
-        # Useful for debugging.  Requested and found path.
-        fmt_result.stmt0 = "_".join(f_stmts)
-        fmt_result.stmt1 = result_blk.key
-
-        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
-        fmt_result.stmtc0 = "_".join(c_stmts)
-        fmt_result.stmtc1 = c_result_blk.key
-        
         whelpers.add_copy_array_helper(fmt_result, ast)
         need_wrapper = self.build_arg_list_impl(
             fmt_result,
