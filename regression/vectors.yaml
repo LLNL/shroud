@@ -22,7 +22,7 @@ cxx_header: vectors.hpp
 options:
   debug: True
   literalinclude2: True
-  wrap_python: True
+#  wrap_python: True
 
 declarations:
 

@@ -219,7 +219,7 @@ PY_ReturnVectorAlloc(
   PyObject *args,
   PyObject *kwds)
 {
-// std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+// std::vector<int> ReturnVectorAlloc(int n +intent(in)+value)
 // splicer begin function.return_vector_alloc
     int n;
     const char *SHT_kwlist[] = {
