@@ -47,6 +47,7 @@ default_stmts = dict(
         destructor_name=None,
         owner="library",
         return_type=None,
+        return_cptr=False,
     ),
     f=dict(
         key="f_default",
@@ -1269,6 +1270,7 @@ fc_statements = dict(
             "{c_var_context}->len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
         ],
+        return_cptr=True,
     ),
     f_native_pointer_result_allocatable=dict(
         buf_args=["context"],
@@ -1313,6 +1315,9 @@ fc_statements = dict(
         ],
     ),
     
+    c_char_result=dict(
+        return_cptr=True,
+    ),
     c_char_in_buf=dict(
         buf_args=["arg", "len_trim"],
         cxx_local_var="pointer",
@@ -1457,6 +1462,7 @@ fc_statements = dict(
         ret=[
             "return {c_var};",
         ],
+        return_cptr=True,
     ),
     c_string_result_buf=dict(
         buf_args=["arg", "len"],
@@ -1802,7 +1808,6 @@ fc_statements = dict(
     # Return a C_capsule_data_type.
     c_shadow_result=dict(
         buf_extra=["shadow"],
-        return_type="{c_type} *",
         c_local_var="pointer",
         post_call=[
             "{c_var}->addr = {cxx_cast_to_void_ptr};",
@@ -1811,6 +1816,8 @@ fc_statements = dict(
         ret=[
             "return {c_var};",
         ],
+        return_type="{c_type} *",
+        return_cptr=True,
     ),
     c_shadow_scalar_result=dict(
         # Return a instance by value.
@@ -1818,7 +1825,6 @@ fc_statements = dict(
         # owner="caller" sets idtor flag to release the memory.
         # c_local_var is passed in via buf_extra=shadow.
         buf_extra=["shadow"],
-        return_type="{c_type} *",
         cxx_local_var="pointer",
         c_local_var="pointer",
         owner="caller",
@@ -1832,6 +1838,8 @@ fc_statements = dict(
         ret=[
             "return {c_var};",
         ],
+        return_type="{c_type} *",
+        return_cptr=True,
     ),
     f_shadow_result=dict(
         need_wrapper=True,
@@ -1847,7 +1855,6 @@ fc_statements = dict(
     ),
     c_shadow_ctor=dict(
         buf_extra=["shadow"],
-        return_type="{c_type} *",
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
@@ -1857,6 +1864,7 @@ fc_statements = dict(
         ret=[
             "return {c_var};",
         ],
+        return_type="{c_type} *",
     ),
     c_shadow_scalar_ctor=dict(
         alias="c_shadow_ctor",
@@ -1865,11 +1873,11 @@ fc_statements = dict(
         alias="f_shadow_result",
     ),
     c_shadow_dtor=dict(
-        return_type="void",
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",
         ],
+        return_type="void",
     ),
 
     c_struct=dict(

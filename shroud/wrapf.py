@@ -973,18 +973,16 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
 
-        if ast.is_indirect():
-            spointer = "pointer"
-        else:
-            spointer = "scalar"
+        sgroup = result_typemap.sgroup
+        spointer = "pointer" if ast.is_indirect() else "scalar"
+        c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
+        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
 
-        result_blk = typemap.lookup_fc_stmts(
-            ["c", result_typemap.sgroup, spointer, "result", node.generated_suffix])
         self.build_arg_list_interface(
             node, fileinfo,
             fmt_func,
             ast,
-            result_blk.buf_args,
+            c_result_blk.buf_args,
             modules,
             imports,
             arg_c_names,
@@ -1032,7 +1030,7 @@ rv = .false.
                 node, fileinfo,
                 fmt_func,
                 ast,
-                result_blk.buf_extra,
+                c_result_blk.buf_extra,
                 modules,
                 imports,
                 arg_c_names,
@@ -1052,7 +1050,7 @@ rv = .false.
         )
 
         if fmt.F_C_subprogram == "function":
-            if result_typemap.base in ["shadow", "string", "vector"]:
+            if c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_pointer_as in ["pointer", "allocatable", "raw"]:

@@ -839,7 +839,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "stmt0": "c_char_pointer_result_",
-                        "stmt1": "c_default"
+                        "stmt1": "c_char_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
