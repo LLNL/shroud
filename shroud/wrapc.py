@@ -660,19 +660,19 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        if "pre_call" in intent_blk:
+        if intent_blk.pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
-            for line in intent_blk["pre_call"]:
+            for line in intent_blk.pre_call:
                 append_format(pre_call, line, fmt)
 
-        if "post_call" in intent_blk:
+        if intent_blk.post_call:
             need_wrapper = True
-            for line in intent_blk["post_call"]:
+            for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
-        if "c_helper" in intent_blk:
-            c_helper = wformat(intent_blk["c_helper"], fmt)
+        if intent_blk.c_helper:
+            c_helper = wformat(intent_blk.c_helper, fmt)
             for helper in c_helper.split():
                 self.c_helper[helper] = True
         return need_wrapper
@@ -766,7 +766,7 @@ class Wrapc(util.WrapperMixin):
             result_blk = typemap.lookup_fc_stmts(stmts)
             # Useful for debugging.  Requested and found path.
             fmt_result.stmt0 = "_".join(stmts)
-            fmt_result.stmt1 = result_blk["key"]
+            fmt_result.stmt1 = result_blk.key
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -775,8 +775,8 @@ class Wrapc(util.WrapperMixin):
             c_local_var = ""
             if self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
-            elif "c_local_var" in result_blk:
-                c_local_var = result_blk["c_local_var"]
+            elif result_blk.c_local_var:
+                c_local_var = result_blk.c_local_var
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif result_typemap.cxx_to_c is None:
@@ -790,7 +790,7 @@ class Wrapc(util.WrapperMixin):
             )
 
             compute_cxx_deref(
-                CXX_ast, result_blk.get("cxx_local_var", None), fmt_result)
+                CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
 
         proto_list = []  # arguments for wrapper prototype
@@ -845,7 +845,7 @@ class Wrapc(util.WrapperMixin):
         need_wrapper = self.build_proto_list(
             fmt_result,
             ast,
-            result_blk.get("buf_args", []),
+            result_blk.buf_args,
             proto_list,
             need_wrapper,
         )
@@ -913,7 +913,7 @@ class Wrapc(util.WrapperMixin):
                 ]
                 intent_blk = typemap.lookup_fc_stmts(stmts)
                 need_wrapper = True
-                cxx_local_var = intent_blk.get("cxx_local_var", None)
+                cxx_local_var = intent_blk.cxx_local_var
 
                 if cxx_local_var:
                     fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
@@ -927,9 +927,9 @@ class Wrapc(util.WrapperMixin):
 
                 if self.language == "c":
                     fmt_arg.cxx_var = fmt_arg.c_var
-                elif "cxx_local_var" in intent_blk:
+                elif intent_blk.cxx_local_var:
                     # Explicit conversion must be in pre_call.
-                    cxx_local_var = intent_blk["cxx_local_var"]
+                    cxx_local_var = intent_blk.cxx_local_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                 elif arg_typemap.c_to_cxx is None:
                     # Compatible
@@ -951,12 +951,12 @@ class Wrapc(util.WrapperMixin):
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = "_".join(stmts)
-            fmt_arg.stmt1 = intent_blk["key"]
+            fmt_arg.stmt1 = intent_blk.key
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
                 arg,
-                intent_blk.get("buf_args", self._default_buf_args),
+                intent_blk.buf_args or self._default_buf_args,
                 proto_list,
                 need_wrapper,
             )
@@ -1000,6 +1000,10 @@ class Wrapc(util.WrapperMixin):
                         call_list.append("*" + fmt_arg.cxx_var)
                 elif arg.is_reference():
                     # reference to scalar  i.e. double &max
+                    # void tutorial::getMinMax(int &min);
+                    # wrapper(int *min) {
+                    #   tutorial::getMinMax(*min);
+                    #}
                     call_list.append("*" + fmt_arg.cxx_var)
                 else:
                     call_list.append(fmt_arg.cxx_var)
@@ -1015,7 +1019,7 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.build_proto_list(
                 fmt_result,
                 ast,
-                result_blk.get("buf_extra", []),
+                result_blk.buf_extra,
                 proto_tail,
                 need_wrapper,
                 name=fmt_result.c_var,
@@ -1029,9 +1033,9 @@ class Wrapc(util.WrapperMixin):
 
         if node.return_this:
             fmt_func.C_return_type = "void"
-        elif "return_type" in result_blk:
+        elif result_blk.return_type:
             fmt_func.C_return_type = wformat(
-                result_blk["return_type"], fmt_result)
+                result_blk.return_type, fmt_result)
         elif fmt_func.C_custom_return_type:
             pass  # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == "scalar":
@@ -1057,7 +1061,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_pattern,
                 )
         
-        if result_blk and "call" in result_blk:
+        if result_blk.call:
             raw_call_code = result_blk["call"]
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
@@ -1065,7 +1069,7 @@ class Wrapc(util.WrapperMixin):
                 "{CXX_template}(\t{C_call_list});",
             ]
         else:
-            if "cxx_local_var" in result_blk:
+            if result_blk.cxx_local_var:
                 # A C++ var is created by pre_call.
                 # Assign to it directly. ex c_shadow_scalar_result
                 fmt_result.cxx_addr = ""
@@ -1080,7 +1084,7 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
-                elif "c_local_var" in result_blk:
+                elif result_blk.c_local_var:
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
                     # For example, with struct and shadow.
@@ -1122,15 +1126,8 @@ class Wrapc(util.WrapperMixin):
             if C_subprogram == "function":
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
-                if node.ast.is_reference():
-                    if result_typemap.base in ["string"]:
-                        C_return_code = wformat("return {c_var};", fmt_result)
-                    else:
-                        # Return address of reference i.e. a pointer.
-                        C_return_code = wformat("return &{c_var};", fmt_result)
-                else:
-                    fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
-                    C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
+                fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+                C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
 
         call_code = []
         for line in raw_call_code:
@@ -1154,9 +1151,9 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal("C_return_code"):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
-        elif result_blk and "ret" in result_blk:
+        elif result_blk.ret:
             # XXX - Only first line for now
-            fmt_func.C_return_code = wformat(result_blk["ret"][0], fmt_result)
+            fmt_func.C_return_code = wformat(result_blk.ret[0], fmt_result)
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
             fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
@@ -1360,7 +1357,7 @@ class Wrapc(util.WrapperMixin):
             intent_blk -
         """
 
-        destructor_name = intent_blk.get("destructor_name", None)
+        destructor_name = intent_blk.destructor_name
         if destructor_name:
             # Custom destructor from statements.
             # Use destructor in typemap to remove intermediate objects
@@ -1382,7 +1379,7 @@ class Wrapc(util.WrapperMixin):
         if "owner" in ast.attrs:
             owner = ast.attrs["owner"]
         elif "owner" in intent_blk:
-            owner = intent_blk["owner"]
+            owner = intent_blk.owner
             from_stmt = True
         else:
             owner = default_owner
@@ -1480,7 +1477,7 @@ def compute_return_prefix(arg, local_var):
         else:
             return "*"
     elif arg.is_reference():
-        # reference to scalar  i.e. double &max
-        return "*"
+        # Convert a return reference into a pointer.
+        return "&"
     else:
         return ""

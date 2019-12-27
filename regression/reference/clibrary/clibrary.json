@@ -103,6 +103,8 @@
             "cast_static": "(",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "Clibrary",
             "function_suffix": "",
             "library": "Clibrary",
@@ -150,6 +152,10 @@
                     "PY_name_impl": "PY_NoReturnNoArguments",
                     "c_const": "",
                     "function_name": "NoReturnNoArguments",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "no_return_no_arguments"
                 },
                 "linenumber": 39,
@@ -178,9 +184,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -217,9 +226,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -254,7 +266,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "double",
-                        "f_var": "SHT_rv"
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -360,9 +377,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "stmt0": "f_native_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -399,9 +419,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -490,6 +513,10 @@
                     "PY_name_impl": "PY_PassByReference",
                     "c_const": "",
                     "function_name": "PassByReference",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_by_reference"
                 },
                 "linenumber": 45,
@@ -518,9 +545,12 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg1",
+                            "f_type": "logical",
                             "f_var": "arg1",
                             "stmt0": "f_bool_scalar_in_",
-                            "stmt1": "f_bool_in"
+                            "stmt1": "f_bool_in",
+                            "stmtc0": "c_bool_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -559,9 +589,12 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg2",
+                            "f_type": "logical",
                             "f_var": "arg2",
                             "stmt0": "f_bool_pointer_out_",
-                            "stmt1": "f_bool_out"
+                            "stmt1": "f_bool_out",
+                            "stmtc0": "c_bool_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -599,9 +632,12 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg3",
+                            "f_type": "logical",
                             "f_var": "arg3",
                             "stmt0": "f_bool_pointer_inout_",
-                            "stmt1": "f_bool_inout"
+                            "stmt1": "f_bool_inout",
+                            "stmtc0": "c_bool_pointer_inout_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -711,6 +747,10 @@
                     "PY_name_impl": "PY_checkBool",
                     "c_const": "",
                     "function_name": "checkBool",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "check_bool"
                 },
                 "linenumber": 49,
@@ -799,11 +839,16 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "stmt0": "c_char_pointer_result_",
-                        "stmt1": "c_default"
+                        "stmt1": "c_char_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_char_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -928,9 +973,12 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_char_pointer_result_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc1": "c_char_result_buf"
                         }
                     },
                     "arg1": {
@@ -1182,6 +1230,10 @@
                     "PY_name_impl": "PY_acceptName",
                     "c_const": "",
                     "function_name": "acceptName",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_name"
                 },
                 "linenumber": 59,
@@ -1284,6 +1336,10 @@
                     "PY_name_impl": "PY_returnOneName",
                     "c_const": "",
                     "function_name": "returnOneName",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "return_one_name"
                 },
                 "linenumber": 68,
@@ -1313,9 +1369,12 @@
                         },
                         "fmtf": {
                             "c_var": "name1",
+                            "f_type": "character(*)",
                             "f_var": "name1",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -1531,6 +1590,10 @@
                     "PY_name_impl": "PY_returnTwoNames",
                     "c_const": "",
                     "function_name": "returnTwoNames",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "return_two_names"
                 },
                 "linenumber": 78,
@@ -1557,9 +1620,12 @@
                         },
                         "fmtf": {
                             "c_var": "name1",
+                            "f_type": "character(*)",
                             "f_var": "name1",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "name2": {
@@ -1581,9 +1647,12 @@
                         },
                         "fmtf": {
                             "c_var": "name2",
+                            "f_type": "character(*)",
                             "f_var": "name2",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -1813,6 +1882,10 @@
                     "PY_name_impl": "PY_ImpliedTextLen",
                     "c_const": "",
                     "function_name": "ImpliedTextLen",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "implied_text_len"
                 },
                 "linenumber": 88,
@@ -1864,9 +1937,12 @@
                         },
                         "fmtf": {
                             "c_var": "text",
+                            "f_type": "character(*)",
                             "f_var": "text",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -2084,7 +2160,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2331,7 +2412,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2502,7 +2588,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "bool",
-                        "f_var": "SHT_rv"
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_bool_scalar_result_",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
@@ -2635,7 +2726,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "bool",
-                        "f_var": "SHT_rv"
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_bool_scalar_result_",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
@@ -2748,6 +2844,10 @@
                     "__line__": 129,
                     "c_const": "",
                     "function_name": "bindC1",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "bind_c1"
                 },
                 "linenumber": 124,
@@ -2832,6 +2932,10 @@
                     "__line__": 142,
                     "c_const": "",
                     "function_name": "bindC2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "bind_c2"
                 },
                 "linenumber": 137,
@@ -2861,9 +2965,12 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -2952,9 +3059,12 @@
                         },
                         "fmtf": {
                             "c_var": "in",
+                            "f_type": "type(C_PTR)",
                             "f_var": "in",
                             "stmt0": "f_unknown_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_pointer_in_",
+                            "stmtc1": "c_default"
                         }
                     },
                     "out": {
@@ -2975,9 +3085,12 @@
                         },
                         "fmtf": {
                             "c_var": "out",
+                            "f_type": "type(C_PTR)",
                             "f_var": "out",
                             "stmt0": "f_unknown_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_unknown_pointer_out_",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -3057,6 +3170,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "passVoidStarStar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_void_star_star"
                 },
                 "linenumber": 150,
@@ -3105,7 +3222,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -3255,6 +3377,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "passAssumedTypeDim",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_assumed_type_dim"
                 },
                 "linenumber": 170,
@@ -3316,7 +3442,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -3445,9 +3576,12 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -3590,9 +3724,12 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -3611,7 +3748,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -3761,9 +3903,12 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -3876,6 +4021,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "callback2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "callback2"
                 },
                 "linenumber": 199,
@@ -4090,6 +4239,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "callback3",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "callback3"
                 },
                 "linenumber": 207,
@@ -4162,9 +4315,12 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "type": {

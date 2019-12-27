@@ -111,6 +111,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "pointers",
             "function_suffix": "",
             "library": "pointers",
@@ -145,9 +147,12 @@
                         },
                         "fmtf": {
                             "c_var": "argin",
+                            "f_type": "integer(C_INT)",
                             "f_var": "argin",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -184,9 +189,12 @@
                         },
                         "fmtf": {
                             "c_var": "arginout",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arginout",
                             "stmt0": "f_native_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_inout_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -223,9 +231,12 @@
                         },
                         "fmtf": {
                             "c_var": "argout",
+                            "f_type": "integer(C_INT)",
                             "f_var": "argout",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -329,6 +340,10 @@
                     "PY_name_impl": "PY_intargs",
                     "c_const": "",
                     "function_name": "intargs",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "intargs"
                 },
                 "linenumber": 31,
@@ -354,9 +369,12 @@
                         },
                         "fmtf": {
                             "c_var": "in",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
                             "stmt0": "f_native_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -394,10 +412,13 @@
                         },
                         "fmtf": {
                             "c_var": "out",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "out",
                             "mold": "lbound(in,1):ubound(in,1)",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -552,6 +573,10 @@
                     "PY_name_impl": "PY_cos_doubles",
                     "c_const": "",
                     "function_name": "cos_doubles",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "cos_doubles"
                 },
                 "linenumber": 35,
@@ -577,9 +602,12 @@
                         },
                         "fmtf": {
                             "c_var": "in",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
                             "stmt0": "f_native_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -617,10 +645,13 @@
                         },
                         "fmtf": {
                             "c_var": "out",
+                            "f_type": "integer(C_INT)",
                             "f_var": "out",
                             "mold": "lbound(in,1):ubound(in,1)",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -775,6 +806,10 @@
                     "PY_name_impl": "PY_truncate_to_int",
                     "c_const": "",
                     "function_name": "truncate_to_int",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "truncate_to_int"
                 },
                 "linenumber": 44,
@@ -800,9 +835,12 @@
                         },
                         "fmtf": {
                             "c_var": "nvalues",
+                            "f_type": "integer(C_INT)",
                             "f_var": "nvalues",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -839,9 +877,12 @@
                         },
                         "fmtf": {
                             "c_var": "values",
+                            "f_type": "integer(C_INT)",
                             "f_var": "values",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -940,6 +981,10 @@
                     "PY_name_impl": "PY_get_values",
                     "c_const": "",
                     "function_name": "get_values",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_values"
                 },
                 "linenumber": 53,
@@ -965,9 +1010,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg1",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1008,9 +1056,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1110,6 +1161,10 @@
                     "PY_name_impl": "PY_get_values2",
                     "c_const": "",
                     "function_name": "get_values2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_values2"
                 },
                 "linenumber": 62,
@@ -1174,9 +1229,12 @@
                         },
                         "fmtf": {
                             "c_var": "result",
+                            "f_type": "integer(C_INT)",
                             "f_var": "result",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1213,9 +1271,12 @@
                         },
                         "fmtf": {
                             "c_var": "values",
+                            "f_type": "integer(C_INT)",
                             "f_var": "values",
                             "stmt0": "f_native_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1321,6 +1382,10 @@
                     "PY_name_impl": "PY_Sum",
                     "c_const": "",
                     "function_name": "Sum",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "sum"
                 },
                 "linenumber": 75,
@@ -1350,9 +1415,12 @@
                         },
                         "fmtf": {
                             "c_var": "out",
+                            "f_type": "integer(C_INT)",
                             "f_var": "out",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1432,6 +1500,10 @@
                     "PY_name_impl": "PY_fillIntArray",
                     "c_const": "",
                     "function_name": "fillIntArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "fill_int_array"
                 },
                 "linenumber": 83,
@@ -1457,9 +1529,12 @@
                         },
                         "fmtf": {
                             "c_var": "array",
+                            "f_type": "integer(C_INT)",
                             "f_var": "array",
                             "stmt0": "f_native_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_inout_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1590,6 +1665,10 @@
                     "PY_name_impl": "PY_incrementIntArray",
                     "c_const": "",
                     "function_name": "incrementIntArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "increment_int_array"
                 },
                 "linenumber": 88,

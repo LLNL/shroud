@@ -7,6 +7,7 @@
 from __future__ import print_function
 
 from shroud import typemap
+from shroud import util
 
 import unittest
 
@@ -48,7 +49,8 @@ class Typemap(unittest.TestCase):
         typemap.update_stmt_tree(stmts, cf_tree)
 
         rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
-        self.assertIs(rv, stmts["c_a"])
+        self.assertIsInstance(rv, util.Scope)
+        self.assertEqual(rv.key, "c_a")
         
     def test_lookup_tree1(self):
         cf_tree = {}

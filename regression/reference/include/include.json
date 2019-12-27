@@ -41,9 +41,12 @@
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
+                                    "f_type": "integer",
                                     "f_var": "comm",
                                     "stmt0": "f_unknown_scalar_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_unknown_scalar_in_",
+                                    "stmtc1": "c_default"
                                 }
                             }
                         },
@@ -97,6 +100,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
                         "linenumber": 49,
@@ -122,9 +129,12 @@
                                 },
                                 "fmtf": {
                                     "c_var": "c2",
+                                    "f_type": "type(class1)",
                                     "f_var": "c2",
                                     "stmt0": "f_shadow_pointer_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_shadow_pointer_in_",
+                                    "stmtc1": "c_shadow_in"
                                 }
                             }
                         },
@@ -182,6 +192,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
                         "linenumber": 51,
@@ -289,6 +303,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "library",
             "function_suffix": "",
             "library": "library",
@@ -369,6 +385,10 @@
                                     "F_subprogram": "subroutine",
                                     "c_const": "",
                                     "function_name": "function1",
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "function1"
                                 },
                                 "linenumber": 37,
@@ -432,9 +452,12 @@
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",
+                                            "f_type": "integer(C_INT)",
                                             "f_var": "arg1",
                                             "stmt0": "f_native_scalar_in_",
-                                            "stmt1": "f_default"
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_",
+                                            "stmtc1": "c_default"
                                         }
                                     }
                                 },
@@ -488,6 +511,10 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "method1"
                                 },
                                 "linenumber": 43,
@@ -580,6 +607,10 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
                                 "linenumber": 62,
@@ -641,6 +672,10 @@
                             "F_subprogram": "subroutine",
                             "c_const": "",
                             "function_name": "outer_func",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
                         "linenumber": 57,
@@ -711,6 +746,10 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
+                                    "stmt0": "f_subroutine",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c",
+                                    "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
                                 "linenumber": 74,
@@ -772,6 +811,10 @@
                             "F_subprogram": "subroutine",
                             "c_const": "",
                             "function_name": "outer_func",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
                         "linenumber": 67,

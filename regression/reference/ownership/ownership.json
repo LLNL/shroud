@@ -71,6 +71,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
+                            "stmt0": "f_shadow_dtor",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_shadow_dtor",
+                            "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
                         "linenumber": 30,
@@ -92,7 +96,12 @@
                             },
                             "fmtf": {
                                 "cxx_type": "int",
-                                "f_var": "SHT_rv"
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "stmt0": "f_native_scalar_result_",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result_",
+                                "stmtc1": "c_default"
                             }
                         },
                         "ast": {
@@ -295,6 +304,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "ownership",
             "function_suffix": "",
             "library": "ownership",
@@ -383,7 +394,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_pointer_result_scalar",
+                        "stmt1": "f_native_pointer_result_scalar",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -465,7 +481,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_pointer_result_pointer",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -647,9 +668,12 @@
                         },
                         "fmtf": {
                             "c_var": "len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -684,8 +708,14 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_pointer_shape": ", [len]",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "pointer_shape": "len"
+                        "f_var_shape": "(:)",
+                        "stmt0": "f_native_pointer_result_pointer",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -829,7 +859,14 @@
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "len",
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_pointer_shape": ", [len]",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "f_var_shape": "(:)",
+                        "stmt0": "f_native_pointer_result_allocatable",
+                        "stmt1": "f_native_pointer_result_allocatable",
+                        "stmtc0": "c_native_pointer_result_buf",
+                        "stmtc1": "c_native_pointer_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -940,9 +977,12 @@
                         },
                         "fmtf": {
                             "c_var": "len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_buf",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -1052,9 +1092,12 @@
                         },
                         "fmtf": {
                             "c_var": "len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1089,8 +1132,14 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_pointer_shape": ", [len]",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "pointer_shape": "len"
+                        "f_var_shape": "(:)",
+                        "stmt0": "f_native_pointer_result_",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -1298,9 +1347,12 @@
                         },
                         "fmtf": {
                             "c_var": "len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1335,8 +1387,14 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_pointer_shape": ", [len]",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "pointer_shape": "len"
+                        "f_var_shape": "(:)",
+                        "stmt0": "f_native_pointer_result_pointer",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -1579,9 +1637,12 @@
                         },
                         "fmtf": {
                             "c_var": "len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "stmt0": "f_native_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1616,8 +1677,14 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_pointer_shape": ", [len]",
+                        "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "pointer_shape": "len"
+                        "f_var_shape": "(:)",
+                        "stmt0": "f_native_pointer_result_",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_native_pointer_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -2299,9 +2366,12 @@
                         },
                         "fmtf": {
                             "c_var": "flag",
+                            "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2368,6 +2438,10 @@
                     "PY_name_impl": "PY_createClassStatic",
                     "c_const": "",
                     "function_name": "createClassStatic",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "create_class_static"
                 },
                 "linenumber": 260,
@@ -2393,7 +2467,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Class1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(class1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_shadow_pointer_result_",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_pointer_result_",
+                        "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
                         "PyObject": "PY_Class1",
@@ -2480,9 +2559,12 @@
                         },
                         "fmtf": {
                             "c_var": "flag",
+                            "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2518,7 +2600,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Class1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(class1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_shadow_pointer_result_",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_pointer_result_",
+                        "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
                         "PyObject": "PY_Class1",

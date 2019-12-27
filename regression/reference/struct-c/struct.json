@@ -179,6 +179,8 @@
             "cast_static": "(",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "struct",
             "function_suffix": "",
             "library": "struct",
@@ -213,9 +215,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_scalar_in_",
+                            "stmtc1": "c_struct"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -254,7 +259,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -346,9 +356,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_pointer_in_",
+                            "stmtc1": "c_struct"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -387,7 +400,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -552,7 +570,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -669,9 +692,12 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "s1": {
@@ -692,9 +718,12 @@
                         },
                         "fmtf": {
                             "c_var": "s1",
+                            "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "stmt0": "f_struct_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_pointer_in_buf",
+                            "stmtc1": "c_struct"
                         }
                     }
                 },
@@ -814,9 +843,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_pointer_in_",
+                            "stmtc1": "c_struct"
                         }
                     }
                 },
@@ -835,7 +867,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -918,9 +955,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_pointer_out_",
+                            "stmtc1": "c_struct"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -960,9 +1000,12 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -999,9 +1042,12 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1104,6 +1150,10 @@
                     "PY_name_impl": "PY_acceptStructOutPtr",
                     "c_const": "",
                     "function_name": "acceptStructOutPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_struct_out_ptr"
                 },
                 "linenumber": 55,
@@ -1129,9 +1179,12 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_inout_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_pointer_inout_",
+                            "stmtc1": "c_struct"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1206,6 +1259,10 @@
                     "PY_name_impl": "PY_acceptStructInOutPtr",
                     "c_const": "",
                     "function_name": "acceptStructInOutPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
                 "linenumber": 60,
@@ -1231,9 +1288,12 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1270,9 +1330,12 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1307,7 +1370,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_struct_scalar_result_",
+                        "stmt1": "f_struct_scalar_result",
+                        "stmtc0": "c_struct_scalar_result_",
+                        "stmtc1": "c_struct_result"
                     },
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1416,9 +1484,12 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1455,9 +1526,12 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1492,7 +1566,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_struct_scalar_result_",
+                        "stmt1": "f_struct_scalar_result",
+                        "stmtc0": "c_struct_scalar_result_",
+                        "stmtc1": "c_struct_result"
                     },
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1602,9 +1681,12 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1641,9 +1723,12 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1678,7 +1763,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_struct_pointer_result_",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_struct_pointer_result_",
+                        "stmtc1": "c_struct_result"
                     },
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1892,7 +1982,12 @@
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
-                        "f_var": "SHT_rv"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_struct_pointer_result_",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_struct_pointer_result_buf",
+                        "stmtc1": "c_struct_result"
                     },
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2027,9 +2122,12 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
                         }
                     },
                     "i": {
@@ -2050,9 +2148,12 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
                         }
                     },
                     "outbuf": {
@@ -2074,9 +2175,12 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },

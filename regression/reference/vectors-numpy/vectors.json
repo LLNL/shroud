@@ -111,6 +111,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "vectors",
             "function_suffix": "",
             "library": "vectors",
@@ -154,7 +156,12 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -256,9 +263,12 @@
                         "fmtf": {
                             "c_var": "arg",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_in__native",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_pointer_in_buf_native",
+                            "stmtc1": "c_vector_in_buf"
                         }
                     }
                 },
@@ -430,6 +440,10 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_vector_iota_out",
                     "function_name": "vector_iota_out",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out"
                 },
                 "linenumber": 39,
@@ -466,9 +480,12 @@
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_out__native",
-                            "stmt1": "f_vector_out"
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
                         }
                     }
                 },
@@ -602,6 +619,10 @@
                     "F_name_impl": "vector_iota_out_alloc",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_out_alloc",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
                 },
                 "linenumber": 47,
@@ -639,9 +660,12 @@
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_out_allocatable_native",
-                            "stmt1": "f_vector_out_allocatable"
+                            "stmt1": "f_vector_out_allocatable",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
                         }
                     }
                 },
@@ -776,6 +800,10 @@
                     "F_name_impl": "vector_iota_inout_alloc",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_inout_alloc",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
                 "linenumber": 55,
@@ -814,9 +842,12 @@
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_inout_allocatable_native",
-                            "stmt1": "f_vector_inout_allocatable"
+                            "stmt1": "f_vector_inout_allocatable",
+                            "stmtc0": "c_vector_pointer_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
                         }
                     }
                 },
@@ -947,6 +978,10 @@
                     "F_name_impl": "vector_increment",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_increment",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_increment"
                 },
                 "linenumber": 64,
@@ -984,9 +1019,12 @@
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_inout__native",
-                            "stmt1": "f_vector_inout"
+                            "stmt1": "f_vector_inout",
+                            "stmtc0": "c_vector_pointer_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
                         }
                     }
                 },
@@ -1143,6 +1181,10 @@
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_vector_iota_out_d",
                     "function_name": "vector_iota_out_d",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out_d"
                 },
                 "linenumber": 75,
@@ -1178,9 +1220,12 @@
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "double",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_out__native",
-                            "stmt1": "f_vector_out"
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
                         }
                     }
                 },
@@ -1260,7 +1305,12 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -1355,9 +1405,12 @@
                         "fmtf": {
                             "c_var": "arg",
                             "cxx_T": "std::string",
+                            "f_type": "character(*)",
                             "f_var": "arg",
                             "stmt0": "f_vector_pointer_in__string",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_pointer_in_buf_string",
+                            "stmtc1": "c_vector_in_buf_string"
                         }
                     }
                 },
@@ -1597,7 +1650,12 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::vector<{cxx_T}>",
-                        "f_var": "SHT_rv"
+                        "f_type": null,
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_vector_scalar_result_allocatable",
+                        "stmt1": "f_vector_result_allocatable",
+                        "stmtc0": "c_vector_scalar_result_buf",
+                        "stmtc1": "c_vector_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
@@ -1706,9 +1764,12 @@
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_vector_pointer_result_allocatable_native",
-                            "stmt1": "f_vector_out_allocatable"
+                            "stmt1": "f_vector_result_allocatable",
+                            "stmtc0": "c_vector_pointer_result_buf_allocatable_native",
+                            "stmtc1": "c_vector_result_buf"
                         }
                     },
                     "n": {
@@ -1729,9 +1790,12 @@
                         },
                         "fmtf": {
                             "c_var": "n",
+                            "f_type": "integer(C_INT)",
                             "f_var": "n",
                             "stmt0": "f_native_scalar_in_",
-                            "stmt1": "f_default"
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
                         }
                     }
                 },

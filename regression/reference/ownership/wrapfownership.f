@@ -373,8 +373,8 @@ contains
     function get_class_static() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_static
         SHT_prv = c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
@@ -389,8 +389,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
-        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_new
         SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new

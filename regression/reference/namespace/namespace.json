@@ -95,6 +95,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "ns",
             "function_suffix": "",
             "library": "ns",
@@ -112,6 +114,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -122,11 +125,16 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "stmt0": "c_string_pointer_result_",
-                        "stmt1": "c_default"
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -212,9 +220,12 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable"
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
@@ -323,6 +334,10 @@
                     "PY_name_impl": "PY_One",
                     "c_const": "",
                     "function_name": "One",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "one"
                 },
                 "linenumber": 32,
@@ -653,6 +668,10 @@
                             "PY_name_impl": "PY_One",
                             "c_const": "",
                             "function_name": "One",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "one"
                         },
                         "linenumber": 31,

@@ -63,6 +63,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
                         "linenumber": 29,
@@ -105,6 +109,10 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
                         "linenumber": 30,
@@ -149,6 +157,10 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_0",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
                         "linenumber": 32,
@@ -182,9 +194,12 @@
                                 },
                                 "fmtf": {
                                     "c_var": "i",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "i",
                                     "stmt0": "f_native_scalar_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in_",
+                                    "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -263,6 +278,10 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_1",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
                         "linenumber": 32,
@@ -338,6 +357,10 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_0",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
                         "linenumber": 41,
@@ -363,9 +386,12 @@
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "stmt0": "f_native_scalar_in_",
-                                    "stmt1": "f_default"
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in_",
+                                    "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -438,6 +464,10 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_1",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
                         "linenumber": 43,
@@ -561,6 +591,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "preprocess",
             "function_suffix": "",
             "library": "preprocess",
