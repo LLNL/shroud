@@ -1610,13 +1610,7 @@ rv = .false.
                 )
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            elif return_pointer_as == "pointer":
-                dim = ast.attrs.get("dimension", None)
-                if dim:
-                    # XXX - Assume 1-d
-                    fmt_result.f_var_shape = "(:)"
-                    fmt_result.f_pointer_shape = ", [{}]".format(dim)
-            elif return_pointer_as == "allocatable":
+            elif return_pointer_as in ["allocatable", "pointer"]:
                 dim = ast.attrs.get("dimension", None)
                 if dim:
                     # XXX - Assume 1-d
