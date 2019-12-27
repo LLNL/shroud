@@ -1653,7 +1653,7 @@
                         "f_type": null,
                         "f_var": "SHT_rv",
                         "stmt0": "f_vector_scalar_result_allocatable",
-                        "stmt1": "f_vector_out_allocatable",
+                        "stmt1": "f_vector_result_allocatable",
                         "stmtc0": "c_vector_scalar_result_buf",
                         "stmtc1": "c_vector_result_buf"
                     },
@@ -1767,7 +1767,7 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_vector_pointer_result_allocatable_native",
-                            "stmt1": "f_vector_out_allocatable",
+                            "stmt1": "f_vector_result_allocatable",
                             "stmtc0": "c_vector_pointer_result_buf_allocatable_native",
                             "stmtc1": "c_vector_result_buf"
                         }

@@ -1331,6 +1331,8 @@ rv = .false.
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_result.f_type = result_typemap.f_type
+#            if result_typemap.base == "vector":
+#                fmt_result.f_type = ast.template_arguments[0].typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
@@ -1617,16 +1619,11 @@ rv = .false.
                     fmt_result.f_var_shape = "(:)"
                     fmt_result.f_pointer_shape = ", [{}]".format(dim)
             elif return_pointer_as == "allocatable":
-                need_wrapper = True
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_allocatable=True
-                    )
-                )
-                if result_typemap.base not in ["string", "vector"]:
-                    # XXX - needed with int *, but not char *
-                    arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
+                dim = ast.attrs.get("dimension", None)
+                if dim:
+                    # XXX - Assume 1-d
+                    fmt_result.f_var_shape = "(:)"
+                    fmt_result.f_pointer_shape = ", [{}]".format(dim)
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1682,8 +1679,6 @@ rv = .false.
             if C_subprogram == "function":
                 if result_blk.call:
                     cmd_list = result_blk.call
-                elif return_pointer_as == "allocatable":
-                    cmd_list = ["{F_pointer} = {F_C_call}({F_arg_c_call})"]
                 else:
                     cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
                 #                for cmd in cmd_list:  # only allow a single statment for now

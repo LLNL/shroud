@@ -1273,6 +1273,14 @@ fc_statements = dict(
     f_native_pointer_result_allocatable=dict(
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        declare=[
+            "{f_type}, allocatable :: {f_var}{f_var_shape}",
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}({c_var_dimension}))",
@@ -1366,6 +1374,9 @@ fc_statements = dict(
     f_char_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
+        declare=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
         post_call=[
             "allocate(character(len={c_var_context}%len):: {f_var})",
             "call SHROUD_copy_string_and_free"
@@ -1519,6 +1530,9 @@ fc_statements = dict(
     f_string_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
+        declare=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
         post_call=[
             "allocate(character(len={c_var_context}%len):: {f_var})",
             "call SHROUD_copy_string_and_free("
@@ -1757,8 +1771,19 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))",
         ],
     ),
+    # Similar to f_vector_out_allocatable but must declare result variable.
+    # Always return a 1-d array.
     f_vector_result_allocatable=dict(
-        alias="f_vector_out_allocatable",
+        f_helper="copy_array_{cxx_T}",
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        declare=[
+            "{f_type}, allocatable :: {f_var}(:)",
+        ],
+        post_call=[
+            "allocate({f_var}({c_var_context}%size))",
+            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
+            "{f_var}, size({f_var},kind=C_SIZE_T))",
+        ],
     ),
 
     # Pass in a pointer to a shadow object via buf_args.
