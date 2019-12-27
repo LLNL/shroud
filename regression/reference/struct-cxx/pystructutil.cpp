@@ -60,12 +60,20 @@ static void PY_SHROUD_capsule_destructor_1(void *ptr)
     delete cxx_ptr;
 }
 
+// 2 - cxx const Cstruct1 *
+static void PY_SHROUD_capsule_destructor_2(void *ptr)
+{
+    const Cstruct1 * cxx_ptr = static_cast<const Cstruct1 *>(ptr);
+    delete cxx_ptr;
+}
+
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx Cstruct1 *", PY_SHROUD_capsule_destructor_1},
+    {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_2},
     {NULL, NULL}
 };
 

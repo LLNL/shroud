@@ -176,14 +176,19 @@ The *C_code* field has a default value of::
     }
 
 
+alias
+^^^^^
+
+Names another node which will be used for its contents.
+
 buf_args
 ^^^^^^^^^
 
-*buf_args* lists the arguments which are added to the wrapper.
+*buf_args* lists the arguments which are used by the wrapper.
 The default is to provide a one-for-one correspondance with the 
 arguments of the function which is being wrapped.
 However, often an additional function is created which will pass 
-additional arguments to provide meta-data about the argument.
+additional or different arguments to provide meta-data about the argument.
 
 The Fortran wrapper will call the generated 'bufferified' function
 and provide the meta-data to the C wrapper.
@@ -206,6 +211,8 @@ context
     address and size of data contained in the argument
     in a form which may be used directly by Fortran.
 
+    *c_var_context*
+
 len
 
     Result of Fortran intrinsic ``LEN`` for string arguments.
@@ -227,13 +234,32 @@ shadow
 
 
 
+c_local_var
+^^^^^^^^^^^
+
+If a local C variable is created for the return value by post_call, *c_local_var*
+indicates if the local variable is a **pointer** or **scalar**.
+For example, when a structure is returned by a C++ function, the C wrapper creates
+a local variable which contains a pointer to the C type of the struct.
+
+The local variable can be passed in when buf_args is *shadow*.
+
+call
+^^^^
+
+Code to call function.  This is usually generated.
+An exception which require explicit call code are constructors
+and destructors for shadow types.
+
 cxx_local_var
 ^^^^^^^^^^^^^
 
-If a local C++ variable must be created from the C argument, *cxx_local_var*
+If a local C++ variable is created for an argument by pre_call, *cxx_local_var*
 indicates if the local variable is a **pointer** or **scalar**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
 This in turns will set the format fields *cxx_member*.
+For example, a ``std::string`` argument is created for the C++ function
+from the ``char *`` argument passed into the C API wrapper.
 
 c_header
 ^^^^^^^^
@@ -299,6 +325,8 @@ pre_call
 
 Code used with *intent(in)* arguments to convert from C to C++.
 
+.. the typemap.c_to_cxx field will not be used.
+
 .. * **C_call_code** code used to call the function.
    Constructor and destructor will use ``new`` and ``delete``.
 
@@ -308,7 +336,7 @@ Code used with *intent(in)* arguments to convert from C to C++.
 post_call
 ^^^^^^^^^
 
-Code used with *intent(out)* arguments.
+Code used with *intent(out)* arguments and function results.
 Can be used to convert results from C++ to C.
 
 .. Includes any code from **C_finalize**.
@@ -316,6 +344,22 @@ Can be used to convert results from C++ to C.
 * **C_return_code** returns a value from the wrapper.
 
 
+ret
+---
+
+Code for return statement.
+Usually generated but can be replaced.
+For example, with constructors.
+
+.. return is a reserved word so it's not possible to do dict(return=[])
+
+return_type
+-----------
+
+Explicit return type when it is different than the
+functions return type.
+For example, with shadow types.
+  
 Predefined types
 ----------------
 

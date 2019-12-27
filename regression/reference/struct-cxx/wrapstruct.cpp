@@ -18,12 +18,6 @@
 extern "C" {
 
 
-typedef union {
-  Cstruct1 cxx;
-  STR_cstruct1 c;
-} SH_union_0_t;
-
-
 // helper function
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
@@ -130,9 +124,22 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 STR_cstruct1 STR_return_struct_by_value(int i, double d)
 {
 // splicer begin function.return_struct_by_value
-    SH_union_0_t SHC_rv = {returnStructByValue(i, d)};
-    return SHC_rv.c;
+    Cstruct1 SHCXX_rv = returnStructByValue(i, d);
+    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
+        static_cast<void *>(&SHCXX_rv));
+    return *SHC_rv;
 // splicer end function.return_struct_by_value
+}
+
+// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
+{
+// splicer begin function.return_const_struct_by_value
+    const Cstruct1 SHCXX_rv = returnConstStructByValue(i, d);
+    const STR_cstruct1 * SHC_rv = static_cast<const STR_cstruct1 *>(
+        static_cast<const void *>(&SHCXX_rv));
+    return *SHC_rv;
+// splicer end function.return_const_struct_by_value
 }
 
 // Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)

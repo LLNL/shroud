@@ -16,6 +16,7 @@ from . import util
 from . import declast
 from . import todict
 from . import typemap
+from .util import wformat
 
 
 class AstNode(object):
@@ -344,6 +345,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             create_std_namespace(self)  # add 'std::' to library
             self.using_directive("std")
 
+        typemap.update_typemap_for_language(self.language)
+
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self
@@ -562,7 +565,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_bufferify_suffix="_bufferify",
             C_prefix=C_prefix,
             C_result="rv",  # return value
-            C_argument="SH_",
             c_temp="SHT_",
             C_local="SHC_",
             C_name_scope = "",
@@ -593,6 +595,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             F_array_type="SHROUD_array",
 
+            f_pointer_shape="",  # scalar
+            f_var_shape="",      # scalar
+
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
@@ -619,6 +624,22 @@ class LibraryNode(AstNode, NamespaceMixin):
             template_suffix="",  # assume no suffix
             namespace_scope="",
         )
+
+        if False:
+            # Add default values to format to aid debugging.
+            # Avoids exception from wformat for non-existent fields.
+            fmt_library.update(dict(
+                c_val="XXXc_val",
+                c_var="XXXc_var",
+                c_var_context="XXXc_var_context",
+                c_var_dimension="XXXc_var_dimension",
+                cxx_addr="XXXcxx_addr",
+                cxx_member="XXXcxx_member",
+                cxx_type="XXXcxx_type",
+                cxx_var="XXXcxx_var",
+                f_type="XXXf_type",
+                f_var="XXXf_var",
+            ))
 
         fmt_library.F_filename_suffix = "f"
 
@@ -1167,7 +1188,7 @@ class FunctionNode(AstNode):
 
     _function_index  - sequence number function,
                        used in lieu of a pointer
-    _generated       - who generated this function
+    _generated       - which method generated this function
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
@@ -1235,7 +1256,7 @@ class FunctionNode(AstNode):
         self.F_return_type = "--none--"
 
         # Used with c_statements to find correct intent block
-        # possible values are '', '_buf'
+        # possible values are '', 'buf'
         self.generated_suffix = ""
 
         # Headers required by template arguments.
@@ -1439,9 +1460,11 @@ class EnumNode(AstNode):
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
             )
 
-        # format for each enum member
+        # Format for each enum member.
+        # Compute all names first since any expression must be converted to 
+        # C or Fortran names.
+        options = self.options
         fmtmembers = {}
-        evalue = 0
         if ast.scope is not None:
             # members of 'class enum' must be qualified, add to scope.
             C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
@@ -1454,15 +1477,45 @@ class EnumNode(AstNode):
             if ast.scope is not None:
                 fmt.C_name_scope = C_name_scope
                 fmt.F_name_scope = F_name_scope
+            fmt.C_enum_member = wformat(options.C_enum_member_template, fmt)
+            fmt.F_enum_member = wformat(options.F_enum_member_template, fmt)
+            fmtmembers[member.name] = fmt
 
+        # Compute enum values.
+        # Required for Fortran since it will not implicitly generate values.
+        # Expressions are assumed to be built up from other enum values.
+        cvalue = 0
+        fvalue = 0
+        value_is_int = True
+        for member in ast.members:
+            fmt = fmtmembers[member.name]
             # evaluate value
             if member.value is not None:
-                fmt.cxx_value = todict.print_node(member.value)
-                evalue = int(todict.print_node(member.value))
-            fmt.evalue = evalue
-            evalue = evalue + 1
+                try:
+                    cvalue = int(todict.print_node(member.value))
+                    fvalue = cvalue
+                    value_is_int = True
+                except ValueError:
+                    cvalue = todict.print_node_identifier(
+                        member.value, fmtmembers, "C_enum_member")
+                    fvalue = todict.print_node_identifier(
+                        member.value, fmtmembers, "F_enum_member")
+                    cbase = cvalue
+                    fbase = fvalue
+                    incr = 0
+                    value_is_int = False
+                fmt.C_value = cvalue # Only set if explicitly set by user.
+            fmt.F_value = fvalue     # Always set.
 
-            fmtmembers[member.name] = fmt
+            # Prepare for next value.
+            if value_is_int:
+                cvalue = cvalue + 1
+                fvalue = cvalue
+            else:
+                incr += 1
+                cvalue = "{}+{}".format(cbase, incr)
+                fvalue = "{}+{}".format(fbase, incr)
+
         self._fmtmembers = fmtmembers
         # Headers required by template arguments.
         self.gen_headers_typedef = {}

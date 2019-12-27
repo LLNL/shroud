@@ -318,6 +318,16 @@ if __name__ == "__main__":
         TestDesc("tutorial"),
         TestDesc("types"),
 
+        # enum
+        TestDesc("enum-c", yaml="enum",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("enum-cxx", yaml="enum",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+
         # pointers
         TestDesc("pointers-numpy-cpp", yaml="pointers",
                  cmdline=[
@@ -357,7 +367,21 @@ if __name__ == "__main__":
                      "--language", "c++",
                      "--option", "PY_struct_arg=class",
                  ]),
-        TestDesc("vectors"),
+
+        # vectors
+        TestDesc("vectors-numpy", yaml="vectors",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_array_arg=numpy",
+                 ]),
+        TestDesc("vectors-list", yaml="vectors",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_array_arg=list",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                 ]),
+        
         TestDesc("forward"),
         TestDesc("example"),
         TestDesc("include"),

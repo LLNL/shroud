@@ -94,8 +94,8 @@ PY_UseImplWorker_internal_ImplWorker1(
 // splicer begin function.use_impl_worker_internal_ImplWorker1
     PyObject * SHTPy_rv = NULL;
 
-    int rv = UseImplWorker();
-    SHTPy_rv = PyInt_FromLong(rv);
+    int SHCXX_rv = UseImplWorker();
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }
@@ -113,8 +113,8 @@ PY_UseImplWorker_internal_ImplWorker2(
 // splicer begin function.use_impl_worker_internal_ImplWorker2
     PyObject * SHTPy_rv = NULL;
 
-    int rv = UseImplWorker();
-    SHTPy_rv = PyInt_FromLong(rv);
+    int SHCXX_rv = UseImplWorker();
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker2
 }

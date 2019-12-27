@@ -96,7 +96,7 @@ module templates_std_mod
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
-            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import :: SHROUD_vector_int_capsule
             implicit none
             type(SHROUD_vector_int_capsule), intent(IN) :: self
@@ -136,7 +136,7 @@ module templates_std_mod
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
-            use iso_c_binding, only : C_DOUBLE, C_PTR, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             import :: SHROUD_vector_double_capsule
             implicit none
             type(SHROUD_vector_double_capsule), intent(IN) :: self
@@ -156,8 +156,8 @@ contains
     function vector_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(vector_int) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_int.method.ctor
         SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.ctor
@@ -221,8 +221,8 @@ contains
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(vector_double) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_double.method.ctor
         SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.ctor

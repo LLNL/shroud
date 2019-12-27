@@ -79,6 +79,12 @@ Cstruct1 returnStructByValue(int i, double d)
   return s;
 }
 
+const Cstruct1 returnConstStructByValue(int i, double d)
+{
+  Cstruct1 s = {i, d};
+  return s;
+}
+
 Cstruct1 *returnStructPtr1(int i, double d)
 {
     strncpy(last_function_called, "returnStructPtr1", MAXLAST);

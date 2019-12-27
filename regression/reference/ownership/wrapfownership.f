@@ -93,7 +93,7 @@ module ownership_mod
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_raw")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_raw
@@ -109,7 +109,7 @@ module ownership_mod
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_pointer")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_pointer
@@ -325,9 +325,9 @@ contains
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_alloc
         SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
-        ! splicer end function.return_int_ptr_dim_alloc
         allocate(SHT_rv(len))
         call SHROUD_copy_array_int(DSHC_rv, SHT_rv, size(SHT_rv, kind=C_SIZE_T))
+        ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc
 
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
@@ -373,8 +373,8 @@ contains
     function get_class_static() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_static
         SHT_prv = c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
@@ -389,8 +389,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
-        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_new
         SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new

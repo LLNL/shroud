@@ -46,8 +46,7 @@ void TUT_Class1_delete(TUT_Class1 * self);
 
 int TUT_Class1_method1(TUT_Class1 * self);
 
-bool TUT_Class1_equivalent(const TUT_Class1 * self,
-    const TUT_Class1 * obj2);
+bool TUT_Class1_equivalent(const TUT_Class1 * self, TUT_Class1 * obj2);
 
 void TUT_Class1_return_this(TUT_Class1 * self);
 

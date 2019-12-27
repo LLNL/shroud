@@ -92,8 +92,12 @@ contains
     call set_case_name("test_struct2")
 
     str1 = return_struct_by_value(1_C_INT, 2.5_C_DOUBLE)
-    call assert_equals(1_C_INT,      str1%ifield, "return_struct i field")
-    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct d field")
+    call assert_equals(1_C_INT,      str1%ifield, "return_struct_by_value i field")
+    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct_by_value d field")
+
+    str1 = return_const_struct_by_value(10_C_INT, 20.5_C_DOUBLE)
+    call assert_equals(10_C_INT,      str1%ifield, "return_const_struct_by_value i field")
+    call assert_equals(20.5_C_DOUBLE, str1%dfield, "return_const_struct_by_value d field")
 
     nullify(str2)
     str2 => return_struct_ptr1(33, 33.5d0)

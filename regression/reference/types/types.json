@@ -23,7 +23,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "TYP_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "TYP_SHROUD_capsule_data",
@@ -84,9 +83,9 @@
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pytypesmodule.cpp",
-            "PY_module_init": "types",
-            "PY_module_name": "types",
-            "PY_module_scope": "types",
+            "PY_module_init": "shtypes",
+            "PY_module_name": "shtypes",
+            "PY_module_scope": "shtypes",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
@@ -103,6 +102,7 @@
             "PY_utility_filename": "pytypesutil.cpp",
             "PyObject": "PyObject",
             "YAML_type_filename": "types_types.yaml",
+            "__line__": 27,
             "c_temp": "SHT_",
             "capsule_order": "0",
             "cast1": ">\t(",
@@ -112,6 +112,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "types",
             "function_suffix": "",
             "library": "types",
@@ -130,6 +132,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -139,11 +142,18 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_SHORT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -156,6 +166,7 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -164,23 +175,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "short",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "short",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_SHORT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "short",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -237,13 +259,14 @@
                     "function_name": "short_func",
                     "underscore_name": "short_func"
                 },
-                "linenumber": 31,
+                "linenumber": 34,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -253,11 +276,18 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -270,6 +300,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -278,23 +309,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -351,13 +393,14 @@
                     "function_name": "int_func",
                     "underscore_name": "int_func"
                 },
-                "linenumber": 32,
+                "linenumber": 35,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -367,11 +410,18 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -384,6 +434,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -392,23 +443,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -465,13 +527,14 @@
                     "function_name": "long_func",
                     "underscore_name": "long_func"
                 },
-                "linenumber": 33,
+                "linenumber": 36,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -481,11 +544,18 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -498,6 +568,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -506,28 +577,39 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "long long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "long long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "long long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "rv"
+                        "vargs": "SHCXX_rv"
                     }
                 },
                 "ast": {
@@ -583,13 +665,14 @@
                     "function_name": "long_long_func",
                     "underscore_name": "long_long_func"
                 },
-                "linenumber": 34,
+                "linenumber": 37,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -599,11 +682,18 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_SHORT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -616,6 +706,7 @@
                             "cxx_member": ".",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -624,23 +715,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "short",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "short",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_SHORT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "short",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -699,13 +801,14 @@
                     "function_name": "short_int_func",
                     "underscore_name": "short_int_func"
                 },
-                "linenumber": 37,
+                "linenumber": 40,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -715,11 +818,18 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -732,6 +842,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -740,23 +851,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -815,13 +937,14 @@
                     "function_name": "long_int_func",
                     "underscore_name": "long_int_func"
                 },
-                "linenumber": 38,
+                "linenumber": 41,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -831,11 +954,18 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -848,6 +978,7 @@
                             "cxx_member": ".",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -856,28 +987,39 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "long long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "long long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "long long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "rv"
+                        "vargs": "SHCXX_rv"
                     }
                 },
                 "ast": {
@@ -935,13 +1077,14 @@
                     "function_name": "long_long_int_func",
                     "underscore_name": "long_long_int_func"
                 },
-                "linenumber": 39,
+                "linenumber": 42,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -951,11 +1094,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -968,6 +1118,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -976,23 +1127,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1049,13 +1211,14 @@
                     "function_name": "unsigned_func",
                     "underscore_name": "unsigned_func"
                 },
-                "linenumber": 42,
+                "linenumber": 45,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1065,11 +1228,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned short",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_SHORT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1082,6 +1252,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned short",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1090,23 +1261,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned short",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned short",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned short",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_SHORT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned short",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1165,13 +1347,14 @@
                     "function_name": "ushort_func",
                     "underscore_name": "ushort_func"
                 },
-                "linenumber": 44,
+                "linenumber": 47,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1181,11 +1364,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1198,6 +1388,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1206,23 +1397,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1281,13 +1483,14 @@
                     "function_name": "uint_func",
                     "underscore_name": "uint_func"
                 },
-                "linenumber": 45,
+                "linenumber": 48,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1297,11 +1500,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1314,6 +1524,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1322,23 +1533,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1397,13 +1619,14 @@
                     "function_name": "ulong_func",
                     "underscore_name": "ulong_func"
                 },
-                "linenumber": 46,
+                "linenumber": 49,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1413,11 +1636,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1430,6 +1660,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONGLONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1438,28 +1669,39 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned long long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned long long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned long long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned long long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "rv"
+                        "vargs": "SHCXX_rv"
                     }
                 },
                 "ast": {
@@ -1517,13 +1759,14 @@
                     "function_name": "ulong_long_func",
                     "underscore_name": "ulong_long_func"
                 },
-                "linenumber": 47,
+                "linenumber": 50,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1533,11 +1776,18 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_LONG)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1550,6 +1800,7 @@
                             "cxx_member": ".",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1558,23 +1809,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "unsigned long",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "unsigned long",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "unsigned long",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_LONG)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "unsigned long",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1635,13 +1897,14 @@
                     "function_name": "ulong_int_func",
                     "underscore_name": "ulong_int_func"
                 },
-                "linenumber": 48,
+                "linenumber": 51,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1651,11 +1914,18 @@
                             "cxx_member": ".",
                             "cxx_type": "int8_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT8_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1668,6 +1938,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int8_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT8",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1676,23 +1947,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int8_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int8_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int8_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT8_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "int8_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1749,13 +2031,14 @@
                     "function_name": "int8_func",
                     "underscore_name": "int8_func"
                 },
-                "linenumber": 50,
+                "linenumber": 53,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1765,11 +2048,18 @@
                             "cxx_member": ".",
                             "cxx_type": "int16_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT16_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1782,6 +2072,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int16_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT16",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1790,23 +2081,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int16_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int16_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int16_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT16_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "int16_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1863,13 +2165,14 @@
                     "function_name": "int16_func",
                     "underscore_name": "int16_func"
                 },
-                "linenumber": 51,
+                "linenumber": 54,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1879,11 +2182,18 @@
                             "cxx_member": ".",
                             "cxx_type": "int32_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT32_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1896,6 +2206,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int32_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT32",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -1904,23 +2215,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int32_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int32_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int32_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT32_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "int32_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1977,13 +2299,14 @@
                     "function_name": "int32_func",
                     "underscore_name": "int32_func"
                 },
-                "linenumber": 52,
+                "linenumber": 55,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -1993,11 +2316,18 @@
                             "cxx_member": ".",
                             "cxx_type": "int64_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT64_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2010,6 +2340,7 @@
                             "cxx_member": ".",
                             "cxx_type": "int64_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT64",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2018,23 +2349,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int64_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int64_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int64_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT64_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "int64_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2091,13 +2433,14 @@
                     "function_name": "int64_func",
                     "underscore_name": "int64_func"
                 },
-                "linenumber": 53,
+                "linenumber": 56,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2107,11 +2450,18 @@
                             "cxx_member": ".",
                             "cxx_type": "uint8_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT8_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2124,6 +2474,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint8_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT8",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2132,23 +2483,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "uint8_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "uint8_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "uint8_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT8_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "uint8_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2205,13 +2567,14 @@
                     "function_name": "uint8_func",
                     "underscore_name": "uint8_func"
                 },
-                "linenumber": 55,
+                "linenumber": 58,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2221,11 +2584,18 @@
                             "cxx_member": ".",
                             "cxx_type": "uint16_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT16_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2238,6 +2608,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint16_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT16",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2246,23 +2617,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "uint16_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "uint16_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "uint16_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT16_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "uint16_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2319,13 +2701,14 @@
                     "function_name": "uint16_func",
                     "underscore_name": "uint16_func"
                 },
-                "linenumber": 56,
+                "linenumber": 59,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2335,11 +2718,18 @@
                             "cxx_member": ".",
                             "cxx_type": "uint32_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT32_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2352,6 +2742,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint32_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT32",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2360,23 +2751,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "uint32_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "uint32_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "uint32_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT32_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "uint32_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2433,13 +2835,14 @@
                     "function_name": "uint32_func",
                     "underscore_name": "uint32_func"
                 },
-                "linenumber": 57,
+                "linenumber": 60,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2449,11 +2852,18 @@
                             "cxx_member": ".",
                             "cxx_type": "uint64_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_INT64_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2466,6 +2876,7 @@
                             "cxx_member": ".",
                             "cxx_type": "uint64_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": "NPY_UINT64",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2474,23 +2885,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "uint64_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "uint64_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "uint64_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT64_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "uint64_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_UINT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2547,13 +2969,14 @@
                     "function_name": "uint64_func",
                     "underscore_name": "uint64_func"
                 },
-                "linenumber": 58,
+                "linenumber": 61,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2563,11 +2986,18 @@
                             "cxx_member": ".",
                             "cxx_type": "size_t",
                             "cxx_var": "arg1",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "arg1",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2580,6 +3010,7 @@
                             "cxx_member": ".",
                             "cxx_type": "size_t",
                             "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -2588,23 +3019,34 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "size_t",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "size_t",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "size_t",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_SIZE_T)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "size_t",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2661,13 +3103,14 @@
                     "function_name": "size_func",
                     "underscore_name": "size_func"
                 },
-                "linenumber": 60,
+                "linenumber": 63,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -2677,11 +3120,18 @@
                             "cxx_member": ".",
                             "cxx_type": "bool",
                             "cxx_var": "arg",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_bool_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "SH_arg",
-                            "f_var": "arg"
+                            "f_type": "logical",
+                            "f_var": "arg",
+                            "stmt0": "f_bool_scalar_in_",
+                            "stmt1": "f_bool_in",
+                            "stmtc0": "c_bool_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2695,6 +3145,7 @@
                             "cxx_member": ".",
                             "cxx_type": "bool",
                             "cxx_var": "arg",
+                            "data_var": "SHData_arg",
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
                             "py_var": "SHPy_arg",
@@ -2704,24 +3155,35 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_bool_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "bool",
-                        "f_var": "SHT_rv"
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_bool_scalar_result_",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2778,13 +3240,14 @@
                     "function_name": "bool_func",
                     "underscore_name": "bool_func"
                 },
-                "linenumber": 62,
+                "linenumber": 65,
                 "options": {}
             },
             {
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2794,11 +3257,18 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "flag",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_native_pointer_out_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "flag",
-                            "f_var": "flag"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "flag",
+                            "stmt0": "f_native_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2811,6 +3281,7 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "flag",
+                            "data_var": "SHData_flag",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag"
@@ -2819,24 +3290,35 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "bool",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "bool",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_bool_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "bool",
-                        "f_var": "SHT_rv"
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_bool_scalar_result_",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result_",
+                        "stmtc1": "c_default"
                     },
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2875,7 +3357,7 @@
                 "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
                 "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
                 "doxygen": {
-                    "__line__": 65,
+                    "__line__": 68,
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
@@ -2902,7 +3384,7 @@
                     "function_name": "returnBoolAndOthers",
                     "underscore_name": "return_bool_and_others"
                 },
-                "linenumber": 64,
+                "linenumber": 67,
                 "options": {}
             }
         ],
@@ -2997,1069 +3479,5 @@
         "scope_file": [
             "types"
         ]
-    },
-    "types": {
-        "MPI_Comm": {
-            "c_header": "mpi.h",
-            "c_to_cxx": "MPI_Comm_f2c({c_var})",
-            "c_type": "MPI_Fint",
-            "cxx_header": "mpi.h",
-            "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
-            "cxx_type": "MPI_Comm",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_c_type": "integer(C_INT)",
-            "f_kind": "C_INT",
-            "f_type": "integer",
-            "flat_name": "MPI_Comm"
-        },
-        "bool": {
-            "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TBOOLEAN",
-            "PYN_typenum": "NPY_BOOL",
-            "PY_PyTypeObject": "PyBool_Type",
-            "c_header": "<stdbool.h>",
-            "c_type": "bool",
-            "cxx_type": "bool",
-            "f_c_type": "logical(C_BOOL)",
-            "f_kind": "C_BOOL",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_BOOL"
-                ]
-            },
-            "f_statements": {
-                "intent_in": {
-                    "c_local_var": true,
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_inout": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ],
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_out": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ]
-                },
-                "result": {
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "logical",
-            "flat_name": "bool",
-            "py_statements": {
-                "intent_in": {
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ],
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                },
-                "result": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                }
-            }
-        },
-        "char": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_ctor": "PyString_FromString({c_var})",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrBlankFill",
-                    "post_call": [
-                        "ShroudStrBlankFill({c_var}, {c_var_len});"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "char"
-        },
-        "char_scalar": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "(int) {cxx_var}",
-            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
-            "PY_format": "c",
-            "c_statements": {
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_header": "<string.h>",
-                    "cxx_header": "<cstring>",
-                    "post_call": [
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
-                        "{c_var}[0] = {cxx_var};"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character",
-            "flat_name": "char"
-        },
-        "charout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "char"
-        },
-        "double": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_DOUBLE",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "d",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "double",
-            "cxx_type": "double",
-            "f_cast": "real({f_var}, C_DOUBLE)",
-            "f_kind": "C_DOUBLE",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_DOUBLE"
-                ]
-            },
-            "f_type": "real(C_DOUBLE)",
-            "flat_name": "double"
-        },
-        "float": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_FLOAT",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "f",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "float",
-            "cxx_type": "float",
-            "f_cast": "real({f_var}, C_FLOAT)",
-            "f_kind": "C_FLOAT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_FLOAT"
-                ]
-            },
-            "f_type": "real(C_FLOAT)",
-            "flat_name": "float"
-        },
-        "int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "int",
-            "cxx_type": "int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "int"
-        },
-        "int16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "int16_t"
-        },
-        "int32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "int32_t"
-        },
-        "int64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "int64_t"
-        },
-        "int8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "int8_t"
-        },
-        "long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "long",
-            "cxx_type": "long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "long"
-        },
-        "long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "long long",
-            "cxx_type": "long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "long_long"
-        },
-        "short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "short",
-            "cxx_type": "short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "short"
-        },
-        "size_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
-            "c_header": "<stddef.h>",
-            "c_type": "size_t",
-            "cxx_header": "<cstddef>",
-            "cxx_type": "size_t",
-            "f_cast": "int({f_var}, C_SIZE_T)",
-            "f_kind": "C_SIZE_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SIZE_T"
-                ]
-            },
-            "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t"
-        },
-        "std::string": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-            "PY_build_format": "s#",
-            "PY_ctor": "PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);",
-                        "-}} else {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
-                        "-}}"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
-            "cxx_type": "std::string",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "std_string",
-            "impl_header": "<string>",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                }
-            }
-        },
-        "std::vector": {
-            "base": "vector",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size",
-                        "context"
-                    ],
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-                    ]
-                }
-            },
-            "c_templates": {
-                "std::string": {
-                    "intent_in_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_inout_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_out_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
-                        ]
-                    }
-                }
-            },
-            "cxx_header": "<vector>",
-            "cxx_type": "std::vector<{cxx_T}>",
-            "f_statements": {
-                "intent_inout": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_inout_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "if (allocated({f_var})) deallocate({f_var})",
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                }
-            },
-            "flat_name": "std_vector_{cxx_T}"
-        },
-        "stringout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "void",
-            "cxx_to_c": "static_cast<void *>({cxx_var})",
-            "cxx_type": "std::string",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string",
-            "impl_header": "<string>"
-        },
-        "uint16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "uint16_t"
-        },
-        "uint32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "uint32_t"
-        },
-        "uint64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "uint64_t"
-        },
-        "uint8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "uint8_t"
-        },
-        "unsigned_int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned int",
-            "cxx_type": "unsigned int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "unsigned_int"
-        },
-        "unsigned_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned long",
-            "cxx_type": "unsigned long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "unsigned_long"
-        },
-        "unsigned_long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "unsigned long long",
-            "cxx_type": "unsigned long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "unsigned_long_long"
-        },
-        "unsigned_short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned short",
-            "cxx_type": "unsigned short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "unsigned_short"
-        },
-        "void": {
-            "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
-            "c_type": "void",
-            "cxx_type": "void",
-            "f_cast": "C_LOC({f_var})",
-            "f_cast_keywords": {
-                "is_target": true
-            },
-            "f_cast_module": {
-                "iso_c_binding": [
-                    "C_LOC"
-                ]
-            },
-            "f_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            },
-            "f_type": "type(C_PTR)",
-            "flat_name": "void"
-        }
     }
 }

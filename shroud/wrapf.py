@@ -361,12 +361,9 @@ class Wrapf(util.WrapperMixin):
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
-            fmt_id.F_enum_member = wformat(
-                options.F_enum_member_template, fmt_id
-            )
             append_format(
                 output,
-                "integer(C_INT), parameter :: {F_enum_member} = {evalue}",
+                "integer(C_INT), parameter :: {F_enum_member} = {F_value}",
                 fmt_id,
             )
         self.set_f_module(fileinfo.module_use, "iso_c_binding", "C_INT")
@@ -768,7 +765,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, c_statements = typemap.lookup_c_statements(
+                    arg_typemap, specialize = typemap.lookup_c_statements(
                         param
                     )
                     self.update_f_module(
@@ -814,6 +811,8 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
+        name=None,
+        intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
 
@@ -822,11 +821,15 @@ rv = .false.
             fileinfo - ModuleInfo
             fmt -
             ast - Abstract Syntax Tree from parser
+               node.ast for subprograms
+               node.params[n] for parameters
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
+            name    - name to override ast.name (shadow only).
+            intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
 
@@ -853,10 +856,27 @@ rv = .false.
                     imports[absiface] = True
                 else:
                     arg_c_decl.append(ast.bind_c())
+                    arg_typemap = ast.typemap
+                    if ast.template_arguments:
+                        # If a template, use its type
+                        arg_typemap = ast.template_arguments[0].typemap
+                    self.update_f_module(
+                        modules, imports,
+                        arg_typemap.f_c_module or arg_typemap.f_module
+                    )
                 continue
             elif buf_arg == "shadow":
-                arg_c_names.append(ast.name)
-                arg_c_decl.append(ast.bind_c())
+                # Always pass a pointer to capsule.
+                # Do not use const or value in declaration
+                arg_c_names.append(name or ast.name)
+                arg_c_decl.append("{}, intent({}) :: {}".format(
+                    ast.typemap.f_c_type,
+                    (intent or ast.attrs["intent"]).upper(),
+                    name or ast.name))
+                self.update_f_module(
+                    modules, imports,
+                    ast.typemap.f_c_module or ast.typemap.f_module
+                )
                 continue
 
             if buf_arg not in attrs:
@@ -880,12 +900,16 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
+                if ast.attrs.get("_is_result", False):
+                    intent = "OUT"
+                else:
+                    intent = "INOUT"
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
-                    "type(%s), intent(INOUT) :: %s"
-                    % (fmt.F_array_type, buf_arg_name)
+                    "type(%s), intent(%s) :: %s"
+                    % (fmt.F_array_type, intent, buf_arg_name)
                 )
-                #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
+#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":
                 arg_c_names.append(buf_arg_name)
@@ -959,66 +983,74 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
 
-        if hasattr(node, "statements"):
-            if "c" in node.statements:
-                iblk = node.statements["c"]["result_buf"]
-                self.build_arg_list_interface(
-                    node, fileinfo,
-                    fmt_func,
-                    ast,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_c_names,
-                    arg_c_decl,
-                )
+        sgroup = result_typemap.sgroup
+        spointer = "pointer" if ast.is_indirect() else "scalar"
+        c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
+        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+
+        self.build_arg_list_interface(
+            node, fileinfo,
+            fmt_func,
+            ast,
+            c_result_blk.buf_args,
+            modules,
+            imports,
+            arg_c_names,
+            arg_c_decl,
+        )
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
             arg_typemap = arg.typemap
+            sgroup = arg_typemap.sgroup
             fmt.update(arg_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
-            attrs = arg.attrs
-            self.update_f_module(
-                modules, imports, arg_typemap.f_c_module or arg_typemap.f_module
-            )
 
+            attrs = arg.attrs
             intent = attrs.get("intent", "inout")
             if intent != "in":
                 args_all_in = False
+            deref_clause = attrs.get("deref", "")
 
+            spointer = "pointer" if arg.is_indirect() else "scalar"
             if attrs.get("_is_result", False):
-                c_stmts = "result" + generated_suffix
+                c_stmts = ["c", sgroup, spointer, "result",
+                           generated_suffix, deref_clause]
             else:
-                c_stmts = "intent_" + intent + arg.stmts_suffix
-            c_intent_blk = c_statements.get(c_stmts, {})
+                c_stmts = ["c", sgroup, spointer, intent,
+                           arg.stmts_suffix, deref_clause]
+            c_stmts.extend(specialize)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt,
                 arg,
-                c_intent_blk.get("buf_args", self._default_buf_args),
+                c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
                 arg_c_names,
                 arg_c_decl,
             )
 
-        if result_typemap.base == "shadow":
-            arg_c_names.append(fmt_func.F_result_capsule)
-            arg_c_decl.append(
-                ast.bind_c(name=fmt_func.F_result_capsule, intent="out")
-            )
-            self.update_f_module(
+        if subprogram == "function":
+            self.build_arg_list_interface(
+                node, fileinfo,
+                fmt_func,
+                ast,
+                c_result_blk.buf_extra,
                 modules,
                 imports,
-                result_typemap.f_c_module or result_typemap.f_module,
+                arg_c_names,
+                arg_c_decl,
+                name=fmt_func.F_result_capsule,
+                intent="out",
             )
-            # Functions which return shadow classes are not pure
-            # since the result argument will be assigned to.
-        elif subprogram == "function" and (
+        # Functions which return shadow classes are not pure
+        # since the result argument will be assigned to.
+        if result_typemap.base != "shadow" and subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
             fmt.F_C_pure_clause = "pure "
@@ -1028,19 +1060,14 @@ rv = .false.
         )
 
         if fmt.F_C_subprogram == "function":
-            if result_typemap.base in ["shadow", "string"]:
+            if c_result_blk.return_cptr:
+                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif return_pointer_as in ["pointer", "allocatable", "raw"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                # XXX - make sure ptr is set to avoid VALUE
-                rvast = declast.create_this_arg(
-                    fmt.F_result, result_typemap, False
-                )
-                if return_pointer_as in ["pointer", "allocatable", "raw"]:
-                    arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                else:
-                    arg_c_decl.append(rvast.bind_c())
+                arg_c_decl.append(ast.bind_c(name=fmt.F_result))
                 self.update_f_module(
                     modules,
                     imports,
@@ -1213,26 +1240,25 @@ rv = .false.
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        if "f_module" in intent_blk:
-            self.update_f_module(modules, imports, intent_blk["f_module"])
+        self.update_f_module(modules, imports, intent_blk.f_module)
 
-        if arg_f_decl is not None and "declare" in intent_blk:
+        if arg_f_decl is not None and intent_blk.declare:
             need_wrapper = True
-            for line in intent_blk["declare"]:
+            for line in intent_blk.declare:
                 append_format(arg_f_decl, line, fmt)
 
-        if pre_call is not None and "pre_call" in intent_blk:
+        if pre_call is not None and intent_blk.pre_call:
             need_wrapper = True
-            for line in intent_blk["pre_call"]:
+            for line in intent_blk.pre_call:
                 append_format(pre_call, line, fmt)
 
-        if post_call is not None and "post_call" in intent_blk:
+        if post_call is not None and intent_blk.post_call:
             need_wrapper = True
-            for line in intent_blk["post_call"]:
+            for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
-        if "f_helper" in intent_blk:
-            f_helper = wformat(intent_blk["f_helper"], fmt)
+        if intent_blk.f_helper:
+            f_helper = wformat(intent_blk.f_helper, fmt)
             for helper in f_helper.split():
                 fileinfo.f_helper[helper] = True
         return need_wrapper
@@ -1248,15 +1274,15 @@ rv = .false.
         options = node.options
         fmt_func = node.fmtdict
 
-        # Assume that the C function can be called directly.
+        # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
         need_wrapper = options["F_force_wrapper"]
         if node._overloaded:
             # need wrapper for generic interface
             need_wrapper = True
 
-        # Look for C routine to wrap
-        # Usually the same node unless it is a generic function
+        # Look for C routine to wrap.
+        # Usually the same node unless it is a generated.
         C_node = node
         generated = []
         if C_node._generated:
@@ -1280,6 +1306,7 @@ rv = .false.
         generated_suffix = C_node.generated_suffix
         ast = node.ast
         is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
         is_static = False
 
         if fmt_func.C_custom_return_type:
@@ -1289,18 +1316,6 @@ rv = .false.
             # Maybe parse result_type instead of copy.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
-
-        if "deref" in ast.attrs:
-            result_generated_suffix = "_" + ast.attrs["deref"]
-        else:
-            result_generated_suffix = ""
-
-        # this catches stuff like a bool to logical conversion which
-        # requires the wrapper
-        if result_typemap.f_statements.get(
-            "result" + result_generated_suffix, {}
-        ).get("need_wrapper", False):
-            need_wrapper = True
 
         arg_c_call = []  # arguments to C function
         arg_f_names = []  # arguments in subprogram statement
@@ -1312,14 +1327,46 @@ rv = .false.
 
         if subprogram == "subroutine":
             fmt_result = fmt_func
+            if is_dtor:
+                f_stmts = ["f", "shadow", "dtor"]
+                c_stmts = ["c", "shadow", "dtor"]
+            else:
+                f_stmts = ["f", "subroutine"]
+                c_stmts = ["c"]
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
-            fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
+            fmt_result.f_type = result_typemap.f_type
+#            if result_typemap.base == "vector":
+#                fmt_result.f_type = ast.template_arguments[0].typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            sgroup = result_typemap.sgroup
+            spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
+            result_deref_clause = ast.attrs.get("deref", "")
+            if is_ctor:
+                f_stmts = ["f", "shadow", "ctor"]
+                c_stmts = ["c", "shadow", "ctor"]
+            else:
+                sintent = "result"
+                f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]
+                c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
+        result_blk = typemap.lookup_fc_stmts(f_stmts)
+        # Useful for debugging.  Requested and found path.
+        fmt_result.stmt0 = "_".join(f_stmts)
+        fmt_result.stmt1 = result_blk.key
+
+        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        fmt_result.stmtc0 = "_".join(c_stmts)
+        fmt_result.stmtc1 = c_result_blk.key
+
+        # this catches stuff like a bool to logical conversion which
+        # requires the wrapper
+        need_wrapper = need_wrapper or result_blk.need_wrapper
+        
         if cls:
             need_wrapper = True
             is_static = "static" in ast.storage
@@ -1336,36 +1383,20 @@ rv = .false.
                     wformat("{F_this}%{F_derived_member}", fmt_func)
                 )
 
-        if hasattr(C_node, "statements"):
-            # function result
-            if "f" in C_node.statements:
-                fmt_result.f_kind = result_typemap.f_kind
-                whelpers.add_copy_array_helper(fmt_result)
-                iblk = C_node.statements["f"][
-                    "result" + result_generated_suffix
-                ]
-                need_wrapper = self.build_arg_list_impl(
-                    fmt_result,
-                    C_node.ast,
-                    ast,
-                    result_typemap,
-                    iblk.get("buf_args", []),
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    arg_c_call,
-                    need_wrapper,
-                )
-                need_wrapper = self.add_code_from_statements(
-                    need_wrapper, fileinfo,
-                    fmt_result,
-                    iblk,
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    pre_call,
-                    post_call,
-                )
+        # Function result.
+        whelpers.add_copy_array_helper(fmt_result, ast)
+        need_wrapper = self.build_arg_list_impl(
+            fmt_result,
+            C_node.ast,
+            ast,
+            result_typemap,
+            result_blk.buf_args,
+            modules,
+            imports,
+            arg_f_decl,
+            arg_c_call,
+            need_wrapper,
+        )
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1389,21 +1420,25 @@ rv = .false.
             allocatable = c_attrs.get("allocatable", False)
             hidden = c_attrs.get("hidden", False)
             intent = c_attrs["intent"]
+            deref_clause = c_attrs.get("deref", "")
 
-            if "deref" in c_attrs:
-                deref_suffix = "_" + c_attrs["deref"]
+            sgroup = c_arg.typemap.sgroup
+            if c_arg.template_arguments:
+                specialize = [c_arg.template_arguments[0].typemap.sgroup]
             else:
-                deref_suffix = ""
-
+                specialize = []
+            
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
+            spointer = "pointer" if c_arg.is_indirect() else "scalar"
             if c_attrs.get("_is_result", False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                c_stmts = "result" + generated_suffix
-                f_stmts = "result"  # + generated_suffix
+                c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", sgroup, spointer, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1411,8 +1446,10 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = "intent_" + intent + c_arg.stmts_suffix  # e.g. _buf
-                f_stmts = "intent_" + intent + deref_suffix  # e.g. _allocatable
+                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix]  # e.g. buf
+                f_stmts = ["f", sgroup, spointer, intent, deref_clause]  # e.g. allocatable
+            c_stmts.extend(specialize)
+            f_stmts.extend(specialize)
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1489,23 +1526,28 @@ rv = .false.
                 # If a template, use its type
                 arg_typemap = c_arg.template_arguments[0].typemap
                 fmt_arg.cxx_T = arg_typemap.name
+            fmt_arg.f_type = arg_typemap.f_type
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
-            f_statements = base_typemap.f_statements  # AAA - new vector
-            #                f_statements = arg_typemap.f_statements
-            f_intent_blk = f_statements.get(f_stmts, {})
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
+
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = "_".join(f_stmts)
+            fmt_arg.stmt1 = f_intent_blk.key
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
-            arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = c_statements.get(c_stmts, {})
+            arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            fmt_arg.stmtc0 = "_".join(c_stmts)
+            fmt_arg.stmtc1 = c_intent_blk.key
 
             # Create a local variable for C if necessary.
-            # The local variable c_var is used in f_statements. 
-            have_c_local_var = f_intent_blk.get("c_local_var", False)
+            # The local variable c_var is used in fc_statements. 
+            have_c_local_var = f_intent_blk.c_local_var
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 arg_f_decl.append(
@@ -1520,7 +1562,7 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
-                c_intent_blk.get("buf_args", self._default_buf_args),
+                c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
                 arg_f_decl,
@@ -1541,16 +1583,20 @@ rv = .false.
 
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
+            # End parameters loop.
 
-        if result_typemap.base == "shadow":
-            # Function which return a shadow type will pass in
-            # the capsule_data_type and return a type(C_PTR).
-            arg_f_decl.append(
-                wformat("type(C_PTR) :: {F_result_ptr}", fmt_func)
-            )
-            self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            arg_c_call.append(
-                wformat("{F_result}%{F_derived_member}", fmt_func)
+        if subprogram == "function":
+            need_wrapper = self.build_arg_list_impl(
+                fmt_result,
+                C_node.ast, #c_arg,
+                ast, # f_arg,
+                result_typemap,
+                c_result_blk.buf_extra,
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
             )
 
         # use tabs to insert continuations
@@ -1559,9 +1605,9 @@ rv = .false.
             "F_arguments", ",\t ".join(arg_f_names)
         )
 
-        # declare function return value after arguments
+        # Declare function return value after arguments
         # since arguments may be used to compute return value
-        # (for example, string lengths)
+        # (for example, string lengths).
         return_pointer_as = ast.return_pointer_as
         if subprogram == "function":
             # if func_is_const:
@@ -1574,26 +1620,12 @@ rv = .false.
                 )
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            elif return_pointer_as == "pointer":
-                need_wrapper = True
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_pointer=True
-                    )
-                )
-                arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            elif return_pointer_as == "allocatable":
-                need_wrapper = True
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_allocatable=True
-                    )
-                )
-                if result_typemap.base != "string":
-                    # XXX - needed with int *, but not char *
-                    arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif return_pointer_as in ["allocatable", "pointer"]:
+                dim = ast.attrs.get("dimension", None)
+                if dim:
+                    # XXX - Assume 1-d
+                    fmt_result.f_var_shape = "(:)"
+                    fmt_result.f_pointer_shape = ", [{}]".format(dim)
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1646,20 +1678,9 @@ rv = .false.
             F_code = splicer_code
         else:
             F_code = []
-            if is_ctor:
-                fmt_func.F_call_code = wformat(
-                    "{F_result_ptr} = {F_C_call}({F_arg_c_call})", fmt_func
-                )
-                F_code.append(fmt_func.F_call_code)
-            elif C_subprogram == "function":
-                f_statements = result_typemap.f_statements
-                intent_blk = f_statements.get(
-                    "result" + result_generated_suffix, {}
-                )
-                if "call" in intent_blk:
-                    cmd_list = intent_blk["call"]
-                elif return_pointer_as in ["pointer", "allocatable"]:
-                    cmd_list = ["{F_pointer} = {F_C_call}({F_arg_c_call})"]
+            if C_subprogram == "function":
+                if result_blk.call:
+                    cmd_list = result_blk.call
                 else:
                     cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
                 #                for cmd in cmd_list:  # only allow a single statment for now
@@ -1669,8 +1690,8 @@ rv = .false.
 
                 need_wrapper = self.add_code_from_statements(
                     need_wrapper, fileinfo,
-                    fmt_func,
-                    intent_blk,
+                    fmt_result,
+                    result_blk,
                     modules,
                     imports,
                     arg_f_decl,
@@ -1681,44 +1702,6 @@ rv = .false.
                     "call {F_C_call}({F_arg_c_call})", fmt_func
                 )
                 F_code.append(fmt_func.F_call_code)
-
-            if return_pointer_as == "allocatable":
-                # Copy into allocatable array.
-                # Processed by types stringout and charout in
-                # f_statements.result.post_call.
-                pass
-            #                dim = ast.attrs.get('dimension', None)
-            #                if dim:
-            #                    fmt_result.pointer_shape = dim
-            #                    F_code.append(wformat('allocate({F_result}({pointer_shape}))',
-            #                                          fmt_result))
-            #                else:
-            #                    F_code.append(wformat('allocate({F_result})', fmt_result))
-            # #               fmt_result.c_var_context = 'aaaa'
-            #                F_code.append(wformat(
-            #                    'call copy_array({c_var_context}, {F_pointer}, '
-            #                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
-            elif return_pointer_as == "pointer":
-                # Put C pointer into Fortran pointer.
-                # Used with pointer to struct.
-                dim = ast.attrs.get("dimension", None)
-                if dim:
-                    fmt_result.pointer_shape = dim
-                    F_code.append(
-                        wformat(
-                            "call c_f_pointer({F_pointer}, {F_result}, "
-                            "[{pointer_shape}])",
-                            fmt_result,
-                        )
-                    )
-                else:
-                    F_code.append(
-                        wformat(
-                            "call c_f_pointer({F_pointer}, {F_result})",
-                            fmt_result,
-                        )
-                    )
-                self.set_f_module(modules, "iso_c_binding", "c_f_pointer")
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 

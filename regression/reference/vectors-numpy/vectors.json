@@ -23,7 +23,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "VEC_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "VEC_SHROUD_capsule_data",
@@ -73,22 +72,38 @@
             "LUA_result": "rv",
             "LUA_state_var": "L",
             "LUA_this_call": "",
+            "PY_PyObject": "PyObject",
             "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
             "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
+            "PY_extern_C_begin": "extern \"C\" ",
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
+            "PY_header_filename": "pyvectorsmodule.hpp",
+            "PY_header_filename_suffix": "hpp",
+            "PY_impl_filename_suffix": "cpp",
+            "PY_library_doc": "library documentation",
+            "PY_module_filename": "pyvectorsmodule.cpp",
             "PY_module_init": "vectors",
             "PY_module_name": "vectors",
             "PY_module_scope": "vectors",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
+            "PY_param_args": "args",
+            "PY_param_kwds": "kwds",
+            "PY_param_self": "self",
             "PY_prefix": "PY_",
             "PY_release_memory_function": "PY_SHROUD_release_memory",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
+            "PY_used_param_args": false,
+            "PY_used_param_kwds": false,
+            "PY_used_param_self": false,
+            "PY_utility_filename": "pyvectorsutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "vectors_types.yaml",
             "c_temp": "SHT_",
+            "capsule_order": "0",
             "cast1": ">\t(",
             "cast2": ")",
             "cast_const": "const_cast<",
@@ -96,22 +111,69 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "vectors",
             "function_suffix": "",
             "library": "vectors",
             "library_lower": "vectors",
             "library_upper": "VECTORS",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
         },
         "functions": [
             {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "const ",
+                            "c_decl": "None * arg",
+                            "c_deref": "",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "std::vector<int> * arg",
+                            "cxx_member": ".",
+                            "cxx_type": "std::vector<int>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -166,50 +228,62 @@
                     "F_name_impl": "vector_sum",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum",
                     "underscore_name": "vector_sum"
                 },
-                "linenumber": 29,
+                "linenumber": 33,
                 "options": {
-                    "__line__": 30,
+                    "__line__": 34,
                     "literalinclude": true,
                     "wrap_c": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 }
             },
             {
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_size": "Sarg",
                             "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(SH_arg))",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&SHCXX_arg))",
                             "cxx_member": ".",
                             "cxx_type": "int",
-                            "cxx_var": "SH_arg",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "stmt0": "c_vector_pointer_in_buf_native",
+                            "stmt1": "c_vector_in_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "cxx_T": "int",
-                            "f_var": "arg"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_in__native",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_pointer_in_buf_native",
+                            "stmtc1": "c_vector_in_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -238,7 +312,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -258,10 +332,10 @@
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t vector_sum(\tSH_arg);",
-                    "C_call_list": "SH_arg",
+                    "C_call_code": "int SHC_rv =\t vector_sum(\tSHCXX_arg);",
+                    "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
-                    "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);",
+                    "C_pre_call": "const std::vector<int> SHCXX_arg(arg, arg + Sarg);",
                     "C_prototype": "const int * arg,\t long Sarg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -272,9 +346,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_sum"
                 },
-                "linenumber": 29,
+                "linenumber": 33,
                 "options": {
-                    "__line__": 30,
+                    "__line__": 34,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -283,6 +357,33 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "None * arg",
+                            "c_deref": "*",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "capsule_order": "1",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_alloc_decl": "std::vector<int> * SH_arg",
+                            "cxx_decl": "std::vector<int> * arg",
+                            "cxx_member": "->",
+                            "cxx_type": "std::vector<int>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_capsule": "SHC_arg",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out",
@@ -325,7 +426,7 @@
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
                 "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 36,
+                    "__line__": 40,
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
@@ -337,22 +438,27 @@
                     "F_name_generic": "vector_iota_out",
                     "F_name_impl": "vector_iota_out",
                     "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_vector_iota_out",
                     "function_name": "vector_iota_out",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out"
                 },
-                "linenumber": 35,
+                "linenumber": 39,
                 "options": {
-                    "__line__": 38,
+                    "__line__": 42,
                     "literalinclude": true,
                     "wrap_c": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 }
             },
             {
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -361,18 +467,25 @@
                             "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "SH_arg",
-                            "idtor": "1"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "stmt0": "c_vector_pointer_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
-                            "f_var": "arg"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_out__native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
                         }
                     }
                 },
@@ -401,7 +514,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -421,15 +534,15 @@
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
                 "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 36,
+                    "__line__": 40,
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out(\t*SH_arg);",
-                    "C_call_list": "*SH_arg",
+                    "C_call_code": "vector_iota_out(\t*SHCXX_arg);",
+                    "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
+                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -439,9 +552,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_out"
                 },
-                "linenumber": 35,
+                "linenumber": 39,
                 "options": {
-                    "__line__": 38,
+                    "__line__": 42,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -493,7 +606,7 @@
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 44,
+                    "__line__": 48,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -506,11 +619,15 @@
                     "F_name_impl": "vector_iota_out_alloc",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_out_alloc",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
                 },
-                "linenumber": 43,
+                "linenumber": 47,
                 "options": {
-                    "__line__": 46,
+                    "__line__": 50,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -521,6 +638,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -529,18 +647,25 @@
                             "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "SH_arg",
-                            "idtor": "1"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "stmt0": "c_vector_pointer_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
-                            "f_var": "arg"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_out_allocatable_native",
+                            "stmt1": "f_vector_out_allocatable",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
                         }
                     }
                 },
@@ -570,7 +695,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -590,15 +715,15 @@
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 44,
+                    "__line__": 48,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out_alloc(\t*SH_arg);",
-                    "C_call_list": "*SH_arg",
+                    "C_call_code": "vector_iota_out_alloc(\t*SHCXX_arg);",
+                    "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_alloc_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
+                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -608,9 +733,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_out_alloc"
                 },
-                "linenumber": 43,
+                "linenumber": 47,
                 "options": {
-                    "__line__": 46,
+                    "__line__": 50,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -662,7 +787,7 @@
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))",
                 "doxygen": {
-                    "__line__": 52,
+                    "__line__": 56,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
@@ -675,11 +800,15 @@
                     "F_name_impl": "vector_iota_inout_alloc",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_inout_alloc",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
-                "linenumber": 51,
+                "linenumber": 55,
                 "options": {
-                    "__line__": 54,
+                    "__line__": 58,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_lua": false,
@@ -690,6 +819,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -699,18 +829,25 @@
                             "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "SH_arg",
-                            "idtor": "1"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "stmt0": "c_vector_pointer_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
-                            "f_var": "arg"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_inout_allocatable_native",
+                            "stmt1": "f_vector_inout_allocatable",
+                            "stmtc0": "c_vector_pointer_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
                         }
                     }
                 },
@@ -741,7 +878,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -761,15 +898,15 @@
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))",
                 "doxygen": {
-                    "__line__": 52,
+                    "__line__": 56,
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);",
-                    "C_call_list": "*SH_arg",
+                    "C_call_code": "vector_iota_inout_alloc(\t*SHCXX_arg);",
+                    "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
-                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
+                    "C_pre_call": "std::vector<int> *SHCXX_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -779,9 +916,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
-                "linenumber": 51,
+                "linenumber": 55,
                 "options": {
-                    "__line__": 54,
+                    "__line__": 58,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -841,11 +978,15 @@
                     "F_name_impl": "vector_increment",
                     "F_subprogram": "subroutine",
                     "function_name": "vector_increment",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "vector_increment"
                 },
-                "linenumber": 60,
+                "linenumber": 64,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 65,
                     "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -855,6 +996,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -864,18 +1006,25 @@
                             "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "SH_arg",
-                            "idtor": "1"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "stmt0": "c_vector_pointer_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
-                            "f_var": "arg"
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_inout__native",
+                            "stmt1": "f_vector_inout",
+                            "stmtc0": "c_vector_pointer_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
                         }
                     }
                 },
@@ -905,7 +1054,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -925,11 +1074,11 @@
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))",
                 "fmtdict": {
-                    "C_call_code": "vector_increment(\t*SH_arg);",
-                    "C_call_list": "*SH_arg",
+                    "C_call_code": "vector_increment(\t*SHCXX_arg);",
+                    "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();",
-                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
+                    "C_pre_call": "std::vector<int> *SHCXX_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -939,9 +1088,213 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_increment"
                 },
-                "linenumber": 60,
+                "linenumber": 64,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 65,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "None * arg",
+                            "c_deref": "*",
+                            "c_type": null,
+                            "c_var": "arg",
+                            "capsule_order": "2",
+                            "cxx_T": "double",
+                            "cxx_addr": "",
+                            "cxx_alloc_decl": "std::vector<double> * SH_arg",
+                            "cxx_decl": "std::vector<double> * arg",
+                            "cxx_member": "->",
+                            "cxx_type": "std::vector<double>",
+                            "cxx_var": "SH_arg",
+                            "data_var": "SHData_arg",
+                            "npy_dims": "SHD_arg",
+                            "npy_intp": "npy_intp SHD_arg[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_capsule": "SHC_arg",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_out_d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 76,
+                    "brief": "Copy vector into Fortran input array"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_vector_iota_out_d_bufferify",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_call_code": "call c_vector_iota_out_d_bufferify(Darg)",
+                    "F_name_function": "vector_iota_out_d",
+                    "F_name_generic": "vector_iota_out_d",
+                    "F_name_impl": "vector_iota_out_d",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_vector_iota_out_d",
+                    "function_name": "vector_iota_out_d",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "vector_iota_out_d"
+                },
+                "linenumber": 75,
+                "options": {
+                    "__line__": 78,
+                    "wrap_c": false,
+                    "wrap_lua": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "double",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
+                            "cxx_member": "->",
+                            "cxx_type": "double",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "2",
+                            "stmt0": "c_vector_pointer_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_dimension": ":",
+                            "cxx_T": "double",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_out__native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_pointer_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_iota_out_d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Darg",
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "stmts_suffix": "buf",
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context(Darg)+dimension(:)+intent(out))",
+                "doxygen": {
+                    "__line__": 76,
+                    "brief": "Copy vector into Fortran input array"
+                },
+                "fmtdict": {
+                    "C_call_code": "vector_iota_out_d(\t*SHCXX_arg);",
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "VEC_vector_iota_out_d_bufferify",
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 2;\nDarg->addr.cvoidp = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->len = sizeof(double);\nDarg->size = SHCXX_arg->size();",
+                    "C_pre_call": "std::vector<double>\t *SHCXX_arg = new std::vector<double>;",
+                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_vector_iota_out_d_bufferify",
+                    "c_const": "",
+                    "function_name": "vector_iota_out_d",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "vector_iota_out_d"
+                },
+                "linenumber": 75,
+                "options": {
+                    "__line__": 78,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -952,7 +1305,12 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_var": "SHT_rv"
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     }
                 },
                 "ast": {
@@ -998,7 +1356,7 @@
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))",
                 "doxygen": {
-                    "__line__": 69,
+                    "__line__": 84,
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
@@ -1015,8 +1373,9 @@
                     "function_name": "vector_string_count",
                     "underscore_name": "vector_string_count"
                 },
-                "linenumber": 68,
+                "linenumber": 83,
                 "options": {
+                    "__line__": 88,
                     "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1026,6 +1385,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1033,28 +1393,39 @@
                             "c_var_len": "Narg",
                             "c_var_size": "Sarg",
                             "cxx_T": "std::string",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg))",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_arg))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "stmt0": "c_vector_pointer_in_buf_string",
+                            "stmt1": "c_vector_in_buf_string"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "cxx_T": "std::string",
-                            "f_var": "arg"
+                            "f_type": "character(*)",
+                            "f_var": "arg",
+                            "stmt0": "f_vector_pointer_in__string",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_pointer_in_buf_string",
+                            "stmtc1": "c_vector_in_buf_string"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1084,7 +1455,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1104,15 +1475,15 @@
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))",
                 "doxygen": {
-                    "__line__": 69,
+                    "__line__": 84,
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t vector_string_count(\tSH_arg);",
-                    "C_call_list": "SH_arg",
+                    "C_call_code": "int SHC_rv =\t vector_string_count(\tSHCXX_arg);",
+                    "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_string_count_bufferify",
-                    "C_pre_call": "std::vector<std::string> SH_arg;\n{+\nconst char * BBB = arg;\nstd::vector<std::string>::size_type\n+SHT_i = 0,\nSHT_n = Sarg;\n-for(; SHT_i < SHT_n; SHT_i++) {+\nSH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\nBBB += Narg;\n-}\n-}",
+                    "C_pre_call": "std::vector<std::string> SHCXX_arg;\n{+\nconst char * BBB = arg;\nstd::vector<std::string>::size_type\n+SHT_i = 0,\nSHT_n = Sarg;\n-for(; SHT_i < SHT_n; SHT_i++) {+\nSHCXX_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\nBBB += Narg;\n-}\n-}",
                     "C_prototype": "const char * arg,\t long Sarg,\t int Narg",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -1123,8 +1494,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_string_count"
                 },
-                "linenumber": 68,
+                "linenumber": 83,
                 "options": {
+                    "__line__": 88,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1174,7 +1546,7 @@
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
                 "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 100,
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
@@ -1182,13 +1554,13 @@
                     "C_custom_return_type": "int",
                     "C_return_code": "return SH_arg.size();",
                     "C_return_type": "int",
-                    "__line__": 80,
+                    "__line__": 97,
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 },
-                "linenumber": 74,
+                "linenumber": 91,
                 "options": {
-                    "__line__": 75,
+                    "__line__": 92,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1238,17 +1610,289 @@
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
                 "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
                 "doxygen": {
-                    "__line__": 95,
+                    "__line__": 112,
                     "brief": "append '-like' to names."
                 },
                 "fmtdict": {
                     "function_name": "vector_string_append",
                     "underscore_name": "vector_string_append"
                 },
-                "linenumber": 89,
+                "linenumber": 106,
                 "options": {
-                    "__line__": 90,
+                    "__line__": 107,
                     "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "n": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int n",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "n",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int n",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "data_var": "SHData_n",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_n",
+                            "size_var": "SHSize_n"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "std::vector<{cxx_T}>",
+                        "f_type": null,
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_vector_scalar_result_allocatable",
+                        "stmt1": "f_vector_result_allocatable",
+                        "stmtc0": "c_vector_scalar_result_buf",
+                        "stmtc1": "c_vector_result_buf"
+                    },
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "capsule_order": "1",
+                        "cxx_T": "int",
+                        "cxx_addr": "",
+                        "cxx_alloc_decl": "std::vector<int> * SHCXX_rv",
+                        "cxx_member": "->",
+                        "cxx_type": "std::vector<int>",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "npy_dims": "SHD_rv",
+                        "npy_intp": "npy_intp SHD_rv[1];\n",
+                        "npy_ndims": "1",
+                        "numpy_type": "NPY_INT",
+                        "py_capsule": "SHC_SHCXX_rv",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable"
+                    },
+                    "declarator": {
+                        "name": "ReturnVectorAlloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "n",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "return_pointer_as": "allocatable",
+                    "specifier": [
+                        "std::vector"
+                    ],
+                    "template_arguments": [
+                        {
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "typemap_name": "std::vector"
+                },
+                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)",
+                "doxygen": {
+                    "__line__": 120,
+                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_return_vector_alloc_bufferify",
+                    "F_arg_c_call": "n,\t DSHF_rv",
+                    "F_arguments": "n",
+                    "F_call_code": "call c_return_vector_alloc_bufferify(n,\t DSHF_rv)",
+                    "F_name_function": "return_vector_alloc",
+                    "F_name_generic": "return_vector_alloc",
+                    "F_name_impl": "return_vector_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnVectorAlloc",
+                    "function_name": "ReturnVectorAlloc",
+                    "underscore_name": "return_vector_alloc"
+                },
+                "linenumber": 119,
+                "options": {
+                    "wrap_c": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "SHF_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "1",
+                            "stmt0": "c_vector_scalar_result_buf_allocatable",
+                            "stmt1": "c_vector_result_buf"
+                        },
+                        "fmtf": {
+                            "c_var": "SHT_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_T": "int",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_vector_pointer_result_allocatable_native",
+                            "stmt1": "f_vector_result_allocatable",
+                            "stmtc0": "c_vector_pointer_result_buf_allocatable_native",
+                            "stmtc1": "c_vector_result_buf"
+                        }
+                    },
+                    "n": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "n",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&n)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "idtor": "0",
+                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "c_var": "n",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "n",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_type": "void",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "void",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "ReturnVectorAlloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "n",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "_is_result": true,
+                                "context": "DSHF_rv",
+                                "deref": "allocatable",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "SHF_rv",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
+                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "doxygen": {
+                    "__line__": 120,
+                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "*SHC_rv =\t ReturnVectorAlloc(\tn);",
+                    "C_call_list": "n",
+                    "C_name": "VEC_return_vector_alloc_bufferify",
+                    "C_post_call": "DSHF_rv->cxx.addr  = static_cast<void *>(SHC_rv);\nDSHF_rv->cxx.idtor = 1;\nDSHF_rv->addr.cvoidp = SHC_rv->empty() ? NULL : &SHC_rv->front();\nDSHF_rv->len = sizeof(int);\nDSHF_rv->size = SHC_rv->size();",
+                    "C_pre_call": "std::vector<int>\t *SHC_rv = new std::vector<int>;",
+                    "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_return_vector_alloc_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "*SHC_rv",
+                    "function_name": "ReturnVectorAlloc",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_vector_alloc"
+                },
+                "linenumber": 119,
+                "options": {
+                    "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1341,1074 +1985,10 @@
             "wrap_c": true,
             "wrap_fortran": true,
             "wrap_lua": false,
-            "wrap_python": false
+            "wrap_python": true
         },
         "scope_file": [
             "vectors"
         ]
-    },
-    "types": {
-        "MPI_Comm": {
-            "c_header": "mpi.h",
-            "c_to_cxx": "MPI_Comm_f2c({c_var})",
-            "c_type": "MPI_Fint",
-            "cxx_header": "mpi.h",
-            "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
-            "cxx_type": "MPI_Comm",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_c_type": "integer(C_INT)",
-            "f_kind": "C_INT",
-            "f_type": "integer",
-            "flat_name": "MPI_Comm"
-        },
-        "bool": {
-            "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TBOOLEAN",
-            "PYN_typenum": "NPY_BOOL",
-            "PY_PyTypeObject": "PyBool_Type",
-            "c_header": "<stdbool.h>",
-            "c_type": "bool",
-            "cxx_type": "bool",
-            "f_c_type": "logical(C_BOOL)",
-            "f_kind": "C_BOOL",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_BOOL"
-                ]
-            },
-            "f_statements": {
-                "intent_in": {
-                    "c_local_var": true,
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_inout": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ],
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_out": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ]
-                },
-                "result": {
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "logical",
-            "flat_name": "bool",
-            "py_statements": {
-                "intent_in": {
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ],
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                },
-                "result": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                }
-            }
-        },
-        "char": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_ctor": "PyString_FromString({c_var})",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrBlankFill",
-                    "post_call": [
-                        "ShroudStrBlankFill({c_var}, {c_var_len});"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "char"
-        },
-        "char_scalar": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "(int) {cxx_var}",
-            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
-            "PY_format": "c",
-            "c_statements": {
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_header": "<string.h>",
-                    "cxx_header": "<cstring>",
-                    "post_call": [
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
-                        "{c_var}[0] = {cxx_var};"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character",
-            "flat_name": "char"
-        },
-        "charout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "char"
-        },
-        "double": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_DOUBLE",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "d",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "double",
-            "cxx_type": "double",
-            "f_cast": "real({f_var}, C_DOUBLE)",
-            "f_kind": "C_DOUBLE",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_DOUBLE"
-                ]
-            },
-            "f_type": "real(C_DOUBLE)",
-            "flat_name": "double"
-        },
-        "float": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_FLOAT",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "f",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "float",
-            "cxx_type": "float",
-            "f_cast": "real({f_var}, C_FLOAT)",
-            "f_kind": "C_FLOAT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_FLOAT"
-                ]
-            },
-            "f_type": "real(C_FLOAT)",
-            "flat_name": "float"
-        },
-        "int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "int",
-            "cxx_type": "int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "int"
-        },
-        "int16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "int16_t"
-        },
-        "int32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "int32_t"
-        },
-        "int64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "int64_t"
-        },
-        "int8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "int8_t"
-        },
-        "long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "long",
-            "cxx_type": "long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "long"
-        },
-        "long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "long long",
-            "cxx_type": "long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "long_long"
-        },
-        "short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "short",
-            "cxx_type": "short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "short"
-        },
-        "size_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
-            "c_header": "<stddef.h>",
-            "c_type": "size_t",
-            "cxx_header": "<cstddef>",
-            "cxx_type": "size_t",
-            "f_cast": "int({f_var}, C_SIZE_T)",
-            "f_kind": "C_SIZE_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SIZE_T"
-                ]
-            },
-            "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t"
-        },
-        "std::string": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-            "PY_build_format": "s#",
-            "PY_ctor": "PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);",
-                        "-}} else {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
-                        "-}}"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
-            "cxx_type": "std::string",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "std_string",
-            "impl_header": "<string>",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                }
-            }
-        },
-        "std::vector": {
-            "base": "vector",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size",
-                        "context"
-                    ],
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-                    ]
-                }
-            },
-            "c_templates": {
-                "std::string": {
-                    "intent_in_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_inout_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_out_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
-                        ]
-                    }
-                }
-            },
-            "cxx_header": "<vector>",
-            "cxx_type": "std::vector<{cxx_T}>",
-            "f_statements": {
-                "intent_inout": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_inout_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "if (allocated({f_var})) deallocate({f_var})",
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                }
-            },
-            "flat_name": "std_vector_{cxx_T}"
-        },
-        "stringout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "void",
-            "cxx_to_c": "static_cast<void *>({cxx_var})",
-            "cxx_type": "std::string",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string",
-            "impl_header": "<string>"
-        },
-        "uint16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "uint16_t"
-        },
-        "uint32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "uint32_t"
-        },
-        "uint64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "uint64_t"
-        },
-        "uint8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "uint8_t"
-        },
-        "unsigned_int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned int",
-            "cxx_type": "unsigned int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "unsigned_int"
-        },
-        "unsigned_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned long",
-            "cxx_type": "unsigned long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "unsigned_long"
-        },
-        "unsigned_long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "unsigned long long",
-            "cxx_type": "unsigned long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "unsigned_long_long"
-        },
-        "unsigned_short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned short",
-            "cxx_type": "unsigned short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "unsigned_short"
-        },
-        "void": {
-            "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
-            "c_type": "void",
-            "cxx_type": "void",
-            "f_cast": "C_LOC({f_var})",
-            "f_cast_keywords": {
-                "is_target": true
-            },
-            "f_cast_module": {
-                "iso_c_binding": [
-                    "C_LOC"
-                ]
-            },
-            "f_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            },
-            "f_type": "type(C_PTR)",
-            "flat_name": "void"
-        }
     }
 }

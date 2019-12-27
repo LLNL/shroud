@@ -53,7 +53,7 @@ module memdoc_mod
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
             import :: SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
     ! end c_get_const_string_ptr_alloc_bufferify

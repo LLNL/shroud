@@ -34,6 +34,11 @@ Running a single test
 
     make do-test test-args=tutorial
 
+
+Running a single Python test
+
+    python -m unittest test_ast.CheckAst.test_d_generate1
+
 Test generated code
 -------------------
 
@@ -91,7 +96,12 @@ debugging
 ---------
 
 ```
+import yaml
+print(yaml.dump(cf_tree, default_flow_style=False))
+
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint( dict or tuple )
 ```
+
+import pdb; pdb.set_trace()

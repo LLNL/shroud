@@ -47,8 +47,13 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg);
 
+void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg);
+
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg);
+
+void VEC_return_vector_alloc_bufferify(int n,
+    VEC_SHROUD_array *DSHF_rv);
 
 #ifdef __cplusplus
 }

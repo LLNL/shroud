@@ -691,7 +691,7 @@ In addition to replacing code for a function wrapper, there are
 splicers that are generated which allow a user to insert additional
 code for helper functions or declarations:
 
-.. code-block:: yaml
+.. code-block:: fortran
 
     ! file_top
     module {F_module_name}

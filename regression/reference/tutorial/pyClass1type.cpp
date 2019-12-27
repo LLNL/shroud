@@ -99,10 +99,10 @@ PY_Method1(
 // splicer begin class.Class1.method.method1
     PyObject * SHTPy_rv = NULL;
 
-    int rv = self->obj->Method1();
+    int SHCXX_rv = self->obj->Method1();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
@@ -137,10 +137,10 @@ PY_equivalent(
     // post_parse
     const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
-    bool rv = self->obj->equivalent(*obj2);
+    bool SHCXX_rv = self->obj->equivalent(*obj2);
 
     // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;

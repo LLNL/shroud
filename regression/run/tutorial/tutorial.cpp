@@ -194,6 +194,18 @@ Class1 * getclass3()
     return const_cast<Class1 *>(global_class1);
 }
 
+const Class1 &getConstClassReference()
+{
+    last_function_called = "getConstClassReference";
+    return *global_class1;
+}
+
+Class1 &getClassReference()
+{
+    last_function_called = "getClassReference";
+    return *const_cast<Class1 *>(global_class1);
+}
+
 /* Return class instance by value */
 Class1 getClassCopy(int flag)
 {

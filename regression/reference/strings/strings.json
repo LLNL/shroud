@@ -23,7 +23,6 @@
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_argument": "SH_",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
@@ -112,6 +111,8 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_pointer_shape": "",
+            "f_var_shape": "",
             "file_scope": "strings",
             "function_suffix": "",
             "library": "strings",
@@ -130,6 +131,7 @@
                 "_fmtargs": {
                     "status": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -139,11 +141,18 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_schar_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "status",
-                            "f_var": "status"
+                            "f_type": "character",
+                            "f_var": "status",
+                            "stmt0": "f_schar_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -156,6 +165,7 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
+                            "data_var": "SHData_status",
                             "numpy_type": null,
                             "py_var": "SHPy_status",
                             "size_var": "SHSize_status"
@@ -213,6 +223,10 @@
                     "PY_name_impl": "PY_passChar",
                     "c_const": "",
                     "function_name": "passChar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char"
                 },
                 "linenumber": 30,
@@ -221,23 +235,34 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_schar_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_type": "character",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_schar_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_schar_scalar_result_buf",
+                        "stmtc1": "c_schar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -290,6 +315,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -300,22 +326,32 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_schar_scalar_result_buf_",
+                            "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_schar_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc1": "c_schar_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -327,7 +363,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -384,6 +419,7 @@
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -393,7 +429,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_",
+                            "stmt1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -407,6 +445,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
+                            "data_var": "SHData_dest",
                             "numpy_type": null,
                             "py_var": "SHPy_dest",
                             "size_var": "SHSize_dest"
@@ -414,6 +453,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -423,7 +463,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -436,6 +478,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
+                            "data_var": "SHData_src",
                             "numpy_type": null,
                             "py_var": "SHPy_src",
                             "size_var": "SHSize_src"
@@ -519,6 +562,10 @@
                     "PY_name_impl": "PY_passCharPtr",
                     "c_const": "",
                     "function_name": "passCharPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr"
                 },
                 "linenumber": 41,
@@ -532,6 +579,7 @@
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -542,15 +590,23 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_buf",
+                            "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
                             "c_var": "dest",
-                            "f_var": "dest"
+                            "f_type": "character(*)",
+                            "f_var": "dest",
+                            "stmt0": "f_char_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "src": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -560,7 +616,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "src",
@@ -593,7 +651,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         },
                         {
@@ -658,6 +716,7 @@
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -667,7 +726,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "s",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_inout_",
+                            "stmt1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -680,6 +741,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "s",
+                            "data_var": "SHData_s",
                             "numpy_type": null,
                             "py_var": "SHPy_s",
                             "size_var": "SHSize_s"
@@ -742,6 +804,10 @@
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "c_const": "",
                     "function_name": "passCharPtrInOut",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
                 "linenumber": 55,
@@ -751,6 +817,7 @@
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -758,15 +825,22 @@
                             "c_var_len": "Ns",
                             "c_var_trim": "Ls",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_s)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_s)",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_s",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_s",
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_inout_buf",
+                            "stmt1": "c_char_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "s",
-                            "f_var": "s"
+                            "f_type": "character(*)",
+                            "f_var": "s",
+                            "stmt0": "f_char_pointer_inout_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_inout_buf",
+                            "stmtc1": "c_char_inout_buf"
                         }
                     }
                 },
@@ -795,7 +869,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -812,11 +886,11 @@
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtrInOut(\tSH_s);",
-                    "C_call_list": "SH_s",
+                    "C_call_code": "passCharPtrInOut(\tSHCXX_s);",
+                    "C_call_list": "SHCXX_s",
                     "C_name": "STR_pass_char_ptr_in_out_bufferify",
-                    "C_post_call": "ShroudStrCopy(s, Ns,\t SH_s,\t -1);\nShroudStrFree(SH_s);",
-                    "C_pre_call": "char * SH_s = ShroudStrAlloc(\ts,\t Ns,\t Ls);",
+                    "C_post_call": "ShroudStrCopy(s, Ns,\t SHCXX_s,\t -1);\nShroudStrFree(SHCXX_s);",
+                    "C_pre_call": "char * SHCXX_s = ShroudStrAlloc(\ts,\t Ns,\t Ls);",
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -837,23 +911,34 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_char_pointer_result_",
+                        "stmt1": "c_char_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_char_scalar_result_allocatable",
+                        "stmt1": "f_char_result_allocatable",
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -918,6 +1003,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -928,23 +1014,33 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_result_buf_allocatable",
+                            "stmt1": "c_char_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_char_pointer_result_allocatable",
+                            "stmt1": "f_char_result_allocatable",
+                            "stmtc0": "c_char_pointer_result_buf_allocatable",
+                            "stmtc1": "c_char_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -956,7 +1052,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -974,7 +1069,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "typemap_name": "charout"
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
@@ -1016,23 +1111,34 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_char_pointer_result_",
+                        "stmt1": "c_char_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_char_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1098,6 +1204,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1108,22 +1215,32 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_result_buf_",
+                            "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_char_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc1": "c_char_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1138,7 +1255,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -1196,19 +1312,25 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_char_pointer_result_",
+                        "stmt1": "c_char_result"
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1267,6 +1389,7 @@
                 "_fmtargs": {
                     "output": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1277,22 +1400,32 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_result_buf_",
+                            "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_type": "character(*)",
+                            "f_var": "output",
+                            "stmt0": "f_char_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc1": "c_char_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1304,7 +1437,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -1371,7 +1503,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -1414,6 +1545,10 @@
                     "__line__": 84,
                     "function_name": "getCharPtr3",
                     "function_suffix": "",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_char_ptr3"
                 },
                 "linenumber": 78,
@@ -1431,14 +1566,21 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1490,6 +1632,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1500,23 +1643,33 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_string_scalar_result_buf_allocatable",
+                            "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1528,7 +1681,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -1544,9 +1696,9 @@
                                 ]
                             },
                             "specifier": [
-                                "std::string"
+                                "string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -1555,7 +1707,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringResult()",
-                "declgen": "void getConstStringResult(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringResult(const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
                     "__line__": 92,
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
@@ -1564,7 +1716,7 @@
                     "C_call_code": "*SHCXX_rv =\t getConstStringResult(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_result_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 1;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);",
                     "C_pre_call": "std::string * SHCXX_rv = new std::string;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
@@ -1589,14 +1741,21 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1649,6 +1808,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1659,22 +1819,32 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_scalar_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1689,7 +1859,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -1750,7 +1919,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1796,6 +1967,7 @@
                 "_fmtargs": {
                     "output": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1806,22 +1978,32 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_scalar_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_type": "character(*)",
+                            "f_var": "output",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -1833,7 +2015,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -1899,7 +2080,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -1942,6 +2122,10 @@
                     "__line__": 104,
                     "function_name": "getConstStringAsArg",
                     "function_suffix": "",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_const_string_as_arg"
                 },
                 "linenumber": 100,
@@ -1956,14 +2140,21 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2010,6 +2201,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2020,23 +2212,33 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "1"
+                            "idtor": "1",
+                            "stmt0": "c_string_scalar_result_buf_allocatable",
+                            "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2048,7 +2250,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -2066,7 +2267,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -2080,7 +2281,7 @@
                     "C_call_code": "*SHCXX_rv =\t getConstStringAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 1;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);",
                     "C_pre_call": "std::string * SHCXX_rv = new std::string;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
@@ -2103,25 +2304,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2157,7 +2369,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -2187,6 +2399,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2197,23 +2410,33 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2225,7 +2448,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -2236,14 +2458,14 @@
                                 "name": "SHF_rv",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
-                                "std::string"
+                                "string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -2252,7 +2474,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "void getConstStringRefPure(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefPure(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
                     "__line__": 114,
                     "brief": "return a 'const string&' as ALLOCATABLE character"
@@ -2261,7 +2483,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2286,25 +2508,36 @@
                 "C_error_pattern": "C_invalid_name",
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2342,8 +2575,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n",
+                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -2371,6 +2603,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2381,22 +2614,32 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2411,7 +2654,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -2469,21 +2711,27 @@
                 "C_error_pattern": "C_invalid_name",
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2520,8 +2768,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_as_arg",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n",
+                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -2544,6 +2791,7 @@
                 "_fmtargs": {
                     "output": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2554,22 +2802,32 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
-                            "f_var": "output"
+                            "f_type": "character(*)",
+                            "f_var": "output",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2581,7 +2839,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -2648,7 +2905,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "Noutput"
@@ -2692,6 +2948,10 @@
                     "__line__": 138,
                     "function_name": "getConstStringRefAsArg",
                     "function_suffix": "",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
                 "linenumber": 131,
@@ -2706,25 +2966,36 @@
                 "C_error_pattern": "C_invalid_name",
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2761,8 +3032,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_empty",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n",
+                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -2790,6 +3060,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2800,22 +3071,32 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -2830,7 +3111,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -2886,25 +3166,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2936,7 +3227,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -2963,6 +3254,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2973,23 +3265,33 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -3001,7 +3303,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -3012,14 +3313,14 @@
                                 "name": "SHF_rv",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
                                 "std::string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -3028,12 +3329,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "void getConstStringRefAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3055,25 +3356,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3112,7 +3424,7 @@
                     "C_call_list": "",
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -3140,6 +3452,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3150,22 +3463,32 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -3180,7 +3503,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -3239,25 +3561,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3290,7 +3623,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -3317,6 +3650,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3327,23 +3661,33 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -3355,7 +3699,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -3374,7 +3717,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -3388,7 +3731,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3410,25 +3753,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "2"
+                        "idtor": "2",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3465,7 +3819,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -3492,6 +3846,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3502,23 +3857,33 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "2"
+                            "idtor": "2",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -3530,7 +3895,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -3549,7 +3913,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -3567,7 +3931,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3589,25 +3953,36 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "3"
+                        "idtor": "3",
+                        "stmt0": "c_string_pointer_result_",
+                        "stmt1": "c_string_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
-                        "f_var": "SHT_rv"
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_string_scalar_result_allocatable",
+                        "stmt1": "f_string_result_allocatable",
+                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc1": "c_string_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -3646,7 +4021,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();",
+                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
@@ -3673,6 +4048,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -3683,23 +4059,33 @@
                             "cxx_member": "->",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
-                            "idtor": "3"
+                            "idtor": "3",
+                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt1": "f_string_result_allocatable",
+                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -3714,7 +4100,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
+                                "__line__": 178,
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
@@ -3734,7 +4120,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "typemap_name": "stringout"
+                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
@@ -3752,7 +4138,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 3;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;",
+                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 3);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3775,16 +4161,19 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_arg1))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_in_",
+                            "stmt1": "c_string_in"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -3797,6 +4186,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -3842,10 +4232,10 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringConstReference(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringConstReference(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_const_reference",
-                    "C_pre_call": "const std::string SH_arg1(arg1);",
+                    "C_pre_call": "const std::string SHCXX_arg1(arg1);",
                     "C_prototype": "const char * arg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3861,6 +4251,10 @@
                     "PY_name_impl": "PY_acceptStringConstReference",
                     "c_const": "",
                     "function_name": "acceptStringConstReference",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_const_reference"
                 },
                 "linenumber": 184,
@@ -3870,21 +4264,29 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_arg1))",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_in_buf",
+                            "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_in_buf",
+                            "stmtc1": "c_string_in_buf"
                         }
                     }
                 },
@@ -3913,7 +4315,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -3930,10 +4332,10 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringConstReference(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringConstReference(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_const_reference_bufferify",
-                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);",
+                    "C_pre_call": "const std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "const char * arg1,\t int Larg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3955,16 +4357,19 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_out_",
+                            "stmt1": "c_string_out"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3977,6 +4382,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4021,11 +4427,11 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringReferenceOut(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_out",
-                    "C_post_call": "strcpy(arg1, SH_arg1.c_str());",
-                    "C_pre_call": "std::string SH_arg1;",
+                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
+                    "C_pre_call": "std::string SHCXX_arg1;",
                     "C_prototype": "char * arg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4041,6 +4447,10 @@
                     "PY_name_impl": "PY_acceptStringReferenceOut",
                     "c_const": "",
                     "function_name": "acceptStringReferenceOut",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_reference_out"
                 },
                 "linenumber": 192,
@@ -4050,21 +4460,29 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_out_buf",
+                            "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_out_buf",
+                            "stmtc1": "c_string_out_buf"
                         }
                     }
                 },
@@ -4092,7 +4510,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4109,11 +4527,11 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringReferenceOut(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_out_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SH_arg1.data(),\t SH_arg1.size());",
-                    "C_pre_call": "std::string SH_arg1;",
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
+                    "C_pre_call": "std::string SHCXX_arg1;",
                     "C_prototype": "char * arg1,\t int Narg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4135,16 +4553,19 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_inout_",
+                            "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -4157,6 +4578,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4201,11 +4623,11 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReference(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringReference(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference",
-                    "C_post_call": "strcpy(arg1, SH_arg1.c_str());",
-                    "C_pre_call": "std::string SH_arg1(arg1);",
+                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
+                    "C_pre_call": "std::string SHCXX_arg1(arg1);",
                     "C_prototype": "char * arg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4221,6 +4643,10 @@
                     "PY_name_impl": "PY_acceptStringReference",
                     "c_const": "",
                     "function_name": "acceptStringReference",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_reference"
                 },
                 "linenumber": 200,
@@ -4233,22 +4659,30 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
                             "c_var_trim": "Larg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_inout_buf",
+                            "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_inout_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
                         }
                     }
                 },
@@ -4277,7 +4711,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4294,11 +4728,11 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReference(\tSH_arg1);",
-                    "C_call_list": "SH_arg1",
+                    "C_call_code": "acceptStringReference(\tSHCXX_arg1);",
+                    "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SH_arg1.data(),\t SH_arg1.size());",
-                    "C_pre_call": "std::string SH_arg1(arg1, Larg1);",
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
+                    "C_pre_call": "std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4322,16 +4756,19 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_inout_",
+                            "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -4344,6 +4781,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4387,11 +4825,11 @@
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringPointer(\t&SH_arg1);",
-                    "C_call_list": "&SH_arg1",
+                    "C_call_code": "acceptStringPointer(\t&SHCXX_arg1);",
+                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer",
-                    "C_post_call": "strcpy(arg1, SH_arg1.c_str());",
-                    "C_pre_call": "std::string SH_arg1(arg1);",
+                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
+                    "C_pre_call": "std::string SHCXX_arg1(arg1);",
                     "C_prototype": "char * arg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4407,6 +4845,10 @@
                     "PY_name_impl": "PY_acceptStringPointer",
                     "c_const": "",
                     "function_name": "acceptStringPointer",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "accept_string_pointer"
                 },
                 "linenumber": 210,
@@ -4416,22 +4858,30 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
                             "c_var_trim": "Larg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg1)",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "idtor": "0"
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "stmt0": "c_string_pointer_inout_buf",
+                            "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "stmt0": "f_string_pointer_inout_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
                         }
                     }
                 },
@@ -4460,7 +4910,7 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4476,11 +4926,11 @@
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringPointer(\t&SH_arg1);",
-                    "C_call_list": "&SH_arg1",
+                    "C_call_code": "acceptStringPointer(\t&SHCXX_arg1);",
+                    "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SH_arg1.data(),\t SH_arg1.size());",
-                    "C_pre_call": "std::string SH_arg1(arg1, Larg1);",
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
+                    "C_pre_call": "std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4512,6 +4962,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1"
@@ -4529,6 +4980,7 @@
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
+                            "data_var": "SHData_arg2",
                             "numpy_type": null,
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2"
@@ -4655,6 +5107,7 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4664,7 +5117,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "name",
@@ -4681,6 +5136,7 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
+                            "data_var": "SHData_name",
                             "numpy_type": null,
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name"
@@ -4742,6 +5198,10 @@
                     "__line__": 241,
                     "c_const": "",
                     "function_name": "explicit1",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "explicit1"
                 },
                 "linenumber": 240,
@@ -4751,6 +5211,7 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4760,7 +5221,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_",
+                            "stmt1": "c_default"
                         }
                     }
                 },
@@ -4815,6 +5278,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "explicit2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "explicit2"
                 },
                 "linenumber": 245,
@@ -4828,6 +5295,7 @@
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4838,11 +5306,18 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_buf",
+                            "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "stmt0": "f_char_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     }
                 },
@@ -4870,7 +5345,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -4909,6 +5384,7 @@
                 "_fmtargs": {
                     "status": {
                         "fmtc": {
+                            "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
@@ -4918,11 +5394,18 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_schar_scalar_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "status",
-                            "f_var": "status"
+                            "f_type": "character",
+                            "f_var": "status",
+                            "stmt0": "f_schar_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc1": "c_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -4935,6 +5418,7 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "status",
+                            "data_var": "SHData_status",
                             "numpy_type": null,
                             "py_var": "SHPy_status",
                             "size_var": "SHSize_status"
@@ -4992,6 +5476,10 @@
                     "PY_name_impl": "PY_CpassChar",
                     "c_const": "",
                     "function_name": "CpassChar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "cpass_char"
                 },
                 "linenumber": 259,
@@ -5003,23 +5491,34 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "char",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_schar_scalar_result_",
+                        "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_var": "SHT_rv"
+                        "f_type": "character",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_schar_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_schar_scalar_result_buf",
+                        "stmtc1": "c_schar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "rv",
+                        "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -5075,6 +5574,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5085,22 +5585,32 @@
                             "cxx_member": ".",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_schar_scalar_result_buf_",
+                            "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "f_var": "SHT_rv"
+                            "f_type": "character",
+                            "f_var": "SHT_rv",
+                            "stmt0": "f_schar_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc1": "c_schar_result_buf"
                         }
                     }
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0"
+                        "idtor": "0",
+                        "stmt0": "c_unknown_scalar_result_buf",
+                        "stmt1": "c_default"
                     }
                 },
                 "_generated": "arg_to_buffer",
@@ -5112,7 +5622,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -5171,6 +5680,7 @@
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5180,11 +5690,14 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_",
+                            "stmt1": "c_default"
                         }
                     },
                     "src": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5194,7 +5707,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_in_",
+                            "stmt1": "c_default"
                         }
                     }
                 },
@@ -5273,6 +5788,10 @@
                     "F_subprogram": "subroutine",
                     "c_const": "",
                     "function_name": "CpassCharPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "cpass_char_ptr"
                 },
                 "linenumber": 274,
@@ -5287,6 +5806,7 @@
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5297,15 +5817,23 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_out_buf",
+                            "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
                             "c_var": "dest",
-                            "f_var": "dest"
+                            "f_type": "character(*)",
+                            "f_var": "dest",
+                            "stmt0": "f_char_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc1": "c_char_out_buf"
                         }
                     },
                     "src": {
                         "fmtc": {
+                            "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -5315,7 +5843,9 @@
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
-                            "idtor": "0"
+                            "idtor": "0",
+                            "stmt0": "c_char_pointer_in_",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "src",
@@ -5347,7 +5877,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
+                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         },
                         {
@@ -5500,1071 +6030,5 @@
         "scope_file": [
             "strings"
         ]
-    },
-    "types": {
-        "MPI_Comm": {
-            "c_header": "mpi.h",
-            "c_to_cxx": "MPI_Comm_f2c({c_var})",
-            "c_type": "MPI_Fint",
-            "cxx_header": "mpi.h",
-            "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
-            "cxx_type": "MPI_Comm",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_c_type": "integer(C_INT)",
-            "f_kind": "C_INT",
-            "f_type": "integer",
-            "flat_name": "MPI_Comm"
-        },
-        "bool": {
-            "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TBOOLEAN",
-            "PYN_typenum": "NPY_BOOL",
-            "PY_PyTypeObject": "PyBool_Type",
-            "c_header": "<stdbool.h>",
-            "c_type": "bool",
-            "cxx_type": "bool",
-            "f_c_type": "logical(C_BOOL)",
-            "f_kind": "C_BOOL",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_BOOL"
-                ]
-            },
-            "f_statements": {
-                "intent_in": {
-                    "c_local_var": true,
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_inout": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ],
-                    "pre_call": [
-                        "{c_var} = {f_var}  ! coerce to C_BOOL"
-                    ]
-                },
-                "intent_out": {
-                    "c_local_var": true,
-                    "post_call": [
-                        "{f_var} = {c_var}  ! coerce to logical"
-                    ]
-                },
-                "result": {
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "logical",
-            "flat_name": "bool",
-            "py_statements": {
-                "intent_in": {
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ],
-                    "pre_call": [
-                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                },
-                "result": {
-                    "decl": [
-                        "{PyObject} * {py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});",
-                        "if ({py_var} == NULL) goto fail;"
-                    ]
-                }
-            }
-        },
-        "char": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_ctor": "PyString_FromString({c_var})",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrBlankFill",
-                    "post_call": [
-                        "ShroudStrBlankFill({c_var}, {c_var_len});"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "char"
-        },
-        "char_scalar": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "(int) {cxx_var}",
-            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
-            "PY_format": "c",
-            "c_statements": {
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_header": "<string.h>",
-                    "cxx_header": "<cstring>",
-                    "post_call": [
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
-                        "{c_var}[0] = {cxx_var};"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character",
-            "flat_name": "char"
-        },
-        "charout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "char"
-        },
-        "double": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_DOUBLE",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "d",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "double",
-            "cxx_type": "double",
-            "f_cast": "real({f_var}, C_DOUBLE)",
-            "f_kind": "C_DOUBLE",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_DOUBLE"
-                ]
-            },
-            "f_type": "real(C_DOUBLE)",
-            "flat_name": "double"
-        },
-        "float": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_FLOAT",
-            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})",
-            "PY_format": "f",
-            "PY_get": "PyFloat_AsDouble({py_var})",
-            "c_type": "float",
-            "cxx_type": "float",
-            "f_cast": "real({f_var}, C_FLOAT)",
-            "f_kind": "C_FLOAT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_FLOAT"
-                ]
-            },
-            "f_type": "real(C_FLOAT)",
-            "flat_name": "float"
-        },
-        "int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "int",
-            "cxx_type": "int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "int"
-        },
-        "int16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "int16_t"
-        },
-        "int32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "int32_t"
-        },
-        "int64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "int64_t"
-        },
-        "int8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "int8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "int8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "int8_t"
-        },
-        "long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "long",
-            "cxx_type": "long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "long"
-        },
-        "long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "long long",
-            "cxx_type": "long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "long_long"
-        },
-        "short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "short",
-            "cxx_type": "short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "short"
-        },
-        "size_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
-            "c_header": "<stddef.h>",
-            "c_type": "size_t",
-            "cxx_header": "<cstddef>",
-            "cxx_type": "size_t",
-            "f_cast": "int({f_var}, C_SIZE_T)",
-            "f_kind": "C_SIZE_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SIZE_T"
-                ]
-            },
-            "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t"
-        },
-        "std::string": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-            "PY_build_format": "s#",
-            "PY_ctor": "PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
-            "PY_format": "s",
-            "base": "string",
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len_trim",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var}({c_var}, {c_var_trim});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_header": "<cstring>",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-                    ],
-                    "pre_call": [
-                        "std::string {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "arg",
-                        "len"
-                    ],
-                    "c_helper": "ShroudStrCopy",
-                    "post_call": [
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);",
-                        "-}} else {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
-                        "-}}"
-                    ]
-                }
-            },
-            "c_type": "char",
-            "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
-            "cxx_type": "std::string",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_statements": {
-                "result_pure": {
-                    "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
-                    ],
-                    "f_helper": "fstr_ptr",
-                    "need_wrapper": true
-                }
-            },
-            "f_type": "character(*)",
-            "flat_name": "std_string",
-            "idtor": "2",
-            "impl_header": "<string>",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var}({c_var});"
-                    ]
-                },
-                "intent_out": {
-                    "cxx_local_var": "scalar",
-                    "post_parse": [
-                        "{c_const}std::string {cxx_var};"
-                    ]
-                }
-            }
-        },
-        "std::vector": {
-            "base": "vector",
-            "c_statements": {
-                "intent_in_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size",
-                        "context"
-                    ],
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-                    ]
-                }
-            },
-            "c_templates": {
-                "std::string": {
-                    "intent_in_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_inout_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_out_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
-                        ]
-                    }
-                }
-            },
-            "cxx_header": "<vector>",
-            "cxx_type": "std::vector<{cxx_T}>",
-            "f_statements": {
-                "intent_inout": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_inout_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "if (allocated({f_var})) deallocate({f_var})",
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                }
-            },
-            "flat_name": "std_vector_{cxx_T}"
-        },
-        "stringout": {
-            "base": "string",
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "arg",
-                        "lenout"
-                    ],
-                    "c_helper": "copy_string",
-                    "cxx_local_var": "scalar",
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ],
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                },
-                "result_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "copy_string",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{c_var_context}->addr.ccharp = NULL;",
-                        "{c_var_context}->len = 0;",
-                        "-}} else {{+",
-                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();",
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();",
-                        "-}}",
-                        "{c_var_context}->size = 1;"
-                    ]
-                }
-            },
-            "c_type": "void",
-            "cxx_to_c": "static_cast<void *>({cxx_var})",
-            "cxx_type": "std::string",
-            "f_statements": {
-                "result": {
-                    "f_helper": "copy_string",
-                    "need_wrapper": true,
-                    "post_call": [
-                        "allocate(character(len={c_var_context}%len):: {f_var})",
-                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
-                    ]
-                }
-            },
-            "f_type": "type(C_PTR)YY",
-            "flat_name": "std_string",
-            "idtor": "2",
-            "impl_header": "<string>"
-        },
-        "uint16_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT16",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint16_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
-            "f_kind": "C_INT16_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT16_T"
-                ]
-            },
-            "f_type": "integer(C_INT16_T)",
-            "flat_name": "uint16_t"
-        },
-        "uint32_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT32",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint32_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
-            "f_kind": "C_INT32_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT32_T"
-                ]
-            },
-            "f_type": "integer(C_INT32_T)",
-            "flat_name": "uint32_t"
-        },
-        "uint64_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT64",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint64_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
-            "f_kind": "C_INT64_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT64_T"
-                ]
-            },
-            "f_type": "integer(C_INT64_T)",
-            "flat_name": "uint64_t"
-        },
-        "uint8_t": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_UINT8",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
-            "c_type": "uint8_t",
-            "cxx_header": "<cstdint>",
-            "cxx_type": "uint8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
-            "f_kind": "C_INT8_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT8_T"
-                ]
-            },
-            "f_type": "integer(C_INT8_T)",
-            "flat_name": "uint8_t"
-        },
-        "unsigned_int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned int",
-            "cxx_type": "unsigned int",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "unsigned_int"
-        },
-        "unsigned_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONG",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "l",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned long",
-            "cxx_type": "unsigned long",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG)",
-            "flat_name": "unsigned_long"
-        },
-        "unsigned_long_long": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_LONGLONG",
-            "PY_format": "L",
-            "c_type": "unsigned long long",
-            "cxx_type": "unsigned long long",
-            "f_cast": "int({f_var}, C_LONG_LONG)",
-            "f_kind": "C_LONG_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG_LONG"
-                ]
-            },
-            "f_type": "integer(C_LONG_LONG)",
-            "flat_name": "unsigned_long_long"
-        },
-        "unsigned_short": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_SHORT",
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
-            "PY_format": "h",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_type": "unsigned short",
-            "cxx_type": "unsigned short",
-            "f_cast": "int({f_var}, C_SHORT)",
-            "f_kind": "C_SHORT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SHORT"
-                ]
-            },
-            "f_type": "integer(C_SHORT)",
-            "flat_name": "unsigned_short"
-        },
-        "void": {
-            "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
-            "c_type": "void",
-            "cxx_type": "void",
-            "f_cast": "C_LOC({f_var})",
-            "f_cast_keywords": {
-                "is_target": true
-            },
-            "f_cast_module": {
-                "iso_c_binding": [
-                    "C_LOC"
-                ]
-            },
-            "f_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            },
-            "f_type": "type(C_PTR)",
-            "flat_name": "void"
-        }
     }
 }

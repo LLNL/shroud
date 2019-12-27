@@ -615,7 +615,7 @@ class Parser(ExprParser):
 #                    break
         if ntypemap is None:
             self.error_msg(
-                "Unknown typemap '{}".format("_".join(node.specifier))
+                "Unknown typemap '{}".format("_".join(decl.specifier))
             )
         decl.typemap = ntypemap
 
@@ -931,7 +931,7 @@ class Declaration(Node):
         self.typemap = None
 
         self.return_pointer_as = None
-        self.stmts_suffix = ''  # Used to find statements in typemap
+        self.stmts_suffix = ''  # Used to find statements in typemap (ex. buf)
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
 
     def get_name(self, use_attr=True):
@@ -1044,13 +1044,14 @@ class Declaration(Node):
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
-        This is intended for pointer arguments, char or string.
+        This is intended for pointer arguments, char, string or vector.
+        Move template_arguments from function to argument.
         """
         new = Declaration()
         new.specifier = self.specifier[:]
         new.storage = self.storage[:]
-        new.const = False
-        new.volatile = False
+        new.const = self.const
+        new.volatile = self.volatile
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
@@ -1059,6 +1060,7 @@ class Declaration(Node):
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs)
         new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
         return new
 
     def _set_to_void(self):
@@ -1066,22 +1068,15 @@ class Declaration(Node):
         self.specifier = ["void"]
         self.typemap = typemap.lookup_type("void")
         self.const = False
+        self.volatile = False
         self.declarator.pointer = []
+        self.template_arguments = []
 
     def result_as_arg(self, name):
         """Pass the function result as an argument.
         Change function result to 'void'.
         """
         newarg = self._as_arg(name)
-        self.params.append(newarg)
-        self._set_to_void()
-        return newarg
-
-    def result_as_voidstar(self, ntypemap, name, const=False):
-        """Add an 'typ*' argument to return pointer to result.
-        Change function result to 'void'.
-        """
-        newarg = create_voidstar(ntypemap, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
@@ -1230,6 +1225,7 @@ class Declaration(Node):
         continuation=False,
         asgn_value=False,
         remove_const=False,
+        with_template_args=False,
         **kwargs
     ):
         """Generate an argument for the C wrapper.
@@ -1246,6 +1242,7 @@ class Declaration(Node):
             force_ptr - Change a scalar into a pointer
             as_scalar - Do not print Ptr
             params - if None, do not print function parameters.
+            with_template_args - if True, print template arguments
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1258,13 +1255,24 @@ class Declaration(Node):
             const_index = len(decl)
             decl.append("const ")
 
-        if self.template_arguments:
-            ntypemap = self.template_arguments[0].typemap
+        if with_template_args and self.template_arguments:
+            # Use template arguments from declaration
+            typ = getattr(self.typemap, lang)
+            decl.append(self.typemap.name)
+            decl.append("<")
+            for targ in self.template_arguments:
+                decl.append(str(targ))
+                decl.append(",")
+            decl[-1] = ">"
         else:
-            ntypemap = self.typemap
-
-        typ = getattr(ntypemap, lang)
-        decl.append(typ)
+            # Convert template_argument.
+            # ex vector<int> -> int
+            if self.template_arguments:
+                ntypemap = self.template_arguments[0].typemap
+            else:
+                ntypemap = self.typemap
+            typ = getattr(ntypemap, lang)
+            decl.append(typ)
 
         if self.declarator is None:
             # XXX - used with constructor but seems wrong for abstract arguments
@@ -1310,6 +1318,8 @@ class Declaration(Node):
         Args:
             intent - Explicit intent 'in', 'inout', 'out'.
                      Defaults to None to use intent from attrs.
+
+            name   - Set name explicitly, else self.name.
         """
         t = []
         attrs = self.attrs
@@ -1559,20 +1569,6 @@ def check_decl(decl, namespace=None, template_types=None, trace=False):
     else:
         a = Parser(decl, namespace, trace).decl_statement()
     return a
-
-
-def create_this_arg(name, arg_typemap, const=True):
-    """Create a Declaration for an argument for the 'this' argument
-    as 'typ *name'
-    """
-    arg = Declaration()
-    arg.const = const
-    arg.declarator = Declarator()
-    arg.declarator.name = name
-    arg.declarator.pointer = [Ptr("*")]
-    arg.specifier = arg_typemap.cxx_type.split()
-    arg.typemap = arg_typemap
-    return arg
 
 
 def create_voidstar(ntypemap, name, const=False):

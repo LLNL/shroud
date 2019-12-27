@@ -22,13 +22,17 @@ cxx_header: vectors.hpp
 options:
   debug: True
   literalinclude2: True
+  wrap_python: True
 
 declarations:
+
+##################################################
+# int
 
 # const implies intent(in)
 - decl: int vector_sum(const std::vector<int> &arg)
   options:
-    wrap_python: False
+#    wrap_python: False
     wrap_lua: False
     literalinclude: True
 
@@ -36,7 +40,7 @@ declarations:
   doxygen:
     brief: Copy vector into Fortran input array
   options:
-    wrap_python: False
+#    wrap_python: False
     wrap_lua: False
     literalinclude: True
 
@@ -64,13 +68,26 @@ declarations:
   
 # does multidimensional make sense?  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
+
+##################################################
+# double
+
+- decl: void vector_iota_out_d(std::vector<double> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
+  options:
+    wrap_lua: False
+
+##################################################
   
 - decl: int vector_string_count(const std::vector< std::string > &arg)
   doxygen:
     brief: count number of underscore in vector of strings
     decription: |
       The input will be copied in order to create the C++ argument
- 
+  options:
+    wrap_python: False
+
 - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
   options:
     wrap_c: False
@@ -99,7 +116,9 @@ declarations:
 ########################################
 # return vectors
 
-#- decl: std::vector<int> ReturnVectorAlloc(int i)
-#  doxygen:
-#    description: |
-#      Return a vector as an ALLOCATABLE array.
+- decl: std::vector<int> ReturnVectorAlloc(int n)
+  doxygen:
+    description: |
+      Implement iota function.
+      Return a vector as an ALLOCATABLE array.
+      Copy results into the new array.

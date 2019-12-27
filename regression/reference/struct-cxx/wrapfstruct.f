@@ -117,11 +117,21 @@ module struct_mod
             type(cstruct1) :: SHT_rv
         end function return_struct_by_value
 
+        function return_const_struct_by_value(i, d) &
+                result(SHT_rv) &
+                bind(C, name="STR_return_const_struct_by_value")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            import :: cstruct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: i
+            real(C_DOUBLE), value, intent(IN) :: d
+            type(cstruct1) :: SHT_rv
+        end function return_const_struct_by_value
+
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &
                 bind(C, name="STR_return_struct_ptr1")
             use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
@@ -132,7 +142,6 @@ module struct_mod
                 result(SHT_rv) &
                 bind(C, name="STR_return_struct_ptr2")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
@@ -144,7 +153,6 @@ module struct_mod
                 result(SHT_rv) &
                 bind(C, name="STR_return_struct_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
-            import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d

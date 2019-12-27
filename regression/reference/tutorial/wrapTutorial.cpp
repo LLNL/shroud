@@ -37,6 +37,24 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
+// start helper ShroudStrToArray
+// Save str metadata into array to allow Fortran to access values.
+static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, int idtor)
+{
+    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.idtor = idtor;
+    if (src->empty()) {
+        array->addr.ccharp = NULL;
+        array->len = 0;
+    } else {
+        array->addr.ccharp = src->data();
+        array->len = src->size();
+    }
+    array->size = 1;
+}
+// end helper ShroudStrToArray
+
+// helper function
 // start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
@@ -81,21 +99,11 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.concatenate_strings_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
+    const std::string SHCXX_arg1(arg1, Larg1);
+    const std::string SHCXX_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1, SH_arg2);
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 2;
-    if (SHCXX_rv->empty()) {
-        DSHF_rv->addr.ccharp = NULL;
-        DSHF_rv->len = 0;
-    } else {
-        DSHF_rv->addr.ccharp = SHCXX_rv->data();
-        DSHF_rv->len = SHCXX_rv->size();
-    }
-    DSHF_rv->size = 1;
+    *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
+    ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);
     return;
 // splicer end function.concatenate_strings_bufferify
 }
@@ -137,8 +145,8 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 void TUT_overloaded_function_from_name(const char * name)
 {
 // splicer begin function.overloaded_function_from_name
-    const std::string SH_name(name);
-    tutorial::OverloadedFunction(SH_name);
+    const std::string SHCXX_name(name);
+    tutorial::OverloadedFunction(SHCXX_name);
     return;
 // splicer end function.overloaded_function_from_name
 }
@@ -148,8 +156,8 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
 {
 // splicer begin function.overloaded_function_from_name_bufferify
-    const std::string SH_name(name, Lname);
-    tutorial::OverloadedFunction(SH_name);
+    const std::string SHCXX_name(name, Lname);
+    tutorial::OverloadedFunction(SHCXX_name);
     return;
 // splicer end function.overloaded_function_from_name_bufferify
 }
@@ -212,8 +220,8 @@ void TUT_fortran_generic_overloaded_0()
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 {
 // splicer begin function.fortran_generic_overloaded_1
-    const std::string SH_name(name);
-    tutorial::FortranGenericOverloaded(SH_name, arg2);
+    const std::string SHCXX_name(name);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     return;
 // splicer end function.fortran_generic_overloaded_1
 }
@@ -223,8 +231,8 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     int Lname, double arg2)
 {
 // splicer begin function.fortran_generic_overloaded_1_bufferify
-    const std::string SH_name(name, Lname);
-    tutorial::FortranGenericOverloaded(SH_name, arg2);
+    const std::string SHCXX_name(name, Lname);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     return;
 // splicer end function.fortran_generic_overloaded_1_bufferify
 }
@@ -351,18 +359,18 @@ int TUT_direction_func(int arg)
  * \brief Pass arguments to a function.
  *
  */
-void TUT_pass_class_by_value(TUT_Class1 arg)
+void TUT_pass_class_by_value(TUT_Class1 * arg)
 {
 // splicer begin function.pass_class_by_value
-    tutorial::Class1 * SHCXX_arg =
-        static_cast<tutorial::Class1 *>(arg.addr);
+    tutorial::Class1 * SHCXX_arg = static_cast<tutorial::Class1 *>
+        (arg->addr);
     tutorial::passClassByValue(*SHCXX_arg);
     return;
 // splicer end function.pass_class_by_value
 }
 
 // int useclass(const Class1 * arg +intent(in))
-int TUT_useclass(const TUT_Class1 * arg)
+int TUT_useclass(TUT_Class1 * arg)
 {
 // splicer begin function.useclass
     const tutorial::Class1 * SHCXX_arg =
@@ -393,6 +401,30 @@ TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv)
     SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end function.getclass3
+}
+
+// const Class1 & getConstClassReference()
+TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv)
+{
+// splicer begin function.get_const_class_reference
+    const tutorial::Class1 & SHCXX_rv =
+        tutorial::getConstClassReference();
+    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
+        (&SHCXX_rv));
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+// splicer end function.get_const_class_reference
+}
+
+// Class1 & getClassReference()
+TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv)
+{
+// splicer begin function.get_class_reference
+    tutorial::Class1 & SHCXX_rv = tutorial::getClassReference();
+    SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+// splicer end function.get_class_reference
 }
 
 // Class1 getClassCopy(int flag +intent(in)+value)

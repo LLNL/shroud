@@ -29,6 +29,7 @@ test-fortran-% : fortran-%
 test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-enum-c \
   test-fortran-namespace \
   test-fortran-pointers \
   test-fortran-struct-c \
@@ -58,6 +59,7 @@ test-c-% : c-%
 test-c : \
   test-c-tutorial \
   test-c-types \
+  test-c-enum-c \
   test-c-namespace \
   test-c-templates
 
@@ -109,12 +111,15 @@ test-python-% : pymod-%
 
 test-python : \
   test-python-tutorial \
+  test-python-types \
+  test-python-enum-c \
   test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cpp \
   test-python-pointers-list-cpp \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
+  test-python-vectors-numpy \
   test-python-clibrary \
   test-python-struct-c \
   test-python-struct-cxx \
@@ -153,6 +158,8 @@ phony_explicit:
 .SECONDARY: \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/enum-c/.. \
+    $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/generic/.. \
     $(tempdir)/run/namespace/.. \
@@ -179,7 +186,8 @@ phony_explicit:
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
+    $(tempdir)/run/types/python/..\
     $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors/python/.. \
-    $(tempdir)/run/vectors/lua/.. \
+    $(tempdir)/run/vectors-list/python/.. \
+    $(tempdir)/run/vectors-numpy/python/..
 

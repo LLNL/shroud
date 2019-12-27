@@ -269,7 +269,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass1_capsule
             implicit none
             type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         pure function c_exclass1_get_name_arg(self) &
@@ -420,7 +420,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name2_bufferify
 
         pure function c_exclass2_get_name3(self) &
@@ -438,7 +438,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name3_bufferify
 
         function c_exclass2_get_name4(self) &
@@ -456,7 +456,7 @@ module userlibrary_example_nested_mod
             import :: SHROUD_array, SHROUD_exclass2_capsule
             implicit none
             type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
         pure function c_exclass2_get_name_length(self) &
@@ -700,7 +700,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_func_ptr1")
-            use iso_c_binding, only : C_PTR
             import :: func_ptr1_get
             implicit none
             procedure(func_ptr1_get) :: get
@@ -708,7 +707,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_func_ptr2")
-            use iso_c_binding, only : C_DOUBLE
             import :: func_ptr2_get
             implicit none
             procedure(func_ptr2_get) :: get
@@ -716,7 +714,6 @@ module userlibrary_example_nested_mod
 
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_func_ptr3")
-            use iso_c_binding, only : C_DOUBLE
             import :: func_ptr3_get
             implicit none
             procedure(func_ptr3_get) :: get
@@ -724,7 +721,6 @@ module userlibrary_example_nested_mod
 
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_func_ptr4")
-            use iso_c_binding, only : C_DOUBLE
             import :: custom_funptr
             implicit none
             procedure(custom_funptr) :: get
@@ -732,7 +728,6 @@ module userlibrary_example_nested_mod
 
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_func_ptr5")
-            use iso_c_binding, only : C_PTR
             import :: func_ptr5_get
             implicit none
             procedure(func_ptr5_get) :: get
@@ -835,8 +830,8 @@ contains
     function exclass1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
         SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
@@ -856,8 +851,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         SHT_prv = c_exclass1_ctor_1_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
@@ -1041,8 +1036,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(C_PTR) :: SHT_prv
         type(exclass2) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         SHT_prv = c_exclass2_ctor_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
@@ -1137,8 +1132,8 @@ contains
         use iso_c_binding, only : C_PTR
         class(exclass2) :: obj
         type(exclass1), intent(IN) :: in
-        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
         SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
             SHT_rv%cxxmem)

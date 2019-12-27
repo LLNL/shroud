@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# run/tutorial
+# run/types
 #
 include $(top)/regression/run/defaults.mk
 

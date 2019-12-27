@@ -24,6 +24,9 @@ options:
   wrap_python: True
 #  wrap_lua: True
 
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: shtypes
 
 declarations:
 #- decl: extern int int_global;

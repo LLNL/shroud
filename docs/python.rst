@@ -118,11 +118,13 @@ The template for a function is:
             return NULL;
         }
 
+        // result pre_call
+        
         // Create C from Python objects
         // Create C++ from C
         {post_parse}
         {               create scope before fail
-          {pre_call}    pre_call declares variables
+          {pre_call}    pre_call declares variables for arguments
 
           call
 
@@ -139,6 +141,14 @@ The template for a function is:
           {fail}
           Py_XDECREF(arr_x);
     }
+
+allocate_local_var
+^^^^^^^^^^^^^^^^^^
+
+Functions which return a struct/class instance (such as std::vector)
+need to allocate a local variable which will be used to store the result.
+The Python object will maintain a pointer to the instance until it is
+deleted.
 
 decl
 ^^^^

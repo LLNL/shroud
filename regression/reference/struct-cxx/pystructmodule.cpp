@@ -56,10 +56,10 @@ PY_passStructByValue(
     // post_parse
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int rv = passStructByValue(*arg);
+    int SHCXX_rv = passStructByValue(*arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct_by_value
@@ -90,10 +90,10 @@ PY_passStruct1(
     // post_parse
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int rv = passStruct1(arg);
+    int SHCXX_rv = passStruct1(arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct1
@@ -130,10 +130,10 @@ PY_passStruct2(
     // pre_call
     char outbuf[LENOUTBUF];  // intent(out)
 
-    int rv = passStruct2(s1, outbuf);
+    int SHCXX_rv = passStruct2(s1, outbuf);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("is", rv, outbuf);
+    SHTPy_rv = Py_BuildValue("is", SHCXX_rv, outbuf);
 
     return SHTPy_rv;
 // splicer end function.pass_struct2
@@ -235,7 +235,7 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
-    Cstruct1 * rv = NULL;
+    Cstruct1 * SHCXX_rv = NULL;
     PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -243,28 +243,82 @@ PY_returnStructByValue(
         &d))
         return NULL;
 
-    rv = new Cstruct1;
-    if (rv == NULL) {
+    // result pre_call
+    SHCXX_rv = new Cstruct1;
+    if (SHCXX_rv == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
-    *rv = returnStructByValue(i, d);
+
+    *SHCXX_rv = returnStructByValue(i, d);
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
-    SHTPy_rv->obj = rv;
+    SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 1;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (rv != NULL) {
-        PY_SHROUD_release_memory(1, rv);
+    if (SHCXX_rv != NULL) {
+        PY_SHROUD_release_memory(1, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
     return NULL;
 // splicer end function.return_struct_by_value
+}
+
+static char PY_returnConstStructByValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnConstStructByValue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_const_struct_by_value
+    int i;
+    double d;
+    const char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+    Cstruct1 * SHCXX_rv = NULL;
+    PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "id:returnConstStructByValue", const_cast<char **>(SHT_kwlist), 
+        &i, &d))
+        return NULL;
+
+    // result pre_call
+    SHCXX_rv = new Cstruct1;
+    if (SHCXX_rv == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
+
+    *SHCXX_rv = returnConstStructByValue(i, d);
+
+    // post_call
+    SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    if (SHTPy_rv == NULL) goto fail;
+    SHTPy_rv->obj = SHCXX_rv;
+    SHTPy_rv->idtor = 2;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    if (SHCXX_rv != NULL) {
+        PY_SHROUD_release_memory(2, SHCXX_rv);
+    }
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end function.return_const_struct_by_value
 }
 
 static char PY_returnStructPtr1__doc__[] =
@@ -374,6 +428,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructInOutPtr__doc__},
 {"returnStructByValue", (PyCFunction)PY_returnStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructByValue__doc__},
+{"returnConstStructByValue", (PyCFunction)PY_returnConstStructByValue,
+    METH_VARARGS|METH_KEYWORDS, PY_returnConstStructByValue__doc__},
 {"returnStructPtr1", (PyCFunction)PY_returnStructPtr1,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
