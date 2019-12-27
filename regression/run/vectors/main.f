@@ -72,8 +72,8 @@ contains
 
   subroutine test_vector_double
     real(C_DOUBLE) intv(5)
-    real(C_DOUBLE), allocatable :: inta(:)
-    integer irv
+!    real(C_DOUBLE), allocatable :: inta(:)
+!    integer irv
 
     call set_case_name("test_vector_double")
 
