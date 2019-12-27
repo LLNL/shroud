@@ -220,6 +220,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "stmt0": "f_native_scalar_in_",
                                     "stmt1": "f_default",
@@ -518,6 +519,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "obj2",
+                                    "f_type": "type(class1)",
                                     "f_var": "obj2",
                                     "stmt0": "f_shadow_pointer_in_",
                                     "stmt1": "f_default",
@@ -879,6 +881,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "SH_flag",
+                                    "f_type": "logical",
                                     "f_var": "flag",
                                     "stmt0": "f_bool_scalar_in_",
                                     "stmt1": "f_bool_in",
@@ -905,6 +908,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "name",
+                                    "f_type": "character(*)",
                                     "f_var": "name",
                                     "stmt0": "f_string_pointer_in_",
                                     "stmt1": "f_default",
@@ -1131,6 +1135,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "arg",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "arg",
                                     "stmt0": "f_native_scalar_in_",
                                     "stmt1": "f_default",
@@ -1431,6 +1436,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "val",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "stmt0": "f_native_scalar_in_",
                                     "stmt1": "f_default",
@@ -1940,6 +1946,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1992,6 +1999,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2332,6 +2340,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -2358,6 +2367,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "character(*)",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -2384,6 +2394,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "character(*)",
                             "f_var": "arg2",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -2608,6 +2619,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2732,6 +2744,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2784,6 +2797,7 @@
                         },
                         "fmtf": {
                             "c_var": "SH_arg2",
+                            "f_type": "logical",
                             "f_var": "arg2",
                             "stmt0": "f_bool_scalar_in_",
                             "stmt1": "f_bool_in",
@@ -3084,6 +3098,7 @@
                         },
                         "fmtf": {
                             "c_var": "name",
+                            "f_type": "character(*)",
                             "f_var": "name",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -3172,6 +3187,7 @@
                         },
                         "fmtf": {
                             "c_var": "indx",
+                            "f_type": "integer(C_INT)",
                             "f_var": "indx",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -3362,6 +3378,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -3512,6 +3529,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4373,6 +4391,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4399,6 +4418,7 @@
                         },
                         "fmtf": {
                             "c_var": "name",
+                            "f_type": "character(*)",
                             "f_var": "name",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -4583,6 +4603,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4700,6 +4721,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4725,6 +4747,7 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
+                            "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4861,6 +4884,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4913,6 +4937,7 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
+                            "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -4965,6 +4990,7 @@
                         },
                         "fmtf": {
                             "c_var": "stride",
+                            "f_type": "integer(C_INT)",
                             "f_var": "stride",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5159,6 +5185,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5184,6 +5211,7 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5310,6 +5338,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5335,6 +5364,7 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
+                            "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5360,6 +5390,7 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5505,6 +5536,7 @@
                         },
                         "fmtf": {
                             "c_var": "num",
+                            "f_type": "integer(C_INT)",
                             "f_var": "num",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5557,6 +5589,7 @@
                         },
                         "fmtf": {
                             "c_var": "offset",
+                            "f_type": "integer(C_INT)",
                             "f_var": "offset",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5609,6 +5642,7 @@
                         },
                         "fmtf": {
                             "c_var": "stride",
+                            "f_type": "integer(C_INT)",
                             "f_var": "stride",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5661,6 +5695,7 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "type",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -5862,6 +5897,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -6016,6 +6052,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -6175,6 +6212,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -6332,6 +6370,7 @@
                         },
                         "fmtf": {
                             "c_var": "max",
+                            "f_type": "integer(C_INT)",
                             "f_var": "max",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",
@@ -6373,6 +6412,7 @@
                         },
                         "fmtf": {
                             "c_var": "min",
+                            "f_type": "integer(C_INT)",
                             "f_var": "min",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",
@@ -6505,6 +6545,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -6662,6 +6703,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(class1)",
                             "f_var": "arg",
                             "stmt0": "f_shadow_scalar_in_",
                             "stmt1": "f_default",
@@ -6773,6 +6815,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(class1)",
                             "f_var": "arg",
                             "stmt0": "f_shadow_pointer_in_",
                             "stmt1": "f_default",
@@ -7236,6 +7279,7 @@
                         },
                         "fmtf": {
                             "c_var": "flag",
+                            "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -7351,6 +7395,7 @@
                         },
                         "fmtf": {
                             "c_var": "in",
+                            "f_type": "integer(C_INT)",
                             "f_var": "in",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -7517,6 +7562,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -7810,6 +7856,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",

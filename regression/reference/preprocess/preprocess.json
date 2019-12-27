@@ -194,6 +194,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "i",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "i",
                                     "stmt0": "f_native_scalar_in_",
                                     "stmt1": "f_default",
@@ -385,6 +386,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
+                                    "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "stmt0": "f_native_scalar_in_",
                                     "stmt1": "f_default",

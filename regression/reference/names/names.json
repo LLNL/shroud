@@ -470,6 +470,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -573,6 +574,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_LONG)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -808,6 +810,7 @@
                         },
                         "fmtf": {
                             "c_var": "rv",
+                            "f_type": "character(*)",
                             "f_var": "rv",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -1072,6 +1075,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "integer(C_INT)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1113,6 +1117,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1293,6 +1298,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "real(C_FLOAT)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1334,6 +1340,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",

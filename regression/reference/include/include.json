@@ -41,6 +41,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "comm",
+                                    "f_type": "integer",
                                     "f_var": "comm",
                                     "stmt0": "f_unknown_scalar_in_",
                                     "stmt1": "f_default",
@@ -128,6 +129,7 @@
                                 },
                                 "fmtf": {
                                     "c_var": "c2",
+                                    "f_type": "type(class1)",
                                     "f_var": "c2",
                                     "stmt0": "f_shadow_pointer_in_",
                                     "stmt1": "f_default",
@@ -450,6 +452,7 @@
                                         },
                                         "fmtf": {
                                             "c_var": "arg1",
+                                            "f_type": "integer(C_INT)",
                                             "f_var": "arg1",
                                             "stmt0": "f_native_scalar_in_",
                                             "stmt1": "f_default",

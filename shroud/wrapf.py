@@ -1516,6 +1516,7 @@ rv = .false.
                 # If a template, use its type
                 arg_typemap = c_arg.template_arguments[0].typemap
                 fmt_arg.cxx_T = arg_typemap.name
+            fmt_arg.f_type = arg_typemap.f_type
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 

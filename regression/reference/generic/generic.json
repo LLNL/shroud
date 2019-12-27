@@ -182,6 +182,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -428,6 +429,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -453,6 +455,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg2",
+                            "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -797,6 +800,7 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
+                            "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
                             "stmt0": "f_unknown_pointer_in_",
                             "stmt1": "f_default",
@@ -1242,6 +1246,7 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
+                            "f_type": "type(C_PTR)",
                             "f_var": "addr",
                             "stmt0": "f_unknown_pointer_out_",
                             "stmt1": "f_default",
@@ -1267,6 +1272,7 @@
                         },
                         "fmtf": {
                             "c_var": "size",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",
@@ -1292,6 +1298,7 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",
@@ -1418,6 +1425,7 @@
                         },
                         "fmtf": {
                             "c_var": "addr",
+                            "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
                             "stmt0": "f_unknown_pointer_out_",
                             "stmt1": "f_default",
@@ -1443,6 +1451,7 @@
                         },
                         "fmtf": {
                             "c_var": "size",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",
@@ -1468,6 +1477,7 @@
                         },
                         "fmtf": {
                             "c_var": "type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "stmt0": "f_native_pointer_out_",
                             "stmt1": "f_default",

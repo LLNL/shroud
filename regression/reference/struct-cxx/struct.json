@@ -336,6 +336,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_scalar_in_",
                             "stmt1": "f_default",
@@ -477,6 +478,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_in_",
                             "stmt1": "f_default",
@@ -814,6 +816,7 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
                             "stmt1": "f_default",
@@ -839,6 +842,7 @@
                         },
                         "fmtf": {
                             "c_var": "s1",
+                            "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "stmt0": "f_struct_pointer_in_",
                             "stmt1": "f_default",
@@ -964,6 +968,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_in_",
                             "stmt1": "f_default",
@@ -1076,6 +1081,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_out_",
                             "stmt1": "f_default",
@@ -1120,6 +1126,7 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1161,6 +1168,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1298,6 +1306,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "stmt0": "f_struct_pointer_inout_",
                             "stmt1": "f_default",
@@ -1407,6 +1416,7 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1448,6 +1458,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1603,6 +1614,7 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1644,6 +1656,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1800,6 +1813,7 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -1841,6 +1855,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2243,6 +2258,7 @@
                         },
                         "fmtf": {
                             "c_var": "d",
+                            "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2268,6 +2284,7 @@
                         },
                         "fmtf": {
                             "c_var": "i",
+                            "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "stmt0": "f_native_scalar_in_",
                             "stmt1": "f_default",
@@ -2294,6 +2311,7 @@
                         },
                         "fmtf": {
                             "c_var": "outbuf",
+                            "f_type": "character(*)",
                             "f_var": "outbuf",
                             "stmt0": "f_char_pointer_out_",
                             "stmt1": "f_default",

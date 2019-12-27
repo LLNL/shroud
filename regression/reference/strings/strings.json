@@ -147,6 +147,7 @@
                         },
                         "fmtf": {
                             "c_var": "status",
+                            "f_type": "character",
                             "f_var": "status",
                             "stmt0": "f_schar_scalar_in_",
                             "stmt1": "f_default",
@@ -331,6 +332,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character",
                             "f_var": "SHT_rv",
                             "stmt0": "f_schar_pointer_result_",
                             "stmt1": "f_default",
@@ -594,6 +596,7 @@
                         },
                         "fmtf": {
                             "c_var": "dest",
+                            "f_type": "character(*)",
                             "f_var": "dest",
                             "stmt0": "f_char_pointer_out_",
                             "stmt1": "f_default",
@@ -832,6 +835,7 @@
                         },
                         "fmtf": {
                             "c_var": "s",
+                            "f_type": "character(*)",
                             "f_var": "s",
                             "stmt0": "f_char_pointer_inout_",
                             "stmt1": "f_default",
@@ -1017,6 +1021,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_char_pointer_result_allocatable",
                             "stmt1": "f_char_result_allocatable",
@@ -1216,6 +1221,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_char_pointer_result_",
                             "stmt1": "f_default",
@@ -1400,6 +1406,7 @@
                         },
                         "fmtf": {
                             "c_var": "output",
+                            "f_type": "character(*)",
                             "f_var": "output",
                             "stmt0": "f_char_pointer_result_",
                             "stmt1": "f_default",
@@ -1643,6 +1650,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -1817,6 +1825,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -1975,6 +1984,7 @@
                         },
                         "fmtf": {
                             "c_var": "output",
+                            "f_type": "character(*)",
                             "f_var": "output",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -2209,6 +2219,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -2406,6 +2417,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -2608,6 +2620,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -2795,6 +2808,7 @@
                         },
                         "fmtf": {
                             "c_var": "output",
+                            "f_type": "character(*)",
                             "f_var": "output",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -3063,6 +3077,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -3257,6 +3272,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -3453,6 +3469,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_",
                             "stmt1": "f_default",
@@ -3651,6 +3668,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -3846,6 +3864,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -4047,6 +4066,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
@@ -4261,6 +4281,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "character(*)",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_in_",
                             "stmt1": "f_default",
@@ -4456,6 +4477,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "character(*)",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_out_",
                             "stmt1": "f_default",
@@ -4655,6 +4677,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "character(*)",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_inout_",
                             "stmt1": "f_default",
@@ -4853,6 +4876,7 @@
                         },
                         "fmtf": {
                             "c_var": "arg1",
+                            "f_type": "character(*)",
                             "f_var": "arg1",
                             "stmt0": "f_string_pointer_inout_",
                             "stmt1": "f_default",
@@ -5288,6 +5312,7 @@
                         },
                         "fmtf": {
                             "c_var": "name",
+                            "f_type": "character(*)",
                             "f_var": "name",
                             "stmt0": "f_char_pointer_out_",
                             "stmt1": "f_default",
@@ -5375,6 +5400,7 @@
                         },
                         "fmtf": {
                             "c_var": "status",
+                            "f_type": "character",
                             "f_var": "status",
                             "stmt0": "f_schar_scalar_in_",
                             "stmt1": "f_default",
@@ -5565,6 +5591,7 @@
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
+                            "f_type": "character",
                             "f_var": "SHT_rv",
                             "stmt0": "f_schar_pointer_result_",
                             "stmt1": "f_default",
@@ -5796,6 +5823,7 @@
                         },
                         "fmtf": {
                             "c_var": "dest",
+                            "f_type": "character(*)",
                             "f_var": "dest",
                             "stmt0": "f_char_pointer_out_",
                             "stmt1": "f_default",
