@@ -143,7 +143,7 @@ def add_external_helpers(fmtin, literalinclude):
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
-if (data->len < n) n = data->len;
+if (data->elem_len < n) n = data->elem_len;
 {stdlib}strncpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}
@@ -191,10 +191,10 @@ array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
 array->cxx.idtor = idtor;
 if (src->empty()) {{+
 array->addr.ccharp = NULL;
-array->len = 0;
+array->elem_len = 0;
 -}} else {{+
 array->addr.ccharp = src->data();
-array->len = src->size();
+array->elem_len = src->length();
 -}}
 array->size = 1;
 -}}{lend}""", fmt),
@@ -343,11 +343,11 @@ call array_destructor(cap%mem, .false._C_BOOL)
 {lstart}struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
-const void * cvoidp;
+const void * base;
 const char * ccharp;
 -}} addr;
-size_t len;     /* bytes-per-item or character len of data in cxx */
-size_t size;    /* size of data in cxx */
+size_t elem_len; /* bytes-per-item or character len in c++ */
+size_t size;     /* size of data in c++ */
 -}};
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
                 fmt,
@@ -366,10 +366,14 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
             derived_type=wformat(
                 """
 {lstart}type, bind(C) :: {F_array_type}+
-type({F_capsule_data_type}) :: cxx       ! address of C++ memory
-type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
-integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
-integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+! address of C++ memory
+type({F_capsule_data_type}) :: cxx
+! address of data in cxx
+type(C_PTR) :: base_addr = C_NULL_PTR
+! bytes-per-item or character len of data in cxx
+integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+! size of data in cxx
+integer(C_SIZE_T) :: size = 0_C_SIZE_T
 -end type {F_array_type}{lend}""",
                 fmt,
             ),
@@ -411,9 +415,9 @@ def add_copy_array_helper_c(fmtin):
 // Called from Fortran.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
-const void *cxx_var = data->addr.cvoidp;
+const void *cxx_var = data->addr.base;
 int n = c_var_size < data->size ? c_var_size : data->size;
-n *= data->len;
+n *= data->elem_len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}""",

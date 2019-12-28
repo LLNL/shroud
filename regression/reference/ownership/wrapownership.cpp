@@ -33,9 +33,9 @@ extern "C" {
 void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const void *cxx_var = data->addr.cvoidp;
+    const void *cxx_var = data->addr.base;
     int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->len;
+    n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
     OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
@@ -104,8 +104,8 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     DSHC_rv->cxx.addr  = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.cvoidp = SHC_rv;
-    DSHC_rv->len = sizeof(int);
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->elem_len = sizeof(int);
     DSHC_rv->size = *len;
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc_bufferify

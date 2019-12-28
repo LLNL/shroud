@@ -1052,7 +1052,7 @@
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_bufferify",
-                    "C_post_call": "DSHC_rv->cxx.addr  = SHC_rv;\nDSHC_rv->cxx.idtor = 0;\nDSHC_rv->addr.cvoidp = SHC_rv;\nDSHC_rv->len = sizeof(int);\nDSHC_rv->size = *len;",
+                    "C_post_call": "DSHC_rv->cxx.addr  = SHC_rv;\nDSHC_rv->cxx.idtor = 0;\nDSHC_rv->addr.base = SHC_rv;\nDSHC_rv->elem_len = sizeof(int);\nDSHC_rv->size = *len;",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int *",
