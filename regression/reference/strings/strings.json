@@ -1087,7 +1087,7 @@
                     "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr1_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<char *>\t(SHC_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHC_rv;\nDSHF_rv->len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);\nDSHF_rv->size = 1;",
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<char *>\t(SHC_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHC_rv;\nDSHF_rv->elem_len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);\nDSHF_rv->size = 1;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",

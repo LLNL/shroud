@@ -1266,8 +1266,8 @@ fc_statements = dict(
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var};",
-            "{c_var_context}->len = sizeof({cxx_type});",
+            "{c_var_context}->addr.base = {cxx_var};",
+            "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
         ],
         return_cptr=True,
@@ -1372,7 +1372,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
-            "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
         ],
     ),
@@ -1383,9 +1383,9 @@ fc_statements = dict(
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
-            "allocate(character(len={c_var_context}%len):: {f_var})",
+            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free"
-            "({c_var_context}, {f_var}, {c_var_context}%len)",
+            "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
 
@@ -1482,8 +1482,8 @@ fc_statements = dict(
     # Uses a two part call to copy results of std::string into a
     # allocatable Fortran array.
     #    c_step1(context)
-    #    allocate(character(len=context%len): Fout)
-    #    c_step2(context, Fout, context%len)
+    #    allocate(character(len=context%elem_len): Fout)
+    #    c_step2(context, Fout, context%elem_len)
     # only used with bufferifed routines and intent(out) or result
     # std::string * function()
     c_string_result_buf_allocatable=dict(
@@ -1540,9 +1540,9 @@ fc_statements = dict(
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
-            "allocate(character(len={c_var_context}%len):: {f_var})",
+            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free("
-            "{c_var_context}, {f_var}, {c_var_context}%len)",
+            "{c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     
@@ -1570,9 +1570,9 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",
@@ -1593,9 +1593,9 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",
@@ -1618,9 +1618,9 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",

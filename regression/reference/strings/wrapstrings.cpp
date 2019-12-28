@@ -80,10 +80,10 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
-        array->len = 0;
+        array->elem_len = 0;
     } else {
         array->addr.ccharp = src->data();
-        array->len = src->size();
+        array->elem_len = src->length();
     }
     array->size = 1;
 }
@@ -96,7 +96,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
-    if (data->len < n) n = data->len;
+    if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
     STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
@@ -245,7 +245,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
     DSHF_rv->cxx.idtor = 0;
     DSHF_rv->addr.ccharp = SHC_rv;
-    DSHF_rv->len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);
+    DSHF_rv->elem_len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_char_ptr1_bufferify

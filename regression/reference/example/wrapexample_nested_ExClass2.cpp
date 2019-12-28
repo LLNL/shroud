@@ -51,10 +51,10 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
-        array->len = 0;
+        array->elem_len = 0;
     } else {
         array->addr.ccharp = src->data();
-        array->len = src->size();
+        array->elem_len = src->length();
     }
     array->size = 1;
 }
@@ -65,7 +65,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
-    if (data->len < n) n = data->len;
+    if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
     AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
