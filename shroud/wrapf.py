@@ -1311,6 +1311,7 @@ rv = .false.
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations
         pre_call = []
+        call = []
         post_call = []
         modules = {}  # indexed as [module][variable]
         imports = {}
@@ -1660,36 +1661,35 @@ rv = .false.
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
+        F_code = None
+        call_list = []
         if fmt_func.inlocal("F_code"):
             need_wrapper = True
             F_code = [wformat(fmt_func.F_code, fmt_result)]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code
+        elif result_blk.call:
+            call_list = result_blk.call
+        elif C_subprogram == "function":
+            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
-            F_code = []
-            if C_subprogram == "function":
-                if result_blk.call:
-                    cmd_list = result_blk.call
-                else:
-                    cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
-                #                for cmd in cmd_list:  # only allow a single statment for now
-                #                    append_format(pre_call, cmd, fmt_func)
-                F_code.append(wformat(cmd_list[0], fmt_func))
+            call_list = ["call {F_C_call}({F_arg_c_call})"]
 
-                need_wrapper = self.add_code_from_statements(
-                    need_wrapper, fileinfo,
-                    fmt_result,
-                    result_blk,
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    post_call=F_code,
-                )
-            else:
-                F_code.append(wformat(
-                    "call {F_C_call}({F_arg_c_call})", fmt_func))
-
+        for line in call_list:
+            append_format(call, line, fmt_result)
+        if C_subprogram == "function":
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                result_blk,
+                modules,
+                imports,
+                arg_f_decl,
+                pre_call,
+                post_call,
+            )
+            
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
         if need_wrapper:
@@ -1716,9 +1716,9 @@ rv = .false.
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
-            impl.extend(pre_call)
+            if F_code is None:
+                F_code = pre_call + call + post_call
             self._create_splicer(sname, impl, F_code)
-            impl.extend(post_call)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
             if options.literalinclude:

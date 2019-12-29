@@ -928,8 +928,8 @@ contains
         logical(C_BOOL) SH_flag
         type(class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
-        SH_flag = flag  ! coerce to C_BOOL
         ! splicer begin class.Class1.method.return_this_buffer
+        SH_flag = flag  ! coerce to C_BOOL
         SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
             name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
@@ -1086,9 +1086,9 @@ contains
         call c_concatenate_strings_bufferify(arg1, &
             len_trim(arg1, kind=C_INT), arg2, &
             len_trim(arg2, kind=C_INT), DSHF_rv)
-        ! splicer end function.concatenate_strings
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end function.concatenate_strings
     end function concatenate_strings
 
     ! double UseDefaultArguments()
@@ -1127,8 +1127,8 @@ contains
         logical, value, intent(IN) :: arg2
         logical(C_BOOL) SH_arg2
         real(C_DOUBLE) :: SHT_rv
-        SH_arg2 = arg2  ! coerce to C_BOOL
         ! splicer begin function.use_default_arguments_arg1_arg2
+        SH_arg2 = arg2  ! coerce to C_BOOL
         SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
         ! splicer end function.use_default_arguments_arg1_arg2
     end function use_default_arguments_arg1_arg2

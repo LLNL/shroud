@@ -926,9 +926,9 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
             DSHF_rv)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
     ! void getNameArg(string & name +intent(out)+len(Nname)) const
@@ -997,8 +997,8 @@ contains
         logical, value, intent(IN) :: in
         logical(C_BOOL) SH_in
         logical :: SHT_rv
-        SH_in = in  ! coerce to C_BOOL
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+        SH_in = in  ! coerce to C_BOOL
         SHT_rv = c_exclass1_has_addr(obj%cxxmem, SH_in)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
     end function exclass1_has_addr
@@ -1082,9 +1082,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
-        ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function exclass2_get_name2
 
     ! string & getName3() const +deref(allocatable)
@@ -1096,9 +1096,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
-        ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function exclass2_get_name3
 
     ! string & getName4() +deref(allocatable)
@@ -1110,9 +1110,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
-        ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function exclass2_get_name4
 
     ! int GetNameLength() const
@@ -1484,9 +1484,9 @@ contains
         real(C_DOUBLE), intent(IN) :: in(:,:)
         real(C_DOUBLE), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: SH_sizein
+        ! splicer begin namespace.example::nested.function.cos_doubles
         allocate(out, mold=in)
         SH_sizein = size(in,kind=C_INT)
-        ! splicer begin namespace.example::nested.function.cos_doubles
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end namespace.example::nested.function.cos_doubles
     end subroutine cos_doubles

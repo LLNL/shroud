@@ -205,9 +205,9 @@ contains
         real(C_FLOAT), intent(IN), target :: addr(:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer_float1d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        ! splicer begin function.save_pointer_float1d
         call c_save_pointer(C_LOC(addr), SH_type, SH_size)
         ! splicer end function.save_pointer_float1d
     end subroutine save_pointer_float1d
@@ -221,9 +221,9 @@ contains
         real(C_FLOAT), intent(IN), target :: addr(:,:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer_float2d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        ! splicer begin function.save_pointer_float2d
         call c_save_pointer(C_LOC(addr), SH_type, SH_size)
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
