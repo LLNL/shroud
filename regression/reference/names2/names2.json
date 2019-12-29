@@ -124,7 +124,6 @@
                     "F_C_name": "afunction",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "call c_afunction()",
                     "F_name_function": "afunction",
                     "F_name_generic": "afunction",
                     "F_name_impl": "afunction",

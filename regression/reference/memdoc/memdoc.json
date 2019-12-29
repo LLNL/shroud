@@ -161,7 +161,6 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
-                    "F_call_code": "call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
                     "F_name_impl": "get_const_string_ptr_alloc",

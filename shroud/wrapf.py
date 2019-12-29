@@ -1675,8 +1675,7 @@ rv = .false.
                     cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
                 #                for cmd in cmd_list:  # only allow a single statment for now
                 #                    append_format(pre_call, cmd, fmt_func)
-                fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
-                F_code.append(fmt_func.F_call_code)
+                F_code.append(wformat(cmd_list[0], fmt_func))
 
                 need_wrapper = self.add_code_from_statements(
                     need_wrapper, fileinfo,
@@ -1688,10 +1687,8 @@ rv = .false.
                     post_call=F_code,
                 )
             else:
-                fmt_func.F_call_code = wformat(
-                    "call {F_C_call}({F_arg_c_call})", fmt_func
-                )
-                F_code.append(fmt_func.F_call_code)
+                F_code.append(wformat(
+                    "call {F_C_call}({F_arg_c_call})", fmt_func))
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
