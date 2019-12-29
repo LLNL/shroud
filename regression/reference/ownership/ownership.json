@@ -118,7 +118,6 @@
                         "fmtdict": {
                             "C_call_code": "int SHC_rv =\t SH_this->getFlag(\t);",
                             "C_call_list": "",
-                            "C_code": "return SH_this->m_flag;",
                             "C_name": "OWN_Class1_get_flag",
                             "C_prototype": "OWN_Class1 * self",
                             "C_return_code": "return SHC_rv;",
@@ -144,6 +143,11 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_flag;"
+                            ]
                         }
                     }
                 ],

@@ -1164,6 +1164,10 @@ class FunctionNode(AstNode):
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
+      splicer:
+         c: [ ]
+         f: [ ]
+         py: [ ]
 
 
     _fmtfunc = Scope()
@@ -1237,6 +1241,7 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
+        self.splicer = {}
 
         # self.function_index = []
 
@@ -1332,6 +1337,10 @@ class FunctionNode(AstNode):
                     arg.attrs.update(attrs[name])
         if "fattrs" in kwargs:
             ast.attrs.update(kwargs["fattrs"])
+
+        if "splicer" in kwargs:
+            self.splicer = kwargs["splicer"]
+            
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict

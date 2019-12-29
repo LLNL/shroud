@@ -119,10 +119,9 @@ declarations:
       - decl: int GetNameLength() const
         doxygen:
           brief: helper function for Fortran to get length of name.
-        format:
-          C_code: |
-            {C_pre_call}
-            return {CXX_this}->getName().length();
+        splicer:
+          c:
+          - "return SH_this->getName().length();"
 
       - decl: const string& getNameErrorCheck() const
 
@@ -184,10 +183,9 @@ declarations:
       - decl: int GetNameLength() const
         doxygen:
           brief: helper function for Fortran
-        format:
-          C_code: |
-            {C_pre_call}
-            return {CXX_this}->getName().length();
+        splicer:
+          c:
+          - "return SH_this->getName().length();"
 
       # test forward declarations
       - decl: ExClass1 *get_class1(const ExClass1 *in)
@@ -228,9 +226,11 @@ declarations:
 
     # override the C code.
     - decl: bool isNameValid(const std::string& name)
-      format:
-        C_code:  "return name != NULL;"
-        F_code:  rv = name .ne. " "
+      splicer:
+        c:
+        - "return name != NULL;"
+        f:
+        - 'rv = name .ne. " "'
 
     # return bool, no arguments.
     # This needs to generate a Fortran wrapper to convert the bool to logical

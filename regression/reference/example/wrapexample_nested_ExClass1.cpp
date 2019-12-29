@@ -205,9 +205,7 @@ int AA_example_nested_ExClass1_get_name_length(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
-
     return SH_this->getName().length();
-
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_length
 }
 

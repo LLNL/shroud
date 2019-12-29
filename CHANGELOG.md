@@ -63,6 +63,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
        - decl: (double arg)
          function_suffix: double
 ```
+- Replace format fields C_code and F_code with splicers within the declaration.
+  Consistent with other ways to define splicers.
+  previous format:
+```
+   - decl: bool isNameValid(const std::string& name)
+     format:
+       C_code:  "return name != NULL;"
+       F_code:  rv = name .ne. " "
+```
+  new format:
+```
+   - decl: bool isNameValid(const std::string& name)
+     splicer:
+        c:
+        - "return name != NULL;"
+        f:
+        - 'rv = name .ne. " "'
+```
 
 ### Fixed
 - C++ function arguments which pass a class by value.

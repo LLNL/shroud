@@ -497,11 +497,14 @@ class GenFunctions(object):
         else:
             fmt.cxx_var = field
             val = wformat(arg_typemap.cxx_to_c, fmt)
-        return_val = "return " + val + ";"
 
-        format = dict(C_code=return_val)
+        splicer = dict(
+            c=[
+                "return " + val + ";",
+            ],
+        )
 
-        cls.add_function(decl, format=format, options=options)
+        cls.add_function(decl, options=options, splicer=splicer)
 
         # setter
         if ast.attrs.get("readonly", False):
@@ -523,9 +526,14 @@ class GenFunctions(object):
             )  # XXX - what about pointer variables?
         )
 
-        format = dict(C_code=set_val + "\nreturn;")
+        splicer = dict(
+            c=[
+                set_val,
+                "return;"
+            ],
+        )
 
-        cls.add_function(decl, attrs=attrs, format=format, options=options)
+        cls.add_function(decl, attrs=attrs, options=options, splicer=splicer)
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.

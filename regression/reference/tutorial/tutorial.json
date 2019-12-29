@@ -1303,7 +1303,6 @@
                         "fmtdict": {
                             "C_call_code": "int SHC_rv =\t SH_this->getM_flag(\t);",
                             "C_call_list": "",
-                            "C_code": "return SH_this->m_flag;",
                             "C_name": "TUT_Class1_get_m_flag",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return SHC_rv;",
@@ -1329,6 +1328,11 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_flag;"
+                            ]
                         }
                     },
                     {
@@ -1371,7 +1375,6 @@
                         "fmtdict": {
                             "C_call_code": "int SHC_rv =\t SH_this->getTest(\t);",
                             "C_call_list": "",
-                            "C_code": "return SH_this->m_test;",
                             "C_name": "TUT_Class1_get_test",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_code": "return SHC_rv;",
@@ -1397,6 +1400,11 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_test;"
+                            ]
                         }
                     },
                     {
@@ -1459,7 +1467,6 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->setTest(\tval);",
                             "C_call_list": "val",
-                            "C_code": "SH_this->m_test = val;\nreturn;",
                             "C_name": "TUT_Class1_set_test",
                             "C_prototype": "TUT_Class1 * self,\t int val",
                             "C_return_code": "return;",
@@ -1487,6 +1494,12 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->m_test = val;",
+                                "return;"
+                            ]
                         }
                     }
                 ],

@@ -1663,9 +1663,9 @@ rv = .false.
         splicer_code = self.splicer_stack[-1].get(sname, None)
         F_code = None
         call_list = []
-        if fmt_func.inlocal("F_code"):
+        if "f" in node.splicer:
             need_wrapper = True
-            F_code = [wformat(fmt_func.F_code, fmt_result)]
+            F_code = node.splicer["f"]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code

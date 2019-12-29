@@ -1028,7 +1028,6 @@
                                         "fmtdict": {
                                             "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);",
                                             "C_call_list": "",
-                                            "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n",
                                             "C_name": "AA_example_nested_ExClass1_get_name_length",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
                                             "C_return_code": "return SHC_rv;",
@@ -1045,7 +1044,6 @@
                                             "LUA_name": "GetNameLength",
                                             "LUA_name_impl": "l_example_nested_ExClass1_get_name_length",
                                             "PY_name_impl": "PP_GetNameLength",
-                                            "__line__": 122,
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1055,7 +1053,13 @@
                                             "underscore_name": "get_name_length"
                                         },
                                         "linenumber": 119,
-                                        "options": {}
+                                        "options": {},
+                                        "splicer": {
+                                            "__line__": "122",
+                                            "c": [
+                                                "return SH_this->getName().length();"
+                                            ]
+                                        }
                                     },
                                     {
                                         "_fmtresult": {
@@ -1152,7 +1156,7 @@
                                             "function_name": "getNameErrorCheck",
                                             "underscore_name": "get_name_error_check"
                                         },
-                                        "linenumber": 127,
+                                        "linenumber": 126,
                                         "options": {}
                                     },
                                     {
@@ -1254,7 +1258,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name_error_check"
                                         },
-                                        "linenumber": 127,
+                                        "linenumber": 126,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -1333,7 +1337,7 @@
                                             "LUA_name": "getNameArg",
                                             "LUA_name_impl": "l_example_nested_ExClass1_get_name_arg",
                                             "PY_name_impl": "PP_getNameArg",
-                                            "__line__": 131,
+                                            "__line__": 130,
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1342,7 +1346,7 @@
                                             "function_name": "getNameArg",
                                             "underscore_name": "get_name_arg"
                                         },
-                                        "linenumber": 129,
+                                        "linenumber": 128,
                                         "options": {
                                             "wrap_fortran": false
                                         }
@@ -1435,7 +1439,7 @@
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass1_get_name_arg_bufferify",
                                             "F_string_result_as_arg": "name",
-                                            "__line__": 131,
+                                            "__line__": 130,
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1445,7 +1449,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name_arg"
                                         },
-                                        "linenumber": 129,
+                                        "linenumber": 128,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -1498,7 +1502,7 @@
                                             "F_name_impl": "exclass1_get_name_arg",
                                             "F_string_result_as_arg": "name",
                                             "F_subprogram": "subroutine",
-                                            "__line__": 131,
+                                            "__line__": 130,
                                             "function_name": "getNameArg",
                                             "function_suffix": "",
                                             "stmt0": "f_subroutine",
@@ -1507,7 +1511,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "get_name_arg"
                                         },
-                                        "linenumber": 129,
+                                        "linenumber": 128,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": true,
@@ -1601,7 +1605,7 @@
                                             "function_name": "getRoot",
                                             "underscore_name": "get_root"
                                         },
-                                        "linenumber": 136,
+                                        "linenumber": 135,
                                         "options": {}
                                     },
                                     {
@@ -1749,7 +1753,7 @@
                                             "LUA_name": "getValue",
                                             "LUA_name_impl": "l_example_nested_ExClass1_get_value",
                                             "PY_name_impl": "PP_getValue_from_int",
-                                            "__line__": 139,
+                                            "__line__": 138,
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -1759,7 +1763,7 @@
                                             "function_suffix": "_from_int",
                                             "underscore_name": "get_value"
                                         },
-                                        "linenumber": 138,
+                                        "linenumber": 137,
                                         "options": {}
                                     },
                                     {
@@ -1914,7 +1918,7 @@
                                             "function_suffix": "_1",
                                             "underscore_name": "get_value"
                                         },
-                                        "linenumber": 141,
+                                        "linenumber": 140,
                                         "options": {}
                                     },
                                     {
@@ -2003,7 +2007,7 @@
                                             "function_name": "getAddr",
                                             "underscore_name": "get_addr"
                                         },
-                                        "linenumber": 143,
+                                        "linenumber": 142,
                                         "options": {}
                                     },
                                     {
@@ -2161,7 +2165,7 @@
                                             "function_name": "hasAddr",
                                             "underscore_name": "has_addr"
                                         },
-                                        "linenumber": 144,
+                                        "linenumber": 143,
                                         "options": {}
                                     },
                                     {
@@ -2207,7 +2211,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "splicer_special"
                                         },
-                                        "linenumber": 146,
+                                        "linenumber": 145,
                                         "options": {}
                                     }
                                 ],
@@ -2355,7 +2359,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "__line__": 164,
+                                                        "__line__": 163,
                                                         "intent": "in",
                                                         "len_trim": "trim_name",
                                                         "value": false
@@ -2383,7 +2387,7 @@
                                         "decl": "ExClass2(const string *name)",
                                         "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))",
                                         "doxygen": {
-                                            "__line__": 159,
+                                            "__line__": 158,
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
@@ -2413,7 +2417,7 @@
                                             "function_name": "ctor",
                                             "underscore_name": "ctor"
                                         },
-                                        "linenumber": 158,
+                                        "linenumber": 157,
                                         "options": {}
                                     },
                                     {
@@ -2468,7 +2472,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "__line__": 164,
+                                                        "__line__": 163,
                                                         "intent": "in",
                                                         "len_trim": "trim_name",
                                                         "value": false
@@ -2497,7 +2501,7 @@
                                         "decl": "ExClass2(const string *name)",
                                         "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))",
                                         "doxygen": {
-                                            "__line__": 159,
+                                            "__line__": 158,
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
@@ -2515,7 +2519,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "ctor"
                                         },
-                                        "linenumber": 158,
+                                        "linenumber": 157,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -2538,7 +2542,7 @@
                                         "decl": "~ExClass2()",
                                         "declgen": "~ExClass2()",
                                         "doxygen": {
-                                            "__line__": 170,
+                                            "__line__": 169,
                                             "brief": "destructor"
                                         },
                                         "fmtdict": {
@@ -2558,7 +2562,7 @@
                                             "F_subprogram": "subroutine",
                                             "LUA_name": "dtor",
                                             "LUA_name_impl": "l_example_nested_ExClass2_dtor",
-                                            "__line__": 168,
+                                            "__line__": 167,
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2570,7 +2574,7 @@
                                             "stmtc1": "c_shadow_dtor",
                                             "underscore_name": "dtor"
                                         },
-                                        "linenumber": 167,
+                                        "linenumber": 166,
                                         "options": {}
                                     },
                                     {
@@ -2619,7 +2623,7 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "__line__": 175,
+                                                "__line__": 174,
                                                 "deref": "result_as_arg",
                                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                             },
@@ -2670,7 +2674,7 @@
                                             "function_name": "getName",
                                             "underscore_name": "get_name"
                                         },
-                                        "linenumber": 173,
+                                        "linenumber": 172,
                                         "options": {}
                                     },
                                     {
@@ -2719,7 +2723,7 @@
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "attrs": {
-                                                "__line__": 175,
+                                                "__line__": 174,
                                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                             },
                                             "declarator": {
@@ -2730,7 +2734,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "__line__": 175,
+                                                        "__line__": 174,
                                                         "_is_result": true,
                                                         "intent": "out",
                                                         "len": "NSHF_rv"
@@ -2774,7 +2778,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name"
                                         },
-                                        "linenumber": 173,
+                                        "linenumber": 172,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -2876,7 +2880,7 @@
                                             "function_name": "getName2",
                                             "underscore_name": "get_name2"
                                         },
-                                        "linenumber": 179,
+                                        "linenumber": 178,
                                         "options": {}
                                     },
                                     {
@@ -2977,7 +2981,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name2"
                                         },
-                                        "linenumber": 179,
+                                        "linenumber": 178,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -3079,7 +3083,7 @@
                                             "function_name": "getName3",
                                             "underscore_name": "get_name3"
                                         },
-                                        "linenumber": 180,
+                                        "linenumber": 179,
                                         "options": {}
                                     },
                                     {
@@ -3180,7 +3184,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name3"
                                         },
-                                        "linenumber": 180,
+                                        "linenumber": 179,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -3281,7 +3285,7 @@
                                             "function_name": "getName4",
                                             "underscore_name": "get_name4"
                                         },
-                                        "linenumber": 181,
+                                        "linenumber": 180,
                                         "options": {}
                                     },
                                     {
@@ -3381,7 +3385,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "get_name4"
                                         },
-                                        "linenumber": 181,
+                                        "linenumber": 180,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -3446,13 +3450,12 @@
                                         "decl": "int GetNameLength() const",
                                         "declgen": "int GetNameLength() const",
                                         "doxygen": {
-                                            "__line__": 185,
+                                            "__line__": 184,
                                             "brief": "helper function for Fortran"
                                         },
                                         "fmtdict": {
                                             "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);",
                                             "C_call_list": "",
-                                            "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n",
                                             "C_name": "AA_example_nested_ExClass2_get_name_length",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_code": "return SHC_rv;",
@@ -3469,7 +3472,6 @@
                                             "LUA_name": "GetNameLength",
                                             "LUA_name_impl": "l_example_nested_ExClass2_get_name_length",
                                             "PY_name_impl": "PP_GetNameLength",
-                                            "__line__": 187,
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -3478,8 +3480,14 @@
                                             "function_name": "GetNameLength",
                                             "underscore_name": "get_name_length"
                                         },
-                                        "linenumber": 184,
-                                        "options": {}
+                                        "linenumber": 183,
+                                        "options": {},
+                                        "splicer": {
+                                            "__line__": "186",
+                                            "c": [
+                                                "return SH_this->getName().length();"
+                                            ]
+                                        }
                                     },
                                     {
                                         "_fmtargs": {
@@ -3650,7 +3658,7 @@
                                             "function_name": "get_class1",
                                             "underscore_name": "get_class1"
                                         },
-                                        "linenumber": 193,
+                                        "linenumber": 191,
                                         "options": {}
                                     },
                                     {
@@ -3807,7 +3815,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": false,
@@ -3882,7 +3890,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": true,
@@ -3957,7 +3965,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": true,
@@ -4226,7 +4234,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_fortran": false
                                         },
@@ -4306,7 +4314,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": true,
@@ -4389,7 +4397,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "declare"
                                         },
-                                        "linenumber": 196,
+                                        "linenumber": 194,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": true,
@@ -4441,7 +4449,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "destroyall"
                                         },
-                                        "linenumber": 207,
+                                        "linenumber": 205,
                                         "options": {}
                                     },
                                     {
@@ -4530,7 +4538,7 @@
                                             "function_name": "getTypeID",
                                             "underscore_name": "get_type_id"
                                         },
-                                        "linenumber": 210,
+                                        "linenumber": 208,
                                         "options": {}
                                     },
                                     {
@@ -4576,7 +4584,7 @@
                                             "underscore_name": "set_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 212,
+                                        "linenumber": 210,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": false,
@@ -4751,7 +4759,7 @@
                                             "underscore_name": "set_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 212,
+                                        "linenumber": 210,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": true,
@@ -4924,7 +4932,7 @@
                                             "underscore_name": "set_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 212,
+                                        "linenumber": 210,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": true,
@@ -5097,7 +5105,7 @@
                                             "underscore_name": "set_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 212,
+                                        "linenumber": 210,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": true,
@@ -5276,7 +5284,7 @@
                                             "long"
                                         ],
                                         "have_template_args": true,
-                                        "linenumber": 212,
+                                        "linenumber": 210,
                                         "options": {
                                             "wrap_c": true,
                                             "wrap_fortran": true,
@@ -5359,7 +5367,7 @@
                                             "underscore_name": "get_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 219,
+                                        "linenumber": 217,
                                         "options": {
                                             "wrap_c": false,
                                             "wrap_fortran": false,
@@ -5481,7 +5489,7 @@
                                             "underscore_name": "get_value"
                                         },
                                         "have_template_args": true,
-                                        "linenumber": 219,
+                                        "linenumber": 217,
                                         "options": {
                                             "F_create_generic": false,
                                             "wrap_c": true,
@@ -5606,7 +5614,7 @@
                                             "int"
                                         ],
                                         "have_template_args": true,
-                                        "linenumber": 219,
+                                        "linenumber": 217,
                                         "options": {
                                             "F_create_generic": false,
                                             "wrap_c": true,
@@ -5643,11 +5651,11 @@
                                         ]
                                     }
                                 ],
-                                "linenumber": 149,
+                                "linenumber": 148,
                                 "name": "ExClass2",
                                 "options": {},
                                 "python": {
-                                    "__line__": 151,
+                                    "__line__": 150,
                                     "type": [
                                         "dealloc",
                                         "print",
@@ -5729,7 +5737,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "local_function1"
                                 },
-                                "linenumber": 227,
+                                "linenumber": 225,
                                 "options": {}
                             },
                             {
@@ -5857,7 +5865,6 @@
                                 "fmtdict": {
                                     "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
-                                    "C_code": "return name != NULL;",
                                     "C_name": "AA_example_nested_is_name_valid",
                                     "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name",
@@ -5867,7 +5874,6 @@
                                     "F_C_name": "c_is_name_valid",
                                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
                                     "F_arguments": "name",
-                                    "F_code": "rv = name .ne. \" \"",
                                     "F_name_function": "is_name_valid",
                                     "F_name_generic": "is_name_valid",
                                     "F_name_impl": "is_name_valid",
@@ -5876,14 +5882,22 @@
                                     "LUA_name": "isNameValid",
                                     "LUA_name_impl": "l_example_nested_is_name_valid",
                                     "PY_name_impl": "PP_isNameValid",
-                                    "__line__": 231,
                                     "c_const": "",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isNameValid",
                                     "underscore_name": "is_name_valid"
                                 },
-                                "linenumber": 230,
-                                "options": {}
+                                "linenumber": 228,
+                                "options": {},
+                                "splicer": {
+                                    "__line__": "229",
+                                    "c": [
+                                        "return name != NULL;"
+                                    ],
+                                    "f": [
+                                        "rv = name .ne. \" \""
+                                    ]
+                                }
                             },
                             {
                                 "_fmtargs": {
@@ -5968,27 +5982,33 @@
                                 "fmtdict": {
                                     "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
-                                    "C_code": "return name != NULL;",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
                                     "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_code": "return SHC_rv;",
                                     "C_return_type": "bool",
                                     "F_C_name": "c_is_name_valid_bufferify",
-                                    "F_code": "rv = name .ne. \" \"",
-                                    "__line__": 231,
                                     "c_const": "",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isNameValid",
                                     "function_suffix": "_bufferify",
                                     "underscore_name": "is_name_valid"
                                 },
-                                "linenumber": 230,
+                                "linenumber": 228,
                                 "options": {
                                     "wrap_c": true,
                                     "wrap_fortran": false,
                                     "wrap_lua": false,
                                     "wrap_python": false
+                                },
+                                "splicer": {
+                                    "__line__": "229",
+                                    "c": [
+                                        "return name != NULL;"
+                                    ],
+                                    "f": [
+                                        "rv = name .ne. \" \""
+                                    ]
                                 }
                             },
                             {
