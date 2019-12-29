@@ -30,11 +30,11 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
-// splicer begin function.pass_struct2_bufferify
+    // splicer begin function.pass_struct2_bufferify
     int SHC_rv = passStruct2(s1, outbuf);
     ShroudStrBlankFill(outbuf, Noutbuf);
     return SHC_rv;
-// splicer end function.pass_struct2_bufferify
+    // splicer end function.pass_struct2_bufferify
 }
 
 // Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
@@ -46,11 +46,11 @@ int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
 {
-// splicer begin function.return_struct_ptr2_bufferify
+    // splicer begin function.return_struct_ptr2_bufferify
     Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
     ShroudStrBlankFill(outbuf, Noutbuf);
     return SHC_rv;
-// splicer end function.return_struct_ptr2_bufferify
+    // splicer end function.return_struct_ptr2_bufferify
 }
 
 // start release allocated memory

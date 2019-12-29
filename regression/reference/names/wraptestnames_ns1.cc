@@ -27,10 +27,10 @@ extern "C" {
 // void init_ns1()
 void TES_ns1_init_ns1()
 {
-// splicer begin namespace.ns1.function.init_ns1
+    // splicer begin namespace.ns1.function.init_ns1
     ns1::init_ns1();
     return;
-// splicer end namespace.ns1.function.init_ns1
+    // splicer end namespace.ns1.function.init_ns1
 }
 
 }  // extern "C"

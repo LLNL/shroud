@@ -800,6 +800,7 @@ class Wrapc(util.WrapperMixin):
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
+        setup_this = []
         pre_call = []  # list of temporary variable declarations
         post_call = []
 
@@ -834,7 +835,7 @@ class Wrapc(util.WrapperMixin):
                             "Wapped class is not a shadow type"
                         )
                     append_format(
-                        pre_call,
+                        setup_this,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
                         "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
                         fmt_func,
@@ -1169,19 +1170,18 @@ class Wrapc(util.WrapperMixin):
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         if fmt_func.inlocal("C_code"):
             need_wrapper = True
-            C_code = [1, wformat(fmt_func.C_code, fmt_func), -1]
+            C_code = [wformat(fmt_func.C_code, fmt_func)]
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code
         else:
             # copy-out values, clean up
-            C_code = [1]
+            C_code = []
             C_code.extend(pre_call)
             C_code.extend(call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
             C_code.append(fmt_func.C_return_code)
-            C_code.append(-1)
 
         if need_wrapper:
             self.header_proto_c.append("")
@@ -1210,7 +1210,8 @@ class Wrapc(util.WrapperMixin):
             append_format(
                 impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
             )
-            impl.append("{")
+            impl.append("{+")
+            impl.extend(setup_this)
             self._create_splicer(
                 fmt_func.underscore_name +
                 fmt_func.function_suffix +
@@ -1218,7 +1219,7 @@ class Wrapc(util.WrapperMixin):
                 impl,
                 C_code,
             )
-            impl.append("}")
+            impl.append("-}")
             if options.literalinclude:
                 append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:

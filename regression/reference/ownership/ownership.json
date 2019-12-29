@@ -51,7 +51,6 @@
                             "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
                             "C_name": "OWN_Class1_dtor",
-                            "C_pre_call": "Class1 *SH_this =\t static_cast<Class1 *>(self->addr);",
                             "C_prototype": "OWN_Class1 * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
@@ -119,9 +118,8 @@
                         "fmtdict": {
                             "C_call_code": "int SHC_rv =\t SH_this->getFlag(\t);",
                             "C_call_list": "",
-                            "C_code": "{C_pre_call}\nreturn SH_this->m_flag;",
+                            "C_code": "return SH_this->m_flag;",
                             "C_name": "OWN_Class1_get_flag",
-                            "C_pre_call": "Class1 *SH_this =\t static_cast<Class1 *>(self->addr);",
                             "C_prototype": "OWN_Class1 * self",
                             "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",

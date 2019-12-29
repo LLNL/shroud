@@ -27,11 +27,11 @@ extern "C" {
 // void Member1()
 void TES_capi_class1_member1(TES_capi_class1 * self)
 {
-// splicer begin namespace.CAPI.class.Class1.method.member1
     CAPI::Class1 *SH_this = static_cast<CAPI::Class1 *>(self->addr);
+    // splicer begin namespace.CAPI.class.Class1.method.member1
     SH_this->Member1();
     return;
-// splicer end namespace.CAPI.class.Class1.method.member1
+    // splicer end namespace.CAPI.class.Class1.method.member1
 }
 
 }  // extern "C"

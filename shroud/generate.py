@@ -499,7 +499,7 @@ class GenFunctions(object):
             val = wformat(arg_typemap.cxx_to_c, fmt)
         return_val = "return " + val + ";"
 
-        format = dict(C_code="{C_pre_call}\n" + return_val)
+        format = dict(C_code=return_val)
 
         cls.add_function(decl, format=format, options=options)
 
@@ -523,7 +523,7 @@ class GenFunctions(object):
             )  # XXX - what about pointer variables?
         )
 
-        format = dict(C_code="{C_pre_call}\n" + set_val + "\nreturn;")
+        format = dict(C_code=set_val + "\nreturn;")
 
         cls.add_function(decl, attrs=attrs, format=format, options=options)
 
