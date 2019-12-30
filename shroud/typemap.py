@@ -62,6 +62,7 @@ default_stmts = dict(
         pre_call=[],
         call=[],
         post_call=[],
+        result=None,  # name of result variable
     ),
 )
 default_scopes = dict()
@@ -1068,6 +1069,18 @@ def compute_name(path, char="_"):
     work = [ part for part in path if part ] # skip empty components
     return char.join(work)
 
+def lookup_local_stmts(language, blk, node):
+    """Look in node.fstatements for additional statements.
+    XXX - Only used with result.
+    mode - "update", "replace"
+    """
+    blk2 = node.fstatements.get(language, None)
+    if blk2:
+        mode = blk2.get("mode", "update")
+        if mode == "update":
+            blk2.reparent(blk)
+        return blk2
+    return blk
 
 def create_buf_variable_names(options, blk, attrs, c_var):
     """Define variable names for buffer arguments.
@@ -1533,6 +1546,7 @@ fc_statements = dict(
         ],
     ),
     
+    # similar to f_char_result_allocatable
     f_string_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",

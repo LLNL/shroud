@@ -1168,6 +1168,10 @@ class FunctionNode(AstNode):
          c: [ ]
          f: [ ]
          py: [ ]
+      fstatements: # function statements
+         c:
+         f:
+         py:
 
 
     _fmtfunc = Scope()
@@ -1242,6 +1246,7 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
         self.splicer = {}
+        self.fstatements = {}
 
         # self.function_index = []
 
@@ -1341,6 +1346,14 @@ class FunctionNode(AstNode):
         if "splicer" in kwargs:
             self.splicer = kwargs["splicer"]
             
+        if "fstatements" in kwargs:
+            # fstatements must be a dict
+            for key, value in kwargs["fstatements"].items():
+                # value must be a dict
+                if key in ["c", "f", "py"]:
+                    # remove __line__?
+                    self.fstatements[key] = util.Scope(None, **value)
+
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
@@ -1401,7 +1414,7 @@ class FunctionNode(AstNode):
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
 
-        # Deep copy dictionaries.
+        # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)

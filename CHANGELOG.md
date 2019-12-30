@@ -33,6 +33,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Replaces any language directive in the YAML file.
 - Wrap functions which return a std::vector.
 
+- Add *fstatements* to decl to add additional statement fields
+  for the funtion result.
+- Change Fortran splicer to include code from pre_call, call, and post_call
+  fields from cf_statements.
+
 ### Changed
 - Default of library name from *default_library* to *library*.
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.

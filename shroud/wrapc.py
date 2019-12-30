@@ -792,6 +792,7 @@ class Wrapc(util.WrapperMixin):
             compute_cxx_deref(
                 CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
+        result_blk = typemap.lookup_local_stmts("c", result_blk, node)
 
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
@@ -1061,7 +1062,7 @@ class Wrapc(util.WrapperMixin):
                     self.patterns[C_error_pattern],
                     fmt_pattern,
                 )
-        
+
         if result_blk.call:
             raw_call_code = result_blk["call"]
         elif CXX_subprogram == "subroutine":

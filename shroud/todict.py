@@ -216,6 +216,7 @@ class ToDict(visitor.Visitor):
                 "options",
                 "template_arguments",
                 "fortran_generic",
+                "fstatements",
                 "splicer",
             ],
         )

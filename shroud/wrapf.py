@@ -1346,14 +1346,22 @@ rv = .false.
         fmt_func.F_subprogram = subprogram
 
         result_blk = typemap.lookup_fc_stmts(f_stmts)
+        result_blk = typemap.lookup_local_stmts("f", result_blk, node)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = "_".join(f_stmts)
         fmt_result.stmt1 = result_blk.key
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
         fmt_result.stmtc0 = "_".join(c_stmts)
         fmt_result.stmtc1 = c_result_blk.key
 
+        if result_blk.result:
+            # Change a subroutine into function.
+            fmt_func.F_subprogram = "function"
+            fmt_func.F_result = result_blk.result
+            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+        
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
         need_wrapper = need_wrapper or result_blk.need_wrapper
@@ -1425,7 +1433,6 @@ rv = .false.
             # to hold the result.
             spointer = "pointer" if c_arg.is_indirect() else "scalar"
             if c_attrs.get("_is_result", False):
-                # XXX - _is_result implies a string result for now
                 # This argument is the C function result
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
 #XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
@@ -1683,6 +1690,18 @@ rv = .false.
                 need_wrapper, fileinfo,
                 fmt_result,
                 result_blk,
+                modules,
+                imports,
+                arg_f_decl,
+                pre_call,
+                post_call,
+            )
+        elif "f" in node.fstatements:
+            # Result is an argument.
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                node.fstatements["f"],
                 modules,
                 imports,
                 arg_f_decl,
