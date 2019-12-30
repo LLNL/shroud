@@ -977,7 +977,13 @@ rv = .false.
         spointer = "pointer" if ast.is_indirect() else "scalar"
         c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
 
+        if c_result_blk.return_type:
+            # Change a subroutine into function.
+            fmt.F_C_subprogram = "function"
+            fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+        
         self.build_arg_list_interface(
             node, fileinfo,
             fmt_func,
@@ -1053,6 +1059,12 @@ rv = .false.
             if c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif c_result_blk.return_type:
+                # Return type changed by user.
+                ntypemap = typemap.lookup_type(c_result_blk.return_type)
+                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt.F_result))
+                self.update_f_module(modules, imports,
+                                     ntypemap.f_module)
             elif return_pointer_as in ["pointer", "allocatable", "raw"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")

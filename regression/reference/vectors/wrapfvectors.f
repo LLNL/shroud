@@ -72,6 +72,31 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_bufferify
 
+    ! start c_vector_iota_out_with_num_bufferify
+    interface
+        function c_vector_iota_out_with_num_bufferify(Darg) &
+                result(SHT_rv) &
+                bind(C, name="VEC_vector_iota_out_with_num_bufferify")
+            use iso_c_binding, only : C_LONG
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+            integer(C_LONG) SHT_rv
+        end function c_vector_iota_out_with_num_bufferify
+    end interface
+    ! end c_vector_iota_out_with_num_bufferify
+
+    ! start c_vector_iota_out_with_num2_bufferify
+    interface
+        subroutine c_vector_iota_out_with_num2_bufferify(Darg) &
+                bind(C, name="VEC_vector_iota_out_with_num2_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+        end subroutine c_vector_iota_out_with_num2_bufferify
+    end interface
+    ! end c_vector_iota_out_with_num2_bufferify
+
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
@@ -206,6 +231,51 @@ contains
         ! splicer end function.vector_iota_out
     end subroutine vector_iota_out
     ! end vector_iota_out
+
+    ! void vector_iota_out_with_num(std::vector<int> & arg +dimension(:)+intent(out))
+    ! arg_to_buffer
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !! Return the number of items copied into argument
+    !! by setting fstatements for both C and Fortran.
+    !<
+    ! start vector_iota_out_with_num
+    function vector_iota_out_with_num(arg) &
+            result(num)
+        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT) :: arg(:)
+        type(SHROUD_array) :: Darg
+        integer(C_LONG) :: num
+        ! splicer begin function.vector_iota_out_with_num
+        num = c_vector_iota_out_with_num_bufferify(Darg)
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_out_with_num
+    end function vector_iota_out_with_num
+    ! end vector_iota_out_with_num
+
+    ! void vector_iota_out_with_num2(std::vector<int> & arg +dimension(:)+intent(out))
+    ! arg_to_buffer
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !! Return the number of items copied into argument
+    !! by setting fstatements for the Fortran wrapper only.
+    !<
+    ! start vector_iota_out_with_num2
+    function vector_iota_out_with_num2(arg) &
+            result(num)
+        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT) :: arg(:)
+        type(SHROUD_array) :: Darg
+        integer(C_LONG) :: num
+        ! splicer begin function.vector_iota_out_with_num2
+        call c_vector_iota_out_with_num2_bufferify(Darg)
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        num = Darg%size
+        ! splicer end function.vector_iota_out_with_num2
+    end function vector_iota_out_with_num2
+    ! end vector_iota_out_with_num2
 
     ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
     ! arg_to_buffer

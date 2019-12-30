@@ -35,9 +35,10 @@ program tester
 contains
 
   subroutine test_vector_int
-    integer(C_INT) intv(5)
+    integer(C_INT) intv(5), intv2(10)
     integer(C_INT), allocatable :: inta(:)
     integer irv
+    integer(C_LONG) num
 
     call set_case_name("test_vector_int")
 
@@ -49,14 +50,28 @@ contains
     call vector_iota_out(intv)
     call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
 
-    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
+    ! Fortran and C wrappers have custom statements.
+    intv2(:) = 0
+    num = vector_iota_out_with_num(intv2)
+    call assert_true(5 == num)
+    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]))
+
+    ! Only Fortran wrapper has custom statements.
+    intv2(:) = 0
+    num = vector_iota_out_with_num2(intv2)
+    call assert_true(5 == num)
+    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]))
+
+    ! inta is intent(out), so it will be deallocated upon entry
+    ! to vector_iota_out_alloc.
     call vector_iota_out_alloc(inta)
     call assert_true(allocated(inta))
     call assert_equals(5 , size(inta))
     call assert_true( all(inta == [1,2,3,4,5]), &
          "vector_iota_out_alloc value")
 
-    ! inta is intent(inout), so it will NOT be deallocated upon entry to vector_iota_inout_alloc
+    ! inta is intent(inout), so it will NOT be deallocated upon entry
+    ! to vector_iota_inout_alloc.
     ! Use previous value to append
     call vector_iota_inout_alloc(inta)
     call assert_true(allocated(inta))

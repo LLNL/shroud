@@ -93,6 +93,52 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_bufferify
 
+// void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+/**
+ * \brief Copy vector into Fortran input array
+ *
+ * Return the number of items copied into argument
+ * by setting fstatements for both C and Fortran.
+ */
+// start VEC_vector_iota_out_with_num_bufferify
+long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
+{
+    // splicer begin function.vector_iota_out_with_num_bufferify
+    std::vector<int> *SHCXX_arg = new std::vector<int>;
+    vector_iota_out_with_num(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->elem_len = sizeof(int);
+    Darg->size = SHCXX_arg->size();
+    return Darg->size;
+    // splicer end function.vector_iota_out_with_num_bufferify
+}
+// end VEC_vector_iota_out_with_num_bufferify
+
+// void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+/**
+ * \brief Copy vector into Fortran input array
+ *
+ * Return the number of items copied into argument
+ * by setting fstatements for the Fortran wrapper only.
+ */
+// start VEC_vector_iota_out_with_num2_bufferify
+void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
+{
+    // splicer begin function.vector_iota_out_with_num2_bufferify
+    std::vector<int> *SHCXX_arg = new std::vector<int>;
+    vector_iota_out_with_num2(*SHCXX_arg);
+    Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->elem_len = sizeof(int);
+    Darg->size = SHCXX_arg->size();
+    return;
+    // splicer end function.vector_iota_out_with_num2_bufferify
+}
+// end VEC_vector_iota_out_with_num2_bufferify
+
 // void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
 /**
  * \brief Copy vector into Fortran allocatable array
