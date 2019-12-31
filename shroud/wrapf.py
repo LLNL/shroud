@@ -977,7 +977,13 @@ rv = .false.
         spointer = "pointer" if ast.is_indirect() else "scalar"
         c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
 
+        if c_result_blk.return_type:
+            # Change a subroutine into function.
+            fmt.F_C_subprogram = "function"
+            fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+        
         self.build_arg_list_interface(
             node, fileinfo,
             fmt_func,
@@ -1053,6 +1059,12 @@ rv = .false.
             if c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            elif c_result_blk.return_type:
+                # Return type changed by user.
+                ntypemap = typemap.lookup_type(c_result_blk.return_type)
+                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt.F_result))
+                self.update_f_module(modules, imports,
+                                     ntypemap.f_module)
             elif return_pointer_as in ["pointer", "allocatable", "raw"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1208,7 +1220,7 @@ rv = .false.
         intent_blk,
         modules,
         imports,
-        arg_f_decl=None,
+        declare=None,
         pre_call=None,
         post_call=None,
     ):
@@ -1223,7 +1235,7 @@ rv = .false.
             intent_blk -
             modules -
             imports -
-            arg_f_decl -
+            declare -
             pre_call -
             post_call -
 
@@ -1232,10 +1244,10 @@ rv = .false.
         """
         self.update_f_module(modules, imports, intent_blk.f_module)
 
-        if arg_f_decl is not None and intent_blk.declare:
+        if declare is not None and intent_blk.declare:
             need_wrapper = True
             for line in intent_blk.declare:
-                append_format(arg_f_decl, line, fmt)
+                append_format(declare, line, fmt)
 
         if pre_call is not None and intent_blk.pre_call:
             need_wrapper = True
@@ -1299,18 +1311,12 @@ rv = .false.
         is_dtor = ast.is_dtor()
         is_static = False
 
-        if fmt_func.C_custom_return_type:
-            # User has changed the return type of the C function
-            # TODO: probably needs to be more clever about
-            # setting pointer or reference fields too.
-            # Maybe parse result_type instead of copy.
-            ast = copy.deepcopy(node.ast)
-            ast.typename = result_type
-
         arg_c_call = []  # arguments to C function
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations
+        declare = []
         pre_call = []
+        call = []
         post_call = []
         modules = {}  # indexed as [module][variable]
         imports = {}
@@ -1345,14 +1351,22 @@ rv = .false.
         fmt_func.F_subprogram = subprogram
 
         result_blk = typemap.lookup_fc_stmts(f_stmts)
+        result_blk = typemap.lookup_local_stmts("f", result_blk, node)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = "_".join(f_stmts)
         fmt_result.stmt1 = result_blk.key
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
+        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
         fmt_result.stmtc0 = "_".join(c_stmts)
         fmt_result.stmtc1 = c_result_blk.key
 
+        if result_blk.result:
+            # Change a subroutine into function.
+            fmt_func.F_subprogram = "function"
+            fmt_func.F_result = result_blk.result
+            fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+        
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
         need_wrapper = need_wrapper or result_blk.need_wrapper
@@ -1424,7 +1438,6 @@ rv = .false.
             # to hold the result.
             spointer = "pointer" if c_arg.is_indirect() else "scalar"
             if c_attrs.get("_is_result", False):
-                # XXX - _is_result implies a string result for now
                 # This argument is the C function result
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
 #XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
@@ -1566,7 +1579,7 @@ rv = .false.
                 f_intent_blk,
                 modules,
                 imports,
-                arg_f_decl,
+                declare,
                 pre_call,
                 post_call,
             )
@@ -1616,6 +1629,18 @@ rv = .false.
                     # XXX - Assume 1-d
                     fmt_result.f_var_shape = "(:)"
                     fmt_result.f_pointer_shape = ", [{}]".format(dim)
+                if result_typemap.base == "vector":
+                    ntypemap = ast.template_arguments[0].typemap
+                else:
+                    ntypemap = result_typemap
+                if return_pointer_as == "allocatable":
+                    f_type = ntypemap.f_type_allocatable or \
+                             ntypemap.f_type
+                else:
+                    f_type = ntypemap.f_type
+                arg_f_decl.append("{}, {} :: {}{}".format(
+                    f_type, return_pointer_as,
+                    fmt_result.f_var, fmt_result.f_var_shape))
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1660,39 +1685,47 @@ rv = .false.
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
-        if fmt_func.inlocal("F_code"):
+        F_code = None
+        call_list = []
+        if "f" in node.splicer:
             need_wrapper = True
-            F_code = [wformat(fmt_func.F_code, fmt_result)]
+            F_code = node.splicer["f"]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code
+        elif result_blk.call:
+            call_list = result_blk.call
+        elif C_subprogram == "function":
+            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
-            F_code = []
-            if C_subprogram == "function":
-                if result_blk.call:
-                    cmd_list = result_blk.call
-                else:
-                    cmd_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
-                #                for cmd in cmd_list:  # only allow a single statment for now
-                #                    append_format(pre_call, cmd, fmt_func)
-                fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
-                F_code.append(fmt_func.F_call_code)
+            call_list = ["call {F_C_call}({F_arg_c_call})"]
 
-                need_wrapper = self.add_code_from_statements(
-                    need_wrapper, fileinfo,
-                    fmt_result,
-                    result_blk,
-                    modules,
-                    imports,
-                    arg_f_decl,
-                    post_call=F_code,
-                )
-            else:
-                fmt_func.F_call_code = wformat(
-                    "call {F_C_call}({F_arg_c_call})", fmt_func
-                )
-                F_code.append(fmt_func.F_call_code)
-
+        for line in call_list:
+            append_format(call, line, fmt_result)
+        if C_subprogram == "function":
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                result_blk,
+                modules,
+                imports,
+                declare,
+                pre_call,
+                post_call,
+            )
+        elif "f" in node.fstatements:
+            # Result is an argument.
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                node.fstatements["f"],
+                modules,
+                imports,
+                declare,
+                pre_call,
+                post_call,
+            )
+            
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
         if need_wrapper:
@@ -1719,9 +1752,9 @@ rv = .false.
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
-            impl.extend(pre_call)
+            if F_code is None:
+                F_code = declare + pre_call + call + post_call
             self._create_splicer(sname, impl, F_code)
-            impl.extend(post_call)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
             if options.literalinclude:

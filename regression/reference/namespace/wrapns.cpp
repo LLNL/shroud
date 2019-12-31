@@ -47,30 +47,30 @@ void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var
 // const std::string & LastFunctionCalled() +deref(allocatable)
 const char * NS_last_function_called()
 {
-// splicer begin function.last_function_called
+    // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end function.last_function_called
+    // splicer end function.last_function_called
 }
 
 // void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.last_function_called_bufferify
+    // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
     return;
-// splicer end function.last_function_called_bufferify
+    // splicer end function.last_function_called_bufferify
 }
 
 // void One()
 void NS_one()
 {
-// splicer begin function.one
+    // splicer begin function.one
     One();
     return;
-// splicer end function.one
+    // splicer end function.one
 }
 
 // Release library allocated memory.

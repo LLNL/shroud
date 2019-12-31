@@ -72,6 +72,31 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_bufferify
 
+    ! start c_vector_iota_out_with_num_bufferify
+    interface
+        function c_vector_iota_out_with_num_bufferify(Darg) &
+                result(SHT_rv) &
+                bind(C, name="VEC_vector_iota_out_with_num_bufferify")
+            use iso_c_binding, only : C_LONG
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+            integer(C_LONG) SHT_rv
+        end function c_vector_iota_out_with_num_bufferify
+    end interface
+    ! end c_vector_iota_out_with_num_bufferify
+
+    ! start c_vector_iota_out_with_num2_bufferify
+    interface
+        subroutine c_vector_iota_out_with_num2_bufferify(Darg) &
+                bind(C, name="VEC_vector_iota_out_with_num2_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+        end subroutine c_vector_iota_out_with_num2_bufferify
+    end interface
+    ! end c_vector_iota_out_with_num2_bufferify
+
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
@@ -202,10 +227,55 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota_out
         call c_vector_iota_out_bufferify(Darg)
-        ! splicer end function.vector_iota_out
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_out
     end subroutine vector_iota_out
     ! end vector_iota_out
+
+    ! void vector_iota_out_with_num(std::vector<int> & arg +dimension(:)+intent(out))
+    ! arg_to_buffer
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !! Return the number of items copied into argument
+    !! by setting fstatements for both C and Fortran.
+    !<
+    ! start vector_iota_out_with_num
+    function vector_iota_out_with_num(arg) &
+            result(num)
+        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT) :: arg(:)
+        type(SHROUD_array) :: Darg
+        ! splicer begin function.vector_iota_out_with_num
+        integer(C_LONG) :: num
+        num = c_vector_iota_out_with_num_bufferify(Darg)
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_out_with_num
+    end function vector_iota_out_with_num
+    ! end vector_iota_out_with_num
+
+    ! void vector_iota_out_with_num2(std::vector<int> & arg +dimension(:)+intent(out))
+    ! arg_to_buffer
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !! Return the number of items copied into argument
+    !! by setting fstatements for the Fortran wrapper only.
+    !<
+    ! start vector_iota_out_with_num2
+    function vector_iota_out_with_num2(arg) &
+            result(num)
+        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
+        integer(C_INT), intent(OUT) :: arg(:)
+        type(SHROUD_array) :: Darg
+        ! splicer begin function.vector_iota_out_with_num2
+        integer(C_LONG) :: num
+        call c_vector_iota_out_with_num2_bufferify(Darg)
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        num = Darg%size
+        ! splicer end function.vector_iota_out_with_num2
+    end function vector_iota_out_with_num2
+    ! end vector_iota_out_with_num2
 
     ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
     ! arg_to_buffer
@@ -220,9 +290,9 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota_out_alloc
         call c_vector_iota_out_alloc_bufferify(Darg)
-        ! splicer end function.vector_iota_out_alloc
         allocate(arg(Darg%size))
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_out_alloc
     end subroutine vector_iota_out_alloc
     ! end vector_iota_out_alloc
 
@@ -240,10 +310,10 @@ contains
         ! splicer begin function.vector_iota_inout_alloc
         call c_vector_iota_inout_alloc_bufferify(arg, &
             size(arg, kind=C_LONG), Darg)
-        ! splicer end function.vector_iota_inout_alloc
         if (allocated(arg)) deallocate(arg)
         allocate(arg(Darg%size))
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_inout_alloc
     end subroutine vector_iota_inout_alloc
     ! end vector_iota_inout_alloc
 
@@ -256,8 +326,8 @@ contains
         ! splicer begin function.vector_increment
         call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG), &
             Darg)
-        ! splicer end function.vector_increment
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_increment
     end subroutine vector_increment
 
     ! void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
@@ -272,8 +342,8 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota_out_d
         call c_vector_iota_out_d_bufferify(Darg)
-        ! splicer end function.vector_iota_out_d
         call SHROUD_copy_array_double(Darg, arg, size(arg,kind=C_SIZE_T))
+        ! splicer end function.vector_iota_out_d
     end subroutine vector_iota_out_d
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
@@ -293,7 +363,7 @@ contains
         ! splicer end function.vector_string_count
     end function vector_string_count
 
-    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+dimension(:)
     ! arg_to_buffer
     !>
     !! Implement iota function.
@@ -308,9 +378,9 @@ contains
         integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_vector_alloc
         call c_return_vector_alloc_bufferify(n, DSHF_rv)
-        ! splicer end function.return_vector_alloc
         allocate(SHT_rv(DSHF_rv%size))
         call SHROUD_copy_array_int(DSHF_rv, SHT_rv, size(SHT_rv,kind=C_SIZE_T))
+        ! splicer end function.return_vector_alloc
     end function return_vector_alloc
 
     ! splicer begin additional_functions

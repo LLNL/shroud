@@ -298,8 +298,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_pointer
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_pointer()
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_pointer
@@ -311,8 +311,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_pointer
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_pointer
@@ -326,8 +326,8 @@ contains
         type(SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), allocatable :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_alloc
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
         allocate(SHT_rv(len))
         call SHROUD_copy_array_int(DSHC_rv, SHT_rv, size(SHT_rv, kind=C_SIZE_T))
@@ -340,8 +340,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_default
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_default
@@ -353,8 +353,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_pointer_new
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_new(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_pointer_new
@@ -366,8 +366,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_default_new
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_new(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_default_new
@@ -378,8 +378,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_static
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
     end function get_class_static
@@ -394,8 +394,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_new
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new

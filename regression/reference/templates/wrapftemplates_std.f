@@ -157,8 +157,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(vector_int) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_int.method.ctor
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.ctor
     end function vector_int_ctor
@@ -185,8 +185,8 @@ contains
         class(vector_int) :: obj
         integer(C_SIZE_T), value, intent(IN) :: n
         integer(C_INT), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
         ! splicer begin namespace.std.class.vector_int.method.at
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_vector_int_at(obj%cxxmem, n)
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_int.method.at
@@ -222,8 +222,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(vector_double) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_double.method.ctor
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.ctor
     end function vector_double_ctor
@@ -250,8 +250,8 @@ contains
         class(vector_double) :: obj
         integer(C_SIZE_T), value, intent(IN) :: n
         real(C_DOUBLE), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
         ! splicer begin namespace.std.class.vector_double.method.at
+        type(C_PTR) :: SHT_ptr
         SHT_ptr = c_vector_double_at(obj%cxxmem, n)
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_double.method.at

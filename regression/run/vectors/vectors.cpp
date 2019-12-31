@@ -26,7 +26,8 @@ int vector_sum(const std::vector<int> &arg)
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(out)
-// Start with empty vector and fill in values
+// Start with empty vector and fill in values.
+// Three copies of the same function but wrapped differently.
 
 // start vector_iota_out
 void vector_iota_out(std::vector<int> &arg)
@@ -37,6 +38,24 @@ void vector_iota_out(std::vector<int> &arg)
   return;
 }
 // end vector_iota_out
+
+// C and Fortran wrapper will be a function which returns arg.size()
+void vector_iota_out_with_num(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 1);
+  }
+  return;
+}
+
+// Fortran wrapper will be a function which Darg%size
+void vector_iota_out_with_num2(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 1);
+  }
+  return;
+}
 
 //----------------------------------------------------------------------
 // vector reference as argument.

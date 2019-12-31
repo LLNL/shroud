@@ -39,6 +39,10 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg);
 
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg);
 
+long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg);
+
+void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg);
+
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg);
 
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,

@@ -56,22 +56,22 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // start STR_get_const_string_ptr_alloc
 const char * STR_get_const_string_ptr_alloc()
 {
-// splicer begin function.get_const_string_ptr_alloc
+    // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-// splicer end function.get_const_string_ptr_alloc
+    // splicer end function.get_const_string_ptr_alloc
 }
 // end STR_get_const_string_ptr_alloc
 
 // start STR_get_const_string_ptr_alloc_bufferify
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.get_const_string_ptr_alloc_bufferify
+    // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);
     return;
-// splicer end function.get_const_string_ptr_alloc_bufferify
+    // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify
 

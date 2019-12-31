@@ -1164,6 +1164,14 @@ class FunctionNode(AstNode):
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
+      splicer:
+         c: [ ]
+         f: [ ]
+         py: [ ]
+      fstatements: # function statements
+         c:
+         f:
+         py:
 
 
     _fmtfunc = Scope()
@@ -1237,6 +1245,8 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
+        self.splicer = {}
+        self.fstatements = {}
 
         # self.function_index = []
 
@@ -1332,6 +1342,18 @@ class FunctionNode(AstNode):
                     arg.attrs.update(attrs[name])
         if "fattrs" in kwargs:
             ast.attrs.update(kwargs["fattrs"])
+
+        if "splicer" in kwargs:
+            self.splicer = kwargs["splicer"]
+            
+        if "fstatements" in kwargs:
+            # fstatements must be a dict
+            for key, value in kwargs["fstatements"].items():
+                # value must be a dict
+                if key in ["c", "f", "py"]:
+                    # remove __line__?
+                    self.fstatements[key] = util.Scope(None, **value)
+
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
@@ -1376,10 +1398,6 @@ class FunctionNode(AstNode):
         self.option_to_fmt()
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
-            if "C_return_type" in fmtdict:
-                # wrapc.py will overwrite C_return_type.
-                # keep original value for wrapf.py.
-                self.fmtdict.C_custom_return_type = fmtdict["C_return_type"]
 
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template
@@ -1392,7 +1410,7 @@ class FunctionNode(AstNode):
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
 
-        # Deep copy dictionaries.
+        # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)

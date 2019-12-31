@@ -155,8 +155,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class2) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class2.method.ctor
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_class2_ctor(SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor

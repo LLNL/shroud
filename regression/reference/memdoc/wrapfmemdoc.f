@@ -89,9 +89,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
-        ! splicer end function.get_const_string_ptr_alloc
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
     ! end get_const_string_ptr_alloc
 

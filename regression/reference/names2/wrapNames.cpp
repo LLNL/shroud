@@ -21,10 +21,10 @@ extern "C" {
 // void AFunction()
 void NAM_afunction()
 {
-// splicer begin function.afunction
+    // splicer begin function.afunction
     ignore1::ignore2::AFunction();
     return;
-// splicer end function.afunction
+    // splicer end function.afunction
 }
 
 // Release library allocated memory.

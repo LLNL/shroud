@@ -112,9 +112,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.last_function_called
         call c_last_function_called_bufferify(DSHF_rv)
-        ! splicer end function.last_function_called
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end function.last_function_called
     end function last_function_called
 
     ! splicer begin additional_functions
