@@ -109,34 +109,6 @@ static int l_example_nested_ExClass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-static int l_example_nested_ExClass1_get_name_error_pattern(lua_State *L)
-{
-    // splicer begin class.ExClass1.method.getNameErrorPattern
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
-        L, 1, "ExClass1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getNameErrorPattern();
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end class.ExClass1.method.getNameErrorPattern
-}
-
-// int GetNameLength() const
-/**
- * \brief helper function for Fortran to get length of name.
- *
- */
-static int l_example_nested_ExClass1_get_name_length(lua_State *L)
-{
-    // splicer begin class.ExClass1.method.GetNameLength
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
-        L, 1, "ExClass1.metatable");
-    int SHCXX_rv = SH_this->self->GetNameLength();
-    lua_pushinteger(L, SHCXX_rv);
-    return 1;
-    // splicer end class.ExClass1.method.GetNameLength
-}
-
 // const string & getNameErrorCheck() const +deref(allocatable)
 static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
 {
@@ -253,8 +225,6 @@ static int l_example_nested_ExClass1_splicer_special(lua_State *L)
 static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"__gc", l_example_nested_ExClass1_dtor},
     {"incrementCount", l_example_nested_ExClass1_increment_count},
-    {"getNameErrorPattern", l_example_nested_ExClass1_get_name_error_pattern},
-    {"GetNameLength", l_example_nested_ExClass1_get_name_length},
     {"getNameErrorCheck", l_example_nested_ExClass1_get_name_error_check},
     {"getNameArg", l_example_nested_ExClass1_get_name_arg},
     {"getRoot", l_example_nested_ExClass1_get_root},

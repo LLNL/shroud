@@ -396,6 +396,7 @@ if __name__ == "__main__":
         TestDesc("strings"),
         TestDesc("clibrary"),
         TestDesc("interface"),
+        TestDesc("statement"),
         TestDesc("templates"),
         TestDesc("ownership"),
         TestDesc("generic"),

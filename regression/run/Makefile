@@ -40,6 +40,7 @@ test-fortran : \
   test-fortran-clibrary \
   test-fortran-ownership \
   test-fortran-generic \
+  test-fortran-statement \
   test-fortran-templates
 
 ######################################################################
@@ -61,6 +62,7 @@ test-c : \
   test-c-types \
   test-c-enum-c \
   test-c-namespace \
+  test-c-statement \
   test-c-templates
 
 
@@ -175,6 +177,7 @@ phony_explicit:
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
     $(tempdir)/run/scope/.. \
+    $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/struct-c/.. \

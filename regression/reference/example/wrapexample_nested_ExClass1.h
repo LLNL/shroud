@@ -51,16 +51,6 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self);
 int AA_example_nested_ExClass1_increment_count(
     AA_example_nested_ExClass1 * self, int incr);
 
-const char * AA_example_nested_ExClass1_get_name_error_pattern(
-    const AA_example_nested_ExClass1 * self);
-
-void AA_example_nested_ExClass1_get_name_error_pattern_bufferify(
-    const AA_example_nested_ExClass1 * self, char * SHF_rv,
-    int NSHF_rv);
-
-int AA_example_nested_ExClass1_get_name_length(
-    const AA_example_nested_ExClass1 * self);
-
 const char * AA_example_nested_ExClass1_get_name_error_check(
     const AA_example_nested_ExClass1 * self);
 

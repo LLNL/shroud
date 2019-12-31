@@ -61,8 +61,6 @@ module userlibrary_example_nested_mod
     contains
         procedure :: delete => exclass1_dtor
         procedure :: increment_count => exclass1_increment_count
-        procedure :: get_name_error_pattern => exclass1_get_name_error_pattern
-        procedure :: get_name_length => exclass1_get_name_length
         procedure :: get_name_error_check => exclass1_get_name_error_check
         procedure :: get_name_arg => exclass1_get_name_arg
         procedure :: get_root => exclass1_get_root
@@ -227,37 +225,6 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
-
-        pure function c_exclass1_get_name_error_pattern(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_pattern")
-            use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(C_PTR) SHT_rv
-        end function c_exclass1_get_name_error_pattern
-
-        subroutine c_exclass1_get_name_error_pattern_bufferify(self, &
-                SHF_rv, NSHF_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_pattern_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_exclass1_get_name_error_pattern_bufferify
-
-        pure function c_exclass1_get_name_length(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_length")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            integer(C_INT) :: SHT_rv
-        end function c_exclass1_get_name_length
 
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -889,34 +856,6 @@ contains
         SHT_rv = c_exclass1_increment_count(obj%cxxmem, incr)
         ! splicer end namespace.example::nested.class.ExClass1.method.increment_count
     end function exclass1_increment_count
-
-    ! const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-    ! arg_to_buffer
-    function exclass1_get_name_error_pattern(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
-        character(len=aa_exclass1_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-        call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem, &
-            SHT_rv, len(SHT_rv, kind=C_INT))
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-    end function exclass1_get_name_error_pattern
-
-    ! int GetNameLength() const
-    !>
-    !! \brief helper function for Fortran to get length of name.
-    !!
-    !<
-    function exclass1_get_name_length(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
-        integer(C_INT) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
-        SHT_rv = c_exclass1_get_name_length(obj%cxxmem)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_length
-    end function exclass1_get_name_length
 
     ! const string & getNameErrorCheck() const +deref(allocatable)
     ! arg_to_buffer
