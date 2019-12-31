@@ -565,6 +565,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         fmt_library = util.Scope(
             parent=None,
             C_bufferify_suffix="_bufferify",
+            C_call_list="",
             C_prefix=C_prefix,
             C_result="rv",  # return value
             c_temp="SHT_",
@@ -577,6 +578,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             cxx_class="",  # Assume no class
             class_scope="",
             file_scope = "_".join(self.scope_file),
+            F_arg_c_call="",
             F_C_prefix="c_",
             F_derived_member="cxxmem",
             F_name_assign="assign",

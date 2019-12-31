@@ -1603,7 +1603,8 @@ rv = .false.
             )
 
         # use tabs to insert continuations
-        fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
+        if arg_c_call:
+            fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
         fmt_func.F_arguments = options.get(
             "F_arguments", ",\t ".join(arg_f_names)
         )

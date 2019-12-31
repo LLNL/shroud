@@ -25,6 +25,7 @@
             "CXX_this_call": "",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapstrings.h",
@@ -44,6 +45,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -283,7 +285,6 @@
                     "brief": "return a char argument (non-pointer)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_return_char",
                     "C_prototype": "",
                     "C_return_type": "char",
@@ -387,7 +388,6 @@
                     "brief": "return a char argument (non-pointer)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_return_char_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
@@ -949,7 +949,6 @@
                     "brief": "return a 'const char *' as character(*)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr1",
                     "C_prototype": "",
                     "C_return_type": "const char *",
@@ -1059,7 +1058,6 @@
                     "brief": "return a 'const char *' as character(*)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr1_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -1144,7 +1142,6 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr2",
                     "C_prototype": "",
                     "C_return_type": "const char *",
@@ -1254,7 +1251,6 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr2_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
@@ -1329,7 +1325,6 @@
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr3",
                     "C_prototype": "",
                     "C_return_type": "const char *",
@@ -1431,7 +1426,6 @@
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_char_ptr3_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
@@ -1672,7 +1666,6 @@
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_result_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -1843,7 +1836,6 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
@@ -1996,7 +1988,6 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_as_arg_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
@@ -2224,7 +2215,6 @@
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -2307,7 +2297,6 @@
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -2418,7 +2407,6 @@
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -2506,7 +2494,6 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -2616,7 +2603,6 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
@@ -2692,7 +2678,6 @@
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_as_arg",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -2795,7 +2780,6 @@
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_as_arg_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
@@ -2949,7 +2933,6 @@
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_empty",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -3058,7 +3041,6 @@
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_empty_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
@@ -3137,7 +3119,6 @@
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -3241,7 +3222,6 @@
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -3326,7 +3306,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
@@ -3437,7 +3416,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
@@ -3519,7 +3497,6 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
@@ -3624,7 +3601,6 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -3708,7 +3684,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
@@ -3817,7 +3792,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -3903,7 +3877,6 @@
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
@@ -4017,7 +3990,6 @@
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -5375,7 +5347,6 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "CreturnChar",
                     "C_prototype": "",
                     "C_return_type": "char",
@@ -5482,7 +5453,6 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_creturn_char_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",

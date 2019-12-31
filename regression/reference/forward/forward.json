@@ -128,7 +128,6 @@
                         "decl": "Class2()",
                         "declgen": "Class2()",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "FOR_Class2_ctor",
                             "C_prototype": "FOR_Class2 * SHC_rv",
                             "C_return_type": "FOR_Class2 *",
@@ -169,7 +168,6 @@
                         "decl": "~Class2()",
                         "declgen": "~Class2()",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "FOR_Class2_dtor",
                             "C_prototype": "FOR_Class2 * self",
                             "C_return_type": "void",
@@ -468,6 +466,7 @@
             "CXX_this_call": "",
             "C_array_type": "FOR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "FOR_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapforward.h",
@@ -487,6 +486,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
