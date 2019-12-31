@@ -242,7 +242,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     // splicer end function.vector_string_count_bufferify
 }
 
-// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+dimension(:)+intent(out)) +dimension(:)
 /**
  * Implement iota function.
  * Return a vector as an ALLOCATABLE array.

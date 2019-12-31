@@ -1960,8 +1960,10 @@
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "std::vector<{cxx_T}>",
+                        "f_pointer_shape": ", [:]",
                         "f_type": null,
                         "f_var": "SHT_rv",
+                        "f_var_shape": "(:)",
                         "stmt0": "f_vector_scalar_result_allocatable",
                         "stmt1": "f_vector_result_allocatable",
                         "stmtc0": "c_vector_scalar_result_buf",
@@ -1970,7 +1972,8 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "dimension": ":"
                     },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
@@ -2007,7 +2010,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+dimension(:)",
                 "doxygen": {
                     "__line__": 164,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
@@ -2039,6 +2042,7 @@
                             "c_member": "->",
                             "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
+                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)",
@@ -2052,6 +2056,7 @@
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_type": "integer(C_INT)",
                             "f_var": "SHT_rv",
@@ -2103,6 +2108,9 @@
                 },
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "attrs": {
+                        "dimension": ":"
+                    },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
                         "pointer": []
@@ -2128,6 +2136,7 @@
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
+                                "dimension": ":",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2158,7 +2167,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+dimension(:)+intent(out)) +dimension(:)",
                 "doxygen": {
                     "__line__": 164,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"

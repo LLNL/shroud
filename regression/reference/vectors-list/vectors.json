@@ -933,6 +933,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "dimension": ":"
+                    },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
                         "pointer": []
@@ -968,7 +971,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)",
                 "doxygen": {
                     "__line__": 164,
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"

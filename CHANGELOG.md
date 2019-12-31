@@ -35,8 +35,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add *fstatements* to decl to add additional statement fields
   for the funtion result.
-- Change Fortran splicer to include code from pre_call, call, and post_call
-  fields from cf_statements.
+- Change Fortran splicer to include code from declare, pre_call, call,
+  and post_call fields from cf_statements.
+  Declarations for arguments and results are outside the splicer
+  since they are controlled by the decl and attributes.
 
 ### Changed
 - Default of library name from *default_library* to *library*.

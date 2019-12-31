@@ -246,8 +246,8 @@ contains
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
         type(SHROUD_array) :: Darg
-        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num
+        integer(C_LONG) :: num
         num = c_vector_iota_out_with_num_bufferify(Darg)
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_with_num
@@ -268,8 +268,8 @@ contains
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
         type(SHROUD_array) :: Darg
-        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num2
+        integer(C_LONG) :: num
         call c_vector_iota_out_with_num2_bufferify(Darg)
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
         num = Darg%size
@@ -363,7 +363,7 @@ contains
         ! splicer end function.vector_string_count
     end function vector_string_count
 
-    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)
+    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+dimension(:)
     ! arg_to_buffer
     !>
     !! Implement iota function.

@@ -1220,7 +1220,7 @@ rv = .false.
         intent_blk,
         modules,
         imports,
-        arg_f_decl=None,
+        declare=None,
         pre_call=None,
         post_call=None,
     ):
@@ -1235,7 +1235,7 @@ rv = .false.
             intent_blk -
             modules -
             imports -
-            arg_f_decl -
+            declare -
             pre_call -
             post_call -
 
@@ -1244,10 +1244,10 @@ rv = .false.
         """
         self.update_f_module(modules, imports, intent_blk.f_module)
 
-        if arg_f_decl is not None and intent_blk.declare:
+        if declare is not None and intent_blk.declare:
             need_wrapper = True
             for line in intent_blk.declare:
-                append_format(arg_f_decl, line, fmt)
+                append_format(declare, line, fmt)
 
         if pre_call is not None and intent_blk.pre_call:
             need_wrapper = True
@@ -1322,6 +1322,7 @@ rv = .false.
         arg_c_call = []  # arguments to C function
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations
+        declare = []
         pre_call = []
         call = []
         post_call = []
@@ -1586,7 +1587,7 @@ rv = .false.
                 f_intent_blk,
                 modules,
                 imports,
-                arg_f_decl,
+                declare,
                 pre_call,
                 post_call,
             )
@@ -1636,6 +1637,18 @@ rv = .false.
                     # XXX - Assume 1-d
                     fmt_result.f_var_shape = "(:)"
                     fmt_result.f_pointer_shape = ", [{}]".format(dim)
+                if result_typemap.base == "vector":
+                    ntypemap = ast.template_arguments[0].typemap
+                else:
+                    ntypemap = result_typemap
+                if return_pointer_as == "allocatable":
+                    f_type = ntypemap.f_type_allocatable or \
+                             ntypemap.f_type
+                else:
+                    f_type = ntypemap.f_type
+                arg_f_decl.append("{}, {} :: {}{}".format(
+                    f_type, return_pointer_as,
+                    fmt_result.f_var, fmt_result.f_var_shape))
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1704,7 +1717,7 @@ rv = .false.
                 result_blk,
                 modules,
                 imports,
-                arg_f_decl,
+                declare,
                 pre_call,
                 post_call,
             )
@@ -1716,7 +1729,7 @@ rv = .false.
                 node.fstatements["f"],
                 modules,
                 imports,
-                arg_f_decl,
+                declare,
                 pre_call,
                 post_call,
             )
@@ -1748,7 +1761,7 @@ rv = .false.
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
             if F_code is None:
-                F_code = pre_call + call + post_call
+                F_code = declare + pre_call + call + post_call
             self._create_splicer(sname, impl, F_code)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)

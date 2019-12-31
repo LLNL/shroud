@@ -80,7 +80,8 @@ class VerifyAttrs(object):
                 )
 
     def check_fcn_attrs(self, node):
-        """
+        """Check attributes on FunctionNode.
+
         Args:
             node - ast.FunctionNode
         """
@@ -123,14 +124,16 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(ast.params)
 
-    def check_shared_attrs(self, node):
+    def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
-        deref, free_pattern, owner
+        deref, dimension, free_pattern, owner
 
         Args:
             node -
         """
-        attrs = node.attrs
+        attrs = ast.attrs
+        ntypemap = ast.typemap
+        is_ptr = ast.is_indirect()
 
         deref = attrs.get("deref", None)
         if deref is not None:
@@ -141,6 +144,30 @@ class VerifyAttrs(object):
                     "or 'scalar'.".format(deref)
                 )
         # XXX deref only on pointer, vector
+
+        # dimension
+        dimension = attrs.get("dimension", None)
+        if dimension:
+            if attrs.get("value", False):
+                raise RuntimeError(
+                    "argument must not have value=True "
+                    "because it has the dimension attribute."
+                )
+            if not is_ptr:
+                raise RuntimeError(
+                    "dimension attribute can only be "
+                    "used on pointer and references"
+                )
+            if dimension is True:
+                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
+                # No value was provided, provide default
+                if "allocatable" in attrs:
+                    attrs["dimension"] = ":"
+                else:
+                    attrs["dimension"] = "*"
+        elif ntypemap and ntypemap.base == "vector":
+            # default to 1-d assumed shape
+            attrs["dimension"] = ":"
 
         owner = attrs.get("owner", None)
         if owner is not None:
@@ -271,30 +298,6 @@ class VerifyAttrs(object):
                     attrs["value"] = False
             else:
                 attrs["value"] = True
-
-        # dimension
-        dimension = attrs.get("dimension", None)
-        if dimension:
-            if attrs.get("value", False):
-                raise RuntimeError(
-                    "argument must not have value=True "
-                    "because it has the dimension attribute."
-                )
-            if not is_ptr:
-                raise RuntimeError(
-                    "dimension attribute can only be "
-                    "used on pointer and references"
-                )
-            if dimension is True:
-                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
-                # No value was provided, provide default
-                if "allocatable" in attrs:
-                    attrs["dimension"] = ":"
-                else:
-                    attrs["dimension"] = "*"
-        elif arg_typemap and arg_typemap.base == "vector":
-            # default to 1-d assumed shape
-            attrs["dimension"] = ":"
 
         # charlen
         # Only meaningful with 'char *arg+intent(out)'

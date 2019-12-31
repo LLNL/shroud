@@ -111,6 +111,7 @@ class Typemap(object):
             None,
         ),  # Fortran modules needed for interface  (dictionary)
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
+        ("f_type_allocatable", None),
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
         ("f_to_c", None),  # Expression to convert from Fortran to C
@@ -676,6 +677,7 @@ def initialize():
             cxx_type="char",
             c_type="char",  # XXX - char *
             f_type="character(*)",
+            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -715,6 +717,7 @@ def initialize():
             c_type="char",  # XXX - char *
             impl_header="<string>",
             f_type="character(*)",
+            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -1290,7 +1293,6 @@ fc_statements = dict(
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
-            "{f_type}, allocatable :: {f_var}{f_var_shape}",
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
@@ -1317,7 +1319,6 @@ fc_statements = dict(
     f_native_pointer_result_pointer=dict(
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
-            "{f_type}, pointer :: {f_var}{f_var_shape}",
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
@@ -1392,9 +1393,6 @@ fc_statements = dict(
     f_char_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
-        declare=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free"
@@ -1550,9 +1548,6 @@ fc_statements = dict(
     f_string_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
-        declare=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free("
@@ -1796,9 +1791,6 @@ fc_statements = dict(
     f_vector_result_allocatable=dict(
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        declare=[
-            "{f_type}, allocatable :: {f_var}(:)",
-        ],
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
             "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
