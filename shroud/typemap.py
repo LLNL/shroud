@@ -1409,8 +1409,7 @@ fc_statements = dict(
     ),
     c_char_result_buf_allocatable=dict(
         buf_args=["context"],
-#        c_helper="copy_string",
-        c_helper="capsule_data_helper ShroudTypeDefines",
+        c_helper="array_context copy_string ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1604,7 +1603,7 @@ fc_statements = dict(
     c_vector_out_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
+        c_helper="array_context copy_array ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1629,8 +1628,7 @@ fc_statements = dict(
     c_vector_inout_buf=dict(
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
-#        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
-        c_helper="capsule_data_helper ShroudTypeDefines",
+        c_helper="array_context copy_array ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -1656,7 +1654,7 @@ fc_statements = dict(
     c_vector_result_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper ShroudTypeDefines",
+        c_helper="array_context ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
