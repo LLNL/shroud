@@ -248,7 +248,6 @@
                                         "decl": "ExClass1()",
                                         "declgen": "ExClass1()",
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_ctor_0",
                                             "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
@@ -408,10 +407,8 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
-                                            "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_call": "c_exclass1_ctor_1_bufferify",
@@ -522,10 +519,8 @@
                                             "return": "return new instance"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
-                                            "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
@@ -563,7 +558,6 @@
                                             "description": "longer description joined with previous line"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_dtor",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
@@ -719,7 +713,6 @@
                                         "decl": "int incrementCount(int incr)",
                                         "declgen": "int incrementCount(int incr +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "int SHC_rv =\t SH_this->incrementCount(\tincr);",
                                             "C_call_list": "incr",
                                             "C_name": "AA_example_nested_ExClass1_increment_count",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
@@ -818,7 +811,6 @@
                                         "decl": "const string& getNameErrorPattern() const",
                                         "declgen": "const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_pattern",
                                             "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHCXX_rv)) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -933,10 +925,8 @@
                                         "decl": "const string& getNameErrorPattern() const",
                                         "declgen": "void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_pattern_bufferify",
-                                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t char * SHF_rv,\t int NSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass1_get_name_error_pattern_bufferify",
@@ -1018,7 +1008,6 @@
                                             "brief": "helper function for Fortran to get length of name."
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_length",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
@@ -1119,7 +1108,6 @@
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck() const +deref(allocatable)",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check",
                                             "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -1230,10 +1218,8 @@
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
-                                            "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass1_get_name_error_check_bufferify",
@@ -1312,7 +1298,6 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string & getNameArg() const +deref(result_as_arg)",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg",
                                             "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -1416,10 +1401,8 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg_bufferify",
-                                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(name, Nname,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(name, Nname,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t char * name,\t int Nname",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass1_get_name_arg_bufferify",
@@ -1564,7 +1547,6 @@
                                         "decl": "void *getRoot()",
                                         "declgen": "void * getRoot()",
                                         "fmtdict": {
-                                            "C_call_code": "void * SHC_rv =\t SH_this->getRoot(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_root",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
@@ -1719,7 +1701,6 @@
                                         "decl": "int  getValue(int value)",
                                         "declgen": "int getValue(int value +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "int SHC_rv =\t SH_this->getValue(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass1_get_value_from_int",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
@@ -1876,7 +1857,6 @@
                                         "decl": "long getValue(long value)",
                                         "declgen": "long getValue(long value +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "long SHC_rv =\t SH_this->getValue(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass1_get_value_1",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
@@ -1963,7 +1943,6 @@
                                         "decl": "void *getAddr()",
                                         "declgen": "void * getAddr()",
                                         "fmtdict": {
-                                            "C_call_code": "void * SHC_rv =\t SH_this->getAddr(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_get_addr",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
@@ -2120,7 +2099,6 @@
                                         "decl": "bool hasAddr(bool in)",
                                         "declgen": "bool hasAddr(bool in +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "bool SHC_rv =\t SH_this->hasAddr(\tin);",
                                             "C_call_list": "in",
                                             "C_name": "AA_example_nested_ExClass1_has_addr",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
@@ -2163,7 +2141,6 @@
                                         "decl": "void SplicerSpecial()",
                                         "declgen": "void SplicerSpecial()",
                                         "fmtdict": {
-                                            "C_call_code": "SH_this->SplicerSpecial(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass1_splicer_special",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
@@ -2370,10 +2347,8 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor",
-                                            "C_pre_call": "const std::string SHCXX_name(name);",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_call": "c_exclass2_ctor_bufferify",
@@ -2483,10 +2458,8 @@
                                             "brief": "constructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SHCXX_name);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
-                                            "C_pre_call": "const std::string SHCXX_name(name, trim_name);",
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
@@ -2523,7 +2496,6 @@
                                             "brief": "destructor"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_dtor",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -2622,7 +2594,6 @@
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name",
                                             "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -2735,10 +2706,8 @@
                                         "decl": "const string& getName() const",
                                         "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name_bufferify",
-                                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t char * SHF_rv,\t int NSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_get_name_bufferify",
@@ -2825,7 +2794,6 @@
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2() +deref(allocatable)",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name2",
                                             "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -2935,10 +2903,8 @@
                                         "decl": "const string& getName2()",
                                         "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                                         "fmtdict": {
-                                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
-                                            "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_get_name2_bufferify",
@@ -3025,7 +2991,6 @@
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3() const +deref(allocatable)",
                                         "fmtdict": {
-                                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name3",
                                             "C_post_call_pattern": "char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -3135,10 +3100,8 @@
                                         "decl": "string& getName3() const",
                                         "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
                                         "fmtdict": {
-                                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
-                                            "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_get_name3_bufferify",
@@ -3224,7 +3187,6 @@
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4() +deref(allocatable)",
                                         "fmtdict": {
-                                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name4",
                                             "C_post_call_pattern": "char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -3333,10 +3295,8 @@
                                         "decl": "string& getName4()",
                                         "declgen": "void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                                         "fmtdict": {
-                                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
-                                            "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_get_name4_bufferify",
@@ -3418,7 +3378,6 @@
                                             "brief": "helper function for Fortran"
                                         },
                                         "fmtdict": {
-                                            "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_name_length",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
@@ -3592,11 +3551,8 @@
                                         "decl": "ExClass1 *get_class1(const ExClass1 *in)",
                                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in))",
                                         "fmtdict": {
-                                            "C_call_code": "example::nested::ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);",
                                             "C_call_list": "SHCXX_in",
                                             "C_name": "AA_example_nested_ExClass2_get_class1",
-                                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                                            "C_pre_call": "const example::nested::ExClass1 * SHCXX_in =\t static_cast<const example::nested::ExClass1 *>\t(in->addr);",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_call": "c_exclass2_get_class1",
@@ -3688,10 +3644,8 @@
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void * declare(TypeID type +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "SH_this->declare(\tSHCXX_type);",
                                             "C_call_list": "SHCXX_type",
                                             "C_name": "AA_example_nested_ExClass2_declare_0",
-                                            "C_pre_call": "TypeID SHCXX_type =\t getTypeID(type);",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int type",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_declare_0",
@@ -4103,10 +4057,8 @@
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)",
                                         "fmtdict": {
-                                            "C_call_code": "SH_this->declare(\tSHCXX_type,\t len);",
                                             "C_call_list": "SHCXX_type,\t len",
                                             "C_name": "AA_example_nested_ExClass2_declare_1",
-                                            "C_pre_call": "TypeID SHCXX_type =\t getTypeID(type);",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int type,\t SIDRE_SidreLength len",
                                             "C_return_type": "void",
                                             "F_C_name": "c_exclass2_declare_1",
@@ -4380,7 +4332,6 @@
                                         "decl": "void destroyall()",
                                         "declgen": "void destroyall()",
                                         "fmtdict": {
-                                            "C_call_code": "SH_this->destroyall(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_destroyall",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -4469,7 +4420,6 @@
                                         "decl": "TypeID getTypeID() const",
                                         "declgen": "TypeID getTypeID() const",
                                         "fmtdict": {
-                                            "C_call_code": "TypeID SHCXX_rv =\t SH_this->getTypeID(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_type_id",
                                             "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
@@ -4686,7 +4636,6 @@
                                         "declgen": "void setValue(int value +intent(in)+value)",
                                         "fmtdict": {
                                             "CXX_template": "<int>",
-                                            "C_call_code": "SH_this->setValue<int>(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass2_set_value_int",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
@@ -4860,7 +4809,6 @@
                                         "declgen": "void setValue(long value +intent(in)+value)",
                                         "fmtdict": {
                                             "CXX_template": "<long>",
-                                            "C_call_code": "SH_this->setValue<long>(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass2_set_value_long",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
@@ -5032,7 +4980,6 @@
                                         "declgen": "void setValue(float value +intent(in)+value)",
                                         "fmtdict": {
                                             "CXX_template": "<float>",
-                                            "C_call_code": "SH_this->setValue<float>(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass2_set_value_float",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
@@ -5204,7 +5151,6 @@
                                         "declgen": "void setValue(double value +intent(in)+value)",
                                         "fmtdict": {
                                             "CXX_template": "<double>",
-                                            "C_call_code": "SH_this->setValue<double>(\tvalue);",
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass2_set_value_double",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
@@ -5414,7 +5360,6 @@
                                         "declgen": "int getValue()",
                                         "fmtdict": {
                                             "CXX_template": "<int>",
-                                            "C_call_code": "int SHC_rv =\t SH_this->getValue<int>(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_value_int",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -5536,7 +5481,6 @@
                                         "declgen": "double getValue()",
                                         "fmtdict": {
                                             "CXX_template": "<double>",
-                                            "C_call_code": "double SHC_rv =\t SH_this->getValue<double>(\t);",
                                             "C_call_list": "",
                                             "C_name": "AA_example_nested_ExClass2_get_value_double",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -5663,7 +5607,6 @@
                                 "decl": "void local_function1()",
                                 "declgen": "void local_function1()",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::local_function1(\t);",
                                     "C_call_list": "",
                                     "C_name": "AA_example_nested_local_function1",
                                     "C_prototype": "",
@@ -5813,10 +5756,8 @@
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid",
-                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name",
                                     "C_return_type": "bool",
                                     "F_C_call": "c_is_name_valid_bufferify",
@@ -5929,10 +5870,8 @@
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))",
                                 "fmtdict": {
-                                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
-                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "bool",
                                     "F_C_name": "c_is_name_valid_bufferify",
@@ -6016,7 +5955,6 @@
                                 "decl": "bool isInitialized()",
                                 "declgen": "bool isInitialized()",
                                 "fmtdict": {
-                                    "C_call_code": "bool SHC_rv =\t example::nested::isInitialized(\t);",
                                     "C_call_list": "",
                                     "C_name": "AA_example_nested_is_initialized",
                                     "C_prototype": "",
@@ -6123,10 +6061,8 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names",
-                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name",
                                     "C_return_type": "void",
                                     "F_C_call": "c_test_names_bufferify",
@@ -6221,10 +6157,8 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSHCXX_name);",
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
-                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_bufferify",
@@ -6382,10 +6316,8 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSHCXX_name,\t flag);",
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag",
-                                    "C_pre_call": "const std::string SHCXX_name(name);",
                                     "C_prototype": "const char * name,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_call": "c_test_names_flag_bufferify",
@@ -6519,10 +6451,8 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::test_names(\tSHCXX_name,\t flag);",
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
-                                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                                     "C_prototype": "const char * name,\t int Lname,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_flag_bufferify",
@@ -6557,7 +6487,6 @@
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional()",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testoptional(\t);",
                                     "C_call_list": "",
                                     "C_name": "AA_example_nested_testoptional_0",
                                     "C_prototype": "",
@@ -6648,7 +6577,6 @@
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional(int i=1 +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testoptional(\ti);",
                                     "C_call_list": "i",
                                     "C_name": "AA_example_nested_testoptional_1",
                                     "C_prototype": "int i",
@@ -6842,7 +6770,6 @@
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testoptional(\ti,\t j);",
                                     "C_call_list": "i,\t j",
                                     "C_name": "AA_example_nested_testoptional_2",
                                     "C_prototype": "int i,\t long j",
@@ -6926,7 +6853,6 @@
                                 "decl": "size_t test_size_t()",
                                 "declgen": "size_t test_size_t()",
                                 "fmtdict": {
-                                    "C_call_code": "size_t SHC_rv =\t example::nested::test_size_t(\t);",
                                     "C_call_list": "",
                                     "C_name": "AA_example_nested_test_size_t",
                                     "C_prototype": "",
@@ -7040,10 +6966,8 @@
                                 "decl": "void testmpi(MPI_Comm comm)",
                                 "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testmpi(\tSHCXX_comm);",
                                     "C_call_list": "SHCXX_comm",
                                     "C_name": "AA_example_nested_testmpi_mpi",
-                                    "C_pre_call": "MPI_Comm SHCXX_comm =\t MPI_Comm_f2c(comm);",
                                     "C_prototype": "MPI_Fint comm",
                                     "C_return_type": "void",
                                     "F_C_call": "c_testmpi_mpi",
@@ -7086,7 +7010,6 @@
                                 "decl": "void testmpi()",
                                 "declgen": "void testmpi()",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testmpi(\t);",
                                     "C_call_list": "",
                                     "C_name": "AA_example_nested_testmpi_serial",
                                     "C_prototype": "",
@@ -7204,10 +7127,8 @@
                                 "decl": "void testgroup1(axom::sidre::Group * grp)",
                                 "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testgroup1(\tSHCXX_grp);",
                                     "C_call_list": "SHCXX_grp",
                                     "C_name": "AA_example_nested_testgroup1",
-                                    "C_pre_call": "axom::sidre::Group * SHCXX_grp =\t static_cast<axom::sidre::Group *>\t(grp->addr);",
                                     "C_prototype": "SIDRE_group * grp",
                                     "C_return_type": "void",
                                     "F_C_call": "c_testgroup1",
@@ -7324,10 +7245,8 @@
                                 "decl": "void testgroup2(const axom::sidre::Group * grp)",
                                 "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::testgroup2(\tSHCXX_grp);",
                                     "C_call_list": "SHCXX_grp",
                                     "C_name": "AA_example_nested_testgroup2",
-                                    "C_pre_call": "const axom::sidre::Group * SHCXX_grp =\t static_cast<const axom::sidre::Group *>\t(grp->addr);",
                                     "C_prototype": "SIDRE_group * grp",
                                     "C_return_type": "void",
                                     "F_C_call": "c_testgroup2",
@@ -7444,7 +7363,6 @@
                                     "brief": "subroutine"
                                 },
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::FuncPtr1(\tget);",
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr1",
                                     "C_prototype": "void ( * get)(\t)",
@@ -7567,7 +7485,6 @@
                                     "brief": "return a pointer"
                                 },
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::FuncPtr2(\tget);",
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr2",
                                     "C_prototype": "double * ( * get)(\t)",
@@ -7709,7 +7626,6 @@
                                     "brief": "abstract argument"
                                 },
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::FuncPtr3(\tget);",
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr3",
                                     "C_prototype": "double ( * get)(\tint i,\t int)",
@@ -7823,7 +7739,6 @@
                                     "brief": "abstract argument"
                                 },
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::FuncPtr4(\tget);",
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr4",
                                     "C_prototype": "double ( * get)(\tdouble,\t int)",
@@ -8073,7 +7988,6 @@
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
                                 "declgen": "void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::FuncPtr5(\tget);",
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr5",
                                     "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
@@ -8828,7 +8742,6 @@
                                 "decl": "void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))",
                                 "declgen": "void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))",
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);",
                                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "C_name": "AA_example_nested_verylongfunctionname1",
                                     "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
@@ -9587,7 +9500,6 @@
                                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                 "declgen": "int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "int SHC_rv =\t example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);",
                                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "C_name": "AA_example_nested_verylongfunctionname2",
                                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
@@ -9856,7 +9768,6 @@
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },
                                 "fmtdict": {
-                                    "C_call_code": "example::nested::cos_doubles(\tin,\t out,\t sizein);",
                                     "C_call_list": "in,\t out,\t sizein",
                                     "C_name": "AA_example_nested_cos_doubles",
                                     "C_prototype": "double * in,\t double * out,\t int sizein",

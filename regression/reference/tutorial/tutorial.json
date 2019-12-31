@@ -169,7 +169,6 @@
                         "decl": "Class1()         +name(new)",
                         "declgen": "Class1() +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_new_default",
                             "C_prototype": "TUT_Class1 * SHC_rv",
@@ -329,7 +328,6 @@
                         "decl": "Class1(int flag) +name(new)",
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "flag",
                             "C_name": "TUT_Class1_new_flag",
                             "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
@@ -372,7 +370,6 @@
                         "decl": "~Class1()        +name(delete)",
                         "declgen": "~Class1() +name(delete)",
                         "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_delete",
                             "C_prototype": "TUT_Class1 * self",
@@ -461,7 +458,6 @@
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->Method1(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_method1",
                             "C_prototype": "TUT_Class1 * self",
@@ -612,10 +608,8 @@
                             "brief": "Pass in reference to instance"
                         },
                         "fmtdict": {
-                            "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);",
                             "C_call_list": "*SHCXX_obj2",
                             "C_name": "TUT_Class1_equivalent",
-                            "C_pre_call": "const tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>\t(obj2->addr);",
                             "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * obj2",
                             "C_return_type": "bool",
                             "F_C_call": "c_class1_equivalent",
@@ -665,7 +659,6 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "SH_this->returnThis(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_return_this",
                             "C_prototype": "TUT_Class1 * self",
@@ -812,11 +805,8 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "std::string SHCXX_name(name);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_return_this_buffer_bufferify",
@@ -972,11 +962,8 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer_bufferify",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "std::string SHCXX_name(name, Lname);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t TUT_Class1 * SHC_rv",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
@@ -1059,10 +1046,8 @@
                             "brief": "Test const method"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->getclass3(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_getclass3",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * SHC_rv",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_getclass3",
@@ -1220,11 +1205,9 @@
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "TUT_Class1_direction_func",
                             "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                            "C_pre_call": "tutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                             "C_prototype": "TUT_Class1 * self,\t int arg",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_direction_func",
@@ -1288,7 +1271,6 @@
                         "decl": "int getM_flag()",
                         "declgen": "int getM_flag()",
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getM_flag(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_get_m_flag",
                             "C_prototype": "TUT_Class1 * self",
@@ -1359,7 +1341,6 @@
                         "decl": "int getTest()",
                         "declgen": "int getTest()",
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getTest(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Class1_get_test",
                             "C_prototype": "TUT_Class1 * self",
@@ -1450,7 +1431,6 @@
                         "decl": "void setTest(int val)",
                         "declgen": "void setTest(int val +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "SH_this->setTest(\tval);",
                             "C_call_list": "val",
                             "C_name": "TUT_Class1_set_test",
                             "C_prototype": "TUT_Class1 * self,\t int val",
@@ -1634,10 +1614,8 @@
                         "declgen": "static Singleton & getReference()",
                         "fmtdict": {
                             "CXX_this_call": "tutorial::Singleton::",
-                            "C_call_code": "tutorial::Singleton & SHCXX_rv =\t tutorial::Singleton::getReference(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_Singleton_get_reference",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "TUT_Singleton * SHC_rv",
                             "C_return_type": "TUT_Singleton *",
                             "F_C_call": "c_singleton_get_reference",
@@ -1869,7 +1847,6 @@
                 "decl": "void NoReturnNoArguments()",
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::NoReturnNoArguments(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_no_return_no_arguments",
                     "C_prototype": "",
@@ -2092,7 +2069,6 @@
                 "decl": "double PassByValue(double arg1, int arg2)",
                 "declgen": "double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::PassByValue(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TUT_pass_by_value",
                     "C_prototype": "double arg1,\t int arg2",
@@ -2469,11 +2445,8 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2);",
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);",
-                    "C_pre_call": "const std::string SHCXX_arg1(arg1, Larg1);\nconst std::string SHCXX_arg2(arg2, Larg2);\nstd::string * SHCXX_rv = new std::string;",
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_concatenate_strings_bufferify",
@@ -2536,7 +2509,6 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_use_default_arguments",
                     "C_prototype": "",
@@ -2655,7 +2627,6 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TUT_use_default_arguments_arg1",
                     "C_prototype": "double arg1",
@@ -2897,7 +2868,6 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TUT_use_default_arguments_arg1_arg2",
                     "C_prototype": "double arg1,\t bool arg2",
@@ -3008,10 +2978,8 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name",
-                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name",
                     "C_return_type": "void",
                     "F_C_call": "c_overloaded_function_from_name_bufferify",
@@ -3106,10 +3074,8 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
-                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname",
                     "C_return_type": "void",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
@@ -3213,7 +3179,6 @@
                 "decl": "void OverloadedFunction(int indx)",
                 "declgen": "void OverloadedFunction(int indx +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tindx);",
                     "C_call_list": "indx",
                     "C_name": "TUT_overloaded_function_from_index",
                     "C_prototype": "int indx",
@@ -3404,7 +3369,6 @@
                 "declgen": "void TemplateArgument(int arg +intent(in)+value)",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_code": "tutorial::TemplateArgument<int>(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_template_argument_int",
                     "C_prototype": "int arg",
@@ -3553,7 +3517,6 @@
                 "declgen": "void TemplateArgument(double arg +intent(in)+value)",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_code": "tutorial::TemplateArgument<double>(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_template_argument_double",
                     "C_prototype": "double arg",
@@ -3719,7 +3682,6 @@
                 "declgen": "int TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_code": "int SHC_rv =\t tutorial::TemplateReturn<int>(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_template_return_int",
                     "C_prototype": "",
@@ -3818,7 +3780,6 @@
                 "declgen": "double TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_code": "double SHC_rv =\t tutorial::TemplateReturn<double>(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_template_return_double",
                     "C_prototype": "",
@@ -3896,7 +3857,6 @@
                 "decl": "void FortranGenericOverloaded()",
                 "declgen": "void FortranGenericOverloaded()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_fortran_generic_overloaded_0",
                     "C_prototype": "",
@@ -4064,10 +4024,8 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1",
-                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name,\t double arg2",
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1",
@@ -4425,10 +4383,8 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
-                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1_bufferify",
@@ -4615,7 +4571,6 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum);",
                     "C_call_list": "num",
                     "C_name": "TUT_use_default_overload_num",
                     "C_prototype": "int num",
@@ -4772,7 +4727,6 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset);",
                     "C_call_list": "num,\t offset",
                     "C_name": "TUT_use_default_overload_num_offset",
                     "C_prototype": "int num,\t int offset",
@@ -5077,7 +5031,6 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset,\t stride);",
                     "C_call_list": "num,\t offset,\t stride",
                     "C_name": "TUT_use_default_overload_num_offset_stride",
                     "C_prototype": "int num,\t int offset,\t int stride",
@@ -5226,7 +5179,6 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num);",
                     "C_call_list": "type,\t num",
                     "C_name": "TUT_use_default_overload_3",
                     "C_prototype": "double type,\t int num",
@@ -5418,7 +5370,6 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset);",
                     "C_call_list": "type,\t num,\t offset",
                     "C_name": "TUT_use_default_overload_4",
                     "C_prototype": "double type,\t int num,\t int offset",
@@ -5785,7 +5736,6 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride);",
                     "C_call_list": "type,\t num,\t offset,\t stride",
                     "C_name": "TUT_use_default_overload_5",
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride",
@@ -5935,7 +5885,6 @@
                 "decl": "TypeID typefunc(TypeID arg)",
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::TypeID SHC_rv =\t tutorial::typefunc(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_typefunc",
                     "C_prototype": "int arg",
@@ -6091,11 +6040,9 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::enumfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
                     "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::EnumTypeID SHCXX_arg =\t static_cast<tutorial::EnumTypeID>(arg);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_enumfunc",
@@ -6249,11 +6196,9 @@
                 "decl": "Color colorfunc(Color arg);",
                 "declgen": "Color colorfunc(Color arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Color SHCXX_rv =\t tutorial::colorfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
                     "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::Color SHCXX_arg =\t static_cast<tutorial::Color>(arg);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_colorfunc",
@@ -6418,7 +6363,6 @@
                     "brief": "Pass in reference to scalar"
                 },
                 "fmtdict": {
-                    "C_call_code": "tutorial::getMinMax(\t*min,\t *max);",
                     "C_call_list": "*min,\t *max",
                     "C_name": "TUT_get_min_max",
                     "C_prototype": "int * min,\t int * max",
@@ -6578,11 +6522,9 @@
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t tutorial::directionFunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_direction_func",
                     "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_direction_func",
@@ -6686,10 +6628,8 @@
                     "brief": "Pass arguments to a function."
                 },
                 "fmtdict": {
-                    "C_call_code": "tutorial::passClassByValue(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "TUT_pass_class_by_value",
-                    "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>\t(arg->addr);",
                     "C_prototype": "TUT_Class1 * arg",
                     "C_return_type": "void",
                     "F_C_call": "c_pass_class_by_value",
@@ -6832,10 +6772,8 @@
                 "decl": "int useclass(const Class1 *arg)",
                 "declgen": "int useclass(const Class1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::useclass(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_useclass",
-                    "C_pre_call": "const tutorial::Class1 * SHCXX_arg =\t static_cast<const tutorial::Class1 *>\t(arg->addr);",
                     "C_prototype": "TUT_Class1 * arg",
                     "C_return_type": "int",
                     "F_C_call": "c_useclass",
@@ -6902,10 +6840,8 @@
                 "decl": "const Class1 *getclass2()",
                 "declgen": "const Class1 * getclass2()",
                 "fmtdict": {
-                    "C_call_code": "const tutorial::Class1 * SHCXX_rv =\t tutorial::getclass2(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_getclass2",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass2",
@@ -6985,10 +6921,8 @@
                 "decl": "Class1 *getclass3()",
                 "declgen": "Class1 * getclass3()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1 * SHCXX_rv =\t tutorial::getclass3(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_getclass3",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass3",
@@ -7055,10 +6989,8 @@
                 "decl": "const Class1 &getConstClassReference()",
                 "declgen": "const Class1 & getConstClassReference()",
                 "fmtdict": {
-                    "C_call_code": "const tutorial::Class1 & SHCXX_rv =\t tutorial::getConstClassReference(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_get_const_class_reference",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(&SHCXX_rv));\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_const_class_reference",
@@ -7138,10 +7070,8 @@
                 "decl": "Class1 &getClassReference()",
                 "declgen": "Class1 & getClassReference()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1 & SHCXX_rv =\t tutorial::getClassReference(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_get_class_reference",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_class_reference",
@@ -7250,11 +7180,8 @@
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::getClassCopy(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "TUT_get_class_copy",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;",
-                    "C_pre_call": "tutorial::Class1 * SHCXX_rv = new tutorial::Class1;",
                     "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_class_copy",
@@ -7416,7 +7343,6 @@
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::callback1(\tin,\t incr);",
                     "C_call_list": "in,\t incr",
                     "C_name": "TUT_callback1",
                     "C_prototype": "int in,\t int ( * incr)(\tint)",
@@ -7528,7 +7454,6 @@
                 "decl": "void set_global_flag(int arg)",
                 "declgen": "void set_global_flag(int arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::set_global_flag(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_set_global_flag",
                     "C_prototype": "int arg",
@@ -7611,7 +7536,6 @@
                 "decl": "int get_global_flag()",
                 "declgen": "int get_global_flag()",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::get_global_flag(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_get_global_flag",
                     "C_prototype": "",
@@ -7703,7 +7627,6 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_last_function_called",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -7810,10 +7733,8 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);",
                     "C_call_list": "",
                     "C_name": "TUT_last_function_called_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",

@@ -1157,12 +1157,6 @@ class Wrapc(util.WrapperMixin):
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        if pre_call:
-            fmt_func.C_pre_call = "\n".join(pre_call)
-        fmt_func.C_call_code = "\n".join(call_code)
-        if post_call:
-            fmt_func.C_post_call = "\n".join(post_call)
-
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         if "c" in node.splicer:
             need_wrapper = True

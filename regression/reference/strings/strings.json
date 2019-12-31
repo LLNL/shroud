@@ -205,7 +205,6 @@
                     "brief": "pass a single char argument as a scalar."
                 },
                 "fmtdict": {
-                    "C_call_code": "passChar(\tstatus);",
                     "C_call_list": "status",
                     "C_name": "STR_pass_char",
                     "C_prototype": "char status",
@@ -284,7 +283,6 @@
                     "brief": "return a char argument (non-pointer)"
                 },
                 "fmtdict": {
-                    "C_call_code": "char SHC_rv =\t returnChar(\t);",
                     "C_call_list": "",
                     "C_name": "STR_return_char",
                     "C_prototype": "",
@@ -389,10 +387,8 @@
                     "brief": "return a char argument (non-pointer)"
                 },
                 "fmtdict": {
-                    "C_call_code": "char SHC_rv =\t returnChar(\t);",
                     "C_call_list": "",
                     "C_name": "STR_return_char_bufferify",
-                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHC_rv;",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_return_char_bufferify",
@@ -539,7 +535,6 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtr(\tdest,\t src);",
                     "C_call_list": "dest,\t src",
                     "C_name": "STR_pass_char_ptr",
                     "C_prototype": "char * dest,\t const char * src",
@@ -681,10 +676,8 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtr(\tdest,\t src);",
                     "C_call_list": "dest,\t src",
                     "C_name": "STR_pass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(dest, Ndest);",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_name": "c_pass_char_ptr_bufferify",
@@ -778,7 +771,6 @@
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtrInOut(\ts);",
                     "C_call_list": "s",
                     "C_name": "STR_pass_char_ptr_in_out",
                     "C_prototype": "char * s",
@@ -876,11 +868,8 @@
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtrInOut(\tSHCXX_s);",
                     "C_call_list": "SHCXX_s",
                     "C_name": "STR_pass_char_ptr_in_out_bufferify",
-                    "C_post_call": "ShroudStrCopy(s, Ns,\t SHCXX_s,\t -1);\nShroudStrFree(SHCXX_s);",
-                    "C_pre_call": "char * SHCXX_s = ShroudStrAlloc(\ts,\t Ns,\t Ls);",
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
                     "C_return_type": "void",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
@@ -960,7 +949,6 @@
                     "brief": "return a 'const char *' as character(*)"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr1",
                     "C_prototype": "",
@@ -1071,10 +1059,8 @@
                     "brief": "return a 'const char *' as character(*)"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr1_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<char *>\t(SHC_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHC_rv;\nDSHF_rv->elem_len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);\nDSHF_rv->size = 1;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_char_ptr1_bufferify",
@@ -1158,7 +1144,6 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr2",
                     "C_prototype": "",
@@ -1269,10 +1254,8 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr2_bufferify",
-                    "C_post_call": "ShroudStrCopy(SHF_rv, NSHF_rv,\t SHC_rv,\t -1);",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_char_ptr2_bufferify",
@@ -1346,7 +1329,6 @@
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr3",
                     "C_prototype": "",
@@ -1449,10 +1431,8 @@
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_char_ptr3_bufferify",
-                    "C_post_call": "ShroudStrCopy(output, Noutput,\t SHC_rv,\t -1);",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
                     "F_C_name": "c_get_char_ptr3_bufferify",
@@ -1692,11 +1672,8 @@
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t getConstStringResult(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_result_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);",
-                    "C_pre_call": "std::string * SHCXX_rv = new std::string;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_result_bufferify",
@@ -1866,10 +1843,8 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string SHCXX_rv =\t getConstStringLen(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_len_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_len_bufferify",
@@ -2021,10 +1996,8 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string SHCXX_rv =\t getConstStringAsArg(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_as_arg_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(output, Noutput,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(output, Noutput,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_as_arg_bufferify",
@@ -2251,11 +2224,8 @@
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t getConstStringAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_alloc_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);",
-                    "C_pre_call": "std::string * SHCXX_rv = new std::string;",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_alloc_bufferify",
@@ -2337,7 +2307,6 @@
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -2449,10 +2418,8 @@
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_pure_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_pure_bufferify",
@@ -2539,7 +2506,6 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -2650,10 +2616,8 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_len_bufferify",
@@ -2728,7 +2692,6 @@
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_as_arg",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -2832,10 +2795,8 @@
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_as_arg_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(output, Noutput,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(output, Noutput,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
@@ -2988,7 +2949,6 @@
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_empty",
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -3098,10 +3058,8 @@
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_len_empty_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
@@ -3179,7 +3137,6 @@
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -3284,10 +3241,8 @@
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ref_alloc_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_alloc_bufferify",
@@ -3371,7 +3326,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);",
                     "C_call_list": "",
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len",
@@ -3483,11 +3437,9 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);",
                     "C_call_list": "",
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len_bufferify",
-                    "C_post_call": "if (SHCXX_rv->empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv->data(),\t SHCXX_rv->size());\n-}\n{\n    // C_finalize\n    delete SHCXX_rv;\n}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_len_bufferify",
@@ -3567,7 +3519,6 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
@@ -3673,10 +3624,8 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
@@ -3759,7 +3708,6 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
@@ -3869,10 +3817,8 @@
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
@@ -3957,7 +3903,6 @@
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
@@ -4072,10 +4017,8 @@
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);",
                     "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 3);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
@@ -4168,10 +4111,8 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringConstReference(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_const_reference",
-                    "C_pre_call": "const std::string SHCXX_arg1(arg1);",
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_string_const_reference_bufferify",
@@ -4266,10 +4207,8 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringConstReference(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_const_reference_bufferify",
-                    "C_pre_call": "const std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "const char * arg1,\t int Larg1",
                     "C_return_type": "void",
                     "F_C_name": "c_accept_string_const_reference_bufferify",
@@ -4360,11 +4299,8 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReferenceOut(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_out",
-                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
-                    "C_pre_call": "std::string SHCXX_arg1;",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_string_reference_out_bufferify",
@@ -4458,11 +4394,8 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReferenceOut(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_out_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
-                    "C_pre_call": "std::string SHCXX_arg1;",
                     "C_prototype": "char * arg1,\t int Narg1",
                     "C_return_type": "void",
                     "F_C_name": "c_accept_string_reference_out_bufferify",
@@ -4553,11 +4486,8 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReference(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference",
-                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
-                    "C_pre_call": "std::string SHCXX_arg1(arg1);",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_string_reference_bufferify",
@@ -4656,11 +4586,8 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringReference(\tSHCXX_arg1);",
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
-                    "C_pre_call": "std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_type": "void",
                     "F_C_name": "c_accept_string_reference_bufferify",
@@ -4752,11 +4679,8 @@
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringPointer(\t&SHCXX_arg1);",
                     "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer",
-                    "C_post_call": "strcpy(arg1, SHCXX_arg1.c_str());",
-                    "C_pre_call": "std::string SHCXX_arg1(arg1);",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_string_pointer_bufferify",
@@ -4851,11 +4775,8 @@
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStringPointer(\t&SHCXX_arg1);",
                     "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer_bufferify",
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SHCXX_arg1.data(),\t SHCXX_arg1.size());",
-                    "C_pre_call": "std::string SHCXX_arg1(arg1, Larg1);",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_type": "void",
                     "F_C_name": "c_accept_string_pointer_bufferify",
@@ -5103,7 +5024,6 @@
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
                 "fmtdict": {
                     "C_bufferify_suffix": "_BUFFER",
-                    "C_call_code": "explicit1(\tname);",
                     "C_call_list": "name",
                     "C_name": "STR_explicit1",
                     "C_prototype": "char * name",
@@ -5183,7 +5103,6 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
                 "fmtdict": {
-                    "C_call_code": "explicit2(\tname);",
                     "C_call_list": "name",
                     "C_name": "STR_explicit2",
                     "C_prototype": "char * name",
@@ -5277,10 +5196,8 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
                 "fmtdict": {
-                    "C_call_code": "explicit2(\tname);",
                     "C_call_list": "name",
                     "C_name": "STR_explicit2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(name, AAtrim);",
                     "C_prototype": "char * name,\t int AAtrim",
                     "C_return_type": "void",
                     "F_C_name": "c_explicit2_bufferify",
@@ -5377,7 +5294,6 @@
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
                 "fmtdict": {
-                    "C_call_code": "CpassChar(\tstatus);",
                     "C_call_list": "status",
                     "C_name": "CpassChar",
                     "C_prototype": "char status",
@@ -5459,7 +5375,6 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
-                    "C_call_code": "char SHC_rv =\t CreturnChar(\t);",
                     "C_call_list": "",
                     "C_name": "CreturnChar",
                     "C_prototype": "",
@@ -5567,10 +5482,8 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
-                    "C_call_code": "char SHC_rv =\t CreturnChar(\t);",
                     "C_call_list": "",
                     "C_name": "STR_creturn_char_bufferify",
-                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHC_rv;",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_creturn_char_bufferify",
@@ -5685,7 +5598,6 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "CpassCharPtr(\tdest,\t src);",
                     "C_call_list": "dest,\t src",
                     "C_name": "CpassCharPtr",
                     "C_prototype": "char * dest,\t const char * src",
@@ -5826,10 +5738,8 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "CpassCharPtr(\tdest,\t src);",
                     "C_call_list": "dest,\t src",
                     "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(dest, Ndest);",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_name": "c_cpass_char_ptr_bufferify",

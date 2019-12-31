@@ -48,7 +48,6 @@
                         "decl": "~Class1()",
                         "declgen": "~Class1()",
                         "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
                             "C_name": "OWN_Class1_dtor",
                             "C_prototype": "OWN_Class1 * self",
@@ -115,7 +114,6 @@
                         "decl": "int getFlag()",
                         "declgen": "int getFlag()",
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getFlag(\t);",
                             "C_call_list": "",
                             "C_name": "OWN_Class1_get_flag",
                             "C_prototype": "OWN_Class1 * self",
@@ -356,7 +354,6 @@
                 "decl": "int * ReturnIntPtrRaw()",
                 "declgen": "int * ReturnIntPtrRaw() +deref(raw)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrRaw(\t);",
                     "C_call_list": "",
                     "C_name": "OWN_return_int_ptr_raw",
                     "C_prototype": "",
@@ -433,7 +430,6 @@
                 "decl": "int * ReturnIntPtrScalar()",
                 "declgen": "int * ReturnIntPtrScalar() +deref(scalar)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrScalar(\t);",
                     "C_call_list": "",
                     "C_name": "OWN_return_int_ptr_scalar",
                     "C_prototype": "",
@@ -518,7 +514,6 @@
                 "decl": "int * ReturnIntPtrPointer()",
                 "declgen": "int * ReturnIntPtrPointer() +deref(pointer)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrPointer(\t);",
                     "C_call_list": "",
                     "C_name": "OWN_return_int_ptr_pointer",
                     "C_prototype": "",
@@ -620,7 +615,6 @@
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))",
                 "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimRaw(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw",
                     "C_prototype": "int * len",
@@ -769,7 +763,6 @@
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointer(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_pointer",
                     "C_prototype": "int * len",
@@ -918,7 +911,6 @@
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc",
                     "C_prototype": "int * len",
@@ -1036,10 +1028,8 @@
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_bufferify",
-                    "C_post_call": "DSHC_rv->cxx.addr  = SHC_rv;\nDSHC_rv->cxx.idtor = 0;\nDSHC_rv->addr.base = SHC_rv;\nDSHC_rv->elem_len = sizeof(int);\nDSHC_rv->size = *len;",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
@@ -1187,7 +1177,6 @@
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimDefault(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default",
                     "C_prototype": "int * len",
@@ -1291,7 +1280,6 @@
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimRawNew(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw_new",
                     "C_prototype": "int * len",
@@ -1441,7 +1429,6 @@
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointerNew(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_new",
                     "C_prototype": "int * len",
@@ -1578,7 +1565,6 @@
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAllocNew(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_new",
                     "C_prototype": "int * len",
@@ -1727,7 +1713,6 @@
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "fmtdict": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimDefaultNew(\tlen);",
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new",
                     "C_prototype": "int * len",
@@ -2398,7 +2383,6 @@
                 "decl": "void createClassStatic(int flag)",
                 "declgen": "void createClassStatic(int flag +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "createClassStatic(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "OWN_create_class_static",
                     "C_prototype": "int flag",
@@ -2485,10 +2469,8 @@
                 "decl": "Class1 * getClassStatic() +owner(library)",
                 "declgen": "Class1 * getClassStatic() +owner(library)",
                 "fmtdict": {
-                    "C_call_code": "Class1 * SHCXX_rv =\t getClassStatic(\t);",
                     "C_call_list": "",
                     "C_name": "OWN_get_class_static",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                     "C_prototype": "OWN_Class1 * SHC_rv",
                     "C_return_type": "OWN_Class1 *",
                     "F_C_call": "c_get_class_static",
@@ -2634,10 +2616,8 @@
                     "brief": "Return pointer to new Class1 instance."
                 },
                 "fmtdict": {
-                    "C_call_code": "Class1 * SHCXX_rv =\t getClassNew(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "OWN_get_class_new",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;",
                     "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                     "C_return_type": "OWN_Class1 *",
                     "F_C_call": "c_get_class_new",

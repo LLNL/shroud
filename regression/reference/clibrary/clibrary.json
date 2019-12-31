@@ -134,7 +134,6 @@
                 "decl": "void NoReturnNoArguments()",
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
-                    "C_call_code": "NoReturnNoArguments(\t);",
                     "C_call_list": "",
                     "C_name": "NoReturnNoArguments",
                     "C_prototype": "",
@@ -327,7 +326,6 @@
                 "decl": "double PassByValue(double arg1, int arg2)",
                 "declgen": "double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t PassByValue(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByValue",
                     "C_prototype": "double arg1,\t int arg2",
@@ -491,7 +489,6 @@
                 "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
                 "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "PassByReference(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByReference",
                     "C_prototype": "double * arg1,\t int * arg2",
@@ -723,7 +720,6 @@
                     "brief": "Check intent with bool"
                 },
                 "fmtdict": {
-                    "C_call_code": "checkBool(\targ1,\t arg2,\t arg3);",
                     "C_call_list": "arg1,\t arg2,\t arg3",
                     "C_name": "checkBool",
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
@@ -919,7 +915,6 @@
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)",
                 "fmtdict": {
-                    "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function4a",
                     "C_prototype": "const char * arg1,\t const char * arg2",
@@ -1105,10 +1100,8 @@
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "fmtdict": {
-                    "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "CLI_function4a_bufferify",
-                    "C_post_call": "ShroudStrCopy(SHF_rv, NSHF_rv,\t SHC_rv,\t -1);",
                     "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_function4a_bufferify",
@@ -1201,7 +1194,6 @@
                 "decl": "void acceptName(const char *name)",
                 "declgen": "void acceptName(const char * name +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "acceptName(\tname);",
                     "C_call_list": "name",
                     "C_name": "acceptName",
                     "C_prototype": "const char * name",
@@ -1305,7 +1297,6 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnOneName(\tname1);",
                     "C_call_list": "name1",
                     "C_name": "returnOneName",
                     "C_prototype": "char * name1",
@@ -1405,10 +1396,8 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnOneName(\tname1);",
                     "C_call_list": "name1",
                     "C_name": "CLI_return_one_name_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(name1, Nname1);",
                     "C_prototype": "char * name1,\t int Nname1",
                     "C_return_type": "void",
                     "F_C_name": "c_return_one_name_bufferify",
@@ -1556,7 +1545,6 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnTwoNames(\tname1,\t name2);",
                     "C_call_list": "name1,\t name2",
                     "C_name": "returnTwoNames",
                     "C_prototype": "char * name1,\t char * name2",
@@ -1701,10 +1689,8 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnTwoNames(\tname1,\t name2);",
                     "C_call_list": "name1,\t name2",
                     "C_name": "CLI_return_two_names_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(name1, Nname1);\nShroudStrBlankFill(name2, Nname2);",
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
                     "C_return_type": "void",
                     "F_C_name": "c_return_two_names_bufferify",
@@ -1845,7 +1831,6 @@
                     "brief": "Fill text, at most ltext characters."
                 },
                 "fmtdict": {
-                    "C_call_code": "ImpliedTextLen(\ttext,\t ltext);",
                     "C_call_list": "text,\t ltext",
                     "C_name": "ImpliedTextLen",
                     "C_prototype": "char * text,\t int ltext",
@@ -1982,10 +1967,8 @@
                     "brief": "Fill text, at most ltext characters."
                 },
                 "fmtdict": {
-                    "C_call_code": "ImpliedTextLen(\ttext,\t ltext);",
                     "C_call_list": "text,\t ltext",
                     "C_name": "CLI_implied_text_len_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(text, Ntext);",
                     "C_prototype": "char * text,\t int Ntext,\t int ltext",
                     "C_return_type": "void",
                     "F_C_name": "c_implied_text_len_bufferify",
@@ -2228,7 +2211,6 @@
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t ImpliedLen(\ttext,\t ltext,\t flag);",
                     "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLen",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
@@ -2478,7 +2460,6 @@
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t ImpliedLenTrim(\ttext,\t ltext,\t flag);",
                     "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLenTrim",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
@@ -2617,7 +2598,6 @@
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "bool SHC_rv =\t ImpliedBoolTrue(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "ImpliedBoolTrue",
                     "C_prototype": "bool flag",
@@ -2753,7 +2733,6 @@
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
-                    "C_call_code": "bool SHC_rv =\t ImpliedBoolFalse(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "ImpliedBoolFalse",
                     "C_prototype": "bool flag",
@@ -2796,7 +2775,6 @@
                     "description": "This creates only an interface.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "bindC1(\t);",
                     "C_call_list": "",
                     "C_name": "bindC1",
                     "C_prototype": "",
@@ -2882,7 +2860,6 @@
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "bindC2(\toutbuf);",
                     "C_call_list": "outbuf",
                     "C_name": "bindC2",
                     "C_prototype": "char * outbuf",
@@ -2981,10 +2958,8 @@
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "bindC2(\toutbuf);",
                     "C_call_list": "outbuf",
                     "C_name": "CLI_bind_c2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "char * outbuf,\t int Noutbuf",
                     "C_return_type": "void",
                     "F_C_name": "c_bind_c2_bufferify",
@@ -3118,7 +3093,6 @@
                     "description": "No bufferify function is created, only an interface.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passVoidStarStar(\tin,\t out);",
                     "C_call_list": "in,\t out",
                     "C_name": "passVoidStarStar",
                     "C_prototype": "void * in,\t void * * out",
@@ -3232,7 +3206,6 @@
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passAssumedType(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passAssumedType",
                     "C_prototype": "void * arg",
@@ -3321,7 +3294,6 @@
                     "brief": "Test assumed-type with dimension"
                 },
                 "fmtdict": {
-                    "C_call_code": "passAssumedTypeDim(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passAssumedTypeDim",
                     "C_prototype": "void * arg",
@@ -3466,7 +3438,6 @@
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passAssumedTypeBuf(\targ,\t outbuf);",
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "passAssumedTypeBuf",
                     "C_prototype": "void * arg,\t char * outbuf",
@@ -3617,10 +3588,8 @@
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passAssumedTypeBuf(\targ,\t outbuf);",
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "void * arg,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_assumed_type_buf_bufferify",
@@ -3768,7 +3737,6 @@
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t callback1(\ttype,\t incr);",
                     "C_call_list": "type,\t incr",
                     "C_name": "callback1",
                     "C_prototype": "int type,\t void ( * incr)(\t)",
@@ -3958,7 +3926,6 @@
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "callback2(\ttype,\t in,\t incr);",
                     "C_call_list": "type,\t in,\t incr",
                     "C_name": "callback2",
                     "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
@@ -4174,7 +4141,6 @@
                     "description": "A bufferify function will be created.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "callback3(\ttype,\t in,\t incr,\t outbuf);",
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "callback3",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
@@ -4417,10 +4383,8 @@
                     "description": "A bufferify function will be created.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "callback3(\ttype,\t in,\t incr,\t outbuf);",
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "CLI_callback3_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "void",
                     "F_C_name": "c_callback3_bufferify",

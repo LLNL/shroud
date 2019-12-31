@@ -308,7 +308,6 @@
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStructByValue(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
@@ -451,7 +450,6 @@
                 "decl": "int passStruct1(Cstruct1 *arg)",
                 "declgen": "int passStruct1(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct1(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passStruct1",
                     "C_prototype": "Cstruct1 * arg",
@@ -642,7 +640,6 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t outbuf);",
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "passStruct2",
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf",
@@ -795,10 +792,8 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t outbuf);",
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_struct2_bufferify",
@@ -901,7 +896,6 @@
                 "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t acceptStructInPtr(\targ);",
                     "C_call_list": "arg",
                     "C_name": "acceptStructInPtr",
                     "C_prototype": "Cstruct1 * arg",
@@ -1123,7 +1117,6 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStructOutPtr(\targ,\t i,\t d);",
                     "C_call_list": "arg,\t i,\t d",
                     "C_name": "acceptStructOutPtr",
                     "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
@@ -1230,7 +1223,6 @@
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
                 "fmtdict": {
-                    "C_call_code": "acceptStructInOutPtr(\targ);",
                     "C_call_list": "arg",
                     "C_name": "acceptStructInOutPtr",
                     "C_prototype": "Cstruct1 * arg",
@@ -1426,7 +1418,6 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 SHC_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
@@ -1621,7 +1612,6 @@
                 "decl": "const Cstruct1 returnConstStructByValue(int i, double d);",
                 "declgen": "const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "const Cstruct1 SHC_rv =\t returnConstStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnConstStructByValue",
                     "C_prototype": "int i,\t double d",
@@ -1822,7 +1812,6 @@
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr1(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructPtr1",
                     "C_prototype": "int i,\t double d",
@@ -2058,7 +2047,6 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "returnStructPtr2",
                     "C_prototype": "int i,\t double d,\t char * outbuf",
@@ -2254,10 +2242,8 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "Cstruct1 *",
                     "F_C_name": "c_return_struct_ptr2_bufferify",

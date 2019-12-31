@@ -123,7 +123,6 @@
                 "decl": "void Function1()",
                 "declgen": "void Function1()",
                 "fmtdict": {
-                    "C_call_code": "Function1(\t);",
                     "C_call_list": "",
                     "C_name": "Function1",
                     "C_prototype": "",
@@ -268,7 +267,6 @@
                 "decl": "double Function2(double arg1, int arg2)",
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t Function2(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function2",
                     "C_prototype": "double arg1,\t int arg2",

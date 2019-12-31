@@ -108,6 +108,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   return type. Use statement.return_type to modify the return type of
   a wrapper. It is still a format field with the actual return type.
 - Format field *C_return_code*.  Replaced with statement.ret clause.
+- Format fields *C_pre_call*, *C_call_code*, and *C_post_call*.
+  They existed to help with splicers. statements now provide more control.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

@@ -274,10 +274,8 @@
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t vector_sum(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
-                    "C_pre_call": "const std::vector<int> SHCXX_arg(arg, arg + Sarg);",
                     "C_prototype": "const int * arg,\t long Sarg",
                     "C_return_type": "int",
                     "F_C_name": "c_vector_sum_bufferify",
@@ -450,11 +448,8 @@
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_iota_out_bufferify",
@@ -656,11 +651,8 @@
                     "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out_with_num(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_type": "long",
                     "F_C_name": "c_vector_iota_out_with_num_bufferify",
@@ -880,11 +872,8 @@
                     "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out_with_num2(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num2_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_iota_out_with_num2_bufferify",
@@ -1077,11 +1066,8 @@
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out_alloc(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_alloc_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int>\t *SHCXX_arg = new std::vector<int>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_iota_out_alloc_bufferify",
@@ -1258,11 +1244,8 @@
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_inout_alloc(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int> *SHCXX_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_iota_inout_alloc_bufferify",
@@ -1428,11 +1411,8 @@
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))",
                 "fmtdict": {
-                    "C_call_code": "vector_increment(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(int);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<int> *SHCXX_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_increment_bufferify",
@@ -1602,11 +1582,8 @@
                     "brief": "Copy vector into Fortran input array"
                 },
                 "fmtdict": {
-                    "C_call_code": "vector_iota_out_d(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_d_bufferify",
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);\nDarg->cxx.idtor = 2;\nDarg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();\nDarg->elem_len = sizeof(double);\nDarg->size = SHCXX_arg->size();",
-                    "C_pre_call": "std::vector<double>\t *SHCXX_arg = new std::vector<double>;",
                     "C_prototype": "VEC_SHROUD_array *Darg",
                     "C_return_type": "void",
                     "F_C_name": "c_vector_iota_out_d_bufferify",
@@ -1802,10 +1779,8 @@
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t vector_string_count(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_string_count_bufferify",
-                    "C_pre_call": "std::vector<std::string> SHCXX_arg;\n{+\nconst char * BBB = arg;\nstd::vector<std::string>::size_type\n+SHT_i = 0,\nSHT_n = Sarg;\n-for(; SHT_i < SHT_n; SHT_i++) {+\nSHCXX_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\nBBB += Narg;\n-}\n-}",
                     "C_prototype": "const char * arg,\t long Sarg,\t int Narg",
                     "C_return_type": "int",
                     "F_C_name": "c_vector_string_count_bufferify",
@@ -2160,11 +2135,8 @@
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHC_rv =\t ReturnVectorAlloc(\tn);",
                     "C_call_list": "n",
                     "C_name": "VEC_return_vector_alloc_bufferify",
-                    "C_post_call": "DSHF_rv->cxx.addr  = static_cast<void *>(SHC_rv);\nDSHF_rv->cxx.idtor = 1;\nDSHF_rv->addr.base = SHC_rv->empty() ? NULL : &SHC_rv->front();\nDSHF_rv->elem_len = sizeof(int);\nDSHF_rv->size = SHC_rv->size();",
-                    "C_pre_call": "std::vector<int>\t *SHC_rv = new std::vector<int>;",
                     "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_return_vector_alloc_bufferify",

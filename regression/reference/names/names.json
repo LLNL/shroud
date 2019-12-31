@@ -380,7 +380,6 @@
                 "decl": "void function1()",
                 "declgen": "void function1()",
                 "fmtdict": {
-                    "C_call_code": "function1(\t);",
                     "C_call_list": "",
                     "C_name": "YYY_TES_function1",
                     "C_prototype": "",
@@ -420,7 +419,6 @@
                 "decl": "void function2()",
                 "declgen": "void function2()",
                 "fmtdict": {
-                    "C_call_code": "function2(\t);",
                     "C_call_list": "",
                     "C_name": "c_name_special",
                     "C_prototype": "",
@@ -521,7 +519,6 @@
                 "decl": "void function3a(int i)",
                 "declgen": "void function3a(int i +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "function3a(\ti);",
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_0",
                     "C_prototype": "int i",
@@ -623,7 +620,6 @@
                 "decl": "void function3a(long i)",
                 "declgen": "void function3a(long i +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "function3a(\ti);",
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_1",
                     "C_prototype": "long i",
@@ -755,10 +751,8 @@
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t function4(\tARG_rv);",
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4",
-                    "C_pre_call": "const std::string ARG_rv(rv);",
                     "C_prototype": "const char * rv",
                     "C_return_type": "int",
                     "F_C_call": "yyy_tes_function4_bufferify",
@@ -860,10 +854,8 @@
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t function4(\tARG_rv);",
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
-                    "C_pre_call": "const std::string ARG_rv(rv, Lrv);",
                     "C_prototype": "const char * rv,\t int Lrv",
                     "C_return_type": "int",
                     "F_C_name": "yyy_tes_function4_bufferify",
@@ -899,7 +891,6 @@
                 "decl": "void function5() +name(fiveplus)",
                 "declgen": "void function5() +name(fiveplus)",
                 "fmtdict": {
-                    "C_call_code": "fiveplus(\t);",
                     "C_call_list": "",
                     "C_name": "YYY_TES_fiveplus",
                     "C_prototype": "",
@@ -1179,7 +1170,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<int, long>",
-                    "C_call_code": "FunctionTU<int, long>(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "c_name_instantiation1",
                     "C_prototype": "int arg1,\t long arg2",
@@ -1400,7 +1390,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<float, double>",
-                    "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TES_function_tu_instantiation2",
                     "C_prototype": "float arg1,\t double arg2",
@@ -1599,7 +1588,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker1>(\t);",
                     "C_call_list": "",
                     "C_name": "TES_use_impl_worker_instantiation3",
                     "C_prototype": "",
@@ -1692,7 +1680,6 @@
                                 "decl": "void method1()",
                                 "declgen": "void method1()",
                                 "fmtdict": {
-                                    "C_call_code": "SH_this->method1(\t);",
                                     "C_call_list": "",
                                     "C_name": "XXX_TES_ns0_Names_method1",
                                     "C_prototype": "TES_ns0_Names * self",
@@ -1737,7 +1724,6 @@
                                 "declgen": "void method2()",
                                 "fmtdict": {
                                     "CXX_this": "SH_this2",
-                                    "C_call_code": "SH_this->method2(\t);",
                                     "C_call_list": "",
                                     "C_name": "XXX_TES_ns0_Names_method2",
                                     "C_prototype": "TES_ns0_Names * self2",
@@ -1872,7 +1858,6 @@
                         "decl": "void init_ns1()",
                         "declgen": "void init_ns1()",
                         "fmtdict": {
-                            "C_call_code": "ns1::init_ns1(\t);",
                             "C_call_list": "",
                             "C_name": "TES_ns1_init_ns1",
                             "C_prototype": "",
@@ -2381,7 +2366,6 @@
                                 "decl": "void Member1()",
                                 "declgen": "void Member1()",
                                 "fmtdict": {
-                                    "C_call_code": "SH_this->Member1(\t);",
                                     "C_call_list": "",
                                     "C_name": "TES_capi_class1_member1",
                                     "C_prototype": "TES_capi_class1 * self",
@@ -2447,7 +2431,6 @@
                         "decl": "void Worker1()",
                         "declgen": "void Worker1()",
                         "fmtdict": {
-                            "C_call_code": "CAPI::Worker1(\t);",
                             "C_call_list": "",
                             "C_name": "TES_capi_worker1",
                             "C_prototype": "",

@@ -128,7 +128,6 @@
                         "decl": "Class2()",
                         "declgen": "Class2()",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "",
                             "C_name": "FOR_Class2_ctor",
                             "C_prototype": "FOR_Class2 * SHC_rv",
@@ -170,7 +169,6 @@
                         "decl": "~Class2()",
                         "declgen": "~Class2()",
                         "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
                             "C_name": "FOR_Class2_dtor",
                             "C_prototype": "FOR_Class2 * self",
@@ -288,10 +286,8 @@
                         "decl": "void func1(Class1 *arg)",
                         "declgen": "void func1(Class1 * arg +intent(in))",
                         "fmtdict": {
-                            "C_call_code": "SH_this->func1(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
-                            "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>\t(arg->addr);",
                             "C_prototype": "FOR_Class2 * self,\t TUT_class1 * arg",
                             "C_return_type": "void",
                             "F_C_call": "c_class2_func1",
@@ -411,10 +407,8 @@
                         "decl": "void acceptClass3(Class3 *arg)",
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))",
                         "fmtdict": {
-                            "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_accept_class3",
-                            "C_pre_call": "tutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>\t(arg->addr);",
                             "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                             "C_return_type": "void",
                             "F_C_call": "c_class2_accept_class3",

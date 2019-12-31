@@ -322,7 +322,6 @@
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "intargs(\targin,\t arginout,\t argout);",
                     "C_call_list": "argin,\t arginout,\t argout",
                     "C_name": "POI_intargs",
                     "C_prototype": "const int argin,\t int * arginout,\t int * argout",
@@ -553,7 +552,6 @@
                     "description": "allocate OUT same type as IN implied size of array"
                 },
                 "fmtdict": {
-                    "C_call_code": "cos_doubles(\tin,\t out,\t sizein);",
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_cos_doubles",
                     "C_prototype": "double * in,\t double * out,\t int sizein",
@@ -784,7 +782,6 @@
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);",
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_truncate_to_int",
                     "C_prototype": "double * in,\t int * out,\t int sizein",
@@ -957,7 +954,6 @@
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values(\tnvalues,\t values);",
                     "C_call_list": "nvalues,\t values",
                     "C_name": "POI_get_values",
                     "C_prototype": "int * nvalues,\t int * values",
@@ -1135,7 +1131,6 @@
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values2(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "POI_get_values2",
                     "C_prototype": "int * arg1,\t int * arg2",
@@ -1354,7 +1349,6 @@
                 "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result);",
                     "C_call_list": "len,\t values,\t result",
                     "C_name": "POI_sum",
                     "C_prototype": "int len,\t int * values,\t int * result",
@@ -1470,7 +1464,6 @@
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "fillIntArray(\tout);",
                     "C_call_list": "out",
                     "C_name": "POI_fill_int_array",
                     "C_prototype": "int * out",
@@ -1633,7 +1626,6 @@
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "incrementIntArray(\tarray,\t sizein);",
                     "C_call_list": "array,\t sizein",
                     "C_name": "POI_increment_int_array",
                     "C_prototype": "int * array,\t int sizein",

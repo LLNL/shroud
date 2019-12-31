@@ -41,7 +41,6 @@
                         "decl": "void method1()",
                         "declgen": "void method1()",
                         "fmtdict": {
-                            "C_call_code": "SH_this->method1(\t);",
                             "C_call_list": "",
                             "C_name": "PRE_User1_method1",
                             "C_prototype": "PRE_User1 * self",
@@ -84,7 +83,6 @@
                         "decl": "void method2()",
                         "declgen": "void method2()",
                         "fmtdict": {
-                            "C_call_code": "SH_this->method2(\t);",
                             "C_call_list": "",
                             "C_name": "PRE_User1_method2",
                             "C_prototype": "PRE_User1 * self",
@@ -129,7 +127,6 @@
                         "decl": "void method3def(int i=0)",
                         "declgen": "void method3def()",
                         "fmtdict": {
-                            "C_call_code": "SH_this->method3def(\t);",
                             "C_call_list": "",
                             "C_name": "PRE_User1_method3def_0",
                             "C_prototype": "PRE_User1 * self",
@@ -246,7 +243,6 @@
                         "decl": "void method3def(int i=0)",
                         "declgen": "void method3def(int i=0 +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "SH_this->method3def(\ti);",
                             "C_call_list": "i",
                             "C_name": "PRE_User1_method3def_1",
                             "C_prototype": "PRE_User1 * self,\t int i",
@@ -322,7 +318,6 @@
                         "decl": "void exfunc()",
                         "declgen": "void exfunc()",
                         "fmtdict": {
-                            "C_call_code": "SH_this->exfunc(\t);",
                             "C_call_list": "",
                             "C_name": "PRE_User2_exfunc_0",
                             "C_prototype": "PRE_User2 * self",
@@ -426,7 +421,6 @@
                         "decl": "void exfunc(int flag)",
                         "declgen": "void exfunc(int flag +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "SH_this->exfunc(\tflag);",
                             "C_call_list": "flag",
                             "C_name": "PRE_User2_exfunc_1",
                             "C_prototype": "PRE_User2 * self,\t int flag",

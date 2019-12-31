@@ -429,10 +429,8 @@
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStructByValue(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "STR_pass_struct_by_value",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\t&arg));",
                     "C_prototype": "STR_cstruct1 arg",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct_by_value",
@@ -573,10 +571,8 @@
                 "decl": "int passStruct1(Cstruct1 *arg)",
                 "declgen": "int passStruct1(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct1(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_pass_struct1",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct1",
@@ -765,10 +761,8 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\tSHCXX_s1,\t outbuf);",
                     "C_call_list": "SHCXX_s1,\t outbuf",
                     "C_name": "STR_pass_struct2",
-                    "C_pre_call": "Cstruct1 * SHCXX_s1 = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\ts1));",
                     "C_prototype": "STR_cstruct1 * s1,\t char * outbuf",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct2_bufferify",
@@ -919,11 +913,8 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\tSHCXX_s1,\t outbuf);",
                     "C_call_list": "SHCXX_s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
-                    "C_pre_call": "Cstruct1 * SHCXX_s1 = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\ts1));",
                     "C_prototype": "STR_cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_struct2_bufferify",
@@ -1026,10 +1017,8 @@
                 "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t acceptStructInPtr(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_accept_struct_in_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_type": "int",
                     "F_C_call": "c_accept_struct_in_ptr",
@@ -1249,10 +1238,8 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStructOutPtr(\tSHCXX_arg,\t i,\t d);",
                     "C_call_list": "SHCXX_arg,\t i,\t d",
                     "C_name": "STR_accept_struct_out_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg,\t int i,\t double d",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_struct_out_ptr",
@@ -1357,10 +1344,8 @@
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
                 "fmtdict": {
-                    "C_call_code": "acceptStructInOutPtr(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "STR_accept_struct_in_out_ptr",
-                    "C_pre_call": "Cstruct1 * SHCXX_arg = \tstatic_cast<Cstruct1 *>\t(static_cast<void *>(\targ));",
                     "C_prototype": "STR_cstruct1 * arg",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_struct_in_out_ptr",
@@ -1555,10 +1540,8 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 SHCXX_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "STR_return_struct_by_value",
-                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\t&SHCXX_rv));",
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "STR_cstruct1",
                     "F_C_call": "c_return_struct_by_value",
@@ -1752,10 +1735,8 @@
                 "decl": "const Cstruct1 returnConstStructByValue(int i, double d);",
                 "declgen": "const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "const Cstruct1 SHCXX_rv =\t returnConstStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "STR_return_const_struct_by_value",
-                    "C_post_call": "const STR_cstruct1 * SHC_rv = \tstatic_cast<const STR_cstruct1 *>(\tstatic_cast<const void *>(\t&SHCXX_rv));",
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "const STR_cstruct1",
                     "F_C_call": "c_return_const_struct_by_value",
@@ -1955,10 +1936,8 @@
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr1(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "STR_return_struct_ptr1",
-                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "STR_cstruct1 *",
                     "F_C_call": "c_return_struct_ptr1",
@@ -2193,10 +2172,8 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2",
-                    "C_post_call": "STR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d,\t char * outbuf",
                     "C_return_type": "STR_cstruct1 *",
                     "F_C_call": "c_return_struct_ptr2_bufferify",
@@ -2391,10 +2368,8 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHCXX_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);\nSTR_cstruct1 * SHC_rv = \tstatic_cast<STR_cstruct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "STR_cstruct1 *",
                     "F_C_name": "c_return_struct_ptr2_bufferify",

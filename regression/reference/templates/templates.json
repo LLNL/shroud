@@ -266,7 +266,6 @@
                         "declgen": "void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                         "fmtdict": {
                             "CXX_template": "<double>",
-                            "C_call_code": "SH_this->nested<double>(\targ1,\t arg2);",
                             "C_call_list": "arg1,\t arg2",
                             "C_name": "TEM_user_int_nested_double",
                             "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
@@ -698,7 +697,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<int, long>",
-                    "C_call_code": "FunctionTU<int, long>(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TEM_function_tu_0",
                     "C_prototype": "int arg1,\t long arg2",
@@ -907,7 +905,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<float, double>",
-                    "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TEM_function_tu_1",
                     "C_prototype": "float arg1,\t double arg2",
@@ -1108,7 +1105,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker1>(\t);",
                     "C_call_list": "",
                     "C_name": "TEM_use_impl_worker_internal_ImplWorker1",
                     "C_prototype": "",
@@ -1223,7 +1219,6 @@
                 },
                 "fmtdict": {
                     "CXX_template": "<internal::ImplWorker2>",
-                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker2>(\t);",
                     "C_call_list": "",
                     "C_name": "TEM_use_impl_worker_internal_ImplWorker2",
                     "C_prototype": "",
@@ -1369,7 +1364,6 @@
                                 "decl": "vector()",
                                 "declgen": "vector()",
                                 "fmtdict": {
-                                    "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_int_ctor",
                                     "C_prototype": "TEM_vector_int * SHC_rv",
@@ -1409,7 +1403,6 @@
                                 "decl": "~vector()",
                                 "declgen": "~vector()",
                                 "fmtdict": {
-                                    "C_call_code": "delete SH_this;\nself->addr = NULL;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_int_dtor",
                                     "C_prototype": "TEM_vector_int * self",
@@ -1563,7 +1556,6 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const int & value +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "SH_this->push_back(\t*value);",
                                     "C_call_list": "*value",
                                     "C_name": "TEM_vector_int_push_back",
                                     "C_prototype": "TEM_vector_int * self,\t const int * value",
@@ -1759,7 +1751,6 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "int & at(size_type n +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "int & SHC_rv =\t SH_this->at(\tn);",
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
                                     "C_prototype": "TEM_vector_int * self,\t size_t n",
@@ -1915,7 +1906,6 @@
                                 "decl": "vector()",
                                 "declgen": "vector()",
                                 "fmtdict": {
-                                    "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_double_ctor",
                                     "C_prototype": "TEM_vector_double * SHC_rv",
@@ -1955,7 +1945,6 @@
                                 "decl": "~vector()",
                                 "declgen": "~vector()",
                                 "fmtdict": {
-                                    "C_call_code": "delete SH_this;\nself->addr = NULL;",
                                     "C_call_list": "",
                                     "C_name": "TEM_vector_double_dtor",
                                     "C_prototype": "TEM_vector_double * self",
@@ -2109,7 +2098,6 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const double & value +intent(in))",
                                 "fmtdict": {
-                                    "C_call_code": "SH_this->push_back(\t*value);",
                                     "C_call_list": "*value",
                                     "C_name": "TEM_vector_double_push_back",
                                     "C_prototype": "TEM_vector_double * self,\t const double * value",
@@ -2305,7 +2293,6 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "double & at(size_type n +intent(in)+value)",
                                 "fmtdict": {
-                                    "C_call_code": "double & SHC_rv =\t SH_this->at(\tn);",
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",
                                     "C_prototype": "TEM_vector_double * self,\t size_t n",

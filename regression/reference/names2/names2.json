@@ -114,7 +114,6 @@
                 "decl": "void AFunction()",
                 "declgen": "void AFunction()",
                 "fmtdict": {
-                    "C_call_code": "ignore1::ignore2::AFunction(\t);",
                     "C_call_list": "",
                     "C_name": "NAM_afunction",
                     "C_prototype": "",

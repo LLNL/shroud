@@ -171,7 +171,6 @@
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled() +deref(allocatable)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);",
                     "C_call_list": "",
                     "C_name": "NS_last_function_called",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
@@ -276,10 +275,8 @@
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);",
                     "C_call_list": "",
                     "C_name": "NS_last_function_called_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
@@ -312,7 +309,6 @@
                 "decl": "void One()",
                 "declgen": "void One()",
                 "fmtdict": {
-                    "C_call_code": "One(\t);",
                     "C_call_list": "",
                     "C_name": "NS_one",
                     "C_prototype": "",
@@ -644,7 +640,6 @@
                         "decl": "void One()",
                         "declgen": "void One()",
                         "fmtdict": {
-                            "C_call_code": "outer::One(\t);",
                             "C_call_list": "",
                             "C_name": "NS_outer_one",
                             "C_prototype": "",

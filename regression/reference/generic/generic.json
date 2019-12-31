@@ -138,7 +138,6 @@
                 "decl": "double GetGlobalDouble()",
                 "declgen": "double GetGlobalDouble()",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t GetGlobalDouble(\t);",
                     "C_call_list": "",
                     "C_name": "GetGlobalDouble",
                     "C_prototype": "",
@@ -223,7 +222,6 @@
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
-                    "C_call_code": "GenericReal(\targ);",
                     "C_call_list": "arg",
                     "C_name": "GenericReal",
                     "C_prototype": "double arg",
@@ -522,7 +520,6 @@
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "long SHC_rv =\t GenericReal2(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "GenericReal2",
                     "C_prototype": "long arg1,\t long arg2",
@@ -908,7 +905,6 @@
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SavePointer(\taddr,\t type,\t size);",
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "SavePointer",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
@@ -1368,7 +1364,6 @@
                 "decl": "void GetPointer(void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
                 "declgen": "void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "GetPointer(\taddr,\t type,\t size);",
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointer",
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",
@@ -1548,7 +1543,6 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
-                    "C_call_code": "GetPointerAsPointer(\taddr,\t type,\t size);",
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointerAsPointer",
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",

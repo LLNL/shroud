@@ -237,7 +237,6 @@
                 "decl": "short short_func(short arg1)",
                 "declgen": "short short_func(short arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "short SHC_rv =\t short_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_func",
                     "C_prototype": "short arg1",
@@ -369,7 +368,6 @@
                 "decl": "int int_func(int arg1)",
                 "declgen": "int int_func(int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t int_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_int_func",
                     "C_prototype": "int arg1",
@@ -501,7 +499,6 @@
                 "decl": "long long_func(long arg1)",
                 "declgen": "long long_func(long arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "long SHC_rv =\t long_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_func",
                     "C_prototype": "long arg1",
@@ -637,7 +634,6 @@
                 "decl": "long long long_long_func(long long arg1)",
                 "declgen": "long long long_long_func(long long arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "long long SHC_rv =\t long_long_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_func",
                     "C_prototype": "long long arg1",
@@ -771,7 +767,6 @@
                 "decl": "short int short_int_func(short int arg1)",
                 "declgen": "short int short_int_func(short int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "short SHC_rv =\t short_int_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_int_func",
                     "C_prototype": "short arg1",
@@ -905,7 +900,6 @@
                 "decl": "long int long_int_func(long int arg1)",
                 "declgen": "long int long_int_func(long int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "long SHC_rv =\t long_int_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_int_func",
                     "C_prototype": "long arg1",
@@ -1043,7 +1037,6 @@
                 "decl": "long long int long_long_int_func(long long int arg1)",
                 "declgen": "long long int long_long_int_func(long long int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "long long SHC_rv =\t long_long_int_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_int_func",
                     "C_prototype": "long long arg1",
@@ -1175,7 +1168,6 @@
                 "decl": "unsigned unsigned_func(unsigned arg1)",
                 "declgen": "unsigned unsigned_func(unsigned arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned int SHC_rv =\t unsigned_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_unsigned_func",
                     "C_prototype": "unsigned int arg1",
@@ -1309,7 +1301,6 @@
                 "decl": "unsigned short ushort_func(unsigned short arg1)",
                 "declgen": "unsigned short ushort_func(unsigned short arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned short SHC_rv =\t ushort_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_ushort_func",
                     "C_prototype": "unsigned short arg1",
@@ -1443,7 +1434,6 @@
                 "decl": "unsigned int uint_func(unsigned int arg1)",
                 "declgen": "unsigned int uint_func(unsigned int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned int SHC_rv =\t uint_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint_func",
                     "C_prototype": "unsigned int arg1",
@@ -1577,7 +1567,6 @@
                 "decl": "unsigned long ulong_func(unsigned long arg1)",
                 "declgen": "unsigned long ulong_func(unsigned long arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned long SHC_rv =\t ulong_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_func",
                     "C_prototype": "unsigned long arg1",
@@ -1715,7 +1704,6 @@
                 "decl": "unsigned long long ulong_long_func(unsigned long long arg1)",
                 "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned long long SHC_rv =\t ulong_long_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_long_func",
                     "C_prototype": "unsigned long long arg1",
@@ -1851,7 +1839,6 @@
                 "decl": "unsigned long int ulong_int_func(unsigned long int arg1)",
                 "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "unsigned long SHC_rv =\t ulong_int_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_int_func",
                     "C_prototype": "unsigned long arg1",
@@ -1983,7 +1970,6 @@
                 "decl": "int8_t  int8_func(int8_t arg1)",
                 "declgen": "int8_t int8_func(int8_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int8_t SHC_rv =\t int8_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_int8_func",
                     "C_prototype": "int8_t arg1",
@@ -2115,7 +2101,6 @@
                 "decl": "int16_t int16_func(int16_t arg1)",
                 "declgen": "int16_t int16_func(int16_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int16_t SHC_rv =\t int16_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_int16_func",
                     "C_prototype": "int16_t arg1",
@@ -2247,7 +2232,6 @@
                 "decl": "int32_t int32_func(int32_t arg1)",
                 "declgen": "int32_t int32_func(int32_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int32_t SHC_rv =\t int32_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_int32_func",
                     "C_prototype": "int32_t arg1",
@@ -2379,7 +2363,6 @@
                 "decl": "int64_t int64_func(int64_t arg1)",
                 "declgen": "int64_t int64_func(int64_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int64_t SHC_rv =\t int64_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_int64_func",
                     "C_prototype": "int64_t arg1",
@@ -2511,7 +2494,6 @@
                 "decl": "uint8_t  uint8_func(uint8_t arg1)",
                 "declgen": "uint8_t uint8_func(uint8_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "uint8_t SHC_rv =\t uint8_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint8_func",
                     "C_prototype": "uint8_t arg1",
@@ -2643,7 +2625,6 @@
                 "decl": "uint16_t uint16_func(uint16_t arg1)",
                 "declgen": "uint16_t uint16_func(uint16_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "uint16_t SHC_rv =\t uint16_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint16_func",
                     "C_prototype": "uint16_t arg1",
@@ -2775,7 +2756,6 @@
                 "decl": "uint32_t uint32_func(uint32_t arg1)",
                 "declgen": "uint32_t uint32_func(uint32_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "uint32_t SHC_rv =\t uint32_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint32_func",
                     "C_prototype": "uint32_t arg1",
@@ -2907,7 +2887,6 @@
                 "decl": "uint64_t uint64_func(uint64_t arg1)",
                 "declgen": "uint64_t uint64_func(uint64_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "uint64_t SHC_rv =\t uint64_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint64_func",
                     "C_prototype": "uint64_t arg1",
@@ -3039,7 +3018,6 @@
                 "decl": "size_t size_func(size_t arg1)",
                 "declgen": "size_t size_func(size_t arg1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "size_t SHC_rv =\t size_func(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TYP_size_func",
                     "C_prototype": "size_t arg1",
@@ -3174,7 +3152,6 @@
                 "decl": "bool bool_func(bool arg)",
                 "declgen": "bool bool_func(bool arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "bool SHC_rv =\t bool_func(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TYP_bool_func",
                     "C_prototype": "bool arg",
@@ -3316,7 +3293,6 @@
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "bool SHC_rv =\t returnBoolAndOthers(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "TYP_return_bool_and_others",
                     "C_prototype": "int * flag",
