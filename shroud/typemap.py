@@ -1656,7 +1656,7 @@ fc_statements = dict(
     c_vector_result_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
+        c_helper="capsule_data_helper ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
