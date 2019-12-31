@@ -660,6 +660,8 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
+        self.add_statements_headers(intent_blk)
+
         if intent_blk.pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
@@ -988,7 +990,6 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper
             )
-            self.add_statements_headers(intent_blk)
 
             if arg_call:
                 # Collect arguments to pass to wrapped function.
@@ -1120,8 +1121,6 @@ class Wrapc(util.WrapperMixin):
 
                 if result_typemap.impl_header:
                     self.header_impl_include[result_typemap.impl_header] = True
-
-                self.add_statements_headers(result_blk)
 
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, result_blk, pre_call, post_call, need_wrapper
