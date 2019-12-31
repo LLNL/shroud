@@ -2326,7 +2326,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_pure",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_pure_bufferify",
@@ -2526,7 +2525,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_len",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_len_bufferify",
@@ -2713,7 +2711,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_as_arg",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_name": "c_get_const_string_ref_as_arg",
@@ -2971,7 +2968,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_empty",
-                    "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n\nconst char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
@@ -3160,7 +3156,6 @@
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_alloc_bufferify",
@@ -3351,7 +3346,6 @@
                 "fmtdict": {
                     "C_finalize_buf": "delete {cxx_var};",
                     "C_name": "STR_get_const_string_ptr_len",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_len_bufferify",
@@ -3544,7 +3538,6 @@
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
@@ -3734,7 +3727,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
@@ -3930,7 +3922,6 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",

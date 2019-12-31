@@ -1217,7 +1217,6 @@
                         "fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "TUT_Class1_direction_func",
-                            "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                             "C_prototype": "TUT_Class1 * self,\t int arg",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_direction_func",
@@ -6094,7 +6093,6 @@
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_enumfunc",
@@ -6252,7 +6250,6 @@
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_colorfunc",
@@ -6582,7 +6579,6 @@
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_direction_func",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_call": "c_direction_func",
@@ -7695,7 +7691,6 @@
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",

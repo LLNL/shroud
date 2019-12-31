@@ -153,7 +153,6 @@
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",

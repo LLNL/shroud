@@ -798,6 +798,7 @@ class Wrapc(util.WrapperMixin):
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
+        return_code = []
 
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
@@ -1056,6 +1057,7 @@ class Wrapc(util.WrapperMixin):
             C_error_pattern = typemap.compute_name(
                 [node.C_error_pattern, generated_suffix])
             if C_error_pattern in self.patterns:
+                need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
                 append_format(
                     post_call_pattern,
@@ -1113,7 +1115,7 @@ class Wrapc(util.WrapperMixin):
                         result_typemap.cxx_to_c, fmt_result
                     )
                     append_format(
-                        post_call_pattern, "{c_rv_decl} =\t {c_val};", fmt_result
+                        return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
                 if result_typemap.impl_header:
@@ -1128,10 +1130,6 @@ class Wrapc(util.WrapperMixin):
         call_code = []
         for line in raw_call_code:
             append_format(call_code, line, fmt_result)
-
-        if post_call_pattern:
-            need_wrapper = True
-            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
 
         local = typemap.compute_name(["C_finalize", generated_suffix])
         if fmt_func.inlocal(local):
@@ -1156,7 +1154,6 @@ class Wrapc(util.WrapperMixin):
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             raw_return_code = ["return;"]
-        return_code = []
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
