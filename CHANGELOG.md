@@ -104,6 +104,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Format field *class_prefix*. Replace with *C_name_scope* or *F_name_scope*
   which includes the namespace.
 - Option F_module_per_class. Now a namespace corresponds to a Fortran module.
+- Format field *C_return_type* when set in the YAML file to change the
+  return type. Use statement.return_type to modify the return type of
+  a wrapper. It is still a format field with the actual return type.
+- Format field *C_return_code*.  Replaced with statement.ret clause.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

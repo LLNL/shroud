@@ -138,9 +138,9 @@ declarations:
     wrap_fortran: False
     wrap_python: False
     wrap_lua: False
-  format:
-    C_return_type: int
-    C_return_code: return SH_arg.size();
+#  format:
+#    C_return_type: int   # XXX use fstatements
+#    C_return_code: return SH_arg.size();
   doxygen:
     brief: Fill in arg with some animal names
     description: |

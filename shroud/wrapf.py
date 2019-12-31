@@ -1311,14 +1311,6 @@ rv = .false.
         is_dtor = ast.is_dtor()
         is_static = False
 
-        if fmt_func.C_custom_return_type:
-            # User has changed the return type of the C function
-            # TODO: probably needs to be more clever about
-            # setting pointer or reference fields too.
-            # Maybe parse result_type instead of copy.
-            ast = copy.deepcopy(node.ast)
-            ast.typename = result_type
-
         arg_c_call = []  # arguments to C function
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations

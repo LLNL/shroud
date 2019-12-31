@@ -824,10 +824,6 @@
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
                 "fmtdict": {
-                    "C_custom_return_type": "int",
-                    "C_return_code": "return SH_arg.size();",
-                    "C_return_type": "int",
-                    "__line__": 141,
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 },

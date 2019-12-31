@@ -114,7 +114,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -177,7 +176,6 @@
                     "C_name": "NS_last_function_called",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",
@@ -283,7 +281,6 @@
                     "C_name": "NS_last_function_called_bufferify",
                     "C_post_call": "ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);",
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
                     "c_const": "",
@@ -319,7 +316,6 @@
                     "C_call_list": "",
                     "C_name": "NS_one",
                     "C_prototype": "",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_one",
                     "F_C_name": "one",
@@ -652,7 +648,6 @@
                             "C_call_list": "",
                             "C_name": "NS_outer_one",
                             "C_prototype": "",
-                            "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_one",
                             "F_C_name": "one",

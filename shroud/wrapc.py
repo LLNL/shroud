@@ -1038,8 +1038,6 @@ class Wrapc(util.WrapperMixin):
         elif result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
-        elif fmt_func.C_custom_return_type:
-            pass  # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == "scalar":
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True
@@ -1050,7 +1048,6 @@ class Wrapc(util.WrapperMixin):
             )
 
         # generate the C body
-        C_return_code = "return;"
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = typemap.compute_name(
@@ -1125,12 +1122,6 @@ class Wrapc(util.WrapperMixin):
                     fmt_result, result_blk, pre_call, post_call, need_wrapper
                 )
 
-            if C_subprogram == "function":
-                # Note: A C function may be converted into a Fortran subroutine
-                # subprogram when the result is returned in an argument.
-                fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
-                C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
-
         call_code = []
         for line in raw_call_code:
             append_format(call_code, line, fmt_result)
@@ -1150,17 +1141,21 @@ class Wrapc(util.WrapperMixin):
             util.append_format_indent(post_call, finalize_line, fmt_result)
             post_call.append("}")
 
-        if fmt_func.inlocal("C_return_code"):
-            need_wrapper = True
-            C_return_code = wformat(fmt_func.C_return_code, fmt_func)
-        elif result_blk.ret:
-            # XXX - Only first line for now
-            fmt_func.C_return_code = wformat(result_blk.ret[0], fmt_result)
+        if result_blk.ret:
+            raw_return_code = result_blk.ret
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
-            fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
+            raw_return_code = ["return *{cxx_var};"]
+        elif result_arg is None and C_subprogram == "function":
+            # Note: A C function may be converted into a Fortran subroutine
+            # subprogram when the result is returned in an argument.
+            fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+            raw_return_code = ["return {c_get_value}{c_var};"]
         else:
-            fmt_func.C_return_code = C_return_code
+            raw_return_code = ["return;"]
+        return_code = []
+        for line in raw_return_code:
+            append_format(return_code, line, fmt_result)
 
         if pre_call:
             fmt_func.C_pre_call = "\n".join(pre_call)
@@ -1182,7 +1177,7 @@ class Wrapc(util.WrapperMixin):
             C_code.extend(call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
-            C_code.append(fmt_func.C_return_code)
+            C_code.extend(return_code)
 
         if need_wrapper:
             self.header_proto_c.append("")

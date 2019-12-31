@@ -118,7 +118,6 @@
                     "C_call_list": "",
                     "C_name": "NAM_afunction",
                     "C_prototype": "",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_afunction",
                     "F_C_name": "afunction",

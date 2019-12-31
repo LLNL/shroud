@@ -1398,10 +1398,6 @@ class FunctionNode(AstNode):
         self.option_to_fmt()
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
-            if "C_return_type" in fmtdict:
-                # wrapc.py will overwrite C_return_type.
-                # keep original value for wrapf.py.
-                self.fmtdict.C_custom_return_type = fmtdict["C_return_type"]
 
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template

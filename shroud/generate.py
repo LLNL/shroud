@@ -1483,10 +1483,6 @@ class Preprocess(object):
             F_result_type = "void"
             node.CXX_subprogram = "subroutine"
             subprogram = "subroutine"
-        elif fmt_func.C_custom_return_type:
-            C_result_type = fmt_func.C_custom_return_type
-            F_result_type = fmt_func.C_custom_return_type
-            subprogram = "function"
 
         node.C_subprogram = subprogram
         node.F_subprogram = subprogram
