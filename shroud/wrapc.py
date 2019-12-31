@@ -772,6 +772,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.sh_type = result_typemap.sh_type
             c_local_var = ""
             if self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
@@ -886,6 +887,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = ""
             compute_c_deref(arg, None, fmt_arg)
             fmt_arg.cxx_type = arg_typemap.cxx_type
+            fmt_arg.sh_type = arg_typemap.sh_type
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 

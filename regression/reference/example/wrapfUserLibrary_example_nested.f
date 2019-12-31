@@ -39,6 +39,8 @@ module userlibrary_example_nested_mod
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
         type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
         ! bytes-per-item or character len of data in cxx
         integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
         ! size of data in cxx

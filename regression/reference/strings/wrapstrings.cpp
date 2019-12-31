@@ -245,6 +245,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
     DSHF_rv->cxx.idtor = 0;
     DSHF_rv->addr.ccharp = SHC_rv;
+    DSHF_rv->type = SH_TYPE_OTHER;
     DSHF_rv->elem_len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);
     DSHF_rv->size = 1;
     return;
