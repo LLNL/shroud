@@ -16,6 +16,7 @@
             "CXX_this_call": "",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapmemdoc.h",
@@ -35,6 +36,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -149,7 +151,6 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
@@ -253,7 +254,6 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",

@@ -1027,7 +1027,8 @@ class Wrapc(util.WrapperMixin):
                 name=fmt_result.c_var,
             )
 
-        fmt_func.C_call_list = ",\t ".join(call_list)
+        if call_list:
+            fmt_func.C_call_list = ",\t ".join(call_list)
 
         fmt_func.C_prototype = options.get(
             "C_prototype", ",\t ".join(proto_list + proto_tail)
@@ -1065,7 +1066,7 @@ class Wrapc(util.WrapperMixin):
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
                 "{CXX_this_call}{function_name}"
-                "{CXX_template}(\t{C_call_list});",
+                "{CXX_template}({C_call_list});",
             ]
         else:
             if result_blk.cxx_local_var:

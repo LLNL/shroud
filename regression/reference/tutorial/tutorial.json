@@ -169,7 +169,6 @@
                         "decl": "Class1()         +name(new)",
                         "declgen": "Class1() +name(new)",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_new_default",
                             "C_prototype": "TUT_Class1 * SHC_rv",
                             "C_return_type": "TUT_Class1 *",
@@ -370,7 +369,6 @@
                         "decl": "~Class1()        +name(delete)",
                         "declgen": "~Class1() +name(delete)",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_delete",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_type": "void",
@@ -458,7 +456,6 @@
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_method1",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_type": "int",
@@ -659,7 +656,6 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_return_this",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_type": "void",
@@ -1046,7 +1042,6 @@
                             "brief": "Test const method"
                         },
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_getclass3",
                             "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * SHC_rv",
                             "C_return_type": "TUT_Class1 *",
@@ -1271,7 +1266,6 @@
                         "decl": "int getM_flag()",
                         "declgen": "int getM_flag()",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_get_m_flag",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_type": "int",
@@ -1341,7 +1335,6 @@
                         "decl": "int getTest()",
                         "declgen": "int getTest()",
                         "fmtdict": {
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_get_test",
                             "C_prototype": "TUT_Class1 * self",
                             "C_return_type": "int",
@@ -1614,7 +1607,6 @@
                         "declgen": "static Singleton & getReference()",
                         "fmtdict": {
                             "CXX_this_call": "tutorial::Singleton::",
-                            "C_call_list": "",
                             "C_name": "TUT_Singleton_get_reference",
                             "C_prototype": "TUT_Singleton * SHC_rv",
                             "C_return_type": "TUT_Singleton *",
@@ -1725,6 +1717,7 @@
             "CXX_this_call": "",
             "C_array_type": "TUT_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "TUT_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapTutorial.h",
@@ -1744,6 +1737,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -1847,13 +1841,11 @@
                 "decl": "void NoReturnNoArguments()",
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_no_return_no_arguments",
                     "C_prototype": "",
                     "C_return_type": "void",
                     "F_C_call": "c_no_return_no_arguments",
                     "F_C_name": "no_return_no_arguments",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "no_return_no_arguments",
                     "F_name_generic": "no_return_no_arguments",
@@ -2509,13 +2501,11 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_use_default_arguments",
                     "C_prototype": "",
                     "C_return_type": "double",
                     "F_C_call": "c_use_default_arguments",
                     "F_C_name": "c_use_default_arguments",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
@@ -3682,13 +3672,11 @@
                 "declgen": "int TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_list": "",
                     "C_name": "TUT_template_return_int",
                     "C_prototype": "",
                     "C_return_type": "int",
                     "F_C_call": "c_template_return_int",
                     "F_C_name": "c_template_return_int",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
@@ -3780,13 +3768,11 @@
                 "declgen": "double TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_list": "",
                     "C_name": "TUT_template_return_double",
                     "C_prototype": "",
                     "C_return_type": "double",
                     "F_C_call": "c_template_return_double",
                     "F_C_name": "c_template_return_double",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
@@ -3857,13 +3843,11 @@
                 "decl": "void FortranGenericOverloaded()",
                 "declgen": "void FortranGenericOverloaded()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_fortran_generic_overloaded_0",
                     "C_prototype": "",
                     "C_return_type": "void",
                     "F_C_call": "c_fortran_generic_overloaded_0",
                     "F_C_name": "c_fortran_generic_overloaded_0",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "fortran_generic_overloaded_0",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -6840,7 +6824,6 @@
                 "decl": "const Class1 *getclass2()",
                 "declgen": "const Class1 * getclass2()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_getclass2",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
@@ -6921,7 +6904,6 @@
                 "decl": "Class1 *getclass3()",
                 "declgen": "Class1 * getclass3()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_getclass3",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
@@ -6989,7 +6971,6 @@
                 "decl": "const Class1 &getConstClassReference()",
                 "declgen": "const Class1 & getConstClassReference()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_get_const_class_reference",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
@@ -7070,7 +7051,6 @@
                 "decl": "Class1 &getClassReference()",
                 "declgen": "Class1 & getClassReference()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_get_class_reference",
                     "C_prototype": "TUT_Class1 * SHC_rv",
                     "C_return_type": "TUT_Class1 *",
@@ -7536,13 +7516,11 @@
                 "decl": "int get_global_flag()",
                 "declgen": "int get_global_flag()",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_get_global_flag",
                     "C_prototype": "",
                     "C_return_type": "int",
                     "F_C_call": "c_get_global_flag",
                     "F_C_name": "get_global_flag",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
                     "F_name_function": "get_global_flag",
                     "F_name_generic": "get_global_flag",
@@ -7627,7 +7605,6 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_last_function_called",
                     "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
@@ -7733,7 +7710,6 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "fmtdict": {
-                    "C_call_list": "",
                     "C_name": "TUT_last_function_called_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
