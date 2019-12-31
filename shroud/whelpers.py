@@ -346,6 +346,7 @@ union {{+
 const void * base;
 const char * ccharp;
 -}} addr;
+int type;        /* type of element */
 size_t elem_len; /* bytes-per-item or character len in c++ */
 size_t size;     /* size of data in c++ */
 -}};
@@ -370,6 +371,8 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
 type({F_capsule_data_type}) :: cxx
 ! address of data in cxx
 type(C_PTR) :: base_addr = C_NULL_PTR
+! type of element
+integer(C_INT) :: type
 ! bytes-per-item or character len of data in cxx
 integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
 ! size of data in cxx
@@ -730,6 +733,50 @@ if (PyList_Check(seq))
 # Static helpers
 
 CHelpers = dict(
+    ShroudTypeDefines=dict(
+        # Order derived from TS 29113
+        # with the addition of unsigned types
+        temp_source="""
+#define SH_TYPE_SIGNED_CHAR 1
+#define SH_TYPE_SHORT       2
+#define SH_TYPE_INT         3
+#define SH_TYPE_LONG        4
+#define SH_TYPE_LONG_LONG   5
+#define SH_TYPE_SIZE_T      6
+
+#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100
+#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100
+#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100
+#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100
+
+#define SH_TYPE_INT8_T      7
+#define SH_TYPE_INT16_T     8
+#define SH_TYPE_INT32_T     9
+#define SH_TYPE_INT64_T    10
+
+#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100
+#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100
+#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100
+#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100
+
+/* least8 least16 least32 least64 */
+/* fast8 fast16 fast32 fast64 */
+/* intmax_t intptr_t ptrdiff_t */
+
+#define SH_TYPE_FLOAT        22
+#define SH_TYPE_DOUBLE       23
+#define SH_TYPE_LONG_DOUBLE  24
+#define SH_TYPE_FLOAT_COMPLEX       25
+#define SH_TYPE_DOUBLE_COMPLEX      26
+#define SH_TYPE_LONG_DOUBLE_COMPLEX 27
+
+#define SH_TYPE_BOOL       28
+#define SH_TYPE_CHAR       29
+#define SH_TYPE_CPTR       30
+#define SH_TYPE_STRUCT     31
+#define SH_TYPE_OTHER      32
+        """,
+    ),
     ShroudStrCopy=dict(
         c_header="<string.h>",
         c_source="""

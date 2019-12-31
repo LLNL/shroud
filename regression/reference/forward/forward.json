@@ -79,6 +79,7 @@
                                 "cxx_type": "tutorial::Class2",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "0",
                                 "stmt0": "c_shadow_scalar_ctor_",
                                 "stmt1": "c_shadow_ctor"
                             },
@@ -210,6 +211,7 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
+                                    "sh_type": "0",
                                     "stmt0": "c_shadow_pointer_in_",
                                     "stmt1": "c_shadow_in"
                                 },
@@ -328,6 +330,7 @@
                                     "cxx_type": "tutorial::Class3",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
+                                    "sh_type": "0",
                                     "stmt0": "c_shadow_pointer_in_",
                                     "stmt1": "c_shadow_in"
                                 },

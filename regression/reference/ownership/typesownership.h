@@ -38,6 +38,7 @@ struct s_OWN_SHROUD_array {
         const void * base;
         const char * ccharp;
     } addr;
+    int type;        /* type of element */
     size_t elem_len; /* bytes-per-item or character len in c++ */
     size_t size;     /* size of data in c++ */
 };

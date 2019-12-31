@@ -156,6 +156,8 @@ class Typemap(object):
         ("LUA_push", "PUSH"),
         ("LUA_statements", {}),
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
+#XXX        ("sh_type", "SH_TYPE_OTHER"),
+        ("sh_type", "0"),
         ("__line__", None),
     )
 
@@ -309,6 +311,7 @@ def initialize():
             f_cast_module=dict(iso_c_binding=["C_LOC"]),
             f_cast_keywords=dict(is_target=True),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
+            sh_type="SH_TYPE_VOID",
         ),
         short=Typemap(
             "short",
@@ -326,6 +329,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_SHORT",
         ),
         int=Typemap(
             "int",
@@ -343,6 +347,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT",
         ),
         long=Typemap(
             "long",
@@ -360,6 +365,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_LONG",
         ),
         long_long=Typemap(
             "long_long",
@@ -376,6 +382,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_LONG_LONG",
         ),
         unsigned_short=Typemap(
             "unsigned_short",
@@ -393,6 +400,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_SHORT",
         ),
         unsigned_int=Typemap(
             "unsigned_int",
@@ -410,6 +418,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_INT",
         ),
         unsigned_long=Typemap(
             "unsigned_long",
@@ -427,6 +436,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_LONG",
         ),
         unsigned_long_long=Typemap(
             "unsigned_long_long",
@@ -443,6 +453,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_LONG_LONG",
         ),
         size_t=Typemap(
             "size_t",
@@ -460,6 +471,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_SIZE_T",
         ),
         # XXX- sized based types for Python
         int8_t=Typemap(
@@ -480,6 +492,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT8_T",
         ),
         int16_t=Typemap(
             "int16_t",
@@ -499,6 +512,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT16_T",
         ),
         int32_t=Typemap(
             "int32_t",
@@ -518,6 +532,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT32_T",
         ),
         int64_t=Typemap(
             "int64_t",
@@ -537,6 +552,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT64_T",
         ),
         # XXX- sized based types for Python
         uint8_t=Typemap(
@@ -557,6 +573,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT8_T",
         ),
         uint16_t=Typemap(
             "uint16_t",
@@ -576,6 +593,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT16_T",
         ),
         uint32_t=Typemap(
             "uint32_t",
@@ -595,6 +613,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT32_T",
         ),
         uint64_t=Typemap(
             "uint64_t",
@@ -614,6 +633,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT64_T",
         ),
         float=Typemap(
             "float",
@@ -631,6 +651,7 @@ def initialize():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_FLOAT",
         ),
         double=Typemap(
             "double",
@@ -648,6 +669,7 @@ def initialize():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_DOUBLE",
         ),
         bool=Typemap(
             "bool",
@@ -670,6 +692,7 @@ def initialize():
             LUA_push="lua_pushboolean({LUA_state_var}, {c_var})",
             base="bool",
             sgroup="bool",
+            sh_type="SH_TYPE_BOOL",
         ),
         # implies null terminated string
         char=Typemap(
@@ -771,6 +794,10 @@ def initialize():
     del def_types["string"]
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
+
+    # XXX - zero out sh_type until defines are in place.
+    for ntypemap in def_types.values():
+        ntypemap.sh_type = "0";
 
     set_global_types(def_types)
 
@@ -874,6 +901,8 @@ def create_class_typemap(node, fields=None):
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
+#XXX        sh_type="SH_TYPE_OTHER",
+        sh_type="0",
     )
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
@@ -961,6 +990,8 @@ def create_struct_typemap(node, fields=None):
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
+#XXX        sh_type="SH_TYPE_STRUCT",
+        sh_type="0",
     )
     if fields is not None:
         ntypemap.update(fields)
@@ -1283,6 +1314,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
         ],
@@ -1377,7 +1409,8 @@ fc_statements = dict(
     ),
     c_char_result_buf_allocatable=dict(
         buf_args=["context"],
-        c_helper="copy_string",
+#        c_helper="copy_string",
+        c_helper="capsule_data_helper ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1386,6 +1419,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
         ],
@@ -1570,7 +1604,7 @@ fc_statements = dict(
     c_vector_out_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array",
+        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1581,6 +1615,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
+            "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
@@ -1594,6 +1629,8 @@ fc_statements = dict(
     c_vector_inout_buf=dict(
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
+#        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
+        c_helper="capsule_data_helper ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -1604,6 +1641,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
+            "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
@@ -1618,7 +1656,7 @@ fc_statements = dict(
     c_vector_result_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array",
+        c_helper="capsule_data_helper copy_array ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1629,6 +1667,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
+            "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],

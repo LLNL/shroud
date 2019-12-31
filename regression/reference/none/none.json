@@ -215,7 +215,8 @@
             "f_c_type": "integer(C_INT)",
             "f_kind": "C_INT",
             "f_type": "integer",
-            "flat_name": "MPI_Comm"
+            "flat_name": "MPI_Comm",
+            "sh_type": "0"
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
@@ -236,7 +237,8 @@
             },
             "f_type": "logical",
             "flat_name": "bool",
-            "sgroup": "bool"
+            "sgroup": "bool",
+            "sh_type": "0"
         },
         "char": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -257,7 +259,8 @@
             "f_type": "character(*)",
             "f_type_allocatable": "character(len=:)",
             "flat_name": "char",
-            "sgroup": "char"
+            "sgroup": "char",
+            "sh_type": "0"
         },
         "char_scalar": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -277,7 +280,8 @@
             "f_kind": "C_CHAR",
             "f_type": "character",
             "flat_name": "char",
-            "sgroup": "schar"
+            "sgroup": "schar",
+            "sh_type": "0"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -298,7 +302,8 @@
             },
             "f_type": "real(C_DOUBLE)",
             "flat_name": "double",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -319,7 +324,8 @@
             },
             "f_type": "real(C_FLOAT)",
             "flat_name": "float",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -340,7 +346,8 @@
             },
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -363,7 +370,8 @@
             },
             "f_type": "integer(C_INT16_T)",
             "flat_name": "int16_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -386,7 +394,8 @@
             },
             "f_type": "integer(C_INT32_T)",
             "flat_name": "int32_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -409,7 +418,8 @@
             },
             "f_type": "integer(C_INT64_T)",
             "flat_name": "int64_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -432,7 +442,8 @@
             },
             "f_type": "integer(C_INT8_T)",
             "flat_name": "int8_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -453,7 +464,8 @@
             },
             "f_type": "integer(C_LONG)",
             "flat_name": "long",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -472,7 +484,8 @@
             },
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -493,7 +506,8 @@
             },
             "f_type": "integer(C_SHORT)",
             "flat_name": "short",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -514,7 +528,8 @@
             },
             "f_type": "integer(C_SIZE_T)",
             "flat_name": "size_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -539,14 +554,16 @@
             "f_type_allocatable": "character(len=:)",
             "flat_name": "std_string",
             "impl_header": "<string>",
-            "sgroup": "string"
+            "sgroup": "string",
+            "sh_type": "0"
         },
         "std::vector": {
             "base": "vector",
             "cxx_header": "<vector>",
             "cxx_type": "std::vector<{cxx_T}>",
             "flat_name": "std_vector_{cxx_T}",
-            "sgroup": "vector"
+            "sgroup": "vector",
+            "sh_type": "0"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -569,7 +586,8 @@
             },
             "f_type": "integer(C_INT16_T)",
             "flat_name": "uint16_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -592,7 +610,8 @@
             },
             "f_type": "integer(C_INT32_T)",
             "flat_name": "uint32_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -615,7 +634,8 @@
             },
             "f_type": "integer(C_INT64_T)",
             "flat_name": "uint64_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -638,7 +658,8 @@
             },
             "f_type": "integer(C_INT8_T)",
             "flat_name": "uint8_t",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -659,7 +680,8 @@
             },
             "f_type": "integer(C_INT)",
             "flat_name": "unsigned_int",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -680,7 +702,8 @@
             },
             "f_type": "integer(C_LONG)",
             "flat_name": "unsigned_long",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -699,7 +722,8 @@
             },
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "unsigned_long_long",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -720,7 +744,8 @@
             },
             "f_type": "integer(C_SHORT)",
             "flat_name": "unsigned_short",
-            "sgroup": "native"
+            "sgroup": "native",
+            "sh_type": "0"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
@@ -741,7 +766,8 @@
                 ]
             },
             "f_type": "type(C_PTR)",
-            "flat_name": "void"
+            "flat_name": "void",
+            "sh_type": "0"
         }
     }
 }

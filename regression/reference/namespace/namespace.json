@@ -125,6 +125,7 @@
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "0",
                         "stmt0": "c_string_pointer_result_",
                         "stmt1": "c_string_result"
                     },
@@ -211,6 +212,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
+                            "sh_type": "0",
                             "stmt0": "c_string_pointer_result_buf_allocatable",
                             "stmt1": "c_string_result_buf_allocatable"
                         },
@@ -235,6 +237,7 @@
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "0",
                         "stmt0": "c_unknown_scalar_result_buf",
                         "stmt1": "c_default"
                     }
