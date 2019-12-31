@@ -156,8 +156,7 @@ class Typemap(object):
         ("LUA_push", "PUSH"),
         ("LUA_statements", {}),
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
-#XXX        ("sh_type", "SH_TYPE_OTHER"),
-        ("sh_type", "0"),
+        ("sh_type", "SH_TYPE_OTHER"),
         ("__line__", None),
     )
 
@@ -311,7 +310,7 @@ def initialize():
             f_cast_module=dict(iso_c_binding=["C_LOC"]),
             f_cast_keywords=dict(is_target=True),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
-            sh_type="SH_TYPE_VOID",
+            sh_type="SH_TYPE_CPTR",
         ),
         short=Typemap(
             "short",
@@ -795,10 +794,6 @@ def initialize():
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
 
-    # XXX - zero out sh_type until defines are in place.
-    for ntypemap in def_types.values():
-        ntypemap.sh_type = "0";
-
     set_global_types(def_types)
 
     return def_types
@@ -901,8 +896,7 @@ def create_class_typemap(node, fields=None):
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
-#XXX        sh_type="SH_TYPE_OTHER",
-        sh_type="0",
+        sh_type="SH_TYPE_OTHER",
     )
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
@@ -990,8 +984,7 @@ def create_struct_typemap(node, fields=None):
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
-#XXX        sh_type="SH_TYPE_STRUCT",
-        sh_type="0",
+        sh_type="SH_TYPE_STRUCT",
     )
     if fields is not None:
         ntypemap.update(fields)
@@ -1309,7 +1302,7 @@ fc_statements = dict(
     #        c_step2(context, Fout, size(len))
     c_native_pointer_result_buf=dict(
         buf_args=["context"],
-        c_helper="array_context copy_array",
+        c_helper="array_context copy_array ShroudTypeDefines",
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",

@@ -736,7 +736,9 @@ CHelpers = dict(
     ShroudTypeDefines=dict(
         # Order derived from TS 29113
         # with the addition of unsigned types
-        temp_source="""
+        scope="utility",
+        source="""
+/* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
 #define SH_TYPE_INT         3
@@ -774,8 +776,7 @@ CHelpers = dict(
 #define SH_TYPE_CHAR       29
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
-#define SH_TYPE_OTHER      32
-        """,
+#define SH_TYPE_OTHER      32""",
     ),
     ShroudStrCopy=dict(
         c_header="<string.h>",

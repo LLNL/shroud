@@ -161,7 +161,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
-                            "sh_type": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -188,7 +188,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "idtor": "0",
-                            "sh_type": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -213,7 +213,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
-                        "sh_type": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },

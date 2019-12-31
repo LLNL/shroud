@@ -48,7 +48,7 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   name: MPI_Comm
   result_as_arg: null
   sgroup: unknown
-  sh_type: '0'
+  sh_type: SH_TYPE_OTHER
   template_suffix: null
   typedef: null
 bool: !!python/object:shroud.typemap.Typemap
@@ -101,7 +101,7 @@ bool: !!python/object:shroud.typemap.Typemap
   name: bool
   result_as_arg: null
   sgroup: bool
-  sh_type: '0'
+  sh_type: SH_TYPE_BOOL
   template_suffix: null
   typedef: null
 char: !!python/object:shroud.typemap.Typemap
@@ -154,7 +154,7 @@ char: !!python/object:shroud.typemap.Typemap
   name: char
   result_as_arg: null
   sgroup: char
-  sh_type: '0'
+  sh_type: SH_TYPE_OTHER
   template_suffix: null
   typedef: null
 char_scalar: !!python/object:shroud.typemap.Typemap
@@ -207,7 +207,7 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   name: char_scalar
   result_as_arg: null
   sgroup: schar
-  sh_type: '0'
+  sh_type: SH_TYPE_OTHER
   template_suffix: null
   typedef: null
 double: !!python/object:shroud.typemap.Typemap
@@ -260,7 +260,7 @@ double: !!python/object:shroud.typemap.Typemap
   name: double
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_DOUBLE
   template_suffix: null
   typedef: null
 float: !!python/object:shroud.typemap.Typemap
@@ -313,7 +313,7 @@ float: !!python/object:shroud.typemap.Typemap
   name: float
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_FLOAT
   template_suffix: null
   typedef: null
 int: !!python/object:shroud.typemap.Typemap
@@ -366,7 +366,7 @@ int: !!python/object:shroud.typemap.Typemap
   name: int
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_INT
   template_suffix: null
   typedef: null
 int16_t: !!python/object:shroud.typemap.Typemap
@@ -419,7 +419,7 @@ int16_t: !!python/object:shroud.typemap.Typemap
   name: int16_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_INT16_T
   template_suffix: null
   typedef: null
 int32_t: !!python/object:shroud.typemap.Typemap
@@ -472,7 +472,7 @@ int32_t: !!python/object:shroud.typemap.Typemap
   name: int32_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_INT32_T
   template_suffix: null
   typedef: null
 int64_t: !!python/object:shroud.typemap.Typemap
@@ -525,7 +525,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   name: int64_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_INT64_T
   template_suffix: null
   typedef: null
 int8_t: !!python/object:shroud.typemap.Typemap
@@ -578,7 +578,7 @@ int8_t: !!python/object:shroud.typemap.Typemap
   name: int8_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_INT8_T
   template_suffix: null
   typedef: null
 long: !!python/object:shroud.typemap.Typemap
@@ -631,7 +631,7 @@ long: !!python/object:shroud.typemap.Typemap
   name: long
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_LONG
   template_suffix: null
   typedef: null
 long_long: !!python/object:shroud.typemap.Typemap
@@ -684,7 +684,7 @@ long_long: !!python/object:shroud.typemap.Typemap
   name: long_long
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_LONG_LONG
   template_suffix: null
   typedef: null
 short: !!python/object:shroud.typemap.Typemap
@@ -737,7 +737,7 @@ short: !!python/object:shroud.typemap.Typemap
   name: short
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_SHORT
   template_suffix: null
   typedef: null
 size_t: !!python/object:shroud.typemap.Typemap
@@ -790,7 +790,7 @@ size_t: !!python/object:shroud.typemap.Typemap
   name: size_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_SIZE_T
   template_suffix: null
   typedef: null
 std::string: !!python/object:shroud.typemap.Typemap
@@ -843,7 +843,7 @@ std::string: !!python/object:shroud.typemap.Typemap
   name: std::string
   result_as_arg: null
   sgroup: string
-  sh_type: '0'
+  sh_type: SH_TYPE_OTHER
   template_suffix: null
   typedef: null
 std::vector: !!python/object:shroud.typemap.Typemap
@@ -894,7 +894,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
   name: std::vector
   result_as_arg: null
   sgroup: vector
-  sh_type: '0'
+  sh_type: SH_TYPE_OTHER
   template_suffix: null
   typedef: null
 uint16_t: !!python/object:shroud.typemap.Typemap
@@ -947,7 +947,7 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   name: uint16_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UINT16_T
   template_suffix: null
   typedef: null
 uint32_t: !!python/object:shroud.typemap.Typemap
@@ -1000,7 +1000,7 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   name: uint32_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UINT32_T
   template_suffix: null
   typedef: null
 uint64_t: !!python/object:shroud.typemap.Typemap
@@ -1053,7 +1053,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   name: uint64_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UINT64_T
   template_suffix: null
   typedef: null
 uint8_t: !!python/object:shroud.typemap.Typemap
@@ -1106,7 +1106,7 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   name: uint8_t
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UINT8_T
   template_suffix: null
   typedef: null
 unsigned_int: !!python/object:shroud.typemap.Typemap
@@ -1159,7 +1159,7 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   name: unsigned_int
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UNSIGNED_INT
   template_suffix: null
   typedef: null
 unsigned_long: !!python/object:shroud.typemap.Typemap
@@ -1212,7 +1212,7 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   name: unsigned_long
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UNSIGNED_LONG
   template_suffix: null
   typedef: null
 unsigned_long_long: !!python/object:shroud.typemap.Typemap
@@ -1265,7 +1265,7 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   name: unsigned_long_long
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UNSIGNED_LONG_LONG
   template_suffix: null
   typedef: null
 unsigned_short: !!python/object:shroud.typemap.Typemap
@@ -1318,7 +1318,7 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   name: unsigned_short
   result_as_arg: null
   sgroup: native
-  sh_type: '0'
+  sh_type: SH_TYPE_UNSIGNED_SHORT
   template_suffix: null
   typedef: null
 void: !!python/object:shroud.typemap.Typemap
@@ -1374,6 +1374,6 @@ void: !!python/object:shroud.typemap.Typemap
   name: void
   result_as_arg: null
   sgroup: unknown
-  sh_type: '0'
+  sh_type: SH_TYPE_CPTR
   template_suffix: null
   typedef: null
