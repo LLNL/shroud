@@ -80,7 +80,8 @@ class VerifyAttrs(object):
                 )
 
     def check_fcn_attrs(self, node):
-        """
+        """Check attributes on FunctionNode.
+
         Args:
             node - ast.FunctionNode
         """
@@ -123,14 +124,16 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(ast.params)
 
-    def check_shared_attrs(self, node):
+    def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
-        deref, free_pattern, owner
+        deref, dimension, free_pattern, owner
 
         Args:
             node -
         """
-        attrs = node.attrs
+        attrs = ast.attrs
+        ntypemap = ast.typemap
+        is_ptr = ast.is_indirect()
 
         deref = attrs.get("deref", None)
         if deref is not None:
@@ -141,6 +144,30 @@ class VerifyAttrs(object):
                     "or 'scalar'.".format(deref)
                 )
         # XXX deref only on pointer, vector
+
+        # dimension
+        dimension = attrs.get("dimension", None)
+        if dimension:
+            if attrs.get("value", False):
+                raise RuntimeError(
+                    "argument must not have value=True "
+                    "because it has the dimension attribute."
+                )
+            if not is_ptr:
+                raise RuntimeError(
+                    "dimension attribute can only be "
+                    "used on pointer and references"
+                )
+            if dimension is True:
+                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
+                # No value was provided, provide default
+                if "allocatable" in attrs:
+                    attrs["dimension"] = ":"
+                else:
+                    attrs["dimension"] = "*"
+        elif ntypemap and ntypemap.base == "vector":
+            # default to 1-d assumed shape
+            attrs["dimension"] = ":"
 
         owner = attrs.get("owner", None)
         if owner is not None:
@@ -271,30 +298,6 @@ class VerifyAttrs(object):
                     attrs["value"] = False
             else:
                 attrs["value"] = True
-
-        # dimension
-        dimension = attrs.get("dimension", None)
-        if dimension:
-            if attrs.get("value", False):
-                raise RuntimeError(
-                    "argument must not have value=True "
-                    "because it has the dimension attribute."
-                )
-            if not is_ptr:
-                raise RuntimeError(
-                    "dimension attribute can only be "
-                    "used on pointer and references"
-                )
-            if dimension is True:
-                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
-                # No value was provided, provide default
-                if "allocatable" in attrs:
-                    attrs["dimension"] = ":"
-                else:
-                    attrs["dimension"] = "*"
-        elif arg_typemap and arg_typemap.base == "vector":
-            # default to 1-d assumed shape
-            attrs["dimension"] = ":"
 
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
@@ -497,11 +500,14 @@ class GenFunctions(object):
         else:
             fmt.cxx_var = field
             val = wformat(arg_typemap.cxx_to_c, fmt)
-        return_val = "return " + val + ";"
 
-        format = dict(C_code="{C_pre_call}\n" + return_val)
+        splicer = dict(
+            c=[
+                "return " + val + ";",
+            ],
+        )
 
-        cls.add_function(decl, format=format, options=options)
+        cls.add_function(decl, options=options, splicer=splicer)
 
         # setter
         if ast.attrs.get("readonly", False):
@@ -523,9 +529,14 @@ class GenFunctions(object):
             )  # XXX - what about pointer variables?
         )
 
-        format = dict(C_code="{C_pre_call}\n" + set_val + "\nreturn;")
+        splicer = dict(
+            c=[
+                set_val,
+                "return;"
+            ],
+        )
 
-        cls.add_function(decl, attrs=attrs, format=format, options=options)
+        cls.add_function(decl, attrs=attrs, options=options, splicer=splicer)
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
@@ -1472,10 +1483,6 @@ class Preprocess(object):
             F_result_type = "void"
             node.CXX_subprogram = "subroutine"
             subprogram = "subroutine"
-        elif fmt_func.C_custom_return_type:
-            C_result_type = fmt_func.C_custom_return_type
-            F_result_type = fmt_func.C_custom_return_type
-            subprogram = "function"
 
         node.C_subprogram = subprogram
         node.F_subprogram = subprogram

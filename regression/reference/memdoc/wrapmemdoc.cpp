@@ -28,10 +28,10 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
-        array->len = 0;
+        array->elem_len = 0;
     } else {
         array->addr.ccharp = src->data();
-        array->len = src->size();
+        array->elem_len = src->length();
     }
     array->size = 1;
 }
@@ -44,7 +44,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
-    if (data->len < n) n = data->len;
+    if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
     STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
@@ -56,22 +56,22 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // start STR_get_const_string_ptr_alloc
 const char * STR_get_const_string_ptr_alloc()
 {
-// splicer begin function.get_const_string_ptr_alloc
+    // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-// splicer end function.get_const_string_ptr_alloc
+    // splicer end function.get_const_string_ptr_alloc
 }
 // end STR_get_const_string_ptr_alloc
 
 // start STR_get_const_string_ptr_alloc_bufferify
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.get_const_string_ptr_alloc_bufferify
+    // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);
     return;
-// splicer end function.get_const_string_ptr_alloc_bufferify
+    // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify
 

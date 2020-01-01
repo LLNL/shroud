@@ -57,14 +57,6 @@ def append_format_cmds(lstout, dictin, name, fmt):
     return True
 
 
-def append_format_indent(lst, template, dct, indent="    "):
-    """Split lines, indent each by 4 blanks, append to out.
-    """
-    lines = wformat(template, dct)
-    for line in lines.split("\n"):
-        lst.append(indent + line)
-
-
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
     """ Converts a CamelCase name into an under_score name.

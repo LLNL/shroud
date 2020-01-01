@@ -27,10 +27,16 @@ module ns_mod
     end type SHROUD_capsule_data
 
     type, bind(C) :: SHROUD_array
-        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
-        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
-        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+        ! address of C++ memory
+        type(SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
     end type SHROUD_array
 
     !  enum upper::Color
@@ -114,9 +120,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.last_function_called
         call c_last_function_called_bufferify(DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.last_function_called
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function last_function_called
 
     ! splicer begin additional_functions

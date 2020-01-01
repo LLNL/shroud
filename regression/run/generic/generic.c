@@ -38,6 +38,13 @@ void SavePointer(void *addr, int type, size_t size)
   global_size = size;
 }
 
+void SavePointer2(void *addr, int type, size_t size)
+{
+  global_void = addr;
+  global_type = type;
+  global_size = size;
+}
+
 void GetPointer(void **addr, int *type, size_t *size)
 {
   *addr = global_void;

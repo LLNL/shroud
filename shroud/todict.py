@@ -20,6 +20,9 @@ class ToDict(visitor.Visitor):
     def visit_bool(self, node):
         return str(node)
 
+    def visit_int(self, node):
+        return str(node)
+
     def visit_str(self, node):
         return str(node)
 
@@ -213,6 +216,8 @@ class ToDict(visitor.Visitor):
                 "options",
                 "template_arguments",
                 "fortran_generic",
+                "fstatements",
+                "splicer",
             ],
         )
         add_true_fields(

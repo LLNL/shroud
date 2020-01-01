@@ -28,21 +28,21 @@ extern "C" {
 // ~Class1()
 void OWN_Class1_dtor(OWN_Class1 * self)
 {
-// splicer begin class.Class1.method.dtor
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
+    // splicer begin class.Class1.method.dtor
     delete SH_this;
     self->addr = NULL;
     return;
-// splicer end class.Class1.method.dtor
+    // splicer end class.Class1.method.dtor
 }
 
 // int getFlag()
 int OWN_Class1_get_flag(OWN_Class1 * self)
 {
-// splicer begin class.Class1.method.get_flag
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
+    // splicer begin class.Class1.method.get_flag
     return SH_this->m_flag;
-// splicer end class.Class1.method.get_flag
+    // splicer end class.Class1.method.get_flag
 }
 
 }  // extern "C"

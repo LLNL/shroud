@@ -42,6 +42,7 @@ default_stmts = dict(
         pre_call=[],
         call=[],
         post_call=[],
+        final=[],
         ret=[],
 
         destructor_name=None,
@@ -62,6 +63,7 @@ default_stmts = dict(
         pre_call=[],
         call=[],
         post_call=[],
+        result=None,  # name of result variable
     ),
 )
 default_scopes = dict()
@@ -110,6 +112,7 @@ class Typemap(object):
             None,
         ),  # Fortran modules needed for interface  (dictionary)
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
+        ("f_type_allocatable", None),
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
         ("f_to_c", None),  # Expression to convert from Fortran to C
@@ -154,6 +157,7 @@ class Typemap(object):
         ("LUA_push", "PUSH"),
         ("LUA_statements", {}),
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
+        ("sh_type", "SH_TYPE_OTHER"),
         ("__line__", None),
     )
 
@@ -307,6 +311,7 @@ def initialize():
             f_cast_module=dict(iso_c_binding=["C_LOC"]),
             f_cast_keywords=dict(is_target=True),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
+            sh_type="SH_TYPE_CPTR",
         ),
         short=Typemap(
             "short",
@@ -324,6 +329,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_SHORT",
         ),
         int=Typemap(
             "int",
@@ -341,6 +347,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT",
         ),
         long=Typemap(
             "long",
@@ -358,6 +365,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_LONG",
         ),
         long_long=Typemap(
             "long_long",
@@ -374,6 +382,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_LONG_LONG",
         ),
         unsigned_short=Typemap(
             "unsigned_short",
@@ -391,6 +400,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_SHORT",
         ),
         unsigned_int=Typemap(
             "unsigned_int",
@@ -408,6 +418,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_INT",
         ),
         unsigned_long=Typemap(
             "unsigned_long",
@@ -425,6 +436,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_LONG",
         ),
         unsigned_long_long=Typemap(
             "unsigned_long_long",
@@ -441,6 +453,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UNSIGNED_LONG_LONG",
         ),
         size_t=Typemap(
             "size_t",
@@ -458,6 +471,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_SIZE_T",
         ),
         # XXX- sized based types for Python
         int8_t=Typemap(
@@ -478,6 +492,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT8_T",
         ),
         int16_t=Typemap(
             "int16_t",
@@ -497,6 +512,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT16_T",
         ),
         int32_t=Typemap(
             "int32_t",
@@ -516,6 +532,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT32_T",
         ),
         int64_t=Typemap(
             "int64_t",
@@ -535,6 +552,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_INT64_T",
         ),
         # XXX- sized based types for Python
         uint8_t=Typemap(
@@ -555,6 +573,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT8_T",
         ),
         uint16_t=Typemap(
             "uint16_t",
@@ -574,6 +593,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT16_T",
         ),
         uint32_t=Typemap(
             "uint32_t",
@@ -593,6 +613,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT32_T",
         ),
         uint64_t=Typemap(
             "uint64_t",
@@ -612,6 +633,7 @@ def initialize():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_UINT64_T",
         ),
         float=Typemap(
             "float",
@@ -629,6 +651,7 @@ def initialize():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_FLOAT",
         ),
         double=Typemap(
             "double",
@@ -646,6 +669,7 @@ def initialize():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
             sgroup="native",
+            sh_type="SH_TYPE_DOUBLE",
         ),
         bool=Typemap(
             "bool",
@@ -668,6 +692,7 @@ def initialize():
             LUA_push="lua_pushboolean({LUA_state_var}, {c_var})",
             base="bool",
             sgroup="bool",
+            sh_type="SH_TYPE_BOOL",
         ),
         # implies null terminated string
         char=Typemap(
@@ -675,6 +700,7 @@ def initialize():
             cxx_type="char",
             c_type="char",  # XXX - char *
             f_type="character(*)",
+            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -714,6 +740,7 @@ def initialize():
             c_type="char",  # XXX - char *
             impl_header="<string>",
             f_type="character(*)",
+            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -870,6 +897,7 @@ def create_class_typemap(node, fields=None):
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
+        sh_type="SH_TYPE_OTHER",
     )
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
@@ -957,6 +985,7 @@ def create_struct_typemap(node, fields=None):
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
+        sh_type="SH_TYPE_STRUCT",
     )
     if fields is not None:
         ntypemap.update(fields)
@@ -1068,6 +1097,24 @@ def compute_name(path, char="_"):
     work = [ part for part in path if part ] # skip empty components
     return char.join(work)
 
+def lookup_local_stmts(path, parent, node):
+    """Look in node.fstatements for additional statements.
+    XXX - Only used with result.
+    mode - "update", "replace"
+
+    Args:
+        path   - list of path components ["c", "buf"]
+        parent - parent Scope.
+        node   - FunctionNode.
+    """
+    name = compute_name(path)
+    blk = node.fstatements.get(name, None)
+    if blk:
+        mode = blk.get("mode", "update")
+        if mode == "update":
+            blk.reparent(parent)
+            return blk
+    return parent
 
 def create_buf_variable_names(options, blk, attrs, c_var):
     """Define variable names for buffer arguments.
@@ -1262,12 +1309,13 @@ fc_statements = dict(
     #        c_step2(context, Fout, size(len))
     c_native_pointer_result_buf=dict(
         buf_args=["context"],
-        c_helper="array_context copy_array",
+        c_helper="array_context copy_array ShroudTypeDefines",
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var};",
-            "{c_var_context}->len = sizeof({cxx_type});",
+            "{c_var_context}->addr.base = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
         ],
         return_cptr=True,
@@ -1277,7 +1325,6 @@ fc_statements = dict(
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
-            "{f_type}, allocatable :: {f_var}{f_var_shape}",
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
@@ -1304,7 +1351,6 @@ fc_statements = dict(
     f_native_pointer_result_pointer=dict(
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
-            "{f_type}, pointer :: {f_var}{f_var_shape}",
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
@@ -1363,7 +1409,7 @@ fc_statements = dict(
     ),
     c_char_result_buf_allocatable=dict(
         buf_args=["context"],
-        c_helper="copy_string",
+        c_helper="array_context copy_string ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1372,20 +1418,18 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
-            "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
         ],
     ),
     f_char_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
-        declare=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
         post_call=[
-            "allocate(character(len={c_var_context}%len):: {f_var})",
+            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free"
-            "({c_var_context}, {f_var}, {c_var_context}%len)",
+            "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
 
@@ -1482,8 +1526,8 @@ fc_statements = dict(
     # Uses a two part call to copy results of std::string into a
     # allocatable Fortran array.
     #    c_step1(context)
-    #    allocate(character(len=context%len): Fout)
-    #    c_step2(context, Fout, context%len)
+    #    allocate(character(len=context%elem_len): Fout)
+    #    c_step2(context, Fout, context%elem_len)
     # only used with bufferifed routines and intent(out) or result
     # std::string * function()
     c_string_result_buf_allocatable=dict(
@@ -1533,16 +1577,14 @@ fc_statements = dict(
         ],
     ),
     
+    # similar to f_char_result_allocatable
     f_string_result_allocatable=dict(
         need_wrapper=True,
         f_helper="copy_string",
-        declare=[
-            "character(len=:), allocatable :: {f_var}",
-        ],
         post_call=[
-            "allocate(character(len={c_var_context}%len):: {f_var})",
+            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free("
-            "{c_var_context}, {f_var}, {c_var_context}%len)",
+            "{c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     
@@ -1561,7 +1603,7 @@ fc_statements = dict(
     c_vector_out_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array",
+        c_helper="array_context copy_array ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1570,9 +1612,10 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",
@@ -1585,6 +1628,7 @@ fc_statements = dict(
     c_vector_inout_buf=dict(
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
+        c_helper="array_context copy_array ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -1593,9 +1637,10 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",
@@ -1609,7 +1654,7 @@ fc_statements = dict(
     c_vector_result_buf=dict(
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="capsule_data_helper copy_array",
+        c_helper="array_context ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1618,9 +1663,10 @@ fc_statements = dict(
             # Return address and size of vector data.
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.cvoidp = {cxx_var}->empty()"
+            "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? NULL : &{cxx_var}->front();",
-            "{c_var_context}->len = sizeof({cxx_T});",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
         ],
         destructor_name="std_vector_{cxx_T}",
@@ -1782,9 +1828,6 @@ fc_statements = dict(
     f_vector_result_allocatable=dict(
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        declare=[
-            "{f_type}, allocatable :: {f_var}(:)",
-        ],
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
             "call SHROUD_copy_array_{cxx_T}({c_var_context}, "

@@ -34,11 +34,12 @@ typedef struct s_AA_SHROUD_capsule_data AA_SHROUD_capsule_data;
 struct s_AA_SHROUD_array {
     AA_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
-        const void * cvoidp;
+        const void * base;
         const char * ccharp;
     } addr;
-    size_t len;     /* bytes-per-item or character len of data in cxx */
-    size_t size;    /* size of data in cxx */
+    int type;        /* type of element */
+    size_t elem_len; /* bytes-per-item or character len in c++ */
+    size_t size;     /* size of data in c++ */
 };
 typedef struct s_AA_SHROUD_array AA_SHROUD_array;
 

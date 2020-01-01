@@ -33,9 +33,9 @@ extern "C" {
 void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const void *cxx_var = data->addr.cvoidp;
+    const void *cxx_var = data->addr.base;
     int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->len;
+    n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
     OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
@@ -45,135 +45,136 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
 // int * ReturnIntPtrRaw() +deref(raw)
 int * OWN_return_int_ptr_raw()
 {
-// splicer begin function.return_int_ptr_raw
+    // splicer begin function.return_int_ptr_raw
     int * SHC_rv = ReturnIntPtrRaw();
     return SHC_rv;
-// splicer end function.return_int_ptr_raw
+    // splicer end function.return_int_ptr_raw
 }
 
 // int * ReturnIntPtrScalar() +deref(scalar)
 int OWN_return_int_ptr_scalar()
 {
-// splicer begin function.return_int_ptr_scalar
+    // splicer begin function.return_int_ptr_scalar
     int * SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
-// splicer end function.return_int_ptr_scalar
+    // splicer end function.return_int_ptr_scalar
 }
 
 // int * ReturnIntPtrPointer() +deref(pointer)
 int * OWN_return_int_ptr_pointer()
 {
-// splicer begin function.return_int_ptr_pointer
+    // splicer begin function.return_int_ptr_pointer
     int * SHC_rv = ReturnIntPtrPointer();
     return SHC_rv;
-// splicer end function.return_int_ptr_pointer
+    // splicer end function.return_int_ptr_pointer
 }
 
 // int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
 int * OWN_return_int_ptr_dim_raw(int * len)
 {
-// splicer begin function.return_int_ptr_dim_raw
+    // splicer begin function.return_int_ptr_dim_raw
     int * SHC_rv = ReturnIntPtrDimRaw(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_raw
+    // splicer end function.return_int_ptr_dim_raw
 }
 
 // int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
-// splicer begin function.return_int_ptr_dim_pointer
+    // splicer begin function.return_int_ptr_dim_pointer
     int * SHC_rv = ReturnIntPtrDimPointer(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_pointer
+    // splicer end function.return_int_ptr_dim_pointer
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
-// splicer begin function.return_int_ptr_dim_alloc
+    // splicer begin function.return_int_ptr_dim_alloc
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_alloc
+    // splicer end function.return_int_ptr_dim_alloc
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
 {
-// splicer begin function.return_int_ptr_dim_alloc_bufferify
+    // splicer begin function.return_int_ptr_dim_alloc_bufferify
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     DSHC_rv->cxx.addr  = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.cvoidp = SHC_rv;
-    DSHC_rv->len = sizeof(int);
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
     DSHC_rv->size = *len;
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_alloc_bufferify
+    // splicer end function.return_int_ptr_dim_alloc_bufferify
 }
 
 // int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 int * OWN_return_int_ptr_dim_default(int * len)
 {
-// splicer begin function.return_int_ptr_dim_default
+    // splicer begin function.return_int_ptr_dim_default
     int * SHC_rv = ReturnIntPtrDimDefault(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_default
+    // splicer end function.return_int_ptr_dim_default
 }
 
 // int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 int * OWN_return_int_ptr_dim_raw_new(int * len)
 {
-// splicer begin function.return_int_ptr_dim_raw_new
+    // splicer begin function.return_int_ptr_dim_raw_new
     int * SHC_rv = ReturnIntPtrDimRawNew(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_raw_new
+    // splicer end function.return_int_ptr_dim_raw_new
 }
 
 // int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
-// splicer begin function.return_int_ptr_dim_pointer_new
+    // splicer begin function.return_int_ptr_dim_pointer_new
     int * SHC_rv = ReturnIntPtrDimPointerNew(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_pointer_new
+    // splicer end function.return_int_ptr_dim_pointer_new
 }
 
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
-// splicer begin function.return_int_ptr_dim_alloc_new
+    // splicer begin function.return_int_ptr_dim_alloc_new
     int * SHC_rv = ReturnIntPtrDimAllocNew(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_alloc_new
+    // splicer end function.return_int_ptr_dim_alloc_new
 }
 
 // int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 int * OWN_return_int_ptr_dim_default_new(int * len)
 {
-// splicer begin function.return_int_ptr_dim_default_new
+    // splicer begin function.return_int_ptr_dim_default_new
     int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
     return SHC_rv;
-// splicer end function.return_int_ptr_dim_default_new
+    // splicer end function.return_int_ptr_dim_default_new
 }
 
 // void createClassStatic(int flag +intent(in)+value)
 void OWN_create_class_static(int flag)
 {
-// splicer begin function.create_class_static
+    // splicer begin function.create_class_static
     createClassStatic(flag);
     return;
-// splicer end function.create_class_static
+    // splicer end function.create_class_static
 }
 
 // Class1 * getClassStatic() +owner(library)
 OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
-// splicer begin function.get_class_static
+    // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-// splicer end function.get_class_static
+    // splicer end function.get_class_static
 }
 
 // Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
@@ -183,12 +184,12 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
  */
 OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 {
-// splicer begin function.get_class_new
+    // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
     return SHC_rv;
-// splicer end function.get_class_new
+    // splicer end function.get_class_new
 }
 
 // Release library allocated memory.

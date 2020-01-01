@@ -149,6 +149,7 @@ declarations:
 # return std::string pointer
 
 - decl: const string * getConstStringPtrLen() +len=30
+# XXX? +owner=caller
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string *' as character(30)
@@ -157,8 +158,10 @@ declarations:
       created by the C++ library.
       This is accomplished with C_finalize_buf which is possible
       because +len(30) so the contents are copied before returning.
-  format:
-    C_finalize_buf: delete {cxx_var};
+  fstatements:
+    c_buf:
+      final:
+      - delete {cxx_var};
 
 - decl: const std::string * getConstStringPtrAlloc() +owner(library)
 

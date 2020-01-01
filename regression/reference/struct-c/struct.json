@@ -95,6 +95,7 @@
             "CXX_this_call": "",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapstruct.h",
@@ -114,6 +115,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -213,6 +215,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_scalar_in_",
                             "stmt1": "c_struct"
                         },
@@ -257,6 +260,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -311,17 +315,14 @@
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStructByValue(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct_by_value",
                     "F_C_name": "pass_struct_by_value",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_pass_struct_by_value(arg)",
                     "F_name_function": "pass_struct_by_value",
                     "F_name_generic": "pass_struct_by_value",
                     "F_name_impl": "pass_struct_by_value",
@@ -354,6 +355,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_in_",
                             "stmt1": "c_struct"
                         },
@@ -398,6 +400,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -456,17 +459,14 @@
                 "decl": "int passStruct1(Cstruct1 *arg)",
                 "declgen": "int passStruct1(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct1(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passStruct1",
                     "C_prototype": "Cstruct1 * arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct1",
                     "F_C_name": "pass_struct1",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_pass_struct1(arg)",
                     "F_name_function": "pass_struct1",
                     "F_name_generic": "pass_struct1",
                     "F_name_impl": "pass_struct1",
@@ -499,6 +499,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -533,6 +534,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_in_",
                             "stmt1": "c_struct"
                         },
@@ -568,6 +570,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -649,17 +652,14 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t outbuf);",
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "passStruct2",
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct2_bufferify",
                     "F_C_name": "c_pass_struct2",
                     "F_arg_c_call": "s1,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "s1,\t outbuf",
-                    "F_call_code": "SHT_rv = c_pass_struct2_bufferify(s1,\t outbuf,\t len(outbuf, kind=C_INT))",
                     "F_name_function": "pass_struct2",
                     "F_name_generic": "pass_struct2",
                     "F_name_impl": "pass_struct2",
@@ -690,6 +690,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_pointer_out_buf",
                             "stmt1": "c_char_out_buf"
                         },
@@ -716,6 +717,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_in_buf",
                             "stmt1": "c_struct"
                         },
@@ -740,6 +742,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -804,12 +807,9 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t outbuf);",
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_struct2_bufferify",
                     "c_const": "",
@@ -841,6 +841,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_in_",
                             "stmt1": "c_struct"
                         },
@@ -865,6 +866,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -911,17 +913,14 @@
                 "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t acceptStructInPtr(\targ);",
                     "C_call_list": "arg",
                     "C_name": "acceptStructInPtr",
                     "C_prototype": "Cstruct1 * arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_accept_struct_in_ptr",
                     "F_C_name": "accept_struct_in_ptr",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_accept_struct_in_ptr(arg)",
                     "F_name_function": "accept_struct_in_ptr",
                     "F_name_generic": "accept_struct_in_ptr",
                     "F_name_impl": "accept_struct_in_ptr",
@@ -953,6 +952,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_out_",
                             "stmt1": "c_struct"
                         },
@@ -998,6 +998,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1040,6 +1041,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1135,17 +1137,14 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "acceptStructOutPtr(\targ,\t i,\t d);",
                     "C_call_list": "arg,\t i,\t d",
                     "C_name": "acceptStructOutPtr",
                     "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_struct_out_ptr",
                     "F_C_name": "accept_struct_out_ptr",
                     "F_arg_c_call": "arg,\t i,\t d",
                     "F_arguments": "arg,\t i,\t d",
-                    "F_call_code": "call c_accept_struct_out_ptr(arg,\t i,\t d)",
                     "F_name_function": "accept_struct_out_ptr",
                     "F_name_generic": "accept_struct_out_ptr",
                     "F_name_impl": "accept_struct_out_ptr",
@@ -1177,6 +1176,7 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "c_struct_pointer_inout_",
                             "stmt1": "c_struct"
                         },
@@ -1244,17 +1244,14 @@
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
                 "fmtdict": {
-                    "C_call_code": "acceptStructInOutPtr(\targ);",
                     "C_call_list": "arg",
                     "C_name": "acceptStructInOutPtr",
                     "C_prototype": "Cstruct1 * arg",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_struct_in_out_ptr",
                     "F_C_name": "accept_struct_in_out_ptr",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_accept_struct_in_out_ptr(arg)",
                     "F_name_function": "accept_struct_in_out_ptr",
                     "F_name_generic": "accept_struct_in_out_ptr",
                     "F_name_impl": "accept_struct_in_out_ptr",
@@ -1286,6 +1283,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1328,6 +1326,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1368,6 +1367,7 @@
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_struct_scalar_result_",
                         "stmt1": "c_struct_result"
                     },
@@ -1442,17 +1442,14 @@
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 SHC_rv =\t returnStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1",
                     "F_C_call": "c_return_struct_by_value",
                     "F_C_name": "return_struct_by_value",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_rv = c_return_struct_by_value(i,\t d)",
                     "F_name_function": "return_struct_by_value",
                     "F_name_generic": "return_struct_by_value",
                     "F_name_impl": "return_struct_by_value",
@@ -1482,6 +1479,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1524,6 +1522,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1564,6 +1563,7 @@
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_struct_scalar_result_",
                         "stmt1": "c_struct_result"
                     },
@@ -1639,17 +1639,14 @@
                 "decl": "const Cstruct1 returnConstStructByValue(int i, double d);",
                 "declgen": "const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "const Cstruct1 SHC_rv =\t returnConstStructByValue(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnConstStructByValue",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "const Cstruct1",
                     "F_C_call": "c_return_const_struct_by_value",
                     "F_C_name": "return_const_struct_by_value",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_rv = c_return_const_struct_by_value(i,\t d)",
                     "F_name_function": "return_const_struct_by_value",
                     "F_name_generic": "return_const_struct_by_value",
                     "F_name_impl": "return_const_struct_by_value",
@@ -1679,6 +1676,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1721,6 +1719,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1761,6 +1760,7 @@
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_struct_pointer_result_",
                         "stmt1": "c_struct_result"
                     },
@@ -1842,17 +1842,14 @@
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr1(\ti,\t d);",
                     "C_call_list": "i,\t d",
                     "C_name": "returnStructPtr1",
                     "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1 *",
                     "F_C_call": "c_return_struct_ptr1",
                     "F_C_name": "c_return_struct_ptr1",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_ptr = c_return_struct_ptr1(i,\t d)",
                     "F_name_function": "return_struct_ptr1",
                     "F_name_generic": "return_struct_ptr1",
                     "F_name_impl": "return_struct_ptr1",
@@ -1882,6 +1879,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1915,6 +1913,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1948,6 +1947,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -1980,6 +1980,7 @@
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_struct_pointer_result_",
                         "stmt1": "c_struct_result"
                     },
@@ -2080,17 +2081,14 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "returnStructPtr2",
                     "C_prototype": "int i,\t double d,\t char * outbuf",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1 *",
                     "F_C_call": "c_return_struct_ptr2_bufferify",
                     "F_C_name": "c_return_struct_ptr2",
                     "F_arg_c_call": "i,\t d,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "i,\t d,\t outbuf",
-                    "F_call_code": "SHT_ptr = c_return_struct_ptr2_bufferify(i,\t d,\t outbuf,\t len(outbuf, kind=C_INT))",
                     "F_name_function": "return_struct_ptr2",
                     "F_name_generic": "return_struct_ptr2",
                     "F_name_impl": "return_struct_ptr2",
@@ -2120,6 +2118,7 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_buf",
                             "stmt1": "c_default"
                         },
@@ -2146,6 +2145,7 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_buf",
                             "stmt1": "c_default"
                         },
@@ -2173,6 +2173,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_pointer_out_buf",
                             "stmt1": "c_char_out_buf"
                         },
@@ -2197,6 +2198,7 @@
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "c_struct_pointer_result_buf",
                         "stmt1": "c_struct_result"
                     }
@@ -2278,12 +2280,9 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\ti,\t d,\t outbuf);",
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2_bufferify",
-                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1 *",
                     "F_C_name": "c_return_struct_ptr2_bufferify",
                     "c_const": "",

@@ -33,6 +33,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Replaces any language directive in the YAML file.
 - Wrap functions which return a std::vector.
 
+- Add *fstatements* to decl to add additional statement fields
+  for the funtion result.
+- Change Fortran splicer to include code from declare, pre_call, call,
+  and post_call fields from cf_statements.
+  Declarations for arguments and results are outside the splicer
+  since they are controlled by the decl and attributes.
+
 ### Changed
 - Default of library name from *default_library* to *library*.
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.
@@ -63,6 +70,37 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
        - decl: (double arg)
          function_suffix: double
 ```
+- Replace format fields C_code and F_code with splicers within the declaration.
+  Consistent with other ways to define splicers.
+  previous format:
+```
+   - decl: bool isNameValid(const std::string& name)
+     format:
+       C_code:  "return name != NULL;"
+       F_code:  rv = name .ne. " "
+```
+  new format:
+```
+   - decl: bool isNameValid(const std::string& name)
+     splicer:
+        c:
+        - "return name != NULL;"
+        f:
+        - 'rv = name .ne. " "'
+```
+- Replace format field C_finalize with statements clause final.
+  previous_format:
+```
+  format:
+    C_finalize_buf: delete {cxx_var};
+```
+  new_format:
+```  
+  fstatements:
+    c_buf:
+      final:
+      - delete {cxx_var};
+```
 
 ### Fixed
 - C++ function arguments which pass a class by value.
@@ -79,6 +117,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Format field *class_prefix*. Replace with *C_name_scope* or *F_name_scope*
   which includes the namespace.
 - Option F_module_per_class. Now a namespace corresponds to a Fortran module.
+- Format field *C_return_type* when set in the YAML file to change the
+  return type. Use statement.return_type to modify the return type of
+  a wrapper. It is still a format field with the actual return type.
+- Format field *C_return_code*.  Replaced with statement.ret clause.
+- Format fields *C_pre_call*, *C_call_code*, and *C_post_call*.
+  They existed to help with splicers. statements now provide more control.
+- Format field *C_post_call_pattern*.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

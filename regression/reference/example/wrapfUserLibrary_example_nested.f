@@ -35,10 +35,16 @@ module userlibrary_example_nested_mod
     end type SHROUD_capsule_data
 
     type, bind(C) :: SHROUD_array
-        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
-        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
-        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+        ! address of C++ memory
+        type(SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
     end type SHROUD_array
 
     type, bind(C) :: SHROUD_exclass1_capsule
@@ -55,8 +61,6 @@ module userlibrary_example_nested_mod
     contains
         procedure :: delete => exclass1_dtor
         procedure :: increment_count => exclass1_increment_count
-        procedure :: get_name_error_pattern => exclass1_get_name_error_pattern
-        procedure :: get_name_length => exclass1_get_name_length
         procedure :: get_name_error_check => exclass1_get_name_error_check
         procedure :: get_name_arg => exclass1_get_name_arg
         procedure :: get_root => exclass1_get_root
@@ -221,37 +225,6 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
-
-        pure function c_exclass1_get_name_error_pattern(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_pattern")
-            use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(C_PTR) SHT_rv
-        end function c_exclass1_get_name_error_pattern
-
-        subroutine c_exclass1_get_name_error_pattern_bufferify(self, &
-                SHF_rv, NSHF_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_pattern_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_exclass1_get_name_error_pattern_bufferify
-
-        pure function c_exclass1_get_name_length(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_length")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            integer(C_INT) :: SHT_rv
-        end function c_exclass1_get_name_length
 
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -831,8 +804,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(exclass1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
     end function exclass1_ctor_0
@@ -852,8 +825,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
         type(exclass1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_exclass1_ctor_1_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
@@ -884,34 +857,6 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-    ! arg_to_buffer
-    function exclass1_get_name_error_pattern(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
-        character(len=aa_exclass1_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-        call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem, &
-            SHT_rv, len(SHT_rv, kind=C_INT))
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-    end function exclass1_get_name_error_pattern
-
-    ! int GetNameLength() const
-    !>
-    !! \brief helper function for Fortran to get length of name.
-    !!
-    !<
-    function exclass1_get_name_length(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
-        integer(C_INT) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
-        SHT_rv = c_exclass1_get_name_length(obj%cxxmem)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_length
-    end function exclass1_get_name_length
-
     ! const string & getNameErrorCheck() const +deref(allocatable)
     ! arg_to_buffer
     function exclass1_get_name_error_check(obj) &
@@ -922,9 +867,9 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
             DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass1_get_name_error_check
 
     ! void getNameArg(string & name +intent(out)+len(Nname)) const
@@ -993,8 +938,8 @@ contains
         logical, value, intent(IN) :: in
         logical(C_BOOL) SH_in
         logical :: SHT_rv
-        SH_in = in  ! coerce to C_BOOL
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+        SH_in = in  ! coerce to C_BOOL
         SHT_rv = c_exclass1_has_addr(obj%cxxmem, SH_in)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
     end function exclass1_has_addr
@@ -1037,8 +982,8 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
         type(exclass2) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_exclass2_ctor_bufferify(name, &
             len_trim(name, kind=C_INT), SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
@@ -1078,9 +1023,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name2
 
     ! string & getName3() const +deref(allocatable)
@@ -1092,9 +1037,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name3
 
     ! string & getName4() +deref(allocatable)
@@ -1106,9 +1051,9 @@ contains
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name4
 
     ! int GetNameLength() const
@@ -1133,8 +1078,8 @@ contains
         class(exclass2) :: obj
         type(exclass1), intent(IN) :: in
         type(exclass1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
+        type(C_PTR) :: SHT_prv
         SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_class1
@@ -1480,9 +1425,9 @@ contains
         real(C_DOUBLE), intent(IN) :: in(:,:)
         real(C_DOUBLE), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: SH_sizein
+        ! splicer begin namespace.example::nested.function.cos_doubles
         allocate(out, mold=in)
         SH_sizein = size(in,kind=C_INT)
-        ! splicer begin namespace.example::nested.function.cos_doubles
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end namespace.example::nested.function.cos_doubles
     end subroutine cos_doubles

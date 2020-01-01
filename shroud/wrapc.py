@@ -660,6 +660,8 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
+        self.add_statements_headers(intent_blk)
+
         if intent_blk.pre_call:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
@@ -772,6 +774,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.sh_type = result_typemap.sh_type
             c_local_var = ""
             if self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
@@ -792,14 +795,19 @@ class Wrapc(util.WrapperMixin):
             compute_cxx_deref(
                 CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
+        result_blk = typemap.lookup_local_stmts(
+            ["c", generated_suffix], result_blk, node)
 
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
         call_list = []  # arguments to call function
+        final_code = []
+        return_code = []
 
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
+        setup_this = []
         pre_call = []  # list of temporary variable declarations
         post_call = []
 
@@ -834,7 +842,7 @@ class Wrapc(util.WrapperMixin):
                             "Wapped class is not a shadow type"
                         )
                     append_format(
-                        pre_call,
+                        setup_this,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
                         "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
                         fmt_func,
@@ -884,6 +892,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = ""
             compute_c_deref(arg, None, fmt_arg)
             fmt_arg.cxx_type = arg_typemap.cxx_type
+            fmt_arg.sh_type = arg_typemap.sh_type
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
@@ -897,7 +906,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for C_finalize which evaluates in fmt_result context
+                # Set cxx_var for statement.final in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True
@@ -983,7 +992,6 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper
             )
-            self.add_statements_headers(intent_blk)
 
             if arg_call:
                 # Collect arguments to pass to wrapped function.
@@ -1025,7 +1033,8 @@ class Wrapc(util.WrapperMixin):
                 name=fmt_result.c_var,
             )
 
-        fmt_func.C_call_list = ",\t ".join(call_list)
+        if call_list:
+            fmt_func.C_call_list = ",\t ".join(call_list)
 
         fmt_func.C_prototype = options.get(
             "C_prototype", ",\t ".join(proto_list + proto_tail)
@@ -1036,8 +1045,6 @@ class Wrapc(util.WrapperMixin):
         elif result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
-        elif fmt_func.C_custom_return_type:
-            pass  # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == "scalar":
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True
@@ -1048,25 +1055,25 @@ class Wrapc(util.WrapperMixin):
             )
 
         # generate the C body
-        C_return_code = "return;"
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = typemap.compute_name(
                 [node.C_error_pattern, generated_suffix])
             if C_error_pattern in self.patterns:
+                need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
                 append_format(
                     post_call_pattern,
                     self.patterns[C_error_pattern],
                     fmt_pattern,
                 )
-        
+
         if result_blk.call:
             raw_call_code = result_blk["call"]
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
                 "{CXX_this_call}{function_name}"
-                "{CXX_template}(\t{C_call_list});",
+                "{CXX_template}({C_call_list});",
             ]
         else:
             if result_blk.cxx_local_var:
@@ -1111,77 +1118,54 @@ class Wrapc(util.WrapperMixin):
                         result_typemap.cxx_to_c, fmt_result
                     )
                     append_format(
-                        post_call_pattern, "{c_rv_decl} =\t {c_val};", fmt_result
+                        return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
                 if result_typemap.impl_header:
                     self.header_impl_include[result_typemap.impl_header] = True
 
-                self.add_statements_headers(result_blk)
-
-                need_wrapper = self.add_code_from_statements(
-                    fmt_result, result_blk, pre_call, post_call, need_wrapper
-                )
-
-            if C_subprogram == "function":
-                # Note: A C function may be converted into a Fortran subroutine
-                # subprogram when the result is returned in an argument.
-                fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
-                C_return_code = wformat("return {c_get_value}{c_var};", fmt_result)
+        need_wrapper = self.add_code_from_statements(
+            fmt_result, result_blk, pre_call, post_call, need_wrapper
+        )
 
         call_code = []
         for line in raw_call_code:
             append_format(call_code, line, fmt_result)
 
-        if post_call_pattern:
+        if result_blk.final:
             need_wrapper = True
-            fmt_func.C_post_call_pattern = "\n".join(post_call_pattern)
+            final_code.append("{+")
+            final_code.append("// final")
+            for line in result_blk.final:
+                append_format(final_code, line, fmt_result)
+            final_code.append("-}")
 
-        local = typemap.compute_name(["C_finalize", generated_suffix])
-        if fmt_func.inlocal(local):
-            # maybe check C_finalize up chain for accumulative code
-            # i.e. per class, per library.
-            finalize_line = fmt_func.get(local)
-            need_wrapper = True
-            post_call.append("{")
-            post_call.append("    // C_finalize")
-            util.append_format_indent(post_call, finalize_line, fmt_result)
-            post_call.append("}")
-
-        if fmt_func.inlocal("C_return_code"):
-            need_wrapper = True
-            C_return_code = wformat(fmt_func.C_return_code, fmt_func)
-        elif result_blk.ret:
-            # XXX - Only first line for now
-            fmt_func.C_return_code = wformat(result_blk.ret[0], fmt_result)
+        if result_blk.ret:
+            raw_return_code = result_blk.ret
         elif ast.return_pointer_as == "scalar":
             # dereference pointer to return scalar
-            fmt_func.C_return_code = wformat("return *{cxx_var};", fmt_result)
+            raw_return_code = ["return *{cxx_var};"]
+        elif result_arg is None and C_subprogram == "function":
+            # Note: A C function may be converted into a Fortran subroutine
+            # subprogram when the result is returned in an argument.
+            fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+            raw_return_code = ["return {c_get_value}{c_var};"]
         else:
-            fmt_func.C_return_code = C_return_code
-
-        if pre_call:
-            fmt_func.C_pre_call = "\n".join(pre_call)
-        fmt_func.C_call_code = "\n".join(call_code)
-        if post_call:
-            fmt_func.C_post_call = "\n".join(post_call)
+            raw_return_code = ["return;"]
+        for line in raw_return_code:
+            append_format(return_code, line, fmt_result)
 
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if fmt_func.inlocal("C_code"):
+        if "c" in node.splicer:
             need_wrapper = True
-            C_code = [1, wformat(fmt_func.C_code, fmt_func), -1]
+            C_code = node.splicer["c"]
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code
         else:
             # copy-out values, clean up
-            C_code = [1]
-            C_code.extend(pre_call)
-            C_code.extend(call_code)
-            C_code.extend(post_call_pattern)
-            C_code.extend(post_call)
-            C_code.append(fmt_func.C_return_code)
-            C_code.append(-1)
+            C_code = pre_call + call_code + post_call_pattern + \
+                     post_call + final_code + return_code
 
         if need_wrapper:
             self.header_proto_c.append("")
@@ -1210,7 +1194,8 @@ class Wrapc(util.WrapperMixin):
             append_format(
                 impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
             )
-            impl.append("{")
+            impl.append("{+")
+            impl.extend(setup_this)
             self._create_splicer(
                 fmt_func.underscore_name +
                 fmt_func.function_suffix +
@@ -1218,7 +1203,7 @@ class Wrapc(util.WrapperMixin):
                 impl,
                 C_code,
             )
-            impl.append("}")
+            impl.append("-}")
             if options.literalinclude:
                 append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:

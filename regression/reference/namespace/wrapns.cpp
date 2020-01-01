@@ -28,10 +28,10 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
-        array->len = 0;
+        array->elem_len = 0;
     } else {
         array->addr.ccharp = src->data();
-        array->len = src->size();
+        array->elem_len = src->length();
     }
     array->size = 1;
 }
@@ -42,7 +42,7 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
 void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
-    if (data->len < n) n = data->len;
+    if (data->elem_len < n) n = data->elem_len;
     std::strncpy(c_var, cxx_var, n);
     NS_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
@@ -53,30 +53,30 @@ void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var
 // const std::string & LastFunctionCalled() +deref(allocatable)
 const char * NS_last_function_called()
 {
-// splicer begin function.last_function_called
+    // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end function.last_function_called
+    // splicer end function.last_function_called
 }
 
 // void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.last_function_called_bufferify
+    // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
     return;
-// splicer end function.last_function_called_bufferify
+    // splicer end function.last_function_called_bufferify
 }
 
 // void One()
 void NS_one()
 {
-// splicer begin function.one
+    // splicer begin function.one
     One();
     return;
-// splicer end function.one
+    // splicer end function.one
 }
 
 // Release library allocated memory.

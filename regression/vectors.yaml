@@ -44,6 +44,50 @@ declarations:
     wrap_lua: False
     literalinclude: True
 
+- decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
+    description: |
+      Return the number of items copied into argument
+      by setting fstatements for both C and Fortran.
+  options:
+    wrap_python: False
+    wrap_lua: False
+    literalinclude: True
+  fstatements:
+    c_buf:
+      return_type: long
+      ret:
+      - return Darg->size;
+    f:
+      result: num
+      f_module:
+        iso_c_binding: ["C_LONG"]
+      declare:
+      -  "integer(C_LONG) :: {F_result}"
+      call:
+      -  "{F_result} = {F_C_call}({F_arg_c_call})"
+
+- decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
+    description: |
+      Return the number of items copied into argument
+      by setting fstatements for the Fortran wrapper only.
+  options:
+    wrap_python: False
+    wrap_lua: False
+    literalinclude: True
+  fstatements:
+    f:
+      result: num
+      f_module:
+        iso_c_binding: ["C_LONG"]
+      declare:
+      -  "integer(C_LONG) :: num"
+      post_call:
+      -  "num = Darg%size"
+
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:
     brief: Copy vector into Fortran allocatable array
@@ -94,9 +138,9 @@ declarations:
     wrap_fortran: False
     wrap_python: False
     wrap_lua: False
-  format:
-    C_return_type: int
-    C_return_code: return SH_arg.size();
+#  format:
+#    C_return_type: int   # XXX use fstatements
+#    C_return_code: return SH_arg.size();
   doxygen:
     brief: Fill in arg with some animal names
     description: |

@@ -16,6 +16,7 @@
             "CXX_this_call": "",
             "C_array_type": "STR_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "STR_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapmemdoc.h",
@@ -35,6 +36,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -103,7 +105,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -113,6 +114,7 @@
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_string_pointer_result_",
                         "stmt1": "c_string_result"
                     },
@@ -150,18 +152,13 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv->c_str();",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
-                    "F_call_code": "call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
                     "F_name_impl": "get_const_string_ptr_alloc",
@@ -191,6 +188,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_result_buf_allocatable",
                             "stmt1": "c_string_result_buf_allocatable"
                         },
@@ -215,6 +213,7 @@
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "c_unknown_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -257,12 +256,8 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);",
-                    "C_call_list": "",
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "c_const": "",

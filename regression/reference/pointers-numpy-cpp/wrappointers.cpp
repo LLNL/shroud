@@ -30,10 +30,10 @@ extern "C" {
 // void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 void POI_intargs(const int argin, int * arginout, int * argout)
 {
-// splicer begin function.intargs
+    // splicer begin function.intargs
     intargs(argin, arginout, argout);
     return;
-// splicer end function.intargs
+    // splicer end function.intargs
 }
 
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
@@ -44,10 +44,10 @@ void POI_intargs(const int argin, int * arginout, int * argout)
  */
 void POI_cos_doubles(double * in, double * out, int sizein)
 {
-// splicer begin function.cos_doubles
+    // splicer begin function.cos_doubles
     cos_doubles(in, out, sizein);
     return;
-// splicer end function.cos_doubles
+    // splicer end function.cos_doubles
 }
 
 // void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
@@ -59,10 +59,10 @@ void POI_cos_doubles(double * in, double * out, int sizein)
  */
 void POI_truncate_to_int(double * in, int * out, int sizein)
 {
-// splicer begin function.truncate_to_int
+    // splicer begin function.truncate_to_int
     truncate_to_int(in, out, sizein);
     return;
-// splicer end function.truncate_to_int
+    // splicer end function.truncate_to_int
 }
 
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
@@ -76,10 +76,10 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  */
 void POI_get_values(int * nvalues, int * values)
 {
-// splicer begin function.get_values
+    // splicer begin function.get_values
     get_values(nvalues, values);
     return;
-// splicer end function.get_values
+    // splicer end function.get_values
 }
 
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
@@ -91,20 +91,20 @@ void POI_get_values(int * nvalues, int * values)
  */
 void POI_get_values2(int * arg1, int * arg2)
 {
-// splicer begin function.get_values2
+    // splicer begin function.get_values2
     get_values2(arg1, arg2);
     return;
-// splicer end function.get_values2
+    // splicer end function.get_values2
 }
 
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // start POI_sum
 void POI_sum(int len, int * values, int * result)
 {
-// splicer begin function.sum
+    // splicer begin function.sum
     Sum(len, values, result);
     return;
-// splicer end function.sum
+    // splicer end function.sum
 }
 // end POI_sum
 
@@ -114,10 +114,10 @@ void POI_sum(int len, int * values, int * result)
  */
 void POI_fill_int_array(int * out)
 {
-// splicer begin function.fill_int_array
+    // splicer begin function.fill_int_array
     fillIntArray(out);
     return;
-// splicer end function.fill_int_array
+    // splicer end function.fill_int_array
 }
 
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
@@ -126,10 +126,10 @@ void POI_fill_int_array(int * out)
  */
 void POI_increment_int_array(int * array, int sizein)
 {
-// splicer begin function.increment_int_array
+    // splicer begin function.increment_int_array
     incrementIntArray(array, sizein);
     return;
-// splicer end function.increment_int_array
+    // splicer end function.increment_int_array
 }
 
 // start release allocated memory

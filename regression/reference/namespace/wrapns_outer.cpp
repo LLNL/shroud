@@ -20,10 +20,10 @@ extern "C" {
 // void One()
 void NS_outer_one()
 {
-// splicer begin namespace.outer.function.one
+    // splicer begin namespace.outer.function.one
     outer::One();
     return;
-// splicer end namespace.outer.function.one
+    // splicer end namespace.outer.function.one
 }
 
 }  // extern "C"

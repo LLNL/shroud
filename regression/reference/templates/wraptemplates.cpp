@@ -23,10 +23,10 @@ extern "C" {
  */
 void TEM_function_tu_0(int arg1, long arg2)
 {
-// splicer begin function.function_tu_0
+    // splicer begin function.function_tu_0
     FunctionTU<int, long>(arg1, arg2);
     return;
-// splicer end function.function_tu_0
+    // splicer end function.function_tu_0
 }
 
 /**
@@ -35,10 +35,10 @@ void TEM_function_tu_0(int arg1, long arg2)
  */
 void TEM_function_tu_1(float arg1, double arg2)
 {
-// splicer begin function.function_tu_1
+    // splicer begin function.function_tu_1
     FunctionTU<float, double>(arg1, arg2);
     return;
-// splicer end function.function_tu_1
+    // splicer end function.function_tu_1
 }
 
 /**
@@ -47,10 +47,10 @@ void TEM_function_tu_1(float arg1, double arg2)
  */
 int TEM_use_impl_worker_internal_ImplWorker1()
 {
-// splicer begin function.use_impl_worker_internal_ImplWorker1
+    // splicer begin function.use_impl_worker_internal_ImplWorker1
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
     return SHC_rv;
-// splicer end function.use_impl_worker_internal_ImplWorker1
+    // splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
 /**
@@ -59,10 +59,10 @@ int TEM_use_impl_worker_internal_ImplWorker1()
  */
 int TEM_use_impl_worker_internal_ImplWorker2()
 {
-// splicer begin function.use_impl_worker_internal_ImplWorker2
+    // splicer begin function.use_impl_worker_internal_ImplWorker2
     int SHC_rv = UseImplWorker<internal::ImplWorker2>();
     return SHC_rv;
-// splicer end function.use_impl_worker_internal_ImplWorker2
+    // splicer end function.use_impl_worker_internal_ImplWorker2
 }
 
 // Release library allocated memory.

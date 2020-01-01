@@ -25,6 +25,7 @@
             "CXX_this_call": "",
             "C_array_type": "POI_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "POI_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrappointers.h",
@@ -44,6 +45,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -142,6 +144,7 @@
                             "cxx_type": "int",
                             "cxx_var": "argin",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -184,6 +187,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arginout",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_inout_",
                             "stmt1": "c_default"
                         },
@@ -226,6 +230,7 @@
                             "cxx_type": "int",
                             "cxx_var": "argout",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -322,17 +327,14 @@
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "intargs(\targin,\t arginout,\t argout);",
                     "C_call_list": "argin,\t arginout,\t argout",
                     "C_name": "POI_intargs",
                     "C_prototype": "const int argin,\t int * arginout,\t int * argout",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_intargs",
                     "F_C_name": "intargs",
                     "F_arg_c_call": "argin,\t arginout,\t argout",
                     "F_arguments": "argin,\t arginout,\t argout",
-                    "F_call_code": "call c_intargs(argin,\t arginout,\t argout)",
                     "F_name_function": "intargs",
                     "F_name_generic": "intargs",
                     "F_name_impl": "intargs",
@@ -364,6 +366,7 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_pointer_in_",
                             "stmt1": "c_default"
                         },
@@ -407,6 +410,7 @@
                             "cxx_type": "double",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -455,6 +459,7 @@
                             "cxx_type": "int",
                             "cxx_var": "sizein",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -555,17 +560,14 @@
                     "description": "allocate OUT same type as IN implied size of array"
                 },
                 "fmtdict": {
-                    "C_call_code": "cos_doubles(\tin,\t out,\t sizein);",
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_cos_doubles",
                     "C_prototype": "double * in,\t double * out,\t int sizein",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_cos_doubles",
                     "F_C_name": "c_cos_doubles",
                     "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_cos_doubles(in,\t out,\t SH_sizein)",
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
@@ -597,6 +599,7 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_pointer_in_",
                             "stmt1": "c_default"
                         },
@@ -640,6 +643,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -688,6 +692,7 @@
                             "cxx_type": "int",
                             "cxx_var": "sizein",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -788,17 +793,14 @@
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);",
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_truncate_to_int",
                     "C_prototype": "double * in,\t int * out,\t int sizein",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_truncate_to_int",
                     "F_C_name": "c_truncate_to_int",
                     "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_truncate_to_int(in,\t out,\t SH_sizein)",
                     "F_name_function": "truncate_to_int",
                     "F_name_generic": "truncate_to_int",
                     "F_name_impl": "truncate_to_int",
@@ -830,6 +832,7 @@
                             "cxx_type": "int",
                             "cxx_var": "nvalues",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -872,6 +875,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -963,17 +967,14 @@
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values(\tnvalues,\t values);",
                     "C_call_list": "nvalues,\t values",
                     "C_name": "POI_get_values",
                     "C_prototype": "int * nvalues,\t int * values",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_get_values",
                     "F_C_name": "get_values",
                     "F_arg_c_call": "nvalues,\t values",
                     "F_arguments": "nvalues,\t values",
-                    "F_call_code": "call c_get_values(nvalues,\t values)",
                     "F_name_function": "get_values",
                     "F_name_generic": "get_values",
                     "F_name_impl": "get_values",
@@ -1005,6 +1006,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -1051,6 +1053,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -1143,17 +1146,14 @@
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values2(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "POI_get_values2",
                     "C_prototype": "int * arg1,\t int * arg2",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_get_values2",
                     "F_C_name": "get_values2",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "call c_get_values2(arg1,\t arg2)",
                     "F_name_function": "get_values2",
                     "F_name_generic": "get_values2",
                     "F_name_impl": "get_values2",
@@ -1185,6 +1185,7 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1224,6 +1225,7 @@
                             "cxx_type": "int",
                             "cxx_var": "result",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -1266,6 +1268,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_in_",
                             "stmt1": "c_default"
                         },
@@ -1364,17 +1367,14 @@
                 "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result);",
                     "C_call_list": "len,\t values,\t result",
                     "C_name": "POI_sum",
                     "C_prototype": "int len,\t int * values,\t int * result",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_sum",
                     "F_C_name": "c_sum",
                     "F_arg_c_call": "SH_len,\t values,\t result",
                     "F_arguments": "values,\t result",
-                    "F_call_code": "call c_sum(SH_len,\t values,\t result)",
                     "F_name_function": "sum",
                     "F_name_generic": "sum",
                     "F_name_impl": "sum",
@@ -1410,6 +1410,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -1482,17 +1483,14 @@
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "fillIntArray(\tout);",
                     "C_call_list": "out",
                     "C_name": "POI_fill_int_array",
                     "C_prototype": "int * out",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_fill_int_array",
                     "F_C_name": "fill_int_array",
                     "F_arg_c_call": "out",
                     "F_arguments": "out",
-                    "F_call_code": "call c_fill_int_array(out)",
                     "F_name_function": "fill_int_array",
                     "F_name_generic": "fill_int_array",
                     "F_name_impl": "fill_int_array",
@@ -1524,6 +1522,7 @@
                             "cxx_type": "int",
                             "cxx_var": "array",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_inout_",
                             "stmt1": "c_default"
                         },
@@ -1567,6 +1566,7 @@
                             "cxx_type": "int",
                             "cxx_var": "sizein",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1647,17 +1647,14 @@
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "incrementIntArray(\tarray,\t sizein);",
                     "C_call_list": "array,\t sizein",
                     "C_name": "POI_increment_int_array",
                     "C_prototype": "int * array,\t int sizein",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_increment_int_array",
                     "F_C_name": "c_increment_int_array",
                     "F_arg_c_call": "array,\t SH_sizein",
                     "F_arguments": "array",
-                    "F_call_code": "call c_increment_int_array(array,\t SH_sizein)",
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",

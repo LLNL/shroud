@@ -14,11 +14,11 @@ extern "C" {
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,
     double arg2)
 {
-// splicer begin class.user.method.nested_double
     user<int> *SH_this = static_cast<user<int> *>(self->addr);
+    // splicer begin class.user.method.nested_double
     SH_this->nested<double>(arg1, arg2);
     return;
-// splicer end class.user.method.nested_double
+    // splicer end class.user.method.nested_double
 }
 
 }  // extern "C"

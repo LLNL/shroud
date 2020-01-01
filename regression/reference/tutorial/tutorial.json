@@ -118,6 +118,7 @@
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_scalar_ctor_",
                                 "stmt1": "c_shadow_ctor"
                             },
@@ -169,17 +170,13 @@
                         "decl": "Class1()         +name(new)",
                         "declgen": "Class1() +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_new_default",
                             "C_prototype": "TUT_Class1 * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_new_default",
                             "F_C_name": "c_class1_new_default",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
-                            "F_call_code": "SHT_prv = c_class1_new_default(SHT_rv%cxxmem)",
                             "F_name_function": "new_default",
                             "F_name_generic": "new",
                             "F_name_impl": "class1_new_default",
@@ -215,6 +212,7 @@
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
                                     "stmt0": "c_native_scalar_in_",
                                     "stmt1": "c_default"
                                 },
@@ -265,6 +263,7 @@
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_scalar_ctor_",
                                 "stmt1": "c_shadow_ctor"
                             },
@@ -331,17 +330,14 @@
                         "decl": "Class1(int flag) +name(new)",
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_call_list": "flag",
                             "C_name": "TUT_Class1_new_flag",
                             "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_new_flag",
                             "F_C_name": "c_class1_new_flag",
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                             "F_arguments": "flag",
-                            "F_call_code": "SHT_prv = c_class1_new_flag(flag,\t SHT_rv%cxxmem)",
                             "F_name_function": "new_flag",
                             "F_name_generic": "new",
                             "F_name_impl": "class1_new_flag",
@@ -376,18 +372,13 @@
                         "decl": "~Class1()        +name(delete)",
                         "declgen": "~Class1() +name(delete)",
                         "fmtdict": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;",
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_delete",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self",
-                            "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_delete",
                             "F_C_name": "c_class1_delete",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "call c_class1_delete(obj%cxxmem)",
                             "F_name_function": "delete",
                             "F_name_generic": "delete",
                             "F_name_impl": "class1_delete",
@@ -419,6 +410,7 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_native_scalar_result_",
                                 "stmt1": "c_default"
                             },
@@ -468,18 +460,13 @@
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->Method1(\t);",
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_method1",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_method1",
                             "F_C_name": "c_class1_method1",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "SHT_rv = c_class1_method1(obj%cxxmem)",
                             "F_name_function": "method1",
                             "F_name_generic": "method1",
                             "F_name_impl": "class1_method1",
@@ -514,6 +501,7 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "SHCXX_obj2",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_shadow_pointer_in_",
                                     "stmt1": "c_shadow_in"
                                 },
@@ -557,6 +545,7 @@
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
                                 "stmt0": "c_bool_scalar_result_",
                                 "stmt1": "c_default"
                             },
@@ -622,18 +611,14 @@
                             "brief": "Pass in reference to instance"
                         },
                         "fmtdict": {
-                            "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);",
                             "C_call_list": "*SHCXX_obj2",
                             "C_name": "TUT_Class1_equivalent",
-                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);\nconst tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>\t(obj2->addr);",
                             "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * obj2",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "bool",
                             "F_C_call": "c_class1_equivalent",
                             "F_C_name": "c_class1_equivalent",
                             "F_arg_c_call": "obj%cxxmem,\t obj2%cxxmem",
                             "F_arguments": "obj,\t obj2",
-                            "F_call_code": "SHT_rv = c_class1_equivalent(obj%cxxmem,\t obj2%cxxmem)",
                             "F_name_function": "equivalent",
                             "F_name_generic": "equivalent",
                             "F_name_impl": "class1_equivalent",
@@ -677,18 +662,13 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "SH_this->returnThis(\t);",
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_return_this",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self",
-                            "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_return_this",
                             "F_C_name": "c_class1_return_this",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "call c_class1_return_this(obj%cxxmem)",
                             "F_name_function": "return_this",
                             "F_name_generic": "return_this",
                             "F_name_impl": "class1_return_this",
@@ -727,6 +707,7 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
                                     "stmt0": "c_bool_scalar_in_",
                                     "stmt1": "c_default"
                                 }
@@ -744,6 +725,7 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_string_pointer_in_",
                                     "stmt1": "c_string_in"
                                 }
@@ -751,7 +733,6 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
-                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -760,6 +741,7 @@
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_pointer_result_",
                                 "stmt1": "c_shadow_result"
                             },
@@ -828,19 +810,14 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SHCXX_name(name);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t bool flag,\t TUT_Class1 * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_return_this_buffer_bufferify",
                             "F_C_name": "c_class1_return_this_buffer",
                             "F_arg_c_call": "obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag,\t SHT_rv%cxxmem",
                             "F_arguments": "obj,\t name,\t flag",
-                            "F_call_code": "SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag,\t SHT_rv%cxxmem)",
                             "F_name_function": "return_this_buffer",
                             "F_name_generic": "return_this_buffer",
                             "F_name_impl": "class1_return_this_buffer",
@@ -876,6 +853,7 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
                                     "stmt0": "c_bool_scalar_in_buf",
                                     "stmt1": "c_default"
                                 },
@@ -903,6 +881,7 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_string_pointer_in_buf",
                                     "stmt1": "c_string_in_buf"
                                 },
@@ -919,7 +898,6 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
-                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -928,6 +906,7 @@
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_pointer_result_buf",
                                 "stmt1": "c_shadow_result"
                             }
@@ -991,13 +970,9 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSHCXX_name,\t flag);",
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "TUT_Class1_return_this_buffer_bufferify",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SHCXX_name(name, Lname);",
                             "C_prototype": "TUT_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t TUT_Class1 * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
                             "c_const": "",
@@ -1021,7 +996,6 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_get_value": "",
                                 "c_type": "TUT_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -1030,6 +1004,7 @@
                                 "cxx_type": "tutorial::Class1",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_pointer_result_",
                                 "stmt1": "c_shadow_result"
                             },
@@ -1080,19 +1055,13 @@
                             "brief": "Test const method"
                         },
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->getclass3(\t);",
-                            "C_call_list": "",
                             "C_name": "TUT_Class1_getclass3",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
-                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);",
                             "C_prototype": "const TUT_Class1 * self,\t TUT_Class1 * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Class1 *",
                             "F_C_call": "c_class1_getclass3",
                             "F_C_name": "c_class1_getclass3",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "SHT_prv = c_class1_getclass3(obj%cxxmem,\t SHT_rv%cxxmem)",
                             "F_name_function": "getclass3",
                             "F_name_generic": "getclass3",
                             "F_name_impl": "class1_getclass3",
@@ -1130,6 +1099,7 @@
                                     "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
                                     "stmt0": "c_native_scalar_in_",
                                     "stmt1": "c_default"
                                 },
@@ -1184,6 +1154,7 @@
                                 "cxx_type": "tutorial::Class1::DIRECTION",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_native_scalar_result_",
                                 "stmt1": "c_default"
                             },
@@ -1244,19 +1215,14 @@
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "TUT_Class1_direction_func",
-                            "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\ntutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                             "C_prototype": "TUT_Class1 * self,\t int arg",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_direction_func",
                             "F_C_name": "c_class1_direction_func",
                             "F_arg_c_call": "obj%cxxmem,\t arg",
                             "F_arguments": "obj,\t arg",
-                            "F_call_code": "SHT_rv = c_class1_direction_func(obj%cxxmem,\t arg)",
                             "F_name_function": "direction_func",
                             "F_name_generic": "direction_func",
                             "F_name_impl": "class1_direction_func",
@@ -1287,6 +1253,7 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_native_scalar_result_",
                                 "stmt1": "c_default"
                             },
@@ -1314,19 +1281,13 @@
                         "decl": "int getM_flag()",
                         "declgen": "int getM_flag()",
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getM_flag(\t);",
-                            "C_call_list": "",
-                            "C_code": "{C_pre_call}\nreturn SH_this->m_flag;",
                             "C_name": "TUT_Class1_get_m_flag",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_get_m_flag",
                             "F_C_name": "c_class1_get_m_flag",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "SHT_rv = c_class1_get_m_flag(obj%cxxmem)",
                             "F_name_function": "get_m_flag",
                             "F_name_generic": "get_m_flag",
                             "F_name_impl": "class1_get_m_flag",
@@ -1344,6 +1305,11 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_flag;"
+                            ]
                         }
                     },
                     {
@@ -1357,6 +1323,7 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
                                 "stmt0": "c_native_scalar_result_",
                                 "stmt1": "c_default"
                             },
@@ -1384,19 +1351,13 @@
                         "decl": "int getTest()",
                         "declgen": "int getTest()",
                         "fmtdict": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getTest(\t);",
-                            "C_call_list": "",
-                            "C_code": "{C_pre_call}\nreturn SH_this->m_test;",
                             "C_name": "TUT_Class1_get_test",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "int",
                             "F_C_call": "c_class1_get_test",
                             "F_C_name": "c_class1_get_test",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
-                            "F_call_code": "SHT_rv = c_class1_get_test(obj%cxxmem)",
                             "F_name_function": "get_test",
                             "F_name_generic": "get_test",
                             "F_name_impl": "class1_get_test",
@@ -1414,6 +1375,11 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_test;"
+                            ]
                         }
                     },
                     {
@@ -1431,6 +1397,7 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
                                     "stmt0": "c_native_scalar_in_",
                                     "stmt1": "c_default"
                                 },
@@ -1474,19 +1441,14 @@
                         "decl": "void setTest(int val)",
                         "declgen": "void setTest(int val +intent(in)+value)",
                         "fmtdict": {
-                            "C_call_code": "SH_this->setTest(\tval);",
                             "C_call_list": "val",
-                            "C_code": "{C_pre_call}\nSH_this->m_test = val;\nreturn;",
                             "C_name": "TUT_Class1_set_test",
-                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);",
                             "C_prototype": "TUT_Class1 * self,\t int val",
-                            "C_return_code": "return;",
                             "C_return_type": "void",
                             "F_C_call": "c_class1_set_test",
                             "F_C_name": "c_class1_set_test",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
-                            "F_call_code": "call c_class1_set_test(obj%cxxmem,\t val)",
                             "F_name_function": "set_test",
                             "F_name_generic": "set_test",
                             "F_name_impl": "class1_set_test",
@@ -1506,6 +1468,12 @@
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->m_test = val;",
+                                "return;"
+                            ]
                         }
                     }
                 ],
@@ -1599,7 +1567,6 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_get_value": "*",
                                 "c_type": "TUT_Singleton",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1608,6 +1575,7 @@
                                 "cxx_type": "tutorial::Singleton",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_pointer_result_",
                                 "stmt1": "c_shadow_result"
                             },
@@ -1657,18 +1625,13 @@
                         "declgen": "static Singleton & getReference()",
                         "fmtdict": {
                             "CXX_this_call": "tutorial::Singleton::",
-                            "C_call_code": "tutorial::Singleton & SHCXX_rv =\t tutorial::Singleton::getReference(\t);",
-                            "C_call_list": "",
                             "C_name": "TUT_Singleton_get_reference",
-                            "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "TUT_Singleton * SHC_rv",
-                            "C_return_code": "return SHC_rv;",
                             "C_return_type": "TUT_Singleton *",
                             "F_C_call": "c_singleton_get_reference",
                             "F_C_name": "c_singleton_get_reference",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
-                            "F_call_code": "SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)",
                             "F_name_function": "get_reference",
                             "F_name_generic": "get_reference",
                             "F_name_impl": "singleton_get_reference",
@@ -1772,6 +1735,7 @@
             "CXX_this_call": "",
             "C_array_type": "TUT_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
+            "C_call_list": "",
             "C_capsule_data_type": "TUT_SHROUD_capsule_data",
             "C_custom_return_type": "",
             "C_header_filename": "wrapTutorial.h",
@@ -1791,6 +1755,7 @@
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
             "F_C_result_clause": "",
+            "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -1894,17 +1859,12 @@
                 "decl": "void NoReturnNoArguments()",
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::NoReturnNoArguments(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_no_return_no_arguments",
                     "C_prototype": "",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_no_return_no_arguments",
                     "F_C_name": "no_return_no_arguments",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "call c_no_return_no_arguments()",
                     "F_name_function": "no_return_no_arguments",
                     "F_name_generic": "no_return_no_arguments",
                     "F_name_impl": "no_return_no_arguments",
@@ -1941,6 +1901,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -1994,6 +1955,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -2045,6 +2007,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -2119,17 +2082,14 @@
                 "decl": "double PassByValue(double arg1, int arg2)",
                 "declgen": "double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::PassByValue(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TUT_pass_by_value",
                     "C_prototype": "double arg1,\t int arg2",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
                     "F_C_call": "c_pass_by_value",
                     "F_C_name": "pass_by_value",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "SHT_rv = c_pass_by_value(arg1,\t arg2)",
                     "F_name_function": "pass_by_value",
                     "F_name_generic": "pass_by_value",
                     "F_name_impl": "pass_by_value",
@@ -2301,7 +2261,6 @@
                     "F_C_call": "c_concatenate_strings_bufferify",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "call c_concatenate_strings_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv)",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
                     "F_name_impl": "concatenate_strings",
@@ -2334,6 +2293,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "2",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_scalar_result_buf_allocatable",
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
@@ -2362,6 +2322,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -2389,6 +2350,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -2412,6 +2374,7 @@
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "c_unknown_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -2499,13 +2462,9 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2);",
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_post_call": "ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);",
-                    "C_pre_call": "const std::string SHCXX_arg1(arg1, Larg1);\nconst std::string SHCXX_arg2(arg2, Larg2);\nstd::string * SHCXX_rv = new std::string;",
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "c_const": "",
@@ -2533,6 +2492,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -2567,17 +2527,12 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_use_default_arguments",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
                     "F_C_call": "c_use_default_arguments",
                     "F_C_name": "c_use_default_arguments",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_use_default_arguments()",
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
                     "F_name_impl": "use_default_arguments",
@@ -2614,6 +2569,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -2638,6 +2594,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -2688,17 +2645,14 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1);",
                     "C_call_list": "arg1",
                     "C_name": "TUT_use_default_arguments_arg1",
                     "C_prototype": "double arg1",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
                     "F_C_call": "c_use_default_arguments_arg1",
                     "F_C_name": "c_use_default_arguments_arg1",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
-                    "F_call_code": "SHT_rv = c_use_default_arguments_arg1(arg1)",
                     "F_name_function": "use_default_arguments_arg1",
                     "F_name_generic": "use_default_arguments",
                     "F_name_impl": "use_default_arguments_arg1",
@@ -2739,6 +2693,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -2792,6 +2747,7 @@
                             "cxx_type": "bool",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
                             "stmt0": "c_bool_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -2845,6 +2801,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -2932,17 +2889,14 @@
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TUT_use_default_arguments_arg1_arg2",
                     "C_prototype": "double arg1,\t bool arg2",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
                     "F_C_call": "c_use_default_arguments_arg1_arg2",
                     "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_arg_c_call": "arg1,\t SH_arg2",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "SHT_rv = c_use_default_arguments_arg1_arg2(arg1,\t SH_arg2)",
                     "F_name_function": "use_default_arguments_arg1_arg2",
                     "F_name_generic": "use_default_arguments",
                     "F_name_impl": "use_default_arguments_arg1_arg2",
@@ -2978,6 +2932,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_",
                             "stmt1": "c_string_in"
                         },
@@ -3045,18 +3000,14 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name",
-                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_overloaded_function_from_name_bufferify",
                     "F_C_name": "c_overloaded_function_from_name",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
                     "F_arguments": "name",
-                    "F_call_code": "call c_overloaded_function_from_name_bufferify(name,\t len_trim(name, kind=C_INT))",
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
                     "F_name_impl": "overloaded_function_from_name",
@@ -3093,6 +3044,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -3145,12 +3097,9 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tSHCXX_name);",
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
-                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "__line__": 71,
@@ -3182,6 +3131,7 @@
                             "cxx_type": "int",
                             "cxx_var": "indx",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -3253,17 +3203,14 @@
                 "decl": "void OverloadedFunction(int indx)",
                 "declgen": "void OverloadedFunction(int indx +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::OverloadedFunction(\tindx);",
                     "C_call_list": "indx",
                     "C_name": "TUT_overloaded_function_from_index",
                     "C_prototype": "int indx",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_overloaded_function_from_index",
                     "F_C_name": "c_overloaded_function_from_index",
                     "F_arg_c_call": "indx",
                     "F_arguments": "indx",
-                    "F_call_code": "call c_overloaded_function_from_index(indx)",
                     "F_name_function": "overloaded_function_from_index",
                     "F_name_generic": "overloaded_function",
                     "F_name_impl": "overloaded_function_from_index",
@@ -3373,6 +3320,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -3446,17 +3394,14 @@
                 "declgen": "void TemplateArgument(int arg +intent(in)+value)",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_code": "tutorial::TemplateArgument<int>(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_template_argument_int",
                     "C_prototype": "int arg",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_template_argument_int",
                     "F_C_name": "c_template_argument_int",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_template_argument_int(arg)",
                     "F_name_function": "template_argument_int",
                     "F_name_generic": "template_argument",
                     "F_name_impl": "template_argument_int",
@@ -3524,6 +3469,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -3597,17 +3543,14 @@
                 "declgen": "void TemplateArgument(double arg +intent(in)+value)",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_code": "tutorial::TemplateArgument<double>(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_template_argument_double",
                     "C_prototype": "double arg",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_template_argument_double",
                     "F_C_name": "c_template_argument_double",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_template_argument_double(arg)",
                     "F_name_function": "template_argument_double",
                     "F_name_generic": "template_argument",
                     "F_name_impl": "template_argument_double",
@@ -3735,6 +3678,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -3765,17 +3709,12 @@
                 "declgen": "int TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_code": "int SHC_rv =\t tutorial::TemplateReturn<int>(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_template_return_int",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_template_return_int",
                     "F_C_name": "c_template_return_int",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_template_return_int()",
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
                     "F_name_impl": "template_return_int",
@@ -3836,6 +3775,7 @@
                         "cxx_type": "double",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -3866,17 +3806,12 @@
                 "declgen": "double TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_code": "double SHC_rv =\t tutorial::TemplateReturn<double>(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_template_return_double",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
                     "F_C_call": "c_template_return_double",
                     "F_C_name": "c_template_return_double",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_template_return_double()",
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
                     "F_name_impl": "template_return_double",
@@ -3946,17 +3881,12 @@
                 "decl": "void FortranGenericOverloaded()",
                 "declgen": "void FortranGenericOverloaded()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_fortran_generic_overloaded_0",
                     "C_prototype": "",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_fortran_generic_overloaded_0",
                     "F_C_name": "c_fortran_generic_overloaded_0",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "call c_fortran_generic_overloaded_0()",
                     "F_name_function": "fortran_generic_overloaded_0",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_0",
@@ -3991,6 +3921,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4035,6 +3966,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_",
                             "stmt1": "c_string_in"
                         },
@@ -4116,12 +4048,9 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1",
-                    "C_pre_call": "const std::string SHCXX_name(name);",
                     "C_prototype": "const char * name,\t double arg2",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
@@ -4271,7 +4200,6 @@
                     "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE)",
                     "F_arguments": "name,\t arg2",
-                    "F_call_code": "call c_fortran_generic_overloaded_1_bufferify(name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE))",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_float",
@@ -4348,7 +4276,6 @@
                     "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
-                    "F_call_code": "call c_fortran_generic_overloaded_1_bufferify(name,\t len_trim(name, kind=C_INT),\t arg2)",
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_double",
@@ -4386,6 +4313,7 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_buf",
                             "stmt1": "c_default"
                         },
@@ -4413,6 +4341,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -4480,12 +4409,9 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2);",
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
-                    "C_pre_call": "const std::string SHCXX_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1_bufferify",
                     "c_const": "",
@@ -4598,6 +4524,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4622,6 +4549,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -4671,17 +4599,14 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum);",
                     "C_call_list": "num",
                     "C_name": "TUT_use_default_overload_num",
                     "C_prototype": "int num",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_num",
                     "F_C_name": "c_use_default_overload_num",
                     "F_arg_c_call": "num",
                     "F_arguments": "num",
-                    "F_call_code": "SHT_rv = c_use_default_overload_num(num)",
                     "F_name_function": "use_default_overload_num",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_num",
@@ -4716,6 +4641,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4742,6 +4668,7 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4766,6 +4693,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -4830,17 +4758,14 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset);",
                     "C_call_list": "num,\t offset",
                     "C_name": "TUT_use_default_overload_num_offset",
                     "C_prototype": "int num,\t int offset",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_num_offset",
                     "F_C_name": "c_use_default_overload_num_offset",
                     "F_arg_c_call": "num,\t offset",
                     "F_arguments": "num,\t offset",
-                    "F_call_code": "SHT_rv = c_use_default_overload_num_offset(num,\t offset)",
                     "F_name_function": "use_default_overload_num_offset",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_num_offset",
@@ -4879,6 +4804,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4932,6 +4858,7 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -4985,6 +4912,7 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5036,6 +4964,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -5137,17 +5066,14 @@
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset,\t stride);",
                     "C_call_list": "num,\t offset,\t stride",
                     "C_name": "TUT_use_default_overload_num_offset_stride",
                     "C_prototype": "int num,\t int offset,\t int stride",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_num_offset_stride",
                     "F_C_name": "c_use_default_overload_num_offset_stride",
                     "F_arg_c_call": "num,\t offset,\t stride",
                     "F_arguments": "num,\t offset,\t stride",
-                    "F_call_code": "SHT_rv = c_use_default_overload_num_offset_stride(num,\t offset,\t stride)",
                     "F_name_function": "use_default_overload_num_offset_stride",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_num_offset_stride",
@@ -5180,6 +5106,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5206,6 +5133,7 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5230,6 +5158,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -5288,17 +5217,14 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num);",
                     "C_call_list": "type,\t num",
                     "C_name": "TUT_use_default_overload_3",
                     "C_prototype": "double type,\t int num",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_3",
                     "F_C_name": "c_use_default_overload_3",
                     "F_arg_c_call": "type,\t num",
                     "F_arguments": "type,\t num",
-                    "F_call_code": "SHT_rv = c_use_default_overload_3(type,\t num)",
                     "F_name_function": "use_default_overload_3",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_3",
@@ -5333,6 +5259,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5359,6 +5286,7 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5385,6 +5313,7 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5409,6 +5338,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -5482,17 +5412,14 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset);",
                     "C_call_list": "type,\t num,\t offset",
                     "C_name": "TUT_use_default_overload_4",
                     "C_prototype": "double type,\t int num,\t int offset",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_4",
                     "F_C_name": "c_use_default_overload_4",
                     "F_arg_c_call": "type,\t num,\t offset",
                     "F_arguments": "type,\t num,\t offset",
-                    "F_call_code": "SHT_rv = c_use_default_overload_4(type,\t num,\t offset)",
                     "F_name_function": "use_default_overload_4",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_4",
@@ -5531,6 +5458,7 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5584,6 +5512,7 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5637,6 +5566,7 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5690,6 +5620,7 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5741,6 +5672,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -5851,17 +5783,14 @@
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride);",
                     "C_call_list": "type,\t num,\t offset,\t stride",
                     "C_name": "TUT_use_default_overload_5",
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_use_default_overload_5",
                     "F_C_name": "c_use_default_overload_5",
                     "F_arg_c_call": "type,\t num,\t offset,\t stride",
                     "F_arguments": "type,\t num,\t offset,\t stride",
-                    "F_call_code": "SHT_rv = c_use_default_overload_5(type,\t num,\t offset,\t stride)",
                     "F_name_function": "use_default_overload_5",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_5",
@@ -5892,6 +5821,7 @@
                             "cxx_type": "tutorial::TypeID",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -5943,6 +5873,7 @@
                         "cxx_type": "tutorial::TypeID",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -6003,17 +5934,14 @@
                 "decl": "TypeID typefunc(TypeID arg)",
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::TypeID SHC_rv =\t tutorial::typefunc(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_typefunc",
                     "C_prototype": "int arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_typefunc",
                     "F_C_name": "typefunc",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_typefunc(arg)",
                     "F_name_function": "typefunc",
                     "F_name_generic": "typefunc",
                     "F_name_impl": "typefunc",
@@ -6047,6 +5975,7 @@
                             "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -6101,6 +6030,7 @@
                         "cxx_type": "tutorial::EnumTypeID",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -6161,19 +6091,14 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::enumfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::EnumTypeID SHCXX_arg =\t static_cast<tutorial::EnumTypeID>(arg);",
                     "C_prototype": "int arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_enumfunc",
                     "F_C_name": "enumfunc",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_enumfunc(arg)",
                     "F_name_function": "enumfunc",
                     "F_name_generic": "enumfunc",
                     "F_name_impl": "enumfunc",
@@ -6207,6 +6132,7 @@
                             "cxx_val": "static_cast<tutorial::Color>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -6261,6 +6187,7 @@
                         "cxx_type": "tutorial::Color",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -6321,19 +6248,14 @@
                 "decl": "Color colorfunc(Color arg);",
                 "declgen": "Color colorfunc(Color arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Color SHCXX_rv =\t tutorial::colorfunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::Color SHCXX_arg =\t static_cast<tutorial::Color>(arg);",
                     "C_prototype": "int arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_colorfunc",
                     "F_C_name": "colorfunc",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_colorfunc(arg)",
                     "F_name_function": "colorfunc",
                     "F_name_generic": "colorfunc",
                     "F_name_impl": "colorfunc",
@@ -6365,6 +6287,7 @@
                             "cxx_type": "int",
                             "cxx_var": "max",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -6407,6 +6330,7 @@
                             "cxx_type": "int",
                             "cxx_var": "min",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_pointer_out_",
                             "stmt1": "c_default"
                         },
@@ -6492,17 +6416,14 @@
                     "brief": "Pass in reference to scalar"
                 },
                 "fmtdict": {
-                    "C_call_code": "tutorial::getMinMax(\t*min,\t *max);",
                     "C_call_list": "*min,\t *max",
                     "C_name": "TUT_get_min_max",
                     "C_prototype": "int * min,\t int * max",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_get_min_max",
                     "F_C_name": "get_min_max",
                     "F_arg_c_call": "min,\t max",
                     "F_arguments": "min,\t max",
-                    "F_call_code": "call c_get_min_max(min,\t max)",
                     "F_name_function": "get_min_max",
                     "F_name_generic": "get_min_max",
                     "F_name_impl": "get_min_max",
@@ -6540,6 +6461,7 @@
                             "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -6594,6 +6516,7 @@
                         "cxx_type": "tutorial::Class1::DIRECTION",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -6654,19 +6577,14 @@
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t tutorial::directionFunc(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_direction_func",
-                    "C_post_call_pattern": "int SHC_rv =\t static_cast<int>(SHCXX_rv);",
-                    "C_pre_call": "tutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);",
                     "C_prototype": "int arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_direction_func",
                     "F_C_name": "direction_func",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_direction_func(arg)",
                     "F_name_function": "direction_func",
                     "F_name_generic": "direction_func",
                     "F_name_impl": "direction_func",
@@ -6698,6 +6616,7 @@
                             "cxx_type": "tutorial::Class1",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_shadow_scalar_in_",
                             "stmt1": "c_shadow_in"
                         },
@@ -6764,18 +6683,14 @@
                     "brief": "Pass arguments to a function."
                 },
                 "fmtdict": {
-                    "C_call_code": "tutorial::passClassByValue(\t*SHCXX_arg);",
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "TUT_pass_class_by_value",
-                    "C_pre_call": "tutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>\t(arg->addr);",
                     "C_prototype": "TUT_Class1 * arg",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_pass_class_by_value",
                     "F_C_name": "c_pass_class_by_value",
                     "F_arg_c_call": "arg%cxxmem",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_pass_class_by_value(arg%cxxmem)",
                     "F_name_function": "pass_class_by_value",
                     "F_name_generic": "pass_class_by_value",
                     "F_name_impl": "pass_class_by_value",
@@ -6810,6 +6725,7 @@
                             "cxx_type": "tutorial::Class1",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_shadow_pointer_in_",
                             "stmt1": "c_shadow_in"
                         },
@@ -6853,6 +6769,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -6912,18 +6829,14 @@
                 "decl": "int useclass(const Class1 *arg)",
                 "declgen": "int useclass(const Class1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::useclass(\tSHCXX_arg);",
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_useclass",
-                    "C_pre_call": "const tutorial::Class1 * SHCXX_arg =\t static_cast<const tutorial::Class1 *>\t(arg->addr);",
                     "C_prototype": "TUT_Class1 * arg",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_useclass",
                     "F_C_name": "c_useclass",
                     "F_arg_c_call": "arg%cxxmem",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_useclass(arg%cxxmem)",
                     "F_name_function": "useclass",
                     "F_name_generic": "useclass",
                     "F_name_impl": "useclass",
@@ -6944,7 +6857,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -6953,6 +6865,7 @@
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_shadow_pointer_result_",
                         "stmt1": "c_shadow_result"
                     },
@@ -6985,18 +6898,13 @@
                 "decl": "const Class1 *getclass2()",
                 "declgen": "const Class1 * getclass2()",
                 "fmtdict": {
-                    "C_call_code": "const tutorial::Class1 * SHCXX_rv =\t tutorial::getclass2(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_getclass2",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass2",
                     "F_C_name": "c_getclass2",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
-                    "F_call_code": "SHT_prv = c_getclass2(SHT_rv%cxxmem)",
                     "F_name_function": "getclass2",
                     "F_name_generic": "getclass2",
                     "F_name_impl": "getclass2",
@@ -7017,7 +6925,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -7026,6 +6933,7 @@
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_shadow_pointer_result_",
                         "stmt1": "c_shadow_result"
                     },
@@ -7071,18 +6979,13 @@
                 "decl": "Class1 *getclass3()",
                 "declgen": "Class1 * getclass3()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1 * SHCXX_rv =\t tutorial::getclass3(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_getclass3",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_getclass3",
                     "F_C_name": "c_getclass3",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
-                    "F_call_code": "SHT_prv = c_getclass3(SHT_rv%cxxmem)",
                     "F_name_function": "getclass3",
                     "F_name_generic": "getclass3",
                     "F_name_impl": "getclass3",
@@ -7103,7 +7006,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -7112,6 +7014,7 @@
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_shadow_pointer_result_",
                         "stmt1": "c_shadow_result"
                     },
@@ -7144,18 +7047,13 @@
                 "decl": "const Class1 &getConstClassReference()",
                 "declgen": "const Class1 & getConstClassReference()",
                 "fmtdict": {
-                    "C_call_code": "const tutorial::Class1 & SHCXX_rv =\t tutorial::getConstClassReference(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_get_const_class_reference",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(&SHCXX_rv));\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_const_class_reference",
                     "F_C_name": "c_get_const_class_reference",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
-                    "F_call_code": "SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)",
                     "F_name_function": "get_const_class_reference",
                     "F_name_generic": "get_const_class_reference",
                     "F_name_impl": "get_const_class_reference",
@@ -7176,7 +7074,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -7185,6 +7082,7 @@
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_shadow_pointer_result_",
                         "stmt1": "c_shadow_result"
                     },
@@ -7230,18 +7128,13 @@
                 "decl": "Class1 &getClassReference()",
                 "declgen": "Class1 & getClassReference()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Class1 & SHCXX_rv =\t tutorial::getClassReference(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_get_class_reference",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
                     "C_prototype": "TUT_Class1 * SHC_rv",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_class_reference",
                     "F_C_name": "c_get_class_reference",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
-                    "F_call_code": "SHT_prv = c_get_class_reference(SHT_rv%cxxmem)",
                     "F_name_function": "get_class_reference",
                     "F_name_generic": "get_class_reference",
                     "F_name_impl": "get_class_reference",
@@ -7274,6 +7167,7 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -7290,7 +7184,6 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "*",
                         "c_type": "TUT_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -7299,6 +7192,7 @@
                         "cxx_type": "tutorial::Class1",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_shadow_scalar_result_",
                         "stmt1": "c_shadow_scalar_result"
                     },
@@ -7345,19 +7239,14 @@
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::getClassCopy(\tflag);",
                     "C_call_list": "flag",
                     "C_name": "TUT_get_class_copy",
-                    "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;",
-                    "C_pre_call": "tutorial::Class1 * SHCXX_rv = new tutorial::Class1;",
                     "C_prototype": "int flag,\t TUT_Class1 * SHC_rv",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "TUT_Class1 *",
                     "F_C_call": "c_get_class_copy",
                     "F_C_name": "c_get_class_copy",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                     "F_arguments": "flag",
-                    "F_call_code": "SHT_prv = c_get_class_copy(flag,\t SHT_rv%cxxmem)",
                     "F_name_function": "get_class_copy",
                     "F_name_generic": "get_class_copy",
                     "F_name_impl": "get_class_copy",
@@ -7390,6 +7279,7 @@
                             "cxx_type": "int",
                             "cxx_var": "in",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -7416,6 +7306,7 @@
                             "cxx_type": "int",
                             "cxx_var": "incr",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -7435,6 +7326,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -7513,17 +7405,14 @@
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::callback1(\tin,\t incr);",
                     "C_call_list": "in,\t incr",
                     "C_name": "TUT_callback1",
                     "C_prototype": "int in,\t int ( * incr)(\tint)",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_callback1",
                     "F_C_name": "callback1",
                     "F_arg_c_call": "in,\t incr",
                     "F_arguments": "in,\t incr",
-                    "F_call_code": "SHT_rv = c_callback1(in,\t incr)",
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
                     "F_name_impl": "callback1",
@@ -7557,6 +7446,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_scalar_in_",
                             "stmt1": "c_default"
                         },
@@ -7627,17 +7517,14 @@
                 "decl": "void set_global_flag(int arg)",
                 "declgen": "void set_global_flag(int arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::set_global_flag(\targ);",
                     "C_call_list": "arg",
                     "C_name": "TUT_set_global_flag",
                     "C_prototype": "int arg",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_set_global_flag",
                     "F_C_name": "set_global_flag",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_set_global_flag(arg)",
                     "F_name_function": "set_global_flag",
                     "F_name_generic": "set_global_flag",
                     "F_name_impl": "set_global_flag",
@@ -7667,6 +7554,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_scalar_result_",
                         "stmt1": "c_default"
                     },
@@ -7712,17 +7600,12 @@
                 "decl": "int get_global_flag()",
                 "declgen": "int get_global_flag()",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::get_global_flag(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_get_global_flag",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_get_global_flag",
                     "F_C_name": "get_global_flag",
-                    "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_get_global_flag()",
                     "F_name_function": "get_global_flag",
                     "F_name_generic": "get_global_flag",
                     "F_name_impl": "get_global_flag",
@@ -7742,7 +7625,6 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_get_value": "&",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -7752,6 +7634,7 @@
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_string_pointer_result_",
                         "stmt1": "c_string_result"
                     },
@@ -7807,18 +7690,13 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_last_function_called",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
-                    "C_return_code": "return SHC_rv;",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
-                    "F_call_code": "call c_last_function_called_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
@@ -7851,6 +7729,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_string_pointer_result_buf_",
                             "stmt1": "c_string_result_buf"
                         },
@@ -7874,6 +7753,7 @@
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
+                        "sh_type": "SH_TYPE_CPTR",
                         "stmt0": "c_unknown_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -7916,12 +7796,8 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);",
-                    "C_call_list": "",
                     "C_name": "TUT_last_function_called_bufferify",
-                    "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
-                    "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
                     "c_const": "",
