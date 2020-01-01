@@ -40,11 +40,11 @@ The generated Python requires Python 2.7 or 3.4+.
 
 ## Release
 
-Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+other Shroud Project Developers.
+See the top-level COPYRIGHT file for details.
 
-Produced at the Lawrence Livermore National Laboratory.
-
-All rights reserved.
+SPDX-License-Identifier: (BSD-3-Clause)
 
 Unlimited Open Source - BSD 3-clause Distribution
 
