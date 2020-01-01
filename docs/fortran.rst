@@ -51,9 +51,10 @@ be controlled directly by the input YAML file:
     contains
 
       {F_subprogram} {F_name_impl}
-        {pre_call}
-        {F_code}
-        {post_call}
+        declare
+        pre_call
+        call
+        post_call
       end {F_subprogram} {F_name_impl}
 
     end module {F_module_name}
@@ -170,84 +171,6 @@ None
 Argument in Fortran wrapper to call C.
 
 
-
-statements
-----------
-
-Statements are used to add additional lines of code for each argument:
-
-.. code-block:: text
-
-      {F_subprogram} {F_name_impl}
-        ! arg_f_use
-        ! arg_f_decl
-        ! pre_call
-        {F_code}
-        ! post_call
-      end {F_subprogram} {F_name_impl}
-
-buf_arg
-^^^^^^^
-
-
-c_local_var
-^^^^^^^^^^^
-
-If true, generate a local variable using the C declaration for the argument.
-This variable can be used by the pre_call and post_call statements.
-A single declaration will be added even if with ``intent(inout)``.
-
-call
-^^^^
-
-f_helper
-^^^^^^^^
-
-Blank delimited list of helper function names to add to generated Fortran code.
-These functions are defined in whelper.py.
-There is no current way to add additional functions.
-
-
-f_module
-^^^^^^^^
-
-``USE`` statements to add to Fortran wrapper.
-A dictionary of list of ``ONLY`` names:
-
-.. code-block:: yaml
-
-        f_module=dict(iso_c_binding=['C_SIZE_T']),
-
-declare
-^^^^^^^
-
-A list of declarations needed by *pre_call* or *post_call*.
-Usually a *c_local_var* is sufficient.
-
-
-pre_call
-^^^^^^^^
-
-Statement to execute before call, often to coerce types when *f_cast* cannot be used.
-
-call
-^^^^
-
-Code used to call the function.
-Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
-
-post_call
-^^^^^^^^^
-
-Statement to execute after call.
-Can be use to cleanup after *pre_call* or to coerce the return value.
-
-need_wrapper
-^^^^^^^^^^^^
-
-If true, the Fortran wrapper will always be created.
-This is used when an assignment is needed to do a type coercion;
-for example, with logical types.
 
 
 Predefined Types

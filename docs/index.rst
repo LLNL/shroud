@@ -39,6 +39,7 @@ Contents
    struct
    declarations
    types
+   typemaps
    functions
    cwrapper
    fortran

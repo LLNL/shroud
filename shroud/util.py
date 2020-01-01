@@ -503,7 +503,7 @@ class WrapperMixin(object):
                 save = False  # don't save newline
             elif len(subline) + len(part) > linelen:
                 # Next line will be too long, dump line now
-                # unless part by itself is exceeds linelen
+                # unless part by itself exceeds linelen
                 if nparts > 0:
                     dump = True
             if dump:

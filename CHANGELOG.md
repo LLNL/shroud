@@ -95,7 +95,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     C_finalize_buf: delete {cxx_var};
 ```
   new_format:
-```  
+```
   fstatements:
     c_buf:
       final:

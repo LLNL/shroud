@@ -179,6 +179,7 @@ The ``POI`` prefix to the function names is derived from
 the format field *C_prefix* which defaults to the first three letters
 of the *library* field, in this case *pointers*.
 This is a C++ file which provides a C API via ``extern "C"``.
+
 :file:`wrappointers.cpp`:
 
 .. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrappointers.cpp
