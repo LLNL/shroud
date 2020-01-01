@@ -1,19 +1,11 @@
 // pytestnamesutil.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pytestnamesmodule.hpp"
 const char *PY_Names_capsule_name = "Names";
 const char *PY_Vvv1_capsule_name = "Vvv1";

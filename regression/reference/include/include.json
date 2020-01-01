@@ -103,7 +103,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 49,
+                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -192,11 +192,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 51,
+                        "linenumber": 43,
                         "options": {}
                     }
                 ],
-                "linenumber": 45,
+                "linenumber": 37,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -204,20 +204,12 @@
             }
         ],
         "copyright": [
-            "#######################################################################",
-            "Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and",
+            "other Shroud Project Developers.",
+            "See the top-level COPYRIGHT file for details.",
             "",
-            "Produced at the Lawrence Livermore National Laboratory",
-            "",
-            "LLNL-CODE-738041.",
-            "",
-            "All rights reserved.",
-            "",
-            "This file is part of Shroud.",
-            "",
-            "For details about use and distribution, please read LICENSE.",
-            "",
-            "#######################################################################"
+            "SPDX-License-Identifier: (BSD-3-Clause)",
+            ""
         ],
         "cxx_header": "global_header.hpp",
         "fmtdict": {
@@ -329,7 +321,7 @@
                     "file_scope": "library_one",
                     "namespace_scope": "one::"
                 },
-                "linenumber": 33,
+                "linenumber": 25,
                 "name": "one",
                 "namespaces": [
                     {
@@ -382,11 +374,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "function1"
                                 },
-                                "linenumber": 37,
+                                "linenumber": 29,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 35,
+                        "linenumber": 27,
                         "name": "two",
                         "options": {},
                         "scope": "one::two::",
@@ -505,11 +497,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method1"
                                 },
-                                "linenumber": 43,
+                                "linenumber": 35,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 40,
+                        "linenumber": 32,
                         "name": "Class1",
                         "options": {},
                         "scope": "three::Class1::",
@@ -531,7 +523,7 @@
                     "file_scope": "library_three",
                     "namespace_scope": "three::"
                 },
-                "linenumber": 38,
+                "linenumber": 30,
                 "name": "three",
                 "options": {},
                 "scope": "three::",
@@ -596,11 +588,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "linenumber": 62,
+                                "linenumber": 54,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 60,
+                        "linenumber": 52,
                         "name": "class0",
                         "options": {},
                         "scope": "outer1::class0::",
@@ -656,11 +648,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "linenumber": 57,
+                        "linenumber": 49,
                         "options": {}
                     }
                 ],
-                "linenumber": 54,
+                "linenumber": 46,
                 "name": "outer1",
                 "options": {},
                 "scope": "outer1::",
@@ -725,11 +717,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "linenumber": 74,
+                                "linenumber": 66,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 71,
+                        "linenumber": 63,
                         "name": "class0",
                         "options": {},
                         "scope": "outer2::class0::",
@@ -785,11 +777,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "linenumber": 67,
+                        "linenumber": 59,
                         "options": {}
                     }
                 ],
-                "linenumber": 64,
+                "linenumber": 56,
                 "name": "outer2",
                 "options": {},
                 "scope": "outer2::",
@@ -872,7 +864,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 24,
+            "__line__": 16,
             "debug": false,
             "debug_index": false,
             "doxygen": true,

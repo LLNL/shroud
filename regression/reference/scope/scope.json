@@ -58,7 +58,7 @@
                             "enum_upper": "COLOR",
                             "namespace_scope": "Class1::"
                         },
-                        "linenumber": 70,
+                        "linenumber": 62,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "Class1::Color"
@@ -78,7 +78,7 @@
                     "cxx_type": "Class1",
                     "file_scope": "Class1"
                 },
-                "linenumber": 68,
+                "linenumber": 60,
                 "name": "Class1",
                 "options": {},
                 "scope": "Class1::",
@@ -140,7 +140,7 @@
                             "enum_upper": "COLOR",
                             "namespace_scope": "Class2::"
                         },
-                        "linenumber": 78,
+                        "linenumber": 70,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "Class2::Color"
@@ -160,7 +160,7 @@
                     "cxx_type": "Class2",
                     "file_scope": "Class2"
                 },
-                "linenumber": 76,
+                "linenumber": 68,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -168,20 +168,12 @@
             }
         ],
         "copyright": [
-            "#######################################################################",
-            "Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and",
+            "other Shroud Project Developers.",
+            "See the top-level COPYRIGHT file for details.",
             "",
-            "Produced at the Lawrence Livermore National Laboratory",
-            "",
-            "LLNL-CODE-738041.",
-            "",
-            "All rights reserved.",
-            "",
-            "This file is part of Shroud.",
-            "",
-            "For details about use and distribution, please read LICENSE.",
-            "",
-            "#######################################################################"
+            "SPDX-License-Identifier: (BSD-3-Clause)",
+            ""
         ],
         "enums": [
             {
@@ -236,7 +228,7 @@
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
                 },
-                "linenumber": 30,
+                "linenumber": 22,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color"
@@ -293,7 +285,7 @@
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
                 },
-                "linenumber": 59,
+                "linenumber": 51,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "ns3::Color"
@@ -357,7 +349,7 @@
                     "enum_name": "ColorEnum",
                     "enum_upper": "COLORENUM"
                 },
-                "linenumber": 87,
+                "linenumber": 79,
                 "name": "ColorEnum",
                 "options": {},
                 "typemap_name": "ColorEnum"
@@ -510,7 +502,7 @@
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
                         },
-                        "linenumber": 41,
+                        "linenumber": 33,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "ns1::Color"
@@ -531,7 +523,7 @@
                     "file_scope": "scope_ns1",
                     "namespace_scope": "ns1::"
                 },
-                "linenumber": 39,
+                "linenumber": 31,
                 "name": "ns1",
                 "options": {},
                 "scope": "ns1::",
@@ -594,7 +586,7 @@
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
                         },
-                        "linenumber": 49,
+                        "linenumber": 41,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "ns2::Color"
@@ -615,7 +607,7 @@
                     "file_scope": "scope_ns2",
                     "namespace_scope": "ns2::"
                 },
-                "linenumber": 47,
+                "linenumber": 39,
                 "name": "ns2",
                 "options": {},
                 "scope": "ns2::",
@@ -698,7 +690,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 22,
+            "__line__": 14,
             "debug": true,
             "debug_index": false,
             "doxygen": true,
