@@ -24,6 +24,38 @@ module generic_mod
     integer, parameter :: T_DOUBLE = 4
     ! splicer end module_top
 
+    ! Shroud type defines from helper ShroudTypeDefines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
     interface
         function get_global_double() &
                 result(SHT_rv) &
@@ -69,6 +101,17 @@ module generic_mod
         end subroutine c_save_pointer
     end interface
 #endif
+
+    interface
+        subroutine c_save_pointer2(addr, type, size) &
+                bind(C, name="GEN_save_pointer2")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), value, intent(IN) :: addr
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer2
+    end interface
 
     interface
         subroutine get_pointer(addr, type, size) &
@@ -124,6 +167,11 @@ module generic_mod
         module procedure save_pointer_float2d
     end interface save_pointer
 #endif
+
+    interface save_pointer2
+        module procedure save_pointer2_float1d
+        module procedure save_pointer2_float2d
+    end interface save_pointer2
 
 contains
 
@@ -228,6 +276,34 @@ contains
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
 #endif
+
+    ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer2_float1d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(IN), target :: addr(:)
+        integer(C_INT) :: SH_type
+        integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer2_float1d
+        SH_type = SH_TYPE_FLOAT
+        SH_size = size(addr,kind=C_SIZE_T)
+        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        ! splicer end function.save_pointer2_float1d
+    end subroutine save_pointer2_float1d
+
+    ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer2_float2d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(IN), target :: addr(:,:)
+        integer(C_INT) :: SH_type
+        integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer2_float2d
+        SH_type = SH_TYPE_FLOAT
+        SH_size = size(addr,kind=C_SIZE_T)
+        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        ! splicer end function.save_pointer2_float2d
+    end subroutine save_pointer2_float2d
 
 #if 0
     ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))

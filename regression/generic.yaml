@@ -9,7 +9,7 @@ copyright:
 # Test fortran_generic
 
 library: generic
-cxx_header: generic.h
+cxx_header: generic.h helper.h
 language: c
 
 options:
@@ -52,6 +52,22 @@ declarations:
   - decl: (float *addr+dimension(:),    int type+implied(T_FLOAT))
     function_suffix: _float1d
   - decl: (float *addr+dimension(:,:),  int type+implied(T_FLOAT))
+    function_suffix: _float2d
+
+#  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
+#  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
+
+
+- decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
+  fstatements:
+    c:
+      c_helper: ShroudTypeDefines
+      pre_call:
+      - type = convert_type(type);
+  fortran_generic:
+  - decl: (float *addr+dimension(:))
+    function_suffix: _float1d
+  - decl: (float *addr+dimension(:,:))
     function_suffix: _float2d
 
 #  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))

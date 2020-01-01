@@ -20,6 +20,7 @@ VPATH = \
 
 OBJS = \
     generic.o \
+    helper.o \
     wrapfgeneric.o \
     wrapgeneric.o \
     fruit.o \
@@ -31,6 +32,7 @@ generic : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod generic
 
+helper.o : generic.h typesgeneric.h
 generic.o : generic.h
 wrapgeneric.o : generic.h
 main.o : wrapfgeneric.o
