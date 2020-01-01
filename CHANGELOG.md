@@ -88,6 +88,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         f:
         - 'rv = name .ne. " "'
 ```
+- Replace format field C_finalize with statements clause final.
+  previous_format:
+```
+  format:
+    C_finalize_buf: delete {cxx_var};
+```
+  new_format:
+```  
+  fstatements:
+    c_buf:
+      final:
+      - delete {cxx_var};
+```
 
 ### Fixed
 - C++ function arguments which pass a class by value.
@@ -110,6 +123,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Format field *C_return_code*.  Replaced with statement.ret clause.
 - Format fields *C_pre_call*, *C_call_code*, and *C_post_call*.
   They existed to help with splicers. statements now provide more control.
+- Format field *C_post_call_pattern*.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

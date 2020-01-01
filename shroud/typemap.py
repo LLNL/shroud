@@ -42,6 +42,7 @@ default_stmts = dict(
         pre_call=[],
         call=[],
         post_call=[],
+        final=[],
         ret=[],
 
         destructor_name=None,
@@ -1096,18 +1097,24 @@ def compute_name(path, char="_"):
     work = [ part for part in path if part ] # skip empty components
     return char.join(work)
 
-def lookup_local_stmts(language, blk, node):
+def lookup_local_stmts(path, parent, node):
     """Look in node.fstatements for additional statements.
     XXX - Only used with result.
     mode - "update", "replace"
+
+    Args:
+        path   - list of path components ["c", "buf"]
+        parent - parent Scope.
+        node   - FunctionNode.
     """
-    blk2 = node.fstatements.get(language, None)
-    if blk2:
-        mode = blk2.get("mode", "update")
+    name = compute_name(path)
+    blk = node.fstatements.get(name, None)
+    if blk:
+        mode = blk.get("mode", "update")
         if mode == "update":
-            blk2.reparent(blk)
-        return blk2
-    return blk
+            blk.reparent(parent)
+            return blk
+    return parent
 
 def create_buf_variable_names(options, blk, attrs, c_var):
     """Define variable names for buffer arguments.

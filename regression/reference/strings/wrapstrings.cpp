@@ -595,7 +595,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
             SHCXX_rv->size());
     }
     {
-        // C_finalize
+        // final
         delete SHCXX_rv;
     }
     return;

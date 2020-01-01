@@ -146,62 +146,6 @@ PP_incrementCount(
 // splicer end namespace.example::nested.class.ExClass1.method.increment_count
 }
 
-static char PP_getNameErrorPattern__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getNameErrorPattern(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-// splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-    PyObject * SHTPy_rv = NULL;
-
-    const std::string & SHCXX_rv = self->obj->getNameErrorPattern();
-    if (! isNameValid(rv)) {
-        PyErr_SetString(PyExc_KeyError, "XXX need value of name");
-        return NULL;
-    }
-
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-}
-
-static char PP_GetNameLength__doc__[] =
-"documentation"
-;
-
-/**
- * \brief helper function for Fortran to get length of name.
- *
- */
-static PyObject *
-PP_GetNameLength(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int GetNameLength() const
-// splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
-    PyObject * SHTPy_rv = NULL;
-
-    int SHCXX_rv = self->obj->GetNameLength();
-
-    // post_call
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_name_length
-}
-
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -482,10 +426,6 @@ PP_getValue(
 static PyMethodDef PP_ExClass1_methods[] = {
     {"incrementCount", (PyCFunction)PP_incrementCount,
         METH_VARARGS|METH_KEYWORDS, PP_incrementCount__doc__},
-    {"getNameErrorPattern", (PyCFunction)PP_getNameErrorPattern,
-        METH_NOARGS, PP_getNameErrorPattern__doc__},
-    {"GetNameLength", (PyCFunction)PP_GetNameLength, METH_NOARGS,
-        PP_GetNameLength__doc__},
     {"getNameErrorCheck", (PyCFunction)PP_getNameErrorCheck,
         METH_NOARGS, PP_getNameErrorCheck__doc__},
     {"getNameArg", (PyCFunction)PP_getNameArg, METH_NOARGS,

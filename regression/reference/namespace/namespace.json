@@ -175,7 +175,6 @@
                 "declgen": "const std::string & LastFunctionCalled() +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "NS_last_function_called",
-                    "C_post_call_pattern": "const char * SHC_rv =\t SHCXX_rv.c_str();",
                     "C_prototype": "",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",

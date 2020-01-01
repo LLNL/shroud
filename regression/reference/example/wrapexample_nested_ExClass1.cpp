@@ -158,57 +158,6 @@ int AA_example_nested_ExClass1_increment_count(
     // splicer end namespace.example::nested.class.ExClass1.method.increment_count
 }
 
-// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-const char * AA_example_nested_ExClass1_get_name_error_pattern(
-    const AA_example_nested_ExClass1 * self)
-{
-    const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-    const std::string & SHCXX_rv = SH_this->getNameErrorPattern();
-    // C_error_pattern
-    if (! isNameValid(SHCXX_rv)) {
-        return NULL;
-    }
-
-    const char * SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern
-}
-
-// void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-void AA_example_nested_ExClass1_get_name_error_pattern_bufferify(
-    const AA_example_nested_ExClass1 * self, char * SHF_rv, int NSHF_rv)
-{
-    const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_pattern_bufferify
-    const std::string & SHCXX_rv = SH_this->getNameErrorPattern();
-    if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
-            SHCXX_rv.size());
-    }
-    return;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_pattern_bufferify
-}
-
-// int GetNameLength() const
-/**
- * \brief helper function for Fortran to get length of name.
- *
- */
-int AA_example_nested_ExClass1_get_name_length(
-    const AA_example_nested_ExClass1 * self)
-{
-    const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_length
-    return SH_this->getName().length();
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_length
-}
-
 // const string & getNameErrorCheck() const +deref(allocatable)
 const char * AA_example_nested_ExClass1_get_name_error_check(
     const AA_example_nested_ExClass1 * self)

@@ -9,27 +9,28 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
+        "cxx_header": "statement.hpp",
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_array_type": "STR_SHROUD_array",
+            "C_array_type": "STMT_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_call_list": "",
-            "C_capsule_data_type": "STR_SHROUD_capsule_data",
+            "C_capsule_data_type": "STMT_SHROUD_capsule_data",
             "C_custom_return_type": "",
-            "C_header_filename": "wrapmemdoc.h",
+            "C_header_filename": "wrapstatement.h",
             "C_header_filename_suffix": "h",
-            "C_header_utility": "typesmemdoc.h",
-            "C_impl_filename": "wrapmemdoc.cpp",
+            "C_header_utility": "typesstatement.h",
+            "C_impl_filename": "wrapstatement.cpp",
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
-            "C_memory_dtor_function": "STR_SHROUD_memory_destructor",
+            "C_memory_dtor_function": "STMT_SHROUD_memory_destructor",
             "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
-            "C_prefix": "STR_",
+            "C_prefix": "STMT_",
             "C_result": "rv",
             "C_string_result_as_arg": "SHF_rv",
             "C_this": "self",
@@ -43,8 +44,8 @@
             "F_capsule_type": "SHROUD_capsule",
             "F_derived_member": "cxxmem",
             "F_filename_suffix": "f",
-            "F_impl_filename": "wrapfmemdoc.f",
-            "F_module_name": "memdoc_mod",
+            "F_impl_filename": "wrapfstatement.f",
+            "F_module_name": "statement_mod",
             "F_name_assign": "assign",
             "F_name_associated": "associated",
             "F_name_final": "final",
@@ -69,9 +70,9 @@
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
             "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
-            "PY_module_init": "memdoc",
-            "PY_module_name": "memdoc",
-            "PY_module_scope": "memdoc",
+            "PY_module_init": "statement",
+            "PY_module_name": "statement",
+            "PY_module_scope": "statement",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_prefix": "PY_",
             "PY_release_memory_function": "PY_SHROUD_release_memory",
@@ -79,7 +80,7 @@
             "PY_this_call": "",
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
-            "YAML_type_filename": "memdoc_types.yaml",
+            "YAML_type_filename": "statement_types.yaml",
             "__line__": 17,
             "c_temp": "SHT_",
             "cast1": ">\t(",
@@ -91,11 +92,11 @@
             "cxx_class": "",
             "f_pointer_shape": "",
             "f_var_shape": "",
-            "file_scope": "memdoc",
+            "file_scope": "statement",
             "function_suffix": "",
-            "library": "memdoc",
-            "library_lower": "memdoc",
-            "library_upper": "MEMDOC",
+            "library": "statement",
+            "library_lower": "statement",
+            "library_upper": "STATEMENT",
             "namespace_scope": "",
             "stdlib": "std::",
             "template_suffix": "",
@@ -105,12 +106,85 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result_",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result_",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "pure": true
+                    },
+                    "declarator": {
+                        "name": "GetNameLength",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int GetNameLength() +pure",
+                "declgen": "int GetNameLength() +pure",
+                "doxygen": {
+                    "__line__": 23,
+                    "brief": "helper function for Fortran to get length of name."
+                },
+                "fmtdict": {
+                    "C_name": "STMT_get_name_length",
+                    "C_prototype": "",
+                    "C_return_type": "int",
+                    "F_C_call": "c_get_name_length",
+                    "F_C_name": "get_name_length",
+                    "F_arguments": "",
+                    "F_name_function": "get_name_length",
+                    "F_name_generic": "get_name_length",
+                    "F_name_impl": "get_name_length",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "GetNameLength",
+                    "underscore_name": "get_name_length"
+                },
+                "linenumber": 22,
+                "options": {},
+                "splicer": {
+                    "__line__": "25",
+                    "c": [
+                        "return getNameErrorPattern().length();"
+                    ]
+                }
+            },
+            {
+                "C_error_pattern": "C_invalid_name",
+                "PY_error_pattern": "PY_invalid_name",
+                "_fmtresult": {
+                    "fmtc": {
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
-                        "c_val": "SHCXX_rv->c_str()",
+                        "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
                         "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -122,85 +196,87 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_result_allocatable",
+                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_result_buf"
                     }
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
-                        "owner": "library"
+                        "__line__": 30,
+                        "deref": "result_as_arg",
+                        "len": "get_name_length()"
                     },
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringPtrAlloc",
+                        "name": "getNameErrorPattern",
                         "pointer": [
                             {
-                                "ptr": "*"
+                                "ptr": "&"
                             }
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
+                    "return_pointer_as": "result_as_arg",
                     "specifier": [
-                        "std::string"
+                        "string"
                     ],
                     "typemap_name": "std::string"
                 },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
+                "decl": "const string& getNameErrorPattern()",
+                "declgen": "const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
+                    "C_name": "STMT_get_name_error_pattern",
                     "C_prototype": "",
                     "C_return_type": "const char *",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
-                    "F_C_name": "c_get_const_string_ptr_alloc",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_C_call": "c_get_name_error_pattern_bufferify",
+                    "F_C_name": "c_get_name_error_pattern",
+                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
-                    "F_name_function": "get_const_string_ptr_alloc",
-                    "F_name_generic": "get_const_string_ptr_alloc",
-                    "F_name_impl": "get_const_string_ptr_alloc",
+                    "F_name_function": "get_name_error_pattern",
+                    "F_name_generic": "get_name_error_pattern",
+                    "F_name_impl": "get_name_error_pattern",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "const ",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "getNameErrorPattern",
+                    "underscore_name": "get_name_error_pattern"
                 },
-                "linenumber": 23,
+                "linenumber": 29,
                 "options": {}
             },
             {
+                "C_error_pattern": "C_invalid_name",
+                "PY_error_pattern": "PY_invalid_name",
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "const ",
+                            "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))",
-                            "cxx_member": "->",
+                            "c_var_len": "NSHF_rv",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)",
+                            "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_allocatable",
-                            "stmt1": "c_string_result_buf_allocatable"
+                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable",
-                            "stmtc0": "c_string_pointer_result_buf_allocatable",
-                            "stmtc1": "c_string_result_buf_allocatable"
+                            "stmt0": "f_string_pointer_result_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc1": "c_string_result_buf"
                         }
                     }
                 },
@@ -208,8 +284,8 @@
                     "fmtc": {
                         "c_type": "void",
                         "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
@@ -220,30 +296,32 @@
                 },
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "attrs": {
+                        "__line__": 30,
+                        "len": "get_name_length()"
+                    },
                     "declarator": {
-                        "name": "getConstStringPtrAlloc",
+                        "name": "getNameErrorPattern",
                         "pointer": []
                     },
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 30,
                                 "_is_result": true,
-                                "context": "DSHF_rv",
-                                "deref": "allocatable",
                                 "intent": "out",
-                                "owner": "library"
+                                "len": "NSHF_rv"
                             },
-                            "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
                                 "pointer": [
                                     {
-                                        "ptr": "*"
+                                        "ptr": "&"
                                     }
                                 ]
                             },
                             "specifier": [
-                                "std::string"
+                                "string"
                             ],
                             "typemap_name": "std::string"
                         }
@@ -253,20 +331,20 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
+                "decl": "const string& getNameErrorPattern()",
+                "declgen": "void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STMT_get_name_error_pattern_bufferify",
+                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
-                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_name": "c_get_name_error_pattern_bufferify",
                     "c_const": "",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "getNameErrorPattern",
                     "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "underscore_name": "get_name_error_pattern"
                 },
-                "linenumber": 23,
+                "linenumber": 29,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -349,13 +427,13 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 19,
-            "debug": false,
+            "__line__": 11,
+            "debug": true,
             "debug_index": false,
             "doxygen": true,
             "flatten_namespace": false,
-            "literalinclude": true,
-            "literalinclude2": true,
+            "literalinclude": false,
+            "literalinclude2": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,
@@ -364,7 +442,7 @@
             "wrap_python": false
         },
         "scope_file": [
-            "memdoc"
+            "statement"
         ]
     }
 }
