@@ -55,7 +55,7 @@ declarations:
     wrap_lua: False
     literalinclude: True
   fstatements:
-    c:
+    c_buf:
       return_type: long
       ret:
       - return Darg->size;

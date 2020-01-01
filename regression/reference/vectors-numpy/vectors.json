@@ -356,7 +356,7 @@
                     "underscore_name": "vector_iota_out_with_num"
                 },
                 "fstatements": {
-                    "c": {
+                    "c_buf": {
                         "__line__": 58,
                         "ret": [
                             "return Darg->size;"

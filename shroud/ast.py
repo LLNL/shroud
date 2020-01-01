@@ -1352,7 +1352,7 @@ class FunctionNode(AstNode):
             # fstatements must be a dict
             for key, value in kwargs["fstatements"].items():
                 # value must be a dict
-                if key in ["c", "f", "py"]:
+                if key in ["c", "c_buf", "f", "py"]:
                     # remove __line__?
                     self.fstatements[key] = util.Scope(None, **value)
 

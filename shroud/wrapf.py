@@ -977,7 +977,8 @@ rv = .false.
         spointer = "pointer" if ast.is_indirect() else "scalar"
         c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
-        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
+        c_result_blk = typemap.lookup_local_stmts(
+            ["c", node.generated_suffix], c_result_blk, node)
 
         if c_result_blk.return_type:
             # Change a subroutine into function.
@@ -1357,7 +1358,8 @@ rv = .false.
         fmt_result.stmt1 = result_blk.key
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
-        c_result_blk = typemap.lookup_local_stmts("c", c_result_blk, node)
+        c_result_blk = typemap.lookup_local_stmts(
+            ["c", generated_suffix], c_result_blk, node)
         fmt_result.stmtc0 = "_".join(c_stmts)
         fmt_result.stmtc1 = c_result_blk.key
 
