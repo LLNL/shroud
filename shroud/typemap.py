@@ -42,6 +42,7 @@ default_stmts = dict(
         pre_call=[],
         call=[],
         post_call=[],
+        final=[],
         ret=[],
 
         destructor_name=None,

@@ -88,6 +88,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         f:
         - 'rv = name .ne. " "'
 ```
+- Replace format field C_finalize with statements clause final.
+  previous_format:
+```
+  format:
+    C_finalize_buf: delete {cxx_var};
+```
+  new_format:
+```  
+  fstatements:
+    c_buf:
+      final:
+      - delete {cxx_var};
+```
 
 ### Fixed
 - C++ function arguments which pass a class by value.
