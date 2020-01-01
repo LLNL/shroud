@@ -6,7 +6,15 @@
 //
 // generic.h
 
+#ifndef GENERIC_H
+#define GENERIC_H
+
 #include <stddef.h>
+
+#define T_INT     1
+#define T_LONG    2
+#define T_FLOAT   3
+#define T_DOUBLE  4
 
 double GetGlobalDouble(void);
 
@@ -18,3 +26,5 @@ void SavePointer(void *addr, int type, size_t size);
 void SavePointer2(void *addr, int type, size_t size);
 void GetPointer(void **addr, int *type, size_t *size);
 void GetPointerAsPointer(void **addr, int *type, size_t *size);
+
+#endif // GENERIC_HPP

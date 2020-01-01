@@ -6,6 +6,7 @@ C function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+
 C function void SavePointer2(void * addr +intent(in)+value, int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 C function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
 C function void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+Close wrapgeneric.h
 Close wrapgeneric.c
 Close typesgeneric.h
 C-interface, Fortran function double GetGlobalDouble()

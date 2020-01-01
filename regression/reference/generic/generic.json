@@ -9,7 +9,7 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "generic.h",
+        "cxx_header": "generic.h helper.h",
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
@@ -1360,7 +1360,7 @@
                 "declgen": "void SavePointer2(void * addr +intent(in)+value, int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "SavePointer2",
+                    "C_name": "GEN_save_pointer2",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_name": "c_save_pointer2",
@@ -1480,6 +1480,15 @@
                         "generic": "(float *addr+dimension(:,:))"
                     }
                 ],
+                "fstatements": {
+                    "c": {
+                        "__line__": 63,
+                        "c_helper": "ShroudTypeDefines",
+                        "pre_call": [
+                            "type = convert_type(type);"
+                        ]
+                    }
+                },
                 "linenumber": 61,
                 "options": {
                     "wrap_fortran": false
@@ -1566,6 +1575,15 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "save_pointer2"
+                },
+                "fstatements": {
+                    "c": {
+                        "__line__": 63,
+                        "c_helper": "ShroudTypeDefines",
+                        "pre_call": [
+                            "type = convert_type(type);"
+                        ]
+                    }
                 },
                 "linenumber": 61,
                 "options": {
@@ -1656,6 +1674,15 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "save_pointer2"
+                },
+                "fstatements": {
+                    "c": {
+                        "__line__": 63,
+                        "c_helper": "ShroudTypeDefines",
+                        "pre_call": [
+                            "type = convert_type(type);"
+                        ]
+                    }
                 },
                 "linenumber": 61,
                 "options": {
@@ -1841,7 +1868,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer"
                 },
-                "linenumber": 72,
+                "linenumber": 77,
                 "options": {}
             },
             {
@@ -2148,7 +2175,7 @@
                         "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
                     }
                 ],
-                "linenumber": 75,
+                "linenumber": 80,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -2247,7 +2274,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 75,
+                "linenumber": 80,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -2349,7 +2376,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 75,
+                "linenumber": 80,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,

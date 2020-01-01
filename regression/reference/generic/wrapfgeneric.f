@@ -104,7 +104,7 @@ module generic_mod
 
     interface
         subroutine c_save_pointer2(addr, type, size) &
-                bind(C, name="SavePointer2")
+                bind(C, name="GEN_save_pointer2")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
             implicit none
             type(C_PTR), value, intent(IN) :: addr

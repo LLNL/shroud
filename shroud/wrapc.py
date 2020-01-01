@@ -1124,9 +1124,9 @@ class Wrapc(util.WrapperMixin):
                 if result_typemap.impl_header:
                     self.header_impl_include[result_typemap.impl_header] = True
 
-                need_wrapper = self.add_code_from_statements(
-                    fmt_result, result_blk, pre_call, post_call, need_wrapper
-                )
+        need_wrapper = self.add_code_from_statements(
+            fmt_result, result_blk, pre_call, post_call, need_wrapper
+        )
 
         call_code = []
         for line in raw_call_code:
