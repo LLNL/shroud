@@ -64,7 +64,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 29,
+                        "linenumber": 21,
                         "options": {}
                     },
                     {
@@ -105,7 +105,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 30,
+                        "linenumber": 22,
                         "options": {}
                     },
                     {
@@ -148,7 +148,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 32,
+                        "linenumber": 24,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -266,11 +266,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 32,
+                        "linenumber": 24,
                         "options": {}
                     }
                 ],
-                "linenumber": 27,
+                "linenumber": 19,
                 "name": "User1",
                 "options": {},
                 "scope": "User1::",
@@ -340,7 +340,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 41,
+                        "linenumber": 33,
                         "options": {}
                     },
                     {
@@ -444,11 +444,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 43,
+                        "linenumber": 35,
                         "options": {}
                     }
                 ],
-                "linenumber": 36,
+                "linenumber": 28,
                 "name": "User2",
                 "options": {},
                 "scope": "User2::",
@@ -456,20 +456,12 @@
             }
         ],
         "copyright": [
-            "#######################################################################",
-            "Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and",
+            "other Shroud Project Developers.",
+            "See the top-level COPYRIGHT file for details.",
             "",
-            "Produced at the Lawrence Livermore National Laboratory",
-            "",
-            "LLNL-CODE-738041.",
-            "",
-            "All rights reserved.",
-            "",
-            "This file is part of Shroud.",
-            "",
-            "For details about use and distribution, please read LICENSE.",
-            "",
-            "#######################################################################"
+            "SPDX-License-Identifier: (BSD-3-Clause)",
+            ""
         ],
         "cxx_header": "preprocess.hpp",
         "fmtdict": {
@@ -656,7 +648,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 22,
+            "__line__": 14,
             "debug": true,
             "debug_index": false,
             "doxygen": true,
