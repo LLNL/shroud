@@ -71,6 +71,17 @@ module generic_mod
 #endif
 
     interface
+        subroutine c_save_pointer2(addr, type, size) &
+                bind(C, name="SavePointer2")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), value, intent(IN) :: addr
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer2
+    end interface
+
+    interface
         subroutine get_pointer(addr, type, size) &
                 bind(C, name="GetPointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -124,6 +135,11 @@ module generic_mod
         module procedure save_pointer_float2d
     end interface save_pointer
 #endif
+
+    interface save_pointer2
+        module procedure save_pointer2_float1d
+        module procedure save_pointer2_float2d
+    end interface save_pointer2
 
 contains
 
@@ -228,6 +244,34 @@ contains
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
 #endif
+
+    ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer2_float1d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(IN), target :: addr(:)
+        integer(C_INT) :: SH_type
+        integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer2_float1d
+        SH_type = T_FLOAT
+        SH_size = size(addr,kind=C_SIZE_T)
+        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        ! splicer end function.save_pointer2_float1d
+    end subroutine save_pointer2_float1d
+
+    ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer2_float2d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(IN), target :: addr(:,:)
+        integer(C_INT) :: SH_type
+        integer(C_SIZE_T) :: SH_size
+        ! splicer begin function.save_pointer2_float2d
+        SH_type = T_FLOAT
+        SH_size = size(addr,kind=C_SIZE_T)
+        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        ! splicer end function.save_pointer2_float2d
+    end subroutine save_pointer2_float2d
 
 #if 0
     ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
