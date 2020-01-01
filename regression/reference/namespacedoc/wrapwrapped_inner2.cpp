@@ -19,10 +19,10 @@ extern "C" {
 // void worker()
 void WWW_inner2_worker()
 {
-// splicer begin namespace.inner2.function.worker
+    // splicer begin namespace.inner2.function.worker
     outer::inner2::worker();
     return;
-// splicer end namespace.inner2.function.worker
+    // splicer end namespace.inner2.function.worker
 }
 
 }  // extern "C"
