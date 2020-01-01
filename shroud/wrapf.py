@@ -1500,7 +1500,7 @@ rv = .false.
                     continue
                 elif implied:
                     # implied is computed then passed to C++.
-                    fmt_arg.pre_call_intent, intermediate = ftn_implied(
+                    fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
                         f_arg.attrs["implied"], node, f_arg)
                     if intermediate:
                         fmt_arg.c_var = "SH_" + fmt_arg.f_var
@@ -1510,6 +1510,8 @@ rv = .false.
                         arg_c_call.append(fmt_arg.c_var)
                     else:
                         arg_c_call.append(fmt_arg.pre_call_intent)
+                    for helper in f_helper.split():
+                        fileinfo.f_helper[helper] = True
                     self.update_f_module(modules, imports, f_arg.typemap.f_module)
                     need_wrapper = True
                     continue
@@ -1924,6 +1926,7 @@ class ToImplied(todict.PrintNode):
         # Helps with debugging, and implies a type conversion of the expression
         # to the C function argument's type.
         self.intermediate = True
+        self.helper = ""  # blank delimited string of Fortran helper
 
     def visit_Identifier(self, node):
         # Look for functions
@@ -1944,9 +1947,11 @@ class ToImplied(todict.PrintNode):
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "type":
             self.intermediate = True
+            self.helper = "ShroudTypeDefines"
             argname = node.args[0].name
-            arg_typemap = self.arg.typemap
-            return "0" # arg_typemap.sh_type
+            typearg = self.func.ast.find_arg_by_name(argname)
+            arg_typemap = typearg.typemap
+            return arg_typemap.sh_type
         elif node.name == "len":
             # len(arg)
             self.intermediate = True
@@ -1973,7 +1978,7 @@ def ftn_implied(expr, func, arg):
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func, arg)
-    return visitor.visit(node), visitor.intermediate
+    return visitor.visit(node), visitor.intermediate, visitor.helper
 
 
 def attr_allocatable(allocatable, node, arg, pre_call):

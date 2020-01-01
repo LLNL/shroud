@@ -1291,7 +1291,7 @@
                         "fmtf": {
                             "c_var": "SH_type",
                             "f_var": "type",
-                            "pre_call_intent": "0"
+                            "pre_call_intent": "SH_TYPE_FLOAT"
                         }
                     }
                 },
