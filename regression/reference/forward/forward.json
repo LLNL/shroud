@@ -32,7 +32,7 @@
                     "cxx_type": "Class3",
                     "file_scope": "Class3"
                 },
-                "linenumber": 42,
+                "linenumber": 34,
                 "name": "Class3",
                 "options": {},
                 "scope": "tutorial::Class3::",
@@ -151,7 +151,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 48,
+                        "linenumber": 40,
                         "options": {}
                     },
                     {
@@ -193,7 +193,7 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 49,
+                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -312,7 +312,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 50,
+                        "linenumber": 42,
                         "options": {}
                     },
                     {
@@ -434,11 +434,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 51,
+                        "linenumber": 43,
                         "options": {}
                     }
                 ],
-                "linenumber": 46,
+                "linenumber": 38,
                 "name": "Class2",
                 "options": {},
                 "scope": "tutorial::Class2::",
@@ -446,20 +446,12 @@
             }
         ],
         "copyright": [
-            "#######################################################################",
-            "Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and",
+            "other Shroud Project Developers.",
+            "See the top-level COPYRIGHT file for details.",
             "",
-            "Produced at the Lawrence Livermore National Laboratory",
-            "",
-            "LLNL-CODE-738041.",
-            "",
-            "All rights reserved.",
-            "",
-            "This file is part of Shroud.",
-            "",
-            "For details about use and distribution, please read LICENSE.",
-            "",
-            "#######################################################################"
+            "SPDX-License-Identifier: (BSD-3-Clause)",
+            ""
         ],
         "cxx_header": "tutorial.hpp",
         "fmtdict": {
@@ -651,7 +643,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 24,
+            "__line__": 16,
             "debug": true,
             "debug_index": false,
             "doxygen": true,
