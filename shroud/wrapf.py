@@ -1942,6 +1942,11 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
+        elif node.name == "type":
+            self.intermediate = True
+            argname = node.args[0].name
+            arg_typemap = self.arg.typemap
+            return "0" # arg_typemap.sh_type
         elif node.name == "len":
             # len(arg)
             self.intermediate = True

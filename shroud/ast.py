@@ -1327,7 +1327,7 @@ class FunctionNode(AstNode):
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.
                     print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-                            garg.name, str(new.ast), generic.linenumber))
+                            garg.name, str(ast), generic.linenumber))
 #                    raise RuntimeError(
 #                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
 #                            garg.name, str(new.ast), generic.linenumber))

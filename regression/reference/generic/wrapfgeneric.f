@@ -245,7 +245,7 @@ contains
     end subroutine save_pointer_float2d
 #endif
 
-    ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -253,13 +253,13 @@ contains
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer2_float1d
-        SH_type = T_FLOAT
+        SH_type = 0
         SH_size = size(addr,kind=C_SIZE_T)
         call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
         ! splicer end function.save_pointer2_float1d
     end subroutine save_pointer2_float1d
 
-    ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -267,7 +267,7 @@ contains
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer2_float2d
-        SH_type = T_FLOAT
+        SH_type = 0
         SH_size = size(addr,kind=C_SIZE_T)
         call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
         ! splicer end function.save_pointer2_float2d

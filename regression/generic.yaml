@@ -58,11 +58,11 @@ declarations:
 #  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
 
 
-- decl: void SavePointer2(void *addr, int type, size_t size+implied(size(addr)))
+- decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
   fortran_generic:
-  - decl: (float *addr+dimension(:),    int type+implied(T_FLOAT))
+  - decl: (float *addr+dimension(:))
     function_suffix: _float1d
-  - decl: (float *addr+dimension(:,:),  int type+implied(T_FLOAT))
+  - decl: (float *addr+dimension(:,:))
     function_suffix: _float2d
 
 #  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
