@@ -929,9 +929,9 @@ contains
         use iso_c_binding, only : C_BOOL
         class(exclass1) :: obj
         logical, value, intent(IN) :: in
-        logical(C_BOOL) SH_in
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+        logical(C_BOOL) SH_in
         SH_in = in  ! coerce to C_BOOL
         SHT_rv = c_exclass1_has_addr(obj%cxxmem, SH_in)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr

@@ -1557,7 +1557,7 @@ rv = .false.
             have_c_local_var = f_intent_blk.c_local_var
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
-                arg_f_decl.append(
+                declare.append(
                     "{} {}".format(
                         arg_typemap.f_c_type or arg_typemap.f_type,
                         fmt_arg.c_var,

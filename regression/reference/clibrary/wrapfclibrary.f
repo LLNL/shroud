@@ -404,12 +404,12 @@ contains
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
-        logical(C_BOOL) SH_arg1
         logical, intent(OUT) :: arg2
-        logical(C_BOOL) SH_arg2
         logical, intent(INOUT) :: arg3
-        logical(C_BOOL) SH_arg3
         ! splicer begin function.check_bool
+        logical(C_BOOL) SH_arg1
+        logical(C_BOOL) SH_arg2
+        logical(C_BOOL) SH_arg3
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
