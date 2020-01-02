@@ -258,7 +258,7 @@ class WrapperMixin(object):
                     output.append("}")
 
     def find_header(self, node):
-        """Add cxx_header for node or for parent to header_impl_include."""
+        """Add cxx_header for node or its parent to header_impl_include."""
         if node.cxx_header:
             for hdr in node.cxx_header.split():
                 self.header_impl_include[hdr] = True
@@ -309,8 +309,9 @@ class WrapperMixin(object):
 
         for typedef in types.values():
             hdr = getattr(typedef, lang_header)
-            if hdr:
-                headers.setdefault(hdr, []).append(typedef)
+            if hdr is not None:
+                for h in hdr.split():
+                    headers.setdefault(h, []).append(typedef)
 
         need_blank = True
         for hdr in sorted(headers):

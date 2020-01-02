@@ -22,6 +22,7 @@ declarations:
     - type: Class3
       fields:
         base: shadow
+        impl_header: header1.hpp header2.hpp
         cxx_type: tutorial::Class3
         c_type: FOR_Class3
         f_module_name: forward_mod

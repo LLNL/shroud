@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": "header1.hpp header2.hpp",
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass3.h",
@@ -151,7 +151,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 40,
+                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -193,7 +193,7 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 41,
+                        "linenumber": 42,
                         "options": {}
                     },
                     {
@@ -312,7 +312,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 42,
+                        "linenumber": 43,
                         "options": {}
                     },
                     {
@@ -434,11 +434,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 43,
+                        "linenumber": 44,
                         "options": {}
                     }
                 ],
-                "linenumber": 38,
+                "linenumber": 39,
                 "name": "Class2",
                 "options": {},
                 "scope": "tutorial::Class2::",
