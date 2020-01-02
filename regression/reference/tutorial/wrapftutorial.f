@@ -927,9 +927,9 @@ contains
         class(class1) :: obj
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
-        logical(C_BOOL) SH_flag
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.return_this_buffer
+        logical(C_BOOL) SH_flag
         type(C_PTR) :: SHT_prv
         SH_flag = flag  ! coerce to C_BOOL
         SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
@@ -1127,9 +1127,9 @@ contains
         use iso_c_binding, only : C_BOOL, C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         logical, value, intent(IN) :: arg2
-        logical(C_BOOL) SH_arg2
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin function.use_default_arguments_arg1_arg2
+        logical(C_BOOL) SH_arg2
         SH_arg2 = arg2  ! coerce to C_BOOL
         SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
         ! splicer end function.use_default_arguments_arg1_arg2
