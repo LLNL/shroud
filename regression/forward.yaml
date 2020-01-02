@@ -34,6 +34,7 @@ declarations:
 - decl: class Class3
   # forward declaration
   # Will add declarations later, but need the type defined now.
+  cxx_header: header1.hpp header2.hpp
 
 - decl: class Class2
   declarations:
