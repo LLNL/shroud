@@ -11,7 +11,7 @@ declarations:
   - type: Worker
     fields:
       base: shadow
-      cxx_type: Worker
+      wrap_header: typestemplates.h
       c_type: TEM_Worker
       f_module_name: templates_mod
       f_derived_type: worker
@@ -22,8 +22,7 @@ declarations:
     - type: ImplWorker1
       fields:
         base: shadow
-        impl_header: implworker1.hpp
-        cxx_type: internal::ImplWorker1
+        wrap_header: typestemplates.h
         c_type: TEM_internal_ImplWorker1
         f_module_name: templates_internal_mod
         f_derived_type: implworker1
@@ -32,8 +31,7 @@ declarations:
     - type: ImplWorker2
       fields:
         base: shadow
-        impl_header: implworker2.hpp
-        cxx_type: internal::ImplWorker2
+        wrap_header: typestemplates.h
         c_type: TEM_internal_ImplWorker2
         f_module_name: templates_internal_mod
         f_derived_type: implworker2
@@ -44,8 +42,7 @@ declarations:
     - type: vector_double
       fields:
         base: shadow
-        impl_header: <vector>
-        cxx_type: std::vector<double>
+        wrap_header: typestemplates.h
         c_type: TEM_vector_double
         f_module_name: templates_std_mod
         f_derived_type: vector_double
@@ -54,8 +51,7 @@ declarations:
     - type: vector_int
       fields:
         base: shadow
-        impl_header: <vector>
-        cxx_type: std::vector<int>
+        wrap_header: typestemplates.h
         c_type: TEM_vector_int
         f_module_name: templates_std_mod
         f_derived_type: vector_int
@@ -64,7 +60,7 @@ declarations:
   - type: user_int
     fields:
       base: shadow
-      cxx_type: user<int>
+      wrap_header: typestemplates.h
       c_type: TEM_user_int
       f_module_name: templates_mod
       f_derived_type: user_int

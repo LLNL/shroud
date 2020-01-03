@@ -77,10 +77,11 @@ class Typemap(object):
     c_header and cxx_header are used for interface. For example,
     size_t uses <stddef.h> and <cstddef>.
 
-    impl_header is used for implementation.  For example, std::string
-    uses <string>. <string> should not be in the interface since the
-    wrapper is a C API.
+    impl_header is used for implementation, i.e. the wrap.cpp file.
+    For example, std::string uses <string>. <string> should not be in
+    the interface since the wrapper is a C API.
 
+    wrap_header is used for generated wrappers for shadow classes.
     """
 
     # Array of known keys with default values
@@ -132,6 +133,7 @@ class Typemap(object):
         # override fields when result should be treated as an argument
         ("result_as_arg", None),
         ("impl_header", None), # implementation header
+        ("wrap_header", None), # generated wrapper header
         # Python
         ("PY_format", "O"),  # 'format unit' for PyArg_Parse
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
@@ -254,15 +256,23 @@ class Typemap(object):
             indent -
             output -
         """
+        if self.base == "shadow":
+            order = [
+                "base",
+                "wrap_header",
+            ]
+        else:
+            order = [
+                "base",
+                "cxx_header",
+                "c_header",
+            ]
+            pass
         util.as_yaml(
             self,
-            [
-                "base",
-                "impl_header",
-                "cxx_header",
-                "cxx_type",
+            order + [
+#                "cxx_type",  # same as the dict key
                 "c_type",
-                "c_header",
                 "f_module_name",
                 "f_derived_type",
                 "f_capsule_data_type",
@@ -890,6 +900,7 @@ def create_class_typemap(node, fields=None):
         cxx_type=cxx_type,
         # XXX - look up scope for header...
         impl_header=node.cxx_header or None,
+        wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,

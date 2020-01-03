@@ -247,6 +247,10 @@ class Wrapc(util.WrapperMixin):
 
     def write_header_utility(self):
         """Write a utility header file with type definitions.
+
+        One utility header is written for the library.
+        Named from fmt.C_header_utility.
+        Contains typedefs for each shadow class.
         """
         self.gather_helper_code(self.shared_helper)
 
@@ -324,7 +328,7 @@ class Wrapc(util.WrapperMixin):
 
         # headers required by typedefs and helpers
         self.write_includes_for_header(
-            "c_header",
+            node.fmtdict,
             self.header_typedef_nodes,
             self.c_helper_include.keys(),
             output,

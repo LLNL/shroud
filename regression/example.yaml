@@ -40,8 +40,7 @@ typemap:
     # This example is pulled from spio
     # DataGroup is a type which is provided by another shroud wrapped library
     base: shadow
-    cxx_header: sidre/Group.hpp
-    c_header: sidre/wrapGroup.h
+    wrap_header: sidre/wrapGroup.h
     c_type: SIDRE_group
     f_module_name: sidre_mod
     f_derived_type: datagroup

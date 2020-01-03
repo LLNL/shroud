@@ -11,7 +11,6 @@ declarations:
   - type: Cstruct1
     fields:
       base: struct
-      cxx_type: Cstruct1
-      c_type: Cstruct1
       c_header: struct.h
+      c_type: Cstruct1
       f_derived_type: cstruct1

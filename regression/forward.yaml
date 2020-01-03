@@ -23,9 +23,7 @@ typemap:
 - type: tutorial::Class1
   fields:
     base: shadow
-    c_header: wrapClass1.h
-    cxx_header: wrapClass1.h
-# cxx_type : defaults to type
+    wrap_header: wrapClass1.h
     c_type: TUT_Class1
     f_module_name: tutorial_mod
     f_derived_type: class1

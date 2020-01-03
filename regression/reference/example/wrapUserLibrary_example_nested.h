@@ -15,17 +15,16 @@
 #ifndef WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 #define WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 
+#include "sidre/wrapGroup.h"
 #ifdef USE_MPI
 #include "mpi.h"
 #endif
 #include "typesUserLibrary.h"
 #ifdef __cplusplus
 #include <cstddef>
-#include "sidre/Group.hpp"
 #else
 #include <stdbool.h>
 #include <stddef.h>
-#include "sidre/wrapGroup.h"
 #endif
 
 // splicer begin namespace.example::nested.CXX_declarations

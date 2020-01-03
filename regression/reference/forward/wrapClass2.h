@@ -15,8 +15,8 @@
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
 
-#include "typesforward.h"
 #include "wrapClass1.h"
+#include "typesforward.h"
 
 // splicer begin class.Class2.CXX_declarations
 // splicer end class.Class2.CXX_declarations

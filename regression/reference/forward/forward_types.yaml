@@ -13,7 +13,7 @@ declarations:
     - type: Class2
       fields:
         base: shadow
-        cxx_type: forward::Class2
+        wrap_header: typesforward.h
         c_type: FOR_Class2
         f_module_name: forward_mod
         f_derived_type: class2
@@ -22,8 +22,7 @@ declarations:
     - type: Class3
       fields:
         base: shadow
-        impl_header: header1.hpp header2.hpp forward.hpp
-        cxx_type: forward::Class3
+        wrap_header: typesforward.h
         c_type: FOR_Class3
         f_module_name: forward_mod
         f_derived_type: class3

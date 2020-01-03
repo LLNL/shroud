@@ -341,21 +341,20 @@ class WrapperMixin(object):
                     output.append('#include "%s"' % hdr)
 
     def write_includes_for_header(
-            self, lang_header, types, hlist, output, skip={}):
+            self, fmt, types, hlist, output, skip={}):
         """
         Write the include statements for headers required for
         arguments in wrapper declarations.
 
         Write include files for C or C++.
 
-
-        lang_header - "c_header"
-        types - dictionary of Typemap nodes.
-                types[typedef.name] = typedef
-        hlist - list of headers to include
-                From helper routines
-        output - append lines of code.
-        skip - dictionary of headers to ignore.
+        Args:
+            types - dictionary of Typemap nodes.
+                    types[typedef.name] = typedef
+            hlist - list of headers to include
+                    From helper routines
+            output - append lines of code.
+            skip - dictionary of headers to ignore.
 
         headers[hdr] [ typedef, None, ... ]
         None from helper files
@@ -364,6 +363,7 @@ class WrapperMixin(object):
         always = {}  # used by C and C++.
         c_headers = {}
         cxx_headers = {}
+        wrap_headers = {}
         for hdr in hlist:
             always.setdefault(hdr, []).append(None)
 
@@ -375,6 +375,11 @@ class WrapperMixin(object):
             hdr = getattr(typedef, "cxx_header")
             if hdr:
                 cxx_headers.setdefault(hdr, []).append(typedef)
+            hdr = typedef.wrap_header
+            if hdr:
+                for h in hdr.split():
+                    if h != fmt.C_header_utility:
+                        wrap_headers.setdefault(h, []).append(typedef)
 
         # Find which headers are always included.
         both = {}
@@ -387,6 +392,7 @@ class WrapperMixin(object):
             del cxx_headers[hdr]
 
         lines = []
+        self.write_include_group(wrap_headers, lines)
         self.write_include_group(always, lines)
         if cxx_headers:
             lines.append("#ifdef __cplusplus")
