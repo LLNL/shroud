@@ -29,6 +29,7 @@ test-fortran-% : fortran-%
 test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-forward \
   test-fortran-enum-c \
   test-fortran-namespace \
   test-fortran-pointers \

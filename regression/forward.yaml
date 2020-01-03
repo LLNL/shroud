@@ -10,8 +10,8 @@ copyright:
 # This file should only contain a class.
 
 library: forward
-cxx_header: tutorial.hpp
-namespace: tutorial
+cxx_header: forward.hpp
+namespace: forward
 
 options:
   debug: True
@@ -23,24 +23,26 @@ typemap:
 - type: tutorial::Class1
   fields:
     base: shadow
+    c_header: wrapClass1.h
+    cxx_header: wrapClass1.h
 # cxx_type : defaults to type
-    c_type: TUT_class1
+    c_type: TUT_Class1
     f_module_name: tutorial_mod
     f_derived_type: class1
-    f_capsule_data_type: custom_capsule
-    f_to_c: "{f_var}%get_instance()"
+    f_capsule_data_type: SHROUD_class1_capsule
+    f_to_c: "{f_var}%cxxmem"
 
 declarations:
 - decl: class Class3
   # forward declaration
   # Will add declarations later, but need the type defined now.
-  cxx_header: header1.hpp header2.hpp
+  cxx_header: header1.hpp header2.hpp forward.hpp
 
 - decl: class Class2
   declarations:
   - decl: Class2()
   - decl: ~Class2()
-  - decl: void func1(Class1 *arg)
+  - decl: void func1(tutorial::Class1 *arg)
   - decl: void acceptClass3(Class3 *arg)
 
 - decl: class Class3

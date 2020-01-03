@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "header1.hpp header2.hpp",
+                "cxx_header": "header1.hpp header2.hpp forward.hpp",
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass3.h",
@@ -32,11 +32,11 @@
                     "cxx_type": "Class3",
                     "file_scope": "Class3"
                 },
-                "linenumber": 34,
+                "linenumber": 36,
                 "name": "Class3",
                 "options": {},
-                "scope": "tutorial::Class3::",
-                "typemap_name": "tutorial::Class3"
+                "scope": "forward::Class3::",
+                "typemap_name": "forward::Class3"
             },
             {
                 "cxx_header": "",
@@ -76,7 +76,7 @@
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_type": "tutorial::Class2",
+                                "cxx_type": "forward::Class2",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -84,7 +84,7 @@
                                 "stmt1": "c_shadow_ctor"
                             },
                             "fmtf": {
-                                "cxx_type": "tutorial::Class2",
+                                "cxx_type": "forward::Class2",
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
                                 "stmt0": "f_shadow_ctor",
@@ -106,7 +106,7 @@
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_type": "tutorial::Class2",
+                                "cxx_type": "forward::Class2",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
@@ -124,7 +124,7 @@
                             "specifier": [
                                 "Class2"
                             ],
-                            "typemap_name": "tutorial::Class2"
+                            "typemap_name": "forward::Class2"
                         },
                         "decl": "Class2()",
                         "declgen": "Class2()",
@@ -147,11 +147,11 @@
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
                             "c_const": "",
-                            "cxx_rv_decl": "tutorial::Class2 SHCXX_rv",
+                            "cxx_rv_decl": "forward::Class2 SHCXX_rv",
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 41,
+                        "linenumber": 43,
                         "options": {}
                     },
                     {
@@ -164,7 +164,7 @@
                             "specifier": [
                                 "Class2"
                             ],
-                            "typemap_name": "tutorial::Class2"
+                            "typemap_name": "forward::Class2"
                         },
                         "decl": "~Class2()",
                         "declgen": "~Class2()",
@@ -193,7 +193,7 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 42,
+                        "linenumber": 44,
                         "options": {}
                     },
                     {
@@ -237,9 +237,9 @@
                                 },
                                 "fmtpy": {
                                     "c_const": "",
-                                    "c_decl": "TUT_class1 arg",
+                                    "c_decl": "TUT_Class1 arg",
                                     "c_deref": "",
-                                    "c_type": "TUT_class1",
+                                    "c_type": "TUT_Class1",
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_decl": "tutorial::Class1 arg",
@@ -273,7 +273,7 @@
                                         ]
                                     },
                                     "specifier": [
-                                        "Class1"
+                                        "tutorial::Class1"
                                     ],
                                     "typemap_name": "tutorial::Class1"
                                 }
@@ -283,12 +283,12 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void func1(Class1 *arg)",
-                        "declgen": "void func1(Class1 * arg +intent(in))",
+                        "decl": "void func1(tutorial::Class1 *arg)",
+                        "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
                         "fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
-                            "C_prototype": "FOR_Class2 * self,\t TUT_class1 * arg",
+                            "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                             "C_return_type": "void",
                             "F_C_call": "c_class2_func1",
                             "F_C_name": "c_class2_func1",
@@ -312,7 +312,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 43,
+                        "linenumber": 45,
                         "options": {}
                     },
                     {
@@ -327,7 +327,7 @@
                                     "cxx_addr": "",
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                                     "cxx_member": "->",
-                                    "cxx_type": "tutorial::Class3",
+                                    "cxx_type": "forward::Class3",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
@@ -350,7 +350,7 @@
                                     "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
                                     "c_var_len": "Larg",
                                     "cxx_member": "->",
-                                    "cxx_type": "tutorial::Class3",
+                                    "cxx_type": "forward::Class3",
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg"
                                 },
@@ -363,9 +363,9 @@
                                     "c_type": "FOR_Class3",
                                     "c_var": "arg",
                                     "cxx_addr": "",
-                                    "cxx_decl": "tutorial::Class3 arg",
+                                    "cxx_decl": "forward::Class3 arg",
                                     "cxx_member": "->",
-                                    "cxx_type": "tutorial::Class3",
+                                    "cxx_type": "forward::Class3",
                                     "cxx_var": "arg",
                                     "data_var": "SHData_arg",
                                     "numpy_type": null,
@@ -397,7 +397,7 @@
                                     "specifier": [
                                         "Class3"
                                     ],
-                                    "typemap_name": "tutorial::Class3"
+                                    "typemap_name": "forward::Class3"
                                 }
                             ],
                             "specifier": [
@@ -434,15 +434,15 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 44,
+                        "linenumber": 46,
                         "options": {}
                     }
                 ],
-                "linenumber": 39,
+                "linenumber": 41,
                 "name": "Class2",
                 "options": {},
-                "scope": "tutorial::Class2::",
-                "typemap_name": "tutorial::Class2"
+                "scope": "forward::Class2::",
+                "typemap_name": "forward::Class2"
             }
         ],
         "copyright": [
@@ -453,7 +453,7 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "tutorial.hpp",
+        "cxx_header": "forward.hpp",
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

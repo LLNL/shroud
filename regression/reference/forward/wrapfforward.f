@@ -8,7 +8,7 @@
 !
 !>
 !! \file wrapfforward.f
-!! \brief Shroud generated wrapper for tutorial namespace
+!! \brief Shroud generated wrapper for forward namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top
@@ -92,11 +92,11 @@ module forward_mod
 
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
-            use tutorial_mod, only : custom_capsule
+            use tutorial_mod, only : SHROUD_class1_capsule
             import :: SHROUD_class2_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
-            type(custom_capsule), intent(IN) :: arg
+            type(SHROUD_class1_capsule), intent(IN) :: arg
         end subroutine c_class2_func1
 
         subroutine c_class2_accept_class3(self, arg) &
@@ -161,7 +161,7 @@ contains
         ! splicer end class.Class2.method.dtor
     end subroutine class2_dtor
 
-    ! void func1(Class1 * arg +intent(in))
+    ! void func1(tutorial::Class1 * arg +intent(in))
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj

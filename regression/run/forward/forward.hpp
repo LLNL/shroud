@@ -11,14 +11,23 @@
 #ifndef FORWARD_HPP
 #define FORWARD_HPP
 
-namespace tutorial
+#include "tutorial.hpp"  // Class1
+
+namespace forward
 {
+class Class3;
 
 class Class2
 {
 public:
-    void func1(Class1 *arg);
+    void func1(tutorial::Class1 *arg);
+    void acceptClass3(Class3 *arg);
 };
+
+class Class3
+{
+};
+
 
 } /* end namespace tutorial */
 

@@ -7,13 +7,13 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyforwardmodule.hpp"
-#include "tutorial.hpp"
+#include "forward.hpp"
 
 const char *PY_Class3_capsule_name = "Class3";
 const char *PY_Class2_capsule_name = "Class2";
 
 
-PyObject *PP_Class3_to_Object(tutorial::Class3 *addr)
+PyObject *PP_Class3_to_Object(forward::Class3 *addr)
 {
     // splicer begin class.Class3.utility.to_object
     PyObject *voidobj;
@@ -42,7 +42,7 @@ int PP_Class3_from_Object(PyObject *obj, void **addr)
     // splicer end class.Class3.utility.from_object
 }
 
-PyObject *PP_Class2_to_Object(tutorial::Class2 *addr)
+PyObject *PP_Class2_to_Object(forward::Class2 *addr)
 {
     // splicer begin class.Class2.utility.to_object
     PyObject *voidobj;
@@ -83,10 +83,10 @@ static void PY_SHROUD_capsule_destructor_0(void *ptr)
     // Do not release
 }
 
-// 1 - cxx tutorial::Class2 *
+// 1 - cxx forward::Class2 *
 static void PY_SHROUD_capsule_destructor_1(void *ptr)
 {
-    tutorial::Class2 * cxx_ptr = static_cast<tutorial::Class2 *>(ptr);
+    forward::Class2 * cxx_ptr = static_cast<forward::Class2 *>(ptr);
     delete cxx_ptr;
 }
 
@@ -95,7 +95,7 @@ static void PY_SHROUD_capsule_destructor_1(void *ptr)
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
-    {"cxx tutorial::Class2 *", PY_SHROUD_capsule_destructor_1},
+    {"cxx forward::Class2 *", PY_SHROUD_capsule_destructor_1},
     {NULL, NULL}
 };
 
