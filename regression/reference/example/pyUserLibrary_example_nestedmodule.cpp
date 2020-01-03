@@ -273,66 +273,6 @@ PP_testmpi_serial(
 }
 #endif // ifndef HAVE_MPI
 
-static char PP_testgroup1__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_testgroup1(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void testgroup1(axom::sidre::Group * grp +intent(in))
-// splicer begin namespace.example::nested.function.testgroup1
-    PyObject * SHPy_grp;
-    const char *SHT_kwlist[] = {
-        "grp",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
-        const_cast<char **>(SHT_kwlist), &FillInTypeForGroup,
-        &SHPy_grp))
-        return NULL;
-
-    // post_parse
-    axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
-
-    example::nested::testgroup1(grp);
-    Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.testgroup1
-}
-
-static char PP_testgroup2__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_testgroup2(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void testgroup2(const axom::sidre::Group * grp +intent(in))
-// splicer begin namespace.example::nested.function.testgroup2
-    PyObject * SHPy_grp;
-    const char *SHT_kwlist[] = {
-        "grp",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
-        const_cast<char **>(SHT_kwlist), &FillInTypeForGroup,
-        &SHPy_grp))
-        return NULL;
-
-    // post_parse
-    const axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
-
-    example::nested::testgroup2(grp);
-    Py_RETURN_NONE;
-// splicer end namespace.example::nested.function.testgroup2
-}
-
 static char PP_FuncPtr1__doc__[] =
 "documentation"
 ;
@@ -716,10 +656,6 @@ static PyMethodDef PP_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
 {"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS,
     PP_test_size_t__doc__},
-{"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS,
-    PP_testgroup1__doc__},
-{"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS,
-    PP_testgroup2__doc__},
 {"FuncPtr1", (PyCFunction)PP_FuncPtr1, METH_VARARGS|METH_KEYWORDS,
     PP_FuncPtr1__doc__},
 {"FuncPtr2", (PyCFunction)PP_FuncPtr2, METH_VARARGS|METH_KEYWORDS,

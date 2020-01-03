@@ -675,30 +675,6 @@ static int l_example_nested_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void testgroup1(axom::sidre::Group * grp +intent(in))
-static int l_example_nested_testgroup1(lua_State *L)
-{
-    // splicer begin function.testgroup1
-    axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
-        (XXLUA_userdata_type *) luaL_checkudata(
-        L, 1, "XXLUA_metadata")->addr);
-    example::nested::testgroup1(grp);
-    return 0;
-    // splicer end function.testgroup1
-}
-
-// void testgroup2(const axom::sidre::Group * grp +intent(in))
-static int l_example_nested_testgroup2(lua_State *L)
-{
-    // splicer begin function.testgroup2
-    const axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
-        (XXLUA_userdata_type *) luaL_checkudata(
-        L, 1, "XXLUA_metadata")->addr);
-    example::nested::testgroup2(grp);
-    return 0;
-    // splicer end function.testgroup2
-}
-
 // void FuncPtr1(void ( * get)() +intent(in)+value)
 /**
  * \brief subroutine
@@ -838,8 +814,6 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"testoptional", l_example_nested_testoptional},
     {"test_size_t", l_example_nested_test_size_t},
     {"testmpi", l_example_nested_testmpi},
-    {"testgroup1", l_example_nested_testgroup1},
-    {"testgroup2", l_example_nested_testgroup2},
     {"FuncPtr1", l_example_nested_func_ptr1},
     {"FuncPtr2", l_example_nested_func_ptr2},
     {"FuncPtr3", l_example_nested_func_ptr3},

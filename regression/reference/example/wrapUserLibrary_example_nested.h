@@ -15,7 +15,6 @@
 #ifndef WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 #define WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 
-#include "sidre/wrapGroup.h"
 #ifdef USE_MPI
 #include "mpi.h"
 #endif
@@ -71,10 +70,6 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm);
 #ifndef HAVE_MPI
 void AA_example_nested_testmpi_serial();
 #endif
-
-void AA_example_nested_testgroup1(SIDRE_group * grp);
-
-void AA_example_nested_testgroup2(SIDRE_group * grp);
 
 void AA_example_nested_func_ptr1(void ( * get)());
 

@@ -32,7 +32,7 @@
                     "cxx_type": "Class3",
                     "file_scope": "Class3"
                 },
-                "linenumber": 34,
+                "linenumber": 35,
                 "name": "Class3",
                 "options": {},
                 "scope": "forward::Class3::",
@@ -151,7 +151,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 41,
+                        "linenumber": 42,
                         "options": {}
                     },
                     {
@@ -193,7 +193,7 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 42,
+                        "linenumber": 43,
                         "options": {}
                     },
                     {
@@ -312,7 +312,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 43,
+                        "linenumber": 44,
                         "options": {}
                     },
                     {
@@ -434,11 +434,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 44,
+                        "linenumber": 45,
                         "options": {}
                     }
                 ],
-                "linenumber": 39,
+                "linenumber": 40,
                 "name": "Class2",
                 "options": {},
                 "scope": "forward::Class2::",
