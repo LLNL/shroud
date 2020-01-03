@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapClass2.h"
+#include <cstddef>
 #include "header1.hpp"
 #include "header2.hpp"
 #include "tutorial.hpp"

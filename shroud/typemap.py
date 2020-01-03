@@ -1916,6 +1916,9 @@ fc_statements = dict(
         alias="f_shadow_result",
     ),
     c_shadow_dtor=dict(
+        # NULL in stddef.h
+        c_header="<stddef.h>",
+        cxx_header="<cstddef>",
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",
