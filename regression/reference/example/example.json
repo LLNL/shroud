@@ -153,7 +153,9 @@
                     {
                         "classes": [
                             {
-                                "cxx_header": "ExClass1.hpp",
+                                "cxx_header": [
+                                    "ExClass1.hpp"
+                                ],
                                 "fmtdict": {
                                     "CXX_this_call": "SH_this->",
                                     "C_header_filename": "wrapexample_nested_ExClass1.h",
@@ -1890,7 +1892,9 @@
                                 "typemap_name": "example::nested::ExClass1"
                             },
                             {
-                                "cxx_header": "ExClass2.hpp",
+                                "cxx_header": [
+                                    "ExClass2.hpp"
+                                ],
                                 "fmtdict": {
                                     "CXX_this_call": "SH_this->",
                                     "C_header_filename": "wrapexample_nested_ExClass2.h",

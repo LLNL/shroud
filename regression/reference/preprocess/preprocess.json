@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser1.h",
@@ -277,7 +277,9 @@
                 "typemap_name": "User1"
             },
             {
-                "cxx_header": "User2.hpp",
+                "cxx_header": [
+                    "User2.hpp"
+                ],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser2.h",
@@ -463,7 +465,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "preprocess.hpp",
+        "cxx_header": [
+            "preprocess.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

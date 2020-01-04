@@ -260,7 +260,7 @@ class WrapperMixin(object):
     def find_header(self, node):
         """Add cxx_header for node or its parent to header_impl_include."""
         if node.cxx_header:
-            for hdr in node.cxx_header.split():
+            for hdr in node.cxx_header:
                 self.header_impl_include[hdr] = True
         elif node.parent is not None:
             self.find_header(node.parent)

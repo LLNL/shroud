@@ -916,7 +916,7 @@ def create_class_typemap(node, fields=None):
         sgroup="shadow",
         cxx_type=cxx_type,
         # XXX - look up scope for header...
-        impl_header=node.cxx_header or "",
+        impl_header=node.cxx_header,
         wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
@@ -1041,7 +1041,8 @@ def fill_struct_typemap_defaults(node, ntypemap):
     language = libnode.language
     if language == "c":
         # The struct from the user's library is used.
-        ntypemap.c_header = libnode.cxx_header.split()
+        # XXX - if struct in class, uses class.cxx_header?
+        ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
 
     # To convert, extract correct field from union

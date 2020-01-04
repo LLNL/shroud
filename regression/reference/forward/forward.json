@@ -3,7 +3,11 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "header1.hpp header2.hpp forward.hpp",
+                "cxx_header": [
+                    "header1.hpp",
+                    "header2.hpp",
+                    "forward.hpp"
+                ],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass3.h",
@@ -39,7 +43,7 @@
                 "typemap_name": "forward::Class3"
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass2.h",
@@ -453,7 +457,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "forward.hpp",
+        "cxx_header": [
+            "forward.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

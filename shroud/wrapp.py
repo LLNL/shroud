@@ -2189,11 +2189,12 @@ extern PyObject *{PY_prefix}error_obj;
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
 
+        # XXX - util.find_header
         if node.cxx_header:
-            for include in node.cxx_header.split():
+            for include in node.cxx_header:
                 output.append('#include "%s"' % include)
         else:
-            for include in self.newlibrary.cxx_header.split():
+            for include in self.newlibrary.cxx_header:
                 output.append('#include "%s"' % include)
 
         self.header_impl_include.update(self.helper_header["file"])
@@ -2271,7 +2272,7 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if len(self.capsule_order) > 1:
             # header file may be needed to fully qualify types capsule destructors
-            for include in node.cxx_header.split():
+            for include in node.cxx_header:
                 output.append('#include "%s"' % include)
             output.append("")
         output.extend(self.py_utility_definition)

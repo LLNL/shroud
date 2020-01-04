@@ -9,7 +9,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "vectors.hpp",
+        "cxx_header": [
+            "vectors.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

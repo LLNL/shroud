@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "enums": [
                     {
                         "_fmtmembers": {
@@ -85,7 +85,7 @@
                 "typemap_name": "Class1"
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "enums": [
                     {
                         "_fmtmembers": {
