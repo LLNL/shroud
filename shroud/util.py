@@ -144,8 +144,7 @@ def as_yaml(obj, order, output):
                     output.append("@- {}".format(i))
         elif isinstance(value, collections.Mapping):
             output.append("{}:".format(key))
-            order0 = value.keys()
-            order0.sort()
+            order0 = sorted(value.keys())
             output.append(1)
             as_yaml(value, order0, output)
             output.append(-1)
