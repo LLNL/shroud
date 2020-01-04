@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapClass1.h"
+#include <cstddef>
 #include "ownership.hpp"
 
 // splicer begin class.Class1.CXX_definitions

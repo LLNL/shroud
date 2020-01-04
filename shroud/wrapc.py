@@ -247,6 +247,10 @@ class Wrapc(util.WrapperMixin):
 
     def write_header_utility(self):
         """Write a utility header file with type definitions.
+
+        One utility header is written for the library.
+        Named from fmt.C_header_utility.
+        Contains typedefs for each shadow class.
         """
         self.gather_helper_code(self.shared_helper)
 
@@ -324,7 +328,7 @@ class Wrapc(util.WrapperMixin):
 
         # headers required by typedefs and helpers
         self.write_includes_for_header(
-            "c_header",
+            node.fmtdict,
             self.header_typedef_nodes,
             self.c_helper_include.keys(),
             output,
@@ -880,7 +884,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
             if arg_typemap.impl_header is not None:
-                for hdr in arg_typemap.impl_header.split():
+                for hdr in arg_typemap.impl_header:
                     self.header_impl_include[hdr] = True
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             self.header_typedef_nodes[arg_typemap.name] = arg_typemap
@@ -1123,7 +1127,7 @@ class Wrapc(util.WrapperMixin):
                     )
 
                 if result_typemap.impl_header is not None:
-                    for hdr in result_typemap.impl_header.split():
+                    for hdr in result_typemap.impl_header:
                         self.header_impl_include[hdr] = True
 
         need_wrapper = self.add_code_from_statements(

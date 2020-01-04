@@ -77,10 +77,11 @@ class Typemap(object):
     c_header and cxx_header are used for interface. For example,
     size_t uses <stddef.h> and <cstddef>.
 
-    impl_header is used for implementation.  For example, std::string
-    uses <string>. <string> should not be in the interface since the
-    wrapper is a C API.
+    impl_header is used for implementation, i.e. the wrap.cpp file.
+    For example, std::string uses <string>. <string> should not be in
+    the interface since the wrapper is a C API.
 
+    wrap_header is used for generated wrappers for shadow classes.
     """
 
     # Array of known keys with default values
@@ -99,11 +100,11 @@ class Typemap(object):
         # None implies {cxx_var} i.e. no conversion
         (
             "cxx_header",
-            None,
+            [],
         ),  # Name of C++ header file required for implementation
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
-        ("c_header", None),  # Name of C header file required for type
+        ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_return_code", None),
@@ -131,7 +132,8 @@ class Typemap(object):
         # e.g. intrinsics such as int and real
         # override fields when result should be treated as an argument
         ("result_as_arg", None),
-        ("impl_header", None), # implementation header
+        ("impl_header", []), # implementation header
+        ("wrap_header", []), # generated wrapper header
         # Python
         ("PY_format", "O"),  # 'format unit' for PyArg_Parse
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
@@ -186,9 +188,15 @@ class Typemap(object):
         Args:
             dct - dictionary-like object.
         """
-        for key in dct:
-            if key in self.defaults:
-                setattr(self, key, dct[key])
+        for key, value in dct.items():
+            if key in ["c_header", "cxx_header", "impl_header", "wrap_header"]:
+                # Blank delimited strings to list
+                if isinstance(value,list):
+                    setattr(self, key, value)
+                else:
+                    setattr(self, key, value.split())
+            elif key in self.defaults:
+                setattr(self, key, value)
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
 
@@ -246,31 +254,39 @@ class Typemap(object):
         """
         util.as_yaml(self, self._keyorder, indent, output)
 
-    def __export_yaml__(self, indent, output):
+    def __export_yaml__(self, output, mode="all"):
         """Write out a subset of a wrapped type.
         Other fields are set with fill_shadow_typemap_defaults.
 
         Args:
-            indent -
             output -
         """
-        util.as_yaml(
-            self,
-            [
-                "base",
-                "impl_header",
-                "cxx_header",
-                "cxx_type",
+        # Temporary dictionary to allow convert on header fields.
+        if mode == "all":
+            order = self._keyorder
+        else: # class
+            # To be used by other libraries which import shadow types.
+            if self.base == "shadow":
+                order = [
+                    "base",
+                    "wrap_header",
+                ]
+            else:
+                order = [
+                    "base",
+                    "cxx_header",
+                    "c_header",
+                ]
+            order.extend([
+#                "cxx_type",  # same as the dict key
                 "c_type",
-                "c_header",
                 "f_module_name",
                 "f_derived_type",
                 "f_capsule_data_type",
                 "f_to_c",
-            ],
-            indent,
-            output,
-        )
+            ])
+                
+        util.as_yaml(self, order, output)
 
 
 # Manage collection of typemaps
@@ -889,7 +905,8 @@ def create_class_typemap(node, fields=None):
         sgroup="shadow",
         cxx_type=cxx_type,
         # XXX - look up scope for header...
-        impl_header=node.cxx_header or None,
+        impl_header=node.cxx_header,
+        wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
@@ -1013,6 +1030,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     language = libnode.language
     if language == "c":
         # The struct from the user's library is used.
+        # XXX - if struct in class, uses class.cxx_header?
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
 
@@ -1916,6 +1934,9 @@ fc_statements = dict(
         alias="f_shadow_result",
     ),
     c_shadow_dtor=dict(
+        # NULL in stddef.h
+        c_header="<stddef.h>",
+        cxx_header="<cstddef>",
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",

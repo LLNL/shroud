@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapNames2.hh",
@@ -32,7 +32,7 @@
                 "typemap_name": "Names2"
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wraptwoTs_0.hh",
@@ -105,7 +105,7 @@
                 "typemap_name": "twoTs_0"
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wraptwoTs_instantiation4.hh",
@@ -1638,7 +1638,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "foo.h",
@@ -1891,7 +1891,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker1.hh",
@@ -1948,7 +1948,9 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_int.hh",
@@ -2036,7 +2038,9 @@
                         "typemap_name": "std::Vvv1"
                     },
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_double.hh",
@@ -2123,7 +2127,9 @@
                         "typemap_name": "std::vector_double"
                     },
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_instantiation5.hh",
@@ -2212,7 +2218,9 @@
                         "typemap_name": "std::vector_instantiation5"
                     },
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_instantiation3.hh",
@@ -2328,7 +2336,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapCAPI_Class1.hh",

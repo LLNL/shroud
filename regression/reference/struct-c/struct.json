@@ -4,7 +4,7 @@
         "classes": [
             {
                 "as_struct": true,
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
                     "C_impl_filename": "wrapCstruct1.c",
@@ -84,7 +84,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "struct.h",
+        "cxx_header": [
+            "struct.h"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

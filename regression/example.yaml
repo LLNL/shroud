@@ -35,20 +35,6 @@ typemap:
   fields:
     cpp_if: ifdef USE_MPI
 
-- type: axom::sidre::Group
-  fields:
-    # This example is pulled from spio
-    # DataGroup is a type which is provided by another shroud wrapped library
-    base: shadow
-    cxx_header: sidre/Group.hpp
-    c_header: sidre/wrapGroup.h
-    c_type: SIDRE_group
-    f_module_name: sidre_mod
-    f_derived_type: datagroup
-    f_capsule_data_type: SHROUD_group_capsule
-    f_to_c: '{f_var}%get_instance()'
-    PY_PyTypeObject: FillInTypeForGroup
-
 declarations:
 - decl: typedef long SidreLength
   fields:
@@ -252,9 +238,6 @@ declarations:
       format:
         function_suffix: _serial
       cpp_if: ifndef HAVE_MPI
-
-    - decl: void testgroup1(axom::sidre::Group * grp)
-    - decl: void testgroup2(const axom::sidre::Group * grp)
 
     # function pointers
     - decl: void FuncPtr1(void (*get)());

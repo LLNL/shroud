@@ -9,7 +9,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "namespace.hpp",
+        "cxx_header": [
+            "namespace.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
@@ -422,7 +424,7 @@
                 "classes": [
                     {
                         "as_struct": true,
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
                             "C_impl_filename": "wrapouter_Cstruct1.cpp",
@@ -683,7 +685,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapnswork_ClassWork.h",

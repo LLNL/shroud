@@ -193,10 +193,14 @@
     },
     "types": {
         "MPI_Comm": {
-            "c_header": "mpi.h",
+            "c_header": [
+                "mpi.h"
+            ],
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
             "c_type": "MPI_Fint",
-            "cxx_header": "mpi.h",
+            "cxx_header": [
+                "mpi.h"
+            ],
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})",
             "cxx_type": "MPI_Comm",
             "f_c_module": {
@@ -216,7 +220,9 @@
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
             "base": "bool",
-            "c_header": "<stdbool.h>",
+            "c_header": [
+                "<stdbool.h>"
+            ],
             "c_type": "bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
@@ -346,9 +352,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "int16_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "int16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -370,9 +380,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "int32_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "int32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -394,9 +408,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "int64_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "int64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -418,9 +436,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "int8_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "int8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",
@@ -504,9 +526,13 @@
             "LUA_type": "LUA_TNUMBER",
             "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})",
             "PY_format": "n",
-            "c_header": "<stddef.h>",
+            "c_header": [
+                "<stddef.h>"
+            ],
             "c_type": "size_t",
-            "cxx_header": "<cstddef>",
+            "cxx_header": [
+                "<cstddef>"
+            ],
             "cxx_type": "size_t",
             "f_cast": "int({f_var}, C_SIZE_T)",
             "f_kind": "C_SIZE_T",
@@ -542,12 +568,16 @@
             "f_type": "character(*)",
             "f_type_allocatable": "character(len=:)",
             "flat_name": "std_string",
-            "impl_header": "<string>",
+            "impl_header": [
+                "<string>"
+            ],
             "sgroup": "string"
         },
         "std::vector": {
             "base": "vector",
-            "cxx_header": "<vector>",
+            "cxx_header": [
+                "<vector>"
+            ],
             "cxx_type": "std::vector<{cxx_T}>",
             "flat_name": "std_vector_{cxx_T}",
             "sgroup": "vector"
@@ -560,9 +590,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "uint16_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "uint16_t",
             "f_cast": "int({f_var}, C_INT16_t)",
             "f_kind": "C_INT16_T",
@@ -584,9 +618,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "uint32_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "uint32_t",
             "f_cast": "int({f_var}, C_INT32_t)",
             "f_kind": "C_INT32_T",
@@ -608,9 +646,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "uint64_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "uint64_t",
             "f_cast": "int({f_var}, C_INT64_t)",
             "f_kind": "C_INT64_T",
@@ -632,9 +674,13 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_header": "<stdint.h>",
+            "c_header": [
+                "<stdint.h>"
+            ],
             "c_type": "uint8_t",
-            "cxx_header": "<cstdint>",
+            "cxx_header": [
+                "<cstdint>"
+            ],
             "cxx_type": "uint8_t",
             "f_cast": "int({f_var}, C_INT8_t)",
             "f_kind": "C_INT8_T",

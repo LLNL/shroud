@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass1.h",
@@ -190,7 +190,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "ownership.hpp",
+        "cxx_header": [
+            "ownership.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

@@ -650,20 +650,6 @@ module userlibrary_example_nested_mod
         end subroutine c_testmpi_serial
 #endif
 
-        subroutine c_testgroup1(grp) &
-                bind(C, name="AA_example_nested_testgroup1")
-            use sidre_mod, only : SHROUD_group_capsule
-            implicit none
-            type(SHROUD_group_capsule), intent(IN) :: grp
-        end subroutine c_testgroup1
-
-        subroutine c_testgroup2(grp) &
-                bind(C, name="AA_example_nested_testgroup2")
-            use sidre_mod, only : SHROUD_group_capsule
-            implicit none
-            type(SHROUD_group_capsule), intent(IN) :: grp
-        end subroutine c_testgroup2
-
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_func_ptr1")
             import :: func_ptr1_get
@@ -1319,24 +1305,6 @@ contains
         ! splicer end namespace.example::nested.function.testmpi_serial
     end subroutine testmpi_serial
 #endif
-
-    ! void testgroup1(axom::sidre::Group * grp +intent(in))
-    subroutine testgroup1(grp)
-        use sidre_mod, only : datagroup
-        type(datagroup), intent(IN) :: grp
-        ! splicer begin namespace.example::nested.function.testgroup1
-        call c_testgroup1(grp%cxxmem)
-        ! splicer end namespace.example::nested.function.testgroup1
-    end subroutine testgroup1
-
-    ! void testgroup2(const axom::sidre::Group * grp +intent(in))
-    subroutine testgroup2(grp)
-        use sidre_mod, only : datagroup
-        type(datagroup), intent(IN) :: grp
-        ! splicer begin namespace.example::nested.function.testgroup2
-        call c_testgroup2(grp%cxxmem)
-        ! splicer end namespace.example::nested.function.testgroup2
-    end subroutine testgroup2
 
     ! void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
     !>

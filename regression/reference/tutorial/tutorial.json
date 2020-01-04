@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "enums": [
                     {
                         "_fmtmembers": {
@@ -1541,7 +1541,7 @@
                 ]
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapSingleton.h",
@@ -1669,7 +1669,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "tutorial.hpp",
+        "cxx_header": [
+            "tutorial.hpp"
+        ],
         "enums": [
             {
                 "_fmtmembers": {
