@@ -13,7 +13,8 @@ typemap:
     - type: Class2
       fields:
         base: shadow
-        wrap_header: typesforward.h
+        wrap_header:
+        - typesforward.h
         c_type: FOR_Class2
         f_module_name: forward_mod
         f_derived_type: class2
@@ -22,7 +23,8 @@ typemap:
     - type: Class3
       fields:
         base: shadow
-        wrap_header: typesforward.h
+        wrap_header:
+        - typesforward.h
         c_type: FOR_Class3
         f_module_name: forward_mod
         f_derived_type: class3

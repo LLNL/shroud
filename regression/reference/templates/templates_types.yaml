@@ -11,7 +11,8 @@ typemap:
   - type: Worker
     fields:
       base: shadow
-      wrap_header: typestemplates.h
+      wrap_header:
+      - typestemplates.h
       c_type: TEM_Worker
       f_module_name: templates_mod
       f_derived_type: worker
@@ -22,7 +23,8 @@ typemap:
     - type: ImplWorker1
       fields:
         base: shadow
-        wrap_header: typestemplates.h
+        wrap_header:
+        - typestemplates.h
         c_type: TEM_internal_ImplWorker1
         f_module_name: templates_internal_mod
         f_derived_type: implworker1
@@ -31,7 +33,8 @@ typemap:
     - type: ImplWorker2
       fields:
         base: shadow
-        wrap_header: typestemplates.h
+        wrap_header:
+        - typestemplates.h
         c_type: TEM_internal_ImplWorker2
         f_module_name: templates_internal_mod
         f_derived_type: implworker2
@@ -42,7 +45,8 @@ typemap:
     - type: vector_double
       fields:
         base: shadow
-        wrap_header: typestemplates.h
+        wrap_header:
+        - typestemplates.h
         c_type: TEM_vector_double
         f_module_name: templates_std_mod
         f_derived_type: vector_double
@@ -51,7 +55,8 @@ typemap:
     - type: vector_int
       fields:
         base: shadow
-        wrap_header: typestemplates.h
+        wrap_header:
+        - typestemplates.h
         c_type: TEM_vector_int
         f_module_name: templates_std_mod
         f_derived_type: vector_int
@@ -60,7 +65,8 @@ typemap:
   - type: user_int
     fields:
       base: shadow
-      wrap_header: typestemplates.h
+      wrap_header:
+      - typestemplates.h
       c_type: TEM_user_int
       f_module_name: templates_mod
       f_derived_type: user_int

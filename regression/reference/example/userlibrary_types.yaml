@@ -15,7 +15,8 @@ typemap:
       - type: ExClass1
         fields:
           base: shadow
-          wrap_header: typesUserLibrary.h
+          wrap_header:
+          - typesUserLibrary.h
           c_type: AA_example_nested_ExClass1
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass1
@@ -24,7 +25,8 @@ typemap:
       - type: ExClass2
         fields:
           base: shadow
-          wrap_header: typesUserLibrary.h
+          wrap_header:
+          - typesUserLibrary.h
           c_type: AA_example_nested_ExClass2
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass2

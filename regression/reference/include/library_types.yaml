@@ -11,7 +11,8 @@ typemap:
   - type: Class2
     fields:
       base: shadow
-      wrap_header: typeslibrary.h
+      wrap_header:
+      - typeslibrary.h
       c_type: LIB_Class2
       f_module_name: library_mod
       f_derived_type: class2
@@ -24,7 +25,8 @@ typemap:
     - type: class0
       fields:
         base: shadow
-        wrap_header: typeslibrary.h
+        wrap_header:
+        - typeslibrary.h
         c_type: LIB_outer1_class0
         f_module_name: library_outer1_mod
         f_derived_type: class0
@@ -35,7 +37,8 @@ typemap:
     - type: class0
       fields:
         base: shadow
-        wrap_header: typeslibrary.h
+        wrap_header:
+        - typeslibrary.h
         c_type: LIB_outer2_class0
         f_module_name: library_outer2_mod
         f_derived_type: class0
@@ -46,7 +49,8 @@ typemap:
     - type: Class1
       fields:
         base: shadow
-        wrap_header: typeslibrary.h
+        wrap_header:
+        - typeslibrary.h
         c_type: LIB_three_Class1
         f_module_name: library_three_mod
         f_derived_type: class1

@@ -11,6 +11,7 @@ typemap:
   - type: Cstruct1
     fields:
       base: struct
-      c_header: struct.h
+      c_header:
+      - struct.h
       c_type: Cstruct1
       f_derived_type: cstruct1

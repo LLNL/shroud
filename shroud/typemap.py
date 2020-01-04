@@ -263,31 +263,20 @@ class Typemap(object):
         """
         # Temporary dictionary to allow convert on header fields.
         if mode == "all":
-            temp = self
             order = self._keyorder
         else: # class
-            temp = dict(
-                base=self.base,
-                c_type=self.c_type,
-                f_module_name=self.f_module_name,
-                f_derived_type=self.f_derived_type,
-                f_capsule_data_type=self.f_capsule_data_type,
-                f_to_c=self.f_to_c,
-            )
+            # To be used by other libraries which import shadow types.
             if self.base == "shadow":
                 order = [
                     "base",
                     "wrap_header",
                 ]
-                temp["wrap_header"] = " ".join(self.wrap_header)
             else:
                 order = [
                     "base",
                     "cxx_header",
                     "c_header",
                 ]
-                temp["cxx_header"] = " ".join(self.cxx_header)
-                temp["c_header"] = " ".join(self.c_header)
             order.extend([
 #                "cxx_type",  # same as the dict key
                 "c_type",
@@ -297,11 +286,7 @@ class Typemap(object):
                 "f_to_c",
             ])
                 
-        util.as_yaml(
-            temp,
-            order,
-            output,
-        )
+        util.as_yaml(self, order, output)
 
 
 # Manage collection of typemaps

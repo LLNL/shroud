@@ -11,7 +11,8 @@ typemap:
   - type: Class1
     fields:
       base: shadow
-      wrap_header: typesscope.h
+      wrap_header:
+      - typesscope.h
       c_type: SCO_Class1
       f_module_name: scope_mod
       f_derived_type: class1
@@ -20,7 +21,8 @@ typemap:
   - type: Class2
     fields:
       base: shadow
-      wrap_header: typesscope.h
+      wrap_header:
+      - typesscope.h
       c_type: SCO_Class2
       f_module_name: scope_mod
       f_derived_type: class2

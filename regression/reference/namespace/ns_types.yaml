@@ -13,7 +13,8 @@ typemap:
     - type: ClassWork
       fields:
         base: shadow
-        wrap_header: typesns.h
+        wrap_header:
+        - typesns.h
         c_type: NS_nswork_ClassWork
         f_module_name: ns_nswork_mod
         f_derived_type: classwork

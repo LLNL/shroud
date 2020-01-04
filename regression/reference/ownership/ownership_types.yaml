@@ -11,7 +11,8 @@ typemap:
   - type: Class1
     fields:
       base: shadow
-      wrap_header: typesownership.h
+      wrap_header:
+      - typesownership.h
       c_type: OWN_Class1
       f_module_name: ownership_mod
       f_derived_type: class1
