@@ -309,9 +309,8 @@ class WrapperMixin(object):
 
         for typedef in types.values():
             hdr = getattr(typedef, lang_header)
-            if hdr is not None:
-                for h in hdr.split():
-                    headers.setdefault(h, []).append(typedef)
+            for h in hdr:
+                headers.setdefault(h, []).append(typedef)
 
         need_blank = True
         for hdr in sorted(headers):
@@ -369,17 +368,13 @@ class WrapperMixin(object):
 
         # Collect headers for c and c++.
         for typedef in types.values():
-            hdr = getattr(typedef, "c_header")
-            if hdr:
+            for hdr in typedef.c_header:
                 c_headers.setdefault(hdr, []).append(typedef)
-            hdr = getattr(typedef, "cxx_header")
-            if hdr:
+            for hdr in typedef.cxx_header:
                 cxx_headers.setdefault(hdr, []).append(typedef)
-            hdr = typedef.wrap_header
-            if hdr:
-                for h in hdr.split():
-                    if h != fmt.C_header_utility:
-                        wrap_headers.setdefault(h, []).append(typedef)
+            for hdr in typedef.wrap_header:
+                if hdr != fmt.C_header_utility:
+                    wrap_headers.setdefault(hdr, []).append(typedef)
 
         # Find which headers are always included.
         both = {}

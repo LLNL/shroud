@@ -100,11 +100,11 @@ class Typemap(object):
         # None implies {cxx_var} i.e. no conversion
         (
             "cxx_header",
-            None,
+            [],
         ),  # Name of C++ header file required for implementation
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
-        ("c_header", None),  # Name of C header file required for type
+        ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_return_code", None),
@@ -132,8 +132,8 @@ class Typemap(object):
         # e.g. intrinsics such as int and real
         # override fields when result should be treated as an argument
         ("result_as_arg", None),
-        ("impl_header", None), # implementation header
-        ("wrap_header", None), # generated wrapper header
+        ("impl_header", []), # implementation header
+        ("wrap_header", []), # generated wrapper header
         # Python
         ("PY_format", "O"),  # 'format unit' for PyArg_Parse
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
@@ -188,9 +188,15 @@ class Typemap(object):
         Args:
             dct - dictionary-like object.
         """
-        for key in dct:
-            if key in self.defaults:
-                setattr(self, key, dct[key])
+        for key, value in dct.items():
+            if key in ["c_header", "cxx_header", "impl_header", "wrap_header"]:
+                # Blank delimited strings to list
+                if isinstance(value,list):
+                    setattr(self, key, value)
+                else:
+                    setattr(self, key, value.split())
+            elif key in self.defaults:
+                setattr(self, key, value)
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
 
@@ -256,20 +262,31 @@ class Typemap(object):
             indent -
             output -
         """
+        # Temporary dictionary to allow convert on header fields.
+        temp = dict(
+            base=self.base,
+                c_type=self.c_type,
+                f_module_name=self.f_module_name,
+                f_derived_type=self.f_derived_type,
+                f_capsule_data_type=self.f_capsule_data_type,
+                f_to_c=self.f_to_c,
+        )
         if self.base == "shadow":
             order = [
                 "base",
                 "wrap_header",
             ]
+            temp["wrap_header"] = " ".join(self.wrap_header)
         else:
             order = [
                 "base",
                 "cxx_header",
                 "c_header",
             ]
-            pass
+            temp["cxx_header"] = " ".join(self.cxx_header)
+            temp["c_header"] = " ".join(self.c_header)
         util.as_yaml(
-            self,
+            temp,
             order + [
 #                "cxx_type",  # same as the dict key
                 "c_type",
@@ -899,7 +916,7 @@ def create_class_typemap(node, fields=None):
         sgroup="shadow",
         cxx_type=cxx_type,
         # XXX - look up scope for header...
-        impl_header=node.cxx_header or None,
+        impl_header=node.cxx_header or "",
         wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
@@ -1024,7 +1041,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     language = libnode.language
     if language == "c":
         # The struct from the user's library is used.
-        ntypemap.c_header = libnode.cxx_header
+        ntypemap.c_header = libnode.cxx_header.split()
         ntypemap.c_type = ntypemap.cxx_type
 
     # To convert, extract correct field from union
