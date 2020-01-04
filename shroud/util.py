@@ -97,11 +97,10 @@ def update(d, u):
     return d
 
 
-def as_yaml(obj, order, indent, output):
+def as_yaml(obj, order, output):
     """Write out obj in YAML syntax
     obj    - a dictionary or an instance with attributes to dump.
     order  - order of keys to dump
-    indent - indention level.
     output - list of output lines.
 
     This is not really intendent to be a general routine.
@@ -109,7 +108,6 @@ def as_yaml(obj, order, indent, output):
     a YAML file similar to what a user may write.
     """
 
-    prefix = "  " * indent
     for key in order:
         if isinstance(obj, collections.Mapping):
             value = obj[key]
@@ -124,9 +122,9 @@ def as_yaml(obj, order, indent, output):
             # quote strings which start with { to avoid treating them
             # as a dictionary.
             if value.startswith("{"):
-                output.append('{}{}: "{}"'.format(prefix, key, value))
+                output.append('{}: "{}"'.format(key, value))
             else:
-                output.append("{}{}: {}".format(prefix, key, value))
+                output.append("{}: {}".format(key, value))
         elif isinstance(value, collections.Sequence):
             # Keys which are are an array of string (code templates)
             if key in (
@@ -137,21 +135,23 @@ def as_yaml(obj, order, indent, output):
                 "post_parse",
                 "ctor",
             ):
-                output.append("{}{}: |".format(prefix, key))
+                output.append("{}: |".format(key))
                 for i in value:
-                    output.append("{}  {}".format(prefix, i))
+                    output.append("{}".format(i))
             else:
-                output.append("{}{}:".format(prefix, key))
+                output.append("{}:".format(key))
                 for i in value:
-                    output.append("{}- {}".format(prefix, i))
+                    output.append("@- {}".format(i))
         elif isinstance(value, collections.Mapping):
-            output.append("{}{}:".format(prefix, key))
+            output.append("{}:".format(key))
             order0 = value.keys()
             order0.sort()
-            as_yaml(value, order0, indent + 1, output)
+            output.append(1)
+            as_yaml(value, order0, output)
+            output.append(-1)
         else:
             # numbers or booleans
-            output.append("{}{}: {}".format(prefix, key, value))
+            output.append("{}: {}".format(key, value))
 
 
 def extern_C(output, position):

@@ -254,48 +254,52 @@ class Typemap(object):
         """
         util.as_yaml(self, self._keyorder, indent, output)
 
-    def __export_yaml__(self, indent, output):
+    def __export_yaml__(self, output, mode="all"):
         """Write out a subset of a wrapped type.
         Other fields are set with fill_shadow_typemap_defaults.
 
         Args:
-            indent -
             output -
         """
         # Temporary dictionary to allow convert on header fields.
-        temp = dict(
-            base=self.base,
+        if mode == "all":
+            temp = self
+            order = self._keyorder
+        else: # class
+            temp = dict(
+                base=self.base,
                 c_type=self.c_type,
                 f_module_name=self.f_module_name,
                 f_derived_type=self.f_derived_type,
                 f_capsule_data_type=self.f_capsule_data_type,
                 f_to_c=self.f_to_c,
-        )
-        if self.base == "shadow":
-            order = [
-                "base",
-                "wrap_header",
-            ]
-            temp["wrap_header"] = " ".join(self.wrap_header)
-        else:
-            order = [
-                "base",
-                "cxx_header",
-                "c_header",
-            ]
-            temp["cxx_header"] = " ".join(self.cxx_header)
-            temp["c_header"] = " ".join(self.c_header)
-        util.as_yaml(
-            temp,
-            order + [
+            )
+            if self.base == "shadow":
+                order = [
+                    "base",
+                    "wrap_header",
+                ]
+                temp["wrap_header"] = " ".join(self.wrap_header)
+            else:
+                order = [
+                    "base",
+                    "cxx_header",
+                    "c_header",
+                ]
+                temp["cxx_header"] = " ".join(self.cxx_header)
+                temp["c_header"] = " ".join(self.c_header)
+            order.extend([
 #                "cxx_type",  # same as the dict key
                 "c_type",
                 "f_module_name",
                 "f_derived_type",
                 "f_capsule_data_type",
                 "f_to_c",
-            ],
-            indent,
+            ])
+                
+        util.as_yaml(
+            temp,
+            order,
             output,
         )
 

@@ -64,50 +64,49 @@ class TypeOut(util.WrapperMixin):
         self.cont = ""
         self.linelen = 1000
 
-    def write_types(self):
+    def _get_namespaces(self, node, top):
+        for cls in node.classes:
+            fullname = cls.typemap.name
+            parts = fullname.split("::")
+            top[parts[-1]] = cls.typemap
+        for ns in node.namespaces:
+            top[ns.name] = {}
+            self._get_namespaces(ns, top[ns.name])
+            
+    def splitup(self, ns, output, mode):
+        for name in sorted(ns.keys()):
+            nxt = ns[name]
+            if isinstance(nxt, dict):
+                if nxt:
+                    output.append("@- namespace: " + name)
+                    output.append(1)
+                    output.append("declarations: " + name)
+                    self.splitup(nxt, output, mode)
+                    output.append(-1)
+            elif isinstance(nxt, typemap.Typemap):
+                output.append("@- type: " + name)
+                output.append(1)
+                output.append("fields:")
+                output.append(1)
+                nxt.__export_yaml__(output, mode)
+                output.append(-2)
+            else:
+                raise RuntimeError("Unexpected class in splitup")
+
+    def write_class_types(self):
         """Write out types into a file.
         This file can be read by Shroud to share types.
         """
         newlibrary = self.newlibrary
         newlibrary.eval_template("YAML_type_filename")
         fname = newlibrary.fmtdict.YAML_type_filename
-        output = []
 
-        def get_namespaces(node, top):
-            for cls in node.classes:
-                fullname = cls.typemap.name
-                parts = fullname.split("::")
-                top[parts[-1]] = cls.typemap
-            for ns in node.namespaces:
-                top[ns.name] = {}
-                get_namespaces(ns, top[ns.name])
         top = {}
         #        get_namespaces(newlibrary.wrap_namespace, top)
-        get_namespaces(newlibrary, top)
+        self._get_namespaces(newlibrary, top)
 
         output = []
-
-        def splitup(ns, output):
-            for name in sorted(ns.keys()):
-                nxt = ns[name]
-                if isinstance(nxt, dict):
-                    if nxt:
-                        output.append("@- namespace: " + name)
-                        output.append(1)
-                        output.append("declarations: " + name)
-                        splitup(nxt, output)
-                        output.append(-1)
-                elif isinstance(nxt, typemap.Typemap):
-                    output.append("@- type: " + name)
-                    output.append(1)
-                    output.append("fields:")
-                    output.append(1)
-                    nxt.__export_yaml__(0, output)
-                    output.append(-2)
-                else:
-                    raise RuntimeError("Unexpected class in splitup")
-
-        splitup(top, output)
+        self.splitup(top, output, "class")
 
         if output:
             output = [
@@ -115,6 +114,35 @@ class TypeOut(util.WrapperMixin):
                     self.newlibrary.library
                 ),
                 "declarations:",
+                1,
+            ] + output
+
+            self.write_output_file(
+                fname, self.config.yaml_dir, output, spaces="  "
+            )
+
+    def write_all_types(self, def_types, fname):
+        """Write out types into a file.
+        This file can be read by Shroud to share types.
+        """
+        output = []
+        self.splitup(def_types, output, "all")
+
+        # This is called before the YAML file is read and the library created.
+        # Dummy out the library for the copyright.
+        class Dummy:
+            copyright = ["""
+# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)"""]
+        self.newlibrary = Dummy()
+
+        if output:
+            output = [
+                "# All types predefined by Shroud",
+                "typemap:",
                 1,
             ] + output
 
@@ -385,11 +413,7 @@ def main_with_args(args):
 
     # Write out native types as YAML if requested
     if config.yaml_types:
-        with open(
-            os.path.join(config.yaml_dir, config.yaml_types), "w"
-        ) as yaml_file:
-            yaml.dump(def_types, yaml_file, default_flow_style=False)
-        print("Wrote", config.yaml_types)
+        TypeOut(None, config).write_all_types(def_types, config.yaml_types)
 
     newlibrary = ast.create_library_from_dictionary(allinput)
 
@@ -425,7 +449,7 @@ def main_with_args(args):
         splicers.update(allinput["splicer_code"])
 
     # Write out generated types
-    TypeOut(newlibrary, config).write_types()
+    TypeOut(newlibrary, config).write_class_types()
 
     try:
         options = newlibrary.options
