@@ -1075,7 +1075,6 @@ return 1;""",
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
                 c_local_var = "pointer"
-                as_object = True
             else:
                 # non-strings should be scalars
                 fmt_arg.c_deref = ""
@@ -2941,7 +2940,7 @@ default_stmts = dict(
         cxx_local_var=None,
         need_numpy=False,
         object_created=False,
-        parse_as_object=False,
+        parse_as_object=False,  # Uses pytmp_var in PyArg_Parse
 
         decl=[],
         pre_call=[],
@@ -3053,6 +3052,7 @@ py_statements = dict(
 ## numpy
     py_native_in_dimension_numpy=dict(
         need_numpy=True,
+        parse_as_object=True,
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3078,6 +3078,7 @@ py_statements = dict(
 
     py_native_inout_dimension_numpy=dict(
         need_numpy=True,
+        parse_as_object=True,
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3166,6 +3167,7 @@ py_statements = dict(
 ## list
     py_native_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
+        parse_as_object=True,
         decl=[
             "PyObject *{pytmp_var} = NULL;",
             "{cxx_decl} = NULL;",
@@ -3188,6 +3190,7 @@ py_statements = dict(
     py_native_inout_dimension_list=dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
+        parse_as_object=True,
         decl=[
             "PyObject *{pytmp_var} = NULL;",
             "{cxx_decl} = NULL;",
@@ -3564,6 +3567,7 @@ py_statements = dict(
         # cxx_var is released by the compiler.
         c_helper="from_PyObject_vector_{cxx_T}",
         cxx_local_var="scalar",
+        parse_as_object=True,
         decl=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
@@ -3616,11 +3620,13 @@ py_statements = dict(
 ##########
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
+# vectors have the dimension attribute added by generate.py
     py_vector_in_numpy=dict(
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
         need_numpy=True,
+        parse_as_object=True,
         cxx_local_var="scalar",
         decl=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
