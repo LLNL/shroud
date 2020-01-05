@@ -9263,12 +9263,10 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "double * out",
                                             "c_deref": "*",
                                             "c_type": "double",
                                             "c_var": "out",
                                             "cxx_addr": "",
-                                            "cxx_decl": "double * out",
                                             "cxx_member": "->",
                                             "cxx_type": "double",
                                             "cxx_var": "out",

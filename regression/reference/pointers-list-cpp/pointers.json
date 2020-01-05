@@ -281,12 +281,10 @@
                     "out": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "double * out",
                             "c_deref": "*",
                             "c_type": "double",
                             "c_var": "out",
                             "cxx_addr": "",
-                            "cxx_decl": "double * out",
                             "cxx_member": "->",
                             "cxx_type": "double",
                             "cxx_var": "out",
@@ -429,12 +427,10 @@
                     "out": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int * out",
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "out",
                             "cxx_addr": "",
-                            "cxx_decl": "int * out",
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "out",

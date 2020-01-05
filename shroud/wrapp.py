@@ -1067,10 +1067,6 @@ return 1;""",
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
                 c_local_var = "funcptr"
-            elif allocatable:
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                c_local_var = "pointer"
             elif dimension:
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
@@ -3150,13 +3146,14 @@ py_statements = dict(
     py_native_out_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
+        c_local_var="pointer",
         pre_call=[
             "{npy_descr_code}"
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
             "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
             "if ({py_var} == NULL)",
             "+goto fail;-",
-            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
+            "{cxx_type} * {cxx_var} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
             ],
         object_created=True,
         fail=["Py_XDECREF({py_var});"],
@@ -3254,8 +3251,9 @@ py_statements = dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
+        c_local_var="pointer",
         decl=[
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         c_pre_call=[
             "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
