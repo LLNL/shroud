@@ -272,12 +272,11 @@ class WrapperMixin(object):
         """
         # include any dependent header in generated source
         if self.language == "c":
-            headers = intent_blk.get("c_header", None)
+            headers = intent_blk.c_header
         else:
-            headers = intent_blk.get("cxx_header", None)
-        if headers:
-            for h in headers.split():
-                self.header_impl_include[h] = True
+            headers = intent_blk.cxx_header
+        for hdr in headers:
+            self.header_impl_include[hdr] = True
 
     def write_headers(self, headers, output):
         for header in sorted(headers):

@@ -2950,8 +2950,10 @@ def lookup_stmts(path):
 
 default_stmts = dict(
     allocate_local_var=False,
+    c_header=[],
     c_helper=[],
     create_out_decl=False,
+    cxx_header=[],
     cxx_local_var="",
     need_numpy=False,
     object_created=False,
@@ -3228,8 +3230,8 @@ py_statements = dict(
 
     native_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
-        c_header="<stdlib.h>",  # malloc/free
-        cxx_header="<cstdlib>",  # malloc/free
+        c_header=["<stdlib.h>"],  # malloc/free
+        cxx_header=["<cstdlib>"],  # malloc/free
         decl=[
             "PyObject *{py_var} = NULL;",
             "{cxx_decl} = NULL;",
@@ -3262,8 +3264,8 @@ py_statements = dict(
 ## allocatable
     native_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
-        c_header="<stdlib.h>",  # malloc/free
-        cxx_header="<cstdlib>",  # malloc/free
+        c_header=["<stdlib.h>"],  # malloc/free
+        cxx_header=["<cstdlib>"],  # malloc/free
         decl=[
             "{cxx_decl} = NULL;",
         ],
