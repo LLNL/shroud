@@ -124,13 +124,11 @@
                     "arg": {
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "None * arg",
                             "c_deref": "",
                             "c_type": null,
                             "c_var": "arg",
                             "cxx_T": "int",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::vector<int> * arg",
                             "cxx_member": ".",
                             "cxx_type": "std::vector<int>",
                             "cxx_var": "SH_arg",
@@ -222,7 +220,6 @@
                     "arg": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "None * arg",
                             "c_deref": "*",
                             "c_type": null,
                             "c_var": "arg",
@@ -230,7 +227,6 @@
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_alloc_decl": "std::vector<int> * SH_arg",
-                            "cxx_decl": "std::vector<int> * arg",
                             "cxx_member": "->",
                             "cxx_type": "std::vector<int>",
                             "cxx_var": "SH_arg",
@@ -641,7 +637,6 @@
                     "arg": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "None * arg",
                             "c_deref": "*",
                             "c_type": null,
                             "c_var": "arg",
@@ -649,7 +644,6 @@
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_alloc_decl": "std::vector<double> * SH_arg",
-                            "cxx_decl": "std::vector<double> * arg",
                             "cxx_member": "->",
                             "cxx_type": "std::vector<double>",
                             "cxx_var": "SH_arg",

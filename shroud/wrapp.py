@@ -1067,10 +1067,6 @@ return 1;""",
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
                 c_local_var = "funcptr"
-            elif dimension:
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                c_local_var = "pointer"
             else:
                 # non-strings should be scalars
                 fmt_arg.c_deref = ""
@@ -3049,6 +3045,7 @@ py_statements = dict(
     py_native_in_dimension_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3058,10 +3055,10 @@ py_statements = dict(
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
             "Py_DECREF({py_var});",
@@ -3075,6 +3072,7 @@ py_statements = dict(
     py_native_inout_dimension_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3084,10 +3082,10 @@ py_statements = dict(
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -3098,6 +3096,7 @@ py_statements = dict(
 
     py_native_out_dimension_numpy=dict(
         need_numpy=True,
+        c_local_var="pointer",
         decl=[
             "{npy_intp}"
             "PyArrayObject * {py_var} = NULL;",
@@ -3107,10 +3106,10 @@ py_statements = dict(
             "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -3165,9 +3164,10 @@ py_statements = dict(
     py_native_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
         parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3188,9 +3188,10 @@ py_statements = dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
         parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3217,13 +3218,14 @@ py_statements = dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
+        c_local_var="pointer",
         decl=[
             "PyObject *{py_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         c_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = malloc(\tsizeof({cxx_type}) * {pointer_shape});",
+            "{c_var} = malloc(\tsizeof({c_type}) * {pointer_shape});",
         ] + malloc_error,
         cxx_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
@@ -3256,7 +3258,7 @@ py_statements = dict(
             "{cxx_type} * {cxx_var} = NULL;",
         ],
         c_pre_call=[
-            "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
+            "{c_var} = malloc(sizeof({c_type}) * {size_var});",
         ] + malloc_error,
         cxx_pre_call=[
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
@@ -3335,7 +3337,7 @@ py_statements = dict(
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3366,7 +3368,7 @@ py_statements = dict(
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3395,7 +3397,7 @@ py_statements = dict(
         ] + array_error,
         c_pre_call=[
 #            "{cxx_decl} = PyArray_DATA({py_var});",
-            "{cxx_type} *{cxx_var} = PyArray_DATA({py_var});",
+            "{c_type} *{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
 #            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3456,7 +3458,7 @@ py_statements = dict(
             "{PyObject} * {py_var} = NULL;",
         ],
         c_pre_call=[
-            "{cxx_type} * {cxx_var} = malloc(sizeof({cxx_type}));",
+            "{c_type} * {c_var} = malloc(sizeof({c_type}));",
         ],
         c_dealloc_capsule=[
             "free(ptr);",
@@ -3564,6 +3566,7 @@ py_statements = dict(
         # Pass to C++ function.
         # cxx_var is released by the compiler.
         c_helper="from_PyObject_vector_{cxx_T}",
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         parse_as_object=True,
         decl=[
@@ -3582,6 +3585,7 @@ py_statements = dict(
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
         c_helper="to_PyList_vector_{cxx_T}",
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         decl=[
             "PyObject * {py_var} = NULL;",
@@ -3625,6 +3629,7 @@ py_statements = dict(
         # Pass to C++ function.
         need_numpy=True,
         parse_as_object=True,
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         decl=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
@@ -3648,6 +3653,7 @@ py_statements = dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="pointer",
         allocate_local_var=True,
         decl=[
