@@ -1166,6 +1166,26 @@ def create_buf_variable_names(options, blk, attrs, c_var):
             )
 
 
+def compute_return_prefix(arg, local_var):
+    """Compute how to access variable: dereference, address, as-is"""
+    if local_var == "scalar":
+        if arg.is_pointer():
+            return "&"
+        else:
+            return ""
+    elif local_var == "pointer":
+        if arg.is_pointer():
+            return ""
+        else:
+            return "*"
+    elif local_var == "funcptr":
+        return ""
+    elif arg.is_reference():
+        # Convert a return reference into a pointer.
+        return "&"
+    else:
+        return ""
+
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.

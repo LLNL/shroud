@@ -877,6 +877,11 @@ return 1;""",
 
         fmt.PY_error_return - 'NULL' for all wrappers except constructors
                               which are called via tp_init and require -1.
+
+        c_local_var is the "scalar" or "pointer" for the c variable,
+        which always exist.  It is the result of PyArg_Parse.
+        c_local_var has been converted into a cxx variable when
+        cxx_local_var is defined.
         """
 
         # need_rv - need Return Value declaration.
@@ -1016,7 +1021,7 @@ return 1;""",
                 fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
-                local_var = "funcptr"
+                c_local_var = "funcptr"
             elif arg_typemap.base == "string":
                 charlen = arg.attrs.get("charlen", False)
                 if charlen:
@@ -1027,15 +1032,15 @@ return 1;""",
                     fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
                     #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                local_var = "pointer"
+                c_local_var = "pointer"
             elif arg.attrs.get("allocatable", False):
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                local_var = "pointer"
+                c_local_var = "pointer"
             elif dimension:
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                local_var = "pointer"
+                c_local_var = "pointer"
                 as_object = True
             else:
                 # non-strings should be scalars
@@ -1044,7 +1049,7 @@ return 1;""",
                 #                fmt_arg.cxx_member = '.'
                 fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
-                local_var = "scalar"
+                c_local_var = "scalar"
 
             allocatable = attrs.get("allocatable", False)
             hidden = attrs.get("hidden", False)
@@ -1090,7 +1095,7 @@ return 1;""",
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
                     fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                local_var = cxx_local_var
+#                c_local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
                 # cxx_member used with typemap fields like PY_ctor.
                 if cxx_local_var == "scalar":
@@ -1198,20 +1203,8 @@ return 1;""",
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
-            if local_var == "scalar":
-                if arg.is_pointer():
-                    cxx_call_list.append("&" + pass_var)
-                else:
-                    cxx_call_list.append(pass_var)
-            elif local_var == "pointer":
-                if arg.is_pointer():
-                    cxx_call_list.append(pass_var)
-                else:
-                    cxx_call_list.append("*" + pass_var)
-            elif local_var == "funcptr":
-                cxx_call_list.append(pass_var)
-            else:
-                raise RuntimeError("unexpected value of local_var")
+            prefix = typemap.compute_return_prefix(arg, cxx_local_var or c_local_var)
+            cxx_call_list.append(prefix + pass_var)
         # end for arg in args:
 
         # Add implied argument initialization to pre_call_code
@@ -2938,9 +2931,10 @@ default_stmts = dict(
         allocate_local_var=False,
         c_header=[],
         c_helper=[],
+        c_local_var=None,  # "scalar", "pointer", "funcptr"
         create_out_decl=False,
         cxx_header=[],
-        cxx_local_var="",
+        cxx_local_var=None,
         need_numpy=False,
         object_created=False,
         parse_as_object=False,

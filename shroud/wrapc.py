@@ -1154,7 +1154,7 @@ class Wrapc(util.WrapperMixin):
         elif result_arg is None and C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
-            fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+            fmt_result.c_get_value = typemap.compute_return_prefix(ast, c_local_var)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             raw_return_code = ["return;"]
@@ -1454,21 +1454,3 @@ def compute_cxx_deref(arg, local_var, fmt):
 #        fmt.cxx_deref = ""
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
-
-def compute_return_prefix(arg, local_var):
-    """Compute how to access variable: dereference, address, as-is"""
-    if local_var == "scalar":
-        if arg.is_pointer():
-            return "&"
-        else:
-            return ""
-    elif local_var == "pointer":
-        if arg.is_pointer():
-            return ""
-        else:
-            return "*"
-    elif arg.is_reference():
-        # Convert a return reference into a pointer.
-        return "&"
-    else:
-        return ""
