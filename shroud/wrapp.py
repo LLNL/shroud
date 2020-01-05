@@ -800,7 +800,7 @@ return 1;""",
         NumPy intent(OUT) arguments will create a Python object as part of pre-call.
         Return a BuildTuple instance.
         """
-        if "post_call" in intent_blk:
+        if "object_created" in intent_blk:
             # Explicit code exists to create object.
             # If post_call is None, the Object has already been created
             build_format = "O"
@@ -2993,6 +2993,7 @@ py_statements = dict(
             "{py_var} = PyBool_FromLong({c_deref}{c_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3006,6 +3007,7 @@ py_statements = dict(
             "{py_var} = PyBool_FromLong({c_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3019,6 +3021,7 @@ py_statements = dict(
             "{py_var} = PyBool_FromLong({c_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3068,7 +3071,7 @@ py_statements = dict(
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
-        post_call=None,  # Object already created in post_parse
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3091,7 +3094,7 @@ py_statements = dict(
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
-        post_call=None,  # Object already created in post_parse
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3110,6 +3113,7 @@ py_statements = dict(
             "\t {numpy_type},\t {cxx_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3132,7 +3136,7 @@ py_statements = dict(
             "+goto fail;-",
             "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
             ],
-        post_call=None,  # Object already created in pre_call
+        object_created=True,
         fail=["Py_XDECREF({py_var});"],
         goto_fail=True,
     ),
@@ -3178,6 +3182,7 @@ py_statements = dict(
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
         ],
@@ -3207,6 +3212,7 @@ py_statements = dict(
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
             "{cxx_var} = NULL;",
@@ -3237,6 +3243,7 @@ py_statements = dict(
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
         ],
@@ -3318,7 +3325,7 @@ py_statements = dict(
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
-        post_call=None,
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3348,7 +3355,7 @@ py_statements = dict(
 #            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
             "{cxx_type} *{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
-        post_call=None,  # Object already created in post_parse
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3369,6 +3376,7 @@ py_statements = dict(
             " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3392,7 +3400,7 @@ py_statements = dict(
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
-        post_call=None,  # Object was passed in
+        object_created=True,
     ),
     struct_out_class=dict(
         create_out_decl=True,
@@ -3420,6 +3428,7 @@ py_statements = dict(
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3438,6 +3447,7 @@ py_statements = dict(
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3471,6 +3481,7 @@ py_statements = dict(
             "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
         ],
+        object_created=True,
 #            post_call_capsule=[
 #                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
 #            ],
@@ -3489,6 +3500,7 @@ py_statements = dict(
 #                "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
         ],
+        object_created=True,
 #            post_call_capsule=[
 #                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
 #            ],
@@ -3534,6 +3546,7 @@ py_statements = dict(
             "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3548,6 +3561,7 @@ py_statements = dict(
             "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3598,6 +3612,7 @@ py_statements = dict(
             "\t {numpy_type},\t {cxx_var}->data());",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
@@ -3620,6 +3635,7 @@ py_statements = dict(
             "\t {numpy_type},\t {cxx_var}->data());",
             "if ({py_var} == NULL) goto fail;",
         ],
+        object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
