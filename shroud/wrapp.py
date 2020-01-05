@@ -1051,6 +1051,7 @@ return 1;""",
             implied = attrs.get("implied", False)
             intent = attrs["intent"]
             sgroup = arg_typemap.sgroup
+            stmts = None
             if implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
@@ -1063,22 +1064,20 @@ return 1;""",
                     raise RuntimeError(
                         "Argument {} must have intent(out) with +allocatable".
                         format(arg.name))
-                intent_blk = lookup_stmts(
-                    ["py", sgroup, "out", "allocatable", node.options.PY_array_arg])
+                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg]
             elif arg_typemap.base == "struct":
-                intent_blk = lookup_stmts(
-                    ["py", sgroup, intent, options.PY_struct_arg])
+                stmts = ["py", sgroup, intent, options.PY_struct_arg]
             elif arg_typemap.base == "vector":
-                intent_blk = lookup_stmts(
-                    ["py", sgroup, intent, options.PY_array_arg])
+                stmts = ["py", sgroup, intent, options.PY_array_arg]
                 whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
-                intent_blk = lookup_stmts(
-                    ["py", sgroup, intent, "dimension", options.PY_array_arg])
+                stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
-                intent_blk = lookup_stmts(["py", arg_typemap.sgroup, intent])
+                stmts = ["py", arg_typemap.sgroup, intent]
+            if stmts is not None:
+                intent_blk = lookup_stmts(stmts)
 
             if intent_blk.parse_as_object:
                 as_object = True
@@ -1658,24 +1657,24 @@ return 1;""",
 
             self.set_fmt_fields(ast, fmt_result, True)
             sgroup = result_typemap.sgroup
+            stmts = None
             if is_ctor:
                 # Code added by create_ctor_function.
                 result_blk = default_scope
             elif result_typemap.base == "struct":
-                result_blk = lookup_stmts(
-                    ["py", sgroup, "result", options.PY_struct_arg])
+                stmts = ["py", sgroup, "result", options.PY_struct_arg]
             elif result_typemap.base == "vector":
-                result_blk = lookup_stmts(
-                    ["py", sgroup, "result", options.PY_array_arg])
+                stmts = ["py", sgroup, "result", options.PY_array_arg]
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                result_blk = lookup_stmts(
-                    ["py", sgroup, "result", "dimension", options.PY_array_arg])
+                stmts = ["py", sgroup, "result", "dimension", options.PY_array_arg]
             else:
-                result_blk = lookup_stmts(["py", sgroup, "result"])
+                stmts = ["py", sgroup, "result"]
+            if stmts is not None:
+                result_blk = lookup_stmts(stmts)
             
         return fmt_result, result_blk
 
@@ -2929,6 +2928,7 @@ def lookup_stmts(path):
 
 default_stmts = dict(
     py=dict(
+        key="py_default",
         allocate_local_var=False,
         c_header=[],
         c_helper=[],
