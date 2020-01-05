@@ -253,7 +253,9 @@
                                     "data_var": "SHData_arg",
                                     "numpy_type": null,
                                     "py_var": "SHPy_arg",
-                                    "size_var": "SHSize_arg"
+                                    "size_var": "SHSize_arg",
+                                    "stmt0": "py_shadow_in",
+                                    "stmt1": "py_shadow_in"
                                 }
                             }
                         },
@@ -375,7 +377,9 @@
                                     "numpy_type": null,
                                     "py_type": "PY_Class3",
                                     "py_var": "SHPy_arg",
-                                    "size_var": "SHSize_arg"
+                                    "size_var": "SHSize_arg",
+                                    "stmt0": "py_shadow_in",
+                                    "stmt1": "py_shadow_in"
                                 }
                             }
                         },

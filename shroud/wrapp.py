@@ -1078,6 +1078,9 @@ return 1;""",
                 stmts = ["py", arg_typemap.sgroup, intent]
             if stmts is not None:
                 intent_blk = lookup_stmts(stmts)
+                # Useful for debugging.  Requested and found path.
+                fmt_arg.stmt0 = "_".join(stmts)
+                fmt_arg.stmt1 = intent_blk.key
 
             if intent_blk.parse_as_object:
                 as_object = True
@@ -1675,6 +1678,9 @@ return 1;""",
                 stmts = ["py", sgroup, "result"]
             if stmts is not None:
                 result_blk = lookup_stmts(stmts)
+                # Useful for debugging.  Requested and found path.
+                fmt_result.stmt0 = "_".join(stmts)
+                fmt_result.stmt1 = result_blk.key
             
         return fmt_result, result_blk
 

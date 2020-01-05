@@ -201,7 +201,9 @@
                                     "data_var": "SHData_i",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_i",
-                                    "size_var": "SHSize_i"
+                                    "size_var": "SHSize_i",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },
@@ -387,7 +389,9 @@
                                     "data_var": "SHData_flag",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
-                                    "size_var": "SHSize_flag"
+                                    "size_var": "SHSize_flag",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },

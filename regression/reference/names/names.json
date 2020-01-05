@@ -476,7 +476,9 @@
                             "data_var": "SHData_i",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
-                            "size_var": "SHSize_i"
+                            "size_var": "SHSize_i",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -578,7 +580,9 @@
                             "data_var": "SHData_i",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_i",
-                            "size_var": "SHSize_i"
+                            "size_var": "SHSize_i",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -671,7 +675,9 @@
                             "data_var": "SHData_rv",
                             "numpy_type": null,
                             "py_var": "SHPy_rv",
-                            "size_var": "SHSize_rv"
+                            "size_var": "SHSize_rv",
+                            "stmt0": "py_string_in",
+                            "stmt1": "py_string_in"
                         }
                     }
                 },
@@ -708,7 +714,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -1069,7 +1077,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -1112,7 +1122,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -1291,7 +1303,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_FLOAT",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -1334,7 +1348,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -1563,7 +1579,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "_generated": "cxx_template",
