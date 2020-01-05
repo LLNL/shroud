@@ -49,8 +49,8 @@ def append_format_cmds(lstout, dictin, name, fmt):
       name - entry into dictin. ex. "decl", "pre_call", "post_call".
       fmt - format dictionary or Scope instance.
     """
-    cmd_list = dictin.get(name, None)
-    if cmd_list is None:
+    cmd_list = dictin.get(name)
+    if not cmd_list:
         return False
     for cmd in cmd_list:
         lstout.append(wformat(cmd, fmt))
