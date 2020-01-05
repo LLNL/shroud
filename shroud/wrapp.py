@@ -1013,33 +1013,9 @@ return 1;""",
             attrs = arg.attrs
 
             self.set_fmt_fields(arg, fmt_arg)
+            pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             dimension = arg.attrs.get("dimension", False)
-            pass_var = fmt_arg.c_var  # The variable to pass to the function
-            # local_var - 'funcptr', 'pointer', or 'scalar'
-            if arg.is_function_pointer():
-                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
-                # not sure how function pointers work with Python.
-                c_local_var = "funcptr"
-            elif arg.attrs.get("allocatable", False):
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                c_local_var = "pointer"
-            elif dimension:
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                c_local_var = "pointer"
-                as_object = True
-            else:
-                # non-strings should be scalars
-                fmt_arg.c_deref = ""
-                #                fmt_arg.cxx_addr = '&'
-                #                fmt_arg.cxx_member = '.'
-                fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
-                c_local_var = "scalar"
-
             allocatable = attrs.get("allocatable", False)
             hidden = attrs.get("hidden", False)
             implied = attrs.get("implied", False)
@@ -1083,8 +1059,32 @@ return 1;""",
                 fmt_arg.stmt0 = "_".join(stmts)
                 fmt_arg.stmt1 = intent_blk.key
 
+            # local_var - 'funcptr', 'pointer', or 'scalar'
             if intent_blk.c_local_var:
                 c_local_var = intent_blk.c_local_var
+            elif arg.is_function_pointer():
+                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
+                # not sure how function pointers work with Python.
+                c_local_var = "funcptr"
+            elif allocatable:
+                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
+                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
+                c_local_var = "pointer"
+            elif dimension:
+                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
+                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
+                c_local_var = "pointer"
+                as_object = True
+            else:
+                # non-strings should be scalars
+                fmt_arg.c_deref = ""
+                #                fmt_arg.cxx_addr = '&'
+                #                fmt_arg.cxx_member = '.'
+                fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
+                fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
+                c_local_var = "scalar"
+
             if intent_blk.parse_as_object:
                 as_object = True
             cxx_local_var = intent_blk.cxx_local_var
