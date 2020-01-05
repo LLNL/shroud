@@ -35,8 +35,10 @@ default_stmts = dict(
         key="c_default",
         buf_args=[],
         buf_extra=[],
+        c_header=[],
         c_helper="",
         c_local_var=None,
+        cxx_header=[],
         cxx_local_var=None,
 
         pre_call=[],
@@ -1453,8 +1455,8 @@ fc_statements = dict(
 
     c_schar_result_buf=dict(
         buf_args=["arg", "len"],
-        c_header="<string.h>",
-        cxx_header="<cstring>",
+        c_header=["<string.h>"],
+        cxx_header=["<cstring>"],
         post_call=[
             "{stdlib}memset({c_var}, ' ', {c_var_len});",
             "{c_var}[0] = {cxx_var};",
@@ -1466,7 +1468,7 @@ fc_statements = dict(
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     c_string_out=dict(
-        cxx_header="<cstring>",
+        cxx_header=["<cstring>"],
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
         # #-     ],
@@ -1478,7 +1480,7 @@ fc_statements = dict(
         ],
     ),
     c_string_inout=dict(
-        cxx_header="<cstring>",
+        cxx_header=["<cstring>"],
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
         post_call=[
@@ -1935,8 +1937,8 @@ fc_statements = dict(
     ),
     c_shadow_dtor=dict(
         # NULL in stddef.h
-        c_header="<stddef.h>",
-        cxx_header="<cstddef>",
+        c_header=["<stddef.h>"],
+        cxx_header=["<cstddef>"],
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",
