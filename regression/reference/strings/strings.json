@@ -429,13 +429,13 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char dest[40]",
-                            "c_deref": "*",
+                            "c_decl": "char dest",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "dest",
                             "charlen": "40",
                             "cxx_addr": "",
-                            "cxx_decl": "char dest[40]",
+                            "cxx_decl": "char dest",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "dest",
@@ -443,8 +443,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_dest",
                             "size_var": "SHSize_dest",
-                            "stmt0": "py_char_out",
-                            "stmt1": "py_default"
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     },
                     "src": {
@@ -466,12 +466,12 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * src",
-                            "c_deref": "*",
+                            "c_decl": "char src",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "src",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * src",
+                            "cxx_decl": "char src",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "src",
@@ -480,7 +480,7 @@
                             "py_var": "SHPy_src",
                             "size_var": "SHSize_src",
                             "stmt0": "py_char_in",
-                            "stmt1": "py_default"
+                            "stmt1": "py_char_in"
                         }
                     }
                 },
@@ -728,12 +728,12 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * s",
-                            "c_deref": "*",
+                            "c_decl": "char s",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "s",
                             "cxx_addr": "",
-                            "cxx_decl": "char * s",
+                            "cxx_decl": "char s",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "s",
@@ -742,7 +742,7 @@
                             "py_var": "SHPy_s",
                             "size_var": "SHSize_s",
                             "stmt0": "py_char_inout",
-                            "stmt1": "py_default"
+                            "stmt1": "py_char_inout"
                         }
                     }
                 },
@@ -4122,12 +4122,12 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * arg1",
+                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_decl": "const std::string & arg1",
+                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
@@ -4315,12 +4315,12 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * arg1",
+                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string & arg1",
+                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
@@ -4506,12 +4506,12 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * arg1",
+                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string & arg1",
+                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
@@ -4704,12 +4704,12 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * arg1",
-                            "c_deref": "*",
+                            "c_decl": "char arg1",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "",
-                            "cxx_decl": "std::string * arg1",
+                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
@@ -4879,12 +4879,12 @@
                     "arg1": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * arg1",
+                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string & arg1",
+                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
@@ -4899,12 +4899,12 @@
                     "arg2": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * arg2",
+                            "c_decl": "char arg2",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg2",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string & arg2",
+                            "cxx_decl": "std::string arg2",
                             "cxx_member": ".",
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
@@ -5058,12 +5058,12 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char * name",
-                            "c_deref": "*",
+                            "c_decl": "char name",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "name",
                             "cxx_addr": "",
-                            "cxx_decl": "char * name",
+                            "cxx_decl": "char name",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
@@ -5072,7 +5072,7 @@
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name",
                             "stmt0": "py_char_in",
-                            "stmt1": "py_default"
+                            "stmt1": "py_char_in"
                         }
                     }
                 },

@@ -512,13 +512,13 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char outbuf[LENOUTBUF]",
-                            "c_deref": "*",
+                            "c_decl": "char outbuf",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "outbuf",
                             "charlen": "LENOUTBUF",
                             "cxx_addr": "",
-                            "cxx_decl": "char outbuf[LENOUTBUF]",
+                            "cxx_decl": "char outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
@@ -526,8 +526,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_out",
-                            "stmt1": "py_default"
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     },
                     "s1": {
@@ -1996,13 +1996,13 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char outbuf[LENOUTBUF]",
-                            "c_deref": "*",
+                            "c_decl": "char outbuf",
+                            "c_deref": "",
                             "c_type": "char",
                             "c_var": "outbuf",
                             "charlen": "LENOUTBUF",
                             "cxx_addr": "",
-                            "cxx_decl": "char outbuf[LENOUTBUF]",
+                            "cxx_decl": "char outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
@@ -2010,8 +2010,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_out",
-                            "stmt1": "py_default"
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     }
                 },

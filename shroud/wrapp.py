@@ -39,7 +39,7 @@ from . import todict
 from . import typemap
 from . import util
 from . import whelpers
-from .util import wformat, append_format
+from .util import wformat, append_format, append_format_lst
 
 # The tree of Python Scope statements.
 py_tree = {}
@@ -1022,17 +1022,6 @@ return 1;""",
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
                 c_local_var = "funcptr"
-            elif arg_typemap.base == "string":
-                charlen = arg.attrs.get("charlen", False)
-                if charlen:
-                    fmt_arg.charlen = charlen
-                    fmt_arg.c_decl = wformat("{c_const}char {c_var}[{charlen}]", fmt_arg)
-                    fmt_arg.cxx_decl = fmt_arg.c_decl
-                else:
-                    fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
-                    #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
-                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                c_local_var = "pointer"
             elif arg.attrs.get("allocatable", False):
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
@@ -1070,6 +1059,13 @@ return 1;""",
                         "Argument {} must have intent(out) with +allocatable".
                         format(arg.name))
                 stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg]
+            elif arg_typemap.sgroup == "char":
+                charlen = arg.attrs.get("charlen", False)
+                if charlen:
+                    fmt_arg.charlen = charlen
+                    stmts = ["py", "char", intent, "charlen"]
+                else:
+                    stmts = ["py", "char", intent]
             elif arg_typemap.base == "struct":
                 stmts = ["py", sgroup, intent, options.PY_struct_arg]
             elif arg_typemap.base == "vector":
@@ -1087,6 +1083,8 @@ return 1;""",
                 fmt_arg.stmt0 = "_".join(stmts)
                 fmt_arg.stmt1 = intent_blk.key
 
+            if intent_blk.c_local_var:
+                c_local_var = intent_blk.c_local_var
             if intent_blk.parse_as_object:
                 as_object = True
             cxx_local_var = intent_blk.cxx_local_var
@@ -1155,6 +1153,10 @@ return 1;""",
                     parse_format.append("&")
                     parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append("&" + fmt_arg.cxx_var)
+                elif intent_blk.decl:
+#                    append_format_lst(decl_code, intent_blk.decl, fmt_arg)
+                    parse_format.append(arg_typemap.PY_format)
+                    parse_vargs.append("&" + fmt_arg.c_var)
                 else:
                     append_format(decl_code, "{c_decl};", fmt_arg)
                     parse_format.append(arg_typemap.PY_format)
@@ -1164,6 +1166,8 @@ return 1;""",
                 if intent == "out":
                     if allocatable or dimension or create_out_decl:
                         # If an array, a local NumPy array has already been defined.
+                        pass
+                    elif intent_blk.c_local_var:
                         pass
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
@@ -3271,12 +3275,36 @@ py_statements = dict(
     ),
 
 ########################################
+# char *
+    py_char_in=dict(
+        c_local_var="pointer",
+        decl=[
+            "{c_const}char * {c_var};",
+        ],
+    ),
+    py_char_out_charlen=dict(
+        c_local_var="pointer",
+        pre_call=[
+            "{c_const}char {c_var}[{charlen}];  // intent(out)",
+        ],
+    ),
+    py_char_inout=dict(
+        c_local_var="pointer",
+        decl=[
+            "{c_const}char * {c_var};",
+        ],
+    ),
+########################################
 # string
     py_string_in=dict(
+        c_local_var="pointer",
+        decl=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     py_string_inout=dict(
+        c_local_var="pointer",
+        decl=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
