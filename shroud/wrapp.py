@@ -2917,36 +2917,15 @@ def update_typemap_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
-    Fill in cf_tree.
+    Fill in py_tree.
     """
     typemap.update_for_language(py_statements, language)
-    update_stmt_tree(py_statements, py_tree)
-
-def update_stmt_tree(stmts, tree):
-    """Convert dictionaries into Scope
-
-    This differs from typemap.update_stmt_tree by creating
-    a single dictionary instead of a tree.
-    """
-    # Convert defaults into Scope nodes.
+    typemap.update_stmt_tree(py_statements, py_tree, default_stmts)
     global default_scope
-    default_scope = util.Scope(None)
-    default_scope.update(default_stmts["py"])
-
-    for key, node in stmts.items():
-        scope = util.Scope(default_scope)
-        scope.update(node)
-        tree[key] = scope
+    default_scope = typemap.default_scopes["py"]
 
 def lookup_stmts(path):
-    test = typemap.lookup_stmts(py_statements, path)
-    work = [ part for part in path if part ] # skip empty components
-    while work:
-        check = '_'.join(work)
-        if check in py_tree:
-            return py_tree[check]
-        work.pop()
-    return default_scope
+    return typemap.lookup_stmts_tree(py_tree, path)
 
 default_stmts = dict(
     py=dict(
