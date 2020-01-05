@@ -1064,21 +1064,21 @@ return 1;""",
                         "Argument {} must have intent(out) with +allocatable".
                         format(arg.name))
                 intent_blk = lookup_stmts(
-                    [sgroup, "out", "allocatable", node.options.PY_array_arg])
+                    ["py", sgroup, "out", "allocatable", node.options.PY_array_arg])
             elif arg_typemap.base == "struct":
                 intent_blk = lookup_stmts(
-                    [sgroup, intent, options.PY_struct_arg])
+                    ["py", sgroup, intent, options.PY_struct_arg])
             elif arg_typemap.base == "vector":
                 intent_blk = lookup_stmts(
-                    [sgroup, intent, options.PY_array_arg])
+                    ["py", sgroup, intent, options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
                 intent_blk = lookup_stmts(
-                    [sgroup, intent, "dimension", options.PY_array_arg])
+                    ["py", sgroup, intent, "dimension", options.PY_array_arg])
             else:
-                intent_blk = lookup_stmts([arg_typemap.sgroup, intent])
+                intent_blk = lookup_stmts(["py", arg_typemap.sgroup, intent])
 
             if intent_blk.parse_as_object:
                 as_object = True
@@ -1663,19 +1663,19 @@ return 1;""",
                 result_blk = default_scope
             elif result_typemap.base == "struct":
                 result_blk = lookup_stmts(
-                    [sgroup, "result", options.PY_struct_arg])
+                    ["py", sgroup, "result", options.PY_struct_arg])
             elif result_typemap.base == "vector":
                 result_blk = lookup_stmts(
-                    [sgroup, "result", options.PY_array_arg])
+                    ["py", sgroup, "result", options.PY_array_arg])
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
                 result_blk = lookup_stmts(
-                    [sgroup, "result", "dimension", options.PY_array_arg])
+                    ["py", sgroup, "result", "dimension", options.PY_array_arg])
             else:
-                result_blk = lookup_stmts([sgroup, "result"])
+                result_blk = lookup_stmts(["py", sgroup, "result"])
             
         return fmt_result, result_blk
 
@@ -2931,7 +2931,7 @@ def update_stmt_tree(stmts, tree):
     # Convert defaults into Scope nodes.
     global default_scope
     default_scope = util.Scope(None)
-    default_scope.update(default_stmts)
+    default_scope.update(default_stmts["py"])
 
     for key, node in stmts.items():
         scope = util.Scope(default_scope)
@@ -2949,23 +2949,25 @@ def lookup_stmts(path):
     return default_scope
 
 default_stmts = dict(
-    allocate_local_var=False,
-    c_header=[],
-    c_helper=[],
-    create_out_decl=False,
-    cxx_header=[],
-    cxx_local_var="",
-    need_numpy=False,
-    object_created=False,
-    parse_as_object=False,
+    py=dict(
+        allocate_local_var=False,
+        c_header=[],
+        c_helper=[],
+        create_out_decl=False,
+        cxx_header=[],
+        cxx_local_var="",
+        need_numpy=False,
+        object_created=False,
+        parse_as_object=False,
 
-    decl=[],
-    pre_call=[],
-    post_call=[],
-    post_call_capsule=[],
-    cleanup=[],
-    fail=[],
-    goto_fail=False,
+        decl=[],
+        pre_call=[],
+        post_call=[],
+        post_call_capsule=[],
+        cleanup=[],
+        fail=[],
+        goto_fail=False,
+    )
 )
 
 # put into list to avoid duplicating text below
@@ -3019,10 +3021,10 @@ py_statements = dict(
 
 ########################################
 # bool
-    bool_in=dict(
+    py_bool_in=dict(
         pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
     ),
-    bool_inout=dict(
+    py_bool_inout=dict(
         pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
         # py_var is already declared for inout
         post_call=[
@@ -3035,7 +3037,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    bool_out=dict(
+    py_bool_out=dict(
         decl=[
             "{PyObject} * {py_var} = NULL;",
         ],
@@ -3049,7 +3051,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    bool_result=dict(
+    py_bool_result=dict(
         decl=[
             "{PyObject} * {py_var} = NULL;",
         ],
@@ -3066,7 +3068,7 @@ py_statements = dict(
     
 ####################
 ## numpy
-    native_in_dimension_numpy=dict(
+    py_native_in_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {pytmp_var};",
@@ -3091,7 +3093,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_inout_dimension_numpy=dict(
+    py_native_inout_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {pytmp_var};",
@@ -3114,7 +3116,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_out_dimension_numpy=dict(
+    py_native_out_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{npy_intp}"
@@ -3137,7 +3139,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_result_dimension_numpy=dict(
+    py_native_result_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {py_var} = NULL;",
@@ -3161,7 +3163,7 @@ py_statements = dict(
 
 ########################################
 ## allocatable
-    native_out_allocatable_numpy=dict(
+    py_native_out_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
@@ -3179,7 +3181,7 @@ py_statements = dict(
 
 ########################################
 ## list
-    native_in_dimension_list=dict(
+    py_native_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
@@ -3200,7 +3202,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_inout_dimension_list=dict(
+    py_native_inout_dimension_list=dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
         decl=[
@@ -3228,7 +3230,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_out_dimension_list=dict(
+    py_native_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -3262,7 +3264,7 @@ py_statements = dict(
 
 ########################################
 ## allocatable
-    native_out_allocatable_list=dict(
+    py_native_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -3291,15 +3293,15 @@ py_statements = dict(
 
 ########################################
 # string
-    string_in=dict(
+    py_string_in=dict(
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
-    string_inout=dict(
+    py_string_inout=dict(
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
-    string_out=dict(
+    py_string_out=dict(
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var};"],
     ),
@@ -3307,7 +3309,7 @@ py_statements = dict(
 ########################################
 # struct
 # numpy
-    struct_in_numpy=dict(
+    py_struct_in_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3338,7 +3340,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_inout_numpy=dict(
+    py_struct_inout_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3367,7 +3369,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_out_numpy=dict(
+    py_struct_out_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -3397,7 +3399,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_result_numpy=dict(
+    py_struct_result_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
         allocate_local_var=True,
@@ -3423,14 +3425,14 @@ py_statements = dict(
     ),
 
 ##########
-    struct_in_class=dict(
+    py_struct_in_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
     ),
-    struct_inout_class=dict(
+    py_struct_inout_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
@@ -3438,7 +3440,7 @@ py_statements = dict(
         ],
         object_created=True,
     ),
-    struct_out_class=dict(
+    py_struct_out_class=dict(
         create_out_decl=True,
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
@@ -3470,7 +3472,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_result_class=dict(
+    py_struct_result_class=dict(
         cxx_local_var="pointer",
         allocate_local_var=True,
         decl=[
@@ -3493,21 +3495,21 @@ py_statements = dict(
 
 ########################################
 # shadow
-    shadow_in=dict(
+    py_shadow_in=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
         ],
     ),
-    shadow_inout=dict(
+    py_shadow_inout=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
         ],
     ),
-    shadow_out=dict(
+    py_shadow_out=dict(
         decl=[
             "{PyObject} *{py_var} = NULL;"
         ],
@@ -3526,7 +3528,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    shadow_result=dict(
+    py_shadow_result=dict(
 #            decl=[
 #                "{PyObject} *{py_var} = NULL;"
 #            ],
@@ -3549,7 +3551,7 @@ py_statements = dict(
 ########################################
 # std::vector  only used with C++
 # list
-    vector_in_list=dict(
+    py_vector_in_list=dict(
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
@@ -3566,7 +3568,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    vector_out_list=dict(
+    py_vector_out_list=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
@@ -3589,7 +3591,7 @@ py_statements = dict(
         goto_fail=True,
     ),
     # XXX - must release after copying result.
-    vector_result_list=dict(
+    py_vector_result_list=dict(
         decl=[
             "PyObject * {py_var} = NULL;",
         ],
@@ -3607,7 +3609,7 @@ py_statements = dict(
 ##########
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
-    vector_in_numpy=dict(
+    py_vector_in_numpy=dict(
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
@@ -3631,7 +3633,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    vector_out_numpy=dict(
+    py_vector_out_numpy=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
@@ -3657,7 +3659,7 @@ py_statements = dict(
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
     ),
-    vector_result_numpy=dict(
+    py_vector_result_numpy=dict(
         need_numpy=True,
         allocate_local_var=True,
         decl=[
