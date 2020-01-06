@@ -30,44 +30,6 @@ except:
 cf_tree = {}
 # Always return the same empty statements.
 empty_stmts = {}
-default_stmts = dict(
-    c=dict(
-        key="c_default",
-        buf_args=[],
-        buf_extra=[],
-        c_header=[],
-        c_helper="",
-        c_local_var=None,
-        cxx_header=[],
-        cxx_local_var=None,
-
-        pre_call=[],
-        call=[],
-        post_call=[],
-        final=[],
-        ret=[],
-
-        destructor_name=None,
-        owner="library",
-        return_type=None,
-        return_cptr=False,
-    ),
-    f=dict(
-        key="f_default",
-
-        buf_args=[],
-        c_local_var=None,
-        f_helper="",
-        f_module=None,
-
-        need_wrapper=False,
-        declare=[],
-        pre_call=[],
-        call=[],
-        post_call=[],
-        result=None,  # name of result variable
-    ),
-)
 default_scopes = dict()
 
 class Typemap(object):
@@ -1246,8 +1208,7 @@ def update_stmt_tree(stmts, tree, defaults):
     """
     # Convert defaults into Scope nodes.
     for key, node in defaults.items():
-        default_scopes[key] = util.Scope(None)
-        default_scopes[key].update(node)
+        default_scopes[key] = node()
 
     for key, node in stmts.items():
         step = tree
@@ -1299,11 +1260,70 @@ def lookup_stmts_tree(tree, path):
         if "_node" in step:
             # Path ends here.
             found = step["_node"]["scope"]
-    if not isinstance(found, util.Scope):
-        raise RuntimeError
+#    if not isinstance(found, util.Scope):
+#        raise RuntimeError
     return found
 
 
+class CStmts(object):
+    def __init__(self,
+        key="c_default",
+        buf_args=[], buf_extra=[],
+        c_header=[], c_helper="", c_local_var=None,
+        cxx_header=[], cxx_local_var=None,
+        pre_call=[], call=[], post_call=[], final=[], ret=[],
+        destructor_name=None,
+        owner="library",
+        return_type=None, return_cptr=False,
+    ):
+        self.key = key
+        self.buf_args = buf_args
+        self.buf_extra = buf_extra
+        self.c_header = c_header
+        self.c_helper = c_helper
+        self.c_local_var = c_local_var
+        self.cxx_header = cxx_header
+        self.cxx_local_var = cxx_local_var
+
+        self.pre_call = pre_call
+        self.call = call
+        self.post_call = post_call
+        self.final = final
+        self.ret = ret
+
+        self.destructor_name = destructor_name
+        self.owner = owner
+        self.return_type = return_type
+        self.return_cptr = return_cptr
+
+class FStmts(object):
+    def __init__(self,
+        key="f_default",
+        buf_args=[],
+        c_local_var=None,
+        f_helper="", f_module=None,
+        need_wrapper=False,
+        declare=[], pre_call=[], call=[], post_call=[],
+        result=None,  # name of result variable
+    ):
+        self.key = key
+        self.buf_args = buf_args
+        self.c_local_var = c_local_var
+        self.f_helper = f_helper
+        self.f_module = f_module
+
+        self.need_wrapper = need_wrapper
+        self.declare = declare
+        self.pre_call = pre_call
+        self.call = call
+        self.post_call = post_call
+        self.result = result
+
+
+default_stmts = dict(
+    c=CStmts,
+    f=FStmts,
+)
                 
 # language   "c" 
 # sgroup     "native", "string", "char"

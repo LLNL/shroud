@@ -2877,8 +2877,9 @@ def update_code_blocks(symtab, stmts, fmt):
     """
     for clause in ["decl", "post_parse", "pre_call",
                    "post_call", "cleanup", "fail"]:
-        if clause in stmts:
-            util.append_format_cmds(symtab[clause + "_code"], stmts, clause, fmt)
+        lstout = symtab[clause + "_code"]
+        for cmd in getattr(stmts, clause):
+            lstout.append(wformat(cmd, fmt))
 
     # If capsule_order is defined, then add some additional code to 
     # do reference counting.
@@ -2920,28 +2921,45 @@ def update_typemap_for_language(language):
 def lookup_stmts(path):
     return typemap.lookup_stmts_tree(py_tree, path)
 
-default_stmts = dict(
-    py=dict(
+class PyStmts(object):
+    # c_local_var - "scalar", "pointer", "funcptr"
+    # parse_as_object - Uses pytmp_var in PyArg_Parse
+    def __init__(self,
         key="py_default",
         allocate_local_var=False,
-        c_header=[],
-        c_helper=[],
-        c_local_var=None,  # "scalar", "pointer", "funcptr"
+        c_header=[], c_helper=[], c_local_var=None,
         create_out_decl=False,
-        cxx_header=[],
-        cxx_local_var=None,
+        cxx_header=[], cxx_local_var=None,
         need_numpy=False,
-        object_created=False,
-        parse_as_object=False,  # Uses pytmp_var in PyArg_Parse
-
-        decl=[],
-        pre_call=[],
-        post_call=[],
-        post_call_capsule=[],
-        cleanup=[],
-        fail=[],
+        object_created=False, parse_as_object=False,
+        decl=[], post_parse=[], pre_call=[],
+        post_call=[], post_call_capsule=[],
+        cleanup=[], fail=[],
         goto_fail=False,
-    )
+    ):
+        self.key = key
+        self.allocate_local_var = allocate_local_var
+        self.c_header = c_header
+        self.c_helper = c_helper
+        self.c_local_var = c_local_var
+        self.create_out_decl = create_out_decl
+        self.cxx_header = cxx_header
+        self.cxx_local_var = cxx_local_var
+        self.need_numpy = need_numpy
+        self.object_created = object_created
+        self.parse_as_object = parse_as_object
+
+        self.decl = decl
+        self.post_parse = post_parse
+        self.pre_call = pre_call
+        self.post_call = post_call
+        self.post_call_capsule = post_call_capsule
+        self.cleanup = cleanup
+        self.fail = fail
+        self.goto_fail = goto_fail
+                 
+default_stmts = dict(
+    py=PyStmts,
 )
 
 # put into list to avoid duplicating text below
