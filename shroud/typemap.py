@@ -965,6 +965,7 @@ def create_struct_typemap(node, fields=None):
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
+        f_c_module={"--import--": [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
     )

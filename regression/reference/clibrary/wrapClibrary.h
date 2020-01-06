@@ -18,6 +18,7 @@
 #include "typesClibrary.h"
 #ifndef __cplusplus
 #include <stdbool.h>
+#include "clibrary.h"
 #endif
 
 // splicer begin C_declarations

@@ -36,6 +36,17 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+- decl: struct array_info {
+          int tc;
+        }
+  doxygen:
+    brief: Array information
+    description: |
+      Passed to function call backs
+  options:
+    wrap_lua: False
+    wrap_python: False
+
 - decl: void NoReturnNoArguments()
   options:
     literalinclude: True
@@ -210,6 +221,17 @@ declarations:
     brief: Test function pointer
     description: |
       A bufferify function will be created.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void callback_set_alloc(array_info *arr+intent(inout),
+                                void (*alloc)(array_info *arr+intent(inout)))
+  doxygen:
+   description: |
+     The function argument takes a struct argument
+     which is defined in this library.
+     Use IMPORT.
   options:
     wrap_lua: False
     wrap_python: False

@@ -13,6 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
+    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -20,6 +21,11 @@ module clibrary_mod
     ! splicer begin module_top
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
+
+
+    type, bind(C) :: array_info
+        integer(C_INT) :: tc
+    end type array_info
 
     ! start abstract callback1_incr
     abstract interface
@@ -43,6 +49,14 @@ module clibrary_mod
             implicit none
             integer(C_INT) :: arg0
         end subroutine callback3_incr
+    end interface
+
+    abstract interface
+        subroutine callback_set_alloc_alloc(arr) bind(C)
+            import :: array_info
+            implicit none
+            type(array_info), intent(INOUT) :: arr
+        end subroutine callback_set_alloc_alloc
     end interface
 
     ! start no_return_no_arguments
@@ -386,6 +400,16 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_callback3_bufferify
+    end interface
+
+    interface
+        subroutine callback_set_alloc(arr, alloc) &
+                bind(C, name="callback_set_alloc")
+            import :: array_info, callback_set_alloc_alloc
+            implicit none
+            type(array_info), intent(INOUT) :: arr
+            procedure(callback_set_alloc_alloc) :: alloc
+        end subroutine callback_set_alloc
     end interface
 
     interface

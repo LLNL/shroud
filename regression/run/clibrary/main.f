@@ -64,6 +64,13 @@ contains
     real(C_DOUBLE) :: input
     input = input + 20.5_C_DOUBLE
   end subroutine incr3b_double
+
+  subroutine set_alloc(arr)
+    use clibrary_mod, only : array_info
+    type(array_info), intent(inout) :: arr
+    arr%tc = 3
+  end subroutine set_alloc
+  
 end module callback_mod
 
 program tester
@@ -218,6 +225,7 @@ contains
     integer(C_INT) arg_int
     real(C_DOUBLE) arg_dbl
     character(lenoutbuf)  :: outbuf
+    type(array_info) :: arr
     external incr2_int, incr2_double
     external incr3_int, incr3_double
 
@@ -270,6 +278,12 @@ contains
     arg_dbl = 3.4_C_DOUBLE
     call callback3("double", arg_dbl, incr3b_double, outbuf)
     call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3b_double")
+
+    ! The callback sets tc
+    arr%tc = 0
+    call callback_set_alloc(arr, set_alloc)
+    call assert_equals(3, arr%tc, "callback_set_alloc")
+    
 
   end subroutine test_callback
 
