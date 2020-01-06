@@ -205,7 +205,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -248,7 +250,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -285,7 +289,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_DOUBLE",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -398,7 +404,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -441,7 +449,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_out",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -567,7 +577,9 @@
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_bool_in",
+                            "stmt1": "py_bool_in"
                         }
                     },
                     "arg2": {
@@ -611,7 +623,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_bool_out",
+                            "stmt1": "py_bool_out"
                         }
                     },
                     "arg3": {
@@ -656,7 +670,9 @@
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
                             "py_var": "SHPy_arg3",
-                            "size_var": "SHSize_arg3"
+                            "size_var": "SHSize_arg3",
+                            "stmt0": "py_bool_inout",
+                            "stmt1": "py_bool_inout"
                         }
                     }
                 },
@@ -778,19 +794,19 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * arg1",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "arg1",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * arg1",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "arg1",
                             "data_var": "SHData_arg1",
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_char_in",
+                            "stmt1": "py_char_in"
                         }
                     },
                     "arg2": {
@@ -812,19 +828,19 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * arg2",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "arg2",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * arg2",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "arg2",
                             "data_var": "SHData_arg2",
                             "numpy_type": null,
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_char_in",
+                            "stmt1": "py_char_in"
                         }
                     }
                 },
@@ -861,7 +877,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_char_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -1161,19 +1179,19 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * name",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "name",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * name",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name",
                             "data_var": "SHData_name",
                             "numpy_type": null,
                             "py_var": "SHPy_name",
-                            "size_var": "SHSize_name"
+                            "size_var": "SHSize_name",
+                            "stmt0": "py_char_in",
+                            "stmt1": "py_char_in"
                         }
                     }
                 },
@@ -1260,20 +1278,20 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char name1[MAXNAME]",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "name1",
                             "charlen": "MAXNAME",
                             "cxx_addr": "",
-                            "cxx_decl": "char name1[MAXNAME]",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name1",
                             "data_var": "SHData_name1",
                             "numpy_type": null,
                             "py_var": "SHPy_name1",
-                            "size_var": "SHSize_name1"
+                            "size_var": "SHSize_name1",
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     }
                 },
@@ -1457,20 +1475,20 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char name1[MAXNAME]",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "name1",
                             "charlen": "MAXNAME",
                             "cxx_addr": "",
-                            "cxx_decl": "char name1[MAXNAME]",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name1",
                             "data_var": "SHData_name1",
                             "numpy_type": null,
                             "py_var": "SHPy_name1",
-                            "size_var": "SHSize_name1"
+                            "size_var": "SHSize_name1",
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     },
                     "name2": {
@@ -1492,20 +1510,20 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char name2[MAXNAME]",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "name2",
                             "charlen": "MAXNAME",
                             "cxx_addr": "",
-                            "cxx_decl": "char name2[MAXNAME]",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "name2",
                             "data_var": "SHData_name2",
                             "numpy_type": null,
                             "py_var": "SHPy_name2",
-                            "size_var": "SHSize_name2"
+                            "size_var": "SHSize_name2",
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     }
                 },
@@ -1787,20 +1805,20 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char text[MAXNAME]",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "text",
                             "charlen": "MAXNAME",
                             "cxx_addr": "",
-                            "cxx_decl": "char text[MAXNAME]",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "text",
                             "data_var": "SHData_text",
                             "numpy_type": null,
                             "py_var": "SHPy_text",
-                            "size_var": "SHSize_text"
+                            "size_var": "SHSize_text",
+                            "stmt0": "py_char_out_charlen",
+                            "stmt1": "py_char_out_charlen"
                         }
                     }
                 },
@@ -2121,19 +2139,19 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * text",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "text",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * text",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "text",
                             "data_var": "SHData_text",
                             "numpy_type": null,
                             "py_var": "SHPy_text",
-                            "size_var": "SHSize_text"
+                            "size_var": "SHSize_text",
+                            "stmt0": "py_char_in",
+                            "stmt1": "py_char_in"
                         }
                     }
                 },
@@ -2170,7 +2188,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -2374,19 +2394,19 @@
                         },
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "const char * text",
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "text",
                             "cxx_addr": "",
-                            "cxx_decl": "const char * text",
                             "cxx_member": "->",
                             "cxx_type": "char",
                             "cxx_var": "text",
                             "data_var": "SHData_text",
                             "numpy_type": null,
                             "py_var": "SHPy_text",
-                            "size_var": "SHSize_text"
+                            "size_var": "SHSize_text",
+                            "stmt0": "py_char_in",
+                            "stmt1": "py_char_in"
                         }
                     }
                 },
@@ -2423,7 +2443,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -2599,7 +2621,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_bool_result",
+                        "stmt1": "py_bool_result"
                     }
                 },
                 "ast": {
@@ -2736,7 +2760,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_bool_result",
+                        "stmt1": "py_bool_result"
                     }
                 },
                 "ast": {

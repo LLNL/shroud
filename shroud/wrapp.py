@@ -39,7 +39,7 @@ from . import todict
 from . import typemap
 from . import util
 from . import whelpers
-from .util import wformat, append_format
+from .util import wformat, append_format, append_format_lst
 
 # The tree of Python Scope statements.
 py_tree = {}
@@ -877,6 +877,11 @@ return 1;""",
 
         fmt.PY_error_return - 'NULL' for all wrappers except constructors
                               which are called via tp_init and require -1.
+
+        c_local_var is the "scalar" or "pointer" for the c variable,
+        which always exist.  It is the result of PyArg_Parse.
+        c_local_var has been converted into a cxx variable when
+        cxx_local_var is defined.
         """
 
         # need_rv - need Return Value declaration.
@@ -1008,49 +1013,15 @@ return 1;""",
             attrs = arg.attrs
 
             self.set_fmt_fields(arg, fmt_arg)
+            pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             dimension = arg.attrs.get("dimension", False)
-            pass_var = fmt_arg.c_var  # The variable to pass to the function
-            # local_var - 'funcptr', 'pointer', or 'scalar'
-            if arg.is_function_pointer():
-                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
-                # not sure how function pointers work with Python.
-                local_var = "funcptr"
-            elif arg_typemap.base == "string":
-                charlen = arg.attrs.get("charlen", False)
-                if charlen:
-                    fmt_arg.charlen = charlen
-                    fmt_arg.c_decl = wformat("{c_const}char {c_var}[{charlen}]", fmt_arg)
-                    fmt_arg.cxx_decl = fmt_arg.c_decl
-                else:
-                    fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
-                    #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
-                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                local_var = "pointer"
-            elif arg.attrs.get("allocatable", False):
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                local_var = "pointer"
-            elif dimension:
-                fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
-                local_var = "pointer"
-                as_object = True
-            else:
-                # non-strings should be scalars
-                fmt_arg.c_deref = ""
-                #                fmt_arg.cxx_addr = '&'
-                #                fmt_arg.cxx_member = '.'
-                fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
-                local_var = "scalar"
-
             allocatable = attrs.get("allocatable", False)
             hidden = attrs.get("hidden", False)
             implied = attrs.get("implied", False)
             intent = attrs["intent"]
             sgroup = arg_typemap.sgroup
+            stmts = None
             if implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
@@ -1063,22 +1034,47 @@ return 1;""",
                     raise RuntimeError(
                         "Argument {} must have intent(out) with +allocatable".
                         format(arg.name))
-                intent_blk = lookup_stmts(
-                    [sgroup, "out", "allocatable", node.options.PY_array_arg])
+                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg]
+            elif arg_typemap.sgroup == "char":
+                charlen = arg.attrs.get("charlen", False)
+                if charlen:
+                    fmt_arg.charlen = charlen
+                    stmts = ["py", "char", intent, "charlen"]
+                else:
+                    stmts = ["py", "char", intent]
             elif arg_typemap.base == "struct":
-                intent_blk = lookup_stmts(
-                    [sgroup, intent, options.PY_struct_arg])
+                stmts = ["py", sgroup, intent, options.PY_struct_arg]
             elif arg_typemap.base == "vector":
-                intent_blk = lookup_stmts(
-                    [sgroup, intent, options.PY_array_arg])
+                stmts = ["py", sgroup, intent, options.PY_array_arg]
                 whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
-                intent_blk = lookup_stmts(
-                    [sgroup, intent, "dimension", options.PY_array_arg])
+                stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
-                intent_blk = lookup_stmts([arg_typemap.sgroup, intent])
+                stmts = ["py", arg_typemap.sgroup, intent]
+            if stmts is not None:
+                intent_blk = lookup_stmts(stmts)
+                # Useful for debugging.  Requested and found path.
+                fmt_arg.stmt0 = "_".join(stmts)
+                fmt_arg.stmt1 = intent_blk.key
+
+            # local_var - 'funcptr', 'pointer', or 'scalar'
+            if intent_blk.c_local_var:
+                c_local_var = intent_blk.c_local_var
+            elif arg.is_function_pointer():
+                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
+                # not sure how function pointers work with Python.
+                c_local_var = "funcptr"
+            else:
+                # non-strings should be scalars
+                fmt_arg.c_deref = ""
+                #                fmt_arg.cxx_addr = '&'
+                #                fmt_arg.cxx_member = '.'
+                fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
+                fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
+                c_local_var = "scalar"
 
             if intent_blk.parse_as_object:
                 as_object = True
@@ -1088,7 +1084,7 @@ return 1;""",
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
                     fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                local_var = cxx_local_var
+#                c_local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
                 # cxx_member used with typemap fields like PY_ctor.
                 if cxx_local_var == "scalar":
@@ -1148,6 +1144,10 @@ return 1;""",
                     parse_format.append("&")
                     parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append("&" + fmt_arg.cxx_var)
+                elif intent_blk.decl:
+#                    append_format_lst(decl_code, intent_blk.decl, fmt_arg)
+                    parse_format.append(arg_typemap.PY_format)
+                    parse_vargs.append("&" + fmt_arg.c_var)
                 else:
                     append_format(decl_code, "{c_decl};", fmt_arg)
                     parse_format.append(arg_typemap.PY_format)
@@ -1157,6 +1157,8 @@ return 1;""",
                 if intent == "out":
                     if allocatable or dimension or create_out_decl:
                         # If an array, a local NumPy array has already been defined.
+                        pass
+                    elif intent_blk.c_local_var:
                         pass
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
@@ -1196,20 +1198,8 @@ return 1;""",
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
-            if local_var == "scalar":
-                if arg.is_pointer():
-                    cxx_call_list.append("&" + pass_var)
-                else:
-                    cxx_call_list.append(pass_var)
-            elif local_var == "pointer":
-                if arg.is_pointer():
-                    cxx_call_list.append(pass_var)
-                else:
-                    cxx_call_list.append("*" + pass_var)
-            elif local_var == "funcptr":
-                cxx_call_list.append(pass_var)
-            else:
-                raise RuntimeError("unexpected value of local_var")
+            prefix = typemap.compute_return_prefix(arg, cxx_local_var or c_local_var)
+            cxx_call_list.append(prefix + pass_var)
         # end for arg in args:
 
         # Add implied argument initialization to pre_call_code
@@ -1658,24 +1648,27 @@ return 1;""",
 
             self.set_fmt_fields(ast, fmt_result, True)
             sgroup = result_typemap.sgroup
+            stmts = None
             if is_ctor:
                 # Code added by create_ctor_function.
                 result_blk = default_scope
             elif result_typemap.base == "struct":
-                result_blk = lookup_stmts(
-                    [sgroup, "result", options.PY_struct_arg])
+                stmts = ["py", sgroup, "result", options.PY_struct_arg]
             elif result_typemap.base == "vector":
-                result_blk = lookup_stmts(
-                    [sgroup, "result", options.PY_array_arg])
+                stmts = ["py", sgroup, "result", options.PY_array_arg]
                 whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                result_blk = lookup_stmts(
-                    [sgroup, "result", "dimension", options.PY_array_arg])
+                stmts = ["py", sgroup, "result", "dimension", options.PY_array_arg]
             else:
-                result_blk = lookup_stmts([sgroup, "result"])
+                stmts = ["py", sgroup, "result"]
+            if stmts is not None:
+                result_blk = lookup_stmts(stmts)
+                # Useful for debugging.  Requested and found path.
+                fmt_result.stmt0 = "_".join(stmts)
+                fmt_result.stmt1 = result_blk.key
             
         return fmt_result, result_blk
 
@@ -2917,55 +2910,38 @@ def update_typemap_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
-    Fill in cf_tree.
+    Fill in py_tree.
     """
     typemap.update_for_language(py_statements, language)
-    update_stmt_tree(py_statements, py_tree)
-
-def update_stmt_tree(stmts, tree):
-    """Convert dictionaries into Scope
-
-    This differs from typemap.update_stmt_tree by creating
-    a single dictionary instead of a tree.
-    """
-    # Convert defaults into Scope nodes.
+    typemap.update_stmt_tree(py_statements, py_tree, default_stmts)
     global default_scope
-    default_scope = util.Scope(None)
-    default_scope.update(default_stmts)
-
-    for key, node in stmts.items():
-        scope = util.Scope(default_scope)
-        scope.update(node)
-        tree[key] = scope
+    default_scope = typemap.default_scopes["py"]
 
 def lookup_stmts(path):
-    test = typemap.lookup_stmts(py_statements, path)
-    work = [ part for part in path if part ] # skip empty components
-    while work:
-        check = '_'.join(work)
-        if check in py_tree:
-            return py_tree[check]
-        work.pop()
-    return default_scope
+    return typemap.lookup_stmts_tree(py_tree, path)
 
 default_stmts = dict(
-    allocate_local_var=False,
-    c_header=[],
-    c_helper=[],
-    create_out_decl=False,
-    cxx_header=[],
-    cxx_local_var="",
-    need_numpy=False,
-    object_created=False,
-    parse_as_object=False,
+    py=dict(
+        key="py_default",
+        allocate_local_var=False,
+        c_header=[],
+        c_helper=[],
+        c_local_var=None,  # "scalar", "pointer", "funcptr"
+        create_out_decl=False,
+        cxx_header=[],
+        cxx_local_var=None,
+        need_numpy=False,
+        object_created=False,
+        parse_as_object=False,  # Uses pytmp_var in PyArg_Parse
 
-    decl=[],
-    pre_call=[],
-    post_call=[],
-    post_call_capsule=[],
-    cleanup=[],
-    fail=[],
-    goto_fail=False,
+        decl=[],
+        pre_call=[],
+        post_call=[],
+        post_call_capsule=[],
+        cleanup=[],
+        fail=[],
+        goto_fail=False,
+    )
 )
 
 # put into list to avoid duplicating text below
@@ -3019,10 +2995,10 @@ py_statements = dict(
 
 ########################################
 # bool
-    bool_in=dict(
+    py_bool_in=dict(
         pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
     ),
-    bool_inout=dict(
+    py_bool_inout=dict(
         pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
         # py_var is already declared for inout
         post_call=[
@@ -3035,7 +3011,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    bool_out=dict(
+    py_bool_out=dict(
         decl=[
             "{PyObject} * {py_var} = NULL;",
         ],
@@ -3049,7 +3025,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    bool_result=dict(
+    py_bool_result=dict(
         decl=[
             "{PyObject} * {py_var} = NULL;",
         ],
@@ -3066,8 +3042,10 @@ py_statements = dict(
     
 ####################
 ## numpy
-    native_in_dimension_numpy=dict(
+    py_native_in_dimension_numpy=dict(
         need_numpy=True,
+        parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3077,10 +3055,10 @@ py_statements = dict(
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
             "Py_DECREF({py_var});",
@@ -3091,8 +3069,10 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_inout_dimension_numpy=dict(
+    py_native_inout_dimension_numpy=dict(
         need_numpy=True,
+        parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
@@ -3102,10 +3082,10 @@ py_statements = dict(
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -3114,8 +3094,9 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_out_dimension_numpy=dict(
+    py_native_out_dimension_numpy=dict(
         need_numpy=True,
+        c_local_var="pointer",
         decl=[
             "{npy_intp}"
             "PyArrayObject * {py_var} = NULL;",
@@ -3125,10 +3106,10 @@ py_statements = dict(
             "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -3137,7 +3118,7 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_result_dimension_numpy=dict(
+    py_native_result_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyObject * {py_var} = NULL;",
@@ -3161,16 +3142,17 @@ py_statements = dict(
 
 ########################################
 ## allocatable
-    native_out_allocatable_numpy=dict(
+    py_native_out_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
+        c_local_var="pointer",
         pre_call=[
             "{npy_descr_code}"
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
             "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
             "if ({py_var} == NULL)",
             "+goto fail;-",
-            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
+            "{cxx_type} * {cxx_var} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
             ],
         object_created=True,
         fail=["Py_XDECREF({py_var});"],
@@ -3179,11 +3161,13 @@ py_statements = dict(
 
 ########################################
 ## list
-    native_in_dimension_list=dict(
+    py_native_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
+        parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3200,12 +3184,14 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_inout_dimension_list=dict(
+    py_native_inout_dimension_list=dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
+        parse_as_object=True,
+        c_local_var="pointer",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3228,17 +3214,18 @@ py_statements = dict(
         goto_fail=True,
     ),
 
-    native_out_dimension_list=dict(
+    py_native_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
+        c_local_var="pointer",
         decl=[
             "PyObject *{py_var} = NULL;",
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         c_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = malloc(\tsizeof({cxx_type}) * {pointer_shape});",
+            "{c_var} = malloc(\tsizeof({c_type}) * {pointer_shape});",
         ] + malloc_error,
         cxx_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
@@ -3262,15 +3249,16 @@ py_statements = dict(
 
 ########################################
 ## allocatable
-    native_out_allocatable_list=dict(
+    py_native_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
+        c_local_var="pointer",
         decl=[
-            "{cxx_decl} = NULL;",
+            "{cxx_type} * {cxx_var} = NULL;",
         ],
         c_pre_call=[
-            "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
+            "{c_var} = malloc(sizeof({c_type}) * {size_var});",
         ] + malloc_error,
         cxx_pre_call=[
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
@@ -3290,16 +3278,40 @@ py_statements = dict(
     ),
 
 ########################################
+# char *
+    py_char_in=dict(
+        c_local_var="pointer",
+        decl=[
+            "{c_const}char * {c_var};",
+        ],
+    ),
+    py_char_out_charlen=dict(
+        c_local_var="pointer",
+        pre_call=[
+            "{c_const}char {c_var}[{charlen}];  // intent(out)",
+        ],
+    ),
+    py_char_inout=dict(
+        c_local_var="pointer",
+        decl=[
+            "{c_const}char * {c_var};",
+        ],
+    ),
+########################################
 # string
-    string_in=dict(
+    py_string_in=dict(
+        c_local_var="pointer",
+        decl=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
-    string_inout=dict(
+    py_string_inout=dict(
+        c_local_var="pointer",
+        decl=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var}({c_var});"],
     ),
-    string_out=dict(
+    py_string_out=dict(
         cxx_local_var="scalar",
         post_parse=["{c_const}std::string {cxx_var};"],
     ),
@@ -3307,7 +3319,7 @@ py_statements = dict(
 ########################################
 # struct
 # numpy
-    struct_in_numpy=dict(
+    py_struct_in_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3325,7 +3337,7 @@ py_statements = dict(
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3338,7 +3350,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_inout_numpy=dict(
+    py_struct_inout_numpy=dict(
         need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
@@ -3356,7 +3368,7 @@ py_statements = dict(
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3367,7 +3379,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_out_numpy=dict(
+    py_struct_out_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -3385,7 +3397,7 @@ py_statements = dict(
         ] + array_error,
         c_pre_call=[
 #            "{cxx_decl} = PyArray_DATA({py_var});",
-            "{cxx_type} *{cxx_var} = PyArray_DATA({py_var});",
+            "{c_type} *{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
 #            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
@@ -3397,7 +3409,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_result_numpy=dict(
+    py_struct_result_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
         allocate_local_var=True,
@@ -3423,14 +3435,14 @@ py_statements = dict(
     ),
 
 ##########
-    struct_in_class=dict(
+    py_struct_in_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
     ),
-    struct_inout_class=dict(
+    py_struct_inout_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
@@ -3438,7 +3450,7 @@ py_statements = dict(
         ],
         object_created=True,
     ),
-    struct_out_class=dict(
+    py_struct_out_class=dict(
         create_out_decl=True,
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
@@ -3446,7 +3458,7 @@ py_statements = dict(
             "{PyObject} * {py_var} = NULL;",
         ],
         c_pre_call=[
-            "{cxx_type} * {cxx_var} = malloc(sizeof({cxx_type}));",
+            "{c_type} * {c_var} = malloc(sizeof({c_type}));",
         ],
         c_dealloc_capsule=[
             "free(ptr);",
@@ -3470,7 +3482,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    struct_result_class=dict(
+    py_struct_result_class=dict(
         cxx_local_var="pointer",
         allocate_local_var=True,
         decl=[
@@ -3493,21 +3505,21 @@ py_statements = dict(
 
 ########################################
 # shadow
-    shadow_in=dict(
+    py_shadow_in=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
         ],
     ),
-    shadow_inout=dict(
+    py_shadow_inout=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
         ],
     ),
-    shadow_out=dict(
+    py_shadow_out=dict(
         decl=[
             "{PyObject} *{py_var} = NULL;"
         ],
@@ -3526,7 +3538,7 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    shadow_result=dict(
+    py_shadow_result=dict(
 #            decl=[
 #                "{PyObject} *{py_var} = NULL;"
 #            ],
@@ -3549,12 +3561,14 @@ py_statements = dict(
 ########################################
 # std::vector  only used with C++
 # list
-    vector_in_list=dict(
+    py_vector_in_list=dict(
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
         c_helper="from_PyObject_vector_{cxx_T}",
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
+        parse_as_object=True,
         decl=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
@@ -3566,11 +3580,12 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    vector_out_list=dict(
+    py_vector_out_list=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
         c_helper="to_PyList_vector_{cxx_T}",
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         decl=[
             "PyObject * {py_var} = NULL;",
@@ -3589,7 +3604,7 @@ py_statements = dict(
         goto_fail=True,
     ),
     # XXX - must release after copying result.
-    vector_result_list=dict(
+    py_vector_result_list=dict(
         decl=[
             "PyObject * {py_var} = NULL;",
         ],
@@ -3607,11 +3622,14 @@ py_statements = dict(
 ##########
 # numpy
 # cxx_var will always be a pointer since we must save it in a capsule.
-    vector_in_numpy=dict(
+# vectors have the dimension attribute added by generate.py
+    py_vector_in_numpy=dict(
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
         need_numpy=True,
+        parse_as_object=True,
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         decl=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
@@ -3631,10 +3649,11 @@ py_statements = dict(
         ],
         goto_fail=True,
     ),
-    vector_out_numpy=dict(
+    py_vector_out_numpy=dict(
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
+        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="pointer",
         allocate_local_var=True,
         decl=[
@@ -3657,7 +3676,7 @@ py_statements = dict(
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
     ),
-    vector_result_numpy=dict(
+    py_vector_result_numpy=dict(
         need_numpy=True,
         allocate_local_var=True,
         decl=[

@@ -824,7 +824,7 @@ def update_typemap_for_language(language):
     Fill in cf_tree.
     """
     update_for_language(fc_statements, language)
-    update_stmt_tree(fc_statements, cf_tree)
+    update_stmt_tree(fc_statements, cf_tree, default_stmts)
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
@@ -1166,6 +1166,26 @@ def create_buf_variable_names(options, blk, attrs, c_var):
             )
 
 
+def compute_return_prefix(arg, local_var):
+    """Compute how to access variable: dereference, address, as-is"""
+    if local_var == "scalar":
+        if arg.is_pointer():
+            return "&"
+        else:
+            return ""
+    elif local_var == "pointer":
+        if arg.is_pointer():
+            return ""
+        else:
+            return "*"
+    elif local_var == "funcptr":
+        return ""
+    elif arg.is_reference():
+        # Convert a return reference into a pointer.
+        return "&"
+    else:
+        return ""
+
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
@@ -1189,7 +1209,7 @@ def update_for_language(stmts, lang):
                 item[clause] = item[specific]
 
 
-def update_stmt_tree(stmts, tree):
+def update_stmt_tree(stmts, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
     the values from stmts.  The end key is named _node, since it is
@@ -1225,7 +1245,7 @@ def update_stmt_tree(stmts, tree):
 
     """
     # Convert defaults into Scope nodes.
-    for key, node in default_stmts.items():
+    for key, node in defaults.items():
         default_scopes[key] = util.Scope(None)
         default_scopes[key].update(node)
 
