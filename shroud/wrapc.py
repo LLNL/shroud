@@ -1369,7 +1369,7 @@ class Wrapc(util.WrapperMixin):
         from_stmt = False
         if "owner" in ast.attrs:
             owner = ast.attrs["owner"]
-        elif "owner" in intent_blk:
+        elif intent_blk.owner:
             owner = intent_blk.owner
             from_stmt = True
         else:
