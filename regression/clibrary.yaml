@@ -235,8 +235,8 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
-- decl: void callback_set_alloc(array_info *arr+intent(inout),
-                                void (*alloc)(array_info *arr+intent(inout)))
+- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
+                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))
   doxygen:
    description: |
      The function argument takes a struct argument

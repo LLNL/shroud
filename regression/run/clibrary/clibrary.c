@@ -213,9 +213,9 @@ void callback3(const char *type, void * in, void (*incr)(int *),
   strncpy(outbuf, "callback3", LENOUTBUF);
 }
 
-void callback_set_alloc(array_info *arr, void (*alloc)(array_info *arr))
+void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))
 {
-  alloc(arr);
+  alloc(tc, arr);
 }
 
 //----------------------------------------------------------------------

@@ -4788,6 +4788,33 @@
                             "stmtc0": "c_struct_pointer_inout_",
                             "stmtc1": "c_struct"
                         }
+                    },
+                    "tc": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "tc",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&tc",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "tc",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in_",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "c_var": "tc",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "tc",
+                            "stmt0": "f_native_scalar_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc1": "c_default"
+                        }
                     }
                 },
                 "ast": {
@@ -4796,6 +4823,20 @@
                         "pointer": []
                     },
                     "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "tc",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
                         {
                             "attrs": {
                                 "intent": "inout",
@@ -4833,6 +4874,20 @@
                             "params": [
                                 {
                                     "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "tc",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                {
+                                    "attrs": {
                                         "intent": "inout",
                                         "value": false
                                     },
@@ -4861,21 +4916,21 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_set_alloc(array_info *arr+intent(inout), void (*alloc)(array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(array_info * arr +intent(inout), void ( * alloc)(array_info * arr +intent(inout)) +intent(in)+value)",
+                "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
+                "declgen": "void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)",
                 "doxygen": {
                     "__line__": 240,
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "arr,\t alloc",
+                    "C_call_list": "tc,\t arr,\t alloc",
                     "C_name": "callback_set_alloc",
-                    "C_prototype": "array_info * arr,\t void ( * alloc)(\tarray_info * arr)",
+                    "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
                     "C_return_type": "void",
                     "F_C_call": "c_callback_set_alloc",
                     "F_C_name": "callback_set_alloc",
-                    "F_arg_c_call": "arr,\t alloc",
-                    "F_arguments": "arr,\t alloc",
+                    "F_arg_c_call": "tc,\t arr,\t alloc",
+                    "F_arguments": "tc,\t arr,\t alloc",
                     "F_name_function": "callback_set_alloc",
                     "F_name_generic": "callback_set_alloc",
                     "F_name_impl": "callback_set_alloc",

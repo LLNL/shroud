@@ -65,10 +65,12 @@ contains
     input = input + 20.5_C_DOUBLE
   end subroutine incr3b_double
 
-  subroutine set_alloc(arr)
+  subroutine set_alloc(tc, arr)
+    use iso_c_binding, only : C_INT
     use clibrary_mod, only : array_info
-    type(array_info), intent(inout) :: arr
-    arr%tc = 3
+    integer(C_INT), intent(IN), value :: tc
+    type(array_info), intent(INOUT) :: arr
+    arr%tc = tc
   end subroutine set_alloc
   
 end module callback_mod
@@ -285,7 +287,7 @@ contains
 
     ! The callback sets tc
     arr%tc = 0
-    call callback_set_alloc(arr, set_alloc)
+    call callback_set_alloc(3, arr, set_alloc)
     call assert_equals(3, arr%tc, "callback_set_alloc")
     
 

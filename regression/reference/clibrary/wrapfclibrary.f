@@ -52,9 +52,11 @@ module clibrary_mod
     end interface
 
     abstract interface
-        subroutine callback_set_alloc_alloc(arr) bind(C)
+        subroutine callback_set_alloc_alloc(tc, arr) bind(C)
+            use iso_c_binding, only : C_INT
             import :: array_info
             implicit none
+            integer(C_INT), value, intent(IN) :: tc
             type(array_info), intent(INOUT) :: arr
         end subroutine callback_set_alloc_alloc
     end interface
@@ -423,10 +425,12 @@ module clibrary_mod
     end interface
 
     interface
-        subroutine callback_set_alloc(arr, alloc) &
+        subroutine callback_set_alloc(tc, arr, alloc) &
                 bind(C, name="callback_set_alloc")
+            use iso_c_binding, only : C_INT
             import :: array_info, callback_set_alloc_alloc
             implicit none
+            integer(C_INT), value, intent(IN) :: tc
             type(array_info), intent(INOUT) :: arr
             procedure(callback_set_alloc_alloc) :: alloc
         end subroutine callback_set_alloc

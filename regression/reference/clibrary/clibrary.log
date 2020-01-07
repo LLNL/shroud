@@ -31,7 +31,7 @@ C function int callback1(int type +intent(in)+value, void ( * incr)() +external+
 C function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
-C function void callback_set_alloc(array_info * arr +intent(inout), void ( * alloc)(array_info * arr +intent(inout)) +intent(in)+value)
+C function void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
@@ -67,7 +67,7 @@ C-interface, Fortran function int callback1(int type +intent(in)+value, void ( *
 C-interface, Fortran function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C-interface, Fortran function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C-interface function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
-C-interface, Fortran function void callback_set_alloc(array_info * arr +intent(inout), void ( * alloc)(array_info * arr +intent(inout)) +intent(in)+value)
+C-interface, Fortran function void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)
 Close wrapfclibrary.f
 Python function void NoReturnNoArguments()
 Python function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

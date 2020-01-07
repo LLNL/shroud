@@ -775,10 +775,10 @@ rv = .false.
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
                 iface.append(1)
-                if imports:
-                    iface.append("import :: " + ", ".join(sorted(imports.keys())))
                 arg_f_use = self.sort_module_info(modules, None)
                 iface.extend(arg_f_use)
+                if imports:
+                    iface.append("import :: " + ", ".join(sorted(imports.keys())))
                 iface.append("implicit none")
                 iface.extend(arg_c_decl)
                 iface.append(-1)
