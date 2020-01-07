@@ -18,6 +18,7 @@
 #include "typesClibrary.h"
 #ifndef __cplusplus
 #include <stdbool.h>
+#include "clibrary.h"
 #endif
 
 // splicer begin C_declarations
@@ -25,6 +26,8 @@
 
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv);
+
+void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
 void CLI_return_one_name_bufferify(char * name1, int Nname1);
 

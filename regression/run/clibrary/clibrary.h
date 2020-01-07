@@ -22,6 +22,10 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
+typedef struct {
+  int tc;
+} array_info;
+
 void NoReturnNoArguments(void);
 
 double PassByValue(double arg1, int arg2);
@@ -31,6 +35,8 @@ void checkBool(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
 void acceptName(const char *name);
+
+void passCharPtrInOut(char *s);
 
 #define MAXNAME 20
 void returnOneName(char *name1);
@@ -54,6 +60,7 @@ int passAssumedTypeBuf(void *arg, char *outbuf);
 void callback1(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
+void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr));
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);

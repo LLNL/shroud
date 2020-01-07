@@ -14,6 +14,18 @@
 
 
 // helper function
+// Copy src into new memory and null terminate.
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+{
+   char *rv = malloc(nsrc + 1);
+   if (ntrim > 0) {
+     memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\0';
+   return rv;
+}
+
+// helper function
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
 {
@@ -36,6 +48,13 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
      if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
    }
 }
+
+// helper function
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
+{
+   free(src);
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -48,6 +67,24 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, -1);
     return;
     // splicer end function.function4a_bufferify
+}
+
+// void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
+/**
+ * \brief toupper
+ *
+ * Change a string in-place.
+ * For Python, return a new string since strings are immutable.
+ */
+void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
+{
+    // splicer begin function.pass_char_ptr_in_out_bufferify
+    char * SHCXX_s = ShroudStrAlloc(s, Ns, Ls);
+    passCharPtrInOut(SHCXX_s);
+    ShroudStrCopy(s, Ns, SHCXX_s, -1);
+    ShroudStrFree(SHCXX_s);
+    return;
+    // splicer end function.pass_char_ptr_in_out_bufferify
 }
 
 // void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))

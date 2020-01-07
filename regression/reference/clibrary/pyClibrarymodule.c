@@ -226,6 +226,43 @@ PY_acceptName(
 // splicer end function.accept_name
 }
 
+static char PY_passCharPtrInOut__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief toupper
+ *
+ * Change a string in-place.
+ * For Python, return a new string since strings are immutable.
+ */
+static PyObject *
+PY_passCharPtrInOut(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void passCharPtrInOut(char * s +intent(inout))
+// splicer begin function.pass_char_ptr_in_out
+    char * s;
+    char *SHT_kwlist[] = {
+        "s",
+        NULL };
+    PyObject * SHPy_s = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut",
+        SHT_kwlist, &s))
+        return NULL;
+
+    passCharPtrInOut(s);
+
+    // post_call
+    SHPy_s = PyString_FromString(s);
+
+    return (PyObject *) SHPy_s;
+// splicer end function.pass_char_ptr_in_out
+}
+
 static char PY_returnOneName__doc__[] =
 "documentation"
 ;
@@ -488,6 +525,8 @@ static PyMethodDef PY_methods[] = {
     PY_Function4a__doc__},
 {"acceptName", (PyCFunction)PY_acceptName, METH_VARARGS|METH_KEYWORDS,
     PY_acceptName__doc__},
+{"passCharPtrInOut", (PyCFunction)PY_passCharPtrInOut,
+    METH_VARARGS|METH_KEYWORDS, PY_passCharPtrInOut__doc__},
 {"returnOneName", (PyCFunction)PY_returnOneName, METH_NOARGS,
     PY_returnOneName__doc__},
 {"returnTwoNames", (PyCFunction)PY_returnTwoNames, METH_NOARGS,

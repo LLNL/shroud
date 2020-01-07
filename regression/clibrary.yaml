@@ -36,6 +36,17 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+- decl: struct array_info {
+          int tc;
+        }
+  doxygen:
+    brief: Array information
+    description: |
+      Passed to function call backs
+  options:
+    wrap_lua: False
+    wrap_python: False
+
 - decl: void NoReturnNoArguments()
   options:
     literalinclude: True
@@ -59,6 +70,16 @@ declarations:
 - decl: void acceptName(const char *name)
   options:
     literalinclude: True
+
+######################################################################
+# from strings.yaml
+
+- decl: void passCharPtrInOut(char * s+intent(inout))
+  doxygen:
+    brief: toupper
+    description: |
+      Change a string in-place.
+      For Python, return a new string since strings are immutable.
 
 ######################################################################
 # charlen
@@ -210,6 +231,17 @@ declarations:
     brief: Test function pointer
     description: |
       A bufferify function will be created.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
+                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))
+  doxygen:
+   description: |
+     The function argument takes a struct argument
+     which is defined in this library.
+     Use IMPORT.
   options:
     wrap_lua: False
     wrap_python: False

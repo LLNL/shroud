@@ -777,6 +777,8 @@ rv = .false.
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, None)
                 iface.extend(arg_f_use)
+                if imports:
+                    iface.append("import :: " + ", ".join(sorted(imports.keys())))
                 iface.append("implicit none")
                 iface.extend(arg_c_decl)
                 iface.append(-1)
