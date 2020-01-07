@@ -16,8 +16,6 @@
 #define WRAPCLIBRARY_H
 
 #include "typesClibrary.h"
-#include <stdbool.h>
-#include "clibrary.h"
 
 // splicer begin C_declarations
 // splicer end C_declarations

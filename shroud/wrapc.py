@@ -42,10 +42,6 @@ class Wrapc(util.WrapperMixin):
         self.newlibrary = newlibrary
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
-        if self.language == "c":
-            self.lang_header = "c_header"
-        else:
-            self.lang_header = "cxx_header"
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -738,7 +734,8 @@ class Wrapc(util.WrapperMixin):
         is_const = ast.func_const
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
-        self.header_typedef_nodes[result_typemap.name] = result_typemap
+        header_typedef_nodes = {}
+        header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
         #            # i.e. This method returns a wrapped type
@@ -887,7 +884,7 @@ class Wrapc(util.WrapperMixin):
                 for hdr in arg_typemap.impl_header:
                     self.header_impl_include[hdr] = True
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
-            self.header_typedef_nodes[arg_typemap.name] = arg_typemap
+            header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
 
@@ -1174,6 +1171,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
+            self.header_typedef_nodes.update(header_typedef_nodes)
             self.header_proto_c.append("")
             if node.cpp_if:
                 self.header_proto_c.append("#" + node.cpp_if)
