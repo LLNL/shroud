@@ -1,6 +1,12 @@
-//
-// Another package which has been 'wrapped' by shroud
-//
+/*
+ * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * other Shroud Project Developers.
+ * See the top-level COPYRIGHT file for details.
+ *
+ * SPDX-License-Identifier: (BSD-3-Clause)
+ *
+ * Another package which has been 'wrapped' by shroud
+ */
 
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
