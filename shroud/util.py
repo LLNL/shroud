@@ -387,7 +387,9 @@ class WrapperMixin(object):
         lines = []
         self.write_include_group(wrap_headers, lines)
         self.write_include_group(always, lines)
-        if cxx_headers:
+        if self.language == "c":
+            self.write_include_group(c_headers, lines)
+        elif cxx_headers:
             lines.append("#ifdef __cplusplus")
             self.write_include_group(cxx_headers, lines)
             if c_headers:
