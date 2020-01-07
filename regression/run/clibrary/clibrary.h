@@ -36,6 +36,8 @@ void checkBool(const bool arg1, bool *arg2, bool *arg3);
 char *Function4a(const char *arg1, const char *arg2);
 void acceptName(const char *name);
 
+void passCharPtrInOut(char *s);
+
 #define MAXNAME 20
 void returnOneName(char *name1);
 void returnTwoNames(char *name1, char *name2);

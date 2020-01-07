@@ -55,6 +55,10 @@ class Tutorial(unittest.TestCase):
         clibrary.acceptName('spot')
 ##        self.assertEqual('acceptName', clibrary.last_function_called())
 
+    def testpassCharPtrInOut(self):
+        """char * +intent(out)"""
+        self.assertEqual('DOG', strings.passCharPtrInOut('dog'))
+
     def testReturnOneName(self):
         name1 = clibrary.returnOneName()
         self.assertEqual("bill", name1)

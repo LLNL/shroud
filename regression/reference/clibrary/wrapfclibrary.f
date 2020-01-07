@@ -142,6 +142,26 @@ module clibrary_mod
     end interface
     ! end c_accept_name
 
+    interface
+        subroutine c_pass_char_ptr_in_out(s) &
+                bind(C, name="passCharPtrInOut")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+        end subroutine c_pass_char_ptr_in_out
+    end interface
+
+    interface
+        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
+                bind(C, name="CLI_pass_char_ptr_in_out_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+            integer(C_INT), value, intent(IN) :: Ls
+            integer(C_INT), value, intent(IN) :: Ns
+        end subroutine c_pass_char_ptr_in_out_bufferify
+    end interface
+
     ! start c_return_one_name
     interface
         subroutine c_return_one_name(name1) &
@@ -467,6 +487,23 @@ contains
         ! splicer end function.accept_name
     end subroutine accept_name
     ! end accept_name
+
+    ! void passCharPtrInOut(char * s +intent(inout))
+    ! arg_to_buffer
+    !>
+    !! \brief toupper
+    !!
+    !! Change a string in-place.
+    !! For Python, return a new string since strings are immutable.
+    !<
+    subroutine pass_char_ptr_in_out(s)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(INOUT) :: s
+        ! splicer begin function.pass_char_ptr_in_out
+        call c_pass_char_ptr_in_out_bufferify(s, &
+            len_trim(s, kind=C_INT), len(s, kind=C_INT))
+        ! splicer end function.pass_char_ptr_in_out
+    end subroutine pass_char_ptr_in_out
 
     ! void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer

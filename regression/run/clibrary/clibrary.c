@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
 // See the top-level COPYRIGHT file for details.
 //
@@ -8,6 +8,7 @@
 
 #include "clibrary.h"
 
+#include <ctype.h>   // toupper
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -72,6 +73,16 @@ void acceptName(const char *name)
     strncpy(last_function_called, "acceptName", MAXLAST);
 }
 // end acceptName
+
+//----------------------------------------------------------------------
+
+void passCharPtrInOut(char *s)
+{
+    size_t n = strlen(s);
+    for (unsigned int i = 0; i < n; i++) {
+        s[i] = toupper(s[i]);
+    }
+}
 
 //----------------------------------------------------------------------
 // Test charlen attribute.

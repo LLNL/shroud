@@ -72,6 +72,16 @@ declarations:
     literalinclude: True
 
 ######################################################################
+# from strings.yaml
+
+- decl: void passCharPtrInOut(char * s+intent(inout))
+  doxygen:
+    brief: toupper
+    description: |
+      Change a string in-place.
+      For Python, return a new string since strings are immutable.
+
+######################################################################
 # charlen
 # returnOneName will use PyString_FromString.
 # returnTwoNames will use Py_BuildValue.

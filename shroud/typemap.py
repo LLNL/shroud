@@ -1164,7 +1164,7 @@ def update_for_language(stmts, lang):
       foo_bar["decl"] = foo_bar["c_decl"]
     """
     for item in stmts.values():
-        for clause in ["decl", "post_parse", "pre_call", "post_call",
+        for clause in ["cxx_local_var", "decl", "post_parse", "pre_call", "post_call",
                        "cleanup", "fail"]:
             specific = lang + "_" + clause
             if specific in item:
@@ -1990,7 +1990,7 @@ fc_statements = dict(
     c_struct=dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
-        cxx_local_var="pointer",
+        cxx_cxx_local_var="pointer", # cxx_local_var only used with C++
         cxx_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],

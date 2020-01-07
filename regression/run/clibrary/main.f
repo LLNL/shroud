@@ -111,6 +111,7 @@ contains
     integer(C_INT), target :: int_var
     character(MAXNAME) name1, name2
     character(lenoutbuf)  :: outbuf
+    character(30) str
     type(C_PTR) :: cptr1, cptr2
 
     integer(C_INT) int_array(10)
@@ -144,6 +145,9 @@ contains
     call accept_name("spot")
 !    call assert_true(last_function_called() == "acceptName")
 
+    str = 'dog'
+    call pass_char_ptr_in_out(str)
+    call assert_true( str == "DOG")
     !--------------------------------------------------
 
     name1 = " "

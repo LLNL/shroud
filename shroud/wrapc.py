@@ -939,12 +939,12 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
                 intent_blk = typemap.lookup_fc_stmts(stmts)
 
-                if self.language == "c":
-                    fmt_arg.cxx_var = fmt_arg.c_var
-                elif intent_blk.cxx_local_var:
+                if intent_blk.cxx_local_var:
                     # Explicit conversion must be in pre_call.
                     cxx_local_var = intent_blk.cxx_local_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                elif self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
                 elif arg_typemap.c_to_cxx is None:
                     # Compatible
                     fmt_arg.cxx_var = fmt_arg.c_var
