@@ -16,11 +16,7 @@
 #define WRAPGENERIC_H
 
 #include "typesgeneric.h"
-#ifdef __cplusplus
-#include <cstddef>
-#else
 #include <stddef.h>
-#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations
