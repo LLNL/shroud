@@ -7,7 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapSingleton.h"
-#include "tutorial.hpp"
+#include "classes.hpp"
 
 // splicer begin class.Singleton.CXX_definitions
 // splicer end class.Singleton.CXX_definitions
@@ -18,11 +18,10 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // static Singleton & getReference()
-TUT_Singleton * TUT_Singleton_get_reference(TUT_Singleton * SHC_rv)
+CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
 {
     // splicer begin class.Singleton.method.get_reference
-    tutorial::Singleton & SHCXX_rv = tutorial::Singleton::getReference(
-        );
+    classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
     SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;

@@ -317,6 +317,7 @@ if __name__ == "__main__":
                  cmdline=["--yaml-types", "def_types.yaml"]),
         TestDesc("tutorial"),
         TestDesc("types"),
+        TestDesc("classes"),
 
         # enum
         TestDesc("enum-c", yaml="enum",

@@ -6,30 +6,32 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial module
+#  Compile the python classes module
 #
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/tutorial \
-    -I$(top)/regression/run/tutorial \
+    -I$(top)/regression/reference/classes \
+    -I$(top)/regression/run/classes \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/tutorial \
-    $(top)/regression/run/tutorial \
-    $(top)/regression/run/tutorial/python
+    $(top)/regression/reference/classes \
+    $(top)/regression/run/classes \
+    $(top)/regression/run/classes/python
 
 OBJS = \
-    tutorial.o \
-    pyTutorialmodule.o \
-    pyTutorialutil.o
+    classes.o \
+    pyclassesmodule.o \
+    pyClass1type.o \
+    pySingletontype.o \
+    pyclassesutil.o
 
 CXXFLAGS += $(SHARED)
 
-all : tutorial.so simple
+all : classes.so simple
 
-tutorial.so : $(OBJS)
+classes.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 simple : testpython.o $(OBJS)

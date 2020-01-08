@@ -94,27 +94,7 @@ int TUT_colorfunc(int arg);
 
 void TUT_get_min_max(int * min, int * max);
 
-int TUT_direction_func(int arg);
-
-void TUT_pass_class_by_value(TUT_Class1 * arg);
-
-int TUT_useclass(TUT_Class1 * arg);
-
-TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv);
-
-TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv);
-
-TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv);
-
-TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv);
-
-TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv);
-
 int TUT_callback1(int in, int ( * incr)(int));
-
-void TUT_set_global_flag(int arg);
-
-int TUT_get_global_flag();
 
 const char * TUT_last_function_called();
 
