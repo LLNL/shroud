@@ -830,7 +830,7 @@ return 1;""",
                 decl = "{PyObject} * {py_var} = NULL;"
                 post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
                 ctorvar = fmt.py_var
-            blk = util.Scope(default_scope,
+            blk = PyStmts(
                 decl=[wformat(decl, fmt)],
                 post_call=[wformat(post_call, fmt)],
             )
@@ -1409,7 +1409,7 @@ return 1;""",
             # create tuple object
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
-            rv_blk = util.Scope(default_scope,
+            rv_blk = PyStmts(
                 decl=["PyObject *{PY_result} = NULL;  // return value object"],
                 post_call=["{PY_result} = "
                            'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});'],
@@ -1738,7 +1738,7 @@ return 1;""",
 #            result_typeflag = ast.typemap.base
 #        result_typemap = node.CXX_result_typemap
             
-            return util.Scope(default_scope,
+            return PyStmts(
                 decl=["{cxx_alloc_decl} = NULL;"],
                 pre_call=self.allocate_memory(
                     fmt.cxx_var, capsule_type, fmt,
@@ -2933,7 +2933,9 @@ class PyStmts(object):
         need_numpy=False,
         object_created=False, parse_as_object=False,
         decl=[], post_parse=[], pre_call=[],
-        post_call=[], post_call_capsule=[],
+        post_call=[],
+        decl_capsule=[], post_call_capsule=[], fail_capsule=[],
+        decl_keep=[], post_call_keep=[], fail_keep=[],
         cleanup=[], fail=[],
         goto_fail=False,
     ):
@@ -2953,7 +2955,14 @@ class PyStmts(object):
         self.post_parse = post_parse
         self.pre_call = pre_call
         self.post_call = post_call
+
+        self.decl_capsule = decl_capsule
         self.post_call_capsule = post_call_capsule
+        self.fail_capsule = fail_capsule
+        self.decl_keep = decl_keep
+        self.post_call_keep = post_call_keep
+        self.fail_keep = fail_keep
+
         self.cleanup = cleanup
         self.fail = fail
         self.goto_fail = goto_fail
