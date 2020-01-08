@@ -1500,7 +1500,7 @@ Class Type
 constructor and destructor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The C++ header file from :file:`tutorial.hpp`.
+The C++ header file from :file:`classes.hpp`.
 
 .. code-block:: c++
 
@@ -1513,7 +1513,7 @@ The C++ header file from :file:`tutorial.hpp`.
         Class1(int flag) : m_flag(flag), m_test(0) {};
     };
 
-:file:`tutorial.yaml`:
+:file:`classes.yaml`:
 
 .. code-block:: yaml
 
@@ -1532,36 +1532,36 @@ A C wrapper function is created for each constructor and the destructor.
 
 The C wrappers:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_new_default
-   :end-before: end TUT_Class1_new_default
+   :start-after: start CLA_Class1_new_default
+   :end-before: end CLA_Class1_new_default
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_new_flag
-   :end-before: end TUT_Class1_new_flag
+   :start-after: start CLA_Class1_new_flag
+   :end-before: end CLA_Class1_new_flag
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_delete
-   :end-before: end TUT_Class1_delete
+   :start-after: start CLA_Class1_delete
+   :end-before: end CLA_Class1_delete
 
 The corresponding Fortran interfaces:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_new_default
    :end-before: end c_class1_new_default
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_new_flag
    :end-before: end c_class1_new_flag
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_delete
    :end-before: end c_class1_delete
@@ -1569,19 +1569,19 @@ The corresponding Fortran interfaces:
 
 And the Fortran wrappers:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_new_default
    :end-before: end class1_new_default
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_new_flag
    :end-before: end class1_new_flag
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_delete
    :end-before: end class1_delete
@@ -1605,7 +1605,7 @@ The Fortran shadow class adds the type-bound method for the destructor:
 The constructors are not type-bound procedures. But they
 are combined into a generic interface.
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: ! start interface class1_new
    :end-before: ! end interface class1_new
@@ -1615,7 +1615,7 @@ A class instance is created and destroy from Fortran as:
 
 .. code-block:: fortran
 
-    use tutorial_mod
+    use classes_mod
     type(class1) obj
 
     obj = class1_new()
@@ -1625,9 +1625,9 @@ Corresponding C++ code:
 
 .. code-block:: c++
 
-    include <tutorial.hpp>
+    include <classes.hpp>
 
-    tutorial::Class1 * obj = new tutorial::Class1;
+    classes::Class1 * obj = new classes::Class1;
 
     delete obj;
 
@@ -1637,7 +1637,7 @@ Corresponding C++ code:
 
 Getter and Setter
 ^^^^^^^^^^^^^^^^^
-The C++ header file from :file:`tutorial.hpp`.
+The C++ header file from :file:`classes.hpp`.
 
 .. code-block:: c++
 
@@ -1648,7 +1648,7 @@ The C++ header file from :file:`tutorial.hpp`.
         int m_test;
     };
 
-:file:`tutorial.yaml`:
+:file:`classes.yaml`:
 
 .. code-block:: yaml
 
@@ -1666,36 +1666,36 @@ the Fortran API with this convention.
 
 The C wrappers:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_get_m_flag
-   :end-before: end TUT_Class1_get_m_flag
+   :start-after: start CLA_Class1_get_m_flag
+   :end-before: end CLA_Class1_get_m_flag
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_get_test
-   :end-before: end TUT_Class1_get_test
+   :start-after: start CLA_Class1_get_test
+   :end-before: end CLA_Class1_get_test
 
-.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start TUT_Class1_set_test
-   :end-before: end TUT_Class1_set_test
+   :start-after: start CLA_Class1_set_test
+   :end-before: end CLA_Class1_set_test
 
 The corresponding Fortran interfaces:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_get_m_flag
    :end-before: end c_class1_get_m_flag
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_get_test
    :end-before: end c_class1_get_test
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start c_class1_set_test
    :end-before: end c_class1_set_test
@@ -1703,19 +1703,19 @@ The corresponding Fortran interfaces:
 
 And the Fortran wrappers:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_get_m_flag
    :end-before: end class1_get_m_flag
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_get_test
    :end-before: end class1_get_test
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start class1_set_test
    :end-before: end class1_set_test
@@ -1737,7 +1737,7 @@ The class variables can be used as:
 
 .. code-block:: fortran
 
-    use tutorial_mod
+    use classes_mod
     type(class1) obj
     integer iflag
 
@@ -1749,8 +1749,8 @@ Corresponding C++ code:
 
 .. code-block:: c++
 
-    include <tutorial.hpp>
-    tutorial::Class1 obj = new * tutorial::Class1;
+    include <classes.hpp>
+    classes::Class1 obj = new * classes::Class1;
     obj->m_test = 4;
     int iflag = obj->m_test;
 
