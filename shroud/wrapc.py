@@ -609,10 +609,11 @@ class Wrapc(util.WrapperMixin):
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
             elif buf_arg == "shadow":
-                # Always pass a pointer to capsule.
                 # Do not use const in declaration.
-                proto_list.append( "{} * {}".format(ast.typemap.c_type,
-                                                    name or ast.name))
+                proto_list.append( "{} {}{}".format(
+                    ast.typemap.c_type,
+                    "" if attrs.get("value", False) else "* ",
+                    name or ast.name))
                 continue
 
             need_wrapper = True

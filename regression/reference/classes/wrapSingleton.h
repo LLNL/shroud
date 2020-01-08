@@ -15,7 +15,7 @@
 #ifndef WRAPSINGLETON_H
 #define WRAPSINGLETON_H
 
-#include "typesTutorial.h"
+#include "typesclasses.h"
 
 // splicer begin class.Singleton.CXX_declarations
 // splicer end class.Singleton.CXX_declarations
@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin class.Singleton.C_declarations
 // splicer end class.Singleton.C_declarations
 
-TUT_Singleton * TUT_Singleton_get_reference(TUT_Singleton * SHC_rv);
+CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv);
 
 #ifdef __cplusplus
 }

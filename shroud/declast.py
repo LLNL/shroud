@@ -1345,7 +1345,7 @@ class Declaration(Node):
         decl.append(", ".join(t))
         decl.append(" :: ")
 
-        if "name" in kwargs:
+        if kwargs.get("name", None):
             decl.append(kwargs["name"])
         else:
             decl.append(self.name)

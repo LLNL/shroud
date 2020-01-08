@@ -29,6 +29,7 @@ test-fortran-% : fortran-%
 test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \
   test-fortran-namespace \
@@ -59,8 +60,8 @@ test-c-% : c-%
 
 # Compile C tests
 test-c : \
-  test-c-tutorial \
   test-c-types \
+  test-c-classes \
   test-c-enum-c \
   test-c-namespace \
   test-c-statement \
@@ -115,6 +116,7 @@ test-python-% : pymod-%
 test-python : \
   test-python-tutorial \
   test-python-types \
+  test-python-classes \
   test-python-enum-c \
   test-python-namespace \
   test-python-strings \
@@ -159,6 +161,8 @@ phony_explicit:
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
 .SECONDARY: \
+    $(tempdir)/run/classes/.. \
+    $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
     $(tempdir)/run/enum-c/.. \

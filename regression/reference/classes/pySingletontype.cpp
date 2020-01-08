@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pyTutorialmodule.hpp"
-#include "tutorial.hpp"
+#include "pyclassesmodule.hpp"
+#include "classes.hpp"
 // splicer begin class.Singleton.impl.include
 // splicer end class.Singleton.impl.include
 
@@ -48,8 +48,7 @@ PY_getReference(
 {
 // static Singleton & getReference()
 // splicer begin class.Singleton.method.get_reference
-    tutorial::Singleton & SHCXX_rv =
-        tutorial::Singleton::getReference();
+    classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
 
     // post_call
     PY_Singleton * SHTPy_rv =
@@ -76,7 +75,7 @@ static char Singleton__doc__[] =
 /* static */
 PyTypeObject PY_Singleton_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "tutorial.Singleton",                       /* tp_name */
+    "classes.Singleton",                       /* tp_name */
     sizeof(PY_Singleton),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

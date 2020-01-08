@@ -20,106 +20,6 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
-// Class1() +name(new)
-// Class1(int flag +intent(in)+value) +name(new)
-static int l_Class1_new(lua_State *L)
-{
-    // splicer begin class.Class1.method.new
-    int SH_nresult = 0;
-    int SH_nargs = lua_gettop(L);
-    int SH_itype1 = lua_type(L, 1);
-    switch (SH_nargs) {
-    case 0:
-        {
-            l_Class1_Type * SH_this =
-                (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new tutorial::Class1();
-            /* Add the metatable to the stack. */
-            luaL_getmetatable(L, "Class1.metatable");
-            /* Set the metatable on the userdata. */
-            lua_setmetatable(L, -2);
-            SH_nresult = 1;
-        }
-        break;
-    case 1:
-        if (SH_itype1 == LUA_TNUMBER) {
-            int flag = lua_tointeger(L, 1);
-            l_Class1_Type * SH_this =
-                (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new tutorial::Class1(flag);
-            /* Add the metatable to the stack. */
-            luaL_getmetatable(L, "Class1.metatable");
-            /* Set the metatable on the userdata. */
-            lua_setmetatable(L, -2);
-            SH_nresult = 1;
-        }
-        else {
-            luaL_error(L, "error with arguments");
-        }
-        break;
-    default:
-        luaL_error(L, "error with arguments");
-        break;
-    }
-    return SH_nresult;
-    // splicer end class.Class1.method.new
-}
-
-// ~Class1() +name(delete)
-static int l_Class1_delete(lua_State *L)
-{
-    // splicer begin class.Class1.method.__gc
-    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
-        L, 1, "Class1.metatable");
-    delete SH_this->self;
-    SH_this->self = NULL;
-    return 0;
-    // splicer end class.Class1.method.__gc
-}
-
-// int Method1()
-/**
- * \brief returns the value of flag member
- *
- */
-static int l_Class1_method1(lua_State *L)
-{
-    // splicer begin class.Class1.method.Method1
-    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
-        L, 1, "Class1.metatable");
-    int SHCXX_rv = SH_this->self->Method1();
-    lua_pushinteger(L, SHCXX_rv);
-    return 1;
-    // splicer end class.Class1.method.Method1
-}
-
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
-static int l_Class1_direction_func(lua_State *L)
-{
-    // splicer begin class.Class1.method.directionFunc
-    tutorial::Class1::DIRECTION arg =
-        static_cast<tutorial::Class1::DIRECTION>(lua_tointeger(L, 1));
-    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
-        L, 1, "Class1.metatable");
-    tutorial::Class1::DIRECTION SHCXX_rv =
-        SH_this->self->directionFunc(arg);
-    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
-    return 1;
-    // splicer end class.Class1.method.directionFunc
-}
-
-// splicer begin class.Class1.additional_functions
-// splicer end class.Class1.additional_functions
-
-static const struct luaL_Reg l_Class1_Reg [] = {
-    {"__gc", l_Class1_delete},
-    {"Method1", l_Class1_method1},
-    {"directionFunc", l_Class1_direction_func},
-    // splicer begin class.Class1.register
-    // splicer end class.Class1.register
-    {NULL, NULL}   /*sentinel */
-};
-
 // void NoReturnNoArguments()
 static int l_no_return_no_arguments(lua_State *)
 {
@@ -438,38 +338,6 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-static int l_direction_func(lua_State *L)
-{
-    // splicer begin function.directionFunc
-    tutorial::Class1::DIRECTION arg =
-        static_cast<tutorial::Class1::DIRECTION>(lua_tointeger(L, 1));
-    tutorial::Class1::DIRECTION SHCXX_rv = tutorial::directionFunc(arg);
-    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
-    return 1;
-    // splicer end function.directionFunc
-}
-
-// void set_global_flag(int arg +intent(in)+value)
-static int l_set_global_flag(lua_State *L)
-{
-    // splicer begin function.set_global_flag
-    int arg = lua_tointeger(L, 1);
-    tutorial::set_global_flag(arg);
-    return 0;
-    // splicer end function.set_global_flag
-}
-
-// int get_global_flag()
-static int l_get_global_flag(lua_State *L)
-{
-    // splicer begin function.get_global_flag
-    int SHCXX_rv = tutorial::get_global_flag();
-    lua_pushinteger(L, SHCXX_rv);
-    return 1;
-    // splicer end function.get_global_flag
-}
-
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 static int l_last_function_called(lua_State *L)
 {
@@ -484,7 +352,6 @@ static int l_last_function_called(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
-    {"Class1", l_Class1_new},
     {"NoReturnNoArguments", l_no_return_no_arguments},
     {"PassByValue", l_pass_by_value},
     {"ConcatenateStrings", l_concatenate_strings},
@@ -496,9 +363,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},
-    {"directionFunc", l_direction_func},
-    {"set_global_flag", l_set_global_flag},
-    {"get_global_flag", l_get_global_flag},
     {"LastFunctionCalled", l_last_function_called},
     // splicer begin register
     // splicer end register
@@ -509,26 +373,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
 extern "C" {
 #endif
 int luaopen_tutorial(lua_State *L) {
-
-    /* Create the metatable and put it on the stack. */
-    luaL_newmetatable(L, "Class1.metatable");
-    /* Duplicate the metatable on the stack (We now have 2). */
-    lua_pushvalue(L, -1);
-    /* Pop the first metatable off the stack and assign it to __index
-     * of the second one. We set the metatable for the table to itself.
-     * This is equivalent to the following in lua:
-     * metatable = {}
-     * metatable.__index = metatable
-     */
-    lua_setfield(L, -2, "__index");
-
-    /* Set the methods to the metatable that should be accessed via object:func */
-#if LUA_VERSION_NUM < 502
-    luaL_register(L, NULL, l_Class1_Reg);
-#else
-    luaL_setfuncs(L, l_Class1_Reg, 0);
-#endif
-
 
 #if LUA_VERSION_NUM < 502
     luaL_register(L, "tutorial", l_Tutorial_Reg);

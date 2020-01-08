@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pyTutorialmodule.hpp"
-#include "tutorial.hpp"
+#include "pyclassesmodule.hpp"
+#include "classes.hpp"
 // splicer begin class.Class1.impl.include
 // splicer end class.Class1.impl.include
 
@@ -44,7 +44,7 @@ PY_Class1_tp_init_default(
 {
 // Class1() +name(new)
 // splicer begin class.Class1.method.new_default
-    self->obj = new tutorial::Class1();
+    self->obj = new classes::Class1();
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
@@ -71,7 +71,7 @@ PY_Class1_tp_init_flag(
         const_cast<char **>(SHT_kwlist), &flag))
         return -1;
 
-    self->obj = new tutorial::Class1(flag);
+    self->obj = new classes::Class1(flag);
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
@@ -135,7 +135,7 @@ PY_equivalent(
         return NULL;
 
     // post_parse
-    const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
+    const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
     bool SHCXX_rv = self->obj->equivalent(*obj2);
 
@@ -167,7 +167,7 @@ PY_getclass3(
 {
 // Class1 * getclass3() const
 // splicer begin class.Class1.method.getclass3
-    tutorial::Class1 * SHCXX_rv = self->obj->getclass3();
+    classes::Class1 * SHCXX_rv = self->obj->getclass3();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -200,10 +200,10 @@ PY_directionFunc(
         return NULL;
 
     // post_parse
-    tutorial::Class1::DIRECTION SH_arg =
-        static_cast<tutorial::Class1::DIRECTION>(arg);
+    classes::Class1::DIRECTION SH_arg =
+        static_cast<classes::Class1::DIRECTION>(arg);
 
-    tutorial::Class1::DIRECTION SHCXX_rv =
+    classes::Class1::DIRECTION SHCXX_rv =
         self->obj->directionFunc(SH_arg);
 
     // post_call
@@ -304,7 +304,7 @@ static char Class1__doc__[] =
 /* static */
 PyTypeObject PY_Class1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "tutorial.Class1",                       /* tp_name */
+    "classes.Class1",                       /* tp_name */
     sizeof(PY_Class1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
