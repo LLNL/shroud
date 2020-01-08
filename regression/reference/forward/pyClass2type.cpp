@@ -7,7 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyforwardmodule.hpp"
-#include "tutorial.hpp"
+#include "forward.hpp"
 // splicer begin class.Class2.impl.include
 // splicer end class.Class2.impl.include
 
@@ -44,7 +44,7 @@ PY_Class2_tp_init(
 {
 // Class2()
 // splicer begin class.Class2.method.ctor
-    self->obj = new tutorial::Class2();
+    self->obj = new forward::Class2();
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
@@ -64,9 +64,9 @@ PY_func1(
   PyObject *args,
   PyObject *kwds)
 {
-// void func1(Class1 * arg +intent(in))
+// void func1(tutorial::Class1 * arg +intent(in))
 // splicer begin class.Class2.method.func1
-    TUT_class1 arg;
+    TUT_Class1 arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
@@ -105,7 +105,7 @@ PY_acceptClass3(
         return NULL;
 
     // post_parse
-    tutorial::Class3 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     self->obj->acceptClass3(arg);
     Py_RETURN_NONE;

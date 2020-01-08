@@ -7,7 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyforwardmodule.hpp"
-#include "tutorial.hpp"
+#include "forward.hpp"
+#include "header1.hpp"
+#include "header2.hpp"
 // splicer begin class.Class3.impl.include
 // splicer end class.Class3.impl.include
 

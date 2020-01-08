@@ -21,11 +21,9 @@
 #include "typesUserLibrary.h"
 #ifdef __cplusplus
 #include <cstddef>
-#include "sidre/Group.hpp"
 #else
 #include <stdbool.h>
 #include <stddef.h>
-#include "sidre/wrapGroup.h"
 #endif
 
 // splicer begin namespace.example::nested.CXX_declarations
@@ -72,10 +70,6 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm);
 #ifndef HAVE_MPI
 void AA_example_nested_testmpi_serial();
 #endif
-
-void AA_example_nested_testgroup1(SIDRE_group * grp);
-
-void AA_example_nested_testgroup2(SIDRE_group * grp);
 
 void AA_example_nested_func_ptr1(void ( * get)());
 

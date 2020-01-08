@@ -7,7 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include <cstdlib>
-#include "tutorial.hpp"
+#include "forward.hpp"
 #include "typesforward.h"
 
 // splicer begin CXX_definitions
@@ -28,10 +28,10 @@ void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)
         // Nothing to delete
         break;
     }
-    case 1:   // tutorial::Class2
+    case 1:   // forward::Class2
     {
-        tutorial::Class2 *cxx_ptr = 
-            reinterpret_cast<tutorial::Class2 *>(ptr);
+        forward::Class2 *cxx_ptr = 
+            reinterpret_cast<forward::Class2 *>(ptr);
         delete cxx_ptr;
         break;
     }

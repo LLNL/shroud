@@ -30,42 +30,6 @@ except:
 cf_tree = {}
 # Always return the same empty statements.
 empty_stmts = {}
-default_stmts = dict(
-    c=dict(
-        key="c_default",
-        buf_args=[],
-        buf_extra=[],
-        c_helper="",
-        c_local_var=None,
-        cxx_local_var=None,
-
-        pre_call=[],
-        call=[],
-        post_call=[],
-        final=[],
-        ret=[],
-
-        destructor_name=None,
-        owner="library",
-        return_type=None,
-        return_cptr=False,
-    ),
-    f=dict(
-        key="f_default",
-
-        buf_args=[],
-        c_local_var=None,
-        f_helper="",
-        f_module=None,
-
-        need_wrapper=False,
-        declare=[],
-        pre_call=[],
-        call=[],
-        post_call=[],
-        result=None,  # name of result variable
-    ),
-)
 default_scopes = dict()
 
 class Typemap(object):
@@ -77,10 +41,11 @@ class Typemap(object):
     c_header and cxx_header are used for interface. For example,
     size_t uses <stddef.h> and <cstddef>.
 
-    impl_header is used for implementation.  For example, std::string
-    uses <string>. <string> should not be in the interface since the
-    wrapper is a C API.
+    impl_header is used for implementation, i.e. the wrap.cpp file.
+    For example, std::string uses <string>. <string> should not be in
+    the interface since the wrapper is a C API.
 
+    wrap_header is used for generated wrappers for shadow classes.
     """
 
     # Array of known keys with default values
@@ -99,11 +64,11 @@ class Typemap(object):
         # None implies {cxx_var} i.e. no conversion
         (
             "cxx_header",
-            None,
+            [],
         ),  # Name of C++ header file required for implementation
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
-        ("c_header", None),  # Name of C header file required for type
+        ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_return_code", None),
@@ -131,7 +96,8 @@ class Typemap(object):
         # e.g. intrinsics such as int and real
         # override fields when result should be treated as an argument
         ("result_as_arg", None),
-        ("impl_header", None), # implementation header
+        ("impl_header", []), # implementation header
+        ("wrap_header", []), # generated wrapper header
         # Python
         ("PY_format", "O"),  # 'format unit' for PyArg_Parse
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
@@ -186,9 +152,15 @@ class Typemap(object):
         Args:
             dct - dictionary-like object.
         """
-        for key in dct:
-            if key in self.defaults:
-                setattr(self, key, dct[key])
+        for key, value in dct.items():
+            if key in ["c_header", "cxx_header", "impl_header", "wrap_header"]:
+                # Blank delimited strings to list
+                if isinstance(value,list):
+                    setattr(self, key, value)
+                else:
+                    setattr(self, key, value.split())
+            elif key in self.defaults:
+                setattr(self, key, value)
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
 
@@ -246,31 +218,39 @@ class Typemap(object):
         """
         util.as_yaml(self, self._keyorder, indent, output)
 
-    def __export_yaml__(self, indent, output):
+    def __export_yaml__(self, output, mode="all"):
         """Write out a subset of a wrapped type.
         Other fields are set with fill_shadow_typemap_defaults.
 
         Args:
-            indent -
             output -
         """
-        util.as_yaml(
-            self,
-            [
-                "base",
-                "impl_header",
-                "cxx_header",
-                "cxx_type",
+        # Temporary dictionary to allow convert on header fields.
+        if mode == "all":
+            order = self._keyorder
+        else: # class
+            # To be used by other libraries which import shadow types.
+            if self.base == "shadow":
+                order = [
+                    "base",
+                    "wrap_header",
+                ]
+            else:
+                order = [
+                    "base",
+                    "cxx_header",
+                    "c_header",
+                ]
+            order.extend([
+#                "cxx_type",  # same as the dict key
                 "c_type",
-                "c_header",
                 "f_module_name",
                 "f_derived_type",
                 "f_capsule_data_type",
                 "f_to_c",
-            ],
-            indent,
-            output,
-        )
+            ])
+                
+        util.as_yaml(self, order, output)
 
 
 # Manage collection of typemaps
@@ -806,7 +786,7 @@ def update_typemap_for_language(language):
     Fill in cf_tree.
     """
     update_for_language(fc_statements, language)
-    update_stmt_tree(fc_statements, cf_tree)
+    update_stmt_tree(fc_statements, cf_tree, default_stmts)
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
@@ -889,7 +869,8 @@ def create_class_typemap(node, fields=None):
         sgroup="shadow",
         cxx_type=cxx_type,
         # XXX - look up scope for header...
-        impl_header=node.cxx_header or None,
+        impl_header=node.cxx_header,
+        wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
@@ -984,6 +965,7 @@ def create_struct_typemap(node, fields=None):
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
+        f_c_module={"--import--": [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
     )
@@ -1013,6 +995,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     language = libnode.language
     if language == "c":
         # The struct from the user's library is used.
+        # XXX - if struct in class, uses class.cxx_header?
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
 
@@ -1146,22 +1129,43 @@ def create_buf_variable_names(options, blk, attrs, c_var):
             )
 
 
+def compute_return_prefix(arg, local_var):
+    """Compute how to access variable: dereference, address, as-is"""
+    if local_var == "scalar":
+        if arg.is_pointer():
+            return "&"
+        else:
+            return ""
+    elif local_var == "pointer":
+        if arg.is_pointer():
+            return ""
+        else:
+            return "*"
+    elif local_var == "funcptr":
+        return ""
+    elif arg.is_reference():
+        # Convert a return reference into a pointer.
+        return "&"
+    else:
+        return ""
+
 def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
 
     stmts=dict(
       foo_bar=dict(
-        c_decl=[],
-        cxx_decl=[],
+        c_declare=[],
+        cxx_declare=[],
       )
     )
 
     For lang==c,
-      foo_bar["decl"] = foo_bar["c_decl"]
+      foo_bar["declare"] = foo_bar["c_declare"]
     """
     for item in stmts.values():
-        for clause in ["decl", "post_parse", "pre_call", "post_call",
+        for clause in ["cxx_local_var", "declare", "post_parse",
+                       "pre_call", "post_call",
                        "cleanup", "fail"]:
             specific = lang + "_" + clause
             if specific in item:
@@ -1169,7 +1173,7 @@ def update_for_language(stmts, lang):
                 item[clause] = item[specific]
 
 
-def update_stmt_tree(stmts, tree):
+def update_stmt_tree(stmts, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
     the values from stmts.  The end key is named _node, since it is
@@ -1205,9 +1209,8 @@ def update_stmt_tree(stmts, tree):
 
     """
     # Convert defaults into Scope nodes.
-    for key, node in default_stmts.items():
-        default_scopes[key] = util.Scope(None)
-        default_scopes[key].update(node)
+    for key, node in defaults.items():
+        default_scopes[key] = node()
 
     for key, node in stmts.items():
         step = tree
@@ -1259,11 +1262,70 @@ def lookup_stmts_tree(tree, path):
         if "_node" in step:
             # Path ends here.
             found = step["_node"]["scope"]
-    if not isinstance(found, util.Scope):
-        raise RuntimeError
+#    if not isinstance(found, util.Scope):
+#        raise RuntimeError
     return found
 
 
+class CStmts(object):
+    def __init__(self,
+        key="c_default",
+        buf_args=[], buf_extra=[],
+        c_header=[], c_helper="", c_local_var=None,
+        cxx_header=[], cxx_local_var=None,
+        pre_call=[], call=[], post_call=[], final=[], ret=[],
+        destructor_name=None,
+        owner="library",
+        return_type=None, return_cptr=False,
+    ):
+        self.key = key
+        self.buf_args = buf_args
+        self.buf_extra = buf_extra
+        self.c_header = c_header
+        self.c_helper = c_helper
+        self.c_local_var = c_local_var
+        self.cxx_header = cxx_header
+        self.cxx_local_var = cxx_local_var
+
+        self.pre_call = pre_call
+        self.call = call
+        self.post_call = post_call
+        self.final = final
+        self.ret = ret
+
+        self.destructor_name = destructor_name
+        self.owner = owner
+        self.return_type = return_type
+        self.return_cptr = return_cptr
+
+class FStmts(object):
+    def __init__(self,
+        key="f_default",
+        buf_args=[],
+        c_local_var=None,
+        f_helper="", f_module=None,
+        need_wrapper=False,
+        declare=[], pre_call=[], call=[], post_call=[],
+        result=None,  # name of result variable
+    ):
+        self.key = key
+        self.buf_args = buf_args
+        self.c_local_var = c_local_var
+        self.f_helper = f_helper
+        self.f_module = f_module
+
+        self.need_wrapper = need_wrapper
+        self.declare = declare
+        self.pre_call = pre_call
+        self.call = call
+        self.post_call = post_call
+        self.result = result
+
+
+default_stmts = dict(
+    c=CStmts,
+    f=FStmts,
+)
                 
 # language   "c" 
 # sgroup     "native", "string", "char"
@@ -1435,8 +1497,8 @@ fc_statements = dict(
 
     c_schar_result_buf=dict(
         buf_args=["arg", "len"],
-        c_header="<string.h>",
-        cxx_header="<cstring>",
+        c_header=["<string.h>"],
+        cxx_header=["<cstring>"],
         post_call=[
             "{stdlib}memset({c_var}, ' ', {c_var_len});",
             "{c_var}[0] = {cxx_var};",
@@ -1448,7 +1510,7 @@ fc_statements = dict(
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     c_string_out=dict(
-        cxx_header="<cstring>",
+        cxx_header=["<cstring>"],
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
         # #-     ],
@@ -1460,7 +1522,7 @@ fc_statements = dict(
         ],
     ),
     c_string_inout=dict(
-        cxx_header="<cstring>",
+        cxx_header=["<cstring>"],
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
         post_call=[
@@ -1842,7 +1904,8 @@ fc_statements = dict(
         buf_args=["shadow"],
         cxx_local_var="pointer",
         pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
         ],
     ),
     c_shadow_scalar_in=dict(
@@ -1916,6 +1979,9 @@ fc_statements = dict(
         alias="f_shadow_result",
     ),
     c_shadow_dtor=dict(
+        # NULL in stddef.h
+        c_header=["<stddef.h>"],
+        cxx_header=["<cstddef>"],
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = NULL;",
@@ -1926,7 +1992,7 @@ fc_statements = dict(
     c_struct=dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
-        cxx_local_var="pointer",
+        cxx_cxx_local_var="pointer", # cxx_local_var only used with C++
         cxx_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],

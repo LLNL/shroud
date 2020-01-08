@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapWorker.h",
@@ -32,7 +32,7 @@
                 "typemap_name": "Worker"
             },
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapuser_int.h",
@@ -175,7 +175,9 @@
                                     "data_var": "SHData_arg1",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_arg1",
-                                    "size_var": "SHSize_arg1"
+                                    "size_var": "SHSize_arg1",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             },
                             "arg2": {
@@ -218,7 +220,9 @@
                                     "data_var": "SHData_arg2",
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHPy_arg2",
-                                    "size_var": "SHSize_arg2"
+                                    "size_var": "SHSize_arg2",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },
@@ -353,7 +357,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "templates.hpp",
+        "cxx_header": [
+            "templates.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
@@ -614,7 +620,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -657,7 +665,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_LONG",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -824,7 +834,9 @@
                             "data_var": "SHData_arg1",
                             "numpy_type": "NPY_FLOAT",
                             "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1"
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     },
                     "arg2": {
@@ -867,7 +879,9 @@
                             "data_var": "SHData_arg2",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2"
+                            "size_var": "SHSize_arg2",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
                         }
                     }
                 },
@@ -1098,7 +1112,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "_generated": "cxx_template",
@@ -1211,7 +1227,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "_generated": "cxx_template",
@@ -1300,7 +1318,9 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_int.h",
@@ -1531,7 +1551,9 @@
                                             "data_var": "SHData_value",
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_value",
-                                            "size_var": "SHSize_value"
+                                            "size_var": "SHSize_value",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     }
                                 },
@@ -1692,7 +1714,9 @@
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
                                             "py_var": "SHPy_n",
-                                            "size_var": "SHSize_n"
+                                            "size_var": "SHSize_n",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     }
                                 },
@@ -1729,7 +1753,9 @@
                                         "data_var": "SHData_rv",
                                         "numpy_type": "NPY_INT",
                                         "py_var": "SHTPy_rv",
-                                        "size_var": "SHSize_rv"
+                                        "size_var": "SHSize_rv",
+                                        "stmt0": "py_native_result_dimension_numpy",
+                                        "stmt1": "py_native_result_dimension_numpy"
                                     }
                                 },
                                 "_generated": "cxx_template",
@@ -1846,7 +1872,9 @@
                         "typemap_name": "std::vector_int"
                     },
                     {
-                        "cxx_header": "<vector>",
+                        "cxx_header": [
+                            "<vector>"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_double.h",
@@ -2075,7 +2103,9 @@
                                             "data_var": "SHData_value",
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_value",
-                                            "size_var": "SHSize_value"
+                                            "size_var": "SHSize_value",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     }
                                 },
@@ -2236,7 +2266,9 @@
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
                                             "py_var": "SHPy_n",
-                                            "size_var": "SHSize_n"
+                                            "size_var": "SHSize_n",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     }
                                 },
@@ -2273,7 +2305,9 @@
                                         "data_var": "SHData_rv",
                                         "numpy_type": "NPY_DOUBLE",
                                         "py_var": "SHTPy_rv",
-                                        "size_var": "SHSize_rv"
+                                        "size_var": "SHSize_rv",
+                                        "stmt0": "py_native_result_dimension_numpy",
+                                        "stmt1": "py_native_result_dimension_numpy"
                                     }
                                 },
                                 "_generated": "cxx_template",
@@ -2417,7 +2451,9 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "implworker1.hpp",
+                        "cxx_header": [
+                            "implworker1.hpp"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker1.h",
@@ -2449,7 +2485,9 @@
                         "typemap_name": "internal::ImplWorker1"
                     },
                     {
-                        "cxx_header": "implworker2.hpp",
+                        "cxx_header": [
+                            "implworker2.hpp"
+                        ],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker2.h",

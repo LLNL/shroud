@@ -9,7 +9,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "enum.h",
+        "cxx_header": [
+            "enum.h"
+        ],
         "enums": [
             {
                 "_fmtmembers": {

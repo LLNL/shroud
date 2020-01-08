@@ -64,6 +64,15 @@ contains
     real(C_DOUBLE) :: input
     input = input + 20.5_C_DOUBLE
   end subroutine incr3b_double
+
+  subroutine set_alloc(tc, arr)
+    use iso_c_binding, only : C_INT
+    use clibrary_mod, only : array_info
+    integer(C_INT), intent(IN), value :: tc
+    type(array_info), intent(INOUT) :: arr
+    arr%tc = tc
+  end subroutine set_alloc
+  
 end module callback_mod
 
 program tester
@@ -104,6 +113,7 @@ contains
     integer(C_INT), target :: int_var
     character(MAXNAME) name1, name2
     character(lenoutbuf)  :: outbuf
+    character(30) str
     type(C_PTR) :: cptr1, cptr2
 
     integer(C_INT) int_array(10)
@@ -137,6 +147,9 @@ contains
     call accept_name("spot")
 !    call assert_true(last_function_called() == "acceptName")
 
+    str = 'dog'
+    call pass_char_ptr_in_out(str)
+    call assert_true( str == "DOG")
     !--------------------------------------------------
 
     name1 = " "
@@ -218,6 +231,7 @@ contains
     integer(C_INT) arg_int
     real(C_DOUBLE) arg_dbl
     character(lenoutbuf)  :: outbuf
+    type(array_info) :: arr
     external incr2_int, incr2_double
     external incr3_int, incr3_double
 
@@ -270,6 +284,12 @@ contains
     arg_dbl = 3.4_C_DOUBLE
     call callback3("double", arg_dbl, incr3b_double, outbuf)
     call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3b_double")
+
+    ! The callback sets tc
+    arr%tc = 0
+    call callback_set_alloc(3, arr, set_alloc)
+    call assert_equals(3, arr%tc, "callback_set_alloc")
+    
 
   end subroutine test_callback
 

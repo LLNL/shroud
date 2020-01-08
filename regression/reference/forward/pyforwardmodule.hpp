@@ -18,7 +18,7 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace tutorial {
+namespace forward {
     class Class3;  // forward declare
 }
 extern PyTypeObject PY_Class3_Type;
@@ -27,18 +27,18 @@ extern PyTypeObject PY_Class3_Type;
 
 typedef struct {
 PyObject_HEAD
-    tutorial::Class3 * obj;
+    forward::Class3 * obj;
     int idtor;
     // splicer begin class.Class3.C_object
     // splicer end class.Class3.C_object
 } PY_Class3;
 
 extern const char *PY_Class3_capsule_name;
-PyObject *PP_Class3_to_Object(tutorial::Class3 *addr);
+PyObject *PP_Class3_to_Object(forward::Class3 *addr);
 int PP_Class3_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace tutorial {
+namespace forward {
     class Class2;  // forward declare
 }
 extern PyTypeObject PY_Class2_Type;
@@ -47,14 +47,14 @@ extern PyTypeObject PY_Class2_Type;
 
 typedef struct {
 PyObject_HEAD
-    tutorial::Class2 * obj;
+    forward::Class2 * obj;
     int idtor;
     // splicer begin class.Class2.C_object
     // splicer end class.Class2.C_object
 } PY_Class2;
 
 extern const char *PY_Class2_capsule_name;
-PyObject *PP_Class2_to_Object(tutorial::Class2 *addr);
+PyObject *PP_Class2_to_Object(forward::Class2 *addr);
 int PP_Class2_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 

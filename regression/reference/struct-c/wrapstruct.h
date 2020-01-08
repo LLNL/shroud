@@ -16,9 +16,7 @@
 #define WRAPSTRUCT_H
 
 #include "typesstruct.h"
-#ifndef __cplusplus
 #include "struct.h"
-#endif
 
 // splicer begin C_declarations
 // splicer end C_declarations

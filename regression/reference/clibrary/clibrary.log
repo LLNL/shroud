@@ -1,4 +1,5 @@
 Read yaml clibrary.yaml
+Close clibrary_types.yaml
 C function void NoReturnNoArguments()
 C function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
@@ -6,6 +7,8 @@ C function void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent
 C function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 C function void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function void acceptName(const char * name +intent(in))
+C function void passCharPtrInOut(char * s +intent(inout))
+C function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 C function void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 C function void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))
 C function void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
@@ -28,9 +31,11 @@ C function int callback1(int type +intent(in)+value, void ( * incr)() +external+
 C function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+C function void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
+class array_info
 C-interface, Fortran function void NoReturnNoArguments()
 C-interface, Fortran function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
@@ -38,6 +43,8 @@ C-interface, Fortran function void checkBool(const bool arg1 +intent(in)+value, 
 C-interface, Fortran function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 C-interface function void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface, Fortran function void acceptName(const char * name +intent(in))
+C-interface, Fortran function void passCharPtrInOut(char * s +intent(inout))
+C-interface function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 C-interface, Fortran function void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 C-interface function void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))
 C-interface, Fortran function void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
@@ -60,6 +67,7 @@ C-interface, Fortran function int callback1(int type +intent(in)+value, void ( *
 C-interface, Fortran function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C-interface, Fortran function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C-interface function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+C-interface, Fortran function void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)
 Close wrapfclibrary.f
 Python function void NoReturnNoArguments()
 Python function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -67,6 +75,7 @@ Python function void PassByReference(double * arg1 +intent(in), int * arg2 +inte
 Python function void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 Python function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 Python function void acceptName(const char * name +intent(in))
+Python function void passCharPtrInOut(char * s +intent(inout))
 Python function void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 Python function void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
 Python function void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)

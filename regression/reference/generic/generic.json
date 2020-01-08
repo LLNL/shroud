@@ -9,7 +9,10 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "generic.h helper.h",
+        "cxx_header": [
+            "generic.h",
+            "helper.h"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

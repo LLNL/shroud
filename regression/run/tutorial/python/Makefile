@@ -23,8 +23,6 @@ VPATH = \
 OBJS = \
     tutorial.o \
     pyTutorialmodule.o \
-    pyClass1type.o \
-    pySingletontype.o \
     pyTutorialutil.o
 
 CXXFLAGS += $(SHARED)

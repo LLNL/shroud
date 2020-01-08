@@ -17,7 +17,7 @@ import unittest
 
 class Namespace(unittest.TestCase):
     def test_ns1(self):
-        lib = ast.LibraryNode(None)
+        lib = ast.LibraryNode()
         self.assertEqual("", lib.scope)
 
         # The Typemap must be created before the TypedefNode.
@@ -46,7 +46,7 @@ class Namespace(unittest.TestCase):
 
     def test_ns2_class(self):
         # test class
-        lib = ast.LibraryNode(None)
+        lib = ast.LibraryNode()
         class1 = lib.add_class("Class1")
         self.assertEqual("Class1", class1.typemap.name)
         self.assertEqual("Class1::", class1.scope)
@@ -78,7 +78,7 @@ class Namespace(unittest.TestCase):
     def test_ns3_enum(self):
         # test enum
         typemap.initialize()
-        lib = ast.LibraryNode(None)
+        lib = ast.LibraryNode()
         enum1 = lib.add_enum("enum Enum1 {}")
         self.assertEqual("Enum1", enum1.typemap.name)
         self.assertEqual("Enum1::", enum1.scope)
@@ -115,7 +115,7 @@ class Namespace(unittest.TestCase):
 
     def test_ns4_namespace(self):
         # nested namespace
-        lib = ast.LibraryNode(None)
+        lib = ast.LibraryNode()
         ns1 = lib.add_namespace("ns1")
         self.assertEqual("ns1::", ns1.scope)
         self.assertEqual(ns1, lib.qualified_lookup("ns1"))
@@ -140,7 +140,7 @@ class Namespace(unittest.TestCase):
         self.assertEqual(enumx, ns1.unqualified_lookup("Enumx"))
 
     def test_declare_namespace(self):
-        lib = ast.LibraryNode(None)
+        lib = ast.LibraryNode("")
         ns = lib.add_declaration("namespace ns")
 
 

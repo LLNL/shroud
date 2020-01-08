@@ -38,19 +38,19 @@ def append_format_lst(lstout, lstin, fmt):
         lstout.append(wformat(template, fmt))
 
 
-def append_format_cmds(lstout, dictin, name, fmt):
+def append_format_cmds(lstout, stmts, name, fmt):
     """Format entries in dictin[name] and append to lstout.
     Return True if found.
     Used with c_statements and py_statements.
 
     Args:
       lstout - list to append output lines to.
-      dictin - could be c_statements.intent_in.
-      name - entry into dictin. ex. "decl", "pre_call", "post_call".
+      stmts - could be c_statements.intent_in.
+      name - entry into dictin. ex. "declare", "pre_call", "post_call".
       fmt - format dictionary or Scope instance.
     """
-    cmd_list = dictin.get(name, None)
-    if cmd_list is None:
+    cmd_list = getattr(stmts, name)
+    if not cmd_list:
         return False
     for cmd in cmd_list:
         lstout.append(wformat(cmd, fmt))
@@ -97,11 +97,10 @@ def update(d, u):
     return d
 
 
-def as_yaml(obj, order, indent, output):
+def as_yaml(obj, order, output):
     """Write out obj in YAML syntax
     obj    - a dictionary or an instance with attributes to dump.
     order  - order of keys to dump
-    indent - indention level.
     output - list of output lines.
 
     This is not really intendent to be a general routine.
@@ -109,7 +108,6 @@ def as_yaml(obj, order, indent, output):
     a YAML file similar to what a user may write.
     """
 
-    prefix = "  " * indent
     for key in order:
         if isinstance(obj, collections.Mapping):
             value = obj[key]
@@ -124,9 +122,9 @@ def as_yaml(obj, order, indent, output):
             # quote strings which start with { to avoid treating them
             # as a dictionary.
             if value.startswith("{"):
-                output.append('{}{}: "{}"'.format(prefix, key, value))
+                output.append('{}: "{}"'.format(key, value))
             else:
-                output.append("{}{}: {}".format(prefix, key, value))
+                output.append("{}: {}".format(key, value))
         elif isinstance(value, collections.Sequence):
             # Keys which are are an array of string (code templates)
             if key in (
@@ -137,21 +135,22 @@ def as_yaml(obj, order, indent, output):
                 "post_parse",
                 "ctor",
             ):
-                output.append("{}{}: |".format(prefix, key))
+                output.append("{}: |".format(key))
                 for i in value:
-                    output.append("{}  {}".format(prefix, i))
+                    output.append("{}".format(i))
             else:
-                output.append("{}{}:".format(prefix, key))
+                output.append("{}:".format(key))
                 for i in value:
-                    output.append("{}- {}".format(prefix, i))
+                    output.append("@- {}".format(i))
         elif isinstance(value, collections.Mapping):
-            output.append("{}{}:".format(prefix, key))
-            order0 = value.keys()
-            order0.sort()
-            as_yaml(value, order0, indent + 1, output)
+            output.append("{}:".format(key))
+            order0 = sorted(value.keys())
+            output.append(1)
+            as_yaml(value, order0, output)
+            output.append(-1)
         else:
             # numbers or booleans
-            output.append("{}{}: {}".format(prefix, key, value))
+            output.append("{}: {}".format(key, value))
 
 
 def extern_C(output, position):
@@ -258,9 +257,9 @@ class WrapperMixin(object):
                     output.append("}")
 
     def find_header(self, node):
-        """Add cxx_header for node or for parent to header_impl_include."""
+        """Add cxx_header for node or its parent to header_impl_include."""
         if node.cxx_header:
-            for hdr in node.cxx_header.split():
+            for hdr in node.cxx_header:
                 self.header_impl_include[hdr] = True
         elif node.parent is not None:
             self.find_header(node.parent)
@@ -273,12 +272,11 @@ class WrapperMixin(object):
         """
         # include any dependent header in generated source
         if self.language == "c":
-            headers = intent_blk.get("c_header", None)
+            headers = intent_blk.c_header
         else:
-            headers = intent_blk.get("cxx_header", None)
-        if headers:
-            for h in headers.split():
-                self.header_impl_include[h] = True
+            headers = intent_blk.cxx_header
+        for hdr in headers:
+            self.header_impl_include[hdr] = True
 
     def write_headers(self, headers, output):
         for header in sorted(headers):
@@ -309,8 +307,8 @@ class WrapperMixin(object):
 
         for typedef in types.values():
             hdr = getattr(typedef, lang_header)
-            if hdr:
-                headers.setdefault(hdr, []).append(typedef)
+            for h in hdr:
+                headers.setdefault(h, []).append(typedef)
 
         need_blank = True
         for hdr in sorted(headers):
@@ -340,21 +338,20 @@ class WrapperMixin(object):
                     output.append('#include "%s"' % hdr)
 
     def write_includes_for_header(
-            self, lang_header, types, hlist, output, skip={}):
+            self, fmt, types, hlist, output, skip={}):
         """
         Write the include statements for headers required for
         arguments in wrapper declarations.
 
         Write include files for C or C++.
 
-
-        lang_header - "c_header"
-        types - dictionary of Typemap nodes.
-                types[typedef.name] = typedef
-        hlist - list of headers to include
-                From helper routines
-        output - append lines of code.
-        skip - dictionary of headers to ignore.
+        Args:
+            types - dictionary of Typemap nodes.
+                    types[typedef.name] = typedef
+            hlist - list of headers to include
+                    From helper routines
+            output - append lines of code.
+            skip - dictionary of headers to ignore.
 
         headers[hdr] [ typedef, None, ... ]
         None from helper files
@@ -363,17 +360,19 @@ class WrapperMixin(object):
         always = {}  # used by C and C++.
         c_headers = {}
         cxx_headers = {}
+        wrap_headers = {}
         for hdr in hlist:
             always.setdefault(hdr, []).append(None)
 
         # Collect headers for c and c++.
         for typedef in types.values():
-            hdr = getattr(typedef, "c_header")
-            if hdr:
+            for hdr in typedef.c_header:
                 c_headers.setdefault(hdr, []).append(typedef)
-            hdr = getattr(typedef, "cxx_header")
-            if hdr:
+            for hdr in typedef.cxx_header:
                 cxx_headers.setdefault(hdr, []).append(typedef)
+            for hdr in typedef.wrap_header:
+                if hdr != fmt.C_header_utility:
+                    wrap_headers.setdefault(hdr, []).append(typedef)
 
         # Find which headers are always included.
         both = {}
@@ -386,8 +385,11 @@ class WrapperMixin(object):
             del cxx_headers[hdr]
 
         lines = []
+        self.write_include_group(wrap_headers, lines)
         self.write_include_group(always, lines)
-        if cxx_headers:
+        if self.language == "c":
+            self.write_include_group(c_headers, lines)
+        elif cxx_headers:
             lines.append("#ifdef __cplusplus")
             self.write_include_group(cxx_headers, lines)
             if c_headers:

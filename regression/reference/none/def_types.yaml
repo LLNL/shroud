@@ -1,1379 +1,618 @@
-MPI_Comm: !!python/object:shroud.typemap.Typemap
-  LUA_pop: POP
-  LUA_push: PUSH
-  LUA_statements: &id001 {}
-  LUA_type: LUA_TNONE
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: null
-  PY_format: O
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: mpi.h
-  c_return_code: null
-  c_to_cxx: MPI_Comm_f2c({c_var})
-  c_type: MPI_Fint
-  cpp_if: null
-  cxx_header: mpi.h
-  cxx_to_c: MPI_Comm_c2f({cxx_var})
-  cxx_type: MPI_Comm
-  f_args: null
-  f_c_module:
-    iso_c_binding:
-    - C_INT
-  f_c_type: integer(C_INT)
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT
-  f_module: null
-  f_module_name: null
-  f_to_c: null
-  f_type: integer
-  f_type_allocatable: null
-  flat_name: MPI_Comm
-  format: &id002 {}
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: MPI_Comm
-  result_as_arg: null
-  sgroup: unknown
-  sh_type: SH_TYPE_OTHER
-  template_suffix: null
-  typedef: null
-bool: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_toboolean({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushboolean({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TBOOLEAN
-  PYN_descr: null
-  PYN_typenum: NPY_BOOL
-  PY_PyObject: null
-  PY_PyTypeObject: PyBool_Type
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: null
-  PY_format: O
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: bool
-  c_header: <stdbool.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: bool
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: bool
-  f_args: null
-  f_c_module: null
-  f_c_type: logical(C_BOOL)
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_BOOL
-  f_module:
-    iso_c_binding:
-    - C_BOOL
-  f_module_name: null
-  f_to_c: null
-  f_type: logical
-  f_type_allocatable: null
-  flat_name: bool
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: bool
-  result_as_arg: null
-  sgroup: bool
-  sh_type: SH_TYPE_BOOL
-  template_suffix: null
-  typedef: null
-char: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushstring({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TSTRING
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyString_FromString({c_var})
-  PY_format: s
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: string
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: char
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: char
-  f_args: null
-  f_c_module:
-    iso_c_binding:
-    - C_CHAR
-  f_c_type: character(kind=C_CHAR)
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_CHAR
-  f_module: null
-  f_module_name: null
-  f_to_c: null
-  f_type: character(*)
-  f_type_allocatable: character(len=:)
-  flat_name: char
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: char
-  result_as_arg: null
-  sgroup: char
-  sh_type: SH_TYPE_OTHER
-  template_suffix: null
-  typedef: null
-char_scalar: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushstring({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TSTRING
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: (int) {cxx_var}
-  PY_build_format: null
-  PY_ctor: PyString_FromStringAndSize(&{c_var}, 1)
-  PY_format: c
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: char
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: char
-  f_args: null
-  f_c_module:
-    iso_c_binding:
-    - C_CHAR
-  f_c_type: character(kind=C_CHAR)
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_CHAR
-  f_module: null
-  f_module_name: null
-  f_to_c: null
-  f_type: character
-  f_type_allocatable: null
-  flat_name: char
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: char_scalar
-  result_as_arg: null
-  sgroup: schar
-  sh_type: SH_TYPE_OTHER
-  template_suffix: null
-  typedef: null
-double: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_DOUBLE
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
-  PY_format: d
-  PY_from_object: null
-  PY_get: PyFloat_AsDouble({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: double
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: double
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: real({f_var}, C_DOUBLE)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_DOUBLE
-  f_module:
-    iso_c_binding:
-    - C_DOUBLE
-  f_module_name: null
-  f_to_c: null
-  f_type: real(C_DOUBLE)
-  f_type_allocatable: null
-  flat_name: double
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: double
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_DOUBLE
-  template_suffix: null
-  typedef: null
-float: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_FLOAT
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
-  PY_format: f
-  PY_from_object: null
-  PY_get: PyFloat_AsDouble({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: float
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: float
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: real({f_var}, C_FLOAT)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_FLOAT
-  f_module:
-    iso_c_binding:
-    - C_FLOAT
-  f_module_name: null
-  f_to_c: null
-  f_type: real(C_FLOAT)
-  f_type_allocatable: null
-  flat_name: float
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: float
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_FLOAT
-  template_suffix: null
-  typedef: null
-int: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: int
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: int
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT)
-  f_type_allocatable: null
-  flat_name: int
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: int
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_INT
-  template_suffix: null
-  typedef: null
-int16_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT16
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: int16_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: int16_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT16_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT16_T
-  f_module:
-    iso_c_binding:
-    - C_INT16_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT16_T)
-  f_type_allocatable: null
-  flat_name: int16_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: int16_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_INT16_T
-  template_suffix: null
-  typedef: null
-int32_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT32
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: int32_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: int32_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT32_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT32_T
-  f_module:
-    iso_c_binding:
-    - C_INT32_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT32_T)
-  f_type_allocatable: null
-  flat_name: int32_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: int32_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_INT32_T
-  template_suffix: null
-  typedef: null
-int64_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT64
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: L
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: int64_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: int64_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT64_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT64_T
-  f_module:
-    iso_c_binding:
-    - C_INT64_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT64_T)
-  f_type_allocatable: null
-  flat_name: int64_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: int64_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_INT64_T
-  template_suffix: null
-  typedef: null
-int8_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT8
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: int8_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: int8_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT8_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT8_T
-  f_module:
-    iso_c_binding:
-    - C_INT8_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT8_T)
-  f_type_allocatable: null
-  flat_name: int8_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: int8_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_INT8_T
-  template_suffix: null
-  typedef: null
-long: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_LONG
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: l
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: long
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: long
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_LONG)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_LONG
-  f_module:
-    iso_c_binding:
-    - C_LONG
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_LONG)
-  f_type_allocatable: null
-  flat_name: long
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: long
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_LONG
-  template_suffix: null
-  typedef: null
-long_long: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_LONGLONG
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: null
-  PY_format: L
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: long long
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: long long
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_LONG_LONG)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_LONG_LONG
-  f_module:
-    iso_c_binding:
-    - C_LONG_LONG
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_LONG_LONG)
-  f_type_allocatable: null
-  flat_name: long_long
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: long_long
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_LONG_LONG
-  template_suffix: null
-  typedef: null
-short: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_SHORT
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: h
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: short
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: short
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_SHORT)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_SHORT
-  f_module:
-    iso_c_binding:
-    - C_SHORT
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_SHORT)
-  f_type_allocatable: null
-  flat_name: short
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: short
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_SHORT
-  template_suffix: null
-  typedef: null
-size_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromSize_t({c_deref}{c_var})
-  PY_format: n
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stddef.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: size_t
-  cpp_if: null
-  cxx_header: <cstddef>
-  cxx_to_c: null
-  cxx_type: size_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_SIZE_T)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_SIZE_T
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_SIZE_T)
-  f_type_allocatable: null
-  flat_name: size_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: size_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_SIZE_T
-  template_suffix: null
-  typedef: null
-std::string: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushstring({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TSTRING
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  PY_build_format: s#
-  PY_ctor: "PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())"
-  PY_format: s
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: string
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: char
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: '{cxx_var}{cxx_member}c_str()'
-  cxx_type: std::string
-  f_args: null
-  f_c_module:
-    iso_c_binding:
-    - C_CHAR
-  f_c_type: character(kind=C_CHAR)
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_CHAR
-  f_module: null
-  f_module_name: null
-  f_to_c: null
-  f_type: character(*)
-  f_type_allocatable: character(len=:)
-  flat_name: std_string
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: <string>
-  name: std::string
-  result_as_arg: null
-  sgroup: string
-  sh_type: SH_TYPE_OTHER
-  template_suffix: null
-  typedef: null
-std::vector: !!python/object:shroud.typemap.Typemap
-  LUA_pop: POP
-  LUA_push: PUSH
-  LUA_statements: *id001
-  LUA_type: LUA_TNONE
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: null
-  PY_format: O
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: vector
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: null
-  cpp_if: null
-  cxx_header: <vector>
-  cxx_to_c: null
-  cxx_type: std::vector<{cxx_T}>
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: '{f_var}'
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: null
-  f_module: null
-  f_module_name: null
-  f_to_c: null
-  f_type: null
-  f_type_allocatable: null
-  flat_name: std_vector_{cxx_T}
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: std::vector
-  result_as_arg: null
-  sgroup: vector
-  sh_type: SH_TYPE_OTHER
-  template_suffix: null
-  typedef: null
-uint16_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_UINT16
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: uint16_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: uint16_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT16_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT16_T
-  f_module:
-    iso_c_binding:
-    - C_INT16_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT16_T)
-  f_type_allocatable: null
-  flat_name: uint16_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: uint16_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UINT16_T
-  template_suffix: null
-  typedef: null
-uint32_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_UINT32
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: uint32_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: uint32_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT32_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT32_T
-  f_module:
-    iso_c_binding:
-    - C_INT32_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT32_T)
-  f_type_allocatable: null
-  flat_name: uint32_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: uint32_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UINT32_T
-  template_suffix: null
-  typedef: null
-uint64_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_UINT64
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: L
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: uint64_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: uint64_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT64_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT64_T
-  f_module:
-    iso_c_binding:
-    - C_INT64_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT64_T)
-  f_type_allocatable: null
-  flat_name: uint64_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: uint64_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UINT64_T
-  template_suffix: null
-  typedef: null
-uint8_t: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_UINT8
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: <stdint.h>
-  c_return_code: null
-  c_to_cxx: null
-  c_type: uint8_t
-  cpp_if: null
-  cxx_header: <cstdint>
-  cxx_to_c: null
-  cxx_type: uint8_t
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT8_t)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT8_T
-  f_module:
-    iso_c_binding:
-    - C_INT8_T
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT8_T)
-  f_type_allocatable: null
-  flat_name: uint8_t
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: uint8_t
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UINT8_T
-  template_suffix: null
-  typedef: null
-unsigned_int: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_INT
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: i
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: unsigned int
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: unsigned int
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_INT)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_INT
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_INT)
-  f_type_allocatable: null
-  flat_name: unsigned_int
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: unsigned_int
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UNSIGNED_INT
-  template_suffix: null
-  typedef: null
-unsigned_long: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_LONG
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: l
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: unsigned long
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: unsigned long
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_LONG)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_LONG
-  f_module:
-    iso_c_binding:
-    - C_LONG
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_LONG)
-  f_type_allocatable: null
-  flat_name: unsigned_long
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: unsigned_long
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UNSIGNED_LONG
-  template_suffix: null
-  typedef: null
-unsigned_long_long: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_LONGLONG
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: null
-  PY_format: L
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: unsigned long long
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: unsigned long long
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_LONG_LONG)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_LONG_LONG
-  f_module:
-    iso_c_binding:
-    - C_LONG_LONG
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_LONG_LONG)
-  f_type_allocatable: null
-  flat_name: unsigned_long_long
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: unsigned_long_long
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UNSIGNED_LONG_LONG
-  template_suffix: null
-  typedef: null
-unsigned_short: !!python/object:shroud.typemap.Typemap
-  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
-  LUA_statements: *id001
-  LUA_type: LUA_TNUMBER
-  PYN_descr: null
-  PYN_typenum: NPY_SHORT
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyInt_FromLong({c_deref}{c_var})
-  PY_format: h
-  PY_from_object: null
-  PY_get: PyInt_AsLong({py_var})
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: unsigned short
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: unsigned short
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: int({f_var}, C_SHORT)
-  f_cast_keywords: null
-  f_cast_module: null
-  f_derived_type: null
-  f_kind: C_SHORT
-  f_module:
-    iso_c_binding:
-    - C_SHORT
-  f_module_name: null
-  f_to_c: null
-  f_type: integer(C_SHORT)
-  f_type_allocatable: null
-  flat_name: unsigned_short
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: unsigned_short
-  result_as_arg: null
-  sgroup: native
-  sh_type: SH_TYPE_UNSIGNED_SHORT
-  template_suffix: null
-  typedef: null
-void: !!python/object:shroud.typemap.Typemap
-  LUA_pop: POP
-  LUA_push: PUSH
-  LUA_statements: *id001
-  LUA_type: LUA_TNONE
-  PYN_descr: null
-  PYN_typenum: null
-  PY_PyObject: null
-  PY_PyTypeObject: null
-  PY_build_arg: null
-  PY_build_format: null
-  PY_ctor: PyCapsule_New({cxx_var}, NULL, NULL)
-  PY_format: O
-  PY_from_object: null
-  PY_get: null
-  PY_to_object: null
-  __line__: null
-  base: unknown
-  c_header: null
-  c_return_code: null
-  c_to_cxx: null
-  c_type: void
-  cpp_if: null
-  cxx_header: null
-  cxx_to_c: null
-  cxx_type: void
-  f_args: null
-  f_c_module: null
-  f_c_type: null
-  f_capsule_data_type: null
-  f_cast: C_LOC({f_var})
-  f_cast_keywords:
-    is_target: true
-  f_cast_module:
-    iso_c_binding:
-    - C_LOC
-  f_derived_type: null
-  f_kind: null
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_module_name: null
-  f_to_c: null
-  f_type: type(C_PTR)
-  f_type_allocatable: null
-  flat_name: void
-  format: *id002
-  forward: null
-  idtor: '0'
-  impl_header: null
-  name: void
-  result_as_arg: null
-  sgroup: unknown
-  sh_type: SH_TYPE_CPTR
-  template_suffix: null
-  typedef: null
+# def_types.yaml
+# This is generated code, do not edit
+# 
+# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+# All types predefined by Shroud
+typemap:
+  - type: MPI_Comm
+    fields:
+      flat_name: MPI_Comm
+      base: unknown
+      idtor: 0
+      cxx_type: MPI_Comm
+      cxx_to_c: MPI_Comm_c2f({cxx_var})
+      cxx_header:
+      - mpi.h
+      c_type: MPI_Fint
+      c_header:
+      - mpi.h
+      c_to_cxx: MPI_Comm_f2c({c_var})
+      f_c_module:
+        iso_c_binding:
+        - C_INT
+      f_type: integer
+      f_kind: C_INT
+      f_c_type: integer(C_INT)
+      f_cast: "{f_var}"
+      PY_format: O
+      LUA_type: LUA_TNONE
+      LUA_pop: POP
+      LUA_push: PUSH
+      sgroup: unknown
+      sh_type: SH_TYPE_OTHER
+  - type: bool
+    fields:
+      flat_name: bool
+      base: bool
+      idtor: 0
+      cxx_type: bool
+      c_type: bool
+      c_header:
+      - <stdbool.h>
+      f_type: logical
+      f_kind: C_BOOL
+      f_c_type: logical(C_BOOL)
+      f_module:
+        iso_c_binding:
+        - C_BOOL
+      f_cast: "{f_var}"
+      PY_format: O
+      PY_PyTypeObject: PyBool_Type
+      PYN_typenum: NPY_BOOL
+      LUA_type: LUA_TBOOLEAN
+      LUA_pop: lua_toboolean({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushboolean({LUA_state_var}, {c_var})
+      sgroup: bool
+      sh_type: SH_TYPE_BOOL
+  - type: char
+    fields:
+      flat_name: char
+      base: string
+      idtor: 0
+      cxx_type: char
+      c_type: char
+      f_c_module:
+        iso_c_binding:
+        - C_CHAR
+      f_type: character(*)
+      f_type_allocatable: character(len=:)
+      f_kind: C_CHAR
+      f_c_type: character(kind=C_CHAR)
+      f_cast: "{f_var}"
+      PY_format: s
+      PY_ctor: PyString_FromString({c_var})
+      LUA_type: LUA_TSTRING
+      LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
+      sgroup: char
+      sh_type: SH_TYPE_OTHER
+  - type: char_scalar
+    fields:
+      flat_name: char
+      base: unknown
+      idtor: 0
+      cxx_type: char
+      c_type: char
+      f_c_module:
+        iso_c_binding:
+        - C_CHAR
+      f_type: character
+      f_kind: C_CHAR
+      f_c_type: character(kind=C_CHAR)
+      f_cast: "{f_var}"
+      PY_format: c
+      PY_ctor: PyString_FromStringAndSize(&{c_var}, 1)
+      PY_build_arg: (int) {cxx_var}
+      LUA_type: LUA_TSTRING
+      LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
+      sgroup: schar
+      sh_type: SH_TYPE_OTHER
+  - type: double
+    fields:
+      flat_name: double
+      base: unknown
+      idtor: 0
+      cxx_type: double
+      c_type: double
+      f_type: real(C_DOUBLE)
+      f_kind: C_DOUBLE
+      f_module:
+        iso_c_binding:
+        - C_DOUBLE
+      f_cast: real({f_var}, C_DOUBLE)
+      PY_format: d
+      PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
+      PY_get: PyFloat_AsDouble({py_var})
+      PYN_typenum: NPY_DOUBLE
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_DOUBLE
+  - type: float
+    fields:
+      flat_name: float
+      base: unknown
+      idtor: 0
+      cxx_type: float
+      c_type: float
+      f_type: real(C_FLOAT)
+      f_kind: C_FLOAT
+      f_module:
+        iso_c_binding:
+        - C_FLOAT
+      f_cast: real({f_var}, C_FLOAT)
+      PY_format: f
+      PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
+      PY_get: PyFloat_AsDouble({py_var})
+      PYN_typenum: NPY_FLOAT
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_FLOAT
+  - type: int
+    fields:
+      flat_name: int
+      base: unknown
+      idtor: 0
+      cxx_type: int
+      c_type: int
+      f_type: integer(C_INT)
+      f_kind: C_INT
+      f_module:
+        iso_c_binding:
+        - C_INT
+      f_cast: int({f_var}, C_INT)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_INT
+  - type: int16_t
+    fields:
+      flat_name: int16_t
+      base: unknown
+      idtor: 0
+      cxx_type: int16_t
+      cxx_header:
+      - <cstdint>
+      c_type: int16_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT16_T)
+      f_kind: C_INT16_T
+      f_module:
+        iso_c_binding:
+        - C_INT16_T
+      f_cast: int({f_var}, C_INT16_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT16
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_INT16_T
+  - type: int32_t
+    fields:
+      flat_name: int32_t
+      base: unknown
+      idtor: 0
+      cxx_type: int32_t
+      cxx_header:
+      - <cstdint>
+      c_type: int32_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT32_T)
+      f_kind: C_INT32_T
+      f_module:
+        iso_c_binding:
+        - C_INT32_T
+      f_cast: int({f_var}, C_INT32_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT32
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_INT32_T
+  - type: int64_t
+    fields:
+      flat_name: int64_t
+      base: unknown
+      idtor: 0
+      cxx_type: int64_t
+      cxx_header:
+      - <cstdint>
+      c_type: int64_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT64_T)
+      f_kind: C_INT64_T
+      f_module:
+        iso_c_binding:
+        - C_INT64_T
+      f_cast: int({f_var}, C_INT64_t)
+      PY_format: L
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT64
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_INT64_T
+  - type: int8_t
+    fields:
+      flat_name: int8_t
+      base: unknown
+      idtor: 0
+      cxx_type: int8_t
+      cxx_header:
+      - <cstdint>
+      c_type: int8_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT8_T)
+      f_kind: C_INT8_T
+      f_module:
+        iso_c_binding:
+        - C_INT8_T
+      f_cast: int({f_var}, C_INT8_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT8
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_INT8_T
+  - type: long
+    fields:
+      flat_name: long
+      base: unknown
+      idtor: 0
+      cxx_type: long
+      c_type: long
+      f_type: integer(C_LONG)
+      f_kind: C_LONG
+      f_module:
+        iso_c_binding:
+        - C_LONG
+      f_cast: int({f_var}, C_LONG)
+      PY_format: l
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_LONG
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_LONG
+  - type: long_long
+    fields:
+      flat_name: long_long
+      base: unknown
+      idtor: 0
+      cxx_type: long long
+      c_type: long long
+      f_type: integer(C_LONG_LONG)
+      f_kind: C_LONG_LONG
+      f_module:
+        iso_c_binding:
+        - C_LONG_LONG
+      f_cast: int({f_var}, C_LONG_LONG)
+      PY_format: L
+      PYN_typenum: NPY_LONGLONG
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_LONG_LONG
+  - type: short
+    fields:
+      flat_name: short
+      base: unknown
+      idtor: 0
+      cxx_type: short
+      c_type: short
+      f_type: integer(C_SHORT)
+      f_kind: C_SHORT
+      f_module:
+        iso_c_binding:
+        - C_SHORT
+      f_cast: int({f_var}, C_SHORT)
+      PY_format: h
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_SHORT
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_SHORT
+  - type: size_t
+    fields:
+      flat_name: size_t
+      base: unknown
+      idtor: 0
+      cxx_type: size_t
+      cxx_header:
+      - <cstddef>
+      c_type: size_t
+      c_header:
+      - <stddef.h>
+      f_type: integer(C_SIZE_T)
+      f_kind: C_SIZE_T
+      f_module:
+        iso_c_binding:
+        - C_SIZE_T
+      f_cast: int({f_var}, C_SIZE_T)
+      PY_format: n
+      PY_ctor: PyInt_FromSize_t({c_deref}{c_var})
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_SIZE_T
+  - type: std::string
+    fields:
+      flat_name: std_string
+      base: string
+      idtor: 0
+      cxx_type: std::string
+      cxx_to_c: "{cxx_var}{cxx_member}c_str()"
+      c_type: char
+      f_c_module:
+        iso_c_binding:
+        - C_CHAR
+      f_type: character(*)
+      f_type_allocatable: character(len=:)
+      f_kind: C_CHAR
+      f_c_type: character(kind=C_CHAR)
+      f_cast: "{f_var}"
+      impl_header:
+      - <string>
+      PY_format: s
+      PY_ctor: PyString_FromStringAndSize({cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size())
+      PY_build_arg: "{cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size()"
+      PY_build_format: s#
+      LUA_type: LUA_TSTRING
+      LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
+      sgroup: string
+      sh_type: SH_TYPE_OTHER
+  - type: std::vector
+    fields:
+      flat_name: std_vector_{cxx_T}
+      base: vector
+      idtor: 0
+      cxx_type: std::vector<{cxx_T}>
+      cxx_header:
+      - <vector>
+      f_cast: "{f_var}"
+      PY_format: O
+      LUA_type: LUA_TNONE
+      LUA_pop: POP
+      LUA_push: PUSH
+      sgroup: vector
+      sh_type: SH_TYPE_OTHER
+  - type: uint16_t
+    fields:
+      flat_name: uint16_t
+      base: unknown
+      idtor: 0
+      cxx_type: uint16_t
+      cxx_header:
+      - <cstdint>
+      c_type: uint16_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT16_T)
+      f_kind: C_INT16_T
+      f_module:
+        iso_c_binding:
+        - C_INT16_T
+      f_cast: int({f_var}, C_INT16_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_UINT16
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UINT16_T
+  - type: uint32_t
+    fields:
+      flat_name: uint32_t
+      base: unknown
+      idtor: 0
+      cxx_type: uint32_t
+      cxx_header:
+      - <cstdint>
+      c_type: uint32_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT32_T)
+      f_kind: C_INT32_T
+      f_module:
+        iso_c_binding:
+        - C_INT32_T
+      f_cast: int({f_var}, C_INT32_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_UINT32
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UINT32_T
+  - type: uint64_t
+    fields:
+      flat_name: uint64_t
+      base: unknown
+      idtor: 0
+      cxx_type: uint64_t
+      cxx_header:
+      - <cstdint>
+      c_type: uint64_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT64_T)
+      f_kind: C_INT64_T
+      f_module:
+        iso_c_binding:
+        - C_INT64_T
+      f_cast: int({f_var}, C_INT64_t)
+      PY_format: L
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_UINT64
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UINT64_T
+  - type: uint8_t
+    fields:
+      flat_name: uint8_t
+      base: unknown
+      idtor: 0
+      cxx_type: uint8_t
+      cxx_header:
+      - <cstdint>
+      c_type: uint8_t
+      c_header:
+      - <stdint.h>
+      f_type: integer(C_INT8_T)
+      f_kind: C_INT8_T
+      f_module:
+        iso_c_binding:
+        - C_INT8_T
+      f_cast: int({f_var}, C_INT8_t)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_UINT8
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UINT8_T
+  - type: unsigned_int
+    fields:
+      flat_name: unsigned_int
+      base: unknown
+      idtor: 0
+      cxx_type: unsigned int
+      c_type: unsigned int
+      f_type: integer(C_INT)
+      f_kind: C_INT
+      f_module:
+        iso_c_binding:
+        - C_INT
+      f_cast: int({f_var}, C_INT)
+      PY_format: i
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_INT
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UNSIGNED_INT
+  - type: unsigned_long
+    fields:
+      flat_name: unsigned_long
+      base: unknown
+      idtor: 0
+      cxx_type: unsigned long
+      c_type: unsigned long
+      f_type: integer(C_LONG)
+      f_kind: C_LONG
+      f_module:
+        iso_c_binding:
+        - C_LONG
+      f_cast: int({f_var}, C_LONG)
+      PY_format: l
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_LONG
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UNSIGNED_LONG
+  - type: unsigned_long_long
+    fields:
+      flat_name: unsigned_long_long
+      base: unknown
+      idtor: 0
+      cxx_type: unsigned long long
+      c_type: unsigned long long
+      f_type: integer(C_LONG_LONG)
+      f_kind: C_LONG_LONG
+      f_module:
+        iso_c_binding:
+        - C_LONG_LONG
+      f_cast: int({f_var}, C_LONG_LONG)
+      PY_format: L
+      PYN_typenum: NPY_LONGLONG
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UNSIGNED_LONG_LONG
+  - type: unsigned_short
+    fields:
+      flat_name: unsigned_short
+      base: unknown
+      idtor: 0
+      cxx_type: unsigned short
+      c_type: unsigned short
+      f_type: integer(C_SHORT)
+      f_kind: C_SHORT
+      f_module:
+        iso_c_binding:
+        - C_SHORT
+      f_cast: int({f_var}, C_SHORT)
+      PY_format: h
+      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_get: PyInt_AsLong({py_var})
+      PYN_typenum: NPY_SHORT
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_UNSIGNED_SHORT
+  - type: void
+    fields:
+      flat_name: void
+      base: unknown
+      idtor: 0
+      cxx_type: void
+      c_type: void
+      f_type: type(C_PTR)
+      f_module:
+        iso_c_binding:
+        - C_PTR
+      f_cast: C_LOC({f_var})
+      f_cast_module:
+        iso_c_binding:
+        - C_LOC
+      f_cast_keywords:
+        is_target: True
+      PY_format: O
+      PY_ctor: PyCapsule_New({cxx_var}, NULL, NULL)
+      LUA_type: LUA_TNONE
+      LUA_pop: POP
+      LUA_push: PUSH
+      sgroup: unknown
+      sh_type: SH_TYPE_CPTR

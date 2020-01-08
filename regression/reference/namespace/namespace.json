@@ -9,7 +9,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "namespace.hpp",
+        "cxx_header": [
+            "namespace.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
@@ -156,7 +158,9 @@
                         "data_var": "SHData_rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv"
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_string_result",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
@@ -422,7 +426,7 @@
                 "classes": [
                     {
                         "as_struct": true,
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
                             "C_impl_filename": "wrapouter_Cstruct1.cpp",
@@ -464,7 +468,9 @@
                                             "data_var": "SHData_dfield",
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
-                                            "size_var": "SHSize_dfield"
+                                            "size_var": "SHSize_dfield",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     },
                                     "ifield": {
@@ -482,7 +488,9 @@
                                             "data_var": "SHData_ifield",
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
-                                            "size_var": "SHSize_ifield"
+                                            "size_var": "SHSize_ifield",
+                                            "stmt0": "py_native_in",
+                                            "stmt1": "py_default"
                                         }
                                     }
                                 },
@@ -683,7 +691,7 @@
             {
                 "classes": [
                     {
-                        "cxx_header": "",
+                        "cxx_header": [],
                         "fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapnswork_ClassWork.h",

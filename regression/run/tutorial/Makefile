@@ -25,9 +25,7 @@ VPATH = \
 
 C_OBJS = \
     tutorial.o \
-    wrapTutorial.o \
-    wrapClass1.o \
-    wrapSingleton.o
+    wrapTutorial.o
 F_OBJS = \
     wrapftutorial.o \
     fruit.o \
@@ -41,14 +39,12 @@ clean :
 
 tutorial.o : tutorial.hpp
 wrapTutorial.o : wrapTutorial.h tutorial.hpp
-wrapClass1.o : wrapClass1.h tutorial.hpp
-wrapSingleton.o : wrapSingleton.h tutorial.hpp
 main.o : wrapftutorial.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+maincpp : maincpp.o wrapTutorial.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
-testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
+testc.o : testc.c wrapTutorial.h tutorial.hpp
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

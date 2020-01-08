@@ -103,7 +103,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const std::string SHCXX_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(DSHF_rv, SHCXX_rv, 2);
+    ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);
     return;
     // splicer end function.concatenate_strings_bufferify
 }
@@ -341,108 +341,6 @@ void TUT_get_min_max(int * min, int * max)
 }
 // end TUT_get_min_max
 
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-int TUT_direction_func(int arg)
-{
-    // splicer begin function.direction_func
-    tutorial::Class1::DIRECTION SHCXX_arg =
-        static_cast<tutorial::Class1::DIRECTION>(arg);
-    tutorial::Class1::DIRECTION SHCXX_rv = tutorial::directionFunc(
-        SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
-    return SHC_rv;
-    // splicer end function.direction_func
-}
-
-// void passClassByValue(Class1 arg +intent(in)+value)
-/**
- * \brief Pass arguments to a function.
- *
- */
-void TUT_pass_class_by_value(TUT_Class1 * arg)
-{
-    // splicer begin function.pass_class_by_value
-    tutorial::Class1 * SHCXX_arg = static_cast<tutorial::Class1 *>
-        (arg->addr);
-    tutorial::passClassByValue(*SHCXX_arg);
-    return;
-    // splicer end function.pass_class_by_value
-}
-
-// int useclass(const Class1 * arg +intent(in))
-int TUT_useclass(TUT_Class1 * arg)
-{
-    // splicer begin function.useclass
-    const tutorial::Class1 * SHCXX_arg =
-        static_cast<const tutorial::Class1 *>(arg->addr);
-    int SHC_rv = tutorial::useclass(SHCXX_arg);
-    return SHC_rv;
-    // splicer end function.useclass
-}
-
-// const Class1 * getclass2()
-TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv)
-{
-    // splicer begin function.getclass2
-    const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
-    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
-        (SHCXX_rv));
-    SHC_rv->idtor = 0;
-    return SHC_rv;
-    // splicer end function.getclass2
-}
-
-// Class1 * getclass3()
-TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv)
-{
-    // splicer begin function.getclass3
-    tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    return SHC_rv;
-    // splicer end function.getclass3
-}
-
-// const Class1 & getConstClassReference()
-TUT_Class1 * TUT_get_const_class_reference(TUT_Class1 * SHC_rv)
-{
-    // splicer begin function.get_const_class_reference
-    const tutorial::Class1 & SHCXX_rv =
-        tutorial::getConstClassReference();
-    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
-        (&SHCXX_rv));
-    SHC_rv->idtor = 0;
-    return SHC_rv;
-    // splicer end function.get_const_class_reference
-}
-
-// Class1 & getClassReference()
-TUT_Class1 * TUT_get_class_reference(TUT_Class1 * SHC_rv)
-{
-    // splicer begin function.get_class_reference
-    tutorial::Class1 & SHCXX_rv = tutorial::getClassReference();
-    SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
-    SHC_rv->idtor = 0;
-    return SHC_rv;
-    // splicer end function.get_class_reference
-}
-
-// Class1 getClassCopy(int flag +intent(in)+value)
-/**
- * \brief Return Class1 instance by value, uses copy constructor
- *
- */
-TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv)
-{
-    // splicer begin function.get_class_copy
-    tutorial::Class1 * SHCXX_rv = new tutorial::Class1;
-    *SHCXX_rv = tutorial::getClassCopy(flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 1;
-    return SHC_rv;
-    // splicer end function.get_class_copy
-}
-
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
 /**
  * \brief Test function pointer
@@ -457,24 +355,6 @@ int TUT_callback1(int in, int ( * incr)(int))
     // splicer end function.callback1
 }
 // end TUT_callback1
-
-// void set_global_flag(int arg +intent(in)+value)
-void TUT_set_global_flag(int arg)
-{
-    // splicer begin function.set_global_flag
-    tutorial::set_global_flag(arg);
-    return;
-    // splicer end function.set_global_flag
-}
-
-// int get_global_flag()
-int TUT_get_global_flag()
-{
-    // splicer begin function.get_global_flag
-    int SHC_rv = tutorial::get_global_flag();
-    return SHC_rv;
-    // splicer end function.get_global_flag
-}
 
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 const char * TUT_last_function_called()
@@ -512,14 +392,7 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
         // Nothing to delete
         break;
     }
-    case 1:   // tutorial::Class1
-    {
-        tutorial::Class1 *cxx_ptr = 
-            reinterpret_cast<tutorial::Class1 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:   // new_string
+    case 1:   // new_string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

@@ -1,13 +1,16 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
-//
-// SPDX-License-Identifier: (BSD-3-Clause)
-//
-// clibrary.c
+/*
+ * Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+ * other Shroud Project Developers.
+ * See the top-level COPYRIGHT file for details.
+ *
+ * SPDX-License-Identifier: (BSD-3-Clause)
+ *
+ * clibrary.c
+ */
 
 #include "clibrary.h"
 
+#include <ctype.h>   // toupper
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -72,6 +75,16 @@ void acceptName(const char *name)
     strncpy(last_function_called, "acceptName", MAXLAST);
 }
 // end acceptName
+
+//----------------------------------------------------------------------
+
+void passCharPtrInOut(char *s)
+{
+    size_t n = strlen(s);
+    for (unsigned int i = 0; i < n; i++) {
+        s[i] = toupper(s[i]);
+    }
+}
 
 //----------------------------------------------------------------------
 // Test charlen attribute.
@@ -200,6 +213,11 @@ void callback3(const char *type, void * in, void (*incr)(int *),
     incr2(in);
   }
   strncpy(outbuf, "callback3", LENOUTBUF);
+}
+
+void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))
+{
+  alloc(tc, arr);
 }
 
 //----------------------------------------------------------------------

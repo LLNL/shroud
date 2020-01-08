@@ -42,10 +42,6 @@ class Wrapc(util.WrapperMixin):
         self.newlibrary = newlibrary
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
-        if self.language == "c":
-            self.lang_header = "c_header"
-        else:
-            self.lang_header = "cxx_header"
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -247,6 +243,10 @@ class Wrapc(util.WrapperMixin):
 
     def write_header_utility(self):
         """Write a utility header file with type definitions.
+
+        One utility header is written for the library.
+        Named from fmt.C_header_utility.
+        Contains typedefs for each shadow class.
         """
         self.gather_helper_code(self.shared_helper)
 
@@ -324,7 +324,7 @@ class Wrapc(util.WrapperMixin):
 
         # headers required by typedefs and helpers
         self.write_includes_for_header(
-            "c_header",
+            node.fmtdict,
             self.header_typedef_nodes,
             self.c_helper_include.keys(),
             output,
@@ -609,10 +609,11 @@ class Wrapc(util.WrapperMixin):
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
             elif buf_arg == "shadow":
-                # Always pass a pointer to capsule.
                 # Do not use const in declaration.
-                proto_list.append( "{} * {}".format(ast.typemap.c_type,
-                                                    name or ast.name))
+                proto_list.append( "{} {}{}".format(
+                    ast.typemap.c_type,
+                    "" if attrs.get("value", False) else "* ",
+                    name or ast.name))
                 continue
 
             need_wrapper = True
@@ -734,7 +735,8 @@ class Wrapc(util.WrapperMixin):
         is_const = ast.func_const
 
         self.impl_typedef_nodes.update(node.gen_headers_typedef)
-        self.header_typedef_nodes[result_typemap.name] = result_typemap
+        header_typedef_nodes = {}
+        header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
         #            # i.e. This method returns a wrapped type
@@ -879,10 +881,11 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
-            if arg_typemap.impl_header:
-                self.header_impl_include[arg_typemap.impl_header] = True
+            if arg_typemap.impl_header is not None:
+                for hdr in arg_typemap.impl_header:
+                    self.header_impl_include[hdr] = True
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
-            self.header_typedef_nodes[arg_typemap.name] = arg_typemap
+            header_typedef_nodes[arg_typemap.name] = arg_typemap
 
             fmt_arg.c_var = arg_name
 
@@ -934,12 +937,12 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
                 intent_blk = typemap.lookup_fc_stmts(stmts)
 
-                if self.language == "c":
-                    fmt_arg.cxx_var = fmt_arg.c_var
-                elif intent_blk.cxx_local_var:
+                if intent_blk.cxx_local_var:
                     # Explicit conversion must be in pre_call.
                     cxx_local_var = intent_blk.cxx_local_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                elif self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
                 elif arg_typemap.c_to_cxx is None:
                     # Compatible
                     fmt_arg.cxx_var = fmt_arg.c_var
@@ -1069,7 +1072,7 @@ class Wrapc(util.WrapperMixin):
                 )
 
         if result_blk.call:
-            raw_call_code = result_blk["call"]
+            raw_call_code = result_blk.call
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
                 "{CXX_this_call}{function_name}"
@@ -1121,8 +1124,9 @@ class Wrapc(util.WrapperMixin):
                         return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
 
-                if result_typemap.impl_header:
-                    self.header_impl_include[result_typemap.impl_header] = True
+                if result_typemap.impl_header is not None:
+                    for hdr in result_typemap.impl_header:
+                        self.header_impl_include[hdr] = True
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_blk, pre_call, post_call, need_wrapper
@@ -1148,7 +1152,7 @@ class Wrapc(util.WrapperMixin):
         elif result_arg is None and C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
-            fmt_result.c_get_value = compute_return_prefix(ast, c_local_var)
+            fmt_result.c_get_value = typemap.compute_return_prefix(ast, c_local_var)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             raw_return_code = ["return;"]
@@ -1168,6 +1172,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
+            self.header_typedef_nodes.update(header_typedef_nodes)
             self.header_proto_c.append("")
             if node.cpp_if:
                 self.header_proto_c.append("#" + node.cpp_if)
@@ -1363,7 +1368,7 @@ class Wrapc(util.WrapperMixin):
         from_stmt = False
         if "owner" in ast.attrs:
             owner = ast.attrs["owner"]
-        elif "owner" in intent_blk:
+        elif intent_blk.owner:
             owner = intent_blk.owner
             from_stmt = True
         else:
@@ -1448,21 +1453,3 @@ def compute_cxx_deref(arg, local_var, fmt):
 #        fmt.cxx_deref = ""
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
-
-def compute_return_prefix(arg, local_var):
-    """Compute how to access variable: dereference, address, as-is"""
-    if local_var == "scalar":
-        if arg.is_pointer():
-            return "&"
-        else:
-            return ""
-    elif local_var == "pointer":
-        if arg.is_pointer():
-            return ""
-        else:
-            return "*"
-    elif arg.is_reference():
-        # Convert a return reference into a pointer.
-        return "&"
-    else:
-        return ""

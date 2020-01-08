@@ -112,6 +112,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed enum option templates to include namespace as well as class name.
   Non-scoped enums only use *C_prefix* on enum member names.
 - Passing a struct by value in Fortran wrapper for C library.
+- Use IMPORT statement when creating an abstract interface with derived type
+  argument which is defined by the library.
 
 ### Removed
 - Format field *class_prefix*. Replace with *C_name_scope* or *F_name_scope*

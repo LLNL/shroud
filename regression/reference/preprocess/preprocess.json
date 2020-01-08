@@ -3,7 +3,7 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "",
+                "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser1.h",
@@ -201,7 +201,9 @@
                                     "data_var": "SHData_i",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_i",
-                                    "size_var": "SHSize_i"
+                                    "size_var": "SHSize_i",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },
@@ -277,7 +279,9 @@
                 "typemap_name": "User1"
             },
             {
-                "cxx_header": "User2.hpp",
+                "cxx_header": [
+                    "User2.hpp"
+                ],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser2.h",
@@ -385,7 +389,9 @@
                                     "data_var": "SHData_flag",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
-                                    "size_var": "SHSize_flag"
+                                    "size_var": "SHSize_flag",
+                                    "stmt0": "py_native_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },
@@ -463,7 +469,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
-        "cxx_header": "preprocess.hpp",
+        "cxx_header": [
+            "preprocess.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",

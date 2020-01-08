@@ -289,7 +289,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         """
         # From arguments
         self.parent = None
-        self.cxx_header = cxx_header
+        self.cxx_header = cxx_header.split()
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
             raise RuntimeError("language must be 'c' or 'c++'")
@@ -789,7 +789,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         # From arguments
         self.name = name
         self.parent = parent
-        self.cxx_header = cxx_header
+        self.cxx_header = cxx_header.split()
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
 
@@ -940,7 +940,7 @@ class ClassNode(AstNode, NamespaceMixin):
         # From arguments
         self.name = name
         self.parent = parent
-        self.cxx_header = cxx_header
+        self.cxx_header = cxx_header.split()
         self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
 

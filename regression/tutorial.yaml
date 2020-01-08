@@ -148,117 +148,6 @@ declarations:
     literalinclude: True
   
 ##################################################
-  
-- decl: class Class1
-  options:
-    literalinclude: True
-  declarations:
-  - decl: int m_flag +readonly;
-  - decl: int m_test +name(test);
-  - decl: Class1()         +name(new)
-    format:
-      function_suffix: _default
-  - decl: Class1(int flag) +name(new)
-    format:
-      function_suffix: _flag
-  - decl: ~Class1()        +name(delete)
-  - decl: int Method1()
-    doxygen:
-       brief: returns the value of flag member
-  
-  - decl: bool equivalent(Class1 const &obj2) const;
-    # Note that Fortran adds an obj argument so use obj2 instead.
-    doxygen:
-       brief: Pass in reference to instance
-    options:
-       # Need to fix fmt.cxx_deref
-       wrap_lua: False
-
-  - decl: Class1 * returnThis();
-    return_this: True
-    doxygen:
-       brief: Return pointer to 'this' to allow chaining calls
-    options:
-       wrap_python: False
-       wrap_lua: False
-  
-  - decl: Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);
-    # do not set return_this
-    # passing in a string will cause node.generated_suffix to be set to '_buf'.
-    # but result is not bufferified so look for c_statements['result'], not
-    # 'result_buf'.
-
-    # The bool argument tests that wrapf.py does not use _generated_suffix
-    # since it only applies to the generated C function.
-
-    doxygen:
-       brief: Return pointer to 'this' to allow chaining calls
-    options:
-       wrap_python: False
-       wrap_lua: False
-  
-  - decl: Class1 *getclass3() const
-    doxygen:
-       brief: Test const method
-# This test is compile only to make sure it is not PURE
-    options:
-#    wrap_python: False
-      wrap_lua: False
-
-  - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
-  
-  - decl: DIRECTION directionFunc(DIRECTION arg);
-  
-##################################################
-
-- decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
-  
-- decl: void passClassByValue(Class1 arg)
-  doxygen:
-    brief: Pass arguments to a function.
-  options:
-     wrap_lua: False
-  
-- decl: int useclass(const Class1 *arg)
-  options:
-    wrap_lua: False
-  
-# parser does not recognized **
-#- decl: void getclass(const Class1 **arg1) 
-#  options:
-#    wrap_python: False
-#    wrap_lua: False
-  
-- decl: const Class1 *getclass2() 
-  options:
-    # const issues with python
-    wrap_python: False
-    wrap_lua: False
-  
-- decl: Class1 *getclass3() 
-  options:
-#  wrap_python: False
-    wrap_lua: False
-
-- decl: const Class1 &getConstClassReference()
-  options:
-    # const issues with python
-    wrap_python: False
-    wrap_lua: False
-  
-- decl: Class1 &getClassReference()
-  options:
-#  wrap_python: False
-    wrap_lua: False
-
-- decl: Class1 getClassCopy(int flag)
-  doxygen:
-    brief: Return Class1 instance by value, uses copy constructor
-  options:
-    wrap_python: False
-    wrap_lua: False
-
-##################################################
 # Function pointer
 
 - decl: int callback1(int in, int (*incr)(int));
@@ -271,18 +160,10 @@ declarations:
   
 ##################################################
 # Used with testing
-- decl: void set_global_flag(int arg)
-- decl: int get_global_flag()
 - decl: const std::string& LastFunctionCalled() +len(30)
 
 ##########
   
-- decl: class Singleton
-  options:
-    wrap_lua: false
-  declarations:
-#  - decl: static Singleton* instancePtr()
-  - decl: static Singleton& getReference()
   
   
 ##################################################

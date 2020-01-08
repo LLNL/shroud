@@ -6,7 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "tutorial.hpp"
+#include "forward.hpp"
 #include "luaforwardmodule.hpp"
 #ifdef __cplusplus
 extern "C" {
@@ -35,7 +35,7 @@ static int l_Class2_ctor(lua_State *L)
     // splicer begin class.Class2.method.ctor
     l_Class2_Type * SH_this =
         (l_Class2_Type *) lua_newuserdata(L, sizeof(*SH_this));
-    SH_this->self = new tutorial::Class2();
+    SH_this->self = new forward::Class2();
     /* Add the metatable to the stack. */
     luaL_getmetatable(L, "Class2.metatable");
     /* Set the metatable on the userdata. */
@@ -56,7 +56,7 @@ static int l_Class2_dtor(lua_State *L)
     // splicer end class.Class2.method.__gc
 }
 
-// void func1(Class1 * arg +intent(in))
+// void func1(tutorial::Class1 * arg +intent(in))
 static int l_Class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1
@@ -74,7 +74,7 @@ static int l_Class2_func1(lua_State *L)
 static int l_Class2_accept_class3(lua_State *L)
 {
     // splicer begin class.Class2.method.acceptClass3
-    tutorial::Class3 * arg = static_cast<tutorial::Class3 *>(
+    forward::Class3 * arg = static_cast<forward::Class3 *>(
         (l_Class2_Type *) luaL_checkudata(
         L, 1, "Class2.metatable")->addr);
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(

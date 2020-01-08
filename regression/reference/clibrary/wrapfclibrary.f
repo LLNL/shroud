@@ -13,6 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
+    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -20,6 +21,11 @@ module clibrary_mod
     ! splicer begin module_top
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
+
+
+    type, bind(C) :: array_info
+        integer(C_INT) :: tc
+    end type array_info
 
     ! start abstract callback1_incr
     abstract interface
@@ -43,6 +49,16 @@ module clibrary_mod
             implicit none
             integer(C_INT) :: arg0
         end subroutine callback3_incr
+    end interface
+
+    abstract interface
+        subroutine callback_set_alloc_alloc(tc, arr) bind(C)
+            use iso_c_binding, only : C_INT
+            import :: array_info
+            implicit none
+            integer(C_INT), value, intent(IN) :: tc
+            type(array_info), intent(INOUT) :: arr
+        end subroutine callback_set_alloc_alloc
     end interface
 
     ! start no_return_no_arguments
@@ -127,6 +143,26 @@ module clibrary_mod
         end subroutine c_accept_name
     end interface
     ! end c_accept_name
+
+    interface
+        subroutine c_pass_char_ptr_in_out(s) &
+                bind(C, name="passCharPtrInOut")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+        end subroutine c_pass_char_ptr_in_out
+    end interface
+
+    interface
+        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
+                bind(C, name="CLI_pass_char_ptr_in_out_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+            integer(C_INT), value, intent(IN) :: Ls
+            integer(C_INT), value, intent(IN) :: Ns
+        end subroutine c_pass_char_ptr_in_out_bufferify
+    end interface
 
     ! start c_return_one_name
     interface
@@ -389,6 +425,18 @@ module clibrary_mod
     end interface
 
     interface
+        subroutine callback_set_alloc(tc, arr, alloc) &
+                bind(C, name="callback_set_alloc")
+            use iso_c_binding, only : C_INT
+            import :: array_info, callback_set_alloc_alloc
+            implicit none
+            integer(C_INT), value, intent(IN) :: tc
+            type(array_info), intent(INOUT) :: arr
+            procedure(callback_set_alloc_alloc) :: alloc
+        end subroutine callback_set_alloc
+    end interface
+
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -404,12 +452,12 @@ contains
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
-        logical(C_BOOL) SH_arg1
         logical, intent(OUT) :: arg2
-        logical(C_BOOL) SH_arg2
         logical, intent(INOUT) :: arg3
-        logical(C_BOOL) SH_arg3
         ! splicer begin function.check_bool
+        logical(C_BOOL) SH_arg1
+        logical(C_BOOL) SH_arg2
+        logical(C_BOOL) SH_arg3
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
@@ -443,6 +491,23 @@ contains
         ! splicer end function.accept_name
     end subroutine accept_name
     ! end accept_name
+
+    ! void passCharPtrInOut(char * s +intent(inout))
+    ! arg_to_buffer
+    !>
+    !! \brief toupper
+    !!
+    !! Change a string in-place.
+    !! For Python, return a new string since strings are immutable.
+    !<
+    subroutine pass_char_ptr_in_out(s)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(INOUT) :: s
+        ! splicer begin function.pass_char_ptr_in_out
+        call c_pass_char_ptr_in_out_bufferify(s, &
+            len_trim(s, kind=C_INT), len(s, kind=C_INT))
+        ! splicer end function.pass_char_ptr_in_out
+    end subroutine pass_char_ptr_in_out
 
     ! void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer

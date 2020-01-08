@@ -8,9 +8,17 @@
 // forward.cpp - wrapped routines
 //
 
-#include "tutorial.hpp"
+#include "forward.hpp"
 
-namespace tutorial
+namespace forward
 {
 
-} /* end namespace tutorial */
+  void Class2::func1(tutorial::Class1 *arg)
+  {
+  };
+
+  void Class2::acceptClass3(Class3 *arg)
+  {
+  };
+  
+} /* end namespace forward */

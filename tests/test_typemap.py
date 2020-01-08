@@ -46,7 +46,7 @@ class Typemap(unittest.TestCase):
                 alias="c_a",
             ),
         )
-        typemap.update_stmt_tree(stmts, cf_tree)
+        typemap.update_stmt_tree(stmts, cf_tree, typemap.default_stmts)
 
         rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
         self.assertIsInstance(rv, util.Scope)
@@ -62,7 +62,7 @@ class Typemap(unittest.TestCase):
                 name="c_string_scalar_result_buf_allocatable"
             ),
         )
-        typemap.update_stmt_tree(stmts, cf_tree)
+        typemap.update_stmt_tree(stmts, cf_tree, typemap.default_stmts)
 
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","result","buf","allocatable"])

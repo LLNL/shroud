@@ -787,6 +787,8 @@ rv = .false.
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, None)
                 iface.extend(arg_f_use)
+                if imports:
+                    iface.append("import :: " + ", ".join(sorted(imports.keys())))
                 iface.append("implicit none")
                 iface.extend(arg_c_decl)
                 iface.append(-1)
@@ -866,12 +868,13 @@ rv = .false.
                     )
                 continue
             elif buf_arg == "shadow":
-                # Always pass a pointer to capsule.
                 # Do not use const or value in declaration
+                # Function result arguments explicitly set to intent(out).
                 arg_c_names.append(name or ast.name)
-                arg_c_decl.append("{}, intent({}) :: {}".format(
+                arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.attrs["intent"]).upper(),
+                    ", value" if attrs.get("value", False) else "",
                     name or ast.name))
                 self.update_f_module(
                     modules, imports,
@@ -994,7 +997,7 @@ rv = .false.
             # Change a subroutine into function.
             fmt.F_C_subprogram = "function"
             fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        
+
         self.build_arg_list_interface(
             node, fileinfo,
             fmt_func,
@@ -1567,7 +1570,7 @@ rv = .false.
             have_c_local_var = f_intent_blk.c_local_var
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
-                arg_f_decl.append(
+                declare.append(
                     "{} {}".format(
                         arg_typemap.f_c_type or arg_typemap.f_type,
                         fmt_arg.c_var,
