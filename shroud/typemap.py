@@ -1903,7 +1903,8 @@ fc_statements = dict(
         buf_args=["shadow"],
         cxx_local_var="pointer",
         pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} =\t static_cast<{c_const}{cxx_type} *>\t({c_var}->addr);",
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
         ],
     ),
     c_shadow_scalar_in=dict(

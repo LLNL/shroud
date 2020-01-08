@@ -1964,7 +1964,7 @@
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "CLA_pass_class_by_value",
-                    "C_prototype": "CLA_Class1 * arg",
+                    "C_prototype": "CLA_Class1 arg",
                     "C_return_type": "void",
                     "F_C_call": "c_pass_class_by_value",
                     "F_C_name": "c_pass_class_by_value",

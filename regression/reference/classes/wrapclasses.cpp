@@ -55,11 +55,11 @@ int CLA_direction_func(int arg)
  * \brief Pass arguments to a function.
  *
  */
-void CLA_pass_class_by_value(CLA_Class1 * arg)
+void CLA_pass_class_by_value(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value
     classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
-        (arg->addr);
+        (arg.addr);
     classes::passClassByValue(*SHCXX_arg);
     return;
     // splicer end function.pass_class_by_value

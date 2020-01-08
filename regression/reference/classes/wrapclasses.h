@@ -29,7 +29,7 @@ extern "C" {
 
 int CLA_direction_func(int arg);
 
-void CLA_pass_class_by_value(CLA_Class1 * arg);
+void CLA_pass_class_by_value(CLA_Class1 arg);
 
 int CLA_useclass(CLA_Class1 * arg);
 

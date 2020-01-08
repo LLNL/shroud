@@ -858,12 +858,13 @@ rv = .false.
                     )
                 continue
             elif buf_arg == "shadow":
-                # Always pass a pointer to capsule.
                 # Do not use const or value in declaration
+                # Function result arguments explicitly set to intent(out).
                 arg_c_names.append(name or ast.name)
-                arg_c_decl.append("{}, intent({}) :: {}".format(
+                arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.attrs["intent"]).upper(),
+                    ", value" if attrs.get("value", False) else "",
                     name or ast.name))
                 self.update_f_module(
                     modules, imports,
@@ -986,7 +987,7 @@ rv = .false.
             # Change a subroutine into function.
             fmt.F_C_subprogram = "function"
             fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
-        
+
         self.build_arg_list_interface(
             node, fileinfo,
             fmt_func,
