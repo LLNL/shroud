@@ -1155,16 +1155,17 @@ def update_for_language(stmts, lang):
 
     stmts=dict(
       foo_bar=dict(
-        c_decl=[],
-        cxx_decl=[],
+        c_declare=[],
+        cxx_declare=[],
       )
     )
 
     For lang==c,
-      foo_bar["decl"] = foo_bar["c_decl"]
+      foo_bar["declare"] = foo_bar["c_declare"]
     """
     for item in stmts.values():
-        for clause in ["cxx_local_var", "decl", "post_parse", "pre_call", "post_call",
+        for clause in ["cxx_local_var", "declare", "post_parse",
+                       "pre_call", "post_call",
                        "cleanup", "fail"]:
             specific = lang + "_" + clause
             if specific in item:
