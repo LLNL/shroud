@@ -83,7 +83,9 @@ A dictionary of list of ``ONLY`` names:
 
 .. code-block:: yaml
 
-        f_module=dict(iso_c_binding=['C_SIZE_T']),
+        f_module:
+          iso_c_binding:
+          - C_SIZE_T
 
 
 post_call
@@ -322,6 +324,3 @@ alias
 ^^^^^
 
 Names another node which will be used for its contents.
-
-
-    
