@@ -46,7 +46,7 @@ def append_format_cmds(lstout, stmts, name, fmt):
     Args:
       lstout - list to append output lines to.
       stmts - could be c_statements.intent_in.
-      name - entry into dictin. ex. "decl", "pre_call", "post_call".
+      name - entry into dictin. ex. "declare", "pre_call", "post_call".
       fmt - format dictionary or Scope instance.
     """
     cmd_list = getattr(stmts, name)
