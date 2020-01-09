@@ -36,18 +36,18 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=metadata['version'],
 
-    description='Generate Fortran wrappers for C++ Libraries',
+    description='Generate Fortran and Python wrappers for C and C++ Libraries',
     long_description=long_description,
 
     # The project's main homepage.
-    url='http://lc.llnl.gov/toolkit',
+    url='http://github.gov/llnl/shroud',
 
     # Author details
     author='Lawrence Livermore National Laboratory',
     author_email='axom-users@llnl.gov',
 
     # Choose your license
-#    license='MIT',
+    license='BSD-3-Clause',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -62,7 +62,7 @@ setup(
         'Topic :: Software Development :: Build Tools',
 
         # Pick your license as you wish (should match "license" above)
-#        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: BSD-3-Clause',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
@@ -70,6 +70,8 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 
     # What does your project relate to?
