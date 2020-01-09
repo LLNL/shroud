@@ -334,6 +334,7 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
         """
         self.log.write("class {1.name}\n".format(self, node))
         fileinfo = FileTuple([], [], [], [])
+        options = node.options
         fmt_class = node.fmtdict
 
         node.eval_template("PY_type_filename")
@@ -372,9 +373,11 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         output.append(wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class))
 
         self._create_splicer("C_declaration", output)
+        output.append("")
+        if options.literalinclude:
+            output.append("// start object " + fmt_class.PY_PyObject)
         append_format(
             output,
-            "\n"
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
@@ -383,6 +386,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         )
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
+        if options.literalinclude:
+            output.append("// end object " + fmt_class.PY_PyObject)
         output.append("")
 
         self.create_class_utility_functions(node)
@@ -511,6 +516,7 @@ return 1;""",
         Args:
             node - ast.ClassNode
         """
+        options = node.options
         fmt = node.fmtdict
 
         self.need_numpy = True
@@ -532,6 +538,8 @@ return 1;""",
         )
         output = self.arraydescr
         output.append("")
+        if options.literalinclude:
+            output.append("// start " + fmt.PY_struct_array_descr_create)
         append_format(
             output,
             "// Create PyArray_Descr for {cxx_class}\n"
@@ -628,6 +636,8 @@ return 1;""",
 
         output.append(-1)
         output.append("}")
+        if options.literalinclude:
+            output.append("// end " + fmt.PY_struct_array_descr_create)
 
     def wrap_class_variable(self, node, fileinfo):
         """Wrap a VariableNode in a class with descriptors.

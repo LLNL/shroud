@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -611,8 +611,9 @@ C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
 
 C_name_scope
-   Underscore delimited name of namespace, class, enumeration.
-   Used with creating names in C.
+    Underscore delimited name of namespace, class, enumeration.
+    Used with creating names in C.
+    Does not include toplevel *namespace*.
 
 C_result
     The name of the C wrapper's result variable.
@@ -668,16 +669,21 @@ F_derived_member
     A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
 
-F_filename_suffix:
-   Suffix added to Fortran files.
-   Defaults to ``f``.
-   Other useful values might be ``F`` or ``f90``.
+F_filename_suffix
+    Suffix added to Fortran files.
+    Defaults to ``f``.
+    Other useful values might be ``F`` or ``f90``.
 
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*
     which is **{library_lower}_mod**.
     Then converted to lower case.
+
+F_name_scope
+    Underscore delimited name of namespace, class, enumeration.
+    Used with creating names in Fortran.
+    Does not include toplevel *namespace*.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.
@@ -902,7 +908,6 @@ F_name_instance_set
 
 cxx_class
     The name of the C++ class from the YAML input file.
-    ex. ``std::string``.
     Used in generating names for C and Fortran and filenames.
     When the class is templated, it willl be converted to a legal identifier
     by adding the *template_suffix* or a sequence number.
@@ -940,38 +945,9 @@ C_call_list
 
 .. uses tabs
 
-C_call_code
-    Code used to call function in C wrapper.
-
-.. uses tabs
-
-C_code
-    User supplied wrapper code for the C wrapper for a function.
-
-C_finalize
-    User supplied code to perform any function finialization.
-    Code added after all of the argument's *post_call* code.
-    Can be used to free memory in the C wrapper.
-
-.. evaluated in context of fmt_result
-
-C_finalize_buf
-    Identical to **C_finalize** but only applies to the buffer version of the
-    wrapper routine.
-
 C_name
     Name of the C wrapper function.
     Defaults to evaluation of option *C_name_template*.
-
-C_post_call
-    Statements added after the call to the function.
-    Used to convert result and/or ``intent(OUT)`` arguments to C types.
-
-.. C_post_call_pattern
-
-C_pre_call
-    Statements added before the call to the function.
-    Used to convert C types to C++ types.
 
 C_prototype
     C prototype for the function.
@@ -980,14 +956,11 @@ C_prototype
 
 .. uses tabs
 
-C_return_code
-    Code used to return from C wrapper.
-
 C_return_type
     Return type of the C wrapper function.
     If the **return_this** field is true, then set to ``void``.
-    If the **C_return_type** format is set, use its value.
-    Otherwise set to function's return type.
+    
+    Set to function's return type.
 
 CXX_template
     The template component of the function declaration.
@@ -1030,13 +1003,7 @@ F_C_result_clause
 F_C_subprogram
     ``subroutine`` or ``function``.
 
-F_call_code
-    Code used to call function in Fortran wrapper.
-
 .. uses tabs
-
-F_code
-    User supplied wrapper code for the Fortran wrapper for a function.
 
 F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 

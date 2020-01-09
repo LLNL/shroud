@@ -394,6 +394,7 @@ if __name__ == "__main__":
         TestDesc("names"),
         TestDesc("names2"),
         TestDesc("namespace"),
+        TestDesc("namespacedoc"),
         TestDesc("strings"),
         TestDesc("clibrary"),
         TestDesc("interface"),

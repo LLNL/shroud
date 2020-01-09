@@ -466,9 +466,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
-            F_enum_member_template=(
-                "{F_name_scope}{enum_member_lower}"
-            ),
+            F_enum_member_template="{F_name_scope}{enum_member_lower}",
             F_name_impl_template=(
                 "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),

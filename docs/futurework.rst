@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -8,7 +8,6 @@ Future Work
 ===========
 
   * complex
-  * structures
 
   * pointers to pointers and in particular ``char **`` are not supported.
     An argument like ``Class **ptr+intent(out)`` does not work.

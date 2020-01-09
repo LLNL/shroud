@@ -521,6 +521,7 @@ static PyMethodDef PY_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
+// start PY_Cstruct1_create_array_descr
 // Create PyArray_Descr for Cstruct1
 static PyArray_Descr *PY_Cstruct1_create_array_descr(void)
 {
@@ -582,6 +583,7 @@ fail:
     Py_XDECREF(dtype);
     return NULL;
 }
+// end PY_Cstruct1_create_array_descr
 
 /*
  * initstruct - Initialization function for the module

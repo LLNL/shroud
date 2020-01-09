@@ -1087,7 +1087,7 @@ macro(add_shroud)
         OUTPUT  ${_timestamp}
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${arg_YAML_INPUT_FILE} ${shroud_depends}
         COMMAND ${_cmd}
-        COMMAND touch ${_timestamp}
+        COMMAND ${CMAKE_COMMAND} -E touch ${_timestamp}
         COMMENT "Running shroud ${arg_YAML_INPUT_FILE}"
         WORKING_DIRECTORY ${SHROUD_OUTPUT_DIR}
     )

@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -412,8 +412,8 @@ In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
 .. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
    :language: c++
-   :start-after: start struct TUT_class1
-   :end-before: end struct TUT_class1
+   :start-after: start struct TUT_Class1
+   :end-before: end struct TUT_Class1
 
 And :file:`wrapftutorial.f`:
 
@@ -523,6 +523,8 @@ This technique is discussed at [blog1]_ and [blog2]_
 
 Old
 ---
+
+.. note:: C_finalize is replaced by statement.final
 
 
 Shroud generated C wrappers do not explicitly delete any memory.

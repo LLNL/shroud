@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
    other Shroud Project Developers.
    See the top-level COPYRIGHT file for details.
 
@@ -307,62 +307,6 @@ This is used for files which are not part of the library but which contain code
 which helps map C++ constants to C constants
 
 .. FILL IN MORE
-
-Namespace
----------
-
-Each library or class can be associated with a namespace:
-
-.. code-block:: c++
-
-    namespace one {
-      namespace two {
-         void function();
-
-         namespace three {
-           class Class1 {
-           };
-         }
-
-         class Class2 {
-         };
-      } // namespace two
-    } // namespace one
-
-    class Class3 {
-    };
-
-The YAML file would look like:
-
-.. code-block:: yaml
-
-    declarations:
-    - decl: namespace one
-      declarations:
-      - decl: namespace two
-        declarations:
-        - decl: void function();
-        - decl: namespace three
-          declarations:
-          - class: Class1
-        - class: Class2
-    - class: Class3
-
-If only one set of namespaces are used in a file, the ``namespace``
-field can be used at the global level to avoid excessive indenting.
-For example, if *Class3* was not wrapped then the file could be
-written as:
-
-.. code-block:: yaml
-
-    namespace: one two
-    declarations:
-    - decl: void function();
-    - decl: namespace three
-      declarations:
-      - class: Class1
-    - class: Class2
-
 
 Local Variable
 ^^^^^^^^^^^^^^

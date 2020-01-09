@@ -1,0 +1,41 @@
+copyright:
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# used in namespace.rst
+
+options:
+  debug: True
+  wrap_python: True
+
+library: wrapped
+namespace: outer
+format:
+  C_prefix: WWW_
+
+declarations:
+- decl: namespace inner1
+  declarations:
+  - decl: void worker();
+
+- decl: namespace inner2
+  declarations:
+  - decl: void worker();
+
+- decl: namespace inner3
+  options:
+    flatten_namespace: True
+  declarations:
+  - decl: void worker3();
+
+- decl: namespace inner4
+  options:
+    F_flatten_namespace: True
+  declarations:
+  - decl: void worker4();
+
+- decl: void worker();
