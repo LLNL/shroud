@@ -1,0 +1,85 @@
+# test names in scopes
+# Must flatten the scopes for C and Fortran
+
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: scope
+
+options:
+  debug: True
+#  wrap_python: True
+
+declarations:
+
+########################################
+# global enum
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+
+########################################
+# Same enum in two namespaces
+- decl: namespace ns1
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 20,
+          BLUE,
+          WHITE
+        };
+- decl: namespace ns2
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 30,
+          BLUE,
+          WHITE
+        };
+- decl: namespace ns3
+  options:
+    flatten_namespace: True
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 70,
+          BLUE,
+          WHITE
+        };
+
+########################################
+# Same enum in two classes
+- decl: class Class1
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 40,
+          BLUE,
+          WHITE
+        };
+- decl: class Class2
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 50,
+          BLUE,
+          WHITE
+        };
+
+########################################
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+

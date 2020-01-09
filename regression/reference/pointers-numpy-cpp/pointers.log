@@ -1,0 +1,32 @@
+Read yaml pointers.yaml
+C function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+C function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C function void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
+C function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+C function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+C function void fillIntArray(int * out +dimension(3)+intent(out))
+C function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+Close wrappointers.h
+Close wrappointers.cpp
+Close typespointers.h
+C-interface, Fortran function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+C-interface, Fortran function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C-interface, Fortran function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C-interface, Fortran function void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
+C-interface, Fortran function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+C-interface, Fortran function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+C-interface, Fortran function void fillIntArray(int * out +dimension(3)+intent(out))
+C-interface, Fortran function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+Close wrapfpointers.f
+Python function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+Python function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
+Python function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+Python function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+Python function void fillIntArray(int * out +dimension(3)+intent(out))
+Python function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+Close pypointersmodule.cpp
+Close pypointersutil.cpp
+Close pypointersmodule.hpp

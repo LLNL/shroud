@@ -1,0 +1,48 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+library: statement
+cxx_header: statement.hpp
+
+options:
+  debug: True
+#  wrap_python: True
+#  wrap_lua: True
+#  literalinclude2: True
+
+format:
+  C_prefix: STMT_
+
+declarations:
+
+- decl: int GetNameLength() +pure
+  doxygen:
+    brief: helper function for Fortran to get length of name.
+  splicer:
+    c:
+    - "return getNameErrorPattern().length();"
+
+- decl: const string& getNameErrorPattern()
+  fattrs:
+    len: get_name_length()
+  C_error_pattern: C_invalid_name
+  PY_error_pattern: PY_invalid_name
+
+
+######################################################################
+patterns:
+    C_invalid_name: |
+        if (! isNameValid({cxx_var})) {{
+            return NULL;
+        }}
+    PY_invalid_name: |
+        if (! isNameValid({cxx_var})) {{
+            PyErr_SetString(PyExc_KeyError, "XXX need value of name");
+            return NULL;
+        }}
+
+

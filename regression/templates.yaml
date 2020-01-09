@@ -1,0 +1,114 @@
+#
+#  Test templates
+#
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: templates
+cxx_header: templates.hpp
+
+options:
+  wrap_python: True
+
+declarations:
+- decl: namespace std
+  format:
+    # Do not put 'std' into names
+    C_name_scope: ""
+    PY_module_scope: templates
+  declarations:
+  - decl: template<typename T> class vector
+    # std::vector class
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        fmtsample: one
+        C_impl_filename: wrapvectorforint.cpp
+      options:
+        optsample: two
+    - instantiation: <double>
+
+# This has a problem since we're redefining namespace std
+#    - instantiation: <std::string>
+
+    declarations:
+    - decl: typedef size_t size_type
+    - decl: vector()
+    - decl: ~vector()
+    - decl: void push_back( const T& value+intent(in) )
+    - decl: T & at(size_type n)
+      # const_reference at (size_type n) const;
+    # XXX - reference is getting lost
+
+
+# A class used with templates
+- decl: class Worker
+
+- decl: namespace internal
+  format:
+    PY_module_scope: templates
+  declarations:
+# Class which is used to instantiate the C++ template.
+# It is not part of the Fortran API.
+  - decl: class ImplWorker1
+    cxx_header: implworker1.hpp
+    options:
+      wrap_fortran: false
+  - decl: class ImplWorker2
+    cxx_header: implworker2.hpp
+    options:
+      wrap_fortran: false
+
+- decl: template<typename T> class user
+  # XXX - error if cxx_template is missing
+  cxx_template:
+  - instantiation: <int>
+  declarations:
+  - decl: template<U> void nested( T arg1, U arg2 );
+    # XXX - error if cxx_template is missing
+    cxx_template:
+    - instantiation: <double>
+
+
+
+#- decl: template<ArgType> void Function7(ArgType arg)
+#  cxx_template:
+#    ArgType:
+#    - int
+#    - double
+#  cxx_template:
+#    - instantiation: <int>
+#    - instantiation: <double>
+
+
+# template structs
+# template class variables
+
+- decl: template<T,U> void FunctionTU(T arg1, U arg2)
+  doxygen:
+     brief: Function template with two template parameters.
+  cxx_template:
+  - instantiation: <int, long>
+  - instantiation: <float, double>
+#  - instantiation: <Worker, Worker>
+
+#- decl: template<typename T> T ReturnT()
+#  doxygen:
+#     brief: Function which returns a templated type
+#  cxx_template:
+#  - instantiation: <Worker>
+
+- decl: template<typename T> int UseImplWorker()
+  doxygen:
+     brief: Function which uses a templated T in the implemetation.
+  options:
+    F_create_generic: False
+  cxx_template:
+  - instantiation: <internal::ImplWorker1>
+  - instantiation: <internal::ImplWorker2>

@@ -1,42 +1,8 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-.. All rights reserved. 
-..
-.. This file is part of Shroud.  For details, see
-.. https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-..
-.. Redistribution and use in source and binary forms, with or without
-.. modification, are permitted provided that the following conditions are
-.. met:
-..
-.. * Redistributions of source code must retain the above copyright
-..   notice, this list of conditions and the disclaimer below.
-.. 
-.. * Redistributions in binary form must reproduce the above copyright
-..   notice, this list of conditions and the disclaimer (as noted below)
-..   in the documentation and/or other materials provided with the
-..   distribution.
-..
-.. * Neither the name of the LLNS/LLNL nor the names of its contributors
-..   may be used to endorse or promote products derived from this
-..   software without specific prior written permission.
-..
-.. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-.. "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-.. LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-.. A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE
-.. LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR
-.. CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-.. EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-.. PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-.. PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-.. LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-.. NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-.. SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 :orphan:
 
@@ -60,11 +26,13 @@ Now we'll add a simple class to the library::
 
 To wrap the class add the lines to the YAML file::
 
-    classes:
-    - name: Class1
-      methods:
-      - decl: Class1 *new()  +constructor
-      - decl: void delete()  +destructor
+    declarations:
+    - class: Class1
+      declarations:
+      - decl: Class1 new()  +name(new)
+        format:
+          function_suffix: _default
+      - decl: ~Class1()  +name(delete)
       - decl: void Method1()
 
 The method ``new`` has the attribute **+constructor** to mark it as a
@@ -77,45 +45,50 @@ The file ``wrapClass1.h`` will have an opaque struct for the class.
 This is to allows some measure of type safety over using ``void``
 pointers for every instance::
 
-    struct s_TUT_class1;
+    struct s_TUT_class1 {
+        void *addr;  /* address of C++ memory */
+        int idtor;   /* index of destructor */
+    };
     typedef struct s_TUT_class1 TUT_class1;
 
 
-    TUT_class1 * TUT_class1_new()
+    TUT_class1 TUT_class1_new_default()
     {
-        Class1 *SH_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SH_rv));
+        tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
+        TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+        return SHC_rv;
     }
 
     void TUT_class1_method1(TUT_class1 * self)
     {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-        SH_this->Method1();
-        return;
+        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
+        int SHC_rv = SH_this->Method1();
+        return SHC_rv;
     }
 
 For Fortran a derived type is created::
 
     type class1
-        type(C_PTR) voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
     contains
         procedure :: method1 => class1_method1
     end type class1
 
 And the subroutines::
 
-    function class1_new() result(rv)
-        implicit none
-        type(class1) :: rv
-        rv%voidptr = c_class1_new()
+    function class1_new_default() &
+            result(SHT_rv)
+        type(class1) :: SHT_rv
+        SHT_rv%cxxmem = c_class1_new_default()
     end function class1_new
     
-    subroutine class1_method1(obj)
-        implicit none
+    function class1_method1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
         class(class1) :: obj
-        call c_class1_method1(obj%voidptr)
-    end subroutine class1_method1
-
+        integer(C_INT) :: SHT_rv
+        SHT_rv = c_class1_method1(obj%cxxmem)
+    end function class1_method1
 
 The additional C++ code to call the function::
 

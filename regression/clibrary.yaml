@@ -1,0 +1,410 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Wrap a C library
+# Many of the same function as Tutorial, but for C.
+
+# Several tests have a 'char *outbuf+intent(out)' argument
+# which will force a C bufferify wrapper to be created.
+# The size of this buffer is controlled by lenoutbuf.
+# This feature is helpful for the C tests since a C wrapper is not required
+# for each function since we do not need to deal with name mangling
+# like in C++.
+
+library: Clibrary
+cxx_header: clibrary.h
+
+language: c
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: False
+  literalinclude2: True
+
+declarations:
+
+- decl: typedef int TypeID;
+
+- decl: typedef int EnumTypeID
+  fields:
+    c_to_cxx : static_cast<EnumTypeID>({c_var})
+    cxx_to_c : static_cast<int>({cxx_var})
+
+- decl: struct array_info {
+          int tc;
+        }
+  doxygen:
+    brief: Array information
+    description: |
+      Passed to function call backs
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void NoReturnNoArguments()
+  options:
+    literalinclude: True
+- decl: double PassByValue(double arg1, int arg2)
+  options:
+    literalinclude: True
+- decl: void PassByReference(double *arg1+intent(in), int *arg2+intent(out))
+  options:
+    literalinclude: True
+
+- decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+  doxygen:
+    brief: Check intent with bool
+  options:
+    literalinclude: True
+
+- decl: char *Function4a(
+    const char *arg1,
+    const char *arg2 ) +len(30)
+
+- decl: void acceptName(const char *name)
+  options:
+    literalinclude: True
+
+######################################################################
+# from strings.yaml
+
+- decl: void passCharPtrInOut(char * s+intent(inout))
+  doxygen:
+    brief: toupper
+    description: |
+      Change a string in-place.
+      For Python, return a new string since strings are immutable.
+
+######################################################################
+# charlen
+# returnOneName will use PyString_FromString.
+# returnTwoNames will use Py_BuildValue.
+
+- decl: void returnOneName(char *name1+intent(out)+charlen(MAXNAME))
+  doxygen:
+    brief: Test charlen attribute
+    description: |
+      Each argument is assumed to be at least MAXNAME long.
+      This define is provided by the user.
+      The function will copy into the user provided buffer.
+  options:
+    literalinclude: True
+
+- decl: void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME),
+                            char *name2+intent(out)+charlen(MAXNAME))
+  doxygen:
+    brief: Test charlen attribute
+    description: |
+      Each argument is assumed to be at least MAXNAME long.
+      This define is provided by the user.
+      The function will copy into the user provided buffer.
+
+######################################################################
+- decl: void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME),
+                            int ltext+implied(len(text)))
+  doxygen:
+    brief: Fill text, at most ltext characters.
+  options:
+    literalinclude: True
+
+- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
+                       bool flag+implied(false))
+  options:
+    F_create_bufferify_function: false
+  doxygen:
+    brief: Return the implied argument - text length
+    description: |
+       Pass the Fortran length of the char argument directy to the C function.
+       No need for the bufferify version which will needlessly copy the string.
+
+- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)),
+                           bool flag+implied(true))
+  options:
+    F_create_bufferify_function: false
+  doxygen:
+    brief: Return the implied argument - text length
+    description: |
+       Pass the Fortran length of the char argument directy to the C function.
+       No need for the bufferify version which will needlessly copy the string.
+
+- decl: bool ImpliedBoolTrue(bool flag+implied(true))
+  doxygen:
+    brief: Single, implied bool argument
+
+- decl: bool ImpliedBoolFalse(bool flag+implied(false))
+  doxygen:
+    brief: Single, implied bool argument
+
+######################################################################
+- decl: void bindC1()
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates only an interface.
+  format:
+    # Used with interface since there is no implementation.
+    F_name_impl: Fortran_bindC1a
+    # Unused.
+    F_C_name: Fortran_bindC1b
+  options:
+    wrap_python: false
+
+- decl: void bindC2(char *outbuf+intent(out))
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates a Fortran bufferify function and an interface.
+  format:
+    # Used with implemention.
+    F_name_impl: Fortran_bindC2a
+    # XXX - Used with both interfaces, regular and bufferify
+#    F_C_name: Fortran_bindC2b
+  options:
+    wrap_python: false
+
+- decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+  doxygen:
+    brief: Assign in to out.
+    description: |
+      No bufferify function is created, only an interface.
+  options:
+    wrap_python: false
+    literalinclude: True
+
+- decl: int passAssumedType(void *arg+assumedtype)
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      No bufferify function is created, only an interface.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+    literalinclude: True
+
+- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension)
+  doxygen:
+    brief: Test assumed-type with dimension
+  options:
+    wrap_python: false
+    literalinclude: True
+
+- decl: int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      A bufferify function is created.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+
+######################################################################
+# Function pointer (from tutorial.yaml)
+
+# XXX (void)
+- decl: int callback1(int type, void (*incr)()+external)
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+    literalinclude: True
+  
+- decl: void callback2(int type, void * in+assumedtype,
+                       void (*incr)(int *)+external)
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void callback3(const char *type, void * in+assumedtype,
+                       void (*incr)(int *)+external, char *outbuf+intent(out))
+  doxygen:
+    brief: Test function pointer
+    description: |
+      A bufferify function will be created.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
+                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))
+  doxygen:
+   description: |
+     The function argument takes a struct argument
+     which is defined in this library.
+     Use IMPORT.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+######################################################################
+
+# XXX - Replace with other code to free memory
+#  format:
+#    C_finalize_buf: |
+#       // Function4a allocates memory which must be released after it is copied
+#       // into the Fortran argument or else it will leak.
+#       free({cxx_var});
+
+##-- decl: const std::string& Function4b(
+##-    const std::string& arg1,
+##-    const std::string& arg2 )
+##-  options:
+##-    F_string_result_as_arg: output
+
+##-- decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
+##-  default_arg_suffix:
+##-  -  
+##-  -  _arg1
+##-  -  _arg1_arg2
+
+##-- decl: void Function6(const std::string& name)
+##-  function_suffix: _from_name
+##-- decl: void Function6(int indx)
+##-  function_suffix: _from_index
+##-
+##-- decl: void Function7(ArgType arg)
+##-  cxx_template:
+##-    ArgType:
+##-    - int
+##-    - double
+##-
+##-- decl: RetType Function8()
+##-  cxx_template:
+##-    RetType:
+##-    - int
+##-    - double
+##-
+##-- decl: void Function9(double arg)
+##-  fortran_generic:
+##-     arg:
+##-     - float
+##-     - double
+##-
+##-# test cxx_template, fortran_generic, overload
+##-#- decl: void Function10()
+##-#- decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
+##-#  options:
+##-#    F_string_len_trim: True
+##-#  cxx_template:
+##-#    ArgType:
+##-#    - int
+##-#    - double
+##-#  fortran_generic:
+##-#     arg2:
+##-#     - float
+##-#     - double
+##-
+##-
+##-# test fortran_generic, overload
+##-- decl: void Function10()
+##-- decl: void Function10(const std::string &name, double arg2)
+##-  options:
+##-    F_string_len_trim: True
+##-#  cxx_template:
+##-#    ArgType:
+##-#    - int
+##-#    - double
+##-  fortran_generic:
+##-     arg2:
+##-     - float
+##-     - double
+##-
+##-# overload with optional
+##-- decl: int overload1(int num,
+##-          int offset = 0, int stride = 1)
+##-  default_arg_suffix:
+##-  - _num
+##-  - _num_offset
+##-  - _num_offset_stride
+##-- decl: int overload1(double type, int num,
+##-          int offset = 0, int stride = 1)
+##-
+##-# test F_string_result_as_arg and optional arguments
+##-#- decl: const string& overload2(int flag = 0, bool flag2 = true) const
+##-#  options:
+##-#    F_string_result_as_arg: output
+##-
+##-# TypeID and DataTypeId must be define in types
+##-- decl: TypeID typefunc(TypeID arg)
+##-- decl: EnumTypeID enumfunc(EnumTypeID arg)
+##-
+##-- decl: void useclass(const Class1 *arg1) 
+##-  options:
+##-    wrap_lua: False
+##-
+##-# parser does not recognized **
+##-#- decl: void getclass(const Class1 **arg1) 
+##-#  options:
+##-#    wrap_python: False
+##-#    wrap_lua: False
+##-
+##-# test std::vector
+##-# const implies intent(in)
+##-- decl: int vector_sum(const std::vector<int> &arg)
+##-  options:
+##-    wrap_python: False
+##-    wrap_lua: False
+##-
+##-- decl: void vector_iota(std::vector<int> &arg+intent(out))
+##-  options:
+##-    wrap_python: False
+##-    wrap_lua: False
+##-
+##-# defaults to intent(inout)
+##-- decl: void vector_increment(std::vector<int> &arg)
+##-  options:
+##-    wrap_python: False
+##-    wrap_lua: False
+##-
+##-# does multidimensional make sense.  Need to call shape
+##-#- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
+##-
+##--  decl: int vector_string_count(const std::vector< std::string > &arg)
+##-   doxygen:
+##-     brief: count number of underscore in vector of strings
+##-     decription: |
+##-       The input will be copied in order to create the C++ argument
+##-
+##--  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
+##-   C_return_type: int
+##-   C_return_code: return SH_arg.size();
+##-   doxygen:
+##-     brief: Fill in arg with some animal names
+##-     description: |
+##-       The C++ function returns void. But the C and Fortran wrappers return
+##-       an int with the number of items added to arg.
+##-
+##--  decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
+##-   doxygen:
+##-     brief: append '-like' to names.
+##-
+
+ 
+#-##################################################
+##-
+##-# Used with testing
+##-- decl: const std::string& LastFunctionCalled()
+##-
+##-##################################################
+##-
+##-- class: Class1
+##-  declarations:
+##-  - decl: Class1()  +name(new)
+##-  - decl: ~Class1() +name(delete)
+##-  - decl: void Method1()
+
+
+splicer_code:
+  f:
+    module_top:
+    -  "integer, parameter :: MAXNAME = 20"

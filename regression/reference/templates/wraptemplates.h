@@ -1,0 +1,42 @@
+// wraptemplates.h
+// This is generated code, do not edit
+// Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
+//
+// SPDX-License-Identifier: (BSD-3-Clause)
+//
+/**
+ * \file wraptemplates.h
+ * \brief Shroud generated wrapper for templates library
+ */
+// For C users and C++ implementation
+
+#ifndef WRAPTEMPLATES_H
+#define WRAPTEMPLATES_H
+
+#include "typestemplates.h"
+
+// splicer begin CXX_declarations
+// splicer end CXX_declarations
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// splicer begin C_declarations
+// splicer end C_declarations
+
+void TEM_function_tu_0(int arg1, long arg2);
+
+void TEM_function_tu_1(float arg1, double arg2);
+
+int TEM_use_impl_worker_internal_ImplWorker1();
+
+int TEM_use_impl_worker_internal_ImplWorker2();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // WRAPTEMPLATES_H

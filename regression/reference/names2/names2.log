@@ -1,0 +1,8 @@
+Read yaml names2.yaml
+Close names_types.yaml
+C function void AFunction()
+Close wrapNames.h
+Close wrapNames.cpp
+Close typesNames.h
+C-interface, Fortran function void AFunction()
+Close wrapfnames.f

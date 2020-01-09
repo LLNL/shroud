@@ -1,43 +1,9 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
-# Produced at the Lawrence Livermore National Laboratory
-# 
-# LLNL-CODE-738041.
-# All rights reserved.
-#  
-# This file is part of Shroud.  For details, see
-# https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are
-# met:
-#  
-# * Redistributions of source code must retain the above copyright
-#   notice, this list of conditions and the disclaimer below.
-# 
-# * Redistributions in binary form must reproduce the above copyright
-#   notice, this list of conditions and the disclaimer (as noted below)
-#   in the documentation and/or other materials provided with the
-#   distribution.
-# 
-# * Neither the name of the LLNS/LLNL nor the names of its contributors
-#   may be used to endorse or promote products derived from this
-#   software without specific prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-# A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE
-# LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR
-# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
-########################################################################
+# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate C bindings for C++ classes
 
@@ -47,594 +13,1443 @@ from __future__ import absolute_import
 
 import os
 
+from . import declast
+from . import typemap
 from . import whelpers
 from . import util
-from .util import append_format
+from .util import append_format, wformat
 
-wformat = util.wformat
+default_owner = "library"
+
+lang_map = {"c": "C", "cxx": "C++"}
 
 
 class Wrapc(util.WrapperMixin):
-    """Generate C bindings for C++ classes
+    """Generate C bindings and Fortran helpers for C++ library.
 
     """
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.patterns = tree['patterns']
+    capsule_code = {}
+    capsule_order = []
+    capsule_include = {}  # includes needed by C_memory_dtor_function
+
+    def __init__(self, newlibrary, config, splicers):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+            splicers -
+        """
+        self.newlibrary = newlibrary
+        self.patterns = newlibrary.patterns
+        self.language = newlibrary.language
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
-        self.comment = '//'
-        self.doxygen_begin = '/**'
-        self.doxygen_cont = ' *'
-        self.doxygen_end = ' */'
+        self.comment = "//"
+        self.cont = ""
+        self.linelen = newlibrary.options.C_line_length
+        self.doxygen_begin = "/**"
+        self.doxygen_cont = " *"
+        self.doxygen_end = " */"
+        self.shared_helper = {}  # All accumulated helpers
+        self.shared_proto_c = []
+        # Include files required by wrapper implementations.
+        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
+
+    _default_buf_args = ["arg"]
 
     def _begin_output_file(self):
         """Start a new class for output"""
-        # forward declarations of C++ class as opaque C struct.
-        self.header_forward = {}
-        # include files required by typedefs
-        self.header_typedef_include = {}
-        # headers needed by implementation, i.e. helper functions
+        #        # forward declarations of C++ class as opaque C struct.
+        #        self.header_forward = {}
+        # Include files required by wrapper prototypes
+        self.header_typedef_nodes = {}  # [typemap.name] = typemap
+        # Include files required by wrapper implementations.
+        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
+        # Headers needed by implementation, i.e. helper functions.
         self.header_impl_include = {}
         self.header_proto_c = []
         self.impl = []
-
-    def _c_type(self, lang, arg):
-        """
-        Return the C type.
-        pass-by-value default
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        t = []
-        typedef = self.typedef.get(arg['type'], None)
-        if typedef is None:
-            raise RuntimeError("No such type %s" % arg['type'])
-        if arg['attrs'].get('const', False):
-            t.append('const')
-        typ = getattr(typedef, lang)
-        if typ is None:
-            raise RuntimeError(
-                "Type {} has no value for {}".format(arg['type'], lang))
-        t.append(typ)
-        if arg['attrs'].get('ptr', False):
-            t.append('*')
-        elif arg['attrs'].get('reference', False):
-            if lang == 'cpp_type':
-                t.append('&')
-            else:
-                t.append('*')
-        return ' '.join(t)
-
-    def _c_decl(self, lang, arg, name=None):
-        """
-        Return the C declaration.
-
-        If name is not supplied, use name in arg.
-        This makes it easy to reproduce the arguments.
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        typ = self._c_type(lang, arg)
-        return typ + ' ' + (name or arg['name'])
+        self.enum_impl = []
+        self.struct_impl = []
+        self.c_helper = {}
+        self.c_helper_include = {}  # include files in generated C header
 
     def wrap_library(self):
-        fmt_library = self.tree['fmt']
+        newlibrary = self.newlibrary
+        fmt_library = newlibrary.fmtdict
+        # reserved the 0 slot of capsule_order
+        self.add_capsule_code("--none--", None, ["// Nothing to delete"])
+        whelpers.set_literalinclude(newlibrary.options.literalinclude2)
+        whelpers.add_copy_array_helper_c(fmt_library)
+        self.wrap_namespace(newlibrary.wrap_namespace, True)
+        self.write_header_utility()
 
-        self._push_splicer('class')
-        for node in self.tree['classes']:
-            self._push_splicer(node['name'])
-            self.write_file(self.tree, node)
-            self._pop_splicer(node['name'])
-        self._pop_splicer('class')
+    def wrap_namespace(self, node, top=False):
+        """Wrap a library or namespace.
 
-        if self.tree['functions']:
-            self.write_file(self.tree, None)
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+            top - True = top level library/namespace, else nested.
 
-        self.write_helper_files()
-
-    def write_file(self, library, cls):
-        """Write a file for the library and its functions or
-        a class and its methods.
+        Wrap depth first to accumulate destructor information
+        which is written at the library level.
         """
-        node = cls or library
-        fmt = node['fmt']
-        self._begin_output_file()
-        if cls:
-            self.wrap_class(cls)
+        if top:
+            # have one namespace level, then replace name each time
+            self._push_splicer("namespace")
+            self._push_splicer("XXX") # placer holder
+        for ns in node.namespaces:
+            if ns.options.wrap_c:
+                self.wrap_namespace(ns)
+        if top:
+            self._pop_splicer("XXX")  # This name will not match since it is replaced.
+            self._pop_splicer("namespace")
         else:
-            self.wrap_functions(library)
+            # Skip file component in scope_file for splicer name.
+            self._update_splicer_top("::".join(node.scope_file[1:]))
+
+        self._push_splicer("class")
+        structs = []
+        for cls in node.classes:
+            if not node.options.wrap_c:
+                continue
+            if cls.as_struct:
+                structs.append(cls)
+            else:
+                self._push_splicer(cls.name)
+                self.write_file(node, cls, None, False)
+                self._pop_splicer(cls.name)
+        self._pop_splicer("class")
+
+        self.write_file(node, None, structs, top)
+
+    def write_file(self, ns, cls, structs, top):
+        """Write a file for the library, namespace or class.
+
+        Args:
+            ns - ast.LibraryNode or ast.NamespaceNode
+            cls - ast.ClassNode
+            structs -
+        """
+        node = cls or ns
+        fmt = node.fmtdict
+        self._begin_output_file()
+
+        if structs:
+            for struct in structs:
+                self.wrap_struct(struct)
+
+        if cls:
+            if not cls.as_struct:
+                self.wrap_class(cls)
+        else:
+            self.wrap_enums(ns)
+            self.wrap_functions(ns)
+            if top:
+                self.write_capsule_code()
+                self.impl_typedef_nodes.update(self.capsule_typedef_nodes)
+
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
-        self.write_header(library, cls, c_header)
-        self.write_impl(library, cls, c_header, c_impl)
 
-    def wrap_functions(self, tree):
+        self.gather_helper_code(self.c_helper)
+        # always include utility header
+        self.c_helper_include[ns.fmtdict.C_header_utility] = True
+        self.shared_helper.update(self.c_helper)  # accumulate all helpers
+
+        if not self.write_header(ns, cls, c_header):
+            # The header will not be written if it is empty
+            c_header = None
+        self.write_impl(ns, cls, c_header, c_impl)
+
+    def wrap_enums(self, node):
+        """Wrap all enums in a splicer block
+
+        Args:
+            node - ast.ClassNode.
+        """
+        self._push_splicer("enum")
+        for node in node.enums:
+            self.wrap_enum(None, node)
+        self._pop_splicer("enum")
+
+    def wrap_functions(self, library):
+        """
+        Args:
+            library - ast.LibraryNode
+        """
         # worker function for write_file
-        self._push_splicer('function')
-        for node in tree['functions']:
+        self._push_splicer("function")
+        for node in library.functions:
             self.wrap_function(None, node)
-        self._pop_splicer('function')
+        self._pop_splicer("function")
+
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+
+        Args:
+            name -
+            done -
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = whelpers.CHelpers[name]
+        if "dependent_helpers" in helper_info:
+            for dep in helper_info["dependent_helpers"]:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        if self.language == "c":
+            lang_header = "c_header"
+            lang_source = "c_source"
+        else:
+            lang_header = "cxx_header"
+            lang_source = "cxx_source"
+        scope = helper_info.get("scope", "file")
+
+        if lang_header in helper_info:
+            for include in helper_info[lang_header].split():
+                self.helper_header[scope][include] = True
+        elif "header" in helper_info:
+            for include in helper_info["header"].split():
+                self.helper_header[scope][include] = True
+
+        if lang_source in helper_info:
+            self.helper_source[scope].append(helper_info[lang_source])
+        elif "source" in helper_info:
+            self.helper_source[scope].append(helper_info["source"])
+
+    def gather_helper_code(self, helpers):
+        """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers -
+        """
+        # per class
+        self.helper_source = dict(file=[], utility=[])
+        self.helper_header = dict(file={}, utility={})
+
+        done = {}  # avoid duplicates and recursion
+        for name in sorted(helpers.keys()):
+            self._gather_helper_code(name, done)
+
+    def write_header_utility(self):
+        """Write a utility header file with type definitions.
+
+        One utility header is written for the library.
+        Named from fmt.C_header_utility.
+        Contains typedefs for each shadow class.
+        """
+        self.gather_helper_code(self.shared_helper)
+
+        fmt = self.newlibrary.fmtdict
+        fname = fmt.C_header_utility
+        output = []
+
+        guard = fname.replace(".", "_").upper()
+
+        output.extend(
+            [
+                "// For C users and %s implementation" % lang_map[self.language],
+                "",
+                "#ifndef %s" % guard,
+                "#define %s" % guard,
+            ]
+        )
+
+        # headers required helpers
+        self.write_headers_nodes(
+            "c_header", {}, self.helper_header["utility"].keys(), output
+        )
+
+        if self.language == "cxx":
+            output.append("")
+            #            if self._create_splicer('CXX_declarations', output):
+            #                write_file = True
+            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+
+        output.extend(self.helper_source["utility"])
+
+        if self.shared_proto_c:
+            output.extend(self.shared_proto_c)
+
+        if self.language == "cxx":
+            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+
+        output.extend(["", "#endif  // " + guard])
+
+        self.config.cfiles.append(
+            os.path.join(self.config.c_fortran_dir, fname)
+        )
+        self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_header(self, library, cls, fname):
-        """ Write header file for a library node or a class node.
+        """ Write header file for a library or class node.
+        The header file can be used by C or C++.
+
+        Args:
+            library - ast.LibraryNode.
+            cls - ast.ClassNode.
+            fname -
         """
         guard = fname.replace(".", "_").upper()
         node = cls or library
-        options = node['options']
+        options = node.options
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
 
         if options.doxygen:
-            self.write_doxygen_file(output, fname, library, cls)
+            self.write_doxygen_file(output, fname, node)
 
-        output.extend([
-                '// For C users and C++ implementation',
-                '',
-                '#ifndef %s' % guard,
-                '#define %s' % guard,
-                ])
-        # headers required by typedefs
-        if self.header_typedef_include:
-            # output.append('// header_typedef_include')
-            output.append('')
-            headers = self.header_typedef_include.keys()
-            self.write_headers(headers, output)
+        output.extend(
+            [
+                "// For C users and %s implementation" % lang_map[self.language],
+                "",
+                "#ifndef %s" % guard,
+                "#define %s" % guard,
+            ]
+        )
+        if cls and cls.cpp_if:
+            output.append("#" + node.cpp_if)
 
-        output.append('')
-        self._create_splicer('CXX_declarations', output)
+        # headers required by typedefs and helpers
+        self.write_includes_for_header(
+            node.fmtdict,
+            self.header_typedef_nodes,
+            self.c_helper_include.keys(),
+            output,
+        )
 
-        output.extend([
-                '',
-                '#ifdef __cplusplus',
-                'extern "C" {',
-                '#endif',
-                '',
-                '// declaration of wrapped types',
-                ])
-        names = sorted(self.header_forward.keys())
-        for name in names:
-            output.append(
-                'struct s_{C_type_name};\n'
-                'typedef struct s_{C_type_name} {C_type_name};'.
-                format(C_type_name=name))
-        output.append('')
-        self._create_splicer('C_declarations', output)
-        output.extend(self.header_proto_c)
-        output.extend([
-                '',
-                '#ifdef __cplusplus',
-                '}',
-                '#endif',
-                '',
-                '#endif  // %s' % guard
-                ])
+        if self.language == "cxx":
+            output.append("")
+            if self._create_splicer("CXX_declarations", output):
+                write_file = True
+            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if self.enum_impl:
+            write_file = True
+            output.extend(self.enum_impl)
 
-    def write_impl(self, library, cls, hname, fname):
-        """Write implementation
+        if self.struct_impl:
+            write_file = True
+            output.extend(self.struct_impl)
+
+        #        if self.header_forward:
+        #            output.extend([
+        #                '',
+        #                '// declaration of shadow types'
+        #            ])
+        #            for name in sorted(self.header_forward.keys()):
+        #                write_file = True
+        #                output.append(
+        #                    'struct s_{C_type_name} {{+\n'
+        #                    'void *addr;   /* address of C++ memory */\n'
+        #                    'int idtor;    /* index of destructor */\n'
+        #                    'int refcount; /* reference count */\n'
+        #                    '-}};\n'
+        #                    'typedef struct s_{C_type_name} {C_type_name};'.
+        #                    format(C_type_name=name))
+        output.append("")
+        if self._create_splicer("C_declarations", output):
+            write_file = True
+        if self.header_proto_c:
+            write_file = True
+            output.extend(self.header_proto_c)
+        if self.language == "cxx":
+            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+        if cls and cls.cpp_if:
+            output.append("#endif  // " + node.cpp_if)
+        output.extend(["", "#endif  // " + guard])
+
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname)
+            )
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
+        return write_file
+
+    def write_impl(self, ns, cls, hname, fname):
+        """Write implementation.
+        Write struct, function, enum for a
+        namespace or class.
+
+        Args:
+            ns - ast.LibraryNode or ast.NamespaceNode
+            cls - ast.ClassNode
+            hname -
+            fname -
         """
-        node = cls or library
-        options = node['options']
+        node = cls or ns
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
-        output.append('// ' + fname)
+        if cls and cls.cpp_if:
+            output.append("#" + node.cpp_if)
 
-        output.append('#include "%s"' % hname)
+        if hname:
+            output.append('#include "%s"' % hname)
 
-        # Use headers from class if they exist or else library
-        if cls and cls['cpp_header']:
-            for include in cls['cpp_header'].split():
-                self.header_impl_include[include] = True
-        else:
-            for include in library['cpp_header'].split():
-                self.header_impl_include[include] = True
+        # Use headers from implementation
+        self.find_header(node)
+        self.header_impl_include.update(self.helper_header["file"])
 
         # headers required by implementation
         if self.header_impl_include:
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        self.namespace(library, cls, 'begin', output)
-        output.append('')
-        self._create_splicer('CXX_definitions', output)
-        output.append('\nextern "C" {')
-        output.append('')
-        self._create_splicer('C_definitions', output)
-        output.extend(self.impl)
-        output.append('')
+        # Headers required by implementations,
+        # for example template instantiation.
+        if self.impl_typedef_nodes:
+            self.write_headers_nodes(
+                "impl_header",
+                self.impl_typedef_nodes,
+                [],
+                output,
+                self.header_impl_include,
+            )
 
-        output.append('}  // extern "C"')
-        self.namespace(library, cls, 'end', output)
+        if self.language == "cxx":
+            output.append("")
+            if self._create_splicer("CXX_definitions", output):
+                write_file = True
+            output.append('\nextern "C" {')
+        output.append("")
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if self.helper_source["file"]:
+            write_file = True
+            output.extend(self.helper_source["file"])
 
-    def write_headers(self, headers, output):
-        for header in sorted(headers):
-            if header[0] == '<':
-                output.append('#include %s' % header)
-            else:
-                output.append('#include "%s"' % header)
+        if self._create_splicer("C_definitions", output):
+            write_file = True
+        if self.impl:
+            write_file = True
+            output.extend(self.impl)
+
+        if self.language == "cxx":
+            output.append("")
+            output.append('}  // extern "C"')
+
+        if cls and cls.cpp_if:
+            output.append("#endif  // " + node.cpp_if)
+
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname)
+            )
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
+
+    def wrap_struct(self, node):
+        """Create a C copy of struct.
+        A C++ struct must all POD.
+        XXX - Only need to wrap if in a C++ namespace.
+
+        Args:
+            node - ast.ClasNode.
+        """
+        if self.language == "c":
+            # No need for wrapper with C.
+            # Use struct definition in user's header from cxx_header.
+            return
+        self.log.write("struct {1.name}\n".format(self, node))
+        cname = node.typemap.c_type
+
+        output = self.struct_impl
+        output.append("")
+        output.extend(
+            ["", "struct s_{C_type_name} {{".format(C_type_name=cname), 1]
+        )
+        for var in node.variables:
+            ast = var.ast
+            output.append(ast.gen_arg_as_c() + ";")
+        output.extend(
+            [
+                -1,
+                "};",
+                "typedef struct s_{C_type_name} {C_type_name};".format(
+                    C_type_name=cname
+                ),
+            ]
+        )
+
+        # Add a sanity check on sizes of structs
+        if False:
+            # XXX - add this to compiled code somewhere
+            stypemap = node.typemap
+            output.extend(
+                [
+                    "",
+                    "0#if sizeof {} != sizeof {}".format(
+                        stypemap.name, stypemap.c_type
+                    ),
+                    "0#error Sizeof {} and {} do not match".format(
+                        stypemap.name, stypemap.c_type
+                    ),
+                    "0#endif",
+                ]
+            )
 
     def wrap_class(self, node):
-        self.log.write("class {1[name]}\n".format(self, node))
-        name = node['name']
-        typedef = self.typedef[name]
-        cname = typedef.c_type
+        """
+        Args:
+            node - ast.ClassNode.
+        """
+        self.log.write("class {1.name}\n".format(self, node))
 
-        fmt_class = node['fmt']
+        fmt_class = node.fmtdict
         # call method syntax
-        fmt_class.CPP_this_call = fmt_class.CPP_this + '->'
-#        fmt_class.update(dict(
-#                ))
+        fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
 
         # create a forward declaration for this type
-        self.header_forward[cname] = True
+        hname = whelpers.add_shadow_helper(node)
+        self.shared_helper[hname] = True
+        #        self.header_forward[cname] = True
+        self.compute_idtor(node)
 
-        self._push_splicer('method')
-        for method in node['methods']:
+        self.wrap_enums(node)
+
+        self._push_splicer("method")
+        for method in node.functions:
             self.wrap_function(node, method)
-        self._pop_splicer('method')
+        self._pop_splicer("method")
+
+    def compute_idtor(self, node):
+        """Create a capsule destructor for type.
+
+        Only call add_capsule_code if the destructor is wrapped.
+        Otherwise, there is no way to delete the object.
+        i.e. the class has a private destructor.
+
+        Args:
+            node - ast.ClassNode.
+        """
+        has_dtor = False
+        for method in node.functions:
+            if "_destructor" in method.ast.attrs:
+                has_dtor = True
+                break
+
+        ntypemap = node.typemap
+        if has_dtor:
+            cxx_type = ntypemap.cxx_type
+            del_lines = [
+                "{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);".format(
+                    cxx_type=cxx_type
+                ),
+                "delete cxx_ptr;",
+            ]
+            ntypemap.idtor = self.add_capsule_code(
+                cxx_type, ntypemap, del_lines
+            )
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
+        else:
+            ntypemap.idtor = "0"
+
+    def wrap_enum(self, cls, node):
+        """Wrap an enumeration.
+        This largely echoes the C++ code.
+        For classes, it adds prefixes.
+
+        Args:
+            cls - ast.ClassNode.
+            node - ast.EnumNode.
+        """
+        options = node.options
+        ast = node.ast
+        output = self.enum_impl
+
+        node.eval_template("C_enum")
+        fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
+        output.append("")
+        append_format(output, "//  {namespace_scope}{enum_name}", fmt_enum)
+        append_format(output, "enum {C_enum} {{+", fmt_enum)
+        for member in ast.members:
+            fmt_id = fmtmembers[member.name]
+            if member.value is not None:
+                append_format(output, "{C_enum_member} = {C_value},", fmt_id)
+            else:
+                append_format(output, "{C_enum_member},", fmt_id)
+        output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
+        append_format(output, "-}};", fmt_enum)
+
+    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper,
+                         name=None):
+        """Find prototype based on buf_args in fc_statements.
+
+        Args:
+            fmt - Format dictionary (fmt_arg or fmt_result).
+            ast - Abstract Syntax Tree from parser.
+            buf_args - List of arguments/metadata to add.
+            proto_list - Prototypes are appended to list.
+            need_wrapper -
+            name - name to override ast.name (with shadow only).
+
+        return need_wrapper
+        A wrapper will be needed if there is meta data.
+        i.e. No wrapper if the C function can be called directly.
+        """
+        attrs = ast.attrs
+
+        for buf_arg in buf_args:
+            if buf_arg == "arg":
+                # vector<int> -> int *
+                proto_list.append(ast.gen_arg_as_c(continuation=True))
+                continue
+            elif buf_arg == "shadow":
+                # Do not use const in declaration.
+                proto_list.append( "{} {}{}".format(
+                    ast.typemap.c_type,
+                    "" if attrs.get("value", False) else "* ",
+                    name or ast.name))
+                continue
+
+            need_wrapper = True
+            if buf_arg == "size":
+                fmt.c_var_size = attrs["size"]
+                append_format(proto_list, "long {c_var_size}", fmt)
+            elif buf_arg == "capsule":
+                fmt.c_var_capsule = attrs["capsule"]
+                append_format(
+                    proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
+                )
+            elif buf_arg == "context":
+                fmt.c_var_context = attrs["context"]
+                append_format(
+                    proto_list, "{C_array_type} *{c_var_context}", fmt
+                )
+                if "dimension" in attrs:
+                    # XXX - assumes dimension is a single variable.
+                    fmt.c_var_dimension = attrs["dimension"]
+            elif buf_arg == "len_trim":
+                fmt.c_var_trim = attrs["len_trim"]
+                append_format(proto_list, "int {c_var_trim}", fmt)
+            elif buf_arg == "len":
+                fmt.c_var_len = attrs["len"]
+                append_format(proto_list, "int {c_var_len}", fmt)
+            else:
+                raise RuntimeError(
+                    "wrap_function: unhandled case {}".format(buf_arg)
+                )
+        return need_wrapper
+
+    def add_code_from_statements(
+        self, fmt, intent_blk, pre_call, post_call, need_wrapper
+    ):
+        """Add pre_call and post_call code blocks.
+        Also record the helper functions they need.
+
+        Args:
+            fmt -
+            intent_blk -
+            pre_call -
+            post_call -
+            need_wrapper -
+
+        return need_wrapper
+        A wrapper is needed if code is added.
+        """
+        self.add_statements_headers(intent_blk)
+
+        if intent_blk.pre_call:
+            need_wrapper = True
+            # pre_call.append('// intent=%s' % intent)
+            for line in intent_blk.pre_call:
+                append_format(pre_call, line, fmt)
+
+        if intent_blk.post_call:
+            need_wrapper = True
+            for line in intent_blk.post_call:
+                append_format(post_call, line, fmt)
+
+        if intent_blk.c_helper:
+            c_helper = wformat(intent_blk.c_helper, fmt)
+            for helper in c_helper.split():
+                self.c_helper[helper] = True
+        return need_wrapper
 
     def wrap_function(self, cls, node):
+        """Wrap a C++ function with C.
+
+        Args:
+            cls  - ast.ClassNode or None for functions.
+            node - ast.FunctionNode.
         """
-        Wrap a C++ function with C
-        cls  - class node or None for functions
-        node - function/method node
-        """
-        options = node['options']
+        options = node.options
         if not options.wrap_c:
             return
 
         if cls:
-            cls_function = 'method'
+            cls_function = "method"
         else:
-            cls_function = 'function'
-        self.log.write("C {0} {1[_decl]}\n".format(cls_function, node))
+            cls_function = "function"
+        self.log.write("C {0} {1.declgen}\n".format(cls_function, node))
 
-        fmt_func = node['fmt']
+        fmt_func = node.fmtdict
+        fmtargs = node._fmtargs
 
-        # Look for C++ routine to wrap
-        # Usually the same node unless it is generated (i.e. bufferified)
-        CPP_node = node
+        if self.language == "c" or options.get("C_extern_C", False):
+            # Fortran can call C directly and only needs wrappers when code is
+            # inserted. For example, pre_call or post_call.
+            need_wrapper = False
+        else:
+            # C++ will need C wrappers to deal with name mangling.
+            need_wrapper = True
+
+        # Look for C++ routine to call.
+        # Usually the same node unless it is generated (i.e. bufferified).
+        CXX_node = node
         generated = []
-        if '_generated' in CPP_node:
-            generated.append(CPP_node['_generated'])
-        while '_PTR_C_CPP_index' in CPP_node:
-            CPP_node = self.tree['function_index'][
-                CPP_node['_PTR_C_CPP_index']]
-            if '_generated' in CPP_node:
-                generated.append(CPP_node['_generated'])
-        CPP_result = CPP_node['result']
-        CPP_result_type = CPP_result['type']
-        CPP_subprogram = CPP_node['_subprogram']
+        if CXX_node._generated:
+            generated.append(CXX_node._generated)
+        while CXX_node._PTR_C_CXX_index is not None:
+            CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
+            if CXX_node._generated:
+                generated.append(CXX_node._generated)
+        CXX_ast = CXX_node.ast
+        CXX_subprogram = CXX_node.CXX_subprogram
 
         # C return type
-        result = node['result']
-        result_type = result['type']
-        subprogram = node['_subprogram']
-        generator = node.get('_generated', '')
+        ast = node.ast
+        C_subprogram = node.C_subprogram
+        result_typemap = node.CXX_result_typemap
+        generated_suffix = node.generated_suffix
 
-        # C++ functions which return 'this',
-        # are easier to call from Fortran if they are subroutines.
-        # There is no way to chain in Fortran:  obj->doA()->doB();
-        if node.get('return_this', False):
-            CPP_result_type = 'void'
-            CPP_subprogram = 'subroutine'
+        result_is_const = ast.const
+        is_ctor = CXX_ast.is_ctor()
+        is_dtor = CXX_ast.is_dtor()
+        is_static = False
+        is_pointer = CXX_ast.is_pointer()
+        is_const = ast.func_const
 
-        result_typedef = self.typedef[result_type]
-        result_is_const = result['attrs'].get('const', False)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
-        is_const = node['attrs'].get('const', False)
-
-        if result_typedef.c_header:
-            # include any dependent header in generated header
-            self.header_typedef_include[result_typedef.c_header] = True
-        if result_typedef.cpp_header:
-            # include any dependent header in generated source
-            self.header_impl_include[result_typedef.cpp_header] = True
-        if result_typedef.forward:
-            # create forward references for other types being wrapped
-            # i.e. This method returns a wrapped type
-            self.header_forward[result_typedef.c_type] = True
+        self.impl_typedef_nodes.update(node.gen_headers_typedef)
+        header_typedef_nodes = {}
+        header_typedef_nodes[result_typemap.name] = result_typemap
+        #        if result_typemap.forward:
+        #            # create forward references for other types being wrapped
+        #            # i.e. This method returns a wrapped type
+        #            self.header_forward[result_typemap.c_type] = True
 
         if result_is_const:
-            fmt_func.c_const = 'const '
+            fmt_func.c_const = "const "
         else:
-            fmt_func.c_const = ''
+            fmt_func.c_const = ""
 
-        return_lang = '{cpp_var}'  # Assume C and C++ types are compatiable
-        if CPP_subprogram == 'subroutine':
+        if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
+            result_blk = None
+            if is_dtor:
+                stmts = ["c", "shadow", "dtor"]
+            else:
+                stmts = ["c"]
+            result_blk = typemap.lookup_fc_stmts(stmts)
         else:
-            fmt_result = result.setdefault('fmtc', util.Options(fmt_func))
-            fmt_result.cpp_var = fmt_func.C_result
-#            fmt_result.cpp_decl = self._c_type('cpp_type', CPP_result)
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
+            #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            fmt_result.cpp_rv_decl = self._c_decl('cpp_type', CPP_result, name=fmt_func.C_result)
+            spointer = "pointer" if ast.is_indirect() else "scalar"
+            if is_ctor:
+                sintent = "ctor"
+            else:
+                sintent = "result"
+            stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
+            result_blk = typemap.lookup_fc_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_result.stmt0 = "_".join(stmts)
+            fmt_result.stmt1 = result_blk.key
+
+            fmt_result.idtor = "0"  # no destructor
+            fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+            fmt_result.c_type = result_typemap.c_type
+            fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.sh_type = result_typemap.sh_type
+            c_local_var = ""
+            if self.language == "c":
+                fmt_result.cxx_var = fmt_result.c_var
+            elif result_blk.c_local_var:
+                c_local_var = result_blk.c_local_var
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            elif result_typemap.cxx_to_c is None:
+                # C and C++ are compatible
+                fmt_result.cxx_var = fmt_result.c_var
+            else:
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
+            fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True
+            )
+
+            compute_cxx_deref(
+                CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
+        result_blk = typemap.lookup_local_stmts(
+            ["c", generated_suffix], result_blk, node)
 
-        proto_list = []
-        call_list = []
-        if cls:
-            # object pointer
-            arg_dict = dict(name=fmt_func.C_this,
-                            type=cls['name'],
-                            attrs=dict(ptr=True,
-                                       const=is_const))
-            C_this_type = self._c_type('c_type', arg_dict)
-            if not is_ctor:
-                arg = self._c_decl('c_type', arg_dict)
-                proto_list.append(arg)
+        proto_list = []  # arguments for wrapper prototype
+        proto_tail = []  # extra arguments at end of call
+        call_list = []  # arguments to call function
+        final_code = []
+        return_code = []
 
-        # indicate which argument contains function result, usually none
+        # Indicate which argument contains function result, usually none.
+        # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
-        pre_call = []      # list of temporary variable declarations
+        setup_this = []
+        pre_call = []  # list of temporary variable declarations
         post_call = []
 
-        if cls and not is_ctor:
-            if is_const:
-                fmt_func.c_const = 'const '
+        if cls:
+            # Add 'this' argument
+            need_wrapper = True
+            is_static = "static" in ast.storage
+            if is_ctor:
+                pass
             else:
-                fmt_func.c_const = ''
-            fmt_func.c_ptr = ' *'
-            fmt_func.c_var = fmt_func.C_this
-            # LHS is class' cpp_to_c
-            cls_typedef = self.typedef[cls['name']]
-            append_format(pre_call, 
-                          '{c_const}{cpp_class} *{CPP_this} = ' +
-                          cls_typedef.c_to_cpp + ';', fmt_func)
+                if is_const:
+                    fmt_func.c_const = "const "
+                else:
+                    fmt_func.c_const = ""
+                fmt_func.c_deref = "*"
+                fmt_func.c_member = "->"
+                fmt_func.c_var = fmt_func.C_this
+                if is_static:
+                    fmt_func.CXX_this_call = (
+                        fmt_func.namespace_scope + fmt_func.class_scope
+                    )
+                else:
+                    # 'this' argument, always a pointer to a shadow type.
+                    proto_list.append( "{}{} * {}".format(
+                        fmt_func.c_const,
+                        cls.typemap.c_type, fmt_func.C_this))
 
-#    c_var      - argument to C function  (wrapper function)
-#    c_var_trim - variable with trimmed length of c_var
-#    c_var_len  - variable with length of c_var
-#    cpp_var    - argument to C++ function  (wrapped function).
-#                 Usually same as c_var but may be a new local variable
-#                 or the funtion result variable.
+                    # LHS is class' cxx_to_c
+                    cls_typemap = cls.typemap
+                    if cls_typemap.base != "shadow":
+                        raise RuntimeError(
+                            "Wapped class is not a shadow type"
+                        )
+                    append_format(
+                        setup_this,
+                        "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
+                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
+                        fmt_func,
+                    )
 
-        for arg in node['args']:
-            fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
-            c_attrs = arg['attrs']
-            arg_typedef = self.typedef[arg['type']]
-            c_statements = arg_typedef.c_statements
-            fmt_arg.c_var = arg['name']
-            if arg_typedef.base == 'string' or \
-               arg_typedef.name == 'char_scalar':
-                fmt_arg.c_var_trim = c_attrs.get('len_trim', 'SH_' +
-                                                 options.C_var_trim_template.format(
-                                                     c_var=fmt_arg.c_var))
-                fmt_arg.c_var_len = c_attrs.get('len', 'SH_' +
-                                                options.C_var_len_template.format(
-                                                    c_var=fmt_arg.c_var))
-            if c_attrs.get('const', False):
-                fmt_arg.c_const = 'const '
+        self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
+
+        need_wrapper = self.build_proto_list(
+            fmt_result,
+            ast,
+            result_blk.buf_args,
+            proto_list,
+            need_wrapper,
+        )
+
+        #    c_var      - argument to C function  (wrapper function)
+        #    c_var_trim - variable with trimmed length of c_var
+        #    c_var_len  - variable with length of c_var
+        #    cxx_var    - argument to C++ function  (wrapped function).
+        #                 Usually same as c_var but may be a new local variable
+        #                 or the function result variable.
+
+        # --- Loop over function parameters
+        for arg in ast.params:
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
+            c_attrs = arg.attrs
+
+            arg_typemap = arg.typemap  # XXX - look up vector
+            sgroup = arg_typemap.sgroup
+            fmt_arg.update(arg_typemap.format)
+
+            if arg_typemap.base == "vector":
+                fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
+
+            if arg_typemap.impl_header is not None:
+                for hdr in arg_typemap.impl_header:
+                    self.header_impl_include[hdr] = True
+            arg_typemap, specialize = typemap.lookup_c_statements(arg)
+            header_typedef_nodes[arg_typemap.name] = arg_typemap
+
+            fmt_arg.c_var = arg_name
+
+            if arg.const:
+                fmt_arg.c_const = "const "
             else:
-                fmt_arg.c_const = ''
-            if c_attrs.get('ptr', False):
-                fmt_arg.c_ptr = ' *'
-            else:
-                fmt_arg.c_ptr = ''
-            fmt_arg.cpp_type = arg_typedef.cpp_type
+                fmt_arg.c_const = ""
+            compute_c_deref(arg, None, fmt_arg)
+            fmt_arg.cxx_type = arg_typemap.cxx_type
+            fmt_arg.sh_type = arg_typemap.sh_type
+            fmt_arg.idtor = "0"
+            cxx_local_var = ""
 
-            proto_list.append(self._c_decl('c_type', arg))
-
-            intent_grp = ''
-            if generator == 'string_to_buffer_and_len' and \
-               (arg_typedef.base == 'string' or
-                arg_typedef.name == 'char_scalar'):
-                len_trim = c_attrs.get('len_trim', False)
-                if len_trim:
-                    append_format(proto_list, 'int {c_var_trim}', fmt_arg)
-                len_arg = c_attrs.get('len', False)
-                if len_arg:
-                    append_format(proto_list, 'int {c_var_len}', fmt_arg)
-                intent_grp = '_buf'
-
-            if c_attrs.get('_is_result', False):
+            is_result = c_attrs.get("_is_result", False)
+            if is_result:
+                # This argument is the C function result
                 arg_call = False
-                fmt_arg.cpp_var = fmt_arg.C_result
+
+                # Note that result_type is void, so use arg_typemap.
+                if arg_typemap.cxx_to_c is None:
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
+                else:
+                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
+                # Set cxx_var for statement.final in fmt_result context
+                fmt_result.cxx_var = fmt_arg.cxx_var
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True
+                )
+
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                slist = ['result' + intent_grp]
+                result_return_pointer_as = c_attrs.get("deref", "")
+                spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
+                stmts = [
+                    "c", sgroup, spointer, "result",
+                    generated_suffix, result_return_pointer_as,
+                ]
+                intent_blk = typemap.lookup_fc_stmts(stmts)
+                need_wrapper = True
+                cxx_local_var = intent_blk.cxx_local_var
+
+                if cxx_local_var:
+                    fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
+                compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
+                # regular argument (not function result)
                 arg_call = arg
-                fmt_arg.cpp_var = fmt_arg.c_var      # name in c++ call.
-                slist = []
-                if c_attrs['intent'] in ['inout', 'in']:
-                    slist.append('intent_in' + intent_grp)
-                if c_attrs['intent'] in ['inout', 'out']:
-                    slist.append('intent_out' + intent_grp)
+                spointer = "pointer" if arg.is_indirect() else "scalar"
+                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
+                intent_blk = typemap.lookup_fc_stmts(stmts)
 
-            # Add any code needed for intent(IN).
-            # Usually to convert types.
-            # For example, convert char * to std::string
-            # Skip input arguments generated by F_string_result_as_arg
-            have_cpp_local_var = arg_typedef.cpp_local_var
-            for intent in slist:
-                have_cpp_local_var = have_cpp_local_var or \
-                    c_statements.get(intent, {}).get('cpp_local_var', False)
-            if have_cpp_local_var:
-                fmt_arg.cpp_var = 'SH_' + fmt_arg.c_var
-
-            for intent in slist:
-                # pre_call.append('// intent=%s' % intent)
-                intent_blk = c_statements.get(intent, {})
-                cmd_list = intent_blk.get('pre_call', [])
-                if cmd_list:
-                    for cmd in cmd_list:
-                        append_format(pre_call, cmd, fmt_arg)
-
-                cmd_list = intent_blk.get('post_call', [])
-                if cmd_list:
-                    # pick up c_str() from cpp_to_c
-                    fmt_arg.cpp_val = wformat(arg_typedef.cpp_to_c, fmt_arg)
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_arg)
-
-                cpp_header = intent_blk.get('cpp_header', None)
-                # include any dependent header in generated source
-                if cpp_header:
-                    for h in cpp_header.split():
-                        self.header_impl_include[h] = True
-
-            if arg_typedef.cpp_local_var:
-                # cpp_local_var should only be set if c_statements are not used
-                if arg_typedef.c_statements:
-                    raise RuntimeError(
-                        'c_statements and cpp_local_var are both '
-                        'defined for {}'
-                        .format(arg_typedef.name))
-                append_format(pre_call,
-                              '{c_const}{cpp_type}{c_ptr} {cpp_var} = ' +
-                              arg_typedef.c_to_cpp + ';', fmt_arg)
-
-            if arg_call:
-                if have_cpp_local_var:
-                    call_list.append(fmt_arg.cpp_var)
+                if intent_blk.cxx_local_var:
+                    # Explicit conversion must be in pre_call.
+                    cxx_local_var = intent_blk.cxx_local_var
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                elif self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
+                elif arg_typemap.c_to_cxx is None:
+                    # Compatible
+                    fmt_arg.cxx_var = fmt_arg.c_var
                 else:
                     # convert C argument to C++
-                    append_format(call_list, arg_typedef.c_to_cpp, fmt_arg)
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                    fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                        name=fmt_arg.cxx_var,
+                        params=None,
+                        as_ptr=True,
+                        continuation=True,
+                    )
+                    append_format(
+                        pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+                    )
+                compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
-            if arg_typedef.c_header:
-                # include any dependent header in generated header
-                self.header_typedef_include[arg_typedef.c_header] = True
-            if arg_typedef.cpp_header:
-                # include any dependent header in generated source
-                self.header_impl_include[arg_typedef.cpp_header] = True
-            if arg_typedef.forward:
-                # create forward references for other types being wrapped
-                # i.e. This argument is another wrapped type
-                self.header_forward[arg_typedef.c_type] = True
-        fmt_func.C_call_list = ', '.join(call_list)
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = "_".join(stmts)
+            fmt_arg.stmt1 = intent_blk.key
 
-        fmt_func.C_prototype = options.get('C_prototype', ', '.join(proto_list))
+            need_wrapper = self.build_proto_list(
+                fmt_arg,
+                arg,
+                intent_blk.buf_args or self._default_buf_args,
+                proto_list,
+                need_wrapper,
+            )
 
-        if node.get('return_this', False):
-            fmt_func.C_return_type = 'void'
+            if self.language == "c":
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    "{cxx_addr}{cxx_var}", fmt_arg
+                )
+            elif arg.const:
+                # cast away constness
+                fmt_arg.cxx_type = arg_typemap.cxx_type
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    "static_cast<void *>\t(const_cast<"
+                    "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
+                    fmt_arg,
+                )
+            else:
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    "static_cast<void *>({cxx_addr}{cxx_var})", fmt_arg
+                )
+
+            self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
+
+            need_wrapper = self.add_code_from_statements(
+                fmt_arg, intent_blk, pre_call, post_call, need_wrapper
+            )
+
+            if arg_call:
+                # Collect arguments to pass to wrapped function.
+                # Skips result_as_arg argument.
+                if cxx_local_var == "scalar":
+                    if arg.is_pointer():
+                        call_list.append("&" + fmt_arg.cxx_var)
+                    else:
+                        call_list.append(fmt_arg.cxx_var)
+                elif cxx_local_var == "pointer":
+                    if arg.is_pointer():
+                        call_list.append(fmt_arg.cxx_var)
+                    else:
+                        call_list.append("*" + fmt_arg.cxx_var)
+                elif arg.is_reference():
+                    # reference to scalar  i.e. double &max
+                    # void tutorial::getMinMax(int &min);
+                    # wrapper(int *min) {
+                    #   tutorial::getMinMax(*min);
+                    #}
+                    call_list.append("*" + fmt_arg.cxx_var)
+                else:
+                    call_list.append(fmt_arg.cxx_var)
+
+        #            if arg_typemap.forward:
+        #                # create forward references for other types being wrapped
+        #                # i.e. This argument is another wrapped type
+        #                self.header_forward[arg_typemap.c_type] = True
+        # --- End loop over function parameters
+
+        if CXX_subprogram == "function":
+            # Add extra arguments to end of prototype for result.
+            need_wrapper = self.build_proto_list(
+                fmt_result,
+                ast,
+                result_blk.buf_extra,
+                proto_tail,
+                need_wrapper,
+                name=fmt_result.c_var,
+            )
+
+        if call_list:
+            fmt_func.C_call_list = ",\t ".join(call_list)
+
+        fmt_func.C_prototype = options.get(
+            "C_prototype", ",\t ".join(proto_list + proto_tail)
+        )
+
+        if node.return_this:
+            fmt_func.C_return_type = "void"
+        elif result_blk.return_type:
+            fmt_func.C_return_type = wformat(
+                result_blk.return_type, fmt_result)
+        elif ast.return_pointer_as == "scalar":
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, as_scalar=True, params=None, continuation=True
+            )
         else:
-            fmt_func.C_return_type = options.get(
-                'C_return_type', self._c_type('c_type', result))
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, params=None, continuation=True
+            )
 
-        if pre_call:
-            fmt_func.C_pre_call = '\n'.join(pre_call)
-        if post_call:
-            fmt_func.C_post_call = '\n'.join(post_call)
-
+        # generate the C body
         post_call_pattern = []
-        if 'C_error_pattern' in node:
-            C_error_pattern = node['C_error_pattern'] + \
-                              node.get('_error_pattern_suffix', '')
+        if node.C_error_pattern is not None:
+            C_error_pattern = typemap.compute_name(
+                [node.C_error_pattern, generated_suffix])
             if C_error_pattern in self.patterns:
-                post_call_pattern.append('// C_error_pattern')
+                need_wrapper = True
+                post_call_pattern.append("// C_error_pattern")
                 append_format(
-                    post_call_pattern, self.patterns[C_error_pattern], fmt_pattern)
-        if post_call_pattern:
-            fmt_func.C_post_call_pattern = '\n'.join(post_call_pattern)
+                    post_call_pattern,
+                    self.patterns[C_error_pattern],
+                    fmt_pattern,
+                )
 
-        # body of function
+        if result_blk.call:
+            raw_call_code = result_blk.call
+        elif CXX_subprogram == "subroutine":
+            raw_call_code = [
+                "{CXX_this_call}{function_name}"
+                "{CXX_template}({C_call_list});",
+            ]
+        else:
+            if result_blk.cxx_local_var:
+                # A C++ var is created by pre_call.
+                # Assign to it directly. ex c_shadow_scalar_result
+                fmt_result.cxx_addr = ""
+                fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
+            
+            raw_call_code = [
+                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
+                "{CXX_template}(\t{C_call_list});",
+            ]
+            if result_arg is None:
+                # Return result from function
+                # (It was not passed back in an argument)
+                if self.language == "c":
+                    pass
+                elif result_blk.c_local_var:
+                    # c_var is created by the post_call clause or
+                    # it may be passed in as an argument.
+                    # For example, with struct and shadow.
+                    if result_is_const:
+                        # cast away constness
+                        fmt_result.cxx_type = result_typemap.cxx_type
+                        fmt_result.cxx_cast_to_void_ptr = wformat(
+                            "static_cast<void *>\t(const_cast<"
+                            "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
+                            fmt_result,
+                        )
+                    else:
+                        fmt_result.cxx_cast_to_void_ptr = wformat(
+                            "static_cast<void *>({cxx_addr}{cxx_var})",
+                            fmt_result,
+                        )
+                elif result_typemap.cxx_to_c is not None:
+                    # Make intermediate c_var value if a conversion
+                    # is required i.e. not the same as cxx_var.
+                    fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
+                        name=fmt_result.c_var, params=None, continuation=True
+                    )
+                    fmt_result.c_val = wformat(
+                        result_typemap.cxx_to_c, fmt_result
+                    )
+                    append_format(
+                        return_code, "{c_rv_decl} =\t {c_val};", fmt_result
+                    )
+
+                if result_typemap.impl_header is not None:
+                    for hdr in result_typemap.impl_header:
+                        self.header_impl_include[hdr] = True
+
+        need_wrapper = self.add_code_from_statements(
+            fmt_result, result_blk, pre_call, post_call, need_wrapper
+        )
+
+        call_code = []
+        for line in raw_call_code:
+            append_format(call_code, line, fmt_result)
+
+        if result_blk.final:
+            need_wrapper = True
+            final_code.append("{+")
+            final_code.append("// final")
+            for line in result_blk.final:
+                append_format(final_code, line, fmt_result)
+            final_code.append("-}")
+
+        if result_blk.ret:
+            raw_return_code = result_blk.ret
+        elif ast.return_pointer_as == "scalar":
+            # dereference pointer to return scalar
+            raw_return_code = ["return *{cxx_var};"]
+        elif result_arg is None and C_subprogram == "function":
+            # Note: A C function may be converted into a Fortran subroutine
+            # subprogram when the result is returned in an argument.
+            fmt_result.c_get_value = typemap.compute_return_prefix(ast, c_local_var)
+            raw_return_code = ["return {c_get_value}{c_var};"]
+        else:
+            raw_return_code = ["return;"]
+        for line in raw_return_code:
+            append_format(return_code, line, fmt_result)
+
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if 'C_code' in node:
-            C_code = [1, wformat(node['C_code'], fmt_func), -1]
+        if "c" in node.splicer:
+            need_wrapper = True
+            C_code = node.splicer["c"]
         elif splicer_code:
+            need_wrapper = True
             C_code = splicer_code
         else:
-            # generate the C body
-            fmt_func.C_return_code = 'return;'
-            if is_ctor:
-                fmt_func.C_call_code = wformat('{cpp_rv_decl} = new {cpp_class}'
-                               '({C_call_list});', fmt_result)
-                fmt_func.C_return_code = ('return '
-                               + wformat(result_typedef.cpp_to_c, fmt_result)
-                               + ';')
-            elif is_dtor:
-                fmt_func.C_call_code = 'delete %s;' % fmt_func.CPP_this
-            elif CPP_subprogram == 'subroutine':
-                fmt_func.C_call_code = wformat(
-                    '{CPP_this_call}{function_name}'
-                    '{CPP_template}({C_call_list});',
-                    fmt_func)
-            else:
-                fmt_func.C_call_code = wformat(
-                    '{cpp_rv_decl} = {CPP_this_call}{function_name}'
-                    '{CPP_template}({C_call_list});',
-                    fmt_result)
-
-                if not result_arg:
-                    c_statements = result_typedef.c_statements
-                    intent_blk = c_statements.get('result', {})
-                    if result_typedef.cpp_to_c != '{cpp_var}':
-                        # Make intermediate c_var value if a conversion
-                        # is required i.e. not the same as cpp_var.
-                        have_c_local_var = True
-                    else:
-                        have_c_local_var = intent_blk.get('c_local_var', False)
-                    if have_c_local_var:
-                        # XXX need better mangling than 'X'
-                        fmt_result.c_var = 'X' + fmt_func.C_result
-                        fmt_result.c_rv_decl = self._c_decl('c_type', CPP_result,
-                                                          name=fmt_result.c_var)
-                        fmt_result.c_val = wformat(result_typedef.cpp_to_c, fmt_result)
-                        append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
-                        return_lang = '{c_var}'
-
-                    cmd_list = intent_blk.get('post_call', [])
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_result)
-                    # XXX release rv is necessary
-
-                if subprogram == 'function':
-                    # Note: A C function may be converted into a Fortran subroutine subprogram
-                    # when the result is returned in an argument.
-                    fmt_func.C_return_code = ('return '
-                                            + wformat(return_lang, fmt_result)
-                                            + ';')
-
             # copy-out values, clean up
-            C_code = [1]
-            C_code.extend(pre_call)
-            C_code.append(fmt_func.C_call_code)
-            C_code.extend(post_call_pattern)
-            C_code.extend(post_call)
-            C_code.append(fmt_func.C_return_code)
-            C_code.append(-1)
+            C_code = pre_call + call_code + post_call_pattern + \
+                     post_call + final_code + return_code
 
-        self.header_proto_c.append('')
-        self.header_proto_c.append(
-            wformat('{C_return_type} {C_name}({C_prototype});',
-                    fmt_func))
+        if need_wrapper:
+            self.header_typedef_nodes.update(header_typedef_nodes)
+            self.header_proto_c.append("")
+            if node.cpp_if:
+                self.header_proto_c.append("#" + node.cpp_if)
+            append_format(
+                self.header_proto_c,
+                "{C_return_type} {C_name}(\t{C_prototype});",
+                fmt_func,
+            )
+            if node.cpp_if:
+                self.header_proto_c.append("#endif")
 
-        impl = self.impl
-        impl.append('')
-        if options.debug:
-            impl.append('// %s' % node['_decl'])
-            impl.append('// function_index=%d' % node['_function_index'])
-        if options.doxygen and 'doxygen' in node:
-            self.write_doxygen(impl, node['doxygen'])
-        impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
-        impl.append('{')
-        self._create_splicer(fmt_func.underscore_name +
-                             fmt_func.function_suffix, impl, C_code)
-        impl.append('}')
+            impl = self.impl
+            impl.append("")
+            if options.debug:
+                impl.append("// " + node.declgen)
+                if options.debug_index:
+                    impl.append("// function_index=%d" % node._function_index)
+            if options.doxygen and node.doxygen:
+                self.write_doxygen(impl, node.doxygen)
+            if node.cpp_if:
+                impl.append("#" + node.cpp_if)
+            if options.literalinclude:
+                append_format(impl, "// start {C_name}", fmt_func)
+            append_format(
+                impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
+            )
+            impl.append("{+")
+            impl.extend(setup_this)
+            self._create_splicer(
+                fmt_func.underscore_name +
+                fmt_func.function_suffix +
+                fmt_func.template_suffix,
+                impl,
+                C_code,
+            )
+            impl.append("-}")
+            if options.literalinclude:
+                append_format(impl, "// end {C_name}", fmt_func)
+            if node.cpp_if:
+                impl.append("#endif  // " + node.cpp_if)
+        else:
+            # There is no C wrapper, have Fortran call the function directly.
+            fmt_func.C_name = node.ast.name
 
-    def write_helper_files(self):
-        output = [whelpers.FccHeaders]
-        self.write_output_file('shroudrt.hpp',
-                               self.config.c_fortran_dir, output)
+    def write_capsule_code(self):
+        """Write a function used to delete memory when C/C++
+        memory is deleted.
+        """
+        library = self.newlibrary
+        options = library.options
 
-        output = [whelpers.FccCSource]
-        self.write_output_file('shroudrt.cpp',
-                               self.config.c_fortran_dir, output)
+        self.c_helper["capsule_data_helper"] = True
+        fmt = library.fmtdict
+
+        self.header_impl_include.update(self.capsule_include)
+        self.header_impl_include[fmt.C_header_utility] = True
+
+        append_format(
+            self.shared_proto_c,
+            "\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);",
+            fmt,
+        )
+
+        output = self.impl
+        output.append("")
+        if options.literalinclude2:
+            output.append("// start release allocated memory")
+        append_format(
+            output,
+            "// Release library allocated memory.\n"
+            "void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n"
+            "{{+",
+            fmt,
+        )
+
+        if options.F_auto_reference_count:
+            # check refererence before deleting
+            append_format(
+                output,
+                "@--cap->refcount;\n"
+                "if (cap->refcount > 0) {{+\n"
+                "return;\n"
+                "-}}",
+                fmt,
+            )
+
+        if len(self.capsule_order) > 1:
+            # If more than slot 0 is added, create switch statement
+            append_format(
+                output, "void *ptr = cap->addr;\n" "switch (cap->idtor) {{", fmt
+            )
+
+            for i, name in enumerate(self.capsule_order):
+                output.append("case {}:   // {}\n{{+".format(i, name))
+                output.extend(self.capsule_code[name][1])
+                output.append("break;\n-}")
+
+            output.append(
+                "default:\n{+\n"
+                "// Unexpected case in destructor\n"
+                "break;\n"
+                "-}\n"
+                "}"
+            )
+
+        # Add header for NULL.
+        if self.language == "cxx":
+            self.header_impl_include["<cstdlib>"] = True
+            # XXXX nullptr
+        else:
+            self.header_impl_include["<stdlib.h>"] = True
+        output.append(
+            "cap->addr = NULL;\n"
+            "cap->idtor = 0;  // avoid deleting again\n"
+            "-}"
+        )
+        if options.literalinclude2:
+            output.append("// end release allocated memory")
+
+    def add_capsule_code(self, name, var_typemap, lines):
+        """Add unique names to capsule_code.
+        Return index of name.
+
+        Args:
+            name - ex.  std::vector<int>
+            var_typemap - typemap.Typemap.
+            lines -
+        """
+        if name not in self.capsule_code:
+            self.capsule_code[name] = (str(len(self.capsule_code)), lines)
+            self.capsule_order.append(name)
+
+            # include files required by the type
+            if var_typemap and var_typemap.cxx_header:
+                for include in var_typemap.cxx_header.split():
+                    self.capsule_include[include] = True
+
+        return self.capsule_code[name][0]
+
+    def add_destructor(self, fmt, name, cmd_list, arg_typemap):
+        """Add a capsule destructor with name and commands.
+
+        Args:
+            fmt -
+            name -
+            cmd_list -
+            arg_typemap - typemap.Typemap.
+        """
+        if name not in self.capsule_code:
+            del_lines = []
+            for cmd in cmd_list:
+                del_lines.append(wformat(cmd, fmt))
+            idtor = self.add_capsule_code(name, arg_typemap, del_lines)
+        else:
+            idtor = self.capsule_code[name][0]
+        return idtor
+
+    def find_idtor(self, ast, atypemap, fmt, intent_blk):
+        """Find the destructor based on the typemap.
+        idtor = index of destructor.
+
+        Only arguments have idtor's.
+        For example,
+            int * foo() +owner(caller)
+        will convert to
+            void foo(context+owner(caller) )
+
+        Args:
+            ast -
+            atypemap - typemap.Typemap
+            fmt -
+            intent_blk -
+        """
+
+        destructor_name = intent_blk.destructor_name
+        if destructor_name:
+            # Custom destructor from statements.
+            # Use destructor in typemap to remove intermediate objects
+            # e.g. std::vector
+            destructor_name = wformat(destructor_name, fmt)
+            if destructor_name not in self.capsule_code:
+                del_lines = []
+                util.append_format_cmds(
+                    del_lines, intent_blk, "destructor", fmt
+                )
+                fmt.idtor = self.add_capsule_code(
+                    destructor_name, atypemap, del_lines
+                )
+            else:
+                fmt.idtor = self.capsule_code[destructor_name][0]
+            return
+
+        from_stmt = False
+        if "owner" in ast.attrs:
+            owner = ast.attrs["owner"]
+        elif intent_blk.owner:
+            owner = intent_blk.owner
+            from_stmt = True
+        else:
+            owner = default_owner
+
+        free_pattern = ast.attrs.get("free_pattern", None)
+        if owner == "library":
+            # Library owns memory, do not let user release.
+            pass
+        elif not ast.is_pointer() and not from_stmt:
+            # Non-pointers do not return dynamic memory.
+            pass
+        elif free_pattern is not None:
+            # free_pattern attribute.
+            fmt.idtor = self.add_destructor(
+                fmt, free_pattern, [self.patterns[free_pattern]], None
+            )
+        elif atypemap.idtor != "0":
+            # Return cached value.
+            fmt.idtor = atypemap.idtor
+        elif atypemap.cxx_to_c:
+            # A C++ native type (std::string, std::vector)
+            # XXX - vector does not assign cxx_to_c
+            fmt.idtor = self.add_destructor(
+                fmt,
+                atypemap.cxx_type,
+                [
+                    "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
+                    "delete cxx_ptr;",
+                ],
+                atypemap,
+            )
+            atypemap.idtor = fmt.idtor
+        else:
+            # A POD type
+            fmt.idtor = self.add_destructor(
+                fmt,
+                atypemap.cxx_type,
+                [
+                    "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
+                    "free(cxx_ptr);",
+                ],
+                atypemap,
+            )
+            atypemap.idtor = fmt.idtor
+
+
+def compute_c_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C argument."""
+    if local_var == "scalar":
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+    elif local_var == "pointer":
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    elif arg.is_indirect(): #pointer():
+        fmt.c_deref = "*"
+        fmt.c_member = "->"
+        fmt.c_addr = ""
+    else:
+        fmt.c_deref = ""
+        fmt.c_member = "."
+        fmt.c_addr = "&"
+
+def compute_cxx_deref(arg, local_var, fmt):
+    """Compute format fields to dereference C++ variable."""
+    if local_var == "scalar":
+#        fmt.cxx_deref = ""
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"
+    elif local_var == "pointer":
+#        fmt.cxx_deref = "*"
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    elif arg.is_pointer():
+#        fmt.cxx_deref = "*"
+        fmt.cxx_member = "->"
+        fmt.cxx_addr = ""
+    else:
+#        fmt.cxx_deref = ""
+        fmt.cxx_member = "."
+        fmt.cxx_addr = "&"

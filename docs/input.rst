@@ -1,42 +1,8 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-.. All rights reserved. 
-..
-.. This file is part of Shroud.  For details, see
-.. https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-..
-.. Redistribution and use in source and binary forms, with or without
-.. modification, are permitted provided that the following conditions are
-.. met:
-..
-.. * Redistributions of source code must retain the above copyright
-..   notice, this list of conditions and the disclaimer below.
-.. 
-.. * Redistributions in binary form must reproduce the above copyright
-..   notice, this list of conditions and the disclaimer (as noted below)
-..   in the documentation and/or other materials provided with the
-..   distribution.
-..
-.. * Neither the name of the LLNS/LLNL nor the names of its contributors
-..   may be used to endorse or promote products derived from this
-..   software without specific prior written permission.
-..
-.. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-.. "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-.. LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-.. A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE
-.. LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR
-.. CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-.. EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-.. PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-.. PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-.. LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-.. NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-.. SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Input
 =====
@@ -45,49 +11,106 @@ The input to Shroud is a YAML formatted file.
 YAML is a human friendly data serialization standard. [yaml]_
 Structure is shown through indentation (one or more spaces).  Sequence
 items are denoted by a dash, and key value pairs within a map are
-separated by a colon::
+separated by a colon:
+
+.. code-block:: yaml
 
     library: Tutorial
 
-    types:
-      TypeID:
-        typedef  : int
-        cpp_type : TypeID
-    
-    functions:
-    - decl: void Function1
+    declarations:
+    - decl: typedef int TypeID
 
-    classes:
-    - name: Class1
-      methods:
+    - decl: void Function1()
+
+    - decl: class Class1
+      declarations:
       - decl: void Method1()
+
+Each ``decl`` entry corresponds to a line of C or C++ code.  The top
+level ``declarations`` field represents the source file while nested
+``declarations`` fields corresponds to curly brace blocks.
+The above YAML file represent the source file:
+
+.. code-block:: c++
+
+    typedef int TypeID;
+
+    void Function1();
+
+    class Class1
+    {
+        void Method1();
+    }
+
+A ``block`` can be used to group a collection of ``decl`` entires.
+Any ``option`` or ``format`` fields will apply to all declarations in
+the group:
+
+.. code-block:: yaml
+
+    declarations:
+    - block: True
+      options:
+        F_name_impl_template: {library}_{undescore_name}
+      format:
+        F_impl_filename: localfile.f
+      declarations:
+      - decl: void func1()
+      - decl: void func2()
 
 Shroud use curly braces for format strings.
 If a string starts with a curly brace YAML
 will interpret it as a map/dictionary instead of as part of the
 string. To avoid this behavior, strings which start with a curly brace
-should be quoted::
+should be quoted:
+
+.. code-block:: yaml
 
     name : "{fmt}"
 
-Strings may be split across several lines by indenting the continued line::
+Strings may be split across several lines by indenting the continued line:
+
+.. code-block:: yaml
 
     - decl: void Sum(int len, int *values+dimension+intent(in),
                      int *result+intent(out))
 
 Some values consist of blocks of code.  The pipe, ``|``, is used to indicate that
-the string will span several lines and that newlines should be preserved::
+the string will span several lines and that newlines should be preserved:
+
+.. code-block:: yaml
 
     C_invalid_name: |
-        if (! isNameValid({cpp_var})) {{
+        if (! isNameValid({cxx_var})) {{
             return NULL;
         }}
 
 Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
-``{cpp_var}`` in this example.
+``{cxx_var}`` in this example.
 
+Literal newlines, ``/n``, are respected.  Format strings can use a
+tab, ``/t``, to hint where it would be convenient to add a
+continuation if necessary.  A formfeed, ``/f``, will force a
+continuation.  Lines which start with ``0`` are not indented.  This
+can be used with labels.  A trailing ``+`` will indent then next line
+a level and a leading ``-`` will deindent. Line lengths are controlled
+by the options *C_line_length* and *F_line_length* and default to
+72.:
 
+.. code-block:: yaml
+
+    C_invalid_name: |
+        if (! isNameValid({cxx_var})) {{+
+        return NULL;
+        -}}
+
+The only formatting option is to control output line lengths.  This is
+required for Fortran which has a maximum line length of 132 in free
+form which is generated by shroud.  If you care where curly braces go
+in the C source then it is best to set *C_line_length* to a large
+number then use an external formatting tool such as ``indent`` or
+``uncrustify``.
 
 Customizing Behavior in the YAML file
 -------------------------------------
@@ -95,31 +118,22 @@ Customizing Behavior in the YAML file
 Fields
 ^^^^^^
 
-A field only applies to the type, class or function to which it belongs.
+A field only applies to the type, enumeration, function, structure or class
+to which it belongs.
 It is not inherited.
-For example, *C_name* is a field which is used to explicitly name
-a single C wrapper function.  While *C_name_template* is an option which
-controls the default value of *C_name*::
+For example, *cxx_header* is a field which is used to define the header file
+for class *Names*.  Likewise, setting *library* within a class does not change
+the library name.
+
+.. code-block:: yaml
 
     library: testnames
 
-    classes:
-      - name: Names
-        C_header_filename: foo.h
-        C_impl_filename: foo.cpp
-        methods:
+    declarations:
+      - decl: class Names
+        cxx_header: names.hpp
+        declarations:
         -  decl: void method1
-           C_name: testmethod1
-
-Annotations
-^^^^^^^^^^^
-
-Annotations or attributes apply to specific arguments or results.
-They describe semantic behavior for an argument::
-
-    - decl: Class1 *new()  +constructor
-    - decl: void delete()  +destructor
-    - decl: void Sum(int len, int *values+dimension+intent(in))
 
 Options
 ^^^^^^^
@@ -128,28 +142,39 @@ Options are used to customize the behavior of Shroud.
 They are defined in the YAML files as a dictionary.
 Options can be defined at the global, class, or function level.
 Each level creates a new scope which can access all upper level options.
-This allows the user to modifiy behavior for all functions or just a single one::
+This allows the user to modify behavior for all functions or just a single one:
+
+.. code-block:: yaml
 
     options:
       option_a = false
       option_b = false
       option_c = false
 
-    classes:
-    - name: class1
+    declarations:
+    - class: class1
       options:
     #    option_a = false     # inherited
          option_b = true
     #    option_c = false     # inherited
-      methods:
-      - decl: void funtion1
+      declarations:
+      - decl: void function1
         options:
     #     option_a = false    # inherited
-    #     option_b = true     # ihherited
+    #     option_b = true     # inherited
           option_c = true
 
+Format
+------
+
+A format dictionary contains strings which can be inserted into
+generated code.  Generated filenames are also entries in the format
+dictionary.  Format dictionaries are also scoped like options.
+For example, setting a format in a class also effects all of the 
+functions within the class.
+
 How code is formatted
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Format strings contain “replacement fields” surrounded by curly braces
 ``{}``. Anything that is not contained in braces is considered literal
@@ -157,16 +182,597 @@ text, which is copied unchanged to the output. If you need to include
 a brace character in the literal text, it can be escaped by doubling:
 ``{{`` and ``}}``. [Python_Format]_
 
+There are some metacharacters that are used for formatting the line:
+
+\\f
+
+    Add an explicit formfeed
+
+\\t
+
+    A tab is used to suggest a place to break the line for a continuation
+    before it exceeds option *C_line_length* or *F_line_length*.
+    Any whitespace after a tab will be trimmed if the line is actually
+    split at the tab.  If a continuation was not needed (there was enough
+    space on the current line) then the tab has no effect::
+
+        arg1,\t arg2
+
+\+ -
+
+    Increase or decrease indention indention level.
+    Used at the beginning or end of a line::
+
+       if (condition) {{+
+       do_one();
+       -}} else {{+
+       do_two();
+       -}}
+
+    The double curly braces are replace by a single curly.
+    This will be indented as::
+
+       if (condition) {
+           do_one();
+       } else {
+           do_two();
+       }
+
+#
+
+       If the first character is a #, ignore indention and write in column 0.
+       Useful for preprocessing directives.
+
+^
+
+       If the first character is ^, ignore indention and write in column 0.
+       Useful for comments or labels.
+
+@
+
+       If the first character is @, treat the following character literally.
+       Used to ignore a metacharacter::
+
+           struct aa = {{++
+           0// set field to 0
+           @0,
+           -}};
+
+       Formatted as::
+
+           struct aa = {
+           // set field to 0
+               0,
+           };
+
+
+Attributes
+----------
+
+Annotations or attributes apply to specific arguments or results.
+They describe semantic behavior for an argument.
+An attribute may be set to true by listing its name or
+it may have a value in parens:
+
+.. code-block:: yaml
+
+    - decl: Class1()  +name(new)
+    - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: const std::string getName() +len(30)
+
+Attributes may also be added external to *decl*:
+
+.. code-block:: yaml
+
+    - decl: void Sum(int len, int *values)
+      attrs:
+          values:
+              dimension: True
+              intent: in  
+    - decl: const std::string getName()
+      fattrs:
+          len: 30
+  
+
+allocatable
+^^^^^^^^^^^
+
+Sometimes it is more convenient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *allocatable* attribute.  For example the
+C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
+argument and assigns it to an ``intent(out)`` argument:
+
+.. code-block:: c++
+
+    void cos_doubles(double *in, double *out, int size)
+    {
+        for(int i = 0; i < size; i++) {
+            out[i] = cos(in[i]);
+        }
+    }
+
+This is wrapped as:
+
+.. code-block:: yaml
+
+    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                           double * out    +intent(out) +allocatable(mold=in),
+                           int      sizein +implied(size(in)))
+
+The *mold* argument is similar to the *mold* argument in the Fortran
+``allocate`` statement, it will allocate ``out`` as the same shape as
+``in``.  Also notice the use of the *implied* attribute on the
+``size`` argument.  This argument is not added to the Fortran API
+since its value is *implied* to be the size of argument ``in``.
+``size`` is the Fortran intrinsic which returns the number of items
+allocated by its argument.
+
+The Fortran wrapper produced is:
+
+.. code-block:: fortran
+
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in)
+        call c_cos_doubles(in, out, sizein)
+    end subroutine cos_doubles
+
+The mold argument was added to the Fortran 2008 standard.  If the
+option **F_standard** is not 2008 then the allocate statement will be:
+
+.. code-block:: fortran
+
+        allocate(out(lbound(in,1):ubound(in,1)))
+
+
+For Python, a similar NumPy array object will be constructed using 
+``PyArray_NewLikeArray``.
+
+
+assumedtype
+^^^^^^^^^^^
+
+When this attribute is applied to a ``void *`` argument, the Fortran
+assumed-type declaration, ``type(*)``, will be used.  Since Fortran
+defaults to pass-by-reference, the argument will be passed to C as a
+``void *`` argument.  The C function will need some other mechanism to
+determine the type of the argument before dereferencing the pointer.
+Note that *assumed-type* is part of Fortran 2018.
+
+charlen
+^^^^^^^
+
+*charlen* is used to define the size of a ``char *arg+intent(out)``
+argument in the Python wrapper. This deals with the case where ``arg``
+is provided by the user and the function writes into the provided
+space.  This technique has the inherent risk of overwritting memory if
+the supplied buffer is not long enough.  For example, when used in C
+the user would write:
+
+.. code-block:: c
+
+    #define API_CHARLEN
+    char buffer[API_CHARLEN];
+    fill_buffer(buffer);
+
+The Python wrapper must know the assumed length before calling the
+function.  It will then be converted into a *str* object by
+``PyString_FromString``.
+
+Fortran does not use this attribute since the *buffer* argument is
+supplied by the user. However, it is useful to provide the parameter
+by adding a splicer block in the YAML file:
+
+.. code-block:: yaml
+
+    splicer_code:
+      f:
+        module_top:
+        -  "integer, parameter :: MAXNAME = 20"
+
+.. warning :: Using *charlen* and *dimension* together is not currently supported.
+
+default
+^^^^^^^
+
+Default value for C++ function argument.
+This value is implied by C++ default argument syntax.
+
+
+deref
+^^^^^
+
+List how to dereference pointer arguments or function results.
+This is used in conjunction with *dimension* to create arrays.
+
+scalar
+
+    Treat the pointee as a scalar.
+    For Python, this will not create a NumPy object.
+
+pointer
+
+    For Fortran, add ``POINTER`` attribute to argument and is associated
+    with the argument using ``c_f_pointer``.
+    If *owner(caller)* is also defined, add an additional argument
+    which is used to release the memory.
+
+    For Python, create a NumPy array.
+
+allocatable
+
+    For Fortran, add ``ALLOCATABLE`` attribute to argument.
+    An ``ALLOCATE`` is added and the contents of the C++ argument
+    is copied.  If *owner(caller)* is also defined, the C++ argument
+    is released.  The caller is responsible to ``DEALLOCATE`` the array.
+
+    For Python, create a NumPy array (same as *pointer*)
+
+raw
+
+    For Fortran, return a ``type(C_PTR)``.
+
+    For Python, return a ``PyCapsule``.
+
+dimension
+^^^^^^^^^
+
+Sets the Fortran DIMENSION attribute.
+Pointer argument should be passed through since it is an array.
+*value* attribute must not be *True*.
+If set without a value, it defaults to ``(*)``:
+
+.. code-block:: text
+
+    double *array +dimension
+    double *array +dimension(len)
+
+external
+^^^^^^^^
+
+This attribute is only valid with function pointers.  It will ensure
+that a Fortran wrapper is created which uses the ``external``
+statement for the argument.  This will allow any function to be used
+as the dummy argument for the function pointer.
+
+free_pattern
+^^^^^^^^^^^^
+
+A name in the **patterns** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
+
+
+hidden
+^^^^^^
+
+The argument will not appear in the Fortran API.
+But it will be passed to the C wrapper.
+This allows the value to be used in the C wrapper.
+For example, setting the shape of a pointer function:
+
+.. code-block:: text
+
+      int * ReturnIntPtr(int *len+intent(out)+hidden +dimension(len))
+
+.. assumed intent(out)
+
+
+implied
+^^^^^^^
+.. assumed intent(in)
+
+The value of an arguments to the C++ function may be implied by other arguments.
+If so the *implied* attribute can be used to assign the value to the argument and 
+it will not be included in the wrapped API.
+
+Used to compute value of argument to C++ based on argument
+to Fortran or Python wrapper.  Useful with array sizes:
+
+.. code-block:: text
+
+      int Sum(int * array +intent(in), int len +implied(size(array))
+
+Several functions will be converted to the corresponding code for
+Python wrappers: ``size``, ``len`` and ``len_trim``.
+
+intent
+^^^^^^
+
+Valid valid values are ``in``, ``out``, ``inout``.
+If the argument is ``const``, the default is ``in``.
+
+
+len
+^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_len_template*.
+
+When used with a function, it will be the length of the return
+value of the function using the declaration:
+
+.. code-block:: text
+
+     character(kind=C_CHAR, len={c_var_len}) :: {F_result}
+
+len_trim
+^^^^^^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len_trim``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_trim_template*.
+
+name
+^^^^
+
+Name of the method.
+Useful for constructor and destructor methods which have no names.
+
+owner
+^^^^^
+
+Specifies who is responsible to release the memory associated with the argument/result.
+
+The terms follow Python's reference counting .  [Python_Refcount]_
+The default is set by option *default_owner* which is initialized to *borrow*.
+
+.. new   The caller is responsible to release the memory.
+
+.. borrow  The memory belongs to the C++ library.  Do not release.
+
+caller
+
+   The memory belongs to the user who is responsible to delete it.
+   A shadow class must have a destructor wrapped in order to delete 
+   the memory.
+
+library
+
+   The memory belongs to the library and should not be deleted by
+   the user.
+   This is the default value.
+
+.. steal  intent(in)
+
+value
+^^^^^
+
+If true, pass-by-value; else, pass-by-reference.
+This attribute is implied when the argument is not a pointer or reference.
+This will also default to ``intent(IN)`` since there is no way to return
+a value.
+
+.. note:: The Fortran wrapper may use an intrinsic function for some
+          attributes. For example, *len*, *len_trim*, and *size*.
+          If there is an argument with the same name, the generated
+          code may not compile.
+
+          Shroud preserves the names of the arguments since Fortran
+          allows them to be used in function calls - ``call worker(len=10)``
+
+Patterns
+--------
+
+To address the issue of semantic differences between Fortran and C++,
+*patterns* may be used to insert additional code.  A *pattern* is a 
+code template which is inserted at a specific point in the wrapper.
+They are defined in the input YAML file:
+
+.. code-block:: yaml
+
+   declarations:
+   - decl: const string& getString2+len=30()
+     C_error_pattern: C_invalid_name
+
+   patterns:
+     C_invalid_name: |
+         if ({cxx_var}.empty()) {{
+             return NULL;
+         }}
+
+The **C_error_pattern** will insert code after the call to the C++
+function in the C wrapper and before any post_call sections from the
+types. The bufferified version of a function will append
+``_buf`` to the **C_error_pattern** value.  The *pattern* is
+formatted using the context of the return argument if present,
+otherwise the context of the function is used.  This means that
+*c_var* and *c_var_len* refer to the argument which is added to
+contain the function result for the ``_buf`` pattern.
+
+The function ``getString2`` is returning a ``std::string`` reference.
+Since C and Fortran cannot deal with this directly, the empty string
+is converted into a ``NULL`` pointer::
+will blank fill the result:
+
+.. code-block:: c++
+
+    const char * STR_get_string2()
+    {
+        const std::string & SHCXX_rv = getString2();
+        // C_error_pattern
+        if (SHCXX_rv.empty()) {
+            return NULL;
+        }
+        const char * SHC_rv = SHCXX_rv.c_str();
+        return SHC_rv;
+    }
+
+
+
+Splicers
+--------
+
+No matter how many features are added to Shroud there will always exist
+cases that it does not handle.  One of the weaknesses of generated
+code is that if the generated code is edited it becomes difficult to
+regenerate the code and preserve the edits.  To deal with this
+situation each block of generated code is surrounded by 'splicer'
+comments:
+
+.. code-block:: c++
+
+    const char * STR_get_char3()
+    {
+        // splicer begin function.get_char3
+        const char * SH_rv = getChar3();
+        return SH_rv;
+        // splicer end function.get_char3
+    }
+
+These comments delineate a section of code which can be replaced by
+the user.  The splicer's name, ``function.get_char3`` in the example,
+is used to determine where to insert the code.
+
+There are two ways to define splicers in the YAML file. First add 
+a list of files which contain the splicer text:
+
+.. code-block:: yaml
+
+    splicer:
+      f:
+      -  fsplicer.f
+      c:
+      -  csplicer.c
+
+In the listed file, add the begin and end splicer comments,
+then add the code which should be inserted into the wrapper inbetween the comments.
+Multiple splicer can be added to an input file.  Any text that is not within a
+splicer block is ignored.  Splicers must be sorted by language.  If
+the input file ends with ``.f`` or ``.f90`` it is processed as
+splicers for the generated Fortran code.  Code for the C wrappers must
+end with any of ``.c``, ``.h``, ``.cpp``, ``.hpp``, ``.cxx``,
+``.hxx``, ``.cc``, ``.C``:
+
+.. code-block:: c++
+
+    -- Lines outside blocks are ignore
+    // splicer begin function.get_char3
+    const char * SH_rv = getChar3();
+    SH_rv[0] = 'F';    // replace first character for Fortran
+    return SH_rv + 1;
+    // splicer end function.get_char3
+
+This technique is useful when the splicers are very large or are
+generated by some other process.
+
+.. The splicer file may be added to the Shroud command line
+   along with the YAML file.
+
+The second method is to add the splicer code directly into the YAML file.
+A splicer can be added after the ``decl`` line.
+
+.. code-block:: yaml
+
+   - decl: bool isNameValid(const std::string& name)
+     splicer:
+        c:
+        - "return name != NULL;"
+        f:
+        - 'rv = name .ne. " "'
+
+A splicer can be added in the ``splicer_code`` section.
+This can be used to add code to spliers which do not correspond
+directly to a declaration.
+Each level of splicer is a mapping and each line of text is an array entry:
+
+.. code-block:: yaml
+
+    splicer_code:
+      c:
+        function:
+          get_char3:
+          - const char * SH_rv = getChar3();
+          - SH_rv[0] = 'F';    // replace first character for Fortran
+          - return SH_rv + 1;
+
+In addition to replacing code for a function wrapper, there are 
+splicers that are generated which allow a user to insert additional
+code for helper functions or declarations:
+
+.. code-block:: text
+
+    ! file_top
+    module {F_module_name}
+       ! module_use
+       implicit none
+       ! module_top
+
+       type class1
+         ! class.{cxx_class}.component_part
+       contains
+         ! class.{cxx_class}.generic.{F_name_generic}
+         ! class.{cxx_class}.type_bound_procedure_part
+       end type class1
+
+       interface
+          ! additional_interfaces
+       end interface
+
+       contains
+
+       ! function.{F_name_function}
+
+       ! {cxx_class}.method.{F_name_function}
+
+       ! additional_functions
+
+    end module {F_module_name}
+
+.. from _create_splicer
+
+C header:
+
+.. code-block:: c++
+
+    // class.{class_name}.CXX_declarations
+
+    extern "C" {
+    // class.{class_name}.C_declarations
+    }
+
+C implementation:
+
+.. code-block:: c++
+
+    // class.{class_name}.CXX_definitions
+
+    extern "C" {
+      // class.{class_name}.C_definitions
+
+      // function.{underscore_name}{function_suffix}
+
+      // class.{cxx_class}.method.{underscore_name}{function_suffix}
+
+    }
+
+The splicer comments can be eliminated by setting the option
+**show_splicer_comments** to false. This may be useful to 
+eliminate the clutter of the splicer comments.
+
+
 
 
 
 .. rubric:: Footnotes
 
-.. [Python_Format] https://docs.python.org/2/library/string.html#format-string-syntax
+.. [Python_Format] `<https://docs.python.org/2/library/string.html#format-string-syntax>`_
+
+.. [Python_Refcount] `<https://docs.python.org/3/c-api/intro.html#reference-count-details>`_
 
 .. [yaml] `yaml.org <http://yaml.org/>`_
-
-
-
-
-

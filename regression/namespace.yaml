@@ -1,0 +1,45 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: ns
+cxx_header: namespace.hpp
+
+options:
+  debug: True
+  wrap_python: True
+  PY_struct_arg: class
+
+declarations:
+- decl: namespace upper
+  # Add a flattened namespace before global function
+  options:
+    F_flatten_namespace: True
+    wrap_python: False
+  declarations:
+  - decl: |
+      enum Color {
+        ERROR,
+        WARN,
+      };
+
+- decl: const std::string& LastFunctionCalled()
+
+- decl: namespace outer
+  declarations:
+    - decl: struct Cstruct1 {
+              int ifield;
+              double dfield;
+            };
+    - decl: void One()
+- decl: void One()
+
+- decl: namespace nswork
+  options:
+    F_flatten_namespace: True
+  declarations:
+  - decl: class ClassWork

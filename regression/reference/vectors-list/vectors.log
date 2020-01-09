@@ -1,0 +1,9 @@
+Read yaml vectors.yaml
+Skipping std::vector<{cxx_T}>, unable to create C wrapper for function returning ReturnVectorAlloc instance (must return a pointer or reference). Bufferify version will still be created.
+Python function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
+Python function void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
+Python function void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
+Python function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)
+Close pyvectorsmodule.cpp
+Close pyvectorsutil.cpp
+Close pyvectorsmodule.hpp

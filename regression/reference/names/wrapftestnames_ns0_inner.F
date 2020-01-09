@@ -1,0 +1,35 @@
+! wrapftestnames_ns0_inner.F
+! This is generated code, do not edit
+! Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+! other Shroud Project Developers.
+! See the top-level COPYRIGHT file for details.
+!
+! SPDX-License-Identifier: (BSD-3-Clause)
+!
+!>
+!! \file wrapftestnames_ns0_inner.F
+!! \brief Shroud generated wrapper for inner namespace
+!<
+! splicer begin namespace.ns0::inner.file_top
+! top of ns0::inner
+! splicer end namespace.ns0::inner.file_top
+module testnames_ns0_inner_mod
+    ! splicer begin namespace.ns0::inner.module_use
+    ! splicer end namespace.ns0::inner.module_use
+    implicit none
+
+    ! splicer begin namespace.ns0::inner.module_top
+    ! splicer end namespace.ns0::inner.module_top
+
+    interface
+
+        ! splicer begin namespace.ns0::inner.additional_interfaces
+        ! splicer end namespace.ns0::inner.additional_interfaces
+    end interface
+
+contains
+
+    ! splicer begin namespace.ns0::inner.additional_functions
+    ! splicer end namespace.ns0::inner.additional_functions
+
+end module testnames_ns0_inner_mod

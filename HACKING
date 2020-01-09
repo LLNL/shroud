@@ -1,0 +1,107 @@
+
+Create development environment
+------------------------------
+
+    make virtualenv
+    make develop
+
+
+
+    make venv=/usr/tce/packages/python/python-3.7.2/bin/virtualenv virtualenv
+    make develop
+
+Run unittest
+------------
+
+    make test
+
+The tests are in the ``tests`` directory.
+
+Regression tests
+----------------
+
+    make do-test
+
+Run the script test/do-test.py over some yaml files.
+
+The output is saved in build/temp.linux-x86_64-2.7/run
+
+Update fiducials
+
+    make do-test-replace
+
+Running a single test
+
+    make do-test test-args=tutorial
+
+
+Running a single Python test
+
+    python -m unittest test_ast.CheckAst.test_d_generate1
+
+Test generated code
+-------------------
+
+    make test-all
+
+Compile the generated code (after do-test-replace) and run some unit
+tests.  These tests are in tests/run and contains a small library
+which is wrapped by the corresponding yaml file
+(i.e. tests/tutorial.yaml wraps run/tutorial)
+
+regression/run/default.mk has compiler flags
+
+Compile a single test
+
+    fortran-XXX        compile wrappers for XXX.yaml
+    test-fortran-XXX   run test for XXX.yaml
+    test-fortran       All Fortran tests
+
+    py-XXX             compile module for XXX.yaml
+    test-python-XXX    run Python test for XXX.yaml
+    test-python        All Python tests
+
+file dependency
+---------------
+
+main.py
+wrapX.py  generate.py
+ast.py
+declast.py
+typemap.py
+todict.py
+whelpers.py
+util.py visitor.py  # no dependencies
+
+
+
+
+Error with template: 'call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))'
+can be debugged by changing util.wformat to remove comment to provide a backtrace.
+
+
+adding a type
+-------------
+
+typemap.py
+
+ast.py LibraryNode.create_std_names()
+  add to namespace
+
+declast.py  get_canonical_typemap()
+  Convert 'long int' into 'long'
+
+
+debugging
+---------
+
+```
+import yaml
+print(yaml.dump(cf_tree, default_flow_style=False))
+
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint( dict or tuple )
+```
+
+import pdb; pdb.set_trace()

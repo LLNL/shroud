@@ -1,0 +1,68 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Create a runnable program to test types
+
+library: types
+cxx_header: types.hpp
+
+options:
+  debug: True
+  wrap_python: True
+#  wrap_lua: True
+
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: shtypes
+
+declarations:
+#- decl: extern int int_global;
+
+- decl: short short_func(short arg1)
+- decl: int int_func(int arg1)
+- decl: long long_func(long arg1)
+- decl: long long long_long_func(long long arg1)
+
+# explicit int
+- decl: short int short_int_func(short int arg1)
+- decl: long int long_int_func(long int arg1)
+- decl: long long int long_long_int_func(long long int arg1)
+
+# implied int
+- decl: unsigned unsigned_func(unsigned arg1)
+
+- decl: unsigned short ushort_func(unsigned short arg1)
+- decl: unsigned int uint_func(unsigned int arg1)
+- decl: unsigned long ulong_func(unsigned long arg1)
+- decl: unsigned long long ulong_long_func(unsigned long long arg1)
+- decl: unsigned long int ulong_int_func(unsigned long int arg1)
+
+- decl: int8_t  int8_func(int8_t arg1)
+- decl: int16_t int16_func(int16_t arg1)
+- decl: int32_t int32_func(int32_t arg1)
+- decl: int64_t int64_func(int64_t arg1)
+
+- decl: uint8_t  uint8_func(uint8_t arg1)
+- decl: uint16_t uint16_func(uint16_t arg1)
+- decl: uint32_t uint32_func(uint32_t arg1)
+- decl: uint64_t uint64_func(uint64_t arg1)
+
+- decl: size_t size_func(size_t arg1)
+
+- decl: bool bool_func(bool arg)
+
+- decl: bool returnBoolAndOthers(int *flag+intent(out))
+  doxygen:
+    brief: Function which returns bool with other intent(out) arguments
+    description: |
+      Python treats bool differently since Py_BuildValue does not support
+      bool until Python 3.3.
+      Must create a PyObject with PyBool_FromLong then include that object
+      in call to Py_BuildValue as type 'O'.  But since two return values
+      are being created, function return and argument flag, rename first
+      local C variable to avoid duplicate names in wrapper.

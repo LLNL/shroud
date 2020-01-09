@@ -1,42 +1,8 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-.. All rights reserved. 
-..
-.. This file is part of Shroud.  For details, see
-.. https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-..
-.. Redistribution and use in source and binary forms, with or without
-.. modification, are permitted provided that the following conditions are
-.. met:
-..
-.. * Redistributions of source code must retain the above copyright
-..   notice, this list of conditions and the disclaimer below.
-.. 
-.. * Redistributions in binary form must reproduce the above copyright
-..   notice, this list of conditions and the disclaimer (as noted below)
-..   in the documentation and/or other materials provided with the
-..   distribution.
-..
-.. * Neither the name of the LLNS/LLNL nor the names of its contributors
-..   may be used to endorse or promote products derived from this
-..   software without specific prior written permission.
-..
-.. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-.. "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-.. LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-.. A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE
-.. LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR
-.. CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-.. EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-.. PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-.. PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-.. LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-.. NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-.. SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Functions
 =========
@@ -49,37 +15,86 @@ C++ or Fortran compilers.
 
 One C++ file will be created for the library and one file for each C++ class.
 
-By default, Fortran will create one file per class similar to the way
-C is handled.
-If one class makes use of another class in a library,
-it is necessary to put all of the classes
-into a single file using the *F_module_per_class* option.
+Fortran creates a file for the library and one per additional namespace.
+Since Fortran does not support forward referencing of derived types,
+it is necessary to add all classes from a namespace into a single module.
+
+.. XXX some comment about submodules?
 
 Each Fortran file will only contain one module to make it easier to
-create makefile dependencies using pattern rules::
+create makefile dependencies using pattern rules:
+
+.. code-block:: makefile
 
     %.o %.mod : %.f
 
+File names for the header and implementation files can be set
+explicitly by setting variables in the format of the global or class scope:
 
-How Names are created
+.. code-block:: yaml
+
+    format:
+      C_header_filename: top.h
+      C_impl_filename: top.cpp
+      F_impl_filename: top.f
+
+    declarations:
+    - decl: class Names
+      format:
+        C_header_filename: foo.h
+        C_impl_filename: foo.cpp
+        F_impl_filename: foo.f
+ 
+
+The default file names are controlled by global options.
+The option values can be changed to avoid setting the name for 
+each class file explicitly.
+It's also possible to change just the suffix of files:
+
+.. code-block:: yaml
+
+    options:
+        YAML_type_filename_template: {library_lower}_types.yaml
+
+        C_header_filename_suffix: h
+        C_impl_filename_suffix: cpp
+        C_header_filename_library_template: wrap{library}.{C_header_filename_suffix}
+        C_impl_filename_library_template: wrap{library}.{C_impl_filename_suffix}
+
+        C_header_filename_namespace_template: wrap{file_scope}.{C_header_file_suffix}
+        C_impl_filename_namespace_template: wrap{file_scope}.{C_impl_filename_suffix}
+
+        C_header_filename_class_template: wrap{cxx_class}.{C_header_file_suffix}
+        C_impl_filename_class_template: wrap{cxx_class}.{C_impl_filename_suffix}
+
+        F_filename_suffix: f
+        F_impl_filename_library_template: wrapf{library_lower}.{F_filename_suffix}
+        F_impl_filename_namespace_template: wrapf{file_scope}.{F_filename_suffix}
+
+
+How names are created
 ---------------------
 
 Shroud attempts to provide user control of names while providing
 reasonable defaults.
-Each name is based on the library, class, method or argument name
+Each name is based on the library, class, function or argument name
 in the current scope.  Most names have a template which may be used
 to control how the names are generated on a global scale.  Many names
 may also be explicitly specified by a field.
 
 For example, a library has an ``initialize`` function which is
-in a namespace.  In C++ it is called as::
+in a namespace.  In C++ it is called as:
+
+.. code-block:: c++
 
   #include "library.hpp"
 
   library::initialize()
 
 By default this will be a function in a Fortran module and 
-can be called as::
+can be called as:
+
+.. code-block:: fortran
 
   use library
 
@@ -88,132 +103,124 @@ can be called as::
 Since ``initialize`` is a rather common name for a function, it may 
 be desirable to rename the Fortran wrapper to something more specific.
 The name of the Fortran implementation wrapper can be changed
-by setting *F_name_impl*::
+by setting *F_name_impl*:
 
-  options:
-    library: library
-    namespace: library
-
-  function:
-  -  decl: void initialize
-     F_name_impl: library_initialize
-
-To rename all functions, set the template in the toplevel *options*::     
+.. code-block:: yaml
 
     library: library
-    namespace: library
+
+    declarations:
+    - decl: namespace library
+      declarations:
+      - decl: void initialize
+        format:
+          F_name_impl: library_initialize
+
+To rename all functions, set the template in the toplevel *options*:
+
+.. code-block:: yaml
+
+    library: library
 
     options:
       F_name_impl_template: "{library}_{underscore_name}{function_suffix}"
 
-    function:
-    -  decl: void initialize
+    declarations:
+    - decl: namespace library
+      declarations:
+      - decl: void initialize
 
+C++ allows allows overloaded functions and will mangle the names
+behind the scenes.  With Fortran, the mangling must be explicit. To
+accomplish this Shroud uses the *function_suffix* format string.  By
+default, Shroud will use a sequence number.  By explicitly setting
+*function_suffix*, a more meaningful name can be provided:
 
-How Functions are Wrapped
--------------------------
+.. example from tutorial.yaml
+.. code-block:: yaml
 
-As each function declartion is parsed a format dictionary is created
-with fields to describe the function and its arguments.
-The fields are then expanded into the function wrapper.
+  - decl: void Function6(const std::string& name)
+    format:
+      function_suffix: _from_name
+  - decl: void Function6(int indx)
+    format:
+      function_suffix: _from_index
 
-C wrapper
-^^^^^^^^^
+This will create the Fortran functions ``function6_from_name`` and
+``function6_from_index``.  A generic interface named ``function6``
+will also be created which will include the two generated functions.
 
-C wrapper::
+Likewise, default arguments will produce several Fortran wrappers and
+a generic interface for a single C++ function. The format dictionary
+only allows for a single *function_default* per function.  Instead the
+field *default_arg_suffix* can be set.  It contains a list of
+*function_suffix* values which will be applied from the minimum to the
+maximum number of arguments:
 
-    {C_return_type} {C_name}({C_prototype})
-    {
-        {C_code}
-    }
+.. example from tutorial.yaml
+.. code-block:: yaml
 
-The wrapper is within an ``extern "C"`` block so that **C_name** will
-not be mangled by the C++ compiler.
+  - decl: int overload1(int num,
+            int offset = 0, int stride = 1)
+    default_arg_suffix:
+    - _num
+    - _num_offset
+    - _num_offset_stride
 
-The *C_code* field has a default value of::
+Finally, multiple Fortran wrappers can be generated from a single
+templated function. Each instantiation will generate an additional
+Fortran Wrapper and can be distinguished by the *template_suffix*
+entry of the format dictionary.
 
-    {C_pre_call}
-    {C_call_code}
-    {C_post_call_pattern}
-    {C_post_call}
-    {C_return_code}
+If there is a single template argument, then *template_suffix* will be
+set to the *flat_name* field of the instantiated argument.  For
+example, ``<int>`` defaults to ``_int``.  This works well for POD types.
+The entire qualified name is used.  For ``<std::string>`` this would be
+``std_string``.  Classes which are deeply nested can produce very long
+values for *template_suffix*. To deal with this, the
+*function_template* field can be set on Class declarations:
 
-* **C_pre_call** code used to convert arguments from C to C++.
-  Derived from argument types c_statements code.
+.. code-block:: yaml
 
-* **C_call_code** code used to call the function.
-  The *constructor* and *destructor* annotations will use ``new`` and ``delete``.
+    - decl: namespace internal
+      declarations:
+      - decl: class ImplWorker1
+        format:
+          template_suffix: instantiation3
 
-* **C_post_call_pattern** code from the *C_error_pattern*.
-  Can be used to deal with error values.
+By default ``internal_implworker1`` would be used for the
+*template_suffix*.  But in this case ``instantiation3`` will be used.
 
-* **C_post_call** code used with *intent(out)* arguments.
+For multiple template arguments, *template_suffix* defaults to a
+sequence number to avoid long function names.  In this case,
+specifying an explicit *template_suffix* can produce a more user
+friendly name:
 
-* **C_return_code** returns a value from the wrapper.
+.. code-block:: yaml
 
+    - decl: template<T,U> void FunctionTU(T arg1, U arg2)
+      cxx_template:
+      - instantiation: <int, long>
+        format:
+          template_suffix: instantiation1
+      - instantiation: <float, double>
+        format:
+          template_suffix: instantiation2
 
-.. wrapc.py   Wrapc.write_header
+The Fortran functions will be named ``function_tu_instantiation1`` and
+ ``function_tu_instantiation2``.
 
-C++ classes create an opaque typedef in the header file for each class::
-
-    struct s_{C_type_name};
-    typedef struct s_{C_type_name} {C_type_name};
-
-
-
-Fortran wrapper
-^^^^^^^^^^^^^^^
-
-The template for Fortran code showing names which may 
-be controlled directly by the input file::
-
-    module {F_module_name}
-
-      ! use_stmts
-      implicit none
-
-      type {F_derived_name}
-        type(C_PTR) {F_derived_member}
-      contains
-        procedure :: {F_name_function} => {F_name_impl}
-        generic :: {F_name_generic} => {F_name_function}, ...
-      end type {F_derived_name}
-
-      interface
-        {F_C_pure_clause} {F_C_subprogram} {F_C_name}
-             {F_C_result_clause} bind(C, name="{C_name}")
-          ! arg_f_use
-          implicit none
-          ! arg_c_decl
-        end {F_C_subprogram} {F_C_name}
-      end interface
-
-      interface {F_name_generic}
-        module procedure {F_name_impl}
-      end interface {F_name_generic}
-
-    contains
-
-      {F_subprogram} {F_name_impl}
-        ! arg_f_use
-        ! arg_f_decl
-        ! pre_call
-        {F_code}
-        ! post_call
-      end {F_subprogram} {F_name_impl}
-
-    end module {F_module_name}
-
-
-Helper functions
-----------------
+Additional Wrapper Functions
+----------------------------
 
 Functions can be created in the Fortran wrapper which have no
 corresponding function in the C++ library.  This may be necessary to
 add functionality which may unnecessary in C++.  For example, a
 library provides a function which returns a string reference to a
 name.  If only the length is desired no extra function is required in
-C++ since the length is extracted used a ``std::string`` method::
+C++ since the length is extracted used a ``std::string`` method:
+
+.. code-block:: c++
 
     ExClass1 obj("name")
     int len = obj.getName().length();
@@ -221,31 +228,53 @@ C++ since the length is extracted used a ``std::string`` method::
 Calling the Fortran ``getName`` wrapper will copy the string into a
 Fortran array but you need the length first to make sure there is
 enough room.  You can create a Fortran wrapper to get the length
-without adding to the C++ library::
+without adding to the C++ library:
 
-    classes:
-      - name: ExClass1
-        methods:
-          - decl: int GetNameLength() const
-            C_code: |
-              {C_pre_call}
-              return {CPP_this}->getName().length();
+.. code-block:: yaml
 
-The generated C wrapper will use the *C_code* provided for the body::
+    declarations:
+    - decl: class ExClass1
+      declarations:
+      - decl: int GetNameLength() const
+        format:
+          C_code: |
+            {C_pre_call}
+            return {CXX_this}->getName().length();
+
+The generated C wrapper will use the *C_code* provided for the body:
+
+.. code-block:: c++
 
     int AA_exclass1_get_name_length(const AA_exclass1 * self)
     {
-        const ExClass1 *SH_this =
-            static_cast<const ExClass1 *>(static_cast<const void *>(self));
+        const ExClass1 *SH_this = static_cast<const ExClass1 *>(
+            static_cast<const void *>(self));
         return SH_this->getName().length();
     }
 
 The *C_pre_call* format string is generated by Shroud to convert the
-``self`` argument into *CPP_this* and must be included in *C_code*
+``self`` argument into *CXX_this* and must be included in *C_code*
 to get the definition.
 
 
 .. Fortran shadow class
+
+Helper functions
+----------------
+
+Shroud provides some additional file static function which are inserted 
+at the beginning of the wrapped code.
+
+C helper functions
+
+``ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)``
+    Copy *src* into *dest*, blank fill to *ndest* characters
+    Truncate if *dest* is too short to hold all of *src*.
+    *dest* will not be NULL terminated.
+
+``int ShroudLenTrim(const char *src, int nsrc)``
+    Returns the length of character string *src* with length *nsrc*,
+    ignoring any trailing blanks.
 
 
 Header Files
@@ -253,23 +282,23 @@ Header Files
 
 The header files for the library are included by the generated C++ source files.
 
-The library source file will include the global *cpp_header* field.
-Each class source file will include the class *cpp_header* field unless it is blank.
-In that case the global *cpp_header* field will be used.
+The library source file will include the global *cxx_header* field.
+Each class source file will include the class *cxx_header* field unless it is blank.
+In that case the global *cxx_header* field will be used.
 
-To include a file in the implementation list it in the global or class options::
+To include a file in the implementation list it in the global or class options:
 
-    cpp_header: global_header.hpp
+.. code-block:: yaml
 
-    classes:
-    -  name: Class1
-       cpp_header: class_header.hpp
+    cxx_header: global_header.hpp
 
-    types:
-       CustomType:
-          typedef: int
-          c_header:  type_header.h
-          cpp_header : type_header.hpp
+    declarations:
+    - decl: class Class1
+      cxx_header: class_header.hpp
+
+    - decl: typedef int CustomType
+        c_header:  type_header.h
+        cxx_header : type_header.hpp
 
 
 The *c_header* field will be added to the header file of contains functions
@@ -279,192 +308,123 @@ which helps map C++ constants to C constants
 
 .. FILL IN MORE
 
-Namespace
----------
-
-Each library or class can be associated with a namespace::
-
-    namespace one {
-    namespace two {
-       void function();
-
-       namespace three {
-         class Class1 {
-         };
-       }
-
-       class Class2 {
-       };
-    } // namespace two
-    } // namespace one
-
-    class Class3 {
-    };
-
-The YAML file would look like::
-
-    namespace: one two
-
-    classes:
-    -  Class1
-       namespace: one two three
-    -  Class2
-    -  Class3
-       namespace: -none
-
-If a namespace starts with a ``-``, then it will be ignored.  This
-allows a library to have a default namespace but have a class have no
-namespace.
-
 Local Variable
 ^^^^^^^^^^^^^^
 
-*SH_* prefix on local variables.
+*SH_* prefix on local variables which are created for a corresponding argument.
+For example the argument `char *name`, may need to create a local variable
+named `std::string SH_name`.
+
+Shroud also generates some code which requires local variables such as
+loop indexes.  These are prefixed with *SHT_*.  This name is controlled 
+by the format variable *c_temp*.
 
 Results are named from *fmt.C_result* or *fmt.F_result*.
 
+Format variable which control names are
 
-Patterns
---------
+* c_temp
+* C_local
+* C_this
+* CXX_local
+* CXX_this
+* C_result
 
-To address the issue of semantic differences between Fortran and C++,
-*patterns* may be used to insert additional code.  A *pattern* is a 
-code template which is inserted at a specific point in the wrapper.
-They are defined in the input YAML file::
+* F_pointer - ``SHT_pointer``
+* F_result - ``SHT_rv``  (return value)
+* F_this - ``obj``
 
-   functions:
-     - decl: const string& getString2+len=30()
-       C_error_pattern: C_invalid_name
+* LUA_result
 
-    patterns:
-        C_invalid_name: |
-            if ({cpp_var}.empty()) {{
-                return NULL;
-            }}
-
-The **C_error_pattern** will insert code after the call to the C++
-function in the C wrapper and before any post_call sections from the
-types. The bufferified version of a function will append
-``_as_buffer`` to the **C_error_pattern** value.  The *pattern* is
-formated using the context of the return argument if present,
-otherwise the context of the function is used.  This means that
-*c_var* and *c_var_len* refer to the argument which is added to
-contain the function result for the ``_as_buffer`` pattern.
-
-The function ``getString2`` is returing a ``std::string`` referrence.
-Since C and Fortran cannot deal with this directly, the empty string
-is converted into a ``NULL`` pointer::
-will blank fill the result::
-
-    const char * STR_get_string2()
-    {
-        const std::string & SH_rv = getString2();
-        // C_error_pattern
-        if (SH_rv.empty()) {
-            return NULL;
-        }
-        const char * XSH_rv = SH_rv.c_str();
-        return XSH_rv;
-    }
+* PY_result
 
 
+C Preprocessor
+--------------
 
-Splicers
---------
+It is possible to add C preprocessor conditional compilation
+directives to the generated source.  For example, if a function should
+only be wrapped if ``USE_MPI`` is defined the ``cpp_if`` field can be
+used:
 
-No matter how many features are added to Shroud there will always exist
-cases that it does not handle.  One of the weaknesses of generated
-code is that if the generated code is edited it becomes difficult to
-regenerate the code and perserve the edits.  To deal with this
-situation each block of generated code is surrounded by 'splicer'
-comments::
+.. code-block:: yaml
 
-    const char * STR_get_char3()
-    {
-    // splicer begin function.get_char3
-        const char * SH_rv = getChar3();
-        return SH_rv;
-    // splicer end function.get_char3
-    }
+    - decl: void testmpi(MPI_Comm comm)
+      format:
+        function_suffix: _mpi
+      cpp_if: ifdef HAVE_MPI
+    - decl: void testmpi()
+      format:
+        function_suffix: _serial
+      cpp_if: ifndef HAVE_MPI
 
-These comments delineate a section of code which can be replaced by
-the user.  The splicer's name, ``function.get_char3`` in the example,
-is used to determine where to insert the code.
-In a separate file, add the begin and end splicer comments,
-then add the code which should be inserted into the wrapper.  Multiple
-splicer can be added to an input file.  Any text that is not within a
-splicer block is ignored.  Splicers must be sorted by language.  If
-the input file ends with ``.f`` or ``.f90`` it is processed as
-splicers for the generated Fortran code.  Code for the C wrappers must
-end with any of ``.c``, ``.h``, ``.cpp``, ``.hpp``, ``.cxx``,
-``.hxx``, ``.cc``, ``.C``::
+The function wrappers will be created within ``#ifdef``/``#endif``
+directives.  This includes the C wrapper, the Fortran interface and
+the Fortran wrapper.  The generated Fortran interface will be:
 
-    // splicer begin function.get_char3
-        const char * SH_rv = getChar3();
-        SH_rv[0] = 'F';    // replace first character for Fortran
-        return SH_rv + 1;
-    // splicer end function.get_char3
+.. code-block:: fortran
 
-The file with the custom splicers is added to the Shroud command line
-along with the YAML file.
+        interface testmpi
+    #ifdef HAVE_MPI
+            module procedure testmpi_mpi
+    #endif
+    #ifndef HAVE_MPI
+            module procedure testmpi_serial
+    #endif
+        end interface testmpi
 
-In addition to replacing code for a function wrapper, there are 
-splicers that are generated which allow a user to insert additional
-code::
+Class generic type-bound function will also insert conditional
+compilation directives:
 
-    ! file_top
-    module {F_module_name}
-       ! module_use
-       implicit none
-       ! module_top
+.. code-block:: yaml
 
-       type class1
-         ! class.{cpp_class}.component_part
-       contains
-         ! class.{cpp_class}.generic.{F_name_generic}
-         ! class.{cpp_class}.type_bound_procedure_part
-       end type class1
+    - decl: class ExClass3
+      cpp_if: ifdef USE_CLASS3
+      declarations:
+      - decl: void exfunc()
+        cpp_if: ifdef USE_CLASS3_A
+      - decl: void exfunc(int flag)
+        cpp_if: ifndef USE_CLASS3_A
 
-       interface
-          ! additional_interfaces
-       end interface
+The generated type will be:
 
-       contains
+.. code-block:: fortran
 
-       ! function.{F_name_function}
+        type exclass3
+            type(SHROUD_capsule_data), private :: cxxmem
+        contains
+            procedure :: exfunc_0 => exclass3_exfunc_0
+            procedure :: exfunc_1 => exclass3_exfunc_1
+    #ifdef USE_CLASS3_A
+            generic :: exfunc => exfunc_0
+    #endif
+    #ifndef USE_CLASS3_A
+            generic :: exfunc => exfunc_1
+    #endif
+        end type exclass3
 
-       ! {cpp_class}.method.{F_name_function}
+A ``cpp_if`` field in a class will add a conditional directive around
+the entire class.
 
-       ! additional_functions
+Finally, ``cpp_if`` can be used with types. This would be required in
+the first example since ``mpi.h`` should only be included when
+``USE_MPI`` is defined:
 
-    end module {F_module_name}
+.. code-block:: yaml
 
-.. from _create_splicer
+    typemaps:
+    - type: MPI_Comm
+      fields:
+        cpp_if: ifdef USE_MPI
 
-C header::
 
-    // class.{class_name}.CXX_declarations
+When using ``cpp_if``, it is useful to set the option
+``F_filename_suffix`` to ``F``. This will cause most compilers to
+process the Fortran souce with ``cpp`` before compilation.
 
-    extern "C" {
-    // class.{class_name}.C_declarations
-    }
+The ``typemaps`` field can only appear at the outermost layer
+and is used to augment existing typemaps.
 
-C implementation::
-
-    // class.{class_name}.CXX_definitions
-
-    extern "C" {
-      // class.{class_name}.C_definitions
-
-      // function.{underscore_name}{function_suffix}
-
-      // class.{cpp_class}.method.{underscore_name}{function_suffix}
-
-    }
-
-The splicer comments can be eliminated by setting the option
-**show_splicer_comments** to false. This may be useful to 
-eliminate the clutter of the splicer comments.
 
 Debugging
 ---------
@@ -472,5 +432,5 @@ Debugging
 Shroud generates a JSON file with all of the input from the YAML
 and all of the format dictionaries and type maps.
 This file can be useful to see which format keys are available and
-how code is genenerated.
+how code is generated.
 
