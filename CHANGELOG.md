@@ -6,11 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## v0.11.0 - 2020-01-08
 ### Added
 - A C++ namespace corresponds to a module in Fortran and Python.
   Options *flatten_namespace* and *F_flatten_namespace* can be used
   to reproduce the previous behavior.
-- Added format dictionary field template_suffix.
+- Added format dictionary field *template_suffix*.
 - Added the **F_create_bufferify_function** option.
 - Support `true` and `false` with implied attribute.
 - Process 'void **' argument as 'type(C_PTR)' by reference.

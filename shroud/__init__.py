@@ -21,6 +21,6 @@ def print_as_json(node, fp):
     json.dump(node, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
 
 
-__version__ = "0.10.1"
-version_info = (0, 10, 1, "beta", 0)
+__version__ = "0.11.0"
+version_info = (0, 11, 0, "beta", 0)
 # 'alpha', 'beta', 'candidate', or 'final'.
