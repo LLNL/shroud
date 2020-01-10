@@ -512,9 +512,9 @@ class Parser(ExprParser):
         self.declaration_specifier(node)
         self.get_canonical_typemap(node)
 
-        if "_destructor" in node.attrs:
+        if node.attrs["_destructor"]:
             pass
-        elif "_constructor" in node.attrs:
+        elif node.attrs["_constructor"]:
             pass
         else:
             node.declarator = self.declarator()
@@ -925,7 +925,7 @@ class Declaration(Node):
         self.array = None
         self.init = None  # initial value
         self.template_arguments = []
-        self.attrs = {}  # Declaration attributes
+        self.attrs = collections.defaultdict(lambda: None)
 
         self.func_const = False
         self.typemap = None
@@ -940,7 +940,7 @@ class Declaration(Node):
         ctor and dtor should have _name set
         """
         if use_attr:
-            name = self.attrs.get("name", None) or self.attrs.get("_name", None)
+            name = self.attrs["name"] or self.attrs["_name"]
             if name is not None:
                 return name
         if self.declarator is None:
@@ -972,11 +972,11 @@ class Declaration(Node):
 
     def is_ctor(self):
         """Return True if self is a constructor."""
-        return self.attrs.get("_constructor", False)
+        return self.attrs["_constructor"]
 
     def is_dtor(self):
         """Return True if self is a constructor."""
-        return self.attrs.get("_destructor", False)
+        return self.attrs["_destructor"]
 
     def is_pointer(self):
         """Return number of levels of pointers.
@@ -1098,7 +1098,7 @@ class Declaration(Node):
             out.append("const ")
         if self.volatile:
             out.append("volatile ")
-        if "_destructor" in self.attrs:
+        if self.attrs["_destructor"]:
             out.append("~")
         if self.storage:
             out.append(" ".join(self.storage))
@@ -1147,7 +1147,7 @@ class Declaration(Node):
         if self.const:
             decl.append("const ")
 
-        if "_destructor" in self.attrs:
+        if self.attrs["_destructor"]:
             decl.append("~")
         if self.storage:
             decl.append(" ".join(self.storage))
@@ -1193,6 +1193,8 @@ class Declaration(Node):
             if attr in self._skip_annotations:
                 continue
             value = attrs[attr]
+            if value is None:  # unset
+                continue
             if value is False:
                 continue
             decl.append(space)
@@ -1335,9 +1337,9 @@ class Declaration(Node):
                 "Type {} has no value for f_c_type".format(self.typename)
             )
         t.append(typ)
-        if attrs.get("value", False):
+        if attrs["value"]:
             t.append("value")
-        intent = intent or attrs.get("intent", None)
+        intent = intent or attrs["intent"]
         if intent:
             t.append("intent(%s)" % intent.upper())
 
@@ -1354,10 +1356,10 @@ class Declaration(Node):
             decl.append("(*)")  # is array
         elif ntypemap.base == "string":
             decl.append("(*)")
-        elif attrs.get("dimension", False):
+        elif attrs["dimension"]:
             # Any dimension is changed to assumed length.
             decl.append("(*)")
-        elif attrs.get("allocatable", False):
+        elif attrs["allocatable"]:
             # allocatable assumes dimension
             decl.append("(*)")
         return "".join(decl)
@@ -1390,17 +1392,17 @@ class Declaration(Node):
             # If a template, use its type
             ntypemap = self.template_arguments[0].typemap
 
-        deref = attrs.get("deref", "")
+        deref = attrs["deref"]
         if deref == "allocatable":
             is_allocatable = True
         elif deref == "pointer":
             is_pointer = True
 
         if not is_allocatable:
-            is_allocatable = attrs.get("allocatable", False)
+            is_allocatable = attrs["allocatable"]
 
         if ntypemap.base == "string":
-            if "len" in attrs and local:
+            if attrs["len"] and local:
                 # Also used with function result declaration.
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
@@ -1415,9 +1417,9 @@ class Declaration(Node):
             t.append(ntypemap.f_type)
 
         if not local:  # must be dummy argument
-            if attrs.get("value", False):
+            if attrs["value"]:
                 t.append("value")
-            intent = attrs.get("intent", None)
+            intent = attrs["intent"]
             if intent:
                 t.append("intent(%s)" % intent.upper())
 
@@ -1438,7 +1440,7 @@ class Declaration(Node):
         else:
             decl.append(self.name)
 
-        dimension = attrs.get("dimension", "")
+        dimension = attrs["dimension"]
         if dimension:
             if is_allocatable:
                 # Assume 1-d.
@@ -1590,11 +1592,11 @@ def create_struct_ctor(cls):
     """
     name = cls.name + "_ctor"
     ast = Declaration()
-    ast.attrs = dict(
+    ast.attrs.update(dict(
         _constructor=True,
 #        _name="ctor",
         name=name,
-    )
+    ))
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
     ast.params = []

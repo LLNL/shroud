@@ -677,7 +677,7 @@ return 1;""",
         )
 
         # setter
-        if not ast.attrs.get("readonly", False):
+        if not ast.attrs["readonly"]:
             fmt_var.PY_setter = wformat(
                 options.PY_member_setter_template, fmt_var
             )
@@ -722,7 +722,7 @@ return 1;""",
         intent = arg.attrs["intent"]
         whelpers.add_to_PyList_helper(arg)
         if intent == "out":
-            dimension = arg.attrs.get("dimension", None)
+            dimension = arg.attrs["dimension"]
             if dimension is None:
                 raise RuntimeError(
                     "Argument must have non-default dimension attribute")
@@ -763,7 +763,7 @@ return 1;""",
             fmt.npy_intp = "npy_intp {}[1];\n".format(fmt.npy_dims)
 #            fmt.npy_intp = "npy_intp {}[1] = {{{}->size()}};\n".format(fmt.npy_dims, fmt.cxx_var)
 
-        dimension = ast.attrs.get("dimension", None)
+        dimension = ast.attrs["dimension"]
         if dimension:
             # (*), (:), (:,:)
             if dimension[0] not in ["*", ":"]:
@@ -795,7 +795,7 @@ return 1;""",
             arg -
             pre_call -
         """
-        implied = arg.attrs.get("implied", None)
+        implied = arg.attrs["implied"]
         if implied:
             fmt = node._fmtargs[arg.name]["fmtpy"]
             fmt.pre_call_intent = py_implied(implied, node)
@@ -1025,10 +1025,10 @@ return 1;""",
             self.set_fmt_fields(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
-            dimension = arg.attrs.get("dimension", False)
-            allocatable = attrs.get("allocatable", False)
-            hidden = attrs.get("hidden", False)
-            implied = attrs.get("implied", False)
+            dimension = arg.attrs["dimension"]
+            allocatable = attrs["allocatable"]
+            hidden = attrs["hidden"]
+            implied = attrs["implied"]
             intent = attrs["intent"]
             sgroup = arg_typemap.sgroup
             stmts = None
@@ -1046,7 +1046,7 @@ return 1;""",
                         format(arg.name))
                 stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg]
             elif arg_typemap.sgroup == "char":
-                charlen = arg.attrs.get("charlen", False)
+                charlen = arg.attrs["charlen"]
                 if charlen:
                     fmt_arg.charlen = charlen
                     stmts = ["py", "char", intent, "charlen"]
@@ -2847,7 +2847,7 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
                     moldvar, allocatable
                 )
             )
-        if "dimension" not in moldarg.attrs:
+        if moldarg.attrs["dimension"] is None:
             raise RuntimeError(
                 "Mold argument '{}' must have dimension attribute: {}".format(
                     moldvar, allocatable

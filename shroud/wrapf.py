@@ -840,8 +840,8 @@ rv = .false.
             if buf_arg == "arg":
                 arg_c_names.append(ast.name)
                 # argument declarations
-                if "assumedtype" in attrs:
-                    if "dimension" in attrs:
+                if attrs["assumedtype"]:
+                    if attrs["dimension"]:
                         arg_c_decl.append(
                             "type(*) :: {}({})".format(
                                 ast.name, attrs["dimension"])
@@ -874,7 +874,7 @@ rv = .false.
                 arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.attrs["intent"]).upper(),
-                    ", value" if attrs.get("value", False) else "",
+                    ", value" if attrs["value"] else "",
                     name or ast.name))
                 self.update_f_module(
                     modules, imports,
@@ -882,14 +882,14 @@ rv = .false.
                 )
                 continue
 
-            if buf_arg not in attrs:
+            buf_arg_name = attrs[buf_arg]
+            if buf_arg_name is None:
                 raise RuntimeError(
                     "attr {} is missing from attrs for {}".format(
                         buf_arg, node.declgen
                     )
                 )
-            buf_arg_name = attrs[buf_arg]
-            if buf_arg == "size":
+            elif buf_arg == "size":
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
                     "integer(C_LONG), value, intent(IN) :: %s" % buf_arg_name
@@ -903,7 +903,7 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
-                if ast.attrs.get("_is_result", False):
+                if ast.attrs["_is_result"]:
                     intent = "OUT"
                 else:
                     intent = "INOUT"
@@ -955,7 +955,7 @@ rv = .false.
         generated_suffix = node.generated_suffix
         return_pointer_as = ast.return_pointer_as
         is_ctor = ast.is_ctor()
-        is_pure = ast.attrs.get("pure", False)
+        is_pure = ast.attrs["pure"]
         is_static = False
         func_is_const = ast.func_const
 
@@ -1020,13 +1020,13 @@ rv = .false.
             fmt.c_var = arg.name
 
             attrs = arg.attrs
-            intent = attrs.get("intent", "inout")
+            intent = attrs["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
-            deref_clause = attrs.get("deref", "")
+            deref_clause = attrs["deref"] or ""
 
             spointer = "pointer" if arg.is_indirect() else "scalar"
-            if attrs.get("_is_result", False):
+            if attrs["_is_result"]:
                 c_stmts = ["c", sgroup, spointer, "result",
                            generated_suffix, deref_clause]
             else:
@@ -1212,7 +1212,7 @@ rv = .false.
                 )
                 arg_c_call.append(fmt.c_var_context)
                 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                if "dimension" in c_attrs:
+                if c_attrs["dimension"]:
                     fmt.c_var_dimension = c_attrs["dimension"]
             elif buf_arg == "len_trim":
                 append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
@@ -1354,7 +1354,7 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-            result_deref_clause = ast.attrs.get("deref", "")
+            result_deref_clause = ast.attrs["deref"] or ""
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
@@ -1436,10 +1436,10 @@ rv = .false.
 
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
-            allocatable = c_attrs.get("allocatable", False)
-            hidden = c_attrs.get("hidden", False)
+            allocatable = c_attrs["allocatable"]
+            hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
-            deref_clause = c_attrs.get("deref", "")
+            deref_clause = c_attrs["deref"] or ""
 
             sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
@@ -1452,7 +1452,7 @@ rv = .false.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
             spointer = "pointer" if c_arg.is_indirect() else "scalar"
-            if c_attrs.get("_is_result", False):
+            if c_attrs["_is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
 #XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
@@ -1475,7 +1475,7 @@ rv = .false.
                 f_arg = f_args[f_index]
 
                 f_attrs = f_arg.attrs
-                implied = f_attrs.get("implied", False)
+                implied = f_attrs["implied"]
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
@@ -1487,7 +1487,7 @@ rv = .false.
                     self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                     need_wrapper = True
                     continue
-                elif "assumedtype" in c_attrs:
+                elif c_attrs["assumedtype"]:
                     # Passed directly to C as a 'void *'
                     arg_f_decl.append(
                         "type(*) :: {}".format(f_arg.name)
@@ -1497,7 +1497,7 @@ rv = .false.
                     continue
                 elif f_arg.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                    if c_attrs.get("external", False):
+                    if c_attrs["external"]:
                         # external is similar to assumed type, in that it will
                         # accept any function.  But external is not allowed
                         # in bind(C), so make sure a wrapper is generated.
@@ -1642,7 +1642,7 @@ rv = .false.
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_pointer_as in ["allocatable", "pointer"]:
-                dim = ast.attrs.get("dimension", None)
+                dim = ast.attrs["dimension"]
                 if dim:
                     # XXX - Assume 1-d
                     fmt_result.f_var_shape = "(:)"
@@ -2022,7 +2022,7 @@ def attr_allocatable(allocatable, node, arg, pre_call):
                     moldvar, allocatable
                 )
             )
-        if "dimension" not in moldarg.attrs:
+        if moldarg.attrs["dimension"] is None:
             raise RuntimeError(
                 "Mold argument '{}' must have dimension attribute: {}".format(
                     moldvar, allocatable

@@ -135,7 +135,7 @@ class VerifyAttrs(object):
         ntypemap = ast.typemap
         is_ptr = ast.is_indirect()
 
-        deref = attrs.get("deref", None)
+        deref = attrs["deref"]
         if deref is not None:
             if deref not in ["allocatable", "pointer", "raw", "scalar"]:
                 raise RuntimeError(
@@ -146,9 +146,9 @@ class VerifyAttrs(object):
         # XXX deref only on pointer, vector
 
         # dimension
-        dimension = attrs.get("dimension", None)
+        dimension = attrs["dimension"]
         if dimension:
-            if attrs.get("value", False):
+            if attrs["value"]:
                 raise RuntimeError(
                     "argument must not have value=True "
                     "because it has the dimension attribute."
@@ -161,7 +161,7 @@ class VerifyAttrs(object):
             if dimension is True:
                 # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
                 # No value was provided, provide default
-                if "allocatable" in attrs:
+                if attrs["allocatable"]:
                     attrs["dimension"] = ":"
                 else:
                     attrs["dimension"] = "*"
@@ -169,7 +169,7 @@ class VerifyAttrs(object):
             # default to 1-d assumed shape
             attrs["dimension"] = ":"
 
-        owner = attrs.get("owner", None)
+        owner = attrs["owner"]
         if owner is not None:
             if owner not in ["caller", "library"]:
                 raise RuntimeError(
@@ -177,7 +177,7 @@ class VerifyAttrs(object):
                     "Must be 'caller' or 'library'.".format(deref)
                 )
 
-        free_pattern = attrs.get("free_pattern", None)
+        free_pattern = attrs["free_pattern"]
         if free_pattern is not None:
             if free_pattern not in self.newlibrary.patterns:
                 raise RuntimeError(
@@ -218,6 +218,7 @@ class VerifyAttrs(object):
                 "intent",
                 "len",
                 "len_trim",
+                "name",
                 "owner",
                 "size",
                 "value",
@@ -241,7 +242,7 @@ class VerifyAttrs(object):
 
         is_ptr = arg.is_indirect()
 
-        allocatable = attrs.get("allocatable", False)
+        allocatable = attrs["allocatable"]
         if allocatable:
             if not is_ptr:
                 raise RuntimeError(
@@ -249,7 +250,7 @@ class VerifyAttrs(object):
                 )
 
         # intent
-        intent = attrs.get("intent", None)
+        intent = attrs["intent"]
         if intent is None:
             if node is None:
                 # do not default intent for function pointers
@@ -265,7 +266,7 @@ class VerifyAttrs(object):
             else:
                 # void *
                 attrs["intent"] = "in"  # XXX must coordinate with VALUE
-            intent = attrs.get("intent", None)
+            intent = attrs["intent"]
         else:
             intent = intent.lower()
             if intent in ["in", "out", "inout"]:
@@ -274,9 +275,9 @@ class VerifyAttrs(object):
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
 
         # assumedtype
-        assumedtype = attrs.get("assumedtype", None)
+        assumedtype = attrs["assumedtype"]
         if assumedtype is not None:
-            if attrs.get("value", False):
+            if attrs["value"]:
                 raise RuntimeError(
                     "argument must not have value=True "
                     "because it has the assumedtype attribute."
@@ -284,7 +285,7 @@ class VerifyAttrs(object):
             attrs["value"] = False
 
         # value
-        value = attrs.get("value", None)
+        value = attrs["value"]
         if value is None:
             if is_ptr:
                 if arg_typemap.name == "void":
@@ -302,7 +303,7 @@ class VerifyAttrs(object):
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
-        charlen = attrs.get("charlen", None)
+        charlen = attrs["charlen"]
         if charlen:
             if arg_typemap.base != "string":
                 raise RuntimeError(
@@ -330,20 +331,20 @@ class VerifyAttrs(object):
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
-        capsule_name = attrs.get("capsule", False)
+        capsule_name = attrs["capsule"]
         if capsule_name is True:
             attrs["capsule"] = options.C_var_capsule_template.format(
                 c_var=argname
             )
-        len_name = attrs.get("len", False)
+        len_name = attrs["len"]
         if len_name is True:
             attrs["len"] = options.C_var_len_template.format(c_var=argname)
-        len_name = attrs.get("len_trim", False)
+        len_name = attrs["len_trim"]
         if len_name is True:
             attrs["len_trim"] = options.C_var_trim_template.format(
                 c_var=argname
             )
-        size_name = attrs.get("size", False)
+        size_name = attrs["size"]
         if size_name is True:
             attrs["size"] = options.C_var_size_template.format(c_var=argname)
 
@@ -456,8 +457,8 @@ class GenFunctions(object):
         found_dtor = False
         for node in cls.functions:
             fattrs = node.ast.attrs
-            found_ctor = found_ctor or fattrs.get("_constructor", False)
-            found_dtor = found_dtor or fattrs.get("_destructor", False)
+            found_ctor = found_ctor or fattrs["_constructor"]
+            found_dtor = found_dtor or fattrs["_destructor"]
 
         if found_ctor and found_dtor:
             return cls.functions
@@ -484,7 +485,7 @@ class GenFunctions(object):
         """
         ast = var.ast
         arg_typemap = ast.typemap
-        fieldname = ast.name  # attrs.get('name', ast.name)
+        fieldname = ast.name  # attrs["name"]
 
         fmt = util.Scope(var.fmtdict)
 
@@ -510,7 +511,7 @@ class GenFunctions(object):
         cls.add_function(decl, options=options, splicer=splicer)
 
         # setter
-        if ast.attrs.get("readonly", False):
+        if ast.attrs["readonly"]:
             return
         funcname = "set" + ast.name.capitalize()
         argdecl = ast.gen_arg_as_c(name="val", continuation=True)
@@ -1036,11 +1037,11 @@ class GenFunctions(object):
         """
         c_attrs = new_node.ast.attrs
         f_attrs = old_node.ast.attrs
-        if "deref" not in f_attrs:
+        if f_attrs["deref"] is None:
             f_attrs["deref"] = "allocatable"
             attrs["deref"] = "allocatable"
         for name in ["owner", "free_pattern"]:
-            if name in c_attrs:
+            if c_attrs[name]:
                 attrs[name] = c_attrs[name]
                 del c_attrs[name]
 
@@ -1132,7 +1133,7 @@ class GenFunctions(object):
             has_vector_result = True
             # Create helpers for vector template.
             whelpers.add_copy_array_helper(fmt, ast)
-        elif result_is_ptr and attrs.get("deref", "") == "allocatable":
+        elif result_is_ptr and attrs["deref"] == "allocatable":
             has_allocatable_result = True
 
         # Functions with these arguments need wrappers.
@@ -1198,7 +1199,7 @@ class GenFunctions(object):
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
 
-            if "len" in ast.attrs or result_as_arg:
+            if ast.attrs["len"] or result_as_arg:
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
@@ -1475,7 +1476,7 @@ class Preprocess(object):
         F_result_type = CXX_result_type
         subprogram = ast.get_subprogram()
         node.CXX_subprogram = subprogram
-        is_dtor = ast.attrs.get("_destructor", False)
+        is_dtor = ast.attrs["_destructor"]
 
         if node.return_this or is_dtor:
             CXX_result_type = "void"
@@ -1513,7 +1514,7 @@ class Preprocess(object):
         if result_typemap.cxx_type == "void":
             # subprogram == subroutine
             # deref may be set when a string function is converted into a subroutine.
-            if "deref" in attrs:
+            if attrs["deref"]:
                 ast.return_pointer_as = attrs["deref"]
         elif result_typemap.base == "shadow":
             # Change a C++ pointer into a Fortran pointer
@@ -1521,23 +1522,23 @@ class Preprocess(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             pass
         elif result_typemap.base in ["string", "vector"]:
-            if "deref" in attrs:
+            if attrs["deref"]:
                 ast.return_pointer_as = attrs["deref"]
             else:
                 # Default strings to create a Fortran allocatable.
                 ast.return_pointer_as = "allocatable"
         elif ast.is_indirect():
             # pointer to a POD  e.g. int *
-            if "deref" in attrs:
+            if attrs["deref"]:
                 ast.return_pointer_as = attrs["deref"]
-            elif "dimension" in attrs:
+            elif attrs["dimension"]:
                 ast.return_pointer_as = "pointer"
             elif options.return_scalar_pointer == "pointer":
                 ast.return_pointer_as = "pointer"
             else:
                 ast.return_pointer_as = "scalar"
         else:
-            if "deref" in attrs:
+            if attrs["deref"]:
                 raise RuntimeError(
                     "Cannot have attribute 'deref' on non-pointer in {}".format(
                         node.decl
@@ -1585,7 +1586,7 @@ class CheckImplied(todict.PrintNode):
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
                 )
-            if "dimension" not in arg.attrs:
+            if arg.attrs["dimension"] is None:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}".format(
 #                        str(arg), self.expr
@@ -1606,7 +1607,7 @@ class CheckImplied(todict.PrintNode):
                     "Unknown argument '{}': {}".format(argname, self.expr)
                 )
             # XXX - Make sure character
-#            if "dimension" not in arg.attrs:
+#            if arg.attrs["dimension"] is None:
 #                raise RuntimeError(
 #                    "Argument '{}' must have dimension attribute: {}".format(
 #                        argname, self.expr
@@ -1630,7 +1631,7 @@ def check_implied_attrs(decls):
         decls - list of Declarations
     """
     for decl in decls:
-        expr = decl.attrs.get("implied", None)
+        expr = decl.attrs["implied"]
         if expr:
             check_implied(expr, decls)
 
