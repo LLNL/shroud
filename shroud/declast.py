@@ -1590,11 +1590,9 @@ def create_struct_ctor(cls):
     """
     name = cls.name + "_ctor"
     ast = Declaration()
-    ast.attrs.update(dict(
-        _constructor=True,
-#        _name="ctor",
-        name=name,
-    ))
+    ast.attrs["_constructor"] = True
+    ast.attrs["name"] = name
+##        _name="ctor",
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
     ast.params = []
