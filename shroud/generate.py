@@ -188,7 +188,7 @@ class VerifyAttrs(object):
     def check_arg_attrs(self, node, arg):
         """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
-        value: if pointer, default to False (pass-by-reference)
+        value: if pointer, default to None (pass-by-reference)
                else True (pass-by-value).
 
         Args:
@@ -282,21 +282,17 @@ class VerifyAttrs(object):
                     "argument must not have value=True "
                     "because it has the assumedtype attribute."
                 )
-            attrs["value"] = False
 
         # value
-        value = attrs["value"]
-        if value is None:
+        elif attrs["value"] is None:
             if is_ptr:
                 if arg_typemap.name == "void":
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
                     if len(arg.declarator.pointer) == 1:
                         attrs["value"] = True  # void *
-                    else:
-                        attrs["value"] = False # void **  XXX intent(out)?
-                else:
-                    attrs["value"] = False
+#                    else:
+#                        attrs["value"] = None # void **  XXX intent(out)?
             else:
                 attrs["value"] = True
 

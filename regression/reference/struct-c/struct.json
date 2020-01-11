@@ -444,8 +444,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -618,8 +617,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "s1",
@@ -637,8 +635,7 @@
                         {
                             "attrs": {
                                 "charlen": "LENOUTBUF",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "outbuf",
@@ -770,8 +767,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "s1",
@@ -791,8 +787,7 @@
                             "attrs": {
                                 "charlen": "LENOUTBUF",
                                 "intent": "out",
-                                "len": "Noutbuf",
-                                "value": false
+                                "len": "Noutbuf"
                             },
                             "declarator": {
                                 "name": "outbuf",
@@ -902,8 +897,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1100,8 +1094,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1241,8 +1234,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -2096,8 +2088,7 @@
                         {
                             "attrs": {
                                 "charlen": "LENOUTBUF",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "outbuf",
@@ -2294,8 +2285,7 @@
                             "attrs": {
                                 "charlen": "LENOUTBUF",
                                 "intent": "out",
-                                "len": "Noutbuf",
-                                "value": false
+                                "len": "Noutbuf"
                             },
                             "declarator": {
                                 "name": "outbuf",

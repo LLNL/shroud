@@ -489,8 +489,7 @@
                         {
                             "attrs": {
                                 "charlen": "40",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -507,8 +506,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -631,8 +629,7 @@
                             "attrs": {
                                 "charlen": "40",
                                 "intent": "out",
-                                "len": "Ndest",
-                                "value": false
+                                "len": "Ndest"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -650,8 +647,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -748,8 +744,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "s",
@@ -845,8 +840,7 @@
                             "attrs": {
                                 "intent": "inout",
                                 "len": "Ns",
-                                "len_trim": "Ls",
-                                "value": false
+                                "len_trim": "Ls"
                             },
                             "declarator": {
                                 "name": "s",
@@ -4140,8 +4134,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -4236,8 +4229,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Larg1",
-                                "value": false
+                                "len_trim": "Larg1"
                             },
                             "const": true,
                             "declarator": {
@@ -4333,8 +4325,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4428,8 +4419,7 @@
                         {
                             "attrs": {
                                 "intent": "out",
-                                "len": "Narg1",
-                                "value": false
+                                "len": "Narg1"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4522,8 +4512,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4622,8 +4611,7 @@
                             "attrs": {
                                 "intent": "inout",
                                 "len": "Narg1",
-                                "len_trim": "Larg1",
-                                "value": false
+                                "len_trim": "Larg1"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4718,8 +4706,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4814,8 +4801,7 @@
                             "attrs": {
                                 "intent": "inout",
                                 "len": "Narg1",
-                                "len_trim": "Larg1",
-                                "value": false
+                                "len_trim": "Larg1"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4913,8 +4899,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4931,8 +4916,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg2",
@@ -4980,8 +4964,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -5071,8 +5054,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "AAlen",
-                                "value": false
+                                "len_trim": "AAlen"
                             },
                             "declarator": {
                                 "name": "name",
@@ -5153,8 +5135,7 @@
                         {
                             "attrs": {
                                 "intent": "out",
-                                "len": "AAtrim",
-                                "value": false
+                                "len": "AAtrim"
                             },
                             "declarator": {
                                 "name": "name",
@@ -5246,8 +5227,7 @@
                         {
                             "attrs": {
                                 "intent": "out",
-                                "len": "AAtrim",
-                                "value": false
+                                "len": "AAtrim"
                             },
                             "declarator": {
                                 "name": "name",
@@ -5632,8 +5612,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -5650,8 +5629,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -5773,8 +5751,7 @@
                         {
                             "attrs": {
                                 "intent": "out",
-                                "len": "Ndest",
-                                "value": false
+                                "len": "Ndest"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -5792,8 +5769,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {

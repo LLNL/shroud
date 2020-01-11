@@ -725,8 +725,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -829,8 +828,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Lrv",
-                                "value": false
+                                "len_trim": "Lrv"
                             },
                             "const": true,
                             "declarator": {

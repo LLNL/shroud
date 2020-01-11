@@ -1195,8 +1195,6 @@ class Declaration(Node):
             value = attrs[attr]
             if value is None:  # unset
                 continue
-            if value is False:
-                continue
             decl.append(space)
             decl.append("+")
             if value is True:

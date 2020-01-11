@@ -170,8 +170,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -252,8 +251,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -310,8 +308,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -394,8 +391,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -472,8 +468,7 @@
                             "attrs": {
                                 "deref": "allocatable",
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -531,8 +526,7 @@
                             "attrs": {
                                 "deref": "allocatable",
                                 "dimension": ":",
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -589,8 +583,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -669,8 +662,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -726,8 +718,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -784,8 +775,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -844,8 +834,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",

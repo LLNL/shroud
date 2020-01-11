@@ -374,8 +374,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
-                                                        "value": false
+                                                        "intent": "in"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -487,8 +486,7 @@
                                                 {
                                                     "attrs": {
                                                         "intent": "in",
-                                                        "len_trim": "Lname",
-                                                        "value": false
+                                                        "len_trim": "Lname"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -2051,8 +2049,7 @@
                                                     "attrs": {
                                                         "__line__": 129,
                                                         "intent": "in",
-                                                        "len_trim": "trim_name",
-                                                        "value": false
+                                                        "len_trim": "trim_name"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -2163,8 +2160,7 @@
                                                     "attrs": {
                                                         "__line__": 129,
                                                         "intent": "in",
-                                                        "len_trim": "trim_name",
-                                                        "value": false
+                                                        "len_trim": "trim_name"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -3276,8 +3272,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
-                                                        "value": false
+                                                        "intent": "in"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -5506,8 +5501,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -5621,8 +5615,7 @@
                                         {
                                             "attrs": {
                                                 "intent": "in",
-                                                "len_trim": "Lname",
-                                                "value": false
+                                                "len_trim": "Lname"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -5815,8 +5808,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -5911,8 +5903,7 @@
                                         {
                                             "attrs": {
                                                 "intent": "in",
-                                                "len_trim": "Lname",
-                                                "value": false
+                                                "len_trim": "Lname"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -6061,8 +6052,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -6196,8 +6186,7 @@
                                         {
                                             "attrs": {
                                                 "intent": "in",
-                                                "len_trim": "Lname",
-                                                "value": false
+                                                "len_trim": "Lname"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -7013,8 +7002,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "declarator": {
                                                 "func": {
@@ -8157,8 +8145,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname1",
@@ -8175,8 +8162,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname2",
@@ -8193,8 +8179,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname3",
@@ -8211,8 +8196,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname4",
@@ -8229,8 +8213,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname5",
@@ -8247,8 +8230,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname6",
@@ -8265,8 +8247,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname7",
@@ -8283,8 +8264,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname8",
@@ -8301,8 +8281,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname9",
@@ -8319,8 +8298,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "inout",
-                                                "value": false
+                                                "intent": "inout"
                                             },
                                             "declarator": {
                                                 "name": "verylongname10",
@@ -9342,8 +9320,7 @@
                                         {
                                             "attrs": {
                                                 "dimension": ":,:",
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "declarator": {
                                                 "name": "in",
@@ -9362,8 +9339,7 @@
                                             "attrs": {
                                                 "allocatable": "mold=in",
                                                 "dimension": ":,:",
-                                                "intent": "out",
-                                                "value": false
+                                                "intent": "out"
                                             },
                                             "declarator": {
                                                 "name": "out",
