@@ -1104,10 +1104,10 @@ def create_buf_variable_names(options, blk, attrs, c_var):
     If user has not explicitly set, then compute from option template.
     """
     for buf_arg in blk.buf_args:
-        if buf_arg in attrs:
-            # do not override user specified variable name
-            continue
-        if buf_arg == "size":
+        if attrs[buf_arg] is not None:
+            # Do not override user specified variable name.
+            pass
+        elif buf_arg == "size":
             attrs["size"] = options.C_var_size_template.format(
                 c_var=c_var
             )

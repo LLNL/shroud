@@ -53,7 +53,13 @@ class ToDict(visitor.Visitor):
             # #- node.array,
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
-        add_true_fields(node, d, ["attrs", "const", "func_const", "volatile"])
+        attrs = {key: value
+                 for (key, value) in node.attrs.items()
+                 if value is not None}
+        if attrs:
+            d["attrs"] = attrs
+        
+        add_true_fields(node, d, ["const", "func_const", "volatile"])
         if node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)

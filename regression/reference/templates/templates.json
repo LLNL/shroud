@@ -1471,8 +1471,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -1566,8 +1565,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -2023,8 +2021,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -2118,8 +2115,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": false
+                                                "intent": "in"
                                             },
                                             "const": true,
                                             "declarator": {

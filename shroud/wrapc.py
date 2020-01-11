@@ -536,7 +536,7 @@ class Wrapc(util.WrapperMixin):
         """
         has_dtor = False
         for method in node.functions:
-            if "_destructor" in method.ast.attrs:
+            if method.ast.attrs["_destructor"]:
                 has_dtor = True
                 break
 
@@ -612,7 +612,7 @@ class Wrapc(util.WrapperMixin):
                 # Do not use const in declaration.
                 proto_list.append( "{} {}{}".format(
                     ast.typemap.c_type,
-                    "" if attrs.get("value", False) else "* ",
+                    "" if attrs["value"] else "* ",
                     name or ast.name))
                 continue
 
@@ -630,7 +630,7 @@ class Wrapc(util.WrapperMixin):
                 append_format(
                     proto_list, "{C_array_type} *{c_var_context}", fmt
                 )
-                if "dimension" in attrs:
+                if attrs["dimension"]:
                     # XXX - assumes dimension is a single variable.
                     fmt.c_var_dimension = attrs["dimension"]
             elif buf_arg == "len_trim":
@@ -899,7 +899,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
-            is_result = c_attrs.get("_is_result", False)
+            is_result = c_attrs["_is_result"]
             if is_result:
                 # This argument is the C function result
                 arg_call = False
@@ -917,7 +917,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                result_return_pointer_as = c_attrs.get("deref", "")
+                result_return_pointer_as = c_attrs["deref"] or ""
                 spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
                 stmts = [
                     "c", sgroup, spointer, "result",
@@ -1366,7 +1366,7 @@ class Wrapc(util.WrapperMixin):
             return
 
         from_stmt = False
-        if "owner" in ast.attrs:
+        if ast.attrs["owner"]:
             owner = ast.attrs["owner"]
         elif intent_blk.owner:
             owner = intent_blk.owner
@@ -1374,7 +1374,7 @@ class Wrapc(util.WrapperMixin):
         else:
             owner = default_owner
 
-        free_pattern = ast.attrs.get("free_pattern", None)
+        free_pattern = ast.attrs["free_pattern"]
         if owner == "library":
             # Library owns memory, do not let user release.
             pass

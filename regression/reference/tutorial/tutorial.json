@@ -558,8 +558,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -577,8 +576,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -739,8 +737,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Larg1",
-                                "value": false
+                                "len_trim": "Larg1"
                             },
                             "const": true,
                             "declarator": {
@@ -760,8 +757,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Larg2",
-                                "value": false
+                                "len_trim": "Larg2"
                             },
                             "const": true,
                             "declarator": {
@@ -1330,8 +1326,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -1426,8 +1421,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Lname",
-                                "value": false
+                                "len_trim": "Lname"
                             },
                             "const": true,
                             "declarator": {
@@ -2372,8 +2366,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -2428,8 +2421,7 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "intent": "in",
-                                    "value": false
+                                    "intent": "in"
                                 },
                                 "const": true,
                                 "declarator": {
@@ -2467,8 +2459,7 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "intent": "in",
-                                    "value": false
+                                    "intent": "in"
                                 },
                                 "const": true,
                                 "declarator": {
@@ -2521,8 +2512,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -2597,8 +2587,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "const": true,
                             "declarator": {
@@ -2731,8 +2720,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Lname",
-                                "value": false
+                                "len_trim": "Lname"
                             },
                             "const": true,
                             "declarator": {
@@ -2788,8 +2776,7 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "intent": "in",
-                                    "value": false
+                                    "intent": "in"
                                 },
                                 "const": true,
                                 "declarator": {
@@ -2827,8 +2814,7 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "intent": "in",
-                                    "value": false
+                                    "intent": "in"
                                 },
                                 "const": true,
                                 "declarator": {
@@ -4767,8 +4753,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "min",
@@ -4785,8 +4770,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "max",

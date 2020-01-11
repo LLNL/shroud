@@ -144,8 +144,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
-                                        "value": false
+                                        "intent": "in"
                                     },
                                     "declarator": {
                                         "name": "c2",

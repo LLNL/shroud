@@ -284,8 +284,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arginout",
@@ -302,8 +301,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "argout",
@@ -496,8 +494,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "in",
@@ -515,8 +512,7 @@
                         {
                             "attrs": {
                                 "allocatable": "mold=in",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "out",
@@ -729,8 +725,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "in",
@@ -748,8 +743,7 @@
                         {
                             "attrs": {
                                 "allocatable": "mold=in",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "out",
@@ -920,8 +914,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "nvalues",
@@ -939,8 +932,7 @@
                         {
                             "attrs": {
                                 "dimension": "3",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "values",
@@ -1099,8 +1091,7 @@
                         {
                             "attrs": {
                                 "dimension": "3",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -1118,8 +1109,7 @@
                         {
                             "attrs": {
                                 "dimension": "3",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg2",
@@ -1328,8 +1318,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "in",
-                                "value": false
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "values",
@@ -1346,8 +1335,7 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "result",
@@ -1458,8 +1446,7 @@
                         {
                             "attrs": {
                                 "dimension": "3",
-                                "intent": "out",
-                                "value": false
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "out",
@@ -1607,8 +1594,7 @@
                         {
                             "attrs": {
                                 "dimension": ":",
-                                "intent": "inout",
-                                "value": false
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "array",
