@@ -1160,9 +1160,10 @@ class Wrapc(util.WrapperMixin):
             append_format(return_code, line, fmt_result)
 
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if "c" in node.splicer:
+        splicer_name = typemap.compute_name(["c", generated_suffix])
+        if splicer_name in node.splicer:
             need_wrapper = True
-            C_code = node.splicer["c"]
+            C_code = util.convert_lines_to_list(node.splicer[splicer_name])
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code

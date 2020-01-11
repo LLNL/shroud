@@ -148,6 +148,25 @@ module top_module
             implicit none
         end subroutine yyy_tes_fiveplus
 
+        subroutine c_test_multiline_splicer(name, value) &
+                bind(C, name="TES_test_multiline_splicer")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: name(*)
+            integer(C_INT), intent(OUT) :: value
+        end subroutine c_test_multiline_splicer
+
+        subroutine c_test_multiline_splicer_bufferify(name, Lname, &
+                Nname, value) &
+                bind(C, name="TES_test_multiline_splicer_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: Nname
+            integer(C_INT), intent(OUT) :: value
+        end subroutine c_test_multiline_splicer_bufferify
+
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -317,6 +336,21 @@ contains
         call yyy_tes_fiveplus()
         ! splicer end function.fiveplus
     end subroutine testnames_fiveplus
+
+    ! void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+    ! arg_to_buffer
+    !>
+    !! Use std::string argument to get bufferified function.
+    !<
+    subroutine test_multiline_splicer(name, value)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(INOUT) :: name
+        integer(C_INT), intent(OUT) :: value
+        ! splicer begin function.test_multiline_splicer
+        ! line 1
+        ! line 2
+        ! splicer end function.test_multiline_splicer
+    end subroutine test_multiline_splicer
 
     ! void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
     ! cxx_template

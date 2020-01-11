@@ -1461,7 +1461,10 @@ return 1;""",
         if len(declare_code):
             # Add blank line after declarations.
             declare_code.append("")
-        PY_impl = [1] + declare_code + PY_code + [-1]
+        if "py" in node.splicer:
+            PY_impl = util.convert_lines_to_list(node.splicer["py"])
+        else:
+            PY_impl = [1] + declare_code + PY_code + [-1]
 
         expose = True
         if is_ctor:

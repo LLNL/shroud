@@ -56,6 +56,20 @@ def append_format_cmds(lstout, stmts, name, fmt):
         lstout.append(wformat(cmd, fmt))
     return True
 
+def convert_lines_to_list(code):
+    """
+    Allow literal lines in YAML to a list.
+    Removing any newline since the file formatting will append one.
+    c: |
+      // line 1
+      // line 2
+    """
+    if not isinstance(code, list):
+        if code[-1] == "\n":
+            code = [ code[:-1] ]
+        else:
+            code = [ code ]
+    return code
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):

@@ -1707,7 +1707,7 @@ rv = .false.
         call_list = []
         if "f" in node.splicer:
             need_wrapper = True
-            F_code = node.splicer["f"]
+            F_code = util.convert_lines_to_list(node.splicer["f"])
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code

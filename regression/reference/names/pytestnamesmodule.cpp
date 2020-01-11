@@ -164,6 +164,26 @@ PY_fiveplus(
 // splicer end function.fiveplus
 }
 
+static char PY_TestMultilineSplicer__doc__[] =
+"documentation"
+;
+
+/**
+ * Use std::string argument to get bufferified function.
+ */
+static PyObject *
+PY_TestMultilineSplicer(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+// splicer begin function.test_multiline_splicer
+// py line 1
+// py line 2
+// splicer end function.test_multiline_splicer
+}
+
 /**
  * \brief Function template with two template parameters.
  *
@@ -330,6 +350,8 @@ static PyMethodDef PY_methods[] = {
 {"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS,
     PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
+{"TestMultilineSplicer", (PyCFunction)PY_TestMultilineSplicer,
+    METH_VARARGS|METH_KEYWORDS, PY_TestMultilineSplicer__doc__},
 {"UseImplWorker_instantiation3",
     (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
     PY_UseImplWorker_instantiation3__doc__},

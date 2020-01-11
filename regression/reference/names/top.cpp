@@ -8,6 +8,7 @@
 //
 #include "top.h"
 #include <cstdlib>
+#include <cstring>
 #include <string>
 #include "typestestnames.hh"
 
@@ -18,6 +19,22 @@
 
 extern "C" {
 
+
+// helper function
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+{
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -84,6 +101,31 @@ void YYY_TES_fiveplus()
     fiveplus();
     return;
     // splicer end function.fiveplus
+}
+
+// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+/**
+ * Use std::string argument to get bufferified function.
+ */
+void TES_test_multiline_splicer(char * name, int * value)
+{
+    // splicer begin function.test_multiline_splicer
+    // line 1
+    // line 2
+    // splicer end function.test_multiline_splicer
+}
+
+// void TestMultilineSplicer(std::string & name +intent(inout)+len(Nname)+len_trim(Lname), int * value +intent(out))
+/**
+ * Use std::string argument to get bufferified function.
+ */
+void TES_test_multiline_splicer_bufferify(char * name, int Lname,
+    int Nname, int * value)
+{
+    // splicer begin function.test_multiline_splicer_bufferify
+    // buf line 1
+    // buf line 2
+    // splicer end function.test_multiline_splicer_bufferify
 }
 
 // void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
