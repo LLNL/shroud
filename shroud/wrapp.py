@@ -1462,8 +1462,10 @@ return 1;""",
             # Add blank line after declarations.
             declare_code.append("")
         if "py" in node.splicer:
-            PY_impl = util.convert_lines_to_list(node.splicer["py"])
+            PY_force = util.convert_lines_to_list(node.splicer["py"])
+            PY_impl = None
         else:
+            PY_force = None
             PY_impl = [1] + declare_code + PY_code + [-1]
 
         expose = True
@@ -1479,9 +1481,11 @@ return 1;""",
             fmt.function_suffix = ""
 
         fmt.PY_ml_flags = "|".join(ml_flags)
-        self.create_method(node, expose, is_ctor, fmt, PY_impl, fileinfo)
+        self.create_method(node, expose, is_ctor, fmt,
+                           PY_force, PY_impl, fileinfo)
 
-    def create_method(self, node, expose, is_ctor, fmt, PY_impl, fileinfo):
+    def create_method(self, node, expose, is_ctor, fmt,
+                      PY_force, PY_impl, fileinfo):
         """Format the function.
 
         Args:
@@ -1490,7 +1494,8 @@ return 1;""",
             expose  - True if exposed to user.
             is_ctor - True if this is a constructor.
             fmt     - dictionary of format values.
-            PY_impl - list of implementation lines.
+            PY_force - list of inline splicer code.
+            PY_impl - list of implementation code.
             fileinfo - FileTuple
         """
         if node:
@@ -1551,6 +1556,7 @@ return 1;""",
             fmt.template_suffix,
             body,
             PY_impl,
+            PY_force,
         )
         body.append("}")
         if cpp_if:
@@ -2118,7 +2124,8 @@ return 1;""",
             append_format(body, "return {PY_error_return};", fmt)
             body.append(-1)
 
-            self.create_method(None, expose, is_ctor, fmt, body, fileinfo)
+            self.create_method(None, expose, is_ctor, fmt,
+                               None, body, fileinfo)
 
     def write_header(self, node):
         """

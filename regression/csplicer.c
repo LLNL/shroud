@@ -8,9 +8,15 @@
 // code to test C splicers
 //
 
-// splicer begin  namespace.example::nested.class.ExClass1.method.SplicerSpecial
+# XXX this splicer is not used.  It has the C++ name, not the C wrapper name.
+# XXX That used to work...
+#// splicer begin  namespace.example::nested.class.ExClass1.method.SplicerSpecial
+#//   splicer for SplicerSpecial
+#// splicer end    namespace.example::nested.class.ExClass1.method.SplicerSpecial
+
+// splicer begin  namespace.example::nested.class.ExClass1.method.splicer_special
 //   splicer for SplicerSpecial
-// splicer end    namespace.example::nested.class.ExClass1.method.SplicerSpecial
+// splicer end    namespace.example::nested.class.ExClass1.method.splicer_special
 
 
 // splicer begin CXX_definitions

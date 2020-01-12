@@ -1159,16 +1159,14 @@ class Wrapc(util.WrapperMixin):
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         splicer_name = typemap.compute_name(["c", generated_suffix])
         if splicer_name in node.splicer:
             need_wrapper = True
-            C_code = util.convert_lines_to_list(node.splicer[splicer_name])
-        elif splicer_code:
-            need_wrapper = True
-            C_code = splicer_code
+            C_force = util.convert_lines_to_list(node.splicer[splicer_name])
+            C_code = None
         else:
             # copy-out values, clean up
+            C_force = None
             C_code = pre_call + call_code + post_call_pattern + \
                      post_call + final_code + return_code
 
@@ -1202,13 +1200,10 @@ class Wrapc(util.WrapperMixin):
             )
             impl.append("{+")
             impl.extend(setup_this)
-            self._create_splicer(
-                fmt_func.underscore_name +
-                fmt_func.function_suffix +
-                fmt_func.template_suffix,
-                impl,
-                C_code,
-            )
+            #sname = fmt_func.function_name # XXX ?
+            sname = wformat("{underscore_name}{function_suffix}{template_suffix}",
+                            fmt_func)
+            self._create_splicer(sname, impl, C_code, C_force)
             impl.append("-}")
             if options.literalinclude:
                 append_format(impl, "// end {C_name}", fmt_func)

@@ -47,8 +47,7 @@ PY_function1(
 {
 // void function1()
 // splicer begin function.function1
-    function1();
-    Py_RETURN_NONE;
+// splicer code for function.function1
 // splicer end function.function1
 }
 

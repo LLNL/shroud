@@ -251,8 +251,23 @@ splicer_code:
        Names2:
          C_definitions:
            - int write_file;
+     function:
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.
    f:
      namespace:
        ns0::inner:
           file_top:
           -  "! top of ns0::inner"
+     function:
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.
+   py:
+     function:
+       function1:
+       - // splicer code for function.function1
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.

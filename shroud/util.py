@@ -211,13 +211,19 @@ class WrapperMixin(object):
         self.splicer_names[-1] = name
         self.splicer_path = ".".join(self.splicer_names) + "."
 
-    def _create_splicer(self, name, out, default=[]):
+    def _create_splicer(self, name, out, default=None, force=None):
         """Insert a splicer with *name* into list *out*.
-        Use the splicer from the splicer_stack if it exists.
-        This allows the user to replace the default text.
-        Return true if code was added to out, else false.
-        TODO:
-          Option to ignore splicer stack to generate original code
+        If *force* is defined, use it for contents. Otherwise,
+        use the splicer from the splicer_stack if it exists.
+        Finally, add *default* lines.
+        Return True if code was added to out, else False.
+
+        Args:
+            name    - Name of splicer in current level.
+            out     - Output list.
+            default - Default contents if no splicer is present.
+            force   - Contents which are added instead of splicer or
+                      default.
         """
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
@@ -228,10 +234,14 @@ class WrapperMixin(object):
                 "%s splicer begin %s%s"
                 % (self.comment, self.splicer_path, name)
             )
-        code = self.splicer_stack[-1].get(name, default)
-        if code:
-            added_code = True
+        added_code = True
+        if force is not None:
+            out.extend(force)
+        elif name in self.splicer_stack[-1]:
+            code = self.splicer_stack[-1][name]
             out.extend(code)
+        elif default is not None:
+            out.extend(default)
         else:
             added_code = False
         if show_splicer_comments:
