@@ -124,15 +124,6 @@ void POI_increment_int_array(int * array, int sizein)
     // splicer end function.increment_int_array
 }
 
-// void Rank2Input(int * arg +intent(in)+rank(2))
-void POI_rank2_input(int * arg)
-{
-    // splicer begin function.rank2_input
-    Rank2Input(arg);
-    return;
-    // splicer end function.rank2_input
-}
-
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
