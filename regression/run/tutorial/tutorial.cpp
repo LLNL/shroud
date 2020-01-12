@@ -4,7 +4,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-// tutorial.hpp - wrapped routines
+// tutorial.cpp - wrapped routines
 //
 
 #include "tutorial.hpp"
