@@ -106,6 +106,15 @@ module pointers_mod
     end interface
 
     interface
+        subroutine c_rank2_input(arg) &
+                bind(C, name="POI_rank2_input")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg(*)
+        end subroutine c_rank2_input
+    end interface
+
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -176,6 +185,15 @@ contains
         call c_increment_int_array(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
+
+    ! void Rank2Input(int * arg +intent(in)+rank(2))
+    subroutine rank2_input(arg)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: arg(:,:)
+        ! splicer begin function.rank2_input
+        call c_rank2_input(arg)
+        ! splicer end function.rank2_input
+    end subroutine rank2_input
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

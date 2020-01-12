@@ -84,3 +84,9 @@ declarations:
       Increment array in place using intent(INOUT).
 
   
+######################################################################
+
+- decl: void Rank2Input(int *arg +intent(in)+rank(2))
+  options:
+    F_force_wrapper: True
+    wrap_python: False

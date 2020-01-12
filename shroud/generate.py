@@ -102,6 +102,7 @@ class VerifyAttrs(object):
                 "name",
                 "owner",
                 "pure",
+                "rank",
             ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for function '{}' define at line {}".format(
@@ -126,10 +127,10 @@ class VerifyAttrs(object):
 
     def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
-        deref, dimension, free_pattern, owner
+        deref, dimension, free_pattern, owner, rank
 
         Args:
-            node -
+            ast - declast.Declaration
         """
         attrs = ast.attrs
         ntypemap = ast.typemap
@@ -147,11 +148,32 @@ class VerifyAttrs(object):
 
         # dimension
         dimension = attrs["dimension"]
+        rank = attrs["rank"]
+        if rank:
+            if rank is True:
+                raise RuntimeError(
+                    "'rank' attribute must have an integer value"
+                )
+            try:
+                attrs["rank"] = int(attrs["rank"])
+            except ValueError:
+                raise RuntimeError(
+                    "'rank' attribute must have an integer value, not '{}'"
+                    .format(attrs["rank"])
+                )
+            if attrs["rank"] > 7:
+                raise RuntimeError(
+                    "'rank' attribute must be 0-7, not '{}'"
+                    .format(attrs["rank"])
+                )
         if dimension:
             if attrs["value"]:
                 raise RuntimeError(
-                    "argument must not have value=True "
-                    "because it has the dimension attribute."
+                    "argument may not have 'value' and 'dimension' attribute."
+                )
+            if rank:
+                raise RuntimeError(
+                    "argument may not have 'rank' and 'dimension' attribute."
                 )
             if not is_ptr:
                 raise RuntimeError(
@@ -220,6 +242,7 @@ class VerifyAttrs(object):
                 "len_trim",
                 "name",
                 "owner",
+                "rank",
                 "size",
                 "value",
             ]:

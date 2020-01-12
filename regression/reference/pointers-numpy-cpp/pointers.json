@@ -1660,6 +1660,96 @@
                 },
                 "linenumber": 80,
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_pointer_in_",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "c_var": "arg",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "stmt0": "f_native_pointer_in_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Rank2Input",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Rank2Input(int *arg +intent(in)+rank(2))",
+                "declgen": "void Rank2Input(int * arg +intent(in)+rank(2))",
+                "fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "POI_rank2_input",
+                    "C_prototype": "int * arg",
+                    "C_return_type": "void",
+                    "F_C_call": "c_rank2_input",
+                    "F_C_name": "c_rank2_input",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "rank2_input",
+                    "F_name_generic": "rank2_input",
+                    "F_name_impl": "rank2_input",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "Rank2Input",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "rank2_input"
+                },
+                "linenumber": 89,
+                "options": {
+                    "F_force_wrapper": true,
+                    "__line__": 90,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

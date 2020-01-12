@@ -432,6 +432,8 @@ If set without a value, it defaults to ``(*)``:
     double *array +dimension
     double *array +dimension(len)
 
+*rank* and *dimension* can not be specified together.
+    
 external
 ^^^^^^^^
 
@@ -549,6 +551,28 @@ library
    This is the default value.
 
 .. steal  intent(in)
+
+rank
+^^^^
+
+Add an assumed-shape dimension with the given rank.
+*rank* must be 0-7.
+A rank of 0 implies a scalar argument.
+
+.. code-block:: yaml
+
+    double *array +rank(2)
+
+Creates the declaration:
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) :: array(:,:)
+
+This can be simpler than the *dimension* attribute for multidimension arrays.
+*rank* and *dimension* can not be specified together.
+
+.. XXX to be used with fortran_generic and formatting  +rank({generic_rank})
 
 value
 ^^^^^
