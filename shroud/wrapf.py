@@ -1471,6 +1471,9 @@ rv = .false.
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+
             if is_f_arg:
                 # An argument to the C and Fortran function
                 f_index += 1
@@ -1536,12 +1539,19 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
                 else:
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                        attributes=f_intent_blk.f_attribute))
                     arg_f_names.append(fmt_arg.f_var)
             else:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
 
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = typemap.compute_name(f_stmts)
+            fmt_arg.stmt1 = f_intent_blk.key
+            fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
+            fmt_arg.stmtc1 = c_intent_blk.key
+            
             arg_typemap = f_arg.typemap
             base_typemap = arg_typemap
             if c_arg.template_arguments:
@@ -1552,20 +1562,11 @@ rv = .false.
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
-            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
-
-            # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = typemap.compute_name(f_stmts)
-            fmt_arg.stmt1 = f_intent_blk.key
-
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
-            fmt_arg.stmtc1 = c_intent_blk.key
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 

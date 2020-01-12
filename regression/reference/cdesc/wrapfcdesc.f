@@ -57,7 +57,7 @@ contains
     ! void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
-        integer(C_INT), intent(IN) :: arg(:,:)
+        integer(C_INT), intent(IN), target :: arg(:,:)
         type(SHROUD_array) :: Darg
         ! splicer begin function.rank2_in
         Darg%base_addr = C_LOC(arg)

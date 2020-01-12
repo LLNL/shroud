@@ -1299,11 +1299,14 @@ class CStmts(object):
         self.return_cptr = return_cptr
 
 class FStmts(object):
+    """
+    f_attribute - passed to gen_arg_as_fortran
+    """
     def __init__(self,
         key="f_default",
         buf_args=[],
         c_local_var=None,
-        f_helper="", f_module=None,
+        f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
@@ -1311,6 +1314,7 @@ class FStmts(object):
         self.key = key
         self.buf_args = buf_args
         self.c_local_var = c_local_var
+        self.f_attribute = f_attribute
         self.f_helper = f_helper
         self.f_module = f_module
 
@@ -1375,6 +1379,8 @@ fc_statements = dict(
         ],
     ),
     f_native_pointer_in_cdesc=dict(
+        # TARGET required for argument to C_LOC.
+        f_attribute=['target'],
         f_helper="array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
