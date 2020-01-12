@@ -917,7 +917,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                result_return_pointer_as = c_attrs["deref"] or ""
+                result_return_pointer_as = c_attrs["deref"]
                 spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
                 stmts = [
                     "c", sgroup, spointer, "result",

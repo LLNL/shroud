@@ -1023,7 +1023,7 @@ rv = .false.
             intent = attrs["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
-            deref_clause = attrs["deref"] or ""
+            deref_clause = attrs["deref"]
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = "pointer" if arg.is_indirect() else "scalar"
@@ -1355,7 +1355,7 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-            result_deref_clause = ast.attrs["deref"] or ""
+            result_deref_clause = ast.attrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
@@ -1440,7 +1440,7 @@ rv = .false.
             allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
-            deref_clause = c_attrs["deref"] or ""
+            deref_clause = c_attrs["deref"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             sgroup = c_arg.typemap.sgroup
