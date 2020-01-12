@@ -48,6 +48,11 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
 void YYY_TES_fiveplus();
 
+void TES_test_multiline_splicer(char * name, int * value);
+
+void TES_test_multiline_splicer_bufferify(char * name, int Lname,
+    int Nname, int * value);
+
 void c_name_instantiation1(int arg1, long arg2);
 
 void TES_function_tu_instantiation2(float arg1, double arg2);

@@ -56,6 +56,20 @@ def append_format_cmds(lstout, stmts, name, fmt):
         lstout.append(wformat(cmd, fmt))
     return True
 
+def convert_lines_to_list(code):
+    """
+    Allow literal lines in YAML to a list.
+    Removing any newline since the file formatting will append one.
+    c: |
+      // line 1
+      // line 2
+    """
+    if not isinstance(code, list):
+        if code[-1] == "\n":
+            code = [ code[:-1] ]
+        else:
+            code = [ code ]
+    return code
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
@@ -197,13 +211,19 @@ class WrapperMixin(object):
         self.splicer_names[-1] = name
         self.splicer_path = ".".join(self.splicer_names) + "."
 
-    def _create_splicer(self, name, out, default=[]):
+    def _create_splicer(self, name, out, default=None, force=None):
         """Insert a splicer with *name* into list *out*.
-        Use the splicer from the splicer_stack if it exists.
-        This allows the user to replace the default text.
-        Return true if code was added to out, else false.
-        TODO:
-          Option to ignore splicer stack to generate original code
+        If *force* is defined, use it for contents. Otherwise,
+        use the splicer from the splicer_stack if it exists.
+        Finally, add *default* lines.
+        Return True if code was added to out, else False.
+
+        Args:
+            name    - Name of splicer in current level.
+            out     - Output list.
+            default - Default contents if no splicer is present.
+            force   - Contents which are added instead of splicer or
+                      default.
         """
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
@@ -214,10 +234,14 @@ class WrapperMixin(object):
                 "%s splicer begin %s%s"
                 % (self.comment, self.splicer_path, name)
             )
-        code = self.splicer_stack[-1].get(name, default)
-        if code:
-            added_code = True
+        added_code = True
+        if force is not None:
+            out.extend(force)
+        elif name in self.splicer_stack[-1]:
+            code = self.splicer_stack[-1][name]
             out.extend(code)
+        elif default is not None:
+            out.extend(default)
         else:
             added_code = False
         if show_splicer_comments:

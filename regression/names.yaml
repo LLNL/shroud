@@ -117,6 +117,30 @@ declarations:
   - decl: void init_ns1()
 
 ########################################
+# inline splicers
+
+- decl: void TestMultilineSplicer(std::string & name, int *value+intent(out))
+# XXX - The helper ShroudStrCopy is inserted by the c_statements, but not
+#       used because of the explicit splicer.
+#       Would need a fstatement to get rid of it.
+  doxygen:
+    description: |
+      Use std::string argument to get bufferified function.
+  splicer:
+    c: |
+      // line 1
+      // line 2
+    c_buf: |
+      // buf line 1
+      // buf line 2
+    f: |
+      ! line 1
+      ! line 2
+    py: |
+      // py line 1
+      // py line 2
+
+########################################
 # Copied from templates.yaml
 # Test class.format.template_suffix
 - decl: namespace internal
@@ -227,8 +251,23 @@ splicer_code:
        Names2:
          C_definitions:
            - int write_file;
+     function:
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.
    f:
      namespace:
        ns0::inner:
           file_top:
           -  "! top of ns0::inner"
+     function:
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.
+   py:
+     function:
+       function1:
+       - // splicer code for function.function1
+       test_multiline_splicer:
+       - // This splicer should be ignored.
+       - // Instead the inline splicer above is used since it is closer to the decl.

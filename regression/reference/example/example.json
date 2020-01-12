@@ -5554,6 +5554,9 @@
                                     "c": [
                                         "return name != NULL;"
                                     ],
+                                    "c_buf": [
+                                        "return name != NULL;"
+                                    ],
                                     "f": [
                                         "rv = name .ne. \" \""
                                     ]
@@ -5664,6 +5667,9 @@
                                     "c": [
                                         "return name != NULL;"
                                     ],
+                                    "c_buf": [
+                                        "return name != NULL;"
+                                    ],
                                     "f": [
                                         "rv = name .ne. \" \""
                                     ]
@@ -5748,7 +5754,7 @@
                                     "function_name": "isInitialized",
                                     "underscore_name": "is_initialized"
                                 },
-                                "linenumber": 203,
+                                "linenumber": 205,
                                 "options": {}
                             },
                             {
@@ -5848,7 +5854,7 @@
                                     "LUA_name": "test_names",
                                     "LUA_name_impl": "l_example_nested_test_names",
                                     "PY_name_impl": "PP_test_names",
-                                    "__line__": 209,
+                                    "__line__": 211,
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "",
@@ -5858,7 +5864,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "test_names"
                                 },
-                                "linenumber": 207,
+                                "linenumber": 209,
                                 "options": {}
                             },
                             {
@@ -5934,13 +5940,13 @@
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_bufferify",
-                                    "__line__": 209,
+                                    "__line__": 211,
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_bufferify",
                                     "underscore_name": "test_names"
                                 },
-                                "linenumber": 207,
+                                "linenumber": 209,
                                 "options": {
                                     "wrap_c": true,
                                     "wrap_fortran": false,
@@ -6104,7 +6110,7 @@
                                     "F_name_impl": "test_names_flag",
                                     "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_test_names_flag",
-                                    "__line__": 212,
+                                    "__line__": 214,
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
@@ -6114,7 +6120,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "test_names"
                                 },
-                                "linenumber": 211,
+                                "linenumber": 213,
                                 "options": {}
                             },
                             {
@@ -6232,13 +6238,13 @@
                                     "C_prototype": "const char * name,\t int Lname,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_flag_bufferify",
-                                    "__line__": 212,
+                                    "__line__": 214,
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag_bufferify",
                                     "underscore_name": "test_names"
                                 },
-                                "linenumber": 211,
+                                "linenumber": 213,
                                 "options": {
                                     "wrap_c": true,
                                     "wrap_fortran": false,
@@ -6282,7 +6288,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
-                                "linenumber": 215,
+                                "linenumber": 217,
                                 "options": {
                                     "wrap_c": true,
                                     "wrap_fortran": true,
@@ -6373,7 +6379,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
-                                "linenumber": 215,
+                                "linenumber": 217,
                                 "options": {
                                     "wrap_c": true,
                                     "wrap_fortran": true,
@@ -6575,7 +6581,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "testoptional"
                                 },
-                                "linenumber": 215,
+                                "linenumber": 217,
                                 "options": {}
                             },
                             {
@@ -6656,7 +6662,7 @@
                                     "function_name": "test_size_t",
                                     "underscore_name": "test_size_t"
                                 },
-                                "linenumber": 229,
+                                "linenumber": 231,
                                 "options": {}
                             },
                             {
@@ -6766,7 +6772,7 @@
                                     "LUA_name": "testmpi",
                                     "LUA_name_impl": "l_example_nested_testmpi",
                                     "PY_name_impl": "PP_testmpi_mpi",
-                                    "__line__": 234,
+                                    "__line__": 236,
                                     "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_mpi",
@@ -6776,7 +6782,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "testmpi"
                                 },
-                                "linenumber": 233,
+                                "linenumber": 235,
                                 "options": {}
                             },
                             {
@@ -6806,7 +6812,7 @@
                                     "F_name_impl": "testmpi_serial",
                                     "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_testmpi_serial",
-                                    "__line__": 238,
+                                    "__line__": 240,
                                     "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_serial",
@@ -6816,7 +6822,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "testmpi"
                                 },
-                                "linenumber": 237,
+                                "linenumber": 239,
                                 "options": {}
                             },
                             {
@@ -6910,7 +6916,7 @@
                                 "decl": "void FuncPtr1(void (*get)());",
                                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)",
                                 "doxygen": {
-                                    "__line__": 244,
+                                    "__line__": 246,
                                     "brief": "subroutine"
                                 },
                                 "fmtdict": {
@@ -6937,7 +6943,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "func_ptr1"
                                 },
-                                "linenumber": 243,
+                                "linenumber": 245,
                                 "options": {}
                             },
                             {
@@ -7034,7 +7040,7 @@
                                 "decl": "void FuncPtr2(double * (*get)());",
                                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))",
                                 "doxygen": {
-                                    "__line__": 247,
+                                    "__line__": 249,
                                     "brief": "return a pointer"
                                 },
                                 "fmtdict": {
@@ -7061,7 +7067,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "func_ptr2"
                                 },
-                                "linenumber": 246,
+                                "linenumber": 248,
                                 "options": {}
                             },
                             {
@@ -7178,7 +7184,7 @@
                                 "decl": "void FuncPtr3(double (*get)(int i, int));",
                                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)",
                                 "doxygen": {
-                                    "__line__": 250,
+                                    "__line__": 252,
                                     "brief": "abstract argument"
                                 },
                                 "fmtdict": {
@@ -7205,10 +7211,10 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "func_ptr3"
                                 },
-                                "linenumber": 249,
+                                "linenumber": 251,
                                 "options": {
                                     "F_force_wrapper": true,
-                                    "__line__": 252
+                                    "__line__": 254
                                 }
                             },
                             {
@@ -7292,7 +7298,7 @@
                                 "decl": "void FuncPtr4(double (*get)(double, int));",
                                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)",
                                 "doxygen": {
-                                    "__line__": 255,
+                                    "__line__": 257,
                                     "brief": "abstract argument"
                                 },
                                 "fmtdict": {
@@ -7316,12 +7322,12 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "func_ptr4"
                                 },
-                                "linenumber": 254,
+                                "linenumber": 256,
                                 "options": {
                                     "F_abstract_interface_argument_template": "XX{index}arg",
                                     "F_abstract_interface_subprogram_template": "custom_funptr",
                                     "F_force_wrapper": true,
-                                    "__line__": 257,
+                                    "__line__": 259,
                                     "wrap_lua": false,
                                     "wrap_python": false
                                 }
@@ -7571,7 +7577,7 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "func_ptr5"
                                 },
-                                "linenumber": 263,
+                                "linenumber": 265,
                                 "options": {}
                             },
                             {
@@ -8345,10 +8351,10 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "verylongfunctionname1"
                                 },
-                                "linenumber": 274,
+                                "linenumber": 276,
                                 "options": {
                                     "F_force_wrapper": true,
-                                    "__line__": 284
+                                    "__line__": 286
                                 }
                             },
                             {
@@ -9134,12 +9140,12 @@
                                     "function_name": "verylongfunctionname2",
                                     "underscore_name": "verylongfunctionname2"
                                 },
-                                "linenumber": 288,
+                                "linenumber": 290,
                                 "options": {
                                     "C_line_length": 0,
                                     "F_force_wrapper": true,
                                     "F_line_length": 0,
-                                    "__line__": 298
+                                    "__line__": 300
                                 }
                             },
                             {
@@ -9378,7 +9384,7 @@
                                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))",
                                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                                 "doxygen": {
-                                    "__line__": 308,
+                                    "__line__": 310,
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },
                                 "fmtdict": {
@@ -9405,10 +9411,10 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "cos_doubles"
                                 },
-                                "linenumber": 304,
+                                "linenumber": 306,
                                 "options": {
                                     "F_standard": 2008,
-                                    "__line__": 310
+                                    "__line__": 312
                                 }
                             }
                         ],

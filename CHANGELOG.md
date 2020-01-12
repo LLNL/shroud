@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Inline splicers (defined as part of a decl) will be used before a
+  splicer with the same name defined in a *splicer_code* or file splicer.
+- C splicers were not looked up using the C wrapper name properly.
+  They were using the C++ function name. This was a problem since a
+  C++ function may produce several wrapper via overloading or
+  adding bufferify arguments.
 
 ## v0.11.0 - 2020-01-08
 ### Added

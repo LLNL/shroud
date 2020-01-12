@@ -1702,15 +1702,12 @@ rv = .false.
         # body of function
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
-        splicer_code = self.splicer_stack[-1].get(sname, None)
+        F_force = None
         F_code = None
         call_list = []
         if "f" in node.splicer:
             need_wrapper = True
-            F_code = node.splicer["f"]
-        elif splicer_code:
-            need_wrapper = True
-            F_code = splicer_code
+            F_force = util.convert_lines_to_list(node.splicer["f"])
         elif result_blk.call:
             call_list = result_blk.call
         elif C_subprogram == "function":
@@ -1772,7 +1769,7 @@ rv = .false.
             impl.extend(arg_f_decl)
             if F_code is None:
                 F_code = declare + pre_call + call + post_call
-            self._create_splicer(sname, impl, F_code)
+            self._create_splicer(sname, impl, F_code, F_force)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
             if options.literalinclude:

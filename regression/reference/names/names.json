@@ -54,7 +54,7 @@
                     "cxx_type": "twoTs<int, long>",
                     "file_scope": "twoTs_0"
                 },
-                "linenumber": 178,
+                "linenumber": 202,
                 "name": "twoTs",
                 "options": {},
                 "scope": "twoTs::",
@@ -92,7 +92,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 183,
+                            "__line__": 207,
                             "template_suffix": "_instantiation4"
                         },
                         "instantiation": "<float, double>"
@@ -122,14 +122,14 @@
                     "PY_this_call": "self->myobj->",
                     "PY_to_object_func": "PP_twoTs_instantiation4_to_Object",
                     "PY_type_filename": "pytwoTs_instantiation4type.cpp",
-                    "__line__": 183,
+                    "__line__": 207,
                     "class_scope": "twoTs_instantiation4::",
                     "cxx_class": "twoTs_instantiation4",
                     "cxx_type": "twoTs<float, double>",
                     "file_scope": "twoTs_instantiation4",
                     "template_suffix": "_instantiation4"
                 },
-                "linenumber": 178,
+                "linenumber": 202,
                 "name": "twoTs",
                 "options": {},
                 "scope": "twoTs::",
@@ -167,7 +167,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 183,
+                            "__line__": 207,
                             "template_suffix": "_instantiation4"
                         },
                         "instantiation": "<float, double>"
@@ -914,6 +914,305 @@
                 "options": {}
             },
             {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&ARG_name)",
+                            "cxx_member": ".",
+                            "cxx_type": "std::string",
+                            "cxx_var": "ARG_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_pointer_inout_",
+                            "stmt1": "c_string_inout"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_name",
+                            "data_var": "SHData_name",
+                            "numpy_type": null,
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name",
+                            "stmt0": "py_string_inout",
+                            "stmt1": "py_string_inout"
+                        }
+                    },
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "value",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(value)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_pointer_out_",
+                            "stmt1": "c_default"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int value",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "value",
+                            "cxx_addr": "",
+                            "cxx_decl": "int value",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "data_var": "SHData_value",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_value",
+                            "size_var": "SHSize_value",
+                            "stmt0": "py_native_out",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "TestMultilineSplicer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))",
+                "doxygen": {
+                    "__line__": 126,
+                    "description": "Use std::string argument to get bufferified function.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "ARG_name,\t value",
+                    "C_name": "TES_test_multiline_splicer",
+                    "C_prototype": "char * name,\t int * value",
+                    "C_return_type": "void",
+                    "F_C_call": "c_test_multiline_splicer_bufferify",
+                    "F_C_name": "c_test_multiline_splicer",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT),\t value",
+                    "F_arguments": "name,\t value",
+                    "F_name_function": "test_multiline_splicer",
+                    "F_name_generic": "test_multiline_splicer",
+                    "F_name_impl": "test_multiline_splicer",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_TestMultilineSplicer",
+                    "c_const": "",
+                    "function_name": "TestMultilineSplicer",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "test_multiline_splicer"
+                },
+                "linenumber": 122,
+                "options": {},
+                "splicer": {
+                    "__line__": "129",
+                    "c": "// line 1\n// line 2\n",
+                    "c_buf": "// buf line 1\n// buf line 2\n",
+                    "f": "! line 1\n! line 2\n",
+                    "py": "// py line 1\n// py line 2\n"
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_len": "Nname",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&ARG_name)",
+                            "cxx_member": ".",
+                            "cxx_type": "std::string",
+                            "cxx_var": "ARG_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_pointer_inout_buf",
+                            "stmt1": "c_string_inout_buf"
+                        },
+                        "fmtf": {
+                            "c_var": "name",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "stmt0": "f_string_pointer_inout_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_pointer_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
+                        }
+                    },
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "value",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(value)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_pointer_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "c_var": "value",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "value",
+                            "stmt0": "f_native_pointer_out_",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_pointer_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "TestMultilineSplicer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "len": "Nname",
+                                "len_trim": "Lname"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout)+len(Nname)+len_trim(Lname), int * value +intent(out))",
+                "doxygen": {
+                    "__line__": 126,
+                    "description": "Use std::string argument to get bufferified function.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "ARG_name,\t value",
+                    "C_name": "TES_test_multiline_splicer_bufferify",
+                    "C_prototype": "char * name,\t int Lname,\t int Nname,\t int * value",
+                    "C_return_type": "void",
+                    "F_C_name": "c_test_multiline_splicer_bufferify",
+                    "c_const": "",
+                    "function_name": "TestMultilineSplicer",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "test_multiline_splicer"
+                },
+                "linenumber": 122,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "splicer": {
+                    "__line__": "129",
+                    "c": "// line 1\n// line 2\n",
+                    "c_buf": "// buf line 1\n// buf line 2\n",
+                    "f": "! line 1\n! line 2\n",
+                    "py": "// py line 1\n// py line 2\n"
+                }
+            },
+            {
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -964,7 +1263,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 138,
+                    "__line__": 162,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -972,7 +1271,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 137,
+                "linenumber": 161,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1000,7 +1299,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 142
+                            "__line__": 166
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1020,7 +1319,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 148,
+                            "__line__": 172,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1169,7 +1468,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 138,
+                    "__line__": 162,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1187,7 +1486,7 @@
                     "F_name_impl": "f_name_instantiation1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_name_instantiation1",
-                    "__line__": 142,
+                    "__line__": 166,
                     "c_const": "",
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
@@ -1198,7 +1497,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 137,
+                "linenumber": 161,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1226,7 +1525,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 142
+                            "__line__": 166
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1246,7 +1545,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 148,
+                            "__line__": 172,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1395,7 +1694,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 138,
+                    "__line__": 162,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1413,7 +1712,7 @@
                     "F_name_impl": "function_tu_instantiation2",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_instantiation2",
-                    "__line__": 148,
+                    "__line__": 172,
                     "c_const": "",
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
@@ -1430,7 +1729,7 @@
                     "long"
                 ],
                 "have_template_args": true,
-                "linenumber": 137,
+                "linenumber": 161,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1458,7 +1757,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 142
+                            "__line__": 166
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1478,7 +1777,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 148,
+                            "__line__": 172,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1510,14 +1809,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 202,
+                    "__line__": 226,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 201,
+                "linenumber": 225,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1596,7 +1895,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 202,
+                    "__line__": 226,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -1622,7 +1921,7 @@
                 "gen_headers_typedef": [
                     "internal::ImplWorker1"
                 ],
-                "linenumber": 201,
+                "linenumber": 225,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1915,17 +2214,17 @@
                             "F_capsule_data_type": "SHROUD_implworker1_capsule",
                             "F_derived_name": "implworker1",
                             "F_name_scope": "implworker1_",
-                            "__line__": 127,
+                            "__line__": 151,
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
                             "file_scope": "internal_ImplWorker1",
                             "template_suffix": "_instantiation3"
                         },
-                        "linenumber": 126,
+                        "linenumber": 150,
                         "name": "ImplWorker1",
                         "options": {
-                            "__line__": 129,
+                            "__line__": 153,
                             "wrap_fortran": false,
                             "wrap_python": false
                         },
@@ -1950,7 +2249,7 @@
                     "file_scope": "testnames_internal",
                     "namespace_scope": "internal::"
                 },
-                "linenumber": 122,
+                "linenumber": 146,
                 "name": "internal",
                 "options": {},
                 "scope": "internal::",
@@ -1981,13 +2280,13 @@
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_Vvv1_to_Object",
                             "PY_type_filename": "pystd_vector_inttype.cpp",
-                            "__line__": 160,
+                            "__line__": 184,
                             "class_scope": "Vvv1::",
                             "cxx_class": "Vvv1",
                             "cxx_type": "vector<int>",
                             "file_scope": "std_vector_int"
                         },
-                        "linenumber": 155,
+                        "linenumber": 179,
                         "name": "vector",
                         "options": {},
                         "scope": "std::vector::",
@@ -2003,7 +2302,7 @@
                                 ],
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
-                                    "__line__": 160,
+                                    "__line__": 184,
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2029,7 +2328,7 @@
                                     }
                                 ],
                                 "fmtdict": {
-                                    "__line__": 172,
+                                    "__line__": 196,
                                     "template_suffix": "_instantiation5"
                                 },
                                 "instantiation": "<long>"
@@ -2076,7 +2375,7 @@
                             "cxx_type": "vector<double>",
                             "file_scope": "std_vector_double"
                         },
-                        "linenumber": 155,
+                        "linenumber": 179,
                         "name": "vector",
                         "options": {},
                         "scope": "std::vector::",
@@ -2092,7 +2391,7 @@
                                 ],
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
-                                    "__line__": 160,
+                                    "__line__": 184,
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2118,7 +2417,7 @@
                                     }
                                 ],
                                 "fmtdict": {
-                                    "__line__": 172,
+                                    "__line__": 196,
                                     "template_suffix": "_instantiation5"
                                 },
                                 "instantiation": "<long>"
@@ -2160,14 +2459,14 @@
                             "PY_this_call": "self->myobj->",
                             "PY_to_object_func": "PP_vector_instantiation5_to_Object",
                             "PY_type_filename": "pystd_vector_instantiation5type.cpp",
-                            "__line__": 172,
+                            "__line__": 196,
                             "class_scope": "vector_instantiation5::",
                             "cxx_class": "vector_instantiation5",
                             "cxx_type": "vector<long>",
                             "file_scope": "std_vector_instantiation5",
                             "template_suffix": "_instantiation5"
                         },
-                        "linenumber": 155,
+                        "linenumber": 179,
                         "name": "vector",
                         "options": {},
                         "scope": "std::vector::",
@@ -2183,7 +2482,7 @@
                                 ],
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
-                                    "__line__": 160,
+                                    "__line__": 184,
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2209,7 +2508,7 @@
                                     }
                                 ],
                                 "fmtdict": {
-                                    "__line__": 172,
+                                    "__line__": 196,
                                     "template_suffix": "_instantiation5"
                                 },
                                 "instantiation": "<long>"
@@ -2256,7 +2555,7 @@
                             "cxx_type": "vector<internal::ImplWorker1>",
                             "file_scope": "std_vector_instantiation3"
                         },
-                        "linenumber": 155,
+                        "linenumber": 179,
                         "name": "vector",
                         "options": {},
                         "scope": "std::vector::",
@@ -2272,7 +2571,7 @@
                                 ],
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
-                                    "__line__": 160,
+                                    "__line__": 184,
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2298,7 +2597,7 @@
                                     }
                                 ],
                                 "fmtdict": {
-                                    "__line__": 172,
+                                    "__line__": 196,
                                     "template_suffix": "_instantiation5"
                                 },
                                 "instantiation": "<long>"
@@ -2338,7 +2637,7 @@
                     "file_scope": "testnames_std",
                     "namespace_scope": "std::"
                 },
-                "linenumber": 153,
+                "linenumber": 177,
                 "name": "std",
                 "options": {},
                 "scope": "std::",
@@ -2403,11 +2702,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "member1"
                                 },
-                                "linenumber": 197,
+                                "linenumber": 221,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 195,
+                        "linenumber": 219,
                         "name": "Class1",
                         "options": {},
                         "scope": "CAPI::Class1::",
@@ -2463,15 +2762,15 @@
                             "stmtc1": "c_default",
                             "underscore_name": "worker1"
                         },
-                        "linenumber": 194,
+                        "linenumber": 218,
                         "options": {}
                     }
                 ],
-                "linenumber": 189,
+                "linenumber": 213,
                 "name": "CAPI",
                 "options": {
                     "C_API_case": "lower",
-                    "__line__": 190,
+                    "__line__": 214,
                     "wrap_python": false
                 },
                 "scope": "CAPI::",
