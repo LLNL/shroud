@@ -1024,6 +1024,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
             deref_clause = attrs["deref"] or ""
+            cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = "pointer" if arg.is_indirect() else "scalar"
             if attrs["_is_result"]:
@@ -1031,7 +1032,7 @@ rv = .false.
                            generated_suffix, deref_clause]
             else:
                 c_stmts = ["c", sgroup, spointer, intent,
-                           arg.stmts_suffix, deref_clause]
+                           arg.stmts_suffix, deref_clause, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             self.build_arg_list_interface(
@@ -1440,6 +1441,7 @@ rv = .false.
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
             deref_clause = c_attrs["deref"] or ""
+            cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
@@ -1464,8 +1466,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["f", sgroup, spointer, intent, deref_clause]  # e.g. allocatable
+                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
+                f_stmts = ["f", sgroup, spointer, intent, deref_clause, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

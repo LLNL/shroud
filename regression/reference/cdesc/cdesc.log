@@ -1,0 +1,7 @@
+Read yaml cdesc.yaml
+C function void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))
+Close wrapcdesc.h
+Close wrapcdesc.cpp
+Close typescdesc.h
+C-interface, Fortran function void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))
+Close wrapfcdesc.f

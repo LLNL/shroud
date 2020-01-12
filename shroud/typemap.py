@@ -1359,6 +1359,34 @@ fc_statements = dict(
         need_wrapper=True
     ),
 
+
+    # XXX only in buf?
+    c_native_pointer_in_cdesc=dict(
+        buf_args=["context"],
+        c_helper="array_context", #  ShroudTypeDefines",
+        c_pre_call=[
+            "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
+        ],
+        cxx_pre_call=[
+#            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
+#            "({c_var_context}->addr.base);",
+            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
+            "(const_cast<void *>({c_var_context}->addr.base));",
+        ],
+    ),
+    f_native_pointer_in_cdesc=dict(
+        f_helper="array_context",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+#        initialize=[
+        pre_call=[
+            "{c_var_context}%base_addr = C_LOC({f_var})",
+            "! {c_var_context}%type = ",
+            "! {c_var_context}%elem_len = ",
+            "{c_var_context}%size = size({f_var})",
+            "! {c_var_context}%rank = -1",
+        ],
+    ),
+
     # Function has a result with deref(allocatable).
     #
     #    C wrapper:

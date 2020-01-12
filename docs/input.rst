@@ -344,6 +344,20 @@ defaults to pass-by-reference, the argument will be passed to C as a
 determine the type of the argument before dereferencing the pointer.
 Note that *assumed-type* is part of Fortran 2018.
 
+capsule
+^^^^^^^
+
+Name of capsule argument.
+Defaults to C_var_capsule_template.
+
+cdesc
+^^^^^
+
+Pass argument from Fortran to C wrapper as a pointer to a context type.
+This struct contains the address, type, rank and size of the argument.
+
+.. XXX argument is named by context
+
 charlen
 ^^^^^^^
 

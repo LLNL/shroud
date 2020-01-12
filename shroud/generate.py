@@ -95,6 +95,7 @@ class VerifyAttrs(object):
                 continue
             if attr not in [
                 "allocatable",  # return a Fortran ALLOCATABLE
+                "cdesc",
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
@@ -231,6 +232,7 @@ class VerifyAttrs(object):
                 "allocatable",
                 "assumedtype",
                 "capsule",
+                "cdesc",
                 "charlen",
                 "external",
                 "deref",
@@ -353,6 +355,11 @@ class VerifyAttrs(object):
         capsule_name = attrs["capsule"]
         if capsule_name is True:
             attrs["capsule"] = options.C_var_capsule_template.format(
+                c_var=argname
+            )
+        context_name = attrs["context"] or attrs["cdesc"]
+        if context_name is True:
+            attrs["context"] = options.C_var_context_template.format(
                 c_var=argname
             )
         len_name = attrs["len"]

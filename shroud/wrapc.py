@@ -934,7 +934,9 @@ class Wrapc(util.WrapperMixin):
                 # regular argument (not function result)
                 arg_call = arg
                 spointer = "pointer" if arg.is_indirect() else "scalar"
-                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
+                cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
+                stmts = ["c", sgroup, spointer, c_attrs["intent"],
+                         arg.stmts_suffix, cdesc] + specialize
                 intent_blk = typemap.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:
