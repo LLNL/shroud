@@ -1367,13 +1367,13 @@ rv = .false.
         result_blk = typemap.lookup_fc_stmts(f_stmts)
         result_blk = typemap.lookup_local_stmts("f", result_blk, node)
         # Useful for debugging.  Requested and found path.
-        fmt_result.stmt0 = "_".join(f_stmts)
+        fmt_result.stmt0 = typemap.compute_name(f_stmts)
         fmt_result.stmt1 = result_blk.key
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
             ["c", generated_suffix], c_result_blk, node)
-        fmt_result.stmtc0 = "_".join(c_stmts)
+        fmt_result.stmtc0 = typemap.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.key
 
         if result_blk.result:
@@ -1553,7 +1553,7 @@ rv = .false.
             f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
 
             # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = "_".join(f_stmts)
+            fmt_arg.stmt0 = typemap.compute_name(f_stmts)
             fmt_arg.stmt1 = f_intent_blk.key
 
             # Now C function arguments
@@ -1562,7 +1562,7 @@ rv = .false.
             fmt_arg.update(base_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            fmt_arg.stmtc0 = "_".join(c_stmts)
+            fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
             fmt_arg.stmtc1 = c_intent_blk.key
 
             # Create a local variable for C if necessary.

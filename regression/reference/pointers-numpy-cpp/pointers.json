@@ -139,16 +139,16 @@
                             "cxx_var": "argin",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_scalar_in_",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "argin",
                             "f_type": "integer(C_INT)",
                             "f_var": "argin",
-                            "stmt0": "f_native_scalar_in_",
+                            "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -184,16 +184,16 @@
                             "cxx_var": "arginout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_inout_",
+                            "stmt0": "c_native_pointer_inout",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arginout",
                             "f_type": "integer(C_INT)",
                             "f_var": "arginout",
-                            "stmt0": "f_native_pointer_inout_",
+                            "stmt0": "f_native_pointer_inout",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_inout_",
+                            "stmtc0": "c_native_pointer_inout",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -229,16 +229,16 @@
                             "cxx_var": "argout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "argout",
                             "f_type": "integer(C_INT)",
                             "f_var": "argout",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -365,16 +365,16 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_native_pointer_in_",
+                            "stmt0": "c_native_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "in",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "stmt0": "f_native_pointer_in_",
+                            "stmt0": "f_native_pointer_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc0": "c_native_pointer_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -409,7 +409,7 @@
                             "cxx_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -417,9 +417,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "out",
                             "mold": "lbound(in,1):ubound(in,1)",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -458,7 +458,7 @@
                             "cxx_var": "sizein",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_scalar_in_",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -596,16 +596,16 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_native_pointer_in_",
+                            "stmt0": "c_native_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "in",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "stmt0": "f_native_pointer_in_",
+                            "stmt0": "f_native_pointer_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc0": "c_native_pointer_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -640,7 +640,7 @@
                             "cxx_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -648,9 +648,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
                             "mold": "lbound(in,1):ubound(in,1)",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -689,7 +689,7 @@
                             "cxx_var": "sizein",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_scalar_in_",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -827,16 +827,16 @@
                             "cxx_var": "nvalues",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "nvalues",
                             "f_type": "integer(C_INT)",
                             "f_var": "nvalues",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -872,16 +872,16 @@
                             "cxx_var": "values",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "values",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1001,16 +1001,16 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg1",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1048,16 +1048,16 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg2",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1178,7 +1178,7 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_scalar_in_",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1218,16 +1218,16 @@
                             "cxx_var": "result",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "result",
                             "f_type": "integer(C_INT)",
                             "f_var": "result",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1263,16 +1263,16 @@
                             "cxx_var": "values",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_in_",
+                            "stmt0": "c_native_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "values",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "stmt0": "f_native_pointer_in_",
+                            "stmt0": "f_native_pointer_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc0": "c_native_pointer_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1403,16 +1403,16 @@
                             "cxx_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out_",
+                            "stmt0": "c_native_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "out",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
-                            "stmt0": "f_native_pointer_out_",
+                            "stmt0": "f_native_pointer_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out_",
+                            "stmtc0": "c_native_pointer_out",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1514,16 +1514,16 @@
                             "cxx_var": "array",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_inout_",
+                            "stmt0": "c_native_pointer_inout",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "array",
                             "f_type": "integer(C_INT)",
                             "f_var": "array",
-                            "stmt0": "f_native_pointer_inout_",
+                            "stmt0": "f_native_pointer_inout",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_inout_",
+                            "stmtc0": "c_native_pointer_inout",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1558,7 +1558,7 @@
                             "cxx_var": "sizein",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_scalar_in_",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1677,16 +1677,16 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_in_",
+                            "stmt0": "c_native_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "arg",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "stmt0": "f_native_pointer_in_",
+                            "stmt0": "f_native_pointer_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_in_",
+                            "stmtc0": "c_native_pointer_in",
                             "stmtc1": "c_default"
                         }
                     }

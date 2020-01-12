@@ -136,7 +136,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {

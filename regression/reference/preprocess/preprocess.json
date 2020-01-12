@@ -175,16 +175,16 @@
                                     "cxx_var": "i",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "i",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "i",
-                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt0": "f_native_scalar_in",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in_",
+                                    "stmtc0": "c_native_scalar_in",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -363,16 +363,16 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_scalar_in_",
+                                    "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "c_var": "flag",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",
-                                    "stmt0": "f_native_scalar_in_",
+                                    "stmt0": "f_native_scalar_in",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in_",
+                                    "stmtc0": "c_native_scalar_in",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
