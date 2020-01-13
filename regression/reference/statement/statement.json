@@ -275,6 +275,7 @@
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_pointer_result_buf",

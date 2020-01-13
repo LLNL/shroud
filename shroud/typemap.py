@@ -1381,13 +1381,13 @@ fc_statements = dict(
     f_native_pointer_in_cdesc=dict(
         # TARGET required for argument to C_LOC.
         f_attribute=['target'],
-        f_helper="array_context",
+        f_helper="array_context ShroudTypeDefines",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
         pre_call=[
             "{c_var_context}%base_addr = C_LOC({f_var})",
-            "! {c_var_context}%type = ",
-            "! {c_var_context}%elem_len = ",
+            "{c_var_context}%type = {sh_type};",
+            "! {c_var_context}%elem_len = C_SIZEOF()",
             "{c_var_context}%size = size({f_var})",
             "! {c_var_context}%rank = -1",
         ],

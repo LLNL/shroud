@@ -14,10 +14,6 @@ program tester
   implicit none
   logical ok
 
-  integer rv_integer
-  integer(C_INT) rv_int
-  real(C_DOUBLE) rv_double
-
   call init_fruit
 
   call test_cdesc

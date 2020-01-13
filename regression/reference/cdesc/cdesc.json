@@ -129,6 +129,7 @@
                             "c_var_context": "Darg",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_pointer_in_cdesc",
                             "stmt1": "f_native_pointer_in_cdesc",
                             "stmtc0": "c_native_pointer_in_cdesc",
