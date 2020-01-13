@@ -344,6 +344,20 @@ defaults to pass-by-reference, the argument will be passed to C as a
 determine the type of the argument before dereferencing the pointer.
 Note that *assumed-type* is part of Fortran 2018.
 
+capsule
+^^^^^^^
+
+Name of capsule argument.
+Defaults to C_var_capsule_template.
+
+cdesc
+^^^^^
+
+Pass argument from Fortran to C wrapper as a pointer to a context type.
+This struct contains the address, type, rank and size of the argument.
+
+.. XXX argument is named by context
+
 charlen
 ^^^^^^^
 
@@ -432,6 +446,8 @@ If set without a value, it defaults to ``(*)``:
     double *array +dimension
     double *array +dimension(len)
 
+*rank* and *dimension* can not be specified together.
+    
 external
 ^^^^^^^^
 
@@ -549,6 +565,28 @@ library
    This is the default value.
 
 .. steal  intent(in)
+
+rank
+^^^^
+
+Add an assumed-shape dimension with the given rank.
+*rank* must be 0-7.
+A rank of 0 implies a scalar argument.
+
+.. code-block:: yaml
+
+    double *array +rank(2)
+
+Creates the declaration:
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) :: array(:,:)
+
+This can be simpler than the *dimension* attribute for multidimension arrays.
+*rank* and *dimension* can not be specified together.
+
+.. XXX to be used with fortran_generic and formatting  +rank({generic_rank})
 
 value
 ^^^^^

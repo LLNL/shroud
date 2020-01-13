@@ -915,6 +915,17 @@ class Declaration(Node):
     init =         a  *a   a=1
     """
 
+    fortran_ranks = [
+        "",
+        "(:)",
+        "(:,:)",
+        "(:,:,:)",
+        "(:,:,:,:)",
+        "(:,:,:,:,:)",
+        "(:,:,:,:,:,:)",
+        "(:,:,:,:,:,:,:)",
+    ]
+
     def __init__(self):
         self.specifier = []  # int, long, ...
         self.storage = []  # static, tyedef, ...
@@ -1357,6 +1368,9 @@ class Declaration(Node):
         elif attrs["dimension"]:
             # Any dimension is changed to assumed length.
             decl.append("(*)")
+        elif attrs["rank"] is not None and attrs["rank"] > 0:
+            # Any dimension is changed to assumed length.
+            decl.append("(*)")
         elif attrs["allocatable"]:
             # allocatable assumes dimension
             decl.append("(*)")
@@ -1439,7 +1453,10 @@ class Declaration(Node):
             decl.append(self.name)
 
         dimension = attrs["dimension"]
-        if dimension:
+        rank = attrs["rank"]
+        if rank is not None:
+            decl.append(self.fortran_ranks[rank])
+        elif dimension:
             if is_allocatable:
                 # Assume 1-d.
                 decl.append("(:)")

@@ -769,7 +769,7 @@ class Wrapc(util.WrapperMixin):
             stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
             result_blk = typemap.lookup_fc_stmts(stmts)
             # Useful for debugging.  Requested and found path.
-            fmt_result.stmt0 = "_".join(stmts)
+            fmt_result.stmt0 = typemap.compute_name(stmts)
             fmt_result.stmt1 = result_blk.key
 
             fmt_result.idtor = "0"  # no destructor
@@ -917,7 +917,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                result_return_pointer_as = c_attrs["deref"] or ""
+                result_return_pointer_as = c_attrs["deref"]
                 spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
                 stmts = [
                     "c", sgroup, spointer, "result",
@@ -934,7 +934,9 @@ class Wrapc(util.WrapperMixin):
                 # regular argument (not function result)
                 arg_call = arg
                 spointer = "pointer" if arg.is_indirect() else "scalar"
-                stmts = ["c", sgroup, spointer, c_attrs["intent"], arg.stmts_suffix] + specialize
+                cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
+                stmts = ["c", sgroup, spointer, c_attrs["intent"],
+                         arg.stmts_suffix, cdesc] + specialize
                 intent_blk = typemap.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:
@@ -962,7 +964,7 @@ class Wrapc(util.WrapperMixin):
                 compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = "_".join(stmts)
+            fmt_arg.stmt0 = typemap.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.key
 
             need_wrapper = self.build_proto_list(

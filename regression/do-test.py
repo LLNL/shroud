@@ -386,6 +386,7 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
         
+        TestDesc("cdesc"),
         TestDesc("forward"),
         TestDesc("example"),
         TestDesc("include"),

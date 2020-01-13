@@ -1066,7 +1066,7 @@ return 1;""",
             if stmts is not None:
                 intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
-                fmt_arg.stmt0 = "_".join(stmts)
+                fmt_arg.stmt0 = typemap.compute_name(stmts)
                 fmt_arg.stmt1 = intent_blk.key
 
             # local_var - 'funcptr', 'pointer', or 'scalar'
@@ -1686,7 +1686,7 @@ return 1;""",
             if stmts is not None:
                 result_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
-                fmt_result.stmt0 = "_".join(stmts)
+                fmt_result.stmt0 = typemap.compute_name(stmts)
                 fmt_result.stmt1 = result_blk.key
             
         return fmt_result, result_blk

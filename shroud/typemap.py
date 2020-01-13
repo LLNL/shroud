@@ -1299,11 +1299,14 @@ class CStmts(object):
         self.return_cptr = return_cptr
 
 class FStmts(object):
+    """
+    f_attribute - passed to gen_arg_as_fortran
+    """
     def __init__(self,
         key="f_default",
         buf_args=[],
         c_local_var=None,
-        f_helper="", f_module=None,
+        f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
@@ -1311,6 +1314,7 @@ class FStmts(object):
         self.key = key
         self.buf_args = buf_args
         self.c_local_var = c_local_var
+        self.f_attribute = f_attribute
         self.f_helper = f_helper
         self.f_module = f_module
 
@@ -1359,6 +1363,36 @@ fc_statements = dict(
         need_wrapper=True
     ),
 
+
+    # XXX only in buf?
+    c_native_pointer_in_cdesc=dict(
+        buf_args=["context"],
+        c_helper="array_context", #  ShroudTypeDefines",
+        c_pre_call=[
+            "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
+        ],
+        cxx_pre_call=[
+#            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
+#            "({c_var_context}->addr.base);",
+            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
+            "(const_cast<void *>({c_var_context}->addr.base));",
+        ],
+    ),
+    f_native_pointer_in_cdesc=dict(
+        # TARGET required for argument to C_LOC.
+        f_attribute=['target'],
+        f_helper="array_context ShroudTypeDefines",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+#        initialize=[
+        pre_call=[
+            "{c_var_context}%base_addr = C_LOC({f_var})",
+            "{c_var_context}%type = {sh_type}",
+            "! {c_var_context}%elem_len = C_SIZEOF()",
+            "{c_var_context}%size = size({f_var})",
+            "{c_var_context}%rank = {rank}",
+        ],
+    ),
+
     # Function has a result with deref(allocatable).
     #
     #    C wrapper:
@@ -1379,6 +1413,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
+            "{c_var_context}->rank = 1;",
         ],
         return_cptr=True,
     ),
@@ -1483,6 +1518,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
+            "{c_var_context}->rank = 0;",
         ],
     ),
     f_char_result_allocatable=dict(
@@ -1679,6 +1715,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1704,6 +1741,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1730,6 +1768,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[

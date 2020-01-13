@@ -113,6 +113,12 @@ void incrementIntArray(int *array, int size)
 }
 
 //----------------------------------------------------------------------
+
+void Rank2Input(int *arg)
+{
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

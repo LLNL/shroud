@@ -23,5 +23,6 @@ void Sum(int len, int * values, int *result);
 void fillIntArray(int *out);
 void incrementIntArray(int *array, int size);
 
+void Rank2Input(int *arg);
 
 #endif // POINTERS_HPP

@@ -37,6 +37,7 @@ test-fortran : \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
+  test-fortran-cdesc \
   test-fortran-preprocess \
   test-fortran-strings \
   test-fortran-clibrary \
@@ -161,6 +162,7 @@ phony_explicit:
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
 .SECONDARY: \
+    $(tempdir)/run/cdesc/.. \
     $(tempdir)/run/classes/.. \
     $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \

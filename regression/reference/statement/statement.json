@@ -117,16 +117,16 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_native_scalar_result_",
+                        "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_native_scalar_result_",
+                        "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_",
+                        "stmtc0": "c_native_scalar_result",
                         "stmtc1": "c_default"
                     }
                 },
@@ -191,7 +191,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -268,16 +268,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt0": "c_string_pointer_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }

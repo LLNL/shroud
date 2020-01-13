@@ -38,6 +38,8 @@ module strings_mod
         integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
         ! size of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
     end type SHROUD_array
     ! end array_context
 

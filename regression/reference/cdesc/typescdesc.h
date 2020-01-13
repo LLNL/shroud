@@ -1,4 +1,4 @@
-// typesns.h
+// typescdesc.h
 // This is generated code, do not edit
 // Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
@@ -8,8 +8,8 @@
 //
 // For C users and C++ implementation
 
-#ifndef TYPESNS_H
-#define TYPESNS_H
+#ifndef TYPESCDESC_H
+#define TYPESCDESC_H
 
 #include <stddef.h>
 
@@ -18,14 +18,14 @@
 extern "C" {
 #endif
 
-struct s_NS_SHROUD_capsule_data {
+struct s_CDE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_NS_SHROUD_capsule_data NS_SHROUD_capsule_data;
+typedef struct s_CDE_SHROUD_capsule_data CDE_SHROUD_capsule_data;
 
-struct s_NS_SHROUD_array {
-    NS_SHROUD_capsule_data cxx;      /* address of C++ memory */
+struct s_CDE_SHROUD_array {
+    CDE_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
         const void * base;
         const char * ccharp;
@@ -35,18 +35,12 @@ struct s_NS_SHROUD_array {
     size_t size;     /* size of data in c++ */
     int rank;        /* number of dimensions */
 };
-typedef struct s_NS_SHROUD_array NS_SHROUD_array;
+typedef struct s_CDE_SHROUD_array CDE_SHROUD_array;
 
-struct s_NS_nswork_ClassWork {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
-
-void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap);
+void CDE_SHROUD_memory_destructor(CDE_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // TYPESNS_H
+#endif  // TYPESCDESC_H

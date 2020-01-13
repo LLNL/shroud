@@ -9,27 +9,30 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
+        "cxx_header": [
+            "cdesc.hpp"
+        ],
         "fmtdict": {
             "CXX_local": "SHCXX_",
             "CXX_template": "",
             "CXX_this": "SH_this",
             "CXX_this_call": "",
-            "C_array_type": "STR_SHROUD_array",
+            "C_array_type": "CDE_SHROUD_array",
             "C_bufferify_suffix": "_bufferify",
             "C_call_list": "",
-            "C_capsule_data_type": "STR_SHROUD_capsule_data",
+            "C_capsule_data_type": "CDE_SHROUD_capsule_data",
             "C_custom_return_type": "",
-            "C_header_filename": "wrapmemdoc.h",
+            "C_header_filename": "wrapcdesc.h",
             "C_header_filename_suffix": "h",
-            "C_header_utility": "typesmemdoc.h",
-            "C_impl_filename": "wrapmemdoc.cpp",
+            "C_header_utility": "typescdesc.h",
+            "C_impl_filename": "wrapcdesc.cpp",
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
-            "C_memory_dtor_function": "STR_SHROUD_memory_destructor",
+            "C_memory_dtor_function": "CDE_SHROUD_memory_destructor",
             "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
-            "C_prefix": "STR_",
+            "C_prefix": "CDE_",
             "C_result": "rv",
             "C_string_result_as_arg": "SHF_rv",
             "C_this": "self",
@@ -43,8 +46,8 @@
             "F_capsule_type": "SHROUD_capsule",
             "F_derived_member": "cxxmem",
             "F_filename_suffix": "f",
-            "F_impl_filename": "wrapfmemdoc.f",
-            "F_module_name": "memdoc_mod",
+            "F_impl_filename": "wrapfcdesc.f",
+            "F_module_name": "cdesc_mod",
             "F_name_assign": "assign",
             "F_name_associated": "associated",
             "F_name_final": "final",
@@ -69,9 +72,9 @@
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
             "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
-            "PY_module_init": "memdoc",
-            "PY_module_name": "memdoc",
-            "PY_module_scope": "memdoc",
+            "PY_module_init": "cdesc",
+            "PY_module_name": "cdesc",
+            "PY_module_scope": "cdesc",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_prefix": "PY_",
             "PY_release_memory_function": "PY_SHROUD_release_memory",
@@ -79,8 +82,7 @@
             "PY_this_call": "",
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
-            "YAML_type_filename": "memdoc_types.yaml",
-            "__line__": 17,
+            "YAML_type_filename": "cdesc_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
             "cast2": ")",
@@ -91,11 +93,11 @@
             "cxx_class": "",
             "f_pointer_shape": "",
             "f_var_shape": "",
-            "file_scope": "memdoc",
+            "file_scope": "cdesc",
             "function_suffix": "",
-            "library": "memdoc",
-            "library_lower": "memdoc",
-            "library_upper": "MEMDOC",
+            "library": "cdesc",
+            "library_lower": "cdesc",
+            "library_upper": "CDESC",
             "namespace_scope": "",
             "stdlib": "std::",
             "template_suffix": "",
@@ -103,140 +105,54 @@
         },
         "functions": [
             {
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_rv_decl": "const char * SHC_rv",
-                        "c_type": "char",
-                        "c_val": "SHCXX_rv->c_str()",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result",
-                        "stmt1": "c_string_result"
-                    },
-                    "fmtf": {
-                        "cxx_type": "std::string",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_result_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_result_buf"
-                    }
-                },
-                "ast": {
-                    "attrs": {
-                        "deref": "allocatable",
-                        "owner": "library"
-                    },
-                    "const": true,
-                    "declarator": {
-                        "name": "getConstStringPtrAlloc",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "params": [],
-                    "return_pointer_as": "allocatable",
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
-                "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_prototype": "",
-                    "C_return_type": "const char *",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
-                    "F_C_name": "c_get_const_string_ptr_alloc",
-                    "F_arg_c_call": "DSHF_rv",
-                    "F_arguments": "",
-                    "F_name_function": "get_const_string_ptr_alloc",
-                    "F_name_generic": "get_const_string_ptr_alloc",
-                    "F_name_impl": "get_const_string_ptr_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "c_const": "const ",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "underscore_name": "get_const_string_ptr_alloc"
-                },
-                "linenumber": 23,
-                "options": {}
-            },
-            {
                 "_fmtargs": {
-                    "SHF_rv": {
+                    "arg": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "const ",
+                            "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg)",
                             "cxx_member": "->",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_allocatable",
-                            "stmt1": "c_string_result_buf_allocatable"
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_pointer_in_cdesc",
+                            "stmt1": "c_native_pointer_in_cdesc"
                         },
                         "fmtf": {
-                            "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_pointer_result_allocatable",
-                            "stmt1": "f_string_result_allocatable",
-                            "stmtc0": "c_string_pointer_result_buf_allocatable",
-                            "stmtc1": "c_string_result_buf_allocatable"
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_pointer_in_cdesc",
+                            "stmt1": "f_native_pointer_in_cdesc",
+                            "stmtc0": "c_native_pointer_in_cdesc",
+                            "stmtc1": "c_native_pointer_in_cdesc"
                         }
                     }
                 },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_type": "void",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_type": "void",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_unknown_scalar_result_buf",
-                        "stmt1": "c_default"
-                    }
-                },
-                "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "getConstStringPtrAlloc",
+                        "name": "Rank2In",
                         "pointer": []
                     },
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "context": "DSHF_rv",
-                                "deref": "allocatable",
-                                "intent": "out",
-                                "owner": "library"
+                                "cdesc": true,
+                                "context": "Darg",
+                                "intent": "in",
+                                "rank": 2
                             },
-                            "const": true,
                             "declarator": {
-                                "name": "SHF_rv",
+                                "name": "arg",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -244,9 +160,9 @@
                                 ]
                             },
                             "specifier": [
-                                "std::string"
+                                "int"
                             ],
-                            "typemap_name": "std::string"
+                            "typemap_name": "int"
                         }
                     ],
                     "specifier": [
@@ -254,25 +170,33 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
+                "decl": "void Rank2In(int *arg +intent(in)+rank(2)+cdesc)",
+                "declgen": "void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_call_list": "arg",
+                    "C_name": "CDE_rank2_in",
+                    "C_prototype": "CDE_SHROUD_array *Darg",
                     "C_return_type": "void",
-                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_call": "c_rank2_in",
+                    "F_C_name": "c_rank2_in",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_name_function": "rank2_in",
+                    "F_name_generic": "rank2_in",
+                    "F_name_impl": "rank2_in",
+                    "F_subprogram": "subroutine",
                     "c_const": "",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "function_name": "Rank2In",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "rank2_in"
                 },
-                "linenumber": 23,
+                "linenumber": 18,
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_force_wrapper": true,
+                    "__line__": 19
                 }
             }
         ],
@@ -350,13 +274,13 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 19,
-            "debug": false,
+            "__line__": 14,
+            "debug": true,
             "debug_index": false,
             "doxygen": true,
             "flatten_namespace": false,
-            "literalinclude": true,
-            "literalinclude2": true,
+            "literalinclude": false,
+            "literalinclude2": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,
@@ -365,7 +289,7 @@
             "wrap_python": false
         },
         "scope_file": [
-            "memdoc"
+            "cdesc"
         ]
     }
 }

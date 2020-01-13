@@ -139,16 +139,17 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_in_",
+                            "stmt0": "c_schar_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "status",
                             "f_type": "character",
                             "f_var": "status",
-                            "stmt0": "f_schar_scalar_in_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_schar_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc0": "c_schar_scalar_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -240,14 +241,14 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_schar_scalar_result_",
+                        "stmt0": "c_schar_scalar_result",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "char",
                         "f_type": "character",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_schar_scalar_result_",
+                        "stmt0": "f_schar_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_schar_scalar_result_buf",
                         "stmtc1": "c_schar_result_buf"
@@ -323,16 +324,17 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_result_buf_",
+                            "stmt0": "c_schar_scalar_result_buf",
                             "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_schar_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_schar_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc0": "c_schar_pointer_result_buf",
                             "stmtc1": "c_schar_result_buf"
                         }
                     }
@@ -424,7 +426,7 @@
                             "cxx_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out_",
+                            "stmt0": "c_char_pointer_out",
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
@@ -459,7 +461,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_in_",
+                            "stmt0": "c_char_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
@@ -589,7 +591,8 @@
                             "c_var": "dest",
                             "f_type": "character(*)",
                             "f_var": "dest",
-                            "stmt0": "f_char_pointer_out_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_out",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_pointer_out_buf",
                             "stmtc1": "c_char_out_buf"
@@ -609,7 +612,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_in_",
+                            "stmt0": "c_char_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -715,7 +718,7 @@
                             "cxx_var": "s",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_inout_",
+                            "stmt0": "c_char_pointer_inout",
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
@@ -822,7 +825,8 @@
                             "c_var": "s",
                             "f_type": "character(*)",
                             "f_var": "s",
-                            "stmt0": "f_char_pointer_inout_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_pointer_inout_buf",
                             "stmtc1": "c_char_inout_buf"
@@ -900,7 +904,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_char_pointer_result_",
+                        "stmt0": "c_char_pointer_result",
                         "stmt1": "c_char_result"
                     },
                     "fmtf": {
@@ -1003,6 +1007,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_pointer_result_allocatable",
                             "stmt1": "f_char_result_allocatable",
                             "stmtc0": "c_char_pointer_result_buf_allocatable",
@@ -1097,7 +1102,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_char_pointer_result_",
+                        "stmt0": "c_char_pointer_result",
                         "stmt1": "c_char_result"
                     },
                     "fmtf": {
@@ -1193,16 +1198,17 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_result_buf_",
+                            "stmt0": "c_char_pointer_result_buf",
                             "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_char_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc0": "c_char_pointer_result_buf",
                             "stmtc1": "c_char_result_buf"
                         }
                     }
@@ -1295,7 +1301,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_char_pointer_result_",
+                        "stmt0": "c_char_pointer_result",
                         "stmt1": "c_char_result"
                     },
                     "fmtpy": {
@@ -1376,16 +1382,17 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_result_buf_",
+                            "stmt0": "c_char_pointer_result_buf",
                             "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
-                            "stmt0": "f_char_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_pointer_result_buf_",
+                            "stmtc0": "c_char_pointer_result_buf",
                             "stmtc1": "c_char_result_buf"
                         }
                     }
@@ -1625,6 +1632,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -1791,16 +1799,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_scalar_result_buf_",
+                            "stmt0": "c_string_scalar_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -1950,16 +1959,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_scalar_result_buf_",
+                            "stmt0": "c_string_scalar_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -2190,6 +2200,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -2279,7 +2290,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -2382,6 +2393,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -2478,7 +2490,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -2573,16 +2585,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt0": "c_string_pointer_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -2676,7 +2689,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtpy": {
@@ -2757,16 +2770,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt0": "c_string_pointer_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -2926,7 +2940,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -3020,16 +3034,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt0": "c_string_pointer_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -3121,7 +3136,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -3217,6 +3232,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -3306,7 +3322,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -3408,16 +3424,17 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_",
+                            "stmt0": "c_string_pointer_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_string_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_pointer_result_buf_",
+                            "stmtc0": "c_string_pointer_result_buf",
                             "stmtc1": "c_string_result_buf"
                         }
                     }
@@ -3518,7 +3535,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -3615,6 +3632,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -3705,7 +3723,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -3806,6 +3824,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -3900,7 +3919,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result_",
+                        "stmt0": "c_string_pointer_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -4003,6 +4022,7 @@
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_string_pointer_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
                             "stmtc0": "c_string_pointer_result_buf_allocatable",
@@ -4105,7 +4125,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_in_",
+                            "stmt0": "c_string_pointer_in",
                             "stmt1": "c_string_in"
                         },
                         "fmtpy": {
@@ -4212,7 +4232,8 @@
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
-                            "stmt0": "f_string_pointer_in_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_pointer_in_buf",
                             "stmtc1": "c_string_in_buf"
@@ -4294,7 +4315,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_out_",
+                            "stmt0": "c_string_pointer_out",
                             "stmt1": "c_string_out"
                         },
                         "fmtpy": {
@@ -4402,7 +4423,8 @@
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
-                            "stmt0": "f_string_pointer_out_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_out",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_pointer_out_buf",
                             "stmtc1": "c_string_out_buf"
@@ -4483,7 +4505,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_inout_",
+                            "stmt0": "c_string_pointer_inout",
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
@@ -4593,7 +4615,8 @@
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
-                            "stmt0": "f_string_pointer_inout_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_pointer_inout_buf",
                             "stmtc1": "c_string_inout_buf"
@@ -4677,7 +4700,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_inout_",
+                            "stmt0": "c_string_pointer_inout",
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
@@ -4783,7 +4806,8 @@
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
-                            "stmt0": "f_string_pointer_inout_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_pointer_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_pointer_inout_buf",
                             "stmtc1": "c_string_inout_buf"
@@ -5020,7 +5044,7 @@
                             "cxx_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_in_",
+                            "stmt0": "c_char_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5121,7 +5145,7 @@
                             "cxx_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out_",
+                            "stmt0": "c_char_pointer_out",
                             "stmt1": "c_default"
                         }
                     }
@@ -5210,7 +5234,8 @@
                             "c_var": "name",
                             "f_type": "character(*)",
                             "f_var": "name",
-                            "stmt0": "f_char_pointer_out_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_out",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_pointer_out_buf",
                             "stmtc1": "c_char_out_buf"
@@ -5288,16 +5313,17 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_in_",
+                            "stmt0": "c_schar_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "c_var": "status",
                             "f_type": "character",
                             "f_var": "status",
-                            "stmt0": "f_schar_scalar_in_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_schar_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_scalar_in_",
+                            "stmtc0": "c_schar_scalar_in",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -5392,14 +5418,14 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_schar_scalar_result_",
+                        "stmt0": "c_schar_scalar_result",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
                         "cxx_type": "char",
                         "f_type": "character",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_schar_scalar_result_",
+                        "stmt0": "f_schar_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_schar_scalar_result_buf",
                         "stmtc1": "c_schar_result_buf"
@@ -5478,16 +5504,17 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_result_buf_",
+                            "stmt0": "c_schar_scalar_result_buf",
                             "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
                             "c_var": "SHT_rv",
                             "f_type": "character",
                             "f_var": "SHT_rv",
-                            "stmt0": "f_schar_pointer_result_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_schar_pointer_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_pointer_result_buf_",
+                            "stmtc0": "c_schar_pointer_result_buf",
                             "stmtc1": "c_schar_result_buf"
                         }
                     }
@@ -5581,7 +5608,7 @@
                             "cxx_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out_",
+                            "stmt0": "c_char_pointer_out",
                             "stmt1": "c_default"
                         }
                     },
@@ -5599,7 +5626,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_in_",
+                            "stmt0": "c_char_pointer_in",
                             "stmt1": "c_default"
                         }
                     }
@@ -5712,7 +5739,8 @@
                             "c_var": "dest",
                             "f_type": "character(*)",
                             "f_var": "dest",
-                            "stmt0": "f_char_pointer_out_",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_pointer_out",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_pointer_out_buf",
                             "stmtc1": "c_char_out_buf"
@@ -5732,7 +5760,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_in_",
+                            "stmt0": "c_char_pointer_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {

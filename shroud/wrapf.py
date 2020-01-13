@@ -1023,7 +1023,8 @@ rv = .false.
             intent = attrs["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
-            deref_clause = attrs["deref"] or ""
+            deref_clause = attrs["deref"]
+            cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = "pointer" if arg.is_indirect() else "scalar"
             if attrs["_is_result"]:
@@ -1031,7 +1032,7 @@ rv = .false.
                            generated_suffix, deref_clause]
             else:
                 c_stmts = ["c", sgroup, spointer, intent,
-                           arg.stmts_suffix, deref_clause]
+                           arg.stmts_suffix, deref_clause, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             self.build_arg_list_interface(
@@ -1354,7 +1355,7 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
-            result_deref_clause = ast.attrs["deref"] or ""
+            result_deref_clause = ast.attrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
@@ -1367,13 +1368,13 @@ rv = .false.
         result_blk = typemap.lookup_fc_stmts(f_stmts)
         result_blk = typemap.lookup_local_stmts("f", result_blk, node)
         # Useful for debugging.  Requested and found path.
-        fmt_result.stmt0 = "_".join(f_stmts)
+        fmt_result.stmt0 = typemap.compute_name(f_stmts)
         fmt_result.stmt1 = result_blk.key
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
             ["c", generated_suffix], c_result_blk, node)
-        fmt_result.stmtc0 = "_".join(c_stmts)
+        fmt_result.stmtc0 = typemap.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.key
 
         if result_blk.result:
@@ -1439,7 +1440,8 @@ rv = .false.
             allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
-            deref_clause = c_attrs["deref"] or ""
+            deref_clause = c_attrs["deref"]
+            cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
@@ -1464,18 +1466,27 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix]  # e.g. buf
-                f_stmts = ["f", sgroup, spointer, intent, deref_clause]  # e.g. allocatable
+                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
+                f_stmts = ["f", sgroup, spointer, intent, deref_clause, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
-            if is_f_arg:
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+
+            if not is_f_arg:
+                # Pass result as an argument to the C++ function.
+                f_arg = c_arg
+            else:
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
 
                 f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
+                rank = f_attrs["rank"]
+                if rank is not None:
+                    fmt_arg.rank = str(rank)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
@@ -1534,12 +1545,16 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
                 else:
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                        attributes=f_intent_blk.f_attribute))
                     arg_f_names.append(fmt_arg.f_var)
-            else:
-                # Pass result as an argument to the C++ function.
-                f_arg = c_arg
 
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = typemap.compute_name(f_stmts)
+            fmt_arg.stmt1 = f_intent_blk.key
+            fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
+            fmt_arg.stmtc1 = c_intent_blk.key
+            
             arg_typemap = f_arg.typemap
             base_typemap = arg_typemap
             if c_arg.template_arguments:
@@ -1547,23 +1562,15 @@ rv = .false.
                 arg_typemap = c_arg.template_arguments[0].typemap
                 fmt_arg.cxx_T = arg_typemap.name
             fmt_arg.f_type = arg_typemap.f_type
+            fmt_arg.sh_type = arg_typemap.sh_type
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
-
-            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
-
-            # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = "_".join(f_stmts)
-            fmt_arg.stmt1 = f_intent_blk.key
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             fmt_arg.update(base_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
-            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            fmt_arg.stmtc0 = "_".join(c_stmts)
-            fmt_arg.stmtc1 = c_intent_blk.key
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 
