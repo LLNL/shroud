@@ -95,7 +95,7 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.rank2_in
         Darg%base_addr = C_LOC(arg)
-        Darg%type = SH_TYPE_INT;
+        Darg%type = SH_TYPE_INT
         ! Darg%elem_len = C_SIZEOF()
         Darg%size = size(arg)
         Darg%rank = 2
