@@ -1389,7 +1389,7 @@ fc_statements = dict(
             "{c_var_context}%type = {sh_type};",
             "! {c_var_context}%elem_len = C_SIZEOF()",
             "{c_var_context}%size = size({f_var})",
-            "! {c_var_context}%rank = -1",
+            "{c_var_context}%rank = {rank}",
         ],
     ),
 
@@ -1413,6 +1413,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
+            "{c_var_context}->rank = 1;",
         ],
         return_cptr=True,
     ),
@@ -1517,6 +1518,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
+            "{c_var_context}->rank = 0;",
         ],
     ),
     f_char_result_allocatable=dict(
@@ -1713,6 +1715,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1738,6 +1741,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1764,6 +1768,7 @@ fc_statements = dict(
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
+            "{c_var_context}->rank = 1;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[

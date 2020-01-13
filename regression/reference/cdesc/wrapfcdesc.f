@@ -69,6 +69,8 @@ module cdesc_mod
         integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
         ! size of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
     end type SHROUD_array
 
     interface
@@ -96,7 +98,7 @@ contains
         Darg%type = SH_TYPE_INT;
         ! Darg%elem_len = C_SIZEOF()
         Darg%size = size(arg)
-        ! Darg%rank = -1
+        Darg%rank = 2
         call c_rank2_in(Darg)
         ! splicer end function.rank2_in
     end subroutine rank2_in

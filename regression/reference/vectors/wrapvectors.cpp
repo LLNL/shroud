@@ -81,6 +81,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_iota_out_bufferify
 }
@@ -105,6 +106,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return Darg->size;
     // splicer end function.vector_iota_out_with_num_bufferify
 }
@@ -129,6 +131,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_iota_out_with_num2_bufferify
 }
@@ -151,6 +154,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_iota_out_alloc_bufferify
 }
@@ -174,6 +178,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_iota_inout_alloc_bufferify
 }
@@ -192,6 +197,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_increment_bufferify
 }
@@ -212,6 +218,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
     Darg->type = SH_TYPE_DOUBLE;
     Darg->elem_len = sizeof(double);
     Darg->size = SHCXX_arg->size();
+    Darg->rank = 1;
     return;
     // splicer end function.vector_iota_out_d_bufferify
 }
@@ -258,6 +265,7 @@ void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
     DSHF_rv->type = SH_TYPE_INT;
     DSHF_rv->elem_len = sizeof(int);
     DSHF_rv->size = SHC_rv->size();
+    DSHF_rv->rank = 1;
     return;
     // splicer end function.return_vector_alloc_bufferify
 }

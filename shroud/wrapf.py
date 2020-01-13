@@ -1484,6 +1484,9 @@ rv = .false.
 
                 f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
+                rank = f_attrs["rank"]
+                if rank is not None:
+                    fmt_arg.rank = str(rank)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.

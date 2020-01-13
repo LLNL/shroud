@@ -197,6 +197,7 @@ array->addr.ccharp = src->data();
 array->elem_len = src->length();
 -}}
 array->size = 1;
+array->rank = 1;
 -}}{lend}""", fmt),
     )
     ##########
@@ -349,6 +350,7 @@ const char * ccharp;
 int type;        /* type of element */
 size_t elem_len; /* bytes-per-item or character len in c++ */
 size_t size;     /* size of data in c++ */
+int rank;        /* number of dimensions */
 -}};
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
                 fmt,
@@ -377,6 +379,8 @@ integer(C_INT) :: type
 integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
 ! size of data in cxx
 integer(C_SIZE_T) :: size = 0_C_SIZE_T
+! number of dimensions
+integer(C_INT) :: rank = -1
 -end type {F_array_type}{lend}""",
                 fmt,
             ),

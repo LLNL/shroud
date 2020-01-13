@@ -49,6 +49,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
         array->elem_len = src->length();
     }
     array->size = 1;
+    array->rank = 1;
 }
 
 // helper function
