@@ -1474,7 +1474,10 @@ rv = .false.
             f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
-            if is_f_arg:
+            if not is_f_arg:
+                # Pass result as an argument to the C++ function.
+                f_arg = c_arg
+            else:
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
@@ -1542,9 +1545,6 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(
                         attributes=f_intent_blk.f_attribute))
                     arg_f_names.append(fmt_arg.f_var)
-            else:
-                # Pass result as an argument to the C++ function.
-                f_arg = c_arg
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = typemap.compute_name(f_stmts)
