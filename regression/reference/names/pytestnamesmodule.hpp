@@ -47,7 +47,7 @@ extern PyTypeObject PY_Vvv1_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::Vvv1 * myobj;
+    std::vector<int> * myobj;
     int mydtor;
     // splicer begin namespace.std.class.vector.C_object
     // splicer end namespace.std.class.vector.C_object
@@ -67,7 +67,7 @@ extern PyTypeObject PY_vector_double_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_double * myobj;
+    std::vector<double> * myobj;
     int mydtor;
     // splicer begin namespace.std.class.vector.C_object
     // splicer end namespace.std.class.vector.C_object
@@ -87,7 +87,7 @@ extern PyTypeObject PY_vector_instantiation5_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_instantiation5 * myobj;
+    std::vector<long> * myobj;
     int mydtor;
     // splicer begin namespace.std.class.vector.C_object
     // splicer end namespace.std.class.vector.C_object
@@ -107,7 +107,7 @@ extern PyTypeObject PY_vector_instantiation3_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_instantiation3 * myobj;
+    std::vector<internal::ImplWorker1> * myobj;
     int mydtor;
     // splicer begin namespace.std.class.vector.C_object
     // splicer end namespace.std.class.vector.C_object
@@ -143,7 +143,7 @@ extern PyTypeObject PY_twoTs_0_Type;
 
 typedef struct {
 PyObject_HEAD
-    twoTs_0 * myobj;
+    twoTs<int, long> * myobj;
     int mydtor;
     // splicer begin class.twoTs.C_object
     // splicer end class.twoTs.C_object
@@ -161,7 +161,7 @@ extern PyTypeObject PY_twoTs_instantiation4_Type;
 
 typedef struct {
 PyObject_HEAD
-    twoTs_instantiation4 * myobj;
+    twoTs<float, double> * myobj;
     int mydtor;
     // splicer begin class.twoTs.C_object
     // splicer end class.twoTs.C_object

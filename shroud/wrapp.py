@@ -380,7 +380,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             output,
             "typedef struct {{\n"
             "PyObject_HEAD\n"
-            "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
+            "+{namespace_scope}{cxx_type} * {PY_type_obj};\n"
             "int {PY_type_dtor};",
             fmt_class,
         )
