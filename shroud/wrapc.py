@@ -401,7 +401,7 @@ class Wrapc(util.WrapperMixin):
             output.append('#include "%s"' % hname)
 
         # Use headers from implementation
-        self.find_header(node)
+        self.find_header(node, self.header_impl_include)
         self.header_impl_include.update(self.helper_header["file"])
 
         # headers required by implementation

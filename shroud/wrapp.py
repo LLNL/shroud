@@ -361,7 +361,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)
 
-        self.find_header2(node, self.header_type_include)
+        self.find_header(node, self.header_type_include)
             
         # header declarations
         output = self.py_class_decl
@@ -2141,7 +2141,7 @@ return 1;""",
         """
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
-        self.find_header2(node, self.header_type_include)
+        self.find_header(node, self.header_type_include)
 
         output = []
 
