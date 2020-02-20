@@ -447,7 +447,7 @@ PP_setValue_int(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    self->obj->setValue(value);
+    self->obj->setValue<int>(value);
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_int
 }
@@ -469,7 +469,7 @@ PP_setValue_long(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    self->obj->setValue(value);
+    self->obj->setValue<long>(value);
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_long
 }
@@ -491,7 +491,7 @@ PP_setValue_float(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    self->obj->setValue(value);
+    self->obj->setValue<float>(value);
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_float
 }
@@ -513,7 +513,7 @@ PP_setValue_double(
         const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
-    self->obj->setValue(value);
+    self->obj->setValue<double>(value);
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_double
 }
@@ -528,7 +528,7 @@ PP_getValue_int(
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
     PyObject * SHTPy_rv = NULL;
 
-    int SHCXX_rv = self->obj->getValue();
+    int SHCXX_rv = self->obj->getValue<int>();
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -547,7 +547,7 @@ PP_getValue_double(
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
     PyObject * SHTPy_rv = NULL;
 
-    double SHCXX_rv = self->obj->getValue();
+    double SHCXX_rv = self->obj->getValue<double>();
 
     // post_call
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);

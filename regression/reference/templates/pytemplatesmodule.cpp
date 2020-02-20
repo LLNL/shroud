@@ -55,7 +55,7 @@ PY_FunctionTU_0(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
-    FunctionTU(arg1, arg2);
+    FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_0
 }
@@ -81,7 +81,7 @@ PY_FunctionTU_1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
-    FunctionTU(arg1, arg2);
+    FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_1
 }
@@ -99,7 +99,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 // splicer begin function.use_impl_worker_internal_ImplWorker1
     PyObject * SHTPy_rv = NULL;
 
-    int SHCXX_rv = UseImplWorker();
+    int SHCXX_rv = UseImplWorker<internal::ImplWorker1>();
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
@@ -118,7 +118,7 @@ PY_UseImplWorker_internal_ImplWorker2(
 // splicer begin function.use_impl_worker_internal_ImplWorker2
     PyObject * SHTPy_rv = NULL;
 
-    int SHCXX_rv = UseImplWorker();
+    int SHCXX_rv = UseImplWorker<internal::ImplWorker2>();
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker2

@@ -206,7 +206,7 @@ PY_name_instantiation1(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    FunctionTU(arg1, arg2);
+    FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_0
 }
@@ -234,7 +234,7 @@ PY_FunctionTU_instantiation2(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    FunctionTU(arg1, arg2);
+    FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_instantiation2
 }
@@ -257,7 +257,7 @@ PY_UseImplWorker_instantiation3(
 // splicer begin function.use_impl_worker_instantiation3
     PyObject * SHTPy_rv = NULL;
 
-    int ARG_rv = UseImplWorker();
+    int ARG_rv = UseImplWorker<internal::ImplWorker1>();
 
     // post_call
     SHTPy_rv = PyInt_FromLong(ARG_rv);

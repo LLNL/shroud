@@ -56,7 +56,7 @@ PY_nested_double(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:nested",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
-    self->obj->nested(arg1, arg2);
+    self->obj->nested<double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end class.user.method.nested_double
 }

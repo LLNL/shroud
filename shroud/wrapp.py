@@ -1341,14 +1341,16 @@ return 1;""",
             elif CXX_subprogram == "subroutine":
                 append_format(
                     PY_code,
-                    "{PY_this_call}{function_name}({PY_call_list});",
+                    "{PY_this_call}{function_name}"
+                    "{CXX_template}({PY_call_list});",
                     fmt,
                 )
             else:
                 need_rv = True
                 append_format(
                     PY_code,
-                    "{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});",
+                    "{PY_rv_asgn}{PY_this_call}{function_name}"
+                    "{CXX_template}({PY_call_list});",
                     fmt,
                 )
 
