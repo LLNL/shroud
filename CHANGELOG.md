@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   They were using the C++ function name. This was a problem since a
   C++ function may produce several wrapper via overloading or
   adding bufferify arguments.
+- Improved support for templates in the Python wrappers.
 
 ## v0.11.0 - 2020-01-08
 ### Added

@@ -125,11 +125,12 @@ test-python : \
   test-python-pointers-list-cpp \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
-  test-python-vectors-numpy \
-  test-python-clibrary \
   test-python-struct-c \
   test-python-struct-cxx \
-  test-python-ownership
+  test-python-vectors-numpy \
+  test-python-clibrary \
+  test-python-ownership \
+  test-python-templates
 
 # test-python-templates
 
