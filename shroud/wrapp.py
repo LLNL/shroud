@@ -1958,9 +1958,13 @@ return 1;""",
             output.append("#" + node.cpp_if)
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        #        if self.need_numpy:
-        #            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
-        #            output.append('#include "numpy/arrayobject.h"')
+        if self.need_numpy:
+            output.append('#define NO_IMPORT_ARRAY')
+            append_format(output,
+                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                          fmt)
+            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
+            output.append('#include "numpy/arrayobject.h"')
         self._push_splicer("impl")
 
         # Use headers from implementation
@@ -2207,6 +2211,9 @@ extern PyObject *{PY_prefix}error_obj;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if top and self.need_numpy:
+            append_format(output,
+                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                          fmt)
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
 
