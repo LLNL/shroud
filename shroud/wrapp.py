@@ -3171,7 +3171,7 @@ py_statements = dict(
             "{npy_intp}"
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
-            "\t {numpy_type},\t {cxx_var});",
+            "\t {numpy_type},\t {cxx_addr}{cxx_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
         object_created=True,

@@ -101,7 +101,8 @@ PY_at(
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
     double & SHCXX_rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, SHCXX_rv);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE,
+        &SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
 
