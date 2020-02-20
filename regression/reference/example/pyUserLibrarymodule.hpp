@@ -9,6 +9,8 @@
 #ifndef PYUSERLIBRARYMODULE_HPP
 #define PYUSERLIBRARYMODULE_HPP
 #include <Python.h>
+#include "ExClass1.hpp"
+#include "ExClass2.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,11 +20,6 @@ extern void *PP_SHROUD_fetch_context(int icontext);
 extern void PP_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace example {
-    namespace nested {
-        class ExClass1;  // forward declare
-    }
-}
 extern PyTypeObject PP_ExClass1_Type;
 // splicer begin namespace.example::nested.class.ExClass1.C_declaration
 // splicer end namespace.example::nested.class.ExClass1.C_declaration
@@ -40,11 +37,6 @@ PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr);
 int PP_ExClass1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace example {
-    namespace nested {
-        class ExClass2;  // forward declare
-    }
-}
 extern PyTypeObject PP_ExClass2_Type;
 // splicer begin namespace.example::nested.class.ExClass2.C_declaration
 // splicer end namespace.example::nested.class.ExClass2.C_declaration

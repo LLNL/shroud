@@ -9,6 +9,9 @@
 #ifndef PYFORWARDMODULE_HPP
 #define PYFORWARDMODULE_HPP
 #include <Python.h>
+#include "forward.hpp"
+#include "header1.hpp"
+#include "header2.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,9 +21,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace forward {
-    class Class3;  // forward declare
-}
 extern PyTypeObject PY_Class3_Type;
 // splicer begin class.Class3.C_declaration
 // splicer end class.Class3.C_declaration
@@ -38,9 +38,6 @@ PyObject *PP_Class3_to_Object(forward::Class3 *addr);
 int PP_Class3_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace forward {
-    class Class2;  // forward declare
-}
 extern PyTypeObject PY_Class2_Type;
 // splicer begin class.Class2.C_declaration
 // splicer end class.Class2.C_declaration

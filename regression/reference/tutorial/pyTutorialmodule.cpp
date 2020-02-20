@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyTutorialmodule.hpp"
-#include "tutorial.hpp"
 
 // splicer begin include
 // splicer end include

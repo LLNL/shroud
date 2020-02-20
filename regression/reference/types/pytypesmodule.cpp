@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytypesmodule.hpp"
-#include "types.hpp"
 
 // splicer begin include
 // splicer end include

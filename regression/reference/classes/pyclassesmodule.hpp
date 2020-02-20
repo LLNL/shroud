@@ -9,6 +9,7 @@
 #ifndef PYCLASSESMODULE_HPP
 #define PYCLASSESMODULE_HPP
 #include <Python.h>
+#include "classes.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,9 +19,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace classes {
-    class Class1;  // forward declare
-}
 extern PyTypeObject PY_Class1_Type;
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
@@ -40,9 +38,6 @@ PyObject *PP_Class1_to_Object(classes::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace classes {
-    class Singleton;  // forward declare
-}
 extern PyTypeObject PY_Singleton_Type;
 // splicer begin class.Singleton.C_declaration
 // splicer end class.Singleton.C_declaration

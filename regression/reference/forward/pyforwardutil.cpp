@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyforwardmodule.hpp"
-#include "forward.hpp"
-
 const char *PY_Class3_capsule_name = "Class3";
 const char *PY_Class2_capsule_name = "Class2";
 

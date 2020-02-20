@@ -9,6 +9,7 @@
 #ifndef PYTUTORIALMODULE_HPP
 #define PYTUTORIALMODULE_HPP
 #include <Python.h>
+#include "tutorial.hpp"
 // splicer begin header.include
 // splicer end header.include
 

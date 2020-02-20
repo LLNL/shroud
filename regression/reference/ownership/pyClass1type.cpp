@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyownershipmodule.hpp"
-#include "ownership.hpp"
 // splicer begin class.Class1.impl.include
 // splicer end class.Class1.impl.include
 

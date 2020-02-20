@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pypointersmodule.hpp"
-#include "pointers.hpp"
 #include <cstdlib>
 
 // splicer begin include

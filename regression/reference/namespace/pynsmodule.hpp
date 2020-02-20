@@ -9,6 +9,7 @@
 #ifndef PYNSMODULE_HPP
 #define PYNSMODULE_HPP
 #include <Python.h>
+#include "namespace.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,9 +19,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace outer {
-    class Cstruct1;  // forward declare
-}
 extern PyTypeObject PY_Cstruct1_Type;
 // splicer begin namespace.outer.class.Cstruct1.C_declaration
 // splicer end namespace.outer.class.Cstruct1.C_declaration
@@ -38,9 +36,6 @@ PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr);
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace nswork {
-    class ClassWork;  // forward declare
-}
 extern PyTypeObject PY_ClassWork_Type;
 // splicer begin namespace.nswork.class.ClassWork.C_declaration
 // splicer end namespace.nswork.class.ClassWork.C_declaration

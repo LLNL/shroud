@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include <vector>
 // splicer begin namespace.std.class.vector.impl.include
 // splicer end namespace.std.class.vector.impl.include
 

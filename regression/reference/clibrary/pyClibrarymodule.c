@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyClibrarymodule.h"
-#include "clibrary.h"
 
 // splicer begin include
 // splicer end include

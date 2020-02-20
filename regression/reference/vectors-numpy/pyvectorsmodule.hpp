@@ -9,6 +9,7 @@
 #ifndef PYVECTORSMODULE_HPP
 #define PYVECTORSMODULE_HPP
 #include <Python.h>
+#include "vectors.hpp"
 // splicer begin header.include
 // splicer end header.include
 

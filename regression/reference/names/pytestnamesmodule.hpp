@@ -9,6 +9,7 @@
 #ifndef PYTESTNAMESMODULE_HPP
 #define PYTESTNAMESMODULE_HPP
 #include <Python.h>
+#include <vector>
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,9 +19,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-namespace ns0 {
-    class Names;  // forward declare
-}
 extern PyTypeObject PY_Names_Type;
 // splicer begin namespace.ns0.class.Names.C_declaration
 // splicer end namespace.ns0.class.Names.C_declaration
@@ -38,9 +36,6 @@ PyObject *PP_Names_to_Object(ns0::Names *addr);
 int PP_Names_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace std {
-    class vector;  // forward declare
-}
 extern PyTypeObject PY_Vvv1_Type;
 // splicer begin namespace.std.class.vector.C_declaration
 // splicer end namespace.std.class.vector.C_declaration
@@ -58,9 +53,6 @@ PyObject *PP_Vvv1_to_Object(std::vector<int> *addr);
 int PP_Vvv1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace std {
-    class vector;  // forward declare
-}
 extern PyTypeObject PY_vector_double_Type;
 // splicer begin namespace.std.class.vector.C_declaration
 // splicer end namespace.std.class.vector.C_declaration
@@ -78,9 +70,6 @@ PyObject *PP_vector_double_to_Object(std::vector<double> *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace std {
-    class vector;  // forward declare
-}
 extern PyTypeObject PY_vector_instantiation5_Type;
 // splicer begin namespace.std.class.vector.C_declaration
 // splicer end namespace.std.class.vector.C_declaration
@@ -98,9 +87,6 @@ PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr);
 int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-namespace std {
-    class vector;  // forward declare
-}
 extern PyTypeObject PY_vector_instantiation3_Type;
 // splicer begin namespace.std.class.vector.C_declaration
 // splicer end namespace.std.class.vector.C_declaration
@@ -118,7 +104,6 @@ PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> 
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-class Names2;  // forward declare
 extern PyTypeObject PY_Names2_Type;
 // splicer begin class.Names2.C_declaration
 // splicer end class.Names2.C_declaration
@@ -136,7 +121,6 @@ PyObject *PP_Names2_to_Object(Names2 *addr);
 int PP_Names2_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-class twoTs;  // forward declare
 extern PyTypeObject PY_twoTs_0_Type;
 // splicer begin class.twoTs.C_declaration
 // splicer end class.twoTs.C_declaration
@@ -154,7 +138,6 @@ PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr);
 int PP_twoTs_0_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-class twoTs;  // forward declare
 extern PyTypeObject PY_twoTs_instantiation4_Type;
 // splicer begin class.twoTs.C_declaration
 // splicer end class.twoTs.C_declaration

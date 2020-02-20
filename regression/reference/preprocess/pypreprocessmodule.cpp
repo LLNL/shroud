@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pypreprocessmodule.hpp"
-#include "preprocess.hpp"
 
 // splicer begin include
 // splicer end include

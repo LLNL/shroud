@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include "templates.hpp"
-
 const char *PY_vector_int_capsule_name = "vector_int";
 const char *PY_vector_double_capsule_name = "vector_double";
 const char *PY_ImplWorker1_capsule_name = "ImplWorker1";

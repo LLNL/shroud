@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include "templates.hpp"
 // splicer begin class.user.impl.include
 // splicer end class.user.impl.include
 

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyUserLibrarymodule.hpp"
-
 const char *PY_ExClass1_capsule_name = "ExClass1";
 const char *PY_ExClass2_capsule_name = "ExClass2";
 

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include "implworker2.hpp"
 // splicer begin namespace.internal.class.ImplWorker2.impl.include
 // splicer end namespace.internal.class.ImplWorker2.impl.include
 

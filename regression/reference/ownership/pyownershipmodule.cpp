@@ -9,7 +9,6 @@
 #include "pyownershipmodule.hpp"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
-#include "ownership.hpp"
 
 // splicer begin include
 // splicer end include

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyenummodule.hpp"
-#include "enum.h"
 
 // splicer begin include
 // splicer end include
