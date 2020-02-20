@@ -13,7 +13,7 @@ namespace internal
     {
     public:
         static int getValue() {
-            return 1;
+            return 2;
         }
     };
 }  // namespace internal
