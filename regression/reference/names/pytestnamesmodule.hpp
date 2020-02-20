@@ -54,7 +54,7 @@ PyObject_HEAD
 } PY_Vvv1;
 
 extern const char *PY_Vvv1_capsule_name;
-PyObject *PP_Vvv1_to_Object(std::Vvv1 *addr);
+PyObject *PP_Vvv1_to_Object(std::vector<int> *addr);
 int PP_Vvv1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -74,7 +74,7 @@ PyObject_HEAD
 } PY_vector_double;
 
 extern const char *PY_vector_double_capsule_name;
-PyObject *PP_vector_double_to_Object(std::vector_double *addr);
+PyObject *PP_vector_double_to_Object(std::vector<double> *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -94,7 +94,7 @@ PyObject_HEAD
 } PY_vector_instantiation5;
 
 extern const char *PY_vector_instantiation5_capsule_name;
-PyObject *PP_vector_instantiation5_to_Object(std::vector_instantiation5 *addr);
+PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr);
 int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -114,7 +114,7 @@ PyObject_HEAD
 } PY_vector_instantiation3;
 
 extern const char *PY_vector_instantiation3_capsule_name;
-PyObject *PP_vector_instantiation3_to_Object(std::vector_instantiation3 *addr);
+PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> *addr);
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -150,7 +150,7 @@ PyObject_HEAD
 } PY_twoTs_0;
 
 extern const char *PY_twoTs_0_capsule_name;
-PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr);
+PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr);
 int PP_twoTs_0_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -168,7 +168,7 @@ PyObject_HEAD
 } PY_twoTs_instantiation4;
 
 extern const char *PY_twoTs_instantiation4_capsule_name;
-PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr);
+PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr);
 int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 

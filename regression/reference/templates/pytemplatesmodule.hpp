@@ -34,7 +34,7 @@ PyObject_HEAD
 } PY_vector_int;
 
 extern const char *PY_vector_int_capsule_name;
-PyObject *PP_vector_int_to_Object(std::vector_int *addr);
+PyObject *PP_vector_int_to_Object(std::vector<int> *addr);
 int PP_vector_int_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -54,7 +54,7 @@ PyObject_HEAD
 } PY_vector_double;
 
 extern const char *PY_vector_double_capsule_name;
-PyObject *PP_vector_double_to_Object(std::vector_double *addr);
+PyObject *PP_vector_double_to_Object(std::vector<double> *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
@@ -130,7 +130,7 @@ PyObject_HEAD
 } PY_user_int;
 
 extern const char *PY_user_int_capsule_name;
-PyObject *PP_user_int_to_Object(user_int *addr);
+PyObject *PP_user_int_to_Object(user<int> *addr);
 int PP_user_int_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 

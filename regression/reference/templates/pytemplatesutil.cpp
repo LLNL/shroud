@@ -17,7 +17,7 @@ const char *PY_Worker_capsule_name = "Worker";
 const char *PY_user_int_capsule_name = "user_int";
 
 
-PyObject *PP_vector_int_to_Object(std::vector_int *addr)
+PyObject *PP_vector_int_to_Object(std::vector<int> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -46,7 +46,7 @@ int PP_vector_int_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
-PyObject *PP_vector_double_to_Object(std::vector_double *addr)
+PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -162,7 +162,7 @@ int PP_Worker_from_Object(PyObject *obj, void **addr)
     // splicer end class.Worker.utility.from_object
 }
 
-PyObject *PP_user_int_to_Object(user_int *addr)
+PyObject *PP_user_int_to_Object(user<int> *addr)
 {
     // splicer begin class.user.utility.to_object
     PyObject *voidobj;

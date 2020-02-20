@@ -452,7 +452,7 @@ return rv;""",
         to_object = to_object.split("\n")
 
         proto = wformat(
-            "PyObject *{PY_to_object_func}({namespace_scope}{cxx_class} *addr)",
+            "PyObject *{PY_to_object_func}({namespace_scope}{cxx_type} *addr)",
             fmt,
         )
         self.py_class_decl.append(proto + ";")

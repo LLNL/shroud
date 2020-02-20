@@ -46,7 +46,7 @@ int PP_Names_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.ns0.class.Names.utility.from_object
 }
 
-PyObject *PP_Vvv1_to_Object(std::Vvv1 *addr)
+PyObject *PP_Vvv1_to_Object(std::vector<int> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -75,7 +75,7 @@ int PP_Vvv1_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
-PyObject *PP_vector_double_to_Object(std::vector_double *addr)
+PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -104,7 +104,7 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
-PyObject *PP_vector_instantiation5_to_Object(std::vector_instantiation5 *addr)
+PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -133,7 +133,7 @@ int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
-PyObject *PP_vector_instantiation3_to_Object(std::vector_instantiation3 *addr)
+PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
     PyObject *voidobj;
@@ -191,7 +191,7 @@ int PP_Names2_from_Object(PyObject *obj, void **addr)
     // splicer end class.Names2.utility.from_object
 }
 
-PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr)
+PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr)
 {
     // splicer begin class.twoTs.utility.to_object
     PyObject *voidobj;
@@ -220,7 +220,7 @@ int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
     // splicer end class.twoTs.utility.from_object
 }
 
-PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr)
+PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr)
 {
     // splicer begin class.twoTs.utility.to_object
     PyObject *voidobj;
