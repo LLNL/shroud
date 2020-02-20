@@ -641,6 +641,7 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
             "PY_array_arg": "numpy",
             "PY_capsule_destructor_function_template": "{PY_prefix}SHROUD_capsule_destructor",
+            "PY_create_generic": true,
             "PY_dtor_context_array_template": "{PY_prefix}SHROUD_capsule_context",
             "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
             "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",
