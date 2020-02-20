@@ -146,6 +146,7 @@
             "LUA_result": "rv",
             "LUA_state_var": "L",
             "LUA_this_call": "",
+            "PY_ARRAY_UNIQUE_SYMBOL": "SHROUD_STRUCT_ARRAY_API",
             "PY_PyObject": "PyObject",
             "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",

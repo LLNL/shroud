@@ -765,6 +765,10 @@ namespace_scope
     The current C++ namespace delimited with ``::`` and a trailing ``::``.
     Used when referencing identifiers: ``{namespace_scope}id``.
 
+PY_ARRAY_UNIQUE_SYMBOL
+   C preprocessor define used by NumPy to allow NumPy to be
+   imported by several source files.
+    
 PY_header_filename_suffix
    Suffix added to Python header files.
    Defaults to ``h``.

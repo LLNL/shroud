@@ -72,6 +72,7 @@
             "LUA_this_call": "",
             "LUA_used_param_state": false,
             "LUA_userdata_type": "XXLUA_userdata_type",
+            "PY_ARRAY_UNIQUE_SYMBOL": "SHROUD_USERLIBRARY_ARRAY_API",
             "PY_PyObject": "PyObject",
             "PY_capsule_destructor_function": "PP_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PP_SHROUD_capsule_context",
