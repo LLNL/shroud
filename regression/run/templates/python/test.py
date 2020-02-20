@@ -51,11 +51,11 @@ class Templates(unittest.TestCase):
         templates.FunctionTU(1.2, 2.2)
         # call function_tu(w1, w2)
 
-#        rv_int = templates.UseImplWorker_internal_implworker1()
-#        self.assertEqual(1, rv_int)
+        rv_int = templates.UseImplWorker_internal_ImplWorker1()
+        self.assertEqual(1, rv_int)
 
-#        rv_int = templates.UseImplWorker_internal_implworker2()
-#        self.assertEqual(1, rv_int)
+        rv_int = templates.UseImplWorker_internal_ImplWorker2()
+        self.assertEqual(2, rv_int)
         
 
 # creating a new test suite

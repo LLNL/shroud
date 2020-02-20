@@ -861,6 +861,8 @@ return 1;""",
             flist = overloaded_methods.setdefault(function.ast.name, [])
             if not function.options.wrap_python:
                 continue
+            if not function.options.PY_create_generic:
+                continue
             flist.append(function)
         self.overloaded_methods = overloaded_methods
 

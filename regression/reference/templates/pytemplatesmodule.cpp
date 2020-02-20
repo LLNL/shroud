@@ -87,6 +87,10 @@ PY_FunctionTU_1(
 // splicer end function.function_tu_1
 }
 
+static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
+"documentation"
+;
+
 /**
  * \brief Function which uses a templated T in the implemetation.
  *
@@ -105,6 +109,10 @@ PY_UseImplWorker_internal_ImplWorker1(
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }
+
+static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
+"documentation"
+;
 
 /**
  * \brief Function which uses a templated T in the implemetation.
@@ -162,49 +170,15 @@ PY_FunctionTU(
     return NULL;
 // splicer end function.function_tu
 }
-
-static char PY_UseImplWorker__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_UseImplWorker(
-  PyObject *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.use_impl_worker
-    Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
-    PyObject *rvobj;
-    if (SHT_nargs == 0) {
-        rvobj = PY_UseImplWorker_internal_ImplWorker1(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rvobj;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rvobj;
-        }
-        PyErr_Clear();
-    }
-    if (SHT_nargs == 0) {
-        rvobj = PY_UseImplWorker_internal_ImplWorker2(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rvobj;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rvobj;
-        }
-        PyErr_Clear();
-    }
-    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
-// splicer end function.use_impl_worker
-}
 static PyMethodDef PY_methods[] = {
+{"UseImplWorker_internal_ImplWorker1",
+    (PyCFunction)PY_UseImplWorker_internal_ImplWorker1, METH_NOARGS,
+    PY_UseImplWorker_internal_ImplWorker1__doc__},
+{"UseImplWorker_internal_ImplWorker2",
+    (PyCFunction)PY_UseImplWorker_internal_ImplWorker2, METH_NOARGS,
+    PY_UseImplWorker_internal_ImplWorker2__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
     PY_FunctionTU__doc__},
-{"UseImplWorker", (PyCFunction)PY_UseImplWorker,
-    METH_VARARGS|METH_KEYWORDS, PY_UseImplWorker__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
