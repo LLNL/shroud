@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyTutorialmodule.hpp"
-#include "tutorial.hpp"
 
 // splicer begin include
 // splicer end include
@@ -244,7 +243,7 @@ PY_TemplateArgument_int(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::TemplateArgument(arg);
+    tutorial::TemplateArgument<int>(arg);
     Py_RETURN_NONE;
 // splicer end function.template_argument_int
 }
@@ -266,7 +265,7 @@ PY_TemplateArgument_double(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::TemplateArgument(arg);
+    tutorial::TemplateArgument<double>(arg);
     Py_RETURN_NONE;
 // splicer end function.template_argument_double
 }

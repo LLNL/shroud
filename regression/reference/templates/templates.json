@@ -418,6 +418,7 @@
             "LUA_result": "rv",
             "LUA_state_var": "L",
             "LUA_this_call": "",
+            "PY_ARRAY_UNIQUE_SYMBOL": "SHROUD_TEMPLATES_ARRAY_API",
             "PY_PyObject": "PyObject",
             "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
             "PY_dtor_context_array": "PY_SHROUD_capsule_context",
@@ -1050,6 +1051,7 @@
                 "linenumber": 107,
                 "options": {
                     "F_create_generic": false,
+                    "PY_create_generic": false,
                     "__line__": 110,
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1165,6 +1167,7 @@
                 "linenumber": 107,
                 "options": {
                     "F_create_generic": false,
+                    "PY_create_generic": false,
                     "__line__": 110,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1284,6 +1287,7 @@
                 "linenumber": 107,
                 "options": {
                     "F_create_generic": false,
+                    "PY_create_generic": false,
                     "__line__": 110,
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2608,6 +2612,7 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
             "PY_array_arg": "numpy",
             "PY_capsule_destructor_function_template": "{PY_prefix}SHROUD_capsule_destructor",
+            "PY_create_generic": true,
             "PY_dtor_context_array_template": "{PY_prefix}SHROUD_capsule_context",
             "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
             "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",

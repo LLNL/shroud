@@ -251,7 +251,7 @@ F_create_generic
   return type (similar to overloaded functions based on return type in
   C++).
 
-.. should also be set to false when the templated argument in
+.. XXX should also be set to false when the templated argument in
    cxx_template is part of the implementation and not the interface.
 
 F_line_length
@@ -310,6 +310,18 @@ literalinclude2
   Each Fortran interface will be encluded in its own ``interface`` block.
   This is to provide the interface context when code is added to the
   documentation.
+
+PY_create_generic
+  Controls creation of a multi-dispatch function with
+  overloaded/templated functions.
+  It defaults to *true* for
+  most cases but will be set to *False* if a function is templated on
+  the return type since Fortran does not distiuguish generics based on
+  return type (similar to overloaded functions based on return type in
+  C++).
+
+.. XXX should also be set to false when the templated argument in
+   cxx_template is part of the implementation and not the interface.
 
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
@@ -765,6 +777,10 @@ namespace_scope
     The current C++ namespace delimited with ``::`` and a trailing ``::``.
     Used when referencing identifiers: ``{namespace_scope}id``.
 
+PY_ARRAY_UNIQUE_SYMBOL
+   C preprocessor define used by NumPy to allow NumPy to be
+   imported by several source files.
+    
 PY_header_filename_suffix
    Suffix added to Python header files.
    Defaults to ``h``.

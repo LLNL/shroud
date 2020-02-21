@@ -96,6 +96,7 @@ class Wrapp(util.WrapperMixin):
         self.define_arraydescr = []
         self.call_arraydescr = []
         self.need_blah = False
+        self.header_type_include = {}  # header files in module header
         update_typemap_for_language(self.language)
 
     def XXX_begin_output_file(self):
@@ -360,15 +361,14 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)
 
+        self.find_header(node, self.header_type_include)
+            
         # header declarations
         output = self.py_class_decl
         output.append("")
         output.append("// ------------------------------")
         if node.cpp_if:
             output.append("#" + node.cpp_if)
-        self.write_namespace(node, "begin", output)
-        output.append("class {};  // forward declare".format(node.name))
-        self.write_namespace(node, "end", output, comment=False)
 
         output.append(wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class))
 
@@ -380,7 +380,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             output,
             "typedef struct {{\n"
             "PyObject_HEAD\n"
-            "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
+            "+{namespace_scope}{cxx_type} * {PY_type_obj};\n"
             "int {PY_type_dtor};",
             fmt_class,
         )
@@ -452,7 +452,7 @@ return rv;""",
         to_object = to_object.split("\n")
 
         proto = wformat(
-            "PyObject *{PY_to_object_func}({namespace_scope}{cxx_class} *addr)",
+            "PyObject *{PY_to_object_func}({namespace_scope}{cxx_type} *addr)",
             fmt,
         )
         self.py_class_decl.append(proto + ";")
@@ -860,6 +860,8 @@ return 1;""",
         for function in functions:
             flist = overloaded_methods.setdefault(function.ast.name, [])
             if not function.options.wrap_python:
+                continue
+            if not function.options.PY_create_generic:
                 continue
             flist.append(function)
         self.overloaded_methods = overloaded_methods
@@ -1341,14 +1343,16 @@ return 1;""",
             elif CXX_subprogram == "subroutine":
                 append_format(
                     PY_code,
-                    "{PY_this_call}{function_name}({PY_call_list});",
+                    "{PY_this_call}{function_name}"
+                    "{CXX_template}({PY_call_list});",
                     fmt,
                 )
             else:
                 need_rv = True
                 append_format(
                     PY_code,
-                    "{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});",
+                    "{PY_rv_asgn}{PY_this_call}{function_name}"
+                    "{CXX_template}({PY_call_list});",
                     fmt,
                 )
 
@@ -1956,14 +1960,17 @@ return 1;""",
             output.append("#" + node.cpp_if)
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        #        if self.need_numpy:
-        #            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
-        #            output.append('#include "numpy/arrayobject.h"')
+        if self.need_numpy:
+            output.append('#define NO_IMPORT_ARRAY')
+            append_format(output,
+                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                          fmt)
+            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
+            output.append('#include "numpy/arrayobject.h"')
         self._push_splicer("impl")
 
         # Use headers from implementation
         header_impl_include = self.header_impl_include
-        self.find_header(node)
         header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
 
@@ -2128,12 +2135,13 @@ return 1;""",
                                None, body, fileinfo)
 
     def write_header(self, node):
-        """
+        """Write the header for the module.
         Args:
             node - ast.LibraryNode.
         """
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
+        self.find_header(node, self.header_type_include)
 
         output = []
 
@@ -2142,6 +2150,7 @@ return 1;""",
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
 
         output.append("#include <Python.h>")
+        self.write_headers(self.header_type_include, output)
 
         self._push_splicer("header")
         self._create_splicer("include", output)
@@ -2204,16 +2213,11 @@ extern PyObject *{PY_prefix}error_obj;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if top and self.need_numpy:
+            append_format(output,
+                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                          fmt)
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
-
-        # XXX - util.find_header
-        if node.cxx_header:
-            for include in node.cxx_header:
-                output.append('#include "%s"' % include)
-        else:
-            for include in self.newlibrary.cxx_header:
-                output.append('#include "%s"' % include)
 
         self.header_impl_include.update(self.helper_header["file"])
         self.write_headers(self.header_impl_include, output)
@@ -2288,11 +2292,6 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if len(self.capsule_order) > 1:
-            # header file may be needed to fully qualify types capsule destructors
-            for include in node.cxx_header:
-                output.append('#include "%s"' % include)
-            output.append("")
         output.extend(self.py_utility_definition)
         output.append("")
         output.extend(self.py_utility_functions)
@@ -3174,7 +3173,7 @@ py_statements = dict(
             "{npy_intp}"
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
-            "\t {numpy_type},\t {cxx_var});",
+            "\t {numpy_type},\t {cxx_addr}{cxx_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
         object_created=True,

@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pypointersmodule.h"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_POINTERS_ARRAY_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
-#include "pointers.hpp"
 
 // splicer begin include
 // splicer end include

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyUserLibrarymodule.hpp"
-#include "ExClass1.hpp"
 // splicer begin namespace.example::nested.class.ExClass1.impl.include
 // splicer end namespace.example::nested.class.ExClass1.impl.include
 

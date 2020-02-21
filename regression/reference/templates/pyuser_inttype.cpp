@@ -7,7 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include "templates.hpp"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TEMPLATES_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin class.user.impl.include
 // splicer end class.user.impl.include
 
@@ -57,7 +60,7 @@ PY_nested_double(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:nested",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
-    self->obj->nested(arg1, arg2);
+    self->obj->nested<double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end class.user.method.nested_double
 }

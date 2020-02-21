@@ -9,6 +9,7 @@
 #ifndef PYSTRUCTMODULE_HPP
 #define PYSTRUCTMODULE_HPP
 #include <Python.h>
+#include "struct.h"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,7 +19,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-class Cstruct1;  // forward declare
 extern PyTypeObject PY_Cstruct1_Type;
 // splicer begin class.Cstruct1.C_declaration
 // splicer end class.Cstruct1.C_declaration

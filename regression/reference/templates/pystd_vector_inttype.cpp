@@ -7,7 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include <vector>
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TEMPLATES_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin namespace.std.class.vector.impl.include
 // splicer end namespace.std.class.vector.impl.include
 
@@ -98,7 +101,7 @@ PY_at(
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
     int & SHCXX_rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHCXX_rv);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, &SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
 

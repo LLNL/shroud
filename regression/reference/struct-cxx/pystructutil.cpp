@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.hpp"
-#include "struct.h"
-
 const char *PY_Cstruct1_capsule_name = "Cstruct1";
 
 

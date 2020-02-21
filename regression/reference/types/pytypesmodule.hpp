@@ -9,6 +9,7 @@
 #ifndef PYTYPESMODULE_HPP
 #define PYTYPESMODULE_HPP
 #include <Python.h>
+#include "types.hpp"
 // splicer begin header.include
 // splicer end header.include
 

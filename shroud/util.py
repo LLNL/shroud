@@ -280,13 +280,13 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
-    def find_header(self, node):
+    def find_header(self, node, dct):
         """Add cxx_header for node or its parent to header_impl_include."""
         if node.cxx_header:
             for hdr in node.cxx_header:
-                self.header_impl_include[hdr] = True
+                dct[hdr] = True
         elif node.parent is not None:
-            self.find_header(node.parent)
+            self.find_header(node.parent, dct)
 
     def add_statements_headers(self, intent_blk):
         """Add headers required by intent_blk to self.header_impl_include.

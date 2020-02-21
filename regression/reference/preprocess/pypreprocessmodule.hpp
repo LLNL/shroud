@@ -9,6 +9,8 @@
 #ifndef PYPREPROCESSMODULE_HPP
 #define PYPREPROCESSMODULE_HPP
 #include <Python.h>
+#include "User2.hpp"
+#include "preprocess.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,7 +20,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-class User1;  // forward declare
 extern PyTypeObject PY_User1_Type;
 // splicer begin class.User1.C_declaration
 // splicer end class.User1.C_declaration
@@ -37,7 +38,6 @@ int PP_User1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
 #ifdef USE_USER2
-class User2;  // forward declare
 extern PyTypeObject PY_User2_Type;
 // splicer begin class.User2.C_declaration
 // splicer end class.User2.C_declaration

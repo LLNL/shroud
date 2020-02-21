@@ -7,7 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytemplatesmodule.hpp"
-#include "implworker1.hpp"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TEMPLATES_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin namespace.internal.class.ImplWorker1.impl.include
 // splicer end namespace.internal.class.ImplWorker1.impl.include
 

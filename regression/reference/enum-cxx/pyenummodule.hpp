@@ -9,6 +9,7 @@
 #ifndef PYENUMMODULE_HPP
 #define PYENUMMODULE_HPP
 #include <Python.h>
+#include "enum.h"
 // splicer begin header.include
 // splicer end header.include
 

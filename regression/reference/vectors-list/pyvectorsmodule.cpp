@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyvectorsmodule.hpp"
-#include "vectors.hpp"
 
 // splicer begin include
 // splicer end include

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyclassesmodule.hpp"
-#include "classes.hpp"
 // splicer begin class.Singleton.impl.include
 // splicer end class.Singleton.impl.include
 

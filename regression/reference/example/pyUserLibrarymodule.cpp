@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyUserLibrarymodule.hpp"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_USERLIBRARY_ARRAY_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 

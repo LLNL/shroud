@@ -9,6 +9,7 @@
 #ifndef PYOWNERSHIPMODULE_HPP
 #define PYOWNERSHIPMODULE_HPP
 #include <Python.h>
+#include "ownership.hpp"
 // splicer begin header.include
 // splicer end header.include
 
@@ -18,7 +19,6 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-class Class1;  // forward declare
 extern PyTypeObject PY_Class1_Type;
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration

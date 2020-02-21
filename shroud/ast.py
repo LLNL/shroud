@@ -496,6 +496,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_name_template="{function_name}",
             LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
 
+            PY_create_generic=True,
             PY_module_filename_template=(
                 "py{file_scope}module.{PY_impl_filename_suffix}"
             ),
@@ -605,6 +606,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_state_var="L",
             LUA_this_call="",
 
+            PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
+                self.library.upper()),
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
             PY_result="SHTPy_rv",  # Create PyObject for result

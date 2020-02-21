@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystringsmodule.hpp"
-#include "strings.hpp"
 
 // splicer begin include
 // splicer end include
