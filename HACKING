@@ -72,7 +72,7 @@ typemap.py
 todict.py
 whelpers.py
 util.py visitor.py  # no dependencies
-
+metadata.py
 
 
 
