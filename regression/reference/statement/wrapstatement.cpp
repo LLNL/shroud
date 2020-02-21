@@ -75,7 +75,6 @@ void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    return;
     // splicer end function.get_name_error_pattern_bufferify
 }
 

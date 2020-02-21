@@ -16,7 +16,6 @@ extern "C" {
 void LIB_outer2_outer_func()
 {
     outer2::outer_func();
-    return;
 }
 
 }  // extern "C"

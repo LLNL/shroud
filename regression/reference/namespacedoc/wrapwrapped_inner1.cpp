@@ -21,7 +21,6 @@ void WWW_inner1_worker()
 {
     // splicer begin namespace.inner1.function.worker
     outer::inner1::worker();
-    return;
     // splicer end namespace.inner1.function.worker
 }
 

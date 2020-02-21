@@ -21,7 +21,6 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
     // splicer begin function.save_pointer2
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    return;
     // splicer end function.save_pointer2
 }
 

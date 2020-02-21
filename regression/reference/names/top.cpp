@@ -43,7 +43,6 @@ void YYY_TES_function1()
 {
     // splicer begin function.function1
     function1();
-    return;
     // splicer end function.function1
 }
 
@@ -52,7 +51,6 @@ void c_name_special()
 {
     // splicer begin function.function2
     function2();
-    return;
     // splicer end function.function2
 }
 
@@ -61,7 +59,6 @@ void YYY_TES_function3a_0(int i)
 {
     // splicer begin function.function3a_0
     function3a(i);
-    return;
     // splicer end function.function3a_0
 }
 
@@ -70,7 +67,6 @@ void YYY_TES_function3a_1(long i)
 {
     // splicer begin function.function3a_1
     function3a(i);
-    return;
     // splicer end function.function3a_1
 }
 
@@ -99,7 +95,6 @@ void YYY_TES_fiveplus()
 {
     // splicer begin function.fiveplus
     fiveplus();
-    return;
     // splicer end function.fiveplus
 }
 
@@ -137,7 +132,6 @@ void c_name_instantiation1(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
     FunctionTU<int, long>(arg1, arg2);
-    return;
     // splicer end function.function_tu_0
 }
 
@@ -150,7 +144,6 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.function_tu_instantiation2
     FunctionTU<float, double>(arg1, arg2);
-    return;
     // splicer end function.function_tu_instantiation2
 }
 

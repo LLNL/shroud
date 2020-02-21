@@ -136,7 +136,6 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
     // splicer begin namespace.example::nested.class.ExClass1.method.dtor
     delete SH_this;
     self->addr = NULL;
-    return;
     // splicer end namespace.example::nested.class.ExClass1.method.dtor
 }
 
@@ -174,7 +173,6 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
-    return;
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }
 
@@ -204,7 +202,6 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
     } else {
         ShroudStrCopy(name, Nname, SHCXX_rv.data(), SHCXX_rv.size());
     }
-    return;
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
 }
 

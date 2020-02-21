@@ -77,7 +77,6 @@ void TUT_no_return_no_arguments()
 {
     // splicer begin function.no_return_no_arguments
     tutorial::NoReturnNoArguments();
-    return;
     // splicer end function.no_return_no_arguments
 }
 // end TUT_no_return_no_arguments
@@ -105,7 +104,6 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
     ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);
-    return;
     // splicer end function.concatenate_strings_bufferify
 }
 
@@ -148,7 +146,6 @@ void TUT_overloaded_function_from_name(const char * name)
     // splicer begin function.overloaded_function_from_name
     const std::string SHCXX_name(name);
     tutorial::OverloadedFunction(SHCXX_name);
-    return;
     // splicer end function.overloaded_function_from_name
 }
 
@@ -159,7 +156,6 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
     // splicer begin function.overloaded_function_from_name_bufferify
     const std::string SHCXX_name(name, Lname);
     tutorial::OverloadedFunction(SHCXX_name);
-    return;
     // splicer end function.overloaded_function_from_name_bufferify
 }
 
@@ -168,7 +164,6 @@ void TUT_overloaded_function_from_index(int indx)
 {
     // splicer begin function.overloaded_function_from_index
     tutorial::OverloadedFunction(indx);
-    return;
     // splicer end function.overloaded_function_from_index
 }
 
@@ -177,7 +172,6 @@ void TUT_template_argument_int(int arg)
 {
     // splicer begin function.template_argument_int
     tutorial::TemplateArgument<int>(arg);
-    return;
     // splicer end function.template_argument_int
 }
 
@@ -186,7 +180,6 @@ void TUT_template_argument_double(double arg)
 {
     // splicer begin function.template_argument_double
     tutorial::TemplateArgument<double>(arg);
-    return;
     // splicer end function.template_argument_double
 }
 
@@ -213,7 +206,6 @@ void TUT_fortran_generic_overloaded_0()
 {
     // splicer begin function.fortran_generic_overloaded_0
     tutorial::FortranGenericOverloaded();
-    return;
     // splicer end function.fortran_generic_overloaded_0
 }
 
@@ -223,7 +215,6 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
     // splicer begin function.fortran_generic_overloaded_1
     const std::string SHCXX_name(name);
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    return;
     // splicer end function.fortran_generic_overloaded_1
 }
 
@@ -234,7 +225,6 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     // splicer begin function.fortran_generic_overloaded_1_bufferify
     const std::string SHCXX_name(name, Lname);
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    return;
     // splicer end function.fortran_generic_overloaded_1_bufferify
 }
 
@@ -337,7 +327,6 @@ void TUT_get_min_max(int * min, int * max)
 {
     // splicer begin function.get_min_max
     tutorial::getMinMax(*min, *max);
-    return;
     // splicer end function.get_min_max
 }
 // end TUT_get_min_max
@@ -378,7 +367,6 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    return;
     // splicer end function.last_function_called_bufferify
 }
 

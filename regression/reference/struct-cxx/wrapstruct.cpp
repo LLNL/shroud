@@ -105,7 +105,6 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
         arg));
     acceptStructOutPtr(SHCXX_arg, i, d);
-    return;
     // splicer end function.accept_struct_out_ptr
 }
 
@@ -116,7 +115,6 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
         arg));
     acceptStructInOutPtr(SHCXX_arg);
-    return;
     // splicer end function.accept_struct_in_out_ptr
 }
 

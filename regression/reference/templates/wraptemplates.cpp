@@ -31,7 +31,6 @@ void TEM_function_tu_0(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
     FunctionTU<int, long>(arg1, arg2);
-    return;
     // splicer end function.function_tu_0
 }
 
@@ -43,7 +42,6 @@ void TEM_function_tu_1(float arg1, double arg2)
 {
     // splicer begin function.function_tu_1
     FunctionTU<float, double>(arg1, arg2);
-    return;
     // splicer end function.function_tu_1
 }
 

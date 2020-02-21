@@ -23,7 +23,6 @@ void WWW_inner3_worker3()
 {
     // splicer begin function.worker3
     outer::inner3::worker3();
-    return;
     // splicer end function.worker3
 }
 
@@ -32,7 +31,6 @@ void WWW_worker()
 {
     // splicer begin function.worker
     outer::worker();
-    return;
     // splicer end function.worker
 }
 

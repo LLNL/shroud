@@ -61,7 +61,6 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
     classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
         (arg.addr);
     classes::passClassByValue(*SHCXX_arg);
-    return;
     // splicer end function.pass_class_by_value
 }
 
@@ -144,7 +143,6 @@ void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag
     classes::set_global_flag(arg);
-    return;
     // splicer end function.set_global_flag
 }
 
@@ -178,7 +176,6 @@ void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    return;
     // splicer end function.last_function_called_bufferify
 }
 

@@ -21,7 +21,6 @@ void TES_capi_worker1()
 {
     // splicer begin namespace.CAPI.function.worker1
     CAPI::Worker1();
-    return;
     // splicer end namespace.CAPI.function.worker1
 }
 

@@ -155,7 +155,6 @@ void OWN_create_class_static(int flag)
 {
     // splicer begin function.create_class_static
     createClassStatic(flag);
-    return;
     // splicer end function.create_class_static
 }
 

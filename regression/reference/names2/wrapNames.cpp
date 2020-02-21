@@ -23,7 +23,6 @@ void NAM_afunction()
 {
     // splicer begin function.afunction
     ignore1::ignore2::AFunction();
-    return;
     // splicer end function.afunction
 }
 

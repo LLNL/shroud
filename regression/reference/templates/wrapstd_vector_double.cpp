@@ -35,7 +35,6 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
     // splicer begin namespace.std.class.vector.method.dtor
     delete SH_this;
     self->addr = NULL;
-    return;
     // splicer end namespace.std.class.vector.method.dtor
 }
 
@@ -46,7 +45,6 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
         static_cast<std::vector<double> *>(self->addr);
     // splicer begin namespace.std.class.vector.method.push_back
     SH_this->push_back(*value);
-    return;
     // splicer end namespace.std.class.vector.method.push_back
 }
 

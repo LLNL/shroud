@@ -54,7 +54,6 @@ void CLA_Class1_delete(CLA_Class1 * self)
     // splicer begin class.Class1.method.delete
     delete SH_this;
     self->addr = NULL;
-    return;
     // splicer end class.Class1.method.delete
 }
 // end CLA_Class1_delete
@@ -107,7 +106,6 @@ void CLA_Class1_return_this(CLA_Class1 * self)
         static_cast<classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.return_this
     SH_this->returnThis();
-    return;
     // splicer end class.Class1.method.return_this
 }
 // end CLA_Class1_return_this

@@ -16,7 +16,6 @@ extern "C" {
 void LIB_one_two_function1()
 {
     one::two::function1();
-    return;
 }
 
 }  // extern "C"

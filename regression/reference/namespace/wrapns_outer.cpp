@@ -22,7 +22,6 @@ void NS_outer_one()
 {
     // splicer begin namespace.outer.function.one
     outer::One();
-    return;
     // splicer end namespace.outer.function.one
 }
 

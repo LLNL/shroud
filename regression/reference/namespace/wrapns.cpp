@@ -67,7 +67,6 @@ void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
-    return;
     // splicer end function.last_function_called_bufferify
 }
 
@@ -76,7 +75,6 @@ void NS_one()
 {
     // splicer begin function.one
     One();
-    return;
     // splicer end function.one
 }
 

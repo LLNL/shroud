@@ -25,7 +25,6 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
     // splicer begin function.rank2_in
     int * arg = static_cast<int *>(const_cast<void *>(Darg->addr.base));
     Rank2In(arg);
-    return;
     // splicer end function.rank2_in
 }
 

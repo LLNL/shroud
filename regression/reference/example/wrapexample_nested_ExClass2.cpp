@@ -116,7 +116,6 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
     // splicer begin namespace.example::nested.class.ExClass2.method.dtor
     delete SH_this;
     self->addr = NULL;
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.dtor
 }
 
@@ -147,7 +146,6 @@ void AA_example_nested_ExClass2_get_name_bufferify(
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.get_name_bufferify
 }
 
@@ -173,7 +171,6 @@ void AA_example_nested_ExClass2_get_name2_bufferify(
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name2_bufferify
     const std::string & SHCXX_rv = SH_this->getName2();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.get_name2_bufferify
 }
 
@@ -199,7 +196,6 @@ void AA_example_nested_ExClass2_get_name3_bufferify(
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name3_bufferify
     std::string & SHCXX_rv = SH_this->getName3();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.get_name3_bufferify
 }
 
@@ -225,7 +221,6 @@ void AA_example_nested_ExClass2_get_name4_bufferify(
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name4_bufferify
     std::string & SHCXX_rv = SH_this->getName4();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.get_name4_bufferify
 }
 
@@ -271,7 +266,6 @@ void AA_example_nested_ExClass2_declare_0(
     // splicer begin namespace.example::nested.class.ExClass2.method.declare_0
     TypeID SHCXX_type = getTypeID(type);
     SH_this->declare(SHCXX_type);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.declare_0
 }
 
@@ -284,7 +278,6 @@ void AA_example_nested_ExClass2_declare_1(
     // splicer begin namespace.example::nested.class.ExClass2.method.declare_1
     TypeID SHCXX_type = getTypeID(type);
     SH_this->declare(SHCXX_type, len);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.declare_1
 }
 
@@ -296,7 +289,6 @@ void AA_example_nested_ExClass2_destroyall(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.destroyall
     SH_this->destroyall();
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.destroyall
 }
 
@@ -321,7 +313,6 @@ void AA_example_nested_ExClass2_set_value_int(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
     SH_this->setValue<int>(value);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.set_value_int
 }
 
@@ -333,7 +324,6 @@ void AA_example_nested_ExClass2_set_value_long(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
     SH_this->setValue<long>(value);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.set_value_long
 }
 
@@ -345,7 +335,6 @@ void AA_example_nested_ExClass2_set_value_float(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
     SH_this->setValue<float>(value);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.set_value_float
 }
 
@@ -357,7 +346,6 @@ void AA_example_nested_ExClass2_set_value_double(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
     SH_this->setValue<double>(value);
-    return;
     // splicer end namespace.example::nested.class.ExClass2.method.set_value_double
 }
 

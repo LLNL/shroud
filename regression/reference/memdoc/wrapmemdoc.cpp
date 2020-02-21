@@ -71,7 +71,6 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);
-    return;
     // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify
