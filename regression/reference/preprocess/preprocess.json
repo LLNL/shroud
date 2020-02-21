@@ -578,7 +578,7 @@
             "library_lower": "preprocess",
             "library_upper": "PREPROCESS",
             "namespace_scope": "",
-            "npy_dims": "NULL",
+            "npy_dims": "nullptr",
             "npy_intp": "",
             "npy_ndims": "0",
             "nullptr": "nullptr",

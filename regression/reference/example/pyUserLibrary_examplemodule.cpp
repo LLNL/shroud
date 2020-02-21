@@ -29,7 +29,7 @@
 // splicer begin namespace.example.additional_functions
 // splicer end namespace.example.additional_functions
 static PyMethodDef PP_methods[] = {
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

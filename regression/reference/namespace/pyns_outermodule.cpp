@@ -47,7 +47,7 @@ PY_One(
 }
 static PyMethodDef PY_methods[] = {
 {"One", (PyCFunction)PY_One, METH_NOARGS, PY_One__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

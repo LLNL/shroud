@@ -35,7 +35,7 @@ PyObject *PP_init_userlibrary_example(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 static PyMethodDef PP_methods[] = {
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -74,14 +74,14 @@ static struct PyModuleDef moduledef = {
     PP__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PP_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     userlibrary_traverse, /* m_traverse */
     userlibrary_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

@@ -47,7 +47,7 @@ PY_init_ns1(
 }
 static PyMethodDef PY_methods[] = {
 {"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

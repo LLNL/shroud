@@ -64,7 +64,7 @@ static PyMethodDef PY_Singleton_methods[] = {
         METH_STATIC|METH_NOARGS, PY_getReference__doc__},
     // splicer begin class.Singleton.PyMethodDef
     // splicer end class.Singleton.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Singleton__doc__[] =
@@ -73,7 +73,7 @@ static char Singleton__doc__[] =
 
 /* static */
 PyTypeObject PY_Singleton_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "classes.Singleton",                       /* tp_name */
     sizeof(PY_Singleton),         /* tp_basicsize */
     0,                              /* tp_itemsize */

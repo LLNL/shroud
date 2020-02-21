@@ -30,7 +30,7 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 static PyMethodDef PY_methods[] = {
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -69,14 +69,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     preprocess_traverse, /* m_traverse */
     preprocess_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

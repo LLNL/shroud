@@ -47,7 +47,7 @@ PY_worker(
 }
 static PyMethodDef PY_methods[] = {
 {"worker", (PyCFunction)PY_worker, METH_NOARGS, PY_worker__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

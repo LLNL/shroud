@@ -39,7 +39,7 @@ PY_twoTs_0_tp_del (PY_twoTs_0 *self)
 static PyMethodDef PY_twoTs_0_methods[] = {
     // splicer begin class.twoTs.PyMethodDef
     // splicer end class.twoTs.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char twoTs_0__doc__[] =
@@ -48,7 +48,7 @@ static char twoTs_0__doc__[] =
 
 /* static */
 PyTypeObject PY_twoTs_0_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.twoTs_0",                       /* tp_name */
     sizeof(PY_twoTs_0),         /* tp_basicsize */
     0,                              /* tp_itemsize */

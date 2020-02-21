@@ -29,7 +29,7 @@
 // splicer begin namespace.nswork.additional_functions
 // splicer end namespace.nswork.additional_functions
 static PyMethodDef PY_methods[] = {
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

@@ -43,7 +43,7 @@ PY_ImplWorker1_tp_del (PY_ImplWorker1 *self)
 static PyMethodDef PY_ImplWorker1_methods[] = {
     // splicer begin namespace.internal.class.ImplWorker1.PyMethodDef
     // splicer end namespace.internal.class.ImplWorker1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char ImplWorker1__doc__[] =
@@ -52,7 +52,7 @@ static char ImplWorker1__doc__[] =
 
 /* static */
 PyTypeObject PY_ImplWorker1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "templates.ImplWorker1",                       /* tp_name */
     sizeof(PY_ImplWorker1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

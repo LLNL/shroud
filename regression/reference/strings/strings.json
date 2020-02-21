@@ -116,7 +116,7 @@
             "library_lower": "strings",
             "library_upper": "STRINGS",
             "namespace_scope": "",
-            "npy_dims": "NULL",
+            "npy_dims": "nullptr",
             "npy_intp": "",
             "npy_ndims": "0",
             "nullptr": "nullptr",

@@ -73,14 +73,14 @@ PY_ReturnIntPtrPointer(
     int * SHCXX_rv = ReturnIntPtrPointer();
 
     // post_call
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHCXX_rv);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT, SHCXX_rv);
     if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_pointer
 }
 
@@ -112,7 +112,7 @@ PY_ReturnIntPtrDimPointer(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_pointer
 }
 
@@ -144,7 +144,7 @@ PY_ReturnIntPtrDimAlloc(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_alloc
 }
 
@@ -176,7 +176,7 @@ PY_ReturnIntPtrDimDefault(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_default
 }
 
@@ -208,7 +208,7 @@ PY_ReturnIntPtrDimPointerNew(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_pointer_new
 }
 
@@ -240,7 +240,7 @@ PY_ReturnIntPtrDimAllocNew(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_alloc_new
 }
 
@@ -272,7 +272,7 @@ PY_ReturnIntPtrDimDefaultNew(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_int_ptr_dim_default_new
 }
 
@@ -291,11 +291,11 @@ PY_createClassStatic(
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:createClassStatic",
         const_cast<char **>(SHT_kwlist), &flag))
-        return NULL;
+        return nullptr;
 
     createClassStatic(flag);
     Py_RETURN_NONE;
@@ -343,11 +343,11 @@ PY_getClassNew(
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getClassNew",
         const_cast<char **>(SHT_kwlist), &flag))
-        return NULL;
+        return nullptr;
 
     Class1 * SHCXX_rv = getClassNew(flag);
 
@@ -381,7 +381,7 @@ static PyMethodDef PY_methods[] = {
     PY_getClassStatic__doc__},
 {"getClassNew", (PyCFunction)PY_getClassNew, METH_VARARGS|METH_KEYWORDS,
     PY_getClassNew__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -420,14 +420,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     ownership_traverse, /* m_traverse */
     ownership_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

@@ -68,11 +68,11 @@ PY_func1(
     TUT_Class1 arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:func1",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : nullptr;
@@ -97,11 +97,11 @@ PY_acceptClass3(
     PY_Class3 * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:acceptClass3",
         const_cast<char **>(SHT_kwlist), &PY_Class3_Type, &SHPy_arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
@@ -119,7 +119,7 @@ static PyMethodDef PY_Class2_methods[] = {
         METH_VARARGS|METH_KEYWORDS, PY_acceptClass3__doc__},
     // splicer begin class.Class2.PyMethodDef
     // splicer end class.Class2.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Class2__doc__[] =
@@ -128,7 +128,7 @@ static char Class2__doc__[] =
 
 /* static */
 PyTypeObject PY_Class2_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "forward.Class2",                       /* tp_name */
     sizeof(PY_Class2),         /* tp_basicsize */
     0,                              /* tp_itemsize */

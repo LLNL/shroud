@@ -49,11 +49,11 @@ PY_passChar(
     char status;
     const char *SHT_kwlist[] = {
         "status",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:passChar",
         const_cast<char **>(SHT_kwlist), &status))
-        return NULL;
+        return nullptr;
 
     passChar(status);
     Py_RETURN_NONE;
@@ -109,12 +109,12 @@ PY_passCharPtr(
     const char * src;
     const char *SHT_kwlist[] = {
         "src",
-        NULL };
+        nullptr };
     PyObject * SHPy_dest = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
         const_cast<char **>(SHT_kwlist), &src))
-        return NULL;
+        return nullptr;
 
     // pre_call
     char dest[40];  // intent(out)
@@ -149,12 +149,12 @@ PY_passCharPtrInOut(
     char * s;
     const char *SHT_kwlist[] = {
         "s",
-        NULL };
+        nullptr };
     PyObject * SHPy_s = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut",
         const_cast<char **>(SHT_kwlist), &s))
-        return NULL;
+        return nullptr;
 
     passCharPtrInOut(s);
 
@@ -631,12 +631,12 @@ PY_acceptStringConstReference(
     const char * arg1;
     const char *SHT_kwlist[] = {
         "arg1",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringConstReference",
         const_cast<char **>(SHT_kwlist), &arg1))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_arg1(arg1);
@@ -702,13 +702,13 @@ PY_acceptStringReference(
     char * arg1;
     const char *SHT_kwlist[] = {
         "arg1",
-        NULL };
+        nullptr };
     PyObject * SHPy_arg1 = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringReference", const_cast<char **>(SHT_kwlist), 
         &arg1))
-        return NULL;
+        return nullptr;
 
     // post_parse
     std::string SH_arg1(arg1);
@@ -742,13 +742,13 @@ PY_acceptStringPointer(
     char * arg1;
     const char *SHT_kwlist[] = {
         "arg1",
-        NULL };
+        nullptr };
     PyObject * SHPy_arg1 = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringPointer", const_cast<char **>(SHT_kwlist), 
         &arg1))
-        return NULL;
+        return nullptr;
 
     // post_parse
     std::string SH_arg1(arg1);
@@ -810,11 +810,11 @@ PY_explicit1(
     char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1",
         const_cast<char **>(SHT_kwlist), &name))
-        return NULL;
+        return nullptr;
 
     explicit1(name);
     Py_RETURN_NONE;
@@ -840,11 +840,11 @@ PY_CpassChar(
     char status;
     const char *SHT_kwlist[] = {
         "status",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:CpassChar",
         const_cast<char **>(SHT_kwlist), &status))
-        return NULL;
+        return nullptr;
 
     CpassChar(status);
     Py_RETURN_NONE;
@@ -937,7 +937,7 @@ static PyMethodDef PY_methods[] = {
     PY_CpassChar__doc__},
 {"CreturnChar", (PyCFunction)PY_CreturnChar, METH_NOARGS,
     PY_CreturnChar__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -976,14 +976,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     strings_traverse, /* m_traverse */
     strings_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

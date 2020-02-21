@@ -64,7 +64,7 @@ PY_Class1_tp_init_flag(
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:new",
         const_cast<char **>(SHT_kwlist), &flag))
@@ -126,12 +126,12 @@ PY_equivalent(
     PY_Class1 * SHPy_obj2;
     const char *SHT_kwlist[] = {
         "obj2",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:equivalent",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
@@ -146,7 +146,7 @@ PY_equivalent(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end class.Class1.method.equivalent
 }
 
@@ -191,12 +191,12 @@ PY_directionFunc(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     classes::Class1::DIRECTION SH_arg =
@@ -274,13 +274,13 @@ static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
 }
 
 static PyGetSetDef PY_Class1_getset[] = {
-    {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)NULL,
+    {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)nullptr,
         nullptr, nullptr},
     {(char *)"test", (getter)PY_Class1_test_getter,
         (setter)PY_Class1_test_setter, nullptr, nullptr},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
-    {NULL}            /* sentinel */
+    {nullptr}            /* sentinel */
 };
 static PyMethodDef PY_Class1_methods[] = {
     {"Method1", (PyCFunction)PY_Method1, METH_NOARGS,
@@ -293,7 +293,7 @@ static PyMethodDef PY_Class1_methods[] = {
         METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Class1__doc__[] =
@@ -302,7 +302,7 @@ static char Class1__doc__[] =
 
 /* static */
 PyTypeObject PY_Class1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "classes.Class1",                       /* tp_name */
     sizeof(PY_Class1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

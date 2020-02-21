@@ -43,7 +43,7 @@ PY_Worker_tp_del (PY_Worker *self)
 static PyMethodDef PY_Worker_methods[] = {
     // splicer begin class.Worker.PyMethodDef
     // splicer end class.Worker.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Worker__doc__[] =
@@ -52,7 +52,7 @@ static char Worker__doc__[] =
 
 /* static */
 PyTypeObject PY_Worker_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "templates.Worker",                       /* tp_name */
     sizeof(PY_Worker),         /* tp_basicsize */
     0,                              /* tp_itemsize */

@@ -39,7 +39,7 @@ PY_vector_instantiation3_tp_del (PY_vector_instantiation3 *self)
 static PyMethodDef PY_vector_instantiation3_methods[] = {
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char vector_instantiation3__doc__[] =
@@ -48,7 +48,7 @@ static char vector_instantiation3__doc__[] =
 
 /* static */
 PyTypeObject PY_vector_instantiation3_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.std.vector_instantiation3",                       /* tp_name */
     sizeof(PY_vector_instantiation3),         /* tp_basicsize */
     0,                              /* tp_itemsize */

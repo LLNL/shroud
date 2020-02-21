@@ -51,11 +51,11 @@ PY_FunctionTU_0(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
     FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_0
@@ -77,11 +77,11 @@ PY_FunctionTU_1(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
     FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_1
@@ -167,7 +167,7 @@ PY_FunctionTU(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.function_tu
 }
 static PyMethodDef PY_methods[] = {
@@ -179,7 +179,7 @@ static PyMethodDef PY_methods[] = {
     PY_UseImplWorker_internal_ImplWorker2__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
     PY_FunctionTU__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -218,14 +218,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     templates_traverse, /* m_traverse */
     templates_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

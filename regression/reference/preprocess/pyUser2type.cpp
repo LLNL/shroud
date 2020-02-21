@@ -63,11 +63,11 @@ PY_exfunc_1(
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:exfunc",
         const_cast<char **>(SHT_kwlist), &flag))
-        return NULL;
+        return nullptr;
 
     self->obj->exfunc(flag);
     Py_RETURN_NONE;
@@ -113,7 +113,7 @@ PY_exfunc(
     }
 #endif // ifndef USE_CLASS3_A
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end class.User2.method.exfunc
 }
 // splicer begin class.User2.impl.after_methods
@@ -123,7 +123,7 @@ static PyMethodDef PY_User2_methods[] = {
         PY_exfunc__doc__},
     // splicer begin class.User2.PyMethodDef
     // splicer end class.User2.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char User2__doc__[] =
@@ -132,7 +132,7 @@ static char User2__doc__[] =
 
 /* static */
 PyTypeObject PY_User2_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "preprocess.User2",                       /* tp_name */
     sizeof(PY_User2),         /* tp_basicsize */
     0,                              /* tp_itemsize */

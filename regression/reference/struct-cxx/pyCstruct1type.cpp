@@ -48,7 +48,7 @@ PY_Cstruct1_tp_init(
     const char *SHT_kwlist[] = {
         "ifield",
         "dfield",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:Cstruct1_ctor",
         const_cast<char **>(SHT_kwlist), &ifield, &dfield))
@@ -113,12 +113,12 @@ static PyGetSetDef PY_Cstruct1_getset[] = {
         (setter)PY_Cstruct1_dfield_setter, nullptr, nullptr},
     // splicer begin class.Cstruct1.PyGetSetDef
     // splicer end class.Cstruct1.PyGetSetDef
-    {NULL}            /* sentinel */
+    {nullptr}            /* sentinel */
 };
 static PyMethodDef PY_Cstruct1_methods[] = {
     // splicer begin class.Cstruct1.PyMethodDef
     // splicer end class.Cstruct1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Cstruct1__doc__[] =
@@ -127,7 +127,7 @@ static char Cstruct1__doc__[] =
 
 /* static */
 PyTypeObject PY_Cstruct1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "cstruct.Cstruct1",                       /* tp_name */
     sizeof(PY_Cstruct1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

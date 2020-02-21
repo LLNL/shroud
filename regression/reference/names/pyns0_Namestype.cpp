@@ -77,7 +77,7 @@ static PyMethodDef PY_Names_methods[] = {
         PY_method2__doc__},
     // splicer begin namespace.ns0.class.Names.PyMethodDef
     // splicer end namespace.ns0.class.Names.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Names__doc__[] =
@@ -86,7 +86,7 @@ static char Names__doc__[] =
 
 /* static */
 PyTypeObject PY_Names_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.ns0.Names",                       /* tp_name */
     sizeof(PY_Names),         /* tp_basicsize */
     0,                              /* tp_itemsize */

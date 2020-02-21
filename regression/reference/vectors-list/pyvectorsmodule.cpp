@@ -91,12 +91,12 @@ PY_vector_sum(
     PyObject * SHTPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
-        return NULL;
+        return nullptr;
     {
         // pre_call
         std::vector<int> SH_arg;
@@ -113,7 +113,7 @@ PY_vector_sum(
     }
 
 fail:
-    return NULL;
+    return nullptr;
 // splicer end function.vector_sum
 }
 
@@ -150,7 +150,7 @@ PY_vector_iota_out(
 
 fail:
     Py_XDECREF(SHPy_arg);
-    return NULL;
+    return nullptr;
 // splicer end function.vector_iota_out
 }
 
@@ -187,7 +187,7 @@ PY_vector_iota_out_d(
 
 fail:
     Py_XDECREF(SHPy_arg);
-    return NULL;
+    return nullptr;
 // splicer end function.vector_iota_out_d
 }
 
@@ -211,12 +211,12 @@ PY_ReturnVectorAlloc(
     int n;
     const char *SHT_kwlist[] = {
         "n",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ReturnVectorAlloc",
         const_cast<char **>(SHT_kwlist), &n))
-        return NULL;
+        return nullptr;
 
     std::vector<int> SHCXX_rv = ReturnVectorAlloc(n);
 
@@ -228,7 +228,7 @@ PY_ReturnVectorAlloc(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end function.return_vector_alloc
 }
 static PyMethodDef PY_methods[] = {
@@ -240,7 +240,7 @@ static PyMethodDef PY_methods[] = {
     PY_vector_iota_out_d__doc__},
 {"ReturnVectorAlloc", (PyCFunction)PY_ReturnVectorAlloc,
     METH_VARARGS|METH_KEYWORDS, PY_ReturnVectorAlloc__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -279,14 +279,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     vectors_traverse, /* m_traverse */
     vectors_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

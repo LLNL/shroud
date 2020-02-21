@@ -70,11 +70,11 @@ PY_push_back(
     double value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:push_back",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
     self->obj->push_back(value);
     Py_RETURN_NONE;
 // splicer end namespace.std.class.vector.method.push_back
@@ -94,21 +94,21 @@ PY_at(
     size_t n;
     const char *SHT_kwlist[] = {
         "n",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:at",
         const_cast<char **>(SHT_kwlist), &n))
-        return NULL;
+        return nullptr;
     double & SHCXX_rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE,
+    SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_DOUBLE,
         &SHCXX_rv);
     if (SHTPy_rv == nullptr) goto fail;
     return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end namespace.std.class.vector.method.at
 }
 // splicer begin namespace.std.class.vector.impl.after_methods
@@ -120,7 +120,7 @@ static PyMethodDef PY_vector_double_methods[] = {
         PY_at__doc__},
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char vector_double__doc__[] =
@@ -129,7 +129,7 @@ static char vector_double__doc__[] =
 
 /* static */
 PyTypeObject PY_vector_double_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "templates.vector_double",                       /* tp_name */
     sizeof(PY_vector_double),         /* tp_basicsize */
     0,                              /* tp_itemsize */

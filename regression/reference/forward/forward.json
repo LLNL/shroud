@@ -573,7 +573,7 @@
             "library_lower": "forward",
             "library_upper": "FORWARD",
             "namespace_scope": "",
-            "npy_dims": "NULL",
+            "npy_dims": "nullptr",
             "npy_intp": "",
             "npy_ndims": "0",
             "nullptr": "nullptr",

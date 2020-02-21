@@ -55,7 +55,7 @@ PP_ExClass2_tp_getattr (PP_ExClass2 *self, char *name)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.getattr
     PyErr_SetString(PyExc_NotImplementedError, "getattr");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.getattr
 }
 static int
@@ -71,7 +71,7 @@ PP_ExClass2_tp_getattro (PP_ExClass2 *self, PyObject *name)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.getattro
     PyErr_SetString(PyExc_NotImplementedError, "getattro");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.getattro
 }
 static int
@@ -87,7 +87,7 @@ PP_ExClass2_tp_repr (PP_ExClass2 *self)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.repr
     PyErr_SetString(PyExc_NotImplementedError, "repr");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.repr
 }
 static long
@@ -103,7 +103,7 @@ PP_ExClass2_tp_call (PP_ExClass2 *self, PyObject *args, PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.call
     PyErr_SetString(PyExc_NotImplementedError, "call");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.call
 }
 static PyObject *
@@ -111,7 +111,7 @@ PP_ExClass2_tp_str (PP_ExClass2 *self)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.str
     PyErr_SetString(PyExc_NotImplementedError, "str");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.str
 }
 static PyObject *
@@ -119,7 +119,7 @@ PP_ExClass2_tp_alloc (PyTypeObject *type, Py_ssize_t nitems)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.alloc
     PyErr_SetString(PyExc_NotImplementedError, "alloc");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.alloc
 }
 static PyObject *
@@ -127,7 +127,7 @@ PP_ExClass2_tp_new (PyTypeObject *type, PyObject *args, PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.new
     PyErr_SetString(PyExc_NotImplementedError, "new");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.new
 }
 static void
@@ -162,7 +162,7 @@ PP_ExClass2_tp_init(
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ctor",
         const_cast<char **>(SHT_kwlist), &name))
@@ -319,11 +319,11 @@ PP_get_class1(
     PP_ExClass1 * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1",
         const_cast<char **>(SHT_kwlist), &PP_ExClass1_Type, &SHPy_in))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const example::nested::ExClass1 * in =
@@ -358,13 +358,13 @@ PP_declare_1(
     const char *SHT_kwlist[] = {
         "type",
         "len",
-        NULL };
+        nullptr };
 
     if (args != nullptr) SH_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
         const_cast<char **>(SHT_kwlist), &type, &len))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 1:
         {
@@ -441,11 +441,11 @@ PP_setValue_int(
     int value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:setValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     self->obj->setValue<int>(value);
     Py_RETURN_NONE;
@@ -463,11 +463,11 @@ PP_setValue_long(
     long value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:setValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     self->obj->setValue<long>(value);
     Py_RETURN_NONE;
@@ -485,11 +485,11 @@ PP_setValue_float(
     float value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "f:setValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     self->obj->setValue<float>(value);
     Py_RETURN_NONE;
@@ -507,11 +507,11 @@ PP_setValue_double(
     double value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:setValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     self->obj->setValue<double>(value);
     Py_RETURN_NONE;
@@ -608,7 +608,7 @@ PP_setValue(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.method.set_value
 }
 
@@ -646,7 +646,7 @@ PP_getValue(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass2.method.get_value
 }
 // splicer begin namespace.example::nested.class.ExClass2.impl.after_methods
@@ -676,7 +676,7 @@ static PyMethodDef PP_ExClass2_methods[] = {
         PP_getValue__doc__},
     // splicer begin namespace.example::nested.class.ExClass2.PyMethodDef
     // splicer end namespace.example::nested.class.ExClass2.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char ExClass2__doc__[] =
@@ -685,7 +685,7 @@ static char ExClass2__doc__[] =
 
 /* static */
 PyTypeObject PP_ExClass2_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "userlibrary.example.nested.ExClass2",                       /* tp_name */
     sizeof(PP_ExClass2),         /* tp_basicsize */
     0,                              /* tp_itemsize */

@@ -64,12 +64,12 @@ PY_PassByValue(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
 
     double SHCXX_rv = tutorial::PassByValue(arg1, arg2);
 
@@ -101,13 +101,13 @@ PY_ConcatenateStrings(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "ss:ConcatenateStrings", const_cast<char **>(SHT_kwlist), &arg1,
         &arg2))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_arg1(arg1);
@@ -142,7 +142,7 @@ PY_UseDefaultArguments_arg1_arg2(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
     double SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
@@ -151,7 +151,7 @@ PY_UseDefaultArguments_arg1_arg2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|dO!:UseDefaultArguments", const_cast<char **>(SHT_kwlist), 
         &arg1, &PyBool_Type, &SHPy_arg2))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 0:
         SHCXX_rv = tutorial::UseDefaultArguments();
@@ -190,11 +190,11 @@ PY_OverloadedFunction_from_name(
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &name))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_name(name);
@@ -215,11 +215,11 @@ PY_OverloadedFunction_from_index(
     int indx;
     const char *SHT_kwlist[] = {
         "indx",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &indx))
-        return NULL;
+        return nullptr;
 
     tutorial::OverloadedFunction(indx);
     Py_RETURN_NONE;
@@ -237,11 +237,11 @@ PY_TemplateArgument_int(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     tutorial::TemplateArgument<int>(arg);
     Py_RETURN_NONE;
@@ -259,11 +259,11 @@ PY_TemplateArgument_double(
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     tutorial::TemplateArgument<double>(arg);
     Py_RETURN_NONE;
@@ -296,12 +296,12 @@ PY_FortranGenericOverloaded_1(
     const char *SHT_kwlist[] = {
         "name",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "sd:FortranGenericOverloaded", const_cast<char **>(SHT_kwlist), 
         &name, &arg2))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_name(name);
@@ -327,7 +327,7 @@ PY_UseDefaultOverload_num_offset_stride(
         "num",
         "offset",
         "stride",
-        NULL };
+        nullptr };
     int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
@@ -336,7 +336,7 @@ PY_UseDefaultOverload_num_offset_stride(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "i|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
         &num, &offset, &stride))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 1:
         SHCXX_rv = tutorial::UseDefaultOverload(num);
@@ -377,7 +377,7 @@ PY_UseDefaultOverload_5(
         "num",
         "offset",
         "stride",
-        NULL };
+        nullptr };
     int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
@@ -386,7 +386,7 @@ PY_UseDefaultOverload_5(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "di|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
         &type, &num, &offset, &stride))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 2:
         SHCXX_rv = tutorial::UseDefaultOverload(type, num);
@@ -425,12 +425,12 @@ PY_typefunc(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
 
@@ -456,12 +456,12 @@ PY_enumfunc(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     tutorial::EnumTypeID SH_arg =
@@ -491,12 +491,12 @@ PY_colorfunc(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:colorfunc",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     tutorial::Color SH_arg = static_cast<tutorial::Color>(arg);
@@ -599,7 +599,7 @@ PY_OverloadedFunction(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.overloaded_function
 }
 
@@ -637,7 +637,7 @@ PY_TemplateArgument(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.template_argument
 }
 
@@ -675,7 +675,7 @@ PY_FortranGenericOverloaded(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.fortran_generic_overloaded
 }
 
@@ -713,7 +713,7 @@ PY_UseDefaultOverload(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.use_default_overload
 }
 static PyMethodDef PY_methods[] = {
@@ -744,7 +744,7 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_FortranGenericOverloaded__doc__},
 {"UseDefaultOverload", (PyCFunction)PY_UseDefaultOverload,
     METH_VARARGS|METH_KEYWORDS, PY_UseDefaultOverload__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -783,14 +783,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     tutorial_traverse, /* m_traverse */
     tutorial_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

@@ -141,7 +141,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_kwds = False
 
         fmt_library.npy_ndims = "0"   # number of dimensions
-        fmt_library.npy_dims = "NULL" # shape variable
+        fmt_library.npy_dims = fmt_library.nullptr # shape variable
         fmt_library.npy_intp = ""     # shape array definition
 
         # Variables to accumulate output lines
@@ -650,7 +650,7 @@ return 1;""",
         options = node.options
         fmt_var = node.fmtdict
         fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
-        fmt_var.PY_setter = "NULL"  # readonly
+        fmt_var.PY_setter = fmt_var.nullptr  # readonly
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat("{PY_param_self}->{PY_type_obj}->{field_name}", fmt_var)
@@ -944,7 +944,7 @@ return 1;""",
             fmt.PY_error_return = "-1"
         else:
             node.eval_template("PY_name_impl")
-            fmt.PY_error_return = "NULL"
+            fmt.PY_error_return = fmt_func.nullptr
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
@@ -1240,7 +1240,9 @@ return 1;""",
                 kw_const
                 + 'char *SHT_kwlist[] = {\f"'
                 + '",\f"'.join(arg_names)
-                + '",\fNULL };'
+                + '",\f'
+                + fmt.nullptr
+                + ' };'
             )
             parse_format.extend([":", fmt.function_name])
             fmt.PyArg_format = "".join(parse_format)
@@ -1873,7 +1875,8 @@ return 1;""",
             )
             output.append("{")
             default = default_body.get(typename, self.not_implemented_error)
-            default = default(typename, tup[2])
+            ret = fmt_func.nullptr if tup[2] == "NULL" else tup[2]
+            default = default(typename, ret)
 
             # format and indent default bodies
             fmted = [1]
@@ -2010,7 +2013,7 @@ return 1;""",
             )
             output.extend(fileinfo.GetSetDef)
             self._create_splicer("PyGetSetDef", output)
-            output.append("{NULL}            /* sentinel */")
+            append_format(output, "{{{nullptr}}}            /* sentinel */", fmt)
             output.append("-};")
         else:
             fmt_type["tp_getset"] = fmt.nullptr
@@ -2021,8 +2024,11 @@ return 1;""",
         )
         output.extend(fileinfo.MethodDef)
         self._create_splicer("PyMethodDef", output)
-        output.append(
-            "{NULL,   (PyCFunction)NULL, 0, NULL}" "            /* sentinel */"
+        append_format(
+            output,
+            "{{{nullptr},   (PyCFunction){nullptr}, 0, {nullptr}}}"
+            "            /* sentinel */",
+            fmt
         )
         output.append("-};")
 
@@ -2095,7 +2101,7 @@ return 1;""",
                 )
                 return_code = "return rvobj;"
                 return_arg = "rvobj"
-                fmt.PY_error_return = "NULL"
+                fmt.PY_error_return = fmt.nullptr
                 body.append("PyObject *rvobj;")
                 expose = True
 
@@ -2243,8 +2249,11 @@ extern PyObject *{PY_prefix}error_obj;
             output, "static PyMethodDef {PY_prefix}methods[] = {{", fmt
         )
         output.extend(fileinfo.MethodDef)
-        output.append(
-            "{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */"
+        append_format(
+            output,
+            "{{{nullptr},   (PyCFunction){nullptr}, 0, {nullptr}}}"
+            "            /* sentinel */",
+            fmt
         )
         output.append("};")
 
@@ -2353,7 +2362,7 @@ extern PyObject *{PY_prefix}error_obj;
         )
         for name in fcnnames:
             output.append('{{"{}", {}}},'.format(name[0], name[1]))
-        output.append("{NULL, NULL}")
+        output.append('{{{}, {}}},'.format(fmt.nullptr, fmt.nullptr))
         output.append("-};")
 
         # Write function to release from extension type.
@@ -2502,6 +2511,7 @@ typenames = [
 
 
 # return type, prototype, default return value
+# [2] will be converted to fmt.nullptr if 'NULL'.
 typefuncs = {
     "dealloc": ("void", "({object} *self)", ""),
     "print": ("int", "({object} *self, FILE *fp, int flags)", "-1"),
@@ -2550,7 +2560,7 @@ static char {cxx_class}__doc__[] =
 
 /* static */
 PyTypeObject {PY_PyTypeObject} = {{+
-PyVarObject_HEAD_INIT(NULL, 0)
+PyVarObject_HEAD_INIT({nullptr}, 0)
 "{PY_module_scope}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
 0,                              /* tp_itemsize */
@@ -2658,14 +2668,14 @@ static struct PyModuleDef moduledef = {{
     {PY_prefix}_doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     {PY_prefix}methods, /* m_methods */
-    NULL, /* m_reload */
+    {nullptr}, /* m_reload */
     {library_lower}_traverse, /* m_traverse */
     {library_lower}_clear, /* m_clear */
     NULL  /* m_free */
 }};
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return {nullptr}
 #else
 #define RETVAL
 #define INITERROR return

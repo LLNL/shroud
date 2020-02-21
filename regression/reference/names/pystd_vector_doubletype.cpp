@@ -39,7 +39,7 @@ PY_vector_double_tp_del (PY_vector_double *self)
 static PyMethodDef PY_vector_double_methods[] = {
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char vector_double__doc__[] =
@@ -48,7 +48,7 @@ static char vector_double__doc__[] =
 
 /* static */
 PyTypeObject PY_vector_double_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.std.vector_double",                       /* tp_name */
     sizeof(PY_vector_double),         /* tp_basicsize */
     0,                              /* tp_itemsize */

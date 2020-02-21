@@ -79,11 +79,11 @@ PY_function3a_0(
     int i;
     const char *SHT_kwlist[] = {
         "i",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a",
         const_cast<char **>(SHT_kwlist), &i))
-        return NULL;
+        return nullptr;
 
     function3a(i);
     Py_RETURN_NONE;
@@ -101,11 +101,11 @@ PY_function3a_1(
     long i;
     const char *SHT_kwlist[] = {
         "i",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a",
         const_cast<char **>(SHT_kwlist), &i))
-        return NULL;
+        return nullptr;
 
     function3a(i);
     Py_RETURN_NONE;
@@ -127,12 +127,12 @@ PY_function4(
     const char * rv;
     const char *SHT_kwlist[] = {
         "rv",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
         const_cast<char **>(SHT_kwlist), &rv))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_rv(rv);
@@ -200,11 +200,11 @@ PY_name_instantiation1(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
 
     FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
@@ -228,11 +228,11 @@ PY_FunctionTU_instantiation2(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
 
     FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
@@ -300,7 +300,7 @@ PY_function3a(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.function3a
 }
 
@@ -338,7 +338,7 @@ PY_FunctionTU(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end function.function_tu
 }
 static PyMethodDef PY_methods[] = {
@@ -358,7 +358,7 @@ static PyMethodDef PY_methods[] = {
     PY_function3a__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
     PY_FunctionTU__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -397,14 +397,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     testnames_traverse, /* m_traverse */
     testnames_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

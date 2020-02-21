@@ -45,12 +45,12 @@ PY_directionFunc(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     classes::Class1::DIRECTION SH_arg =
@@ -85,11 +85,11 @@ PY_passClassByValue(
     PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passClassByValue",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
@@ -114,12 +114,12 @@ PY_useclass(
     PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
@@ -192,11 +192,11 @@ PY_set_global_flag(
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:set_global_flag",
         const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
+        return nullptr;
 
     classes::set_global_flag(arg);
     Py_RETURN_NONE;
@@ -266,7 +266,7 @@ static PyMethodDef PY_methods[] = {
     PY_get_global_flag__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -305,14 +305,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     classes_traverse, /* m_traverse */
     classes_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

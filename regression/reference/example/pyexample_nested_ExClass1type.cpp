@@ -31,7 +31,7 @@ PP_ExClass1_tp_repr (PP_ExClass1 *self)
 {
 // splicer begin namespace.example::nested.class.ExClass1.type.repr
     PyErr_SetString(PyExc_NotImplementedError, "repr");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass1.type.repr
 }
 static void
@@ -88,7 +88,7 @@ PP_ExClass1_tp_init_1(
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ctor",
         const_cast<char **>(SHT_kwlist), &name))
@@ -122,12 +122,12 @@ PP_incrementCount(
     int incr;
     const char *SHT_kwlist[] = {
         "incr",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount",
         const_cast<char **>(SHT_kwlist), &incr))
-        return NULL;
+        return nullptr;
 
     int SHCXX_rv = self->obj->incrementCount(incr);
 
@@ -220,12 +220,12 @@ PP_getValue_from_int(
     int value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     int SHCXX_rv = self->obj->getValue(value);
 
@@ -247,12 +247,12 @@ PP_getValue_1(
     long value;
     const char *SHT_kwlist[] = {
         "value",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue",
         const_cast<char **>(SHT_kwlist), &value))
-        return NULL;
+        return nullptr;
 
     long SHCXX_rv = self->obj->getValue(value);
 
@@ -301,12 +301,12 @@ PP_hasAddr(
     PyObject * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_in))
-        return NULL;
+        return nullptr;
 
     // pre_call
     bool in = PyObject_IsTrue(SHPy_in);
@@ -321,7 +321,7 @@ PP_hasAddr(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass1.method.has_addr
 }
 
@@ -410,7 +410,7 @@ PP_getValue(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.class.ExClass1.method.get_value
 }
 // splicer begin namespace.example::nested.class.ExClass1.impl.after_methods
@@ -434,7 +434,7 @@ static PyMethodDef PP_ExClass1_methods[] = {
         PP_getValue__doc__},
     // splicer begin namespace.example::nested.class.ExClass1.PyMethodDef
     // splicer end namespace.example::nested.class.ExClass1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char ExClass1__doc__[] =
@@ -443,7 +443,7 @@ static char ExClass1__doc__[] =
 
 /* static */
 PyTypeObject PP_ExClass1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "userlibrary.example.nested.ExClass1",                       /* tp_name */
     sizeof(PP_ExClass1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

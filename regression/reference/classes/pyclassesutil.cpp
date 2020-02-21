@@ -94,7 +94,7 @@ static void PY_SHROUD_capsule_destructor_1(void *ptr)
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx classes::Class1 *", PY_SHROUD_capsule_destructor_1},
-    {NULL, NULL}
+    {nullptr, nullptr},
 };
 
 // Release memory based on icontext.

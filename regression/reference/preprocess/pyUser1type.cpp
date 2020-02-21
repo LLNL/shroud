@@ -88,13 +88,13 @@ PY_method3def_1(
     int i;
     const char *SHT_kwlist[] = {
         "i",
-        NULL };
+        nullptr };
 
     if (args != nullptr) SH_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|i:method3def",
         const_cast<char **>(SHT_kwlist), &i))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 0:
         self->obj->method3def();
@@ -125,7 +125,7 @@ static PyMethodDef PY_User1_methods[] = {
 #endif // if defined(USE_THREE)
     // splicer begin class.User1.PyMethodDef
     // splicer end class.User1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char User1__doc__[] =
@@ -134,7 +134,7 @@ static char User1__doc__[] =
 
 /* static */
 PyTypeObject PY_User1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "preprocess.User1",                       /* tp_name */
     sizeof(PY_User1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

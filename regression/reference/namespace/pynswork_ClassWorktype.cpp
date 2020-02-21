@@ -39,7 +39,7 @@ PY_ClassWork_tp_del (PY_ClassWork *self)
 static PyMethodDef PY_ClassWork_methods[] = {
     // splicer begin namespace.nswork.class.ClassWork.PyMethodDef
     // splicer end namespace.nswork.class.ClassWork.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char ClassWork__doc__[] =
@@ -48,7 +48,7 @@ static char ClassWork__doc__[] =
 
 /* static */
 PyTypeObject PY_ClassWork_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "ns.nswork.ClassWork",                       /* tp_name */
     sizeof(PY_ClassWork),         /* tp_basicsize */
     0,                              /* tp_itemsize */

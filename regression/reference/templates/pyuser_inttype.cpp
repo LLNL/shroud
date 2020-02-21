@@ -55,11 +55,11 @@ PY_nested_double(
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:nested",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
+        return nullptr;
     self->obj->nested<double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end class.user.method.nested_double
@@ -71,7 +71,7 @@ static PyMethodDef PY_user_int_methods[] = {
         METH_VARARGS|METH_KEYWORDS, PY_nested_double__doc__},
     // splicer begin class.user.PyMethodDef
     // splicer end class.user.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char user_int__doc__[] =
@@ -80,7 +80,7 @@ static char user_int__doc__[] =
 
 /* static */
 PyTypeObject PY_user_int_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "templates.user_int",                       /* tp_name */
     sizeof(PY_user_int),         /* tp_basicsize */
     0,                              /* tp_itemsize */

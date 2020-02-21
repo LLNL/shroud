@@ -39,7 +39,7 @@ PY_Class3_tp_del (PY_Class3 *self)
 static PyMethodDef PY_Class3_methods[] = {
     // splicer begin class.Class3.PyMethodDef
     // splicer end class.Class3.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Class3__doc__[] =
@@ -48,7 +48,7 @@ static char Class3__doc__[] =
 
 /* static */
 PyTypeObject PY_Class3_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "forward.Class3",                       /* tp_name */
     sizeof(PY_Class3),         /* tp_basicsize */
     0,                              /* tp_itemsize */

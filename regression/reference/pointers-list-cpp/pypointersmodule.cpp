@@ -128,12 +128,12 @@ PY_intargs(
     const char *SHT_kwlist[] = {
         "argin",
         "arginout",
-        NULL };
+        nullptr };
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         const_cast<char **>(SHT_kwlist), &argin, &arginout))
-        return NULL;
+        return nullptr;
 
     // pre_call
     int argout;  // intent(out)
@@ -169,11 +169,11 @@ PY_cos_doubles(
     double * out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
         const_cast<char **>(SHT_kwlist), &SHTPy_in))
-        return NULL;
+        return nullptr;
 
     // post_parse
     Py_ssize_t SHSize_in;
@@ -206,7 +206,7 @@ PY_cos_doubles(
 fail:
     if (in != nullptr) std::free(in);
     if (out != nullptr) std::free(out);
-    return NULL;
+    return nullptr;
 // splicer end function.cos_doubles
 }
 
@@ -233,11 +233,11 @@ PY_truncate_to_int(
     int * out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:truncate_to_int",
         const_cast<char **>(SHT_kwlist), &SHTPy_in))
-        return NULL;
+        return nullptr;
 
     // post_parse
     Py_ssize_t SHSize_in;
@@ -269,7 +269,7 @@ PY_truncate_to_int(
 fail:
     if (in != nullptr) std::free(in);
     if (out != nullptr) std::free(out);
-    return NULL;
+    return nullptr;
 // splicer end function.truncate_to_int
 }
 
@@ -323,7 +323,7 @@ PY_get_values(
 fail:
     Py_XDECREF(SHPy_values);
     if (values != nullptr) std::free(values);
-    return NULL;
+    return nullptr;
 // splicer end function.get_values
 }
 
@@ -387,7 +387,7 @@ fail:
     if (arg1 != nullptr) std::free(arg1);
     Py_XDECREF(SHPy_arg2);
     if (arg2 != nullptr) std::free(arg2);
-    return NULL;
+    return nullptr;
 // splicer end function.get_values2
 }
 
@@ -407,12 +407,12 @@ PY_Sum(
     int * values = nullptr;
     const char *SHT_kwlist[] = {
         "values",
-        NULL };
+        nullptr };
     PyObject * SHPy_result = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
-        return NULL;
+        return nullptr;
 
     // post_parse
     Py_ssize_t SHSize_values;
@@ -437,7 +437,7 @@ PY_Sum(
 
 fail:
     if (values != nullptr) std::free(values);
-    return NULL;
+    return nullptr;
 // splicer end function.sum
 }
 
@@ -483,7 +483,7 @@ PY_fillIntArray(
 fail:
     Py_XDECREF(SHPy_out);
     if (out != nullptr) std::free(out);
-    return NULL;
+    return nullptr;
 // splicer end function.fill_int_array
 }
 
@@ -506,11 +506,11 @@ PY_incrementIntArray(
     int * array = nullptr;
     const char *SHT_kwlist[] = {
         "array",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:incrementIntArray",
         const_cast<char **>(SHT_kwlist), &SHTPy_array))
-        return NULL;
+        return nullptr;
 
     // post_parse
     Py_ssize_t SHSize_array;
@@ -536,7 +536,7 @@ PY_incrementIntArray(
 
 fail:
     if (array != nullptr) std::free(array);
-    return NULL;
+    return nullptr;
 // splicer end function.increment_int_array
 }
 static PyMethodDef PY_methods[] = {
@@ -555,7 +555,7 @@ static PyMethodDef PY_methods[] = {
     PY_fillIntArray__doc__},
 {"incrementIntArray", (PyCFunction)PY_incrementIntArray,
     METH_VARARGS|METH_KEYWORDS, PY_incrementIntArray__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -594,14 +594,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     pointers_traverse, /* m_traverse */
     pointers_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

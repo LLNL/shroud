@@ -39,7 +39,7 @@ PY_Vvv1_tp_del (PY_Vvv1 *self)
 static PyMethodDef PY_Vvv1_methods[] = {
     // splicer begin namespace.std.class.vector.PyMethodDef
     // splicer end namespace.std.class.vector.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Vvv1__doc__[] =
@@ -48,7 +48,7 @@ static char Vvv1__doc__[] =
 
 /* static */
 PyTypeObject PY_Vvv1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.std.Vvv1",                       /* tp_name */
     sizeof(PY_Vvv1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

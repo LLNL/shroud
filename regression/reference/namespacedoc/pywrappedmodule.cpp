@@ -69,7 +69,7 @@ PY_worker(
 static PyMethodDef PY_methods[] = {
 {"worker3", (PyCFunction)PY_worker3, METH_NOARGS, PY_worker3__doc__},
 {"worker", (PyCFunction)PY_worker, METH_NOARGS, PY_worker__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 /*
@@ -108,14 +108,14 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
     wrapped_traverse, /* m_traverse */
     wrapped_clear, /* m_clear */
     NULL  /* m_free */
 };
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return nullptr
 #else
 #define RETVAL
 #define INITERROR return

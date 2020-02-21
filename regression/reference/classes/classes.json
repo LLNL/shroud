@@ -1458,7 +1458,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Class1_m_flag_getter",
-                            "PY_setter": "NULL",
+                            "PY_setter": "nullptr",
                             "field_name": "m_flag",
                             "variable_lower": "m_flag",
                             "variable_name": "m_flag",
@@ -1732,7 +1732,7 @@
             "library_lower": "classes",
             "library_upper": "CLASSES",
             "namespace_scope": "",
-            "npy_dims": "NULL",
+            "npy_dims": "nullptr",
             "npy_intp": "",
             "npy_ndims": "0",
             "nullptr": "nullptr",

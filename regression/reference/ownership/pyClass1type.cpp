@@ -45,16 +45,16 @@ static PyObject *PY_Class1_flag_getter(PY_Class1 *self,
 }
 
 static PyGetSetDef PY_Class1_getset[] = {
-    {(char *)"flag", (getter)PY_Class1_flag_getter, (setter)NULL,
+    {(char *)"flag", (getter)PY_Class1_flag_getter, (setter)nullptr,
         nullptr, nullptr},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
-    {NULL}            /* sentinel */
+    {nullptr}            /* sentinel */
 };
 static PyMethodDef PY_Class1_methods[] = {
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Class1__doc__[] =
@@ -63,7 +63,7 @@ static char Class1__doc__[] =
 
 /* static */
 PyTypeObject PY_Class1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "ownership.Class1",                       /* tp_name */
     sizeof(PY_Class1),         /* tp_basicsize */
     0,                              /* tp_itemsize */

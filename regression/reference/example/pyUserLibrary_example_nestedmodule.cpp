@@ -61,12 +61,12 @@ PP_isNameValid(
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
         const_cast<char **>(SHT_kwlist), &name))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_name(name);
@@ -81,7 +81,7 @@ PP_isNameValid(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.function.is_name_valid
 }
 
@@ -109,7 +109,7 @@ PP_isInitialized(
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.function.is_initialized
 }
 
@@ -124,11 +124,11 @@ PP_test_names(
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names",
         const_cast<char **>(SHT_kwlist), &name))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_name(name);
@@ -151,11 +151,11 @@ PP_test_names_flag(
     const char *SHT_kwlist[] = {
         "name",
         "flag",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names",
         const_cast<char **>(SHT_kwlist), &name, &flag))
-        return NULL;
+        return nullptr;
 
     // post_parse
     const std::string SH_name(name);
@@ -183,13 +183,13 @@ PP_testoptional_2(
     const char *SHT_kwlist[] = {
         "i",
         "j",
-        NULL };
+        nullptr };
 
     if (args != nullptr) SH_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
         const_cast<char **>(SHT_kwlist), &i, &j))
-        return NULL;
+        return nullptr;
     switch (SH_nargs) {
     case 0:
         example::nested::testoptional();
@@ -243,11 +243,11 @@ PP_testmpi_mpi(
     MPI_Fint comm;
     const char *SHT_kwlist[] = {
         "comm",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi",
         const_cast<char **>(SHT_kwlist), &comm))
-        return NULL;
+        return nullptr;
 
     // post_parse
     MPI_Comm SH_comm = MPI_Comm_f2c(comm);
@@ -292,11 +292,11 @@ PP_FuncPtr1(
     void ( * get)();
     const char *SHT_kwlist[] = {
         "get",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr1",
         const_cast<char **>(SHT_kwlist), &get))
-        return NULL;
+        return nullptr;
 
     example::nested::FuncPtr1(get);
     Py_RETURN_NONE;
@@ -322,11 +322,11 @@ PP_FuncPtr2(
     double * ( * get)();
     const char *SHT_kwlist[] = {
         "get",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr2",
         const_cast<char **>(SHT_kwlist), &get))
-        return NULL;
+        return nullptr;
 
     example::nested::FuncPtr2(get);
     Py_RETURN_NONE;
@@ -352,11 +352,11 @@ PP_FuncPtr3(
     double ( * get)(int i, int);
     const char *SHT_kwlist[] = {
         "get",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3",
         const_cast<char **>(SHT_kwlist), &get))
-        return NULL;
+        return nullptr;
 
     example::nested::FuncPtr3(get);
     Py_RETURN_NONE;
@@ -381,11 +381,11 @@ PP_FuncPtr5(
         int verylongname9, int verylongname10);
     const char *SHT_kwlist[] = {
         "get",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr5",
         const_cast<char **>(SHT_kwlist), &get))
-        return NULL;
+        return nullptr;
 
     example::nested::FuncPtr5(get);
     Py_RETURN_NONE;
@@ -425,7 +425,7 @@ PP_verylongfunctionname1(
         "verylongname8",
         "verylongname9",
         "verylongname10",
-        NULL };
+        nullptr };
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -434,7 +434,7 @@ PP_verylongfunctionname1(
         &verylongname3, &verylongname4, &verylongname5, &verylongname6,
         &verylongname7, &verylongname8, &verylongname9,
         &verylongname10))
-        return NULL;
+        return nullptr;
 
     example::nested::verylongfunctionname1(&verylongname1,
         &verylongname2, &verylongname3, &verylongname4, &verylongname5,
@@ -483,7 +483,7 @@ PP_verylongfunctionname2(
         "verylongname8",
         "verylongname9",
         "verylongname10",
-        NULL };
+        nullptr };
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -492,7 +492,7 @@ PP_verylongfunctionname2(
         &verylongname3, &verylongname4, &verylongname5, &verylongname6,
         &verylongname7, &verylongname8, &verylongname9,
         &verylongname10))
-        return NULL;
+        return nullptr;
 
     int SHCXX_rv = example::nested::verylongfunctionname2(verylongname1,
         verylongname2, verylongname3, verylongname4, verylongname5,
@@ -527,11 +527,11 @@ PP_cos_doubles(
     PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
-        NULL };
+        nullptr };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
         const_cast<char **>(SHT_kwlist), &SHTPy_in))
-        return NULL;
+        return nullptr;
 
     // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
@@ -562,7 +562,7 @@ PP_cos_doubles(
 fail:
     Py_XDECREF(SHPy_in);
     Py_XDECREF(SHPy_out);
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.function.cos_doubles
 }
 
@@ -600,7 +600,7 @@ PP_test_names(
         PyErr_Clear();
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.function.test_names
 }
 
@@ -642,7 +642,7 @@ PP_testmpi(
     }
 #endif // ifndef HAVE_MPI
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
+    return nullptr;
 // splicer end namespace.example::nested.function.testmpi
 }
 static PyMethodDef PP_methods[] = {
@@ -674,7 +674,7 @@ static PyMethodDef PP_methods[] = {
     PP_test_names__doc__},
 {"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS,
     PP_testmpi__doc__},
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+{nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 #if PY_MAJOR_VERSION >= 3

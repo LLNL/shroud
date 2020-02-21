@@ -104,7 +104,7 @@ static PP_SHROUD_dtor_context PP_SHROUD_capsule_context[] = {
     {"--none--", PP_SHROUD_capsule_destructor_0},
     {"cxx example::nested::ExClass1 *", PP_SHROUD_capsule_destructor_1},
     {"cxx example::nested::ExClass2 *", PP_SHROUD_capsule_destructor_2},
-    {NULL, NULL}
+    {nullptr, nullptr},
 };
 
 // Release memory based on icontext.

@@ -39,7 +39,7 @@ PY_Names2_tp_del (PY_Names2 *self)
 static PyMethodDef PY_Names2_methods[] = {
     // splicer begin class.Names2.PyMethodDef
     // splicer end class.Names2.PyMethodDef
-    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
 static char Names2__doc__[] =
@@ -48,7 +48,7 @@ static char Names2__doc__[] =
 
 /* static */
 PyTypeObject PY_Names2_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
+    PyVarObject_HEAD_INIT(nullptr, 0)
     "testnames.Names2",                       /* tp_name */
     sizeof(PY_Names2),         /* tp_basicsize */
     0,                              /* tp_itemsize */

@@ -72,7 +72,7 @@ static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx Cstruct1 *", PY_SHROUD_capsule_destructor_1},
     {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_2},
-    {NULL, NULL}
+    {nullptr, nullptr},
 };
 
 // Release memory based on icontext.
