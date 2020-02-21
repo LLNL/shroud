@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   C++ function may produce several wrapper via overloading or
   adding bufferify arguments.
 - Improved support for templates in the Python wrappers.
+- Added option CXX_standard.
+  If *2011* or greater then `nullptr` is used instead of `NULL`.
+  This makes clang-tidy happy.
 
 ## v0.11.0 - 2020-01-08
 ### Added
