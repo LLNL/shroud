@@ -1861,7 +1861,7 @@ return 1;""",
                 fmt_type[tp_name] = self.tp_init_default
                 continue
             if typename not in selected:
-                fmt_type[tp_name] = fmt_func.nullptr #fmt_type["nullptr"]
+                fmt_type[tp_name] = fmt_func.nullptr
                 continue
             fmt.PY_type_method = tp_name
             func_name = wformat(template, fmt)
