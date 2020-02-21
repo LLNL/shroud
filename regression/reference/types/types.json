@@ -120,6 +120,7 @@
             "npy_dims": "NULL",
             "npy_intp": "",
             "npy_ndims": "0",
+            "nullptr": "nullptr",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -3482,6 +3483,7 @@
         ],
         "language": "cxx",
         "options": {
+            "CXX_standard": 2011,
             "C_API_case": "native",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",

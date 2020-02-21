@@ -218,6 +218,10 @@ C_line_length
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
 
+CXX_standard
+  C++ standard. Defaults to *2011*.
+  See *nullptr*.
+
 debug
   Print additional comments in generated files that may 
   be useful for debugging.
@@ -776,6 +780,10 @@ LUA_state_var
 namespace_scope
     The current C++ namespace delimited with ``::`` and a trailing ``::``.
     Used when referencing identifiers: ``{namespace_scope}id``.
+
+nullptr
+    Set to `NULL` or `nullptr` based on option *CXX_standard*.
+    Always `NULL` when *language* is C.
 
 PY_ARRAY_UNIQUE_SYMBOL
    C preprocessor define used by NumPy to allow NumPy to be
