@@ -24,7 +24,7 @@ void OWN_Class1_dtor(OWN_Class1 * self)
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.dtor
     delete SH_this;
-    self->addr = NULL;
+    self->addr = nullptr;
     // splicer end class.Class1.method.dtor
 }
 

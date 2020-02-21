@@ -212,7 +212,7 @@ void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

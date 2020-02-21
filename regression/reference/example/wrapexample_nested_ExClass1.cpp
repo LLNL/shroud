@@ -135,7 +135,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
         static_cast<example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.dtor
     delete SH_this;
-    self->addr = NULL;
+    self->addr = nullptr;
     // splicer end namespace.example::nested.class.ExClass1.method.dtor
 }
 
@@ -198,7 +198,7 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
     const std::string & SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(name, Nname, NULL, 0);
+        ShroudStrCopy(name, Nname, nullptr, 0);
     } else {
         ShroudStrCopy(name, Nname, SHCXX_rv.data(), SHCXX_rv.size());
     }

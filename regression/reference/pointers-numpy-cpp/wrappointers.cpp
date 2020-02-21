@@ -120,7 +120,7 @@ void POI_increment_int_array(int * array, int sizein)
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

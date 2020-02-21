@@ -99,7 +99,7 @@ void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

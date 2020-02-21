@@ -20,7 +20,7 @@ extern "C" {
 // Release library allocated memory.
 void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

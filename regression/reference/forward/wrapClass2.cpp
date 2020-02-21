@@ -38,7 +38,7 @@ void FOR_Class2_dtor(FOR_Class2 * self)
         static_cast<forward::Class2 *>(self->addr);
     // splicer begin class.Class2.method.dtor
     delete SH_this;
-    self->addr = NULL;
+    self->addr = nullptr;
     // splicer end class.Class2.method.dtor
 }
 

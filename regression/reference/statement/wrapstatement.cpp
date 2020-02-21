@@ -70,7 +70,7 @@ void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer begin function.get_name_error_pattern_bufferify
     const std::string & SHCXX_rv = getNameErrorPattern();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -81,7 +81,7 @@ void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 // Release library allocated memory.
 void STMT_SHROUD_memory_destructor(STMT_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

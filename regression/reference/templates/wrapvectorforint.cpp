@@ -34,7 +34,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
         static_cast<std::vector<int> *>(self->addr);
     // splicer begin namespace.std.class.vector.method.dtor
     delete SH_this;
-    self->addr = NULL;
+    self->addr = nullptr;
     // splicer end namespace.std.class.vector.method.dtor
 }
 

@@ -21,7 +21,7 @@ extern "C" {
 // Release library allocated memory.
 void SCO_SHROUD_memory_destructor(SCO_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

@@ -81,7 +81,7 @@ void NS_one()
 // Release library allocated memory.
 void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

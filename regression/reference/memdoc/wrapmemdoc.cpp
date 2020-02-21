@@ -79,7 +79,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

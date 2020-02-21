@@ -31,7 +31,7 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
 // Release library allocated memory.
 void CDE_SHROUD_memory_destructor(CDE_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

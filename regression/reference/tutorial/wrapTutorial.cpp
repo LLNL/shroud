@@ -362,7 +362,7 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -393,7 +393,7 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

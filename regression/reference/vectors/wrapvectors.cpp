@@ -77,7 +77,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
     vector_iota_out(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -101,7 +101,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
     vector_iota_out_with_num(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -126,7 +126,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
     vector_iota_out_with_num2(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -148,7 +148,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
     vector_iota_out_alloc(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -171,7 +171,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     vector_iota_inout_alloc(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -189,7 +189,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     vector_increment(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 1;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_INT;
     Darg->elem_len = sizeof(int);
     Darg->size = SHCXX_arg->size();
@@ -209,7 +209,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
     vector_iota_out_d(*SHCXX_arg);
     Darg->cxx.addr  = static_cast<void *>(SHCXX_arg);
     Darg->cxx.idtor = 2;
-    Darg->addr.base = SHCXX_arg->empty() ? NULL : &SHCXX_arg->front();
+    Darg->addr.base = SHCXX_arg->empty() ? nullptr : &SHCXX_arg->front();
     Darg->type = SH_TYPE_DOUBLE;
     Darg->elem_len = sizeof(double);
     Darg->size = SHCXX_arg->size();
@@ -255,7 +255,7 @@ void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
     *SHC_rv = ReturnVectorAlloc(n);
     DSHF_rv->cxx.addr  = static_cast<void *>(SHC_rv);
     DSHF_rv->cxx.idtor = 1;
-    DSHF_rv->addr.base = SHC_rv->empty() ? NULL : &SHC_rv->front();
+    DSHF_rv->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
     DSHF_rv->type = SH_TYPE_INT;
     DSHF_rv->elem_len = sizeof(int);
     DSHF_rv->size = SHC_rv->size();
@@ -294,7 +294,7 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

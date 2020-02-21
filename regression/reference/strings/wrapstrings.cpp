@@ -233,7 +233,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.idtor = 0;
     DSHF_rv->addr.ccharp = SHC_rv;
     DSHF_rv->type = SH_TYPE_OTHER;
-    DSHF_rv->elem_len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);
+    DSHF_rv->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
     DSHF_rv->size = 1;
     DSHF_rv->rank = 0;
     // splicer end function.get_char_ptr1_bufferify
@@ -324,7 +324,7 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer begin function.get_const_string_len_bufferify
     const std::string SHCXX_rv = getConstStringLen();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -342,7 +342,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
     // splicer begin function.get_const_string_as_arg_bufferify
     const std::string SHCXX_rv = getConstStringAsArg();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, Noutput, NULL, 0);
+        ShroudStrCopy(output, Noutput, nullptr, 0);
     } else {
         ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -426,7 +426,7 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer begin function.get_const_string_ref_len_bufferify
     const std::string & SHCXX_rv = getConstStringRefLen();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -468,7 +468,7 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
     // splicer begin function.get_const_string_ref_as_arg_bufferify
     const std::string & SHCXX_rv = getConstStringRefAsArg();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, Noutput, NULL, 0);
+        ShroudStrCopy(output, Noutput, nullptr, 0);
     } else {
         ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -506,7 +506,7 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
     // splicer begin function.get_const_string_ref_len_empty_bufferify
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -565,7 +565,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer begin function.get_const_string_ptr_len_bufferify
     const std::string * SHCXX_rv = getConstStringPtrLen();
     if (SHCXX_rv->empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
+        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv->data(),
             SHCXX_rv->size());
@@ -884,7 +884,7 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

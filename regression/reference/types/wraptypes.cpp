@@ -248,7 +248,7 @@ bool TYP_return_bool_and_others(int * flag)
 // Release library allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

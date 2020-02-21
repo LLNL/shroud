@@ -1285,10 +1285,11 @@ class Wrapc(util.WrapperMixin):
             # XXXX nullptr
         else:
             self.header_impl_include["<stdlib.h>"] = True
-        output.append(
-            "cap->addr = NULL;\n"
-            "cap->idtor = 0;  // avoid deleting again\n"
-            "-}"
+        append_format(output,
+                      "cap->addr = {nullptr};\n"
+                      "cap->idtor = 0;  // avoid deleting again\n"
+                      "-}}",
+                      fmt
         )
         if options.literalinclude2:
             output.append("// end release allocated memory")
