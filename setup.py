@@ -19,7 +19,7 @@ import re
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with codecs.open(os.path.join(here, 'shroud', '__init__.py'),
+with codecs.open(os.path.join(here, 'shroud', 'metadata.py'),
                  encoding='utf8') as version_file:
     metadata = dict(re.findall(r"""__([a-z]+)__ = "([^"]+)""", version_file.read()))
 

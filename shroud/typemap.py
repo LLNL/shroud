@@ -1516,7 +1516,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
             "{c_var_context}->rank = 0;",
         ],
@@ -1612,7 +1612,7 @@ fc_statements = dict(
         post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
             "ShroudStrCopy({c_var}, {c_var_len},"
-            "\t NULL,\t 0);",
+            "\t {nullptr},\t 0);",
             "-}} else {{+",
             "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
@@ -1711,7 +1711,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
-            " ? NULL : &{cxx_var}->front();",
+            " ? {nullptr} : &{cxx_var}->front();",
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
@@ -1737,7 +1737,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
-            " ? NULL : &{cxx_var}->front();",
+            " ? {nullptr} : &{cxx_var}->front();",
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
@@ -1764,7 +1764,7 @@ fc_statements = dict(
             "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
-            " ? NULL : &{cxx_var}->front();",
+            " ? {nullptr} : &{cxx_var}->front();",
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
@@ -1783,7 +1783,7 @@ fc_statements = dict(
     #                    post_call=[
     #                        'if ({cxx_var}.empty()) {{+',
     #                        'ShroudStrCopy({c_var}, {c_var_len},'
-    #                        'NULL, 0);',
+    #                        '{nullptr}, 0);',
     #                        '-}} else {{+',
     #                        'ShroudStrCopy({c_var}, {c_var_len},'
     #                        '\t {cxx_var}{cxx_member}data(),'
@@ -2023,7 +2023,7 @@ fc_statements = dict(
         cxx_header=["<cstddef>"],
         call=[
             "delete {CXX_this};",
-            "{C_this}->addr = NULL;",
+            "{C_this}->addr = {nullptr};",
         ],
         return_type="void",
     ),

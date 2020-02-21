@@ -1157,7 +1157,10 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_get_value = typemap.compute_return_prefix(ast, c_local_var)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
-            raw_return_code = ["return;"]
+            # XXX - No return for void statements.
+            # XXX - Put on an option?
+#            raw_return_code = ["return;"]
+            raw_return_code = []
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
@@ -1282,10 +1285,11 @@ class Wrapc(util.WrapperMixin):
             # XXXX nullptr
         else:
             self.header_impl_include["<stdlib.h>"] = True
-        output.append(
-            "cap->addr = NULL;\n"
-            "cap->idtor = 0;  // avoid deleting again\n"
-            "-}"
+        append_format(output,
+                      "cap->addr = {nullptr};\n"
+                      "cap->idtor = 0;  // avoid deleting again\n"
+                      "-}}",
+                      fmt
         )
         if options.literalinclude2:
             output.append("// end release allocated memory")

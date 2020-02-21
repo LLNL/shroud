@@ -462,6 +462,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_len_template="N{c_var}",  # argument for result of len(arg)
             C_var_trim_template="L{c_var}",  # argument for result of len_trim(arg)
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
+            CXX_standard=2011,
             # Fortran's names for C functions
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
@@ -663,6 +664,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.cast_static = "("
             fmt_library.cast1 = ") "
             fmt_library.cast2 = ""
+            fmt_library.nullptr = "NULL"
         else:
             fmt_library.C_header_filename_suffix = "h"
             fmt_library.C_impl_filename_suffix = "cpp"
@@ -678,6 +680,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.cast_static = "static_cast<"
             fmt_library.cast1 = ">\t("
             fmt_library.cast2 = ")"
+            if self.options.CXX_standard >= 2011:
+                fmt_library.nullptr = "nullptr"
+            else:
+                fmt_library.nullptr = "NULL"
 
         for name in [
             "C_header_filename",

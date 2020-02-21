@@ -57,7 +57,7 @@ class Struct(unittest.TestCase):
 
     def test_acceptStructOutPtr(self):
         str = cstruct.acceptStructOutPtr(4, 4.5)
-        self.assertTrue(isinstance(str, cstruct.Cstruct1))
+        self.assertIsInstance(str, cstruct.Cstruct1)
         self.assertEqual(4,   str.ifield)
         self.assertEqual(4.5, str.dfield)
 
@@ -70,25 +70,25 @@ class Struct(unittest.TestCase):
 
     def test_returnStructByValue(self):
         out = cstruct.returnStructByValue(1, 2.5)
-        self.assertTrue(isinstance(out, cstruct.Cstruct1))
+        self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(1,   out.ifield)
         self.assertEqual(2.5, out.dfield)
 
     def test_returnConstStructByValue(self):
         out = cstruct.returnStructByValue(1, 2.5)
-        self.assertTrue(isinstance(out, cstruct.Cstruct1))
+        self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(1,   out.ifield)
         self.assertEqual(2.5, out.dfield)
 
     def test_returnStructPtr1(self):
         out = cstruct.returnStructPtr1(33, 33.5)
-        self.assertTrue(isinstance(out, cstruct.Cstruct1))
+        self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(33,   out.ifield)
         self.assertEqual(33.5, out.dfield)
 
     def test_returnStructPtr2(self):
         out, name = cstruct.returnStructPtr2(35, 35.5)
-        self.assertTrue(isinstance(out, cstruct.Cstruct1))
+        self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(35,   out.ifield)
         self.assertEqual(35.5, out.dfield)
         self.assertEqual("returnStructPtr2", name)

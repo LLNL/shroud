@@ -141,7 +141,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_kwds = False
 
         fmt_library.npy_ndims = "0"   # number of dimensions
-        fmt_library.npy_dims = "NULL" # shape variable
+        fmt_library.npy_dims = fmt_library.nullptr # shape variable
         fmt_library.npy_intp = ""     # shape array definition
 
         # Variables to accumulate output lines
@@ -256,7 +256,7 @@ class Wrapp(util.WrapperMixin):
             wformat("""
 {{+
 PyObject *submodule = {PY_prefix}init_{PY_module_init}();
-if (submodule == NULL)
+if (submodule == {nullptr})
 +INITERROR;-
 Py_INCREF(submodule);
 PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
@@ -441,10 +441,10 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
 PyObject *args;
 PyObject *rv;
 
-voidobj = PyCapsule_New(addr, {PY_capsule_name}, NULL);
+voidobj = PyCapsule_New(addr, {PY_capsule_name}, {nullptr});
 args = PyTuple_New(1);
 PyTuple_SET_ITEM(args, 0, voidobj);
-rv = PyObject_Call((PyObject *) &{PY_PyTypeObject}, args, NULL);
+rv = PyObject_Call((PyObject *) &{PY_PyTypeObject}, args, {nullptr});
 Py_DECREF(args);
 return rv;""",
             fmt,
@@ -549,21 +549,22 @@ return 1;""",
         output.append("{")
         output.append(1)
 
-        nvars = len(node.variables)
-        output.extend(
-            [
-                "int ierr;",
-                "PyObject *obj = NULL;",
-                "PyObject * lnames = NULL;",
-                "PyObject * ldescr = NULL;",
-                "PyObject * dict = NULL;",
-                "PyArray_Descr *dtype = NULL;",
-                "",
-                "lnames = PyList_New({});".format(nvars),
-                "if (lnames == NULL) goto fail;",
-                "ldescr = PyList_New({});".format(nvars),
-                "if (ldescr == NULL) goto fail;",
-            ]
+        tmpfmt = util.Scope(fmt)
+        tmpfmt.nvars = len(node.variables)
+        append_format(
+            output,
+            "int ierr;\n"
+            "PyObject *obj = {nullptr};\n"
+            "PyObject * lnames = {nullptr};\n"
+            "PyObject * ldescr = {nullptr};\n"
+            "PyObject * dict = {nullptr};\n"
+            "PyArray_Descr *dtype = {nullptr};\n"
+            "\n"
+            "lnames = PyList_New({nvars});\n"
+            "if (lnames == {nullptr}) goto fail;\n"
+            "ldescr = PyList_New({nvars});\n"
+            "if (ldescr == {nullptr}) goto fail;",
+            tmpfmt
         )
 
         for i, var in enumerate(node.variables):
@@ -573,7 +574,7 @@ return 1;""",
                     "",
                     "// " + var.ast.name,
                     'obj = PyString_FromString("{}");'.format(ast.name),
-                    "if (obj == NULL) goto fail;",
+                    "if (obj == {}) goto fail;".format(fmt.nullptr),
                     "PyList_SET_ITEM(lnames, {}, obj);".format(i),
                 ]
             )
@@ -584,53 +585,53 @@ return 1;""",
                     "obj = (PyObject *) PyArray_DescrFromType({});".format(
                         arg_typemap.PYN_typenum
                     ),
-                    "if (obj == NULL) goto fail;",
+                    "if (obj == {}) goto fail;".format(fmt.nullptr),
                     "PyList_SET_ITEM(ldescr, {}, obj);".format(i),
                 ]
             )
 
             # XXX - add offset and itemsize to be explicit?
 
-        output.extend(
-            [
-                "obj = NULL;",
-                "",
-                "dict = PyDict_New();",
-                "if (dict == NULL) goto fail;",
-                'ierr = PyDict_SetItemString(dict, "names", lnames);',
-                "if (ierr == -1) goto fail;",
-                "lnames = NULL;",
-                'ierr = PyDict_SetItemString(dict, "formats", ldescr);',
-                "if (ierr == -1) goto fail;",
-                "ldescr = NULL;",
-                # 'Py_INCREF(Py_True);',
-                # 'ierr = PyDict_SetItemString(descr, "aligned", Py_True);',
-                # 'if (ierr == -1) goto fail;',
-                "ierr = PyArray_DescrAlignConverter(dict, &dtype);",
-                "if (ierr == 0) goto fail;",
-                "return dtype;",
-            ]
+        append_format(
+            output,
+            "obj = {nullptr};\n"
+            "\n"
+            "dict = PyDict_New();\n"
+            "if (dict == {nullptr}) goto fail;\n"
+            'ierr = PyDict_SetItemString(dict, "names", lnames);\n'
+            "if (ierr == -1) goto fail;\n"
+            "lnames = {nullptr};\n"
+            'ierr = PyDict_SetItemString(dict, "formats", ldescr);\n'
+            "if (ierr == -1) goto fail;\n"
+            "ldescr = {nullptr};\n"
+            # 'Py_INCREF(Py_True);\n'
+            # 'ierr = PyDict_SetItemString(descr, "aligned", Py_True);\n'
+            # 'if (ierr == -1) goto fail;\n'
+            "ierr = PyArray_DescrAlignConverter(dict, &dtype);\n"
+            "if (ierr == 0) goto fail;\n"
+            "return dtype;",
+            fmt
         )
-        output.extend(
-            [
-                "^fail:",
-                "Py_XDECREF(obj);",
-                "if (lnames != NULL) {+",
-                "for (int i=0; i < {}; i++) {{+".format(nvars),
-                "Py_XDECREF(PyList_GET_ITEM(lnames, i));",
-                "-}",
-                "Py_DECREF(lnames);",
-                "-}",
-                "if (ldescr != NULL) {+",
-                "for (int i=0; i < {}; i++) {{+".format(nvars),
-                "Py_XDECREF(PyList_GET_ITEM(ldescr, i));",
-                "-}",
-                "Py_DECREF(ldescr);",
-                "-}",
-                "Py_XDECREF(dict);",
-                "Py_XDECREF(dtype);",
-                "return NULL;",
-            ]
+        append_format(
+            output,
+            "^fail:\n"
+            "Py_XDECREF(obj);\n"
+            "if (lnames != {nullptr}) {{+\n"
+            "for (int i=0; i < {nvars}; i++) {{+\n"
+            "Py_XDECREF(PyList_GET_ITEM(lnames, i));\n"
+            "-}}\n"
+            "Py_DECREF(lnames);\n"
+            "-}}\n"
+            "if (ldescr != {nullptr}) {{+\n"
+            "for (int i=0; i < {nvars}; i++) {{+\n"
+            "Py_XDECREF(PyList_GET_ITEM(ldescr, i));\n"
+            "-}}\n"
+            "Py_DECREF(ldescr);\n"
+            "-}}\n"
+            "Py_XDECREF(dict);\n"
+            "Py_XDECREF(dtype);\n"
+            "return {nullptr};",
+            tmpfmt
         )
         #    int PyArray_RegisterDataType(descr)
 
@@ -649,7 +650,7 @@ return 1;""",
         options = node.options
         fmt_var = node.fmtdict
         fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
-        fmt_var.PY_setter = "NULL"  # readonly
+        fmt_var.PY_setter = fmt_var.nullptr  # readonly
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat("{PY_param_self}->{PY_type_obj}->{field_name}", fmt_var)
@@ -706,8 +707,8 @@ return 1;""",
                 '{{(char *)"{variable_name}",\t '
                 "(getter){PY_getter},\t "
                 "(setter){PY_setter},\t "
-                "NULL, "  # doc
-                "NULL}},",
+                "{nullptr}, "  # doc
+                "{nullptr}}},",
                 fmt_var,
             )
         )  # closure
@@ -830,14 +831,14 @@ return 1;""",
             vargs = wformat(vargs, fmt)
 
             if typemap.PY_ctor:
-                declare = "{PyObject} * {py_var} = NULL;"
+                declare = "{PyObject} * {py_var} = {nullptr};"
                 post_call = "{py_var} = " + typemap.PY_ctor + ";"
                 ctorvar = fmt.py_var
             else:
                 # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
-                declare = "{PyObject} * {py_var} = NULL;"
+                declare = "{PyObject} * {py_var} = {nullptr};"
                 post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
                 ctorvar = fmt.py_var
             blk = PyStmts(
@@ -943,7 +944,7 @@ return 1;""",
             fmt.PY_error_return = "-1"
         else:
             node.eval_template("PY_name_impl")
-            fmt.PY_error_return = "NULL"
+            fmt.PY_error_return = fmt_func.nullptr
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
@@ -983,11 +984,11 @@ return 1;""",
         found_default = False
         if node._has_default_arg:
             declare_code.append("Py_ssize_t SH_nargs = 0;")
-            PY_code.extend(
-                [
-                    "if (args != NULL) SH_nargs += PyTuple_Size(args);",
-                    "if (kwds != NULL) SH_nargs += PyDict_Size(args);",
-                ]
+            append_format(
+                PY_code,
+                "if (args != {nullptr}) SH_nargs += PyTuple_Size(args);\n"
+                "if (kwds != {nullptr}) SH_nargs += PyDict_Size(args);",
+                fmt
             )
 
         goto_fail = False
@@ -1239,7 +1240,9 @@ return 1;""",
                 kw_const
                 + 'char *SHT_kwlist[] = {\f"'
                 + '",\f"'.join(arg_names)
-                + '",\fNULL };'
+                + '",\f'
+                + fmt.nullptr
+                + ' };'
             )
             parse_format.extend([":", fmt.function_name])
             fmt.PyArg_format = "".join(parse_format)
@@ -1373,13 +1376,15 @@ return 1;""",
                     need_blank = False
         # End of loop over default arguments.
         if found_default:
-            PY_code.append(
+            append_format(
+                PY_code,
                 "default:+\n"
                 "PyErr_SetString(PyExc_ValueError,"
                 "\t \"Wrong number of arguments\");\n"
-                "return NULL;\n"
+                "return {nullptr};\n"
 #                "goto fail;\n"
-                "-}")
+                "-}}",
+                fmt)
 # XXX - need to add a extra scope to deal with goto in C++
 #            goto_fail = True;
         else:
@@ -1424,7 +1429,7 @@ return 1;""",
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
             rv_blk = PyStmts(
-                declare=["PyObject *{PY_result} = NULL;  // return value object"],
+                declare=["PyObject *{PY_result} = {nullptr};  // return value object"],
                 post_call=["{PY_result} = "
                            'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});'],
                 # Since this is the last statement before the Return,
@@ -1762,12 +1767,12 @@ return 1;""",
 #        result_typemap = node.CXX_result_typemap
             
             return PyStmts(
-                declare=["{cxx_alloc_decl} = NULL;"],
+                declare=["{cxx_alloc_decl} = {nullptr};"],
                 pre_call=self.allocate_memory(
                     fmt.cxx_var, capsule_type, fmt,
                     "goto fail", ast.typemap.base),
                 fail=[
-                    "if ({cxx_var} != NULL) {{+\n"
+                    "if ({cxx_var} != {nullptr}) {{+\n"
                     "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
                     "-}}"],
                 goto_fail=True,
@@ -1809,7 +1814,7 @@ return 1;""",
             ]
         lines.append(alloc)
         # This line is formatted later, thus {{{{ for a single {.
-        lines.append("if ({} == NULL) {{{{+\n"
+        lines.append("if ({} == {{nullptr}}) {{{{+\n"
                      "PyErr_NoMemory();\n{};\n-}}}}".format(var, error))
         capsule_order = self.add_capsule_code(self.language + " " + capsule_type, del_lines)
         fmt.capsule_order = capsule_order
@@ -1856,7 +1861,7 @@ return 1;""",
                 fmt_type[tp_name] = self.tp_init_default
                 continue
             if typename not in selected:
-                fmt_type[tp_name] = fmt_type["nullptr"]
+                fmt_type[tp_name] = fmt_func.nullptr
                 continue
             fmt.PY_type_method = tp_name
             func_name = wformat(template, fmt)
@@ -1870,7 +1875,8 @@ return 1;""",
             )
             output.append("{")
             default = default_body.get(typename, self.not_implemented_error)
-            default = default(typename, tup[2])
+            ret = fmt_func.nullptr if tup[2] == "NULL" else tup[2]
+            default = default(typename, ret)
 
             # format and indent default bodies
             fmted = [1]
@@ -1987,7 +1993,7 @@ return 1;""",
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
-            nullptr="0",  # 'NULL',
+            nullptr=fmt.nullptr,
         )
         self.write_tp_func(node, fmt_type, output)
 
@@ -2007,10 +2013,10 @@ return 1;""",
             )
             output.extend(fileinfo.GetSetDef)
             self._create_splicer("PyGetSetDef", output)
-            output.append("{NULL}            /* sentinel */")
+            append_format(output, "{{{nullptr}}}            /* sentinel */", fmt)
             output.append("-};")
         else:
-            fmt_type["tp_getset"] = fmt_type["nullptr"]
+            fmt_type["tp_getset"] = fmt.nullptr
 
         fmt_type["tp_methods"] = wformat("{PY_prefix}{cxx_class}_methods", fmt)
         append_format(
@@ -2018,8 +2024,11 @@ return 1;""",
         )
         output.extend(fileinfo.MethodDef)
         self._create_splicer("PyMethodDef", output)
-        output.append(
-            "{NULL,   (PyCFunction)NULL, 0, NULL}" "            /* sentinel */"
+        append_format(
+            output,
+            "{{{nullptr},   (PyCFunction){nullptr}, 0, {nullptr}}}"
+            "            /* sentinel */",
+            fmt
         )
         output.append("-};")
 
@@ -2067,11 +2076,11 @@ return 1;""",
             body = []
             body.append(1)
             body.append("Py_ssize_t SHT_nargs = 0;")
-            body.extend(
-                [
-                    "if (args != NULL) SHT_nargs += PyTuple_Size(args);",
-                    "if (kwds != NULL) SHT_nargs += PyDict_Size(args);",
-                ]
+            append_format(
+                body,
+                "if (args != {nullptr}) SHT_nargs += PyTuple_Size(args);\n"
+                "if (kwds != {nullptr}) SHT_nargs += PyDict_Size(args);",
+                fmt
             )
             if is_ctor:
                 fmt.PY_type_method = "tp_init"
@@ -2092,7 +2101,7 @@ return 1;""",
                 )
                 return_code = "return rvobj;"
                 return_arg = "rvobj"
-                fmt.PY_error_return = "NULL"
+                fmt.PY_error_return = fmt.nullptr
                 body.append("PyObject *rvobj;")
                 expose = True
 
@@ -2240,8 +2249,11 @@ extern PyObject *{PY_prefix}error_obj;
             output, "static PyMethodDef {PY_prefix}methods[] = {{", fmt
         )
         output.extend(fileinfo.MethodDef)
-        output.append(
-            "{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */"
+        append_format(
+            output,
+            "{{{nullptr},   (PyCFunction){nullptr}, 0, {nullptr}}}"
+            "            /* sentinel */",
+            fmt
         )
         output.append("};")
 
@@ -2350,7 +2362,7 @@ extern PyObject *{PY_prefix}error_obj;
         )
         for name in fcnnames:
             output.append('{{"{}", {}}},'.format(name[0], name[1]))
-        output.append("{NULL, NULL}")
+        output.append('{{{}, {}}},'.format(fmt.nullptr, fmt.nullptr))
         output.append("-};")
 
         # Write function to release from extension type.
@@ -2454,7 +2466,7 @@ extern PyObject *{PY_prefix}error_obj;
         """
         return [
             "{PY_release_memory_function}(self->{PY_type_dtor}, self->{PY_type_obj});",
-            "self->{PY_type_obj} = NULL;"
+            "self->{PY_type_obj} = {nullptr};"
         ]
 
 
@@ -2499,6 +2511,7 @@ typenames = [
 
 
 # return type, prototype, default return value
+# [2] will be converted to fmt.nullptr if 'NULL'.
 typefuncs = {
     "dealloc": ("void", "({object} *self)", ""),
     "print": ("int", "({object} *self, FILE *fp, int flags)", "-1"),
@@ -2547,10 +2560,10 @@ static char {cxx_class}__doc__[] =
 
 /* static */
 PyTypeObject {PY_PyTypeObject} = {{+
-PyVarObject_HEAD_INIT(NULL, 0)
+PyVarObject_HEAD_INIT({nullptr}, 0)
 "{PY_module_scope}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
-{nullptr},                              /* tp_itemsize */
+0,                              /* tp_itemsize */
 /* Methods to implement standard operations */
 (destructor){tp_dealloc},                 /* tp_dealloc */
 (printfunc){tp_print},                   /* tp_print */
@@ -2586,7 +2599,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 /* rich comparisons */
 (richcmpfunc){tp_richcompare},                 /* tp_richcompare */
 /* weak reference enabler */
-{nullptr},                              /* tp_weaklistoffset */
+0,                              /* tp_weaklistoffset */
 /* Added in release 2.2 */
 /* Iterators */
 (getiterfunc){nullptr},                 /* tp_iter */
@@ -2599,7 +2612,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 {nullptr},                              /* tp_dict */
 (descrgetfunc){nullptr},                /* tp_descr_get */
 (descrsetfunc){nullptr},                /* tp_descr_set */
-{nullptr},                              /* tp_dictoffset */
+0,                              /* tp_dictoffset */
 (initproc){tp_init},                   /* tp_init */
 (allocfunc){tp_alloc},                  /* tp_alloc */
 (newfunc){tp_new},                    /* tp_new */
@@ -2611,7 +2624,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 {nullptr},                              /* tp_subclasses */
 {nullptr},                              /* tp_weaklist */
 (destructor){tp_del},                 /* tp_del */
-{nullptr},                              /* tp_version_tag */
+0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
 (destructor){nullptr},                  /* tp_finalize */
 #endif
@@ -2655,14 +2668,14 @@ static struct PyModuleDef moduledef = {{
     {PY_prefix}_doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     {PY_prefix}methods, /* m_methods */
-    NULL, /* m_reload */
+    {nullptr}, /* m_reload */
     {library_lower}_traverse, /* m_traverse */
     {library_lower}_clear, /* m_clear */
     NULL  /* m_free */
 }};
 
 #define RETVAL m
-#define INITERROR return NULL
+#define INITERROR return {nullptr}
 #else
 #define RETVAL
 #define INITERROR return
@@ -2675,7 +2688,7 @@ PyInit_{PY_module_init}(void)
 init{PY_module_init}(void)
 #endif
 {{+
-PyObject *m = NULL;
+PyObject *m = {nullptr};
 const char * error_name = "{library_lower}.Error";
 """
 
@@ -2687,16 +2700,16 @@ m = PyModule_Create(&moduledef);
 #else
 m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,\t
 +{PY_prefix}_doc__,
-(PyObject*)NULL,PYTHON_API_VERSION);
+(PyObject*){nullptr},PYTHON_API_VERSION);
 #endif
--if (m == NULL)
+-if (m == {nullptr})
 +return RETVAL;-
 struct module_state *st = GETSTATE(m);"""
 
 # XXX - +INITERROR;-
 module_middle2 = """
-{PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-if ({PY_prefix}error_obj == NULL)
+{PY_prefix}error_obj = PyErr_NewException((char *) error_name, {nullptr}, {nullptr});
+if ({PY_prefix}error_obj == {nullptr})
 +return RETVAL;-
 st->error = {PY_prefix}error_obj;
 PyModule_AddObject(m, "Error", st->error);
@@ -2719,15 +2732,15 @@ static struct PyModuleDef moduledef = {{
     {PY_prefix}_doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     {PY_prefix}methods, /* m_methods */
-    NULL, /* m_reload */
+    {nullptr}, /* m_reload */
 //    {library_lower}_traverse, /* m_traverse */
 //    {library_lower}_clear, /* m_clear */
-    NULL, /* m_traverse */
-    NULL, /* m_clear */
-    NULL  /* m_free */
+    {nullptr}, /* m_traverse */
+    {nullptr}, /* m_clear */
+    {nullptr}  /* m_free */
 }};
 #endif
-#define RETVAL NULL
+#define RETVAL {nullptr}
 
 PyObject *{PY_prefix}init_{PY_module_init}(void)
 {{+
@@ -2735,10 +2748,10 @@ PyObject *m;
 #if PY_MAJOR_VERSION >= 3
 m = PyModule_Create(&moduledef);
 #else
-m = Py_InitModule3((char *) "{PY_module_scope}", {PY_prefix}methods, NULL);
+m = Py_InitModule3((char *) "{PY_module_scope}", {PY_prefix}methods, {nullptr});
 #endif
-if (m == NULL)
-+return NULL;-
+if (m == {nullptr})
++return {nullptr};-
 """
 submodule_end = """
 return m;
@@ -2992,7 +3005,7 @@ default_stmts = dict(
 
 # put into list to avoid duplicating text below
 array_error = [
-    "if ({py_var} == NULL) {{+",
+    "if ({py_var} == {nullptr}) {{+",
     "PyErr_SetString(PyExc_ValueError,"
     '\t "{c_var} must be a 1-D array of {c_type}");',
     "goto fail;",
@@ -3000,7 +3013,7 @@ array_error = [
 ]
 # Use cxx_T instead of c_type for vector.
 template_array_error = [
-    "if ({py_var} == NULL) {{+",
+    "if ({py_var} == {nullptr}) {{+",
     "PyErr_SetString(PyExc_ValueError,"
     '\t "{c_var} must be a 1-D array of {cxx_T}");',
     "goto fail;",
@@ -3008,20 +3021,20 @@ template_array_error = [
 ]
 
 malloc_error = [
-    "if ({cxx_var} == NULL) {{+",
+    "if ({cxx_var} == {nullptr}) {{+",
     "PyErr_NoMemory();",
     "goto fail;",
     "-}}",
 ]
 
 declare_capsule=[
-    "PyObject *{py_capsule} = NULL;",
+    "PyObject *{py_capsule} = {nullptr};",
 ]
 post_call_capsule=[
     "{py_capsule} = "
     'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
     "\t{PY_capsule_destructor_function});",
-    "if ({py_capsule} == NULL) goto fail;",
+    "if ({py_capsule} == {nullptr}) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
     "\t {PY_fetch_context_function}({capsule_order}));",
     "if (PyArray_SetBaseObject(\t"
@@ -3049,7 +3062,7 @@ py_statements = dict(
         # py_var is already declared for inout
         post_call=[
             "{py_var} = PyBool_FromLong({c_deref}{c_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3059,11 +3072,11 @@ py_statements = dict(
     ),
     py_bool_out=dict(
         declare=[
-            "{PyObject} * {py_var} = NULL;",
+            "{PyObject} * {py_var} = {nullptr};",
         ],
         post_call=[
             "{py_var} = PyBool_FromLong({c_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3073,11 +3086,11 @@ py_statements = dict(
     ),
     py_bool_result=dict(
         declare=[
-            "{PyObject} * {py_var} = NULL;",
+            "{PyObject} * {py_var} = {nullptr};",
         ],
         post_call=[
             "{py_var} = PyBool_FromLong({c_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3094,7 +3107,7 @@ py_statements = dict(
         c_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
@@ -3121,7 +3134,7 @@ py_statements = dict(
         c_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
@@ -3145,7 +3158,7 @@ py_statements = dict(
         c_local_var="pointer",
         declare=[
             "{npy_intp}"
-            "PyArrayObject * {py_var} = NULL;",
+            "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
@@ -3167,14 +3180,14 @@ py_statements = dict(
     py_native_result_dimension_numpy=dict(
         need_numpy=True,
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
             "{npy_intp}"
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_addr}{cxx_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3190,13 +3203,13 @@ py_statements = dict(
 ## allocatable
     py_native_out_allocatable_numpy=dict(
         need_numpy=True,
-        declare=["PyArrayObject * {py_var} = NULL;"],
+        declare=["PyArrayObject * {py_var} = {nullptr};"],
         c_local_var="pointer",
         pre_call=[
             "{npy_descr_code}"
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
             "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
-            "if ({py_var} == NULL)",
+            "if ({py_var} == {nullptr})",
             "+goto fail;-",
             "{cxx_type} * {cxx_var} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
             ],
@@ -3212,8 +3225,8 @@ py_statements = dict(
         parse_as_object=True,
         c_local_var="pointer",
         declare=[
-            "PyObject *{pytmp_var} = NULL;",
-            "{cxx_type} * {cxx_var} = NULL;",
+            "PyObject *{pytmp_var} = {nullptr};",
+            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3225,7 +3238,7 @@ py_statements = dict(
             "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if ({cxx_var} != NULL) {stdlib}free({cxx_var});",
+            "if ({cxx_var} != {nullptr}) {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -3236,8 +3249,8 @@ py_statements = dict(
         parse_as_object=True,
         c_local_var="pointer",
         declare=[
-            "PyObject *{pytmp_var} = NULL;",
-            "{cxx_type} * {cxx_var} = NULL;",
+            "PyObject *{pytmp_var} = {nullptr};",
+            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3248,14 +3261,14 @@ py_statements = dict(
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -3266,8 +3279,8 @@ py_statements = dict(
         cxx_header=["<cstdlib>"],  # malloc/free
         c_local_var="pointer",
         declare=[
-            "PyObject *{py_var} = NULL;",
-            "{cxx_type} * {cxx_var} = NULL;",
+            "PyObject *{py_var} = {nullptr};",
+            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         c_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
@@ -3279,16 +3292,16 @@ py_statements = dict(
         ] + malloc_error,
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
-            "{cxx_var} = NULL;",
+            "{cxx_var} = {nullptr};",
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -3301,7 +3314,7 @@ py_statements = dict(
         cxx_header=["<cstdlib>"],  # malloc/free
         c_local_var="pointer",
         declare=[
-            "{cxx_type} * {cxx_var} = NULL;",
+            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         c_pre_call=[
             "{c_var} = malloc(sizeof({c_type}) * {size_var});",
@@ -3311,14 +3324,14 @@ py_statements = dict(
         ] + malloc_error,
         post_call=[
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         cleanup=[
             "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -3370,8 +3383,8 @@ py_statements = dict(
         parse_as_object=True,
         cxx_local_var="pointer",
         declare=[
-            "PyObject * {pytmp_var} = NULL;",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyObject * {pytmp_var} = {nullptr};",
+            "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
         post_parse=[
@@ -3380,7 +3393,7 @@ py_statements = dict(
             "Py_INCREF({PYN_descr});",
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
             "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
             "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
@@ -3401,8 +3414,8 @@ py_statements = dict(
         parse_as_object=True,
         cxx_local_var="pointer",
         declare=[
-            "PyObject * {pytmp_var} = NULL;",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyObject * {pytmp_var} = {nullptr};",
+            "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
         post_parse=[
@@ -3411,7 +3424,7 @@ py_statements = dict(
             "Py_INCREF({PYN_descr});",
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
             "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
             "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
@@ -3433,13 +3446,13 @@ py_statements = dict(
         cxx_local_var="pointer",
         declare=[
 #            "{npy_intp}"
-            "PyArrayObject * {py_var} = NULL;",
+            "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
             "Py_INCREF({PYN_descr});",
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
             "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
-            "\t 0,\t NULL,\t NULL,\t NULL,\t 0,\t NULL){cast2};",
+            "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
 #            "{cxx_decl} = PyArray_DATA({py_var});",
@@ -3460,15 +3473,15 @@ py_statements = dict(
         need_numpy=True,
         allocate_local_var=True,
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
             "{npy_intp}"
             "Py_INCREF({PYN_descr});",
             "{py_var} = "
             "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
-            " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
-            "if ({py_var} == NULL) goto fail;",
+            " {npy_ndims}, {npy_dims}, \t{nullptr}, {cxx_var}, 0, {nullptr});",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3485,14 +3498,14 @@ py_statements = dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
+            "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
     ),
     py_struct_inout_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
+            "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
         object_created=True,
     ),
@@ -3501,7 +3514,7 @@ py_statements = dict(
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         declare=[
-            "{PyObject} * {py_var} = NULL;",
+            "{PyObject} * {py_var} = {nullptr};",
         ],
         c_pre_call=[
             "{c_type} * {c_var} = malloc(sizeof({c_type}));",
@@ -3518,7 +3531,7 @@ py_statements = dict(
         post_call=[
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
@@ -3532,12 +3545,12 @@ py_statements = dict(
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
-            "{PyObject} *{py_var} = NULL;  // struct_result_class",
+            "{PyObject} *{py_var} = {nullptr};  // struct_result_class",
         ],
         post_call=[
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
@@ -3555,24 +3568,24 @@ py_statements = dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+            "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],
     ),
     py_shadow_inout=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+            "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],
     ),
     py_shadow_out=dict(
         declare=[
-            "{PyObject} *{py_var} = NULL;"
+            "{PyObject} *{py_var} = {nullptr};"
         ],
         post_call=[
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
         ],
         object_created=True,
@@ -3586,12 +3599,12 @@ py_statements = dict(
     ),
     py_shadow_result=dict(
 #            declare=[
-#                "{PyObject} *{py_var} = NULL;"
+#                "{PyObject} *{py_var} = {nullptr};"
 #            ],
         post_call=[
             "{PyObject} * {py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-#                "if ({py_var} == NULL) goto fail;",
+#                "if ({py_var} == {nullptr}) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
         ],
         object_created=True,
@@ -3634,14 +3647,14 @@ py_statements = dict(
         c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
         ],
         post_call=[
             "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3652,11 +3665,11 @@ py_statements = dict(
     # XXX - must release after copying result.
     py_vector_result_list=dict(
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
             "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3679,7 +3692,7 @@ py_statements = dict(
         cxx_local_var="scalar",
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
-            "PyArrayObject * {py_var} = NULL;",
+            "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
@@ -3703,7 +3716,7 @@ py_statements = dict(
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
             "{npy_intp}"
@@ -3711,7 +3724,7 @@ py_statements = dict(
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_var}->data());",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[
@@ -3726,7 +3739,7 @@ py_statements = dict(
         need_numpy=True,
         allocate_local_var=True,
         declare=[
-            "PyObject * {py_var} = NULL;",
+            "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
             "{npy_intp}"
@@ -3734,7 +3747,7 @@ py_statements = dict(
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_var}->data());",
-            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
         fail=[

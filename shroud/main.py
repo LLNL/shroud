@@ -22,6 +22,7 @@ from yaml.constructor import Constructor
 
 from . import ast
 from . import generate
+from . import metadata
 from . import splicer
 from . import todict
 from . import typemap
@@ -175,8 +176,6 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
 
 
 def main():
-    from . import __version__
-
     appname = "shroud"
 
     parser = argparse.ArgumentParser(
@@ -184,7 +183,8 @@ def main():
         description="""Create Fortran or Python wrapper for a C++ library.
 """,
     )
-    parser.add_argument("--version", action="version", version=__version__)
+    parser.add_argument("--version", action="version",
+                        version=metadata.__version__)
     parser.add_argument(
         "--outdir",
         default="",
