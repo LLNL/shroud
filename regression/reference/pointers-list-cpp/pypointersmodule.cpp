@@ -129,7 +129,7 @@ PY_intargs(
         "argin",
         "arginout",
         NULL };
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         const_cast<char **>(SHT_kwlist), &argin, &arginout))
@@ -164,9 +164,9 @@ PY_cos_doubles(
 {
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.cos_doubles
-    PyObject *SHTPy_in = NULL;
-    double * in = NULL;
-    double * out = NULL;
+    PyObject *SHTPy_in = nullptr;
+    double * in = nullptr;
+    double * out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -184,7 +184,7 @@ PY_cos_doubles(
         // pre_call
         out = static_cast<double *>
             (std::malloc(sizeof(double) * SHSize_in));
-        if (out == NULL) {
+        if (out == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -194,7 +194,7 @@ PY_cos_doubles(
 
         // post_call
         PyObject *SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
-        if (SHPy_out == NULL) goto fail;
+        if (SHPy_out == nullptr) goto fail;
 
         // cleanup
         std::free(in);
@@ -204,8 +204,8 @@ PY_cos_doubles(
     }
 
 fail:
-    if (in != NULL) std::free(in);
-    if (out != NULL) std::free(out);
+    if (in != nullptr) std::free(in);
+    if (out != nullptr) std::free(out);
     return NULL;
 // splicer end function.cos_doubles
 }
@@ -228,9 +228,9 @@ PY_truncate_to_int(
 {
 // void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.truncate_to_int
-    PyObject *SHTPy_in = NULL;
-    double * in = NULL;
-    int * out = NULL;
+    PyObject *SHTPy_in = nullptr;
+    double * in = nullptr;
+    int * out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -247,7 +247,7 @@ PY_truncate_to_int(
     {
         // pre_call
         out = static_cast<int *>(std::malloc(sizeof(int) * SHSize_in));
-        if (out == NULL) {
+        if (out == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -257,7 +257,7 @@ PY_truncate_to_int(
 
         // post_call
         PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
-        if (SHPy_out == NULL) goto fail;
+        if (SHPy_out == nullptr) goto fail;
 
         // cleanup
         std::free(in);
@@ -267,8 +267,8 @@ PY_truncate_to_int(
     }
 
 fail:
-    if (in != NULL) std::free(in);
-    if (out != NULL) std::free(out);
+    if (in != nullptr) std::free(in);
+    if (out != nullptr) std::free(out);
     return NULL;
 // splicer end function.truncate_to_int
 }
@@ -293,15 +293,15 @@ PY_get_values(
 {
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
-    PyObject *SHPy_values = NULL;
-    int * values = NULL;
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHPy_values = nullptr;
+    int * values = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     {
         // pre_call
         int nvalues;  // intent(out)
         values = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (values == NULL) {
+        if (values == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -310,19 +310,19 @@ PY_get_values(
 
         // post_call
         SHPy_values = SHROUD_to_PyList_int(values, 3);
-        if (SHPy_values == NULL) goto fail;
+        if (SHPy_values == nullptr) goto fail;
         SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
 
         // cleanup
         std::free(values);
-        values = NULL;
+        values = nullptr;
 
         return SHTPy_rv;
     }
 
 fail:
     Py_XDECREF(SHPy_values);
-    if (values != NULL) std::free(values);
+    if (values != nullptr) std::free(values);
     return NULL;
 // splicer end function.get_values
 }
@@ -345,21 +345,21 @@ PY_get_values2(
 {
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // splicer begin function.get_values2
-    PyObject *SHPy_arg1 = NULL;
-    int * arg1 = NULL;
-    PyObject *SHPy_arg2 = NULL;
-    int * arg2 = NULL;
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHPy_arg1 = nullptr;
+    int * arg1 = nullptr;
+    PyObject *SHPy_arg2 = nullptr;
+    int * arg2 = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     {
         // pre_call
         arg1 = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (arg1 == NULL) {
+        if (arg1 == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
         arg2 = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (arg2 == NULL) {
+        if (arg2 == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -368,25 +368,25 @@ PY_get_values2(
 
         // post_call
         SHPy_arg1 = SHROUD_to_PyList_int(arg1, 3);
-        if (SHPy_arg1 == NULL) goto fail;
+        if (SHPy_arg1 == nullptr) goto fail;
         SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
-        if (SHPy_arg2 == NULL) goto fail;
+        if (SHPy_arg2 == nullptr) goto fail;
         SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
 
         // cleanup
         std::free(arg1);
-        arg1 = NULL;
+        arg1 = nullptr;
         std::free(arg2);
-        arg2 = NULL;
+        arg2 = nullptr;
 
         return SHTPy_rv;
     }
 
 fail:
     Py_XDECREF(SHPy_arg1);
-    if (arg1 != NULL) std::free(arg1);
+    if (arg1 != nullptr) std::free(arg1);
     Py_XDECREF(SHPy_arg2);
-    if (arg2 != NULL) std::free(arg2);
+    if (arg2 != nullptr) std::free(arg2);
     return NULL;
 // splicer end function.get_values2
 }
@@ -403,12 +403,12 @@ PY_Sum(
 {
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
-    PyObject *SHTPy_values = NULL;
-    int * values = NULL;
+    PyObject *SHTPy_values = nullptr;
+    int * values = nullptr;
     const char *SHT_kwlist[] = {
         "values",
         NULL };
-    PyObject * SHPy_result = NULL;
+    PyObject * SHPy_result = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -436,7 +436,7 @@ PY_Sum(
     }
 
 fail:
-    if (values != NULL) std::free(values);
+    if (values != nullptr) std::free(values);
     return NULL;
 // splicer end function.sum
 }
@@ -456,13 +456,13 @@ PY_fillIntArray(
 {
 // void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
-    PyObject *SHPy_out = NULL;
-    int * out = NULL;
+    PyObject *SHPy_out = nullptr;
+    int * out = nullptr;
 
     {
         // pre_call
         out = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (out == NULL) {
+        if (out == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -471,18 +471,18 @@ PY_fillIntArray(
 
         // post_call
         SHPy_out = SHROUD_to_PyList_int(out, 3);
-        if (SHPy_out == NULL) goto fail;
+        if (SHPy_out == nullptr) goto fail;
 
         // cleanup
         std::free(out);
-        out = NULL;
+        out = nullptr;
 
         return (PyObject *) SHPy_out;
     }
 
 fail:
     Py_XDECREF(SHPy_out);
-    if (out != NULL) std::free(out);
+    if (out != nullptr) std::free(out);
     return NULL;
 // splicer end function.fill_int_array
 }
@@ -502,8 +502,8 @@ PY_incrementIntArray(
 {
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
-    PyObject *SHTPy_array = NULL;
-    int * array = NULL;
+    PyObject *SHTPy_array = nullptr;
+    int * array = nullptr;
     const char *SHT_kwlist[] = {
         "array",
         NULL };
@@ -526,7 +526,7 @@ PY_incrementIntArray(
         // post_call
         PyObject *SHPy_array = SHROUD_to_PyList_int(array,
             SHSize_array);
-        if (SHPy_array == NULL) goto fail;
+        if (SHPy_array == nullptr) goto fail;
 
         // cleanup
         std::free(array);
@@ -535,7 +535,7 @@ PY_incrementIntArray(
     }
 
 fail:
-    if (array != NULL) std::free(array);
+    if (array != nullptr) std::free(array);
     return NULL;
 // splicer end function.increment_int_array
 }
@@ -614,7 +614,7 @@ PyInit_pointers(void)
 initpointers(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "pointers.Error";
 
     // splicer begin C_init_locals
@@ -627,14 +627,14 @@ initpointers(void)
 #else
     m = Py_InitModule4("pointers", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

@@ -35,7 +35,7 @@ PY_ImplWorker1_tp_del (PY_ImplWorker1 *self)
 {
 // splicer begin namespace.internal.class.ImplWorker1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end namespace.internal.class.ImplWorker1.type.del
 }
 // splicer begin namespace.internal.class.ImplWorker1.impl.after_methods

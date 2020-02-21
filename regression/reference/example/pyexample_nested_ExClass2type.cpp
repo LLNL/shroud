@@ -143,7 +143,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 {
 // splicer begin namespace.example::nested.class.ExClass2.type.del
     PP_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end namespace.example::nested.class.ExClass2.type.del
 }
 
@@ -172,7 +172,7 @@ PP_ExClass2_tp_init(
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass2(&SH_name);
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -193,7 +193,7 @@ PP_getName(
 {
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getName();
 
@@ -217,7 +217,7 @@ PP_getName2(
 {
 // const string & getName2() +deref(allocatable)
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name2
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getName2();
 
@@ -241,7 +241,7 @@ PP_getName3(
 {
 // string & getName3() const +deref(allocatable)
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name3
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     std::string & SHCXX_rv = self->obj->getName3();
 
@@ -265,7 +265,7 @@ PP_getName4(
 {
 // string & getName4() +deref(allocatable)
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name4
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     std::string & SHCXX_rv = self->obj->getName4();
 
@@ -293,7 +293,7 @@ PP_GetNameLength(
 {
 // int GetNameLength() const
 // splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = self->obj->GetNameLength();
 
@@ -327,7 +327,7 @@ PP_get_class1(
 
     // post_parse
     const example::nested::ExClass1 * in =
-        SHPy_in ? SHPy_in->obj : NULL;
+        SHPy_in ? SHPy_in->obj : nullptr;
 
     example::nested::ExClass1 * SHCXX_rv = self->obj->get_class1(in);
 
@@ -360,8 +360,8 @@ PP_declare_1(
         "len",
         NULL };
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
         const_cast<char **>(SHT_kwlist), &type, &len))
         return NULL;
@@ -384,7 +384,7 @@ PP_declare_1(
         }
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.declare
@@ -419,7 +419,7 @@ PP_getTypeID(
 {
 // TypeID getTypeID() const
 // splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     TypeID SHCXX_rv = self->obj->getTypeID();
 
@@ -526,7 +526,7 @@ PP_getValue_int(
 {
 // int getValue()
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = self->obj->getValue<int>();
 
@@ -545,7 +545,7 @@ PP_getValue_double(
 {
 // double getValue()
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     double SHCXX_rv = self->obj->getValue<double>();
 
@@ -568,8 +568,8 @@ PP_setValue(
 {
 // splicer begin namespace.example::nested.class.ExClass2.method.set_value
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PP_setValue_int(self, args, kwds);
@@ -624,8 +624,8 @@ PP_getValue(
 {
 // splicer begin namespace.example::nested.class.ExClass2.method.get_value
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 0) {
         rvobj = PP_getValue_int(self, args, kwds);

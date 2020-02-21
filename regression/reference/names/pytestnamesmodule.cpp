@@ -128,7 +128,7 @@ PY_function4(
     const char *SHT_kwlist[] = {
         "rv",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
         const_cast<char **>(SHT_kwlist), &rv))
@@ -255,7 +255,7 @@ PY_UseImplWorker_instantiation3(
 {
 // int UseImplWorker()
 // splicer begin function.use_impl_worker_instantiation3
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int ARG_rv = UseImplWorker<internal::ImplWorker1>();
 
@@ -278,8 +278,8 @@ PY_function3a(
 {
 // splicer begin function.function3a
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PY_function3a_0(self, args, kwds);
@@ -316,8 +316,8 @@ PY_FunctionTU(
 {
 // splicer begin function.function_tu
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 2) {
         rvobj = PY_name_instantiation1(self, args, kwds);
@@ -417,7 +417,7 @@ PyInit_testnames(void)
 inittestnames(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "testnames.Error";
 
     // splicer begin C_init_locals
@@ -430,15 +430,15 @@ inittestnames(void)
 #else
     m = Py_InitModule4("testnames", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
     {
         PyObject *submodule = PY_init_testnames_ns0();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "ns0", submodule);
@@ -446,7 +446,7 @@ inittestnames(void)
 
     {
         PyObject *submodule = PY_init_testnames_ns1();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "ns1", submodule);
@@ -454,7 +454,7 @@ inittestnames(void)
 
     {
         PyObject *submodule = PY_init_testnames_internal();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "internal", submodule);
@@ -462,7 +462,7 @@ inittestnames(void)
 
     {
         PyObject *submodule = PY_init_testnames_std();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "std", submodule);
@@ -497,8 +497,8 @@ inittestnames(void)
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

@@ -22,10 +22,10 @@ PyObject *PP_vector_int_to_Object(std::vector<int> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_vector_int_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_vector_int_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_vector_int_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_vector_int_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -51,10 +51,10 @@ PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_vector_double_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_vector_double_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -80,10 +80,10 @@ PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_ImplWorker1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_ImplWorker1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_ImplWorker1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_ImplWorker1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.internal.class.ImplWorker1.utility.to_object
@@ -109,10 +109,10 @@ PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_ImplWorker2_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_ImplWorker2_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_ImplWorker2_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_ImplWorker2_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.internal.class.ImplWorker2.utility.to_object
@@ -138,10 +138,10 @@ PyObject *PP_Worker_to_Object(Worker *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Worker_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Worker_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Worker_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Worker_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.Worker.utility.to_object
@@ -167,10 +167,10 @@ PyObject *PP_user_int_to_Object(user<int> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_user_int_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_user_int_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_user_int_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_user_int_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.user.utility.to_object

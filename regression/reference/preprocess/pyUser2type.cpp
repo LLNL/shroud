@@ -32,7 +32,7 @@ PY_User2_tp_del (PY_User2 *self)
 {
 // splicer begin class.User2.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.User2.type.del
 }
 
@@ -87,8 +87,8 @@ PY_exfunc(
 {
 // splicer begin class.User2.method.exfunc
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
 #ifdef USE_CLASS3_A
     if (SHT_nargs == 0) {

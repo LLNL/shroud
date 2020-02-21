@@ -31,7 +31,7 @@ PY_User1_tp_del (PY_User1 *self)
 {
 // splicer begin class.User1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.User1.type.del
 }
 
@@ -90,8 +90,8 @@ PY_method3def_1(
         "i",
         NULL };
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|i:method3def",
         const_cast<char **>(SHT_kwlist), &i))
         return NULL;
@@ -104,7 +104,7 @@ PY_method3def_1(
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
     Py_RETURN_NONE;
 // splicer end class.User1.method.method3def

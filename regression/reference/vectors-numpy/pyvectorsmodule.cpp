@@ -46,11 +46,11 @@ PY_vector_sum(
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 // splicer begin function.vector_sum
     PyObject * SHTPy_arg;
-    PyArrayObject * SHPy_arg = NULL;
+    PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
@@ -59,7 +59,7 @@ PY_vector_sum(
     // post_parse
     SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_arg, NPY_INT, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_arg == NULL) {
+    if (SHPy_arg == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "arg must be a 1-D array of int");
         goto fail;
@@ -100,14 +100,14 @@ PY_vector_iota_out(
 {
 // void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
-    std::vector<int> * SH_arg = NULL;
-    PyObject * SHPy_arg = NULL;
-    PyObject *SHC_arg = NULL;
+    std::vector<int> * SH_arg = nullptr;
+    PyObject * SHPy_arg = nullptr;
+    PyObject *SHC_arg = nullptr;
 
     {
         // pre_call
         SH_arg = new std::vector<int>;
-        if (SH_arg == NULL) {
+        if (SH_arg == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -119,10 +119,10 @@ PY_vector_iota_out(
         SHD_arg[0] = SH_arg->size();
         SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
             SH_arg->data());
-        if (SHPy_arg == NULL) goto fail;
+        if (SHPy_arg == nullptr) goto fail;
         SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
             PY_SHROUD_capsule_destructor);
-        if (SHC_arg == NULL) goto fail;
+        if (SHC_arg == nullptr) goto fail;
         PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(1));
         if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
             (SHPy_arg), SHC_arg) < 0) goto fail;
@@ -131,7 +131,7 @@ PY_vector_iota_out(
     }
 
 fail:
-    if (SH_arg != NULL) {
+    if (SH_arg != nullptr) {
         PY_SHROUD_release_memory(1, SH_arg);
     }
     Py_XDECREF(SHPy_arg);
@@ -156,14 +156,14 @@ PY_vector_iota_out_d(
 {
 // void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out_d
-    std::vector<double> * SH_arg = NULL;
-    PyObject * SHPy_arg = NULL;
-    PyObject *SHC_arg = NULL;
+    std::vector<double> * SH_arg = nullptr;
+    PyObject * SHPy_arg = nullptr;
+    PyObject *SHC_arg = nullptr;
 
     {
         // pre_call
         SH_arg = new std::vector<double>;
-        if (SH_arg == NULL) {
+        if (SH_arg == nullptr) {
             PyErr_NoMemory();
             goto fail;
         }
@@ -175,10 +175,10 @@ PY_vector_iota_out_d(
         SHD_arg[0] = SH_arg->size();
         SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_DOUBLE,
             SH_arg->data());
-        if (SHPy_arg == NULL) goto fail;
+        if (SHPy_arg == nullptr) goto fail;
         SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
             PY_SHROUD_capsule_destructor);
-        if (SHC_arg == NULL) goto fail;
+        if (SHC_arg == nullptr) goto fail;
         PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(2));
         if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
             (SHPy_arg), SHC_arg) < 0) goto fail;
@@ -187,7 +187,7 @@ PY_vector_iota_out_d(
     }
 
 fail:
-    if (SH_arg != NULL) {
+    if (SH_arg != nullptr) {
         PY_SHROUD_release_memory(2, SH_arg);
     }
     Py_XDECREF(SHPy_arg);
@@ -217,9 +217,9 @@ PY_ReturnVectorAlloc(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
-    std::vector<int> * SHCXX_rv = NULL;
-    PyObject * SHTPy_rv = NULL;
-    PyObject *SHC_SHCXX_rv = NULL;
+    std::vector<int> * SHCXX_rv = nullptr;
+    PyObject * SHTPy_rv = nullptr;
+    PyObject *SHC_SHCXX_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ReturnVectorAlloc",
         const_cast<char **>(SHT_kwlist), &n))
@@ -227,7 +227,7 @@ PY_ReturnVectorAlloc(
 
     // result pre_call
     SHCXX_rv = new std::vector<int>;
-    if (SHCXX_rv == NULL) {
+    if (SHCXX_rv == nullptr) {
         PyErr_NoMemory();
         goto fail;
     }
@@ -239,10 +239,10 @@ PY_ReturnVectorAlloc(
     SHD_rv[0] = SHCXX_rv->size();
     SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT,
         SHCXX_rv->data());
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHC_SHCXX_rv = PyCapsule_New(SHCXX_rv, "PY_array_dtor", 
         PY_SHROUD_capsule_destructor);
-    if (SHC_SHCXX_rv == NULL) goto fail;
+    if (SHC_SHCXX_rv == nullptr) goto fail;
     PyCapsule_SetContext(SHC_SHCXX_rv, PY_SHROUD_fetch_context(1));
     if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
         (SHTPy_rv), SHC_SHCXX_rv) < 0) goto fail;
@@ -250,7 +250,7 @@ PY_ReturnVectorAlloc(
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (SHCXX_rv != NULL) {
+    if (SHCXX_rv != nullptr) {
         PY_SHROUD_release_memory(1, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
@@ -326,7 +326,7 @@ PyInit_vectors(void)
 initvectors(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "vectors.Error";
 
     // splicer begin C_init_locals
@@ -339,16 +339,16 @@ initvectors(void)
 #else
     m = Py_InitModule4("vectors", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
     import_array();
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

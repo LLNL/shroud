@@ -31,7 +31,7 @@ PY_Names2_tp_del (PY_Names2 *self)
 {
 // splicer begin class.Names2.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
-    self->myobj = NULL;
+    self->myobj = nullptr;
 // splicer end class.Names2.type.del
 }
 // splicer begin class.Names2.impl.after_methods

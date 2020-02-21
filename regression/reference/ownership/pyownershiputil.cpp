@@ -17,10 +17,10 @@ PyObject *PP_Class1_to_Object(Class1 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Class1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Class1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Class1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Class1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.Class1.utility.to_object

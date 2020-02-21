@@ -39,15 +39,15 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
 //    testnames_traverse, /* m_traverse */
 //    testnames_clear, /* m_clear */
-    NULL, /* m_traverse */
-    NULL, /* m_clear */
-    NULL  /* m_free */
+    nullptr, /* m_traverse */
+    nullptr, /* m_clear */
+    nullptr  /* m_free */
 };
 #endif
-#define RETVAL NULL
+#define RETVAL nullptr
 
 PyObject *PY_init_testnames_ns0(void)
 {
@@ -55,15 +55,15 @@ PyObject *PY_init_testnames_ns0(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "testnames.ns0", PY_methods, NULL);
+    m = Py_InitModule3((char *) "testnames.ns0", PY_methods, nullptr);
 #endif
-    if (m == NULL)
-        return NULL;
+    if (m == nullptr)
+        return nullptr;
 
 
     {
         PyObject *submodule = PY_init_testnames_ns0_inner();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner", submodule);

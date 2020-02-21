@@ -39,15 +39,15 @@ static struct PyModuleDef moduledef = {
     PP__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PP_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
 //    userlibrary_traverse, /* m_traverse */
 //    userlibrary_clear, /* m_clear */
-    NULL, /* m_traverse */
-    NULL, /* m_clear */
-    NULL  /* m_free */
+    nullptr, /* m_traverse */
+    nullptr, /* m_clear */
+    nullptr  /* m_free */
 };
 #endif
-#define RETVAL NULL
+#define RETVAL nullptr
 
 PyObject *PP_init_userlibrary_example(void)
 {
@@ -55,15 +55,15 @@ PyObject *PP_init_userlibrary_example(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "userlibrary.example", PP_methods, NULL);
+    m = Py_InitModule3((char *) "userlibrary.example", PP_methods, nullptr);
 #endif
-    if (m == NULL)
-        return NULL;
+    if (m == nullptr)
+        return nullptr;
 
 
     {
         PyObject *submodule = PP_init_userlibrary_example_nested();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "nested", submodule);

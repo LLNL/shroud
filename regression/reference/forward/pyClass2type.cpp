@@ -31,7 +31,7 @@ PY_Class2_tp_del (PY_Class2 *self)
 {
 // splicer begin class.Class2.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Class2.type.del
 }
 
@@ -44,7 +44,7 @@ PY_Class2_tp_init(
 // Class2()
 // splicer begin class.Class2.method.ctor
     self->obj = new forward::Class2();
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -75,7 +75,7 @@ PY_func1(
         return NULL;
 
     // post_parse
-    tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->func1(SH_arg);
     Py_RETURN_NONE;
@@ -104,7 +104,7 @@ PY_acceptClass3(
         return NULL;
 
     // post_parse
-    forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->acceptClass3(arg);
     Py_RETURN_NONE;

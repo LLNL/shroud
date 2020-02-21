@@ -31,7 +31,7 @@ PY_ClassWork_tp_del (PY_ClassWork *self)
 {
 // splicer begin namespace.nswork.class.ClassWork.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end namespace.nswork.class.ClassWork.type.del
 }
 // splicer begin namespace.nswork.class.ClassWork.impl.after_methods

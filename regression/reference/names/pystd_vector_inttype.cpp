@@ -31,7 +31,7 @@ PY_Vvv1_tp_del (PY_Vvv1 *self)
 {
 // splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
-    self->myobj = NULL;
+    self->myobj = nullptr;
 // splicer end namespace.std.class.vector.type.del
 }
 // splicer begin namespace.std.class.vector.impl.after_methods

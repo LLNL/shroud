@@ -102,7 +102,7 @@ PY_UseImplWorker_internal_ImplWorker1(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.use_impl_worker_internal_ImplWorker1
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker1>();
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -125,7 +125,7 @@ PY_UseImplWorker_internal_ImplWorker2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.use_impl_worker_internal_ImplWorker2
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker2>();
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -145,8 +145,8 @@ PY_FunctionTU(
 {
 // splicer begin function.function_tu
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 2) {
         rvobj = PY_FunctionTU_0(self, args, kwds);
@@ -238,7 +238,7 @@ PyInit_templates(void)
 inittemplates(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "templates.Error";
 
     // splicer begin C_init_locals
@@ -251,9 +251,9 @@ inittemplates(void)
 #else
     m = Py_InitModule4("templates", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -261,7 +261,7 @@ inittemplates(void)
 
     {
         PyObject *submodule = PY_init_templates_std();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "std", submodule);
@@ -269,7 +269,7 @@ inittemplates(void)
 
     {
         PyObject *submodule = PY_init_templates_internal();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "internal", submodule);
@@ -291,8 +291,8 @@ inittemplates(void)
     Py_INCREF(&PY_user_int_Type);
     PyModule_AddObject(m, "user_int", (PyObject *)&PY_user_int_Type);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

@@ -44,7 +44,7 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +deref(allocatable)
 // splicer begin function.last_function_called
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = LastFunctionCalled();
 
@@ -135,7 +135,7 @@ PyInit_ns(void)
 initns(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "ns.Error";
 
     // splicer begin C_init_locals
@@ -148,15 +148,15 @@ initns(void)
 #else
     m = Py_InitModule4("ns", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
     {
         PyObject *submodule = PY_init_ns_outer();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "outer", submodule);
@@ -164,14 +164,14 @@ initns(void)
 
     {
         PyObject *submodule = PY_init_ns_nswork();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "nswork", submodule);
     }
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

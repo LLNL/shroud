@@ -65,7 +65,7 @@ PY_PassByValue(
         "arg1",
         "arg2",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -102,7 +102,7 @@ PY_ConcatenateStrings(
         "arg1",
         "arg2",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "ss:ConcatenateStrings", const_cast<char **>(SHT_kwlist), &arg1,
@@ -144,10 +144,10 @@ PY_UseDefaultArguments_arg1_arg2(
         "arg2",
         NULL };
     double SHCXX_rv;
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|dO!:UseDefaultArguments", const_cast<char **>(SHT_kwlist), 
         &arg1, &PyBool_Type, &SHPy_arg2))
@@ -169,7 +169,7 @@ PY_UseDefaultArguments_arg1_arg2(
         }
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
 
     // post_call
@@ -329,10 +329,10 @@ PY_UseDefaultOverload_num_offset_stride(
         "stride",
         NULL };
     int SHCXX_rv;
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "i|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
         &num, &offset, &stride))
@@ -349,7 +349,7 @@ PY_UseDefaultOverload_num_offset_stride(
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
 
     // post_call
@@ -379,10 +379,10 @@ PY_UseDefaultOverload_5(
         "stride",
         NULL };
     int SHCXX_rv;
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "di|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
         &type, &num, &offset, &stride))
@@ -400,7 +400,7 @@ PY_UseDefaultOverload_5(
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
 
     // post_call
@@ -426,7 +426,7 @@ PY_typefunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -457,7 +457,7 @@ PY_enumfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -492,7 +492,7 @@ PY_colorfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:colorfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -526,7 +526,7 @@ PY_getMinMax(
 {
 // void getMinMax(int & min +intent(out), int & max +intent(out))
 // splicer begin function.get_min_max
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     // pre_call
     int min;  // intent(out)
@@ -553,7 +553,7 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
@@ -577,8 +577,8 @@ PY_OverloadedFunction(
 {
 // splicer begin function.overloaded_function
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PY_OverloadedFunction_from_name(self, args, kwds);
@@ -615,8 +615,8 @@ PY_TemplateArgument(
 {
 // splicer begin function.template_argument
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PY_TemplateArgument_int(self, args, kwds);
@@ -653,8 +653,8 @@ PY_FortranGenericOverloaded(
 {
 // splicer begin function.fortran_generic_overloaded
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 0) {
         rvobj = PY_FortranGenericOverloaded_0(self, args, kwds);
@@ -691,8 +691,8 @@ PY_UseDefaultOverload(
 {
 // splicer begin function.use_default_overload
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs >= 1 && SHT_nargs <= 3) {
         rvobj = PY_UseDefaultOverload_num_offset_stride(self, args, kwds);
@@ -803,7 +803,7 @@ PyInit_tutorial(void)
 inittutorial(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "tutorial.Error";
 
     // splicer begin C_init_locals
@@ -816,9 +816,9 @@ inittutorial(void)
 #else
     m = Py_InitModule4("tutorial", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -827,8 +827,8 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

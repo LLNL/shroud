@@ -89,7 +89,7 @@ PyInit_enum(void)
 initenum(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "enum.Error";
 
     // splicer begin C_init_locals
@@ -102,9 +102,9 @@ initenum(void)
 #else
     m = Py_InitModule4("enum", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -123,8 +123,8 @@ initenum(void)
     PyModule_AddIntConstant(m, "g1", g1);
     PyModule_AddIntConstant(m, "h1", h1);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

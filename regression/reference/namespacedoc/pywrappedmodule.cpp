@@ -128,7 +128,7 @@ PyInit_wrapped(void)
 initwrapped(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "wrapped.Error";
 
     // splicer begin C_init_locals
@@ -141,15 +141,15 @@ initwrapped(void)
 #else
     m = Py_InitModule4("wrapped", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
     {
         PyObject *submodule = PY_init_wrapped_inner1();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner1", submodule);
@@ -157,7 +157,7 @@ initwrapped(void)
 
     {
         PyObject *submodule = PY_init_wrapped_inner2();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner2", submodule);
@@ -165,14 +165,14 @@ initwrapped(void)
 
     {
         PyObject *submodule = PY_init_wrapped_inner4();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner4", submodule);
     }
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

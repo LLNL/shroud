@@ -46,14 +46,14 @@ PY_passStructByValue(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStructByValue",
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStructByValue(*arg);
 
@@ -80,14 +80,14 @@ PY_passStruct1(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStruct1",
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStruct1(arg);
 
@@ -117,14 +117,14 @@ PY_passStruct2(
     const char *SHT_kwlist[] = {
         "s1",
         NULL };
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStruct2",
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_s1))
         return NULL;
 
     // post_parse
-    Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
+    Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
 
     // pre_call
     char outbuf[LENOUTBUF];  // intent(out)
@@ -153,7 +153,7 @@ PY_acceptStructOutPtr(
 {
 // void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.accept_struct_out_ptr
-    PY_Cstruct1 * SHPy_arg = NULL;
+    PY_Cstruct1 * SHPy_arg = nullptr;
     int i;
     double d;
     const char *SHT_kwlist[] = {
@@ -173,7 +173,7 @@ PY_acceptStructOutPtr(
 
         // post_call
         SHPy_arg = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-        if (SHPy_arg == NULL) goto fail;
+        if (SHPy_arg == nullptr) goto fail;
         SHPy_arg->obj = arg;
         SHPy_arg->idtor = 0;
 
@@ -209,7 +209,7 @@ PY_acceptStructInOutPtr(
         return NULL;
 
     // post_parse
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     acceptStructInOutPtr(arg);
     return (PyObject *) SHPy_arg;
@@ -234,8 +234,8 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
-    Cstruct1 * SHCXX_rv = NULL;
-    PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
+    Cstruct1 * SHCXX_rv = nullptr;
+    PY_Cstruct1 *SHTPy_rv = nullptr;  // struct_result_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "id:returnStructByValue", const_cast<char **>(SHT_kwlist), &i,
@@ -244,7 +244,7 @@ PY_returnStructByValue(
 
     // result pre_call
     SHCXX_rv = new Cstruct1;
-    if (SHCXX_rv == NULL) {
+    if (SHCXX_rv == nullptr) {
         PyErr_NoMemory();
         goto fail;
     }
@@ -253,14 +253,14 @@ PY_returnStructByValue(
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 1;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (SHCXX_rv != NULL) {
+    if (SHCXX_rv != nullptr) {
         PY_SHROUD_release_memory(1, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
@@ -286,8 +286,8 @@ PY_returnConstStructByValue(
         "i",
         "d",
         NULL };
-    Cstruct1 * SHCXX_rv = NULL;
-    PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
+    Cstruct1 * SHCXX_rv = nullptr;
+    PY_Cstruct1 *SHTPy_rv = nullptr;  // struct_result_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "id:returnConstStructByValue", const_cast<char **>(SHT_kwlist), 
@@ -296,7 +296,7 @@ PY_returnConstStructByValue(
 
     // result pre_call
     SHCXX_rv = new Cstruct1;
-    if (SHCXX_rv == NULL) {
+    if (SHCXX_rv == nullptr) {
         PyErr_NoMemory();
         goto fail;
     }
@@ -305,14 +305,14 @@ PY_returnConstStructByValue(
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 2;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (SHCXX_rv != NULL) {
+    if (SHCXX_rv != nullptr) {
         PY_SHROUD_release_memory(2, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
@@ -343,7 +343,7 @@ PY_returnStructPtr1(
         "i",
         "d",
         NULL };
-    PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
+    PY_Cstruct1 *SHTPy_rv = nullptr;  // struct_result_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr1",
         const_cast<char **>(SHT_kwlist), &i, &d))
@@ -353,7 +353,7 @@ PY_returnStructPtr1(
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 0;
 
@@ -388,8 +388,8 @@ PY_returnStructPtr2(
         "i",
         "d",
         NULL };
-    PY_Cstruct1 *SHTPy_rv = NULL;  // struct_result_class
-    PyObject *SHPyResult = NULL;  // return value object
+    PY_Cstruct1 *SHTPy_rv = nullptr;  // struct_result_class
+    PyObject *SHPyResult = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         const_cast<char **>(SHT_kwlist), &i, &d))
@@ -402,7 +402,7 @@ PY_returnStructPtr2(
 
     // post_call
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
     SHTPy_rv->idtor = 0;
     SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
@@ -492,7 +492,7 @@ PyInit_cstruct(void)
 initcstruct(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "struct.Error";
 
     // splicer begin C_init_locals
@@ -505,9 +505,9 @@ initcstruct(void)
 #else
     m = Py_InitModule4("cstruct", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -519,8 +519,8 @@ initcstruct(void)
     Py_INCREF(&PY_Cstruct1_Type);
     PyModule_AddObject(m, "Cstruct1", (PyObject *)&PY_Cstruct1_Type);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

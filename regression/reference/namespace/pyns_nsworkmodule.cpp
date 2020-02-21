@@ -39,15 +39,15 @@ static struct PyModuleDef moduledef = {
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
 //    ns_traverse, /* m_traverse */
 //    ns_clear, /* m_clear */
-    NULL, /* m_traverse */
-    NULL, /* m_clear */
-    NULL  /* m_free */
+    nullptr, /* m_traverse */
+    nullptr, /* m_clear */
+    nullptr  /* m_free */
 };
 #endif
-#define RETVAL NULL
+#define RETVAL nullptr
 
 PyObject *PY_init_ns_nswork(void)
 {
@@ -55,10 +55,10 @@ PyObject *PY_init_ns_nswork(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "ns.nswork", PY_methods, NULL);
+    m = Py_InitModule3((char *) "ns.nswork", PY_methods, nullptr);
 #endif
-    if (m == NULL)
-        return NULL;
+    if (m == nullptr)
+        return nullptr;
 
 
     // ClassWork

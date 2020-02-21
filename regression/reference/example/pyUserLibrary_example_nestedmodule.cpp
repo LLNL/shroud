@@ -62,7 +62,7 @@ PP_isNameValid(
     const char *SHT_kwlist[] = {
         "name",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
         const_cast<char **>(SHT_kwlist), &name))
@@ -75,7 +75,7 @@ PP_isNameValid(
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -97,13 +97,13 @@ PP_isInitialized(
 {
 // bool isInitialized()
 // splicer begin namespace.example::nested.function.is_initialized
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     bool SHCXX_rv = example::nested::isInitialized();
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -185,8 +185,8 @@ PP_testoptional_2(
         "j",
         NULL };
 
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
         const_cast<char **>(SHT_kwlist), &i, &j))
         return NULL;
@@ -202,7 +202,7 @@ PP_testoptional_2(
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return NULL;
+        return nullptr;
     }
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.function.testoptional
@@ -220,7 +220,7 @@ PP_test_size_t(
 {
 // size_t test_size_t()
 // splicer begin namespace.example::nested.function.test_size_t
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     size_t SHCXX_rv = example::nested::test_size_t();
 
@@ -426,7 +426,7 @@ PP_verylongfunctionname1(
         "verylongname9",
         "verylongname10",
         NULL };
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname1",
@@ -484,7 +484,7 @@ PP_verylongfunctionname2(
         "verylongname9",
         "verylongname10",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname2",
@@ -523,8 +523,8 @@ PP_cos_doubles(
 // void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin namespace.example::nested.function.cos_doubles
     PyObject * SHTPy_in;
-    PyArrayObject * SHPy_in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    PyArrayObject * SHPy_in = nullptr;
+    PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -536,7 +536,7 @@ PP_cos_doubles(
     // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_in == NULL) {
+    if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
         goto fail;
@@ -546,7 +546,7 @@ PP_cos_doubles(
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
         SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0));
-        if (SHPy_out == NULL)
+        if (SHPy_out == nullptr)
             goto fail;
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
@@ -578,8 +578,8 @@ PP_test_names(
 {
 // splicer begin namespace.example::nested.function.test_names
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PP_test_names(self, args, kwds);
@@ -616,8 +616,8 @@ PP_testmpi(
 {
 // splicer begin namespace.example::nested.function.testmpi
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
 #ifdef HAVE_MPI
     if (SHT_nargs == 1) {
@@ -684,15 +684,15 @@ static struct PyModuleDef moduledef = {
     PP__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PP_methods, /* m_methods */
-    NULL, /* m_reload */
+    nullptr, /* m_reload */
 //    userlibrary_traverse, /* m_traverse */
 //    userlibrary_clear, /* m_clear */
-    NULL, /* m_traverse */
-    NULL, /* m_clear */
-    NULL  /* m_free */
+    nullptr, /* m_traverse */
+    nullptr, /* m_clear */
+    nullptr  /* m_free */
 };
 #endif
-#define RETVAL NULL
+#define RETVAL nullptr
 
 PyObject *PP_init_userlibrary_example_nested(void)
 {
@@ -700,10 +700,10 @@ PyObject *PP_init_userlibrary_example_nested(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "userlibrary.example.nested", PP_methods, NULL);
+    m = Py_InitModule3((char *) "userlibrary.example.nested", PP_methods, nullptr);
 #endif
-    if (m == NULL)
-        return NULL;
+    if (m == nullptr)
+        return nullptr;
 
 
     // ExClass1

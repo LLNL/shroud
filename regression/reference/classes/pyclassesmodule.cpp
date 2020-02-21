@@ -46,7 +46,7 @@ PY_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -92,7 +92,7 @@ PY_passClassByValue(
         return NULL;
 
     // post_parse
-    classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     classes::passClassByValue(*arg);
     Py_RETURN_NONE;
@@ -115,14 +115,14 @@ PY_useclass(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = classes::useclass(arg);
 
@@ -215,7 +215,7 @@ PY_get_global_flag(
 {
 // int get_global_flag()
 // splicer begin function.get_global_flag
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = classes::get_global_flag();
 
@@ -238,7 +238,7 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
 
@@ -325,7 +325,7 @@ PyInit_classes(void)
 initclasses(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "classes.Error";
 
     // splicer begin C_init_locals
@@ -338,9 +338,9 @@ initclasses(void)
 #else
     m = Py_InitModule4("classes", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -377,8 +377,8 @@ initclasses(void)
         Py_DECREF(tmp_value);
     }
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

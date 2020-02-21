@@ -46,7 +46,7 @@ PY_short_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:short_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -77,7 +77,7 @@ PY_int_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -108,7 +108,7 @@ PY_long_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:long_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -139,7 +139,7 @@ PY_long_long_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:long_long_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -170,7 +170,7 @@ PY_short_int_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:short_int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -201,7 +201,7 @@ PY_long_int_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:long_int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -232,7 +232,7 @@ PY_long_long_int_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:long_long_int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -263,7 +263,7 @@ PY_unsigned_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:unsigned_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -294,7 +294,7 @@ PY_ushort_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:ushort_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -325,7 +325,7 @@ PY_uint_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -356,7 +356,7 @@ PY_ulong_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -387,7 +387,7 @@ PY_ulong_long_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:ulong_long_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -418,7 +418,7 @@ PY_ulong_int_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -449,7 +449,7 @@ PY_int8_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int8_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -480,7 +480,7 @@ PY_int16_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int16_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -511,7 +511,7 @@ PY_int32_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int32_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -542,7 +542,7 @@ PY_int64_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:int64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -573,7 +573,7 @@ PY_uint8_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint8_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -604,7 +604,7 @@ PY_uint16_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint16_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -635,7 +635,7 @@ PY_uint32_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint32_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -666,7 +666,7 @@ PY_uint64_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:uint64_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -697,7 +697,7 @@ PY_size_func(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:size_func",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -728,7 +728,7 @@ PY_bool_func(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:bool_func",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
@@ -741,7 +741,7 @@ PY_bool_func(
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -773,8 +773,8 @@ PY_returnBoolAndOthers(
 {
 // bool returnBoolAndOthers(int * flag +intent(out))
 // splicer begin function.return_bool_and_others
-    PyObject * SHTPy_rv = NULL;
-    PyObject *SHPyResult = NULL;  // return value object
+    PyObject * SHTPy_rv = nullptr;
+    PyObject *SHPyResult = nullptr;  // return value object
 
     // pre_call
     int flag;  // intent(out)
@@ -783,7 +783,7 @@ PY_returnBoolAndOthers(
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
     SHPyResult = Py_BuildValue("Oi", SHTPy_rv, flag);
 
     return SHPyResult;
@@ -901,7 +901,7 @@ PyInit_shtypes(void)
 initshtypes(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "types.Error";
 
     // splicer begin C_init_locals
@@ -914,14 +914,14 @@ initshtypes(void)
 #else
     m = Py_InitModule4("shtypes", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

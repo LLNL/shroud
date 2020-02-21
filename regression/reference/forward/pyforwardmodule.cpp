@@ -89,7 +89,7 @@ PyInit_forward(void)
 initforward(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "forward.Error";
 
     // splicer begin C_init_locals
@@ -102,9 +102,9 @@ initforward(void)
 #else
     m = Py_InitModule4("forward", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -124,8 +124,8 @@ initforward(void)
     Py_INCREF(&PY_Class2_Type);
     PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

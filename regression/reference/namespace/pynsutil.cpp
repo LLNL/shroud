@@ -18,10 +18,10 @@ PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Cstruct1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Cstruct1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Cstruct1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Cstruct1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.outer.class.Cstruct1.utility.to_object
@@ -47,10 +47,10 @@ PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_ClassWork_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_ClassWork_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_ClassWork_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_ClassWork_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.nswork.class.ClassWork.utility.to_object

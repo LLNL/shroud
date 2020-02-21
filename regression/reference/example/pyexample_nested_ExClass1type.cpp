@@ -39,7 +39,7 @@ PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
 // splicer begin namespace.example::nested.class.ExClass1.type.del
     PP_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end namespace.example::nested.class.ExClass1.type.del
 }
 static PyObject *
@@ -60,7 +60,7 @@ PP_ExClass1_tp_init_0(
 // ExClass1()
 // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
     self->obj = new example::nested::ExClass1();
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -98,7 +98,7 @@ PP_ExClass1_tp_init_1(
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass1(&SH_name);
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -123,7 +123,7 @@ PP_incrementCount(
     const char *SHT_kwlist[] = {
         "incr",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount",
         const_cast<char **>(SHT_kwlist), &incr))
@@ -150,7 +150,7 @@ PP_getNameErrorCheck(
 {
 // const string & getNameErrorCheck() const +deref(allocatable)
 // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
 
@@ -174,7 +174,7 @@ PP_getNameArg(
 {
 // const string & getNameArg() const +deref(result_as_arg)
 // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getNameArg();
 
@@ -198,7 +198,7 @@ PP_getRoot(
 {
 // void * getRoot()
 // splicer begin namespace.example::nested.class.ExClass1.method.get_root
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     void * SHCXX_rv = self->obj->getRoot();
 
@@ -221,7 +221,7 @@ PP_getValue_from_int(
     const char *SHT_kwlist[] = {
         "value",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue",
         const_cast<char **>(SHT_kwlist), &value))
@@ -248,7 +248,7 @@ PP_getValue_1(
     const char *SHT_kwlist[] = {
         "value",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue",
         const_cast<char **>(SHT_kwlist), &value))
@@ -275,7 +275,7 @@ PP_getAddr(
 {
 // void * getAddr()
 // splicer begin namespace.example::nested.class.ExClass1.method.get_addr
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     void * SHCXX_rv = self->obj->getAddr();
 
@@ -302,7 +302,7 @@ PP_hasAddr(
     const char *SHT_kwlist[] = {
         "in",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_in))
@@ -315,7 +315,7 @@ PP_hasAddr(
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -350,8 +350,8 @@ PP_ExClass1_tp_init(
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.ctor
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     int rv;
     if (SHT_nargs == 0) {
         rv = PP_ExClass1_tp_init_0(self, args, kwds);
@@ -388,8 +388,8 @@ PP_getValue(
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.get_value
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
         rvobj = PP_getValue_from_int(self, args, kwds);

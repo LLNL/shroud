@@ -51,7 +51,7 @@ PY_intargs(
         "argin",
         "arginout",
         NULL };
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         const_cast<char **>(SHT_kwlist), &argin, &arginout))
@@ -87,8 +87,8 @@ PY_cos_doubles(
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.cos_doubles
     PyObject * SHTPy_in;
-    PyArrayObject * SHPy_in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    PyArrayObject * SHPy_in = nullptr;
+    PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -100,7 +100,7 @@ PY_cos_doubles(
     // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_in == NULL) {
+    if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
         goto fail;
@@ -110,7 +110,7 @@ PY_cos_doubles(
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
         SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0));
-        if (SHPy_out == NULL)
+        if (SHPy_out == nullptr)
             goto fail;
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
@@ -149,8 +149,8 @@ PY_truncate_to_int(
 // void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.truncate_to_int
     PyObject * SHTPy_in;
-    PyArrayObject * SHPy_in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    PyArrayObject * SHPy_in = nullptr;
+    PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -162,7 +162,7 @@ PY_truncate_to_int(
     // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_in == NULL) {
+    if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
         goto fail;
@@ -173,7 +173,7 @@ PY_truncate_to_int(
         PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
         SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, SHDPy_out, 0));
-        if (SHPy_out == NULL)
+        if (SHPy_out == nullptr)
             goto fail;
         int * out = static_cast<int *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
@@ -214,13 +214,13 @@ PY_get_values(
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
     npy_intp SHD_values[1] = {3};
-    PyArrayObject * SHPy_values = NULL;
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyArrayObject * SHPy_values = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     // post_parse
     SHPy_values = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_values, NPY_INT));
-    if (SHPy_values == NULL) {
+    if (SHPy_values == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");
         goto fail;
@@ -263,22 +263,22 @@ PY_get_values2(
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // splicer begin function.get_values2
     npy_intp SHD_arg1[1] = {3};
-    PyArrayObject * SHPy_arg1 = NULL;
+    PyArrayObject * SHPy_arg1 = nullptr;
     npy_intp SHD_arg2[1] = {3};
-    PyArrayObject * SHPy_arg2 = NULL;
-    PyObject *SHTPy_rv = NULL;  // return value object
+    PyArrayObject * SHPy_arg2 = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     // post_parse
     SHPy_arg1 = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_arg1, NPY_INT));
-    if (SHPy_arg1 == NULL) {
+    if (SHPy_arg1 == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "arg1 must be a 1-D array of int");
         goto fail;
     }
     SHPy_arg2 = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_arg2, NPY_INT));
-    if (SHPy_arg2 == NULL) {
+    if (SHPy_arg2 == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "arg2 must be a 1-D array of int");
         goto fail;
@@ -316,11 +316,11 @@ PY_Sum(
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     PyObject * SHTPy_values;
-    PyArrayObject * SHPy_values = NULL;
+    PyArrayObject * SHPy_values = nullptr;
     const char *SHT_kwlist[] = {
         "values",
         NULL };
-    PyObject * SHPy_result = NULL;
+    PyObject * SHPy_result = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -329,7 +329,7 @@ PY_Sum(
     // post_parse
     SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_values, NPY_INT, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_values == NULL) {
+    if (SHPy_values == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");
         goto fail;
@@ -373,12 +373,12 @@ PY_fillIntArray(
 // void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
     npy_intp SHD_out[1] = {3};
-    PyArrayObject * SHPy_out = NULL;
+    PyArrayObject * SHPy_out = nullptr;
 
     // post_parse
     SHPy_out = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_out, NPY_INT));
-    if (SHPy_out == NULL) {
+    if (SHPy_out == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "out must be a 1-D array of int");
         goto fail;
@@ -413,7 +413,7 @@ PY_incrementIntArray(
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
     PyObject * SHTPy_array;
-    PyArrayObject * SHPy_array = NULL;
+    PyArrayObject * SHPy_array = nullptr;
     const char *SHT_kwlist[] = {
         "array",
         NULL };
@@ -425,7 +425,7 @@ PY_incrementIntArray(
     // post_parse
     SHPy_array = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_array, NPY_INT, NPY_ARRAY_INOUT_ARRAY));
-    if (SHPy_array == NULL) {
+    if (SHPy_array == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "array must be a 1-D array of int");
         goto fail;
@@ -519,7 +519,7 @@ PyInit_pointers(void)
 initpointers(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "pointers.Error";
 
     // splicer begin C_init_locals
@@ -532,16 +532,16 @@ initpointers(void)
 #else
     m = Py_InitModule4("pointers", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
     import_array();
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

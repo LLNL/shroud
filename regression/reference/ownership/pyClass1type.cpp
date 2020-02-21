@@ -31,7 +31,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Class1.type.del
 }
 // splicer begin class.Class1.impl.after_methods
@@ -46,7 +46,7 @@ static PyObject *PY_Class1_flag_getter(PY_Class1 *self,
 
 static PyGetSetDef PY_Class1_getset[] = {
     {(char *)"flag", (getter)PY_Class1_flag_getter, (setter)NULL,
-        NULL, NULL},
+        nullptr, nullptr},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
     {NULL}            /* sentinel */

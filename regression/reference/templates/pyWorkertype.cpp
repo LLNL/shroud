@@ -35,7 +35,7 @@ PY_Worker_tp_del (PY_Worker *self)
 {
 // splicer begin class.Worker.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Worker.type.del
 }
 // splicer begin class.Worker.impl.after_methods

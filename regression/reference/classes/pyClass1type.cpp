@@ -31,7 +31,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Class1.type.del
 }
 
@@ -44,7 +44,7 @@ PY_Class1_tp_init_default(
 // Class1() +name(new)
 // splicer begin class.Class1.method.new_default
     self->obj = new classes::Class1();
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -71,7 +71,7 @@ PY_Class1_tp_init_flag(
         return -1;
 
     self->obj = new classes::Class1(flag);
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -96,7 +96,7 @@ PY_Method1(
 {
 // int Method1()
 // splicer begin class.Class1.method.method1
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = self->obj->Method1();
 
@@ -127,20 +127,20 @@ PY_equivalent(
     const char *SHT_kwlist[] = {
         "obj2",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:equivalent",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
         return NULL;
 
     // post_parse
-    const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
+    const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
 
     bool SHCXX_rv = self->obj->equivalent(*obj2);
 
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -192,7 +192,7 @@ PY_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -220,8 +220,8 @@ PY_Class1_tp_init(
 {
 // splicer begin class.Class1.method.new
     Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    if (args != nullptr) SHT_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
     int rv;
     if (SHT_nargs == 0) {
         rv = PY_Class1_tp_init_default(self, args, kwds);
@@ -275,9 +275,9 @@ static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
 
 static PyGetSetDef PY_Class1_getset[] = {
     {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)NULL,
-        NULL, NULL},
+        nullptr, nullptr},
     {(char *)"test", (getter)PY_Class1_test_getter,
-        (setter)PY_Class1_test_setter, NULL, NULL},
+        (setter)PY_Class1_test_setter, nullptr, nullptr},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
     {NULL}            /* sentinel */

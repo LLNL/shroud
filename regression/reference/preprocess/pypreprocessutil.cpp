@@ -20,10 +20,10 @@ PyObject *PP_User1_to_Object(User1 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_User1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_User1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_User1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_User1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.User1.utility.to_object
@@ -50,10 +50,10 @@ PyObject *PP_User2_to_Object(User2 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_User2_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_User2_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_User2_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_User2_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.User2.utility.to_object

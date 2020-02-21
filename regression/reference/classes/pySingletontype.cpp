@@ -31,7 +31,7 @@ PY_Singleton_tp_del (PY_Singleton *self)
 {
 // splicer begin class.Singleton.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Singleton.type.del
 }
 

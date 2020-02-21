@@ -92,7 +92,7 @@ PY_vector_sum(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
@@ -133,7 +133,7 @@ PY_vector_iota_out(
 {
 // void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
-    PyObject * SHPy_arg = NULL;
+    PyObject * SHPy_arg = nullptr;
 
     {
         // pre_call
@@ -143,7 +143,7 @@ PY_vector_iota_out(
 
         // post_call
         SHPy_arg = SHROUD_to_PyList_vector_int(SH_arg);
-        if (SHPy_arg == NULL) goto fail;
+        if (SHPy_arg == nullptr) goto fail;
 
         return (PyObject *) SHPy_arg;
     }
@@ -170,7 +170,7 @@ PY_vector_iota_out_d(
 {
 // void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out_d
-    PyObject * SHPy_arg = NULL;
+    PyObject * SHPy_arg = nullptr;
 
     {
         // pre_call
@@ -180,7 +180,7 @@ PY_vector_iota_out_d(
 
         // post_call
         SHPy_arg = SHROUD_to_PyList_vector_double(SH_arg);
-        if (SHPy_arg == NULL) goto fail;
+        if (SHPy_arg == nullptr) goto fail;
 
         return (PyObject *) SHPy_arg;
     }
@@ -212,7 +212,7 @@ PY_ReturnVectorAlloc(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
-    PyObject * SHTPy_rv = NULL;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ReturnVectorAlloc",
         const_cast<char **>(SHT_kwlist), &n))
@@ -222,7 +222,7 @@ PY_ReturnVectorAlloc(
 
     // post_call
     SHTPy_rv = SHROUD_to_PyList_vector_int(SHCXX_rv);
-    if (SHTPy_rv == NULL) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
@@ -299,7 +299,7 @@ PyInit_vectors(void)
 initvectors(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "vectors.Error";
 
     // splicer begin C_init_locals
@@ -312,14 +312,14 @@ initvectors(void)
 #else
     m = Py_InitModule4("vectors", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

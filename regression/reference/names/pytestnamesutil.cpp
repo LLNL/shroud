@@ -24,10 +24,10 @@ PyObject *PP_Names_to_Object(ns0::Names *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Names_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Names_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Names_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Names_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.ns0.class.Names.utility.to_object
@@ -53,10 +53,10 @@ PyObject *PP_Vvv1_to_Object(std::vector<int> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Vvv1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Vvv1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Vvv1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Vvv1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -82,10 +82,10 @@ PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_vector_double_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_vector_double_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -111,10 +111,10 @@ PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_vector_instantiation5_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_vector_instantiation5_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_vector_instantiation5_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_vector_instantiation5_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -140,10 +140,10 @@ PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> 
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_vector_instantiation3_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_vector_instantiation3_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_vector_instantiation3_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_vector_instantiation3_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.std.class.vector.utility.to_object
@@ -169,10 +169,10 @@ PyObject *PP_Names2_to_Object(Names2 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_Names2_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_Names2_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_Names2_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_Names2_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.Names2.utility.to_object
@@ -198,10 +198,10 @@ PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_twoTs_0_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_twoTs_0_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_twoTs_0_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_twoTs_0_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.twoTs.utility.to_object
@@ -227,10 +227,10 @@ PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_twoTs_instantiation4_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_twoTs_instantiation4_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_twoTs_instantiation4_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PY_twoTs_instantiation4_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end class.twoTs.utility.to_object

@@ -18,10 +18,10 @@ PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_ExClass1_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_ExClass1_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PP_ExClass1_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PP_ExClass1_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.example::nested.class.ExClass1.utility.to_object
@@ -47,10 +47,10 @@ PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr)
     PyObject *args;
     PyObject *rv;
 
-    voidobj = PyCapsule_New(addr, PY_ExClass2_capsule_name, NULL);
+    voidobj = PyCapsule_New(addr, PY_ExClass2_capsule_name, nullptr);
     args = PyTuple_New(1);
     PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PP_ExClass2_Type, args, NULL);
+    rv = PyObject_Call((PyObject *) &PP_ExClass2_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
     // splicer end namespace.example::nested.class.ExClass2.utility.to_object

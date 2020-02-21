@@ -94,7 +94,7 @@ PyInit_userlibrary(void)
 inituserlibrary(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "userlibrary.Error";
 
     // splicer begin C_init_locals
@@ -107,9 +107,9 @@ inituserlibrary(void)
 #else
     m = Py_InitModule4("userlibrary", PP_methods,
         PP__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -117,14 +117,14 @@ inituserlibrary(void)
 
     {
         PyObject *submodule = PP_init_userlibrary_example();
-        if (submodule == NULL)
+        if (submodule == nullptr)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "example", submodule);
     }
 
-    PP_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PP_error_obj == NULL)
+    PP_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PP_error_obj == nullptr)
         return RETVAL;
     st->error = PP_error_obj;
     PyModule_AddObject(m, "Error", st->error);

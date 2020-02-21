@@ -89,7 +89,7 @@ PyInit_preprocess(void)
 initpreprocess(void)
 #endif
 {
-    PyObject *m = NULL;
+    PyObject *m = nullptr;
     const char * error_name = "preprocess.Error";
 
     // splicer begin C_init_locals
@@ -102,9 +102,9 @@ initpreprocess(void)
 #else
     m = Py_InitModule4("preprocess", PY_methods,
         PY__doc__,
-        (PyObject*)NULL,PYTHON_API_VERSION);
+        (PyObject*)nullptr,PYTHON_API_VERSION);
 #endif
-    if (m == NULL)
+    if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
@@ -126,8 +126,8 @@ initpreprocess(void)
     PyModule_AddObject(m, "User2", (PyObject *)&PY_User2_Type);
 #endif // ifdef USE_USER2
 
-    PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if (PY_error_obj == NULL)
+    PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
+    if (PY_error_obj == nullptr)
         return RETVAL;
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);

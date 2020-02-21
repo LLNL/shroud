@@ -35,7 +35,7 @@ PY_user_int_tp_del (PY_user_int *self)
 {
 // splicer begin class.user.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.user.type.del
 }
 

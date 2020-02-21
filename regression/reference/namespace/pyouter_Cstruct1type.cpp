@@ -31,7 +31,7 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 {
 // splicer begin namespace.outer.class.Cstruct1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end namespace.outer.class.Cstruct1.type.del
 }
 
@@ -55,7 +55,7 @@ PY_Cstruct1_tp_init(
         return -1;
 
     self->obj = new outer::Cstruct1;
-    if (self->obj == NULL) {
+    if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
@@ -108,9 +108,9 @@ static int PY_Cstruct1_dfield_setter(PY_Cstruct1 *self, PyObject *value,
 
 static PyGetSetDef PY_Cstruct1_getset[] = {
     {(char *)"ifield", (getter)PY_Cstruct1_ifield_getter,
-        (setter)PY_Cstruct1_ifield_setter, NULL, NULL},
+        (setter)PY_Cstruct1_ifield_setter, nullptr, nullptr},
     {(char *)"dfield", (getter)PY_Cstruct1_dfield_getter,
-        (setter)PY_Cstruct1_dfield_setter, NULL, NULL},
+        (setter)PY_Cstruct1_dfield_setter, nullptr, nullptr},
     // splicer begin namespace.outer.class.Cstruct1.PyGetSetDef
     // splicer end namespace.outer.class.Cstruct1.PyGetSetDef
     {NULL}            /* sentinel */

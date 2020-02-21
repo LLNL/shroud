@@ -31,7 +31,7 @@ PY_vector_instantiation5_tp_del_instantiation5 (PY_vector_instantiation5 *self)
 {
 // splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
-    self->myobj = NULL;
+    self->myobj = nullptr;
 // splicer end namespace.std.class.vector.type.del
 }
 // splicer begin namespace.std.class.vector.impl.after_methods

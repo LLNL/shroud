@@ -31,7 +31,7 @@ PY_Class3_tp_del (PY_Class3 *self)
 {
 // splicer begin class.Class3.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
-    self->obj = NULL;
+    self->obj = nullptr;
 // splicer end class.Class3.type.del
 }
 // splicer begin class.Class3.impl.after_methods
