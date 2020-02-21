@@ -1856,7 +1856,7 @@ return 1;""",
                 fmt_type[tp_name] = self.tp_init_default
                 continue
             if typename not in selected:
-                fmt_type[tp_name] = fmt_type["nullptr"]
+                fmt_type[tp_name] = fmt_func.nullptr #fmt_type["nullptr"]
                 continue
             fmt.PY_type_method = tp_name
             func_name = wformat(template, fmt)
@@ -1987,7 +1987,7 @@ return 1;""",
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
-            nullptr="0",  # 'NULL',
+            nullptr=fmt.nullptr,
         )
         self.write_tp_func(node, fmt_type, output)
 
@@ -2010,7 +2010,7 @@ return 1;""",
             output.append("{NULL}            /* sentinel */")
             output.append("-};")
         else:
-            fmt_type["tp_getset"] = fmt_type["nullptr"]
+            fmt_type["tp_getset"] = fmt.nullptr # fmt_type["nullptr"]
 
         fmt_type["tp_methods"] = wformat("{PY_prefix}{cxx_class}_methods", fmt)
         append_format(
@@ -2550,7 +2550,7 @@ PyTypeObject {PY_PyTypeObject} = {{+
 PyVarObject_HEAD_INIT(NULL, 0)
 "{PY_module_scope}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
-{nullptr},                              /* tp_itemsize */
+0,                              /* tp_itemsize */
 /* Methods to implement standard operations */
 (destructor){tp_dealloc},                 /* tp_dealloc */
 (printfunc){tp_print},                   /* tp_print */
@@ -2586,7 +2586,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 /* rich comparisons */
 (richcmpfunc){tp_richcompare},                 /* tp_richcompare */
 /* weak reference enabler */
-{nullptr},                              /* tp_weaklistoffset */
+0,                              /* tp_weaklistoffset */
 /* Added in release 2.2 */
 /* Iterators */
 (getiterfunc){nullptr},                 /* tp_iter */
@@ -2599,7 +2599,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 {nullptr},                              /* tp_dict */
 (descrgetfunc){nullptr},                /* tp_descr_get */
 (descrsetfunc){nullptr},                /* tp_descr_set */
-{nullptr},                              /* tp_dictoffset */
+0,                              /* tp_dictoffset */
 (initproc){tp_init},                   /* tp_init */
 (allocfunc){tp_alloc},                  /* tp_alloc */
 (newfunc){tp_new},                    /* tp_new */
@@ -2611,7 +2611,7 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 {nullptr},                              /* tp_subclasses */
 {nullptr},                              /* tp_weaklist */
 (destructor){tp_del},                 /* tp_del */
-{nullptr},                              /* tp_version_tag */
+0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
 (destructor){nullptr},                  /* tp_finalize */
 #endif

@@ -193,6 +193,7 @@ phony_explicit:
     $(tempdir)/run/struct-cxx/.. \
     $(tempdir)/run/struct-cxx/python/.. \
     $(tempdir)/run/templates/.. \
+    $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \

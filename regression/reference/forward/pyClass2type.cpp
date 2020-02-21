@@ -133,67 +133,67 @@ PyTypeObject PY_Class2_Type = {
     sizeof(PY_Class2),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
-    (destructor)0,                 /* tp_dealloc */
-    (printfunc)0,                   /* tp_print */
-    (getattrfunc)0,                 /* tp_getattr */
-    (setattrfunc)0,                 /* tp_setattr */
+    (destructor)nullptr,                 /* tp_dealloc */
+    (printfunc)nullptr,                   /* tp_print */
+    (getattrfunc)nullptr,                 /* tp_getattr */
+    (setattrfunc)nullptr,                 /* tp_setattr */
 #if PY_MAJOR_VERSION >= 3
-    0,                               /* tp_reserved */
+    nullptr,                               /* tp_reserved */
 #else
-    (cmpfunc)0,                     /* tp_compare */
+    (cmpfunc)nullptr,                     /* tp_compare */
 #endif
-    (reprfunc)0,                    /* tp_repr */
+    (reprfunc)nullptr,                    /* tp_repr */
     /* Method suites for standard classes */
-    0,                              /* tp_as_number */
-    0,                              /* tp_as_sequence */
-    0,                              /* tp_as_mapping */
+    nullptr,                              /* tp_as_number */
+    nullptr,                              /* tp_as_sequence */
+    nullptr,                              /* tp_as_mapping */
     /* More standard operations (here for binary compatibility) */
-    (hashfunc)0,                    /* tp_hash */
-    (ternaryfunc)0,                 /* tp_call */
-    (reprfunc)0,                    /* tp_str */
-    (getattrofunc)0,                /* tp_getattro */
-    (setattrofunc)0,                /* tp_setattro */
+    (hashfunc)nullptr,                    /* tp_hash */
+    (ternaryfunc)nullptr,                 /* tp_call */
+    (reprfunc)nullptr,                    /* tp_str */
+    (getattrofunc)nullptr,                /* tp_getattro */
+    (setattrofunc)nullptr,                /* tp_setattro */
     /* Functions to access object as input/output buffer */
-    0,                              /* tp_as_buffer */
+    nullptr,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
     Class2__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
-    (traverseproc)0,                /* tp_traverse */
+    (traverseproc)nullptr,                /* tp_traverse */
     /* delete references to contained objects */
-    (inquiry)0,                     /* tp_clear */
+    (inquiry)nullptr,                     /* tp_clear */
     /* Assigned meaning in release 2.1 */
     /* rich comparisons */
-    (richcmpfunc)0,                 /* tp_richcompare */
+    (richcmpfunc)nullptr,                 /* tp_richcompare */
     /* weak reference enabler */
     0,                              /* tp_weaklistoffset */
     /* Added in release 2.2 */
     /* Iterators */
-    (getiterfunc)0,                 /* tp_iter */
-    (iternextfunc)0,                /* tp_iternext */
+    (getiterfunc)nullptr,                 /* tp_iter */
+    (iternextfunc)nullptr,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
     PY_Class2_methods,                             /* tp_methods */
-    0,                              /* tp_members */
-    0,                             /* tp_getset */
-    0,                              /* tp_base */
-    0,                              /* tp_dict */
-    (descrgetfunc)0,                /* tp_descr_get */
-    (descrsetfunc)0,                /* tp_descr_set */
+    nullptr,                              /* tp_members */
+    nullptr,                             /* tp_getset */
+    nullptr,                              /* tp_base */
+    nullptr,                              /* tp_dict */
+    (descrgetfunc)nullptr,                /* tp_descr_get */
+    (descrsetfunc)nullptr,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
     (initproc)PY_Class2_tp_init,                   /* tp_init */
-    (allocfunc)0,                  /* tp_alloc */
-    (newfunc)0,                    /* tp_new */
-    (freefunc)0,                   /* tp_free */
-    (inquiry)0,                     /* tp_is_gc */
-    0,                              /* tp_bases */
-    0,                              /* tp_mro */
-    0,                              /* tp_cache */
-    0,                              /* tp_subclasses */
-    0,                              /* tp_weaklist */
+    (allocfunc)nullptr,                  /* tp_alloc */
+    (newfunc)nullptr,                    /* tp_new */
+    (freefunc)nullptr,                   /* tp_free */
+    (inquiry)nullptr,                     /* tp_is_gc */
+    nullptr,                              /* tp_bases */
+    nullptr,                              /* tp_mro */
+    nullptr,                              /* tp_cache */
+    nullptr,                              /* tp_subclasses */
+    nullptr,                              /* tp_weaklist */
     (destructor)PY_Class2_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
-    (destructor)0,                  /* tp_finalize */
+    (destructor)nullptr,                  /* tp_finalize */
 #endif
 };
