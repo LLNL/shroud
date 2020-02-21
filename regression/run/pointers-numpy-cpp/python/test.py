@@ -43,13 +43,13 @@ class Pointers(unittest.TestCase):
         inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
         outarray = [ math.cos(v) for v in inarray]
         rv = pointers.cos_doubles(inarray)
-        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('float64', rv.dtype.name)
         self.assertTrue(np.allclose(rv, outarray))
 
     def test_truncate_to_int(self):
         rv = pointers.truncate_to_int([1.2, 2.3, 3.4, 4.5])
-        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertTrue(np.equal(rv, [1, 2, 3, 4]).all())
 
@@ -57,7 +57,7 @@ class Pointers(unittest.TestCase):
         # out - created NumPy array.
         nout, out = pointers.get_values()
         self.assertEqual(3, nout)
-        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertIsInstance(out, np.ndarray)
         self.assertEqual('int32', out.dtype.name)
         self.assertTrue(np.equal(out, [1,2,3]).all())
 
@@ -65,11 +65,11 @@ class Pointers(unittest.TestCase):
         # out - created NumPy array.
         arg1, arg2 = pointers.get_values2()
 
-        self.assertTrue(isinstance(arg1, np.ndarray))
+        self.assertIsInstance(arg1, np.ndarray)
         self.assertEqual('int32', arg1.dtype.name)
         self.assertTrue(np.equal(arg1, [1,2,3]).all())
 
-        self.assertTrue(isinstance(arg2, np.ndarray))
+        self.assertIsInstance(arg2, np.ndarray)
         self.assertEqual('int32', arg2.dtype.name)
         self.assertTrue(np.equal(arg2, [11,12,13]).all())
 
@@ -78,7 +78,7 @@ class Pointers(unittest.TestCase):
 
     def test_fillIntArray(self):
         out = pointers.fillIntArray()
-        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertIsInstance(out, np.ndarray)
         self.assertEqual('int32', out.dtype.name)
         self.assertEqual([1, 2, 3], list(out))
 
@@ -87,7 +87,7 @@ class Pointers(unittest.TestCase):
         array = np.array([2,4,6,8], dtype=np.intc)  # int32
         out = pointers.incrementIntArray(array)
         self.assertIs(array, out)
-        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertIsInstance(out, np.ndarray)
         self.assertEqual('int32', out.dtype.name)
         self.assertTrue(np.equal(out, [3,5,7,9]).all())
 

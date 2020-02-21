@@ -43,31 +43,31 @@ class Pointers(unittest.TestCase):
         inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
         outarray = [ math.cos(v) for v in inarray]
         rv = pointers.cos_doubles(inarray)
-        self.assertTrue(isinstance(rv, list))
+        self.assertIsInstance(rv, list)
         self.assertTrue(np.allclose(rv, outarray))
 
     def test_truncate_to_int(self):
 #        argin = [1.2, 2.3, 3.4, 4.5]
 #        rv = pointers.truncate_to_int(argin)
         rv = pointers.truncate_to_int([1.2, 2.3, 3.4, 4.5])
-        self.assertTrue(isinstance(rv, list))
+        self.assertIsInstance(rv, list)
         self.assertEqual([1, 2, 3, 4], rv)
 
     def test_get_values(self):
         # out - created list.
         nout, out = pointers.get_values()
         self.assertEqual(3, nout)
-        self.assertTrue(isinstance(out, list))
+        self.assertIsInstance(out, list)
         self.assertEqual([1,2,3], out)
 
     def test_get_values2(self):
         # out - created list.
         arg1, arg2 = pointers.get_values2()
 
-        self.assertTrue(isinstance(arg1, list))
+        self.assertIsInstance(arg1, list)
         self.assertEqual([1,2,3], arg1)
 
-        self.assertTrue(isinstance(arg2, list))
+        self.assertIsInstance(arg2, list)
         self.assertEqual([11,12,13], arg2)
 
     def test_Sum(self):
@@ -75,7 +75,7 @@ class Pointers(unittest.TestCase):
 
     def test_fillIntArray(self):
         out = pointers.fillIntArray()
-        self.assertTrue(isinstance(out, list))
+        self.assertIsInstance(out, list)
         self.assertEqual([1, 2, 3], out)
 
     def test_incrementIntArray(self):
@@ -83,7 +83,7 @@ class Pointers(unittest.TestCase):
         array = [2,4,6,8]
         out = pointers.incrementIntArray(array)
 #        self.assertIs(array, out)
-        self.assertTrue(isinstance(out, list))
+        self.assertIsInstance(out, list)
         self.assertEqual([3,5,7,9], out)
 
         # Call with incorrect argument type
@@ -101,12 +101,12 @@ class Pointers(unittest.TestCase):
         array = np.array([2,4,6,8], dtype=np.intc)  # int32
         out = pointers.incrementIntArray(array)
 #        self.assertIs(array, out)
-        self.assertTrue(isinstance(out, list))
+        self.assertIsInstance(out, list)
         self.assertEqual([3,5,7,9], out)
 
         out = pointers.incrementIntArray((2,4,6,8))
 #        self.assertIs(array, out)
-        self.assertTrue(isinstance(out, list))
+        self.assertIsInstance(out, list)
         self.assertEqual([3,5,7,9], out)
 
 
