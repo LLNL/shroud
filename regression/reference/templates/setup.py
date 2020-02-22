@@ -23,11 +23,13 @@ module = Extension(
          'pytemplatesmodule.cpp',
          'pytemplatesutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='templates', ext_modules = [module])
-
+setup(
+    name='templates',
+    ext_modules = [module],
+)

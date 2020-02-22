@@ -17,11 +17,13 @@ module = Extension(
          'pyforwardmodule.cpp',
          'pyforwardutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='forward', ext_modules = [module])
-
+setup(
+    name='forward',
+    ext_modules = [module],
+)

@@ -17,11 +17,13 @@ module = Extension(
          'pypreprocessmodule.cpp',
          'pypreprocessutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='preprocess', ext_modules = [module])
-
+setup(
+    name='preprocess',
+    ext_modules = [module],
+)

@@ -15,11 +15,13 @@ module = Extension(
          'pytypesmodule.cpp',
          'pytypesutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='types', ext_modules = [module])
-
+setup(
+    name='types',
+    ext_modules = [module],
+)

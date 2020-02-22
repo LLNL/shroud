@@ -17,6 +17,16 @@ options:
   wrap_c: False
   wrap_python: True
 
+setup:
+  author: me
+  author_email: me@mail.com
+  description: Wrap libc
+  long_description: |
+    Demonstrate wrapping a C library
+  license: BSD-3-Clause
+  url: none
+  test_suite: test
+
 declarations:
 - decl: char *strchr(const char *str, int c)
 - decl: size_t strlen(const char *str)

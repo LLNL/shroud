@@ -2433,8 +2433,9 @@ extern PyObject *{PY_prefix}error_obj;
 
     def write_setup(self):
         """Write a setup.py file for the module"""
-        options = self.newlibrary.options
-        fmt = self.newlibrary.fmtdict
+        library = self.newlibrary
+        options = library.options
+        fmt = library.fmtdict
         fname = "setup.py"
 
         if options.debug_testsuite:
@@ -2443,7 +2444,7 @@ extern PyObject *{PY_prefix}error_obj;
         else:
             srcs = [ "'" + name + "'" for name in self.config.pyfiles]
         fmt = dict(
-            language=self.language,
+            language="c++" if self.language == "cxx" else self.language,
             name=fmt.library_lower,
             source=",\n         ".join(srcs),
         )
@@ -2461,9 +2462,23 @@ module = Extension(
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='{name}', ext_modules = [module])
-""", fmt)
+setup(
+    name='{name}',
+    ext_modules = [module],""", fmt)
         ]
+        setup = library.setup
+        for key in [
+                "author",
+                "author_email",
+                "description",
+#                "long_description",
+                "license",
+                "url",
+                "test_suite",
+        ]:
+            if key in setup:
+                output.append("    {} = '{}',".format(key, setup[key]))
+        output.append(")")
         self.comment = '#'
         self.write_output_file(fname, self.config.out_dir, output)
 

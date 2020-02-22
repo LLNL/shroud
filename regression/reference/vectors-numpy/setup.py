@@ -15,11 +15,13 @@ module = Extension(
          'pyvectorsmodule.cpp',
          'pyvectorsutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='vectors', ext_modules = [module])
-
+setup(
+    name='vectors',
+    ext_modules = [module],
+)

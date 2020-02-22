@@ -19,11 +19,13 @@ module = Extension(
          'pynsmodule.cpp',
          'pynsutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='ns', ext_modules = [module])
-
+setup(
+    name='ns',
+    ext_modules = [module],
+)

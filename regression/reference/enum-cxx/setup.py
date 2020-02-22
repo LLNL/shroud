@@ -15,11 +15,13 @@ module = Extension(
          'pyenummodule.cpp',
          'pyenumutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='enum', ext_modules = [module])
-
+setup(
+    name='enum',
+    ext_modules = [module],
+)

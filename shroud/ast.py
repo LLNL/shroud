@@ -347,6 +347,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         typemap.update_typemap_for_language(self.language)
 
+        self.setup = kwargs.get("setup", {}) # for setup.py
+
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self

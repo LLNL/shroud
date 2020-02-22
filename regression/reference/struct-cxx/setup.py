@@ -16,11 +16,13 @@ module = Extension(
          'pystructmodule.cpp',
          'pystructutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='struct', ext_modules = [module])
-
+setup(
+    name='struct',
+    ext_modules = [module],
+)

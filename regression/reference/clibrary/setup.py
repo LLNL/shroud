@@ -21,5 +21,7 @@ module = Extension(
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='clibrary', ext_modules = [module])
-
+setup(
+    name='clibrary',
+    ext_modules = [module],
+)

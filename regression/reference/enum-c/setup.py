@@ -21,5 +21,7 @@ module = Extension(
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='enum', ext_modules = [module])
-
+setup(
+    name='enum',
+    ext_modules = [module],
+)

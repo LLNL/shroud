@@ -15,11 +15,13 @@ module = Extension(
          'pyTutorialmodule.cpp',
          'pyTutorialutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='tutorial', ext_modules = [module])
-
+setup(
+    name='tutorial',
+    ext_modules = [module],
+)

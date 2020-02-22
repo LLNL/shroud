@@ -8,13 +8,16 @@ all : generate
 
 generate: src/.. libc.log
 
-.PHONY: all generate
+.PHONY: all generate test
 
 libc.log : libc.yaml
 	$(shroud.exe) --outdir-python src libc.yaml
 
 # Pattern rule to make directories.
 %/.. : ; $(at)test -d $(dir $@) || mkdir -p $(dir $@)
+
+test:
+	$(python.exe) setup.py test
 
 clean:
 	rm -f libc.log libc.json setup.py *~ *.so

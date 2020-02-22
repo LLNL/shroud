@@ -21,5 +21,7 @@ module = Extension(
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='struct', ext_modules = [module])
-
+setup(
+    name='struct',
+    ext_modules = [module],
+)

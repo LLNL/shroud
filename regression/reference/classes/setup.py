@@ -17,11 +17,13 @@ module = Extension(
          'pyclassesmodule.cpp',
          'pyclassesutil.cpp'
     ],
-    language='cxx',
+    language='c++',
 #    include_dirs = ['/usr/local/include'],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='classes', ext_modules = [module])
-
+setup(
+    name='classes',
+    ext_modules = [module],
+)

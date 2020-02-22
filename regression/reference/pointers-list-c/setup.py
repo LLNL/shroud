@@ -21,5 +21,7 @@ module = Extension(
 #    library_dirs = ['/usr/local/lib'],      
 )
 
-setup(name='pointers', ext_modules = [module])
-
+setup(
+    name='pointers',
+    ext_modules = [module],
+)
