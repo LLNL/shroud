@@ -12,8 +12,7 @@ import numpy
 module = Extension(
     'pointers',
     sources=[
-         'pypointersmodule.cpp',
-         'pypointersutil.cpp'
+         'pypointersmodule.cpp'
     ],
     language='c++',
     include_dirs = [numpy.get_include()],

@@ -28,6 +28,5 @@ Python function void Sum(int len +implied(size(values))+intent(in)+value, int * 
 Python function void fillIntArray(int * out +dimension(3)+intent(out))
 Python function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 Close pypointersmodule.cpp
-Close pypointersutil.cpp
 Close pypointersmodule.hpp
 Close setup.py

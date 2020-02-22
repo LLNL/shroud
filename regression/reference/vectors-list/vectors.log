@@ -5,6 +5,5 @@ Python function void vector_iota_out(std::vector<int> & arg +dimension(:)+intent
 Python function void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
 Python function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)
 Close pyvectorsmodule.cpp
-Close pyvectorsutil.cpp
 Close pyvectorsmodule.hpp
 Close setup.py

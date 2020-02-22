@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   adding bufferify arguments.
 - Improved support for templates in the Python wrappers.
 - Added define for PyInt_FromSize_t for Python 3.
+- Do not write Python utility file if it is empty.
 
 ## v0.11.0 - 2020-01-08
 ### Added

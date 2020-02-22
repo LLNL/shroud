@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'vectors',
     sources=[
-         'pyvectorsmodule.cpp',
-         'pyvectorsutil.cpp'
+         'pyvectorsmodule.cpp'
     ],
     language='c++',
     include_dirs = None,

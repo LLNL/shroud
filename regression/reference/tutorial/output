@@ -3,7 +3,6 @@ Wrote wrapTutorial.cpp
 Wrote typesTutorial.h
 Wrote wrapftutorial.f
 Wrote pyTutorialmodule.cpp
-Wrote pyTutorialutil.cpp
 Wrote pyTutorialmodule.hpp
 Wrote setup.py
 Wrote luaTutorialmodule.hpp

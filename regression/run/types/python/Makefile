@@ -21,8 +21,7 @@ VPATH = \
 
 OBJS = \
     types.o \
-    pytypesmodule.o \
-    pytypesutil.o
+    pytypesmodule.o
 
 CXXFLAGS += $(SHARED)
 

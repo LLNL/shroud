@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'pointers',
     sources=[
-         'pypointersmodule.c',
-         'pypointersutil.c'
+         'pypointersmodule.c'
     ],
     language='c',
     include_dirs = None,

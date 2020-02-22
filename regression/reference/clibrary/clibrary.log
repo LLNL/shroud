@@ -84,6 +84,5 @@ Python function int ImpliedLenTrim(const char * text +intent(in), int ltext +imp
 Python function bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)
 Python function bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)
 Close pyClibrarymodule.c
-Close pyClibraryutil.c
 Close pyClibrarymodule.h
 Close setup.py

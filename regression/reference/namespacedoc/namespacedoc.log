@@ -31,6 +31,5 @@ Close pywrapped_inner4module.cpp
 Python function void worker3()
 Python function void worker()
 Close pywrappedmodule.cpp
-Close pywrappedutil.cpp
 Close pywrappedmodule.hpp
 Close setup.py

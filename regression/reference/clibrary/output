@@ -4,6 +4,5 @@ Wrote wrapClibrary.c
 Wrote typesClibrary.h
 Wrote wrapfclibrary.f
 Wrote pyClibrarymodule.c
-Wrote pyClibraryutil.c
 Wrote pyClibrarymodule.h
 Wrote setup.py

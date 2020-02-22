@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'enum',
     sources=[
-         'pyenummodule.c',
-         'pyenumutil.c'
+         'pyenummodule.c'
     ],
     language='c',
     include_dirs = None,

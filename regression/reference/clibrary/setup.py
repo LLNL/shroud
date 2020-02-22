@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'clibrary',
     sources=[
-         'pyClibrarymodule.c',
-         'pyClibraryutil.c'
+         'pyClibrarymodule.c'
     ],
     language='c',
     include_dirs = None,

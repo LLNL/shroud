@@ -2301,22 +2301,32 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(output, submodule_end, fmt)
 
     def write_utility(self):
+        """
+        Do not write the file unless it has contents.
+        """
         node = self.newlibrary
         fmt = node.fmtdict
+        need_file = False
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        output.extend(self.py_utility_definition)
-        output.append("")
-        output.extend(self.py_utility_functions)
-
+        if self.py_utility_definition:
+            output.append("")
+            output.extend(self.py_utility_definition)
+            need_file = True
+        if self.py_utility_functions:
+            output.append("")
+            output.extend(self.py_utility_functions)
+            need_file = True
         if self.need_blah:
             self.write_capsule_code(output, fmt)
-        self.config.pyfiles.append(
-            os.path.join(self.config.python_dir, fmt.PY_utility_filename)
-        )
-        self.write_output_file(
-            fmt.PY_utility_filename, self.config.python_dir, output
-        )
+            need_file = True
+        if need_file:
+            self.config.pyfiles.append(
+                os.path.join(self.config.python_dir, fmt.PY_utility_filename)
+            )
+            self.write_output_file(
+                fmt.PY_utility_filename, self.config.python_dir, output
+            )
 
     def write_capsule_code(self, output, fmt):
         """Write a function used to delete memory when a

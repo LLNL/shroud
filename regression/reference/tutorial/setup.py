@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'tutorial',
     sources=[
-         'pyTutorialmodule.cpp',
-         'pyTutorialutil.cpp'
+         'pyTutorialmodule.cpp'
     ],
     language='c++',
     include_dirs = None,

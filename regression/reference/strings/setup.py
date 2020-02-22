@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'strings',
     sources=[
-         'pystringsmodule.cpp',
-         'pystringsutil.cpp'
+         'pystringsmodule.cpp'
     ],
     language='c++',
     include_dirs = None,

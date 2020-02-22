@@ -76,6 +76,5 @@ Python function size_t size_func(size_t arg1 +intent(in)+value)
 Python function bool bool_func(bool arg +intent(in)+value)
 Python function bool returnBoolAndOthers(int * flag +intent(out))
 Close pytypesmodule.cpp
-Close pytypesutil.cpp
 Close pytypesmodule.hpp
 Close setup.py

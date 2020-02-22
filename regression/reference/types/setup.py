@@ -11,8 +11,7 @@ from setuptools import setup, Extension
 module = Extension(
     'types',
     sources=[
-         'pytypesmodule.cpp',
-         'pytypesutil.cpp'
+         'pytypesmodule.cpp'
     ],
     language='c++',
     include_dirs = None,

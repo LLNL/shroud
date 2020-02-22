@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyclassesmodule.hpp"
+
 const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Singleton_capsule_name = "Singleton";
 

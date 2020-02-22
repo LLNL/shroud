@@ -8,7 +8,6 @@
 //
 #include "pyvectorsmodule.hpp"
 
-
 // ----------------------------------------
 typedef struct {
     const char *name;
