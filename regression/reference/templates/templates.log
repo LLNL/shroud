@@ -78,3 +78,4 @@ Python function int UseImplWorker()
 Close pytemplatesmodule.cpp
 Close pytemplatesutil.cpp
 Close pytemplatesmodule.hpp
+Close setup.py

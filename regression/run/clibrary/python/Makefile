@@ -20,8 +20,7 @@ VPATH = \
 
 OBJS = \
     clibrary.o \
-    pyClibrarymodule.o \
-    pyClibraryutil.o
+    pyClibrarymodule.o
 
 CFLAGS += $(SHARED)
 

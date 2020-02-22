@@ -160,6 +160,7 @@ class Wrapp(util.WrapperMixin):
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
         self.write_utility()
         self.write_header(newlibrary)
+        self.write_setup()
 
     def wrap_namespace(self, node, top=False):
         """Wrap a library or namespace.
@@ -2300,22 +2301,32 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(output, submodule_end, fmt)
 
     def write_utility(self):
+        """
+        Do not write the file unless it has contents.
+        """
         node = self.newlibrary
         fmt = node.fmtdict
+        need_file = False
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        output.extend(self.py_utility_definition)
-        output.append("")
-        output.extend(self.py_utility_functions)
-
+        if self.py_utility_definition:
+            output.append("")
+            output.extend(self.py_utility_definition)
+            need_file = True
+        if self.py_utility_functions:
+            output.append("")
+            output.extend(self.py_utility_functions)
+            need_file = True
         if self.need_blah:
             self.write_capsule_code(output, fmt)
-        self.config.pyfiles.append(
-            os.path.join(self.config.python_dir, fmt.PY_utility_filename)
-        )
-        self.write_output_file(
-            fmt.PY_utility_filename, self.config.python_dir, output
-        )
+            need_file = True
+        if need_file:
+            self.config.pyfiles.append(
+                os.path.join(self.config.python_dir, fmt.PY_utility_filename)
+            )
+            self.write_output_file(
+                fmt.PY_utility_filename, self.config.python_dir, output
+            )
 
     def write_capsule_code(self, output, fmt):
         """Write a function used to delete memory when a
@@ -2430,6 +2441,64 @@ extern PyObject *{PY_prefix}error_obj;
             self.capsule_order.append(name)
         return self.capsule_code[name][0]
 
+    def write_setup(self):
+        """Write a setup.py file for the module"""
+        library = self.newlibrary
+        options = library.options
+        fmt = library.fmtdict
+        fname = "setup.py"
+
+        if options.debug_testsuite:
+            srcs = [ "'" + os.path.basename(name) + "'"
+                     for name in self.config.pyfiles]
+        else:
+            srcs = [ "'" + name + "'" for name in self.config.pyfiles]
+        fmt = dict(
+            language="c++" if self.language == "cxx" else self.language,
+            name=fmt.library_lower,
+            source=",\n         ".join(srcs),
+            include_dirs="None",
+        )
+
+        output = ["from setuptools import setup, Extension"]
+        if self.need_numpy:
+            output.append("import numpy")
+            fmt["include_dirs"] = "[numpy.get_include()]"
+
+        append_format(
+            output, """
+module = Extension(
+    '{name}',
+    sources=[
+         {source}
+    ],
+    language='{language}',
+    include_dirs = {include_dirs},
+#    libraries = ['tcl83'],
+#    library_dirs = ['/usr/local/lib'],      
+#    extra_compile_args = [ '-O0', '-g' ],
+#    extra_link_args =
+)
+
+setup(
+    name='{name}',
+    ext_modules = [module],""", fmt)
+        setup = library.setup
+        for key in [
+                "author",
+                "author_email",
+                "description",
+#                "long_description",
+                "license",
+                "url",
+                "test_suite",
+        ]:
+            if key in setup:
+                output.append("    {} = '{}',".format(key, setup[key]))
+        output.append(")")
+        self.comment = '#'
+        self.write_output_file(fname, self.config.out_dir, output)
+
     def not_implemented_error(self, msg, ret):
         """A standard splicer for unimplemented code
         ret is the return value (NULL or -1 or '')
@@ -2485,6 +2554,7 @@ cpp_boilerplate = """
 #if PY_MAJOR_VERSION >= 3
 #define PyInt_AsLong PyLong_AsLong
 #define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromSize_t PyLong_FromSize_t
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif"""

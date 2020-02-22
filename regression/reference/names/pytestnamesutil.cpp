@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytestnamesmodule.hpp"
+
 const char *PY_Names_capsule_name = "Names";
 const char *PY_Vvv1_capsule_name = "Vvv1";
 const char *PY_vector_double_capsule_name = "vector_double";

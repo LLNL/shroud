@@ -8,7 +8,6 @@
 //
 #include "pystructmodule.h"
 
-
 // ----------------------------------------
 typedef struct {
     const char *name;

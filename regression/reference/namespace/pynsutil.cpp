@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pynsmodule.hpp"
+
 const char *PY_Cstruct1_capsule_name = "Cstruct1";
 const char *PY_ClassWork_capsule_name = "ClassWork";
 

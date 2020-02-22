@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added option CXX_standard.
+  If *2011* or greater then `nullptr` is used instead of `NULL`.
+  This makes clang-tidy happy.
+- Create a setup.py for Python wrappers.
+
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a
   splicer with the same name defined in a *splicer_code* or file splicer.
@@ -14,9 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   C++ function may produce several wrapper via overloading or
   adding bufferify arguments.
 - Improved support for templates in the Python wrappers.
-- Added option CXX_standard.
-  If *2011* or greater then `nullptr` is used instead of `NULL`.
-  This makes clang-tidy happy.
+- Added define for PyInt_FromSize_t for Python 3.
+- Do not write Python utility file if it is empty.
 
 ## v0.11.0 - 2020-01-08
 ### Added

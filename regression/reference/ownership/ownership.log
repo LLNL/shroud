@@ -59,6 +59,7 @@ Python function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close pyownershipmodule.cpp
 Close pyownershiputil.cpp
 Close pyownershipmodule.hpp
+Close setup.py
 Lua method ~Class1()
 Close luaownershipmodule.hpp
 Close luaownershipmodule.cpp

@@ -42,6 +42,7 @@ class Config(object):
         self.c_fortran_dir = ""
         self.python_dir = ""
         self.lua_dir = ""
+        self.out_dir = ""
         self.yaml_dir = ""
         self.yaml_types = ""
         self.log = ""
@@ -336,6 +337,7 @@ def main_with_args(args):
 
     # pass around a configuration object
     config = Config()
+    config.out_dir = args.outdir
     config.c_fortran_dir = args.outdir_c_fortran or args.outdir
     config.python_dir = args.outdir_python or args.outdir
     config.lua_dir = args.outdir_lua or args.outdir

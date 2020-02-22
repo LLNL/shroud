@@ -3,5 +3,5 @@ Wrote wrapenum.cpp
 Wrote typesenum.h
 Wrote wrapfenum.f
 Wrote pyenummodule.cpp
-Wrote pyenumutil.cpp
 Wrote pyenummodule.hpp
+Wrote setup.py

@@ -7,3 +7,4 @@ Python function std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dim
 Close pyvectorsmodule.cpp
 Close pyvectorsutil.cpp
 Close pyvectorsmodule.hpp
+Close setup.py

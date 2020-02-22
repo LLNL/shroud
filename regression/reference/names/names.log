@@ -111,3 +111,4 @@ Python function int UseImplWorker()
 Close pytestnamesmodule.cpp
 Close pytestnamesutil.cpp
 Close pytestnamesmodule.hpp
+Close setup.py

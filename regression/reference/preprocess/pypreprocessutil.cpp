@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pypreprocessmodule.hpp"
+
 const char *PY_User1_capsule_name = "User1";
 #ifdef USE_USER2
 const char *PY_User2_capsule_name = "User2";

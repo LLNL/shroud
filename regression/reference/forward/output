@@ -9,5 +9,6 @@ Wrote pyClass2type.cpp
 Wrote pyforwardmodule.cpp
 Wrote pyforwardutil.cpp
 Wrote pyforwardmodule.hpp
+Wrote setup.py
 Wrote luaforwardmodule.hpp
 Wrote luaforwardmodule.cpp

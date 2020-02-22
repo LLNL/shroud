@@ -33,3 +33,4 @@ Python function void One()
 Close pynsmodule.cpp
 Close pynsutil.cpp
 Close pynsmodule.hpp
+Close setup.py

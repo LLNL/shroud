@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyownershipmodule.hpp"
+
 const char *PY_Class1_capsule_name = "Class1";
 
 

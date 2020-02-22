@@ -184,6 +184,9 @@ class Tester:
             self.result_dir,
             "--outdir",
             self.result_dir,
+            # Avoid printing things which may vary (path, date, time).
+            "--option",
+            "debug_testsuite=true",
         ]
 
         # test specific flags

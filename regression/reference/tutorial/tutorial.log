@@ -84,8 +84,8 @@ Python function Color colorfunc(Color arg +intent(in)+value)
 Python function void getMinMax(int & min +intent(out), int & max +intent(out))
 Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 Close pyTutorialmodule.cpp
-Close pyTutorialutil.cpp
 Close pyTutorialmodule.hpp
+Close setup.py
 Lua function void NoReturnNoArguments()
 Lua function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Lua function const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)

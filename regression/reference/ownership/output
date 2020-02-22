@@ -9,5 +9,6 @@ Wrote pyClass1type.cpp
 Wrote pyownershipmodule.cpp
 Wrote pyownershiputil.cpp
 Wrote pyownershipmodule.hpp
+Wrote setup.py
 Wrote luaownershipmodule.hpp
 Wrote luaownershipmodule.cpp

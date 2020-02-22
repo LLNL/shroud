@@ -87,3 +87,4 @@ Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+l
 Close pyclassesmodule.cpp
 Close pyclassesutil.cpp
 Close pyclassesmodule.hpp
+Close setup.py
