@@ -6,7 +6,6 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
-
 from setuptools import setup, Extension
 
 module = Extension(
@@ -16,9 +15,11 @@ module = Extension(
          'pypointersutil.c'
     ],
     language='c',
-#    include_dirs = ['/usr/local/include'],
+    include_dirs = None,
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
+#    extra_compile_args = [ '-O0', '-g' ],
+#    extra_link_args =
 )
 
 setup(

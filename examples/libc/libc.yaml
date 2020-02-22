@@ -29,4 +29,8 @@ setup:
 
 declarations:
 - decl: char *strchr(const char *str, int c)
+#    if (SHCXX_rv == NULL) {
+#      Py_RETURN_NONE;
+#    }
+
 - decl: size_t strlen(const char *str)

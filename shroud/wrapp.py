@@ -2447,25 +2447,32 @@ extern PyObject *{PY_prefix}error_obj;
             language="c++" if self.language == "cxx" else self.language,
             name=fmt.library_lower,
             source=",\n         ".join(srcs),
+            include_dirs="None",
         )
-        output = [wformat("""
-from setuptools import setup, Extension
 
+        output = ["from setuptools import setup, Extension"]
+        if self.need_numpy:
+            output.append("import numpy")
+            fmt["include_dirs"] = "[numpy.get_include()]"
+
+        append_format(
+            output, """
 module = Extension(
     '{name}',
     sources=[
          {source}
     ],
     language='{language}',
-#    include_dirs = ['/usr/local/include'],
+    include_dirs = {include_dirs},
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
+#    extra_compile_args = [ '-O0', '-g' ],
+#    extra_link_args =
 )
 
 setup(
     name='{name}',
     ext_modules = [module],""", fmt)
-        ]
         setup = library.setup
         for key in [
                 "author",
