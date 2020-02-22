@@ -160,6 +160,7 @@ class Wrapp(util.WrapperMixin):
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
         self.write_utility()
         self.write_header(newlibrary)
+        self.write_setup()
 
     def wrap_namespace(self, node, top=False):
         """Wrap a library or namespace.
@@ -2429,6 +2430,42 @@ extern PyObject *{PY_prefix}error_obj;
             self.capsule_code[name] = (str(len(self.capsule_code)), lines)
             self.capsule_order.append(name)
         return self.capsule_code[name][0]
+
+    def write_setup(self):
+        """Write a setup.py file for the module"""
+        options = self.newlibrary.options
+        fmt = self.newlibrary.fmtdict
+        fname = "setup.py"
+
+        if options.debug_testsuite:
+            srcs = [ "'" + os.path.basename(name) + "'"
+                     for name in self.config.pyfiles]
+        else:
+            srcs = [ "'" + name + "'" for name in self.config.pyfiles]
+        fmt = dict(
+            language=self.language,
+            name=fmt.library_lower,
+            source=",\n         ".join(srcs),
+        )
+        output = [wformat("""
+from setuptools import setup, Extension
+
+module = Extension(
+    '{name}',
+    sources=[
+         {source}
+    ],
+    language='{language}',
+#    include_dirs = ['/usr/local/include'],
+#    libraries = ['tcl83'],
+#    library_dirs = ['/usr/local/lib'],      
+)
+
+setup(name='{name}', ext_modules = [module])
+""", fmt)
+        ]
+        self.comment = '#'
+        self.write_output_file(fname, self.config.out_dir, output)
 
     def not_implemented_error(self, msg, ret):
         """A standard splicer for unimplemented code

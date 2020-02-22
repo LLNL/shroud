@@ -45,3 +45,4 @@ Python function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +i
 Close pystructmodule.cpp
 Close pystructutil.cpp
 Close pystructmodule.hpp
+Close setup.py

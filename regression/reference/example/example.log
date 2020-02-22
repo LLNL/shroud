@@ -197,6 +197,7 @@ Close pyUserLibrary_examplemodule.cpp
 Close pyUserLibrarymodule.cpp
 Close pyUserLibraryutil.cpp
 Close pyUserLibrarymodule.hpp
+Close setup.py
 Lua method ExClass1()
 Lua method ExClass1(const string * name +intent(in))
 Lua method ~ExClass1()

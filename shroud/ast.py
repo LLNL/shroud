@@ -414,6 +414,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             parent=None,
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
+            debug_testsuite=False,
             # They change when a function is inserted.
             flatten_namespace=False,
             C_line_length=72,

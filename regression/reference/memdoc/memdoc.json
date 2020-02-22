@@ -357,6 +357,7 @@
             "__line__": 19,
             "debug": false,
             "debug_index": false,
+            "debug_testsuite": true,
             "doxygen": true,
             "flatten_namespace": false,
             "literalinclude": true,

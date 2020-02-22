@@ -1,0 +1,22 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Create an executable program for the tutorial
+
+library: libc
+cxx_header: string.h
+language: c
+
+options:
+  wrap_fortran: False
+  wrap_c: False
+  wrap_python: True
+
+declarations:
+- decl: char *strchr(const char *str, int c)
+- decl: size_t strlen(const char *str)

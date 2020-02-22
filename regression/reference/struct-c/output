@@ -6,3 +6,4 @@ Wrote wrapfstruct.f
 Wrote pystructmodule.c
 Wrote pystructutil.c
 Wrote pystructmodule.h
+Wrote setup.py

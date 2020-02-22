@@ -6,3 +6,4 @@ Close wrapfenum.f
 Close pyenummodule.c
 Close pyenumutil.c
 Close pyenummodule.h
+Close setup.py

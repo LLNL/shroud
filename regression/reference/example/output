@@ -17,5 +17,6 @@ Wrote pyUserLibrary_examplemodule.cpp
 Wrote pyUserLibrarymodule.cpp
 Wrote pyUserLibraryutil.cpp
 Wrote pyUserLibrarymodule.hpp
+Wrote setup.py
 Wrote luaUserLibrarymodule.hpp
 Wrote luaUserLibrarymodule.cpp

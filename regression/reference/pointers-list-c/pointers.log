@@ -10,3 +10,4 @@ Python function void incrementIntArray(int * array +dimension(:)+intent(inout), 
 Close pypointersmodule.c
 Close pypointersutil.c
 Close pypointersmodule.h
+Close setup.py

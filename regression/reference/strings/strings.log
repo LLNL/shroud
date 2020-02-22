@@ -146,3 +146,4 @@ Python function char CreturnChar()
 Close pystringsmodule.cpp
 Close pystringsutil.cpp
 Close pystringsmodule.hpp
+Close setup.py

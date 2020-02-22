@@ -33,3 +33,4 @@ Python function void worker()
 Close pywrappedmodule.cpp
 Close pywrappedutil.cpp
 Close pywrappedmodule.hpp
+Close setup.py

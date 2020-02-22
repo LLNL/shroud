@@ -9567,6 +9567,7 @@
             "__line__": 26,
             "debug": true,
             "debug_index": false,
+            "debug_testsuite": true,
             "doxygen": true,
             "flatten_namespace": false,
             "literalinclude": false,
