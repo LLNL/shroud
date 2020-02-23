@@ -142,7 +142,8 @@ class Wrapp(util.WrapperMixin):
 
         fmt_library.npy_ndims = "0"   # number of dimensions
         fmt_library.npy_dims = fmt_library.nullptr # shape variable
-        fmt_library.npy_intp = ""     # shape array definition
+        fmt_library.npy_intp_decl = ""     # shape array definition
+        fmt_library.npy_intp_asgn = ""     # shape array assignment
 
         # Variables to accumulate output lines
         self.py_class_decl = []  # code for header file
@@ -762,8 +763,9 @@ return 1;""",
 #            fmt.pointer_shape = dimension
             # Dimensions must be in npy_intp type array.
             # XXX - assumes 1-d
-            fmt.npy_intp = "npy_intp {}[1];\n".format(fmt.npy_dims)
-#            fmt.npy_intp = "npy_intp {}[1] = {{{}->size()}};\n".format(fmt.npy_dims, fmt.cxx_var)
+            fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[1];\n", fmt)
+            # XXX - cxx_var may not have prefix yet.
+            fmt.npy_intp_asgn = wformat("{npy_dims}[0] = {cxx_var}->size();\n", fmt)
 
         dimension = ast.attrs["dimension"]
         if dimension:
@@ -777,7 +779,8 @@ return 1;""",
                 fmt.pointer_shape = dimension
                 # Dimensions must be in npy_intp type array.
                 # XXX - assumes 1-d
-                fmt.npy_intp = "npy_intp {}[1] = {{{}}};\n".format(
+                fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[1];\n", fmt)
+                fmt.npy_intp_asgn = "{}[0] = {};\n".format(
                     fmt.npy_dims, dimension)
 
 #        fmt.c_type = typemap.c_type
@@ -1043,12 +1046,13 @@ return 1;""",
                 # Allocate NumPy Array.
                 # Assumes intent(out)
                 # ex. (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
-                attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
+                mold = attr_allocatable(
+                    self.language, allocatable, node, arg, fmt_arg)
                 if intent != "out":
                     raise RuntimeError(
                         "Argument {} must have intent(out) with +allocatable".
                         format(arg.name))
-                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg]
+                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg, mold]
             elif arg_typemap.sgroup == "char":
                 charlen = arg.attrs["charlen"]
                 if charlen:
@@ -2905,6 +2909,8 @@ def py_implied(expr, func):
 
 def attr_allocatable(language, allocatable, node, arg, fmt_arg):
     """parse allocatable and add values to fmt_arg.
+    Return 'mold' if allocatable is (mold=var), else 
+    return ''.
 
     arguments to PyArray_NewLikeArray
       (prototype, order, descr, subok)
@@ -2912,25 +2918,28 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
 
     Valid values of allocatable:
        mold=name
+       expression  i.e. nvar
 
     Args:
         language -
         allocatable -
         node -
         arg -
-        fmt_arg - format dictionary for arg. 
+        fmt_arg - format dictionary for arg.
     """
+    whelpers.add_to_PyList_helper(arg)
     fmtargs = node._fmtargs
 
-    prototype = "--NONE--"
-    order = "NPY_CORDER"
-    descr = "NULL"
-    subok = "0"
-    descr_code = ""
-
-    p = re.compile("mold\s*=\s*(\w+)")
+    p = re.compile(r"mold\s*=\s*(\w+)")
     m = p.match(allocatable)
     if m is not None:
+        # py_native_out_alloctable_numpy
+        mold = 'mold'
+        prototype = "--NONE--"
+        order = "NPY_CORDER"
+        descr = "NULL"
+        subok = "0"
+        descr_code = ""
         moldvar = m.group(1)
         moldarg = node.ast.find_arg_by_name(moldvar)
         if moldarg is None:
@@ -2960,13 +2969,27 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
                     descr, arg_typemap.PYN_typenum
                 )
             )
+        # Arguments used with numpy.
+        fmt_arg.npy_prototype = prototype
+        fmt_arg.npy_order = order
+        fmt_arg.npy_descr = descr
+        fmt_arg.npy_subok = subok
+        fmt_arg.npy_descr_code = descr_code
+    else:
+        # py_native_out_dimension_numpy
+        # allocatable is an expression.
+        mold = ''
+        # XXX - assume expression.
+        # XXX - assume 1-d
+        fmt_arg.size_var = allocatable
+        fmt_arg.npy_ndims = "1"
+        fmt_arg.npy_dims = "SHD_" + arg.name
+        fmt_arg.npy_intp_decl = wformat(
+            "npy_intp {npy_dims}[{npy_ndims}];\n", fmt_arg)
+        fmt_arg.npy_intp_asgn = wformat(
+            "{npy_dims}[0] = {size_var};\n", fmt_arg)
 
-    fmt_arg.npy_prototype = prototype
-    fmt_arg.npy_order = order
-    fmt_arg.npy_descr = descr
-    fmt_arg.npy_subok = subok
-    fmt_arg.npy_descr_code = descr_code
-
+    return mold
 
 def update_code_blocks(symtab, stmts, fmt):
     """ Accumulate info from statements.
@@ -3227,10 +3250,11 @@ py_statements = dict(
         need_numpy=True,
         c_local_var="pointer",
         declare=[
-            "{npy_intp}"
+            "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
+            "{npy_intp_asgn}"  # Must contain a newline if non-blank.
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
             "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
@@ -3250,10 +3274,11 @@ py_statements = dict(
     py_native_result_dimension_numpy=dict(
         need_numpy=True,
         declare=[
+            "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
-            "{npy_intp}"
+            "{npy_intp_asgn}"
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_addr}{cxx_var});",
@@ -3271,7 +3296,9 @@ py_statements = dict(
 
 ########################################
 ## allocatable
-    py_native_out_allocatable_numpy=dict(
+## setup by attr_allocatable.
+    # allocatable(mold=var)
+    py_native_out_allocatable_numpy_mold=dict(
         need_numpy=True,
         declare=["PyArrayObject * {py_var} = {nullptr};"],
         c_local_var="pointer",
@@ -3286,6 +3313,10 @@ py_statements = dict(
         object_created=True,
         fail=["Py_XDECREF({py_var});"],
         goto_fail=True,
+    ),
+    # allocatable(nvar)
+    py_native_out_allocatable_numpy=dict(
+        alias="py_native_out_dimension_numpy",
     ),
 
 ########################################
@@ -3354,11 +3385,11 @@ py_statements = dict(
         ],
         c_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{c_var} = malloc(\tsizeof({c_type}) * {pointer_shape});",
+            "{c_var} = malloc(\tsizeof({c_type}) * ({pointer_shape}));",
         ] + malloc_error,
         cxx_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * {pointer_shape}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({pointer_shape})));",
         ] + malloc_error,
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
@@ -3515,10 +3546,11 @@ py_statements = dict(
         create_out_decl=True,
         cxx_local_var="pointer",
         declare=[
-#            "{npy_intp}"
+#            "{npy_intp_decl}"
             "PyArrayObject * {py_var} = {nullptr};",
         ],
         post_parse=[
+#            "{npy_intp_asgn}"
             "Py_INCREF({PYN_descr});",
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
             "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
@@ -3543,10 +3575,11 @@ py_statements = dict(
         need_numpy=True,
         allocate_local_var=True,
         declare=[
+            "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
-            "{npy_intp}"
+            "{npy_intp_asgn}"
             "Py_INCREF({PYN_descr});",
             "{py_var} = "
             "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
@@ -3786,10 +3819,11 @@ py_statements = dict(
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
+            "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
-            "{npy_intp}"
+#            "{npy_intp_asgn}"
             "{npy_dims}[0] = {cxx_var}->size();",
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
@@ -3809,10 +3843,11 @@ py_statements = dict(
         need_numpy=True,
         allocate_local_var=True,
         declare=[
+            "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
         ],
         post_call=[
-            "{npy_intp}"
+#            "{npy_intp_asgn}"
             "{npy_dims}[0] = {cxx_var}->size();",
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"

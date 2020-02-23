@@ -113,7 +113,8 @@
             "library_upper": "POINTERS",
             "namespace_scope": "",
             "npy_dims": "nullptr",
-            "npy_intp": "",
+            "npy_intp_asgn": "",
+            "npy_intp_decl": "",
             "npy_ndims": "0",
             "nullptr": "nullptr",
             "stdlib": "std::",
@@ -295,7 +296,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_list",
+                            "stmt0": "py_native_out_allocatable_list_mold",
                             "stmt1": "py_native_out_allocatable_list"
                         }
                     },
@@ -437,7 +438,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_list",
+                            "stmt0": "py_native_out_allocatable_list_mold",
                             "stmt1": "py_native_out_allocatable_list"
                         }
                     },
@@ -573,7 +574,8 @@
                             "cxx_var": "values",
                             "data_var": "SHData_values",
                             "npy_dims": "SHD_values",
-                            "npy_intp": "npy_intp SHD_values[1] = {3};\n",
+                            "npy_intp_asgn": "SHD_values[0] = 3;\n",
+                            "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -660,7 +662,8 @@
                             "cxx_var": "arg1",
                             "data_var": "SHData_arg1",
                             "npy_dims": "SHD_arg1",
-                            "npy_intp": "npy_intp SHD_arg1[1] = {3};\n",
+                            "npy_intp_asgn": "SHD_arg1[0] = 3;\n",
+                            "npy_intp_decl": "npy_intp SHD_arg1[1];\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -682,7 +685,8 @@
                             "cxx_var": "arg2",
                             "data_var": "SHData_arg2",
                             "npy_dims": "SHD_arg2",
-                            "npy_intp": "npy_intp SHD_arg2[1] = {3};\n",
+                            "npy_intp_asgn": "SHD_arg2[0] = 3;\n",
+                            "npy_intp_decl": "npy_intp SHD_arg2[1];\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -754,6 +758,205 @@
                     "underscore_name": "get_values2"
                 },
                 "linenumber": 54,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "nvar": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int nvar",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "nvar",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int nvar",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "nvar",
+                            "data_var": "SHData_nvar",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_nvar",
+                            "size_var": "SHSize_nvar",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
+                        }
+                    },
+                    "values": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "data_var": "SHData_values",
+                            "npy_dims": "SHD_values",
+                            "npy_intp_asgn": "SHD_values[0] = nvar;\n",
+                            "npy_intp_decl": "npy_intp SHD_values[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_values",
+                            "size_var": "nvar",
+                            "stmt0": "py_native_out_allocatable_list",
+                            "stmt1": "py_native_out_allocatable_list"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "iota_allocatable",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvar",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "allocatable": "nvar",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+allocatable(nvar))",
+                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_iota_allocatable",
+                    "function_name": "iota_allocatable",
+                    "underscore_name": "iota_allocatable"
+                },
+                "linenumber": 65,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "nvar": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int nvar",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "nvar",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int nvar",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "nvar",
+                            "data_var": "SHData_nvar",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_nvar",
+                            "size_var": "SHSize_nvar",
+                            "stmt0": "py_native_in",
+                            "stmt1": "py_default"
+                        }
+                    },
+                    "values": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "data_var": "SHData_values",
+                            "npy_dims": "SHD_values",
+                            "npy_intp_asgn": "SHD_values[0] = nvar;\n",
+                            "npy_intp_decl": "npy_intp SHD_values[1];\n",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "pointer_shape": "nvar",
+                            "py_var": "SHPy_values",
+                            "size_var": "SHSize_values",
+                            "stmt0": "py_native_out_dimension_list",
+                            "stmt1": "py_native_out_dimension_list"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "iota_dimension",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvar",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "dimension": "nvar",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
+                "declgen": "void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_iota_dimension",
+                    "function_name": "iota_dimension",
+                    "underscore_name": "iota_dimension"
+                },
+                "linenumber": 67,
                 "options": {}
             },
             {
@@ -886,9 +1089,9 @@
                     "function_name": "Sum",
                     "underscore_name": "sum"
                 },
-                "linenumber": 67,
+                "linenumber": 72,
                 "options": {
-                    "__line__": 70,
+                    "__line__": 75,
                     "literalinclude": true,
                     "wrap_lua": false
                 }
@@ -907,7 +1110,8 @@
                             "cxx_var": "out",
                             "data_var": "SHData_out",
                             "npy_dims": "SHD_out",
-                            "npy_intp": "npy_intp SHD_out[1] = {3};\n",
+                            "npy_intp_asgn": "SHD_out[0] = 3;\n",
+                            "npy_intp_decl": "npy_intp SHD_out[1];\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -951,7 +1155,7 @@
                 "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
                 "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 76,
+                    "__line__": 81,
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
@@ -959,7 +1163,7 @@
                     "function_name": "fillIntArray",
                     "underscore_name": "fill_int_array"
                 },
-                "linenumber": 75,
+                "linenumber": 80,
                 "options": {}
             },
             {
@@ -1051,7 +1255,7 @@
                 "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
                 "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 82,
+                    "__line__": 87,
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
@@ -1059,7 +1263,7 @@
                     "function_name": "incrementIntArray",
                     "underscore_name": "increment_int_array"
                 },
-                "linenumber": 80,
+                "linenumber": 85,
                 "options": {}
             }
         ],

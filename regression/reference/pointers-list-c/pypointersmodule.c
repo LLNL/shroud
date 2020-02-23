@@ -296,7 +296,7 @@ PY_get_values(
 
     // pre_call
     int nvalues;  // intent(out)
-    values = malloc(sizeof(int) * 3);
+    values = malloc(sizeof(int) * (3));
     if (values == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -347,12 +347,12 @@ PY_get_values2(
     PyObject *SHTPy_rv = NULL;  // return value object
 
     // pre_call
-    arg1 = malloc(sizeof(int) * 3);
+    arg1 = malloc(sizeof(int) * (3));
     if (arg1 == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
-    arg2 = malloc(sizeof(int) * 3);
+    arg2 = malloc(sizeof(int) * (3));
     if (arg2 == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -382,6 +382,101 @@ fail:
     if (arg2 != NULL) free(arg2);
     return NULL;
 // splicer end function.get_values2
+}
+
+static char PY_iota_allocatable__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_iota_allocatable(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+// splicer begin function.iota_allocatable
+    int nvar;
+    int * values = NULL;
+    char *SHT_kwlist[] = {
+        "nvar",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_allocatable",
+        SHT_kwlist, &nvar))
+        return NULL;
+
+    // pre_call
+    values = malloc(sizeof(int) * nvar);
+    if (values == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
+
+    iota_allocatable(nvar, values);
+
+    // post_call
+    PyObject *SHPy_values = SHROUD_to_PyList_int(values, nvar);
+    if (SHPy_values == NULL) goto fail;
+
+    // cleanup
+    free(values);
+
+    return (PyObject *) SHPy_values;
+
+fail:
+    if (values != NULL) free(values);
+    return NULL;
+// splicer end function.iota_allocatable
+}
+
+static char PY_iota_dimension__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_iota_dimension(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
+// splicer begin function.iota_dimension
+    int nvar;
+    PyObject *SHPy_values = NULL;
+    int * values = NULL;
+    char *SHT_kwlist[] = {
+        "nvar",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_dimension",
+        SHT_kwlist, &nvar))
+        return NULL;
+
+    // pre_call
+    values = malloc(sizeof(int) * (nvar));
+    if (values == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
+
+    iota_dimension(nvar, values);
+
+    // post_call
+    SHPy_values = SHROUD_to_PyList_int(values, nvar);
+    if (SHPy_values == NULL) goto fail;
+
+    // cleanup
+    free(values);
+    values = NULL;
+
+    return (PyObject *) SHPy_values;
+
+fail:
+    Py_XDECREF(SHPy_values);
+    if (values != NULL) free(values);
+    return NULL;
+// splicer end function.iota_dimension
 }
 
 static char PY_Sum__doc__[] =
@@ -452,7 +547,7 @@ PY_fillIntArray(
     int * out = NULL;
 
     // pre_call
-    out = malloc(sizeof(int) * 3);
+    out = malloc(sizeof(int) * (3));
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -538,6 +633,10 @@ static PyMethodDef PY_methods[] = {
     PY_get_values__doc__},
 {"get_values2", (PyCFunction)PY_get_values2, METH_NOARGS,
     PY_get_values2__doc__},
+{"iota_allocatable", (PyCFunction)PY_iota_allocatable,
+    METH_VARARGS|METH_KEYWORDS, PY_iota_allocatable__doc__},
+{"iota_dimension", (PyCFunction)PY_iota_dimension,
+    METH_VARARGS|METH_KEYWORDS, PY_iota_dimension__doc__},
 {"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
 {"fillIntArray", (PyCFunction)PY_fillIntArray, METH_NOARGS,
     PY_fillIntArray__doc__},

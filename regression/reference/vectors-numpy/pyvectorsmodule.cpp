@@ -102,6 +102,7 @@ PY_vector_iota_out(
 // void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
     std::vector<int> * SH_arg = nullptr;
+    npy_intp SHD_arg[1];
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
 
@@ -116,7 +117,6 @@ PY_vector_iota_out(
         vector_iota_out(*SH_arg);
 
         // post_call
-        npy_intp SHD_arg[1];
         SHD_arg[0] = SH_arg->size();
         SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
             SH_arg->data());
@@ -158,6 +158,7 @@ PY_vector_iota_out_d(
 // void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out_d
     std::vector<double> * SH_arg = nullptr;
+    npy_intp SHD_arg[1];
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
 
@@ -172,7 +173,6 @@ PY_vector_iota_out_d(
         vector_iota_out_d(*SH_arg);
 
         // post_call
-        npy_intp SHD_arg[1];
         SHD_arg[0] = SH_arg->size();
         SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_DOUBLE,
             SH_arg->data());
@@ -219,6 +219,7 @@ PY_ReturnVectorAlloc(
         "n",
         nullptr };
     std::vector<int> * SHCXX_rv = nullptr;
+    npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHC_SHCXX_rv = nullptr;
 
@@ -236,7 +237,6 @@ PY_ReturnVectorAlloc(
     *SHCXX_rv = ReturnVectorAlloc(n);
 
     // post_call
-    npy_intp SHD_rv[1];
     SHD_rv[0] = SHCXX_rv->size();
     SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT,
         SHCXX_rv->data());

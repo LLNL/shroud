@@ -83,6 +83,27 @@ void get_values2(int *arg1, int *arg2)
 
 //----------------------------------------------------------------------
 
+// values is assumed to be nvar long.
+
+void iota_allocatable(int nvar, int *values)
+{
+    int i;
+    for(i = 0; i < nvar; i++) {
+        values[i] = i + 1;
+    }
+}
+
+void iota_dimension(int nvar, int *values)
+{
+    int i;
+    for(i = 0; i < nvar; i++) {
+        values[i] = i + 1;
+    }
+}
+
+
+//----------------------------------------------------------------------
+
 // start Sum
 void Sum(int len, int *values, int *result)
 {
