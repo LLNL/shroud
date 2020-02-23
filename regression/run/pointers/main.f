@@ -68,6 +68,16 @@ contains
     call assert_true(all(values1(1:3) == [1, 2, 3]))
     call assert_true(all(values2(1:3) == [11, 12, 13]))
 
+    values1 = 0
+    call iota_allocatable(nvalues, values1)
+    call assert_equals(3, nvalues)
+    call assert_true(all(values1(1:3) == [1, 2, 3]))
+
+    values1 = 0
+    call iota_dimension(nvalues, values1)
+    call assert_equals(3, nvalues)
+    call assert_true(all(values1(1:3) == [1, 2, 3]))
+
   end subroutine test_functions
 
   subroutine test_functions2

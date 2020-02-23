@@ -214,11 +214,12 @@ PY_get_values(
 {
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
-    npy_intp SHD_values[1] = {3};
+    npy_intp SHD_values[1];
     PyArrayObject * SHPy_values = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     // post_parse
+    SHD_values[0] = 3;
     SHPy_values = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_values, NPY_INT));
     if (SHPy_values == nullptr) {
@@ -263,13 +264,14 @@ PY_get_values2(
 {
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // splicer begin function.get_values2
-    npy_intp SHD_arg1[1] = {3};
+    npy_intp SHD_arg1[1];
     PyArrayObject * SHPy_arg1 = nullptr;
-    npy_intp SHD_arg2[1] = {3};
+    npy_intp SHD_arg2[1];
     PyArrayObject * SHPy_arg2 = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     // post_parse
+    SHD_arg1[0] = 3;
     SHPy_arg1 = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_arg1, NPY_INT));
     if (SHPy_arg1 == nullptr) {
@@ -277,6 +279,7 @@ PY_get_values2(
             "arg1 must be a 1-D array of int");
         goto fail;
     }
+    SHD_arg2[0] = 3;
     SHPy_arg2 = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_arg2, NPY_INT));
     if (SHPy_arg2 == nullptr) {
@@ -302,6 +305,98 @@ fail:
     Py_XDECREF(SHPy_arg2);
     return nullptr;
 // splicer end function.get_values2
+}
+
+static char PY_iota_allocatable__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_iota_allocatable(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+// splicer begin function.iota_allocatable
+    int nvar;
+    npy_intp SHD_values[1];
+    PyArrayObject * SHPy_values = nullptr;
+    const char *SHT_kwlist[] = {
+        "nvar",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_allocatable",
+        const_cast<char **>(SHT_kwlist), &nvar))
+        return nullptr;
+
+    // post_parse
+    SHD_values[0] = nvar;
+    SHPy_values = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_values, NPY_INT));
+    if (SHPy_values == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "values must be a 1-D array of int");
+        goto fail;
+    }
+    {
+        // pre_call
+        int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
+
+        iota_allocatable(nvar, values);
+        return (PyObject *) SHPy_values;
+    }
+
+fail:
+    Py_XDECREF(SHPy_values);
+    return nullptr;
+// splicer end function.iota_allocatable
+}
+
+static char PY_iota_dimension__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_iota_dimension(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
+// splicer begin function.iota_dimension
+    int nvar;
+    npy_intp SHD_values[1];
+    PyArrayObject * SHPy_values = nullptr;
+    const char *SHT_kwlist[] = {
+        "nvar",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_dimension",
+        const_cast<char **>(SHT_kwlist), &nvar))
+        return nullptr;
+
+    // post_parse
+    SHD_values[0] = nvar;
+    SHPy_values = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_values, NPY_INT));
+    if (SHPy_values == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "values must be a 1-D array of int");
+        goto fail;
+    }
+    {
+        // pre_call
+        int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
+
+        iota_dimension(nvar, values);
+        return (PyObject *) SHPy_values;
+    }
+
+fail:
+    Py_XDECREF(SHPy_values);
+    return nullptr;
+// splicer end function.iota_dimension
 }
 
 static char PY_Sum__doc__[] =
@@ -373,10 +468,11 @@ PY_fillIntArray(
 {
 // void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
-    npy_intp SHD_out[1] = {3};
+    npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
 
     // post_parse
+    SHD_out[0] = 3;
     SHPy_out = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_out, NPY_INT));
     if (SHPy_out == nullptr) {
@@ -456,6 +552,10 @@ static PyMethodDef PY_methods[] = {
     PY_get_values__doc__},
 {"get_values2", (PyCFunction)PY_get_values2, METH_NOARGS,
     PY_get_values2__doc__},
+{"iota_allocatable", (PyCFunction)PY_iota_allocatable,
+    METH_VARARGS|METH_KEYWORDS, PY_iota_allocatable__doc__},
+{"iota_dimension", (PyCFunction)PY_iota_dimension,
+    METH_VARARGS|METH_KEYWORDS, PY_iota_dimension__doc__},
 {"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
 {"fillIntArray", (PyCFunction)PY_fillIntArray, METH_NOARGS,
     PY_fillIntArray__doc__},

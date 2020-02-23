@@ -37,6 +37,10 @@ void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
 
+void POI_iota_allocatable(int nvar, int * values);
+
+void POI_iota_dimension(int nvar, int * values);
+
 void POI_sum(int len, int * values, int * result);
 
 void POI_fill_int_array(int * out);

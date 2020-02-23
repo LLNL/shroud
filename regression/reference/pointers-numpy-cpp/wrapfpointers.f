@@ -73,6 +73,26 @@ module pointers_mod
         end subroutine get_values2
     end interface
 
+    interface
+        subroutine iota_allocatable(nvar, values) &
+                bind(C, name="POI_iota_allocatable")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: nvar
+            integer(C_INT), intent(OUT) :: values(*)
+        end subroutine iota_allocatable
+    end interface
+
+    interface
+        subroutine iota_dimension(nvar, values) &
+                bind(C, name="POI_iota_dimension")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: nvar
+            integer(C_INT), intent(OUT) :: values(*)
+        end subroutine iota_dimension
+    end interface
+
     ! start c_sum
     interface
         subroutine c_sum(len, values, result) &

@@ -84,6 +84,22 @@ void POI_get_values2(int * arg1, int * arg2)
     // splicer end function.get_values2
 }
 
+// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+void POI_iota_allocatable(int nvar, int * values)
+{
+    // splicer begin function.iota_allocatable
+    iota_allocatable(nvar, values);
+    // splicer end function.iota_allocatable
+}
+
+// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
+void POI_iota_dimension(int nvar, int * values)
+{
+    // splicer begin function.iota_dimension
+    iota_dimension(nvar, values);
+    // splicer end function.iota_dimension
+}
+
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // start POI_sum
 void POI_sum(int len, int * values, int * result)
