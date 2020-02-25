@@ -70,7 +70,8 @@ PY_passStructByValue(
     }
     {
         // pre_call
-        Cstruct1 arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+        Cstruct1 * arg = static_cast<Cstruct1 *>
+            (PyArray_DATA(SHPy_arg));
 
         int SHCXX_rv = passStructByValue(*arg);
 
@@ -124,7 +125,8 @@ PY_passStruct1(
     }
     {
         // pre_call
-        Cstruct1 arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+        Cstruct1 * arg = static_cast<Cstruct1 *>
+            (PyArray_DATA(SHPy_arg));
 
         int SHCXX_rv = passStruct1(arg);
 
@@ -181,7 +183,7 @@ PY_passStruct2(
     }
     {
         // pre_call
-        Cstruct1 s1 = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_s1));
+        Cstruct1 * s1 = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_s1));
         char outbuf[LENOUTBUF];  // intent(out)
 
         int SHCXX_rv = passStruct2(s1, outbuf);
@@ -288,7 +290,8 @@ PY_acceptStructInOutPtr(
     }
     {
         // pre_call
-        Cstruct1 arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+        Cstruct1 * arg = static_cast<Cstruct1 *>
+            (PyArray_DATA(SHPy_arg));
 
         acceptStructInOutPtr(arg);
         return (PyObject *) SHPy_arg;

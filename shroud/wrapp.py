@@ -3510,7 +3510,8 @@ py_statements = dict(
             "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{c_const}{cxx_type} * {cxx_var} = "
+            "static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
             "Py_DECREF({py_var});",
@@ -3541,7 +3542,8 @@ py_statements = dict(
             "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{c_const}{cxx_type} * {cxx_var} = "
+            "static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[

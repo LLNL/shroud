@@ -22,7 +22,8 @@ VPATH = \
 OBJS = \
     struct.o \
     pystructmodule.o \
-    pystructutil.o
+    pystructutil.o \
+    pyCstruct1type.o
 
 CFLAGS += $(SHARED)
 
