@@ -12,8 +12,8 @@
 # run input file, compare results to reference files
 #
 # Directory structure
-#  src-dir/name.yaml
-#  src-dir/ref/name/      reference results
+#  src-dir/input/name.yaml
+#  src-dir/reference/name/      reference results
 #
 #  bin-dir/test/name/     generated files
 
@@ -66,7 +66,7 @@ class Tester:
     def close_log(self):
         logging.shutdown()
 
-    def set_environment(self, input, output, executable=None):
+    def setup_environment(self, input, output, executable=None):
         """Set environment for all tests.
         """
         self.test_input_dir = input
@@ -84,7 +84,7 @@ class Tester:
         makedirs(output)
         return status
 
-    def set_test(self, desc, replace_ref=False):
+    def setup_test(self, desc, replace_ref=False):
         """Setup for a single test.
 
         Args:
@@ -96,7 +96,7 @@ class Tester:
         logging.info("--------------------------------------------------")
         logging.info("Testing " + name)
 
-        self.testyaml = os.path.join(self.test_input_dir, desc.yaml)
+        self.testyaml = os.path.join(self.test_input_dir, "input", desc.yaml)
         logging.info("Input file: " + self.testyaml)
         if not os.path.isfile(self.testyaml):
             logging.error("Input file does not exist")
@@ -179,7 +179,7 @@ class Tester:
         cmd = [
             self.code_path,
             "--path",
-            self.test_input_dir,
+            os.path.join(self.test_input_dir, "input"),
             "--logdir",
             self.result_dir,
             "--outdir",
@@ -306,7 +306,7 @@ if __name__ == "__main__":
 
     tester = Tester()
 
-    status = tester.set_environment(
+    status = tester.setup_environment(
         os.environ["TEST_INPUT_DIR"],
         os.environ["TEST_OUTPUT_DIR"],
         os.environ["EXECUTABLE_DIR"],
@@ -461,7 +461,7 @@ if __name__ == "__main__":
     pass_names = []
     fail_names = []
     for test in runTests:
-        status = tester.set_test(test, replace_ref)
+        status = tester.setup_test(test, replace_ref)
 
         if status:
             status = tester.do_test()
