@@ -391,6 +391,14 @@ if __name__ == "__main__":
                      "--option", "wrap_python=true",
                      "--option", "PY_struct_arg=class",
                  ]),
+        TestDesc("struct-list-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=list",
+                 ]),
 
         # vectors
         TestDesc("vectors", yaml="vectors"),
