@@ -383,6 +383,22 @@ if __name__ == "__main__":
                      "--option", "wrap_python=true",
                      "--option", "PY_struct_arg=numpy",
                  ]),
+        TestDesc("struct-numpy-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=numpy",
+                 ]),
+        TestDesc("struct-class-c", yaml="struct",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=class",
+                 ]),
         TestDesc("struct-class-cxx", yaml="struct",
                  cmdline=[
                      "--language", "c++",
