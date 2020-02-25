@@ -11,32 +11,25 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/struct-cxx \
-    -I$(top)/regression/run/struct-c \
+    -I$(top)/regression/reference/struct-numpy-c \
+    -I$(top)/regression/run/struct \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/struct-cxx \
-    $(top)/regression/run/struct-cxx/python
+    $(top)/regression/reference/struct-numpy-c \
+    $(top)/regression/run/struct
 
 OBJS = \
     struct.o \
     pystructmodule.o \
-    pystructutil.o \
-    pyCstruct1type.o
+    pystructutil.o
 
-CXXFLAGS += $(SHARED)
+CFLAGS += $(SHARED)
 
 all : cstruct.so
 
-# Convert C++ file to C
-struct.cpp : $(top)/regression/run/struct-c/struct.c
-	cp $^ $@
-
 cstruct.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-struct.o : struct.cpp
+	$(CC) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 clean :
 	rm -f *.so *.o

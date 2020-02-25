@@ -908,6 +908,16 @@ return 1;""",
         options = node.options
         if not options.wrap_python:
             return
+        if options.PY_array_arg not in ["numpy", "list"]:
+            linenumber = options.get("__line__", "?")
+            raise RuntimeError(
+                "Illegal value for PY_array_arg around line {}: {}".
+                format(linenumber, options.PY_array_arg))
+        if options.PY_struct_arg not in ["numpy", "list", "class"]:
+            linenumber = options.get("__line__", "?")
+            raise RuntimeError(
+                "Illegal value for PY_struct_arg around line {}: {}".
+                format(linenumber, options.PY_array_arg))
 
         if cls:
             cls_function = "method"
