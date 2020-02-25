@@ -124,20 +124,20 @@ wrapper creates a corresponding struct.  It contains a pointer to an
 instance of the class and index used to release the instance.
 The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
 
-:file:`wrapftutorial.f`
+:file:`wrapfclasses.f`
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start derived-type SHROUD_class1_capsule
    :end-before: end derived-type SHROUD_class1_capsule
    :dedent: 4
 
-:file:`typesTutorial.h`
+:file:`typeclasses.h`
 
-.. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
+.. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c
-   :start-after: start struct TUT_Class1
-   :end-before: end struct TUT_Class1
+   :start-after: start struct CLA_Class1
+   :end-before: end struct CLA_Class1
 
 The capsule is added to the Fortran shadow class.  This derived type
 can contain type-bound procedures and may not use the ``bind(C)``
@@ -179,7 +179,7 @@ Python
 
 An struct is created for each C++ class.
 
-.. literalinclude:: ../regression/reference/tutorial/pyTutorialmodule.hpp
+.. literalinclude:: ../regression/reference/classes/pyclassesmodule.hpp
    :language: c
    :start-after: start object PY_Class1
    :end-before: end object PY_Class1

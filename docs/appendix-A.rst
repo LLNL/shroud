@@ -1419,7 +1419,7 @@ passStruct1
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct-c/struct.c
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStruct1
    :end-before: end passStruct1
@@ -1457,7 +1457,7 @@ passStructByValue
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct-c/struct.c
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStructByValue
    :end-before: end passStructByValue

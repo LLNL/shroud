@@ -11,7 +11,7 @@
 Numpy Struct Descriptor
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: ../regression/reference/struct-c/pystructmodule.c
+.. literalinclude:: ../regression/reference/struct-numpy-c/pystructmodule.c
    :language: c
    :start-after: start PY_Cstruct1_create_array_descr
    :end-before: end PY_Cstruct1_create_array_descr

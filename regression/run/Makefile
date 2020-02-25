@@ -125,8 +125,8 @@ test-python : \
   test-python-pointers-list-cpp \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
-  test-python-struct-c \
-  test-python-struct-cxx \
+  test-python-struct-numpy-c \
+  test-python-struct-class-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
   test-python-ownership \
@@ -189,9 +189,9 @@ phony_explicit:
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/struct-c/.. \
-    $(tempdir)/run/struct-c/python/.. \
     $(tempdir)/run/struct-cxx/.. \
-    $(tempdir)/run/struct-cxx/python/.. \
+    $(tempdir)/run/struct-list-c/python/.. \
+    $(tempdir)/run/struct-class-cxx/python/.. \
     $(tempdir)/run/templates/.. \
     $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\
