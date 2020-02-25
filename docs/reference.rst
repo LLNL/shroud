@@ -524,6 +524,11 @@ PY_member_setter_template
     Name of descriptor setter method for a class variable.
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
+PY_member_object_template
+    Name of struct member of type `PyObject *` which
+    contains the data for member pointer fields.
+    ``{variable_name}_obj``.
+
 PY_name_impl_template
     ``{PY_prefix}{function_name}{function_suffix}{template_suffix}``
 

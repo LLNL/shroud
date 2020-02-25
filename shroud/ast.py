@@ -528,6 +528,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_member_setter_template=(
                 "{PY_prefix}{cxx_class}_{variable_name}_setter"
             ),
+            PY_member_object_template="{variable_name}_obj",
             PY_struct_array_descr_create_template=(
                 "{PY_prefix}{cxx_class}_create_array_descr"
             ),

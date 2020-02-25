@@ -386,6 +386,22 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "int {PY_type_dtor};",
             fmt_class,
         )
+
+        # Create a PyObject pointer for each pointer member
+        # to contain the actual data.
+        if node.as_struct:
+            print_header = True
+            for var in node.variables:
+                # var is VariableNode
+                if var.ast.is_indirect():
+                    if print_header:
+                        output.append("// Python objects for members.")
+                        print_header = False
+                    fmt_var = var.fmtdict
+                    var.eval_template("PY_member_object")
+                    append_format(
+                        output, "PyObject *{PY_member_object};", var.fmtdict)
+        
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
         if options.literalinclude:
@@ -1616,6 +1632,12 @@ return 1;""",
 
         Allocate an instance.
         XXX - do memory reference stuff
+
+        Args:
+            cls  - ast.ClassNode
+            node - ast.FunctionNode
+            code - list of generate wrapper code.
+            fmt  -
         """
         assert cls is not None
         capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
@@ -1637,8 +1659,16 @@ return 1;""",
         if cls.as_struct and cls.options.PY_struct_arg == "class":
             code.append("// initialize fields")
             append_format(code, "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
-            for var in node.ast.params:
-                code.append("SH_obj->{} = {};".format(var.name, var.name))
+            code_obj = []
+            for var in cls.variables:
+                if var.ast.is_indirect():
+                    append_format(code_obj,
+                                  "self->{PY_member_object} = {nullptr};",
+                                  var.fmtdict)
+                append_format(code,
+                              "SH_obj->{field_name} = {field_name};",
+                              var.fmtdict)
+            code.extend(code_obj)
 
     def process_result(self, node, fmt):
         """Work on formatting for result values.
