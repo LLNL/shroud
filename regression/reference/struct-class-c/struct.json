@@ -197,6 +197,152 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_ptr.h",
+                    "C_impl_filename": "wrapCstruct_ptr.c",
+                    "C_name_scope": "Cstruct_ptr_",
+                    "C_type_name": "Cstruct_ptr",
+                    "F_capsule_data_type": "SHROUD_cstruct_ptr_capsule",
+                    "F_derived_name": "cstruct_ptr",
+                    "F_name_scope": "cstruct_ptr_",
+                    "PY_PyObject": "PY_Cstruct_ptr",
+                    "PY_PyTypeObject": "PY_Cstruct_ptr_Type",
+                    "PY_capsule_name": "PY_Cstruct_ptr_capsule_name",
+                    "PY_from_object_func": "PP_Cstruct_ptr_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_ptr_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_ptr_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_ptr_array_descr",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Cstruct_ptr_to_Object",
+                    "PY_type_filename": "pyCstruct_ptrtype.c",
+                    "class_scope": "Cstruct_ptr::",
+                    "cxx_class": "Cstruct_ptr",
+                    "cxx_type": "Cstruct_ptr",
+                    "file_scope": "Cstruct_ptr"
+                },
+                "functions": [
+                    {
+                        "_fmtargs": {
+                            "cfield": {
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_type": "char",
+                                    "c_var": "cfield",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_type": "char",
+                                    "cxx_var": "cfield",
+                                    "data_var": "SHData_cfield",
+                                    "numpy_type": "NPY_INTP",
+                                    "py_var": "SHPy_cfield",
+                                    "size_var": "SHSize_cfield",
+                                    "stmt0": "py_char_in",
+                                    "stmt1": "py_char_in"
+                                }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtpy": {
+                                "PYN_descr": "PY_Cstruct_ptr_array_descr",
+                                "PY_build_format": "O",
+                                "PyObject": "PY_Cstruct_ptr",
+                                "PyTypeObject": "PY_Cstruct_ptr_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "Cstruct_ptr",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "name": "Cstruct_ptr_ctor"
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "cfield",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "char"
+                                    ],
+                                    "typemap_name": "char"
+                                }
+                            ],
+                            "specifier": [
+                                "Cstruct_ptr"
+                            ],
+                            "typemap_name": "Cstruct_ptr"
+                        },
+                        "decl": "Cstruct_ptr_ctor",
+                        "declgen": "Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)",
+                        "fmtdict": {
+                            "PY_name_impl": "PY_Cstruct_ptr_tp_init",
+                            "PY_type_impl": "PY_Cstruct_ptr_tp_init",
+                            "PY_type_method": "tp_init",
+                            "function_name": "Cstruct_ptr_ctor",
+                            "underscore_name": "cstruct_ptr_ctor"
+                        },
+                        "options": {
+                            "wrap_c": false,
+                            "wrap_fortran": false,
+                            "wrap_lua": false
+                        }
+                    }
+                ],
+                "name": "Cstruct_ptr",
+                "options": {},
+                "scope": "Cstruct_ptr::",
+                "typemap_name": "Cstruct_ptr",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "cfield",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "PY_getter": "PY_Cstruct_ptr_cfield_getter",
+                            "PY_member_object": "cfield_obj",
+                            "PY_setter": "PY_Cstruct_ptr_cfield_setter",
+                            "field_name": "cfield",
+                            "variable_lower": "cfield",
+                            "variable_name": "cfield",
+                            "variable_upper": "CFIELD"
+                        },
+                        "name": "cfield",
+                        "options": {}
+                    }
+                ]
             }
         ],
         "copyright": [
@@ -388,7 +534,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",
@@ -899,7 +1045,7 @@
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "capsule_order": "2",
+                        "capsule_order": "3",
                         "cxx_addr": "",
                         "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
                         "cxx_member": "->",
@@ -1138,7 +1284,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",

@@ -32,6 +32,7 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct1_array_descr;
+PyArray_Descr *PY_Cstruct_ptr_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -586,6 +587,60 @@ fail:
 }
 // end PY_Cstruct1_create_array_descr
 
+// Create PyArray_Descr for Cstruct_ptr
+static PyArray_Descr *PY_Cstruct_ptr_create_array_descr(void)
+{
+    int ierr;
+    PyObject *obj = NULL;
+    PyObject * lnames = NULL;
+    PyObject * ldescr = NULL;
+    PyObject * dict = NULL;
+    PyArray_Descr *dtype = NULL;
+
+    lnames = PyList_New(1);
+    if (lnames == NULL) goto fail;
+    ldescr = PyList_New(1);
+    if (ldescr == NULL) goto fail;
+
+    // cfield
+    obj = PyString_FromString("cfield");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+    obj = NULL;
+
+    dict = PyDict_New();
+    if (dict == NULL) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = NULL;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = NULL;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != NULL) {
+        for (int i=0; i < 1; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != NULL) {
+        for (int i=0; i < 1; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return NULL;
+}
+
 /*
  * initstruct - Initialization function for the module
  * *must* be called initstruct
@@ -667,6 +722,9 @@ initcstruct(void)
     PY_Cstruct1_array_descr = PY_Cstruct1_create_array_descr();
     PyModule_AddObject(m, "Cstruct1_dtype", 
         (PyObject *) PY_Cstruct1_array_descr);
+    PY_Cstruct_ptr_array_descr = PY_Cstruct_ptr_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_ptr_dtype", 
+        (PyObject *) PY_Cstruct_ptr_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

@@ -13,3 +13,8 @@ typemap:
       base: struct
       c_type: STR_cstruct1
       f_derived_type: cstruct1
+  - type: Cstruct_ptr
+    fields:
+      base: struct
+      c_type: STR_cstruct_ptr
+      f_derived_type: cstruct_ptr

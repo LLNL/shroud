@@ -103,8 +103,11 @@ class Typemap(object):
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
         ("PY_PyObject", None),  # typedef name of PyObject instance
         ("PY_ctor", None),  # expression to create object.
-        # ex. PyBool_FromLong({rv})
+        # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
+        # ex. PyFloat_AsDouble({py_var})
+        ("PY_get_converter", None),
+        # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object'=converter(address)
         (
             "PY_from_object",
@@ -686,6 +689,8 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",
+            PY_get_converter="SHROUD_get_char_from_object",
+            PYN_typenum="NPY_INTP",  # void *
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",

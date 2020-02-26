@@ -678,19 +678,31 @@ return 1;""",
         ast = node.ast
         arg_typemap = ast.typemap
 
-        if arg_typemap.PY_ctor:
-            fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
-        else:
-            fmt.ctor = "UUUctor"
-        fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
-
         output = fileinfo.GetSetBody
         append_format(
             output,
             "\nstatic PyObject *{PY_getter}("
             "{PY_PyObject} *{PY_param_self},"
             "\t void *SHROUD_UNUSED(closure))\n"
-            "{{+\nPyObject * rv = {ctor};\nreturn rv;"
+            "{{+",
+            fmt,
+        )
+
+        if ast.is_indirect():
+            append_format(
+                output,
+                "if ({c_var} == {nullptr})\n+Py_RETURN_NONE;-",
+                fmt)
+
+        if arg_typemap.PY_ctor:
+            fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
+        else:
+            fmt.ctor = "UUUctor"
+        fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
+
+        append_format(
+            output,
+            "PyObject * rv = {ctor};\nreturn rv;"
             "\n-}}",
             fmt,
         )
@@ -700,19 +712,25 @@ return 1;""",
             fmt_var.PY_setter = wformat(
                 options.PY_member_setter_template, fmt_var
             )
-            if arg_typemap.PY_get:
-                fmt.get = wformat(arg_typemap.PY_get, fmt)
-            else:
-                fmt.get = "UUUget"
 
             append_format(
                 output,
                 "\nstatic int {PY_setter}("
                 "{PY_PyObject} *{PY_param_self}, PyObject *{py_var},"
-                "\t void *SHROUD_UNUSED(closure))\n{{+\n"
-                "{cxx_decl} = {get};",
-                fmt,
+                "\t void *SHROUD_UNUSED(closure))\n{{+",
+                fmt
             )
+            
+            if arg_typemap.PY_get_converter:
+                fmt.get = arg_typemap.PY_get_converter
+                append_format(
+                    output, "{cxx_decl};\n//{get}({py_var}, &rv);", fmt) 
+            elif arg_typemap.PY_get:
+                fmt.get = wformat(arg_typemap.PY_get, fmt)
+                append_format(output, "{cxx_decl} = {get};", fmt)
+            else:
+                append_format(output, "{cxx_decl} = UUUget;", fmt)
+
             output.append("if (PyErr_Occurred()) {\n+return -1;-\n}")
             # XXX - allow user to add error checks on value
             output.append(fmt.c_var + " = rv;")

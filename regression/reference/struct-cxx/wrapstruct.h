@@ -31,6 +31,12 @@ struct s_STR_cstruct1 {
 };
 typedef struct s_STR_cstruct1 STR_cstruct1;
 
+
+struct s_STR_cstruct_ptr {
+    char * cfield;
+};
+typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

@@ -79,6 +79,10 @@ declarations:
       Generates a bufferify C wrapper function.
 
 ######################################################################
+- decl: struct Cstruct_ptr {
+          char *cfield;
+        };
+######################################################################
 splicer_code:
   f:
     module_top:

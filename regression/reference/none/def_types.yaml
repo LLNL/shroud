@@ -75,6 +75,8 @@ typemap:
       f_cast: "{f_var}"
       PY_format: s
       PY_ctor: PyString_FromString({c_var})
+      PY_get_converter: SHROUD_get_char_from_object
+      PYN_typenum: NPY_INTP
       LUA_type: LUA_TSTRING
       LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
       LUA_push: lua_pushstring({LUA_state_var}, {c_var})

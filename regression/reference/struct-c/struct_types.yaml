@@ -15,3 +15,10 @@ typemap:
       - struct.h
       c_type: Cstruct1
       f_derived_type: cstruct1
+  - type: Cstruct_ptr
+    fields:
+      base: struct
+      c_header:
+      - struct.h
+      c_type: Cstruct_ptr
+      f_derived_type: cstruct_ptr

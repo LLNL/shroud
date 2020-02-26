@@ -12,6 +12,7 @@ module = Extension(
     'struct',
     sources=[
          'pyCstruct1type.cpp',
+         'pyCstruct_ptrtype.cpp',
          'pystructmodule.cpp',
          'pystructutil.cpp'
     ],

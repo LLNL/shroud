@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module struct_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -29,6 +29,11 @@ module struct_mod
         real(C_DOUBLE) :: dfield
     end type cstruct1
     ! end derived-type cstruct1
+
+
+    type, bind(C) :: cstruct_ptr
+        type(C_PTR) :: cfield
+    end type cstruct_ptr
 
     ! start pass_struct_by_value
     interface

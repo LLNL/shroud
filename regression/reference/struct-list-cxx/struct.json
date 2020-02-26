@@ -73,6 +73,60 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_ptr.h",
+                    "C_impl_filename": "wrapCstruct_ptr.cpp",
+                    "C_name_scope": "Cstruct_ptr_",
+                    "C_type_name": "STR_cstruct_ptr",
+                    "F_capsule_data_type": "SHROUD_cstruct_ptr_capsule",
+                    "F_derived_name": "cstruct_ptr",
+                    "F_name_scope": "cstruct_ptr_",
+                    "PY_PyObject": "PY_Cstruct_ptr",
+                    "PY_PyTypeObject": "PY_Cstruct_ptr_Type",
+                    "PY_from_object_func": "PP_Cstruct_ptr_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_ptr_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_ptr_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_ptr_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_ptr_to_Object",
+                    "class_scope": "Cstruct_ptr::",
+                    "cxx_class": "Cstruct_ptr",
+                    "cxx_type": "Cstruct_ptr",
+                    "file_scope": "Cstruct_ptr"
+                },
+                "name": "Cstruct_ptr",
+                "options": {},
+                "scope": "Cstruct_ptr::",
+                "typemap_name": "Cstruct_ptr",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "cfield",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "field_name": "cfield",
+                            "variable_lower": "cfield",
+                            "variable_name": "cfield",
+                            "variable_upper": "CFIELD"
+                        },
+                        "name": "cfield",
+                        "options": {}
+                    }
+                ]
             }
         ],
         "copyright": [
@@ -264,7 +318,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",
@@ -1018,7 +1072,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",

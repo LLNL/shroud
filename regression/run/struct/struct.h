@@ -31,4 +31,12 @@ const Cstruct1 returnConstStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 
+/*----------------------------------------------------------------------*/
+struct Cstruct_ptr {
+  char *cfield;
+};
+typedef struct Cstruct_ptr Cstruct_ptr;
+
+
+
 #endif // STRUCT_H

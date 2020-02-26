@@ -1,5 +1,6 @@
 Wrote struct_types.yaml
 Wrote pyCstruct1type.c
+Wrote pyCstruct_ptrtype.c
 Wrote pystructmodule.c
 Wrote pystructutil.c
 Wrote pystructmodule.h

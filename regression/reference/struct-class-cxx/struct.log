@@ -3,6 +3,9 @@ Close struct_types.yaml
 class Cstruct1
 Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 Close pyCstruct1type.cpp
+class Cstruct_ptr
+Python method Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
+Close pyCstruct_ptrtype.cpp
 Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
 Python function int passStruct1(Cstruct1 * arg +intent(in))
 Python function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
