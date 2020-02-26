@@ -64,7 +64,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 21,
                         "options": {}
                     },
                     {
@@ -105,7 +104,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 22,
                         "options": {}
                     },
                     {
@@ -148,7 +146,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 24,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -269,11 +266,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 24,
                         "options": {}
                     }
                 ],
-                "linenumber": 19,
                 "name": "User1",
                 "options": {},
                 "scope": "User1::",
@@ -345,7 +340,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 33,
                         "options": {}
                     },
                     {
@@ -452,11 +446,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 35,
                         "options": {}
                     }
                 ],
-                "linenumber": 28,
                 "name": "User2",
                 "options": {},
                 "scope": "User2::",

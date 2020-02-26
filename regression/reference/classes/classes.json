@@ -73,7 +73,6 @@
                             "enum_upper": "DIRECTION",
                             "namespace_scope": "classes::Class1::"
                         },
-                        "linenumber": 76,
                         "name": "DIRECTION",
                         "options": {},
                         "typemap_name": "classes::Class1::DIRECTION"
@@ -172,14 +171,12 @@
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
-                            "__line__": 27,
                             "c_const": "",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_default",
                             "underscore_name": "new"
                         },
-                        "linenumber": 26,
                         "options": {}
                     },
                     {
@@ -317,14 +314,12 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
-                            "__line__": 30,
                             "c_const": "",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_flag",
                             "underscore_name": "new"
                         },
-                        "linenumber": 29,
                         "options": {}
                     },
                     {
@@ -365,7 +360,6 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "delete"
                         },
-                        "linenumber": 32,
                         "options": {}
                     },
                     {
@@ -421,7 +415,6 @@
                         "decl": "int Method1()",
                         "declgen": "int Method1()",
                         "doxygen": {
-                            "__line__": 34,
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
@@ -446,7 +439,6 @@
                             "function_name": "Method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 33,
                         "options": {}
                     },
                     {
@@ -574,7 +566,6 @@
                         "decl": "bool equivalent(Class1 const &obj2) const;",
                         "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const",
                         "doxygen": {
-                            "__line__": 39,
                             "brief": "Pass in reference to instance"
                         },
                         "fmtdict": {
@@ -600,9 +591,7 @@
                             "function_name": "equivalent",
                             "underscore_name": "equivalent"
                         },
-                        "linenumber": 37,
                         "options": {
-                            "__line__": 41,
                             "wrap_lua": false
                         }
                     },
@@ -625,7 +614,6 @@
                         "decl": "Class1 * returnThis();",
                         "declgen": "Class1 * returnThis()",
                         "doxygen": {
-                            "__line__": 47,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -651,9 +639,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "return_this"
                         },
-                        "linenumber": 45,
                         "options": {
-                            "__line__": 49,
                             "wrap_lua": false,
                             "wrap_python": false
                         },
@@ -772,7 +758,6 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 62,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -797,9 +782,7 @@
                             "function_name": "returnThisBuffer",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 53,
                         "options": {
-                            "__line__": 64,
                             "wrap_lua": false,
                             "wrap_python": false
                         }
@@ -933,7 +916,6 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 62,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -951,9 +933,7 @@
                             "function_suffix": "_bufferify",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 53,
                         "options": {
-                            "__line__": 64,
                             "wrap_c": true,
                             "wrap_fortran": false,
                             "wrap_lua": false,
@@ -1020,7 +1000,6 @@
                         "decl": "Class1 *getclass3() const",
                         "declgen": "Class1 * getclass3() const",
                         "doxygen": {
-                            "__line__": 69,
                             "brief": "Test const method"
                         },
                         "fmtdict": {
@@ -1045,9 +1024,7 @@
                             "function_name": "getclass3",
                             "underscore_name": "getclass3"
                         },
-                        "linenumber": 68,
                         "options": {
-                            "__line__": 72,
                             "wrap_lua": false
                         }
                     },
@@ -1194,7 +1171,6 @@
                             "function_name": "directionFunc",
                             "underscore_name": "direction_func"
                         },
-                        "linenumber": 78,
                         "options": {}
                     },
                     {
@@ -1256,7 +1232,6 @@
                             "function_name": "getM_flag",
                             "underscore_name": "get_m_flag"
                         },
-                        "linenumber": "?",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1326,7 +1301,6 @@
                             "function_name": "getTest",
                             "underscore_name": "get_test"
                         },
-                        "linenumber": "?",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1420,7 +1394,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_test"
                         },
-                        "linenumber": "?",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1433,10 +1406,8 @@
                         }
                     }
                 ],
-                "linenumber": 20,
                 "name": "Class1",
                 "options": {
-                    "__line__": 21,
                     "literalinclude": true
                 },
                 "scope": "classes::Class1::",
@@ -1464,7 +1435,6 @@
                             "variable_name": "m_flag",
                             "variable_upper": "M_FLAG"
                         },
-                        "linenumber": 24,
                         "name": "m_flag",
                         "options": {}
                     },
@@ -1490,7 +1460,6 @@
                             "variable_name": "test",
                             "variable_upper": "TEST"
                         },
-                        "linenumber": 25,
                         "name": "test",
                         "options": {}
                     }
@@ -1605,14 +1574,11 @@
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
-                        "linenumber": 136,
                         "options": {}
                     }
                 ],
-                "linenumber": 131,
                 "name": "Singleton",
                 "options": {
-                    "__line__": 132,
                     "wrap_lua": false
                 },
                 "scope": "classes::Singleton::",
@@ -1771,7 +1737,6 @@
                     "function_name": "directionFunc",
                     "underscore_name": "direction_func"
                 },
-                "linenumber": 82,
                 "options": {}
             },
             {
@@ -1855,7 +1820,6 @@
                 "decl": "void passClassByValue(Class1 arg)",
                 "declgen": "void passClassByValue(Class1 arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 85,
                     "brief": "Pass arguments to a function."
                 },
                 "fmtdict": {
@@ -1880,9 +1844,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_class_by_value"
                 },
-                "linenumber": 84,
                 "options": {
-                    "__line__": 87,
                     "wrap_lua": false
                 }
             },
@@ -2028,9 +1990,7 @@
                     "function_name": "useclass",
                     "underscore_name": "useclass"
                 },
-                "linenumber": 90,
                 "options": {
-                    "__line__": 91,
                     "wrap_lua": false
                 }
             },
@@ -2095,9 +2055,7 @@
                     "function_name": "getclass2",
                     "underscore_name": "getclass2"
                 },
-                "linenumber": 100,
                 "options": {
-                    "__line__": 101,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -2179,9 +2137,7 @@
                     "function_name": "getclass3",
                     "underscore_name": "getclass3"
                 },
-                "linenumber": 106,
                 "options": {
-                    "__line__": 107,
                     "wrap_lua": false
                 }
             },
@@ -2246,9 +2202,7 @@
                     "function_name": "getConstClassReference",
                     "underscore_name": "get_const_class_reference"
                 },
-                "linenumber": 111,
                 "options": {
-                    "__line__": 112,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -2330,9 +2284,7 @@
                     "function_name": "getClassReference",
                     "underscore_name": "get_class_reference"
                 },
-                "linenumber": 117,
                 "options": {
-                    "__line__": 118,
                     "wrap_lua": false
                 }
             },
@@ -2420,7 +2372,6 @@
                 "decl": "Class1 getClassCopy(int flag)",
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 123,
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
@@ -2442,9 +2393,7 @@
                     "function_name": "getClassCopy",
                     "underscore_name": "get_class_copy"
                 },
-                "linenumber": 122,
                 "options": {
-                    "__line__": 125,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -2548,7 +2497,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "set_global_flag"
                 },
-                "linenumber": 140,
                 "options": {}
             },
             {
@@ -2621,7 +2569,6 @@
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
                 },
-                "linenumber": 141,
                 "options": {}
             },
             {
@@ -2706,7 +2653,6 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 142,
                 "options": {}
             },
             {
@@ -2803,7 +2749,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 142,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

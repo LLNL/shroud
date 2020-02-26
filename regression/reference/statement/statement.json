@@ -55,7 +55,6 @@
                 "decl": "int GetNameLength() +pure",
                 "declgen": "int GetNameLength() +pure",
                 "doxygen": {
-                    "__line__": 23,
                     "brief": "helper function for Fortran to get length of name."
                 },
                 "fmtdict": {
@@ -75,10 +74,8 @@
                     "function_name": "GetNameLength",
                     "underscore_name": "get_name_length"
                 },
-                "linenumber": 22,
                 "options": {},
                 "splicer": {
-                    "__line__": "25",
                     "c": [
                         "return getNameErrorPattern().length();"
                     ]
@@ -114,7 +111,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 30,
                         "deref": "result_as_arg",
                         "len": "get_name_length()"
                     },
@@ -154,7 +150,6 @@
                     "function_name": "getNameErrorPattern",
                     "underscore_name": "get_name_error_pattern"
                 },
-                "linenumber": 29,
                 "options": {}
             },
             {
@@ -208,7 +203,6 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "__line__": 30,
                         "len": "get_name_length()"
                     },
                     "declarator": {
@@ -218,7 +212,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "__line__": 30,
                                 "_is_result": true,
                                 "intent": "out",
                                 "len": "NSHF_rv"
@@ -255,7 +248,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_name_error_pattern"
                 },
-                "linenumber": 29,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

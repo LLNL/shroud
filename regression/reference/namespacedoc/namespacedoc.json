@@ -44,7 +44,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "worker3"
                 },
-                "linenumber": 33,
                 "options": {}
             },
             {
@@ -81,7 +80,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "worker"
                 },
-                "linenumber": 41,
                 "options": {}
             }
         ],
@@ -140,11 +138,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "worker"
                         },
-                        "linenumber": 23,
                         "options": {}
                     }
                 ],
-                "linenumber": 21,
                 "name": "inner1",
                 "options": {},
                 "scope": "outer::inner1::",
@@ -206,11 +202,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "worker"
                         },
-                        "linenumber": 27,
                         "options": {}
                     }
                 ],
-                "linenumber": 25,
                 "name": "inner2",
                 "options": {},
                 "scope": "outer::inner2::",
@@ -273,15 +267,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "worker4"
                         },
-                        "linenumber": 39,
                         "options": {}
                     }
                 ],
-                "linenumber": 35,
                 "name": "inner4",
                 "options": {
-                    "F_flatten_namespace": true,
-                    "__line__": 36
+                    "F_flatten_namespace": true
                 },
                 "scope": "outer::inner4::",
                 "scope_file": [
