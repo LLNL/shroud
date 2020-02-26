@@ -911,6 +911,41 @@ int ShroudLenTrim(const char *src, int nsrc) {
 }
 """
     ),
+    ########################################
+    SHROUD_get_char_from_object=dict(
+        source="""
+// Helper - converter to PyObject to char *
+static int SHROUD_get_char_from_object(PyObject *obj, char **data)
+{
+    char *out;
+    if (PyUnicode_Check(obj))
+    {
+#if PY_MAJOR_VERSION >= 3
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyBytes_AS_STRING(strobj); // Borrowed pointer
+        Py_DecRef(strobj);
+#else
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyString_AsString(strobj);
+        Py_DecRef(strobj);
+#endif
+#if PY_MAJOR_VERSION >= 3
+    } else if (PyByteArray_Check(obj)) {
+        out = PyBytes_AS_STRING(obj); // Borrowed pointer
+#else
+    } else if (PyString_Check(obj)) {
+        out = PyString_AsString(obj);
+#endif
+    } else if (obj == Py_None) {
+        out = NULL;
+    } else {
+        return 0;
+    }
+    *data = out;
+    return 1;
+}
+""",
+    ),
 )  # end CHelpers
 
 

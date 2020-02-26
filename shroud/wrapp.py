@@ -711,20 +711,32 @@ return 1;""",
                 "\t void *SHROUD_UNUSED(closure))\n{{+",
                 fmt
             )
-            
+
             if arg_typemap.PY_get_converter:
                 fmt.get = arg_typemap.PY_get_converter
-                append_format(
-                    output, "{cxx_decl};\n//{get}({py_var}, &rv);", fmt) 
+                append_format(output, """{cxx_decl};
+Py_XINCREF(self->{PY_member_object});
+if ({get}({py_var}, &rv) == 0) {{+
+{c_var} = NULL;
+// XXXX set error
+return -1;
+-}}
+{c_var} = rv;
+self->{PY_member_object} = value;
+Py_INCREF(value);""", fmt)
+#                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
+                self.c_helper[fmt.get] = True
             elif arg_typemap.PY_get:
                 fmt.get = wformat(arg_typemap.PY_get, fmt)
-                append_format(output, "{cxx_decl} = {get};", fmt)
+                append_format(output, """{cxx_decl} = {get};
+if (PyErr_Occurred()) {{+
+return -1;
+-}}
+{c_var} = rv;""", fmt)
             else:
                 append_format(output, "{cxx_decl} = UUUget;", fmt)
 
-            output.append("if (PyErr_Occurred()) {\n+return -1;-\n}")
             # XXX - allow user to add error checks on value
-            output.append(fmt.c_var + " = rv;")
             output.append("return 0;\n-}")
 
         # Set pointers to functions

@@ -23,6 +23,38 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
+// Helper - converter to PyObject to char *
+static int SHROUD_get_char_from_object(PyObject *obj, char **data)
+{
+    char *out;
+    if (PyUnicode_Check(obj))
+    {
+#if PY_MAJOR_VERSION >= 3
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyBytes_AS_STRING(strobj); // Borrowed pointer
+        Py_DecRef(strobj);
+#else
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyString_AsString(strobj);
+        Py_DecRef(strobj);
+#endif
+#if PY_MAJOR_VERSION >= 3
+    } else if (PyByteArray_Check(obj)) {
+        out = PyBytes_AS_STRING(obj); // Borrowed pointer
+#else
+    } else if (PyString_Check(obj)) {
+        out = PyString_AsString(obj);
+#endif
+    } else if (obj == Py_None) {
+        out = NULL;
+    } else {
+        return 0;
+    }
+    *data = out;
+    return 1;
+}
+
 // splicer begin class.Cstruct_ptr.impl.C_definition
 // splicer end class.Cstruct_ptr.impl.C_definition
 // splicer begin class.Cstruct_ptr.impl.additional_methods
@@ -84,11 +116,15 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     char * rv;
-    //SHROUD_get_char_from_object(value, &rv);
-    if (PyErr_Occurred()) {
+    Py_XINCREF(self->cfield_obj);
+    if (SHROUD_get_char_from_object(value, &rv) == 0) {
+        self->obj->cfield = NULL;
+        // XXXX set error
         return -1;
     }
     self->obj->cfield = rv;
+    self->cfield_obj = value;
+    Py_INCREF(value);
     return 0;
 }
 
