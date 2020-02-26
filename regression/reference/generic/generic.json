@@ -69,7 +69,6 @@
                     "function_name": "GetGlobalDouble",
                     "underscore_name": "get_global_double"
                 },
-                "linenumber": 23,
                 "options": {}
             },
             {
@@ -133,7 +132,6 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -188,9 +186,7 @@
                         "generic": "(double arg)"
                     }
                 ],
-                "linenumber": 25,
                 "options": {
-                    "__line__": 26,
                     "literalinclude": true,
                     "wrap_fortran": false
                 }
@@ -227,7 +223,6 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(float arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -246,9 +241,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 25,
                 "options": {
-                    "__line__": 26,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -288,7 +281,6 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -307,9 +299,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 25,
                 "options": {
-                    "__line__": 26,
                     "literalinclude": true,
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -435,7 +425,6 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -520,7 +509,6 @@
                         "generic": "(long arg1, long arg2)"
                     }
                 ],
-                "linenumber": 36,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -582,7 +570,6 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -599,7 +586,6 @@
                     "function_suffix": "_all_int",
                     "underscore_name": "generic_real2"
                 },
-                "linenumber": 36,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -664,7 +650,6 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -681,7 +666,6 @@
                     "function_suffix": "_all_long",
                     "underscore_name": "generic_real2"
                 },
-                "linenumber": 36,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -948,7 +932,6 @@
                         "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
                     }
                 ],
-                "linenumber": 48,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -1034,7 +1017,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "save_pointer"
                 },
-                "linenumber": 48,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1123,7 +1105,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "save_pointer"
                 },
-                "linenumber": 48,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1393,14 +1374,12 @@
                 ],
                 "fstatements": {
                     "c": {
-                        "__line__": 63,
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
                             "type = convert_type(type);"
                         ]
                     }
                 },
-                "linenumber": 61,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -1488,14 +1467,12 @@
                 },
                 "fstatements": {
                     "c": {
-                        "__line__": 63,
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
                             "type = convert_type(type);"
                         ]
                     }
                 },
-                "linenumber": 61,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1586,14 +1563,12 @@
                 },
                 "fstatements": {
                     "c": {
-                        "__line__": 63,
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
                             "type = convert_type(type);"
                         ]
                     }
                 },
-                "linenumber": 61,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1777,7 +1752,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer"
                 },
-                "linenumber": 77,
                 "options": {}
             },
             {
@@ -2078,7 +2052,6 @@
                         "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
                     }
                 ],
-                "linenumber": 80,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -2174,7 +2147,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 80,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -2273,7 +2245,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 80,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,

@@ -65,7 +65,6 @@
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
                 },
-                "linenumber": 21,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color"
@@ -195,7 +194,6 @@
                     "enum_name": "val",
                     "enum_upper": "VAL"
                 },
-                "linenumber": 28,
                 "name": "val",
                 "options": {},
                 "typemap_name": "val"

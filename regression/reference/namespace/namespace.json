@@ -94,7 +94,6 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 30,
                 "options": {}
             },
             {
@@ -191,7 +190,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 30,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -233,7 +231,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "one"
                 },
-                "linenumber": 39,
                 "options": {}
             }
         ],
@@ -278,7 +275,6 @@
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
                         },
-                        "linenumber": 24,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "upper::Color"
@@ -300,11 +296,9 @@
                     "file_scope": "ns_upper",
                     "namespace_scope": "upper::"
                 },
-                "linenumber": 18,
                 "name": "upper",
                 "options": {
                     "F_flatten_namespace": true,
-                    "__line__": 20,
                     "wrap_python": false
                 },
                 "scope": "upper::",
@@ -451,7 +445,6 @@
                                     "function_name": "Cstruct1_ctor",
                                     "underscore_name": "cstruct1_ctor"
                                 },
-                                "linenumber": "?",
                                 "options": {
                                     "wrap_c": false,
                                     "wrap_fortran": false,
@@ -459,7 +452,6 @@
                                 }
                             }
                         ],
-                        "linenumber": 34,
                         "name": "Cstruct1",
                         "options": {},
                         "scope": "outer::Cstruct1::",
@@ -484,7 +476,6 @@
                                     "variable_name": "ifield",
                                     "variable_upper": "IFIELD"
                                 },
-                                "linenumber": "?",
                                 "name": "ifield",
                                 "options": {}
                             },
@@ -507,7 +498,6 @@
                                     "variable_name": "dfield",
                                     "variable_upper": "DFIELD"
                                 },
-                                "linenumber": "?",
                                 "name": "dfield",
                                 "options": {}
                             }
@@ -566,11 +556,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "one"
                         },
-                        "linenumber": 38,
                         "options": {}
                     }
                 ],
-                "linenumber": 32,
                 "name": "outer",
                 "options": {},
                 "scope": "outer::",
@@ -604,7 +592,6 @@
                             "cxx_type": "ClassWork",
                             "file_scope": "nswork_ClassWork"
                         },
-                        "linenumber": 45,
                         "name": "ClassWork",
                         "options": {},
                         "scope": "nswork::ClassWork::",
@@ -629,11 +616,9 @@
                     "file_scope": "ns_nswork",
                     "namespace_scope": "nswork::"
                 },
-                "linenumber": 41,
                 "name": "nswork",
                 "options": {
-                    "F_flatten_namespace": true,
-                    "__line__": 42
+                    "F_flatten_namespace": true
                 },
                 "scope": "nswork::",
                 "scope_file": [

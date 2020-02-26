@@ -58,7 +58,6 @@
                             "enum_upper": "COLOR",
                             "namespace_scope": "Class1::"
                         },
-                        "linenumber": 62,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "Class1::Color"
@@ -78,7 +77,6 @@
                     "cxx_type": "Class1",
                     "file_scope": "Class1"
                 },
-                "linenumber": 60,
                 "name": "Class1",
                 "options": {},
                 "scope": "Class1::",
@@ -140,7 +138,6 @@
                             "enum_upper": "COLOR",
                             "namespace_scope": "Class2::"
                         },
-                        "linenumber": 70,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "Class2::Color"
@@ -160,7 +157,6 @@
                     "cxx_type": "Class2",
                     "file_scope": "Class2"
                 },
-                "linenumber": 68,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -228,7 +224,6 @@
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
                 },
-                "linenumber": 22,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color"
@@ -285,7 +280,6 @@
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
                 },
-                "linenumber": 51,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "ns3::Color"
@@ -349,7 +343,6 @@
                     "enum_name": "ColorEnum",
                     "enum_upper": "COLORENUM"
                 },
-                "linenumber": 79,
                 "name": "ColorEnum",
                 "options": {},
                 "typemap_name": "ColorEnum"
@@ -411,7 +404,6 @@
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
                         },
-                        "linenumber": 33,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "ns1::Color"
@@ -432,7 +424,6 @@
                     "file_scope": "scope_ns1",
                     "namespace_scope": "ns1::"
                 },
-                "linenumber": 31,
                 "name": "ns1",
                 "options": {},
                 "scope": "ns1::",
@@ -495,7 +486,6 @@
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
                         },
-                        "linenumber": 41,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "ns2::Color"
@@ -516,7 +506,6 @@
                     "file_scope": "scope_ns2",
                     "namespace_scope": "ns2::"
                 },
-                "linenumber": 39,
                 "name": "ns2",
                 "options": {},
                 "scope": "ns2::",
