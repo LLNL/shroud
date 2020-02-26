@@ -33,6 +33,8 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // splicer begin class.Cstruct_ptr.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = nullptr;
+    // Python objects for members.
+    Py_XDECREF(self->cfield_obj);
 // splicer end class.Cstruct_ptr.type.del
 }
 

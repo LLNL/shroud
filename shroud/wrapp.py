@@ -389,19 +389,10 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
 
         # Create a PyObject pointer for each pointer member
         # to contain the actual data.
-        if node.as_struct:
-            print_header = True
-            for var in node.variables:
-                # var is VariableNode
-                if var.ast.is_indirect():
-                    if print_header:
-                        output.append("// Python objects for members.")
-                        print_header = False
-                    fmt_var = var.fmtdict
-                    var.eval_template("PY_member_object")
-                    append_format(
-                        output, "PyObject *{PY_member_object};", var.fmtdict)
-        
+        self.process_member_obj(
+            node, "PyObject *{PY_member_object};", output,
+            "PY_member_object")
+
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
         if options.literalinclude:
@@ -1939,7 +1930,7 @@ return 1;""",
             output.append("{")
             default = default_body.get(typename, self.not_implemented_error)
             ret = fmt_func.nullptr if tup[2] == "NULL" else tup[2]
-            default = default(typename, ret)
+            default = default(node, typename, ret)
 
             # format and indent default bodies
             fmted = [1]
@@ -2561,11 +2552,12 @@ setup(
         self.comment = '#'
         self.write_output_file(fname, self.config.out_dir, output)
 
-    def not_implemented_error(self, msg, ret):
+    def not_implemented_error(self, node, msg, ret):
         """A standard splicer for unimplemented code
         ret is the return value (NULL or -1 or '')
 
         Args:
+            node - ast.ClassNode
             msg -
             ret -
         """
@@ -2576,10 +2568,11 @@ setup(
             lines.append("return;")
         return lines
 
-    def not_implemented(self, msg, ret):
+    def not_implemented(self, node, msg, ret):
         """A standard splicer for rich comparison
 
         Args:
+            node - ast.ClassNode
             msg -
             ret -
         """
@@ -2588,19 +2581,41 @@ setup(
             "return Py_NotImplemented;"
         ]
 
-    def tp_del(self, msg, ret):
+    def tp_del(self, node, msg, ret):
         """default method for tp_del.
 
         Args:
-            msg = 'del'
-            ret = ''
+            node - ast.ClassNode
+            msg  - 'del'
+            ret  - ''
         """
-        return [
+        output = [
             "{PY_release_memory_function}(self->{PY_type_dtor}, self->{PY_type_obj});",
-            "self->{PY_type_obj} = {nullptr};"
+            "self->{PY_type_obj} = {nullptr};",
         ]
+        self.process_member_obj(
+            node, "Py_XDECREF(self->{PY_member_object});", output)
+        return output
 
-
+    def process_member_obj(self, node, text, output, template=None):
+        """Loop over variables in the class and add a line of text
+        for each pointer variable.
+        If template is set, define a fmtdict field.
+        """
+        if not node.as_struct:
+            return
+        print_header = True
+        for var in node.variables:
+            # var is VariableNode
+            if not var.ast.is_indirect():
+                continue
+            if print_header:
+                output.append("// Python objects for members.")
+                print_header = False
+            if template:
+                var.eval_template("PY_member_object")
+            append_format(output, text, var.fmtdict)
+        
 # --- Python boiler plate
 
 # Avoid warning errors about unused parameters
