@@ -104,7 +104,6 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -193,11 +192,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 43,
                         "options": {}
                     }
                 ],
-                "linenumber": 37,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -233,7 +230,6 @@
                     "file_scope": "library_one",
                     "namespace_scope": "one::"
                 },
-                "linenumber": 25,
                 "name": "one",
                 "namespaces": [
                     {
@@ -286,11 +282,9 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "function1"
                                 },
-                                "linenumber": 29,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 27,
                         "name": "two",
                         "options": {},
                         "scope": "one::two::",
@@ -412,11 +406,9 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method1"
                                 },
-                                "linenumber": 35,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 32,
                         "name": "Class1",
                         "options": {},
                         "scope": "three::Class1::",
@@ -438,7 +430,6 @@
                     "file_scope": "library_three",
                     "namespace_scope": "three::"
                 },
-                "linenumber": 30,
                 "name": "three",
                 "options": {},
                 "scope": "three::",
@@ -503,11 +494,9 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "linenumber": 54,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 52,
                         "name": "class0",
                         "options": {},
                         "scope": "outer1::class0::",
@@ -563,11 +552,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "linenumber": 49,
                         "options": {}
                     }
                 ],
-                "linenumber": 46,
                 "name": "outer1",
                 "options": {},
                 "scope": "outer1::",
@@ -635,11 +622,9 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "linenumber": 66,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 63,
                         "name": "class0",
                         "options": {},
                         "scope": "outer2::class0::",
@@ -695,11 +680,9 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "linenumber": 59,
                         "options": {}
                     }
                 ],
-                "linenumber": 56,
                 "name": "outer2",
                 "options": {},
                 "scope": "outer2::",

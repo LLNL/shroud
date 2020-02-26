@@ -152,6 +152,18 @@ class TypeOut(util.WrapperMixin):
                 fname, self.config.yaml_dir, output, spaces="  "
             )
 
+def prune_entries(dct, names=[]):
+    """Recursively remove names from dct."""
+    for key in names:
+        if key in dct:
+            del dct[key]
+    for key, value in dct.items():
+        if isinstance(value, dict):
+            prune_entries(value, names)
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    prune_entries(item, names)
 
 def dump_jsonfile(config, logdir, basename, newlibrary):
     """Write a JSON file for debugging.
@@ -171,11 +183,12 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
         # Dump types if requested.
         def_types = typemap.get_global_types()
         out["types"] = todict.to_dict(def_types)
-    else:
+    elif newlibrary.options.debug_testsuite:
         # Clean out this info since it's the same for all tests.
         # XXX - anytime a new fmt or option is added it changes all tests.
         del out['library']['fmtdict']
         del out['library']['options']
+        prune_entries(out, names=['__line__', 'linenumber'])
 
     json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
     fp.close()

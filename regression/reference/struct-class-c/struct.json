@@ -138,7 +138,6 @@
                             "function_name": "Cstruct1_ctor",
                             "underscore_name": "cstruct1_ctor"
                         },
-                        "linenumber": "?",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -146,10 +145,8 @@
                         }
                     }
                 ],
-                "linenumber": 33,
                 "name": "Cstruct1",
                 "options": {
-                    "__line__": 37,
                     "literalinclude": true
                 },
                 "scope": "Cstruct1::",
@@ -174,7 +171,6 @@
                             "variable_name": "ifield",
                             "variable_upper": "IFIELD"
                         },
-                        "linenumber": "?",
                         "name": "ifield",
                         "options": {}
                     },
@@ -197,7 +193,6 @@
                             "variable_name": "dfield",
                             "variable_upper": "DFIELD"
                         },
-                        "linenumber": "?",
                         "name": "dfield",
                         "options": {}
                     }
@@ -292,9 +287,7 @@
                     "function_name": "passStructByValue",
                     "underscore_name": "pass_struct_by_value"
                 },
-                "linenumber": 40,
                 "options": {
-                    "__line__": 41,
                     "literalinclude": true
                 }
             },
@@ -377,9 +370,7 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 44,
                 "options": {
-                    "__line__": 45,
                     "literalinclude": true
                 }
             },
@@ -495,7 +486,6 @@
                 "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 49,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -503,7 +493,6 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 48,
                 "options": {}
             },
             {
@@ -542,9 +531,7 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "linenumber": 53,
                 "options": {
-                    "__line__": 54,
                     "wrap_python": false
                 }
             },
@@ -674,7 +661,6 @@
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 58,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -682,7 +668,6 @@
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
                 },
-                "linenumber": 57,
                 "options": {}
             },
             {
@@ -748,7 +733,6 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "linenumber": 62,
                 "options": {}
             },
             {
@@ -863,7 +847,6 @@
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
-                "linenumber": 65,
                 "options": {}
             },
             {
@@ -979,7 +962,6 @@
                     "function_name": "returnConstStructByValue",
                     "underscore_name": "return_const_struct_by_value"
                 },
-                "linenumber": 66,
                 "options": {}
             },
             {
@@ -1092,7 +1074,6 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 69,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1101,7 +1082,6 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 68,
                 "options": {}
             },
             {
@@ -1251,7 +1231,6 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 76,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1260,7 +1239,6 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 74,
                 "options": {}
             }
         ],

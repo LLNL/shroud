@@ -102,10 +102,8 @@
                     "stmtc1": "c_default",
                     "underscore_name": "rank2_in"
                 },
-                "linenumber": 18,
                 "options": {
-                    "F_force_wrapper": true,
-                    "__line__": 19
+                    "F_force_wrapper": true
                 }
             }
         ],

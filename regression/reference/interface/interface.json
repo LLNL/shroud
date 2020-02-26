@@ -46,7 +46,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "function1"
                 },
-                "linenumber": 20,
                 "options": {}
             },
             {
@@ -193,7 +192,6 @@
                     "function_name": "Function2",
                     "underscore_name": "function2"
                 },
-                "linenumber": 21,
                 "options": {}
             }
         ],

@@ -21,10 +21,8 @@
                     "cxx_type": "array_info",
                     "file_scope": "array_info"
                 },
-                "linenumber": 39,
                 "name": "array_info",
                 "options": {
-                    "__line__": 46,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -48,7 +46,6 @@
                             "variable_name": "tc",
                             "variable_upper": "TC"
                         },
-                        "linenumber": "?",
                         "name": "tc",
                         "options": {}
                     }
@@ -101,9 +98,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "no_return_no_arguments"
                 },
-                "linenumber": 50,
                 "options": {
-                    "__line__": 51,
                     "literalinclude": true
                 }
             },
@@ -302,9 +297,7 @@
                     "function_name": "PassByValue",
                     "underscore_name": "pass_by_value"
                 },
-                "linenumber": 53,
                 "options": {
-                    "__line__": 54,
                     "literalinclude": true
                 }
             },
@@ -473,9 +466,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_by_reference"
                 },
-                "linenumber": 56,
                 "options": {
-                    "__line__": 57,
                     "literalinclude": true
                 }
             },
@@ -689,7 +680,6 @@
                 "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
                 "declgen": "void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
                 "doxygen": {
-                    "__line__": 61,
                     "brief": "Check intent with bool"
                 },
                 "fmtdict": {
@@ -714,9 +704,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "check_bool"
                 },
-                "linenumber": 60,
                 "options": {
-                    "__line__": 63,
                     "literalinclude": true
                 }
             },
@@ -910,7 +898,6 @@
                     "function_name": "Function4a",
                     "underscore_name": "function4a"
                 },
-                "linenumber": 66,
                 "options": {}
             },
             {
@@ -1090,7 +1077,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4a"
                 },
-                "linenumber": 66,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1194,9 +1180,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_name"
                 },
-                "linenumber": 70,
                 "options": {
-                    "__line__": 71,
                     "literalinclude": true
                 }
             },
@@ -1269,7 +1253,6 @@
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
                 "declgen": "void passCharPtrInOut(char * s +intent(inout))",
                 "doxygen": {
-                    "__line__": 78,
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
@@ -1295,7 +1278,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
-                "linenumber": 77,
                 "options": {}
             },
             {
@@ -1367,7 +1349,6 @@
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
                 "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))",
                 "doxygen": {
-                    "__line__": 78,
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
@@ -1382,7 +1363,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
-                "linenumber": 77,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1461,7 +1441,6 @@
                 "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
                 "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
-                    "__line__": 90,
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
@@ -1487,9 +1466,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "return_one_name"
                 },
-                "linenumber": 89,
                 "options": {
-                    "__line__": 96,
                     "literalinclude": true
                 }
             },
@@ -1561,7 +1538,6 @@
                 "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
                 "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))",
                 "doxygen": {
-                    "__line__": 90,
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
@@ -1576,9 +1552,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_one_name"
                 },
-                "linenumber": 89,
                 "options": {
-                    "__line__": 96,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1710,7 +1684,6 @@
                 "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
                 "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
-                    "__line__": 101,
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
@@ -1736,7 +1709,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "return_two_names"
                 },
-                "linenumber": 99,
                 "options": {}
             },
             {
@@ -1856,7 +1828,6 @@
                 "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
                 "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))",
                 "doxygen": {
-                    "__line__": 101,
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
@@ -1871,7 +1842,6 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_two_names"
                 },
-                "linenumber": 99,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2000,7 +1970,6 @@
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
                 "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 111,
                     "brief": "Fill text, at most ltext characters."
                 },
                 "fmtdict": {
@@ -2025,9 +1994,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "implied_text_len"
                 },
-                "linenumber": 109,
                 "options": {
-                    "__line__": 113,
                     "literalinclude": true
                 }
             },
@@ -2138,7 +2105,6 @@
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
                 "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len(Ntext), int ltext +implied(len(text))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 111,
                     "brief": "Fill text, at most ltext characters."
                 },
                 "fmtdict": {
@@ -2152,9 +2118,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "implied_text_len"
                 },
-                "linenumber": 109,
                 "options": {
-                    "__line__": 113,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2386,7 +2350,6 @@
                 "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
                 "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 120,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
@@ -2410,10 +2373,8 @@
                     "function_name": "ImpliedLen",
                     "underscore_name": "implied_len"
                 },
-                "linenumber": 116,
                 "options": {
-                    "F_create_bufferify_function": false,
-                    "__line__": 118
+                    "F_create_bufferify_function": false
                 }
             },
             {
@@ -2640,7 +2601,6 @@
                 "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
                 "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 130,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
@@ -2664,10 +2624,8 @@
                     "function_name": "ImpliedLenTrim",
                     "underscore_name": "implied_len_trim"
                 },
-                "linenumber": 126,
                 "options": {
-                    "F_create_bufferify_function": false,
-                    "__line__": 128
+                    "F_create_bufferify_function": false
                 }
             },
             {
@@ -2783,7 +2741,6 @@
                 "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
                 "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 137,
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
@@ -2806,7 +2763,6 @@
                     "function_name": "ImpliedBoolTrue",
                     "underscore_name": "implied_bool_true"
                 },
-                "linenumber": 136,
                 "options": {}
             },
             {
@@ -2922,7 +2878,6 @@
                 "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
                 "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 141,
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
@@ -2945,7 +2900,6 @@
                     "function_name": "ImpliedBoolFalse",
                     "underscore_name": "implied_bool_false"
                 },
-                "linenumber": 140,
                 "options": {}
             },
             {
@@ -2963,7 +2917,6 @@
                 "decl": "void bindC1()",
                 "declgen": "void bindC1()",
                 "doxygen": {
-                    "__line__": 146,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
                 },
@@ -2978,7 +2931,6 @@
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
                     "F_subprogram": "subroutine",
-                    "__line__": 150,
                     "c_const": "",
                     "function_name": "bindC1",
                     "stmt0": "f_subroutine",
@@ -2987,9 +2939,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "bind_c1"
                 },
-                "linenumber": 145,
                 "options": {
-                    "__line__": 155,
                     "wrap_python": false
                 }
             },
@@ -3046,7 +2996,6 @@
                 "decl": "void bindC2(char *outbuf+intent(out))",
                 "declgen": "void bindC2(char * outbuf +intent(out))",
                 "doxygen": {
-                    "__line__": 159,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
@@ -3063,7 +3012,6 @@
                     "F_name_generic": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
                     "F_subprogram": "subroutine",
-                    "__line__": 163,
                     "c_const": "",
                     "function_name": "bindC2",
                     "stmt0": "f_subroutine",
@@ -3072,9 +3020,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 158,
                 "options": {
-                    "__line__": 168,
                     "wrap_python": false
                 }
             },
@@ -3145,7 +3091,6 @@
                 "decl": "void bindC2(char *outbuf+intent(out))",
                 "declgen": "void bindC2(char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 159,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
@@ -3156,15 +3101,12 @@
                     "C_return_type": "void",
                     "F_C_name": "c_bind_c2_bufferify",
                     "F_name_impl": "Fortran_bindC2a",
-                    "__line__": 163,
                     "c_const": "",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 158,
                 "options": {
-                    "__line__": 168,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3283,7 +3225,6 @@
                 "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
                 "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
                 "doxygen": {
-                    "__line__": 172,
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
                 },
@@ -3308,9 +3249,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_void_star_star"
                 },
-                "linenumber": 171,
                 "options": {
-                    "__line__": 176,
                     "literalinclude": true,
                     "wrap_python": false
                 }
@@ -3397,7 +3336,6 @@
                 "decl": "int passAssumedType(void *arg+assumedtype)",
                 "declgen": "int passAssumedType(void * arg +assumedtype+intent(in))",
                 "doxygen": {
-                    "__line__": 181,
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -3420,9 +3358,7 @@
                     "function_name": "passAssumedType",
                     "underscore_name": "pass_assumed_type"
                 },
-                "linenumber": 180,
                 "options": {
-                    "__line__": 187,
                     "literalinclude": true,
                     "wrap_python": false
                 }
@@ -3486,7 +3422,6 @@
                 "decl": "void passAssumedTypeDim(void *arg+assumedtype+dimension)",
                 "declgen": "void passAssumedTypeDim(void * arg +assumedtype+dimension(*)+intent(in))",
                 "doxygen": {
-                    "__line__": 192,
                     "brief": "Test assumed-type with dimension"
                 },
                 "fmtdict": {
@@ -3510,9 +3445,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_assumed_type_dim"
                 },
-                "linenumber": 191,
                 "options": {
-                    "__line__": 194,
                     "literalinclude": true,
                     "wrap_python": false
                 }
@@ -3630,7 +3563,6 @@
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
                 "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out))",
                 "doxygen": {
-                    "__line__": 199,
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -3653,9 +3585,7 @@
                     "function_name": "passAssumedTypeBuf",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "linenumber": 198,
                 "options": {
-                    "__line__": 205,
                     "wrap_python": false
                 }
             },
@@ -3782,7 +3712,6 @@
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
                 "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 199,
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -3798,9 +3727,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "linenumber": 198,
                 "options": {
-                    "__line__": 205,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3936,7 +3863,6 @@
                 "decl": "int callback1(int type, void (*incr)()+external)",
                 "declgen": "int callback1(int type +intent(in)+value, void ( * incr)() +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 213,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -3958,9 +3884,7 @@
                     "function_name": "callback1",
                     "underscore_name": "callback1"
                 },
-                "linenumber": 212,
                 "options": {
-                    "__line__": 215,
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
@@ -4125,7 +4049,6 @@
                 "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *)+external)",
                 "declgen": "void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 222,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -4149,9 +4072,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "callback2"
                 },
-                "linenumber": 220,
                 "options": {
-                    "__line__": 224,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -4337,7 +4258,6 @@
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
                 "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))",
                 "doxygen": {
-                    "__line__": 230,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -4362,9 +4282,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 228,
                 "options": {
-                    "__line__": 234,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -4578,7 +4496,6 @@
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
                 "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 230,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -4593,9 +4510,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 228,
                 "options": {
-                    "__line__": 234,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -4783,7 +4698,6 @@
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
                 "declgen": "void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 240,
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
                 "fmtdict": {
@@ -4807,9 +4721,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "callback_set_alloc"
                 },
-                "linenumber": 238,
                 "options": {
-                    "__line__": 245,
                     "wrap_lua": false,
                     "wrap_python": false
                 }

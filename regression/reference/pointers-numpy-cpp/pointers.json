@@ -239,7 +239,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "intargs"
                 },
-                "linenumber": 23,
                 "options": {}
             },
             {
@@ -446,7 +445,6 @@
                 "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 30,
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
                 },
@@ -472,7 +470,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "cos_doubles"
                 },
-                "linenumber": 27,
                 "options": {}
             },
             {
@@ -679,7 +676,6 @@
                 "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 39,
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
@@ -705,7 +701,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "truncate_to_int"
                 },
-                "linenumber": 36,
                 "options": {}
             },
             {
@@ -856,7 +851,6 @@
                 "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
                 "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 46,
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
@@ -882,7 +876,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_values"
                 },
-                "linenumber": 45,
                 "options": {}
             },
             {
@@ -1037,7 +1030,6 @@
                 "decl": "void get_values2(int *arg1 +intent(out)+dimension(3), int *arg2 +intent(out)+dimension(3))",
                 "declgen": "void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 56,
                     "brief": "fill values into two arrays",
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
@@ -1063,7 +1055,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_values2"
                 },
-                "linenumber": 54,
                 "options": {}
             },
             {
@@ -1231,7 +1222,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "iota_allocatable"
                 },
-                "linenumber": 65,
                 "options": {}
             },
             {
@@ -1400,7 +1390,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "iota_dimension"
                 },
-                "linenumber": 67,
                 "options": {}
             },
             {
@@ -1623,9 +1612,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "sum"
                 },
-                "linenumber": 72,
                 "options": {
-                    "__line__": 75,
                     "literalinclude": true,
                     "wrap_lua": false
                 }
@@ -1715,7 +1702,6 @@
                 "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
                 "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 81,
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
@@ -1740,7 +1726,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "fill_int_array"
                 },
-                "linenumber": 80,
                 "options": {}
             },
             {
@@ -1879,7 +1864,6 @@
                 "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
                 "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 87,
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
@@ -1904,7 +1888,6 @@
                     "stmtc1": "c_default",
                     "underscore_name": "increment_int_array"
                 },
-                "linenumber": 85,
                 "options": {}
             }
         ],
