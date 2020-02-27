@@ -1039,6 +1039,8 @@ return -1;
         # call function based on number of default arguments provided
         default_calls = []  # each possible default call
         found_default = False
+        found_optional = False  # Optional added to parse_format
+        set_optional = []
         if node._has_default_arg:
             declare_code.append("Py_ssize_t SH_nargs = 0;")
             append_format(
@@ -1173,10 +1175,12 @@ return -1;
                 offset += len(arg_name) + 1
 
                 # XXX default should be handled differently
+                need_optional = attrs.get("optional", None)
                 if arg.init is not None:
-                    if not found_default:
+                    if not found_optional:
                         parse_format.append("|")  # add once
-                        found_default = True
+                        found_optional = True
+                    found_default = True
                     # call for default arguments  (num args, arg string)
                     default_calls.append(
                         (
@@ -1186,6 +1190,12 @@ return -1;
                             ",\t ".join(cxx_call_list),
                         )
                     )
+                elif need_optional is not None:
+                    if not found_optional:
+                        parse_format.append("|")  # add once
+                        found_optional = True
+                    if arg.is_indirect():
+                        need_optional = fmt_arg.nullptr
 
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
@@ -1223,6 +1233,9 @@ return -1;
                     append_format(declare_code, "{c_decl};", fmt_arg)
                     parse_format.append(arg_typemap.PY_format)
                     parse_vargs.append("&" + fmt_arg.c_var)
+                    if need_optional is not None:
+                        set_optional.append("{} = {};".format(
+                            fmt_arg.c_var, need_optional))
 
             if intent in ["inout", "out"]:
                 if intent == "out":
@@ -1305,6 +1318,7 @@ return -1;
             parse_format.extend([":", fmt.function_name])
             fmt.PyArg_format = "".join(parse_format)
             fmt.PyArg_vargs = ",\t ".join(parse_vargs)
+            PY_code.extend(set_optional)
             append_format(
                 PY_code,
                 "if (!PyArg_ParseTupleAndKeywords"
@@ -1663,7 +1677,7 @@ return -1;
         Args:
             cls  - ast.ClassNode
             node - ast.FunctionNode
-            code - list of generate wrapper code.
+            code - list of generated wrapper code.
             fmt  -
         """
         assert cls is not None
@@ -1683,19 +1697,7 @@ return -1;
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
-        if cls.as_struct and cls.options.PY_struct_arg == "class":
-            code.append("// initialize fields")
-            append_format(code, "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
-            code_obj = []
-            for var in cls.variables:
-                if var.ast.is_indirect():
-                    append_format(code_obj,
-                                  "self->{PY_member_object} = {nullptr};",
-                                  var.fmtdict)
-                append_format(code,
-                              "SH_obj->{field_name} = {field_name};",
-                              var.fmtdict)
-            code.extend(code_obj)
+        self.assign_member_obj(cls, code, fmt)
 
     def process_result(self, node, fmt):
         """Work on formatting for result values.
@@ -2616,8 +2618,8 @@ setup(
         return output
 
     def process_member_obj(self, node, text, output, template=None):
-        """Loop over variables in the class and add a line of text
-        for each pointer variable.
+        """Loop over variables in the struct-as-class and add
+        a line of text for each pointer variable.
         If template is set, define a fmtdict field.
         """
         if not node.as_struct:
@@ -2633,7 +2635,35 @@ setup(
             if template:
                 var.eval_template("PY_member_object")
             append_format(output, text, var.fmtdict)
-        
+
+    def assign_member_obj(self, node, output, fmt):
+        """Assign members of struct-as-class.
+
+        Args:
+            node - ast.ClassNode
+            output - list of generated wrapper code.
+            fmt    - fmtdict dictionary.
+        """
+        if not node.as_struct:
+            return
+        if node.options.PY_struct_arg != "class":
+            return
+        output.append("// initialize fields")
+        append_format(
+            output,
+            "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};",
+            fmt)
+        output_obj = []
+        for var in node.variables:
+            if var.ast.is_indirect():
+                append_format(output_obj,
+                              "self->{PY_member_object} = {nullptr};",
+                              var.fmtdict)
+            append_format(output,
+                          "SH_obj->{field_name} = {field_name};",
+                          var.fmtdict)
+        output.extend(output_obj)
+            
 # --- Python boiler plate
 
 # Avoid warning errors about unused parameters

@@ -99,7 +99,8 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "optional": "0"
                                     },
                                     "declarator": {
                                         "name": "ifield",
@@ -112,7 +113,8 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "optional": "0"
                                     },
                                     "declarator": {
                                         "name": "dfield",
@@ -130,7 +132,7 @@
                             "typemap_name": "Cstruct1"
                         },
                         "decl": "Cstruct1_ctor",
-                        "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
+                        "declgen": "Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct1_tp_init",
                             "PY_type_impl": "PY_Cstruct1_tp_init",
@@ -277,7 +279,8 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "optional": "0"
                                     },
                                     "declarator": {
                                         "name": "cfield",
@@ -299,7 +302,7 @@
                             "typemap_name": "Cstruct_ptr"
                         },
                         "decl": "Cstruct_ptr_ctor",
-                        "declgen": "Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)",
+                        "declgen": "Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_impl": "PY_Cstruct_ptr_tp_init",

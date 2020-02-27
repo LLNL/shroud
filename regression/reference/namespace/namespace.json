@@ -406,7 +406,8 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "optional": "0"
                                             },
                                             "declarator": {
                                                 "name": "ifield",
@@ -419,7 +420,8 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "optional": "0"
                                             },
                                             "declarator": {
                                                 "name": "dfield",
@@ -437,7 +439,7 @@
                                     "typemap_name": "outer::Cstruct1"
                                 },
                                 "decl": "Cstruct1_ctor",
-                                "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
+                                "declgen": "Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)",
                                 "fmtdict": {
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",

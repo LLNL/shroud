@@ -28,6 +28,16 @@ class Struct(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
 
+    def test_nullconstructor(self):
+        str = cstruct.Cstruct1()
+        self.assertEqual(0, str.ifield)
+        self.assertEqual(0, str.dfield)
+
+        # Only set second field
+        str = cstruct.Cstruct1(dfield=100)
+        self.assertEqual(0, str.ifield)
+        self.assertEqual(100, str.dfield)
+
     def test_dtype(self):
         str = cstruct.Cstruct1(1, 2.5)
         self.assertEqual(1, str.ifield)

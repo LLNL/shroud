@@ -671,7 +671,7 @@ class GenFunctions(object):
         node.classes = clslist
 
     def add_struct_ctor(self, cls):
-        """Add a constructor for a struct when
+        """Add a constructor function for a struct when
         it will be treated like a class.
 
         Args:
@@ -683,6 +683,7 @@ class GenFunctions(object):
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
             a.attrs["intent"] = "in"
+            a.attrs["optional"] = "0"
             ast.params.append(a)
         # Python only
         opt = dict(

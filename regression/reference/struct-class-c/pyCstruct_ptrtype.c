@@ -87,14 +87,14 @@ PY_Cstruct_ptr_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
+// Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
     char * cfield;
     char *SHT_kwlist[] = {
         "cfield",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Cstruct_ptr_ctor",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|s:Cstruct_ptr_ctor",
         SHT_kwlist, &cfield))
         return -1;
 
