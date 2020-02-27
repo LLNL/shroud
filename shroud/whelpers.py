@@ -954,6 +954,7 @@ static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *va
         out = NULL;
         value->obj = NULL;
     } else {
+        PyErr_SetString(PyExc_ValueError, "argument must be a string");
         return 0;
     }
     value->data = out;

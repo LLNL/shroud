@@ -103,6 +103,22 @@ class Struct(unittest.TestCase):
         self.assertEqual(35.5, out.dfield)
         self.assertEqual("returnStructPtr2", name)
 
+    def test_cstruct_ptr_create(self):
+        # struct with a char * cfield
+        ptr = cstruct.Cstruct_ptr()
+        self.assertEqual(None, ptr.cfield)
+
+        ptr.cfield = "standard string"
+        self.assertEqual("standard string", ptr.cfield)
+        ptr.cfield = u"unicode string"
+        self.assertEqual("unicode string", ptr.cfield)
+        ptr.cfield = b"byte string"
+        self.assertEqual("byte string", ptr.cfield)
+
+        with self.assertRaises(ValueError) as context:
+            ptr.cfield = 1
+        self.assertTrue("argument must be a string" in str(context.exception))
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

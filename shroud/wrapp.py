@@ -2680,17 +2680,21 @@ setup(
         output_obj = []
         for var in node.variables:
             if var.ast.is_indirect():
-                append_format(output_obj,
-                              "self->{PY_member_object} = {py_var}.obj;"
-                              "  // steal reference",
-                              var.fmtdict)
-                append_format(output,
-                              "SH_obj->{field_name} = {py_var}.data;",
-                              var.fmtdict)
+                append_format(
+                    output_obj,
+                    "self->{PY_member_object} = {py_var}.obj;"
+                    "  // steal reference",
+                    var.fmtdict)
+                append_format(
+                    output,
+                    "SH_obj->{field_name} = "
+                    "{cast_static}{cxx_type} *{cast1}{py_var}.data{cast2};",
+                    var.fmtdict)
             else:
-                append_format(output,
-                              "SH_obj->{field_name} = {field_name};",
-                              var.fmtdict)
+                append_format(
+                    output,
+                    "SH_obj->{field_name} = {field_name};",
+                    var.fmtdict)
         output.extend(output_obj)
             
 # --- Python boiler plate

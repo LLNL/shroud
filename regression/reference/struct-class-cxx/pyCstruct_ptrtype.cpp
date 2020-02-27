@@ -60,6 +60,7 @@ static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *va
         out = NULL;
         value->obj = NULL;
     } else {
+        PyErr_SetString(PyExc_ValueError, "argument must be a string");
         return 0;
     }
     value->data = out;
@@ -109,7 +110,7 @@ PY_Cstruct_ptr_tp_init(
     self->idtor = 2;
     // initialize fields
     Cstruct_ptr *SH_obj = self->obj;
-    SH_obj->cfield = SHPy_cfield.data;
+    SH_obj->cfield = static_cast<char *>(SHPy_cfield.data);
     self->cfield_obj = SHPy_cfield.obj;  // steal reference
     return 0;
 // splicer end class.Cstruct_ptr.method.cstruct_ptr_ctor
