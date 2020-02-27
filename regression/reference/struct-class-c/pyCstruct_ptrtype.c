@@ -119,6 +119,10 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
 {
     if (self->obj->cfield == NULL)
         Py_RETURN_NONE;
+    if (self->cfield_obj != NULL) {
+        Py_INCREF(self->cfield_obj);
+        return self->cfield_obj;
+    }
     PyObject * rv = PyString_FromString(self->obj->cfield);
     return rv;
 }

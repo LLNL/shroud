@@ -682,7 +682,12 @@ return 1;""",
         if ast.is_indirect():
             append_format(
                 output,
-                "if ({c_var} == {nullptr})\n+Py_RETURN_NONE;-",
+                """if ({c_var} == {nullptr})
++Py_RETURN_NONE;-
+if (self->{PY_member_object} != {nullptr}) {{+
+Py_INCREF(self->{PY_member_object});
+return self->{PY_member_object};
+-}}""",
                 fmt)
 
         if arg_typemap.PY_ctor:
