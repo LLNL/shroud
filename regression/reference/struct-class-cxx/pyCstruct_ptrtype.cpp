@@ -117,8 +117,9 @@ PY_Cstruct_ptr_tp_init(
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
-    if (self->obj->cfield == nullptr)
+    if (self->obj->cfield == nullptr) {
         Py_RETURN_NONE;
+    }
     if (self->cfield_obj != nullptr) {
         Py_INCREF(self->cfield_obj);
         return self->cfield_obj;
