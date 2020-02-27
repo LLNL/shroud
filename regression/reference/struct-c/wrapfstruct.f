@@ -35,6 +35,13 @@ module struct_mod
         type(C_PTR) :: cfield
     end type cstruct_ptr
 
+
+    type, bind(C) :: cstruct_num
+        integer(C_INT) :: nitems
+        type(C_PTR) :: ivalue
+        type(C_PTR) :: dvalue
+    end type cstruct_num
+
     ! start pass_struct_by_value
     interface
         function pass_struct_by_value(arg) &

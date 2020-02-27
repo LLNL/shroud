@@ -125,6 +125,106 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_num.h",
+                    "C_impl_filename": "wrapCstruct_num.cpp",
+                    "C_name_scope": "Cstruct_num_",
+                    "C_type_name": "STR_cstruct_num",
+                    "F_capsule_data_type": "SHROUD_cstruct_num_capsule",
+                    "F_derived_name": "cstruct_num",
+                    "F_name_scope": "cstruct_num_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_num_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_num_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_num_array_descr",
+                    "class_scope": "Cstruct_num::",
+                    "cxx_class": "Cstruct_num",
+                    "cxx_type": "Cstruct_num",
+                    "file_scope": "Cstruct_num"
+                },
+                "name": "Cstruct_num",
+                "options": {},
+                "scope": "Cstruct_num::",
+                "typemap_name": "Cstruct_num",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "nitems",
+                            "variable_lower": "nitems",
+                            "variable_name": "nitems",
+                            "variable_upper": "NITEMS"
+                        },
+                        "name": "nitems",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "ivalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "ivalue",
+                            "variable_lower": "ivalue",
+                            "variable_name": "ivalue",
+                            "variable_upper": "IVALUE"
+                        },
+                        "name": "ivalue",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "dvalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "dvalue",
+                            "variable_lower": "dvalue",
+                            "variable_name": "dvalue",
+                            "variable_upper": "DVALUE"
+                        },
+                        "name": "dvalue",
+                        "options": {}
+                    }
+                ]
             }
         ],
         "copyright": [

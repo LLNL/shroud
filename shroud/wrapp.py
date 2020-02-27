@@ -1208,9 +1208,14 @@ return -1;
                     append_format(
                         declare_code,
                         "SHROUD_converter_value {py_var};", fmt_arg)
+                    if not arg_typemap.PY_get_converter:
+                        declare_code.append(
+                            "#error missing PY_get_converter for type {}"
+                            .format(arg_typemap.name))
                     self.c_helper["converter_type"] = True
                     parse_format.append("O&")
-                    parse_vargs.append(arg_typemap.PY_get_converter)
+                    parse_vargs.append(arg_typemap.PY_get_converter or
+                                       fmt_arg.nullptr)
                     parse_vargs.append("&" + fmt_arg.py_var)
                     append_format(set_optional,
                                   "{py_var}.obj = {nullptr};\n"

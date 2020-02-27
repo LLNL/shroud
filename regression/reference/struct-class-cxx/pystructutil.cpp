@@ -10,6 +10,7 @@
 
 const char *PY_Cstruct1_capsule_name = "Cstruct1";
 const char *PY_Cstruct_ptr_capsule_name = "Cstruct_ptr";
+const char *PY_Cstruct_num_capsule_name = "Cstruct_num";
 
 
 PyObject *PP_Cstruct1_to_Object(Cstruct1 *addr)
@@ -70,6 +71,35 @@ int PP_Cstruct_ptr_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct_ptr.utility.from_object
 }
 
+PyObject *PP_Cstruct_num_to_Object(Cstruct_num *addr)
+{
+    // splicer begin class.Cstruct_num.utility.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Cstruct_num_capsule_name, nullptr);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Cstruct_num_Type, args, nullptr);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.Cstruct_num.utility.to_object
+}
+
+int PP_Cstruct_num_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.Cstruct_num.utility.from_object
+    if (obj->ob_type != &PY_Cstruct_num_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Cstruct_num * self = (PY_Cstruct_num *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.Cstruct_num.utility.from_object
+}
+
 // ----------------------------------------
 typedef struct {
     const char *name;
@@ -96,8 +126,15 @@ static void PY_SHROUD_capsule_destructor_2(void *ptr)
     delete cxx_ptr;
 }
 
-// 3 - cxx const Cstruct1 *
+// 3 - cxx Cstruct_num *
 static void PY_SHROUD_capsule_destructor_3(void *ptr)
+{
+    Cstruct_num * cxx_ptr = static_cast<Cstruct_num *>(ptr);
+    delete cxx_ptr;
+}
+
+// 4 - cxx const Cstruct1 *
+static void PY_SHROUD_capsule_destructor_4(void *ptr)
 {
     const Cstruct1 * cxx_ptr = static_cast<const Cstruct1 *>(ptr);
     delete cxx_ptr;
@@ -110,7 +147,8 @@ static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx Cstruct1 *", PY_SHROUD_capsule_destructor_1},
     {"cxx Cstruct_ptr *", PY_SHROUD_capsule_destructor_2},
-    {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_3},
+    {"cxx Cstruct_num *", PY_SHROUD_capsule_destructor_3},
+    {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_4},
     {nullptr, nullptr},
 };
 

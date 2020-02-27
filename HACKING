@@ -92,6 +92,12 @@ declast.py  get_canonical_typemap()
   Convert 'long int' into 'long'
 
 
+error checking
+--------------
+
+Write a `#error` line instead of generating bad code so the
+compiler will point out the error.
+
 debugging
 ---------
 

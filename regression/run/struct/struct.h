@@ -37,6 +37,14 @@ struct Cstruct_ptr {
 };
 typedef struct Cstruct_ptr Cstruct_ptr;
 
+/*----------------------------------------------------------------------*/
+struct Cstruct_num {
+  int nitems;
+  int *ivalue;
+  double *dvalue;
+};
+typedef struct Cstruct_num Cstruct_num;
+
 
 
 #endif // STRUCT_H

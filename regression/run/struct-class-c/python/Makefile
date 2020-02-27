@@ -24,7 +24,8 @@ OBJS = \
     pystructmodule.o \
     pystructutil.o \
     pyCstruct1type.o \
-    pyCstruct_ptrtype.o
+    pyCstruct_ptrtype.o \
+    pyCstruct_numtype.o
 
 CFLAGS += $(SHARED)
 

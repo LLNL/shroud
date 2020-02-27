@@ -37,6 +37,14 @@ struct s_STR_cstruct_ptr {
 };
 typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 
+
+struct s_STR_cstruct_num {
+    int nitems;
+    int * ivalue;
+    double * dvalue;
+};
+typedef struct s_STR_cstruct_num STR_cstruct_num;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

@@ -82,6 +82,14 @@ declarations:
 - decl: struct Cstruct_ptr {
           char *cfield;
         };
+
+######################################################################
+- decl: struct Cstruct_num {
+          int nitems;
+          int *ivalue;
+          double *dvalue;
+        };
+
 ######################################################################
 splicer_code:
   f:
