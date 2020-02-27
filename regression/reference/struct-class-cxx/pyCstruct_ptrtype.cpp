@@ -89,13 +89,16 @@ PY_Cstruct_ptr_tp_init(
 {
 // Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
-    char * cfield;
+    SHROUD_converter_value SHPy_cfield;
     const char *SHT_kwlist[] = {
         "cfield",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|s:Cstruct_ptr_ctor",
-        const_cast<char **>(SHT_kwlist), &cfield))
+    SHPy_cfield.obj = nullptr;
+    SHPy_cfield.data = nullptr;
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&:Cstruct_ptr_ctor",
+        const_cast<char **>(SHT_kwlist), SHROUD_get_char_from_object,
+        &SHPy_cfield))
         return -1;
 
     self->obj = new Cstruct_ptr;
@@ -106,8 +109,8 @@ PY_Cstruct_ptr_tp_init(
     self->idtor = 2;
     // initialize fields
     Cstruct_ptr *SH_obj = self->obj;
-    SH_obj->cfield = cfield;
-    self->cfield_obj = nullptr;
+    SH_obj->cfield = SHPy_cfield.data;
+    self->cfield_obj = SHPy_cfield.obj;  // steal reference
     return 0;
 // splicer end class.Cstruct_ptr.method.cstruct_ptr_ctor
 }
@@ -132,7 +135,7 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     SHROUD_converter_value cvalue;
-    Py_XINCREF(self->cfield_obj);
+    Py_XDECREF(self->cfield_obj);
     if (SHROUD_get_char_from_object(value, &cvalue) == 0) {
         self->obj->cfield = NULL;
         self->cfield_obj = NULL;

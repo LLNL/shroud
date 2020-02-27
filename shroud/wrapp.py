@@ -43,7 +43,7 @@ from .util import wformat, append_format, append_format_lst
 
 # The tree of Python Scope statements.
 py_tree = {}
-default_scope = None
+default_scope = None  # for statements
 
 # If multiple values are returned, save up into to build a tuple to return.
 # else build value from ctor, then return ctorvar.
@@ -389,9 +389,9 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
 
         # Create a PyObject pointer for each pointer member
         # to contain the actual data.
+        self.init_member_obj(node)
         self.process_member_obj(
-            node, "PyObject *{PY_member_object};", output,
-            "PY_member_object")
+            node, "PyObject *{PY_member_object};", output)
 
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
@@ -721,7 +721,7 @@ return self->{PY_member_object};
             if arg_typemap.PY_get_converter:
                 fmt.get = arg_typemap.PY_get_converter
                 append_format(output, """SHROUD_converter_value cvalue;
-Py_XINCREF(self->{PY_member_object});
+Py_XDECREF(self->{PY_member_object});
 if ({get}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
 self->{PY_member_object} = NULL;
@@ -1176,6 +1176,7 @@ return -1;
 
                 # XXX default should be handled differently
                 need_optional = attrs.get("optional", None)
+                need_converter_value = False
                 if arg.init is not None:
                     if not found_optional:
                         parse_format.append("|")  # add once
@@ -1195,11 +1196,28 @@ return -1;
                         parse_format.append("|")  # add once
                         found_optional = True
                     if arg.is_indirect():
-                        need_optional = fmt_arg.nullptr
+                        need_converter_value = True
 
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
-                if as_object:
+                if need_converter_value:
+                    # Used with struct-as-class for pointer members.
+                    # Retain reference to object which holds the data.
+                    # No function is called,
+                    # only assignments to struct members.
+                    append_format(
+                        declare_code,
+                        "SHROUD_converter_value {py_var};", fmt_arg)
+                    self.c_helper["converter_type"] = True
+                    parse_format.append("O&")
+                    parse_vargs.append(arg_typemap.PY_get_converter)
+                    parse_vargs.append("&" + fmt_arg.py_var)
+                    append_format(set_optional,
+                                  "{py_var}.obj = {nullptr};\n"
+                                  "{py_var}.data = {nullptr};",
+                                  fmt_arg)
+                    intent_blk = default_scope
+                elif as_object:
                     # Use NumPy/list with dimensioned or struct arguments.
                     fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 #                    fmt_arg.pydescr_var = "SHDPy_" + arg.name
@@ -2617,10 +2635,18 @@ setup(
             node, "Py_XDECREF(self->{PY_member_object});", output)
         return output
 
-    def process_member_obj(self, node, text, output, template=None):
+    def init_member_obj(self, node):
+        """Update fmt for members of struct-as-class.
+        """
+        for var in node.variables:
+            fmt = var.fmtdict
+            if var.ast.is_indirect():
+                fmt.py_var = "SHPy_" + fmt.variable_name
+                var.eval_template("PY_member_object")
+
+    def process_member_obj(self, node, text, output):
         """Loop over variables in the struct-as-class and add
-        a line of text for each pointer variable.
-        If template is set, define a fmtdict field.
+        a line of formatted text for each pointer variable.
         """
         if not node.as_struct:
             return
@@ -2632,8 +2658,6 @@ setup(
             if print_header:
                 output.append("// Python objects for members.")
                 print_header = False
-            if template:
-                var.eval_template("PY_member_object")
             append_format(output, text, var.fmtdict)
 
     def assign_member_obj(self, node, output, fmt):
@@ -2657,11 +2681,16 @@ setup(
         for var in node.variables:
             if var.ast.is_indirect():
                 append_format(output_obj,
-                              "self->{PY_member_object} = {nullptr};",
+                              "self->{PY_member_object} = {py_var}.obj;"
+                              "  // steal reference",
                               var.fmtdict)
-            append_format(output,
-                          "SH_obj->{field_name} = {field_name};",
-                          var.fmtdict)
+                append_format(output,
+                              "SH_obj->{field_name} = {py_var}.data;",
+                              var.fmtdict)
+            else:
+                append_format(output,
+                              "SH_obj->{field_name} = {field_name};",
+                              var.fmtdict)
         output.extend(output_obj)
             
 # --- Python boiler plate
@@ -3599,6 +3628,7 @@ py_statements = dict(
 
 ########################################
 # struct
+# "struct", intent, PY_struct_arg
 # numpy
     py_struct_in_numpy=dict(
         need_numpy=True,

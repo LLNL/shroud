@@ -344,6 +344,7 @@
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "cfield",
+                            "py_var": "SHPy_cfield",
                             "variable_lower": "cfield",
                             "variable_name": "cfield",
                             "variable_upper": "CFIELD"
