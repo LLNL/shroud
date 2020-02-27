@@ -40,6 +40,8 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "ifield",
                             "variable_lower": "ifield",
                             "variable_name": "ifield",
@@ -60,6 +62,8 @@
                             "typemap_name": "double"
                         },
                         "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
                             "field_name": "dfield",
                             "variable_lower": "dfield",
                             "variable_name": "dfield",
@@ -110,6 +114,8 @@
                             "typemap_name": "char"
                         },
                         "fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
                             "field_name": "cfield",
                             "variable_lower": "cfield",
                             "variable_name": "cfield",

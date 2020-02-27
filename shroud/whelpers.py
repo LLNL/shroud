@@ -912,36 +912,51 @@ int ShroudLenTrim(const char *src, int nsrc) {
 """
     ),
     ########################################
+    converter_type=dict(
+        source="""
+// Keep track of the PyObject and pointer to the data it contains.
+typedef struct {
+    PyObject *obj;
+    void *data;   // points into obj.
+} SHROUD_converter_value;"""
+    ),
+    ########################################
     SHROUD_get_char_from_object=dict(
+        dependent_helpers=["converter_type"],
         source="""
 // Helper - converter to PyObject to char *
-static int SHROUD_get_char_from_object(PyObject *obj, char **data)
+static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *value)
 {
     char *out;
     if (PyUnicode_Check(obj))
     {
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj); // Borrowed pointer
-        Py_DecRef(strobj);
+        out = PyBytes_AS_STRING(strobj);
+        value->obj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyString_AsString(strobj);
-        Py_DecRef(strobj);
+        value->obj = strobj;  // steal reference
 #endif
 #if PY_MAJOR_VERSION >= 3
     } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj); // Borrowed pointer
+        out = PyBytes_AS_STRING(obj);
+        value->obj = obj;
+        Py_INCREF(obj);
 #else
     } else if (PyString_Check(obj)) {
         out = PyString_AsString(obj);
+        value->obj = obj;
+        Py_INCREF(obj);
 #endif
     } else if (obj == Py_None) {
         out = NULL;
+        value->obj = NULL;
     } else {
         return 0;
     }
-    *data = out;
+    value->data = out;
     return 1;
 }
 """,

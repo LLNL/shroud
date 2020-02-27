@@ -1636,6 +1636,10 @@ class VariableNode(AstNode):
         fmt_var.variable_lower = fmt_var.variable_name.lower()
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
+        ntypemap = ast.typemap
+        fmt_var.c_type = ntypemap.c_type
+        fmt_var.cxx_type = ntypemap.cxx_type
+
         # Add to namespace
 
 

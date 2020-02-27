@@ -153,11 +153,20 @@ test-lua : lua-tutorial
 ######################################################################
 test-all : test-c test-fortran test-python test-lua
 
+# test specific yaml files
+test-struct : \
+  test-fortran-struct-c \
+  test-fortran-struct-cxx \
+  test-python-struct-numpy-c \
+  test-python-struct-numpy-cxx \
+  test-python-struct-class-c \
+  test-python-struct-class-cxx
 
 .PHONY : test-c
 .PHONY : test-python
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all
+.PHONY : test-struct
 
 .PHONY: phony_explicit
 phony_explicit: 

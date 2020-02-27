@@ -5073,6 +5073,8 @@
                     "typemap_name": "int"
                 },
                 "fmtdict": {
+                    "c_type": "int",
+                    "cxx_type": "int",
                     "field_name": "global_flag",
                     "variable_lower": "global_flag",
                     "variable_name": "global_flag",
@@ -5096,6 +5098,8 @@
                     "typemap_name": "int"
                 },
                 "fmtdict": {
+                    "c_type": "int",
+                    "cxx_type": "int",
                     "field_name": "tutorial_flag",
                     "variable_lower": "tutorial_flag",
                     "variable_name": "tutorial_flag",

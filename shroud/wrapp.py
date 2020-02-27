@@ -714,16 +714,16 @@ return 1;""",
 
             if arg_typemap.PY_get_converter:
                 fmt.get = arg_typemap.PY_get_converter
-                append_format(output, """{cxx_decl};
+                append_format(output, """SHROUD_converter_value cvalue;
 Py_XINCREF(self->{PY_member_object});
-if ({get}({py_var}, &rv) == 0) {{+
+if ({get}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
+self->{PY_member_object} = NULL;
 // XXXX set error
 return -1;
 -}}
-{c_var} = rv;
-self->{PY_member_object} = value;
-Py_INCREF(value);""", fmt)
+{c_var} = {cast_static}{cxx_type} *{cast1}cvalue.data{cast2};
+self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
                 self.c_helper[fmt.get] = True
             elif arg_typemap.PY_get:

@@ -41,6 +41,8 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "tc",
                             "variable_lower": "tc",
                             "variable_name": "tc",

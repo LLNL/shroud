@@ -167,6 +167,8 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_flag_getter",
                             "PY_setter": "nullptr",
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "m_flag",
                             "variable_lower": "flag",
                             "variable_name": "flag",

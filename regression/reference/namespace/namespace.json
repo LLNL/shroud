@@ -471,6 +471,8 @@
                                 "fmtdict": {
                                     "PY_getter": "PY_Cstruct1_ifield_getter",
                                     "PY_setter": "PY_Cstruct1_ifield_setter",
+                                    "c_type": "int",
+                                    "cxx_type": "int",
                                     "field_name": "ifield",
                                     "variable_lower": "ifield",
                                     "variable_name": "ifield",
@@ -493,6 +495,8 @@
                                 "fmtdict": {
                                     "PY_getter": "PY_Cstruct1_dfield_getter",
                                     "PY_setter": "PY_Cstruct1_dfield_setter",
+                                    "c_type": "double",
+                                    "cxx_type": "double",
                                     "field_name": "dfield",
                                     "variable_lower": "dfield",
                                     "variable_name": "dfield",

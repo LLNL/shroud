@@ -1430,6 +1430,8 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_m_flag_getter",
                             "PY_setter": "nullptr",
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "m_flag",
                             "variable_lower": "m_flag",
                             "variable_name": "m_flag",
@@ -1455,6 +1457,8 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_test_getter",
                             "PY_setter": "PY_Class1_test_setter",
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "m_test",
                             "variable_lower": "test",
                             "variable_name": "test",
