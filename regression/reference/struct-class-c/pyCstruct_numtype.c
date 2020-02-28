@@ -121,18 +121,13 @@ static PyObject *PY_Cstruct_num_ivalue_getter(PY_Cstruct_num *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    PyObject * rv = PyInt_FromLong(self->obj->ivalue);
-    return rv;
+    return NULL;
 }
 
 static int PY_Cstruct_num_ivalue_setter(PY_Cstruct_num *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    int * rv = PyInt_AsLong(value);
-    if (PyErr_Occurred()) {
-        return -1;
-    }
-    self->obj->ivalue = rv;
+#error missing PY_get_converter for type int
     return 0;
 }
 
@@ -146,18 +141,13 @@ static PyObject *PY_Cstruct_num_dvalue_getter(PY_Cstruct_num *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    PyObject * rv = PyFloat_FromDouble(self->obj->dvalue);
-    return rv;
+    return NULL;
 }
 
 static int PY_Cstruct_num_dvalue_setter(PY_Cstruct_num *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    double * rv = PyFloat_AsDouble(value);
-    if (PyErr_Occurred()) {
-        return -1;
-    }
-    self->obj->dvalue = rv;
+#error missing PY_get_converter for type double
     return 0;
 }
 

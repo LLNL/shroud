@@ -678,6 +678,11 @@ return 1;""",
             "{{+",
             fmt,
         )
+        fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
+        if arg_typemap.PY_ctor:
+            fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
+        else:
+            fmt.ctor = "UUUctor"
 
         if ast.is_indirect():
             append_format(
@@ -690,20 +695,24 @@ Py_INCREF(self->{PY_member_object});
 return self->{PY_member_object};
 -}}""",
                 fmt)
-
-        if arg_typemap.PY_ctor:
-            fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
+            if arg_typemap.name == "char":
+                # XXX - special case char since its ctor accepts a pointer.
+                append_format(
+                    output,
+                    "PyObject * rv = {ctor};\nreturn rv;",
+                    fmt,
+                )
+            else:
+                append_format(output, "return {nullptr};", fmt)
         else:
-            fmt.ctor = "UUUctor"
-        fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
+            append_format(
+                output,
+                "PyObject * rv = {ctor};\nreturn rv;",
+                fmt,
+            )
+        output.append("-}")
 
-        append_format(
-            output,
-            "PyObject * rv = {ctor};\nreturn rv;"
-            "\n-}}",
-            fmt,
-        )
-
+        ########################################
         # setter
         if not ast.attrs["readonly"]:
             fmt_var.PY_setter = wformat(
@@ -732,6 +741,10 @@ return -1;
 self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
                 self.c_helper[fmt.get] = True
+            elif ast.is_indirect():
+                output.append(
+                    "#error missing PY_get_converter for type {}"
+                    .format(arg_typemap.name))
             elif arg_typemap.PY_get:
                 fmt.get = wformat(arg_typemap.PY_get, fmt)
                 append_format(output, """{cxx_decl} = {get};

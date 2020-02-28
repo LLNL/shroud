@@ -92,6 +92,11 @@ declast.py  get_canonical_typemap()
   Convert 'long int' into 'long'
 
 
+formatting generated code
+-------------------------
+
+Always use `{nullptr}` instead of `NULL`.  Helps C++.
+
 error checking
 --------------
 
