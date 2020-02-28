@@ -7,6 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.h"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_STRUCT_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin class.Cstruct_ptr.impl.include
 // splicer end class.Cstruct_ptr.impl.include
 
@@ -30,8 +34,9 @@ typedef struct {
     void *data;   // points into obj.
 } SHROUD_converter_value;
 
-// Helper - converter to PyObject to char *
-static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *value)
+// Helper - converter to PyObject to char *.
+static int SHROUD_get_from_object_char(PyObject *obj,
+    SHROUD_converter_value *value)
 {
     char *out;
     if (PyUnicode_Check(obj))
@@ -98,7 +103,7 @@ PY_Cstruct_ptr_tp_init(
     SHPy_cfield.obj = NULL;
     SHPy_cfield.data = NULL;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&:Cstruct_ptr_ctor",
-        SHT_kwlist, SHROUD_get_char_from_object, &SHPy_cfield))
+        SHT_kwlist, SHROUD_get_from_object_char, &SHPy_cfield))
         return -1;
 
     self->obj = malloc(sizeof(Cstruct_ptr));
@@ -136,7 +141,7 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
 {
     SHROUD_converter_value cvalue;
     Py_XDECREF(self->cfield_obj);
-    if (SHROUD_get_char_from_object(value, &cvalue) == 0) {
+    if (SHROUD_get_from_object_char(value, &cvalue) == 0) {
         self->obj->cfield = NULL;
         self->cfield_obj = NULL;
         // XXXX set error

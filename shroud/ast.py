@@ -555,6 +555,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
+            PY_use_numpy=False,
         )
         return def_options
 

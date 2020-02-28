@@ -7,6 +7,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 from setuptools import setup, Extension
+import numpy
 
 module = Extension(
     'struct',
@@ -18,7 +19,7 @@ module = Extension(
          'pystructutil.c'
     ],
     language='c',
-    include_dirs = None,
+    include_dirs = [numpy.get_include()],
 #    libraries = ['tcl83'],
 #    library_dirs = ['/usr/local/lib'],      
 #    extra_compile_args = [ '-O0', '-g' ],

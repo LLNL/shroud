@@ -58,10 +58,15 @@ def set_literalinclude(flag):
     global _literalinclude
     _literalinclude = flag
 
+_newlibrary = None
+def set_library(library):
+    global _newlibrary
+    _newlibrary = library
+
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
 
-    Should be writtento config.c_fortran_dir
+    Should be written to config.c_fortran_dir
     """
     output = [FccHeaders]
     self.write_output_file("shroudrt.hpp", directory, output)
@@ -485,13 +490,14 @@ def add_to_PyList_helper(arg):
     Several helpers are created based on the type of arg.
 
     Args:
-        arg -
+        arg - declast.Declaration
     """
     ntypemap = arg.typemap
     if ntypemap.base == "vector":
         add_to_PyList_helper_vector(arg)
         return
-    
+
+    ########################################
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
@@ -509,12 +515,11 @@ for (size_t i = 0; i < size; ++i) {{+
 PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 return out;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
         )
         CHelpers[name] = helper
 
+    ########################################
     # Used with intent(inout)
     name = "update_PyList_" + ntypemap.c_type
     if name not in CHelpers:
@@ -534,19 +539,18 @@ PyObject *item = PyList_GET_ITEM(out, i);
 Py_DECREF(item);
 PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
         )
         CHelpers[name] = helper
 
+    ########################################
     # used with intent(in)
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_" + ntypemap.c_type
-    if name not in CHelpers:
+    if name not in CHelpers and ntypemap.PY_get:
         fmt = dict(
             c_type=ntypemap.c_type,
             Py_get=ntypemap.PY_get.format(py_var="item"),
@@ -580,9 +584,7 @@ Py_DECREF(seq);
 *pin = in;
 *psize = size;
 return 0;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
             cxx_header="<cstdlib>",  # malloc/free
             cxx_source=wformat(
                 """
@@ -611,9 +613,33 @@ Py_DECREF(seq);
 *pin = in;
 *psize = size;
 return 0;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
+        )
+        CHelpers[name] = helper
+
+    ########################################
+    # Function called by typemap.PY_get_converter
+    name = "SHROUD_get_from_object_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = util.Scope(_newlibrary.fmtdict)
+        fmt.py_tmp="array"
+        fmt.c_type=ntypemap.c_type
+        fmt.numpy_type=ntypemap.PYN_typenum
+        helper = dict(
+            dependent_helpers=["converter_type"],
+            source=wformat("""
+// Helper - convert PyObject to {c_type} pointer.
+static int SHROUD_get_from_object_{c_type}(PyObject *obj,\t SHROUD_converter_value *value)
+{{+
+PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
+if ({py_tmp} == {nullptr}) {{+
+PyErr_SetString(PyExc_ValueError,\t "must be a 1-D array of {c_type}");
+return 0;
+-}}
+value->obj = {py_tmp};
+value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
+return 1;
+-}}""", fmt),
         )
         CHelpers[name] = helper
 
@@ -921,11 +947,11 @@ typedef struct {
 } SHROUD_converter_value;"""
     ),
     ########################################
-    SHROUD_get_char_from_object=dict(
+    SHROUD_get_from_object_char=dict(
         dependent_helpers=["converter_type"],
         source="""
-// Helper - converter to PyObject to char *
-static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *value)
+// Helper - converter to PyObject to char *.
+static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *value)
 {
     char *out;
     if (PyUnicode_Check(obj))
@@ -962,7 +988,8 @@ static int SHROUD_get_char_from_object(PyObject *obj, SHROUD_converter_value *va
 }
 """,
     ),
-)  # end CHelpers
+    ##############
+)   # end CHelpers
 
 
 FHelpers = dict(

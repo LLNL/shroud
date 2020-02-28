@@ -7,6 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.h"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_STRUCT_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin class.Cstruct_num.impl.include
 // splicer end class.Cstruct_num.impl.include
 
@@ -29,6 +33,37 @@ typedef struct {
     PyObject *obj;
     void *data;   // points into obj.
 } SHROUD_converter_value;
+
+// Helper - convert PyObject to double pointer.
+static int SHROUD_get_from_object_double(PyObject *obj,
+    SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of double");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA((PyArrayObject *) array);
+    return 1;
+}
+
+// Helper - convert PyObject to int pointer.
+static int SHROUD_get_from_object_int(PyObject *obj,
+    SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == NULL) {
+        PyErr_SetString(PyExc_ValueError, "must be a 1-D array of int");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA((PyArrayObject *) array);
+    return 1;
+}
 // splicer begin class.Cstruct_num.impl.C_definition
 // splicer end class.Cstruct_num.impl.C_definition
 // splicer begin class.Cstruct_num.impl.additional_methods
@@ -55,9 +90,7 @@ PY_Cstruct_num_tp_init(
 // splicer begin class.Cstruct_num.method.cstruct_num_ctor
     int nitems;
     SHROUD_converter_value SHPy_ivalue;
-#error missing PY_get_converter for type int
     SHROUD_converter_value SHPy_dvalue;
-#error missing PY_get_converter for type double
     char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -70,8 +103,9 @@ PY_Cstruct_num_tp_init(
     SHPy_dvalue.obj = NULL;
     SHPy_dvalue.data = NULL;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "|iO&O&:Cstruct_num_ctor", SHT_kwlist, &nitems, NULL,
-        &SHPy_ivalue, NULL, &SHPy_dvalue))
+        "|iO&O&:Cstruct_num_ctor", SHT_kwlist, &nitems,
+        SHROUD_get_from_object_int, &SHPy_ivalue,
+        SHROUD_get_from_object_double, &SHPy_dvalue))
         return -1;
 
     self->obj = malloc(sizeof(Cstruct_num));
@@ -127,7 +161,16 @@ static PyObject *PY_Cstruct_num_ivalue_getter(PY_Cstruct_num *self,
 static int PY_Cstruct_num_ivalue_setter(PY_Cstruct_num *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-#error missing PY_get_converter for type int
+    SHROUD_converter_value cvalue;
+    Py_XDECREF(self->ivalue_obj);
+    if (SHROUD_get_from_object_int(value, &cvalue) == 0) {
+        self->obj->ivalue = NULL;
+        self->ivalue_obj = NULL;
+        // XXXX set error
+        return -1;
+    }
+    self->obj->ivalue = (int *) cvalue.data;
+    self->ivalue_obj = cvalue.obj;  // steal reference
     return 0;
 }
 
@@ -147,7 +190,16 @@ static PyObject *PY_Cstruct_num_dvalue_getter(PY_Cstruct_num *self,
 static int PY_Cstruct_num_dvalue_setter(PY_Cstruct_num *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-#error missing PY_get_converter for type double
+    SHROUD_converter_value cvalue;
+    Py_XDECREF(self->dvalue_obj);
+    if (SHROUD_get_from_object_double(value, &cvalue) == 0) {
+        self->obj->dvalue = NULL;
+        self->dvalue_obj = NULL;
+        // XXXX set error
+        return -1;
+    }
+    self->obj->dvalue = (double *) cvalue.data;
+    self->dvalue_obj = cvalue.obj;  // steal reference
     return 0;
 }
 

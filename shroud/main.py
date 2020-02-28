@@ -472,6 +472,7 @@ def main_with_args(args):
     TypeOut(newlibrary, config).write_class_types()
 
     try:
+        whelpers.set_library(newlibrary)
         options = newlibrary.options
         if options.wrap_c:
             wrapc.Wrapc(newlibrary, config, splicers["c"]).wrap_library()

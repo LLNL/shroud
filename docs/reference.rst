@@ -573,6 +573,9 @@ PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.
     ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}``
 
+PY_use_numpy
+    Allow NumPy arrays to be used in the module.
+    For example, when assigning to a struct-as-class member.
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename

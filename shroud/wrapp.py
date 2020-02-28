@@ -158,6 +158,8 @@ class Wrapp(util.WrapperMixin):
         fmt_library.capsule_order = "0"
         self.need_blah = False  # Not needed if no there gc routines are added.
 
+        if newlibrary.options.PY_use_numpy:
+            self.need_numpy = True
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
         self.write_utility()
         self.write_header(newlibrary)
@@ -727,9 +729,10 @@ return self->{PY_member_object};
                 fmt
             )
 
-            if arg_typemap.PY_get_converter:
-                fmt.get = arg_typemap.PY_get_converter
-                append_format(output, """SHROUD_converter_value cvalue;
+            if ast.is_indirect():
+                if arg_typemap.PY_get_converter:
+                    fmt.get = arg_typemap.PY_get_converter
+                    append_format(output, """SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({get}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
@@ -740,11 +743,11 @@ return -1;
 {c_var} = {cast_static}{cxx_type} *{cast1}cvalue.data{cast2};
 self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
-                self.c_helper[fmt.get] = True
-            elif ast.is_indirect():
-                output.append(
-                    "#error missing PY_get_converter for type {}"
-                    .format(arg_typemap.name))
+                    self.c_helper[fmt.get] = True
+                else:
+                    output.append(
+                        "#error missing PY_get_converter for type {}"
+                        .format(arg_typemap.name))
             elif arg_typemap.PY_get:
                 fmt.get = wformat(arg_typemap.PY_get, fmt)
                 append_format(output, """{cxx_decl} = {get};
@@ -1225,7 +1228,9 @@ return -1;
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
-                    self.c_helper["converter_type"] = True
+                    whelpers.add_to_PyList_helper(arg)
+                    hname = "SHROUD_get_from_object_" + arg_typemap.c_type
+                    self.c_helper[hname] = True
                     parse_format.append("O&")
                     parse_vargs.append(arg_typemap.PY_get_converter or
                                        fmt_arg.nullptr)

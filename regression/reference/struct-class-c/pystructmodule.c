@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.h"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_STRUCT_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -507,6 +510,8 @@ initcstruct(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
+
+    import_array();
 
     // Cstruct1
     PY_Cstruct1_Type.tp_new   = PyType_GenericNew;
