@@ -157,7 +157,14 @@ static PyObject *PY_Cstruct_num_ivalue_getter(PY_Cstruct_num *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    return nullptr;
+    npy_intp dims[1] = { 5 };
+    PyObject *rv = PyArray_SimpleNewFromData(1, dims, NPY_INT,
+        self->obj->ivalue);
+    if (rv != nullptr) {
+        Py_INCREF(rv);
+        self->ivalue_obj = rv;
+    }
+    return rv;
 }
 
 static int PY_Cstruct_num_ivalue_setter(PY_Cstruct_num *self, PyObject *value,
@@ -186,7 +193,14 @@ static PyObject *PY_Cstruct_num_dvalue_getter(PY_Cstruct_num *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    return nullptr;
+    npy_intp dims[1] = { 5 };
+    PyObject *rv = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE,
+        self->obj->dvalue);
+    if (rv != nullptr) {
+        Py_INCREF(rv);
+        self->dvalue_obj = rv;
+    }
+    return rv;
 }
 
 static int PY_Cstruct_num_dvalue_setter(PY_Cstruct_num *self, PyObject *value,

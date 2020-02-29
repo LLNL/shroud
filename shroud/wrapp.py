@@ -704,12 +704,59 @@ return self->{PY_member_object};
                     "PyObject * rv = {ctor};\nreturn rv;",
                     fmt,
                 )
+#XXX            elif "dimension" not in attrs:
+            elif options.PY_use_numpy:
+                # Create array from NumPy
+                fmt.size = "5";
+                fmt.npy_ndims = "1"
+                fmt.npy_dims = "dims"
+                fmt.cxx_var = wformat(
+                    "self->{PY_type_obj}->{field_name}",
+                    fmt)
+                if arg_typemap.PYN_descr:
+                    # class
+                    fmt.PYN_descr = arg_typemap.PYN_descr
+                    fmt.incref = wformat("Py_INCREF({PYN_descr});\n", fmt)
+                    fmt.create = wformat(
+                        "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},"
+                        "\t {npy_ndims}, \t{npy_dims}, \t{nullptr},\t {cxx_var},\t 0, {nullptr})n", fmt)
+                else:
+                    fmt.PYN_typenum = arg_typemap.PYN_typenum
+                    fmt.incref = ""
+                    fmt.create = wformat(
+                        "PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {cxx_var})",
+                        fmt)
+                append_format(
+                    output,
+                    "npy_intp {npy_dims}[1] = {{ {size} }};\n"
+                    "{incref}"
+                    "PyObject *rv = {create};\n"
+                    "if (rv != {nullptr}) {{+\n"
+                    "Py_INCREF(rv);\n"
+                    "self->{PY_member_object} = rv;\n"
+                    "-}}\n"
+                    "return rv;",
+                    fmt)
+
+                
             else:
-                append_format(output, "return {nullptr};", fmt)
+                # Create array from helper.
+                self.c_helper["to_PyList_" + fmt.c_type] = True
+                # XXX - 5 should be dimension
+                fmt.size = "5";
+                append_format(
+                    output,
+                    "PyObject *rv = PyObject_to_PyList_{c_type}"
+                    "(self->{PY_type_obj}->{field_name}, {size});\n"
+                    "return rv;",
+                    fmt)
+# XXX - What if pointer to scalar or struct?
+#                append_format(output, "return {nullptr};", fmt)
         else:
             append_format(
                 output,
-                "PyObject * rv = {ctor};\nreturn rv;",
+                "PyObject * rv = {ctor};\n"
+                "return rv;",
                 fmt,
             )
         output.append("-}")
