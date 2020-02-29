@@ -624,10 +624,11 @@ return 0;
         fmt = util.Scope(_newlibrary.fmtdict)
         fmt.py_tmp="array"
         fmt.c_type=ntypemap.c_type
-        fmt.numpy_type=ntypemap.PYN_typenum
-        helper = dict(
-            dependent_helpers=["converter_type"],
-            source=wformat("""
+        if _newlibrary.options.PY_use_numpy:
+            fmt.numpy_type=ntypemap.PYN_typenum
+            helper = dict(
+                dependent_helpers=["converter_type"],
+                source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
 static int SHROUD_get_from_object_{c_type}(PyObject *obj,\t SHROUD_converter_value *value)
 {{+
@@ -640,7 +641,29 @@ value->obj = {py_tmp};
 value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
 -}}""", fmt),
-        )
+            )
+        else:
+            fmt.size_var="size"
+            fmt.c_var="in"
+            helper = dict(
+                dependent_helpers=[
+                    "converter_type",
+                    "from_PyObject_" + ntypemap.c_type,
+                ],
+                source=wformat("""
+// Helper - convert PyObject to {c_type} pointer.
+static int SHROUD_get_from_object_{c_type}(PyObject *obj,\t SHROUD_converter_value *value)
+{{+
+{c_type} *{c_var};
+Py_ssize_t {size_var};
+if (SHROUD_from_PyObject_{c_type}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+return 0;
+-}}
+value->obj = {nullptr};
+value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+return 1;
+-}}""", fmt),
+            )
         CHelpers[name] = helper
 
 def add_to_PyList_helper_vector(arg):
