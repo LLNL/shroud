@@ -38,12 +38,20 @@ struct Cstruct_ptr {
 typedef struct Cstruct_ptr Cstruct_ptr;
 
 /*----------------------------------------------------------------------*/
-struct Cstruct_num {
+struct Cstruct_list {
   int nitems;
   int *ivalue;
   double *dvalue;
 };
-typedef struct Cstruct_num Cstruct_num;
+typedef struct Cstruct_list Cstruct_list;
+
+/*----------------------------------------------------------------------*/
+struct Cstruct_numpy {
+  int nitems;
+  int *ivalue;
+  double *dvalue;
+};
+typedef struct Cstruct_numpy Cstruct_numpy;
 
 
 

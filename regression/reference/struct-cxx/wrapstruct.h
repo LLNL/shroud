@@ -38,12 +38,12 @@ struct s_STR_cstruct_ptr {
 typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 
 
-struct s_STR_cstruct_num {
+struct s_STR_cstruct_numpy {
     int nitems;
     int * ivalue;
     double * dvalue;
 };
-typedef struct s_STR_cstruct_num STR_cstruct_num;
+typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 
 // splicer begin C_declarations
 // splicer end C_declarations

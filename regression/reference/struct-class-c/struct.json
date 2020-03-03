@@ -358,27 +358,27 @@
                 "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
-                    "C_header_filename": "wrapCstruct_num.h",
-                    "C_impl_filename": "wrapCstruct_num.c",
-                    "C_name_scope": "Cstruct_num_",
-                    "C_type_name": "Cstruct_num",
-                    "F_capsule_data_type": "SHROUD_cstruct_num_capsule",
-                    "F_derived_name": "cstruct_num",
-                    "F_name_scope": "cstruct_num_",
-                    "PY_PyObject": "PY_Cstruct_num",
-                    "PY_PyTypeObject": "PY_Cstruct_num_Type",
-                    "PY_capsule_name": "PY_Cstruct_num_capsule_name",
-                    "PY_from_object_func": "PP_Cstruct_num_from_Object",
-                    "PY_struct_array_descr_create": "PY_Cstruct_num_create_array_descr",
-                    "PY_struct_array_descr_name": "Cstruct_num_dtype",
-                    "PY_struct_array_descr_variable": "PY_Cstruct_num_array_descr",
+                    "C_header_filename": "wrapCstruct_numpy.h",
+                    "C_impl_filename": "wrapCstruct_numpy.c",
+                    "C_name_scope": "Cstruct_numpy_",
+                    "C_type_name": "Cstruct_numpy",
+                    "F_capsule_data_type": "SHROUD_cstruct_numpy_capsule",
+                    "F_derived_name": "cstruct_numpy",
+                    "F_name_scope": "cstruct_numpy_",
+                    "PY_PyObject": "PY_Cstruct_numpy",
+                    "PY_PyTypeObject": "PY_Cstruct_numpy_Type",
+                    "PY_capsule_name": "PY_Cstruct_numpy_capsule_name",
+                    "PY_from_object_func": "PP_Cstruct_numpy_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_numpy_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_numpy_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_numpy_array_descr",
                     "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_Cstruct_num_to_Object",
-                    "PY_type_filename": "pyCstruct_numtype.c",
-                    "class_scope": "Cstruct_num::",
-                    "cxx_class": "Cstruct_num",
-                    "cxx_type": "Cstruct_num",
-                    "file_scope": "Cstruct_num"
+                    "PY_to_object_func": "PP_Cstruct_numpy_to_Object",
+                    "PY_type_filename": "pyCstruct_numpytype.c",
+                    "class_scope": "Cstruct_numpy::",
+                    "cxx_class": "Cstruct_numpy",
+                    "cxx_type": "Cstruct_numpy",
+                    "file_scope": "Cstruct_numpy"
                 },
                 "functions": [
                     {
@@ -446,15 +446,15 @@
                         },
                         "_fmtresult": {
                             "fmtpy": {
-                                "PYN_descr": "PY_Cstruct_num_array_descr",
+                                "PYN_descr": "PY_Cstruct_numpy_array_descr",
                                 "PY_build_format": "O",
-                                "PyObject": "PY_Cstruct_num",
-                                "PyTypeObject": "PY_Cstruct_num_Type",
+                                "PyObject": "PY_Cstruct_numpy",
+                                "PyTypeObject": "PY_Cstruct_numpy_Type",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_type": "Cstruct_num",
+                                "cxx_type": "Cstruct_numpy",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
@@ -466,7 +466,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true,
-                                "name": "Cstruct_num_ctor"
+                                "name": "Cstruct_numpy_ctor"
                             },
                             "params": [
                                 {
@@ -521,18 +521,18 @@
                                 }
                             ],
                             "specifier": [
-                                "Cstruct_num"
+                                "Cstruct_numpy"
                             ],
-                            "typemap_name": "Cstruct_num"
+                            "typemap_name": "Cstruct_numpy"
                         },
-                        "decl": "Cstruct_num_ctor",
-                        "declgen": "Cstruct_num(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_num_ctor)",
+                        "decl": "Cstruct_numpy_ctor",
+                        "declgen": "Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_numpy_ctor)",
                         "fmtdict": {
-                            "PY_name_impl": "PY_Cstruct_num_tp_init",
-                            "PY_type_impl": "PY_Cstruct_num_tp_init",
+                            "PY_name_impl": "PY_Cstruct_numpy_tp_init",
+                            "PY_type_impl": "PY_Cstruct_numpy_tp_init",
                             "PY_type_method": "tp_init",
-                            "function_name": "Cstruct_num_ctor",
-                            "underscore_name": "cstruct_num_ctor"
+                            "function_name": "Cstruct_numpy_ctor",
+                            "underscore_name": "cstruct_numpy_ctor"
                         },
                         "options": {
                             "wrap_c": false,
@@ -541,10 +541,10 @@
                         }
                     }
                 ],
-                "name": "Cstruct_num",
+                "name": "Cstruct_numpy",
                 "options": {},
-                "scope": "Cstruct_num::",
-                "typemap_name": "Cstruct_num",
+                "scope": "Cstruct_numpy::",
+                "typemap_name": "Cstruct_numpy",
                 "variables": [
                     {
                         "ast": {
@@ -558,8 +558,8 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
-                            "PY_getter": "PY_Cstruct_num_nitems_getter",
-                            "PY_setter": "PY_Cstruct_num_nitems_setter",
+                            "PY_getter": "PY_Cstruct_numpy_nitems_getter",
+                            "PY_setter": "PY_Cstruct_numpy_nitems_setter",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
@@ -586,9 +586,9 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
-                            "PY_getter": "PY_Cstruct_num_ivalue_getter",
+                            "PY_getter": "PY_Cstruct_numpy_ivalue_getter",
                             "PY_member_object": "ivalue_obj",
-                            "PY_setter": "PY_Cstruct_num_ivalue_setter",
+                            "PY_setter": "PY_Cstruct_numpy_ivalue_setter",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ivalue",
@@ -616,9 +616,9 @@
                             "typemap_name": "double"
                         },
                         "fmtdict": {
-                            "PY_getter": "PY_Cstruct_num_dvalue_getter",
+                            "PY_getter": "PY_Cstruct_numpy_dvalue_getter",
                             "PY_member_object": "dvalue_obj",
-                            "PY_setter": "PY_Cstruct_num_dvalue_setter",
+                            "PY_setter": "PY_Cstruct_numpy_dvalue_setter",
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dvalue",

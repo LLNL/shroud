@@ -15,13 +15,13 @@ typemap:
       - struct.h
       c_type: Cstruct1
       f_derived_type: cstruct1
-  - type: Cstruct_num
+  - type: Cstruct_numpy
     fields:
       base: struct
       c_header:
       - struct.h
-      c_type: Cstruct_num
-      f_derived_type: cstruct_num
+      c_type: Cstruct_numpy
+      f_derived_type: cstruct_numpy
   - type: Cstruct_ptr
     fields:
       base: struct

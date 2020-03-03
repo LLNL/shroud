@@ -85,7 +85,7 @@ declarations:
         };
 
 ######################################################################
-- decl: struct Cstruct_num {
+- decl: struct Cstruct_numpy {
           int nitems;
           int *ivalue;
           double *dvalue;

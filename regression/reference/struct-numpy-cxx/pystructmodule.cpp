@@ -33,7 +33,7 @@
 PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct1_array_descr;
 PyArray_Descr *PY_Cstruct_ptr_array_descr;
-PyArray_Descr *PY_Cstruct_num_array_descr;
+PyArray_Descr *PY_Cstruct_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -663,8 +663,8 @@ fail:
     return nullptr;
 }
 
-// Create PyArray_Descr for Cstruct_num
-static PyArray_Descr *PY_Cstruct_num_create_array_descr()
+// Create PyArray_Descr for Cstruct_numpy
+static PyArray_Descr *PY_Cstruct_numpy_create_array_descr()
 {
     int ierr;
     PyObject *obj = nullptr;
@@ -817,9 +817,9 @@ initcstruct(void)
     PY_Cstruct_ptr_array_descr = PY_Cstruct_ptr_create_array_descr();
     PyModule_AddObject(m, "Cstruct_ptr_dtype", 
         (PyObject *) PY_Cstruct_ptr_array_descr);
-    PY_Cstruct_num_array_descr = PY_Cstruct_num_create_array_descr();
-    PyModule_AddObject(m, "Cstruct_num_dtype", 
-        (PyObject *) PY_Cstruct_num_array_descr);
+    PY_Cstruct_numpy_array_descr = PY_Cstruct_numpy_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_numpy_dtype", 
+        (PyObject *) PY_Cstruct_numpy_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

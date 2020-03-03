@@ -36,11 +36,11 @@ module struct_mod
     end type cstruct_ptr
 
 
-    type, bind(C) :: cstruct_num
+    type, bind(C) :: cstruct_numpy
         integer(C_INT) :: nitems
         type(C_PTR) :: ivalue
         type(C_PTR) :: dvalue
-    end type cstruct_num
+    end type cstruct_numpy
 
     ! start pass_struct_by_value
     interface

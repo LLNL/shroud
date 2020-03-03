@@ -533,13 +533,13 @@ initcstruct(void)
     Py_INCREF(&PY_Cstruct_ptr_Type);
     PyModule_AddObject(m, "Cstruct_ptr", (PyObject *)&PY_Cstruct_ptr_Type);
 
-    // Cstruct_num
-    PY_Cstruct_num_Type.tp_new   = PyType_GenericNew;
-    PY_Cstruct_num_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Cstruct_num_Type) < 0)
+    // Cstruct_numpy
+    PY_Cstruct_numpy_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct_numpy_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct_numpy_Type) < 0)
         return RETVAL;
-    Py_INCREF(&PY_Cstruct_num_Type);
-    PyModule_AddObject(m, "Cstruct_num", (PyObject *)&PY_Cstruct_num_Type);
+    Py_INCREF(&PY_Cstruct_numpy_Type);
+    PyModule_AddObject(m, "Cstruct_numpy", (PyObject *)&PY_Cstruct_numpy_Type);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

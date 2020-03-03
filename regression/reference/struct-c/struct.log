@@ -17,7 +17,7 @@ Close wrapstruct.c
 Close typesstruct.h
 class Cstruct1
 class Cstruct_ptr
-class Cstruct_num
+class Cstruct_numpy
 C-interface, Fortran function int passStructByValue(Cstruct1 arg +intent(in)+value)
 C-interface, Fortran function int passStruct1(Cstruct1 * arg +intent(in))
 C-interface, Fortran function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))

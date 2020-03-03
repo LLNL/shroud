@@ -6,9 +6,9 @@ Close pyCstruct1type.cpp
 class Cstruct_ptr
 Python method Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
 Close pyCstruct_ptrtype.cpp
-class Cstruct_num
-Python method Cstruct_num(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_num_ctor)
-Close pyCstruct_numtype.cpp
+class Cstruct_numpy
+Python method Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
+Close pyCstruct_numpytype.cpp
 Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
 Python function int passStruct1(Cstruct1 * arg +intent(in))
 Python function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
