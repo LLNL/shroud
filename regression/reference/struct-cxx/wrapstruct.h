@@ -38,6 +38,14 @@ struct s_STR_cstruct_ptr {
 typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 
 
+struct s_STR_cstruct_list {
+    int nitems;
+    int * ivalue;
+    double * dvalue;
+};
+typedef struct s_STR_cstruct_list STR_cstruct_list;
+
+
 struct s_STR_cstruct_numpy {
     int nitems;
     int * ivalue;

@@ -13,6 +13,11 @@ typemap:
       base: struct
       c_type: STR_cstruct1
       f_derived_type: cstruct1
+  - type: Cstruct_list
+    fields:
+      base: struct
+      c_type: STR_cstruct_list
+      f_derived_type: cstruct_list
   - type: Cstruct_numpy
     fields:
       base: struct

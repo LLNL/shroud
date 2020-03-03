@@ -746,11 +746,11 @@ return self->{PY_member_object};
                 fmt.size = "5";
                 append_format(
                     output,
-                    "PyObject *rv = PyObject_to_PyList_{c_type}"
+                    "PyObject *rv = SHROUD_to_PyList_{c_type}"
                     "(self->{PY_type_obj}->{field_name}, {size});\n"
                     "return rv;",
                     fmt)
-# XXX - What if pointer to scalar or struct?
+# XXX - What if pointer to scalar or struct?  Check dimension attribute.
 #                append_format(output, "return {nullptr};", fmt)
             else:
                 linenumber = options.get("__line__", "?")

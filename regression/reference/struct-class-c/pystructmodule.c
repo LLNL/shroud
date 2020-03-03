@@ -307,13 +307,13 @@ PY_returnConstStructByValue(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
-    SHTPy_rv->idtor = 4;
+    SHTPy_rv->idtor = 5;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     if (SHCXX_rv != NULL) {
-        PY_SHROUD_release_memory(4, SHCXX_rv);
+        PY_SHROUD_release_memory(5, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
     return NULL;
@@ -528,6 +528,14 @@ initcstruct(void)
         return RETVAL;
     Py_INCREF(&PY_Cstruct_ptr_Type);
     PyModule_AddObject(m, "Cstruct_ptr", (PyObject *)&PY_Cstruct_ptr_Type);
+
+    // Cstruct_list
+    PY_Cstruct_list_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct_list_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct_list_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct_list_Type);
+    PyModule_AddObject(m, "Cstruct_list", (PyObject *)&PY_Cstruct_list_Type);
 
     // Cstruct_numpy
     PY_Cstruct_numpy_Type.tp_new   = PyType_GenericNew;

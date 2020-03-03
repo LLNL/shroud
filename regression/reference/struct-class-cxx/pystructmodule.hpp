@@ -57,6 +57,26 @@ PyObject *PP_Cstruct_ptr_to_Object(Cstruct_ptr *addr);
 int PP_Cstruct_ptr_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
+extern PyTypeObject PY_Cstruct_list_Type;
+// splicer begin class.Cstruct_list.C_declaration
+// splicer end class.Cstruct_list.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    Cstruct_list * obj;
+    int idtor;
+    // Python objects for members.
+    PyObject *ivalue_obj;
+    PyObject *dvalue_obj;
+    // splicer begin class.Cstruct_list.C_object
+    // splicer end class.Cstruct_list.C_object
+} PY_Cstruct_list;
+
+extern const char *PY_Cstruct_list_capsule_name;
+PyObject *PP_Cstruct_list_to_Object(Cstruct_list *addr);
+int PP_Cstruct_list_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
 extern PyTypeObject PY_Cstruct_numpy_Type;
 // splicer begin class.Cstruct_numpy.C_declaration
 // splicer end class.Cstruct_numpy.C_declaration

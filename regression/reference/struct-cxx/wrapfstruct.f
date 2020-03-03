@@ -36,6 +36,13 @@ module struct_mod
     end type cstruct_ptr
 
 
+    type, bind(C) :: cstruct_list
+        integer(C_INT) :: nitems
+        type(C_PTR) :: ivalue
+        type(C_PTR) :: dvalue
+    end type cstruct_list
+
+
     type, bind(C) :: cstruct_numpy
         integer(C_INT) :: nitems
         type(C_PTR) :: ivalue
