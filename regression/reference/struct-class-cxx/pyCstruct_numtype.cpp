@@ -35,7 +35,7 @@ typedef struct {
 } SHROUD_converter_value;
 
 // Helper - convert PyObject to double pointer.
-static int SHROUD_get_from_object_double(PyObject *obj,
+static int SHROUD_get_from_object_double_numpy(PyObject *obj,
     SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
@@ -52,7 +52,7 @@ static int SHROUD_get_from_object_double(PyObject *obj,
 }
 
 // Helper - convert PyObject to int pointer.
-static int SHROUD_get_from_object_int(PyObject *obj,
+static int SHROUD_get_from_object_int_numpy(PyObject *obj,
     SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
@@ -106,8 +106,8 @@ PY_Cstruct_num_tp_init(
     SHPy_dvalue.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&:Cstruct_num_ctor", const_cast<char **>(SHT_kwlist), 
-        &nitems, SHROUD_get_from_object_int, &SHPy_ivalue,
-        SHROUD_get_from_object_double, &SHPy_dvalue))
+        &nitems, SHROUD_get_from_object_int_numpy, &SHPy_ivalue,
+        SHROUD_get_from_object_double_numpy, &SHPy_dvalue))
         return -1;
 
     self->obj = new Cstruct_num;
@@ -172,7 +172,7 @@ static int PY_Cstruct_num_ivalue_setter(PY_Cstruct_num *self, PyObject *value,
 {
     SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
-    if (SHROUD_get_from_object_int(value, &cvalue) == 0) {
+    if (SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
         self->ivalue_obj = NULL;
         // XXXX set error
@@ -208,7 +208,7 @@ static int PY_Cstruct_num_dvalue_setter(PY_Cstruct_num *self, PyObject *value,
 {
     SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
-    if (SHROUD_get_from_object_double(value, &cvalue) == 0) {
+    if (SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;
         self->dvalue_obj = NULL;
         // XXXX set error

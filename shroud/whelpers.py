@@ -9,6 +9,9 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
+ name        = Optional name of generated function.
+               Useful when to helpers create the same function.
+               ex. SHROUD_get_from_object_char_{numpy,list}
  scope       = scope of helper.  Defaults to "file" which are added
                as file static and may be in several files.
                "utility" will add to C_header_utility or PY_utility_filename
@@ -618,19 +621,19 @@ return 0;
         CHelpers[name] = helper
 
     ########################################
-    # Function called by typemap.PY_get_converter
-    name = "SHROUD_get_from_object_" + ntypemap.c_type
+    # Function called by typemap.PY_get_converter for NumPy.
+    name = "SHROUD_get_from_object_{}_numpy".format(ntypemap.c_type)
     if name not in CHelpers:
         fmt = util.Scope(_newlibrary.fmtdict)
         fmt.py_tmp="array"
         fmt.c_type=ntypemap.c_type
-        if _newlibrary.options.PY_use_numpy:
-            fmt.numpy_type=ntypemap.PYN_typenum
-            helper = dict(
-                dependent_helpers=["converter_type"],
-                source=wformat("""
+        fmt.numpy_type=ntypemap.PYN_typenum
+        helper = dict(
+            name=name,
+            dependent_helpers=["converter_type"],
+            source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int SHROUD_get_from_object_{c_type}(PyObject *obj,\t SHROUD_converter_value *value)
+static int SHROUD_get_from_object_{c_type}_numpy(PyObject *obj,\t SHROUD_converter_value *value)
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -641,18 +644,26 @@ value->obj = {py_tmp};
 value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
 -}}""", fmt),
-            )
-        else:
-            fmt.size_var="size"
-            fmt.c_var="in"
-            helper = dict(
-                dependent_helpers=[
-                    "converter_type",
-                    "from_PyObject_" + ntypemap.c_type,
-                ],
-                source=wformat("""
+        )
+        CHelpers[name] = helper
+
+    ########################################
+    # Function called by typemap.PY_get_converter for list.
+    name = "SHROUD_get_from_object_{}_list".format(ntypemap.c_type)
+    if name not in CHelpers:
+        fmt = util.Scope(_newlibrary.fmtdict)
+        fmt.c_type=ntypemap.c_type
+        fmt.size_var="size"
+        fmt.c_var="in"
+        helper = dict(
+            name=name,
+            dependent_helpers=[
+                "converter_type",
+                "from_PyObject_" + ntypemap.c_type,
+            ],
+            source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int SHROUD_get_from_object_{c_type}(PyObject *obj,\t SHROUD_converter_value *value)
+static int SHROUD_get_from_object_{c_type}_list(PyObject *obj,\t SHROUD_converter_value *value)
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
@@ -971,6 +982,7 @@ typedef struct {
     ),
     ########################################
     SHROUD_get_from_object_char=dict(
+        name="SHROUD_get_from_object_char",
         dependent_helpers=["converter_type"],
         source="""
 // Helper - converter to PyObject to char *.
@@ -1010,6 +1022,16 @@ static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *
     return 1;
 }
 """,
+    ),
+    # There are no 'list' or 'numpy' version of these function.
+    # Use the one-true-version SHROUD_get_from_object_char.
+    SHROUD_get_from_object_char_list=dict(
+        name="SHROUD_get_from_object_char",
+        dependent_helpers=["SHROUD_get_from_object_char"],
+    ),
+    SHROUD_get_from_object_char_numpy=dict(
+        name="SHROUD_get_from_object_char",
+        dependent_helpers=["SHROUD_get_from_object_char"],
     ),
     ##############
 )   # end CHelpers

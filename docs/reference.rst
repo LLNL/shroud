@@ -499,6 +499,8 @@ LUA_userdata_member_template
 
 PY_array_arg
     How to wrap arrays - numpy or list.
+    Applies to function arguments and to structs when
+    **PY_struct_arg** is *class* (struct-as-class).
     Defaults to *numpy*.
 
 PY_module_filename_template

@@ -158,8 +158,6 @@ class Wrapp(util.WrapperMixin):
         fmt_library.capsule_order = "0"
         self.need_blah = False  # Not needed if no there gc routines are added.
 
-        if newlibrary.options.PY_use_numpy:
-            self.need_numpy = True
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
         self.write_utility()
         self.write_header(newlibrary)
@@ -705,7 +703,8 @@ return self->{PY_member_object};
                     fmt,
                 )
 #XXX            elif "dimension" not in attrs:
-            elif options.PY_use_numpy:
+            elif options.PY_array_arg == "numpy":
+                self.need_numpy = True
                 # Create array from NumPy
                 fmt.size = "5";
                 fmt.npy_ndims = "1"
@@ -739,8 +738,9 @@ return self->{PY_member_object};
                     fmt)
 
                 
-            else:
+            elif options.PY_array_arg == "list":
                 # Create array from helper.
+                # Include helper called by getter.
                 self.c_helper["to_PyList_" + fmt.c_type] = True
                 # XXX - 5 should be dimension
                 fmt.size = "5";
@@ -752,6 +752,11 @@ return self->{PY_member_object};
                     fmt)
 # XXX - What if pointer to scalar or struct?
 #                append_format(output, "return {nullptr};", fmt)
+            else:
+                linenumber = options.get("__line__", "?")
+                raise RuntimeError(
+                    "Illegal value for PY_array_arg around line {}: {}".
+                    format(linenumber, options.PY_array_member))
         else:
             append_format(
                 output,
@@ -778,7 +783,11 @@ return self->{PY_member_object};
 
             if ast.is_indirect():
                 if arg_typemap.PY_get_converter:
-                    fmt.get = arg_typemap.PY_get_converter
+                    whelpers.add_to_PyList_helper(node.ast)
+                    hname = "{}_{}".format(
+                        arg_typemap.PY_get_converter, options.PY_array_arg)
+                    # Adjust for alias like with type char.
+                    fmt.get = whelpers.CHelpers[hname]["name"]
                     append_format(output, """SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({get}({py_var}, &cvalue) == 0) {{+
@@ -1023,7 +1032,7 @@ return -1;
             linenumber = options.get("__line__", "?")
             raise RuntimeError(
                 "Illegal value for PY_struct_arg around line {}: {}".
-                format(linenumber, options.PY_array_arg))
+                format(linenumber, options.PY_struct_arg))
 
         if cls:
             cls_function = "method"
@@ -1275,12 +1284,16 @@ return -1;
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
-                    whelpers.add_to_PyList_helper(arg)
-                    hname = "SHROUD_get_from_object_" + arg_typemap.c_type
-                    self.c_helper[hname] = True
+                        hname = fmt_arg.nullptr
+                    else:
+                        whelpers.add_to_PyList_helper(arg)
+                        hname = "{}_{}".format(
+                            arg_typemap.PY_get_converter, options.PY_array_arg)
+                        self.c_helper[hname] = True
+                        # Adjust for alias like with type char.
+                        hname = whelpers.CHelpers[hname]["name"]
                     parse_format.append("O&")
-                    parse_vargs.append(arg_typemap.PY_get_converter or
-                                       fmt_arg.nullptr)
+                    parse_vargs.append(hname)
                     parse_vargs.append("&" + fmt_arg.py_var)
                     append_format(set_optional,
                                   "{py_var}.obj = {nullptr};\n"
@@ -2383,7 +2396,9 @@ extern PyObject *{PY_prefix}error_obj;
         output = []
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if top and self.need_numpy:
+        if self.need_numpy:
+            if not top:
+                output.append('#define NO_IMPORT_ARRAY')
             append_format(output,
                           '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
                           fmt)

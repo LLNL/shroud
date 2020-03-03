@@ -7,6 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyUserLibrarymodule.hpp"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_USERLIBRARY_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin namespace.example.include
 // splicer end namespace.example.include
