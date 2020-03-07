@@ -53,6 +53,20 @@ struct Cstruct_numpy {
 };
 typedef struct Cstruct_numpy Cstruct_numpy;
 
+/*----------------------------------------------------------------------*/
+
+struct Cstruct_as_class {
+    int x1;
+    int y1;
+};
+typedef struct Cstruct_as_class Cstruct_as_class;
+
+struct Cstruct_as_numpy {
+    int x2;
+    int y2;
+};
+typedef struct Cstruct_as_numpy Cstruct_as_numpy;
+
 
 
 #endif // STRUCT_H
