@@ -111,3 +111,12 @@ void freeStruct(Cstruct1 *arg1)
 }
 #endif
 
+/*----------------------------------------------------------------------*/
+
+// Return sum of x members to test that they were passed in correctly.
+
+int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)
+{
+    int rv = s1->x1 + s2->x2;
+    return rv;
+}

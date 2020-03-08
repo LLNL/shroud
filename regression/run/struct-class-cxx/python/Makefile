@@ -22,7 +22,10 @@ OBJS = \
     struct.o \
     pystructmodule.o \
     pystructutil.o \
-    pyCstruct1type.o
+    pyCstruct1type.o \
+    pyCstruct_ptrtype.o \
+    pyCstruct_listtype.o \
+    pyCstruct_numpytype.o
 
 CXXFLAGS += $(SHARED)
 

@@ -68,6 +68,14 @@ Expression to get value from an object.
 ex. ``PyInt_AsLong({py_var})``
 Defaults to *None*.
 
+PY_get_converter
+^^^^^^^^^^^^^^^^
+
+Used with descriptor setter.
+Name of converter function with prototype (PyObject *, void *).
+The returned status should be 1 for a successful conversion and 0 if
+the conversion has failed.
+
 PY_to_object
 ^^^^^^^^^^^^
 

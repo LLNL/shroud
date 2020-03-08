@@ -44,6 +44,8 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
                             "field_name": "ifield",
                             "variable_lower": "ifield",
                             "variable_name": "ifield",
@@ -64,12 +66,282 @@
                             "typemap_name": "double"
                         },
                         "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
                             "field_name": "dfield",
                             "variable_lower": "dfield",
                             "variable_name": "dfield",
                             "variable_upper": "DFIELD"
                         },
                         "name": "dfield",
+                        "options": {}
+                    }
+                ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_ptr.h",
+                    "C_impl_filename": "wrapCstruct_ptr.cpp",
+                    "C_name_scope": "Cstruct_ptr_",
+                    "C_type_name": "STR_cstruct_ptr",
+                    "F_capsule_data_type": "SHROUD_cstruct_ptr_capsule",
+                    "F_derived_name": "cstruct_ptr",
+                    "F_name_scope": "cstruct_ptr_",
+                    "PY_PyObject": "PY_Cstruct_ptr",
+                    "PY_PyTypeObject": "PY_Cstruct_ptr_Type",
+                    "PY_from_object_func": "PP_Cstruct_ptr_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_ptr_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_ptr_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_ptr_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_ptr_to_Object",
+                    "class_scope": "Cstruct_ptr::",
+                    "cxx_class": "Cstruct_ptr",
+                    "cxx_type": "Cstruct_ptr",
+                    "file_scope": "Cstruct_ptr"
+                },
+                "name": "Cstruct_ptr",
+                "options": {},
+                "scope": "Cstruct_ptr::",
+                "typemap_name": "Cstruct_ptr",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "cfield",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "cfield",
+                            "variable_lower": "cfield",
+                            "variable_name": "cfield",
+                            "variable_upper": "CFIELD"
+                        },
+                        "name": "cfield",
+                        "options": {}
+                    }
+                ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_list.h",
+                    "C_impl_filename": "wrapCstruct_list.cpp",
+                    "C_name_scope": "Cstruct_list_",
+                    "C_type_name": "STR_cstruct_list",
+                    "F_capsule_data_type": "SHROUD_cstruct_list_capsule",
+                    "F_derived_name": "cstruct_list",
+                    "F_name_scope": "cstruct_list_",
+                    "PY_PyObject": "PY_Cstruct_list",
+                    "PY_PyTypeObject": "PY_Cstruct_list_Type",
+                    "PY_from_object_func": "PP_Cstruct_list_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_list_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_list_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_list_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_list_to_Object",
+                    "class_scope": "Cstruct_list::",
+                    "cxx_class": "Cstruct_list",
+                    "cxx_type": "Cstruct_list",
+                    "file_scope": "Cstruct_list"
+                },
+                "name": "Cstruct_list",
+                "options": {
+                    "PY_array_arg": "list"
+                },
+                "scope": "Cstruct_list::",
+                "typemap_name": "Cstruct_list",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "nitems",
+                            "variable_lower": "nitems",
+                            "variable_name": "nitems",
+                            "variable_upper": "NITEMS"
+                        },
+                        "name": "nitems",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "ivalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "ivalue",
+                            "variable_lower": "ivalue",
+                            "variable_name": "ivalue",
+                            "variable_upper": "IVALUE"
+                        },
+                        "name": "ivalue",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "dvalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "dvalue",
+                            "variable_lower": "dvalue",
+                            "variable_name": "dvalue",
+                            "variable_upper": "DVALUE"
+                        },
+                        "name": "dvalue",
+                        "options": {}
+                    }
+                ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_numpy.h",
+                    "C_impl_filename": "wrapCstruct_numpy.cpp",
+                    "C_name_scope": "Cstruct_numpy_",
+                    "C_type_name": "STR_cstruct_numpy",
+                    "F_capsule_data_type": "SHROUD_cstruct_numpy_capsule",
+                    "F_derived_name": "cstruct_numpy",
+                    "F_name_scope": "cstruct_numpy_",
+                    "PY_PyObject": "PY_Cstruct_numpy",
+                    "PY_PyTypeObject": "PY_Cstruct_numpy_Type",
+                    "PY_from_object_func": "PP_Cstruct_numpy_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_numpy_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_numpy_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_numpy_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_numpy_to_Object",
+                    "class_scope": "Cstruct_numpy::",
+                    "cxx_class": "Cstruct_numpy",
+                    "cxx_type": "Cstruct_numpy",
+                    "file_scope": "Cstruct_numpy"
+                },
+                "name": "Cstruct_numpy",
+                "options": {
+                    "PY_array_arg": "numpy"
+                },
+                "scope": "Cstruct_numpy::",
+                "typemap_name": "Cstruct_numpy",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "nitems",
+                            "variable_lower": "nitems",
+                            "variable_name": "nitems",
+                            "variable_upper": "NITEMS"
+                        },
+                        "name": "nitems",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "ivalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "ivalue",
+                            "variable_lower": "ivalue",
+                            "variable_name": "ivalue",
+                            "variable_upper": "IVALUE"
+                        },
+                        "name": "ivalue",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "dvalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "dvalue",
+                            "variable_lower": "dvalue",
+                            "variable_name": "dvalue",
+                            "variable_upper": "DVALUE"
+                        },
+                        "name": "dvalue",
                         "options": {}
                     }
                 ]
@@ -264,7 +536,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",
@@ -1014,7 +1286,7 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "data_var": "SHData_outbuf",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
                             "stmt0": "py_char_out_charlen",

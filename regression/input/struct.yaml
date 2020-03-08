@@ -79,6 +79,29 @@ declarations:
       Generates a bufferify C wrapper function.
 
 ######################################################################
+- decl: struct Cstruct_ptr {
+          char *cfield;
+        };
+
+######################################################################
+- decl: struct Cstruct_list {
+          int nitems;
+          int *ivalue;
+          double *dvalue;
+        };
+  options:
+    PY_array_arg: list
+
+######################################################################
+- decl: struct Cstruct_numpy {
+          int nitems;
+          int *ivalue;
+          double *dvalue;
+        };
+  options:
+    PY_array_arg: numpy
+
+######################################################################
 splicer_code:
   f:
     module_top:

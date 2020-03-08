@@ -416,6 +416,15 @@ if __name__ == "__main__":
                      "--option", "PY_struct_arg=list",
                  ]),
 
+        TestDesc("struct-py-c", yaml="struct-py",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("struct-py-cxx", yaml="struct-py",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+
         # vectors
         TestDesc("vectors", yaml="vectors"),
         TestDesc("vectors-numpy", yaml="vectors",

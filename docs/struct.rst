@@ -58,14 +58,25 @@ All creation and access of members can be done using Fortran.
 Python
 ^^^^^^
 
-Python can treat struct in several different ways.
+Python can treat a struct in several different ways by setting option
+*PY_struct_arg*.
 First, treat it the same as a class.  An extension type is created with
 descriptors for the field methods. Second, as a numpy descriptor.
 This allows an array of structs to be used easily.
 Finally, as a tuple of Python types.
 
-PY_struct_arg *class*, *numpy*, *list*
+.. PY_struct_arg *class*, *numpy*, *list*
 
+When treated as a class, a constructor is created which will
+create an instance of the class.  This is similar to the
+default constructor for structs in C++ but will also work
+with a C struct.
+
+.. code-block:: python
+
+    import cstruct
+    a = cstruct.Cstruct1(1, 2.5)
+    a = cstruct.Cstruct1()
 
 .. regression/run/struct-c/python/test.py
 
@@ -184,7 +195,7 @@ An struct is created for each C++ class.
    :start-after: start object PY_Class1
    :end-before: end object PY_Class1
 
-The ``idtor`` aregument is used to release memory and described at
+The ``idtor`` argument is used to release memory and described at
 :ref:`MemoryManagementAnchor`.  The splicer allows additional fields
 to be added by the developer which may be used in function wrappers.
 

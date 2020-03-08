@@ -1,8 +1,17 @@
 Read yaml struct.yaml
 Close struct_types.yaml
 class Cstruct1
-Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+Python method Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
 Close pyCstruct1type.c
+class Cstruct_ptr
+Python method Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
+Close pyCstruct_ptrtype.c
+class Cstruct_list
+Python method Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_list_ctor)
+Close pyCstruct_listtype.c
+class Cstruct_numpy
+Python method Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
+Close pyCstruct_numpytype.c
 Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
 Python function int passStruct1(Cstruct1 * arg +intent(in))
 Python function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))

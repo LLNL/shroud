@@ -1,0 +1,6 @@
+Wrote struct_types.yaml
+Wrote pyCstruct_as_classtype.c
+Wrote pystructmodule.c
+Wrote pystructutil.c
+Wrote pystructmodule.h
+Wrote setup.py

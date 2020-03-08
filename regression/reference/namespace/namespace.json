@@ -406,7 +406,8 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "optional": "0"
                                             },
                                             "declarator": {
                                                 "name": "ifield",
@@ -419,7 +420,8 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "optional": "0"
                                             },
                                             "declarator": {
                                                 "name": "dfield",
@@ -437,7 +439,7 @@
                                     "typemap_name": "outer::Cstruct1"
                                 },
                                 "decl": "Cstruct1_ctor",
-                                "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
+                                "declgen": "Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)",
                                 "fmtdict": {
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",
@@ -471,6 +473,8 @@
                                 "fmtdict": {
                                     "PY_getter": "PY_Cstruct1_ifield_getter",
                                     "PY_setter": "PY_Cstruct1_ifield_setter",
+                                    "c_type": "int",
+                                    "cxx_type": "int",
                                     "field_name": "ifield",
                                     "variable_lower": "ifield",
                                     "variable_name": "ifield",
@@ -493,6 +497,8 @@
                                 "fmtdict": {
                                     "PY_getter": "PY_Cstruct1_dfield_getter",
                                     "PY_setter": "PY_Cstruct1_dfield_setter",
+                                    "c_type": "double",
+                                    "cxx_type": "double",
                                     "field_name": "dfield",
                                     "variable_lower": "dfield",
                                     "variable_name": "dfield",

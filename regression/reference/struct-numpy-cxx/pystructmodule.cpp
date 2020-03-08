@@ -32,6 +32,9 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct1_array_descr;
+PyArray_Descr *PY_Cstruct_ptr_array_descr;
+PyArray_Descr *PY_Cstruct_list_array_descr;
+PyArray_Descr *PY_Cstruct_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -607,6 +610,200 @@ fail:
 }
 // end PY_Cstruct1_create_array_descr
 
+// Create PyArray_Descr for Cstruct_ptr
+static PyArray_Descr *PY_Cstruct_ptr_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(1);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(1);
+    if (ldescr == nullptr) goto fail;
+
+    // cfield
+    obj = PyString_FromString("cfield");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 1; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 1; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
+// Create PyArray_Descr for Cstruct_list
+static PyArray_Descr *PY_Cstruct_list_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(3);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(3);
+    if (ldescr == nullptr) goto fail;
+
+    // nitems
+    obj = PyString_FromString("nitems");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // ivalue
+    obj = PyString_FromString("ivalue");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+
+    // dvalue
+    obj = PyString_FromString("dvalue");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 2, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 2, obj);
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 3; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 3; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
+// Create PyArray_Descr for Cstruct_numpy
+static PyArray_Descr *PY_Cstruct_numpy_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(3);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(3);
+    if (ldescr == nullptr) goto fail;
+
+    // nitems
+    obj = PyString_FromString("nitems");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // ivalue
+    obj = PyString_FromString("ivalue");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+
+    // dvalue
+    obj = PyString_FromString("dvalue");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 2, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 2, obj);
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 3; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 3; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
 /*
  * initstruct - Initialization function for the module
  * *must* be called initstruct
@@ -688,6 +885,15 @@ initcstruct(void)
     PY_Cstruct1_array_descr = PY_Cstruct1_create_array_descr();
     PyModule_AddObject(m, "Cstruct1_dtype", 
         (PyObject *) PY_Cstruct1_array_descr);
+    PY_Cstruct_ptr_array_descr = PY_Cstruct_ptr_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_ptr_dtype", 
+        (PyObject *) PY_Cstruct_ptr_array_descr);
+    PY_Cstruct_list_array_descr = PY_Cstruct_list_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_list_dtype", 
+        (PyObject *) PY_Cstruct_list_array_descr);
+    PY_Cstruct_numpy_array_descr = PY_Cstruct_numpy_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_numpy_dtype", 
+        (PyObject *) PY_Cstruct_numpy_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

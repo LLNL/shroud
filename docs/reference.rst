@@ -499,6 +499,8 @@ LUA_userdata_member_template
 
 PY_array_arg
     How to wrap arrays - numpy or list.
+    Applies to function arguments and to structs when
+    **PY_struct_arg** is *class* (struct-as-class).
     Defaults to *numpy*.
 
 PY_module_filename_template
@@ -523,6 +525,11 @@ PY_member_getter_template
 PY_member_setter_template
     Name of descriptor setter method for a class variable.
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
+
+PY_member_object_template
+    Name of struct member of type `PyObject *` which
+    contains the data for member pointer fields.
+    ``{variable_name}_obj``.
 
 PY_name_impl_template
     ``{PY_prefix}{function_name}{function_suffix}{template_suffix}``
@@ -568,6 +575,9 @@ PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.
     ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}``
 
+PY_use_numpy
+    Allow NumPy arrays to be used in the module.
+    For example, when assigning to a struct-as-class member.
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename

@@ -42,7 +42,7 @@ PY_Cstruct1_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+// Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
 // splicer begin namespace.outer.class.Cstruct1.method.cstruct1_ctor
     int ifield;
     double dfield;
@@ -51,7 +51,9 @@ PY_Cstruct1_tp_init(
         "dfield",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:Cstruct1_ctor",
+    ifield = 0;
+    dfield = 0;
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|id:Cstruct1_ctor",
         const_cast<char **>(SHT_kwlist), &ifield, &dfield))
         return -1;
 

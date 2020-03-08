@@ -31,4 +31,43 @@ const Cstruct1 returnConstStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 
+/*----------------------------------------------------------------------*/
+struct Cstruct_ptr {
+  char *cfield;
+};
+typedef struct Cstruct_ptr Cstruct_ptr;
+
+/*----------------------------------------------------------------------*/
+struct Cstruct_list {
+  int nitems;
+  int *ivalue;
+  double *dvalue;
+};
+typedef struct Cstruct_list Cstruct_list;
+
+/*----------------------------------------------------------------------*/
+struct Cstruct_numpy {
+  int nitems;
+  int *ivalue;
+  double *dvalue;
+};
+typedef struct Cstruct_numpy Cstruct_numpy;
+
+/*----------------------------------------------------------------------*/
+
+struct Cstruct_as_class {
+    int x1;
+    int y1;
+};
+typedef struct Cstruct_as_class Cstruct_as_class;
+
+struct Cstruct_as_numpy {
+    int x2;
+    int y2;
+};
+typedef struct Cstruct_as_numpy Cstruct_as_numpy;
+
+int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
+
+
 #endif // STRUCT_H

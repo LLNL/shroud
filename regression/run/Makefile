@@ -129,6 +129,8 @@ test-python : \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
   test-python-struct-class-cxx \
+  test-python-struct-py-c \
+  test-python-struct-py-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
   test-python-ownership \
@@ -153,11 +155,20 @@ test-lua : lua-tutorial
 ######################################################################
 test-all : test-c test-fortran test-python test-lua
 
+# test specific yaml files
+test-struct : \
+  test-fortran-struct-c \
+  test-fortran-struct-cxx \
+  test-python-struct-numpy-c \
+  test-python-struct-numpy-cxx \
+  test-python-struct-class-c \
+  test-python-struct-class-cxx
 
 .PHONY : test-c
 .PHONY : test-python
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all
+.PHONY : test-struct
 
 .PHONY: phony_explicit
 phony_explicit: 
@@ -197,6 +208,8 @@ phony_explicit:
     $(tempdir)/run/struct-class-c/python/.. \
     $(tempdir)/run/struct-class-cxx/python/.. \
     $(tempdir)/run/struct-list-c/python/.. \
+    $(tempdir)/run/struct-py-c/python/.. \
+    $(tempdir)/run/struct-py-cxx/python/.. \
     $(tempdir)/run/templates/.. \
     $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\

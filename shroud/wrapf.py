@@ -156,10 +156,15 @@ class Wrapf(util.WrapperMixin):
         for var in node.variables:
             ast = var.ast
             ntypemap = ast.typemap
-            output.append(ast.gen_arg_as_fortran())
-            self.update_f_module(
-                fileinfo.module_use, {}, ntypemap.f_module
-            )  # XXX - self.module_imports?
+            if ast.is_indirect():
+                append_format(output, "type(C_PTR) :: {variable_name}", var.fmtdict)
+                self.set_f_module(fileinfo.module_use,
+                                  "iso_c_binding", "C_PTR")
+            else:
+                output.append(ast.gen_arg_as_fortran())
+                self.update_f_module(
+                    fileinfo.module_use, {}, ntypemap.f_module
+                )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
             output.append("! end derived-type " +

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   If *2011* or greater then `nullptr` is used instead of `NULL`.
   This makes clang-tidy happy.
 - Create a setup.py for Python wrappers.
+- Wrap pointer members in structs when PY_struct_arg="class".
 
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a
@@ -22,6 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improved support for templates in the Python wrappers.
 - Added define for PyInt_FromSize_t for Python 3.
 - Do not write Python utility file if it is empty.
+- PY_struct_arg now applies to the struct. This allows two structs to use
+  "class" and "numpy" in the same YAML file.
 
 ## v0.11.0 - 2020-01-08
 ### Added

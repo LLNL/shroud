@@ -9,6 +9,9 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
+ name        = Optional name of generated function.
+               Useful when to helpers create the same function.
+               ex. SHROUD_get_from_object_char_{numpy,list}
  scope       = scope of helper.  Defaults to "file" which are added
                as file static and may be in several files.
                "utility" will add to C_header_utility or PY_utility_filename
@@ -58,10 +61,15 @@ def set_literalinclude(flag):
     global _literalinclude
     _literalinclude = flag
 
+_newlibrary = None
+def set_library(library):
+    global _newlibrary
+    _newlibrary = library
+
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
 
-    Should be writtento config.c_fortran_dir
+    Should be written to config.c_fortran_dir
     """
     output = [FccHeaders]
     self.write_output_file("shroudrt.hpp", directory, output)
@@ -485,13 +493,14 @@ def add_to_PyList_helper(arg):
     Several helpers are created based on the type of arg.
 
     Args:
-        arg -
+        arg - declast.Declaration
     """
     ntypemap = arg.typemap
     if ntypemap.base == "vector":
         add_to_PyList_helper_vector(arg)
         return
-    
+
+    ########################################
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
@@ -509,12 +518,11 @@ for (size_t i = 0; i < size; ++i) {{+
 PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 return out;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
         )
         CHelpers[name] = helper
 
+    ########################################
     # Used with intent(inout)
     name = "update_PyList_" + ntypemap.c_type
     if name not in CHelpers:
@@ -534,19 +542,18 @@ PyObject *item = PyList_GET_ITEM(out, i);
 Py_DECREF(item);
 PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
         )
         CHelpers[name] = helper
 
+    ########################################
     # used with intent(in)
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_" + ntypemap.c_type
-    if name not in CHelpers:
+    if name not in CHelpers and ntypemap.PY_get:
         fmt = dict(
             c_type=ntypemap.c_type,
             Py_get=ntypemap.PY_get.format(py_var="item"),
@@ -580,9 +587,7 @@ Py_DECREF(seq);
 *pin = in;
 *psize = size;
 return 0;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
             cxx_header="<cstdlib>",  # malloc/free
             cxx_source=wformat(
                 """
@@ -611,10 +616,65 @@ Py_DECREF(seq);
 *pin = in;
 *psize = size;
 return 0;
--}}""",
-                fmt,
-            ),
+-}}""", fmt),
         )
+        CHelpers[name] = helper
+
+    ########################################
+    # Function called by typemap.PY_get_converter for NumPy.
+    name = "SHROUD_get_from_object_{}_numpy".format(ntypemap.c_type)
+    if name not in CHelpers:
+        fmt = util.Scope(_newlibrary.fmtdict)
+        fmt.py_tmp="array"
+        fmt.c_type=ntypemap.c_type
+        fmt.numpy_type=ntypemap.PYN_typenum
+        helper = dict(
+            name=name,
+            dependent_helpers=["converter_type"],
+            source=wformat("""
+// Helper - convert PyObject to {c_type} pointer.
+static int SHROUD_get_from_object_{c_type}_numpy(PyObject *obj,\t SHROUD_converter_value *value)
+{{+
+PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
+if ({py_tmp} == {nullptr}) {{+
+PyErr_SetString(PyExc_ValueError,\t "must be a 1-D array of {c_type}");
+return 0;
+-}}
+value->obj = {py_tmp};
+value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
+return 1;
+-}}""", fmt),
+        )
+        CHelpers[name] = helper
+
+    ########################################
+    # Function called by typemap.PY_get_converter for list.
+    name = "SHROUD_get_from_object_{}_list".format(ntypemap.c_type)
+    if name not in CHelpers:
+        fmt = util.Scope(_newlibrary.fmtdict)
+        fmt.c_type=ntypemap.c_type
+        fmt.size_var="size"
+        fmt.c_var="in"
+        helper = dict(
+            name=name,
+            dependent_helpers=[
+                "converter_type",
+                "from_PyObject_" + ntypemap.c_type,
+            ],
+            source=wformat("""
+// Helper - convert PyObject to {c_type} pointer.
+static int SHROUD_get_from_object_{c_type}_list(PyObject *obj,\t SHROUD_converter_value *value)
+{{+
+{c_type} *{c_var};
+Py_ssize_t {size_var};
+if (SHROUD_from_PyObject_{c_type}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+return 0;
+-}}
+value->obj = {nullptr};
+value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+return 1;
+-}}""", fmt),
+            )
         CHelpers[name] = helper
 
 def add_to_PyList_helper_vector(arg):
@@ -911,7 +971,70 @@ int ShroudLenTrim(const char *src, int nsrc) {
 }
 """
     ),
-)  # end CHelpers
+    ########################################
+    converter_type=dict(
+        source="""
+// Keep track of the PyObject and pointer to the data it contains.
+typedef struct {
+    PyObject *obj;
+    void *data;   // points into obj.
+} SHROUD_converter_value;"""
+    ),
+    ########################################
+    SHROUD_get_from_object_char=dict(
+        name="SHROUD_get_from_object_char",
+        dependent_helpers=["converter_type"],
+        source="""
+// Helper - converter to PyObject to char *.
+static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *value)
+{
+    char *out;
+    if (PyUnicode_Check(obj))
+    {
+#if PY_MAJOR_VERSION >= 3
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyBytes_AS_STRING(strobj);
+        value->obj = strobj;  // steal reference
+#else
+        PyObject *strobj = PyUnicode_AsUTF8String(obj);
+        out = PyString_AsString(strobj);
+        value->obj = strobj;  // steal reference
+#endif
+#if PY_MAJOR_VERSION >= 3
+    } else if (PyByteArray_Check(obj)) {
+        out = PyBytes_AS_STRING(obj);
+        value->obj = obj;
+        Py_INCREF(obj);
+#else
+    } else if (PyString_Check(obj)) {
+        out = PyString_AsString(obj);
+        value->obj = obj;
+        Py_INCREF(obj);
+#endif
+    } else if (obj == Py_None) {
+        out = NULL;
+        value->obj = NULL;
+    } else {
+        PyErr_SetString(PyExc_ValueError, "argument must be a string");
+        return 0;
+    }
+    value->data = out;
+    return 1;
+}
+""",
+    ),
+    # There are no 'list' or 'numpy' version of these function.
+    # Use the one-true-version SHROUD_get_from_object_char.
+    SHROUD_get_from_object_char_list=dict(
+        name="SHROUD_get_from_object_char",
+        dependent_helpers=["SHROUD_get_from_object_char"],
+    ),
+    SHROUD_get_from_object_char_numpy=dict(
+        name="SHROUD_get_from_object_char",
+        dependent_helpers=["SHROUD_get_from_object_char"],
+    ),
+    ##############
+)   # end CHelpers
 
 
 FHelpers = dict(

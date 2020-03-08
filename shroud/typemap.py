@@ -103,8 +103,11 @@ class Typemap(object):
         ("PY_PyTypeObject", None),  # variable name of PyTypeObject instance
         ("PY_PyObject", None),  # typedef name of PyObject instance
         ("PY_ctor", None),  # expression to create object.
-        # ex. PyBool_FromLong({rv})
+        # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
+        # ex. PyFloat_AsDouble({py_var})
+        ("PY_get_converter", None),
+        # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object'=converter(address)
         (
             "PY_from_object",
@@ -112,6 +115,7 @@ class Typemap(object):
         ),  # PyArg_Parse - status=converter(object, address);
         ("PY_build_arg", None),  # argument for Py_BuildValue
         ("PY_build_format", None),  # 'format unit' for Py_BuildValue
+        ("PY_struct_as", None),  # For struct - "class" or "list"
         ("PYN_typenum", None),  # NumPy typenum enumeration
         (
             "PYN_descr",
@@ -304,6 +308,7 @@ def initialize():
             PY_format="h",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
+            PY_get_converter="SHROUD_get_from_object_short",
             PYN_typenum="NPY_SHORT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -322,6 +327,7 @@ def initialize():
             PY_format="i",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
+            PY_get_converter="SHROUD_get_from_object_int",
             PYN_typenum="NPY_INT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -340,6 +346,7 @@ def initialize():
             PY_format="l",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
+            PY_get_converter="SHROUD_get_from_object_long",
             PYN_typenum="NPY_LONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -626,6 +633,7 @@ def initialize():
             PY_format="f",
             PY_ctor="PyFloat_FromDouble({c_deref}{c_var})",
             PY_get="PyFloat_AsDouble({py_var})",
+            PY_get_converter="SHROUD_get_from_object_float",
             PYN_typenum="NPY_FLOAT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -644,6 +652,7 @@ def initialize():
             PY_format="d",
             PY_ctor="PyFloat_FromDouble({c_deref}{c_var})",
             PY_get="PyFloat_AsDouble({py_var})",
+            PY_get_converter="SHROUD_get_from_object_double",
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -686,6 +695,8 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",
+            PY_get_converter="SHROUD_get_from_object_char",
+            PYN_typenum="NPY_INTP",  # void *
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
@@ -1003,6 +1014,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
     # #-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
 
+    ntypemap.PY_struct_as = node.options.PY_struct_arg
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
 
     # XXX module name may not conflict with type name

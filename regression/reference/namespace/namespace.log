@@ -21,7 +21,7 @@ Close wrapfns_outer.f
 class ClassWork
 Close wrapfns.f
 class Cstruct1
-Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+Python method Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
 Close pyouter_Cstruct1type.cpp
 Python function void One()
 Close pyns_outermodule.cpp

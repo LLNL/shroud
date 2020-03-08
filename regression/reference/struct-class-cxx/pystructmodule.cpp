@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.hpp"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_STRUCT_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -308,13 +311,13 @@ PY_returnConstStructByValue(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == nullptr) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
-    SHTPy_rv->idtor = 2;
+    SHTPy_rv->idtor = 5;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     if (SHCXX_rv != nullptr) {
-        PY_SHROUD_release_memory(2, SHCXX_rv);
+        PY_SHROUD_release_memory(5, SHCXX_rv);
     }
     Py_XDECREF(SHTPy_rv);
     return nullptr;
@@ -512,6 +515,8 @@ initcstruct(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
+
     // Cstruct1
     PY_Cstruct1_Type.tp_new   = PyType_GenericNew;
     PY_Cstruct1_Type.tp_alloc = PyType_GenericAlloc;
@@ -519,6 +524,30 @@ initcstruct(void)
         return RETVAL;
     Py_INCREF(&PY_Cstruct1_Type);
     PyModule_AddObject(m, "Cstruct1", (PyObject *)&PY_Cstruct1_Type);
+
+    // Cstruct_ptr
+    PY_Cstruct_ptr_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct_ptr_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct_ptr_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct_ptr_Type);
+    PyModule_AddObject(m, "Cstruct_ptr", (PyObject *)&PY_Cstruct_ptr_Type);
+
+    // Cstruct_list
+    PY_Cstruct_list_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct_list_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct_list_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct_list_Type);
+    PyModule_AddObject(m, "Cstruct_list", (PyObject *)&PY_Cstruct_list_Type);
+
+    // Cstruct_numpy
+    PY_Cstruct_numpy_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct_numpy_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct_numpy_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct_numpy_Type);
+    PyModule_AddObject(m, "Cstruct_numpy", (PyObject *)&PY_Cstruct_numpy_Type);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

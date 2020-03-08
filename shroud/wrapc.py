@@ -452,7 +452,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_struct(self, node):
         """Create a C copy of struct.
-        A C++ struct must all POD.
+        All members must be POD types.
         XXX - Only need to wrap if in a C++ namespace.
 
         Args:
@@ -461,6 +461,8 @@ class Wrapc(util.WrapperMixin):
         if self.language == "c":
             # No need for wrapper with C.
             # Use struct definition in user's header from cxx_header.
+            return
+        if node.options.wrap_c is False:
             return
         self.log.write("struct {1.name}\n".format(self, node))
         cname = node.typemap.c_type
