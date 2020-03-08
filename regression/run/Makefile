@@ -206,6 +206,8 @@ phony_explicit:
     $(tempdir)/run/struct-class-c/python/.. \
     $(tempdir)/run/struct-class-cxx/python/.. \
     $(tempdir)/run/struct-list-c/python/.. \
+    $(tempdir)/run/struct-py-c/python/.. \
+    $(tempdir)/run/struct-py-cxx/python/.. \
     $(tempdir)/run/templates/.. \
     $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\
