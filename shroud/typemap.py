@@ -115,6 +115,7 @@ class Typemap(object):
         ),  # PyArg_Parse - status=converter(object, address);
         ("PY_build_arg", None),  # argument for Py_BuildValue
         ("PY_build_format", None),  # 'format unit' for Py_BuildValue
+        ("PY_struct_as", None),  # For struct - "class" or "list"
         ("PYN_typenum", None),  # NumPy typenum enumeration
         (
             "PYN_descr",
@@ -1013,6 +1014,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
     # #-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
 
+    ntypemap.PY_struct_as = node.options.PY_struct_arg
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
 
     # XXX module name may not conflict with type name

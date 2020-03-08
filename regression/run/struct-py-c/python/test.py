@@ -53,6 +53,19 @@ class Struct(unittest.TestCase):
         self.assertEqual(3,   a[1]["x2"])
         self.assertEqual(4,   a[1]["y2"])
 
+    def test_acceptBothStructs(self):
+        """acceptBothStructs
+        """
+        dt = cstruct.Cstruct_as_numpy_dtype
+        a1 = cstruct.Cstruct_as_class(1,2)
+        a2 = np.array((3, 4), dtype=dt) 
+        self.assertEqual(1,   a1.x1)
+        self.assertEqual(2,   a1.y1)
+        self.assertEqual(3,   a2["x2"])
+        self.assertEqual(4,   a2["y2"])
+        rv = cstruct.acceptBothStructs(a1, a2)
+        self.assertEqual(4,   rv)
+        
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

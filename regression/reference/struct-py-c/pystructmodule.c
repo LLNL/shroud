@@ -34,7 +34,66 @@ PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
+
+static char PY_acceptBothStructs__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptBothStructs(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
+// splicer begin function.accept_both_structs
+    PY_Cstruct_as_class * SHPy_s1;
+    PyObject * SHTPy_s2 = NULL;
+    PyArrayObject * SHPy_s2 = NULL;
+    char *SHT_kwlist[] = {
+        "s1",
+        "s2",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!O:acceptBothStructs", SHT_kwlist, &PY_Cstruct_as_class_Type,
+        &SHPy_s1, &SHTPy_s2))
+        return NULL;
+
+    // post_parse
+    Cstruct_as_class * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
+    Py_INCREF(PY_Cstruct_as_numpy_array_descr);
+    SHPy_s2 = (PyArrayObject *) PyArray_FromAny(SHTPy_s2,
+        PY_Cstruct_as_numpy_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY,
+        NULL);
+    if (SHPy_s2 == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "s2 must be a 1-D array of Cstruct_as_numpy");
+        goto fail;
+    }
+
+    // pre_call
+    Cstruct_as_numpy * s2 = PyArray_DATA(SHPy_s2);
+
+    int SHCXX_rv = acceptBothStructs(s1, s2);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_s2);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_s2);
+    return NULL;
+// splicer end function.accept_both_structs
+}
 static PyMethodDef PY_methods[] = {
+{"acceptBothStructs", (PyCFunction)PY_acceptBothStructs,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptBothStructs__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

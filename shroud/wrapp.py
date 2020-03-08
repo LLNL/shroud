@@ -1188,7 +1188,7 @@ return -1;
                 else:
                     stmts = ["py", "char", intent]
             elif arg_typemap.base == "struct":
-                stmts = ["py", sgroup, intent, options.PY_struct_arg]
+                stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
                 whelpers.add_to_PyList_helper_vector(arg)

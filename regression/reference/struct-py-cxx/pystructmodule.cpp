@@ -34,7 +34,68 @@ PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
+
+static char PY_acceptBothStructs__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptBothStructs(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
+// splicer begin function.accept_both_structs
+    PY_Cstruct_as_class * SHPy_s1;
+    PyObject * SHTPy_s2 = nullptr;
+    PyArrayObject * SHPy_s2 = nullptr;
+    const char *SHT_kwlist[] = {
+        "s1",
+        "s2",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!O:acceptBothStructs", const_cast<char **>(SHT_kwlist), 
+        &PY_Cstruct_as_class_Type, &SHPy_s1, &SHTPy_s2))
+        return nullptr;
+
+    // post_parse
+    Cstruct_as_class * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
+    Py_INCREF(PY_Cstruct_as_numpy_array_descr);
+    SHPy_s2 = reinterpret_cast<PyArrayObject *>(PyArray_FromAny(
+        SHTPy_s2, PY_Cstruct_as_numpy_array_descr, 0, 1,
+        NPY_ARRAY_IN_ARRAY, nullptr));
+    if (SHPy_s2 == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "s2 must be a 1-D array of STR_cstruct_as_numpy");
+        goto fail;
+    }
+    {
+        // pre_call
+        Cstruct_as_numpy * s2 = static_cast<Cstruct_as_numpy *>
+            (PyArray_DATA(SHPy_s2));
+
+        int SHCXX_rv = acceptBothStructs(s1, s2);
+
+        // post_call
+        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+        // cleanup
+        Py_DECREF(SHPy_s2);
+
+        return (PyObject *) SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHPy_s2);
+    return nullptr;
+// splicer end function.accept_both_structs
+}
 static PyMethodDef PY_methods[] = {
+{"acceptBothStructs", (PyCFunction)PY_acceptBothStructs,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptBothStructs__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

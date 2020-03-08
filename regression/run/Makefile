@@ -129,6 +129,8 @@ test-python : \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
   test-python-struct-class-cxx \
+  test-python-struct-py-c \
+  test-python-struct-py-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
   test-python-ownership \

@@ -292,6 +292,130 @@
         "cxx_header": [
             "struct.h"
         ],
+        "functions": [
+            {
+                "_fmtargs": {
+                    "s1": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct_as_class_array_descr",
+                            "PyObject": "PY_Cstruct_as_class",
+                            "PyTypeObject": "PY_Cstruct_as_class_Type",
+                            "c_const": "",
+                            "c_decl": "Cstruct_as_class s1",
+                            "c_deref": "",
+                            "c_type": "Cstruct_as_class",
+                            "c_var": "s1",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct_as_class s1",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "s1",
+                            "data_var": "SHData_s1",
+                            "numpy_type": null,
+                            "py_type": "PY_Cstruct_as_class",
+                            "py_var": "SHPy_s1",
+                            "size_var": "SHSize_s1",
+                            "stmt0": "py_struct_in_class",
+                            "stmt1": "py_struct_in_class"
+                        }
+                    },
+                    "s2": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct_as_numpy_array_descr",
+                            "PyObject": "PY_Cstruct_as_numpy",
+                            "PyTypeObject": "PY_Cstruct_as_numpy_Type",
+                            "c_const": "",
+                            "c_decl": "Cstruct_as_numpy s2",
+                            "c_deref": "",
+                            "c_type": "Cstruct_as_numpy",
+                            "c_var": "s2",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct_as_numpy s2",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct_as_numpy",
+                            "cxx_var": "s2",
+                            "data_var": "SHData_s2",
+                            "numpy_type": null,
+                            "py_var": "SHPy_s2",
+                            "pytmp_var": "SHTPy_s2",
+                            "size_var": "SHSize_s2",
+                            "stmt0": "py_struct_in_numpy",
+                            "stmt1": "py_struct_in_numpy"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "acceptBothStructs",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "s1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct_as_class"
+                            ],
+                            "typemap_name": "Cstruct_as_class"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "s2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct_as_numpy"
+                            ],
+                            "typemap_name": "Cstruct_as_numpy"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)",
+                "declgen": "int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_acceptBothStructs",
+                    "function_name": "acceptBothStructs",
+                    "underscore_name": "accept_both_structs"
+                },
+                "options": {}
+            }
+        ],
         "language": "c",
         "scope_file": [
             "struct"

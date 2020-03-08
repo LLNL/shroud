@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improved support for templates in the Python wrappers.
 - Added define for PyInt_FromSize_t for Python 3.
 - Do not write Python utility file if it is empty.
+- PY_struct_arg now applies to the struct. This allows two structs to use
+  "class" and "numpy" in the same YAML file.
 
 ## v0.11.0 - 2020-01-08
 ### Added
