@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   If *2011* or greater then `nullptr` is used instead of `NULL`.
   This makes clang-tidy happy.
 - Create a setup.py for Python wrappers.
+- Wrap pointer members in structs when PY_struct_arg="class".
 
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a
