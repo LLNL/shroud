@@ -1050,7 +1050,7 @@ def lookup_c_statements(arg):
         specialize.append(arg_typemap.sgroup)
     return arg_typemap, specialize
 
-def lookup_stmts(stmts, path):
+def XXXlookup_stmts(stmts, path):
     """
     Lookup path in stmts.
     Used to find specific cases first, then fall back to general.
