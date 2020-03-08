@@ -23,7 +23,6 @@ language: c
 options:
   debug: True
   wrap_python: True
-  PY_use_numpy: True
 
 format:
   # Avoid conflict with builtin module
