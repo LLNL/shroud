@@ -1033,6 +1033,17 @@ class Declaration(Node):
             return False
         return True
 
+    def get_indirect(self):
+        """Return indirect operators.
+        '*', '**', '&*'
+        """
+        out = ''
+        if self.declarator is None:
+            return out
+        for ptr in self.declarator.pointer:
+            out += ptr.ptr
+        return out
+
     def get_subprogram(self):
         """Return Fortran subprogram - subroutine or function.
         Return None for variable declarations.

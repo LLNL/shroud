@@ -331,7 +331,7 @@ class VerifyAttrs(object):
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if not is_ptr:
+            if is_ptr != 1:
                 raise RuntimeError(
                     "charlen attribute can only be "
                     "used on 'char *'"
@@ -339,7 +339,7 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if intent == "in" and is_ptr and arg_typemap.name == "char":
+        if intent == "in" and is_ptr == 1 and arg_typemap.name == "char":
             # const char *arg
             # char *arg+intent(in)
             arg.ftrim_char_in = True
