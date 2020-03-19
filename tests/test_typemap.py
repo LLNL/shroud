@@ -44,18 +44,15 @@ class Typemap(unittest.TestCase):
 
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","result","buf","allocatable"])
-        self.assertIsNot(rv, typemap.empty_stmts)
         self.assertEqual(rv["key"], "c_string_result_buf_allocatable")
 
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","scalar", "result","buf","allocatable"])
-        self.assertIsNot(rv, typemap.empty_stmts)
         self.assertEqual(rv["key"], "c_string_scalar_result_buf_allocatable")
 
         # pointer is not in the tree, so skip while doing the lookup.
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","pointer", "result","buf","allocatable"])
-        self.assertIsNot(rv, typemap.empty_stmts)
         self.assertEqual(rv["key"], "c_string_result_buf_allocatable")
         
 
