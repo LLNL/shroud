@@ -1374,13 +1374,13 @@ rv = .false.
         result_blk = typemap.lookup_local_stmts("f", result_blk, node)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = typemap.compute_name(f_stmts)
-        fmt_result.stmt1 = result_blk.key
+        fmt_result.stmt1 = result_blk.name
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
             ["c", generated_suffix], c_result_blk, node)
         fmt_result.stmtc0 = typemap.compute_name(c_stmts)
-        fmt_result.stmtc1 = c_result_blk.key
+        fmt_result.stmtc1 = c_result_blk.name
 
         if result_blk.result:
             # Change a subroutine into function.
@@ -1556,9 +1556,9 @@ rv = .false.
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = typemap.compute_name(f_stmts)
-            fmt_arg.stmt1 = f_intent_blk.key
+            fmt_arg.stmt1 = f_intent_blk.name
             fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
-            fmt_arg.stmtc1 = c_intent_blk.key
+            fmt_arg.stmtc1 = c_intent_blk.name
             
             arg_typemap = f_arg.typemap
             base_typemap = arg_typemap

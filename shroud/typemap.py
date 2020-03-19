@@ -28,8 +28,6 @@ except:
 
 # The tree of c and fortran statements.
 cf_tree = {}
-# Always return the same empty statements.
-empty_stmts = {}
 default_scopes = dict()
 
 class Typemap(object):
@@ -1050,32 +1048,6 @@ def lookup_c_statements(arg):
         specialize.append(arg_typemap.sgroup)
     return arg_typemap, specialize
 
-def lookup_stmts(stmts, path):
-    """
-    Lookup path in stmts.
-    Used to find specific cases first, then fall back to general.
-    ex path = ['result', 'allocatable']
-         Finds 'result_allocatable' if it exists, else 'result'.
-    If not found, return an empty dictionary.
-
-    path typically consists of:
-      intent_in, intent_out, intent_inout, result
-      generated_clause - buf
-      deref - allocatable
-
-    Args:
-        stmts - dictionary
-        path  - list of name components.
-                Blank entries are ignored.
-    """
-    work = [ part for part in path if part ] # skip empty components
-    while work:
-        check = '_'.join(work)
-        if check in stmts:
-            return stmts[check]
-        work.pop()
-    return empty_stmts
-        
 def lookup_fc_stmts(path):
     return lookup_stmts_tree(cf_tree, path)
         
@@ -1165,17 +1137,19 @@ def update_for_language(stmts, lang):
     """
     Move language specific entries to current language.
 
-    stmts=dict(
-      foo_bar=dict(
+    stmts=[
+      dict(
+        name='foo_bar',
         c_declare=[],
         cxx_declare=[],
-      )
-    )
+      ),
+      ...
+    ]
 
     For lang==c,
       foo_bar["declare"] = foo_bar["c_declare"]
     """
-    for item in stmts.values():
+    for item in stmts:
         for clause in ["cxx_local_var", "declare", "post_parse",
                        "pre_call", "post_call",
                        "cleanup", "fail"]:
@@ -1194,27 +1168,29 @@ def update_stmt_tree(stmts, tree, defaults):
 
     Implement "alias" field.
 
-    Add "key" to node and "_key" to tree to aid debugging.
+    Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
     based based on the language (c or f) and added as "scope" field.
     This additional layer of indirection is needed to implement alias.
 
-    stmts = {"c_native_in":1,
-             "c_native_out":2,
-             "c_native_pointer_out":3,
-             "c_string_in":4}
+    stmts = [
+       {name="c_native_in",}           # value1
+       {name="c_native_out",}          # value2
+       {name="c_native_pointer_out",}  # value3
+       {name="c_string_in",}           # value4
+    ]
     tree = {
       "c": {
          "native": {
-           "in": {"_node":1},
-           "out":{"_node":2},
+           "in": {"_node":value1},
+           "out":{"_node":value2},
            "pointer":{
-             "out":{"_node":3},
+             "out":{"_node":value3},
            },
          },
          "string":{
-           "in": {"_node":4},
+           "in": {"_node":value4},
          },
       },
     }
@@ -1224,7 +1200,14 @@ def update_stmt_tree(stmts, tree, defaults):
     for key, node in defaults.items():
         default_scopes[key] = node()
 
-    for key, node in stmts.items():
+    # index by name to find aliases
+    # XXX - look for duplicate names?
+    nodes = {}
+    for node in stmts:
+        nodes[node["name"]] = node
+
+    for node in stmts:
+        key = node["name"]
         step = tree
         steps = key.split("_")
         label = []
@@ -1232,9 +1215,8 @@ def update_stmt_tree(stmts, tree, defaults):
             step = step.setdefault(part, {})
             label.append(part)
             step["_key"] = "_".join(label)
-        node["key"] = key  # useful for debugging/testing
         if "alias" in node:
-            step['_node'] = stmts[node["alias"]]
+            step['_node'] = nodes[node["alias"]]
         else:
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])
@@ -1281,7 +1263,7 @@ def lookup_stmts_tree(tree, path):
 
 class CStmts(object):
     def __init__(self,
-        key="c_default",
+        name="c_default",
         buf_args=[], buf_extra=[],
         c_header=[], c_helper="", c_local_var=None,
         cxx_header=[], cxx_local_var=None,
@@ -1290,7 +1272,7 @@ class CStmts(object):
         owner="library",
         return_type=None, return_cptr=False,
     ):
-        self.key = key
+        self.name = name
         self.buf_args = buf_args
         self.buf_extra = buf_extra
         self.c_header = c_header
@@ -1315,7 +1297,7 @@ class FStmts(object):
     f_attribute - passed to gen_arg_as_fortran
     """
     def __init__(self,
-        key="f_default",
+        name="f_default",
         buf_args=[],
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
@@ -1323,7 +1305,7 @@ class FStmts(object):
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
     ):
-        self.key = key
+        self.name = name
         self.buf_args = buf_args
         self.c_local_var = c_local_var
         self.f_attribute = f_attribute
@@ -1356,28 +1338,33 @@ default_stmts = dict(
 # intent     "in", "out", "inout", "result"
 # attribute  "allocatable"
 
-fc_statements = dict(
-    f_bool_in=dict(
+fc_statements = [
+    dict(
+        name="f_bool_in",
         c_local_var=True,
         pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
     ),
-    f_bool_out=dict(
+    dict(
+        name="f_bool_out",
         c_local_var=True,
         post_call=["{f_var} = {c_var}  ! coerce to logical"],
     ),
-    f_bool_inout=dict(
+    dict(
+        name="f_bool_inout",
         c_local_var=True,
         pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
         post_call=["{f_var} = {c_var}  ! coerce to logical"],
     ),
-    f_bool_result=dict(
+    dict(
+        name="f_bool_result",
         # The wrapper is needed to convert bool to logical
         need_wrapper=True
     ),
 
 
     # XXX only in buf?
-    c_native_pointer_in_cdesc=dict(
+    dict(
+        name="c_native_pointer_in_cdesc",
         buf_args=["context"],
         c_helper="array_context", #  ShroudTypeDefines",
         c_pre_call=[
@@ -1390,7 +1377,8 @@ fc_statements = dict(
             "(const_cast<void *>({c_var_context}->addr.base));",
         ],
     ),
-    f_native_pointer_in_cdesc=dict(
+    dict(
+        name="f_native_pointer_in_cdesc",
         # TARGET required for argument to C_LOC.
         f_attribute=['target'],
         f_helper="array_context ShroudTypeDefines",
@@ -1415,7 +1403,8 @@ fc_statements = dict(
     #        c_step1(context)
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
-    c_native_pointer_result_buf=dict(
+    dict(
+        name="c_native_pointer_result_buf",
         buf_args=["context"],
         c_helper="array_context copy_array ShroudTypeDefines",
         post_call=[
@@ -1429,7 +1418,8 @@ fc_statements = dict(
         ],
         return_cptr=True,
     ),
-    f_native_pointer_result_allocatable=dict(
+    dict(
+        name="f_native_pointer_result_allocatable",
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -1447,17 +1437,20 @@ fc_statements = dict(
         ],
     ),
 
-    f_native_pointer_result=dict(
+    dict(
+        name="f_native_pointer_result",
         alias="f_native_pointer_result_pointer",
     ),
 
-    f_native_pointer_result_scalar=dict(
+    dict(
+        name="f_native_pointer_result_scalar",
         # avoid catching f_native_pointer_result
     ),
 
     # f_pointer_shape may be blank for a scalar, otherwise it
     # includes a leading comma.
-    f_native_pointer_result_pointer=dict(
+    dict(
+        name="f_native_pointer_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1470,10 +1463,12 @@ fc_statements = dict(
         ],
     ),
     
-    c_char_result=dict(
+    dict(
+        name="c_char_result",
         return_cptr=True,
     ),
-    c_char_in_buf=dict(
+    dict(
+        name="c_char_in_buf",
         buf_args=["arg", "len_trim"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrFree",
@@ -1485,14 +1480,16 @@ fc_statements = dict(
             "ShroudStrFree({cxx_var});"
         ],
     ),
-    c_char_out_buf=dict(
+    dict(
+        name="c_char_out_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrBlankFill",
         post_call=[
             "ShroudStrBlankFill({c_var}, {c_var_len});"
         ],
     ),
-    c_char_inout_buf=dict(
+    dict(
+        name="c_char_inout_buf",
         buf_args=["arg", "len_trim", "len"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -1507,7 +1504,8 @@ fc_statements = dict(
             "ShroudStrFree({cxx_var});",
         ],
     ),
-    c_char_result_buf=dict(
+    dict(
+        name="c_char_result_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         post_call=[
@@ -1516,7 +1514,8 @@ fc_statements = dict(
             "\t {cxx_var},\t -1);",
         ],
     ),
-    c_char_result_buf_allocatable=dict(
+    dict(
+        name="c_char_result_buf_allocatable",
         buf_args=["context"],
         c_helper="array_context copy_string ShroudTypeDefines",
         # Copy address of result into c_var and save length.
@@ -1533,7 +1532,8 @@ fc_statements = dict(
             "{c_var_context}->rank = 0;",
         ],
     ),
-    f_char_result_allocatable=dict(
+    dict(
+        name="f_char_result_allocatable",
         need_wrapper=True,
         f_helper="copy_string",
         post_call=[
@@ -1543,7 +1543,8 @@ fc_statements = dict(
         ],
     ),
 
-    c_schar_result_buf=dict(
+    dict(
+        name="c_schar_result_buf",
         buf_args=["arg", "len"],
         c_header=["<string.h>"],
         cxx_header=["<cstring>"],
@@ -1553,11 +1554,13 @@ fc_statements = dict(
         ],
     ),
 
-    c_string_in=dict(
+    dict(
+        name="c_string_in",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
     ),
-    c_string_out=dict(
+    dict(
+        name="c_string_out",
         cxx_header=["<cstring>"],
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
@@ -1569,7 +1572,8 @@ fc_statements = dict(
             "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
         ],
     ),
-    c_string_inout=dict(
+    dict(
+        name="c_string_inout",
         cxx_header=["<cstring>"],
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
@@ -1578,7 +1582,8 @@ fc_statements = dict(
             "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
         ],
     ),
-    c_string_in_buf=dict(
+    dict(
+        name="c_string_in_buf",
         buf_args=["arg", "len_trim"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1588,7 +1593,8 @@ fc_statements = dict(
             )
         ],
     ),
-    c_string_out_buf=dict(
+    dict(
+        name="c_string_out_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -1599,7 +1605,8 @@ fc_statements = dict(
             "\t {cxx_var}{cxx_member}size());"
         ],
     ),
-    c_string_inout_buf=dict(
+    dict(
+        name="c_string_inout_buf",
         buf_args=["arg", "len_trim", "len"],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -1610,7 +1617,8 @@ fc_statements = dict(
             "\t {cxx_var}{cxx_member}size());"
         ],
     ),
-    c_string_result=dict(
+    dict(
+        name="c_string_result",
         # cxx_to_c creates a pointer from a value via c_str()
         # The default behavior will dereference the value.
         ret=[
@@ -1618,7 +1626,8 @@ fc_statements = dict(
         ],
         return_cptr=True,
     ),
-    c_string_result_buf=dict(
+    dict(
+        name="c_string_result_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         post_call=[
@@ -1640,7 +1649,8 @@ fc_statements = dict(
     #    c_step2(context, Fout, context%elem_len)
     # only used with bufferifed routines and intent(out) or result
     # std::string * function()
-    c_string_result_buf_allocatable=dict(
+    dict(
+        name="c_string_result_buf_allocatable",
         # pass address of string and length back to Fortran
         buf_args=["context"],
         c_helper="copy_string ShroudStrToArray",
@@ -1657,7 +1667,8 @@ fc_statements = dict(
     # must set an alias for c_string_scalar.
     # No need to allocate a local copy since the string is copied
     # into a Fortran variable before the string is deleted.
-    c_string_scalar_result_buf=dict(
+    dict(
+        name="c_string_scalar_result_buf",
         alias="c_string_result_buf",
     ),
     
@@ -1665,7 +1676,8 @@ fc_statements = dict(
     # Must allocate the std::string then assign to it via cxx_rv_decl.
     # This allows the std::string to outlast the function return.
     # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
-    c_string_scalar_result_buf_allocatable=dict(
+    dict(
+        name="c_string_scalar_result_buf_allocatable",
         # pass address of string and length back to Fortran
         buf_args=["context"],
         cxx_local_var="pointer",
@@ -1688,7 +1700,8 @@ fc_statements = dict(
     ),
     
     # similar to f_char_result_allocatable
-    f_string_result_allocatable=dict(
+    dict(
+        name="f_string_result_allocatable",
         need_wrapper=True,
         f_helper="copy_string",
         post_call=[
@@ -1699,7 +1712,8 @@ fc_statements = dict(
     ),
     
     
-    c_vector_in_buf=dict(
+    dict(
+        name="c_vector_in_buf",
         buf_args=["arg", "size"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1710,7 +1724,8 @@ fc_statements = dict(
         ],
     ),
     # cxx_var is always a pointer to a vector
-    c_vector_out_buf=dict(
+    dict(
+        name="c_vector_out_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
         c_helper="array_context copy_array ShroudTypeDefines",
@@ -1736,7 +1751,8 @@ fc_statements = dict(
             "delete cxx_ptr;",
         ],
     ),
-    c_vector_inout_buf=dict(
+    dict(
+        name="c_vector_inout_buf",
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
         c_helper="array_context copy_array ShroudTypeDefines",
@@ -1763,7 +1779,8 @@ fc_statements = dict(
         ],
     ),
     # Almost same as intent_out_buf.
-    c_vector_result_buf=dict(
+    dict(
+        name="c_vector_result_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
         c_helper="array_context ShroudTypeDefines",
@@ -1789,7 +1806,8 @@ fc_statements = dict(
             "delete cxx_ptr;",
         ],
     ),
-    #                c_vector_result_buf=dict(
+    #                dict(
+    #                    name="c_vector_result_buf",
     #                    buf_args=['arg', 'size'],
     #                    c_helper='ShroudStrCopy',
     #                    post_call=[
@@ -1805,7 +1823,8 @@ fc_statements = dict(
     #                ),
     
     # Specialize for vector<string>.
-    c_vector_in_buf_string=dict(
+    dict(
+        name="c_vector_in_buf_string",
         buf_args=["arg", "size", "len"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
@@ -1824,7 +1843,8 @@ fc_statements = dict(
             "-}}",
         ],
     ),
-    c_vector_out_buf_string=dict(
+    dict(
+        name="c_vector_out_buf_string",
         buf_args=["arg", "size", "len"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
@@ -1846,7 +1866,8 @@ fc_statements = dict(
             "-}}",
         ],
     ),
-    c_vector_inout_buf_string=dict(
+    dict(
+        name="c_vector_inout_buf_string",
         buf_args=["arg", "size", "len"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1879,7 +1900,8 @@ fc_statements = dict(
             "-}}",
         ],
     ),
-    #                    c_vector_result_buf_string=dict(
+    #                    dict(
+    #                        name="c_vector_result_buf_string",
     #                        c_helper='ShroudStrCopy',
     #                        post_call=[
     #                            'if ({cxx_var}.empty()) {{+',
@@ -1892,7 +1914,8 @@ fc_statements = dict(
     #                        ],
     #                    ),
     # copy into user's existing array
-    f_vector_out=dict(
+    dict(
+        name="f_vector_out",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1900,7 +1923,8 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))"
         ],
     ),
-    f_vector_inout=dict(
+    dict(
+        name="f_vector_inout",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1908,7 +1932,8 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))"
         ],
     ),
-    f_vector_result=dict(
+    dict(
+        name="f_vector_result",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1917,7 +1942,8 @@ fc_statements = dict(
         ],
     ),
     # copy into allocated array
-    f_vector_out_allocatable=dict(
+    dict(
+        name="f_vector_out_allocatable",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1926,7 +1952,8 @@ fc_statements = dict(
             "{f_var}, size({f_var},kind=C_SIZE_T))",
         ],
     ),
-    f_vector_inout_allocatable=dict(
+    dict(
+        name="f_vector_inout_allocatable",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1938,7 +1965,8 @@ fc_statements = dict(
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
     # Always return a 1-d array.
-    f_vector_result_allocatable=dict(
+    dict(
+        name="f_vector_result_allocatable",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -1951,7 +1979,8 @@ fc_statements = dict(
     # Pass in a pointer to a shadow object via buf_args.
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
-    c_shadow_in=dict(
+    dict(
+        name="c_shadow_in",
         buf_args=["shadow"],
         cxx_local_var="pointer",
         pre_call=[
@@ -1959,11 +1988,13 @@ fc_statements = dict(
             "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
         ],
     ),
-    c_shadow_scalar_in=dict(
+    dict(
+        name="c_shadow_scalar_in",
         alias="c_shadow_in",
     ),
     # Return a C_capsule_data_type.
-    c_shadow_result=dict(
+    dict(
+        name="c_shadow_result",
         buf_extra=["shadow"],
         c_local_var="pointer",
         post_call=[
@@ -1976,7 +2007,8 @@ fc_statements = dict(
         return_type="{c_type} *",
         return_cptr=True,
     ),
-    c_shadow_scalar_result=dict(
+    dict(
+        name="c_shadow_scalar_result",
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
@@ -1998,7 +2030,8 @@ fc_statements = dict(
         return_type="{c_type} *",
         return_cptr=True,
     ),
-    f_shadow_result=dict(
+    dict(
+        name="f_shadow_result",
         need_wrapper=True,
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
@@ -2010,7 +2043,8 @@ fc_statements = dict(
             "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
         ],
     ),
-    c_shadow_ctor=dict(
+    dict(
+        name="c_shadow_ctor",
         buf_extra=["shadow"],
         cxx_local_var="pointer",
         call=[
@@ -2023,14 +2057,17 @@ fc_statements = dict(
         ],
         return_type="{c_type} *",
     ),
-    c_shadow_scalar_ctor=dict(
+    dict(
+        name="c_shadow_scalar_ctor",
         alias="c_shadow_ctor",
     ),
-    f_shadow_ctor=dict(
+    dict(
+        name="f_shadow_ctor",
         alias="f_shadow_result",
     ),
-    c_shadow_dtor=dict(
+    dict(
         # NULL in stddef.h
+        name="c_shadow_dtor",
         c_header=["<stddef.h>"],
         cxx_header=["<cstddef>"],
         call=[
@@ -2040,25 +2077,29 @@ fc_statements = dict(
         return_type="void",
     ),
 
-    c_struct=dict(
+    dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
+        name="c_struct",
         cxx_cxx_local_var="pointer", # cxx_local_var only used with C++
         cxx_pre_call=[
             "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void *>(\t{c_addr}{c_var}));",
         ],
     ),
-    c_struct_result=dict(
+    dict(
+        name="c_struct_result",
         # C++ pointer -> void pointer -> C pointer
         c_local_var="pointer",
         cxx_post_call=[
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
     ),
-    f_struct_scalar_result=dict(
+    dict(
+        name="f_struct_scalar_result",
         # Needed to differentiate from f_struct_pointer_result.
     ),
-    f_struct_pointer_result=dict(
+    dict(
+        name="f_struct_pointer_result",
         alias="f_native_pointer_result_pointer",
     ),
-)
+]
