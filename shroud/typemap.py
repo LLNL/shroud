@@ -1168,7 +1168,7 @@ def update_stmt_tree(stmts, tree, defaults):
 
     Implement "alias" field.
 
-    Add "key" to node and "_key" to tree to aid debugging.
+    Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
     based based on the language (c or f) and added as "scope" field.
@@ -1215,7 +1215,6 @@ def update_stmt_tree(stmts, tree, defaults):
             step = step.setdefault(part, {})
             label.append(part)
             step["_key"] = "_".join(label)
-        node["key"] = node["name"]  # useful for debugging/testing
         if "alias" in node:
             step['_node'] = nodes[node["alias"]]
         else:
@@ -1264,7 +1263,6 @@ def lookup_stmts_tree(tree, path):
 
 class CStmts(object):
     def __init__(self,
-        key="c_default",
         name="c_default",
         buf_args=[], buf_extra=[],
         c_header=[], c_helper="", c_local_var=None,
@@ -1274,7 +1272,6 @@ class CStmts(object):
         owner="library",
         return_type=None, return_cptr=False,
     ):
-        self.key = key
         self.name = name
         self.buf_args = buf_args
         self.buf_extra = buf_extra
@@ -1300,7 +1297,6 @@ class FStmts(object):
     f_attribute - passed to gen_arg_as_fortran
     """
     def __init__(self,
-        key="f_default",
         name="f_default",
         buf_args=[],
         c_local_var=None,
@@ -1309,7 +1305,6 @@ class FStmts(object):
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
     ):
-        self.key = key
         self.name = name
         self.buf_args = buf_args
         self.c_local_var = c_local_var

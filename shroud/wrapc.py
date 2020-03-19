@@ -772,7 +772,7 @@ class Wrapc(util.WrapperMixin):
             result_blk = typemap.lookup_fc_stmts(stmts)
             # Useful for debugging.  Requested and found path.
             fmt_result.stmt0 = typemap.compute_name(stmts)
-            fmt_result.stmt1 = result_blk.key
+            fmt_result.stmt1 = result_blk.name
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -967,7 +967,7 @@ class Wrapc(util.WrapperMixin):
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = typemap.compute_name(stmts)
-            fmt_arg.stmt1 = intent_blk.key
+            fmt_arg.stmt1 = intent_blk.name
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,

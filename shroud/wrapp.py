@@ -1202,7 +1202,7 @@ return -1;
                 intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
                 fmt_arg.stmt0 = typemap.compute_name(stmts)
-                fmt_arg.stmt1 = intent_blk.key
+                fmt_arg.stmt1 = intent_blk.name
 
             # local_var - 'funcptr', 'pointer', or 'scalar'
             if intent_blk.c_local_var:
@@ -1871,7 +1871,7 @@ return -1;
                 result_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
                 fmt_result.stmt0 = typemap.compute_name(stmts)
-                fmt_result.stmt1 = result_blk.key
+                fmt_result.stmt1 = result_blk.name
             
         return fmt_result, result_blk
 
@@ -3289,7 +3289,6 @@ class PyStmts(object):
     # c_local_var - "scalar", "pointer", "funcptr"
     # parse_as_object - Uses pytmp_var in PyArg_Parse
     def __init__(self,
-        key="py_default",
         name="py_default",
         allocate_local_var=False,
         c_header=[], c_helper=[], c_local_var=None,
@@ -3304,7 +3303,6 @@ class PyStmts(object):
         cleanup=[], fail=[],
         goto_fail=False,
     ):
-        self.key = key
         self.name = name
         self.allocate_local_var = allocate_local_var
         self.c_header = c_header
