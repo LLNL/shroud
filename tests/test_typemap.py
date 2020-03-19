@@ -28,7 +28,7 @@ class Typemap(unittest.TestCase):
 
         rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
         self.assertIsInstance(rv, util.Scope)
-        self.assertEqual(rv.key, "c_a")
+        self.assertEqual(rv.name, "c_a")
         
     def test_lookup_tree1(self):
         cf_tree = {}
@@ -44,16 +44,16 @@ class Typemap(unittest.TestCase):
 
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","result","buf","allocatable"])
-        self.assertEqual(rv["key"], "c_string_result_buf_allocatable")
+        self.assertEqual(rv["name"], "c_string_result_buf_allocatable")
 
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","scalar", "result","buf","allocatable"])
-        self.assertEqual(rv["key"], "c_string_scalar_result_buf_allocatable")
+        self.assertEqual(rv["name"], "c_string_scalar_result_buf_allocatable")
 
         # pointer is not in the tree, so skip while doing the lookup.
         rv = typemap.lookup_stmts_tree(
             cf_tree, ["c","string","pointer", "result","buf","allocatable"])
-        self.assertEqual(rv["key"], "c_string_result_buf_allocatable")
+        self.assertEqual(rv["name"], "c_string_result_buf_allocatable")
         
 
 if __name__ == "__main__":
