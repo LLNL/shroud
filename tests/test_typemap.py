@@ -12,28 +12,6 @@ from shroud import util
 import unittest
 
 class Typemap(unittest.TestCase):
-    def XXXtest_lookup_stmts1(self):
-        statements = dict(
-            result=dict(check="result"),
-            result_allocatable=dict(check="result_allocatable"),
-        )
-        
-        rv = typemap.lookup_stmts(statements, ["result"])
-        self.assertEqual(rv["check"], "result")
-
-        rv = typemap.lookup_stmts(statements, ["result", "allocatable"])
-        self.assertEqual(rv["check"], "result_allocatable")
-
-        rv = typemap.lookup_stmts(statements, ["result", ""])
-        self.assertEqual(rv["check"], "result")
-
-        rv = typemap.lookup_stmts(statements, ["result", None, "allocatable"])
-        self.assertEqual(rv["check"], "result_allocatable")
-
-        # Not found, return empty dictionary
-        rv = typemap.lookup_stmts(statements, ["none"])
-        self.assertEqual(rv, {})
-
     def test_alias(self):
         # Prefix names with "c" to work with typemap.default_stmts.
         cf_tree = {}

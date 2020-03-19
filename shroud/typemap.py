@@ -28,8 +28,6 @@ except:
 
 # The tree of c and fortran statements.
 cf_tree = {}
-# Always return the same empty statements.
-empty_stmts = {}
 default_scopes = dict()
 
 class Typemap(object):
@@ -1050,32 +1048,6 @@ def lookup_c_statements(arg):
         specialize.append(arg_typemap.sgroup)
     return arg_typemap, specialize
 
-def XXXlookup_stmts(stmts, path):
-    """
-    Lookup path in stmts.
-    Used to find specific cases first, then fall back to general.
-    ex path = ['result', 'allocatable']
-         Finds 'result_allocatable' if it exists, else 'result'.
-    If not found, return an empty dictionary.
-
-    path typically consists of:
-      intent_in, intent_out, intent_inout, result
-      generated_clause - buf
-      deref - allocatable
-
-    Args:
-        stmts - dictionary
-        path  - list of name components.
-                Blank entries are ignored.
-    """
-    work = [ part for part in path if part ] # skip empty components
-    while work:
-        check = '_'.join(work)
-        if check in stmts:
-            return stmts[check]
-        work.pop()
-    return empty_stmts
-        
 def lookup_fc_stmts(path):
     return lookup_stmts_tree(cf_tree, path)
         
@@ -1166,7 +1138,8 @@ def update_for_language(stmts, lang):
     Move language specific entries to current language.
 
     stmts=[
-      foo_bar=dict(
+      dict(
+        name='foo_bar',
         c_declare=[],
         cxx_declare=[],
       ),
@@ -1201,22 +1174,23 @@ def update_stmt_tree(stmts, tree, defaults):
     based based on the language (c or f) and added as "scope" field.
     This additional layer of indirection is needed to implement alias.
 
-    stmts = ["c_native_in":1,
-             "c_native_out":2,
-             "c_native_pointer_out":3,
-             "c_string_in":4,
-            ]
+    stmts = [
+       {name="c_native_in",}           # value1
+       {name="c_native_out",}          # value2
+       {name="c_native_pointer_out",}  # value3
+       {name="c_string_in",}           # value4
+    ]
     tree = {
       "c": {
          "native": {
-           "in": {"_node":1},
-           "out":{"_node":2},
+           "in": {"_node":value1},
+           "out":{"_node":value2},
            "pointer":{
-             "out":{"_node":3},
+             "out":{"_node":value3},
            },
          },
          "string":{
-           "in": {"_node":4},
+           "in": {"_node":value4},
          },
       },
     }
