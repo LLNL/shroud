@@ -90,7 +90,6 @@ declarations:
 
 ######################################################################
 # Deal with 'char **' arguments
+# Python: treat as list of string, even with numpy.
 
 - decl: void acceptCharArrayIn(char **names +intent(in))
-  options:
-    wrap_python: False

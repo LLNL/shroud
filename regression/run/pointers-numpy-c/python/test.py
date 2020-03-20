@@ -112,6 +112,9 @@ class Pointers(unittest.TestCase):
             out = pointers.incrementIntArray(array)
         self.assertTrue('array must be' in str(context.exception))
 
+    def test_acceptCharArrayIn(self):
+        pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

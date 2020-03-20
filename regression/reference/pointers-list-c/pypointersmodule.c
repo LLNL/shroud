@@ -26,6 +26,37 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+// Convert obj into an array of type char *
+// Return -1 on error.
+static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
+    char ***pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    char **in = (char **) malloc(size * sizeof(char *));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyString_AsString(item);
+        if (PyErr_Occurred()) {
+            free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be string", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+
 // Convert obj into an array of type double
 // Return -1 on error.
 static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
@@ -622,6 +653,50 @@ fail:
     return NULL;
 // splicer end function.increment_int_array
 }
+
+static char PY_acceptCharArrayIn__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptCharArrayIn(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// splicer begin function.accept_char_array_in
+    char ** names = NULL;
+    PyObject * SHTPy_names;
+    char *SHT_kwlist[] = {
+        "names",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptCharArrayIn",
+        SHT_kwlist, &SHTPy_names))
+        return NULL;
+
+    // pre_call
+    Py_ssize_t SHSize_names;
+    if (SHROUD_from_PyObject_char(SHTPy_names, "names", &names, 
+        &SHSize_names) == -1)
+        goto fail;
+
+    acceptCharArrayIn(names);
+
+    // post_call
+    free(names);
+    names = NULL;
+
+    Py_RETURN_NONE;
+
+fail:
+    if (names != NULL) {
+        free(names);
+    }
+    return NULL;
+// splicer end function.accept_char_array_in
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -642,6 +717,8 @@ static PyMethodDef PY_methods[] = {
     PY_fillIntArray__doc__},
 {"incrementIntArray", (PyCFunction)PY_incrementIntArray,
     METH_VARARGS|METH_KEYWORDS, PY_incrementIntArray__doc__},
+{"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

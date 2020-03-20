@@ -1141,6 +1141,27 @@
                 "options": {}
             },
             {
+                "_fmtargs": {
+                    "names": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "names",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "names",
+                            "data_var": "SHData_names",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_names",
+                            "pytmp_var": "SHTPy_names",
+                            "size_var": "SHSize_names",
+                            "stmt0": "py_char_**_in",
+                            "stmt1": "py_char_**_in"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -1177,12 +1198,11 @@
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
                 "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
                 "fmtdict": {
+                    "PY_name_impl": "PY_acceptCharArrayIn",
                     "function_name": "acceptCharArrayIn",
                     "underscore_name": "accept_char_array_in"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             }
         ],
         "language": "c",

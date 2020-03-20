@@ -210,6 +210,41 @@ array->rank = 1;
     )
     ##########
 
+    name = "from_PyObject_char"
+    CHelpers[name] = dict(
+        c_header="<stdlib.h>",  # malloc/free
+        cxx_header="<cstdlib>",  # malloc/free
+        source=wformat(
+            """
+// Convert obj into an array of type char *
+// Return -1 on error.
+static int SHROUD_from_PyObject_char\t(PyObject *obj,\t const char *name,\t char ***pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+char **in = {cast_static}char **{cast1}{stdlib}malloc(size * sizeof(char *)){cast2};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = PyString_AsString(item);
+if (PyErr_Occurred()) {{+
+{stdlib}free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be string",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""", fmt),
+    )
+
+######################################################################
 
 def add_shadow_helper(node):
     """

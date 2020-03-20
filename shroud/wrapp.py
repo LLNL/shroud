@@ -1186,7 +1186,10 @@ return -1;
                     fmt_arg.charlen = charlen
                     stmts = ["py", "char", intent, "charlen"]
                 else:
-                    stmts = ["py", "char", intent]
+                    spointer = arg.get_indirect_stmt()
+                    if spointer in ["scalar", "pointer"]:
+                        spointer = "" # XXX - preserve old behavior
+                    stmts = ["py", "char", spointer, intent]
             elif arg_typemap.base == "struct":
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
@@ -3713,6 +3716,34 @@ py_statements = [
             "{c_const}char * {c_var};",
         ],
     ),
+
+    dict(
+        name="py_char_**_in",
+        c_helper="from_PyObject_char",
+        parse_as_object=True,
+        c_local_var="pointer",
+        declare=[
+            "{c_const}char ** {cxx_var} = {nullptr};",
+            "PyObject * {pytmp_var};", # set by PyArg_Parse
+        ],
+        pre_call=[
+            "Py_ssize_t {size_var};",
+            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "+goto fail;-",
+        ],
+        post_call=[
+            "{stdlib}free({cxx_var});",
+            "{cxx_var} = {nullptr};",
+        ],
+        fail=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{stdlib}free({cxx_var});",
+            "-}}",
+        ],
+        goto_fail=True,
+    ),
+    
 ########################################
 # string
     dict(

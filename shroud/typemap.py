@@ -693,6 +693,7 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",
+#            PY_get="PyString_AsString({py_var})",
             PY_get_converter="SHROUD_get_from_object_char",
             PYN_typenum="NPY_INTP",  # void *
             LUA_type="LUA_TSTRING",
