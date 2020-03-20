@@ -157,6 +157,14 @@ test-lua : lua-tutorial
 test-all : test-c test-fortran test-python test-lua
 
 # test specific yaml files
+test-pointers : \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cpp \
+  test-python-pointers-numpy-c \
+  test-python-pointers-numpy-cpp \
+  test-python-pointers-list-c \
+  test-python-pointers-list-cpp
+
 test-struct : \
   test-fortran-struct-c \
   test-fortran-struct-cxx \

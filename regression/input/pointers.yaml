@@ -88,4 +88,9 @@ declarations:
     description: |
       Increment array in place using intent(INOUT).
 
-  
+######################################################################
+# Deal with 'char **' arguments
+
+- decl: void acceptCharArrayIn(char **names +intent(in))
+  options:
+    wrap_python: False

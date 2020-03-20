@@ -1450,6 +1450,177 @@
                     "underscore_name": "increment_int_array"
                 },
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "names": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "names",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "names",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "names",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_**_in",
+                            "stmt1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "acceptCharArrayIn",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "names",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptCharArrayIn(char **names +intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "fmtdict": {
+                    "C_call_list": "names",
+                    "C_name": "acceptCharArrayIn",
+                    "C_prototype": "char * * names",
+                    "C_return_type": "void",
+                    "F_C_call": "c_accept_char_array_in_bufferify",
+                    "F_C_name": "c_accept_char_array_in",
+                    "F_arg_c_call": "names,\t size(names, kind=C_LONG),\t len(names, kind=C_INT)",
+                    "F_arguments": "names",
+                    "F_name_function": "accept_char_array_in",
+                    "F_name_generic": "accept_char_array_in",
+                    "F_name_impl": "accept_char_array_in",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "acceptCharArrayIn",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "accept_char_array_in"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "names": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "names",
+                            "c_var_len": "Nnames",
+                            "c_var_size": "Snames",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SHCXX_names",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SHCXX_names",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_**_in_buf",
+                            "stmt1": "c_char_**_in_buf"
+                        },
+                        "fmtf": {
+                            "c_var": "names",
+                            "f_type": "character(*)",
+                            "f_var": "names",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_**_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_**_in_buf",
+                            "stmtc1": "c_char_**_in_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptCharArrayIn",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in",
+                                "len": "Nnames",
+                                "size": "Snames"
+                            },
+                            "declarator": {
+                                "name": "names",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptCharArrayIn(char **names +intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))",
+                "fmtdict": {
+                    "C_call_list": "SHCXX_names",
+                    "C_name": "POI_accept_char_array_in_bufferify",
+                    "C_prototype": "char *names,\t long Snames,\t int Nnames",
+                    "C_return_type": "void",
+                    "F_C_name": "c_accept_char_array_in_bufferify",
+                    "c_const": "",
+                    "function_name": "acceptCharArrayIn",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "accept_char_array_in"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",

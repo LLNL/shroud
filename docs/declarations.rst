@@ -140,6 +140,13 @@ is to account for blank filled vs ``NULL`` terminated.
     ``char *arg+intent(out), int larg+implied(len(arg))``.
     See example :ref:`ImpliedTextLen <example_ImpliedTextLen>`.
 
+``char **arg``
+   This is treated as an array of ``NULL`` terminated strings.
+
+   ``CHARACTER(len=*) arg(:)``
+
+.. XXX 
+
 std::string
 -----------
 

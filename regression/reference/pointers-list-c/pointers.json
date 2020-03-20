@@ -1139,6 +1139,50 @@
                     "underscore_name": "increment_int_array"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "acceptCharArrayIn",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "names",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptCharArrayIn(char **names +intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "fmtdict": {
+                    "function_name": "acceptCharArrayIn",
+                    "underscore_name": "accept_char_array_in"
+                },
+                "options": {
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",

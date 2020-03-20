@@ -9,6 +9,8 @@ C function void iota_dimension(int nvar +intent(in)+value, int * values +dimensi
 C function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C function void fillIntArray(int * out +dimension(3)+intent(out))
 C function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+C function void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+C function void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
@@ -22,4 +24,6 @@ C-interface, Fortran function void iota_dimension(int nvar +intent(in)+value, in
 C-interface, Fortran function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C-interface, Fortran function void fillIntArray(int * out +dimension(3)+intent(out))
 C-interface, Fortran function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+C-interface, Fortran function void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+C-interface function void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
 Close wrapfpointers.f

@@ -188,9 +188,13 @@ class VerifyAttrs(object):
                     attrs["dimension"] = ":"
                 else:
                     attrs["dimension"] = "*"
-        elif ntypemap and ntypemap.base == "vector":
-            # default to 1-d assumed shape
-            attrs["dimension"] = ":"
+        elif ntypemap:
+            if ntypemap.base == "vector":
+                # default to 1-d assumed shape
+                attrs["dimension"] = ":"
+            elif ntypemap.name == 'char' and is_ptr == 2:
+                # 'char **' -> CHARACTER(*) s(:)
+                attrs["dimension"] = ":"
 
         owner = attrs["owner"]
         if owner is not None:

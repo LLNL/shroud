@@ -1538,14 +1538,14 @@ fc_statements = [
         name='c_char_**_in_buf',
         # argptr - argument is char *, not char **.
         buf_args=["argptr", "size", "len"],
-        c_helper="ShroudStrAllocArray ShroudStrFreeArray",
+        c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         pre_call=[
-            "char **{cxx_var} = ShroudStrAllocArray("
+            "char **{cxx_var} = ShroudStrArrayAlloc("
             "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         post_call=[
-            "ShroudStrFreeArray({c_var}, {c_var_size});",
+            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
         ],
     ),
     #####
