@@ -33,7 +33,8 @@ test-fortran : \
   test-fortran-forward \
   test-fortran-enum-c \
   test-fortran-namespace \
-  test-fortran-pointers \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cpp \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
@@ -189,7 +190,8 @@ phony_explicit:
     $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/pointers/..\
+    $(tempdir)/run/pointers-c/..\
+    $(tempdir)/run/pointers-cpp/..\
     $(tempdir)/run/pointers-numpy-cpp/python/.. \
     $(tempdir)/run/pointers-list-cpp/python/.. \
     $(tempdir)/run/pointers-numpy-c/python/.. \

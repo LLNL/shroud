@@ -11,12 +11,12 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-numpy-cpp \
+    -I$(top)/regression/reference/pointers-c \
     -I$(top)/regression/run/pointers \
     -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/regression/reference/pointers-numpy-cpp \
+    $(top)/regression/reference/pointers-c \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
@@ -27,8 +27,12 @@ OBJS = \
     fruit.o \
     main.o
 
-pointers : $(OBJS)
+pointers-c : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+
+# Convert C++ file to C
+pointers.c : $(top)/regression/run/pointers/pointers.cpp
+	cp $^ $@
 
 clean :
 	rm -f $(OBJS) *.mod pointers

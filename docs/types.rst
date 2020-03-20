@@ -410,14 +410,14 @@ Fortran keeps track of C++ objects with the struct
 ``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{F_name_scope}capsule``.
 In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
-.. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
+.. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c++
-   :start-after: start struct TUT_Class1
-   :end-before: end struct TUT_Class1
+   :start-after: start struct CLA_Class1
+   :end-before: end struct CLA_Class1
 
 And :file:`wrapftutorial.f`:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start derived-type SHROUD_class1_capsule
    :end-before: end derived-type SHROUD_class1_capsule
