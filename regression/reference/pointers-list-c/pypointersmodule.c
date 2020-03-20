@@ -29,7 +29,7 @@
 // Convert obj into an array of type char *
 // Return -1 on error.
 static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
-    char ***pin, Py_ssize_t *psize)
+    char * **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -38,7 +38,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char **in = (char **) malloc(size * sizeof(char *));
+    char * *in = (char * *) malloc(size * sizeof(char *));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyString_AsString(item);
@@ -69,7 +69,7 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    double *in = malloc(size * sizeof(double));
+    double *in = (double *) malloc(size * sizeof(double));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyFloat_AsDouble(item);
@@ -100,7 +100,7 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int *in = malloc(size * sizeof(int));
+    int *in = (int *) malloc(size * sizeof(int));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);

@@ -209,40 +209,14 @@ array->rank = 1;
 -}}{lend}""", fmt),
     )
     ##########
-
+    # 'char *' needs a custom handler because of the nature
+    # of NULL terminated strings.
     name = "from_PyObject_char"
-    CHelpers[name] = dict(
-        c_header="<stdlib.h>",  # malloc/free
-        cxx_header="<cstdlib>",  # malloc/free
-        source=wformat(
-            """
-// Convert obj into an array of type char *
-// Return -1 on error.
-static int SHROUD_from_PyObject_char\t(PyObject *obj,\t const char *name,\t char ***pin,\t Py_ssize_t *psize)
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-char **in = {cast_static}char **{cast1}{stdlib}malloc(size * sizeof(char *)){cast2};
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = PyString_AsString(item);
-if (PyErr_Occurred()) {{+
-{stdlib}free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be string",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-    )
+    fmt.fcn_suffix="char"
+    fmt.fcn_type="string"
+    fmt.c_type="char *"
+    fmt.Py_get="PyString_AsString(item)"
+    CHelpers[name] = add_from_PyObject(fmt)
 
 ######################################################################
 
@@ -589,71 +563,12 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_" + ntypemap.c_type
     if name not in CHelpers and ntypemap.PY_get:
-        fmt = dict(
-            c_type=ntypemap.c_type,
-            Py_get=ntypemap.PY_get.format(py_var="item"),
-        )
-        helper = dict(
-            c_header="<stdlib.h>",  # malloc/free
-            c_source=wformat(
-                """
-// Convert obj into an array of type {c_type}
-// Return -1 on error.
-static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = malloc(size * sizeof({c_type}));
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-            cxx_header="<cstdlib>",  # malloc/free
-            cxx_source=wformat(
-                """
-// Convert obj into an array of type {c_type}
-// Return -1 on error.
-static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = static_cast<{c_type} *>\t(std::malloc(size * sizeof({c_type})));
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-std::free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-        )
-        CHelpers[name] = helper
+        fmt = util.Scope(_newlibrary.fmtdict)
+        fmt.fcn_suffix=ntypemap.c_type
+        fmt.fcn_type=ntypemap.c_type
+        fmt.c_type=ntypemap.c_type
+        fmt.Py_get=ntypemap.PY_get.format(py_var="item")
+        CHelpers[name] = add_from_PyObject(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
@@ -711,6 +626,44 @@ return 1;
 -}}""", fmt),
             )
         CHelpers[name] = helper
+
+def add_from_PyObject(fmt):
+    """Create helper to convert list of objects to C array.
+    """
+    helper = dict(
+        c_header="<stdlib.h>",   # malloc/free
+        cxx_header="<cstdlib>",  # malloc/free
+        source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{fcn_suffix}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+{stdlib}free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""", fmt),
+        )
+    return helper
+    
 
 def add_to_PyList_helper_vector(arg):
     """Add helpers to work with Python lists.
