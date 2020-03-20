@@ -119,6 +119,24 @@ class Struct(unittest.TestCase):
             ptr.cfield = 1
         self.assertTrue("argument must be a string" in str(context.exception))
 
+    def test_cstruct_list(self):
+        # getter and setter
+        s = cstruct.Cstruct_list()
+
+        input = [1,2,3,4,5]
+        s.ivalue = input
+        ivalue = s.ivalue
+        self.assertIsInstance(ivalue, list)
+        self.assertEqual(5, len(ivalue))
+        self.assertEqual(input, ivalue)
+
+        input = [6,7,8,9,10]
+        s.dvalue = input
+        dvalue = s.dvalue
+        self.assertIsInstance(dvalue, list)
+        self.assertEqual(5, len(dvalue))
+        self.assertEqual(input, dvalue)
+        
     def test_cstruct_numpy(self):
         # getter and setter
         s = cstruct.Cstruct_numpy()
