@@ -972,6 +972,66 @@ int ShroudLenTrim(const char *src, int nsrc) {
 """
     ),
     ########################################
+    # Used with 'char **' arguments.
+    ShroudStrAllocArray=dict(
+        dependent_helpers=["ShroudLenTrim"],
+        c_header="<string.h> <stdlib.h>",
+        c_source="""
+// helper function
+// Copy src into new memory and null terminate.
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+{
+   char *rv = malloc(nsrc + 1);
+   if (ntrim > 0) {
+     memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\\0';
+   return rv;
+}""",
+        cxx_header="<cstring> <cstdlib>",
+        cxx_source="""
+// helper function
+// Copy src into new memory and null terminate.
+// char **src +size(nsrc) +len(len)
+// CHARACTER(len) src(nsrc)
+static char **ShroudStrAllocArray(const char *src, int nsrc, int len)
+{
+   char **rv = (char *) std::malloc(sizeof(char *) * nsrc);
+   const char *src0 = src;
+   for(int i=0; i < nsrc; ++i) {
+      int ntrim = ShroudLenTrim(src0, len);
+      char *tgt = std::malloc(ntrim+1);
+      std::memcpy(tgt, src0, ntrim);
+      tgt[ntrim] = '\\0';
+      rv[i] = tgt;
+      src0 += len;
+   }
+   return rv;
+}""",
+    ),
+    
+    ShroudStrFreeArray=dict(
+        c_header="<stdlib.h>",
+        c_source="""
+// helper function
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
+{
+   free(src);
+}""",
+        cxx_header="<cstdlib>",
+        cxx_source="""
+// helper function
+// Release memory allocated by ShroudStrAllocArray
+static void ShroudStrFree(char **src, int nsrc)
+{
+   for(int i=0; i < nsrc; ++i) {
+       std::free(src[i]);
+   }
+   std::free(src);
+}""",
+    ),
+    ########################################
     converter_type=dict(
         source="""
 // Keep track of the PyObject and pointer to the data it contains.

@@ -1213,7 +1213,7 @@ class GenFunctions(object):
             # This filters out "buf" for ftrim_char_in
             arg.stmts_suffix = generated_suffix
             
-            spointer = "pointer" if arg.is_indirect() else "scalar"
+            spointer = arg.get_indirect_stmt()
             c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
             intent_blk = typemap.lookup_fc_stmts(c_stmts)
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)

@@ -1044,6 +1044,23 @@ class Declaration(Node):
             out += ptr.ptr
         return out
 
+    def get_indirect_stmt(self):
+        """Return statement field for pointers.
+        'scalar', 'pointer', '**'
+        """
+        out = ''
+        if self.declarator is None:
+            return "scalar"
+        for ptr in self.declarator.pointer:
+            out += ptr.ptr
+        if out == "":
+            return "scalar"
+        if out == "*":
+            return "pointer"
+        if out == "&":
+            return "pointer"
+        return out
+
     def get_subprogram(self):
         """Return Fortran subprogram - subroutine or function.
         Return None for variable declarations.

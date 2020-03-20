@@ -28,4 +28,6 @@ void incrementIntArray(int *array, int size);
 
 void Rank2Input(int *arg);
 
+void acceptCharArrayIn(char **names);
+
 #endif // POINTERS_HPP

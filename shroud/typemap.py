@@ -1532,6 +1532,23 @@ fc_statements = [
             "{c_var_context}->rank = 0;",
         ],
     ),
+
+    #####
+    dict(
+        name='c_char_**_in_buf',
+        # argptr - argument is char *, not char **.
+        buf_args=["argptr", "size", "len"],
+        c_helper="ShroudStrAllocArray ShroudStrFreeArray",
+        cxx_local_var="pointer",
+        pre_call=[
+            "char **{cxx_var} = ShroudStrAllocArray("
+            "{c_var},\t {c_var_size},\t {c_var_len});",
+        ],
+        post_call=[
+            "ShroudStrFreeArray({c_var}, {c_var_size});",
+        ],
+    ),
+    #####
     dict(
         name="f_char_result_allocatable",
         need_wrapper=True,

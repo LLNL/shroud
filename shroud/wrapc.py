@@ -612,14 +612,17 @@ class Wrapc(util.WrapperMixin):
                 continue
             elif buf_arg == "shadow":
                 # Do not use const in declaration.
-                proto_list.append( "{} {}{}".format(
+                proto_list.append("{} {}{}".format(
                     ast.typemap.c_type,
                     "" if attrs["value"] else "* ",
                     name or ast.name))
                 continue
 
             need_wrapper = True
-            if buf_arg == "size":
+            if buf_arg == "argptr":
+                proto_list.append("char *{}".format(
+                    name or ast.name))
+            elif buf_arg == "size":
                 fmt.c_var_size = attrs["size"]
                 append_format(proto_list, "long {c_var_size}", fmt)
             elif buf_arg == "capsule":
@@ -935,7 +938,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 # regular argument (not function result)
                 arg_call = arg
-                spointer = "pointer" if arg.is_indirect() else "scalar"
+                spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
                 stmts = ["c", sgroup, spointer, c_attrs["intent"],
                          arg.stmts_suffix, cdesc] + specialize
