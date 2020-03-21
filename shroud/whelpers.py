@@ -45,6 +45,7 @@ Helper functions for C and Fortran wrappers.
 
 """
 
+from . import typemap
 from . import util
 
 wformat = util.wformat
@@ -209,14 +210,25 @@ array->rank = 1;
 -}}{lend}""", fmt),
     )
     ##########
+    # Generate C or C++ version of helper.
+    ##########
     # 'char *' needs a custom handler because of the nature
     # of NULL terminated strings.
-    name = "from_PyObject_char"
+    ntypemap = typemap.lookup_type("char")
     fmt.fcn_suffix="char"
     fmt.fcn_type="string"
     fmt.c_type="char *"
     fmt.Py_get="PyString_AsString(item)"
-    CHelpers[name] = add_from_PyObject(fmt)
+#    fmt.Py_get=ntypemap.PY_get.format(py_var="item")
+    fmt.Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
+    CHelpers["to_PyList_char"] = create_to_PyList(fmt)
+
+    name = "SHROUD_get_from_object_charptr_list"
+    fmt.name = name
+    fmt.size_var="size"
+    fmt.c_var="in"
+    CHelpers[name] = create_get_from_object_list(fmt)
 
 ######################################################################
 
@@ -514,22 +526,12 @@ def add_to_PyList_helper(arg):
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(
+            fcn_suffix=ntypemap.c_type,
             c_type=ntypemap.c_type,
             Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         )
-        helper = dict(
-            source=wformat(
-                """
-static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
-{{+
-PyObject *out = PyList_New(size);
-for (size_t i = 0; i < size; ++i) {{+
-PyList_SET_ITEM(out, i, {Py_ctor});
--}}
-return out;
--}}""", fmt),
-        )
-        CHelpers[name] = helper
+        helper = create_to_PyList(fmt)
+        CHelpers[name] = create_to_PyList(fmt)
 
     ########################################
     # Used with intent(inout)
@@ -568,7 +570,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.fcn_type=ntypemap.c_type
         fmt.c_type=ntypemap.c_type
         fmt.Py_get=ntypemap.PY_get.format(py_var="item")
-        CHelpers[name] = add_from_PyObject(fmt)
+        CHelpers[name] = create_from_PyObject(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
@@ -602,33 +604,15 @@ return 1;
     name = "SHROUD_get_from_object_{}_list".format(ntypemap.c_type)
     if name not in CHelpers:
         fmt = util.Scope(_newlibrary.fmtdict)
-        fmt.c_type=ntypemap.c_type
-        fmt.size_var="size"
-        fmt.c_var="in"
-        helper = dict(
-            name=name,
-            dependent_helpers=[
-                "converter_type",
-                "from_PyObject_" + ntypemap.c_type,
-            ],
-            source=wformat("""
-// Helper - convert PyObject to {c_type} pointer.
-static int SHROUD_get_from_object_{c_type}_list(PyObject *obj,\t SHROUD_converter_value *value)
-{{+
-{c_type} *{c_var};
-Py_ssize_t {size_var};
-if (SHROUD_from_PyObject_{c_type}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
-return 0;
--}}
-value->obj = {nullptr};
-value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
-return 1;
--}}""", fmt),
-            )
-        CHelpers[name] = helper
+        fmt.name = name
+        fmt.c_type = ntypemap.c_type
+        fmt.size_var = "size"
+        fmt.c_var = "in"
+        fmt.fcn_suffix = ntypemap.c_type
+        CHelpers[name] = create_get_from_object_list(fmt)
 
-def add_from_PyObject(fmt):
-    """Create helper to convert list of objects to C array.
+def create_from_PyObject(fmt):
+    """Create helper to convert list of PyObjects to C array.
     """
     helper = dict(
         c_header="<stdlib.h>",   # malloc/free
@@ -664,6 +648,49 @@ return 0;
         )
     return helper
     
+def create_to_PyList(fmt):
+    """Create helper to convert C array to list of PyObjects.
+    """
+    helper = dict(
+        source=wformat(
+            """
+static PyObject *SHROUD_to_PyList_{fcn_suffix}({c_type} *in, size_t size)
+{{+
+PyObject *out = PyList_New(size);
+for (size_t i = 0; i < size; ++i) {{+
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+return out;
+-}}""", fmt),
+    )
+    return helper
+
+def create_get_from_object_list(fmt):
+    """
+    format fields:
+       fcn_suffix - 
+    """
+    helper = dict(
+        name=fmt.name,
+        dependent_helpers=[
+            "converter_type",
+            "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
+        ],
+        source=wformat("""
+// Helper - convert PyObject to {c_type} pointer.
+static int {name}(PyObject *obj,\t SHROUD_converter_value *value)
+{{+
+{c_type} *{c_var};
+Py_ssize_t {size_var};
+if (SHROUD_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+return 0;
+-}}
+value->obj = {nullptr};
+value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+return 1;
+-}}""", fmt),
+    )
+    return helper
 
 def add_to_PyList_helper_vector(arg):
     """Add helpers to work with Python lists.

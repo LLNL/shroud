@@ -12,7 +12,6 @@ buf_args documented in cwrapper.rst.
 from __future__ import print_function
 
 from . import util
-from . import whelpers
 
 # translation table to convert type name to flat name
 # unsigned int -> unsigned_int

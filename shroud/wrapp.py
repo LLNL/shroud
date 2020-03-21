@@ -684,7 +684,8 @@ return 1;""",
         else:
             fmt.ctor = "UUUctor"
 
-        if ast.is_indirect():
+        nindirect = ast.is_indirect()
+        if nindirect:
             append_format(
                 output,
                 """if ({c_var} == {nullptr}) {{+
@@ -697,12 +698,25 @@ return self->{PY_member_object};
                 fmt)
             if arg_typemap.name == "char":
                 # XXX - special case char since its ctor accepts a pointer.
-                append_format(
-                    output,
-                    "PyObject * rv = {ctor};\nreturn rv;",
-                    fmt,
-                )
-#XXX            elif "dimension" not in attrs:
+                if nindirect == 1:
+                    # 'char *' is a <type 'str'>.
+                    append_format(
+                        output,
+                        "PyObject * rv = {ctor};\nreturn rv;",
+                        fmt,
+                    )
+                elif nindirect == 2:
+                    # 'char **' is a <type 'list'> of <type 'str'>.
+                    self.c_helper["to_PyList_char"] = True
+                    fmt.size = "5";
+                    append_format(
+                        output,
+                        "PyObject *rv = SHROUD_to_PyList_char"
+                        "(self->{PY_type_obj}->{field_name}, {size});\n"
+                        "return rv;",
+                        fmt
+                    )
+                #XXX            elif "dimension" not in attrs:
             elif options.PY_array_arg == "numpy":
                 self.need_numpy = True
                 # Create array from NumPy
@@ -781,13 +795,22 @@ return self->{PY_member_object};
                 fmt
             )
 
-            if ast.is_indirect():
+            if nindirect:
                 if arg_typemap.PY_get_converter:
                     whelpers.add_to_PyList_helper(node.ast)
-                    hname = "{}_{}".format(
-                        arg_typemap.PY_get_converter, options.PY_array_arg)
+                    if nindirect == 1:
+                        subname = ""
+                    elif nindirect == 2:
+                        # Intended for 'char **'.
+                        subname = "ptr"
+                    hname = "{}{}_{}".format(
+                        arg_typemap.PY_get_converter,
+                        subname,
+                        options.PY_array_arg)
                     # Adjust for alias like with type char.
                     fmt.get = whelpers.CHelpers[hname]["name"]
+                    fmt.cast_type = ast.gen_arg_as_cxx(
+                    name=None, params=None)
                     append_format(output, """SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({get}({py_var}, &cvalue) == 0) {{+
@@ -796,7 +819,7 @@ self->{PY_member_object} = NULL;
 // XXXX set error
 return -1;
 -}}
-{c_var} = {cast_static}{cxx_type} *{cast1}cvalue.data{cast2};
+{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
 self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
                     self.c_helper[fmt.get] = True
@@ -2768,6 +2791,8 @@ setup(
         output_obj = []
         for var in node.variables:
             if var.ast.is_indirect():
+                var.fmtdict.cast_type = var.ast.gen_arg_as_cxx(
+                    name=None, params=None)
                 append_format(
                     output_obj,
                     "self->{PY_member_object} = {py_var}.obj;"
@@ -2776,7 +2801,7 @@ setup(
                 append_format(
                     output,
                     "SH_obj->{field_name} = "
-                    "{cast_static}{cxx_type} *{cast1}{py_var}.data{cast2};",
+                    "{cast_static}{cast_type}{cast1}{py_var}.data{cast2};",
                     var.fmtdict)
             else:
                 append_format(
