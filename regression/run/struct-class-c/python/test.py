@@ -120,6 +120,21 @@ class Struct(unittest.TestCase):
         self.assertTrue("argument must be a string" in str(context.exception))
 
     def test_cstruct_list(self):
+        # Create struct from each argument.
+        iinput = [1,2,3,4,5]
+        dinput = [6.,7.,8.,9.,10.]
+        sinput = ["dog", "cat", "monkey", "bird", "horse"]
+
+        s = cstruct.Cstruct_list(ivalue=iinput)
+        self.assertEqual(iinput, s.ivalue)
+
+        s = cstruct.Cstruct_list(dvalue=dinput)
+        self.assertEqual(dinput, s.dvalue)
+
+        s = cstruct.Cstruct_list(svalue=sinput)
+        self.assertEqual(sinput, s.svalue)
+        
+    def test_cstruct_list_setter(self):
         # getter and setter
         s = cstruct.Cstruct_list()
 

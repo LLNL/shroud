@@ -1306,7 +1306,13 @@ return -1;
                     append_format(
                         declare_code,
                         "SHROUD_converter_value {py_var};", fmt_arg)
-                    if not arg_typemap.PY_get_converter:
+                    hname = intent_blk.get_converter
+                    if hname:
+                        hname = "{}_{}".format(
+                            hname,
+                            options.PY_array_arg)
+                        self.c_helper[hname] = True
+                    elif not arg_typemap.PY_get_converter:
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
@@ -1314,7 +1320,8 @@ return -1;
                     else:
                         whelpers.add_to_PyList_helper(arg)
                         hname = "{}_{}".format(
-                            arg_typemap.PY_get_converter, options.PY_array_arg)
+                            arg_typemap.PY_get_converter,
+                            options.PY_array_arg)
                         self.c_helper[hname] = True
                         # Adjust for alias like with type char.
                         hname = whelpers.CHelpers[hname]["name"]
@@ -3324,6 +3331,7 @@ class PyStmts(object):
         cxx_header=[], cxx_local_var=None,
         need_numpy=False,
         object_created=False, parse_as_object=False,
+        get_converter=None,
         declare=[], post_parse=[], pre_call=[],
         post_call=[],
         declare_capsule=[], post_call_capsule=[], fail_capsule=[],
@@ -3342,6 +3350,7 @@ class PyStmts(object):
         self.need_numpy = need_numpy
         self.object_created = object_created
         self.parse_as_object = parse_as_object
+        self.get_converter = get_converter
 
         self.declare = declare
         self.post_parse = post_parse
@@ -3746,6 +3755,7 @@ py_statements = [
         name="py_char_**_in",
         c_helper="from_PyObject_char",
         parse_as_object=True,
+        get_converter="SHROUD_get_from_object_charptr",
         c_local_var="pointer",
         declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",

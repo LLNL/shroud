@@ -31,45 +31,6 @@ typedef struct {
     void *data;   // points into obj.
 } SHROUD_converter_value;
 
-// Helper - converter to PyObject to char *.
-static int SHROUD_get_from_object_char(PyObject *obj,
-    SHROUD_converter_value *value)
-{
-    char *out;
-    if (PyUnicode_Check(obj))
-    {
-#if PY_MAJOR_VERSION >= 3
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj);
-        value->obj = strobj;  // steal reference
-#else
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyString_AsString(strobj);
-        value->obj = strobj;  // steal reference
-#endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
-    } else if (PyString_Check(obj)) {
-        out = PyString_AsString(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#endif
-    } else if (obj == Py_None) {
-        out = NULL;
-        value->obj = NULL;
-    } else {
-        PyErr_SetString(PyExc_ValueError, "argument must be a string");
-        return 0;
-    }
-    value->data = out;
-    return 1;
-}
-
-
 // Convert obj into an array of type char *
 // Return -1 on error.
 static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
@@ -277,7 +238,7 @@ PY_Cstruct_list_tp_init(
         "|iO&O&O&:Cstruct_list_ctor", SHT_kwlist, &nitems,
         SHROUD_get_from_object_int_list, &SHPy_ivalue,
         SHROUD_get_from_object_double_list, &SHPy_dvalue,
-        SHROUD_get_from_object_char, &SHPy_svalue))
+        SHROUD_get_from_object_charptr_list, &SHPy_svalue))
         return -1;
 
     self->obj = malloc(sizeof(Cstruct_list));
