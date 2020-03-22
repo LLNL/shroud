@@ -63,7 +63,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
 }
 
 // Helper - convert PyObject to char * pointer.
-static int SHROUD_get_from_object_charptr_list(PyObject *obj,
+static int SHROUD_get_from_object_charptr(PyObject *obj,
     SHROUD_converter_value *value)
 {
     char * *in;
@@ -238,7 +238,7 @@ PY_Cstruct_list_tp_init(
         "|iO&O&O&:Cstruct_list_ctor", SHT_kwlist, &nitems,
         SHROUD_get_from_object_int_list, &SHPy_ivalue,
         SHROUD_get_from_object_double_list, &SHPy_dvalue,
-        SHROUD_get_from_object_charptr_list, &SHPy_svalue))
+        SHROUD_get_from_object_charptr, &SHPy_svalue))
         return -1;
 
     self->obj = malloc(sizeof(Cstruct_list));
@@ -359,7 +359,7 @@ static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
 {
     SHROUD_converter_value cvalue;
     Py_XDECREF(self->svalue_obj);
-    if (SHROUD_get_from_object_charptr_list(value, &cvalue) == 0) {
+    if (SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
         self->obj->svalue = NULL;
         self->svalue_obj = NULL;
         // XXXX set error

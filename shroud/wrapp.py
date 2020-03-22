@@ -1312,6 +1312,7 @@ return -1;
                             hname,
                             options.PY_array_arg)
                         self.c_helper[hname] = True
+                        hname = whelpers.CHelpers[hname]["name"]
                     elif not arg_typemap.PY_get_converter:
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"

@@ -224,12 +224,23 @@ array->rank = 1;
     CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
-    name = "SHROUD_get_from_object_charptr_list"
+    # char **
+    name = "SHROUD_get_from_object_charptr"
     fmt.name = name
     fmt.size_var="size"
     fmt.c_var="in"
     CHelpers[name] = create_get_from_object_list(fmt)
-
+    # There are no 'list' or 'numpy' version of these functions.
+    # Use the one-true-version SHROUD_get_from_object_charptr.
+    CHelpers['SHROUD_get_from_object_charptr_list'] = dict(
+        name="SHROUD_get_from_object_charptr",
+        dependent_helpers=["SHROUD_get_from_object_charptr"],
+    )
+    CHelpers['SHROUD_get_from_object_charptr_numpy'] = dict(
+        name="SHROUD_get_from_object_charptr",
+        dependent_helpers=["SHROUD_get_from_object_charptr"],
+    )
+    
 ######################################################################
 
 def add_shadow_helper(node):
@@ -1034,7 +1045,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
         c_header="<stdlib.h>",
         c_source="""
 // helper function
-// Release memory allocated by ShroudStrAlloc
+// Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
    for(int i=0; i < nsrc; ++i) {
@@ -1045,7 +1056,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
         cxx_header="<cstdlib>",
         cxx_source="""
 // helper function
-// Release memory allocated by ShroudStrAllocArray
+// Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
    for(int i=0; i < nsrc; ++i) {
@@ -1106,7 +1117,7 @@ static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *
 }
 """,
     ),
-    # There are no 'list' or 'numpy' version of these function.
+    # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_char.
     SHROUD_get_from_object_char_list=dict(
         name="SHROUD_get_from_object_char",

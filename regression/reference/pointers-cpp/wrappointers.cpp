@@ -54,7 +54,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 }
 
 // helper function
-// Release memory allocated by ShroudStrAllocArray
+// Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
    for(int i=0; i < nsrc; ++i) {
