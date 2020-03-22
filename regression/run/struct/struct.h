@@ -33,23 +33,24 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_ptr {
-  char *cfield;
+    char *cfield;
 };
 typedef struct Cstruct_ptr Cstruct_ptr;
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_list {
-  int nitems;
-  int *ivalue;
-  double *dvalue;
+    int nitems;
+    int *ivalue;
+    double *dvalue;
+    char **svalue;
 };
 typedef struct Cstruct_list Cstruct_list;
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_numpy {
-  int nitems;
-  int *ivalue;
-  double *dvalue;
+    int nitems;
+    int *ivalue;
+    double *dvalue;
 };
 typedef struct Cstruct_numpy Cstruct_numpy;
 

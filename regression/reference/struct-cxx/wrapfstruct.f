@@ -40,6 +40,7 @@ module struct_mod
         integer(C_INT) :: nitems
         type(C_PTR) :: ivalue
         type(C_PTR) :: dvalue
+        type(C_PTR) :: svalue
     end type cstruct_list
 
 

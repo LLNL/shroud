@@ -443,6 +443,24 @@
                                     "stmt0": "py_native_in",
                                     "stmt1": "py_default"
                                 }
+                            },
+                            "svalue": {
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_type": "char",
+                                    "c_var": "svalue",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_type": "char",
+                                    "cxx_var": "svalue",
+                                    "data_var": "SHData_svalue",
+                                    "numpy_type": "NPY_INTP",
+                                    "py_var": "SHPy_svalue",
+                                    "size_var": "SHSize_svalue",
+                                    "stmt0": "py_char_**_in",
+                                    "stmt1": "py_char_**_in"
+                                }
                             }
                         },
                         "_fmtresult": {
@@ -519,6 +537,27 @@
                                         "double"
                                     ],
                                     "typemap_name": "double"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "optional": "0"
+                                    },
+                                    "declarator": {
+                                        "name": "svalue",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            },
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "char"
+                                    ],
+                                    "typemap_name": "char"
                                 }
                             ],
                             "specifier": [
@@ -527,7 +566,7 @@
                             "typemap_name": "Cstruct_list"
                         },
                         "decl": "Cstruct_list_ctor",
-                        "declgen": "Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_list_ctor)",
+                        "declgen": "Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0), char * * svalue +intent(in)+optional(0)) +name(Cstruct_list_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_list_tp_init",
                             "PY_type_impl": "PY_Cstruct_list_tp_init",
@@ -633,6 +672,40 @@
                             "variable_upper": "DVALUE"
                         },
                         "name": "dvalue",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "svalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "PY_getter": "PY_Cstruct_list_svalue_getter",
+                            "PY_member_object": "svalue_obj",
+                            "PY_setter": "PY_Cstruct_list_svalue_setter",
+                            "c_type": "char",
+                            "cast_type": "char * *",
+                            "cxx_type": "char",
+                            "field_name": "svalue",
+                            "py_var": "SHPy_svalue",
+                            "variable_lower": "svalue",
+                            "variable_name": "svalue",
+                            "variable_upper": "SVALUE"
+                        },
+                        "name": "svalue",
                         "options": {}
                     }
                 ]

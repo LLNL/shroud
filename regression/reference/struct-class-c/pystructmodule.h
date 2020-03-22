@@ -68,6 +68,7 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *ivalue_obj;
     PyObject *dvalue_obj;
+    PyObject *svalue_obj;
     // splicer begin class.Cstruct_list.C_object
     // splicer end class.Cstruct_list.C_object
 } PY_Cstruct_list;

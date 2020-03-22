@@ -136,6 +136,13 @@ class Struct(unittest.TestCase):
         self.assertIsInstance(dvalue, list)
         self.assertEqual(5, len(dvalue))
         self.assertEqual(input, dvalue)
+
+        input = ["dog", "cat", "monkey", "bird", "horse"]
+        s.svalue = input
+        svalue = s.svalue
+        self.assertIsInstance(svalue, list)
+        self.assertEqual(5, len(svalue))
+        self.assertEqual(input, svalue)
         
     def test_cstruct_numpy(self):
         # getter and setter

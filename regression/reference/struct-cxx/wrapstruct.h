@@ -42,6 +42,7 @@ struct s_STR_cstruct_list {
     int nitems;
     int * ivalue;
     double * dvalue;
+    char * * svalue;
 };
 typedef struct s_STR_cstruct_list STR_cstruct_list;
 

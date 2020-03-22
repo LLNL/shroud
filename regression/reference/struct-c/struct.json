@@ -225,6 +225,35 @@
                         },
                         "name": "dvalue",
                         "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "svalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "svalue",
+                            "variable_lower": "svalue",
+                            "variable_name": "svalue",
+                            "variable_upper": "SVALUE"
+                        },
+                        "name": "svalue",
+                        "options": {}
                     }
                 ]
             },

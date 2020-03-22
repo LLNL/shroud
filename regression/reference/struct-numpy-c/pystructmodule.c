@@ -653,9 +653,9 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr(void)
     PyObject * dict = NULL;
     PyArray_Descr *dtype = NULL;
 
-    lnames = PyList_New(3);
+    lnames = PyList_New(4);
     if (lnames == NULL) goto fail;
-    ldescr = PyList_New(3);
+    ldescr = PyList_New(4);
     if (ldescr == NULL) goto fail;
 
     // nitems
@@ -681,6 +681,14 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr(void)
     obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
     if (obj == NULL) goto fail;
     PyList_SET_ITEM(ldescr, 2, obj);
+
+    // svalue
+    obj = PyString_FromString("svalue");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 3, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 3, obj);
     obj = NULL;
 
     dict = PyDict_New();
@@ -697,13 +705,13 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr(void)
 fail:
     Py_XDECREF(obj);
     if (lnames != NULL) {
-        for (int i=0; i < 3; i++) {
+        for (int i=0; i < 4; i++) {
             Py_XDECREF(PyList_GET_ITEM(lnames, i));
         }
         Py_DECREF(lnames);
     }
     if (ldescr != NULL) {
-        for (int i=0; i < 3; i++) {
+        for (int i=0; i < 4; i++) {
             Py_XDECREF(PyList_GET_ITEM(ldescr, i));
         }
         Py_DECREF(ldescr);

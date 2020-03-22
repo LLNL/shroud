@@ -88,6 +88,7 @@ declarations:
           int nitems;
           int *ivalue;
           double *dvalue;
+          char **svalue;
         };
   options:
     PY_array_arg: list
