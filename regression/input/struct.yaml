@@ -86,9 +86,9 @@ declarations:
 ######################################################################
 - decl: struct Cstruct_list {
           int nitems;
-          int *ivalue;
-          double *dvalue;
-          char **svalue;
+          int *ivalue     +dimension(nitems);
+          double *dvalue  +dimension(nitems);
+          char **svalue   +dimension(nitems);
         };
   options:
     PY_array_arg: list
@@ -96,8 +96,8 @@ declarations:
 ######################################################################
 - decl: struct Cstruct_numpy {
           int nitems;
-          int *ivalue;
-          double *dvalue;
+          int *ivalue     +dimension(nitems);
+          double *dvalue  +dimension(nitems);
         };
   options:
     PY_array_arg: numpy

@@ -125,18 +125,19 @@ class Struct(unittest.TestCase):
         dinput = [6.,7.,8.,9.,10.]
         sinput = ["dog", "cat", "monkey", "bird", "horse"]
 
-        s = cstruct.Cstruct_list(ivalue=iinput)
+        s = cstruct.Cstruct_list(nitems=5, ivalue=iinput)
         self.assertEqual(iinput, s.ivalue)
 
-        s = cstruct.Cstruct_list(dvalue=dinput)
+        s = cstruct.Cstruct_list(nitems=5, dvalue=dinput)
         self.assertEqual(dinput, s.dvalue)
 
-        s = cstruct.Cstruct_list(svalue=sinput)
+        s = cstruct.Cstruct_list(nitems=5, svalue=sinput)
         self.assertEqual(sinput, s.svalue)
         
     def test_cstruct_list_setter(self):
         # getter and setter
         s = cstruct.Cstruct_list()
+        s.nitems = 5
 
         input = [1,2,3,4,5]
         s.ivalue = input
@@ -162,6 +163,7 @@ class Struct(unittest.TestCase):
     def test_cstruct_numpy(self):
         # getter and setter
         s = cstruct.Cstruct_numpy()
+        s.nitems = 5
 
         input = [1,2,3,4,5]
         s.ivalue = input

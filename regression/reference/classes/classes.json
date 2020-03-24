@@ -1430,6 +1430,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_m_flag_getter",
                             "PY_setter": "nullptr",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_flag",
@@ -1457,6 +1458,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_test_getter",
                             "PY_setter": "PY_Class1_test_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_test",

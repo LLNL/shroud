@@ -660,15 +660,19 @@ return 1;""",
         fmt_var = node.fmtdict
         fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
         fmt_var.PY_setter = fmt_var.nullptr  # readonly
+        # How to find other fields in struct.
+        fmt_var.PY_struct_context = wformat("{PY_param_self}->{PY_type_obj}->", fmt_var)
 
         fmt = util.Scope(fmt_var)
-        fmt.c_var = wformat("{PY_param_self}->{PY_type_obj}->{field_name}", fmt_var)
+        fmt.c_var = wformat("{PY_struct_context}{field_name}", fmt_var)
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
         ast = node.ast
         arg_typemap = ast.typemap
 
+        ########################################
+        # getter
         output = fileinfo.GetSetBody
         append_format(
             output,
@@ -708,11 +712,11 @@ return self->{PY_member_object};
                 elif nindirect == 2:
                     # 'char **' is a <type 'list'> of <type 'str'>.
                     self.c_helper["to_PyList_char"] = True
-                    fmt.size = "5";
+                    fmt.size = py_struct_dimension(node)
                     append_format(
                         output,
                         "PyObject *rv = SHROUD_to_PyList_char"
-                        "(self->{PY_type_obj}->{field_name}, {size});\n"
+                        "({PY_struct_context}{field_name}, {size});\n"
                         "return rv;",
                         fmt
                     )
@@ -720,11 +724,11 @@ return self->{PY_member_object};
             elif options.PY_array_arg == "numpy":
                 self.need_numpy = True
                 # Create array from NumPy
-                fmt.size = "5";
+                fmt.size = py_struct_dimension(node)
                 fmt.npy_ndims = "1"
                 fmt.npy_dims = "dims"
                 fmt.cxx_var = wformat(
-                    "self->{PY_type_obj}->{field_name}",
+                    "{PY_struct_context}{field_name}",
                     fmt)
                 if arg_typemap.PYN_descr:
                     # class
@@ -756,12 +760,11 @@ return self->{PY_member_object};
                 # Create array from helper.
                 # Include helper called by getter.
                 self.c_helper["to_PyList_" + fmt.c_type] = True
-                # XXX - 5 should be dimension
-                fmt.size = "5";
+                fmt.size = py_struct_dimension(node)
                 append_format(
                     output,
                     "PyObject *rv = SHROUD_to_PyList_{c_type}"
-                    "(self->{PY_type_obj}->{field_name}, {size});\n"
+                    "({PY_struct_context}{field_name}, {size});\n"
                     "return rv;",
                     fmt)
 # XXX - What if pointer to scalar or struct?  Check dimension attribute.
@@ -820,7 +823,7 @@ self->{PY_member_object} = NULL;
 return -1;
 -}}
 {c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
+{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
                     self.c_helper[fmt.get] = True
                 else:
@@ -3107,6 +3110,20 @@ return m;
 -}}
 """
 
+def py_struct_dimension(var):
+    """Return the dimension of a struct member.
+    Use the dimension attribute.
+
+    Args:
+        var - ast.VariableNode.
+        fileinfo - FileTuple
+    """
+    dim = var.ast.attrs.get("dimension", None)
+    if dim:
+        fmt_var = var.fmtdict
+        return fmt_var.PY_struct_context + dim
+    else:
+        return "1"
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.

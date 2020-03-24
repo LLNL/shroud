@@ -188,6 +188,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "ivalue",
                                 "pointer": [
@@ -214,6 +217,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "dvalue",
                                 "pointer": [
@@ -240,6 +246,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "svalue",
                                 "pointer": [
@@ -323,6 +332,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "ivalue",
                                 "pointer": [
@@ -349,6 +361,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "dvalue",
                                 "pointer": [

@@ -86,7 +86,7 @@ PY_Cstruct_numpy_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
+// Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
 // splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
     int nitems;
     SHROUD_converter_value SHPy_ivalue;
@@ -155,7 +155,7 @@ static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    npy_intp dims[1] = { 5 };
+    npy_intp dims[1] = { self->obj->nitems };
     PyObject *rv = PyArray_SimpleNewFromData(1, dims, NPY_INT,
         self->obj->ivalue);
     if (rv != NULL) {
@@ -191,7 +191,7 @@ static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    npy_intp dims[1] = { 5 };
+    npy_intp dims[1] = { self->obj->nitems };
     PyObject *rv = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE,
         self->obj->dvalue);
     if (rv != NULL) {

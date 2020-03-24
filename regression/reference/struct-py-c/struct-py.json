@@ -168,6 +168,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_x1_getter",
                             "PY_setter": "PY_Cstruct_as_class_x1_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
@@ -192,6 +193,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_y1_getter",
                             "PY_setter": "PY_Cstruct_as_class_y1_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
