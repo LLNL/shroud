@@ -14,6 +14,9 @@
 /* Size of buffer passed from Fortran */
 #define LENOUTBUF 40
 
+// Used in dimension as a variable which is not a struct member.
+#define TWO 2
+
 struct Cstruct1 {
   int ifield;
   double dfield;

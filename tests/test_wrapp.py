@@ -44,5 +44,20 @@ class CheckImplied(unittest.TestCase):
         self.assertEqual("size+n", wrapp.py_implied("size+n", self.func1))
 
 
+class CheckStruct(unittest.TestCase):
+    def setUp(self):
+        self.library = ast.LibraryNode()
+        self.struct = self.library.add_struct("""
+struct Cstruct_list {
+    int nitems;
+    int *ivalue     +dimension(nitems+nitems);
+    double *dvalue  +dimension(nitems*TWO);
+    char **svalue   +dimension(nitems);
+};
+""")
+
+    def test_dimension(self):
+        print("XXXX", self.struct)
+
 if __name__ == "__main__":
     unittest.main()
