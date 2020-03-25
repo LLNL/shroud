@@ -18,6 +18,7 @@ from shroud import util
 import unittest
 import copy
 
+# Useful to format reference output of to_dict
 #import pprint
 #pp = pprint.PrettyPrinter(indent=4)
 #        print(pp.pprint(todict.to_dict(r)))
@@ -26,9 +27,6 @@ class CheckParse(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
-        typemap.initialize()
-        #        declast.create_global_namespace()  # also done in LibraryNode
-
         self.library = ast.LibraryNode(library="cc")
         self.class1 = self.library.add_class("Class1")
 
@@ -938,6 +936,35 @@ class CheckParse(unittest.TestCase):
         r2.name = "newname"
         self.assertEqual(r.name, "Function4b")  # first is unchanged
         self.assertEqual(r2.name, "newname")
+
+    def test_struct(self):
+        struct = self.library.add_struct("""
+struct Cstruct_list {
+    int nitems;
+    int *ivalue;
+};
+""")
+        self.assertEqual(2, len(struct.variables))
+        ast = struct.variables[0].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'nitems',
+                    'pointer': []
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        ast = struct.variables[1].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'ivalue',
+                    'pointer': [{   'ptr': '*'}]
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
 
 
 class CheckExpr(unittest.TestCase):

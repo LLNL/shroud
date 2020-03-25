@@ -399,11 +399,11 @@
                                     "cxx_var": "dvalue",
                                     "data_var": "SHData_dvalue",
                                     "npy_dims": "SHD_dvalue",
-                                    "npy_intp_asgn": "SHD_dvalue[0] = nitems;\n",
+                                    "npy_intp_asgn": "SHD_dvalue[0] = nitems*TWO;\n",
                                     "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_DOUBLE",
-                                    "pointer_shape": "nitems",
+                                    "pointer_shape": "nitems*TWO",
                                     "py_var": "SHPy_dvalue",
                                     "size_var": "SHSize_dvalue",
                                     "stmt0": "py_native_in_dimension_list",
@@ -422,11 +422,11 @@
                                     "cxx_var": "ivalue",
                                     "data_var": "SHData_ivalue",
                                     "npy_dims": "SHD_ivalue",
-                                    "npy_intp_asgn": "SHD_ivalue[0] = nitems;\n",
+                                    "npy_intp_asgn": "SHD_ivalue[0] = nitems+nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_INT",
-                                    "pointer_shape": "nitems",
+                                    "pointer_shape": "nitems+nitems",
                                     "py_var": "SHPy_ivalue",
                                     "size_var": "SHSize_ivalue",
                                     "stmt0": "py_native_in_dimension_list",
@@ -518,7 +518,7 @@
                                 },
                                 {
                                     "attrs": {
-                                        "dimension": "nitems",
+                                        "dimension": "nitems+nitems",
                                         "intent": "in",
                                         "optional": "0"
                                     },
@@ -537,7 +537,7 @@
                                 },
                                 {
                                     "attrs": {
-                                        "dimension": "nitems",
+                                        "dimension": "nitems*TWO",
                                         "intent": "in",
                                         "optional": "0"
                                     },
@@ -583,7 +583,7 @@
                             "typemap_name": "Cstruct_list"
                         },
                         "decl": "Cstruct_list_ctor",
-                        "declgen": "Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)",
+                        "declgen": "Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_list_tp_init",
                             "PY_type_impl": "PY_Cstruct_list_tp_init",
@@ -633,7 +633,7 @@
                     {
                         "ast": {
                             "attrs": {
-                                "dimension": "nitems"
+                                "dimension": "nitems+nitems"
                             },
                             "declarator": {
                                 "name": "ivalue",
@@ -668,7 +668,7 @@
                     {
                         "ast": {
                             "attrs": {
-                                "dimension": "nitems"
+                                "dimension": "nitems*TWO"
                             },
                             "declarator": {
                                 "name": "dvalue",

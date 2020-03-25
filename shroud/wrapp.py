@@ -339,6 +339,7 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
         fileinfo = FileTuple([], [], [], [])
         options = node.options
         fmt_class = node.fmtdict
+        node.create_node_map()
 
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
@@ -406,7 +407,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self.wrap_enums(node)
 
         for var in node.variables:
-            self.wrap_class_variable(var, fileinfo)
+            self.wrap_class_variable(node, var, fileinfo)
 
         # wrap methods
         self.tp_init_default = "0"
@@ -649,8 +650,8 @@ return 1;""",
         if options.literalinclude:
             output.append("// end " + fmt.PY_struct_array_descr_create)
 
-    def wrap_class_variable(self, node, fileinfo):
-        """Wrap a VariableNode in a class with descriptors.
+    def wrap_class_variable(self, parent, node, fileinfo):
+        """Wrap a VariableNode in a class/struct with descriptors.
 
         Args:
             node - ast.VariableNode.
@@ -712,7 +713,7 @@ return self->{PY_member_object};
                 elif nindirect == 2:
                     # 'char **' is a <type 'list'> of <type 'str'>.
                     self.c_helper["to_PyList_char"] = True
-                    fmt.size = py_struct_dimension(node)
+                    fmt.size = py_struct_dimension(parent, node)
                     append_format(
                         output,
                         "PyObject *rv = SHROUD_to_PyList_char"
@@ -724,7 +725,7 @@ return self->{PY_member_object};
             elif options.PY_array_arg == "numpy":
                 self.need_numpy = True
                 # Create array from NumPy
-                fmt.size = py_struct_dimension(node)
+                fmt.size = py_struct_dimension(parent, node)
                 fmt.npy_ndims = "1"
                 fmt.npy_dims = "dims"
                 fmt.cxx_var = wformat(
@@ -760,7 +761,7 @@ return self->{PY_member_object};
                 # Create array from helper.
                 # Include helper called by getter.
                 self.c_helper["to_PyList_" + fmt.c_type] = True
-                fmt.size = py_struct_dimension(node)
+                fmt.size = py_struct_dimension(parent, node)
                 append_format(
                     output,
                     "PyObject *rv = SHROUD_to_PyList_{c_type}"
@@ -3110,18 +3111,51 @@ return m;
 -}}
 """
 
-def py_struct_dimension(var):
+class ToStructDimension(todict.PrintNode):
+    """Convert dimension expression in struct to Python wrapper code.
+
+    If a name is a member of the struct, prefix with PY_struct_context.
+
+    struct Cstruct_list {
+        int nitems;
+        int *ivalue     +dimension(nitems+nitems);  # case 1
+        double *dvalue  +dimension(nitems*TWO);     # case 2
+    }
+
+    case 1:  {PY_struct_context}nitems+{PY_struct_context}nitems
+    case 2:  {PY_struct_context}nitems*TWO
+    """
+
+    def __init__(self, parent, fmtdict):
+        super(ToStructDimension, self).__init__()
+        self.parent = parent
+        self.fmtdict = fmtdict
+
+    def visit_Identifier(self, node):
+        """
+        Args:
+            node - declast.Identifier
+        """
+        if node.name in self.parent.map_name_to_node:
+            return self.fmtdict.PY_struct_context + node.name
+        elif node.args:
+            return self.param_list(node)
+        else:
+            return node.name
+
+def py_struct_dimension(parent, var):
     """Return the dimension of a struct member.
     Use the dimension attribute.
 
     Args:
+        parent - ast.ClassNode.
         var - ast.VariableNode.
-        fileinfo - FileTuple
     """
     dim = var.ast.attrs.get("dimension", None)
     if dim:
-        fmt_var = var.fmtdict
-        return fmt_var.PY_struct_context + dim
+        node = declast.ExprParser(dim).expression()
+        visitor = ToStructDimension(parent, var.fmtdict)
+        return visitor.visit(node)
     else:
         return "1"
 

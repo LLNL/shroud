@@ -86,8 +86,8 @@ declarations:
 ######################################################################
 - decl: struct Cstruct_list {
           int nitems;
-          int *ivalue     +dimension(nitems);
-          double *dvalue  +dimension(nitems);
+          int *ivalue     +dimension(nitems+nitems);
+          double *dvalue  +dimension(nitems*TWO);
           char **svalue   +dimension(nitems);
         };
   options:

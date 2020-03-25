@@ -121,14 +121,14 @@ class Struct(unittest.TestCase):
 
     def test_cstruct_list(self):
         # Create struct from each argument.
-        iinput = [1,2,3,4,5]
-        dinput = [6.,7.,8.,9.,10.]
+        iinput = [1,2,3,4,5,6]
+        dinput = [6.,7.,8.,9.,10.,11.]
         sinput = ["dog", "cat", "monkey", "bird", "horse"]
 
-        s = cstruct.Cstruct_list(nitems=5, ivalue=iinput)
+        s = cstruct.Cstruct_list(nitems=3, ivalue=iinput)
         self.assertEqual(iinput, s.ivalue)
 
-        s = cstruct.Cstruct_list(nitems=5, dvalue=dinput)
+        s = cstruct.Cstruct_list(nitems=3, dvalue=dinput)
         self.assertEqual(dinput, s.dvalue)
 
         s = cstruct.Cstruct_list(nitems=5, svalue=sinput)
@@ -137,27 +137,30 @@ class Struct(unittest.TestCase):
     def test_cstruct_list_setter(self):
         # getter and setter
         s = cstruct.Cstruct_list()
-        s.nitems = 5
+        s.nitems = 3
 
-        input = [1,2,3,4,5]
+        # int *ivalue     +dimension(nitems+nitems);
+        input = [1,2,3,4,5,6]
         s.ivalue = input
         ivalue = s.ivalue
         self.assertIsInstance(ivalue, list)
-        self.assertEqual(5, len(ivalue))
+        self.assertEqual(6, len(ivalue))
         self.assertEqual(input, ivalue)
 
-        input = [6,7,8,9,10]
+        # double *dvalue  +dimension(nitems*TWO);
+        input = [6,7,8,9,10,11]
         s.dvalue = input
         dvalue = s.dvalue
         self.assertIsInstance(dvalue, list)
-        self.assertEqual(5, len(dvalue))
+        self.assertEqual(6, len(dvalue))
         self.assertEqual(input, dvalue)
 
-        input = ["dog", "cat", "monkey", "bird", "horse"]
+        # char **svalue   +dimension(nitems);
+        input = ["dog", "cat", "monkey"]
         s.svalue = input
         svalue = s.svalue
         self.assertIsInstance(svalue, list)
-        self.assertEqual(5, len(svalue))
+        self.assertEqual(3, len(svalue))
         self.assertEqual(input, svalue)
         
     def test_cstruct_numpy(self):

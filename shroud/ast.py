@@ -1165,6 +1165,13 @@ class ClassNode(AstNode, NamespaceMixin):
 
         return new
 
+    def create_node_map(self):
+        """Create a map from the name to Node for declarations in 
+        the class.
+        """
+        self.map_name_to_node = {}
+        for var in self.variables:
+            self.map_name_to_node[var.name] = var
 
 ######################################################################
 

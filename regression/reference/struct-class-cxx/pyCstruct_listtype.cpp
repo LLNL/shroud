@@ -216,7 +216,7 @@ PY_Cstruct_list_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
+// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems;
     SHROUD_converter_value SHPy_ivalue;
@@ -292,7 +292,7 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_int(self->obj->ivalue, self->obj->nitems);
+    PyObject *rv = SHROUD_to_PyList_int(self->obj->ivalue, self->obj->nitems+self->obj->nitems);
     return rv;
 }
 
@@ -322,7 +322,7 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_double(self->obj->dvalue, self->obj->nitems);
+    PyObject *rv = SHROUD_to_PyList_double(self->obj->dvalue, self->obj->nitems*TWO);
     return rv;
 }
 

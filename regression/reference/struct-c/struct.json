@@ -177,7 +177,7 @@
                     {
                         "ast": {
                             "attrs": {
-                                "dimension": "nitems"
+                                "dimension": "nitems+nitems"
                             },
                             "declarator": {
                                 "name": "ivalue",
@@ -206,7 +206,7 @@
                     {
                         "ast": {
                             "attrs": {
-                                "dimension": "nitems"
+                                "dimension": "nitems*TWO"
                             },
                             "declarator": {
                                 "name": "dvalue",
