@@ -1219,9 +1219,7 @@ return -1;
                 fmt_arg.c_deref = ""
                 fmt_arg.cxx_addr = "&"
                 fmt_arg.cxx_member = "."
-            if arg_typemap.PY_to_object_idtor:
-                fmt_arg.PY_to_object_idtor_func = \
-                    arg_typemap.PY_to_object_idtor
+            update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
             self.set_fmt_fields(arg, fmt_arg)
@@ -1927,9 +1925,7 @@ return -1;
             fmt_result.size_var = "SHSize_" + fmt_result.C_result
             fmt_result.numpy_type = result_typemap.PYN_typenum
             #            fmt_pattern = fmt_result
-            if result_typemap.PY_to_object_idtor:
-                fmt_result.PY_to_object_idtor_func = \
-                    result_typemap.PY_to_object_idtor
+            update_fmt_from_typemap(fmt_result, result_typemap)
 
             self.set_fmt_fields(ast, fmt_result, True)
             sgroup = result_typemap.sgroup
@@ -3154,6 +3150,16 @@ submodule_end = """
 return m;
 -}}
 """
+
+def update_fmt_from_typemap(fmt, ntypemap):
+    """Copy fields from typemap to use with creating output"""
+    # XXX maybe use in wrap_namespace
+    if ntypemap.PY_to_object_idtor:
+        fmt.PY_to_object_idtor_func = ntypemap.PY_to_object_idtor
+        # XXX - not sure if needed, avoid clutter for now.
+#        fmt.PY_to_object_func = ntypemap.PY_to_object
+#        fmt.PY_from_object_func = ntypemap.PY_from_object
+
 
 class ToStructDimension(todict.PrintNode):
     """Convert dimension expression in struct to Python wrapper code.
