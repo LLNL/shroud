@@ -2068,6 +2068,68 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "Cstruct_list",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct_list",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "stmt0": "c_struct_pointer_result",
+                        "stmt1": "c_struct_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_list",
+                        "f_type": "type(cstruct_list)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_struct_pointer_result",
+                        "stmt1": "f_native_pointer_result_pointer",
+                        "stmtc0": "c_struct_pointer_result",
+                        "stmtc1": "c_struct_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "get_global_struct_list",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "Cstruct_list"
+                    ],
+                    "typemap_name": "Cstruct_list"
+                },
+                "decl": "Cstruct_list *get_global_struct_list();",
+                "declgen": "Cstruct_list * get_global_struct_list()",
+                "fmtdict": {
+                    "C_name": "get_global_struct_list",
+                    "C_prototype": "",
+                    "C_return_type": "Cstruct_list *",
+                    "F_C_call": "c_get_global_struct_list",
+                    "F_C_name": "c_get_global_struct_list",
+                    "F_arguments": "",
+                    "F_name_function": "get_global_struct_list",
+                    "F_name_generic": "get_global_struct_list",
+                    "F_name_impl": "get_global_struct_list",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "Cstruct_list * SHC_rv",
+                    "function_name": "get_global_struct_list",
+                    "underscore_name": "get_global_struct_list"
+                },
+                "options": {}
             }
         ],
         "language": "c",

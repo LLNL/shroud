@@ -93,6 +93,9 @@ declarations:
   options:
     PY_array_arg: list
 
+- decl: Cstruct_list *get_global_struct_list();
+#- decl: Cstruct_list *get_global_struct_list(void);
+
 ######################################################################
 - decl: struct Cstruct_numpy {
           int nitems;

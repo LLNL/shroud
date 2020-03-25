@@ -190,6 +190,17 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     // splicer end function.return_struct_ptr2_bufferify
 }
 
+// Cstruct_list * get_global_struct_list()
+STR_cstruct_list * STR_get_global_struct_list()
+{
+    // splicer begin function.get_global_struct_list
+    Cstruct_list * SHCXX_rv = get_global_struct_list();
+    STR_cstruct_list * SHC_rv = static_cast<STR_cstruct_list *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
+    // splicer end function.get_global_struct_list
+}
+
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {

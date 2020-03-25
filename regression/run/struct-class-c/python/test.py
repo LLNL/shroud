@@ -162,6 +162,29 @@ class Struct(unittest.TestCase):
         self.assertIsInstance(svalue, list)
         self.assertEqual(3, len(svalue))
         self.assertEqual(input, svalue)
+
+    def test_cstruct_list_func(self):
+        s = cstruct.get_global_struct_list()
+
+        self.assertEqual(4, s.nitems)
+
+        ref = [0,1,2,3,4,5,6,7]
+        ivalue = s.ivalue
+        self.assertIsInstance(ivalue, list)
+        self.assertEqual(8, len(ivalue))
+        self.assertEqual(ref, ivalue)
+
+        ref = [0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0]
+        dvalue = s.dvalue
+        self.assertIsInstance(dvalue, list)
+        self.assertEqual(8, len(dvalue))
+        self.assertEqual(ref, dvalue)
+
+        ref = ['up', 'down', 'left', 'right']
+        svalue = s.svalue
+        self.assertIsInstance(svalue, list)
+        self.assertEqual(4, len(svalue))
+        self.assertEqual(ref, svalue)
         
     def test_cstruct_numpy(self):
         # getter and setter

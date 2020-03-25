@@ -73,5 +73,6 @@ typedef struct Cstruct_as_numpy Cstruct_as_numpy;
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 
+Cstruct_list *get_global_struct_list(void);
 
 #endif // STRUCT_H

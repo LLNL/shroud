@@ -455,11 +455,16 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
 if (obj == {nullptr})+
 return {nullptr};
 -obj->{PY_type_obj} = addr;
-obj->{PY_type_dtor} = idtor;
-return {cast_reinterpret}PyObject *{cast1}obj{cast2};""",
+obj->{PY_type_dtor} = idtor;""",
             fmt,
         )
         to_object = to_object.split("\n")
+        self.process_member_obj(
+            node, "obj->{PY_member_object} = {nullptr};", to_object)
+        append_format(
+            to_object,
+            "return {cast_reinterpret}PyObject *{cast1}obj{cast2};",
+            fmt)
 
         proto = wformat(
             "PyObject *{PY_to_object_idtor_func}({namespace_scope}{cxx_type} *addr,\t int idtor)",

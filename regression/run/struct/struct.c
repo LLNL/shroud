@@ -10,6 +10,7 @@
  */
 
 #include "struct.h"
+#include <stdlib.h>
 #include <string.h>
 
 #define MAXLAST 50
@@ -119,4 +120,60 @@ int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)
 {
     int rv = s1->x1 + s2->x2;
     return rv;
+}
+
+/*----------------------------------------------------------------------*/
+// Keep a global struct which owns all of its memory.
+//   int *ivalue     +dimension(nitems+nitems);
+//   double *dvalue  +dimension(nitems*TWO);
+//   char **svalue   +dimension(nitems);
+
+Cstruct_list *global_Cstruct_list = NULL;
+
+Cstruct_list *get_global_struct_list(void)
+{
+    if (global_Cstruct_list == NULL) {
+        int nitems = 4;
+
+        int len = nitems + nitems;
+        int *ivalue = (int *) malloc(sizeof(int) * len);
+        for (int i=0; i < len; i++) {
+            ivalue[i] = i;
+        }
+
+        len = nitems * TWO;
+        double *dvalue = (double *) malloc(sizeof(double) * len);
+        for (int i=0; i < len; i++) {
+            dvalue[i] = i*2.0;
+        }
+
+        len = nitems;
+        char **svalue = (char **) malloc(sizeof(char *) * len);
+#ifdef __cplusplus
+        // Avoid warning:
+        // warning: deprecated conversion from string constant to 'char*'
+        svalue[0] = (char *) malloc(3);
+        strcpy(svalue[0], "up");
+        svalue[1] = (char *) malloc(5);
+        strcpy(svalue[1], "down");
+        svalue[2] = (char *) malloc(5);
+        strcpy(svalue[2], "left");
+        svalue[3] = (char *) malloc(6);
+        strcpy(svalue[3], "right");
+#else
+        svalue[0] = "up";
+        svalue[1] = "down";
+        svalue[2] = "left";
+        svalue[3] = "right";
+#endif
+
+        Cstruct_list *work = (Cstruct_list *)
+            malloc(sizeof(Cstruct_list));
+        work->nitems = nitems;
+        work->ivalue = ivalue;
+        work->dvalue = dvalue;
+        work->svalue = svalue;
+        global_Cstruct_list = work;
+    }
+    return global_Cstruct_list;
 }

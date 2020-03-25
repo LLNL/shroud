@@ -68,6 +68,8 @@ PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
         return NULL;
     obj->obj = addr;
     obj->idtor = idtor;
+    // Python objects for members.
+    obj->cfield_obj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_ptr.utility.to_object
 }
@@ -113,6 +115,10 @@ PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr, int idtor)
         return NULL;
     obj->obj = addr;
     obj->idtor = idtor;
+    // Python objects for members.
+    obj->ivalue_obj = NULL;
+    obj->dvalue_obj = NULL;
+    obj->svalue_obj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_list.utility.to_object
 }
@@ -159,6 +165,9 @@ PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
         return NULL;
     obj->obj = addr;
     obj->idtor = idtor;
+    // Python objects for members.
+    obj->ivalue_obj = NULL;
+    obj->dvalue_obj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_numpy.utility.to_object
 }

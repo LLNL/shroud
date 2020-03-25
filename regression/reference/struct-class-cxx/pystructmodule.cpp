@@ -408,6 +408,34 @@ fail:
     return nullptr;
 // splicer end function.return_struct_ptr2
 }
+
+static char PY_get_global_struct_list__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_global_struct_list(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Cstruct_list * get_global_struct_list()
+// splicer begin function.get_global_struct_list
+    PyObject *SHTPy_rv = nullptr;  // struct_result_class
+
+    Cstruct_list * SHCXX_rv = get_global_struct_list();
+
+    // post_call
+    SHTPy_rv = PP_Cstruct_list_to_Object_idtor(SHCXX_rv, 0);
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end function.get_global_struct_list
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -427,6 +455,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr2__doc__},
+{"get_global_struct_list", (PyCFunction)PY_get_global_struct_list,
+    METH_NOARGS, PY_get_global_struct_list__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
