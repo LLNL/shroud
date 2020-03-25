@@ -76,16 +76,26 @@ Name of converter function with prototype ``(PyObject *, void *)``.
 The returned status should be 1 for a successful conversion and 0 if
 the conversion has failed.
 
+PY_to_object_idtor
+^^^^^^^^^^^^^^^^^^
+
+Create an Python object for the type.
+Includes the index of the destructor function.
+Used with structs/classes that are created by functions
+and must be wrapped.
+``object = converter(address, idtor)``.
+Defaults to *None*.
+
 PY_to_object
 ^^^^^^^^^^^^
 
-PyBuild - object = converter(address).
+PyBuild - ``object = converter(address)``.
 Defaults to *None*.
 
 PY_from_object
 ^^^^^^^^^^^^^^
 
-PyArg_Parse - status = converter(object, address).
+PyArg_Parse - ``status = converter(object, address)``.
 Defaults to *None*.
 
 PYN_descr

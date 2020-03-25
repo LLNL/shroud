@@ -32,6 +32,7 @@ PyObject_HEAD
 } PY_Names;
 
 extern const char *PY_Names_capsule_name;
+PyObject *PP_Names_to_Object_idtor(ns0::Names *addr, int idtor);
 PyObject *PP_Names_to_Object(ns0::Names *addr);
 int PP_Names_from_Object(PyObject *obj, void **addr);
 
@@ -49,6 +50,7 @@ PyObject_HEAD
 } PY_Vvv1;
 
 extern const char *PY_Vvv1_capsule_name;
+PyObject *PP_Vvv1_to_Object_idtor(std::vector<int> *addr, int idtor);
 PyObject *PP_Vvv1_to_Object(std::vector<int> *addr);
 int PP_Vvv1_from_Object(PyObject *obj, void **addr);
 
@@ -66,6 +68,8 @@ PyObject_HEAD
 } PY_vector_double;
 
 extern const char *PY_vector_double_capsule_name;
+PyObject *PP_vector_double_to_Object_idtor(std::vector<double> *addr,
+    int idtor);
 PyObject *PP_vector_double_to_Object(std::vector<double> *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
@@ -83,6 +87,8 @@ PyObject_HEAD
 } PY_vector_instantiation5;
 
 extern const char *PY_vector_instantiation5_capsule_name;
+PyObject *PP_vector_instantiation5_to_Object_idtor(std::vector<long> *addr,
+    int idtor);
 PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr);
 int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr);
 
@@ -100,6 +106,8 @@ PyObject_HEAD
 } PY_vector_instantiation3;
 
 extern const char *PY_vector_instantiation3_capsule_name;
+PyObject *PP_vector_instantiation3_to_Object_idtor(std::vector<internal::ImplWorker1> *addr,
+    int idtor);
 PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> *addr);
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr);
 
@@ -117,6 +125,7 @@ PyObject_HEAD
 } PY_Names2;
 
 extern const char *PY_Names2_capsule_name;
+PyObject *PP_Names2_to_Object_idtor(Names2 *addr, int idtor);
 PyObject *PP_Names2_to_Object(Names2 *addr);
 int PP_Names2_from_Object(PyObject *obj, void **addr);
 
@@ -134,6 +143,7 @@ PyObject_HEAD
 } PY_twoTs_0;
 
 extern const char *PY_twoTs_0_capsule_name;
+PyObject *PP_twoTs_0_to_Object_idtor(twoTs<int, long> *addr, int idtor);
 PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr);
 int PP_twoTs_0_from_Object(PyObject *obj, void **addr);
 
@@ -151,6 +161,8 @@ PyObject_HEAD
 } PY_twoTs_instantiation4;
 
 extern const char *PY_twoTs_instantiation4_capsule_name;
+PyObject *PP_twoTs_instantiation4_to_Object_idtor(twoTs<float, double> *addr,
+    int idtor);
 PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr);
 int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr);
 // ------------------------------

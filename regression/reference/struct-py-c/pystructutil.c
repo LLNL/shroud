@@ -11,6 +11,22 @@
 const char *PY_Cstruct_as_class_capsule_name = "Cstruct_as_class";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct_as_class_to_Object_idtor(Cstruct_as_class *addr,
+    int idtor)
+{
+    // splicer begin class.Cstruct_as_class.utility.to_object
+    PY_Cstruct_as_class *obj =
+        PyObject_New(PY_Cstruct_as_class, &PY_Cstruct_as_class_Type);
+    if (obj == NULL)
+        return NULL;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return (PyObject *) obj;
+    // splicer end class.Cstruct_as_class.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct_as_class_to_Object(Cstruct_as_class *addr)
 {
     // splicer begin class.Cstruct_as_class.utility.to_object
@@ -27,6 +43,7 @@ PyObject *PP_Cstruct_as_class_to_Object(Cstruct_as_class *addr)
     // splicer end class.Cstruct_as_class.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct_as_class_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Cstruct_as_class.utility.from_object

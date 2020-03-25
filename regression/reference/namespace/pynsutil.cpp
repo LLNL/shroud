@@ -12,6 +12,20 @@ const char *PY_Cstruct1_capsule_name = "Cstruct1";
 const char *PY_ClassWork_capsule_name = "ClassWork";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct1_to_Object_idtor(outer::Cstruct1 *addr, int idtor)
+{
+    // splicer begin namespace.outer.class.Cstruct1.utility.to_object
+    PY_Cstruct1 *obj = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.outer.class.Cstruct1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr)
 {
     // splicer begin namespace.outer.class.Cstruct1.utility.to_object
@@ -28,6 +42,7 @@ PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr)
     // splicer end namespace.outer.class.Cstruct1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.outer.class.Cstruct1.utility.from_object
@@ -41,6 +56,21 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.outer.class.Cstruct1.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_ClassWork_to_Object_idtor(nswork::ClassWork *addr,
+    int idtor)
+{
+    // splicer begin namespace.nswork.class.ClassWork.utility.to_object
+    PY_ClassWork *obj = PyObject_New(PY_ClassWork, &PY_ClassWork_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.nswork.class.ClassWork.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr)
 {
     // splicer begin namespace.nswork.class.ClassWork.utility.to_object
@@ -57,6 +87,7 @@ PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr)
     // splicer end namespace.nswork.class.ClassWork.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_ClassWork_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.nswork.class.ClassWork.utility.from_object

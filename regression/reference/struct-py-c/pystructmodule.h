@@ -32,6 +32,8 @@ PyObject_HEAD
 } PY_Cstruct_as_class;
 
 extern const char *PY_Cstruct_as_class_capsule_name;
+PyObject *PP_Cstruct_as_class_to_Object_idtor(Cstruct_as_class *addr,
+    int idtor);
 PyObject *PP_Cstruct_as_class_to_Object(Cstruct_as_class *addr);
 int PP_Cstruct_as_class_from_Object(PyObject *obj, void **addr);
 // ------------------------------

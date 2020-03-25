@@ -207,11 +207,13 @@ class Wrapp(util.WrapperMixin):
             # PyObject for class
             cls.eval_template("PY_PyObject")
 
+            fmt.PY_to_object_idtor_func = wformat("PP_{cxx_class}_to_Object_idtor", fmt)
             fmt.PY_to_object_func = wformat("PP_{cxx_class}_to_Object", fmt)
             fmt.PY_from_object_func = wformat("PP_{cxx_class}_from_Object", fmt)
 
             ntypemap.PY_PyTypeObject = fmt.PY_PyTypeObject
             ntypemap.PY_PyObject = fmt.PY_PyObject
+            ntypemap.PY_to_object_idtor = fmt.PY_to_object_idtor_func
             ntypemap.PY_to_object = fmt.PY_to_object_func
             ntypemap.PY_from_object = fmt.PY_from_object_func
 
@@ -444,8 +446,38 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "extern const char *{PY_capsule_name};",
             fmt,
         )
+        output = self.py_utility_functions
 
-        # To
+        ########################################
+        # To object helper with idtor argument.
+        to_object = wformat(
+            """{PY_PyObject} *obj =\t PyObject_New({PY_PyObject}, &{PY_PyTypeObject});
+if (obj == {nullptr})+
+return {nullptr};
+-obj->{PY_type_obj} = addr;
+obj->{PY_type_dtor} = idtor;
+return {cast_reinterpret}PyObject *{cast1}obj{cast2};""",
+            fmt,
+        )
+        to_object = to_object.split("\n")
+
+        proto = wformat(
+            "PyObject *{PY_to_object_idtor_func}({namespace_scope}{cxx_type} *addr,\t int idtor)",
+            fmt,
+        )
+        self.py_class_decl.append(proto + ";")
+
+        output.append("")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        output.append("// Wrap pointer to struct/class.")
+        output.append(proto)
+        output.append("{+")
+        self._create_splicer("to_object", output, to_object)
+        output.append("-}")
+
+        ########################################
+        # To object.
         to_object = wformat(
             """PyObject *voidobj;
 PyObject *args;
@@ -467,15 +499,17 @@ return rv;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_utility_functions.append("")
+        output.append("")
         if node.cpp_if:
-            self.py_utility_functions.append("#" + node.cpp_if)
-        self.py_utility_functions.append(proto)
-        self.py_utility_functions.append("{+")
-        self._create_splicer("to_object", self.py_utility_functions, to_object)
-        self.py_utility_functions.append("-}")
+            output.append("#" + node.cpp_if)
+        output.append("// converter which may be used with PyBuild.")
+        output.append(proto)
+        output.append("{+")
+        self._create_splicer("to_object", output, to_object)
+        output.append("-}")
 
-        # From
+        ########################################
+        # From object.
         from_object = wformat(
             """if (obj->ob_type != &{PY_PyTypeObject}) {{
     // raise exception
@@ -493,17 +527,16 @@ return 1;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_utility_functions.append("")
-        self.py_utility_functions.append(proto)
-        self.py_utility_functions.append("{")
-        self.py_utility_functions.append(1)
+        output.append("")
+        output.append("// converter which may be used with PyArg_Parse.")
+        output.append(proto)
+        output.append("{+")
         self._create_splicer(
             "from_object", self.py_utility_functions, from_object
         )
-        self.py_utility_functions.append(-1)
-        self.py_utility_functions.append("}")
+        output.append("-}")
         if node.cpp_if:
-            self.py_utility_functions.append("#endif  // " + node.cpp_if)
+            output.append("#endif  // " + node.cpp_if)
 
         self._pop_splicer("utility")
 
@@ -1181,6 +1214,9 @@ return -1;
                 fmt_arg.c_deref = ""
                 fmt_arg.cxx_addr = "&"
                 fmt_arg.cxx_member = "."
+            if arg_typemap.PY_to_object_idtor:
+                fmt_arg.PY_to_object_idtor_func = \
+                    arg_typemap.PY_to_object_idtor
             attrs = arg.attrs
 
             self.set_fmt_fields(arg, fmt_arg)
@@ -1886,6 +1922,9 @@ return -1;
             fmt_result.size_var = "SHSize_" + fmt_result.C_result
             fmt_result.numpy_type = result_typemap.PYN_typenum
             #            fmt_pattern = fmt_result
+            if result_typemap.PY_to_object_idtor:
+                fmt_result.PY_to_object_idtor_func = \
+                    result_typemap.PY_to_object_idtor
 
             self.set_fmt_fields(ast, fmt_result, True)
             sgroup = result_typemap.sgroup
@@ -4004,7 +4043,7 @@ py_statements = [
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         declare=[
-            "{PyObject} * {py_var} = {nullptr};",
+            "PyObject *{py_var} = {nullptr};",
         ],
         c_pre_call=[
             "{c_type} * {c_var} = malloc(sizeof({c_type}));",
@@ -4019,11 +4058,8 @@ py_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "{py_var} ="
-            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
             "if ({py_var} == {nullptr}) goto fail;",
-            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         object_created=True,
         fail=[
@@ -4036,14 +4072,11 @@ py_statements = [
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
-            "{PyObject} *{py_var} = {nullptr};  // struct_result_class",
+            "PyObject *{py_var} = {nullptr};  // struct_result_class",
         ],
         post_call=[
-            "{py_var} ="
-            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
             "if ({py_var} == {nullptr}) goto fail;",
-            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         object_created=True,
         fail=[

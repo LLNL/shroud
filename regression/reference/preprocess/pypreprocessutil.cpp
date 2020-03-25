@@ -14,6 +14,20 @@ const char *PY_User2_capsule_name = "User2";
 #endif  // ifdef USE_USER2
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_User1_to_Object_idtor(User1 *addr, int idtor)
+{
+    // splicer begin class.User1.utility.to_object
+    PY_User1 *obj = PyObject_New(PY_User1, &PY_User1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.User1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_User1_to_Object(User1 *addr)
 {
     // splicer begin class.User1.utility.to_object
@@ -30,6 +44,7 @@ PyObject *PP_User1_to_Object(User1 *addr)
     // splicer end class.User1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_User1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.User1.utility.from_object
@@ -44,6 +59,21 @@ int PP_User1_from_Object(PyObject *obj, void **addr)
 }
 
 #ifdef USE_USER2
+// Wrap pointer to struct/class.
+PyObject *PP_User2_to_Object_idtor(User2 *addr, int idtor)
+{
+    // splicer begin class.User2.utility.to_object
+    PY_User2 *obj = PyObject_New(PY_User2, &PY_User2_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.User2.utility.to_object
+}
+
+#ifdef USE_USER2
+// converter which may be used with PyBuild.
 PyObject *PP_User2_to_Object(User2 *addr)
 {
     // splicer begin class.User2.utility.to_object
@@ -60,6 +90,7 @@ PyObject *PP_User2_to_Object(User2 *addr)
     // splicer end class.User2.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_User2_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.User2.utility.from_object

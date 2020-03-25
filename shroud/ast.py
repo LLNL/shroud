@@ -654,6 +654,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
+                PY_to_object_func="XXXPY_to_object_func",
             ))
 
         fmt_library.F_filename_suffix = "f"

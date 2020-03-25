@@ -32,6 +32,7 @@ PyObject_HEAD
 } PY_Class1;
 
 extern const char *PY_Class1_capsule_name;
+PyObject *PP_Class1_to_Object_idtor(Class1 *addr, int idtor);
 PyObject *PP_Class1_to_Object(Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 // ------------------------------

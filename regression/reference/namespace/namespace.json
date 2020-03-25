@@ -329,6 +329,7 @@
                             "PY_struct_array_descr_variable": "PY_Cstruct1_array_descr",
                             "PY_this_call": "self->obj->",
                             "PY_to_object_func": "PP_Cstruct1_to_Object",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PY_type_filename": "pyouter_Cstruct1type.cpp",
                             "class_scope": "Cstruct1::",
                             "cxx_class": "Cstruct1",
@@ -383,6 +384,7 @@
                                     "fmtpy": {
                                         "PYN_descr": "PY_Cstruct1_array_descr",
                                         "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                         "PyObject": "PY_Cstruct1",
                                         "PyTypeObject": "PY_Cstruct1_Type",
                                         "c_deref": "",
@@ -594,6 +596,7 @@
                             "PY_from_object_func": "PP_ClassWork_from_Object",
                             "PY_this_call": "self->obj->",
                             "PY_to_object_func": "PP_ClassWork_to_Object",
+                            "PY_to_object_idtor_func": "PP_ClassWork_to_Object_idtor",
                             "PY_type_filename": "pynswork_ClassWorktype.cpp",
                             "class_scope": "ClassWork::",
                             "cxx_class": "ClassWork",

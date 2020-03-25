@@ -34,6 +34,7 @@ PyObject_HEAD
 } PY_Class3;
 
 extern const char *PY_Class3_capsule_name;
+PyObject *PP_Class3_to_Object_idtor(forward::Class3 *addr, int idtor);
 PyObject *PP_Class3_to_Object(forward::Class3 *addr);
 int PP_Class3_from_Object(PyObject *obj, void **addr);
 
@@ -51,6 +52,7 @@ PyObject_HEAD
 } PY_Class2;
 
 extern const char *PY_Class2_capsule_name;
+PyObject *PP_Class2_to_Object_idtor(forward::Class2 *addr, int idtor);
 PyObject *PP_Class2_to_Object(forward::Class2 *addr);
 int PP_Class2_from_Object(PyObject *obj, void **addr);
 // ------------------------------

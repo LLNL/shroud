@@ -11,6 +11,20 @@
 const char *PY_Class1_capsule_name = "Class1";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Class1_to_Object_idtor(Class1 *addr, int idtor)
+{
+    // splicer begin class.Class1.utility.to_object
+    PY_Class1 *obj = PyObject_New(PY_Class1, &PY_Class1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Class1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Class1_to_Object(Class1 *addr)
 {
     // splicer begin class.Class1.utility.to_object
@@ -27,6 +41,7 @@ PyObject *PP_Class1_to_Object(Class1 *addr)
     // splicer end class.Class1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Class1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Class1.utility.from_object

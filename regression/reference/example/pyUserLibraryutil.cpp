@@ -12,6 +12,21 @@ const char *PY_ExClass1_capsule_name = "ExClass1";
 const char *PY_ExClass2_capsule_name = "ExClass2";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_ExClass1_to_Object_idtor(example::nested::ExClass1 *addr,
+    int idtor)
+{
+    // splicer begin namespace.example::nested.class.ExClass1.utility.to_object
+    PP_ExClass1 *obj = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.example::nested.class.ExClass1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr)
 {
     // splicer begin namespace.example::nested.class.ExClass1.utility.to_object
@@ -28,6 +43,7 @@ PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr)
     // splicer end namespace.example::nested.class.ExClass1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_ExClass1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.example::nested.class.ExClass1.utility.from_object
@@ -41,6 +57,21 @@ int PP_ExClass1_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.example::nested.class.ExClass1.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_ExClass2_to_Object_idtor(example::nested::ExClass2 *addr,
+    int idtor)
+{
+    // splicer begin namespace.example::nested.class.ExClass2.utility.to_object
+    PP_ExClass2 *obj = PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.example::nested.class.ExClass2.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr)
 {
     // splicer begin namespace.example::nested.class.ExClass2.utility.to_object
@@ -57,6 +88,7 @@ PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr)
     // splicer end namespace.example::nested.class.ExClass2.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_ExClass2_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.example::nested.class.ExClass2.utility.from_object

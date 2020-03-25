@@ -34,6 +34,7 @@ PyObject_HEAD
 // end object PY_Cstruct1
 
 extern const char *PY_Cstruct1_capsule_name;
+PyObject *PP_Cstruct1_to_Object_idtor(Cstruct1 *addr, int idtor);
 PyObject *PP_Cstruct1_to_Object(Cstruct1 *addr);
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
 
@@ -53,6 +54,7 @@ PyObject_HEAD
 } PY_Cstruct_ptr;
 
 extern const char *PY_Cstruct_ptr_capsule_name;
+PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor);
 PyObject *PP_Cstruct_ptr_to_Object(Cstruct_ptr *addr);
 int PP_Cstruct_ptr_from_Object(PyObject *obj, void **addr);
 
@@ -74,6 +76,8 @@ PyObject_HEAD
 } PY_Cstruct_list;
 
 extern const char *PY_Cstruct_list_capsule_name;
+PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr,
+    int idtor);
 PyObject *PP_Cstruct_list_to_Object(Cstruct_list *addr);
 int PP_Cstruct_list_from_Object(PyObject *obj, void **addr);
 
@@ -94,6 +98,8 @@ PyObject_HEAD
 } PY_Cstruct_numpy;
 
 extern const char *PY_Cstruct_numpy_capsule_name;
+PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
+    int idtor);
 PyObject *PP_Cstruct_numpy_to_Object(Cstruct_numpy *addr);
 int PP_Cstruct_numpy_from_Object(PyObject *obj, void **addr);
 // ------------------------------

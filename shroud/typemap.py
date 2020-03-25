@@ -105,11 +105,12 @@ class Typemap(object):
         # ex. PyFloat_AsDouble({py_var})
         ("PY_get_converter", None),
         # Name of converter function with prototype (PyObject *, void *).
-        ("PY_to_object", None),  # PyBuild - object'=converter(address)
+        ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
             "PY_from_object",
             None,
         ),  # PyArg_Parse - status=converter(object, address);
+        ("PY_to_object_idtor", None),  # object=converter(address, idtor)
         ("PY_build_arg", None),  # argument for Py_BuildValue
         ("PY_build_format", None),  # 'format unit' for Py_BuildValue
         ("PY_struct_as", None),  # For struct - "class" or "list"

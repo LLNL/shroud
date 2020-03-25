@@ -18,6 +18,20 @@ const char *PY_twoTs_0_capsule_name = "twoTs_0";
 const char *PY_twoTs_instantiation4_capsule_name = "twoTs_instantiation4";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Names_to_Object_idtor(ns0::Names *addr, int idtor)
+{
+    // splicer begin namespace.ns0.class.Names.utility.to_object
+    PY_Names *obj = PyObject_New(PY_Names, &PY_Names_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.ns0.class.Names.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Names_to_Object(ns0::Names *addr)
 {
     // splicer begin namespace.ns0.class.Names.utility.to_object
@@ -34,6 +48,7 @@ PyObject *PP_Names_to_Object(ns0::Names *addr)
     // splicer end namespace.ns0.class.Names.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Names_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.ns0.class.Names.utility.from_object
@@ -47,6 +62,20 @@ int PP_Names_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.ns0.class.Names.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Vvv1_to_Object_idtor(std::vector<int> *addr, int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_Vvv1 *obj = PyObject_New(PY_Vvv1, &PY_Vvv1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Vvv1_to_Object(std::vector<int> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -63,6 +92,7 @@ PyObject *PP_Vvv1_to_Object(std::vector<int> *addr)
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Vvv1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -76,6 +106,22 @@ int PP_Vvv1_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_vector_double_to_Object_idtor(std::vector<double> *addr,
+    int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_vector_double *obj =
+        PyObject_New(PY_vector_double, &PY_vector_double_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -92,6 +138,7 @@ PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_vector_double_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -105,6 +152,22 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_vector_instantiation5_to_Object_idtor(std::vector<long> *addr,
+    int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_vector_instantiation5 *obj =
+        PyObject_New(PY_vector_instantiation5, &PY_vector_instantiation5_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -121,6 +184,7 @@ PyObject *PP_vector_instantiation5_to_Object(std::vector<long> *addr)
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -134,6 +198,22 @@ int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_vector_instantiation3_to_Object_idtor(std::vector<internal::ImplWorker1> *addr,
+    int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_vector_instantiation3 *obj =
+        PyObject_New(PY_vector_instantiation3, &PY_vector_instantiation3_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -150,6 +230,7 @@ PyObject *PP_vector_instantiation3_to_Object(std::vector<internal::ImplWorker1> 
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -163,6 +244,20 @@ int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Names2_to_Object_idtor(Names2 *addr, int idtor)
+{
+    // splicer begin class.Names2.utility.to_object
+    PY_Names2 *obj = PyObject_New(PY_Names2, &PY_Names2_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Names2.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Names2_to_Object(Names2 *addr)
 {
     // splicer begin class.Names2.utility.to_object
@@ -179,6 +274,7 @@ PyObject *PP_Names2_to_Object(Names2 *addr)
     // splicer end class.Names2.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Names2_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Names2.utility.from_object
@@ -192,6 +288,20 @@ int PP_Names2_from_Object(PyObject *obj, void **addr)
     // splicer end class.Names2.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_twoTs_0_to_Object_idtor(twoTs<int, long> *addr, int idtor)
+{
+    // splicer begin class.twoTs.utility.to_object
+    PY_twoTs_0 *obj = PyObject_New(PY_twoTs_0, &PY_twoTs_0_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.twoTs.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr)
 {
     // splicer begin class.twoTs.utility.to_object
@@ -208,6 +318,7 @@ PyObject *PP_twoTs_0_to_Object(twoTs<int, long> *addr)
     // splicer end class.twoTs.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.twoTs.utility.from_object
@@ -221,6 +332,22 @@ int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
     // splicer end class.twoTs.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_twoTs_instantiation4_to_Object_idtor(twoTs<float, double> *addr,
+    int idtor)
+{
+    // splicer begin class.twoTs.utility.to_object
+    PY_twoTs_instantiation4 *obj =
+        PyObject_New(PY_twoTs_instantiation4, &PY_twoTs_instantiation4_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->myobj = addr;
+    obj->mydtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.twoTs.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr)
 {
     // splicer begin class.twoTs.utility.to_object
@@ -237,6 +364,7 @@ PyObject *PP_twoTs_instantiation4_to_Object(twoTs<float, double> *addr)
     // splicer end class.twoTs.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.twoTs.utility.from_object
