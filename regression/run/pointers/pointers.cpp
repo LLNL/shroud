@@ -140,6 +140,12 @@ void Rank2Input(int *arg)
 }
 
 //----------------------------------------------------------------------
+
+void acceptCharArrayIn(char **names)
+{
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

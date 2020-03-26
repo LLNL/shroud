@@ -216,6 +216,8 @@ class NamespaceMixin(object):
         A struct is exactly like a class to the C++ compiler.
         From the YAML, a struct is a single ast and a class is broken into parts.
         """
+        if ast is None:
+            ast = declast.check_decl(decl, namespace=self)
         name = ast.name
         node = ClassNode(name, self, as_struct=True, **kwargs)
         for member in ast.members:
@@ -345,6 +347,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             create_std_namespace(self)  # add 'std::' to library
             self.using_directive("std")
 
+        # Create typemaps once.
+        if not typemap.get_global_types():
+            typemap.initialize()
         typemap.update_typemap_for_language(self.language)
 
         self.setup = kwargs.get("setup", {}) # for setup.py
@@ -649,6 +654,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
+                PY_to_object_func="XXXPY_to_object_func",
             ))
 
         fmt_library.F_filename_suffix = "f"
@@ -1160,6 +1166,13 @@ class ClassNode(AstNode, NamespaceMixin):
 
         return new
 
+    def create_node_map(self):
+        """Create a map from the name to Node for declarations in 
+        the class.
+        """
+        self.map_name_to_node = {}
+        for var in self.variables:
+            self.map_name_to_node[var.name] = var
 
 ######################################################################
 

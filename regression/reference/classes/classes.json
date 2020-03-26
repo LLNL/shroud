@@ -93,6 +93,7 @@
                     "PY_from_object_func": "PP_Class1_from_Object",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                     "PY_type_filename": "pyClass1type.cpp",
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
@@ -125,6 +126,7 @@
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -252,6 +254,7 @@
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -471,6 +474,7 @@
                                     "stmtc1": "c_shadow_in"
                                 },
                                 "fmtpy": {
+                                    "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                     "PyObject": "PY_Class1",
                                     "PyTypeObject": "PY_Class1_Type",
                                     "c_const": "const ",
@@ -965,6 +969,7 @@
                                 "stmtc1": "c_shadow_result"
                             },
                             "fmtpy": {
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "*",
@@ -1430,6 +1435,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_m_flag_getter",
                             "PY_setter": "nullptr",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_flag",
@@ -1457,6 +1463,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_test_getter",
                             "PY_setter": "PY_Class1_test_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_test",
@@ -1486,6 +1493,7 @@
                     "PY_from_object_func": "PP_Singleton_from_Object",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Singleton_to_Object",
+                    "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
                     "PY_type_filename": "pySingletontype.cpp",
                     "class_scope": "Singleton::",
                     "cxx_class": "Singleton",
@@ -1518,6 +1526,7 @@
                                 "stmtc1": "c_shadow_result"
                             },
                             "fmtpy": {
+                                "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
                                 "PyObject": "PY_Singleton",
                                 "PyTypeObject": "PY_Singleton_Type",
                                 "c_deref": "",
@@ -1773,6 +1782,7 @@
                             "stmtc1": "c_shadow_in"
                         },
                         "fmtpy": {
+                            "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
                             "c_const": "",
@@ -1882,6 +1892,7 @@
                             "stmtc1": "c_shadow_in"
                         },
                         "fmtpy": {
+                            "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
                             "c_const": "const ",
@@ -2089,6 +2100,7 @@
                         "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
+                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
                         "c_deref": "*",
@@ -2236,6 +2248,7 @@
                         "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
+                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
                         "c_deref": "",

@@ -42,6 +42,7 @@ struct s_STR_cstruct_list {
     int nitems;
     int * ivalue;
     double * dvalue;
+    char * * svalue;
 };
 typedef struct s_STR_cstruct_list STR_cstruct_list;
 
@@ -81,6 +82,8 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf);
 
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf);
+
+STR_cstruct_list * STR_get_global_struct_list();
 
 #ifdef __cplusplus
 }

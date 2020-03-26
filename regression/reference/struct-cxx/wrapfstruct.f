@@ -40,6 +40,7 @@ module struct_mod
         integer(C_INT) :: nitems
         type(C_PTR) :: ivalue
         type(C_PTR) :: dvalue
+        type(C_PTR) :: svalue
     end type cstruct_list
 
 
@@ -180,6 +181,14 @@ module struct_mod
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr2_bufferify
 
+        function c_get_global_struct_list() &
+                result(SHT_rv) &
+                bind(C, name="STR_get_global_struct_list")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_get_global_struct_list
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -243,6 +252,18 @@ contains
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2
+
+    ! Cstruct_list * get_global_struct_list()
+    function get_global_struct_list() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR, c_f_pointer
+        type(cstruct_list), pointer :: SHT_rv
+        ! splicer begin function.get_global_struct_list
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_get_global_struct_list()
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.get_global_struct_list
+    end function get_global_struct_list
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

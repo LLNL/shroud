@@ -355,6 +355,29 @@ PY_returnStructPtr2(
     return SHPyResult;
 // splicer end function.return_struct_ptr2
 }
+
+static char PY_get_global_struct_list__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_global_struct_list(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Cstruct_list * get_global_struct_list()
+// splicer begin function.get_global_struct_list
+    PY_Cstruct_list * SHTPy_rv = nullptr;
+
+    Cstruct_list * SHCXX_rv = get_global_struct_list();
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("O", SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_global_struct_list
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -374,6 +397,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr2__doc__},
+{"get_global_struct_list", (PyCFunction)PY_get_global_struct_list,
+    METH_NOARGS, PY_get_global_struct_list__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
@@ -505,9 +530,9 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr()
     PyObject * dict = nullptr;
     PyArray_Descr *dtype = nullptr;
 
-    lnames = PyList_New(3);
+    lnames = PyList_New(4);
     if (lnames == nullptr) goto fail;
-    ldescr = PyList_New(3);
+    ldescr = PyList_New(4);
     if (ldescr == nullptr) goto fail;
 
     // nitems
@@ -533,6 +558,14 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr()
     obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
     if (obj == nullptr) goto fail;
     PyList_SET_ITEM(ldescr, 2, obj);
+
+    // svalue
+    obj = PyString_FromString("svalue");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 3, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INTP);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 3, obj);
     obj = nullptr;
 
     dict = PyDict_New();
@@ -549,13 +582,13 @@ static PyArray_Descr *PY_Cstruct_list_create_array_descr()
 fail:
     Py_XDECREF(obj);
     if (lnames != nullptr) {
-        for (int i=0; i < 3; i++) {
+        for (int i=0; i < 4; i++) {
             Py_XDECREF(PyList_GET_ITEM(lnames, i));
         }
         Py_DECREF(lnames);
     }
     if (ldescr != nullptr) {
-        for (int i=0; i < 3; i++) {
+        for (int i=0; i < 4; i++) {
             Py_XDECREF(PyList_GET_ITEM(ldescr, i));
         }
         Py_DECREF(ldescr);

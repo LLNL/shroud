@@ -33,6 +33,7 @@ PyObject_HEAD
 } PY_User1;
 
 extern const char *PY_User1_capsule_name;
+PyObject *PP_User1_to_Object_idtor(User1 *addr, int idtor);
 PyObject *PP_User1_to_Object(User1 *addr);
 int PP_User1_from_Object(PyObject *obj, void **addr);
 
@@ -51,6 +52,7 @@ PyObject_HEAD
 } PY_User2;
 
 extern const char *PY_User2_capsule_name;
+PyObject *PP_User2_to_Object_idtor(User2 *addr, int idtor);
 PyObject *PP_User2_to_Object(User2 *addr);
 int PP_User2_from_Object(PyObject *obj, void **addr);
 #endif // ifdef USE_USER2

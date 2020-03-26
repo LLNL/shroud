@@ -967,6 +967,7 @@ C_prefix
 
 PY_type_obj
     Name variable which points to C or C++ memory.
+    Defaults to *obj*.
 
 PY_type_dtor
     Pointer to information used to release memory.
@@ -1138,12 +1139,21 @@ size_var
     Python wrapper.
 
 Result
-------
+^^^^^^
 
 cxx_rv_decl
     Declaration of variable to hold return value for function.
 
 
+Variable
+^^^^^^^^
+
+PY_struct_context
+   Prefix used to to access struct/class variables.
+   Includes trailing syntax to access member in a struct
+   i.e. ``.`` or ``->``.
+   ``self->obj->``.
+    
 
 Types Map
 ---------

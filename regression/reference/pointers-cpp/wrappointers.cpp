@@ -8,6 +8,7 @@
 //
 #include "wrappointers.h"
 #include <cstdlib>
+#include <cstring>
 #include "pointers.hpp"
 #include "typespointers.h"
 
@@ -16,6 +17,51 @@
 
 extern "C" {
 
+
+// helper function
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
+// helper function
+// Copy src into new memory and null terminate.
+// char **src +size(nsrc) +len(len)
+// CHARACTER(len) src(nsrc)
+static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
+{
+   char **rv = static_cast<char **>(std::malloc(sizeof(char *) * nsrc));
+   const char *src0 = src;
+   for(int i=0; i < nsrc; ++i) {
+      int ntrim = ShroudLenTrim(src0, len);
+      char *tgt = static_cast<char *>(std::malloc(ntrim+1));
+      std::memcpy(tgt, src0, ntrim);
+      tgt[ntrim] = '\0';
+      rv[i] = tgt;
+      src0 += len;
+   }
+   return rv;
+}
+
+// helper function
+// Release memory allocated by ShroudStrArrayAlloc
+static void ShroudStrArrayFree(char **src, int nsrc)
+{
+   for(int i=0; i < nsrc; ++i) {
+       std::free(src[i]);
+   }
+   std::free(src);
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -130,6 +176,25 @@ void POI_increment_int_array(int * array, int sizein)
     // splicer begin function.increment_int_array
     incrementIntArray(array, sizein);
     // splicer end function.increment_int_array
+}
+
+// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+void POI_accept_char_array_in(char * * names)
+{
+    // splicer begin function.accept_char_array_in
+    acceptCharArrayIn(names);
+    // splicer end function.accept_char_array_in
+}
+
+// void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+void POI_accept_char_array_in_bufferify(char *names, long Snames,
+    int Nnames)
+{
+    // splicer begin function.accept_char_array_in_bufferify
+    char **SHCXX_names = ShroudStrArrayAlloc(names, Snames, Nnames);
+    acceptCharArrayIn(SHCXX_names);
+    ShroudStrArrayFree(SHCXX_names, Snames);
+    // splicer end function.accept_char_array_in_bufferify
 }
 
 // start release allocated memory

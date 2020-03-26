@@ -19,6 +19,7 @@ program tester
 
   call test_functions
   call test_functions2
+  call test_char_arrays
 
   call fruit_summary
   call fruit_finalize
@@ -98,5 +99,16 @@ contains
 
   end subroutine test_functions2
 
+  subroutine test_char_arrays
+    character(10) :: in(3) = [ &
+         "dog       ", &
+         "cat       ", &
+         "monkey    "  &
+         ]
+
+    call set_case_name("test_char_arrays")
+
+    call accept_char_array_in(in)
+  end subroutine test_char_arrays
 
 end program tester

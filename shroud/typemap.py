@@ -12,7 +12,6 @@ buf_args documented in cwrapper.rst.
 from __future__ import print_function
 
 from . import util
-from . import whelpers
 
 # translation table to convert type name to flat name
 # unsigned int -> unsigned_int
@@ -106,11 +105,12 @@ class Typemap(object):
         # ex. PyFloat_AsDouble({py_var})
         ("PY_get_converter", None),
         # Name of converter function with prototype (PyObject *, void *).
-        ("PY_to_object", None),  # PyBuild - object'=converter(address)
+        ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
             "PY_from_object",
             None,
         ),  # PyArg_Parse - status=converter(object, address);
+        ("PY_to_object_idtor", None),  # object=converter(address, idtor)
         ("PY_build_arg", None),  # argument for Py_BuildValue
         ("PY_build_format", None),  # 'format unit' for Py_BuildValue
         ("PY_struct_as", None),  # For struct - "class" or "list"
@@ -693,6 +693,7 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",
+#            PY_get="PyString_AsString({py_var})",
             PY_get_converter="SHROUD_get_from_object_char",
             PYN_typenum="NPY_INTP",  # void *
             LUA_type="LUA_TSTRING",
@@ -1532,6 +1533,23 @@ fc_statements = [
             "{c_var_context}->rank = 0;",
         ],
     ),
+
+    #####
+    dict(
+        name='c_char_**_in_buf',
+        # argptr - argument is char *, not char **.
+        buf_args=["argptr", "size", "len"],
+        c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
+        cxx_local_var="pointer",
+        pre_call=[
+            "char **{cxx_var} = ShroudStrArrayAlloc("
+            "{c_var},\t {c_var_size},\t {c_var_len});",
+        ],
+        post_call=[
+            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+        ],
+    ),
+    #####
     dict(
         name="f_char_result_allocatable",
         need_wrapper=True,

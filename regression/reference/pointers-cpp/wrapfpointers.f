@@ -126,6 +126,27 @@ module pointers_mod
     end interface
 
     interface
+        subroutine c_accept_char_array_in(names) &
+                bind(C, name="POI_accept_char_array_in")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: names(*)
+        end subroutine c_accept_char_array_in
+    end interface
+
+    interface
+        subroutine c_accept_char_array_in_bufferify(names, Snames, &
+                Nnames) &
+                bind(C, name="POI_accept_char_array_in_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT, C_LONG
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: names(*)
+            integer(C_LONG), value, intent(IN) :: Snames
+            integer(C_INT), value, intent(IN) :: Nnames
+        end subroutine c_accept_char_array_in_bufferify
+    end interface
+
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -196,6 +217,17 @@ contains
         call c_increment_int_array(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
+
+    ! void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+    ! arg_to_buffer
+    subroutine accept_char_array_in(names)
+        use iso_c_binding, only : C_INT, C_LONG
+        character(len=*), intent(IN) :: names(:)
+        ! splicer begin function.accept_char_array_in
+        call c_accept_char_array_in_bufferify(names, &
+            size(names, kind=C_LONG), len(names, kind=C_INT))
+        ! splicer end function.accept_char_array_in
+    end subroutine accept_char_array_in
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -47,6 +47,11 @@ void POI_fill_int_array(int * out);
 
 void POI_increment_int_array(int * array, int sizein);
 
+void POI_accept_char_array_in(char * * names);
+
+void POI_accept_char_array_in_bufferify(char *names, long Snames,
+    int Nnames);
+
 #ifdef __cplusplus
 }
 #endif

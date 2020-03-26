@@ -33,7 +33,8 @@ test-fortran : \
   test-fortran-forward \
   test-fortran-enum-c \
   test-fortran-namespace \
-  test-fortran-pointers \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cpp \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
@@ -156,6 +157,14 @@ test-lua : lua-tutorial
 test-all : test-c test-fortran test-python test-lua
 
 # test specific yaml files
+test-pointers : \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cpp \
+  test-python-pointers-numpy-c \
+  test-python-pointers-numpy-cpp \
+  test-python-pointers-list-c \
+  test-python-pointers-list-cpp
+
 test-struct : \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
@@ -189,7 +198,8 @@ phony_explicit:
     $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/pointers/..\
+    $(tempdir)/run/pointers-c/..\
+    $(tempdir)/run/pointers-cpp/..\
     $(tempdir)/run/pointers-numpy-cpp/python/.. \
     $(tempdir)/run/pointers-list-cpp/python/.. \
     $(tempdir)/run/pointers-numpy-c/python/.. \

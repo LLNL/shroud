@@ -20,6 +20,7 @@
                     "PY_struct_array_descr_name": "Cstruct1_dtype",
                     "PY_struct_array_descr_variable": "PY_Cstruct1_array_descr",
                     "PY_to_object_func": "PP_Cstruct1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                     "class_scope": "Cstruct1::",
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1",
@@ -96,6 +97,7 @@
                     "PY_struct_array_descr_name": "Cstruct_ptr_dtype",
                     "PY_struct_array_descr_variable": "PY_Cstruct_ptr_array_descr",
                     "PY_to_object_func": "PP_Cstruct_ptr_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_ptr_to_Object_idtor",
                     "class_scope": "Cstruct_ptr::",
                     "cxx_class": "Cstruct_ptr",
                     "cxx_type": "Cstruct_ptr",
@@ -152,6 +154,7 @@
                     "PY_struct_array_descr_name": "Cstruct_list_dtype",
                     "PY_struct_array_descr_variable": "PY_Cstruct_list_array_descr",
                     "PY_to_object_func": "PP_Cstruct_list_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
                     "class_scope": "Cstruct_list::",
                     "cxx_class": "Cstruct_list",
                     "cxx_type": "Cstruct_list",
@@ -188,6 +191,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems+nitems"
+                            },
                             "declarator": {
                                 "name": "ivalue",
                                 "pointer": [
@@ -214,6 +220,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems*TWO"
+                            },
                             "declarator": {
                                 "name": "dvalue",
                                 "pointer": [
@@ -237,6 +246,38 @@
                         },
                         "name": "dvalue",
                         "options": {}
+                    },
+                    {
+                        "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
+                            "declarator": {
+                                "name": "svalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "svalue",
+                            "variable_lower": "svalue",
+                            "variable_name": "svalue",
+                            "variable_upper": "SVALUE"
+                        },
+                        "name": "svalue",
+                        "options": {}
                     }
                 ]
             },
@@ -258,6 +299,7 @@
                     "PY_struct_array_descr_name": "Cstruct_numpy_dtype",
                     "PY_struct_array_descr_variable": "PY_Cstruct_numpy_array_descr",
                     "PY_to_object_func": "PP_Cstruct_numpy_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_numpy_to_Object_idtor",
                     "class_scope": "Cstruct_numpy::",
                     "cxx_class": "Cstruct_numpy",
                     "cxx_type": "Cstruct_numpy",
@@ -294,6 +336,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "ivalue",
                                 "pointer": [
@@ -320,6 +365,9 @@
                     },
                     {
                         "ast": {
+                            "attrs": {
+                                "dimension": "nitems"
+                            },
                             "declarator": {
                                 "name": "dvalue",
                                 "pointer": [
@@ -364,6 +412,7 @@
                     "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
@@ -444,6 +493,7 @@
                     "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
@@ -546,6 +596,7 @@
                     "s1": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
@@ -689,6 +740,7 @@
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
                             "PY_build_format": "O",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
@@ -826,6 +878,7 @@
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
                             "PY_build_format": "O",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
@@ -934,6 +987,7 @@
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
                         "PY_build_format": "O",
+                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "",
@@ -1047,6 +1101,7 @@
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
                         "PY_build_format": "O",
+                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "",
@@ -1161,6 +1216,7 @@
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
                         "PY_build_format": "O",
+                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "*",
@@ -1302,6 +1358,7 @@
                     "fmtpy": {
                         "PYN_descr": "PY_Cstruct1_array_descr",
                         "PY_build_format": "O",
+                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "*",
@@ -1392,6 +1449,54 @@
                     "PY_name_impl": "PY_returnStructPtr2",
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "PYN_descr": "PY_Cstruct_list_array_descr",
+                        "PY_build_format": "O",
+                        "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
+                        "PyObject": "PY_Cstruct_list",
+                        "PyTypeObject": "PY_Cstruct_list_Type",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct_list",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_struct_result_list",
+                        "stmt1": "py_default",
+                        "vargs": "SHCXX_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "get_global_struct_list",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "Cstruct_list"
+                    ],
+                    "typemap_name": "Cstruct_list"
+                },
+                "decl": "Cstruct_list *get_global_struct_list();",
+                "declgen": "Cstruct_list * get_global_struct_list()",
+                "fmtdict": {
+                    "PY_name_impl": "PY_get_global_struct_list",
+                    "function_name": "get_global_struct_list",
+                    "underscore_name": "get_global_struct_list"
                 },
                 "options": {}
             }

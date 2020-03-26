@@ -77,6 +77,7 @@ There is no current way to add additional functions.
 f_attribute
 ^^^^^^^^^^^
 
+Blank delimited list of attributes.
 Allow additional Fortran attributes to be added to the declaration.
 Since the declaration is outside the splicer, there is no other way
 for the user to add attributes.  For example, needed when C_LOC is

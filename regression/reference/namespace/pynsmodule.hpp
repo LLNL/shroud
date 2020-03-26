@@ -32,6 +32,7 @@ PyObject_HEAD
 } PY_Cstruct1;
 
 extern const char *PY_Cstruct1_capsule_name;
+PyObject *PP_Cstruct1_to_Object_idtor(outer::Cstruct1 *addr, int idtor);
 PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr);
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
 
@@ -49,6 +50,8 @@ PyObject_HEAD
 } PY_ClassWork;
 
 extern const char *PY_ClassWork_capsule_name;
+PyObject *PP_ClassWork_to_Object_idtor(nswork::ClassWork *addr,
+    int idtor);
 PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr);
 int PP_ClassWork_from_Object(PyObject *obj, void **addr);
 // ------------------------------

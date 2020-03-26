@@ -14,6 +14,20 @@ const char *PY_Cstruct_list_capsule_name = "Cstruct_list";
 const char *PY_Cstruct_numpy_capsule_name = "Cstruct_numpy";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct1_to_Object_idtor(Cstruct1 *addr, int idtor)
+{
+    // splicer begin class.Cstruct1.utility.to_object
+    PY_Cstruct1 *obj = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Cstruct1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct1_to_Object(Cstruct1 *addr)
 {
     // splicer begin class.Cstruct1.utility.to_object
@@ -30,6 +44,7 @@ PyObject *PP_Cstruct1_to_Object(Cstruct1 *addr)
     // splicer end class.Cstruct1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Cstruct1.utility.from_object
@@ -43,6 +58,23 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct1.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
+{
+    // splicer begin class.Cstruct_ptr.utility.to_object
+    PY_Cstruct_ptr *obj =
+        PyObject_New(PY_Cstruct_ptr, &PY_Cstruct_ptr_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    // Python objects for members.
+    obj->cfield_obj = nullptr;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Cstruct_ptr.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct_ptr_to_Object(Cstruct_ptr *addr)
 {
     // splicer begin class.Cstruct_ptr.utility.to_object
@@ -59,6 +91,7 @@ PyObject *PP_Cstruct_ptr_to_Object(Cstruct_ptr *addr)
     // splicer end class.Cstruct_ptr.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct_ptr_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Cstruct_ptr.utility.from_object
@@ -72,6 +105,25 @@ int PP_Cstruct_ptr_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct_ptr.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr, int idtor)
+{
+    // splicer begin class.Cstruct_list.utility.to_object
+    PY_Cstruct_list *obj =
+        PyObject_New(PY_Cstruct_list, &PY_Cstruct_list_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    // Python objects for members.
+    obj->ivalue_obj = nullptr;
+    obj->dvalue_obj = nullptr;
+    obj->svalue_obj = nullptr;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Cstruct_list.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct_list_to_Object(Cstruct_list *addr)
 {
     // splicer begin class.Cstruct_list.utility.to_object
@@ -88,6 +140,7 @@ PyObject *PP_Cstruct_list_to_Object(Cstruct_list *addr)
     // splicer end class.Cstruct_list.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct_list_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Cstruct_list.utility.from_object
@@ -101,6 +154,25 @@ int PP_Cstruct_list_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct_list.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
+    int idtor)
+{
+    // splicer begin class.Cstruct_numpy.utility.to_object
+    PY_Cstruct_numpy *obj =
+        PyObject_New(PY_Cstruct_numpy, &PY_Cstruct_numpy_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    // Python objects for members.
+    obj->ivalue_obj = nullptr;
+    obj->dvalue_obj = nullptr;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Cstruct_numpy.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Cstruct_numpy_to_Object(Cstruct_numpy *addr)
 {
     // splicer begin class.Cstruct_numpy.utility.to_object
@@ -117,6 +189,7 @@ PyObject *PP_Cstruct_numpy_to_Object(Cstruct_numpy *addr)
     // splicer end class.Cstruct_numpy.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Cstruct_numpy_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Cstruct_numpy.utility.from_object

@@ -34,6 +34,7 @@ PyObject_HEAD
 // end object PY_Class1
 
 extern const char *PY_Class1_capsule_name;
+PyObject *PP_Class1_to_Object_idtor(classes::Class1 *addr, int idtor);
 PyObject *PP_Class1_to_Object(classes::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 
@@ -51,6 +52,8 @@ PyObject_HEAD
 } PY_Singleton;
 
 extern const char *PY_Singleton_capsule_name;
+PyObject *PP_Singleton_to_Object_idtor(classes::Singleton *addr,
+    int idtor);
 PyObject *PP_Singleton_to_Object(classes::Singleton *addr);
 int PP_Singleton_from_Object(PyObject *obj, void **addr);
 // ------------------------------

@@ -30,6 +30,7 @@
                     "PY_from_object_func": "PP_Class3_from_Object",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class3_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
                     "PY_type_filename": "pyClass3type.cpp",
                     "class_scope": "Class3::",
                     "cxx_class": "Class3",
@@ -65,6 +66,7 @@
                     "PY_from_object_func": "PP_Class2_from_Object",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class2_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
                     "PY_type_filename": "pyClass2type.cpp",
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
@@ -103,6 +105,7 @@
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
                                 "PyObject": "PY_Class2",
                                 "PyTypeObject": "PY_Class2_Type",
                                 "c_deref": "",
@@ -358,6 +361,7 @@
                                     "lua_var": "SH_Lua_arg"
                                 },
                                 "fmtpy": {
+                                    "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
                                     "PyObject": "PY_Class3",
                                     "PyTypeObject": "PY_Class3_Type",
                                     "c_const": "",

@@ -14,6 +14,9 @@
 /* Size of buffer passed from Fortran */
 #define LENOUTBUF 40
 
+// Used in dimension as a variable which is not a struct member.
+#define TWO 2
+
 struct Cstruct1 {
   int ifield;
   double dfield;
@@ -33,23 +36,24 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_ptr {
-  char *cfield;
+    char *cfield;
 };
 typedef struct Cstruct_ptr Cstruct_ptr;
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_list {
-  int nitems;
-  int *ivalue;
-  double *dvalue;
+    int nitems;
+    int *ivalue;
+    double *dvalue;
+    char **svalue;
 };
 typedef struct Cstruct_list Cstruct_list;
 
 /*----------------------------------------------------------------------*/
 struct Cstruct_numpy {
-  int nitems;
-  int *ivalue;
-  double *dvalue;
+    int nitems;
+    int *ivalue;
+    double *dvalue;
 };
 typedef struct Cstruct_numpy Cstruct_numpy;
 
@@ -69,5 +73,6 @@ typedef struct Cstruct_as_numpy Cstruct_as_numpy;
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 
+Cstruct_list *get_global_struct_list(void);
 
 #endif // STRUCT_H

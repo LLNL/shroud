@@ -33,6 +33,8 @@ PyObject_HEAD
 } PP_ExClass1;
 
 extern const char *PY_ExClass1_capsule_name;
+PyObject *PP_ExClass1_to_Object_idtor(example::nested::ExClass1 *addr,
+    int idtor);
 PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr);
 int PP_ExClass1_from_Object(PyObject *obj, void **addr);
 
@@ -50,6 +52,8 @@ PyObject_HEAD
 } PP_ExClass2;
 
 extern const char *PY_ExClass2_capsule_name;
+PyObject *PP_ExClass2_to_Object_idtor(example::nested::ExClass2 *addr,
+    int idtor);
 PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr);
 int PP_ExClass2_from_Object(PyObject *obj, void **addr);
 // ------------------------------

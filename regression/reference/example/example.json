@@ -59,6 +59,7 @@
                                     "PY_from_object_func": "PP_ExClass1_from_Object",
                                     "PY_this_call": "self->obj->",
                                     "PY_to_object_func": "PP_ExClass1_to_Object",
+                                    "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                     "PY_type_filename": "pyexample_nested_ExClass1type.cpp",
                                     "class_scope": "ExClass1::",
                                     "cxx_class": "ExClass1",
@@ -97,6 +98,7 @@
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
+                                                "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                 "PyObject": "PP_ExClass1",
                                                 "PyTypeObject": "PP_ExClass1_Type",
                                                 "c_deref": "",
@@ -230,6 +232,7 @@
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
+                                                "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                 "PyObject": "PP_ExClass1",
                                                 "PyTypeObject": "PP_ExClass1_Type",
                                                 "c_deref": "",
@@ -1801,6 +1804,7 @@
                                     "PY_from_object_func": "PP_ExClass2_from_Object",
                                     "PY_this_call": "self->obj->",
                                     "PY_to_object_func": "PP_ExClass2_to_Object",
+                                    "PY_to_object_idtor_func": "PP_ExClass2_to_Object_idtor",
                                     "PY_type_filename": "pyexample_nested_ExClass2type.cpp",
                                     "class_scope": "ExClass2::",
                                     "cxx_class": "ExClass2",
@@ -1886,6 +1890,7 @@
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
+                                                "PY_to_object_idtor_func": "PP_ExClass2_to_Object_idtor",
                                                 "PyObject": "PP_ExClass2",
                                                 "PyTypeObject": "PP_ExClass2_Type",
                                                 "c_deref": "",
@@ -3037,6 +3042,7 @@
                                                     "lua_var": "SH_Lua_in"
                                                 },
                                                 "fmtpy": {
+                                                    "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                     "PyObject": "PP_ExClass1",
                                                     "PyTypeObject": "PP_ExClass1_Type",
                                                     "c_const": "const ",
@@ -3089,6 +3095,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                 "PyObject": "PP_ExClass1",
                                                 "PyTypeObject": "PP_ExClass1_Type",
                                                 "c_deref": "*",

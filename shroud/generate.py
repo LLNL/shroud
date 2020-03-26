@@ -188,9 +188,13 @@ class VerifyAttrs(object):
                     attrs["dimension"] = ":"
                 else:
                     attrs["dimension"] = "*"
-        elif ntypemap and ntypemap.base == "vector":
-            # default to 1-d assumed shape
-            attrs["dimension"] = ":"
+        elif ntypemap:
+            if ntypemap.base == "vector":
+                # default to 1-d assumed shape
+                attrs["dimension"] = ":"
+            elif ntypemap.name == 'char' and is_ptr == 2:
+                # 'char **' -> CHARACTER(*) s(:)
+                attrs["dimension"] = ":"
 
         owner = attrs["owner"]
         if owner is not None:
@@ -331,7 +335,7 @@ class VerifyAttrs(object):
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if not is_ptr:
+            if is_ptr != 1:
                 raise RuntimeError(
                     "charlen attribute can only be "
                     "used on 'char *'"
@@ -339,7 +343,7 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if intent == "in" and is_ptr and arg_typemap.name == "char":
+        if intent == "in" and is_ptr == 1 and arg_typemap.name == "char":
             # const char *arg
             # char *arg+intent(in)
             arg.ftrim_char_in = True
@@ -1213,7 +1217,7 @@ class GenFunctions(object):
             # This filters out "buf" for ftrim_char_in
             arg.stmts_suffix = generated_suffix
             
-            spointer = "pointer" if arg.is_indirect() else "scalar"
+            spointer = arg.get_indirect_stmt()
             c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
             intent_blk = typemap.lookup_fc_stmts(c_stmts)
             typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)

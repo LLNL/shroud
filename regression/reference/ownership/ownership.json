@@ -26,6 +26,7 @@
                     "PY_from_object_func": "PP_Class1_from_Object",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Class1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                     "PY_type_filename": "pyClass1type.cpp",
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
@@ -167,6 +168,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Class1_flag_getter",
                             "PY_setter": "nullptr",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_flag",
@@ -2283,6 +2285,7 @@
                         "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
+                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
                         "c_deref": "*",
@@ -2415,6 +2418,7 @@
                         "stmtc1": "c_shadow_result"
                     },
                     "fmtpy": {
+                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
                         "c_deref": "*",

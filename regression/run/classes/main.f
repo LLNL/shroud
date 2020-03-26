@@ -35,7 +35,6 @@ contains
 
   subroutine test_enums
     ! test values of enumerations
-    integer(C_INT) rv_int
 
     call set_case_name("test_enums")
 

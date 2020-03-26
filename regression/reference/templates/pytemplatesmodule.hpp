@@ -35,6 +35,8 @@ PyObject_HEAD
 } PY_vector_int;
 
 extern const char *PY_vector_int_capsule_name;
+PyObject *PP_vector_int_to_Object_idtor(std::vector<int> *addr,
+    int idtor);
 PyObject *PP_vector_int_to_Object(std::vector<int> *addr);
 int PP_vector_int_from_Object(PyObject *obj, void **addr);
 
@@ -52,6 +54,8 @@ PyObject_HEAD
 } PY_vector_double;
 
 extern const char *PY_vector_double_capsule_name;
+PyObject *PP_vector_double_to_Object_idtor(std::vector<double> *addr,
+    int idtor);
 PyObject *PP_vector_double_to_Object(std::vector<double> *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
@@ -69,6 +73,8 @@ PyObject_HEAD
 } PY_ImplWorker1;
 
 extern const char *PY_ImplWorker1_capsule_name;
+PyObject *PP_ImplWorker1_to_Object_idtor(internal::ImplWorker1 *addr,
+    int idtor);
 PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr);
 int PP_ImplWorker1_from_Object(PyObject *obj, void **addr);
 
@@ -86,6 +92,8 @@ PyObject_HEAD
 } PY_ImplWorker2;
 
 extern const char *PY_ImplWorker2_capsule_name;
+PyObject *PP_ImplWorker2_to_Object_idtor(internal::ImplWorker2 *addr,
+    int idtor);
 PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr);
 int PP_ImplWorker2_from_Object(PyObject *obj, void **addr);
 
@@ -103,6 +111,7 @@ PyObject_HEAD
 } PY_Worker;
 
 extern const char *PY_Worker_capsule_name;
+PyObject *PP_Worker_to_Object_idtor(Worker *addr, int idtor);
 PyObject *PP_Worker_to_Object(Worker *addr);
 int PP_Worker_from_Object(PyObject *obj, void **addr);
 
@@ -120,6 +129,7 @@ PyObject_HEAD
 } PY_user_int;
 
 extern const char *PY_user_int_capsule_name;
+PyObject *PP_user_int_to_Object_idtor(user<int> *addr, int idtor);
 PyObject *PP_user_int_to_Object(user<int> *addr);
 int PP_user_int_from_Object(PyObject *obj, void **addr);
 // ------------------------------

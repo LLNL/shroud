@@ -842,7 +842,7 @@ rv = .false.
 
         # Add implied buffer arguments to prototype
         for buf_arg in buf_args:
-            if buf_arg == "arg":
+            if buf_arg in ["arg", "argptr"]:
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if attrs["assumedtype"]:
@@ -992,7 +992,7 @@ rv = .false.
                 imports[fmt.F_capsule_data_type] = True
 
         sgroup = result_typemap.sgroup
-        spointer = "pointer" if ast.is_indirect() else "scalar"
+        spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
@@ -1031,7 +1031,7 @@ rv = .false.
             deref_clause = attrs["deref"]
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
-            spointer = "pointer" if arg.is_indirect() else "scalar"
+            spointer = arg.get_indirect_stmt()
             if attrs["_is_result"]:
                 c_stmts = ["c", sgroup, spointer, "result",
                            generated_suffix, deref_clause]
@@ -1169,7 +1169,7 @@ rv = .false.
 
         # Add any buffer arguments
         for buf_arg in buf_args:
-            if buf_arg == "arg":
+            if buf_arg in ["arg", "argptr"]:
                 # Attributes   None=skip, True=use default, else use value
                 if arg_typemap.f_args:
                     # TODO - Not sure if this is still needed.
@@ -1359,7 +1359,7 @@ rv = .false.
 #                fmt_result.f_type = ast.template_arguments[0].typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
-            spointer = "pointer" if C_node.ast.is_indirect() else "scalar"
+            spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
@@ -1458,7 +1458,7 @@ rv = .false.
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
-            spointer = "pointer" if c_arg.is_indirect() else "scalar"
+            spointer = c_arg.get_indirect_stmt()
             if c_attrs["_is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]

@@ -31,6 +31,52 @@ typedef struct {
     void *data;   // points into obj.
 } SHROUD_converter_value;
 
+// Convert obj into an array of type char *
+// Return -1 on error.
+static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
+    char * **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    char * *in = static_cast<char * *>
+        (std::malloc(size * sizeof(char *)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyString_AsString(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be string", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+
+// Helper - convert PyObject to char * pointer.
+static int SHROUD_get_from_object_charptr(PyObject *obj,
+    SHROUD_converter_value *value)
+{
+    char * *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_char(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<char * *>(in);
+    return 1;
+}
+
 // Convert obj into an array of type double
 // Return -1 on error.
 static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
@@ -121,6 +167,15 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
     return 1;
 }
 
+static PyObject *SHROUD_to_PyList_char(char * *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyString_FromString(in[i]));
+    }
+    return out;
+}
+
 static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -151,6 +206,7 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
     // Python objects for members.
     Py_XDECREF(self->ivalue_obj);
     Py_XDECREF(self->dvalue_obj);
+    Py_XDECREF(self->svalue_obj);
 // splicer end class.Cstruct_list.type.del
 }
 
@@ -160,15 +216,17 @@ PY_Cstruct_list_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +intent(in)+optional(0), double * dvalue +intent(in)+optional(0)) +name(Cstruct_list_ctor)
+// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems;
     SHROUD_converter_value SHPy_ivalue;
     SHROUD_converter_value SHPy_dvalue;
+    SHROUD_converter_value SHPy_svalue;
     const char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
         "dvalue",
+        "svalue",
         nullptr };
 
     nitems = 0;
@@ -176,10 +234,13 @@ PY_Cstruct_list_tp_init(
     SHPy_ivalue.data = nullptr;
     SHPy_dvalue.obj = nullptr;
     SHPy_dvalue.data = nullptr;
+    SHPy_svalue.obj = nullptr;
+    SHPy_svalue.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "|iO&O&:Cstruct_list_ctor", const_cast<char **>(SHT_kwlist), 
+        "|iO&O&O&:Cstruct_list_ctor", const_cast<char **>(SHT_kwlist), 
         &nitems, SHROUD_get_from_object_int_list, &SHPy_ivalue,
-        SHROUD_get_from_object_double_list, &SHPy_dvalue))
+        SHROUD_get_from_object_double_list, &SHPy_dvalue,
+        SHROUD_get_from_object_charptr, &SHPy_svalue))
         return -1;
 
     self->obj = new Cstruct_list;
@@ -193,8 +254,10 @@ PY_Cstruct_list_tp_init(
     SH_obj->nitems = nitems;
     SH_obj->ivalue = static_cast<int *>(SHPy_ivalue.data);
     SH_obj->dvalue = static_cast<double *>(SHPy_dvalue.data);
+    SH_obj->svalue = static_cast<char * *>(SHPy_svalue.data);
     self->ivalue_obj = SHPy_ivalue.obj;  // steal reference
     self->dvalue_obj = SHPy_dvalue.obj;  // steal reference
+    self->svalue_obj = SHPy_svalue.obj;  // steal reference
     return 0;
 // splicer end class.Cstruct_list.method.cstruct_list_ctor
 }
@@ -229,7 +292,7 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_int(self->obj->ivalue, 5);
+    PyObject *rv = SHROUD_to_PyList_int(self->obj->ivalue, self->obj->nitems+self->obj->nitems);
     return rv;
 }
 
@@ -259,7 +322,7 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_double(self->obj->dvalue, 5);
+    PyObject *rv = SHROUD_to_PyList_double(self->obj->dvalue, self->obj->nitems*TWO);
     return rv;
 }
 
@@ -279,6 +342,36 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
+static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
+    void *SHROUD_UNUSED(closure))
+{
+    if (self->obj->svalue == nullptr) {
+        Py_RETURN_NONE;
+    }
+    if (self->svalue_obj != nullptr) {
+        Py_INCREF(self->svalue_obj);
+        return self->svalue_obj;
+    }
+    PyObject *rv = SHROUD_to_PyList_char(self->obj->svalue, self->obj->nitems);
+    return rv;
+}
+
+static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    SHROUD_converter_value cvalue;
+    Py_XDECREF(self->svalue_obj);
+    if (SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
+        self->obj->svalue = NULL;
+        self->svalue_obj = NULL;
+        // XXXX set error
+        return -1;
+    }
+    self->obj->svalue = static_cast<char * *>(cvalue.data);
+    self->svalue_obj = cvalue.obj;  // steal reference
+    return 0;
+}
+
 static PyGetSetDef PY_Cstruct_list_getset[] = {
     {(char *)"nitems", (getter)PY_Cstruct_list_nitems_getter,
         (setter)PY_Cstruct_list_nitems_setter, nullptr, nullptr},
@@ -286,6 +379,8 @@ static PyGetSetDef PY_Cstruct_list_getset[] = {
         (setter)PY_Cstruct_list_ivalue_setter, nullptr, nullptr},
     {(char *)"dvalue", (getter)PY_Cstruct_list_dvalue_getter,
         (setter)PY_Cstruct_list_dvalue_setter, nullptr, nullptr},
+    {(char *)"svalue", (getter)PY_Cstruct_list_svalue_getter,
+        (setter)PY_Cstruct_list_svalue_setter, nullptr, nullptr},
     // splicer begin class.Cstruct_list.PyGetSetDef
     // splicer end class.Cstruct_list.PyGetSetDef
     {nullptr}            /* sentinel */

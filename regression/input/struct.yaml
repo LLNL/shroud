@@ -86,17 +86,21 @@ declarations:
 ######################################################################
 - decl: struct Cstruct_list {
           int nitems;
-          int *ivalue;
-          double *dvalue;
+          int *ivalue     +dimension(nitems+nitems);
+          double *dvalue  +dimension(nitems*TWO);
+          char **svalue   +dimension(nitems);
         };
   options:
     PY_array_arg: list
 
+- decl: Cstruct_list *get_global_struct_list();
+#- decl: Cstruct_list *get_global_struct_list(void);
+
 ######################################################################
 - decl: struct Cstruct_numpy {
           int nitems;
-          int *ivalue;
-          double *dvalue;
+          int *ivalue     +dimension(nitems);
+          double *dvalue  +dimension(nitems);
         };
   options:
     PY_array_arg: numpy

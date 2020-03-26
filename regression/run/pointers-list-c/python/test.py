@@ -123,6 +123,9 @@ class Pointers(unittest.TestCase):
         self.assertIsInstance(out, list)
         self.assertEqual([3,5,7,9], out)
 
+    def test_acceptCharArrayIn(self):
+        pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

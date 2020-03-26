@@ -333,10 +333,23 @@ if __name__ == "__main__":
                  ]),
 
         # pointers
+        TestDesc("pointers-c", yaml="pointers",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_python=false",
+                 ]),
+        TestDesc("pointers-cpp", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                 ]),
         TestDesc("pointers-numpy-cpp", yaml="pointers",
                  cmdline=[
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
                  ]),
         TestDesc("pointers-list-cpp", yaml="pointers",
                  cmdline=[

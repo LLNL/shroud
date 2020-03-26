@@ -18,14 +18,15 @@ from shroud import util
 import unittest
 import copy
 
+# Useful to format reference output of to_dict
+#import pprint
+#pp = pprint.PrettyPrinter(indent=4)
+#        print(pp.pprint(todict.to_dict(r)))
 
 class CheckParse(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
-        typemap.initialize()
-        #        declast.create_global_namespace()  # also done in LibraryNode
-
         self.library = ast.LibraryNode(library="cc")
         self.class1 = self.library.add_class("Class1")
 
@@ -39,6 +40,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int", s)
+        self.assertEqual("", r.get_indirect())
 
         r = declast.check_decl("int var1")
         self.assertIsNone(r.get_subprogram())
@@ -64,11 +66,28 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True)
         )
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': []},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("", r.get_indirect())
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
-
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': []},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("", r.get_indirect())
         r = declast.check_decl("int *var1 +dimension(:)")
         self.assertIsNone(r.get_subprogram())
         self.assertEqual(1, r.is_pointer())
@@ -99,14 +118,57 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int * const var1")
         s = r.gen_decl()
         self.assertEqual("int * const var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1', 'pointer': [
+                        {'const': True, 'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("*", r.get_indirect())
 
         r = declast.check_decl("int **var1")
         s = r.gen_decl()
         self.assertEqual("int * * var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1', 'pointer': [
+                        {'ptr': '*'}, {'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("**", r.get_indirect())
+
+        r = declast.check_decl("int &*var1")
+        s = r.gen_decl()
+        self.assertEqual("int & * var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': [{   'ptr': '&'}, {   'ptr': '*'}]
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("&*", r.get_indirect())
 
         r = declast.check_decl("const int * const * const var1")
         s = r.gen_decl()
         self.assertEqual("const int * const * const var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                      'pointer': [
+                          {   'const': True, 'ptr': '*'},
+                          {   'const': True, 'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("**", r.get_indirect())
 
         r = declast.check_decl("long long var2")
         s = r.gen_decl()
@@ -535,7 +597,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const std::string & getName() const", s)
         self.assertFalse(r.is_pointer())
         self.assertTrue(r.is_reference())
-        self.assertTrue(r.is_indirect())
+        self.assertEqual(1, r.is_indirect())
 
         self.assertEqual(
             todict.to_dict(r),
@@ -637,7 +699,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("new", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
-        self.assertFalse(r.is_indirect())
+        self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 new", r.gen_arg_as_cxx(params=None))
         self.assertEqual("CC_Class1 new()", r.gen_arg_as_c())
 
@@ -661,7 +723,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("dtor", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
-        self.assertFalse(r.is_indirect())
+        self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 dtor()", r.gen_arg_as_cxx())
         self.assertEqual("CC_Class1 dtor()", r.gen_arg_as_c())
 
@@ -874,6 +936,35 @@ class CheckParse(unittest.TestCase):
         r2.name = "newname"
         self.assertEqual(r.name, "Function4b")  # first is unchanged
         self.assertEqual(r2.name, "newname")
+
+    def test_struct(self):
+        struct = self.library.add_struct("""
+struct Cstruct_list {
+    int nitems;
+    int *ivalue;
+};
+""")
+        self.assertEqual(2, len(struct.variables))
+        ast = struct.variables[0].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'nitems',
+                    'pointer': []
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        ast = struct.variables[1].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'ivalue',
+                    'pointer': [{   'ptr': '*'}]
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
 
 
 class CheckExpr(unittest.TestCase):

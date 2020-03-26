@@ -119,9 +119,77 @@ class Struct(unittest.TestCase):
             ptr.cfield = 1
         self.assertTrue("argument must be a string" in str(context.exception))
 
+    def test_cstruct_list(self):
+        # Create struct from each argument.
+        iinput = [1,2,3,4,5,6]
+        dinput = [6.,7.,8.,9.,10.,11.]
+        sinput = ["dog", "cat", "monkey", "bird", "horse"]
+
+        s = cstruct.Cstruct_list(nitems=3, ivalue=iinput)
+        self.assertEqual(iinput, s.ivalue)
+
+        s = cstruct.Cstruct_list(nitems=3, dvalue=dinput)
+        self.assertEqual(dinput, s.dvalue)
+
+        s = cstruct.Cstruct_list(nitems=5, svalue=sinput)
+        self.assertEqual(sinput, s.svalue)
+        
+    def test_cstruct_list_setter(self):
+        # getter and setter
+        s = cstruct.Cstruct_list()
+        s.nitems = 3
+
+        # int *ivalue     +dimension(nitems+nitems);
+        input = [1,2,3,4,5,6]
+        s.ivalue = input
+        ivalue = s.ivalue
+        self.assertIsInstance(ivalue, list)
+        self.assertEqual(6, len(ivalue))
+        self.assertEqual(input, ivalue)
+
+        # double *dvalue  +dimension(nitems*TWO);
+        input = [6,7,8,9,10,11]
+        s.dvalue = input
+        dvalue = s.dvalue
+        self.assertIsInstance(dvalue, list)
+        self.assertEqual(6, len(dvalue))
+        self.assertEqual(input, dvalue)
+
+        # char **svalue   +dimension(nitems);
+        input = ["dog", "cat", "monkey"]
+        s.svalue = input
+        svalue = s.svalue
+        self.assertIsInstance(svalue, list)
+        self.assertEqual(3, len(svalue))
+        self.assertEqual(input, svalue)
+
+    def test_cstruct_list_func(self):
+        s = cstruct.get_global_struct_list()
+
+        self.assertEqual(4, s.nitems)
+
+        ref = [0,1,2,3,4,5,6,7]
+        ivalue = s.ivalue
+        self.assertIsInstance(ivalue, list)
+        self.assertEqual(8, len(ivalue))
+        self.assertEqual(ref, ivalue)
+
+        ref = [0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0]
+        dvalue = s.dvalue
+        self.assertIsInstance(dvalue, list)
+        self.assertEqual(8, len(dvalue))
+        self.assertEqual(ref, dvalue)
+
+        ref = ['up', 'down', 'left', 'right']
+        svalue = s.svalue
+        self.assertIsInstance(svalue, list)
+        self.assertEqual(4, len(svalue))
+        self.assertEqual(ref, svalue)
+        
     def test_cstruct_numpy(self):
         # getter and setter
         s = cstruct.Cstruct_numpy()
+        s.nitems = 5
 
         input = [1,2,3,4,5]
         s.ivalue = input

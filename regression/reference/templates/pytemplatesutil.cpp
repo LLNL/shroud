@@ -16,6 +16,22 @@ const char *PY_Worker_capsule_name = "Worker";
 const char *PY_user_int_capsule_name = "user_int";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_vector_int_to_Object_idtor(std::vector<int> *addr,
+    int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_vector_int *obj =
+        PyObject_New(PY_vector_int, &PY_vector_int_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_vector_int_to_Object(std::vector<int> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -32,6 +48,7 @@ PyObject *PP_vector_int_to_Object(std::vector<int> *addr)
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_vector_int_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -45,6 +62,22 @@ int PP_vector_int_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_vector_double_to_Object_idtor(std::vector<double> *addr,
+    int idtor)
+{
+    // splicer begin namespace.std.class.vector.utility.to_object
+    PY_vector_double *obj =
+        PyObject_New(PY_vector_double, &PY_vector_double_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.std.class.vector.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
 {
     // splicer begin namespace.std.class.vector.utility.to_object
@@ -61,6 +94,7 @@ PyObject *PP_vector_double_to_Object(std::vector<double> *addr)
     // splicer end namespace.std.class.vector.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_vector_double_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.std.class.vector.utility.from_object
@@ -74,6 +108,22 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.std.class.vector.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_ImplWorker1_to_Object_idtor(internal::ImplWorker1 *addr,
+    int idtor)
+{
+    // splicer begin namespace.internal.class.ImplWorker1.utility.to_object
+    PY_ImplWorker1 *obj =
+        PyObject_New(PY_ImplWorker1, &PY_ImplWorker1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.internal.class.ImplWorker1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr)
 {
     // splicer begin namespace.internal.class.ImplWorker1.utility.to_object
@@ -90,6 +140,7 @@ PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr)
     // splicer end namespace.internal.class.ImplWorker1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_ImplWorker1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.internal.class.ImplWorker1.utility.from_object
@@ -103,6 +154,22 @@ int PP_ImplWorker1_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.internal.class.ImplWorker1.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_ImplWorker2_to_Object_idtor(internal::ImplWorker2 *addr,
+    int idtor)
+{
+    // splicer begin namespace.internal.class.ImplWorker2.utility.to_object
+    PY_ImplWorker2 *obj =
+        PyObject_New(PY_ImplWorker2, &PY_ImplWorker2_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end namespace.internal.class.ImplWorker2.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr)
 {
     // splicer begin namespace.internal.class.ImplWorker2.utility.to_object
@@ -119,6 +186,7 @@ PyObject *PP_ImplWorker2_to_Object(internal::ImplWorker2 *addr)
     // splicer end namespace.internal.class.ImplWorker2.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_ImplWorker2_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin namespace.internal.class.ImplWorker2.utility.from_object
@@ -132,6 +200,20 @@ int PP_ImplWorker2_from_Object(PyObject *obj, void **addr)
     // splicer end namespace.internal.class.ImplWorker2.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Worker_to_Object_idtor(Worker *addr, int idtor)
+{
+    // splicer begin class.Worker.utility.to_object
+    PY_Worker *obj = PyObject_New(PY_Worker, &PY_Worker_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Worker.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Worker_to_Object(Worker *addr)
 {
     // splicer begin class.Worker.utility.to_object
@@ -148,6 +230,7 @@ PyObject *PP_Worker_to_Object(Worker *addr)
     // splicer end class.Worker.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Worker_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Worker.utility.from_object
@@ -161,6 +244,20 @@ int PP_Worker_from_Object(PyObject *obj, void **addr)
     // splicer end class.Worker.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_user_int_to_Object_idtor(user<int> *addr, int idtor)
+{
+    // splicer begin class.user.utility.to_object
+    PY_user_int *obj = PyObject_New(PY_user_int, &PY_user_int_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.user.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_user_int_to_Object(user<int> *addr)
 {
     // splicer begin class.user.utility.to_object
@@ -177,6 +274,7 @@ PyObject *PP_user_int_to_Object(user<int> *addr)
     // splicer end class.user.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_user_int_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.user.utility.from_object

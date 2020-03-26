@@ -41,6 +41,7 @@ test_cases = (
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
     test_wrapp.CheckImplied,
+    test_wrapp.CheckStruct,
     #    test_shroud.MainCase,
 )
 

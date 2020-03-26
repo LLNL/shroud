@@ -37,7 +37,8 @@ Running a single test
 
 Running a single Python test
 
-    python -m unittest test_ast.CheckAst.test_d_generate1
+    cd tests
+    ../build/temp.linux-x86_64-2.7/venv/bin/python -m unittest test_ast.CheckAst.test_d_generate1
 
 Test generated code
 -------------------

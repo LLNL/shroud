@@ -207,11 +207,13 @@ class Wrapp(util.WrapperMixin):
             # PyObject for class
             cls.eval_template("PY_PyObject")
 
+            fmt.PY_to_object_idtor_func = wformat("PP_{cxx_class}_to_Object_idtor", fmt)
             fmt.PY_to_object_func = wformat("PP_{cxx_class}_to_Object", fmt)
             fmt.PY_from_object_func = wformat("PP_{cxx_class}_from_Object", fmt)
 
             ntypemap.PY_PyTypeObject = fmt.PY_PyTypeObject
             ntypemap.PY_PyObject = fmt.PY_PyObject
+            ntypemap.PY_to_object_idtor = fmt.PY_to_object_idtor_func
             ntypemap.PY_to_object = fmt.PY_to_object_func
             ntypemap.PY_from_object = fmt.PY_from_object_func
 
@@ -339,6 +341,7 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
         fileinfo = FileTuple([], [], [], [])
         options = node.options
         fmt_class = node.fmtdict
+        node.create_node_map()
 
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
@@ -406,7 +409,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self.wrap_enums(node)
 
         for var in node.variables:
-            self.wrap_class_variable(var, fileinfo)
+            self.wrap_class_variable(node, var, fileinfo)
 
         # wrap methods
         self.tp_init_default = "0"
@@ -443,8 +446,43 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "extern const char *{PY_capsule_name};",
             fmt,
         )
+        output = self.py_utility_functions
 
-        # To
+        ########################################
+        # To object helper with idtor argument.
+        to_object = wformat(
+            """{PY_PyObject} *obj =\t PyObject_New({PY_PyObject}, &{PY_PyTypeObject});
+if (obj == {nullptr})+
+return {nullptr};
+-obj->{PY_type_obj} = addr;
+obj->{PY_type_dtor} = idtor;""",
+            fmt,
+        )
+        to_object = to_object.split("\n")
+        self.process_member_obj(
+            node, "obj->{PY_member_object} = {nullptr};", to_object)
+        append_format(
+            to_object,
+            "return {cast_reinterpret}PyObject *{cast1}obj{cast2};",
+            fmt)
+
+        proto = wformat(
+            "PyObject *{PY_to_object_idtor_func}({namespace_scope}{cxx_type} *addr,\t int idtor)",
+            fmt,
+        )
+        self.py_class_decl.append(proto + ";")
+
+        output.append("")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        output.append("// Wrap pointer to struct/class.")
+        output.append(proto)
+        output.append("{+")
+        self._create_splicer("to_object", output, to_object)
+        output.append("-}")
+
+        ########################################
+        # To object.
         to_object = wformat(
             """PyObject *voidobj;
 PyObject *args;
@@ -466,15 +504,17 @@ return rv;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_utility_functions.append("")
+        output.append("")
         if node.cpp_if:
-            self.py_utility_functions.append("#" + node.cpp_if)
-        self.py_utility_functions.append(proto)
-        self.py_utility_functions.append("{+")
-        self._create_splicer("to_object", self.py_utility_functions, to_object)
-        self.py_utility_functions.append("-}")
+            output.append("#" + node.cpp_if)
+        output.append("// converter which may be used with PyBuild.")
+        output.append(proto)
+        output.append("{+")
+        self._create_splicer("to_object", output, to_object)
+        output.append("-}")
 
-        # From
+        ########################################
+        # From object.
         from_object = wformat(
             """if (obj->ob_type != &{PY_PyTypeObject}) {{
     // raise exception
@@ -492,17 +532,16 @@ return 1;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_utility_functions.append("")
-        self.py_utility_functions.append(proto)
-        self.py_utility_functions.append("{")
-        self.py_utility_functions.append(1)
+        output.append("")
+        output.append("// converter which may be used with PyArg_Parse.")
+        output.append(proto)
+        output.append("{+")
         self._create_splicer(
             "from_object", self.py_utility_functions, from_object
         )
-        self.py_utility_functions.append(-1)
-        self.py_utility_functions.append("}")
+        output.append("-}")
         if node.cpp_if:
-            self.py_utility_functions.append("#endif  // " + node.cpp_if)
+            output.append("#endif  // " + node.cpp_if)
 
         self._pop_splicer("utility")
 
@@ -649,8 +688,8 @@ return 1;""",
         if options.literalinclude:
             output.append("// end " + fmt.PY_struct_array_descr_create)
 
-    def wrap_class_variable(self, node, fileinfo):
-        """Wrap a VariableNode in a class with descriptors.
+    def wrap_class_variable(self, parent, node, fileinfo):
+        """Wrap a VariableNode in a class/struct with descriptors.
 
         Args:
             node - ast.VariableNode.
@@ -660,15 +699,19 @@ return 1;""",
         fmt_var = node.fmtdict
         fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
         fmt_var.PY_setter = fmt_var.nullptr  # readonly
+        # How to find other fields in struct.
+        fmt_var.PY_struct_context = wformat("{PY_param_self}->{PY_type_obj}->", fmt_var)
 
         fmt = util.Scope(fmt_var)
-        fmt.c_var = wformat("{PY_param_self}->{PY_type_obj}->{field_name}", fmt_var)
+        fmt.c_var = wformat("{PY_struct_context}{field_name}", fmt_var)
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
         ast = node.ast
         arg_typemap = ast.typemap
 
+        ########################################
+        # getter
         output = fileinfo.GetSetBody
         append_format(
             output,
@@ -684,7 +727,8 @@ return 1;""",
         else:
             fmt.ctor = "UUUctor"
 
-        if ast.is_indirect():
+        nindirect = ast.is_indirect()
+        if nindirect:
             append_format(
                 output,
                 """if ({c_var} == {nullptr}) {{+
@@ -697,20 +741,33 @@ return self->{PY_member_object};
                 fmt)
             if arg_typemap.name == "char":
                 # XXX - special case char since its ctor accepts a pointer.
-                append_format(
-                    output,
-                    "PyObject * rv = {ctor};\nreturn rv;",
-                    fmt,
-                )
-#XXX            elif "dimension" not in attrs:
+                if nindirect == 1:
+                    # 'char *' is a <type 'str'>.
+                    append_format(
+                        output,
+                        "PyObject * rv = {ctor};\nreturn rv;",
+                        fmt,
+                    )
+                elif nindirect == 2:
+                    # 'char **' is a <type 'list'> of <type 'str'>.
+                    self.c_helper["to_PyList_char"] = True
+                    fmt.size = py_struct_dimension(parent, node)
+                    append_format(
+                        output,
+                        "PyObject *rv = SHROUD_to_PyList_char"
+                        "({PY_struct_context}{field_name}, {size});\n"
+                        "return rv;",
+                        fmt
+                    )
+                #XXX            elif "dimension" not in attrs:
             elif options.PY_array_arg == "numpy":
                 self.need_numpy = True
                 # Create array from NumPy
-                fmt.size = "5";
+                fmt.size = py_struct_dimension(parent, node)
                 fmt.npy_ndims = "1"
                 fmt.npy_dims = "dims"
                 fmt.cxx_var = wformat(
-                    "self->{PY_type_obj}->{field_name}",
+                    "{PY_struct_context}{field_name}",
                     fmt)
                 if arg_typemap.PYN_descr:
                     # class
@@ -742,12 +799,11 @@ return self->{PY_member_object};
                 # Create array from helper.
                 # Include helper called by getter.
                 self.c_helper["to_PyList_" + fmt.c_type] = True
-                # XXX - 5 should be dimension
-                fmt.size = "5";
+                fmt.size = py_struct_dimension(parent, node)
                 append_format(
                     output,
                     "PyObject *rv = SHROUD_to_PyList_{c_type}"
-                    "(self->{PY_type_obj}->{field_name}, {size});\n"
+                    "({PY_struct_context}{field_name}, {size});\n"
                     "return rv;",
                     fmt)
 # XXX - What if pointer to scalar or struct?  Check dimension attribute.
@@ -781,13 +837,22 @@ return self->{PY_member_object};
                 fmt
             )
 
-            if ast.is_indirect():
+            if nindirect:
                 if arg_typemap.PY_get_converter:
                     whelpers.add_to_PyList_helper(node.ast)
-                    hname = "{}_{}".format(
-                        arg_typemap.PY_get_converter, options.PY_array_arg)
+                    if nindirect == 1:
+                        subname = ""
+                    elif nindirect == 2:
+                        # Intended for 'char **'.
+                        subname = "ptr"
+                    hname = "{}{}_{}".format(
+                        arg_typemap.PY_get_converter,
+                        subname,
+                        options.PY_array_arg)
                     # Adjust for alias like with type char.
                     fmt.get = whelpers.CHelpers[hname]["name"]
+                    fmt.cast_type = ast.gen_arg_as_cxx(
+                    name=None, params=None)
                     append_format(output, """SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({get}({py_var}, &cvalue) == 0) {{+
@@ -796,8 +861,8 @@ self->{PY_member_object} = NULL;
 // XXXX set error
 return -1;
 -}}
-{c_var} = {cast_static}{cxx_type} *{cast1}cvalue.data{cast2};
-self->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
+{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
+{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
                     self.c_helper[fmt.get] = True
                 else:
@@ -1154,6 +1219,7 @@ return -1;
                 fmt_arg.c_deref = ""
                 fmt_arg.cxx_addr = "&"
                 fmt_arg.cxx_member = "."
+            update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
             self.set_fmt_fields(arg, fmt_arg)
@@ -1186,7 +1252,10 @@ return -1;
                     fmt_arg.charlen = charlen
                     stmts = ["py", "char", intent, "charlen"]
                 else:
-                    stmts = ["py", "char", intent]
+                    spointer = arg.get_indirect_stmt()
+                    if spointer in ["scalar", "pointer"]:
+                        spointer = "" # XXX - preserve old behavior
+                    stmts = ["py", "char", spointer, intent]
             elif arg_typemap.base == "struct":
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
@@ -1280,7 +1349,14 @@ return -1;
                     append_format(
                         declare_code,
                         "SHROUD_converter_value {py_var};", fmt_arg)
-                    if not arg_typemap.PY_get_converter:
+                    hname = intent_blk.get_converter
+                    if hname:
+                        hname = "{}_{}".format(
+                            hname,
+                            options.PY_array_arg)
+                        self.c_helper[hname] = True
+                        hname = whelpers.CHelpers[hname]["name"]
+                    elif not arg_typemap.PY_get_converter:
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
@@ -1288,7 +1364,8 @@ return -1;
                     else:
                         whelpers.add_to_PyList_helper(arg)
                         hname = "{}_{}".format(
-                            arg_typemap.PY_get_converter, options.PY_array_arg)
+                            arg_typemap.PY_get_converter,
+                            options.PY_array_arg)
                         self.c_helper[hname] = True
                         # Adjust for alias like with type char.
                         hname = whelpers.CHelpers[hname]["name"]
@@ -1848,6 +1925,7 @@ return -1;
             fmt_result.size_var = "SHSize_" + fmt_result.C_result
             fmt_result.numpy_type = result_typemap.PYN_typenum
             #            fmt_pattern = fmt_result
+            update_fmt_from_typemap(fmt_result, result_typemap)
 
             self.set_fmt_fields(ast, fmt_result, True)
             sgroup = result_typemap.sgroup
@@ -2765,6 +2843,8 @@ setup(
         output_obj = []
         for var in node.variables:
             if var.ast.is_indirect():
+                var.fmtdict.cast_type = var.ast.gen_arg_as_cxx(
+                    name=None, params=None)
                 append_format(
                     output_obj,
                     "self->{PY_member_object} = {py_var}.obj;"
@@ -2773,7 +2853,7 @@ setup(
                 append_format(
                     output,
                     "SH_obj->{field_name} = "
-                    "{cast_static}{cxx_type} *{cast1}{py_var}.data{cast2};",
+                    "{cast_static}{cast_type}{cast1}{py_var}.data{cast2};",
                     var.fmtdict)
             else:
                 append_format(
@@ -3071,6 +3151,63 @@ return m;
 -}}
 """
 
+def update_fmt_from_typemap(fmt, ntypemap):
+    """Copy fields from typemap to use with creating output"""
+    # XXX maybe use in wrap_namespace
+    if ntypemap.PY_to_object_idtor:
+        fmt.PY_to_object_idtor_func = ntypemap.PY_to_object_idtor
+        # XXX - not sure if needed, avoid clutter for now.
+#        fmt.PY_to_object_func = ntypemap.PY_to_object
+#        fmt.PY_from_object_func = ntypemap.PY_from_object
+
+
+class ToStructDimension(todict.PrintNode):
+    """Convert dimension expression in struct to Python wrapper code.
+
+    If a name is a member of the struct, prefix with PY_struct_context.
+
+    struct Cstruct_list {
+        int nitems;
+        int *ivalue     +dimension(nitems+nitems);  # case 1
+        double *dvalue  +dimension(nitems*TWO);     # case 2
+    }
+
+    case 1:  {PY_struct_context}nitems+{PY_struct_context}nitems
+    case 2:  {PY_struct_context}nitems*TWO
+    """
+
+    def __init__(self, parent, fmtdict):
+        super(ToStructDimension, self).__init__()
+        self.parent = parent
+        self.fmtdict = fmtdict
+
+    def visit_Identifier(self, node):
+        """
+        Args:
+            node - declast.Identifier
+        """
+        if node.name in self.parent.map_name_to_node:
+            return self.fmtdict.PY_struct_context + node.name
+        elif node.args:
+            return self.param_list(node)
+        else:
+            return node.name
+
+def py_struct_dimension(parent, var):
+    """Return the dimension of a struct member.
+    Use the dimension attribute.
+
+    Args:
+        parent - ast.ClassNode.
+        var - ast.VariableNode.
+    """
+    dim = var.ast.attrs.get("dimension", None)
+    if dim:
+        node = declast.ExprParser(dim).expression()
+        visitor = ToStructDimension(parent, var.fmtdict)
+        return visitor.visit(node)
+    else:
+        return "1"
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.
@@ -3296,6 +3433,7 @@ class PyStmts(object):
         cxx_header=[], cxx_local_var=None,
         need_numpy=False,
         object_created=False, parse_as_object=False,
+        get_converter=None,
         declare=[], post_parse=[], pre_call=[],
         post_call=[],
         declare_capsule=[], post_call_capsule=[], fail_capsule=[],
@@ -3314,6 +3452,7 @@ class PyStmts(object):
         self.need_numpy = need_numpy
         self.object_created = object_created
         self.parse_as_object = parse_as_object
+        self.get_converter = get_converter
 
         self.declare = declare
         self.post_parse = post_parse
@@ -3713,6 +3852,35 @@ py_statements = [
             "{c_const}char * {c_var};",
         ],
     ),
+
+    dict(
+        name="py_char_**_in",
+        c_helper="from_PyObject_char",
+        parse_as_object=True,
+        get_converter="SHROUD_get_from_object_charptr",
+        c_local_var="pointer",
+        declare=[
+            "{c_const}char ** {cxx_var} = {nullptr};",
+            "PyObject * {pytmp_var};", # set by PyArg_Parse
+        ],
+        pre_call=[
+            "Py_ssize_t {size_var};",
+            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "+goto fail;-",
+        ],
+        post_call=[
+            "{stdlib}free({cxx_var});",
+            "{cxx_var} = {nullptr};",
+        ],
+        fail=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{stdlib}free({cxx_var});",
+            "-}}",
+        ],
+        goto_fail=True,
+    ),
+    
 ########################################
 # string
     dict(
@@ -3886,7 +4054,7 @@ py_statements = [
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         declare=[
-            "{PyObject} * {py_var} = {nullptr};",
+            "PyObject *{py_var} = {nullptr};",
         ],
         c_pre_call=[
             "{c_type} * {c_var} = malloc(sizeof({c_type}));",
@@ -3901,11 +4069,8 @@ py_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "{py_var} ="
-            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
             "if ({py_var} == {nullptr}) goto fail;",
-            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         object_created=True,
         fail=[
@@ -3918,14 +4083,11 @@ py_statements = [
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
-            "{PyObject} *{py_var} = {nullptr};  // struct_result_class",
+            "PyObject *{py_var} = {nullptr};  // struct_result_class",
         ],
         post_call=[
-            "{py_var} ="
-            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
             "if ({py_var} == {nullptr}) goto fail;",
-            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         object_created=True,
         fail=[

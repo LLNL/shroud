@@ -22,6 +22,7 @@
                     "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Cstruct_as_class_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
                     "PY_type_filename": "pyCstruct_as_classtype.c",
                     "class_scope": "Cstruct_as_class::",
                     "cxx_class": "Cstruct_as_class",
@@ -76,6 +77,7 @@
                             "fmtpy": {
                                 "PYN_descr": "PY_Cstruct_as_class_array_descr",
                                 "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
                                 "PyObject": "PY_Cstruct_as_class",
                                 "PyTypeObject": "PY_Cstruct_as_class_Type",
                                 "c_deref": "",
@@ -168,6 +170,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_x1_getter",
                             "PY_setter": "PY_Cstruct_as_class_x1_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
@@ -192,6 +195,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_y1_getter",
                             "PY_setter": "PY_Cstruct_as_class_y1_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
@@ -222,6 +226,7 @@
                     "PY_struct_array_descr_name": "Cstruct_as_numpy_dtype",
                     "PY_struct_array_descr_variable": "PY_Cstruct_as_numpy_array_descr",
                     "PY_to_object_func": "PP_Cstruct_as_numpy_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_as_numpy_to_Object_idtor",
                     "class_scope": "Cstruct_as_numpy::",
                     "cxx_class": "Cstruct_as_numpy",
                     "cxx_type": "Cstruct_as_numpy",
@@ -298,6 +303,7 @@
                     "s1": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct_as_class_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
                             "PyObject": "PY_Cstruct_as_class",
                             "PyTypeObject": "PY_Cstruct_as_class_Type",
                             "c_const": "",
@@ -322,6 +328,7 @@
                     "s2": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct_as_numpy_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct_as_numpy_to_Object_idtor",
                             "PyObject": "PY_Cstruct_as_numpy",
                             "PyTypeObject": "PY_Cstruct_as_numpy_Type",
                             "c_const": "",

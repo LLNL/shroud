@@ -12,6 +12,20 @@ const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Singleton_capsule_name = "Singleton";
 
 
+// Wrap pointer to struct/class.
+PyObject *PP_Class1_to_Object_idtor(classes::Class1 *addr, int idtor)
+{
+    // splicer begin class.Class1.utility.to_object
+    PY_Class1 *obj = PyObject_New(PY_Class1, &PY_Class1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Class1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Class1_to_Object(classes::Class1 *addr)
 {
     // splicer begin class.Class1.utility.to_object
@@ -28,6 +42,7 @@ PyObject *PP_Class1_to_Object(classes::Class1 *addr)
     // splicer end class.Class1.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Class1_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Class1.utility.from_object
@@ -41,6 +56,21 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
     // splicer end class.Class1.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Singleton_to_Object_idtor(classes::Singleton *addr,
+    int idtor)
+{
+    // splicer begin class.Singleton.utility.to_object
+    PY_Singleton *obj = PyObject_New(PY_Singleton, &PY_Singleton_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Singleton.utility.to_object
+}
+
+// converter which may be used with PyBuild.
 PyObject *PP_Singleton_to_Object(classes::Singleton *addr)
 {
     // splicer begin class.Singleton.utility.to_object
@@ -57,6 +87,7 @@ PyObject *PP_Singleton_to_Object(classes::Singleton *addr)
     // splicer end class.Singleton.utility.to_object
 }
 
+// converter which may be used with PyArg_Parse.
 int PP_Singleton_from_Object(PyObject *obj, void **addr)
 {
     // splicer begin class.Singleton.utility.from_object

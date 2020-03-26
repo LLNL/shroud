@@ -72,20 +72,30 @@ PY_get_converter
 ^^^^^^^^^^^^^^^^
 
 Used with descriptor setter.
-Name of converter function with prototype (PyObject *, void *).
+Name of converter function with prototype ``(PyObject *, void *)``.
 The returned status should be 1 for a successful conversion and 0 if
 the conversion has failed.
+
+PY_to_object_idtor
+^^^^^^^^^^^^^^^^^^
+
+Create an Python object for the type.
+Includes the index of the destructor function.
+Used with structs/classes that are created by functions
+and must be wrapped.
+``object = converter(address, idtor)``.
+Defaults to *None*.
 
 PY_to_object
 ^^^^^^^^^^^^
 
-PyBuild - object = converter(address).
+PyBuild - ``object = converter(address)``.
 Defaults to *None*.
 
 PY_from_object
 ^^^^^^^^^^^^^^
 
-PyArg_Parse - status = converter(object, address).
+PyArg_Parse - ``status = converter(object, address)``.
 Defaults to *None*.
 
 PYN_descr
@@ -184,6 +194,30 @@ cleanup
 fail
 ^^^^
 
+.. object conversion
+
+get_converter
+^^^^^^^^^^^^^
+
+Converter argument to ``PyArg_ParseTupleAndKeywords``.
+Accepts a SHROUD_converter_value argument.
+Will append options.PY_array_arg to the name.
+Can be used to override *type.PY_get_converter*.
+Useful with pointer types like ``char **``.
+
+object_created
+^^^^^^^^^^^^^^
+
+Set to ``True`` when a ``PyObject`` is created by *post_call*.
+This prevents ``Py_BuildValue`` from converting it into an Object.
+
+parse_as_object
+^^^^^^^^^^^^^^^
+
+When set to ``True``, ``PyArg_ParseTupleAndKeyword`` will
+return the ``PyObject`` associated with the argument.
+The *post_parse* or *pre_call* will operate on the object.
+Used with NumPy.
 
 Predefined Types
 ----------------
