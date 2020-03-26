@@ -22,47 +22,30 @@ def generate(fp):
 
     # default arguments
     namespace.add_function(
-        'Function5', 'double',
+        'UseDefaultArguments', 'double',
         [param('double', 'arg1', default_value='3.1415'),
          param('bool', 'arg2', default_value='true')])
 
     # overloaded
     namespace.add_function(
-        'Function6', None, 
+        'OverloadedFunction', None, 
         [param('const std::string &', 'name')])
     namespace.add_function(
-        'Function6', None, 
+        'OverloadedFunction', None, 
         [param('int', 'index')])
 
     # overloaded with default arguments
     namespace.add_function(
-        'overload1', 'int',
+        'UseDefaultOverload', 'int',
         [param('int', 'num'),
          param('int', 'offset', default_value='0'),
          param('int', 'stride', default_value='1')])
     namespace.add_function(
-        'overload1', 'int',
+        'UseDefaultOverload', 'int',
         [param('double', 'type'),
          param('int', 'num'),
          param('int', 'offset', default_value='0'),
          param('int', 'stride', default_value='1')])
-
-    class1 = namespace.add_class('Class1')
-    class1.add_enum('DIRECTION', ['UP', 'DOWN', 'LEFT', 'RIGHT'])
-#    class1.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
-
-    class1.add_instance_attribute('m_flag', 'int')
-    class1.add_constructor([param('int', 'flag')])
-    class1.add_constructor([])
-    class1.add_method('Method1', None, [])
-
-    struct = namespace.add_struct('struct1')
-    struct.add_instance_attribute('i', 'int')
-    struct.add_instance_attribute('d', 'double')
-
-    sclass = mod.add_class("Singleton", is_singleton=True)
-    sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
-                      is_static=True)
 
     mod.generate(fp)
 

@@ -7,19 +7,19 @@
 
 include ../defaults.mk
 
-all: strings.cpp strings.hpp strings-binding.cpp
+all: struct.c struct.h struct-binding.c
 	python setup.py build
 
-strings-binding.cpp : gen.py
+struct-binding.c : gen.py
 	$(python.exe) -B $^ > $@
 
-strings.cpp: $(rundir)/strings/strings.cpp
+struct.c: $(rundir)/struct/struct.c
 	cp $^ $@
-strings.hpp: $(rundir)/strings/strings.hpp
+struct.h: $(rundir)/struct/struct.h
 	cp $^ $@
 
 clean:
 	rm -rf build
-	rm -f strings.cpp strings.hpp
+	rm -f struct.c struct.h
 
 .PHONY: all clean test

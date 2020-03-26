@@ -7,19 +7,19 @@
 
 include ../defaults.mk
 
-all: strings.cpp strings.hpp strings-binding.cpp
+all: classes.cpp classes.hpp classes-binding.cpp
 	python setup.py build
 
-strings-binding.cpp : gen.py
+classes-binding.cpp : gen.py
 	$(python.exe) -B $^ > $@
 
-strings.cpp: $(rundir)/strings/strings.cpp
+classes.cpp: $(rundir)/classes/classes.cpp
 	cp $^ $@
-strings.hpp: $(rundir)/strings/strings.hpp
+classes.hpp: $(rundir)/classes/classes.hpp
 	cp $^ $@
 
 clean:
 	rm -rf build
-	rm -f strings.cpp strings.hpp
+	rm -f classes.cpp classes.hpp
 
 .PHONY: all clean test

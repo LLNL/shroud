@@ -80,46 +80,107 @@ typedef enum _PyBindGenWrapperFlags {
 
 
 #include "tutorial.hpp"
-/* --- forward declarations --- */
-
-
-typedef struct {
-    PyObject_HEAD
-    Singleton *obj;
-    PyBindGenWrapperFlags flags:8;
-} PySingleton;
-
-
-extern PyTypeObject PySingleton_Type;
-
-/* --- forward declarations --- */
-
-
-typedef struct {
-    PyObject_HEAD
-    tutorial::Class1 *obj;
-    PyBindGenWrapperFlags flags:8;
-} PyTutorialClass1;
-
-
-extern PyTypeObject PyTutorialClass1_Type;
-
-
-typedef struct {
-    PyObject_HEAD
-    tutorial::struct1 *obj;
-    PyBindGenWrapperFlags flags:8;
-} PyTutorialStruct1;
-
-
-extern PyTypeObject PyTutorialStruct1_Type;
-
 /* --- module functions --- */
+
+
+PyObject *
+_wrap_tutorial_tutorial_UseDefaultArguments(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    double retval;
+    double arg1 = 3.1415;
+    bool arg2;
+    PyObject *py_arg2 = NULL;
+    const char *keywords[] = {"arg1", "arg2", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "|dO", (char **) keywords, &arg1, &py_arg2)) {
+        return NULL;
+    }
+    arg2 = py_arg2? (bool) PyObject_IsTrue(py_arg2) : true;
+    retval = tutorial::UseDefaultArguments(arg1, arg2);
+    py_retval = Py_BuildValue((char *) "d", retval);
+    return py_retval;
+}
+PyObject * _wrap_tutorial_tutorial_UseDefaultArguments(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 
 PyObject *
-_wrap_tutorial_tutorial_overload1__0(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
+_wrap_tutorial_tutorial_OverloadedFunction__0(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
+{
+    PyObject *py_retval;
+    const char *name = NULL;
+    Py_ssize_t name_len;
+    std::string name_std;
+    const char *keywords[] = {"name", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s#", (char **) keywords, &name, &name_len)) {
+        {
+            PyObject *exc_type, *traceback;
+            PyErr_Fetch(&exc_type, return_exception, &traceback);
+            Py_XDECREF(exc_type);
+            Py_XDECREF(traceback);
+        }
+        return NULL;
+    }
+    name_std = std::string(name, name_len);
+    tutorial::OverloadedFunction(name_std);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+
+PyObject *
+_wrap_tutorial_tutorial_OverloadedFunction__1(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
+{
+    PyObject *py_retval;
+    int index;
+    const char *keywords[] = {"index", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "i", (char **) keywords, &index)) {
+        {
+            PyObject *exc_type, *traceback;
+            PyErr_Fetch(&exc_type, return_exception, &traceback);
+            Py_XDECREF(exc_type);
+            Py_XDECREF(traceback);
+        }
+        return NULL;
+    }
+    tutorial::OverloadedFunction(index);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+
+PyObject * _wrap_tutorial_tutorial_OverloadedFunction(PyObject *self, PyObject *args, PyObject *kwargs)
+{
+    PyObject * retval;
+    PyObject *error_list;
+    PyObject *exceptions[2] = {0,};
+    retval = _wrap_tutorial_tutorial_OverloadedFunction__0(self, args, kwargs, &exceptions[0]);
+    if (!exceptions[0]) {
+        return retval;
+    }
+    retval = _wrap_tutorial_tutorial_OverloadedFunction__1(self, args, kwargs, &exceptions[1]);
+    if (!exceptions[1]) {
+        Py_DECREF(exceptions[0]);
+        return retval;
+    }
+    error_list = PyList_New(2);
+    PyList_SET_ITEM(error_list, 0, PyObject_Str(exceptions[0]));
+    Py_DECREF(exceptions[0]);
+    PyList_SET_ITEM(error_list, 1, PyObject_Str(exceptions[1]));
+    Py_DECREF(exceptions[1]);
+    PyErr_SetObject(PyExc_TypeError, error_list);
+    Py_DECREF(error_list);
+    return NULL;
+}
+PyObject * _wrap_tutorial_tutorial_OverloadedFunction(PyObject *self, PyObject *args, PyObject *kwargs);
+
+
+
+PyObject *
+_wrap_tutorial_tutorial_UseDefaultOverload__0(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
 {
     PyObject *py_retval;
     int retval;
@@ -137,13 +198,13 @@ _wrap_tutorial_tutorial_overload1__0(PyObject * PYBINDGEN_UNUSED(dummy), PyObjec
         }
         return NULL;
     }
-    retval = tutorial::overload1(num, offset, stride);
+    retval = tutorial::UseDefaultOverload(num, offset, stride);
     py_retval = Py_BuildValue((char *) "i", retval);
     return py_retval;
 }
 
 PyObject *
-_wrap_tutorial_tutorial_overload1__1(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
+_wrap_tutorial_tutorial_UseDefaultOverload__1(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
 {
     PyObject *py_retval;
     int retval;
@@ -162,21 +223,21 @@ _wrap_tutorial_tutorial_overload1__1(PyObject * PYBINDGEN_UNUSED(dummy), PyObjec
         }
         return NULL;
     }
-    retval = tutorial::overload1(type, num, offset, stride);
+    retval = tutorial::UseDefaultOverload(type, num, offset, stride);
     py_retval = Py_BuildValue((char *) "i", retval);
     return py_retval;
 }
 
-PyObject * _wrap_tutorial_tutorial_overload1(PyObject *self, PyObject *args, PyObject *kwargs)
+PyObject * _wrap_tutorial_tutorial_UseDefaultOverload(PyObject *self, PyObject *args, PyObject *kwargs)
 {
     PyObject * retval;
     PyObject *error_list;
     PyObject *exceptions[2] = {0,};
-    retval = _wrap_tutorial_tutorial_overload1__0(self, args, kwargs, &exceptions[0]);
+    retval = _wrap_tutorial_tutorial_UseDefaultOverload__0(self, args, kwargs, &exceptions[0]);
     if (!exceptions[0]) {
         return retval;
     }
-    retval = _wrap_tutorial_tutorial_overload1__1(self, args, kwargs, &exceptions[1]);
+    retval = _wrap_tutorial_tutorial_UseDefaultOverload__1(self, args, kwargs, &exceptions[1]);
     if (!exceptions[1]) {
         Py_DECREF(exceptions[0]);
         return retval;
@@ -190,562 +251,15 @@ PyObject * _wrap_tutorial_tutorial_overload1(PyObject *self, PyObject *args, PyO
     Py_DECREF(error_list);
     return NULL;
 }
-PyObject * _wrap_tutorial_tutorial_overload1(PyObject *self, PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap_tutorial_tutorial_Function5(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    double retval;
-    double arg1 = 3.1415;
-    bool arg2;
-    PyObject *py_arg2 = NULL;
-    const char *keywords[] = {"arg1", "arg2", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "|dO", (char **) keywords, &arg1, &py_arg2)) {
-        return NULL;
-    }
-    arg2 = py_arg2? (bool) PyObject_IsTrue(py_arg2) : true;
-    retval = tutorial::Function5(arg1, arg2);
-    py_retval = Py_BuildValue((char *) "d", retval);
-    return py_retval;
-}
-PyObject * _wrap_tutorial_tutorial_Function5(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-
-PyObject *
-_wrap_tutorial_tutorial_Function6__0(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    PyObject *py_retval;
-    const char *name = NULL;
-    Py_ssize_t name_len;
-    std::string name_std;
-    const char *keywords[] = {"name", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s#", (char **) keywords, &name, &name_len)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return NULL;
-    }
-    name_std = std::string(name, name_len);
-    tutorial::Function6(name_std);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-
-PyObject *
-_wrap_tutorial_tutorial_Function6__1(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    PyObject *py_retval;
-    int index;
-    const char *keywords[] = {"index", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "i", (char **) keywords, &index)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return NULL;
-    }
-    tutorial::Function6(index);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-
-PyObject * _wrap_tutorial_tutorial_Function6(PyObject *self, PyObject *args, PyObject *kwargs)
-{
-    PyObject * retval;
-    PyObject *error_list;
-    PyObject *exceptions[2] = {0,};
-    retval = _wrap_tutorial_tutorial_Function6__0(self, args, kwargs, &exceptions[0]);
-    if (!exceptions[0]) {
-        return retval;
-    }
-    retval = _wrap_tutorial_tutorial_Function6__1(self, args, kwargs, &exceptions[1]);
-    if (!exceptions[1]) {
-        Py_DECREF(exceptions[0]);
-        return retval;
-    }
-    error_list = PyList_New(2);
-    PyList_SET_ITEM(error_list, 0, PyObject_Str(exceptions[0]));
-    Py_DECREF(exceptions[0]);
-    PyList_SET_ITEM(error_list, 1, PyObject_Str(exceptions[1]));
-    Py_DECREF(exceptions[1]);
-    PyErr_SetObject(PyExc_TypeError, error_list);
-    Py_DECREF(error_list);
-    return NULL;
-}
-PyObject * _wrap_tutorial_tutorial_Function6(PyObject *self, PyObject *args, PyObject *kwargs);
+PyObject * _wrap_tutorial_tutorial_UseDefaultOverload(PyObject *self, PyObject *args, PyObject *kwargs);
 
 static PyMethodDef tutorial_tutorial_functions[] = {
-    {(char *) "overload1", (PyCFunction) _wrap_tutorial_tutorial_overload1, METH_KEYWORDS|METH_VARARGS, NULL },
-    {(char *) "Function5", (PyCFunction) _wrap_tutorial_tutorial_Function5, METH_KEYWORDS|METH_VARARGS, "Function5(arg1, arg2)\n\ntype: arg1: double\ntype: arg2: bool" },
-    {(char *) "Function6", (PyCFunction) _wrap_tutorial_tutorial_Function6, METH_KEYWORDS|METH_VARARGS, NULL },
+    {(char *) "UseDefaultArguments", (PyCFunction) _wrap_tutorial_tutorial_UseDefaultArguments, METH_KEYWORDS|METH_VARARGS, "UseDefaultArguments(arg1, arg2)\n\ntype: arg1: double\ntype: arg2: bool" },
+    {(char *) "OverloadedFunction", (PyCFunction) _wrap_tutorial_tutorial_OverloadedFunction, METH_KEYWORDS|METH_VARARGS, NULL },
+    {(char *) "UseDefaultOverload", (PyCFunction) _wrap_tutorial_tutorial_UseDefaultOverload, METH_KEYWORDS|METH_VARARGS, NULL },
     {NULL, NULL, 0, NULL}
 };
-/* --- classes --- */
-
-
-static PyObject* _wrap_PyTutorialClass1__get_m_flag(PyTutorialClass1 *self, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "i", self->obj->m_flag);
-    return py_retval;
-}
-static int _wrap_PyTutorialClass1__set_m_flag(PyTutorialClass1 *self, PyObject *value, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "(O)", value);
-    if (!PyArg_ParseTuple(py_retval, (char *) "i", &self->obj->m_flag)) {
-        Py_DECREF(py_retval);
-        return -1;
-    }
-    Py_DECREF(py_retval);
-    return 0;
-}
-static PyGetSetDef PyTutorialClass1__getsets[] = {
-    {
-        (char*) "m_flag", /* attribute name */
-        (getter) _wrap_PyTutorialClass1__get_m_flag, /* C function to get the attribute */
-        (setter) _wrap_PyTutorialClass1__set_m_flag, /* C function to set the attribute */
-        NULL, /* optional doc string */
-        NULL /* optional additional data for getter and setter */
-    },
-    { NULL, NULL, NULL, NULL, NULL }
-};
-
-
-static int
-_wrap_PyTutorialClass1__tp_init__0(PyTutorialClass1 *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    int flag;
-    const char *keywords[] = {"flag", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "i", (char **) keywords, &flag)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return -1;
-    }
-    self->obj = new tutorial::Class1(flag);
-    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    return 0;
-}
-
-static int
-_wrap_PyTutorialClass1__tp_init__1(PyTutorialClass1 *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    const char *keywords[] = {NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "", (char **) keywords)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return -1;
-    }
-    self->obj = new tutorial::Class1();
-    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    return 0;
-}
-
-int _wrap_PyTutorialClass1__tp_init(PyTutorialClass1 *self, PyObject *args, PyObject *kwargs)
-{
-    int retval;
-    PyObject *error_list;
-    PyObject *exceptions[2] = {0,};
-    retval = _wrap_PyTutorialClass1__tp_init__0(self, args, kwargs, &exceptions[0]);
-    if (!exceptions[0]) {
-        return retval;
-    }
-    retval = _wrap_PyTutorialClass1__tp_init__1(self, args, kwargs, &exceptions[1]);
-    if (!exceptions[1]) {
-        Py_DECREF(exceptions[0]);
-        return retval;
-    }
-    error_list = PyList_New(2);
-    PyList_SET_ITEM(error_list, 0, PyObject_Str(exceptions[0]));
-    Py_DECREF(exceptions[0]);
-    PyList_SET_ITEM(error_list, 1, PyObject_Str(exceptions[1]));
-    Py_DECREF(exceptions[1]);
-    PyErr_SetObject(PyExc_TypeError, error_list);
-    Py_DECREF(error_list);
-    return -1;
-}
-
-
-PyObject *
-_wrap_PyTutorialClass1_Method1(PyTutorialClass1 *self)
-{
-    PyObject *py_retval;
-
-    self->obj->Method1();
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-
-static PyMethodDef PyTutorialClass1_methods[] = {
-    {(char *) "Method1", (PyCFunction) _wrap_PyTutorialClass1_Method1, METH_NOARGS, "Method1()\n\n" },
-    {NULL, NULL, 0, NULL}
-};
-
-static void
-_wrap_PyTutorialClass1__tp_dealloc(PyTutorialClass1 *self)
-{
-        tutorial::Class1 *tmp = self->obj;
-        self->obj = NULL;
-        if (!(self->flags&PYBINDGEN_WRAPPER_FLAG_OBJECT_NOT_OWNED)) {
-            delete tmp;
-        }
-    Py_TYPE(self)->tp_free((PyObject*)self);
-}
-
-static PyObject*
-_wrap_PyTutorialClass1__tp_richcompare (PyTutorialClass1 *PYBINDGEN_UNUSED(self), PyTutorialClass1 *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PyTutorialClass1_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
-}
-
-PyTypeObject PyTutorialClass1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    (char *) "tutorial.tutorial.Class1",            /* tp_name */
-    sizeof(PyTutorialClass1),                  /* tp_basicsize */
-    0,                                 /* tp_itemsize */
-    /* methods */
-    (destructor)_wrap_PyTutorialClass1__tp_dealloc,        /* tp_dealloc */
-    (printfunc)0,                      /* tp_print */
-    (getattrfunc)NULL,       /* tp_getattr */
-    (setattrfunc)NULL,       /* tp_setattr */
-#if PY_MAJOR_VERSION >= 3
-    NULL,
-#else
-    (cmpfunc)NULL,           /* tp_compare */
-#endif
-    (reprfunc)NULL,             /* tp_repr */
-    (PyNumberMethods*)NULL,     /* tp_as_number */
-    (PySequenceMethods*)NULL, /* tp_as_sequence */
-    (PyMappingMethods*)NULL,   /* tp_as_mapping */
-    (hashfunc)NULL,             /* tp_hash */
-    (ternaryfunc)NULL,          /* tp_call */
-    (reprfunc)NULL,              /* tp_str */
-    (getattrofunc)NULL,     /* tp_getattro */
-    (setattrofunc)NULL,     /* tp_setattro */
-    (PyBufferProcs*)NULL,  /* tp_as_buffer */
-    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
-    "Class1(flag)\nClass1()",                        /* Documentation string */
-    (traverseproc)NULL,     /* tp_traverse */
-    (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)_wrap_PyTutorialClass1__tp_richcompare,   /* tp_richcompare */
-    0,             /* tp_weaklistoffset */
-    (getiterfunc)NULL,          /* tp_iter */
-    (iternextfunc)NULL,     /* tp_iternext */
-    (struct PyMethodDef*)PyTutorialClass1_methods, /* tp_methods */
-    (struct PyMemberDef*)0,              /* tp_members */
-    PyTutorialClass1__getsets,                     /* tp_getset */
-    NULL,                              /* tp_base */
-    NULL,                              /* tp_dict */
-    (descrgetfunc)NULL,    /* tp_descr_get */
-    (descrsetfunc)NULL,    /* tp_descr_set */
-    0,                 /* tp_dictoffset */
-    (initproc)_wrap_PyTutorialClass1__tp_init,             /* tp_init */
-    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
-    (newfunc)PyType_GenericNew,               /* tp_new */
-    (freefunc)0,             /* tp_free */
-    (inquiry)NULL,             /* tp_is_gc */
-    NULL,                              /* tp_bases */
-    NULL,                              /* tp_mro */
-    NULL,                              /* tp_cache */
-    NULL,                              /* tp_subclasses */
-    NULL,                              /* tp_weaklist */
-    (destructor) NULL                  /* tp_del */
-};
-
-
-
-static PyObject* _wrap_PyTutorialStruct1__get_i(PyTutorialStruct1 *self, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "i", self->obj->i);
-    return py_retval;
-}
-static int _wrap_PyTutorialStruct1__set_i(PyTutorialStruct1 *self, PyObject *value, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "(O)", value);
-    if (!PyArg_ParseTuple(py_retval, (char *) "i", &self->obj->i)) {
-        Py_DECREF(py_retval);
-        return -1;
-    }
-    Py_DECREF(py_retval);
-    return 0;
-}
-static PyObject* _wrap_PyTutorialStruct1__get_d(PyTutorialStruct1 *self, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "d", self->obj->d);
-    return py_retval;
-}
-static int _wrap_PyTutorialStruct1__set_d(PyTutorialStruct1 *self, PyObject *value, void * PYBINDGEN_UNUSED(closure))
-{
-    PyObject *py_retval;
-
-    py_retval = Py_BuildValue((char *) "(O)", value);
-    if (!PyArg_ParseTuple(py_retval, (char *) "d", &self->obj->d)) {
-        Py_DECREF(py_retval);
-        return -1;
-    }
-    Py_DECREF(py_retval);
-    return 0;
-}
-static PyGetSetDef PyTutorialStruct1__getsets[] = {
-    {
-        (char*) "i", /* attribute name */
-        (getter) _wrap_PyTutorialStruct1__get_i, /* C function to get the attribute */
-        (setter) _wrap_PyTutorialStruct1__set_i, /* C function to set the attribute */
-        NULL, /* optional doc string */
-        NULL /* optional additional data for getter and setter */
-    },
-    {
-        (char*) "d", /* attribute name */
-        (getter) _wrap_PyTutorialStruct1__get_d, /* C function to get the attribute */
-        (setter) _wrap_PyTutorialStruct1__set_d, /* C function to set the attribute */
-        NULL, /* optional doc string */
-        NULL /* optional additional data for getter and setter */
-    },
-    { NULL, NULL, NULL, NULL, NULL }
-};
-
-
-static int
-_wrap_PyTutorialStruct1__tp_init__0(PyTutorialStruct1 *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    const char *keywords[] = {NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "", (char **) keywords)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return -1;
-    }
-    self->obj = new tutorial::struct1();
-    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    return 0;
-}
-
-static int
-_wrap_PyTutorialStruct1__tp_init__1(PyTutorialStruct1 *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
-{
-    PyTutorialStruct1 *ctor_arg;
-    const char *keywords[] = {"ctor_arg", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyTutorialStruct1_Type, &ctor_arg)) {
-        {
-            PyObject *exc_type, *traceback;
-            PyErr_Fetch(&exc_type, return_exception, &traceback);
-            Py_XDECREF(exc_type);
-            Py_XDECREF(traceback);
-        }
-        return -1;
-    }
-    self->obj = new tutorial::struct1(*((PyTutorialStruct1 *) ctor_arg)->obj);
-    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    return 0;
-}
-
-int _wrap_PyTutorialStruct1__tp_init(PyTutorialStruct1 *self, PyObject *args, PyObject *kwargs)
-{
-    int retval;
-    PyObject *error_list;
-    PyObject *exceptions[2] = {0,};
-    retval = _wrap_PyTutorialStruct1__tp_init__0(self, args, kwargs, &exceptions[0]);
-    if (!exceptions[0]) {
-        return retval;
-    }
-    retval = _wrap_PyTutorialStruct1__tp_init__1(self, args, kwargs, &exceptions[1]);
-    if (!exceptions[1]) {
-        Py_DECREF(exceptions[0]);
-        return retval;
-    }
-    error_list = PyList_New(2);
-    PyList_SET_ITEM(error_list, 0, PyObject_Str(exceptions[0]));
-    Py_DECREF(exceptions[0]);
-    PyList_SET_ITEM(error_list, 1, PyObject_Str(exceptions[1]));
-    Py_DECREF(exceptions[1]);
-    PyErr_SetObject(PyExc_TypeError, error_list);
-    Py_DECREF(error_list);
-    return -1;
-}
-
-
-static PyObject*
-_wrap_PyTutorialStruct1__copy__(PyTutorialStruct1 *self)
-{
-
-    PyTutorialStruct1 *py_copy;
-    py_copy = PyObject_New(PyTutorialStruct1, &PyTutorialStruct1_Type);
-    py_copy->obj = new tutorial::struct1(*self->obj);
-    py_copy->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    return (PyObject*) py_copy;
-}
-
-static PyMethodDef PyTutorialStruct1_methods[] = {
-    {(char *) "__copy__", (PyCFunction) _wrap_PyTutorialStruct1__copy__, METH_NOARGS, NULL},
-    {NULL, NULL, 0, NULL}
-};
-
-static void
-_wrap_PyTutorialStruct1__tp_dealloc(PyTutorialStruct1 *self)
-{
-        tutorial::struct1 *tmp = self->obj;
-        self->obj = NULL;
-        if (!(self->flags&PYBINDGEN_WRAPPER_FLAG_OBJECT_NOT_OWNED)) {
-            delete tmp;
-        }
-    Py_TYPE(self)->tp_free((PyObject*)self);
-}
-
-static PyObject*
-_wrap_PyTutorialStruct1__tp_richcompare (PyTutorialStruct1 *PYBINDGEN_UNUSED(self), PyTutorialStruct1 *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PyTutorialStruct1_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
-}
-
-PyTypeObject PyTutorialStruct1_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    (char *) "tutorial.tutorial.Struct1",            /* tp_name */
-    sizeof(PyTutorialStruct1),                  /* tp_basicsize */
-    0,                                 /* tp_itemsize */
-    /* methods */
-    (destructor)_wrap_PyTutorialStruct1__tp_dealloc,        /* tp_dealloc */
-    (printfunc)0,                      /* tp_print */
-    (getattrfunc)NULL,       /* tp_getattr */
-    (setattrfunc)NULL,       /* tp_setattr */
-#if PY_MAJOR_VERSION >= 3
-    NULL,
-#else
-    (cmpfunc)NULL,           /* tp_compare */
-#endif
-    (reprfunc)NULL,             /* tp_repr */
-    (PyNumberMethods*)NULL,     /* tp_as_number */
-    (PySequenceMethods*)NULL, /* tp_as_sequence */
-    (PyMappingMethods*)NULL,   /* tp_as_mapping */
-    (hashfunc)NULL,             /* tp_hash */
-    (ternaryfunc)NULL,          /* tp_call */
-    (reprfunc)NULL,              /* tp_str */
-    (getattrofunc)NULL,     /* tp_getattro */
-    (setattrofunc)NULL,     /* tp_setattro */
-    (PyBufferProcs*)NULL,  /* tp_as_buffer */
-    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
-    "struct1(ctor_arg)\nstruct1()",                        /* Documentation string */
-    (traverseproc)NULL,     /* tp_traverse */
-    (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)_wrap_PyTutorialStruct1__tp_richcompare,   /* tp_richcompare */
-    0,             /* tp_weaklistoffset */
-    (getiterfunc)NULL,          /* tp_iter */
-    (iternextfunc)NULL,     /* tp_iternext */
-    (struct PyMethodDef*)PyTutorialStruct1_methods, /* tp_methods */
-    (struct PyMemberDef*)0,              /* tp_members */
-    PyTutorialStruct1__getsets,                     /* tp_getset */
-    NULL,                              /* tp_base */
-    NULL,                              /* tp_dict */
-    (descrgetfunc)NULL,    /* tp_descr_get */
-    (descrsetfunc)NULL,    /* tp_descr_set */
-    0,                 /* tp_dictoffset */
-    (initproc)_wrap_PyTutorialStruct1__tp_init,             /* tp_init */
-    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
-    (newfunc)PyType_GenericNew,               /* tp_new */
-    (freefunc)0,             /* tp_free */
-    (inquiry)NULL,             /* tp_is_gc */
-    NULL,                              /* tp_bases */
-    NULL,                              /* tp_mro */
-    NULL,                              /* tp_cache */
-    NULL,                              /* tp_subclasses */
-    NULL,                              /* tp_weaklist */
-    (destructor) NULL                  /* tp_del */
-};
-
-
 /* --- enumerations --- */
-
-
 
 
 
@@ -771,174 +285,14 @@ inittutorial_tutorial(void)
     if (m == NULL) {
         return NULL;
     }
-    /* Register the 'tutorial::Class1' class */
-    if (PyType_Ready(&PyTutorialClass1_Type)) {
-        return NULL;
-    }
-    PyModule_AddObject(m, (char *) "Class1", (PyObject *) &PyTutorialClass1_Type);
-    /* Register the 'tutorial::struct1' class */
-    if (PyType_Ready(&PyTutorialStruct1_Type)) {
-        return NULL;
-    }
-    PyModule_AddObject(m, (char *) "struct1", (PyObject *) &PyTutorialStruct1_Type);
     PyModule_AddIntConstant(m, (char *) "RED", tutorial::RED);
     PyModule_AddIntConstant(m, (char *) "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, (char *) "WHITE", tutorial::WHITE);
-    {
-        PyObject *tmp_value;
-         // tutorial::Class1::UP
-        tmp_value = PyLong_FromLong(tutorial::Class1::UP);
-        PyDict_SetItemString((PyObject*) PyTutorialClass1_Type.tp_dict, "UP", tmp_value);
-        Py_DECREF(tmp_value);
-         // tutorial::Class1::DOWN
-        tmp_value = PyLong_FromLong(tutorial::Class1::DOWN);
-        PyDict_SetItemString((PyObject*) PyTutorialClass1_Type.tp_dict, "DOWN", tmp_value);
-        Py_DECREF(tmp_value);
-         // tutorial::Class1::LEFT
-        tmp_value = PyLong_FromLong(tutorial::Class1::LEFT);
-        PyDict_SetItemString((PyObject*) PyTutorialClass1_Type.tp_dict, "LEFT", tmp_value);
-        Py_DECREF(tmp_value);
-         // tutorial::Class1::RIGHT
-        tmp_value = PyLong_FromLong(tutorial::Class1::RIGHT);
-        PyDict_SetItemString((PyObject*) PyTutorialClass1_Type.tp_dict, "RIGHT", tmp_value);
-        Py_DECREF(tmp_value);
-    }
     return m;
 }
 static PyMethodDef tutorial_functions[] = {
     {NULL, NULL, 0, NULL}
 };
-/* --- classes --- */
-
-
-
-static int
-_wrap_PySingleton__tp_init(void)
-{
-    PyErr_SetString(PyExc_TypeError, "class 'Singleton' cannot be constructed ()");
-    return -1;
-}
-
-
-PyObject *
-_wrap_PySingleton_instancePtr(void)
-{
-    PyObject *py_retval;
-    Singleton *retval;
-    PySingleton *py_Singleton;
-
-    retval = Singleton::instancePtr();
-    if (!(retval)) {
-        Py_INCREF(Py_None);
-        return Py_None;
-    }
-    py_Singleton = PyObject_New(PySingleton, &PySingleton_Type);
-    py_Singleton->obj = retval;
-    py_Singleton->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    py_retval = Py_BuildValue((char *) "N", py_Singleton);
-    return py_retval;
-}
-
-static PyMethodDef PySingleton_methods[] = {
-    {(char *) "instancePtr", (PyCFunction) _wrap_PySingleton_instancePtr, METH_NOARGS|METH_STATIC, "instancePtr()\n\n" },
-    {NULL, NULL, 0, NULL}
-};
-
-static void
-_wrap_PySingleton__tp_dealloc(PySingleton *self)
-{
-
-    Py_TYPE(self)->tp_free((PyObject*)self);
-}
-
-static PyObject*
-_wrap_PySingleton__tp_richcompare (PySingleton *PYBINDGEN_UNUSED(self), PySingleton *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PySingleton_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
-}
-
-PyTypeObject PySingleton_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    (char *) "tutorial.Singleton",            /* tp_name */
-    sizeof(PySingleton),                  /* tp_basicsize */
-    0,                                 /* tp_itemsize */
-    /* methods */
-    (destructor)_wrap_PySingleton__tp_dealloc,        /* tp_dealloc */
-    (printfunc)0,                      /* tp_print */
-    (getattrfunc)NULL,       /* tp_getattr */
-    (setattrfunc)NULL,       /* tp_setattr */
-#if PY_MAJOR_VERSION >= 3
-    NULL,
-#else
-    (cmpfunc)NULL,           /* tp_compare */
-#endif
-    (reprfunc)NULL,             /* tp_repr */
-    (PyNumberMethods*)NULL,     /* tp_as_number */
-    (PySequenceMethods*)NULL, /* tp_as_sequence */
-    (PyMappingMethods*)NULL,   /* tp_as_mapping */
-    (hashfunc)NULL,             /* tp_hash */
-    (ternaryfunc)NULL,          /* tp_call */
-    (reprfunc)NULL,              /* tp_str */
-    (getattrofunc)NULL,     /* tp_getattro */
-    (setattrofunc)NULL,     /* tp_setattro */
-    (PyBufferProcs*)NULL,  /* tp_as_buffer */
-    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
-    "",                        /* Documentation string */
-    (traverseproc)NULL,     /* tp_traverse */
-    (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)_wrap_PySingleton__tp_richcompare,   /* tp_richcompare */
-    0,             /* tp_weaklistoffset */
-    (getiterfunc)NULL,          /* tp_iter */
-    (iternextfunc)NULL,     /* tp_iternext */
-    (struct PyMethodDef*)PySingleton_methods, /* tp_methods */
-    (struct PyMemberDef*)0,              /* tp_members */
-    0,                     /* tp_getset */
-    NULL,                              /* tp_base */
-    NULL,                              /* tp_dict */
-    (descrgetfunc)NULL,    /* tp_descr_get */
-    (descrsetfunc)NULL,    /* tp_descr_set */
-    0,                 /* tp_dictoffset */
-    (initproc)_wrap_PySingleton__tp_init,             /* tp_init */
-    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
-    (newfunc)PyType_GenericNew,               /* tp_new */
-    (freefunc)0,             /* tp_free */
-    (inquiry)NULL,             /* tp_is_gc */
-    NULL,                              /* tp_bases */
-    NULL,                              /* tp_mro */
-    NULL,                              /* tp_cache */
-    NULL,                              /* tp_subclasses */
-    NULL,                              /* tp_weaklist */
-    (destructor) NULL                  /* tp_del */
-};
-
-
 #if PY_VERSION_HEX >= 0x03000000
 static struct PyModuleDef tutorial_moduledef = {
     PyModuleDef_HEAD_INIT,
@@ -979,11 +333,6 @@ MOD_INIT(tutorial)
     if (m == NULL) {
         return MOD_ERROR;
     }
-    /* Register the 'Singleton' class */
-    if (PyType_Ready(&PySingleton_Type)) {
-        return MOD_ERROR;
-    }
-    PyModule_AddObject(m, (char *) "Singleton", (PyObject *) &PySingleton_Type);
     submodule = inittutorial_tutorial();
     if (submodule == NULL) {
         return MOD_ERROR;

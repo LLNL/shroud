@@ -13,13 +13,13 @@ all: tutorial.cpp tutorial.hpp tutorial-binding.cpp
 tutorial-binding.cpp : gen.py
 	$(python.exe) -B $^ > $@
 
-tutorial.cpp: ../../../run/tutorial/tutorial.cpp
+tutorial.cpp: $(rundir)/tutorial/tutorial.cpp
 	cp $^ $@
-tutorial.hpp: ../../../run/tutorial/tutorial.hpp
+tutorial.hpp: $(rundir)/tutorial/tutorial.hpp
 	cp $^ $@
 
 clean:
 	rm -rf build
-	rm -f tutorial.cpp tutorial.hpp tutorial-binding.cpp
+	rm -f tutorial.cpp tutorial.hpp
 
 .PHONY: all clean test
