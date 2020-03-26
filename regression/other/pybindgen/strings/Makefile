@@ -4,5 +4,22 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
-all:
+
+include ../defaults.mk
+
+all: strings.cpp strings.hpp strings-binding.cpp
 	python setup.py build
+
+strings-binding.cpp : gen.py
+	$(python.exe) -B $^ > $@
+
+strings.cpp: ../../../run/strings/strings.cpp
+	cp $^ $@
+strings.hpp: ../../../run/strings/strings.hpp
+	cp $^ $@
+
+clean:
+	rm -rf build
+	rm -f strings.cpp strings.hpp
+
+.PHONY: all clean test
