@@ -4,9 +4,9 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
+import numpy
 import re
 import requests
-import numpy
 
 np_version = re.compile(r'(?P<MAJOR>[0-9]+)\.'
                         '(?P<MINOR>[0-9]+)') \
@@ -32,9 +32,10 @@ from distutils.core import setup, Extension
 import numpy
 
 tutorial = Extension(
-    'tutorial',
-    sources=['../tutorial.cpp', 'tutorial_module.cpp'],
-    include_dirs=['..', numpy.get_include()]
+    '_tutorial',
+    sources=['tutorial.cpp', 'tutorial.i'],
+    include_dirs=[numpy.get_include()],
+    swig_opts = ['-c++'],
 )
 
 setup(ext_modules=[tutorial])

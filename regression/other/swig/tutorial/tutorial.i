@@ -19,6 +19,6 @@
 namespace tutorial
 {
 
-double Function5(double arg1 = 3.1415, bool arg2 = true);
+double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true);
 
 } /* end namespace tutorial */

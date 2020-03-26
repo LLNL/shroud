@@ -5,9 +5,9 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 
+import numpy
 import re
 import requests
-import numpy
 
 np_version = re.compile(r'(?P<MAJOR>[0-9]+)\.'
                         '(?P<MINOR>[0-9]+)') \
@@ -32,6 +32,10 @@ with open(np_file_name, 'wb') as file:
 from distutils.core import setup, Extension
 import numpy
 
-setup(ext_modules=[Extension("_cos_doubles",
-      sources=["cos_doubles.c", "cos_doubles.i"],
-      include_dirs=[numpy.get_include()])])
+setup(ext_modules=[
+    Extension("_pointers",
+              sources=["pointers.c", "pointers.i"],
+              include_dirs=[numpy.get_include()],
+              extra_compile_args = ["-std=c99"],
+    )]
+)

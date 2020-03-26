@@ -1,12 +1,12 @@
 /*  Example of wrapping a C function that takes a C double array as input using
  *  numpy typemaps for SWIG. */
 
-%module cos_doubles
+%module pointers
 %{
     /* the resulting C file should be built as a python extension */
     #define SWIG_FILE_WITH_INIT
     /*  Includes the header in the wrapper code */
-    #include "cos_doubles.h"
+    #include "pointers.hpp"
 %}
 
 /*  include the numpy typemaps */

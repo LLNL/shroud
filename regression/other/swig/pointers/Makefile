@@ -2,20 +2,18 @@
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 
-#	swig -python -c++ -o tutorial_module.cpp tutorial.i
-
-build: tutorial.cpp tutorial.hpp
+build: pointers.c pointers.hpp
 	python setup.py build_ext --inplace
 
-tutorial.cpp: ../../../run/tutorial/tutorial.cpp
+pointers.c:  ../../../run/pointers/pointers.cpp
 	cp $^ $@
-tutorial.hpp: ../../../run/tutorial/tutorial.hpp
+pointers.hpp:  ../../../run/pointers/pointers.hpp
 	cp $^ $@
 
 clean:
 	rm -rf build
-	rm -f tutorial.py* tutorial_wrap.cpp _tutorial.so numpy.i *~
-	rm -f tutorial.cpp tutorial.hpp
+	rm -f pointers.py pointers_wrap.c _pointers.so numpy.i *~
+	rm -f pointers.c pointers.hpp
 
 test:
 	PYTHONPATH=$(shell pwd) python test.py
