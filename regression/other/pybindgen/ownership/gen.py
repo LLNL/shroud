@@ -3,6 +3,11 @@
 # See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
+#
+########################################################################
+"""
+Generate a module for ownership using PyBindGen
+"""
 
 import pybindgen
 from pybindgen import (cppclass, Module, param, Parameter, ReturnValue)

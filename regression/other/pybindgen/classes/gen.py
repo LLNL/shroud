@@ -6,7 +6,7 @@
 # 
 ########################################################################
 """
-Generate a module for tutorial using PyBindGen
+Generate a module for classes using PyBindGen
 """
 
 import pybindgen
@@ -26,13 +26,17 @@ def generate(fp):
     class1.add_constructor([])
     class1.add_method('Method1', None, [])
 
-#    struct = namespace.add_struct('struct1')
-#    struct.add_instance_attribute('i', 'int')
-#    struct.add_instance_attribute('d', 'double')
-
-    sclass = mod.add_class("Singleton", is_singleton=True)
-    sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
+    sclass = namespace.add_class("Singleton", is_singleton=True)
+    sclass.add_method("getReference", retval("classes::Singleton&", caller_owns_return=True), [],
                       is_static=True)
+
+#    mod.add_class('Class1',
+#                  memory_policy=cppclass.ReferenceCountingMethodsPolicy(
+#                      incref_method='Ref',
+#                      decref_method='Unref',
+#                      peekref_method='PeekRef')
+#    )
+#    mod.add_function('DoSomething', retval('Class1 *', caller_owns_return=False), [])
 
     mod.generate(fp)
 

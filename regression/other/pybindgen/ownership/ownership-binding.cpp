@@ -201,19 +201,6 @@ extern PyTypeObject PySomeObject_Type;
 
 
 PyObject *
-_wrap_foo_delete_stored_zbr()
-{
-    PyObject *py_retval;
-
-    delete_stored_zbr();
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap_foo_delete_stored_zbr();
-
-
-PyObject *
 _wrap_foo_store_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -253,10 +240,23 @@ _wrap_foo_invoke_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObjec
 }
 PyObject * _wrap_foo_invoke_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
+
+PyObject *
+_wrap_foo_delete_stored_zbr()
+{
+    PyObject *py_retval;
+
+    delete_stored_zbr();
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap_foo_delete_stored_zbr();
+
 static PyMethodDef foo_functions[] = {
-    {(char *) "delete_stored_zbr", (PyCFunction) _wrap_foo_delete_stored_zbr, METH_NOARGS, "delete_stored_zbr()\n\n" },
     {(char *) "store_zbr", (PyCFunction) _wrap_foo_store_zbr, METH_KEYWORDS|METH_VARARGS, "store_zbr(zbr)\n\ntype: zbr: Zbr *" },
     {(char *) "invoke_zbr", (PyCFunction) _wrap_foo_invoke_zbr, METH_KEYWORDS|METH_VARARGS, "invoke_zbr(x)\n\ntype: x: int" },
+    {(char *) "delete_stored_zbr", (PyCFunction) _wrap_foo_delete_stored_zbr, METH_NOARGS, "delete_stored_zbr()\n\n" },
     {NULL, NULL, 0, NULL}
 };
 /* --- classes --- */
@@ -387,39 +387,6 @@ _wrap_PyFoo__tp_dealloc(PyFoo *self)
     Py_TYPE(self)->tp_free((PyObject*)self);
 }
 
-static PyObject*
-_wrap_PyFoo__tp_richcompare (PyFoo *PYBINDGEN_UNUSED(self), PyFoo *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PyFoo_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
-}
-
 PyTypeObject PyFoo_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
     (char *) "foo.Foo",            /* tp_name */
@@ -449,7 +416,7 @@ PyTypeObject PyFoo_Type = {
     "Foo(datum)\nFoo(foo)\nFoo()",                        /* Documentation string */
     (traverseproc)NULL,     /* tp_traverse */
     (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)_wrap_PyFoo__tp_richcompare,   /* tp_richcompare */
+    (richcmpfunc)NULL,   /* tp_richcompare */
     0,             /* tp_weaklistoffset */
     (getiterfunc)NULL,          /* tp_iter */
     (iternextfunc)NULL,     /* tp_iternext */
@@ -635,19 +602,6 @@ _wrap_PyZbr_get_datum(PyZbr *self)
 
 
 PyObject *
-_wrap_PyZbr_get_value(PyZbr *self)
-{
-    PyObject *py_retval;
-    int retval;
-    int  x;
-
-    retval = self->obj->get_value(&x);
-    py_retval = Py_BuildValue((char *) "ii", retval, x);
-    return py_retval;
-}
-
-
-PyObject *
 _wrap_PyZbr_get_int(PyZbr *self, PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -663,10 +617,23 @@ _wrap_PyZbr_get_int(PyZbr *self, PyObject *args, PyObject *kwargs)
     return py_retval;
 }
 
+
+PyObject *
+_wrap_PyZbr_get_value(PyZbr *self)
+{
+    PyObject *py_retval;
+    int retval;
+    int  x;
+
+    retval = self->obj->get_value(&x);
+    py_retval = Py_BuildValue((char *) "ii", retval, x);
+    return py_retval;
+}
+
 static PyMethodDef PyZbr_methods[] = {
     {(char *) "get_datum", (PyCFunction) _wrap_PyZbr_get_datum, METH_NOARGS, "get_datum()\n\n" },
-    {(char *) "get_value", (PyCFunction) _wrap_PyZbr_get_value, METH_NOARGS, "get_value(x)\n\ntype: x: int *" },
     {(char *) "get_int", (PyCFunction) _wrap_PyZbr_get_int, METH_KEYWORDS|METH_VARARGS, "get_int(x)\n\ntype: x: int" },
+    {(char *) "get_value", (PyCFunction) _wrap_PyZbr_get_value, METH_NOARGS, "get_value(x)\n\ntype: x: int *" },
     {NULL, NULL, 0, NULL}
 };
 
@@ -679,39 +646,6 @@ _wrap_PyZbr__tp_dealloc(PyZbr *self)
         tmp->Unref();
     }
     Py_TYPE(self)->tp_free((PyObject*)self);
-}
-
-static PyObject*
-_wrap_PyZbr__tp_richcompare (PyZbr *PYBINDGEN_UNUSED(self), PyZbr *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PyZbr_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
 }
 
 PyTypeObject PyZbr_Type = {
@@ -743,7 +677,7 @@ PyTypeObject PyZbr_Type = {
     "Zbr(datum)\nZbr()",                        /* Documentation string */
     (traverseproc)NULL,     /* tp_traverse */
     (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)_wrap_PyZbr__tp_richcompare,   /* tp_richcompare */
+    (richcmpfunc)NULL,   /* tp_richcompare */
     0,             /* tp_weaklistoffset */
     (getiterfunc)NULL,          /* tp_iter */
     (iternextfunc)NULL,     /* tp_iternext */
@@ -780,23 +714,23 @@ _wrap_PySomeObject__tp_init(void)
 
 
 PyObject *
-_wrap_PySomeObject_get_foo_ptr(PySomeObject *self)
+_wrap_PySomeObject_set_foo_ptr(PySomeObject *self, PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
-    Foo *retval;
-    PyFoo *py_Foo;
-    PyTypeObject *wrapper_type = 0;
+    PyFoo *foo;
+    Foo *foo_ptr;
+    const char *keywords[] = {"foo", NULL};
 
-    retval = self->obj->get_foo_ptr();
-    if (!(retval)) {
-        Py_INCREF(Py_None);
-        return Py_None;
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyFoo_Type, &foo)) {
+        return NULL;
     }
-    wrapper_type = PyFoo__typeid_map.lookup_wrapper(typeid((*retval)), &PyFoo_Type);
-    py_Foo = PyObject_New(PyFoo, wrapper_type);
-    py_Foo->obj = retval;
-    py_Foo->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    py_retval = Py_BuildValue((char *) "N", py_Foo);
+    foo_ptr = (foo ? foo->obj : NULL);
+    self->obj->set_foo_ptr(foo_ptr);
+    if (foo) {
+        foo->obj = NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
     return py_retval;
 }
 
@@ -814,28 +748,6 @@ _wrap_PySomeObject_set_foo_shared_ptr(PySomeObject *self, PyObject *args, PyObje
     }
     foo_ptr = (foo ? foo->obj : NULL);
     self->obj->set_foo_shared_ptr(foo_ptr);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-
-
-PyObject *
-_wrap_PySomeObject_set_foo_ptr(PySomeObject *self, PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    PyFoo *foo;
-    Foo *foo_ptr;
-    const char *keywords[] = {"foo", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyFoo_Type, &foo)) {
-        return NULL;
-    }
-    foo_ptr = (foo ? foo->obj : NULL);
-    self->obj->set_foo_ptr(foo_ptr);
-    if (foo) {
-        foo->obj = NULL;
-    }
     Py_INCREF(Py_None);
     py_retval = Py_None;
     return py_retval;
@@ -861,11 +773,33 @@ _wrap_PySomeObject_get_foo_shared_ptr(PySomeObject *self)
     return py_retval;
 }
 
+
+PyObject *
+_wrap_PySomeObject_get_foo_ptr(PySomeObject *self)
+{
+    PyObject *py_retval;
+    Foo *retval;
+    PyFoo *py_Foo;
+    PyTypeObject *wrapper_type = 0;
+
+    retval = self->obj->get_foo_ptr();
+    if (!(retval)) {
+        Py_INCREF(Py_None);
+        return Py_None;
+    }
+    wrapper_type = PyFoo__typeid_map.lookup_wrapper(typeid((*retval)), &PyFoo_Type);
+    py_Foo = PyObject_New(PyFoo, wrapper_type);
+    py_Foo->obj = retval;
+    py_Foo->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    py_retval = Py_BuildValue((char *) "N", py_Foo);
+    return py_retval;
+}
+
 static PyMethodDef PySomeObject_methods[] = {
-    {(char *) "get_foo_ptr", (PyCFunction) _wrap_PySomeObject_get_foo_ptr, METH_NOARGS, "get_foo_ptr()\n\n" },
-    {(char *) "set_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_shared_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_shared_ptr(foo)\n\ntype: foo: Foo *" },
     {(char *) "set_foo_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_ptr(foo)\n\ntype: foo: Foo *" },
+    {(char *) "set_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_shared_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_shared_ptr(foo)\n\ntype: foo: Foo *" },
     {(char *) "get_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_get_foo_shared_ptr, METH_NOARGS, "get_foo_shared_ptr()\n\n" },
+    {(char *) "get_foo_ptr", (PyCFunction) _wrap_PySomeObject_get_foo_ptr, METH_NOARGS, "get_foo_ptr()\n\n" },
     {NULL, NULL, 0, NULL}
 };
 
@@ -897,39 +831,6 @@ _wrap_PySomeObject__tp_dealloc(PySomeObject *self)
     Py_TYPE(self)->tp_free((PyObject*)self);
 }
 
-static PyObject*
-_wrap_PySomeObject__tp_richcompare (PySomeObject *PYBINDGEN_UNUSED(self), PySomeObject *other, int opid)
-{
-
-    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PySomeObject_Type)) {
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    }
-    switch (opid)
-    {
-    case Py_LT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_LE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_EQ:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_NE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GE:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    case Py_GT:
-        Py_INCREF(Py_NotImplemented);
-        return Py_NotImplemented;
-    } /* closes switch (opid) */
-    Py_INCREF(Py_NotImplemented);
-    return Py_NotImplemented;
-}
-
 PyTypeObject PySomeObject_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
     (char *) "foo.SomeObject",            /* tp_name */
@@ -959,7 +860,7 @@ PyTypeObject PySomeObject_Type = {
     "",                        /* Documentation string */
     (traverseproc)PySomeObject__tp_traverse,     /* tp_traverse */
     (inquiry)PySomeObject__tp_clear,             /* tp_clear */
-    (richcmpfunc)_wrap_PySomeObject__tp_richcompare,   /* tp_richcompare */
+    (richcmpfunc)NULL,   /* tp_richcompare */
     0,             /* tp_weaklistoffset */
     (getiterfunc)NULL,          /* tp_iter */
     (iternextfunc)NULL,     /* tp_iternext */

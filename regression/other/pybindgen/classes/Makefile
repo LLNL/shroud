@@ -8,7 +8,7 @@
 include ../defaults.mk
 
 all: classes.cpp classes.hpp classes-binding.cpp
-	python setup.py build
+	python setup.py build_ext --inplace
 
 classes-binding.cpp : gen.py
 	$(python.exe) -B $^ > $@
@@ -17,6 +17,9 @@ classes.cpp: $(rundir)/classes/classes.cpp
 	cp $^ $@
 classes.hpp: $(rundir)/classes/classes.hpp
 	cp $^ $@
+
+test:
+	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build

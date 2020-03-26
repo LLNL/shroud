@@ -29,12 +29,4 @@ def generate(fp):
 #                     retval('const std::string *'), [])
 #pybindgen.typehandlers.base.TypeLookupError: ['std::string *']
 
-#    mod.add_class('Class1',
-#                  memory_policy=cppclass.ReferenceCountingMethodsPolicy(
-#                      incref_method='Ref',
-#                      decref_method='Unref',
-#                      peekref_method='PeekRef')
-#    )
-#    mod.add_function('DoSomething', retval('Class1 *', caller_owns_return=False), [])
-
     mod.generate(fp)

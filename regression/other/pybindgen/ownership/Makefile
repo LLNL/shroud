@@ -8,7 +8,7 @@
 include ../defaults.mk
 
 all: ownership.cpp ownership.hpp ownership-binding.cpp
-	python setup.py build
+	python setup.py build_ext --inplace
 
 ownership-binding.cpp : gen.py
 	$(python.exe) -B $^ > $@
@@ -17,6 +17,9 @@ ownership.cpp: $(rundir)/ownership/ownership.cpp
 	cp $^ $@
 ownership.hpp: $(rundir)/ownership/ownership.hpp
 	cp $^ $@
+
+test:
+	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build

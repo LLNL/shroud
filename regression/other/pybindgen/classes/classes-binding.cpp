@@ -85,24 +85,22 @@ typedef enum _PyBindGenWrapperFlags {
 
 typedef struct {
     PyObject_HEAD
-    Singleton *obj;
-    PyBindGenWrapperFlags flags:8;
-} PySingleton;
-
-
-extern PyTypeObject PySingleton_Type;
-
-/* --- forward declarations --- */
-
-
-typedef struct {
-    PyObject_HEAD
     classes::Class1 *obj;
     PyBindGenWrapperFlags flags:8;
 } PyClassesClass1;
 
 
 extern PyTypeObject PyClassesClass1_Type;
+
+
+typedef struct {
+    PyObject_HEAD
+    classes::Singleton *obj;
+    PyBindGenWrapperFlags flags:8;
+} PyClassesSingleton;
+
+
+extern PyTypeObject PyClassesSingleton_Type;
 
 static PyMethodDef classes_classes_functions[] = {
     {NULL, NULL, 0, NULL}
@@ -287,6 +285,97 @@ PyTypeObject PyClassesClass1_Type = {
 };
 
 
+
+
+static int
+_wrap_PyClassesSingleton__tp_init(void)
+{
+    PyErr_SetString(PyExc_TypeError, "class 'Singleton' cannot be constructed ()");
+    return -1;
+}
+
+
+PyObject *
+_wrap_PyClassesSingleton_getReference(void)
+{
+    PyObject *py_retval;
+    PyClassesSingleton *py_Singleton;
+
+    classes::Singleton & retval = classes::Singleton::getReference();
+    py_Singleton = PyObject_New(PyClassesSingleton, &PyClassesSingleton_Type);
+    py_Singleton->obj = (&retval);
+    py_Singleton->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    py_retval = Py_BuildValue((char *) "N", py_Singleton);
+    return py_retval;
+}
+
+static PyMethodDef PyClassesSingleton_methods[] = {
+    {(char *) "getReference", (PyCFunction) _wrap_PyClassesSingleton_getReference, METH_NOARGS|METH_STATIC, "getReference()\n\n" },
+    {NULL, NULL, 0, NULL}
+};
+
+static void
+_wrap_PyClassesSingleton__tp_dealloc(PyClassesSingleton *self)
+{
+
+    Py_TYPE(self)->tp_free((PyObject*)self);
+}
+
+PyTypeObject PyClassesSingleton_Type = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char *) "classes.classes.Singleton",            /* tp_name */
+    sizeof(PyClassesSingleton),                  /* tp_basicsize */
+    0,                                 /* tp_itemsize */
+    /* methods */
+    (destructor)_wrap_PyClassesSingleton__tp_dealloc,        /* tp_dealloc */
+    (printfunc)0,                      /* tp_print */
+    (getattrfunc)NULL,       /* tp_getattr */
+    (setattrfunc)NULL,       /* tp_setattr */
+#if PY_MAJOR_VERSION >= 3
+    NULL,
+#else
+    (cmpfunc)NULL,           /* tp_compare */
+#endif
+    (reprfunc)NULL,             /* tp_repr */
+    (PyNumberMethods*)NULL,     /* tp_as_number */
+    (PySequenceMethods*)NULL, /* tp_as_sequence */
+    (PyMappingMethods*)NULL,   /* tp_as_mapping */
+    (hashfunc)NULL,             /* tp_hash */
+    (ternaryfunc)NULL,          /* tp_call */
+    (reprfunc)NULL,              /* tp_str */
+    (getattrofunc)NULL,     /* tp_getattro */
+    (setattrofunc)NULL,     /* tp_setattro */
+    (PyBufferProcs*)NULL,  /* tp_as_buffer */
+    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
+    "",                        /* Documentation string */
+    (traverseproc)NULL,     /* tp_traverse */
+    (inquiry)NULL,             /* tp_clear */
+    (richcmpfunc)NULL,   /* tp_richcompare */
+    0,             /* tp_weaklistoffset */
+    (getiterfunc)NULL,          /* tp_iter */
+    (iternextfunc)NULL,     /* tp_iternext */
+    (struct PyMethodDef*)PyClassesSingleton_methods, /* tp_methods */
+    (struct PyMemberDef*)0,              /* tp_members */
+    0,                     /* tp_getset */
+    NULL,                              /* tp_base */
+    NULL,                              /* tp_dict */
+    (descrgetfunc)NULL,    /* tp_descr_get */
+    (descrsetfunc)NULL,    /* tp_descr_set */
+    0,                 /* tp_dictoffset */
+    (initproc)_wrap_PyClassesSingleton__tp_init,             /* tp_init */
+    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
+    (newfunc)PyType_GenericNew,               /* tp_new */
+    (freefunc)0,             /* tp_free */
+    (inquiry)NULL,             /* tp_is_gc */
+    NULL,                              /* tp_bases */
+    NULL,                              /* tp_mro */
+    NULL,                              /* tp_cache */
+    NULL,                              /* tp_subclasses */
+    NULL,                              /* tp_weaklist */
+    (destructor) NULL                  /* tp_del */
+};
+
+
 /* --- enumerations --- */
 
 
@@ -318,6 +407,11 @@ initclasses_classes(void)
         return NULL;
     }
     PyModule_AddObject(m, (char *) "Class1", (PyObject *) &PyClassesClass1_Type);
+    /* Register the 'classes::Singleton' class */
+    if (PyType_Ready(&PyClassesSingleton_Type)) {
+        return NULL;
+    }
+    PyModule_AddObject(m, (char *) "Singleton", (PyObject *) &PyClassesSingleton_Type);
     {
         PyObject *tmp_value;
          // classes::Class1::UP
@@ -342,104 +436,6 @@ initclasses_classes(void)
 static PyMethodDef classes_functions[] = {
     {NULL, NULL, 0, NULL}
 };
-/* --- classes --- */
-
-
-
-static int
-_wrap_PySingleton__tp_init(void)
-{
-    PyErr_SetString(PyExc_TypeError, "class 'Singleton' cannot be constructed ()");
-    return -1;
-}
-
-
-PyObject *
-_wrap_PySingleton_instancePtr(void)
-{
-    PyObject *py_retval;
-    Singleton *retval;
-    PySingleton *py_Singleton;
-
-    retval = Singleton::instancePtr();
-    if (!(retval)) {
-        Py_INCREF(Py_None);
-        return Py_None;
-    }
-    py_Singleton = PyObject_New(PySingleton, &PySingleton_Type);
-    py_Singleton->obj = retval;
-    py_Singleton->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
-    py_retval = Py_BuildValue((char *) "N", py_Singleton);
-    return py_retval;
-}
-
-static PyMethodDef PySingleton_methods[] = {
-    {(char *) "instancePtr", (PyCFunction) _wrap_PySingleton_instancePtr, METH_NOARGS|METH_STATIC, "instancePtr()\n\n" },
-    {NULL, NULL, 0, NULL}
-};
-
-static void
-_wrap_PySingleton__tp_dealloc(PySingleton *self)
-{
-
-    Py_TYPE(self)->tp_free((PyObject*)self);
-}
-
-PyTypeObject PySingleton_Type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    (char *) "classes.Singleton",            /* tp_name */
-    sizeof(PySingleton),                  /* tp_basicsize */
-    0,                                 /* tp_itemsize */
-    /* methods */
-    (destructor)_wrap_PySingleton__tp_dealloc,        /* tp_dealloc */
-    (printfunc)0,                      /* tp_print */
-    (getattrfunc)NULL,       /* tp_getattr */
-    (setattrfunc)NULL,       /* tp_setattr */
-#if PY_MAJOR_VERSION >= 3
-    NULL,
-#else
-    (cmpfunc)NULL,           /* tp_compare */
-#endif
-    (reprfunc)NULL,             /* tp_repr */
-    (PyNumberMethods*)NULL,     /* tp_as_number */
-    (PySequenceMethods*)NULL, /* tp_as_sequence */
-    (PyMappingMethods*)NULL,   /* tp_as_mapping */
-    (hashfunc)NULL,             /* tp_hash */
-    (ternaryfunc)NULL,          /* tp_call */
-    (reprfunc)NULL,              /* tp_str */
-    (getattrofunc)NULL,     /* tp_getattro */
-    (setattrofunc)NULL,     /* tp_setattro */
-    (PyBufferProcs*)NULL,  /* tp_as_buffer */
-    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
-    "",                        /* Documentation string */
-    (traverseproc)NULL,     /* tp_traverse */
-    (inquiry)NULL,             /* tp_clear */
-    (richcmpfunc)NULL,   /* tp_richcompare */
-    0,             /* tp_weaklistoffset */
-    (getiterfunc)NULL,          /* tp_iter */
-    (iternextfunc)NULL,     /* tp_iternext */
-    (struct PyMethodDef*)PySingleton_methods, /* tp_methods */
-    (struct PyMemberDef*)0,              /* tp_members */
-    0,                     /* tp_getset */
-    NULL,                              /* tp_base */
-    NULL,                              /* tp_dict */
-    (descrgetfunc)NULL,    /* tp_descr_get */
-    (descrsetfunc)NULL,    /* tp_descr_set */
-    0,                 /* tp_dictoffset */
-    (initproc)_wrap_PySingleton__tp_init,             /* tp_init */
-    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
-    (newfunc)PyType_GenericNew,               /* tp_new */
-    (freefunc)0,             /* tp_free */
-    (inquiry)NULL,             /* tp_is_gc */
-    NULL,                              /* tp_bases */
-    NULL,                              /* tp_mro */
-    NULL,                              /* tp_cache */
-    NULL,                              /* tp_subclasses */
-    NULL,                              /* tp_weaklist */
-    (destructor) NULL                  /* tp_del */
-};
-
-
 #if PY_VERSION_HEX >= 0x03000000
 static struct PyModuleDef classes_moduledef = {
     PyModuleDef_HEAD_INIT,
@@ -480,11 +476,6 @@ MOD_INIT(classes)
     if (m == NULL) {
         return MOD_ERROR;
     }
-    /* Register the 'Singleton' class */
-    if (PyType_Ready(&PySingleton_Type)) {
-        return MOD_ERROR;
-    }
-    PyModule_AddObject(m, (char *) "Singleton", (PyObject *) &PySingleton_Type);
     submodule = initclasses_classes();
     if (submodule == NULL) {
         return MOD_ERROR;

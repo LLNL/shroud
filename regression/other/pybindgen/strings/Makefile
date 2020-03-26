@@ -8,7 +8,7 @@
 include ../defaults.mk
 
 all: strings.cpp strings.hpp strings-binding.cpp
-	python setup.py build
+	python setup.py build_ext --inplace
 
 strings-binding.cpp : gen.py
 	$(python.exe) -B $^ > $@
@@ -17,6 +17,9 @@ strings.cpp: $(rundir)/strings/strings.cpp
 	cp $^ $@
 strings.hpp: $(rundir)/strings/strings.hpp
 	cp $^ $@
+
+test:
+	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build

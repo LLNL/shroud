@@ -8,7 +8,7 @@
 include ../defaults.mk
 
 all: struct.c struct.h struct-binding.c
-	python setup.py build
+	python setup.py build_ext --inplace
 
 struct-binding.c : gen.py
 	$(python.exe) -B $^ > $@
@@ -17,6 +17,9 @@ struct.c: $(rundir)/struct/struct.c
 	cp $^ $@
 struct.h: $(rundir)/struct/struct.h
 	cp $^ $@
+
+test:
+	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build

@@ -3,8 +3,13 @@
 # See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
+#
 
-rundir = ../../../run
-python.exe = ../../../../build/temp.linux-x86_64-2.7/venv/bin/python
+from __future__ import print_function
 
-cwd := $(shell pwd)
+import classes
+
+c = classes.classes.Class1()
+print(c)
+print(c.m_flag)
+
