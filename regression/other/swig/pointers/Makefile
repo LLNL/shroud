@@ -2,13 +2,15 @@
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 
-build: pointers.c pointers.hpp
+include ../../defaults.mk
+
+build: pointers.c pointers.i
 	python setup.py build_ext --inplace
 
-pointers.c:  ../../../run/pointers/pointers.cpp
-	cp $^ $@
-pointers.hpp:  ../../../run/pointers/pointers.hpp
-	cp $^ $@
+pointers.c:  $(rundir)/pointers/pointers.cpp pointers.hpp
+	cp $< $@
+pointers.hpp:  $(rundir)/pointers/pointers.hpp
+	cp $< $@
 
 clean:
 	rm -rf build

@@ -5,24 +5,25 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-include ../defaults.mk
+include ../../defaults.mk
 
-all: ownership.cpp ownership.hpp ownership-binding.cpp
+all: ownership.cpp ownership-binding.cpp
 	python setup.py build_ext --inplace
 
 ownership-binding.cpp : gen.py
-	$(python.exe) -B $^ > $@
+	$(python.exe) -B $< > $@
 
-ownership.cpp: $(rundir)/ownership/ownership.cpp
-	cp $^ $@
+ownership.cpp: $(rundir)/ownership/ownership.cpp ownership.hpp
+	cp $< $@
 ownership.hpp: $(rundir)/ownership/ownership.hpp
-	cp $^ $@
+	cp $< $@
 
 test:
 	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build
+	rm -f ownership.so *~
 	rm -f ownership.cpp ownership.hpp
 
 .PHONY: all clean test

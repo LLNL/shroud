@@ -7,14 +7,16 @@
 
 #SWIG_OPTS = -c++
 
-build: struct.c struct.h
+include ../../defaults.mk
+
+build: struct.c struct.i
 	swig -python -o swigstruct_module.c struct.i
 	python setup.py build_ext --inplace
 
-struct.c: ../../../run/struct/struct.c
-	cp $^ $@
-struct.h: ../../../run/struct/struct.h
-	cp $^ $@
+struct.c: $(rundir)/struct/struct.c struct.h
+	cp $< $@
+struct.h: $(rundir)/struct/struct.h
+	cp $< $@
 
 clean:
 	rm -rf build

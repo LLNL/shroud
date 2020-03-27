@@ -5,24 +5,25 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-include ../defaults.mk
+include ../../defaults.mk
 
-all: struct.c struct.h struct-binding.c
+all: struct.c struct-binding.c
 	python setup.py build_ext --inplace
 
 struct-binding.c : gen.py
-	$(python.exe) -B $^ > $@
+	$(python.exe) -B $< > $@
 
-struct.c: $(rundir)/struct/struct.c
-	cp $^ $@
+struct.c: $(rundir)/struct/struct.c struct.h
+	cp $< $@
 struct.h: $(rundir)/struct/struct.h
-	cp $^ $@
+	cp $< $@
 
 test:
 	PYTHONPATH=$(cwd) python test.py
 
 clean:
 	rm -rf build
+	rm -f cstruct.so *~
 	rm -f struct.c struct.h
 
 .PHONY: all clean test

@@ -4,13 +4,15 @@
 
 #	swig -python -c++ -o tutorial_module.cpp tutorial.i
 
-build: tutorial.cpp tutorial.hpp
+include ../../defaults.mk
+
+build: tutorial.cpp tutorial.i
 	python setup.py build_ext --inplace
 
-tutorial.cpp: ../../../run/tutorial/tutorial.cpp
-	cp $^ $@
-tutorial.hpp: ../../../run/tutorial/tutorial.hpp
-	cp $^ $@
+tutorial.cpp: $(rundir)/tutorial/tutorial.cpp tutorial.hpp
+	cp $< $@
+tutorial.hpp: $(rundir)/tutorial/tutorial.hpp
+	cp $< $@
 
 clean:
 	rm -rf build

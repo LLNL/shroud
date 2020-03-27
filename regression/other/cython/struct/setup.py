@@ -16,8 +16,8 @@ setup(
     ext_modules=cythonize(
         Extension(
             "cstruct",
-            sources=["cstruct.pyx", "../struct.c"],
-            include_dirs=[".."],
+            sources=["cstruct.pyx", "struct.c"],
+            extra_compile_args = ["-std=c99"],
         ),
         annotate=True,
 #        language='c++',
