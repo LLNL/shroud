@@ -4,19 +4,16 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
-ifndef top
-top = ../../../..
-endif
 
-include $(top)/regression/run/defaults.mk
+include ../../defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/run/struct \
-    -I$(top)/regression/run/fruit
+    -I$(rundir)/struct \
+    -I$(rundir)/fruit
 
 VPATH = \
-    $(top)/regression/run/struct \
-    $(top)/regression/run/fruit
+    $(rundir)/struct \
+    $(rundir)/fruit
 
 OBJS = \
     struct.o \
@@ -28,11 +25,17 @@ OBJS = \
 struct : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
+cstruct.f90 : struct.i
+	$(swig-fortran) -fortran struct.i
+
 swig:
 #	swig -fortran -o swigstruct_module.c struct.i
-	/home/taylor16/local-swig/bin/swig -fortran struct.i
+	$(swig-fortran) -fortran struct.i
+
+test:
+	./struct
 
 clean :
 	rm -f $(OBJS) *.mod struct
 
-.PHONY : swig clean
+.PHONY : swig test clean

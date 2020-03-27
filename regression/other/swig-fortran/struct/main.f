@@ -37,17 +37,20 @@ contains
 
   subroutine swig_struct
 
-    real(C_DOUBLE) rv
+    integer(C_INT) rvi
     type(Cstruct1) str1
 
     call set_case_name("test_struct")
 
     str1 = Cstruct1()
-    call str1%set_ifield(1)
-    call str1%set_dfield(11.5_C_DOUBLE)
+    call str1%set_ifield(2)
+    call str1%set_dfield(2.0_C_DOUBLE)
 
-    rv = acceptStructIn(str1)
-    call assert_equals(12.5d0, rv, "acceptStructIn")
+! Error: 'ifield' at (1) is not a member of the 'cstruct1' structure
+!    str1%ifield = 2_C_INT
+!    str1%dfield = 2.0_C_DOUBLE
+    rvi = passStructByValue(str1)
+    call assert_equals(4, rvi, "passStructByValue")
 
   end subroutine swig_struct
 

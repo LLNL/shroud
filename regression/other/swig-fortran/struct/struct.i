@@ -10,5 +10,5 @@ struct Cstruct1 {
 };
 typedef struct Cstruct1 Cstruct1;
 
-double acceptStructIn(Cstruct1 arg);
+int passStructByValue(Cstruct1 arg);
 
