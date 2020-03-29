@@ -11,6 +11,15 @@
 Numpy Struct Descriptor
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+:file:`struct.yaml`:
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1 {
+              int ifield;
+              double dfield;
+            };
+
 .. literalinclude:: ../regression/reference/struct-numpy-c/pystructmodule.c
    :language: c
    :start-after: start PY_Cstruct1_create_array_descr

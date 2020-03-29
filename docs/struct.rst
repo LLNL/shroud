@@ -9,97 +9,16 @@
 Structs and Classes
 ===================
 
-Shroud supports both structs and classes. But it treats them much
-differently.  Whereas in C++ a struct and class are essentially the
-same thing, Shroud treats structs as a C style struct.  They do not
-have associated methods.  This allows them to be mapped to a Fortran
-derived type with the ``bind(C)`` attribute and a Python NumPy array.
+    All problems in computer science can be solved by
+    another level of indirection.
+    --- David Wheeler
+
 Classes are wrapped by a shadow derived-type with methods implemented
 as type-bound procedures in Fortran and an extension type in Python.
-
-Struct
-------
-
-A struct is defined in a single ``decl`` in the YAML file.
-
-.. code-block:: yaml
-
-    - decl: struct Cstruct1 {
-              int ifield;
-              double dfield;
-            };
-
-.. _struct_fortran:
-
-Fortran
-^^^^^^^
-
-This is translated directly into a Fortran derived type with the
-``bind(C)`` attribute.
-
-.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
-   :language: fortran
-   :start-after: start derived-type cstruct1
-   :end-before: end derived-type cstruct1
-   :dedent: 4
-
-All creation and access of members can be done using Fortran.
-
-.. code-block:: fortran
-
-    type(cstruct1) st(2)
-
-    st(1)%ifield = 1_C_INT
-    st(1)%dfield = 1.5_C_DOUBLE
-    st(2)%ifield = 2_C_INT
-    st(2)%dfield = 2.6_C_DOUBLE
-
-
-Python
-^^^^^^
-
-Python can treat a struct in several different ways by setting option
-*PY_struct_arg*.
-First, treat it the same as a class.  An extension type is created with
-descriptors for the field methods. Second, as a numpy descriptor.
-This allows an array of structs to be used easily.
-Finally, as a tuple of Python types.
-
-.. PY_struct_arg *class*, *numpy*, *list*
-
-When treated as a class, a constructor is created which will
-create an instance of the class.  This is similar to the
-default constructor for structs in C++ but will also work
-with a C struct.
-
-.. code-block:: python
-
-    import cstruct
-    a = cstruct.Cstruct1(1, 2.5)
-    a = cstruct.Cstruct1()
-
-.. regression/run/struct-c/python/test.py
-
-When treated as a NumPy array no memory will be copied since the
-NumPy array contains a pointer to the C++ memory.
-
-.. code-block:: python
-
-    import cstruct
-    dt = cstruct.Cstruct1_dtype
-    a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
-
-The descriptor is created in the wrapper
-:ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
-
 
 
 Class
 -----
-
-    All problems in computer science can be solved by
-    another level of indirection.
-    --- David Wheeler
 
 Each class in the input file will create a struct which acts as a
 shadow class for the C++ class.  A pointer to an instance is saved in
@@ -335,3 +254,84 @@ descriptors.  This is helpful when using a naming convention like
 
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
+
+Struct
+------
+
+Shroud supports both structs and classes. But it treats them much
+differently.  Whereas in C++ a struct and class are essentially the
+same thing, Shroud treats structs as a C style struct.  They do not
+have associated methods.  This allows them to be mapped to a Fortran
+derived type with the ``bind(C)`` attribute and a Python NumPy array.
+
+A struct is defined in a single ``decl`` in the YAML file.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1 {
+              int ifield;
+              double dfield;
+            };
+
+.. _struct_fortran:
+
+Fortran
+^^^^^^^
+
+This is translated directly into a Fortran derived type with the
+``bind(C)`` attribute.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start derived-type cstruct1
+   :end-before: end derived-type cstruct1
+   :dedent: 4
+
+All creation and access of members can be done using Fortran.
+
+.. code-block:: fortran
+
+    type(cstruct1) st(2)
+
+    st(1)%ifield = 1_C_INT
+    st(1)%dfield = 1.5_C_DOUBLE
+    st(2)%ifield = 2_C_INT
+    st(2)%dfield = 2.6_C_DOUBLE
+
+
+Python
+^^^^^^
+
+Python can treat a struct in several different ways by setting option
+*PY_struct_arg*.
+First, treat it the same as a class.  An extension type is created with
+descriptors for the field methods. Second, as a numpy descriptor.
+This allows an array of structs to be used easily.
+Finally, as a tuple of Python types.
+
+.. PY_struct_arg *class*, *numpy*, *list*
+
+When treated as a class, a constructor is created which will
+create an instance of the class.  This is similar to the
+default constructor for structs in C++ but will also work
+with a C struct.
+
+.. code-block:: python
+
+    import cstruct
+    a = cstruct.Cstruct1(1, 2.5)
+    a = cstruct.Cstruct1()
+
+.. regression/run/struct-c/python/test.py
+
+When treated as a NumPy array no memory will be copied since the
+NumPy array contains a pointer to the C++ memory.
+
+.. code-block:: python
+
+    import cstruct
+    dt = cstruct.Cstruct1_dtype
+    a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
+
+The descriptor is created in the wrapper
+:ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.

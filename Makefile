@@ -86,6 +86,8 @@ install-isort :
 isort:
 	isort shroud/*.py
 
+install-pybindgen:
+	$(python.dir)/pip install pybindgen
 
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'

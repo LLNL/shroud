@@ -9,9 +9,27 @@ Python Previous Work
 
 There a several available tools to creating a Python interface to a C or C++ library.
 
+.. https://docs.python.org/3/library/struct.html
+   https://legacy.python.org/dev/peps/pep-3118/  Revising the buffer protocol
+   https://docs.python.org/3/c-api/buffer.html
+
+Ctypes
+------
+
+* http://docs.python.org/lib/module-ctypes.html
+
+Pros
+^^^^
+
+* No need for compiler.
+
+Cons
+^^^^
+
+* Difficult wrapping C++ due to mangling and object ABI.
 
 SWIG
------
+----
 
 * http://www.swig.org/
 
@@ -62,3 +80,4 @@ Links
 
 .. https://cppyy.readthedocs.io/en/latest/
 
+* `SciPy Cookbook <https://scipy-cookbook.readthedocs.io/>`_
