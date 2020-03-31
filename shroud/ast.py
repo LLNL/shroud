@@ -618,7 +618,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
                 self.library.upper()),
-            PY_helper_prefix="",
+            PY_helper_prefix="SHROUD_",
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
             PY_result="SHTPy_rv",  # Create PyObject for result

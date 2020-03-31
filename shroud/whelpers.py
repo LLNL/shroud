@@ -228,7 +228,7 @@ array->rank = 1;
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
     # char **
-    name = "SHROUD_get_from_object_charptr"
+    name = "get_from_object_charptr"
     fmt.name = name
     fmt.size_var="size"
     fmt.c_var="in"
@@ -236,13 +236,13 @@ array->rank = 1;
     CHelpers[name] = create_get_from_object_list(fmt)
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
-    CHelpers['SHROUD_get_from_object_charptr_list'] = dict(
+    CHelpers['get_from_object_charptr_list'] = dict(
         name=fmt.hnamefunc,
-        dependent_helpers=["SHROUD_get_from_object_charptr"],
+        dependent_helpers=[name],
     )
-    CHelpers['SHROUD_get_from_object_charptr_numpy'] = dict(
+    CHelpers['get_from_object_charptr_numpy'] = dict(
         name=fmt.hnamefunc,
-        dependent_helpers=["SHROUD_get_from_object_charptr"],
+        dependent_helpers=[name],
     )
     
 ######################################################################
@@ -558,7 +558,7 @@ def add_to_PyList_helper(arg):
                 """
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void {PY_helper_prefix}SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+static void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -584,7 +584,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
-    name = "SHROUD_get_from_object_{}_numpy".format(ntypemap.c_type)
+    name = "get_from_object_{}_numpy".format(ntypemap.c_type)
     if name not in CHelpers:
         fmt.py_tmp="array"
         fmt.c_type=ntypemap.c_type
@@ -611,7 +611,7 @@ return 1;
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
-    name = "SHROUD_get_from_object_{}_list".format(ntypemap.c_type)
+    name = "get_from_object_{}_list".format(ntypemap.c_type)
     if name not in CHelpers:
         fmt.name = name
         fmt.size_var = "size"
@@ -624,7 +624,7 @@ def create_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
     fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}SHROUD_from_PyObject_{fcn_suffix}", fmt)
+        "{PY_helper_prefix}from_PyObject_{fcn_suffix}", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         c_header="<stdlib.h>",   # malloc/free
@@ -664,7 +664,7 @@ def create_to_PyList(fmt):
     """Create helper to convert C array to list of PyObjects.
     """
     fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}SHROUD_to_PyList_{fcn_suffix}", fmt)
+        "{PY_helper_prefix}to_PyList_{fcn_suffix}", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         source=wformat(
@@ -697,7 +697,7 @@ static int {hnamefunc}(PyObject *obj,\t SHROUD_converter_value *value)
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
-if ({PY_helper_prefix}SHROUD_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+if ({PY_helper_prefix}from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
 return 0;
 -}}
 value->obj = {nullptr};
@@ -725,7 +725,7 @@ def add_to_PyList_helper_vector(arg):
     name = "to_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        fmt.hnamefunc = wformat("{PY_helper_prefix}SHROUD_to_PyList_vector_{c_type}", fmt)
+        fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             source=wformat(
@@ -748,7 +748,7 @@ return out;
     name = "update_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        fmt.hnamefunc = wformat("{PY_helper_prefix}SHROUD_update_PyList_{c_type}", fmt)
+        fmt.hnamefunc = wformat("{PY_helper_prefix}update_PyList_{c_type}", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             source=wformat(
@@ -776,7 +776,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     name = "from_PyObject_vector_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        fmt.hnamefunc= wformat("{PY_helper_prefix}SHROUD_from_PyObject_vector_{c_type}", fmt)
+        fmt.hnamefunc= wformat("{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
         helper = dict(
             name=fmt.hnamefunc,
 ##-            cxx_header="<cstdlib>",  # malloc/free
@@ -1079,7 +1079,7 @@ typedef struct {
 } SHROUD_converter_value;"""
     ),
     ########################################
-    SHROUD_get_from_object_char=dict(
+    get_from_object_char=dict(
         name="SHROUD_get_from_object_char",  #XXX
         dependent_helpers=["converter_type"],
         source="""
@@ -1122,14 +1122,14 @@ static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *
 """,
     ),
     # There are no 'list' or 'numpy' version of these functions.
-    # Use the one-true-version SHROUD_get_from_object_char.
-    SHROUD_get_from_object_char_list=dict(
+    # Use the one-true-version get_from_object_char.
+    get_from_object_char_list=dict(
         name="SHROUD_get_from_object_char",
-        dependent_helpers=["SHROUD_get_from_object_char"],
+        dependent_helpers=["get_from_object_char"],
     ),
-    SHROUD_get_from_object_char_numpy=dict(
+    get_from_object_char_numpy=dict(
         name="SHROUD_get_from_object_char",
-        dependent_helpers=["SHROUD_get_from_object_char"],
+        dependent_helpers=["get_from_object_char"],
     ),
     ##############
 )   # end CHelpers
