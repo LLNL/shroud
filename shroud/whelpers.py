@@ -245,6 +245,7 @@ array->rank = 1;
         dependent_helpers=[name],
     )
 
+    # char *
     name = "get_from_object_char"
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     CHelpers[name] = dict(
@@ -253,40 +254,40 @@ array->rank = 1;
         source=wformat("""
 // Helper - converter to PyObject to char *.
 static int {hnamefunc}(PyObject *obj,\t SHROUD_converter_value *value)
-{{
-    char *out;
-    if (PyUnicode_Check(obj))
-    {{
-#if PY_MAJOR_VERSION >= 3
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj);
-        value->obj = strobj;  // steal reference
-#else
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyString_AsString(strobj);
-        value->obj = strobj;  // steal reference
-#endif
-#if PY_MAJOR_VERSION >= 3
-    }} else if (PyByteArray_Check(obj)) {{
-        out = PyBytes_AS_STRING(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
-    }} else if (PyString_Check(obj)) {{
-        out = PyString_AsString(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#endif
-    }} else if (obj == Py_None) {{
-        out = NULL;
-        value->obj = NULL;
-    }} else {{
-        PyErr_SetString(PyExc_ValueError, "argument must be a string");
-        return 0;
-    }}
-    value->data = out;
-    return 1;
-}}
+{{+
+char *out;
+if (PyUnicode_Check(obj))
+{{+
+^#if PY_MAJOR_VERSION >= 3
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyBytes_AS_STRING(strobj);
+value->obj = strobj;  // steal reference
+^#else
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyString_AsString(strobj);
+value->obj = strobj;  // steal reference
+^#endif
+^#if PY_MAJOR_VERSION >= 3
+-}} else if (PyByteArray_Check(obj)) {{+
+out = PyBytes_AS_STRING(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#else
+-}} else if (PyString_Check(obj)) {{+
+out = PyString_AsString(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#endif
+-}} else if (obj == Py_None) {{+
+out = NULL;
+value->obj = NULL;
+-}} else {{+
+PyErr_SetString(PyExc_ValueError, "argument must be a string");
+return 0;
+-}}
+value->data = out;
+return 1;
+-}}
 """, fmt),
     )
     # There are no 'list' or 'numpy' version of these functions.
