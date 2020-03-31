@@ -965,6 +965,9 @@ C_prefix
     The prefix helps to ensure unique global names.
     Defaults to the first three letters of *library_upper*.
 
+PY_helper_prefix
+    Prefix added to helper functions for the Python wrapper.
+
 PY_type_obj
     Name variable which points to C or C++ memory.
     Defaults to *obj*.

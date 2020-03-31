@@ -750,11 +750,11 @@ return self->{PY_member_object};
                     )
                 elif nindirect == 2:
                     # 'char **' is a <type 'list'> of <type 'str'>.
-                    self.c_helper["to_PyList_char"] = True
+                    fmt.hnamefunc = self.add_helper("to_PyList_char")
                     fmt.size = py_struct_dimension(parent, node)
                     append_format(
                         output,
-                        "PyObject *rv = SHROUD_to_PyList_char"
+                        "PyObject *rv = {hnamefunc}"
                         "({PY_struct_context}{field_name}, {size});\n"
                         "return rv;",
                         fmt
@@ -798,15 +798,15 @@ return self->{PY_member_object};
             elif options.PY_array_arg == "list":
                 # Create array from helper.
                 # Include helper called by getter.
-                self.c_helper["to_PyList_" + fmt.c_type] = True
+                whelpers.add_to_PyList_helper(node.ast)
+                fmt.hnamefunc = self.add_helper("to_PyList_" + fmt.c_type)
                 fmt.size = py_struct_dimension(parent, node)
                 append_format(
                     output,
-                    "PyObject *rv = SHROUD_to_PyList_{c_type}"
+                    "PyObject *rv = {hnamefunc}"
                     "({PY_struct_context}{field_name}, {size});\n"
                     "return rv;",
                     fmt)
-# XXX - What if pointer to scalar or struct?  Check dimension attribute.
 #                append_format(output, "return {nullptr};", fmt)
             else:
                 linenumber = options.get("__line__", "?")
@@ -849,13 +849,12 @@ return self->{PY_member_object};
                         arg_typemap.PY_get_converter,
                         subname,
                         options.PY_array_arg)
-                    # Adjust for alias like with type char.
-                    fmt.get = whelpers.CHelpers[hname]["name"]
+                    fmt.hnamefunc = self.add_helper(hname)
                     fmt.cast_type = ast.gen_arg_as_cxx(
                     name=None, params=None)
                     append_format(output, """SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
-if ({get}({py_var}, &cvalue) == 0) {{+
+if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
 self->{PY_member_object} = NULL;
 // XXXX set error
@@ -864,7 +863,6 @@ return -1;
 {c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
 {PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
-                    self.c_helper[fmt.get] = True
                 else:
                     output.append(
                         "#error missing PY_get_converter for type {}"
@@ -1354,23 +1352,20 @@ return -1;
                         hname = "{}_{}".format(
                             hname,
                             options.PY_array_arg)
-                        self.c_helper[hname] = True
-                        hname = whelpers.CHelpers[hname]["name"]
+                        hnamefunc = self.add_helper(hname)
                     elif not arg_typemap.PY_get_converter:
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
-                        hname = fmt_arg.nullptr
+                        hnamefunc = fmt_arg.nullptr
                     else:
                         whelpers.add_to_PyList_helper(arg)
                         hname = "{}_{}".format(
                             arg_typemap.PY_get_converter,
                             options.PY_array_arg)
-                        self.c_helper[hname] = True
-                        # Adjust for alias like with type char.
-                        hname = whelpers.CHelpers[hname]["name"]
+                        hnamefunc = self.add_helper(hname)
                     parse_format.append("O&")
-                    parse_vargs.append(hname)
+                    parse_vargs.append(hnamefunc)
                     parse_vargs.append("&" + fmt_arg.py_var)
                     append_format(set_optional,
                                   "{py_var}.obj = {nullptr};\n"
@@ -1438,13 +1433,13 @@ return -1;
             allocate_local_blk = self.add_stmt_capsule(arg, intent_blk, fmt_arg)
             if allocate_local_blk:
                 update_code_blocks(locals(), allocate_local_blk, fmt_arg)
-            update_code_blocks(locals(), intent_blk, fmt_arg)
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             if intent_blk.c_helper:
                 c_helper = wformat(intent_blk.c_helper, fmt_arg)
-                for helper in c_helper.split():
-                    self.c_helper[helper] = True
+                for i, helper in enumerate(c_helper.split()):
+                    setattr(fmt_arg, "hnamefunc" + str(i), self.add_helper(helper))
+            update_code_blocks(locals(), intent_blk, fmt_arg)
             self.add_statements_headers(intent_blk)
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
@@ -2143,6 +2138,14 @@ return -1;
 
 
 ######
+    def add_helper(self, name):
+        """Use a helper function.
+        Return the name of the function associated with helper.
+        """
+        self.c_helper[name] = True
+        # Adjust for alias like with type char.
+        return whelpers.CHelpers[name]["name"]
+        
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
 
@@ -3720,7 +3723,7 @@ py_statements = [
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
@@ -3736,7 +3739,7 @@ py_statements = [
     dict(
         name="py_native_inout_dimension_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="to_PyList_{cxx_type}",
+        c_helper="from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_as_object=True,
         c_local_var="pointer",
         declare=[
@@ -3745,13 +3748,13 @@ py_statements = [
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "PyObject *{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3783,7 +3786,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({pointer_shape})));",
         ] + malloc_error,
         post_call=[
-            "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
+            "{py_var} = {hnamefunc0}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3816,7 +3819,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
         ] + malloc_error,
         post_call=[
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "PyObject *{py_var} = {hnamefunc0}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3865,7 +3868,7 @@ py_statements = [
         ],
         pre_call=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
@@ -4173,7 +4176,7 @@ py_statements = [
         ],
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
-            "if (SHROUD_from_PyObject_vector_{cxx_T}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
         ],
@@ -4194,7 +4197,7 @@ py_statements = [
             "std::vector<{cxx_T}> {cxx_var};",
         ],
         post_call=[
-            "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
+            "{py_var} = {hnamefunc0}\t({cxx_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
