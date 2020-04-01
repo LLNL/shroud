@@ -28,6 +28,7 @@ Helper functions for C and Fortran wrappers.
  cxx_source  = language=c++ source.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
+ need_numpy  = If True, NumPy headers will be added.
 
  proto       = prototype for function.
  source      = Code inserted before any wrappers.
@@ -671,6 +672,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         helper = dict(
             name=fmt.hnamefunc,
             dependent_helpers=["PY_converter_type"],
+            need_numpy=True,
             proto=fmt.hnameproto + ";",
             source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.

@@ -2168,7 +2168,10 @@ return -1;
                 self._gather_helper_code(dep, done)
 
         scope = helper_info.get("scope", "file")
-#        # assert scope in ["file", "utility"]
+        # assert scope in ["file", "utility"]
+
+        self.helper_need_numpy = (
+            helper_info.get("need_numpy", "False") or self.helper_need_numpy)
 
         lang_key = self.language + "_include"
         if lang_key in helper_info:
@@ -2198,6 +2201,7 @@ return -1;
             proto=dict(file=[], utility=[]),
             source=dict(file=[], utility=[]),
         )
+        self.helper_need_numpy = False
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
@@ -2239,9 +2243,10 @@ return -1;
             self.gather_helper_code(self.shared_helper)
             return (
                 self.helper_summary["include"]["file"],
-                self.helper_summary["source"]["file"]
+                self.helper_summary["source"]["file"],
+                self.helper_need_numpy,
             )
-        return {}, []
+        return {}, [], False
 
 ######
 
@@ -2265,12 +2270,7 @@ return -1;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.need_numpy:
-            output.append('#define NO_IMPORT_ARRAY')
-            append_format(output,
-                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
-                          fmt)
-            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
-            output.append('#include "numpy/arrayobject.h"')
+            self.add_numpy_includes(output)
         self._push_splicer("impl")
 
         # Use headers from implementation
@@ -2526,13 +2526,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.need_numpy:
-            if not top:
-                output.append('#define NO_IMPORT_ARRAY')
-            append_format(output,
-                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
-                          fmt)
-            output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
-            output.append('#include "numpy/arrayobject.h"')
+            self.add_numpy_includes(output, top)
 
         self.header_impl_include.update(hinclude)
         self.write_headers(self.header_impl_include, output)
@@ -2604,6 +2598,19 @@ extern PyObject *{PY_prefix}error_obj;
 #        output.extend(self.enum_impl)
         append_format(output, submodule_end, fmt)
 
+    def add_numpy_includes(self, output, top=False):
+        """Import numpy
+        If top is True, then import_array will be called
+        in the file being written.
+        """
+        if not top:
+            output.append('#define NO_IMPORT_ARRAY')
+        append_format(output,
+                      '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                      self.newlibrary.fmtdict)
+        output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
+        output.append('#include "numpy/arrayobject.h"')
+        
     def write_utility_file(self):
         """
         Do not write the file unless it has contents.
@@ -2611,10 +2618,12 @@ extern PyObject *{PY_prefix}error_obj;
         node = self.newlibrary
         fmt = node.fmtdict
         need_file = False
-        hinclude, hsource = self.find_shared_file_helper_code()
+        hinclude, hsource, need_numpy = self.find_shared_file_helper_code()
         
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
+        if need_numpy:
+            self.add_numpy_includes(output)
         self.write_headers(hinclude, output)
 
         if hsource:
