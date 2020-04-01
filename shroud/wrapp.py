@@ -2168,20 +2168,20 @@ return -1;
                 self._gather_helper_code(dep, done)
 
         if self.language == "c":
-            lang_header = "c_header"
+            lang_include = "c_include"
             lang_source = "c_source"
         else:
-            lang_header = "cxx_header"
+            lang_include = "cxx_include"
             lang_source = "cxx_source"
         scope = helper_info.get("scope", "file")
         # assert scope in ["file", "utility"]
 
-        if lang_header in helper_info:
-            for include in helper_info[lang_header].split():
-                self.helper_header[scope][include] = True
-        elif "header" in helper_info:
-            for include in helper_info["header"].split():
-                self.helper_header[scope][include] = True
+        if lang_include in helper_info:
+            for include in helper_info[lang_include].split():
+                self.helper_include[scope][include] = True
+        elif "include" in helper_info:
+            for include in helper_info["include"].split():
+                self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
             self.helper_source[scope].append(helper_info[lang_source])
@@ -2198,7 +2198,7 @@ return -1;
         """
         # per class
         self.helper_source = dict(file=[], utility=[])
-        self.helper_header = dict(file={}, utility={})
+        self.helper_include = dict(file={}, utility={})
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
@@ -2217,7 +2217,7 @@ return -1;
         self.gather_helper_code(self.c_helper)
         self.shared_helper.update(self.c_helper)
         self.c_helper = {}
-        return self.helper_header["file"], self.helper_source["file"]
+        return self.helper_include["file"], self.helper_source["file"]
 
     def find_utility_helper_code(self):
         """Get "utility" helper code.
@@ -2225,14 +2225,14 @@ return -1;
         Return list of code with typedefs.
         """
         self.gather_helper_code(self.shared_helper)
-        return self.helper_header["utility"], self.helper_source["utility"]
+        return self.helper_include["utility"], self.helper_source["utility"]
 
     def find_shared_file_helper_code(self):
         """Get "file" helper code when added to utility file.
         """
         if self.newlibrary.options.PY_write_helper_in_util:
             self.gather_helper_code(self.shared_helper)
-            return self.helper_header["file"], self.helper_source["file"]
+            return self.helper_include["file"], self.helper_source["file"]
         return {}, []
 
 ######
@@ -2246,7 +2246,7 @@ return -1;
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
-        hheaders, hsource = self.find_file_helper_code()
+        hinclude, hsource = self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2267,7 +2267,7 @@ return -1;
 
         # Use headers from implementation
         header_impl_include = self.header_impl_include
-        header_impl_include.update(hheaders)
+        header_impl_include.update(hinclude)
         self.write_headers(header_impl_include, output)
 
         self._create_splicer("include", output)
@@ -2440,7 +2440,7 @@ return -1;
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
         self.find_header(node, self.header_type_include)
-        hheaders, hsource = self.find_utility_helper_code()
+        hinclude, hsource = self.find_utility_helper_code()
         output = []
 
         # add guard
@@ -2504,7 +2504,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         fmt.PY_library_doc = "library documentation"
 
-        hheaders, hsource = self.find_file_helper_code()
+        hinclude, hsource = self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2521,7 +2521,7 @@ extern PyObject *{PY_prefix}error_obj;
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
 
-        self.header_impl_include.update(hheaders)
+        self.header_impl_include.update(hinclude)
         self.write_headers(self.header_impl_include, output)
         output.append("")
         self._create_splicer("include", output)
@@ -2598,11 +2598,11 @@ extern PyObject *{PY_prefix}error_obj;
         node = self.newlibrary
         fmt = node.fmtdict
         need_file = False
-        hheaders, hsource = self.find_shared_file_helper_code()
+        hinclude, hsource = self.find_shared_file_helper_code()
         
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        self.write_headers(hheaders, output)
+        self.write_headers(hinclude, output)
 
         if hsource:
             output.extend(hsource)

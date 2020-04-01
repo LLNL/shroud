@@ -206,19 +206,19 @@ class Wrapc(util.WrapperMixin):
                 self._gather_helper_code(dep, done)
 
         if self.language == "c":
-            lang_header = "c_header"
+            lang_include = "c_include"
             lang_source = "c_source"
         else:
-            lang_header = "cxx_header"
+            lang_include = "cxx_include"
             lang_source = "cxx_source"
         scope = helper_info.get("scope", "file")
 
-        if lang_header in helper_info:
-            for include in helper_info[lang_header].split():
-                self.helper_header[scope][include] = True
-        elif "header" in helper_info:
-            for include in helper_info["header"].split():
-                self.helper_header[scope][include] = True
+        if lang_include in helper_info:
+            for include in helper_info[lang_include].split():
+                self.helper_include[scope][include] = True
+        elif "include" in helper_info:
+            for include in helper_info["include"].split():
+                self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
             self.helper_source[scope].append(helper_info[lang_source])
@@ -235,7 +235,7 @@ class Wrapc(util.WrapperMixin):
         """
         # per class
         self.helper_source = dict(file=[], utility=[])
-        self.helper_header = dict(file={}, utility={})
+        self.helper_include = dict(file={}, utility={})
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
@@ -267,7 +267,7 @@ class Wrapc(util.WrapperMixin):
 
         # headers required helpers
         self.write_headers_nodes(
-            "c_header", {}, self.helper_header["utility"].keys(), output
+            "c_header", {}, self.helper_include["utility"].keys(), output
         )
 
         if self.language == "cxx":
@@ -402,7 +402,7 @@ class Wrapc(util.WrapperMixin):
 
         # Use headers from implementation
         self.find_header(node, self.header_impl_include)
-        self.header_impl_include.update(self.helper_header["file"])
+        self.header_impl_include.update(self.helper_include["file"])
 
         # headers required by implementation
         if self.header_impl_include:
