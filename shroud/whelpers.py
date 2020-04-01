@@ -258,8 +258,7 @@ array->rank = 1;
 {PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 char *out;
-if (PyUnicode_Check(obj))
-{{+
+if (PyUnicode_Check(obj)) {{+
 ^#if PY_MAJOR_VERSION >= 3
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyBytes_AS_STRING(strobj);

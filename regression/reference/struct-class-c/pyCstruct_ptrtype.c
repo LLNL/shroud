@@ -29,8 +29,7 @@ static int SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
     char *out;
-    if (PyUnicode_Check(obj))
-    {
+    if (PyUnicode_Check(obj)) {
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
