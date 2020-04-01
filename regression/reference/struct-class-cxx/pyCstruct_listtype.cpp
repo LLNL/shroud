@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.hpp"
-#include <cstdlib>
 // splicer begin class.Cstruct_list.impl.include
 // splicer end class.Cstruct_list.impl.include
 
@@ -24,181 +23,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-// helper from_PyObject_char
-// Convert obj into an array of type char *
-// Return -1 on error.
-static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
-    char * **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be string", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-
-// helper get_from_object_charptr
-// Convert PyObject to char * pointer.
-static int SHROUD_get_from_object_charptr(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    char * *in;
-    Py_ssize_t size;
-    if (SHROUD_from_PyObject_char(obj, "in", &in,  &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<char * *>(in);
-    return 1;
-}
-
-// helper from_PyObject_double
-// Convert obj into an array of type double
-// Return -1 on error.
-static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
-    double **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    double *in = static_cast<double *>
-        (std::malloc(size * sizeof(double)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be double", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-
-// helper get_from_object_double_list
-// Convert PyObject to double pointer.
-static int SHROUD_get_from_object_double_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    double *in;
-    Py_ssize_t size;
-    if (SHROUD_from_PyObject_double(obj, "in", &in,  &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<double *>(in);
-    return 1;
-}
-
-// helper from_PyObject_int
-// Convert obj into an array of type int
-// Return -1 on error.
-static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-
-// helper get_from_object_int_list
-// Convert PyObject to int pointer.
-static int SHROUD_get_from_object_int_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    int *in;
-    Py_ssize_t size;
-    if (SHROUD_from_PyObject_int(obj, "in", &in,  &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<int *>(in);
-    return 1;
-}
-
-// helper to_PyList_char
-// Convert char * pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_char(char * *in, size_t size)
-{
-    PyObject *out = PyList_New(size);
-    for (size_t i = 0; i < size; ++i) {
-        PyList_SET_ITEM(out, i, PyString_FromString(in[i]));
-    }
-    return out;
-}
-
-// helper to_PyList_double
-// Convert double pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
-{
-    PyObject *out = PyList_New(size);
-    for (size_t i = 0; i < size; ++i) {
-        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
-    }
-    return out;
-}
-
-// helper to_PyList_int
-// Convert int pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
-{
-    PyObject *out = PyList_New(size);
-    for (size_t i = 0; i < size; ++i) {
-        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
-    }
-    return out;
-}
 // splicer begin class.Cstruct_list.impl.C_definition
 // splicer end class.Cstruct_list.impl.C_definition
 // splicer begin class.Cstruct_list.impl.additional_methods
@@ -244,9 +68,9 @@ PY_Cstruct_list_tp_init(
     SHPy_svalue.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&O&:Cstruct_list_ctor", const_cast<char **>(SHT_kwlist), 
-        &nitems, SHROUD_get_from_object_int_list, &SHPy_ivalue,
-        SHROUD_get_from_object_double_list, &SHPy_dvalue,
-        SHROUD_get_from_object_charptr, &SHPy_svalue))
+        &nitems, STR_SHROUD_get_from_object_int_list, &SHPy_ivalue,
+        STR_SHROUD_get_from_object_double_list, &SHPy_dvalue,
+        STR_SHROUD_get_from_object_charptr, &SHPy_svalue))
         return -1;
 
     self->obj = new Cstruct_list;
@@ -298,7 +122,7 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->ivalue_obj);
         return self->ivalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_int(self->obj->ivalue, self->obj->nitems+self->obj->nitems);
+    PyObject *rv = STR_SHROUD_to_PyList_int(self->obj->ivalue, self->obj->nitems+self->obj->nitems);
     return rv;
 }
 
@@ -307,7 +131,7 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
-    if (SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
         self->ivalue_obj = NULL;
         // XXXX set error
@@ -328,7 +152,7 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->dvalue_obj);
         return self->dvalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_double(self->obj->dvalue, self->obj->nitems*TWO);
+    PyObject *rv = STR_SHROUD_to_PyList_double(self->obj->dvalue, self->obj->nitems*TWO);
     return rv;
 }
 
@@ -337,7 +161,7 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
-    if (SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;
         self->dvalue_obj = NULL;
         // XXXX set error
@@ -358,7 +182,7 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
         Py_INCREF(self->svalue_obj);
         return self->svalue_obj;
     }
-    PyObject *rv = SHROUD_to_PyList_char(self->obj->svalue, self->obj->nitems);
+    PyObject *rv = STR_SHROUD_to_PyList_char(self->obj->svalue, self->obj->nitems);
     return rv;
 }
 
@@ -367,7 +191,7 @@ static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->svalue_obj);
-    if (SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
         self->obj->svalue = NULL;
         self->svalue_obj = NULL;
         // XXXX set error

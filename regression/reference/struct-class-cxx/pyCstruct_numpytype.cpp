@@ -27,41 +27,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-// helper get_from_object_double_numpy
-// Convert PyObject to double pointer.
-static int SHROUD_get_from_object_double_numpy(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
-        NPY_ARRAY_IN_ARRAY);
-    if (array == nullptr) {
-        PyErr_SetString(PyExc_ValueError,
-            "must be a 1-D array of double");
-        return 0;
-    }
-    value->obj = array;
-    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
-        (array));
-    return 1;
-}
-
-// helper get_from_object_int_numpy
-// Convert PyObject to int pointer.
-static int SHROUD_get_from_object_int_numpy(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
-        NPY_ARRAY_IN_ARRAY);
-    if (array == nullptr) {
-        PyErr_SetString(PyExc_ValueError, "must be a 1-D array of int");
-        return 0;
-    }
-    value->obj = array;
-    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
-        (array));
-    return 1;
-}
 // splicer begin class.Cstruct_numpy.impl.C_definition
 // splicer end class.Cstruct_numpy.impl.C_definition
 // splicer begin class.Cstruct_numpy.impl.additional_methods
@@ -102,8 +67,8 @@ PY_Cstruct_numpy_tp_init(
     SHPy_dvalue.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&:Cstruct_numpy_ctor", const_cast<char **>(SHT_kwlist), 
-        &nitems, SHROUD_get_from_object_int_numpy, &SHPy_ivalue,
-        SHROUD_get_from_object_double_numpy, &SHPy_dvalue))
+        &nitems, STR_SHROUD_get_from_object_int_numpy, &SHPy_ivalue,
+        STR_SHROUD_get_from_object_double_numpy, &SHPy_dvalue))
         return -1;
 
     self->obj = new Cstruct_numpy;
@@ -168,7 +133,7 @@ static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *valu
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
-    if (SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
         self->ivalue_obj = NULL;
         // XXXX set error
@@ -204,7 +169,7 @@ static int PY_Cstruct_numpy_dvalue_setter(PY_Cstruct_numpy *self, PyObject *valu
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
-    if (SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;
         self->dvalue_obj = NULL;
         // XXXX set error

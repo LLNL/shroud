@@ -23,6 +23,7 @@ language: c
 options:
   debug: True
   wrap_python: True
+  PY_write_helper_in_util: True
 
 format:
   # Avoid conflict with builtin module

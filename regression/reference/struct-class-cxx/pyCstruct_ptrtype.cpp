@@ -23,45 +23,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-// helper get_from_object_char
-// Converter to PyObject to char *.
-static int SHROUD_get_from_object_char(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    char *out;
-    if (PyUnicode_Check(obj)) {
-#if PY_MAJOR_VERSION >= 3
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj);
-        value->obj = strobj;  // steal reference
-#else
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyString_AsString(strobj);
-        value->obj = strobj;  // steal reference
-#endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
-    } else if (PyString_Check(obj)) {
-        out = PyString_AsString(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#endif
-    } else if (obj == Py_None) {
-        out = NULL;
-        value->obj = NULL;
-    } else {
-        PyErr_SetString(PyExc_ValueError, "argument must be a string");
-        return 0;
-    }
-    value->data = out;
-    return 1;
-}
-
 // splicer begin class.Cstruct_ptr.impl.C_definition
 // splicer end class.Cstruct_ptr.impl.C_definition
 // splicer begin class.Cstruct_ptr.impl.additional_methods
@@ -93,8 +54,8 @@ PY_Cstruct_ptr_tp_init(
     SHPy_cfield.obj = nullptr;
     SHPy_cfield.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&:Cstruct_ptr_ctor",
-        const_cast<char **>(SHT_kwlist), SHROUD_get_from_object_char,
-        &SHPy_cfield))
+        const_cast<char **>(SHT_kwlist), 
+        STR_SHROUD_get_from_object_char, &SHPy_cfield))
         return -1;
 
     self->obj = new Cstruct_ptr;
@@ -132,7 +93,7 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
 {
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->cfield_obj);
-    if (SHROUD_get_from_object_char(value, &cvalue) == 0) {
+    if (STR_SHROUD_get_from_object_char(value, &cvalue) == 0) {
         self->obj->cfield = NULL;
         self->cfield_obj = NULL;
         // XXXX set error

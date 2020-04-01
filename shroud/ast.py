@@ -515,7 +515,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_utility_filename_template=(
                 "py{library}util.{PY_impl_filename_suffix}"
             ),
-            PY_write_helper_in_util=False, #True,
+            PY_write_helper_in_util=False,
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
