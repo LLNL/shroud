@@ -2167,26 +2167,23 @@ return -1;
                 # check for recursion
                 self._gather_helper_code(dep, done)
 
-        if self.language == "c":
-            lang_include = "c_include"
-            lang_source = "c_source"
-        else:
-            lang_include = "cxx_include"
-            lang_source = "cxx_source"
         scope = helper_info.get("scope", "file")
-        # assert scope in ["file", "utility"]
+#        # assert scope in ["file", "utility"]
 
-        if lang_include in helper_info:
-            for include in helper_info[lang_include].split():
-                self.helper_include[scope][include] = True
+        lang_key = self.language + "_include"
+        if lang_key in helper_info:
+            for include in helper_info[lang_key].split():
+                self.helper_summary["include"][scope][include] = True
         elif "include" in helper_info:
             for include in helper_info["include"].split():
-                self.helper_include[scope][include] = True
+                self.helper_summary["include"][scope][include] = True
 
-        if lang_source in helper_info:
-            self.helper_source[scope].append(helper_info[lang_source])
-        elif "source" in helper_info:
-            self.helper_source[scope].append(helper_info["source"])
+        for key in ["proto", "source"]:
+            lang_key = self.language + "_" + key 
+            if lang_key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[lang_key])
+            elif key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[key])
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
@@ -2194,11 +2191,13 @@ return -1;
         helpers should be self.c_helper or self.shared_helper
 
         Args:
-            helpers -
+            helpers - dictionary of helper names.
         """
-        # per class
-        self.helper_source = dict(file=[], utility=[])
-        self.helper_include = dict(file={}, utility={})
+        self.helper_summary = dict(
+            include=dict(file={}, utility={}),
+            proto=dict(file=[], utility=[]),
+            source=dict(file=[], utility=[]),
+        )
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
@@ -2217,7 +2216,10 @@ return -1;
         self.gather_helper_code(self.c_helper)
         self.shared_helper.update(self.c_helper)
         self.c_helper = {}
-        return self.helper_include["file"], self.helper_source["file"]
+        return (
+            self.helper_summary["include"]["file"],
+            self.helper_summary["source"]["file"]
+        )
 
     def find_utility_helper_code(self):
         """Get "utility" helper code.
@@ -2225,14 +2227,20 @@ return -1;
         Return list of code with typedefs.
         """
         self.gather_helper_code(self.shared_helper)
-        return self.helper_include["utility"], self.helper_source["utility"]
+        return (
+            self.helper_summary["include"]["utility"],
+            self.helper_summary["source"]["utility"]
+        )
 
     def find_shared_file_helper_code(self):
         """Get "file" helper code when added to utility file.
         """
         if self.newlibrary.options.PY_write_helper_in_util:
             self.gather_helper_code(self.shared_helper)
-            return self.helper_include["file"], self.helper_source["file"]
+            return (
+                self.helper_summary["include"]["file"],
+                self.helper_summary["source"]["file"]
+            )
         return {}, []
 
 ######
@@ -2454,6 +2462,11 @@ return -1;
         self._create_splicer("include", output)
 
         output.extend(hsource)
+        if self.newlibrary.options.PY_write_helper_in_util:
+            if self.helper_summary["proto"]["file"]:
+                output.append("")
+                output.append("// Helper functions.")
+                output.extend(self.helper_summary["proto"]["file"])
 
         if self.py_utility_declaration:
             output.append("")

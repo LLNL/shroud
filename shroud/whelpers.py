@@ -29,6 +29,7 @@ Helper functions for C and Fortran wrappers.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
 
+ proto       = prototype for function.
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
@@ -250,12 +251,15 @@ array->rank = 1;
     # char *
     name = "get_from_object_char"
     fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
+        proto=fmt.hnameproto + ";",
         source=wformat("""
 // Helper - converter to PyObject to char *.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
+{PY_helper_static}{hnameproto}
 {{+
 char *out;
 if (PyUnicode_Check(obj)) {{+
@@ -622,12 +626,15 @@ def add_to_PyList_helper(arg):
     name = "update_PyList_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.hnameproto = wformat(
+            "void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-{PY_helper_static}void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}{hnameproto}
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -655,16 +662,19 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Function called by typemap.PY_get_converter for NumPy.
     name = "get_from_object_{}_numpy".format(ntypemap.c_type)
     if name not in CHelpers:
-        fmt.py_tmp="array"
-        fmt.c_type=ntypemap.c_type
-        fmt.numpy_type=ntypemap.PYN_typenum
-        fmt.hnamefunc=fmt.PY_helper_prefix + name
+        fmt.py_tmp = "array"
+        fmt.c_type = ntypemap.c_type
+        fmt.numpy_type = ntypemap.PYN_typenum
+        fmt.hnamefunc = fmt.PY_helper_prefix + name
+        fmt.hnameproto = wformat(
+            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             dependent_helpers=["PY_converter_type"],
+            proto=fmt.hnameproto + ";",
             source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -694,15 +704,18 @@ def create_from_PyObject(fmt):
     """
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}from_PyObject_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         c_include="<stdlib.h>",   # malloc/free
         cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
         source=wformat(
                 """
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-{PY_helper_static}int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
@@ -734,11 +747,14 @@ def create_to_PyList(fmt):
     """
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}to_PyList_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+        "PyObject *{hnamefunc}({c_type} *in, size_t size)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
         source=wformat(
             """
-{PY_helper_static}PyObject *{hnamefunc}({c_type} *in, size_t size)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *out = PyList_New(size);
 for (size_t i = 0; i < size; ++i) {{+
@@ -754,15 +770,18 @@ def create_get_from_object_list(fmt):
     format fields:
        fcn_suffix - 
     """
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
             "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
         ],
+        proto=fmt.hnameproto + ";",
         source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
+{PY_helper_static}{hnameproto}
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
@@ -795,11 +814,13 @@ def add_to_PyList_helper_vector(arg):
     if name not in CHelpers:
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
+        fmt.hnameproto = wformat("PyObject *{hnamefunc}(std::vector<{c_type}> & in)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
-{PY_helper_static}PyObject *{hnamefunc}(std::vector<{c_type}> & in)
+{PY_helper_static}{hnameproto}
 {{+
 size_t size = in.size();
 PyObject *out = PyList_New(size);
@@ -817,14 +838,18 @@ return out;
     name = "update_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        fmt.hnamefunc = wformat("{PY_helper_prefix}update_PyList_{c_type}", fmt)
+        fmt.hnamefunc = wformat(
+            "{PY_helper_prefix}update_PyList_{c_type}", fmt)
+        fmt.hnameproto = wformat(
+            "void {hnamefunc}(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-{PY_helper_static}void {hnamefunc}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}{hnameproto}
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -845,15 +870,19 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     name = "from_PyObject_vector_" + ntypemap.c_type
     if name not in CHelpers:
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        fmt.hnamefunc= wformat("{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
+        fmt.hnamefunc= wformat(
+            "{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
+        fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
 ##-            cxx_include="<cstdlib>",  # malloc/free
+            cxx_proto=fmt.hnameproto + ";",
             cxx_source=wformat(
                 """
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-{PY_helper_static}int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
