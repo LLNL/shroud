@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+/* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -58,12 +59,14 @@ extern "C" {
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
 
+// helper capsule_data_helper
 struct s_OWN_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_OWN_SHROUD_capsule_data OWN_SHROUD_capsule_data;
 
+// helper array_context
 struct s_OWN_SHROUD_array {
     OWN_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
@@ -77,6 +80,7 @@ struct s_OWN_SHROUD_array {
 };
 typedef struct s_OWN_SHROUD_array OWN_SHROUD_array;
 
+// helper capsule_OWN_Class1
 struct s_OWN_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

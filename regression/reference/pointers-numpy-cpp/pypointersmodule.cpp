@@ -29,6 +29,7 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+// helper from_PyObject_char
 // Convert obj into an array of type char *
 // Return -1 on error.
 static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,

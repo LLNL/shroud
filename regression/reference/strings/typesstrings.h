@@ -18,12 +18,14 @@
 extern "C" {
 #endif
 
+// helper capsule_data_helper
 struct s_STR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
 
+// helper array_context
 // start array_context
 struct s_STR_SHROUD_array {
     STR_SHROUD_capsule_data cxx;      /* address of C++ memory */
@@ -39,6 +41,7 @@ struct s_STR_SHROUD_array {
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 // end array_context
 
+/* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2

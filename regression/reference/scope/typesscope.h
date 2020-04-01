@@ -16,18 +16,21 @@
 extern "C" {
 #endif
 
+// helper capsule_SCO_Class1
 struct s_SCO_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_Class1 SCO_Class1;
 
+// helper capsule_SCO_Class2
 struct s_SCO_Class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_Class2 SCO_Class2;
 
+// helper capsule_data_helper
 struct s_SCO_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

@@ -22,11 +22,13 @@ module userlibrary_example_nested_mod
     top of module namespace example splicer  3
     ! splicer end namespace.example::nested.module_top
 
+    ! helper capsule_data_helper
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! helper array_context
     type, bind(C) :: SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
@@ -766,7 +768,7 @@ module userlibrary_example_nested_mod
     end interface testoptional
 
     interface
-        ! helper function
+        ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
         subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="AA_ShroudCopyStringAndFree")

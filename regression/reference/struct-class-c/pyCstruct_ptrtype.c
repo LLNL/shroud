@@ -24,7 +24,8 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// Helper - converter to PyObject to char *.
+// helper get_from_object_char
+// Converter to PyObject to char *.
 static int SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {

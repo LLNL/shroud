@@ -16,6 +16,7 @@
 extern "C" {
 #endif
 
+// helper capsule_data_helper
 struct s_POI_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

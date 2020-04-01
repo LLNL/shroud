@@ -24,6 +24,7 @@ module generic_mod
     integer, parameter :: T_DOUBLE = 4
     ! splicer end module_top
 
+    ! helper ShroudTypeDefines
     ! Shroud type defines from helper ShroudTypeDefines
     integer, parameter, private :: &
         SH_TYPE_SIGNED_CHAR= 1, &

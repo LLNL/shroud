@@ -18,7 +18,7 @@
 extern "C" {
 
 
-// helper function
+// helper copy_array
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 // Called from Fortran.

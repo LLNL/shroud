@@ -28,7 +28,8 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// Helper - convert PyObject to double pointer.
+// helper get_from_object_double_numpy
+// Convert PyObject to double pointer.
 static int SHROUD_get_from_object_double_numpy(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -44,7 +45,8 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
     return 1;
 }
 
-// Helper - convert PyObject to int pointer.
+// helper get_from_object_int_numpy
+// Convert PyObject to int pointer.
 static int SHROUD_get_from_object_int_numpy(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {

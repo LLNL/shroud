@@ -11,6 +11,7 @@
 #ifndef TYPESINTERFACE_H
 #define TYPESINTERFACE_H
 
+// helper capsule_data_helper
 struct s_INT_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

@@ -26,6 +26,7 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+// helper from_PyObject_char
 // Convert obj into an array of type char *
 // Return -1 on error.
 static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
@@ -57,6 +58,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
     return 0;
 }
 
+// helper from_PyObject_double
 // Convert obj into an array of type double
 // Return -1 on error.
 static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
@@ -88,6 +90,7 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
     return 0;
 }
 
+// helper from_PyObject_int
 // Convert obj into an array of type int
 // Return -1 on error.
 static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
@@ -118,6 +121,8 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     return 0;
 }
 
+// helper to_PyList_double
+// Convert double pointer to PyList of PyObjects.
 static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -127,6 +132,8 @@ static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
     return out;
 }
 
+// helper to_PyList_int
+// Convert int pointer to PyList of PyObjects.
 static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
 {
     PyObject *out = PyList_New(size);

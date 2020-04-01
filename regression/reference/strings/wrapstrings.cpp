@@ -20,7 +20,7 @@
 extern "C" {
 
 
-// helper function
+// helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
@@ -32,7 +32,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
    return rv;
 }
 
-// helper function
+// helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
 {
@@ -40,7 +40,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
 
-// helper function
+// helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
@@ -56,14 +56,14 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    }
 }
 
-// helper function
+// helper ShroudStrFree
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
    free(src);
 }
 
-// helper function
+// helper ShroudStrToArray
 // start helper ShroudStrToArray
 // Save str metadata into array to allow Fortran to access values.
 static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
@@ -82,7 +82,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 }
 // end helper ShroudStrToArray
 
-// helper function
+// helper copy_string
 // start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.

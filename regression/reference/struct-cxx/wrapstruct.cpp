@@ -18,7 +18,7 @@
 extern "C" {
 
 
-// helper function
+// helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
 {

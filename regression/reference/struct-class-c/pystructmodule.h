@@ -13,7 +13,7 @@
 // splicer begin header.include
 // splicer end header.include
 
-// helper: PY_converter_type
+// helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
 typedef struct {
     PyObject *obj;

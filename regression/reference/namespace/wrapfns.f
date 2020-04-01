@@ -21,11 +21,13 @@ module ns_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper capsule_data_helper
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! helper array_context
     type, bind(C) :: SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
@@ -100,7 +102,7 @@ module ns_mod
     end interface
 
     interface
-        ! helper function
+        ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
         subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="NS_ShroudCopyStringAndFree")

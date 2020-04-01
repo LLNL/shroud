@@ -11,6 +11,7 @@
 #ifndef TYPESGENERIC_H
 #define TYPESGENERIC_H
 
+/* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -51,6 +52,7 @@
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
 
+// helper capsule_data_helper
 struct s_GEN_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
