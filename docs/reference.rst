@@ -327,6 +327,14 @@ PY_create_generic
 .. XXX should also be set to false when the templated argument in
    cxx_template is part of the implementation and not the interface.
 
+PY_write_helper_in_util
+   When *True* helper functions will be written into the utility file
+   *PY_utility_filename*. Useful when there are lots of classes since
+   helper functions may be duplicated in several files.
+   The value of format *PY_helper_prefix* will have *C_prefix* append
+   to create names that are unique to the library.
+   Defaults to *False*.
+   
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
   (it does not have the *dimension* attribute).
@@ -967,6 +975,11 @@ C_prefix
 
 PY_helper_prefix
     Prefix added to helper functions for the Python wrapper.
+    This allows the helper functions to have names which will not conflict
+    with any wrapped routines.
+    When option *PY_write_helper_in_util* is *True*, *C_prefix* will
+    be prefixed to the value to ensure the helper functions will not
+    conflict with any routines in other wrapped libraries.
 
 PY_type_obj
     Name variable which points to C or C++ memory.
