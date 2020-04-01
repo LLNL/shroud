@@ -18,7 +18,7 @@ Helper functions for C and Fortran wrappers.
  scope       = scope of helper.  Defaults to "file" which are added
                as file static and may be in several files.
                "utility" will add to C_header_utility or PY_utility_filename
-               and shared amount files. These names need to be unique
+               and shared among files. These names need to be unique
                since they are shared across wrapped libraries.
  c_include   = Blank delimited list of files to #include
                in implementation file when wrapping a C library.
