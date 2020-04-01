@@ -705,6 +705,8 @@ class LibraryNode(AstNode, NamespaceMixin):
                 fmt_library.C_prefix + fmt_library.PY_helper_prefix )
         else:        
             fmt_library.PY_helper_static = "static "
+        fmt_library.PY_typedef_converter = (
+                fmt_library.C_prefix + "SHROUD_converter_value")
 
         for name in [
             "C_header_filename",

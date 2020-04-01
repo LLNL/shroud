@@ -853,7 +853,7 @@ return self->{PY_member_object};
                     fmt.hnamefunc = self.add_helper(hname)
                     fmt.cast_type = ast.gen_arg_as_cxx(
                     name=None, params=None)
-                    append_format(output, """{C_prefix}SHROUD_converter_value cvalue;
+                    append_format(output, """{PY_typedef_converter} cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
@@ -1347,7 +1347,7 @@ return -1;
                     # only assignments to struct members.
                     append_format(
                         declare_code,
-                        "{C_prefix}SHROUD_converter_value {py_var};", fmt_arg)
+                        "{PY_typedef_converter} {py_var};", fmt_arg)
                     hname = intent_blk.get_converter
                     if hname:
                         hname = "{}_{}".format(

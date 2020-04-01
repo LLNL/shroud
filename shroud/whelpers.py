@@ -255,7 +255,7 @@ array->rank = 1;
         dependent_helpers=["PY_converter_type"],
         source=wformat("""
 // Helper - converter to PyObject to char *.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
 {{+
 char *out;
 if (PyUnicode_Check(obj)) {{+
@@ -311,7 +311,7 @@ return 1;
 typedef struct {{+
 PyObject *obj;
 void *data;   // points into obj.
--}} {C_prefix}SHROUD_converter_value;""", fmt)
+-}} {PY_typedef_converter};""", fmt)
     )
     
 ######################################################################
@@ -664,7 +664,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
             dependent_helpers=["PY_converter_type"],
             source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -762,7 +762,7 @@ def create_get_from_object_list(fmt):
         ],
         source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};

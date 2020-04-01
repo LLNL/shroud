@@ -82,6 +82,7 @@
             "PY_this_call": "",
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
+            "PY_typedef_converter": "LIB_SHROUD_converter_value",
             "YAML_type_filename": "library_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
