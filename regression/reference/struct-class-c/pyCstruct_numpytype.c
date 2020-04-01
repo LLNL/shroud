@@ -28,15 +28,9 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// Keep track of the PyObject and pointer to the data it contains.
-typedef struct {
-    PyObject *obj;
-    void *data;   // points into obj.
-} SHROUD_converter_value;
-
 // Helper - convert PyObject to double pointer.
 static int SHROUD_get_from_object_double_numpy(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
         NPY_ARRAY_IN_ARRAY);
@@ -52,7 +46,7 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
 
 // Helper - convert PyObject to int pointer.
 static int SHROUD_get_from_object_int_numpy(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
         NPY_ARRAY_IN_ARRAY);
@@ -89,8 +83,8 @@ PY_Cstruct_numpy_tp_init(
 // Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
 // splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
     int nitems;
-    SHROUD_converter_value SHPy_ivalue;
-    SHROUD_converter_value SHPy_dvalue;
+    STR_SHROUD_converter_value SHPy_ivalue;
+    STR_SHROUD_converter_value SHPy_dvalue;
     char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -168,7 +162,7 @@ static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
 static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
     if (SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
@@ -204,7 +198,7 @@ static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
 static int PY_Cstruct_numpy_dvalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
     if (SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;

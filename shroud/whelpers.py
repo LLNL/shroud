@@ -18,7 +18,7 @@ Helper functions for C and Fortran wrappers.
  scope       = scope of helper.  Defaults to "file" which are added
                as file static and may be in several files.
                "utility" will add to C_header_utility or PY_utility_filename
-               and shared amount files. They need unique names
+               and shared amount files. These names need to be unique
                since they are shared across wrapped libraries.
  c_header    = Blank delimited list of header files to #include
                in implementation file when wrapping a C library.
@@ -227,6 +227,7 @@ array->rank = 1;
     CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
+    ########################################
     # char **
     name = "get_from_object_charptr"
     fmt.name = name
@@ -245,15 +246,16 @@ array->rank = 1;
         dependent_helpers=[name],
     )
 
+    ########################################
     # char *
     name = "get_from_object_char"
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
-        dependent_helpers=["converter_type"],
+        dependent_helpers=["PY_converter_type"],
         source=wformat("""
 // Helper - converter to PyObject to char *.
-static int {hnamefunc}(PyObject *obj,\t SHROUD_converter_value *value)
+static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 char *out;
 if (PyUnicode_Check(obj))
@@ -299,6 +301,18 @@ return 1;
     CHelpers['get_from_object_char_numpy'] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[name],
+    )
+
+    ########################################
+    CHelpers['PY_converter_type'] = dict(
+        scope="utility",
+        source=wformat("""
+// helper: PY_converter_type
+// Store PyObject and pointer to the data it contains.
+typedef struct {{+
+PyObject *obj;
+void *data;   // points into obj.
+-}} {C_prefix}SHROUD_converter_value;""", fmt)
     )
     
 ######################################################################
@@ -648,10 +662,10 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.hnamefunc=fmt.PY_helper_prefix + name
         helper = dict(
             name=fmt.hnamefunc,
-            dependent_helpers=["converter_type"],
+            dependent_helpers=["PY_converter_type"],
             source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int {hnamefunc}(PyObject *obj,\t SHROUD_converter_value *value)
+static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -744,12 +758,12 @@ def create_get_from_object_list(fmt):
     helper = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[
-            "converter_type",
+            "PY_converter_type",
             "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
         ],
         source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int {hnamefunc}(PyObject *obj,\t SHROUD_converter_value *value)
+static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
@@ -1124,15 +1138,6 @@ static void ShroudStrArrayFree(char **src, int nsrc)
    }
    std::free(src);
 }""",
-    ),
-    ########################################
-    converter_type=dict(
-        source="""
-// Keep track of the PyObject and pointer to the data it contains.
-typedef struct {
-    PyObject *obj;
-    void *data;   // points into obj.
-} SHROUD_converter_value;"""
     ),
     ########################################
 )   # end CHelpers

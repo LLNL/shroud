@@ -24,15 +24,9 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// Keep track of the PyObject and pointer to the data it contains.
-typedef struct {
-    PyObject *obj;
-    void *data;   // points into obj.
-} SHROUD_converter_value;
-
 // Helper - converter to PyObject to char *.
 static int SHROUD_get_from_object_char(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     char *out;
     if (PyUnicode_Check(obj))
@@ -91,7 +85,7 @@ PY_Cstruct_ptr_tp_init(
 {
 // Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
-    SHROUD_converter_value SHPy_cfield;
+    STR_SHROUD_converter_value SHPy_cfield;
     const char *SHT_kwlist[] = {
         "cfield",
         nullptr };
@@ -136,7 +130,7 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->cfield_obj);
     if (SHROUD_get_from_object_char(value, &cvalue) == 0) {
         self->obj->cfield = NULL;

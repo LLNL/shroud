@@ -97,6 +97,7 @@ class Wrapp(util.WrapperMixin):
         self.call_arraydescr = []
         self.need_blah = False
         self.header_type_include = {}  # header files in module header
+        self.shared_helper = {} # All accumulated helpers
         update_typemap_for_language(self.language)
 
     def XXX_begin_output_file(self):
@@ -159,8 +160,8 @@ class Wrapp(util.WrapperMixin):
         self.need_blah = False  # Not needed if no there gc routines are added.
 
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
-        self.write_utility()
-        self.write_header(newlibrary)
+        self.write_utility_file()
+        self.write_module_header(newlibrary)
         self.write_setup()
 
     def wrap_namespace(self, node, top=False):
@@ -852,7 +853,7 @@ return self->{PY_member_object};
                     fmt.hnamefunc = self.add_helper(hname)
                     fmt.cast_type = ast.gen_arg_as_cxx(
                     name=None, params=None)
-                    append_format(output, """SHROUD_converter_value cvalue;
+                    append_format(output, """{C_prefix}SHROUD_converter_value cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
@@ -1346,7 +1347,7 @@ return -1;
                     # only assignments to struct members.
                     append_format(
                         declare_code,
-                        "SHROUD_converter_value {py_var};", fmt_arg)
+                        "{C_prefix}SHROUD_converter_value {py_var};", fmt_arg)
                     hname = intent_blk.get_converter
                     if hname:
                         hname = "{}_{}".format(
@@ -2201,6 +2202,20 @@ return -1;
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
+
+    def find_file_helper_code(self):
+        """Get "file" helper code.
+        Add to shared_helper, then reset.
+        """
+        self.gather_helper_code(self.c_helper)
+        self.shared_helper.update(self.c_helper)
+        self.c_helper = {}
+
+    def find_utility_helper_code(self):
+        """Get "utility" helper code.
+        """
+        self.gather_helper_code(self.shared_helper)
+        
 ######
 
     def write_extension_type(self, node, fileinfo):
@@ -2212,7 +2227,7 @@ return -1;
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
-        self.gather_helper_code(self.c_helper)
+        self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2399,7 +2414,7 @@ return -1;
             self.create_method(None, expose, is_ctor, fmt,
                                None, body, fileinfo)
 
-    def write_header(self, node):
+    def write_module_header(self, node):
         """Write the header for the module.
         Args:
             node - ast.LibraryNode.
@@ -2419,6 +2434,10 @@ return -1;
 
         self._push_splicer("header")
         self._create_splicer("include", output)
+
+        self.find_utility_helper_code()
+        if self.helper_source["utility"]:
+            output.extend(self.helper_source["utility"])
 
         if self.py_utility_declaration:
             output.append("")
@@ -2469,7 +2488,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         fmt.PY_library_doc = "library documentation"
 
-        self.gather_helper_code(self.c_helper)
+        self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2557,7 +2576,7 @@ extern PyObject *{PY_prefix}error_obj;
 #        output.extend(self.enum_impl)
         append_format(output, submodule_end, fmt)
 
-    def write_utility(self):
+    def write_utility_file(self):
         """
         Do not write the file unless it has contents.
         """

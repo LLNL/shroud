@@ -25,12 +25,6 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// Keep track of the PyObject and pointer to the data it contains.
-typedef struct {
-    PyObject *obj;
-    void *data;   // points into obj.
-} SHROUD_converter_value;
-
 // Convert obj into an array of type char *
 // Return -1 on error.
 static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
@@ -64,7 +58,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
 
 // Helper - convert PyObject to char * pointer.
 static int SHROUD_get_from_object_charptr(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     char * *in;
     Py_ssize_t size;
@@ -109,7 +103,7 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
 
 // Helper - convert PyObject to double pointer.
 static int SHROUD_get_from_object_double_list(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     double *in;
     Py_ssize_t size;
@@ -153,7 +147,7 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
 
 // Helper - convert PyObject to int pointer.
 static int SHROUD_get_from_object_int_list(PyObject *obj,
-    SHROUD_converter_value *value)
+    STR_SHROUD_converter_value *value)
 {
     int *in;
     Py_ssize_t size;
@@ -217,9 +211,9 @@ PY_Cstruct_list_tp_init(
 // Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems;
-    SHROUD_converter_value SHPy_ivalue;
-    SHROUD_converter_value SHPy_dvalue;
-    SHROUD_converter_value SHPy_svalue;
+    STR_SHROUD_converter_value SHPy_ivalue;
+    STR_SHROUD_converter_value SHPy_dvalue;
+    STR_SHROUD_converter_value SHPy_svalue;
     char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -297,7 +291,7 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
 static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
     if (SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
@@ -327,7 +321,7 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
 static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
     if (SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;
@@ -357,7 +351,7 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
 static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    SHROUD_converter_value cvalue;
+    STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->svalue_obj);
     if (SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
         self->obj->svalue = NULL;
