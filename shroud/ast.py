@@ -697,6 +697,15 @@ class LibraryNode(AstNode, NamespaceMixin):
             else:
                 fmt_library.nullptr = "NULL"
 
+        # Update format based on options
+        options = self.options
+        if options.PY_write_helper_in_util:
+            fmt_library.PY_helper_static = ""
+            fmt_library.PY_helper_prefix = (
+                fmt_library.C_prefix + fmt_library.PY_helper_prefix )
+        else:        
+            fmt_library.PY_helper_static = "static "
+
         for name in [
             "C_header_filename",
             "C_impl_filename",

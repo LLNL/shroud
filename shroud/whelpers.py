@@ -255,7 +255,7 @@ array->rank = 1;
         dependent_helpers=["PY_converter_type"],
         source=wformat("""
 // Helper - converter to PyObject to char *.
-static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 char *out;
 if (PyUnicode_Check(obj))
@@ -628,7 +628,7 @@ def add_to_PyList_helper(arg):
                 """
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -665,7 +665,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
             dependent_helpers=["PY_converter_type"],
             source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -703,7 +703,7 @@ def create_from_PyObject(fmt):
                 """
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-static int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{PY_helper_static}int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
@@ -739,7 +739,7 @@ def create_to_PyList(fmt):
         name=fmt.hnamefunc,
         source=wformat(
             """
-static PyObject *{hnamefunc}({c_type} *in, size_t size)
+{PY_helper_static}PyObject *{hnamefunc}({c_type} *in, size_t size)
 {{+
 PyObject *out = PyList_New(size);
 for (size_t i = 0; i < size; ++i) {{+
@@ -763,7 +763,7 @@ def create_get_from_object_list(fmt):
         ],
         source=wformat("""
 // Helper - convert PyObject to {c_type} pointer.
-static int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
+{PY_helper_static}int {hnamefunc}(PyObject *obj,\t {C_prefix}SHROUD_converter_value *value)
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
@@ -800,7 +800,7 @@ def add_to_PyList_helper_vector(arg):
             name=fmt.hnamefunc,
             source=wformat(
                 """
-static PyObject *{hnamefunc}(std::vector<{c_type}> & in)
+{PY_helper_static}PyObject *{hnamefunc}(std::vector<{c_type}> & in)
 {{+
 size_t size = in.size();
 PyObject *out = PyList_New(size);
@@ -825,7 +825,7 @@ return out;
                 """
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void {hnamefunc}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}void {hnamefunc}(PyObject *out, {c_type} *in, size_t size)
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -854,7 +854,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
                 """
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-static int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)
+{PY_helper_static}int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+

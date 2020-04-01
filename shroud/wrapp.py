@@ -2204,13 +2204,13 @@ return -1;
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
-    def find_file_helper_code(self, in_util=False):
+    def find_file_helper_code(self):
         """Get "file" helper code.
         Add to shared_helper, then reset.
 
         Return dictionary of headers and list of source files.
         """
-        if self.newlibrary.options.PY_write_helper_in_util and not in_util:
+        if self.newlibrary.options.PY_write_helper_in_util:
             self.shared_helper.update(self.c_helper)
             self.c_helper = {}
             return {}, []
@@ -2598,7 +2598,7 @@ extern PyObject *{PY_prefix}error_obj;
         node = self.newlibrary
         fmt = node.fmtdict
         need_file = False
-        hheaders, hsource = self.find_file_helper_code(True)
+        hheaders, hsource = self.find_shared_file_helper_code()
         
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
