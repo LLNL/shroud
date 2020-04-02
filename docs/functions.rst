@@ -276,6 +276,17 @@ C helper functions
     Returns the length of character string *src* with length *nsrc*,
     ignoring any trailing blanks.
 
+Each Python helper is prefixed by format variable *PY_helper_prefix* which
+defaults to ``SHROUD_``.  This is used to avoid conflict with other
+wrapped functions.
+
+The option *PY_write_helper_in_util* will write all of the
+helper fuctions into the file defined by *PY_utility_filename*.
+This can be useful to avoid clutter when there are a lot of classes
+which may create lots of duplicate helpers. The helpers will no longer
+be file static and instead will also be prefixed with *C_prefix* to
+avoid conflicting with helpers created by another Shroud wrapped library.
+
 
 Header Files
 ^^^^^^^^^^^^
