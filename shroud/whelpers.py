@@ -258,7 +258,7 @@ array->rank = 1;
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     fmt.hnameproto = wformat(
-            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
@@ -648,7 +648,7 @@ def add_to_PyList_helper(arg):
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnameproto = wformat(
-            "void {PY_helper_prefix}update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)", fmt)
+            "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
             proto=fmt.hnameproto + ";",
             source=wformat(
@@ -691,7 +691,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.hname = name
         fmt.hnamefunc = fmt.PY_helper_prefix + name
         fmt.hnameproto = wformat(
-            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             dependent_helpers=["PY_converter_type"],
@@ -775,7 +775,7 @@ def create_to_PyList(fmt):
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}to_PyList_{fcn_suffix}", fmt)
     fmt.hnameproto = wformat(
-        "PyObject *{hnamefunc}({c_type} *in, size_t size)", fmt)
+        "PyObject *{hnamefunc}\t({c_type} *in, size_t size)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
@@ -801,7 +801,7 @@ def create_get_from_object_list(fmt):
        fcn_suffix - 
     """
     fmt.hnameproto = wformat(
-            "int {hnamefunc}(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[
@@ -846,7 +846,7 @@ def add_to_PyList_helper_vector(arg):
         fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
-        fmt.hnameproto = wformat("PyObject *{hnamefunc}(std::vector<{c_type}> & in)", fmt)
+        fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             proto=fmt.hnameproto + ";",
@@ -875,7 +875,7 @@ return out;
         fmt.hnamefunc = wformat(
             "{PY_helper_prefix}update_PyList_{c_type}", fmt)
         fmt.hnameproto = wformat(
-            "void {hnamefunc}(PyObject *out, {c_type} *in, size_t size)", fmt)
+            "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
             proto=fmt.hnameproto + ";",

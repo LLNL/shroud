@@ -53,7 +53,8 @@ static int SHROUD_from_PyObject_vector_int(PyObject *obj,
 }
 
 // helper to_PyList_vector_double
-static PyObject *SHROUD_to_PyList_vector_double(std::vector<double> & in)
+static PyObject *SHROUD_to_PyList_vector_double
+    (std::vector<double> & in)
 {
     size_t size = in.size();
     PyObject *out = PyList_New(size);
