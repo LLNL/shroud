@@ -25,6 +25,7 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+// helper from_PyObject_vector_int
 // Convert obj into an array of type int
 // Return -1 on error.
 static int SHROUD_from_PyObject_vector_int(PyObject *obj,
@@ -51,7 +52,9 @@ static int SHROUD_from_PyObject_vector_int(PyObject *obj,
     return 0;
 }
 
-static PyObject *SHROUD_to_PyList_vector_double(std::vector<double> & in)
+// helper to_PyList_vector_double
+static PyObject *SHROUD_to_PyList_vector_double
+    (std::vector<double> & in)
 {
     size_t size = in.size();
     PyObject *out = PyList_New(size);
@@ -61,6 +64,7 @@ static PyObject *SHROUD_to_PyList_vector_double(std::vector<double> & in)
     return out;
 }
 
+// helper to_PyList_vector_int
 static PyObject *SHROUD_to_PyList_vector_int(std::vector<int> & in)
 {
     size_t size = in.size();

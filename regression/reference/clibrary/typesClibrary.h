@@ -11,6 +11,7 @@
 #ifndef TYPESCLIBRARY_H
 #define TYPESCLIBRARY_H
 
+// helper capsule_data_helper
 struct s_CLI_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

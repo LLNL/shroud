@@ -515,6 +515,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_utility_filename_template=(
                 "py{library}util.{PY_impl_filename_suffix}"
             ),
+            PY_write_helper_in_util=False,
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
@@ -618,6 +619,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
                 self.library.upper()),
+            PY_helper_prefix="SHROUD_",
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
             PY_result="SHTPy_rv",  # Create PyObject for result
@@ -694,6 +696,17 @@ class LibraryNode(AstNode, NamespaceMixin):
                 fmt_library.nullptr = "nullptr"
             else:
                 fmt_library.nullptr = "NULL"
+
+        # Update format based on options
+        options = self.options
+        if options.PY_write_helper_in_util:
+            fmt_library.PY_helper_static = ""
+            fmt_library.PY_helper_prefix = (
+                fmt_library.C_prefix + fmt_library.PY_helper_prefix )
+        else:        
+            fmt_library.PY_helper_static = "static "
+        fmt_library.PY_typedef_converter = (
+                fmt_library.C_prefix + "SHROUD_converter_value")
 
         for name in [
             "C_header_filename",

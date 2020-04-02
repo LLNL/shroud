@@ -168,6 +168,15 @@ need to allocate a local variable which will be used to store the result.
 The Python object will maintain a pointer to the instance until it is
 deleted.
 
+c_helper
+^^^^^^^^
+
+Blank delimited list of helper functions required for the wrapper.
+The name may contain format strings and will be expand before it is used.
+ex. ``to_PyList_{cxx_type}``.
+The function associated with the helper will be named *hnamefunc0*,
+*hnamefunc1*, ... for each helper listed.
+
 decl
 ^^^^
 

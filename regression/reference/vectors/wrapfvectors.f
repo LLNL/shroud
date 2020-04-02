@@ -21,11 +21,13 @@ module vectors_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper capsule_data_helper
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! helper array_context
     ! start array_context
     type, bind(C) :: SHROUD_array
         ! address of C++ memory
@@ -169,7 +171,7 @@ module vectors_mod
     end interface
 
     interface
-        ! helper function
+        ! helper copy_array_double
         ! Copy contents of context into c_var.
         subroutine SHROUD_copy_array_double(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")
@@ -182,7 +184,7 @@ module vectors_mod
     end interface
 
     interface
-        ! helper function
+        ! helper copy_array_int
         ! Copy contents of context into c_var.
         subroutine SHROUD_copy_array_int(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")

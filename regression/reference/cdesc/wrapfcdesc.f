@@ -21,6 +21,7 @@ module cdesc_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper ShroudTypeDefines
     ! Shroud type defines from helper ShroudTypeDefines
     integer, parameter, private :: &
         SH_TYPE_SIGNED_CHAR= 1, &
@@ -53,11 +54,13 @@ module cdesc_mod
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
 
+    ! helper capsule_data_helper
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! helper array_context
     type, bind(C) :: SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx

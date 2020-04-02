@@ -11,6 +11,7 @@
 #ifndef TYPESSTRUCT_H
 #define TYPESSTRUCT_H
 
+// helper capsule_data_helper
 struct s_STR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

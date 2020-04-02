@@ -13,6 +13,36 @@
 // splicer begin header.include
 // splicer end header.include
 
+// helper PY_converter_type
+// Store PyObject and pointer to the data it contains.
+typedef struct {
+    PyObject *obj;
+    void *data;   // points into obj.
+} STR_SHROUD_converter_value;
+
+// Helper functions.
+int STR_SHROUD_get_from_object_char(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+int STR_SHROUD_from_PyObject_char(PyObject *obj, const char *name,
+    char * **pin, Py_ssize_t *psize);
+int STR_SHROUD_get_from_object_charptr(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+int STR_SHROUD_from_PyObject_double(PyObject *obj, const char *name,
+    double **pin, Py_ssize_t *psize);
+int STR_SHROUD_get_from_object_double_list(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+int STR_SHROUD_from_PyObject_int(PyObject *obj, const char *name,
+    int **pin, Py_ssize_t *psize);
+int STR_SHROUD_get_from_object_int_list(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
+    STR_SHROUD_converter_value *value);
+PyObject *STR_SHROUD_to_PyList_char(char * *in, size_t size);
+PyObject *STR_SHROUD_to_PyList_double(double *in, size_t size);
+PyObject *STR_SHROUD_to_PyList_int(int *in, size_t size);
+
 // utility functions
 extern void PY_SHROUD_release_memory(int icontext, void *ptr);
 extern void *PY_SHROUD_fetch_context(int icontext);

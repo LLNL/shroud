@@ -9,27 +9,32 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
- name        = Optional name of generated function.
+ name        = Name of function created by the helper function.
+               This allows the function name to be independent
+               of the helper name so that it may include a prefix
+               to help control namespace/scope.
                Useful when to helpers create the same function.
                ex. SHROUD_get_from_object_char_{numpy,list}
  scope       = scope of helper.  Defaults to "file" which are added
                as file static and may be in several files.
                "utility" will add to C_header_utility or PY_utility_filename
-               and shared amount files. They need unique names
+               and shared among files. These names need to be unique
                since they are shared across wrapped libraries.
- c_header    = Blank delimited list of header files to #include
+ c_include   = Blank delimited list of files to #include
                in implementation file when wrapping a C library.
- cxx_header  = Blank delimited list of header files to #include.
+ cxx_include = Blank delimited list of files to #include.
                in implementation file when wrapping a C++ library.
  c_source    = language=c source.
  cxx_source  = language=c++ source.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
+ need_numpy  = If True, NumPy headers will be added.
 
+ proto       = prototype for function.
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
- header      = Blank delimited list of header files to #include.
+ include     = Blank delimited list of files to #include.
                Used when c_header and cxx_header are not defined.
 
 
@@ -137,16 +142,17 @@ def add_external_helpers(fmtin, literalinclude):
 
     # Only used with std::string and thus C++
     name = "copy_string"
+    fmt.hname = name
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        cxx_header="<cstring> <cstddef>",
+        cxx_include="<cstring> <cstddef>",
         # XXX - mangle name
         source=wformat(
             """
-// helper function
+// helper {hname}
 {lstart}// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
@@ -167,7 +173,7 @@ if (data->elem_len < n) n = data->elem_len;
         interface=wformat(
             """
 interface+
-! helper function
+! helper {hname}
 ! Copy the char* or std::string in context into c_var.
 subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
@@ -184,15 +190,16 @@ integer(C_SIZE_T), value :: c_var_size
     ##########
 
     name = "ShroudStrToArray"
+    fmt.hname = name
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        cxx_header="<cstring> <cstddef>",
+        cxx_include="<cstring> <cstddef>",
         source=wformat(
             """
-// helper function
+// helper {hname}
 {lstart}// Save str metadata into array to allow Fortran to access values.
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
@@ -215,30 +222,107 @@ array->rank = 1;
     # 'char *' needs a custom handler because of the nature
     # of NULL terminated strings.
     ntypemap = typemap.lookup_type("char")
-    fmt.fcn_suffix="char"
-    fmt.fcn_type="string"
-    fmt.c_type="char *"
-    fmt.Py_get="PyString_AsString(item)"
-#    fmt.Py_get=ntypemap.PY_get.format(py_var="item")
-    fmt.Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    fmt.fcn_suffix = "char"
+    fmt.fcn_type = "string"
+    fmt.c_type = "char *"
+    fmt.Py_get = "PyString_AsString(item)"
+#    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+    fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    fmt.hname = "from_PyObject_char"
     CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
+    fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
+    ########################################
     # char **
-    name = "SHROUD_get_from_object_charptr"
-    fmt.name = name
+    name = "get_from_object_charptr"
     fmt.size_var="size"
     fmt.c_var="in"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
     CHelpers[name] = create_get_from_object_list(fmt)
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
-    CHelpers['SHROUD_get_from_object_charptr_list'] = dict(
-        name="SHROUD_get_from_object_charptr",
-        dependent_helpers=["SHROUD_get_from_object_charptr"],
+    CHelpers['get_from_object_charptr_list'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
     )
-    CHelpers['SHROUD_get_from_object_charptr_numpy'] = dict(
-        name="SHROUD_get_from_object_charptr",
-        dependent_helpers=["SHROUD_get_from_object_charptr"],
+    CHelpers['get_from_object_charptr_numpy'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+
+    ########################################
+    # char *
+    name = "get_from_object_char"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["PY_converter_type"],
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+// helper {hname}
+// Converter to PyObject to char *.
+{PY_helper_static}{hnameproto}
+{{+
+char *out;
+if (PyUnicode_Check(obj)) {{+
+^#if PY_MAJOR_VERSION >= 3
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyBytes_AS_STRING(strobj);
+value->obj = strobj;  // steal reference
+^#else
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyString_AsString(strobj);
+value->obj = strobj;  // steal reference
+^#endif
+^#if PY_MAJOR_VERSION >= 3
+-}} else if (PyByteArray_Check(obj)) {{+
+out = PyBytes_AS_STRING(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#else
+-}} else if (PyString_Check(obj)) {{+
+out = PyString_AsString(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#endif
+-}} else if (obj == Py_None) {{+
+out = NULL;
+value->obj = NULL;
+-}} else {{+
+PyErr_SetString(PyExc_ValueError, "argument must be a string");
+return 0;
+-}}
+value->data = out;
+return 1;
+-}}
+""", fmt),
+    )
+    # There are no 'list' or 'numpy' version of these functions.
+    # Use the one-true-version get_from_object_char.
+    CHelpers['get_from_object_char_list'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+    CHelpers['get_from_object_char_numpy'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+
+    ########################################
+    CHelpers['PY_converter_type'] = dict(
+        scope="utility",
+        source=wformat("""
+// helper PY_converter_type
+// Store PyObject and pointer to the data it contains.
+typedef struct {{+
+PyObject *obj;
+void *data;   // points into obj.
+-}} {PY_typedef_converter};""", fmt)
     )
     
 ######################################################################
@@ -270,12 +354,13 @@ def add_shadow_helper(node):
             scope="utility",
             # h_shared_code
             source="""
+// helper {hname}
 {lstart}{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
 typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
-                C_type_name=cname,
+                hname=name, C_type_name=cname,
                 cpp_if=cpp_if, cpp_endif=cpp_endif,
                 lstart=lstart, lend=lend,
             )
@@ -299,10 +384,12 @@ def add_capsule_helper(fmtin, literalinclude):
     fmt.lend = ""
 
     name = "capsule_data_helper"
+    fmt.hname = name
     if name not in FHelpers:
         helper = dict(
             derived_type=wformat(
                 """
+! helper {hname}
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
@@ -318,6 +405,7 @@ integer(C_INT) :: idtor = 0       ! index of destructor
             scope="utility",
             source=wformat(
                 """
+// helper {hname}
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -330,12 +418,14 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
 
     ########################################
     name = "capsule_helper"
+    fmt.hname = name
     if name not in FHelpers:
         # XXX split helper into to parts, one for each derived type
         helper = dict(
             dependent_helpers=["capsule_data_helper"],
             derived_type=wformat(
                 """
+! helper {hname}
 type {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
@@ -347,6 +437,7 @@ type({F_capsule_data_type}) :: mem
             # cannot be declared with both PRIVATE and BIND(C) attributes
             source=wformat(
                 """
+! helper {hname}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 use iso_c_binding, only : C_BOOL
@@ -370,17 +461,19 @@ call array_destructor(cap%mem, .false._C_BOOL)
 
     ########################################
     name = "array_context"
+    fmt.hname = name
     if name not in CHelpers:
         if literalinclude:
             fmt.lstart = "{}{}\n".format(cstart, name)
             fmt.lend = "\n{}{}".format(cend, name)
         helper = dict(
             scope="utility",
-            header="<stddef.h>",
+            include="<stddef.h>",
             # Create a union for addr to avoid some casts.
             # And help with debugging since ccharp will display contents.
             source=wformat(
                 """
+// helper {hname}
 {lstart}struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
@@ -408,6 +501,7 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
         helper = dict(
             derived_type=wformat(
                 """
+! helper {hname}
 {lstart}type, bind(C) :: {F_array_type}+
 ! address of C++ memory
 type({F_capsule_data_type}) :: cxx
@@ -444,19 +538,20 @@ def add_copy_array_helper_c(fmtin):
     fmt.lend = ""
 
     name = "copy_array"
+    fmt.hname = name
     if _literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=["array_context"],
-            c_header="<string.h>",
-            cxx_header="<cstring>",
+            c_include="<string.h>",
+            cxx_include="<cstring>",
             # Create a single C routine which is called from Fortran
             # via an interface for each cxx_type.
             cxx_source=wformat(
                 """
-// helper function
+// helper {hname}
 {lstart}// Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 // Called from Fortran.
@@ -496,6 +591,7 @@ def add_copy_array_helper(fmtin, ast):
     fmt.f_type = ntypemap.f_type
 
     name = wformat("copy_array_{c_type}", fmt)
+    fmt.hname = name
     if name not in FHelpers:
         helper = dict(
             # XXX when f_kind == C_SIZE_T
@@ -503,7 +599,7 @@ def add_copy_array_helper(fmtin, ast):
             interface=wformat(
                 """
 interface+
-! helper function
+! helper {hname}
 ! Copy contents of context into c_var.
 subroutine SHROUD_copy_array_{c_type}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
@@ -532,15 +628,16 @@ def add_to_PyList_helper(arg):
         add_to_PyList_helper_vector(arg)
         return
 
+    fmt = util.Scope(_newlibrary.fmtdict)
+    fmt.c_type = ntypemap.c_type
+    
     ########################################
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt = dict(
-            fcn_suffix=ntypemap.c_type,
-            c_type=ntypemap.c_type,
-            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        )
+        fmt.hname = name
+        fmt.fcn_suffix = ntypemap.c_type
+        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
 
@@ -548,16 +645,18 @@ def add_to_PyList_helper(arg):
     # Used with intent(inout)
     name = "update_PyList_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt = dict(
-            c_type=ntypemap.c_type,
-            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        )
+        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.hname = name
+        fmt.hnameproto = wformat(
+            "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
+// helper {hname}
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}{hnameproto}
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -576,27 +675,32 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_" + ntypemap.c_type
     if name not in CHelpers and ntypemap.PY_get:
-        fmt = util.Scope(_newlibrary.fmtdict)
-        fmt.fcn_suffix=ntypemap.c_type
-        fmt.fcn_type=ntypemap.c_type
-        fmt.c_type=ntypemap.c_type
-        fmt.Py_get=ntypemap.PY_get.format(py_var="item")
+        fmt.hname = name
+        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_type = ntypemap.c_type
+        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         CHelpers[name] = create_from_PyObject(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
-    name = "SHROUD_get_from_object_{}_numpy".format(ntypemap.c_type)
+    name = "get_from_object_{}_numpy".format(ntypemap.c_type)
     if name not in CHelpers:
-        fmt = util.Scope(_newlibrary.fmtdict)
-        fmt.py_tmp="array"
-        fmt.c_type=ntypemap.c_type
-        fmt.numpy_type=ntypemap.PYN_typenum
+        fmt.py_tmp = "array"
+        fmt.c_type = ntypemap.c_type
+        fmt.numpy_type = ntypemap.PYN_typenum
+        fmt.hname = name
+        fmt.hnamefunc = fmt.PY_helper_prefix + name
+        fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
         helper = dict(
-            name=name,
-            dependent_helpers=["converter_type"],
+            name=fmt.hnamefunc,
+            dependent_helpers=["PY_converter_type"],
+            need_numpy=True,
+            proto=fmt.hnameproto + ";",
             source=wformat("""
-// Helper - convert PyObject to {c_type} pointer.
-static int SHROUD_get_from_object_{c_type}_numpy(PyObject *obj,\t SHROUD_converter_value *value)
+// helper {hname}
+// Convert PyObject to {c_type} pointer.
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
 if ({py_tmp} == {nullptr}) {{+
@@ -612,27 +716,33 @@ return 1;
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
-    name = "SHROUD_get_from_object_{}_list".format(ntypemap.c_type)
+    name = "get_from_object_{}_list".format(ntypemap.c_type)
     if name not in CHelpers:
-        fmt = util.Scope(_newlibrary.fmtdict)
-        fmt.name = name
-        fmt.c_type = ntypemap.c_type
         fmt.size_var = "size"
         fmt.c_var = "in"
         fmt.fcn_suffix = ntypemap.c_type
+        fmt.hname = name
+        fmt.hnamefunc = fmt.PY_helper_prefix + name
         CHelpers[name] = create_get_from_object_list(fmt)
 
 def create_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}from_PyObject_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
     helper = dict(
-        c_header="<stdlib.h>",   # malloc/free
-        cxx_header="<cstdlib>",  # malloc/free
+        name=fmt.hnamefunc,
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
         source=wformat(
                 """
+// helper {hname}
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-static int SHROUD_from_PyObject_{fcn_suffix}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
@@ -660,12 +770,20 @@ return 0;
     return helper
     
 def create_to_PyList(fmt):
-    """Create helper to convert C array to list of PyObjects.
+    """Create helper to convert C array to PyList of PyObjects.
     """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}to_PyList_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+        "PyObject *{hnamefunc}\t({c_type} *in, size_t size)", fmt)
     helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
         source=wformat(
             """
-static PyObject *SHROUD_to_PyList_{fcn_suffix}({c_type} *in, size_t size)
+// helper {hname}
+// Convert {c_type} pointer to PyList of PyObjects.
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *out = PyList_New(size);
 for (size_t i = 0; i < size; ++i) {{+
@@ -677,23 +795,28 @@ return out;
     return helper
 
 def create_get_from_object_list(fmt):
-    """
+    """ Convert PyObject to {c_type} pointer.
+
     format fields:
        fcn_suffix - 
     """
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     helper = dict(
-        name=fmt.name,
+        name=fmt.hnamefunc,
         dependent_helpers=[
-            "converter_type",
+            "PY_converter_type",
             "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
         ],
+        proto=fmt.hnameproto + ";",
         source=wformat("""
-// Helper - convert PyObject to {c_type} pointer.
-static int {name}(PyObject *obj,\t SHROUD_converter_value *value)
+// helper {hname}
+// Convert PyObject to {c_type} pointer.
+{PY_helper_static}{hnameproto}
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
-if (SHROUD_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+if ({PY_helper_prefix}from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
 return 0;
 -}}
 value->obj = {nullptr};
@@ -713,18 +836,24 @@ def add_to_PyList_helper_vector(arg):
     ntypemap = arg.typemap
     if ntypemap.base == "vector":
         ntypemap = arg.template_arguments[0].typemap
+
+    fmt = util.Scope(_newlibrary.fmtdict)
+    fmt.c_type = ntypemap.c_type
     
     # Used with intent(out)
     name = "to_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt = dict(
-            c_type=ntypemap.c_type,
-            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        )
+        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.hname = name
+        fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
+        fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
         helper = dict(
+            name=fmt.hnamefunc,
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
-static PyObject *SHROUD_to_PyList_vector_{c_type}(std::vector<{c_type}> & in)
+// helper {hname}
+{PY_helper_static}{hnameproto}
 {{+
 size_t size = in.size();
 PyObject *out = PyList_New(size);
@@ -741,16 +870,21 @@ return out;
     # Used with intent(inout)
     name = "update_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt = dict(
-            c_type=ntypemap.c_type,
-            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-        )
+        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.hname = name
+        fmt.hnamefunc = wformat(
+            "{PY_helper_prefix}update_PyList_{c_type}", fmt)
+        fmt.hnameproto = wformat(
+            "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
+            name=fmt.hnamefunc,
+            proto=fmt.hnameproto + ";",
             source=wformat(
                 """
+// helper {hname}
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{PY_helper_static}{hnameproto}
 {{+
 for (size_t i = 0; i < size; ++i) {{+
 PyObject *item = PyList_GET_ITEM(out, i);
@@ -770,17 +904,22 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt = dict(
-            c_type=ntypemap.c_type,
-            Py_get=ntypemap.PY_get.format(py_var="item"),
-        )
+        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        fmt.hname = name
+        fmt.hnamefunc= wformat(
+            "{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
+        fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
         helper = dict(
-##-            cxx_header="<cstdlib>",  # malloc/free
+            name=fmt.hnamefunc,
+##-            cxx_include="<cstdlib>",  # malloc/free
+            cxx_proto=fmt.hnameproto + ";",
             cxx_source=wformat(
                 """
+// helper {hname}
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_{c_type}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)
+{PY_helper_static}{hnameproto}
 {{+
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
@@ -828,6 +967,7 @@ CHelpers = dict(
         # with the addition of unsigned types
         scope="utility",
         source="""
+/* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
 #define SH_TYPE_SHORT       2
@@ -869,9 +1009,9 @@ CHelpers = dict(
 #define SH_TYPE_OTHER      32""",
     ),
     ShroudStrCopy=dict(
-        c_header="<string.h>",
+        c_include="<string.h>",
         c_source="""
-// helper function
+// helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
@@ -886,9 +1026,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
      if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
    }
 }""",
-        cxx_header="<cstring>",
+        cxx_include="<cstring>",
         cxx_source="""
-// helper function
+// helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
@@ -907,18 +1047,18 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 
     ########################################
     ShroudStrBlankFill=dict(
-        c_header="<string.h>",
+        c_include="<string.h>",
         c_source="""
-// helper function
+// helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
 {
    int nm = strlen(dest);
    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }""",
-        cxx_header="<cstring>",
+        cxx_include="<cstring>",
         cxx_source="""
-// helper function
+// helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
 static void ShroudStrBlankFill(char *dest, int ndest)
 {
@@ -931,9 +1071,9 @@ static void ShroudStrBlankFill(char *dest, int ndest)
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
     ShroudStrAlloc=dict(
-        c_header="<string.h> <stdlib.h>",
+        c_include="<string.h> <stdlib.h>",
         c_source="""
-// helper function
+// helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
@@ -944,9 +1084,9 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
    rv[ntrim] = '\\0';
    return rv;
 }""",
-        cxx_header="<cstring> <cstdlib>",
+        cxx_include="<cstring> <cstdlib>",
         cxx_source="""
-// helper function
+// helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
@@ -960,17 +1100,17 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
     ),
 
     ShroudStrFree=dict(
-        c_header="<stdlib.h>",
+        c_include="<stdlib.h>",
         c_source="""
-// helper function
+// helper ShroudStrFree
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
    free(src);
 }""",
-        cxx_header="<cstdlib>",
+        cxx_include="<cstdlib>",
         cxx_source="""
-// helper function
+// helper ShroudStrFree
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
@@ -981,7 +1121,7 @@ static void ShroudStrFree(char *src)
     ########################################
     ShroudLenTrim=dict(
         source="""
-// helper function
+// helper ShroudLenTrim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *src, int nsrc) {
@@ -1001,9 +1141,9 @@ int ShroudLenTrim(const char *src, int nsrc) {
     # Used with 'char **' arguments.
     ShroudStrArrayAlloc=dict(
         dependent_helpers=["ShroudLenTrim"],
-        c_header="<string.h> <stdlib.h>",
+        c_include="<string.h> <stdlib.h>",
         c_source="""
-// helper function
+// helper ShroudStrArrayAlloc
 // Copy src into new memory and null terminate.
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
@@ -1019,9 +1159,9 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    }
    return rv;
 }""",
-        cxx_header="<cstring> <cstdlib>",
+        cxx_include="<cstring> <cstdlib>",
         cxx_source="""
-// helper function
+// helper ShroudStrArrayAlloc
 // Copy src into new memory and null terminate.
 // char **src +size(nsrc) +len(len)
 // CHARACTER(len) src(nsrc)
@@ -1042,9 +1182,9 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     ),
     
     ShroudStrArrayFree=dict(
-        c_header="<stdlib.h>",
+        c_include="<stdlib.h>",
         c_source="""
-// helper function
+// helper ShroudStrArrayFree
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
@@ -1053,9 +1193,9 @@ static void ShroudStrArrayFree(char **src, int nsrc)
    }
    free(src);
 }""",
-        cxx_header="<cstdlib>",
+        cxx_include="<cstdlib>",
         cxx_source="""
-// helper function
+// helper ShroudStrArrayFree
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
@@ -1066,74 +1206,13 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 }""",
     ),
     ########################################
-    converter_type=dict(
-        source="""
-// Keep track of the PyObject and pointer to the data it contains.
-typedef struct {
-    PyObject *obj;
-    void *data;   // points into obj.
-} SHROUD_converter_value;"""
-    ),
-    ########################################
-    SHROUD_get_from_object_char=dict(
-        name="SHROUD_get_from_object_char",
-        dependent_helpers=["converter_type"],
-        source="""
-// Helper - converter to PyObject to char *.
-static int SHROUD_get_from_object_char(PyObject *obj,\t SHROUD_converter_value *value)
-{
-    char *out;
-    if (PyUnicode_Check(obj))
-    {
-#if PY_MAJOR_VERSION >= 3
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj);
-        value->obj = strobj;  // steal reference
-#else
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyString_AsString(strobj);
-        value->obj = strobj;  // steal reference
-#endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
-    } else if (PyString_Check(obj)) {
-        out = PyString_AsString(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#endif
-    } else if (obj == Py_None) {
-        out = NULL;
-        value->obj = NULL;
-    } else {
-        PyErr_SetString(PyExc_ValueError, "argument must be a string");
-        return 0;
-    }
-    value->data = out;
-    return 1;
-}
-""",
-    ),
-    # There are no 'list' or 'numpy' version of these functions.
-    # Use the one-true-version SHROUD_get_from_object_char.
-    SHROUD_get_from_object_char_list=dict(
-        name="SHROUD_get_from_object_char",
-        dependent_helpers=["SHROUD_get_from_object_char"],
-    ),
-    SHROUD_get_from_object_char_numpy=dict(
-        name="SHROUD_get_from_object_char",
-        dependent_helpers=["SHROUD_get_from_object_char"],
-    ),
-    ##############
 )   # end CHelpers
 
 
 FHelpers = dict(
     ShroudTypeDefines=dict(
         derived_type="""
+! helper ShroudTypeDefines
 ! Shroud type defines from helper ShroudTypeDefines
 integer, parameter, private :: &
     SH_TYPE_SIGNED_CHAR= 1, &

@@ -97,6 +97,7 @@ class Wrapp(util.WrapperMixin):
         self.call_arraydescr = []
         self.need_blah = False
         self.header_type_include = {}  # header files in module header
+        self.shared_helper = {} # All accumulated helpers
         update_typemap_for_language(self.language)
 
     def XXX_begin_output_file(self):
@@ -159,8 +160,8 @@ class Wrapp(util.WrapperMixin):
         self.need_blah = False  # Not needed if no there gc routines are added.
 
         self.wrap_namespace(newlibrary.wrap_namespace, top=True)
-        self.write_utility()
-        self.write_header(newlibrary)
+        self.write_utility_file()
+        self.write_module_header(newlibrary)
         self.write_setup()
 
     def wrap_namespace(self, node, top=False):
@@ -750,11 +751,11 @@ return self->{PY_member_object};
                     )
                 elif nindirect == 2:
                     # 'char **' is a <type 'list'> of <type 'str'>.
-                    self.c_helper["to_PyList_char"] = True
+                    fmt.hnamefunc = self.add_helper("to_PyList_char")
                     fmt.size = py_struct_dimension(parent, node)
                     append_format(
                         output,
-                        "PyObject *rv = SHROUD_to_PyList_char"
+                        "PyObject *rv = {hnamefunc}"
                         "({PY_struct_context}{field_name}, {size});\n"
                         "return rv;",
                         fmt
@@ -798,15 +799,15 @@ return self->{PY_member_object};
             elif options.PY_array_arg == "list":
                 # Create array from helper.
                 # Include helper called by getter.
-                self.c_helper["to_PyList_" + fmt.c_type] = True
+                whelpers.add_to_PyList_helper(node.ast)
+                fmt.hnamefunc = self.add_helper("to_PyList_" + fmt.c_type)
                 fmt.size = py_struct_dimension(parent, node)
                 append_format(
                     output,
-                    "PyObject *rv = SHROUD_to_PyList_{c_type}"
+                    "PyObject *rv = {hnamefunc}"
                     "({PY_struct_context}{field_name}, {size});\n"
                     "return rv;",
                     fmt)
-# XXX - What if pointer to scalar or struct?  Check dimension attribute.
 #                append_format(output, "return {nullptr};", fmt)
             else:
                 linenumber = options.get("__line__", "?")
@@ -849,13 +850,12 @@ return self->{PY_member_object};
                         arg_typemap.PY_get_converter,
                         subname,
                         options.PY_array_arg)
-                    # Adjust for alias like with type char.
-                    fmt.get = whelpers.CHelpers[hname]["name"]
+                    fmt.hnamefunc = self.add_helper(hname)
                     fmt.cast_type = ast.gen_arg_as_cxx(
                     name=None, params=None)
-                    append_format(output, """SHROUD_converter_value cvalue;
+                    append_format(output, """{PY_typedef_converter} cvalue;
 Py_XDECREF(self->{PY_member_object});
-if ({get}({py_var}, &cvalue) == 0) {{+
+if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
 {c_var} = NULL;
 self->{PY_member_object} = NULL;
 // XXXX set error
@@ -864,7 +864,6 @@ return -1;
 {c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
 {PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
 #                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
-                    self.c_helper[fmt.get] = True
                 else:
                     output.append(
                         "#error missing PY_get_converter for type {}"
@@ -1348,29 +1347,26 @@ return -1;
                     # only assignments to struct members.
                     append_format(
                         declare_code,
-                        "SHROUD_converter_value {py_var};", fmt_arg)
+                        "{PY_typedef_converter} {py_var};", fmt_arg)
                     hname = intent_blk.get_converter
                     if hname:
                         hname = "{}_{}".format(
                             hname,
                             options.PY_array_arg)
-                        self.c_helper[hname] = True
-                        hname = whelpers.CHelpers[hname]["name"]
+                        hnamefunc = self.add_helper(hname)
                     elif not arg_typemap.PY_get_converter:
                         declare_code.append(
                             "#error missing PY_get_converter for type {}"
                             .format(arg_typemap.name))
-                        hname = fmt_arg.nullptr
+                        hnamefunc = fmt_arg.nullptr
                     else:
                         whelpers.add_to_PyList_helper(arg)
                         hname = "{}_{}".format(
                             arg_typemap.PY_get_converter,
                             options.PY_array_arg)
-                        self.c_helper[hname] = True
-                        # Adjust for alias like with type char.
-                        hname = whelpers.CHelpers[hname]["name"]
+                        hnamefunc = self.add_helper(hname)
                     parse_format.append("O&")
-                    parse_vargs.append(hname)
+                    parse_vargs.append(hnamefunc)
                     parse_vargs.append("&" + fmt_arg.py_var)
                     append_format(set_optional,
                                   "{py_var}.obj = {nullptr};\n"
@@ -1438,13 +1434,13 @@ return -1;
             allocate_local_blk = self.add_stmt_capsule(arg, intent_blk, fmt_arg)
             if allocate_local_blk:
                 update_code_blocks(locals(), allocate_local_blk, fmt_arg)
-            update_code_blocks(locals(), intent_blk, fmt_arg)
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             if intent_blk.c_helper:
                 c_helper = wformat(intent_blk.c_helper, fmt_arg)
-                for helper in c_helper.split():
-                    self.c_helper[helper] = True
+                for i, helper in enumerate(c_helper.split()):
+                    setattr(fmt_arg, "hnamefunc" + str(i), self.add_helper(helper))
+            update_code_blocks(locals(), intent_blk, fmt_arg)
             self.add_statements_headers(intent_blk)
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
@@ -2143,6 +2139,14 @@ return -1;
 
 
 ######
+    def add_helper(self, name):
+        """Use a helper function.
+        Return the name of the function associated with helper.
+        """
+        self.c_helper[name] = True
+        # Adjust for alias like with type char.
+        return whelpers.CHelpers[name]["name"]
+        
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
 
@@ -2163,25 +2167,26 @@ return -1;
                 # check for recursion
                 self._gather_helper_code(dep, done)
 
-        if self.language == "c":
-            lang_header = "c_header"
-            lang_source = "c_source"
-        else:
-            lang_header = "cxx_header"
-            lang_source = "cxx_source"
         scope = helper_info.get("scope", "file")
+        # assert scope in ["file", "utility"]
 
-        if lang_header in helper_info:
-            for include in helper_info[lang_header].split():
-                self.helper_header[scope][include] = True
-        elif "header" in helper_info:
-            for include in helper_info["header"].split():
-                self.helper_header[scope][include] = True
+        self.helper_need_numpy = (
+            helper_info.get("need_numpy", "False") or self.helper_need_numpy)
 
-        if lang_source in helper_info:
-            self.helper_source[scope].append(helper_info[lang_source])
-        elif "source" in helper_info:
-            self.helper_source[scope].append(helper_info["source"])
+        lang_key = self.language + "_include"
+        if lang_key in helper_info:
+            for include in helper_info[lang_key].split():
+                self.helper_summary["include"][scope][include] = True
+        elif "include" in helper_info:
+            for include in helper_info["include"].split():
+                self.helper_summary["include"][scope][include] = True
+
+        for key in ["proto", "source"]:
+            lang_key = self.language + "_" + key 
+            if lang_key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[lang_key])
+            elif key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[key])
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
@@ -2189,15 +2194,60 @@ return -1;
         helpers should be self.c_helper or self.shared_helper
 
         Args:
-            helpers -
+            helpers - dictionary of helper names.
         """
-        # per class
-        self.helper_source = dict(file=[], utility=[])
-        self.helper_header = dict(file={}, utility={})
+        self.helper_summary = dict(
+            include=dict(file={}, utility={}),
+            proto=dict(file=[], utility=[]),
+            source=dict(file=[], utility=[]),
+        )
+        self.helper_need_numpy = False
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
+
+    def find_file_helper_code(self):
+        """Get "file" helper code.
+        Add to shared_helper, then reset.
+
+        Return dictionary of headers and list of source files.
+        """
+        if self.newlibrary.options.PY_write_helper_in_util:
+            self.shared_helper.update(self.c_helper)
+            self.c_helper = {}
+            return {}, []
+        self.gather_helper_code(self.c_helper)
+        self.shared_helper.update(self.c_helper)
+        self.c_helper = {}
+        return (
+            self.helper_summary["include"]["file"],
+            self.helper_summary["source"]["file"]
+        )
+
+    def find_utility_helper_code(self):
+        """Get "utility" helper code.
+
+        Return list of code with typedefs.
+        """
+        self.gather_helper_code(self.shared_helper)
+        return (
+            self.helper_summary["include"]["utility"],
+            self.helper_summary["source"]["utility"]
+        )
+
+    def find_shared_file_helper_code(self):
+        """Get "file" helper code when added to utility file.
+        """
+        if self.newlibrary.options.PY_write_helper_in_util:
+            self.gather_helper_code(self.shared_helper)
+            return (
+                self.helper_summary["include"]["file"],
+                self.helper_summary["source"]["file"],
+                self.helper_need_numpy,
+            )
+        return {}, [], False
+
 ######
 
     def write_extension_type(self, node, fileinfo):
@@ -2209,7 +2259,7 @@ return -1;
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
-        self.gather_helper_code(self.c_helper)
+        hinclude, hsource = self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2220,23 +2270,17 @@ return -1;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.need_numpy:
-            output.append('#define NO_IMPORT_ARRAY')
-            append_format(output,
-                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
-                          fmt)
-            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
-            output.append('#include "numpy/arrayobject.h"')
+            self.add_numpy_includes(output)
         self._push_splicer("impl")
 
         # Use headers from implementation
         header_impl_include = self.header_impl_include
-        header_impl_include.update(self.helper_header["file"])
+        header_impl_include.update(hinclude)
         self.write_headers(header_impl_include, output)
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
-        if self.helper_source["file"]:
-            output.extend(self.helper_source["file"])
+        output.extend(hsource)
         self._create_splicer("C_definition", output)
         self._create_splicer("additional_methods", output)
         self._pop_splicer("impl")
@@ -2396,7 +2440,7 @@ return -1;
             self.create_method(None, expose, is_ctor, fmt,
                                None, body, fileinfo)
 
-    def write_header(self, node):
+    def write_module_header(self, node):
         """Write the header for the module.
         Args:
             node - ast.LibraryNode.
@@ -2404,7 +2448,7 @@ return -1;
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
         self.find_header(node, self.header_type_include)
-
+        hinclude, hsource = self.find_utility_helper_code()
         output = []
 
         # add guard
@@ -2416,6 +2460,13 @@ return -1;
 
         self._push_splicer("header")
         self._create_splicer("include", output)
+
+        output.extend(hsource)
+        if self.newlibrary.options.PY_write_helper_in_util:
+            if self.helper_summary["proto"]["file"]:
+                output.append("")
+                output.append("// Helper functions.")
+                output.extend(self.helper_summary["proto"]["file"])
 
         if self.py_utility_declaration:
             output.append("")
@@ -2466,7 +2517,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         fmt.PY_library_doc = "library documentation"
 
-        self.gather_helper_code(self.c_helper)
+        hinclude, hsource = self.find_file_helper_code()
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2475,21 +2526,14 @@ extern PyObject *{PY_prefix}error_obj;
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.need_numpy:
-            if not top:
-                output.append('#define NO_IMPORT_ARRAY')
-            append_format(output,
-                          '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
-                          fmt)
-            output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
-            output.append('#include "numpy/arrayobject.h"')
+            self.add_numpy_includes(output, top)
 
-        self.header_impl_include.update(self.helper_header["file"])
+        self.header_impl_include.update(hinclude)
         self.write_headers(self.header_impl_include, output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
-        if self.helper_source["file"]:
-            output.extend(self.helper_source["file"])
+        output.extend(hsource)
         output.append("")
         self._create_splicer("C_definition", output)
 
@@ -2554,15 +2598,37 @@ extern PyObject *{PY_prefix}error_obj;
 #        output.extend(self.enum_impl)
         append_format(output, submodule_end, fmt)
 
-    def write_utility(self):
+    def add_numpy_includes(self, output, top=False):
+        """Import numpy
+        If top is True, then import_array will be called
+        in the file being written.
+        """
+        if not top:
+            output.append('#define NO_IMPORT_ARRAY')
+        append_format(output,
+                      '#define PY_ARRAY_UNIQUE_SYMBOL {PY_ARRAY_UNIQUE_SYMBOL}',
+                      self.newlibrary.fmtdict)
+        output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
+        output.append('#include "numpy/arrayobject.h"')
+        
+    def write_utility_file(self):
         """
         Do not write the file unless it has contents.
         """
         node = self.newlibrary
         fmt = node.fmtdict
         need_file = False
+        hinclude, hsource, need_numpy = self.find_shared_file_helper_code()
+        
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
+        if need_numpy:
+            self.add_numpy_includes(output)
+        self.write_headers(hinclude, output)
+
+        if hsource:
+            output.extend(hsource)
+            need_file = True
         if self.py_utility_definition:
             output.append("")
             output.extend(self.py_utility_definition)
@@ -3720,7 +3786,7 @@ py_statements = [
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
@@ -3736,7 +3802,7 @@ py_statements = [
     dict(
         name="py_native_inout_dimension_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="to_PyList_{cxx_type}",
+        c_helper="from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_as_object=True,
         c_local_var="pointer",
         declare=[
@@ -3745,13 +3811,13 @@ py_statements = [
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "PyObject *{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3783,7 +3849,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({pointer_shape})));",
         ] + malloc_error,
         post_call=[
-            "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
+            "{py_var} = {hnamefunc0}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3816,7 +3882,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
         ] + malloc_error,
         post_call=[
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "PyObject *{py_var} = {hnamefunc0}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -3857,7 +3923,7 @@ py_statements = [
         name="py_char_**_in",
         c_helper="from_PyObject_char",
         parse_as_object=True,
-        get_converter="SHROUD_get_from_object_charptr",
+        get_converter="get_from_object_charptr",
         c_local_var="pointer",
         declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",
@@ -3865,7 +3931,7 @@ py_statements = [
         ],
         pre_call=[
             "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
@@ -4173,7 +4239,7 @@ py_statements = [
         ],
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
-            "if (SHROUD_from_PyObject_vector_{cxx_T}\t({pytmp_var}"
+            "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
         ],
@@ -4194,7 +4260,7 @@ py_statements = [
             "std::vector<{cxx_T}> {cxx_var};",
         ],
         post_call=[
-            "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});",
+            "{py_var} = {hnamefunc0}\t({cxx_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,

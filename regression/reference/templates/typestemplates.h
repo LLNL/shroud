@@ -16,42 +16,49 @@
 extern "C" {
 #endif
 
+// helper capsule_TEM_Worker
 struct s_TEM_Worker {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_Worker TEM_Worker;
 
+// helper capsule_TEM_internal_ImplWorker1
 struct s_TEM_internal_ImplWorker1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
 
+// helper capsule_TEM_internal_ImplWorker2
 struct s_TEM_internal_ImplWorker2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
 
+// helper capsule_TEM_user_int
 struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_user_int TEM_user_int;
 
+// helper capsule_TEM_vector_double
 struct s_TEM_vector_double {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_vector_double TEM_vector_double;
 
+// helper capsule_TEM_vector_int
 struct s_TEM_vector_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_vector_int TEM_vector_int;
 
+// helper capsule_data_helper
 struct s_TEM_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

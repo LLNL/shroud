@@ -19,7 +19,7 @@
 extern "C" {
 
 
-// helper function
+// helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.

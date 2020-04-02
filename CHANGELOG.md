@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This makes clang-tidy happy.
 - Create a setup.py for Python wrappers.
 - Wrap pointer members in structs when PY_struct_arg="class".
+- Add option *PY_write_helper_in_util* to write all helper functions
+  into the file defined by format PY_utility_filename.  Useful when there
+  are a lot of classes which may create lots of duplicate helpers.
 
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a

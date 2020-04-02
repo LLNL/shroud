@@ -18,12 +18,14 @@
 extern "C" {
 #endif
 
+// helper capsule_data_helper
 struct s_CDE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CDE_SHROUD_capsule_data CDE_SHROUD_capsule_data;
 
+// helper array_context
 struct s_CDE_SHROUD_array {
     CDE_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {

@@ -13,7 +13,7 @@
 #include "typespointers.h"
 
 
-// helper function
+// helper ShroudLenTrim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *src, int nsrc) {
@@ -29,7 +29,7 @@ int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper function
+// helper ShroudStrArrayAlloc
 // Copy src into new memory and null terminate.
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
@@ -46,7 +46,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    return rv;
 }
 
-// helper function
+// helper ShroudStrArrayFree
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {

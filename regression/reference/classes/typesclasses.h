@@ -16,6 +16,7 @@
 extern "C" {
 #endif
 
+// helper capsule_CLA_Class1
 // start struct CLA_Class1
 struct s_CLA_Class1 {
     void *addr;     /* address of C++ memory */
@@ -24,12 +25,14 @@ struct s_CLA_Class1 {
 typedef struct s_CLA_Class1 CLA_Class1;
 // end struct CLA_Class1
 
+// helper capsule_CLA_Singleton
 struct s_CLA_Singleton {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Singleton CLA_Singleton;
 
+// helper capsule_data_helper
 struct s_CLA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

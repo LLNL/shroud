@@ -18,7 +18,7 @@
 extern "C" {
 
 
-// helper function
+// helper ShroudLenTrim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *src, int nsrc) {
@@ -34,7 +34,7 @@ int ShroudLenTrim(const char *src, int nsrc) {
 }
 
 
-// helper function
+// helper copy_array
 // start helper copy_array
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
