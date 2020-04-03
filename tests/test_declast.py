@@ -186,6 +186,51 @@ class CheckParse(unittest.TestCase):
             },
         )
 
+    def test_array(self):
+        r = declast.check_decl("int var1[20]")
+        self.assertEqual("int var1[20]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var1[20]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var1', 'pointer': []},
+             'array': [{ 'constant': '20'}],
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+        
+        r = declast.check_decl("int var2[20][10]")
+        self.assertEqual("int var2[20][10]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var2[20][10]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var2', 'pointer': []},
+             'array': [
+                 { 'constant': '20'},
+                 { 'constant': '10'},
+             ],
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+        
+        r = declast.check_decl("int var1[DEFINE + 3]")
+        self.assertEqual("int var1[DEFINE+3]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var1[DEFINE+3]", s)
+        self.assertEqual(
+            {'array': [
+                {'left': {   'name': 'DEFINE'},
+                 'op': '+',
+                 'right': {   'constant': '3'}}],
+             'declarator': {   'name': 'var1', 'pointer': []},
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+       
     def test_type_string(self):
         """Test string declarations
         """
@@ -970,50 +1015,62 @@ struct Cstruct_list {
 class CheckExpr(unittest.TestCase):
     # No need for namespace
 
+    def test_constant1(self):
+        r = declast.check_expr("20")
+        self.assertEqual("20", todict.print_node(r))
+        self.assertEqual(
+            {"constant": "20"},
+            todict.to_dict(r))
+
     def test_identifier1(self):
         r = declast.check_expr("id")
         self.assertEqual("id", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "id"})
+        self.assertEqual(
+            {"name": "id"},
+            todict.to_dict(r))
 
     def test_identifier_no_args(self):
         r = declast.check_expr("id()")
         self.assertEqual("id()", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "id", "args": []})
+        self.assertEqual(
+            {"name": "id", "args": []},
+            todict.to_dict(r))
 
     def test_identifier_with_arg(self):
         r = declast.check_expr("id(arg1)")
         self.assertEqual("id(arg1)", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]}
+            {"name": "id", "args": [{"name": "arg1"}]},
+            todict.to_dict(r)
         )
 
     def test_identifier_with_args(self):
         r = declast.check_expr("id(arg1,1)")
         self.assertEqual("id(arg1,1)", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r), {"name": "id", "args": [
+            {"name": "id", "args": [
                 {"name": "arg1"},
                 {"constant": "1"},
-            ]}
+            ]},
+            todict.to_dict(r)
         )
 
     def test_constant(self):
         r = declast.check_expr("1 + 2.345")
         self.assertEqual("1+2.345", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {"constant": "1"},
                 "op": "+",
                 "right": {"constant": "2.345"},
             },
+            todict.to_dict(r)
         )
 
     def test_binary(self):
         r = declast.check_expr("a + b * c")
         self.assertEqual("a+b*c", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {"name": "a"},
                 "op": "+",
@@ -1023,12 +1080,12 @@ class CheckExpr(unittest.TestCase):
                     "right": {"name": "c"},
                 },
             },
+            todict.to_dict(r),
         )
 
         r = declast.check_expr("(a + b) * c")
         self.assertEqual("(a+b)*c", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {
                     "node": {
@@ -1040,6 +1097,7 @@ class CheckExpr(unittest.TestCase):
                 "op": "*",
                 "right": {"name": "c"},
             },
+            todict.to_dict(r),
         )
 
     def test_others(self):

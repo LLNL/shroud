@@ -15,6 +15,7 @@ import collections
 import copy
 import re
 
+from . import todict
 from . import typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
@@ -49,6 +50,8 @@ token_specification = [
     ("RPAREN", r"\)"),
     ("LCURLY", r"{"),
     ("RCURLY", r"}"),
+    ("LBRACKET", r"\["),
+    ("RBRACKET", r"\]"),
     ("STAR", r"\*"),
     ("EQUALS", r"="),
     ("REF", r"\&"),
@@ -533,11 +536,11 @@ class Parser(ExprParser):
                             self.token.value
                         )
                     )
-            self.attribute(node.attrs)  # function attributes
-        #        elif self.token.typ == 'LBRACKET':
-        #            node.array  = self.constant_expression()
-        else:
-            self.attribute(node.attrs)  # variable attributes
+        while self.token.typ == "LBRACKET":
+            self.next() # consume bracket
+            node.array.append(self.expression())
+            self.mustbe("RBRACKET")
+        self.attribute(node.attrs)  # variable attributes
 
         if self.have("EQUALS"):
             node.init = self.initializer()
@@ -933,7 +936,7 @@ class Declaration(Node):
         self.volatile = False
         self.declarator = None
         self.params = None  # None=No parameters, []=empty parameters list
-        self.array = None
+        self.array = []
         self.init = None  # initial value
         self.template_arguments = []
         self.attrs = collections.defaultdict(lambda: None)
@@ -1159,8 +1162,11 @@ class Declaration(Node):
             out.append(")")
             if self.func_const:
                 out.append(" const")
-        elif self.array:
-            out.append("[AAAA]")
+        if self.array:
+            for dim in self.array:
+                out.append("[")
+                out.append(todict.print_node(dim))
+                out.append("]")
         if self.init:
             out.append("=")
             out.append(str(self.init))
@@ -1219,6 +1225,10 @@ class Declaration(Node):
             decl.append(")")
             if self.func_const:
                 decl.append(" const")
+        for dim in self.array:
+            decl.append("[")
+            decl.append(todict.print_node(dim))
+            decl.append("]")
         if use_attrs:
             self.gen_attrs(self.attrs, decl)
 
