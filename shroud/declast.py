@@ -1358,6 +1358,11 @@ class Declaration(Node):
             decl.append(")")
             if self.func_const:
                 decl.append(" const")
+        if self.array:
+            for dim in self.array:
+                decl.append("[")
+                decl.append(todict.print_node(dim))
+                decl.append("]")
 
     ##############
 
@@ -1451,12 +1456,18 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs["allocatable"]
 
+        last_dim = len(self.array)
         if ntypemap.base == "string":
             if attrs["len"] and local:
                 # Also used with function result declaration.
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
                 t.append("character(len=:)")
+            elif self.array:
+                # Convert last dim to CHARACTER len.
+                t.append("character(len={})".
+                         format(todict.print_node(self.array[-1])))
+                last_dim -= 1
             elif not local:
                 t.append("character(len=*)")
             else:
@@ -1506,6 +1517,13 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
+        elif last_dim > 0:
+            decl.append("(")
+            # Convert to column-major order.
+            for dim in reversed(self.array[:last_dim]):
+                decl.append(todict.print_node(dim))
+                decl.append(",")
+            decl[-1] = ")"
 
         return "".join(decl)
 

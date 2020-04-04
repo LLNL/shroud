@@ -186,7 +186,7 @@ class CheckParse(unittest.TestCase):
             },
         )
 
-    def test_array(self):
+    def test_type_int_array(self):
         r = declast.check_decl("int var1[20]")
         self.assertEqual("int var1[20]", str(r))
         s = r.gen_decl()
@@ -199,6 +199,12 @@ class CheckParse(unittest.TestCase):
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual(
+            "int var1[20]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var1(20)",
+            r.gen_arg_as_fortran())
         
         r = declast.check_decl("int var2[20][10]")
         self.assertEqual("int var2[20][10]", str(r))
@@ -215,21 +221,33 @@ class CheckParse(unittest.TestCase):
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual(
+            "int var2[20][10]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var2(10,20)",
+            r.gen_arg_as_fortran())
         
-        r = declast.check_decl("int var1[DEFINE + 3]")
-        self.assertEqual("int var1[DEFINE+3]", str(r))
+        r = declast.check_decl("int var3[DEFINE + 3]")
+        self.assertEqual("int var3[DEFINE+3]", str(r))
         s = r.gen_decl()
-        self.assertEqual("int var1[DEFINE+3]", s)
+        self.assertEqual("int var3[DEFINE+3]", s)
         self.assertEqual(
             {'array': [
                 {'left': {   'name': 'DEFINE'},
                  'op': '+',
                  'right': {   'constant': '3'}}],
-             'declarator': {   'name': 'var1', 'pointer': []},
+             'declarator': {   'name': 'var3', 'pointer': []},
              'specifier': ['int'],
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual(
+            "int var3[DEFINE+3]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var3(DEFINE+3)",
+            r.gen_arg_as_fortran())
        
     def test_type_string(self):
         """Test string declarations
@@ -290,6 +308,71 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 
+    def test_type_char_array(self):
+        # convert first dimension to Fortran CHARACTER(LEN=)
+        r = declast.check_decl("char var1[20]")
+        self.assertEqual("char var1[20]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("char var1[20]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var1', 'pointer': []},
+             'array': [{ 'constant': '20'}],
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var1[20]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(len=20) :: var1",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("char var2[20][10][5]")
+        self.assertEqual("char var2[20][10][5]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("char var2[20][10][5]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var2', 'pointer': []},
+             'array': [
+                 { 'constant': '20'},
+                 { 'constant': '10'},
+                 { 'constant': '5'},
+             ],
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var2[20][10][5]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(len=5) :: var2(10,20)",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("char var3[DEFINE + 3]")
+        self.assertEqual("char var3[DEFINE+3]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("char var3[DEFINE+3]", s)
+        self.assertEqual(
+            {'array': [
+                {'left': {   'name': 'DEFINE'},
+                 'op': '+',
+                 'right': {   'constant': '3'}}],
+             'declarator': {   'name': 'var3', 'pointer': []},
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var3[DEFINE+3]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(len=DEFINE+3) :: var3",
+            r.gen_arg_as_fortran())
+    
     def test_type_vector(self):
         """Test vector declarations
         """
