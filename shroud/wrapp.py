@@ -729,7 +729,17 @@ return 1;""",
             fmt.ctor = "UUUctor"
 
         nindirect = ast.is_array()
-        if nindirect:
+        stmts = ['py', 'descr', arg_typemap.sgroup, ast.get_indirect()]
+        intent_blk = lookup_stmts(stmts)
+        if intent_blk.name == 'py_default':
+            intent_blk = None
+        if intent_blk:
+            output.append("// " + "-".join(stmts))
+            output.append("// " + intent_blk.name)
+            self.update_descr_code_blocks(
+                "getter", intent_blk, fmt, output)
+        
+        elif nindirect:
             append_format(
                 output,
                 """if ({c_var} == {nullptr}) {{+
@@ -838,7 +848,14 @@ return self->{PY_member_object};
                 fmt
             )
 
-            if nindirect:
+            if intent_blk:
+                output.append("// " + "-".join(stmts))
+                output.append("// " + intent_blk.name)
+                whelpers.add_to_PyList_helper(node.ast)
+                self.update_descr_code_blocks(
+                    "setter", intent_blk, fmt, output)
+
+            elif nindirect:
                 if arg_typemap.PY_get_converter:
                     whelpers.add_to_PyList_helper(node.ast)
                     if nindirect == 1:
@@ -893,6 +910,27 @@ return -1;
                 fmt_var,
             )
         )  # closure
+
+    def update_descr_code_blocks(self, name, stmts, fmt, output):
+        """Format descr code.
+
+        Args:
+            name   - "getter" "setter"
+            stmts  - PyStmts
+            fmt    - Scope
+            output - descr code/
+        """
+        if stmts.need_numpy:
+            self.need_numpy = True
+        helpers = getattr(stmts, name + "_helper", None)
+        if helpers:
+            helpers = wformat(helpers, fmt)
+            for i, helper in enumerate(helpers.split()):
+                setattr(fmt, "hnamefunc" + str(i),
+                        self.add_helper(helper))
+        # update_code_blocks
+        for cmd in getattr(stmts, name):
+            output.append(wformat(cmd, fmt))
 
     def check_dimension_blk(self, arg):
         """Check dimension attribute.
@@ -1439,7 +1477,8 @@ return -1;
             if intent_blk.c_helper:
                 c_helper = wformat(intent_blk.c_helper, fmt_arg)
                 for i, helper in enumerate(c_helper.split()):
-                    setattr(fmt_arg, "hnamefunc" + str(i), self.add_helper(helper))
+                    setattr(fmt_arg, "hnamefunc" + str(i),
+                            self.add_helper(helper))
             update_code_blocks(locals(), intent_blk, fmt_arg)
             self.add_statements_headers(intent_blk)
 
@@ -3498,21 +3537,24 @@ def lookup_stmts(path):
 class PyStmts(object):
     # c_local_var - "scalar", "pointer", "funcptr"
     # parse_as_object - Uses pytmp_var in PyArg_Parse
-    def __init__(self,
-        name="py_default",
-        allocate_local_var=False,
-        c_header=[], c_helper=[], c_local_var=None,
-        create_out_decl=False,
-        cxx_header=[], cxx_local_var=None,
-        need_numpy=False,
-        object_created=False, parse_as_object=False,
-        get_converter=None,
-        declare=[], post_parse=[], pre_call=[],
-        post_call=[],
-        declare_capsule=[], post_call_capsule=[], fail_capsule=[],
-        declare_keep=[], post_call_keep=[], fail_keep=[],
-        cleanup=[], fail=[],
-        goto_fail=False,
+    def __init__(
+            self,
+            name="py_default",
+            allocate_local_var=False,
+            c_header=[], c_helper=[], c_local_var=None,
+            create_out_decl=False,
+            cxx_header=[], cxx_local_var=None,
+            need_numpy=False,
+            object_created=False, parse_as_object=False,
+            get_converter=None,
+            declare=[], post_parse=[], pre_call=[],
+            post_call=[],
+            declare_capsule=[], post_call_capsule=[], fail_capsule=[],
+            declare_keep=[], post_call_keep=[], fail_keep=[],
+            cleanup=[], fail=[],
+            goto_fail=False,
+            getter=[], getter_helper=[],
+            setter=[], setter_helper=[],
     ):
         self.name = name
         self.allocate_local_var = allocate_local_var
@@ -3542,7 +3584,12 @@ class PyStmts(object):
         self.cleanup = cleanup
         self.fail = fail
         self.goto_fail = goto_fail
-                 
+        # descr
+        self.getter = getter
+        self.getter_helper = getter_helper
+        self.setter = setter
+        self.setter_helper = setter_helper
+                          
 default_stmts = dict(
     py=PyStmts,
 )
@@ -4379,4 +4426,62 @@ py_statements = [
         fail_capsule=fail_capsule,
     ),
 
+
+    ########################################
+    dict(
+        name="py_descr_native_[]",
+        need_numpy = True,
+        setter_helper="get_from_object_int_numpy",
+        setter=["""LIB_SHROUD_converter_value cvalue;
+Py_XDECREF(self->count_obj);
+if (SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {{+
+self->obj->count = NULL;
+self->count_obj = NULL;
+// XXXX set error
+return -1;
+-}}
+self->obj->count = static_cast<int *>(cvalue.data);
+self->count_obj = cvalue.obj;  // steal reference"""],
+        getter=["""if (self->obj->count == nullptr) {{+
+Py_RETURN_NONE;
+-}}
+if (self->count_obj != nullptr) {{+
+Py_INCREF(self->count_obj);
+return self->count_obj;
+-}}
+npy_intp dims[1] = {{ 20 }};
+PyObject *rv = PyArray_SimpleNewFromData(\t1,\t dims,\t NPY_INT,\t self->obj->count);
+if (rv != nullptr) {{+
+Py_INCREF(rv);
+self->count_obj = rv;
+-}}
+return rv;""",
+        ]
+    ),
+
+    dict(
+        name="py_descr_char_[]",
+        setter_helper="get_from_object_char_numpy",
+        setter=["""LIB_SHROUD_converter_value cvalue;
+Py_XDECREF(self->name_obj);
+if (SHROUD_get_from_object_char(value, &cvalue) == 0) {{+
+self->obj->name = NULL;
+self->name_obj = NULL;
+// XXXX set error
+return -1;
+-}}
+self->obj->name = static_cast<char *>(cvalue.data);
+self->name_obj = cvalue.obj;  // steal reference"""
+        ],
+        getter=["""if (self->obj->name == nullptr) {{+
+Py_RETURN_NONE;
+-}}
+if (self->name_obj != nullptr) {{+
+Py_INCREF(self->name_obj);
+return self->name_obj;
+-}}
+PyObject * rv = PyString_FromString(self->obj->name);
+return rv;"""],
+    ),
+    
 ]
