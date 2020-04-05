@@ -1015,7 +1015,8 @@ class Declaration(Node):
         return nlevels
 
     def is_indirect(self):
-        """Return number of indirections, pointer or reference.
+        """Return number of indirections.
+        pointer or reference.
         """
         nlevels = 0
         if self.declarator is None:
@@ -1025,6 +1026,20 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
+    def is_array(self):
+        """Return number of indirections.
+        array, pointer or reference.
+        """
+        nlevels = 0
+        if self.array:
+            nlevels += 1
+        if self.declarator is None:
+            return nlevels
+        for ptr in self.declarator.pointer:
+            if ptr.ptr:
+                nlevels += 1
+        return nlevels
+        
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
@@ -1045,6 +1060,8 @@ class Declaration(Node):
             return out
         for ptr in self.declarator.pointer:
             out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
         return out
 
     def get_indirect_stmt(self):

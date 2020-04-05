@@ -728,7 +728,7 @@ return 1;""",
         else:
             fmt.ctor = "UUUctor"
 
-        nindirect = ast.is_indirect()
+        nindirect = ast.is_array()
         if nindirect:
             append_format(
                 output,
@@ -852,7 +852,7 @@ return self->{PY_member_object};
                         options.PY_array_arg)
                     fmt.hnamefunc = self.add_helper(hname)
                     fmt.cast_type = ast.gen_arg_as_cxx(
-                    name=None, params=None)
+                        name=None, params=None)
                     append_format(output, """{PY_typedef_converter} cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
@@ -2869,7 +2869,7 @@ setup(
         """
         for var in node.variables:
             fmt = var.fmtdict
-            if var.ast.is_indirect():
+            if var.ast.is_array():
                 fmt.py_var = "SHPy_" + fmt.variable_name
                 var.eval_template("PY_member_object")
 
@@ -2882,7 +2882,7 @@ setup(
         print_header = True
         for var in node.variables:
             # var is VariableNode
-            if not var.ast.is_indirect():
+            if not var.ast.is_array():
                 continue
             if print_header:
                 output.append("// Python objects for members.")
@@ -2908,7 +2908,7 @@ setup(
             fmt)
         output_obj = []
         for var in node.variables:
-            if var.ast.is_indirect():
+            if var.ast.is_array():
                 var.fmtdict.cast_type = var.ast.gen_arg_as_cxx(
                     name=None, params=None)
                 append_format(
@@ -3261,19 +3261,26 @@ class ToStructDimension(todict.PrintNode):
 
 def py_struct_dimension(parent, var):
     """Return the dimension of a struct member.
-    Use the dimension attribute.
+    Use the ast.array or dimension attribute.
 
     Args:
         parent - ast.ClassNode.
         var - ast.VariableNode.
     """
-    dim = var.ast.attrs.get("dimension", None)
-    if dim:
-        node = declast.ExprParser(dim).expression()
-        visitor = ToStructDimension(parent, var.fmtdict)
-        return visitor.visit(node)
+    ast = var.ast
+    if ast.array:
+        if len(ast.array) == 1:
+            return todict.print_node(ast.array[0])
+        else:
+            return "()()"
     else:
-        return "1"
+        dim = ast.attrs.get("dimension", None)
+        if dim:
+            node = declast.ExprParser(dim).expression()
+            visitor = ToStructDimension(parent, var.fmtdict)
+            return visitor.visit(node)
+        else:
+            return "1"
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.

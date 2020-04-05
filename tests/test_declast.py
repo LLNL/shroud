@@ -283,6 +283,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("character(len=:), allocatable :: var1", s)
 
         r = declast.check_decl("char **var1")
+        self.assertEqual(2, r.is_indirect())
+        self.assertEqual(2, r.is_array())
+        self.assertEqual('**', r.get_indirect())
         s = r.gen_decl()
         self.assertEqual("char * * var1", s)
 
@@ -312,6 +315,9 @@ class CheckParse(unittest.TestCase):
         # convert first dimension to Fortran CHARACTER(LEN=)
         r = declast.check_decl("char var1[20]")
         self.assertEqual("char var1[20]", str(r))
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual('[]', r.get_indirect())
         s = r.gen_decl()
         self.assertEqual("char var1[20]", s)
         self.assertEqual(
@@ -330,6 +336,9 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("char var2[20][10][5]")
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual('[]', r.get_indirect())
         self.assertEqual("char var2[20][10][5]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
@@ -353,6 +362,9 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("char var3[DEFINE + 3]")
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual('[]', r.get_indirect())
         self.assertEqual("char var3[DEFINE+3]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
@@ -371,6 +383,28 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_c())
         self.assertEqual(
             "character(len=DEFINE+3) :: var3",
+            r.gen_arg_as_fortran())
+    
+        r = declast.check_decl("char *var4[44]")
+        self.assertEqual("char * var4[44]", str(r))
+        self.assertEqual(1, r.is_indirect())
+        self.assertEqual(2, r.is_array())
+        self.assertEqual('*[]', r.get_indirect())
+        s = r.gen_decl()
+        self.assertEqual("char * var4[44]", s)
+        self.assertEqual(
+            {'array': [{'constant': '44'}],
+             'declarator': {   'name': 'var4',
+                               'pointer': [{'ptr': '*'}]},
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char * var4[44]",
+            r.gen_arg_as_c())
+        self.assertEqual(  # XXX - fixme
+            "character(len=44) :: var4",
             r.gen_arg_as_fortran())
     
     def test_type_vector(self):
