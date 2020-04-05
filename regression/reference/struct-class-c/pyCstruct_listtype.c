@@ -197,7 +197,7 @@ static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
         // XXXX set error
         return -1;
     }
-    self->obj->svalue = (char * *) cvalue.data;
+    self->obj->svalue = (char **) cvalue.data;
     self->svalue_obj = cvalue.obj;  // steal reference
     return 0;
 }

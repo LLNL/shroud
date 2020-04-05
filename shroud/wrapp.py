@@ -851,8 +851,8 @@ return self->{PY_member_object};
                         subname,
                         options.PY_array_arg)
                     fmt.hnamefunc = self.add_helper(hname)
-                    fmt.cast_type = ast.gen_arg_as_cxx(
-                        name=None, params=None)
+                    fmt.cast_type = ast.as_cast(
+                        language=self.language)
                     append_format(output, """{PY_typedef_converter} cvalue;
 Py_XDECREF(self->{PY_member_object});
 if ({hnamefunc}({py_var}, &cvalue) == 0) {{+

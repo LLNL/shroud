@@ -66,6 +66,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True)
         )
+        self.assertEqual("int", r.as_cast())
         self.assertEqual(
             todict.to_dict(r), {
                 'const': True,
@@ -110,10 +111,15 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const int * var1")
         s = r.gen_decl()
         self.assertEqual("const int * var1", s)
-        self.assertEqual("const int * var1", r.gen_arg_as_c())
-        self.assertEqual("const int * var1", r.gen_arg_as_c(asgn_value=True))
-        self.assertEqual("const int * var1", r.gen_arg_as_cxx())
-        self.assertEqual("const int * var1", r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_c())
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_cxx())
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual("int *", r.as_cast())
 
         r = declast.check_decl("int * const var1")
         s = r.gen_decl()
@@ -153,6 +159,7 @@ class CheckParse(unittest.TestCase):
                 'typemap_name': 'int'
             })
         self.assertEqual("&*", r.get_indirect())
+        self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("const int * const * const var1")
         s = r.gen_decl()
@@ -169,6 +176,7 @@ class CheckParse(unittest.TestCase):
                 'typemap_name': 'int'
             })
         self.assertEqual("**", r.get_indirect())
+        self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("long long var2")
         s = r.gen_decl()
@@ -199,6 +207,7 @@ class CheckParse(unittest.TestCase):
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var1[20]",
             r.gen_arg_as_c())
@@ -221,6 +230,7 @@ class CheckParse(unittest.TestCase):
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var2[20][10]",
             r.gen_arg_as_c())
@@ -242,6 +252,7 @@ class CheckParse(unittest.TestCase):
              'typemap_name': 'int'},
             todict.to_dict(r)
         )
+        self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var3[DEFINE+3]",
             r.gen_arg_as_c())
@@ -257,8 +268,10 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char var1")
         s = r.gen_decl()
         self.assertEqual("char var1", s)
+        self.assertEqual("char", r.as_cast())
 
         r = declast.check_decl("char *var1")
+        self.assertEqual("char *", r.as_cast())
         s = r.gen_decl()
         self.assertEqual("char * var1", s)
         s = r.gen_arg_as_fortran()
@@ -286,6 +299,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(2, r.is_indirect())
         self.assertEqual(2, r.is_array())
         self.assertEqual('**', r.get_indirect())
+        self.assertEqual("char **", r.as_cast())
         s = r.gen_decl()
         self.assertEqual("char * * var1", s)
 
@@ -300,6 +314,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::string * var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
+        self.assertEqual("char *", r.as_cast())
 
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
@@ -317,6 +332,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char var1[20]", str(r))
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect())
         s = r.gen_decl()
         self.assertEqual("char var1[20]", s)
@@ -338,6 +354,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char var2[20][10][5]")
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect())
         self.assertEqual("char var2[20][10][5]", str(r))
         s = r.gen_decl()
@@ -364,6 +381,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char var3[DEFINE + 3]")
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect())
         self.assertEqual("char var3[DEFINE+3]", str(r))
         s = r.gen_decl()
@@ -389,6 +407,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char * var4[44]", str(r))
         self.assertEqual(1, r.is_indirect())
         self.assertEqual(2, r.is_array())
+        self.assertEqual("char **", r.as_cast())
         self.assertEqual('*[]', r.get_indirect())
         s = r.gen_decl()
         self.assertEqual("char * var4[44]", s)

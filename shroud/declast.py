@@ -1381,6 +1381,27 @@ class Declaration(Node):
                 decl.append(todict.print_node(dim))
                 decl.append("]")
 
+    def as_cast(self, language="c"):
+        """
+        Ignore const, name.
+        Array as pointer.
+
+        (as_cast) arg
+        """
+        decl = []
+        typ = getattr(self.typemap, language + '_type')
+        decl.append(typ)
+        ptrs = []
+        if self.declarator:
+            for ptr in self.declarator.pointer:
+                ptrs.append("*")   # ptr.ptr)
+        if self.array:
+            ptrs.append("*")
+        if ptrs:
+            decl.append(" ")
+            decl.extend(ptrs)
+        return ''.join(decl)
+        
     ##############
 
     def bind_c(self, intent=None, **kwargs):
