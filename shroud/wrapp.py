@@ -715,7 +715,7 @@ return 1;""",
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
-        fmt.size = py_struct_dimension(parent, node)
+        have_array, fmt.size = py_struct_dimension(parent, node)
         fmt.npy_ndims = "1"
         fmt.npy_dims = "dims"
 
@@ -746,13 +746,14 @@ return 1;""",
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
                  ast.get_indirect(),
-                 options.PY_array_arg,
         ]
+        if have_array:
+            stmts.append(options.PY_array_arg)
         intent_blk = lookup_stmts(stmts)
+        output.append("// " + "_".join(stmts))
         if intent_blk.name == 'py_default':
             intent_blk = None
         if intent_blk:
-            output.append("// " + "_".join(stmts))
             output.append("// " + intent_blk.name)
             self.update_descr_code_blocks(
                 "getter", intent_blk, fmt, output)
@@ -780,7 +781,6 @@ return self->{PY_member_object};
                 elif nindirect == 2:
                     # 'char **' is a <type 'list'> of <type 'str'>.
                     fmt.hnamefunc = self.add_helper("to_PyList_char")
-                    fmt.size = py_struct_dimension(parent, node)
                     append_format(
                         output,
                         "PyObject *rv = {hnamefunc}"
@@ -857,10 +857,10 @@ return self->{PY_member_object};
                 fmt
             )
 
+            output.append("// " + "_".join(stmts))
             if intent_blk:
                 fmt.cast_type = ast.as_cast(
                     language=self.language)
-                output.append("// " + "_".join(stmts))
                 output.append("// " + intent_blk.name)
                 whelpers.add_to_PyList_helper(node.ast)
                 self.update_descr_code_blocks(
@@ -3310,7 +3310,8 @@ class ToStructDimension(todict.PrintNode):
             return node.name
 
 def py_struct_dimension(parent, var):
-    """Return the dimension of a struct member.
+    """Return tuple with
+    (True if an array, the dimension of a struct member).
     Use the ast.array or dimension attribute.
 
     Args:
@@ -3320,17 +3321,17 @@ def py_struct_dimension(parent, var):
     ast = var.ast
     if ast.array:
         if len(ast.array) == 1:
-            return todict.print_node(ast.array[0])
+            return True, todict.print_node(ast.array[0])
         else:
-            return "()()"
+            return True, "()()"
     else:
         dim = ast.attrs.get("dimension", None)
         if dim:
             node = declast.ExprParser(dim).expression()
             visitor = ToStructDimension(parent, var.fmtdict)
-            return visitor.visit(node)
+            return True, visitor.visit(node)
         else:
-            return "1"
+            return False, "1"
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.

@@ -41,6 +41,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 static PyObject *PY_Class1_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
+    // py_descr_native_
     PyObject * rv = PyInt_FromLong(self->obj->m_flag);
     return rv;
 }
