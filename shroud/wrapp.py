@@ -140,6 +140,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_self = False
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
+        fmt_library.PY_member_object = "XXXPY_member_object"
 
         fmt_library.npy_ndims = "0"   # number of dimensions
         fmt_library.npy_dims = fmt_library.nullptr # shape variable
@@ -709,6 +710,8 @@ return 1;""",
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat("{PY_struct_context}{field_name}", fmt_var)
         fmt.cxx_var = fmt.c_var
+        fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
+        fmt.cxx_var_obj = fmt.c_var_obj
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
@@ -4438,27 +4441,27 @@ py_statements = [
         need_numpy = True,
         setter_helper="get_from_object_int_numpy",
         setter=["""{PY_typedef_converter} cvalue;
-Py_XDECREF({PY_param_self}->{PY_member_object});
+Py_XDECREF({c_var_obj});
 if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
-{PY_param_self}->{PY_type_obj}->{field_name} = {nullptr};
-{PY_param_self}->{PY_member_object} = {nullptr};
+{c_var} = {nullptr};
+{c_var_obj} = {nullptr};
 // XXXX set error
 return -1;
 -}}
-{PY_struct_context}{field_name} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference"""],
-        getter=["""if ({PY_param_self}->{PY_type_obj}->{field_name} == {nullptr}) {{+
+{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
+{c_var_obj} = cvalue.obj;  // steal reference"""],
+        getter=["""if ({c_var} == {nullptr}) {{+
 Py_RETURN_NONE;
 -}}
-if ({PY_param_self}->{PY_member_object} != {nullptr}) {{+
-Py_INCREF({PY_param_self}->{PY_member_object});
-return {PY_param_self}->{PY_member_object};
+if ({c_var_obj} != {nullptr}) {{+
+Py_INCREF({c_var_obj});
+return {c_var_obj};
 -}}
 npy_intp {npy_dims}[1] = {{ {size} }};
-PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {PY_struct_context}{field_name});
+PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});
 if (rv != {nullptr}) {{+
 Py_INCREF(rv);
-{PY_param_self}->{PY_member_object} = rv;
+{c_var_obj} = rv;
 -}}
 return rv;""",
         ]
@@ -4468,24 +4471,24 @@ return rv;""",
         name="py_descr_char_[]",
         setter_helper="get_from_object_char_numpy",
         setter=["""{PY_typedef_converter} cvalue;
-Py_XDECREF(self->{PY_member_object});
+Py_XDECREF({c_var_obj});
 if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
-{PY_param_self}->{PY_type_obj}->{field_name} = {nullptr};
-{PY_param_self}->{PY_member_object} = {nullptr};
+{c_var} = {nullptr};
+{c_var_obj} = {nullptr};
 // XXXX set error
 return -1;
 -}}
-{PY_struct_context}{field_name} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference"""
+{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
+{c_var_obj} = cvalue.obj;  // steal reference"""
         ],
-        getter=["""if ({PY_param_self}->{PY_type_obj}->{field_name} == {nullptr}) {{+
+        getter=["""if ({c_var} == {nullptr}) {{+
 Py_RETURN_NONE;
 -}}
-if ({PY_param_self}->{PY_member_object} != {nullptr}) {{+
-Py_INCREF({PY_param_self}->{PY_member_object});
-return {PY_param_self}->{PY_member_object};
+if ({c_var_obj} != {nullptr}) {{+
+Py_INCREF({c_var_obj});
+return {c_var_obj};
 -}}
-PyObject * rv = PyString_FromString(self->obj->name);
+PyObject * rv = PyString_FromString({c_var});
 return rv;"""],
     ),
     
