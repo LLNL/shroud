@@ -253,6 +253,7 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
     // py_descr_native_
+    // py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->m_flag);
     return rv;
 }
@@ -261,6 +262,7 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
     // py_descr_native_
+    // py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->m_test);
     return rv;
 }
@@ -269,6 +271,7 @@ static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     // py_descr_native_
+    // py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;

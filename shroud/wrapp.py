@@ -719,6 +719,9 @@ return 1;""",
         fmt.npy_ndims = "1"
         fmt.npy_dims = "dims"
 
+        if not have_array and arg_typemap.PY_get:
+            fmt.get = wformat(arg_typemap.PY_get, fmt)
+        
         if arg_typemap.PYN_descr:
             # class
             fmt.PYN_descr = arg_typemap.PYN_descr
@@ -759,6 +762,7 @@ return 1;""",
                 "getter", intent_blk, fmt, output)
         
         elif nindirect:
+            output.append("FIXME")
             append_format(
                 output,
                 """if ({c_var} == {nullptr}) {{+
@@ -867,6 +871,7 @@ return self->{PY_member_object};
                     "setter", intent_blk, fmt, output)
 
             elif nindirect:
+                output.append("FIXME")
                 if arg_typemap.PY_get_converter:
                     whelpers.add_to_PyList_helper(node.ast)
                     if nindirect == 1:
@@ -4442,33 +4447,170 @@ py_statements = [
     ########################################
     # descriptors
     dict(
+        name="py_descr_native",
+        setter=[
+            "{cxx_decl} = {get};",
+            "if (PyErr_Occurred()) {{+",
+            "return -1;",
+            "-}}",
+            "{c_var} = rv;",
+        ],
+        getter=[
+            "PyObject * rv = {ctor};",
+            "return rv;",
+        ],
+    ),
+
+    dict(
+        name="py_descr_native_*_list",
+        setter_helper="get_from_object_{c_type}_list",
+        setter=[
+            "{PY_typedef_converter} cvalue;",
+            "Py_XDECREF({c_var_obj});",
+            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
+            "{c_var} = {nullptr};",
+            "{c_var_obj} = {nullptr};",
+            "// XXXX set error",
+            "return -1;",
+            "-}}",
+            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
+            "{c_var_obj} = cvalue.obj;  // steal reference",
+        ],
+        getter_helper="to_PyList_{c_type}",
+        getter=[
+            "if ({c_var} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "return rv;",
+        ],
+    ),
+    dict(
+        name="py_descr_char_*",
+        setter_helper="get_from_object_{c_type}_list",
+        setter=[
+            "{PY_typedef_converter} cvalue;",
+            "Py_XDECREF({c_var_obj});",
+            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
+            "{c_var} = {nullptr};",
+            "{c_var_obj} = {nullptr};",
+            "// XXXX set error",
+            "return -1;",
+            "-}}",
+            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
+            "{c_var_obj} = cvalue.obj;  // steal reference",
+        ],
+#        getter_helper="to_PyList_{c_type}",
+        getter=[
+            "if ({c_var} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "PyObject * rv = {ctor};", # difference from py_descr_native_*_list
+            "return rv;",
+        ],
+    ),
+    # XXX - only helper is different from py_descr_native_*_list
+    dict(
+        name="py_descr_char_**_list",
+        setter_helper="get_from_object_charptr",
+        setter=[
+            "{PY_typedef_converter} cvalue;",
+            "Py_XDECREF({c_var_obj});",
+            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
+            "{c_var} = {nullptr};",
+            "{c_var_obj} = {nullptr};",
+            "// XXXX set error",
+            "return -1;",
+            "-}}",
+            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
+            "{c_var_obj} = cvalue.obj;  // steal reference",
+        ],
+        getter_helper="to_PyList_char",
+        getter=[
+            "if ({c_var} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "return rv;",
+        ],
+    ),
+    
+    dict(
         name="py_descr_native_[]_numpy",
         need_numpy = True,
-        setter_helper="get_from_object_int_numpy",
-        setter=["""{PY_typedef_converter} cvalue;
-Py_XDECREF({c_var_obj});
-if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
-{c_var} = {nullptr};
-{c_var_obj} = {nullptr};
-// XXXX set error
-return -1;
--}}
-{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-{c_var_obj} = cvalue.obj;  // steal reference"""],
-        getter=["""if ({c_var} == {nullptr}) {{+
-Py_RETURN_NONE;
--}}
-if ({c_var_obj} != {nullptr}) {{+
-Py_INCREF({c_var_obj});
-return {c_var_obj};
--}}
-npy_intp {npy_dims}[1] = {{ {size} }};
-PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});
-if (rv != {nullptr}) {{+
-Py_INCREF(rv);
-{c_var_obj} = rv;
--}}
-return rv;""",
+        setter_helper="get_from_object_{c_type}_numpy",
+        setter=[
+            "{PY_typedef_converter} cvalue;",
+            "Py_XDECREF({c_var_obj});",
+            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
+            "{c_var} = {nullptr};",
+            "{c_var_obj} = {nullptr};",
+            "// XXXX set error",
+            "return -1;",
+            "-}}",
+            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
+            "{c_var_obj} = cvalue.obj;  // steal reference",
+        ],
+        getter=[
+            "if ({c_var} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
+            "if (rv != {nullptr}) {{+",
+            "Py_INCREF(rv);",
+            "{c_var_obj} = rv;",
+            "-}}",
+            "return rv;",
+        ]
+    ),
+    dict(
+        name="py_descr_native_*_numpy",
+        need_numpy = True,
+        setter_helper="get_from_object_{c_type}_numpy",
+        setter=[
+            "{PY_typedef_converter} cvalue;",
+            "Py_XDECREF({c_var_obj});",
+            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
+            "{c_var} = {nullptr};",
+            "{c_var_obj} = {nullptr};",
+            "// XXXX set error",
+            "return -1;",
+            "-}}",
+            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
+            "{c_var_obj} = cvalue.obj;  // steal reference",
+        ],
+        getter=[
+            "if ({c_var} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
+            "if (rv != {nullptr}) {{+",
+            "Py_INCREF(rv);",
+            "{c_var_obj} = rv;",
+            "-}}",
+            "return rv;",
         ]
     ),
 
