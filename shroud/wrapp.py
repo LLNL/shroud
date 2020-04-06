@@ -743,12 +743,16 @@ return 1;""",
             fmt.ctor = "UUUctor"
 
         nindirect = ast.is_array()
-        stmts = ['py', 'descr', arg_typemap.sgroup, ast.get_indirect()]
+        stmts = ['py', 'descr',
+                 arg_typemap.sgroup,
+                 ast.get_indirect(),
+                 options.PY_array_arg,
+        ]
         intent_blk = lookup_stmts(stmts)
         if intent_blk.name == 'py_default':
             intent_blk = None
         if intent_blk:
-            output.append("// " + "-".join(stmts))
+            output.append("// " + "_".join(stmts))
             output.append("// " + intent_blk.name)
             self.update_descr_code_blocks(
                 "getter", intent_blk, fmt, output)
@@ -856,7 +860,7 @@ return self->{PY_member_object};
             if intent_blk:
                 fmt.cast_type = ast.as_cast(
                     language=self.language)
-                output.append("// " + "-".join(stmts))
+                output.append("// " + "_".join(stmts))
                 output.append("// " + intent_blk.name)
                 whelpers.add_to_PyList_helper(node.ast)
                 self.update_descr_code_blocks(
@@ -4437,7 +4441,7 @@ py_statements = [
     ########################################
     # descriptors
     dict(
-        name="py_descr_native_[]",
+        name="py_descr_native_[]_numpy",
         need_numpy = True,
         setter_helper="get_from_object_int_numpy",
         setter=["""{PY_typedef_converter} cvalue;
