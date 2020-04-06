@@ -697,6 +697,9 @@ return 1;""",
             fileinfo - FileTuple
         """
         options = node.options
+        ast = node.ast
+        arg_typemap = ast.typemap
+        
         fmt_var = node.fmtdict
         fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
         fmt_var.PY_setter = fmt_var.nullptr  # readonly
@@ -705,11 +708,19 @@ return 1;""",
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat("{PY_struct_context}{field_name}", fmt_var)
+        fmt.cxx_var = fmt.c_var
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
-        ast = node.ast
-        arg_typemap = ast.typemap
+        fmt.size = py_struct_dimension(parent, node)
+        fmt.npy_ndims = "1"
+        fmt.npy_dims = "dims"
+
+        if arg_typemap.PYN_descr:
+            # class
+            fmt.PYN_descr = arg_typemap.PYN_descr
+        else:
+            fmt.PYN_typenum = arg_typemap.PYN_typenum
 
         ########################################
         # getter
@@ -774,21 +785,13 @@ return self->{PY_member_object};
             elif options.PY_array_arg == "numpy":
                 self.need_numpy = True
                 # Create array from NumPy
-                fmt.size = py_struct_dimension(parent, node)
-                fmt.npy_ndims = "1"
-                fmt.npy_dims = "dims"
-                fmt.cxx_var = wformat(
-                    "{PY_struct_context}{field_name}",
-                    fmt)
                 if arg_typemap.PYN_descr:
                     # class
-                    fmt.PYN_descr = arg_typemap.PYN_descr
                     fmt.incref = wformat("Py_INCREF({PYN_descr});\n", fmt)
                     fmt.create = wformat(
                         "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},"
                         "\t {npy_ndims}, \t{npy_dims}, \t{nullptr},\t {cxx_var},\t 0, {nullptr})n", fmt)
                 else:
-                    fmt.PYN_typenum = arg_typemap.PYN_typenum
                     fmt.incref = ""
                     fmt.create = wformat(
                         "PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {cxx_var})",
@@ -811,7 +814,6 @@ return self->{PY_member_object};
                 # Include helper called by getter.
                 whelpers.add_to_PyList_helper(node.ast)
                 fmt.hnamefunc = self.add_helper("to_PyList_" + fmt.c_type)
-                fmt.size = py_struct_dimension(parent, node)
                 append_format(
                     output,
                     "PyObject *rv = {hnamefunc}"
@@ -849,6 +851,8 @@ return self->{PY_member_object};
             )
 
             if intent_blk:
+                fmt.cast_type = ast.as_cast(
+                    language=self.language)
                 output.append("// " + "-".join(stmts))
                 output.append("// " + intent_blk.name)
                 whelpers.add_to_PyList_helper(node.ast)
@@ -4428,32 +4432,33 @@ py_statements = [
 
 
     ########################################
+    # descriptors
     dict(
         name="py_descr_native_[]",
         need_numpy = True,
         setter_helper="get_from_object_int_numpy",
-        setter=["""LIB_SHROUD_converter_value cvalue;
-Py_XDECREF(self->count_obj);
-if (SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {{+
-self->obj->count = NULL;
-self->count_obj = NULL;
+        setter=["""{PY_typedef_converter} cvalue;
+Py_XDECREF({PY_param_self}->{PY_member_object});
+if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+{PY_param_self}->{PY_type_obj}->{field_name} = {nullptr};
+{PY_param_self}->{PY_member_object} = {nullptr};
 // XXXX set error
 return -1;
 -}}
-self->obj->count = static_cast<int *>(cvalue.data);
-self->count_obj = cvalue.obj;  // steal reference"""],
-        getter=["""if (self->obj->count == nullptr) {{+
+{PY_struct_context}{field_name} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
+{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference"""],
+        getter=["""if ({PY_param_self}->{PY_type_obj}->{field_name} == {nullptr}) {{+
 Py_RETURN_NONE;
 -}}
-if (self->count_obj != nullptr) {{+
-Py_INCREF(self->count_obj);
-return self->count_obj;
+if ({PY_param_self}->{PY_member_object} != {nullptr}) {{+
+Py_INCREF({PY_param_self}->{PY_member_object});
+return {PY_param_self}->{PY_member_object};
 -}}
-npy_intp dims[1] = {{ 20 }};
-PyObject *rv = PyArray_SimpleNewFromData(\t1,\t dims,\t NPY_INT,\t self->obj->count);
-if (rv != nullptr) {{+
+npy_intp {npy_dims}[1] = {{ {size} }};
+PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {PY_struct_context}{field_name});
+if (rv != {nullptr}) {{+
 Py_INCREF(rv);
-self->count_obj = rv;
+{PY_param_self}->{PY_member_object} = rv;
 -}}
 return rv;""",
         ]
@@ -4462,23 +4467,23 @@ return rv;""",
     dict(
         name="py_descr_char_[]",
         setter_helper="get_from_object_char_numpy",
-        setter=["""LIB_SHROUD_converter_value cvalue;
-Py_XDECREF(self->name_obj);
-if (SHROUD_get_from_object_char(value, &cvalue) == 0) {{+
-self->obj->name = NULL;
-self->name_obj = NULL;
+        setter=["""{PY_typedef_converter} cvalue;
+Py_XDECREF(self->{PY_member_object});
+if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+{PY_param_self}->{PY_type_obj}->{field_name} = {nullptr};
+{PY_param_self}->{PY_member_object} = {nullptr};
 // XXXX set error
 return -1;
 -}}
-self->obj->name = static_cast<char *>(cvalue.data);
-self->name_obj = cvalue.obj;  // steal reference"""
+{PY_struct_context}{field_name} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
+{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference"""
         ],
-        getter=["""if (self->obj->name == nullptr) {{+
+        getter=["""if ({PY_param_self}->{PY_type_obj}->{field_name} == {nullptr}) {{+
 Py_RETURN_NONE;
 -}}
-if (self->name_obj != nullptr) {{+
-Py_INCREF(self->name_obj);
-return self->name_obj;
+if ({PY_param_self}->{PY_member_object} != {nullptr}) {{+
+Py_INCREF({PY_param_self}->{PY_member_object});
+return {PY_param_self}->{PY_member_object};
 -}}
 PyObject * rv = PyString_FromString(self->obj->name);
 return rv;"""],
