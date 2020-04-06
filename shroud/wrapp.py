@@ -4488,7 +4488,7 @@ if ({c_var_obj} != {nullptr}) {{+
 Py_INCREF({c_var_obj});
 return {c_var_obj};
 -}}
-PyObject * rv = PyString_FromString({c_var});
+PyObject * rv = {ctor};
 return rv;"""],
     ),
     
