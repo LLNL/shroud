@@ -745,105 +745,26 @@ return 1;""",
         else:
             fmt.ctor = "UUUctor"
 
-        nindirect = ast.is_array()
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
                  ast.get_indirect(),
         ]
         if have_array:
             stmts.append(options.PY_array_arg)
+        stmts0 = "_".join(stmts)
         intent_blk = lookup_stmts(stmts)
-        output.append("// " + "_".join(stmts))
         if intent_blk.name == 'py_default':
             intent_blk = None
         if intent_blk:
-            output.append("// " + intent_blk.name)
+            if options.debug:
+                output.append("// Requested: " + stmts0)
+                output.append("// Found:     " + intent_blk.name)
             self.update_descr_code_blocks(
                 "getter", intent_blk, fmt, output)
-        
-        elif nindirect:
-            output.append("FIXME")
-            append_format(
-                output,
-                """if ({c_var} == {nullptr}) {{+
-Py_RETURN_NONE;
--}}
-if (self->{PY_member_object} != {nullptr}) {{+
-Py_INCREF(self->{PY_member_object});
-return self->{PY_member_object};
--}}""",
-                fmt)
-            if arg_typemap.name == "char":
-                # XXX - special case char since its ctor accepts a pointer.
-                if nindirect == 1:
-                    # 'char *' is a <type 'str'>.
-                    append_format(
-                        output,
-                        "PyObject * rv = {ctor};\nreturn rv;",
-                        fmt,
-                    )
-                elif nindirect == 2:
-                    # 'char **' is a <type 'list'> of <type 'str'>.
-                    fmt.hnamefunc = self.add_helper("to_PyList_char")
-                    append_format(
-                        output,
-                        "PyObject *rv = {hnamefunc}"
-                        "({PY_struct_context}{field_name}, {size});\n"
-                        "return rv;",
-                        fmt
-                    )
-                #XXX            elif "dimension" not in attrs:
-            elif options.PY_array_arg == "numpy":
-                self.need_numpy = True
-                # Create array from NumPy
-                if arg_typemap.PYN_descr:
-                    # class
-                    fmt.incref = wformat("Py_INCREF({PYN_descr});\n", fmt)
-                    fmt.create = wformat(
-                        "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},"
-                        "\t {npy_ndims}, \t{npy_dims}, \t{nullptr},\t {cxx_var},\t 0, {nullptr})n", fmt)
-                else:
-                    fmt.incref = ""
-                    fmt.create = wformat(
-                        "PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {cxx_var})",
-                        fmt)
-                append_format(
-                    output,
-                    "npy_intp {npy_dims}[1] = {{ {size} }};\n"
-                    "{incref}"
-                    "PyObject *rv = {create};\n"
-                    "if (rv != {nullptr}) {{+\n"
-                    "Py_INCREF(rv);\n"
-                    "self->{PY_member_object} = rv;\n"
-                    "-}}\n"
-                    "return rv;",
-                    fmt)
-
-                
-            elif options.PY_array_arg == "list":
-                # Create array from helper.
-                # Include helper called by getter.
-                whelpers.add_to_PyList_helper(node.ast)
-                fmt.hnamefunc = self.add_helper("to_PyList_" + fmt.c_type)
-                append_format(
-                    output,
-                    "PyObject *rv = {hnamefunc}"
-                    "({PY_struct_context}{field_name}, {size});\n"
-                    "return rv;",
-                    fmt)
-#                append_format(output, "return {nullptr};", fmt)
-            else:
-                linenumber = options.get("__line__", "?")
-                raise RuntimeError(
-                    "Illegal value for PY_array_arg around line {}: {}".
-                    format(linenumber, options.PY_array_member))
         else:
-            append_format(
-                output,
-                "PyObject * rv = {ctor};\n"
-                "return rv;",
-                fmt,
-            )
+#            linenumber = options.get("__line__", "?")
+            output.append("#error no py_statements getter for {}"
+                          .format(stmts0))
         output.append("-}")
 
         ########################################
@@ -861,56 +782,18 @@ return self->{PY_member_object};
                 fmt
             )
 
-            output.append("// " + "_".join(stmts))
             if intent_blk:
                 fmt.cast_type = ast.as_cast(
                     language=self.language)
-                output.append("// " + intent_blk.name)
+                if options.debug:
+                    output.append("// Requested: " + stmts0)
+                    output.append("// Found:     " + intent_blk.name)
                 whelpers.add_to_PyList_helper(node.ast)
                 self.update_descr_code_blocks(
                     "setter", intent_blk, fmt, output)
-
-            elif nindirect:
-                output.append("FIXME")
-                if arg_typemap.PY_get_converter:
-                    whelpers.add_to_PyList_helper(node.ast)
-                    if nindirect == 1:
-                        subname = ""
-                    elif nindirect == 2:
-                        # Intended for 'char **'.
-                        subname = "ptr"
-                    hname = "{}{}_{}".format(
-                        arg_typemap.PY_get_converter,
-                        subname,
-                        options.PY_array_arg)
-                    fmt.hnamefunc = self.add_helper(hname)
-                    fmt.cast_type = ast.as_cast(
-                        language=self.language)
-                    append_format(output, """{PY_typedef_converter} cvalue;
-Py_XDECREF(self->{PY_member_object});
-if ({hnamefunc}({py_var}, &cvalue) == 0) {{+
-{c_var} = NULL;
-self->{PY_member_object} = NULL;
-// XXXX set error
-return -1;
--}}
-{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-{PY_param_self}->{PY_member_object} = cvalue.obj;  // steal reference""", fmt)
-#                    output, "{cxx_decl};\n{get}({py_var}, &rv);", fmt)
-                else:
-                    output.append(
-                        "#error missing PY_get_converter for type {}"
-                        .format(arg_typemap.name))
-            elif arg_typemap.PY_get:
-                fmt.get = wformat(arg_typemap.PY_get, fmt)
-                append_format(output, """{cxx_decl} = {get};
-if (PyErr_Occurred()) {{+
-return -1;
--}}
-{c_var} = rv;""", fmt)
             else:
-                append_format(output, "{cxx_decl} = UUUget;", fmt)
-
+                output.append("#error no py_statements setter for {}"
+                              .format(stmts0))
             # XXX - allow user to add error checks on value
             output.append("return 0;\n-}")
 

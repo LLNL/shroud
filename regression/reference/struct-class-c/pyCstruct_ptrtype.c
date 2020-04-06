@@ -76,8 +76,8 @@ PY_Cstruct_ptr_tp_init(
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_char_*
-    // py_descr_char_*
+    // Requested: py_descr_char_*
+    // Found:     py_descr_char_*
     if (self->obj->cfield == NULL) {
         Py_RETURN_NONE;
     }
@@ -92,8 +92,8 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_char_*
-    // py_descr_char_*
+    // Requested: py_descr_char_*
+    // Found:     py_descr_char_*
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->cfield_obj);
     if (STR_SHROUD_get_from_object_char(value, &cvalue) == 0) {

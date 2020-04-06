@@ -76,8 +76,8 @@ PY_Cstruct_as_class_tp_init(
 static PyObject *PY_Cstruct_as_class_x1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->x1);
     return rv;
 }
@@ -85,8 +85,8 @@ static PyObject *PY_Cstruct_as_class_x1_getter(PY_Cstruct_as_class *self,
 static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -98,8 +98,8 @@ static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *va
 static PyObject *PY_Cstruct_as_class_y1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->y1);
     return rv;
 }
@@ -107,8 +107,8 @@ static PyObject *PY_Cstruct_as_class_y1_getter(PY_Cstruct_as_class *self,
 static int PY_Cstruct_as_class_y1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;

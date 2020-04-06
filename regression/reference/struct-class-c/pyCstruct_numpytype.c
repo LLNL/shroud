@@ -93,8 +93,8 @@ PY_Cstruct_numpy_tp_init(
 static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->nitems);
     return rv;
 }
@@ -102,8 +102,8 @@ static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
 static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_
-    // py_descr_native
+    // Requested: py_descr_native_
+    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -115,8 +115,8 @@ static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *valu
 static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_*_numpy
-    // py_descr_native_*_numpy
+    // Requested: py_descr_native_*_numpy
+    // Found:     py_descr_native_*_numpy
     if (self->obj->ivalue == NULL) {
         Py_RETURN_NONE;
     }
@@ -137,8 +137,8 @@ static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
 static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_*_numpy
-    // py_descr_native_*_numpy
+    // Requested: py_descr_native_*_numpy
+    // Found:     py_descr_native_*_numpy
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
     if (STR_SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
@@ -155,8 +155,8 @@ static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *valu
 static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_*_numpy
-    // py_descr_native_*_numpy
+    // Requested: py_descr_native_*_numpy
+    // Found:     py_descr_native_*_numpy
     if (self->obj->dvalue == NULL) {
         Py_RETURN_NONE;
     }
@@ -177,8 +177,8 @@ static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
 static int PY_Cstruct_numpy_dvalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // py_descr_native_*_numpy
-    // py_descr_native_*_numpy
+    // Requested: py_descr_native_*_numpy
+    // Found:     py_descr_native_*_numpy
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
     if (STR_SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
