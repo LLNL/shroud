@@ -4429,12 +4429,13 @@ py_statements = [
             "return rv;",
         ],
     ),
-    
+
     dict(
         name="py_descr_native_[]_numpy",
         need_numpy = True,
         setter_helper="get_from_object_{c_type}_numpy",
         setter=[
+            # XXX - Truncates array, need warning?
             "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_obj});",
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
@@ -4443,24 +4444,21 @@ py_statements = [
             "// XXXX set error",
             "return -1;",
             "-}}",
-            "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
-            "{c_var_obj} = cvalue.obj;  // steal reference",
+            "int nsrc = cvalue.len * sizeof({c_type});",
+            "void *dest = {cast_static}{c_type} *{cast1}{c_var}{cast2};",
+            "int ndest = {size} * sizeof({c_type});",
+            "int nm = nsrc < ndest ? nsrc : ndest;",
+            "{stdlib}strncpy(dest,cvalue.data,nm);",
+            "Py_XDECREF(cvalue.obj);",
         ],
         getter=[
-            "if ({c_var} == {nullptr}) {{+",
-            "Py_RETURN_NONE;",
+            "if ({c_var_obj} == {nullptr}) {{+",
+            "// Create Numpy object which points to struct member.",
+            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "-}}",
-            "if ({c_var_obj} != {nullptr}) {{+",
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
-            "-}}",
-            "npy_intp {npy_dims}[1] = {{ {size} }};",
-            "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
-            "if (rv != {nullptr}) {{+",
-            "Py_INCREF(rv);",
-            "{c_var_obj} = rv;",
-            "-}}",
-            "return rv;",
         ]
     ),
     dict(
@@ -4508,17 +4506,23 @@ if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
 // XXXX set error
 return -1;
 -}}
-{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};
-{c_var_obj} = cvalue.obj;  // steal reference"""
+char *src = {cast_static}char *{cast1}cvalue.data{cast2};
+int nsrc = {stdlib}strlen(src);
+int ndest = {size};
+int nm = nsrc < ndest ? nsrc : ndest;
+{stdlib}strncpy(dest,src,ndest);
+// XXX null terminate string
+Py_DECREF(cvalue.obj);"""
         ],
-        getter=["""if ({c_var} == {nullptr}) {{+
+        getter=["""if ({c_var}[0] == '\\0') {{+
 Py_RETURN_NONE;
 -}}
 if ({c_var_obj} != {nullptr}) {{+
 Py_INCREF({c_var_obj});
 return {c_var_obj};
 -}}
-PyObject * rv = {ctor};
+PyObject * rv = PyString_FromString({c_var});
+// XXX assumes is null terminated
 return rv;"""],
     ),
     
