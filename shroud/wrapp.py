@@ -1213,10 +1213,7 @@ return 1;""",
                 stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
                 spointer = arg.get_indirect()
-                stmts = ["py", arg_typemap.sgroup, spointer, intent]
-#                print("XXX ", " ".join(stmts))
-#                stmts = ["py", arg_typemap.sgroup, intent]
-#                print("    ", " ".join(stmts))
+                stmts = ["py", sgroup, spointer, intent]
             if stmts is not None:
                 intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.

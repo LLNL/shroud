@@ -18,36 +18,43 @@
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
+    size_t size = 0;
     char *out;
     if (PyUnicode_Check(obj)) {
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
+        size = PyString_Size(obj);
         value->obj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyString_AsString(strobj);
+        size = PyString_Size(obj);
         value->obj = strobj;  // steal reference
 #endif
 #if PY_MAJOR_VERSION >= 3
     } else if (PyByteArray_Check(obj)) {
         out = PyBytes_AS_STRING(obj);
+        size = PyBytes_GET_SIZE(obj);
         value->obj = obj;
         Py_INCREF(obj);
 #else
     } else if (PyString_Check(obj)) {
         out = PyString_AsString(obj);
+        size = PyString_Size(obj);
         value->obj = obj;
         Py_INCREF(obj);
 #endif
     } else if (obj == Py_None) {
         out = NULL;
+        size = 0;
         value->obj = NULL;
     } else {
         PyErr_SetString(PyExc_ValueError, "argument must be a string");
         return 0;
     }
     value->data = out;
+    value->size = size;
     return 1;
 }
 
@@ -96,6 +103,7 @@ int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     }
     value->obj = NULL;
     value->data = (char * *) in;
+    value->size = size;
     return 1;
 }
 
@@ -143,6 +151,7 @@ int STR_SHROUD_get_from_object_double_list(PyObject *obj,
     }
     value->obj = NULL;
     value->data = (double *) in;
+    value->size = size;
     return 1;
 }
 
@@ -160,6 +169,7 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     }
     value->obj = array;
     value->data = PyArray_DATA((PyArrayObject *) array);
+    value->size = PyArray_SIZE((PyArrayObject *) array);
     return 1;
 }
 
@@ -206,6 +216,7 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
     }
     value->obj = NULL;
     value->data = (int *) in;
+    value->size = size;
     return 1;
 }
 
@@ -222,6 +233,7 @@ int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
     }
     value->obj = array;
     value->data = PyArray_DATA((PyArrayObject *) array);
+    value->size = PyArray_SIZE((PyArrayObject *) array);
     return 1;
 }
 
