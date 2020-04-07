@@ -54,7 +54,8 @@ PP_local_function1(
 // bool isNameValid(const std::string & name +intent(in))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PP_isNameValid__doc__[] =
 "documentation"
 ;
@@ -124,7 +125,8 @@ fail:
 // void test_names(const std::string & name +intent(in))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static PyObject *
 PP_test_names(
   PyObject *SHROUD_UNUSED(self),
@@ -152,7 +154,8 @@ PP_test_names(
 // void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 // ----------------------------------------
 // Argument:  flag
 // Requested: py_native_in
@@ -340,7 +343,7 @@ PP_FuncPtr1(
 // void FuncPtr2(double * ( * get)() +intent(in))
 // ----------------------------------------
 // Argument:  get
-// Requested: py_native_in
+// Requested: py_native_*_in
 // Match:     py_default
 static char PP_FuncPtr2__doc__[] =
 "documentation"
@@ -441,43 +444,43 @@ PP_FuncPtr5(
 // void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // ----------------------------------------
 // Argument:  verylongname1
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname2
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname3
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname4
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname5
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname6
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname7
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname8
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname9
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname10
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 static char PP_verylongfunctionname1__doc__[] =
 "documentation"

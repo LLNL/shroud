@@ -115,7 +115,8 @@ PY_Method1(
 // bool equivalent(const Class1 & obj2 +intent(in)) const
 // ----------------------------------------
 // Argument:  obj2
-// Exact:     py_shadow_in
+// Requested: py_shadow_&_in
+// Match:     py_shadow_in
 static char PY_equivalent__doc__[] =
 "documentation"
 ;

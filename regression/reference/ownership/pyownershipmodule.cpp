@@ -88,7 +88,7 @@ fail:
 // int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimPointer__doc__[] =
 "documentation"
@@ -125,7 +125,7 @@ fail:
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
 "documentation"
@@ -162,7 +162,7 @@ fail:
 // int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimDefault__doc__[] =
 "documentation"
@@ -199,7 +199,7 @@ fail:
 // int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
 "documentation"
@@ -236,7 +236,7 @@ fail:
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
 "documentation"
@@ -273,7 +273,7 @@ fail:
 // int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
 "documentation"

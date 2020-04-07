@@ -3927,7 +3927,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_string_in",
+                            "stmt0": "py_string_&_in",
                             "stmt1": "py_string_in"
                         }
                     }
@@ -4115,7 +4115,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_string_out",
+                            "stmt0": "py_string_&_out",
                             "stmt1": "py_string_out"
                         }
                     }
@@ -4299,7 +4299,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_string_inout",
+                            "stmt0": "py_string_&_inout",
                             "stmt1": "py_string_inout"
                         }
                     }
@@ -4488,7 +4488,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_string_inout",
+                            "stmt0": "py_string_*_inout",
                             "stmt1": "py_string_inout"
                         }
                     }
@@ -4658,7 +4658,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_string_out",
+                            "stmt0": "py_string_&_out",
                             "stmt1": "py_string_out"
                         }
                     },
@@ -4678,7 +4678,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt0": "py_string_out",
+                            "stmt0": "py_string_&_out",
                             "stmt1": "py_string_out"
                         }
                     }

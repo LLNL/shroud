@@ -57,7 +57,8 @@ PY_Class2_tp_init(
 // void func1(tutorial::Class1 * arg +intent(in))
 // ----------------------------------------
 // Argument:  arg
-// Exact:     py_shadow_in
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PY_func1__doc__[] =
 "documentation"
 ;
@@ -89,7 +90,8 @@ PY_func1(
 // void acceptClass3(Class3 * arg +intent(in))
 // ----------------------------------------
 // Argument:  arg
-// Exact:     py_shadow_in
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PY_acceptClass3__doc__[] =
 "documentation"
 ;

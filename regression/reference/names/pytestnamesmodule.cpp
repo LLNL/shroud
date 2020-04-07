@@ -124,7 +124,8 @@ PY_function3a_1(
 // int function4(const std::string & rv +intent(in))
 // ----------------------------------------
 // Argument:  rv
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PY_function4__doc__[] =
 "documentation"
 ;
@@ -178,10 +179,11 @@ PY_fiveplus(
 // void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_inout
+// Requested: py_string_&_inout
+// Match:     py_string_inout
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_TestMultilineSplicer__doc__[] =
 "documentation"

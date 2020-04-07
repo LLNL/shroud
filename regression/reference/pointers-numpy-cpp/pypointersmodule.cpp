@@ -75,11 +75,11 @@ PyObject *PY_error_obj;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arginout
-// Requested: py_native_inout
+// Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
 // Argument:  argout
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_intargs__doc__[] =
 "documentation"
@@ -255,7 +255,7 @@ fail:
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // ----------------------------------------
 // Argument:  nvalues
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 // ----------------------------------------
 // Argument:  values
@@ -491,7 +491,7 @@ fail:
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
 // Argument:  result
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_Sum__doc__[] =
 "documentation"

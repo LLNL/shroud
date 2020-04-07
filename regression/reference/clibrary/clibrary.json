@@ -347,7 +347,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_*_in",
                             "stmt1": "py_default"
                         }
                     },
@@ -393,7 +393,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -565,7 +565,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt0": "py_bool_out",
+                            "stmt0": "py_bool_*_out",
                             "stmt1": "py_bool_out"
                         }
                     },
@@ -613,7 +613,7 @@
                             "py_type": "PyObject",
                             "py_var": "SHPy_arg3",
                             "size_var": "SHSize_arg3",
-                            "stmt0": "py_bool_inout",
+                            "stmt0": "py_bool_*_inout",
                             "stmt1": "py_bool_inout"
                         }
                     }

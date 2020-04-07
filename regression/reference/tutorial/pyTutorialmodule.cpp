@@ -92,10 +92,12 @@ PY_PassByValue(
 // const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 // ----------------------------------------
 // Argument:  arg2
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
@@ -204,7 +206,8 @@ PY_UseDefaultArguments_arg1_arg2(
 // void OverloadedFunction(const std::string & name +intent(in))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static PyObject *
 PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
@@ -323,7 +326,8 @@ PY_FortranGenericOverloaded_0(
 // void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 // ----------------------------------------
 // Argument:  arg2
 // Requested: py_native_in
@@ -597,11 +601,11 @@ PY_colorfunc(
 // void getMinMax(int & min +intent(out), int & max +intent(out))
 // ----------------------------------------
 // Argument:  min
-// Requested: py_native_out
+// Requested: py_native_&_out
 // Match:     py_default
 // ----------------------------------------
 // Argument:  max
-// Requested: py_native_out
+// Requested: py_native_&_out
 // Match:     py_default
 static char PY_getMinMax__doc__[] =
 "documentation"

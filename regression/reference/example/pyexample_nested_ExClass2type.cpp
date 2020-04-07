@@ -151,7 +151,8 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // ExClass2(const string * name +intent(in)+len_trim(trim_name))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_string_in
+// Requested: py_string_*_in
+// Match:     py_string_in
 /**
  * \brief constructor
  *
@@ -311,7 +312,8 @@ PP_GetNameLength(
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
 // ----------------------------------------
 // Argument:  in
-// Exact:     py_shadow_in
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PP_get_class1__doc__[] =
 "documentation"
 ;

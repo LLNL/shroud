@@ -846,7 +846,7 @@ fail:
 // bool returnBoolAndOthers(int * flag +intent(out))
 // ----------------------------------------
 // Argument:  flag
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"

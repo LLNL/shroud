@@ -110,7 +110,8 @@ PY_passClassByValue(
 // int useclass(const Class1 * arg +intent(in))
 // ----------------------------------------
 // Argument:  arg
-// Exact:     py_shadow_in
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PY_useclass__doc__[] =
 "documentation"
 ;

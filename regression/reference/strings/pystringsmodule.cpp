@@ -626,7 +626,8 @@ PY_getConstStringPtrOwnsAllocPattern(
 // void acceptStringConstReference(const std::string & arg1 +intent(in))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_in
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
@@ -666,7 +667,8 @@ PY_acceptStringConstReference(
 // void acceptStringReferenceOut(std::string & arg1 +intent(out))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_out
+// Requested: py_string_&_out
+// Match:     py_string_out
 static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
 ;
@@ -703,7 +705,8 @@ PY_acceptStringReferenceOut(
 // void acceptStringReference(std::string & arg1 +intent(inout))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_inout
+// Requested: py_string_&_inout
+// Match:     py_string_inout
 static char PY_acceptStringReference__doc__[] =
 "documentation"
 ;
@@ -749,7 +752,8 @@ PY_acceptStringReference(
 // void acceptStringPointer(std::string * arg1 +intent(inout))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_inout
+// Requested: py_string_*_inout
+// Match:     py_string_inout
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
@@ -792,10 +796,12 @@ PY_acceptStringPointer(
 // void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_string_out
+// Requested: py_string_&_out
+// Match:     py_string_out
 // ----------------------------------------
 // Argument:  arg2
-// Exact:     py_string_out
+// Requested: py_string_&_out
+// Match:     py_string_out
 static char PY_returnStrings__doc__[] =
 "documentation"
 ;

@@ -1212,7 +1212,11 @@ return 1;""",
                 self.check_dimension_blk(arg)
                 stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
-                stmts = ["py", arg_typemap.sgroup, intent]
+                spointer = arg.get_indirect()
+                stmts = ["py", arg_typemap.sgroup, spointer, intent]
+#                print("XXX ", " ".join(stmts))
+#                stmts = ["py", arg_typemap.sgroup, intent]
+#                print("    ", " ".join(stmts))
             if stmts is not None:
                 intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.

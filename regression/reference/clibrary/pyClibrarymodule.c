@@ -92,11 +92,11 @@ PY_PassByValue(
 // void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_*_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: py_native_out
+// Requested: py_native_*_out
 // Match:     py_default
 static char PY_PassByReference__doc__[] =
 "documentation"
@@ -137,10 +137,12 @@ PY_PassByReference(
 // Exact:     py_bool_in
 // ----------------------------------------
 // Argument:  arg2
-// Exact:     py_bool_out
+// Requested: py_bool_*_out
+// Match:     py_bool_out
 // ----------------------------------------
 // Argument:  arg3
-// Exact:     py_bool_inout
+// Requested: py_bool_*_inout
+// Match:     py_bool_inout
 static char PY_checkBool__doc__[] =
 "documentation"
 ;
