@@ -160,7 +160,7 @@ fail:
 // Exact:     py_struct_in_numpy
 // ----------------------------------------
 // Argument:  outbuf
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
 ;
@@ -535,7 +535,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  outbuf
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
 ;

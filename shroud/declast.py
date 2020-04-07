@@ -1053,7 +1053,7 @@ class Declaration(Node):
 
     def get_indirect(self):
         """Return indirect operators.
-        '*', '**', '&*'
+        '*', '**', '&*', '[]'
         """
         out = ''
         if self.declarator is None:

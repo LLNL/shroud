@@ -589,8 +589,8 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_out_charlen",
-                            "stmt1": "py_char_out_charlen"
+                            "stmt0": "py_char_*_out_charlen",
+                            "stmt1": "py_char_*_out_charlen"
                         }
                     },
                     "s1": {
@@ -1345,8 +1345,8 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_out_charlen",
-                            "stmt1": "py_char_out_charlen"
+                            "stmt0": "py_char_*_out_charlen",
+                            "stmt1": "py_char_*_out_charlen"
                         }
                     }
                 },

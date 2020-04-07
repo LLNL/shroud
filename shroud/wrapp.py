@@ -1196,15 +1196,12 @@ return 1;""",
                         format(arg.name))
                 stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg, mold]
             elif arg_typemap.sgroup == "char":
+                spointer = arg.get_indirect()
+                stmts = ["py", "char", spointer, intent]
                 charlen = arg.attrs["charlen"]
                 if charlen:
                     fmt_arg.charlen = charlen
-                    stmts = ["py", "char", intent, "charlen"]
-                else:
-                    spointer = arg.get_indirect_stmt()
-                    if spointer in ["scalar", "pointer"]:
-                        spointer = "" # XXX - preserve old behavior
-                    stmts = ["py", "char", spointer, intent]
+                    stmts.append("charlen")
             elif arg_typemap.base == "struct":
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
@@ -3875,21 +3872,21 @@ py_statements = [
 ########################################
 # char *
     dict(
-        name="py_char_in",
+        name="py_char_*_in",
         c_local_var="pointer",
         declare=[
             "{c_const}char * {c_var};",
         ],
     ),
     dict(
-        name="py_char_out_charlen",
+        name="py_char_*_out_charlen",
         c_local_var="pointer",
         pre_call=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
     ),
     dict(
-        name="py_char_inout",
+        name="py_char_*_inout",
         c_local_var="pointer",
         declare=[
             "{c_const}char * {c_var};",

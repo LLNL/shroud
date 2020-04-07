@@ -95,10 +95,10 @@ PY_returnChar(
 // void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 // ----------------------------------------
 // Argument:  dest
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 // ----------------------------------------
 // Argument:  src
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_passCharPtr__doc__[] =
 "documentation"
 ;
@@ -142,7 +142,7 @@ PY_passCharPtr(
 // void passCharPtrInOut(char * s +intent(inout))
 // ----------------------------------------
 // Argument:  s
-// Exact:     py_char_inout
+// Exact:     py_char_*_inout
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -830,7 +830,7 @@ PY_returnStrings(
 // void explicit1(char * name +intent(in)+len_trim(AAlen))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_explicit1__doc__[] =
 "documentation"
 ;

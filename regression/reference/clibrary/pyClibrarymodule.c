@@ -195,10 +195,10 @@ fail:
 // char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 // ----------------------------------------
 // Argument:  arg2
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
@@ -234,7 +234,7 @@ PY_Function4a(
 // void acceptName(const char * name +intent(in))
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_acceptName__doc__[] =
 "documentation"
 ;
@@ -263,7 +263,7 @@ PY_acceptName(
 // void passCharPtrInOut(char * s +intent(inout))
 // ----------------------------------------
 // Argument:  s
-// Exact:     py_char_inout
+// Exact:     py_char_*_inout
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -303,7 +303,7 @@ PY_passCharPtrInOut(
 // void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 // ----------------------------------------
 // Argument:  name1
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 static char PY_returnOneName__doc__[] =
 "documentation"
 ;
@@ -339,10 +339,10 @@ PY_returnOneName(
 // void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
 // ----------------------------------------
 // Argument:  name1
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 // ----------------------------------------
 // Argument:  name2
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 static char PY_returnTwoNames__doc__[] =
 "documentation"
 ;
@@ -379,7 +379,7 @@ PY_returnTwoNames(
 // void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)
 // ----------------------------------------
 // Argument:  text
-// Exact:     py_char_out_charlen
+// Exact:     py_char_*_out_charlen
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
 ;
@@ -413,7 +413,7 @@ PY_ImpliedTextLen(
 // int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
 // ----------------------------------------
 // Argument:  text
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_ImpliedLen__doc__[] =
 "documentation"
 ;
@@ -457,7 +457,7 @@ PY_ImpliedLen(
 // int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)
 // ----------------------------------------
 // Argument:  text
-// Exact:     py_char_in
+// Exact:     py_char_*_in
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
 ;
