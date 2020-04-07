@@ -36,6 +36,7 @@ PyObject *PY_init_testnames_std(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void function1()
 static char PY_function1__doc__[] =
 "documentation"
 ;
@@ -46,12 +47,12 @@ PY_function1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void function1()
 // splicer begin function.function1
 // splicer code for function.function1
 // splicer end function.function1
 }
 
+// void function2()
 static char PY_function2__doc__[] =
 "documentation"
 ;
@@ -62,20 +63,23 @@ PY_function2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void function2()
 // splicer begin function.function2
     function2();
     Py_RETURN_NONE;
 // splicer end function.function2
 }
 
+// void function3a(int i +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_function3a_0(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void function3a(int i +intent(in)+value)
 // splicer begin function.function3a_0
     int i;
     const char *SHT_kwlist[] = {
@@ -91,13 +95,17 @@ PY_function3a_0(
 // splicer end function.function3a_0
 }
 
+// void function3a(long i +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_function3a_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void function3a(long i +intent(in)+value)
 // splicer begin function.function3a_1
     long i;
     const char *SHT_kwlist[] = {
@@ -113,6 +121,10 @@ PY_function3a_1(
 // splicer end function.function3a_1
 }
 
+// int function4(const std::string & rv +intent(in))
+// ----------------------------------------
+// Argument:  rv
+// Exact:     py_string_in
 static char PY_function4__doc__[] =
 "documentation"
 ;
@@ -123,7 +135,6 @@ PY_function4(
   PyObject *args,
   PyObject *kwds)
 {
-// int function4(const std::string & rv +intent(in))
 // splicer begin function.function4
     const char * rv;
     const char *SHT_kwlist[] = {
@@ -147,6 +158,7 @@ PY_function4(
 // splicer end function.function4
 }
 
+// void function5() +name(fiveplus)
 static char PY_fiveplus__doc__[] =
 "documentation"
 ;
@@ -157,13 +169,20 @@ PY_fiveplus(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void function5() +name(fiveplus)
 // splicer begin function.fiveplus
     fiveplus();
     Py_RETURN_NONE;
 // splicer end function.fiveplus
 }
 
+// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+// ----------------------------------------
+// Argument:  name
+// Exact:     py_string_inout
+// ----------------------------------------
+// Argument:  value
+// Requested: py_native_out
+// Match:     py_default
 static char PY_TestMultilineSplicer__doc__[] =
 "documentation"
 ;
@@ -177,13 +196,21 @@ PY_TestMultilineSplicer(
   PyObject *args,
   PyObject *kwds)
 {
-// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 // splicer begin function.test_multiline_splicer
 // py line 1
 // py line 2
 // splicer end function.test_multiline_splicer
 }
 
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_in
+// Match:     py_default
 /**
  * \brief Function template with two template parameters.
  *
@@ -194,7 +221,6 @@ PY_name_instantiation1(
   PyObject *args,
   PyObject *kwds)
 {
-// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 // splicer begin function.function_tu_0
     int arg1;
     long arg2;
@@ -212,6 +238,15 @@ PY_name_instantiation1(
 // splicer end function.function_tu_0
 }
 
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_in
+// Match:     py_default
 /**
  * \brief Function template with two template parameters.
  *
@@ -222,7 +257,6 @@ PY_FunctionTU_instantiation2(
   PyObject *args,
   PyObject *kwds)
 {
-// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // splicer begin function.function_tu_instantiation2
     float arg1;
     double arg2;
@@ -240,6 +274,7 @@ PY_FunctionTU_instantiation2(
 // splicer end function.function_tu_instantiation2
 }
 
+// int UseImplWorker()
 static char PY_UseImplWorker_instantiation3__doc__[] =
 "documentation"
 ;
@@ -254,7 +289,6 @@ PY_UseImplWorker_instantiation3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int UseImplWorker()
 // splicer begin function.use_impl_worker_instantiation3
     PyObject * SHTPy_rv = nullptr;
 

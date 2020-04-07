@@ -30,6 +30,7 @@
 // splicer begin namespace.ns1.additional_functions
 // splicer end namespace.ns1.additional_functions
 
+// void init_ns1()
 static char PY_init_ns1__doc__[] =
 "documentation"
 ;
@@ -40,7 +41,6 @@ PY_init_ns1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void init_ns1()
 // splicer begin namespace.ns1.function.init_ns1
     ns1::init_ns1();
     Py_RETURN_NONE;

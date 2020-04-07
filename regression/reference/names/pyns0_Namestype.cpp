@@ -36,6 +36,7 @@ PY_Names_tp_del (PY_Names *self)
 // splicer end namespace.ns0.class.Names.type.del
 }
 
+// void method1()
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -46,13 +47,13 @@ PY_method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void method1()
 // splicer begin namespace.ns0.class.Names.method.method1
     self->myobj->method1();
     Py_RETURN_NONE;
 // splicer end namespace.ns0.class.Names.method.method1
 }
 
+// void method2()
 static char PY_method2__doc__[] =
 "documentation"
 ;
@@ -63,7 +64,6 @@ PY_method2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void method2()
 // splicer begin namespace.ns0.class.Names.method.method2
     self->myobj->method2();
     Py_RETURN_NONE;

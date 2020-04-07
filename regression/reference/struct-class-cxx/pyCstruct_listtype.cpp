@@ -40,13 +40,26 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // splicer end class.Cstruct_list.type.del
 }
 
+// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
+// ----------------------------------------
+// Argument:  nitems
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  ivalue
+// Exact:     py_native_in_dimension_list
+// ----------------------------------------
+// Argument:  dvalue
+// Exact:     py_native_in_dimension_list
+// ----------------------------------------
+// Argument:  svalue
+// Exact:     py_char_**_in
 static int
 PY_Cstruct_list_tp_init(
   PY_Cstruct_list *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems;
     STR_SHROUD_converter_value SHPy_ivalue;
@@ -94,20 +107,18 @@ PY_Cstruct_list_tp_init(
 // splicer begin class.Cstruct_list.impl.after_methods
 // splicer end class.Cstruct_list.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct_list_nitems_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->nitems);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct_list_nitems_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -116,11 +127,10 @@ static int PY_Cstruct_list_nitems_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_native_*_list
 static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_list
-    // Found:     py_descr_native_*_list
     if (self->obj->ivalue == nullptr) {
         Py_RETURN_NONE;
     }
@@ -132,11 +142,10 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
+// Exact:     py_descr_native_*_list
 static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_list
-    // Found:     py_descr_native_*_list
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
     if (STR_SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
@@ -150,11 +159,10 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_native_*_list
 static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_list
-    // Found:     py_descr_native_*_list
     if (self->obj->dvalue == nullptr) {
         Py_RETURN_NONE;
     }
@@ -166,11 +174,10 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
+// Exact:     py_descr_native_*_list
 static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_list
-    // Found:     py_descr_native_*_list
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
     if (STR_SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
@@ -184,11 +191,10 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_char_**_list
 static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_char_**_list
-    // Found:     py_descr_char_**_list
     if (self->obj->svalue == nullptr) {
         Py_RETURN_NONE;
     }
@@ -200,11 +206,10 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
+// Exact:     py_descr_char_**_list
 static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_char_**_list
-    // Found:     py_descr_char_**_list
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->svalue_obj);
     if (STR_SHROUD_get_from_object_charptr(value, &cvalue) == 0) {

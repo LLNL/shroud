@@ -43,13 +43,23 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // splicer end class.Cstruct_numpy.type.del
 }
 
+// Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
+// ----------------------------------------
+// Argument:  nitems
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  ivalue
+// Exact:     py_native_in_dimension_numpy
+// ----------------------------------------
+// Argument:  dvalue
+// Exact:     py_native_in_dimension_numpy
 static int
 PY_Cstruct_numpy_tp_init(
   PY_Cstruct_numpy *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_numpy(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_numpy_ctor)
 // splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
     int nitems;
     STR_SHROUD_converter_value SHPy_ivalue;
@@ -90,20 +100,18 @@ PY_Cstruct_numpy_tp_init(
 // splicer begin class.Cstruct_numpy.impl.after_methods
 // splicer end class.Cstruct_numpy.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->nitems);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -112,11 +120,10 @@ static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *valu
     return 0;
 }
 
+// Exact:     py_descr_native_*_numpy
 static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_numpy
-    // Found:     py_descr_native_*_numpy
     if (self->obj->ivalue == nullptr) {
         Py_RETURN_NONE;
     }
@@ -134,11 +141,10 @@ static PyObject *PY_Cstruct_numpy_ivalue_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
+// Exact:     py_descr_native_*_numpy
 static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_numpy
-    // Found:     py_descr_native_*_numpy
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->ivalue_obj);
     if (STR_SHROUD_get_from_object_int_numpy(value, &cvalue) == 0) {
@@ -152,11 +158,10 @@ static int PY_Cstruct_numpy_ivalue_setter(PY_Cstruct_numpy *self, PyObject *valu
     return 0;
 }
 
+// Exact:     py_descr_native_*_numpy
 static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_numpy
-    // Found:     py_descr_native_*_numpy
     if (self->obj->dvalue == nullptr) {
         Py_RETURN_NONE;
     }
@@ -174,11 +179,10 @@ static PyObject *PY_Cstruct_numpy_dvalue_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
+// Exact:     py_descr_native_*_numpy
 static int PY_Cstruct_numpy_dvalue_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_*_numpy
-    // Found:     py_descr_native_*_numpy
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->dvalue_obj);
     if (STR_SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {

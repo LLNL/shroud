@@ -36,13 +36,21 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // splicer end class.Cstruct1.type.del
 }
 
+// Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
+// ----------------------------------------
+// Argument:  ifield
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  dfield
+// Requested: py_native_in
+// Match:     py_default
 static int
 PY_Cstruct1_tp_init(
   PY_Cstruct1 *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
 // splicer begin class.Cstruct1.method.cstruct1_ctor
     int ifield;
     double dfield;
@@ -73,20 +81,18 @@ PY_Cstruct1_tp_init(
 // splicer begin class.Cstruct1.impl.after_methods
 // splicer end class.Cstruct1.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->ifield);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -95,20 +101,18 @@ static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyFloat_FromDouble(self->obj->dfield);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct1_dfield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     double rv = PyFloat_AsDouble(value);
     if (PyErr_Occurred()) {
         return -1;

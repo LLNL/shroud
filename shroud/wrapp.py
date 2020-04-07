@@ -728,12 +728,23 @@ return 1;""",
         else:
             fmt.PYN_typenum = arg_typemap.PYN_typenum
 
+        stmts = ['py', 'descr',
+                 arg_typemap.sgroup,
+                 ast.get_indirect(),
+        ]
+        if have_array:
+            stmts.append(options.PY_array_arg)
+        stmt0 = typemap.compute_name(stmts)
+        intent_blk = lookup_stmts(stmts)
+        output = fileinfo.GetSetBody
         ########################################
         # getter
-        output = fileinfo.GetSetBody
+        output.append("")
+        if options.debug:
+            self.document_stmts(output, stmt0, intent_blk.name)
         append_format(
             output,
-            "\nstatic PyObject *{PY_getter}("
+            "static PyObject *{PY_getter}("
             "{PY_PyObject} *{PY_param_self},"
             "\t void *SHROUD_UNUSED(closure))\n"
             "{{+",
@@ -745,20 +756,9 @@ return 1;""",
         else:
             fmt.ctor = "UUUctor"
 
-        stmts = ['py', 'descr',
-                 arg_typemap.sgroup,
-                 ast.get_indirect(),
-        ]
-        if have_array:
-            stmts.append(options.PY_array_arg)
-        stmts0 = "_".join(stmts)
-        intent_blk = lookup_stmts(stmts)
         if intent_blk.name == 'py_default':
             intent_blk = None
         if intent_blk:
-            if options.debug:
-                output.append("// Requested: " + stmts0)
-                output.append("// Found:     " + intent_blk.name)
             self.update_descr_code_blocks(
                 "getter", intent_blk, fmt, output)
         else:
@@ -774,9 +774,12 @@ return 1;""",
                 options.PY_member_setter_template, fmt_var
             )
 
+            output.append("")
+            if options.debug:
+                self.document_stmts(output, stmt0, intent_blk.name)
             append_format(
                 output,
-                "\nstatic int {PY_setter}("
+                "static int {PY_setter}("
                 "{PY_PyObject} *{PY_param_self}, PyObject *{py_var},"
                 "\t void *SHROUD_UNUSED(closure))\n{{+",
                 fmt
@@ -785,9 +788,6 @@ return 1;""",
             if intent_blk:
                 fmt.cast_type = ast.as_cast(
                     language=self.language)
-                if options.debug:
-                    output.append("// Requested: " + stmts0)
-                    output.append("// Found:     " + intent_blk.name)
                 whelpers.add_to_PyList_helper(node.ast)
                 self.update_descr_code_blocks(
                     "setter", intent_blk, fmt, output)
@@ -810,6 +810,18 @@ return 1;""",
             )
         )  # closure
 
+    def document_stmts(self, output, stmt0, stmt1):
+        """A comments to show which py_statements were used.
+        """
+        if stmt0 == stmt1:
+            output.append(
+                "// Exact:     " + stmt0)
+        else:
+            output.append(
+                "// Requested: " + stmt0)
+            output.append(
+                "// Match:     " + stmt1)
+        
     def update_descr_code_blocks(self, name, stmts, fmt, output):
         """Format descr code.
 
@@ -1105,6 +1117,7 @@ return 1;""",
         post_call_code = []  # Create objects passed to PyBuildValue
         cleanup_code = []
         fail_code = []
+        stmts_comments = []
 
         cxx_call_list = []
 
@@ -1208,6 +1221,12 @@ return 1;""",
                 # Useful for debugging.  Requested and found path.
                 fmt_arg.stmt0 = typemap.compute_name(stmts)
                 fmt_arg.stmt1 = intent_blk.name
+                # Add some debug comments to function.
+                stmts_comments.append(
+                    "// ----------------------------------------")
+                stmts_comments.append("// Argument:  " + arg_name)
+                self.document_stmts(
+                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
             # local_var - 'funcptr', 'pointer', or 'scalar'
             if intent_blk.c_local_var:
@@ -1675,10 +1694,12 @@ return 1;""",
 
         fmt.PY_ml_flags = "|".join(ml_flags)
         self.create_method(node, expose, is_ctor, fmt,
-                           PY_force, PY_impl, fileinfo)
+                           PY_force, PY_impl, stmts_comments,
+                           fileinfo)
 
     def create_method(self, node, expose, is_ctor, fmt,
-                      PY_force, PY_impl, fileinfo):
+                      PY_force, PY_impl, stmts_comments,
+                      fileinfo):
         """Format the function.
 
         Args:
@@ -1689,6 +1710,7 @@ return 1;""",
             fmt     - dictionary of format values.
             PY_force - list of inline splicer code.
             PY_impl - list of implementation code.
+            stmts_comments -
             fileinfo - FileTuple
         """
         if node:
@@ -1698,6 +1720,9 @@ return 1;""",
 
         body = fileinfo.MethodBody
         body.append("")
+        if node and node.options.debug:
+            body.append("// " + node.declgen)
+            body.extend(stmts_comments)
         if cpp_if:
             body.append("#" + node.cpp_if)
         if expose:
@@ -1741,8 +1766,6 @@ return 1;""",
         # produce several methods.
         # XXX - make splicer name customizable?
         #        self._create_splicer(fmt.function_name, body, PY_impl)
-        if node and node.options.debug:
-            body.append("// " + node.declgen)
         self._create_splicer(
             fmt.underscore_name +
             fmt.function_suffix +
@@ -2376,7 +2399,7 @@ return 1;""",
             body.append(-1)
 
             self.create_method(None, expose, is_ctor, fmt,
-                               None, body, fileinfo)
+                               None, body, [], fileinfo)
 
     def write_module_header(self, node):
         """Write the header for the module.

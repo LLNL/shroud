@@ -33,6 +33,7 @@ PyObject *PY_init_ns_nswork(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// const std::string & LastFunctionCalled() +deref(allocatable)
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -43,7 +44,6 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +deref(allocatable)
 // splicer begin function.last_function_called
     PyObject * SHTPy_rv = nullptr;
 
@@ -57,6 +57,7 @@ PY_LastFunctionCalled(
 // splicer end function.last_function_called
 }
 
+// void One()
 static char PY_One__doc__[] =
 "documentation"
 ;
@@ -67,7 +68,6 @@ PY_One(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void One()
 // splicer begin function.one
     One();
     Py_RETURN_NONE;

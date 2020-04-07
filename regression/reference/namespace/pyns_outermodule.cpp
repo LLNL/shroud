@@ -30,6 +30,7 @@
 // splicer begin namespace.outer.additional_functions
 // splicer end namespace.outer.additional_functions
 
+// void One()
 static char PY_One__doc__[] =
 "documentation"
 ;
@@ -40,7 +41,6 @@ PY_One(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void One()
 // splicer begin namespace.outer.function.one
     outer::One();
     Py_RETURN_NONE;

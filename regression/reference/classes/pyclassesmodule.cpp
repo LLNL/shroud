@@ -31,6 +31,11 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -41,7 +46,6 @@ PY_directionFunc(
   PyObject *args,
   PyObject *kwds)
 {
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 // splicer begin function.direction_func
     int arg;
     const char *SHT_kwlist[] = {
@@ -67,6 +71,10 @@ PY_directionFunc(
 // splicer end function.direction_func
 }
 
+// void passClassByValue(Class1 arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_shadow_in
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -81,7 +89,6 @@ PY_passClassByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// void passClassByValue(Class1 arg +intent(in)+value)
 // splicer begin function.pass_class_by_value
     PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -100,6 +107,10 @@ PY_passClassByValue(
 // splicer end function.pass_class_by_value
 }
 
+// int useclass(const Class1 * arg +intent(in))
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_shadow_in
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -110,7 +121,6 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// int useclass(const Class1 * arg +intent(in))
 // splicer begin function.useclass
     PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -134,6 +144,7 @@ PY_useclass(
 // splicer end function.useclass
 }
 
+// Class1 * getclass3()
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -144,7 +155,6 @@ PY_getclass3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1 * getclass3()
 // splicer begin function.getclass3
     classes::Class1 * SHCXX_rv = classes::getclass3();
 
@@ -156,6 +166,7 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
+// Class1 & getClassReference()
 static char PY_getClassReference__doc__[] =
 "documentation"
 ;
@@ -166,7 +177,6 @@ PY_getClassReference(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1 & getClassReference()
 // splicer begin function.get_class_reference
     classes::Class1 & SHCXX_rv = classes::getClassReference();
 
@@ -178,6 +188,11 @@ PY_getClassReference(
 // splicer end function.get_class_reference
 }
 
+// void set_global_flag(int arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_set_global_flag__doc__[] =
 "documentation"
 ;
@@ -188,7 +203,6 @@ PY_set_global_flag(
   PyObject *args,
   PyObject *kwds)
 {
-// void set_global_flag(int arg +intent(in)+value)
 // splicer begin function.set_global_flag
     int arg;
     const char *SHT_kwlist[] = {
@@ -204,6 +218,7 @@ PY_set_global_flag(
 // splicer end function.set_global_flag
 }
 
+// int get_global_flag()
 static char PY_get_global_flag__doc__[] =
 "documentation"
 ;
@@ -214,7 +229,6 @@ PY_get_global_flag(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int get_global_flag()
 // splicer begin function.get_global_flag
     PyObject * SHTPy_rv = nullptr;
 
@@ -227,6 +241,7 @@ PY_get_global_flag(
 // splicer end function.get_global_flag
 }
 
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -237,7 +252,6 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
     PyObject * SHTPy_rv = nullptr;
 

@@ -36,13 +36,21 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // splicer end class.Cstruct_as_class.type.del
 }
 
+// Cstruct_as_class(int x1 +intent(in)+optional(0), int y1 +intent(in)+optional(0)) +name(Cstruct_as_class_ctor)
+// ----------------------------------------
+// Argument:  x1
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  y1
+// Requested: py_native_in
+// Match:     py_default
 static int
 PY_Cstruct_as_class_tp_init(
   PY_Cstruct_as_class *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_as_class(int x1 +intent(in)+optional(0), int y1 +intent(in)+optional(0)) +name(Cstruct_as_class_ctor)
 // splicer begin class.Cstruct_as_class.method.cstruct_as_class_ctor
     int x1;
     int y1;
@@ -74,20 +82,18 @@ PY_Cstruct_as_class_tp_init(
 // splicer begin class.Cstruct_as_class.impl.after_methods
 // splicer end class.Cstruct_as_class.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct_as_class_x1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->x1);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;
@@ -96,20 +102,18 @@ static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *va
     return 0;
 }
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct_as_class_y1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     PyObject * rv = PyInt_FromLong(self->obj->y1);
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct_as_class_y1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_native_
-    // Found:     py_descr_native
     int rv = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
         return -1;

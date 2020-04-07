@@ -38,13 +38,16 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // splicer end class.Cstruct_ptr.type.del
 }
 
+// Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
+// ----------------------------------------
+// Argument:  cfield
+// Exact:     py_char_in
 static int
 PY_Cstruct_ptr_tp_init(
   PY_Cstruct_ptr *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
     STR_SHROUD_converter_value SHPy_cfield;
     char *SHT_kwlist[] = {
@@ -73,11 +76,10 @@ PY_Cstruct_ptr_tp_init(
 // splicer begin class.Cstruct_ptr.impl.after_methods
 // splicer end class.Cstruct_ptr.impl.after_methods
 
+// Exact:     py_descr_char_*
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_char_*
-    // Found:     py_descr_char_*
     if (self->obj->cfield == NULL) {
         Py_RETURN_NONE;
     }
@@ -89,11 +91,10 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
+// Exact:     py_descr_char_*
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
-    // Requested: py_descr_char_*
-    // Found:     py_descr_char_*
     STR_SHROUD_converter_value cvalue;
     Py_XDECREF(self->cfield_obj);
     if (STR_SHROUD_get_from_object_char(value, &cvalue) == 0) {
