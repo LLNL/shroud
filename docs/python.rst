@@ -128,7 +128,7 @@ The template for a function is:
         PyObject *{PY_param_args},
         PyObject *{PY_param_kwds})
     {
-        {decl}
+        {declare}
 
         if (!PyArg_ParseTupleAndKeywords(
             {PY_param_args}, {PY_param_kwds}, "{PyArg_format}",
@@ -145,6 +145,7 @@ The template for a function is:
           {pre_call}    pre_call declares variables for arguments
 
           call
+          {post_call}
 
           per argument
             // Create Python object from C++
@@ -172,13 +173,22 @@ c_helper
 ^^^^^^^^
 
 Blank delimited list of helper functions required for the wrapper.
-The name may contain format strings and will be expand before it is used.
-ex. ``to_PyList_{cxx_type}``.
+The name may contain format strings and will be expand before it is
+used.  ex. ``to_PyList_{cxx_type}``.
 The function associated with the helper will be named *hnamefunc0*,
 *hnamefunc1*, ... for each helper listed.
 
-decl
-^^^^
+declare
+^^^^^^^
+
+Code needed to declare local variable.
+
+When defined, *typemap.PY_format* is append to the
+format string for ``PyArg_ParseTupleAndKeywords`` and
+*c_var* is used to hold the parsed.
+
+If the *declare* block is not defined, a local variable is defined of
+the same type as the function argument.
 
 pre_call
 ^^^^^^^^
@@ -193,6 +203,8 @@ Used to convert C values into C++ values:
 
     {var} = PyObject_IsTrue({var_obj});
 
+Will not be added for class constructor objects.
+since there is no need to build return values.
 
 post_parse
 ^^^^^^^^^^
@@ -227,6 +239,26 @@ When set to ``True``, ``PyArg_ParseTupleAndKeyword`` will
 return the ``PyObject`` associated with the argument.
 The *post_parse* or *pre_call* will operate on the object.
 Used with NumPy.
+
+parse_format
+^^^^^^^^^^^^
+
+Works together with *parse_args* to describe how to parse
+``PyObject`` in ``PyArg_ParseTupleAndKeywords``.
+*parse_format* is used in the *format* arguments and
+*parse_args* is append to the call as a vararg.
+
+.. code-block:: c
+
+    int PyArg_ParseTupleAndKeywords(PyObject *args, PyObject *kw,
+        const char *format, char *keywords[], ...)
+
+parse_args
+^^^^^^^^^^
+
+A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
+Used with *parse_format*.
+    
 
 Predefined Types
 ----------------

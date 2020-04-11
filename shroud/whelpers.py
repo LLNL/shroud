@@ -644,18 +644,22 @@ def add_to_PyList_helper(arg):
     ########################################
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
-    if name not in CHelpers:
+    if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = ntypemap.c_type
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.Py_ctor = ntypemap.PY_ctor.format(
+            c_deref="", c_var="in[i]",
+            cxx_var="in[i]", cxx_member="X")
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
 
     ########################################
     # Used with intent(inout)
     name = "update_PyList_" + ntypemap.c_type
-    if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    if name not in CHelpers and ntypemap.PY_ctor is not None:
+        fmt.Py_ctor = ntypemap.PY_ctor.format(
+            c_deref="", c_var="in[i]",
+            cxx_var="in[i]", cxx_member="X")
         fmt.hname = name
         fmt.hnameproto = wformat(
             "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)

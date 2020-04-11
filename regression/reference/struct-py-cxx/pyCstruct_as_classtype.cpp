@@ -36,15 +36,13 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // splicer end class.Cstruct_as_class.type.del
 }
 
-// Cstruct_as_class(int x1 +intent(in)+optional(0), int y1 +intent(in)+optional(0)) +name(Cstruct_as_class_ctor)
+// Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)
 // ----------------------------------------
 // Argument:  x1
-// Requested: py_native_in
-// Match:     py_default
+// Exact:     py_ctor_native
 // ----------------------------------------
 // Argument:  y1
-// Requested: py_native_in
-// Match:     py_default
+// Exact:     py_ctor_native
 static int
 PY_Cstruct_as_class_tp_init(
   PY_Cstruct_as_class *self,
@@ -52,15 +50,13 @@ PY_Cstruct_as_class_tp_init(
   PyObject *kwds)
 {
 // splicer begin class.Cstruct_as_class.method.cstruct_as_class_ctor
-    int x1;
-    int y1;
+    int x1 = 0;
+    int y1 = 0;
     const char *SHT_kwlist[] = {
         "x1",
         "y1",
         nullptr };
 
-    x1 = 0;
-    y1 = 0;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|ii:Cstruct_as_class_ctor", const_cast<char **>(SHT_kwlist), 
         &x1, &y1))
@@ -72,10 +68,12 @@ PY_Cstruct_as_class_tp_init(
         return -1;
     }
     self->idtor = 1;
-    // initialize fields
+
+    // post_call - initialize fields
     Cstruct_as_class *SH_obj = self->obj;
     SH_obj->x1 = x1;
     SH_obj->y1 = y1;
+
     return 0;
 // splicer end class.Cstruct_as_class.method.cstruct_as_class_ctor
 }

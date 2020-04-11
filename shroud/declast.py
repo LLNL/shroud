@@ -916,6 +916,10 @@ class Declaration(Node):
     """
     specifier = const  int
     init =         a  *a   a=1
+
+    attrs     - Attributes set by the user.
+    metaattrs - Attributes set by Shroud.
+        struct_member - map ctor argument to struct member.
     """
 
     fortran_ranks = [
@@ -940,6 +944,7 @@ class Declaration(Node):
         self.init = None  # initial value
         self.template_arguments = []
         self.attrs = collections.defaultdict(lambda: None)
+        self.metaattrs = collections.defaultdict(lambda: None)
 
         self.func_const = False
         self.typemap = None
@@ -1698,6 +1703,7 @@ def create_voidstar(ntypemap, name, const=False):
 def create_struct_ctor(cls):
     """Create a ctor function for a struct (aka C++ class).
     Use with PY_struct_arg==class.
+    Used as __init__ function.
     """
     name = cls.name + "_ctor"
     ast = Declaration()

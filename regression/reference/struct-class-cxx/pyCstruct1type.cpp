@@ -36,15 +36,13 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // splicer end class.Cstruct1.type.del
 }
 
-// Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
+// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 // ----------------------------------------
 // Argument:  ifield
-// Requested: py_native_in
-// Match:     py_default
+// Exact:     py_ctor_native
 // ----------------------------------------
 // Argument:  dfield
-// Requested: py_native_in
-// Match:     py_default
+// Exact:     py_ctor_native
 static int
 PY_Cstruct1_tp_init(
   PY_Cstruct1 *self,
@@ -52,15 +50,13 @@ PY_Cstruct1_tp_init(
   PyObject *kwds)
 {
 // splicer begin class.Cstruct1.method.cstruct1_ctor
-    int ifield;
-    double dfield;
+    int ifield = 0;
+    double dfield = 0;
     const char *SHT_kwlist[] = {
         "ifield",
         "dfield",
         nullptr };
 
-    ifield = 0;
-    dfield = 0;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|id:Cstruct1_ctor",
         const_cast<char **>(SHT_kwlist), &ifield, &dfield))
         return -1;
@@ -71,10 +67,12 @@ PY_Cstruct1_tp_init(
         return -1;
     }
     self->idtor = 1;
-    // initialize fields
+
+    // post_call - initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;
     SH_obj->dfield = dfield;
+
     return 0;
 // splicer end class.Cstruct1.method.cstruct1_ctor
 }

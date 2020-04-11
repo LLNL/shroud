@@ -40,20 +40,19 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // splicer end class.Cstruct_list.type.del
 }
 
-// Cstruct_list(int nitems +intent(in)+optional(0), int * ivalue +dimension(nitems+nitems)+intent(in)+optional(0), double * dvalue +dimension(nitems*TWO)+intent(in)+optional(0), char * * svalue +dimension(nitems)+intent(in)+optional(0)) +name(Cstruct_list_ctor)
+// Cstruct_list(int nitems +intent(in), int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)
 // ----------------------------------------
 // Argument:  nitems
-// Requested: py_native_in
-// Match:     py_default
+// Exact:     py_ctor_native
 // ----------------------------------------
 // Argument:  ivalue
-// Exact:     py_native_in_dimension_list
+// Exact:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  dvalue
-// Exact:     py_native_in_dimension_list
+// Exact:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  svalue
-// Exact:     py_char_**_in
+// Exact:     py_ctor_char_**
 static int
 PY_Cstruct_list_tp_init(
   PY_Cstruct_list *self,
@@ -61,10 +60,10 @@ PY_Cstruct_list_tp_init(
   PyObject *kwds)
 {
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
-    int nitems;
-    STR_SHROUD_converter_value SHPy_ivalue;
-    STR_SHROUD_converter_value SHPy_dvalue;
-    STR_SHROUD_converter_value SHPy_svalue;
+    int nitems = 0;
+    STR_SHROUD_converter_value SHPy_ivalue = { NULL, NULL, 0 };
+    STR_SHROUD_converter_value SHPy_dvalue = { NULL, NULL, 0 };
+    STR_SHROUD_converter_value SHPy_svalue = { NULL, NULL, 0 };
     char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -72,13 +71,6 @@ PY_Cstruct_list_tp_init(
         "svalue",
         NULL };
 
-    nitems = 0;
-    SHPy_ivalue.obj = NULL;
-    SHPy_ivalue.data = NULL;
-    SHPy_dvalue.obj = NULL;
-    SHPy_dvalue.data = NULL;
-    SHPy_svalue.obj = NULL;
-    SHPy_svalue.data = NULL;
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&O&:Cstruct_list_ctor", SHT_kwlist, &nitems,
         STR_SHROUD_get_from_object_int_list, &SHPy_ivalue,
@@ -92,15 +84,17 @@ PY_Cstruct_list_tp_init(
         return -1;
     }
     self->idtor = 3;
-    // initialize fields
+
+    // post_call - initialize fields
     Cstruct_list *SH_obj = self->obj;
     SH_obj->nitems = nitems;
     SH_obj->ivalue = (int *) SHPy_ivalue.data;
-    SH_obj->dvalue = (double *) SHPy_dvalue.data;
-    SH_obj->svalue = (char * *) SHPy_svalue.data;
     self->ivalue_obj = SHPy_ivalue.obj;  // steal reference
+    SH_obj->dvalue = (double *) SHPy_dvalue.data;
     self->dvalue_obj = SHPy_dvalue.obj;  // steal reference
+    SH_obj->svalue = (char **) SHPy_svalue.data;
     self->svalue_obj = SHPy_svalue.obj;  // steal reference
+
     return 0;
 // splicer end class.Cstruct_list.method.cstruct_list_ctor
 }

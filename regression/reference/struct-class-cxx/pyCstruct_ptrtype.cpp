@@ -38,10 +38,10 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // splicer end class.Cstruct_ptr.type.del
 }
 
-// Cstruct_ptr(char * cfield +intent(in)+optional(0)) +name(Cstruct_ptr_ctor)
+// Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
 // ----------------------------------------
 // Argument:  cfield
-// Exact:     py_char_*_in
+// Exact:     py_ctor_char_*
 static int
 PY_Cstruct_ptr_tp_init(
   PY_Cstruct_ptr *self,
@@ -49,13 +49,11 @@ PY_Cstruct_ptr_tp_init(
   PyObject *kwds)
 {
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
-    STR_SHROUD_converter_value SHPy_cfield;
+    STR_SHROUD_converter_value SHPy_cfield = { nullptr, nullptr, 0 };
     const char *SHT_kwlist[] = {
         "cfield",
         nullptr };
 
-    SHPy_cfield.obj = nullptr;
-    SHPy_cfield.data = nullptr;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&:Cstruct_ptr_ctor",
         const_cast<char **>(SHT_kwlist), 
         STR_SHROUD_get_from_object_char, &SHPy_cfield))
@@ -67,10 +65,12 @@ PY_Cstruct_ptr_tp_init(
         return -1;
     }
     self->idtor = 2;
-    // initialize fields
+
+    // post_call - initialize fields
     Cstruct_ptr *SH_obj = self->obj;
     SH_obj->cfield = static_cast<char *>(SHPy_cfield.data);
     self->cfield_obj = SHPy_cfield.obj;  // steal reference
+
     return 0;
 // splicer end class.Cstruct_ptr.method.cstruct_ptr_ctor
 }

@@ -341,6 +341,7 @@
                                 "_fmtargs": {
                                     "dfield": {
                                         "fmtpy": {
+                                            "PY_member_object": "XXXPY_member_object",
                                             "c_const": "",
                                             "c_decl": "double dfield",
                                             "c_deref": "",
@@ -352,15 +353,17 @@
                                             "cxx_type": "double",
                                             "cxx_var": "dfield",
                                             "data_var": "SHData_dfield",
+                                            "field_name": "dfield",
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
-                                            "stmt0": "py_native_in",
-                                            "stmt1": "py_default"
+                                            "stmt0": "py_ctor_native",
+                                            "stmt1": "py_ctor_native"
                                         }
                                     },
                                     "ifield": {
                                         "fmtpy": {
+                                            "PY_member_object": "XXXPY_member_object",
                                             "c_const": "",
                                             "c_decl": "int ifield",
                                             "c_deref": "",
@@ -372,11 +375,12 @@
                                             "cxx_type": "int",
                                             "cxx_var": "ifield",
                                             "data_var": "SHData_ifield",
+                                            "field_name": "ifield",
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
-                                            "stmt0": "py_native_in",
-                                            "stmt1": "py_default"
+                                            "stmt0": "py_ctor_native",
+                                            "stmt1": "py_ctor_native"
                                         }
                                     }
                                 },
@@ -400,6 +404,7 @@
                                         "vargs": "SHCXX_rv"
                                     }
                                 },
+                                "_generated": "struct_as_class_ctor",
                                 "ast": {
                                     "attrs": {
                                         "_constructor": true,
@@ -408,8 +413,7 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "optional": "0"
+                                                "intent": "in"
                                             },
                                             "declarator": {
                                                 "name": "ifield",
@@ -422,8 +426,7 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
-                                                "optional": "0"
+                                                "intent": "in"
                                             },
                                             "declarator": {
                                                 "name": "dfield",
@@ -441,7 +444,7 @@
                                     "typemap_name": "outer::Cstruct1"
                                 },
                                 "decl": "Cstruct1_ctor",
-                                "declgen": "Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)",
+                                "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
                                 "fmtdict": {
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",

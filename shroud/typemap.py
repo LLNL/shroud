@@ -1218,6 +1218,11 @@ def update_stmt_tree(stmts, tree, defaults):
             step["_key"] = "_".join(label)
         if "alias" in node:
             step['_node'] = nodes[node["alias"]]
+        elif "base" in node:
+            step['_node'] = node
+            scope = util.Scope(nodes[node["base"]]["scope"])
+            scope.update(node)
+            node["scope"] = scope
         else:
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])
