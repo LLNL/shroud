@@ -240,14 +240,6 @@ Set to ``True`` when a ``PyObject`` is created by *post_call*.
 This prevents ``Py_BuildValue`` from converting it into an Object.
 For example, when NumPy is used to create an object.
 
-parse_as_object
-^^^^^^^^^^^^^^^
-
-When set to ``True``, ``PyArg_ParseTupleAndKeyword`` will
-return the ``PyObject`` associated with the argument.
-The *post_parse* or *pre_call* will operate on the object.
-Used with NumPy.
-
 parse_format
 ^^^^^^^^^^^^
 
@@ -260,6 +252,31 @@ Works together with *parse_args* to describe how to parse
 
     int PyArg_ParseTupleAndKeywords(PyObject *args, PyObject *kw,
         const char *format, char *keywords[], ...)
+
+The simplest use is to pass the object directly through so that it
+can be operated on by *post_parse* or *pre_call* to convert the object
+into a C/C++ variable. For example, convert a ``PyObject`` into
+an ``int *``.
+
+.. code-block:: python
+
+    parse_format="O",
+    parse_args=["&{pytmp_var}"],
+    declare=[
+        "PyObject * {pytmp_var};",
+    ],
+
+The format field *pytmp_var* is created by Shroud, but must be
+declared if it is used.
+
+It can also be used to provide a *converter* function which converts
+the object:
+
+.. code-block:: python
+
+    parse_format="O&",
+    parse_args=["{hnamefunc0}", "&{py_var}"],
+
 
 parse_args
 ^^^^^^^^^^

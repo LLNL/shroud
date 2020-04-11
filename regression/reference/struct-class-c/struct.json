@@ -259,6 +259,7 @@
                                     "hnamefunc0": "STR_SHROUD_get_from_object_char",
                                     "numpy_type": "NPY_INTP",
                                     "py_var": "SHPy_cfield",
+                                    "pytmp_var": "SHTPy_cfield",
                                     "size_var": "SHSize_cfield",
                                     "stmt0": "py_ctor_char_*",
                                     "stmt1": "py_ctor_char_*"
@@ -422,6 +423,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems*TWO",
                                     "py_var": "SHPy_dvalue",
+                                    "pytmp_var": "SHTPy_dvalue",
                                     "size_var": "SHSize_dvalue",
                                     "stmt0": "py_ctor_native_*",
                                     "stmt1": "py_ctor_native_*"
@@ -450,6 +452,7 @@
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems+nitems",
                                     "py_var": "SHPy_ivalue",
+                                    "pytmp_var": "SHTPy_ivalue",
                                     "size_var": "SHSize_ivalue",
                                     "stmt0": "py_ctor_native_*",
                                     "stmt1": "py_ctor_native_*"
@@ -500,6 +503,7 @@
                                     "numpy_type": "NPY_INTP",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_svalue",
+                                    "pytmp_var": "SHTPy_svalue",
                                     "size_var": "SHSize_svalue",
                                     "stmt0": "py_ctor_char_**",
                                     "stmt1": "py_ctor_char_**"
@@ -817,6 +821,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_dvalue",
+                                    "pytmp_var": "SHTPy_dvalue",
                                     "size_var": "SHSize_dvalue",
                                     "stmt0": "py_ctor_native_*",
                                     "stmt1": "py_ctor_native_*"
@@ -845,6 +850,7 @@
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_ivalue",
+                                    "pytmp_var": "SHTPy_ivalue",
                                     "size_var": "SHSize_ivalue",
                                     "stmt0": "py_ctor_native_*",
                                     "stmt1": "py_ctor_native_*"

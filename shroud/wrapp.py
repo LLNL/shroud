@@ -1311,16 +1311,10 @@ return 1;""",
                 if intent_blk.parse_format:
                     # Explicitly specified parse_format
                     # Must also define parse_args.
+                    fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
                     parse_format.append(intent_blk.parse_format)
                     for varg in intent_blk.parse_args:
                         append_format(parse_vargs, varg, fmt_arg)
-                elif intent_blk.parse_as_object:
-                    # Use NumPy/list with dimensioned or struct arguments.
-                    fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
-#                    fmt_arg.pydescr_var = "SHDPy_" + arg.name
-                    pass_var = fmt_arg.cxx_var
-                    parse_format.append("O")
-                    parse_vargs.append("&" + fmt_arg.pytmp_var)
                 elif arg_typemap.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
@@ -3405,7 +3399,6 @@ def lookup_stmts(path):
 
 class PyStmts(object):
     # c_local_var - "scalar", "pointer", "funcptr"
-    # parse_as_object - Uses pytmp_var in PyArg_Parse
     def __init__(
         self,
         name="py_default",
@@ -3414,7 +3407,7 @@ class PyStmts(object):
         create_out_decl=False,
         cxx_header=[], cxx_local_var=None,
         need_numpy=False,
-        object_created=False, parse_as_object=False,
+        object_created=False,
         parse_format=None, parse_args=[],
         declare=[], post_parse=[], pre_call=[],
         post_call=[],
@@ -3435,7 +3428,6 @@ class PyStmts(object):
         self.cxx_local_var = cxx_local_var
         self.need_numpy = need_numpy
         self.object_created = object_created
-        self.parse_as_object = parse_as_object
         self.parse_format = parse_format
         self.parse_args = parse_args
 
@@ -3473,7 +3465,6 @@ class PyStmts(object):
                 "cxx_local_var",
                 "need_numpy",
                 "object_created",
-                "parse_as_object",
                 "parse_format",
                 "parse_args",
                 "declare",
@@ -3609,7 +3600,8 @@ py_statements = [
     dict(
         name="py_native_in_dimension_numpy",
         need_numpy=True,
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var};",
@@ -3637,7 +3629,8 @@ py_statements = [
     dict(
         name="py_native_inout_dimension_numpy",
         need_numpy=True,
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var};",
@@ -3742,7 +3735,8 @@ py_statements = [
     dict(
         name="py_native_in_dimension_list",
         c_helper="from_PyObject_{cxx_type}",
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
@@ -3767,7 +3761,8 @@ py_statements = [
         name="py_native_inout_dimension_list",
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="from_PyObject_{cxx_type} to_PyList_{cxx_type}",
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
@@ -3886,7 +3881,8 @@ py_statements = [
     dict(
         name="py_char_**_in",
         c_helper="from_PyObject_char",
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
         declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",
@@ -3939,7 +3935,8 @@ py_statements = [
     dict(
         name="py_struct_in_numpy",
         need_numpy=True,
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var} = {nullptr};",
@@ -3972,7 +3969,8 @@ py_statements = [
     dict(
         name="py_struct_inout_numpy",
         need_numpy=True,
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
         declare=[
             "PyObject * {pytmp_var} = {nullptr};",
@@ -4196,7 +4194,8 @@ py_statements = [
         c_helper="from_PyObject_vector_{cxx_T}",
         c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
@@ -4259,7 +4258,8 @@ py_statements = [
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
         need_numpy=True,
-        parse_as_object=True,
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
         c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         declare=[
