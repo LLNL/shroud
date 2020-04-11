@@ -198,9 +198,9 @@ declare
 
 Code needed to declare local variable.
 
-When defined, *typemap.PY_format* is append to the
-format string for ``PyArg_ParseTupleAndKeywords`` and
-*c_var* is used to hold the parsed.
+.. When defined, *typemap.PY_format* is append to the
+   format string for ``PyArg_ParseTupleAndKeywords`` and
+   *c_var* is used to hold the parsed.
 
 If the *declare* block is not defined, a local variable is defined of
 the same type as the function argument.

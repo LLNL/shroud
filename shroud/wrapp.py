@@ -1627,6 +1627,7 @@ return 1;""",
             need_blank = True
         elif post_call_code and not is_ctor:
             # ctor does not need to build return values.
+            # Called as the __init__ method.
             if options.debug:
                 PY_code.append("")
                 PY_code.append("// post_call")
