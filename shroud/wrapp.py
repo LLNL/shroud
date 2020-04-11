@@ -737,6 +737,7 @@ return 1;""",
         stmt0 = typemap.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
         output = fileinfo.GetSetBody
+        whelpers.add_to_PyList_helper(ast)
         ########################################
         # getter
         output.append("")
@@ -4369,7 +4370,7 @@ py_statements = [
     dict(
         name="py_ctor_native_[]",
         base="base_py_ctor_array",
-        helper="XXXX",
+        c_helper="get_from_object_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
@@ -4380,7 +4381,7 @@ py_statements = [
     dict(
         name="py_ctor_char_[]",
         base="base_py_ctor_array",
-        helper="XXXX",
+        c_helper="get_from_object_char",
     ),
     dict(
         name="py_ctor_char_*",
