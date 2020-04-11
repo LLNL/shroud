@@ -3416,7 +3416,6 @@ class PyStmts(object):
         need_numpy=False,
         object_created=False, parse_as_object=False,
         parse_format=None, parse_args=[],
-        get_converter=None,
         declare=[], post_parse=[], pre_call=[],
         post_call=[],
         declare_capsule=[], post_call_capsule=[], fail_capsule=[],
@@ -3439,7 +3438,6 @@ class PyStmts(object):
         self.parse_as_object = parse_as_object
         self.parse_format = parse_format
         self.parse_args = parse_args
-        self.get_converter = get_converter
 
         self.declare = declare
         self.post_parse = post_parse
@@ -3478,7 +3476,6 @@ class PyStmts(object):
                 "parse_as_object",
                 "parse_format",
                 "parse_args",
-                "get_converter",
                 "declare",
                 "post_parse",
                 "pre_call",
@@ -3890,7 +3887,6 @@ py_statements = [
         name="py_char_**_in",
         c_helper="from_PyObject_char",
         parse_as_object=True,
-        get_converter="get_from_object_charptr",
         c_local_var="pointer",
         declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",

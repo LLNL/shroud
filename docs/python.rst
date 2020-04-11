@@ -68,14 +68,6 @@ Expression to get value from an object.
 ex. ``PyInt_AsLong({py_var})``
 Defaults to *None*.
 
-PY_get_converter
-^^^^^^^^^^^^^^^^
-
-Used with descriptor setter.
-Name of converter function with prototype ``(PyObject *, void *)``.
-The returned status should be 1 for a successful conversion and 0 if
-the conversion has failed.
-
 PY_to_object_idtor
 ^^^^^^^^^^^^^^^^^^
 
@@ -161,6 +153,29 @@ The template for a function is:
           Py_XDECREF(arr_x);
     }
 
+
+The template for a setter is:
+
+.. code-block:: text
+
+    static PyObject *{PY_getter}(
+        {PY_PyObject} *{PY_param_self},
+        void *SHROUD_UNUSED(closure)) {
+        {setter}
+    }
+
+The template for a getter is:
+
+.. code-block:: text
+
+    static int {PY_setter}("
+        {PY_PyObject} *{PY_param_self},
+        PyObject *{py_var},
+        void *SHROUD_UNUSED(closure)) {
+        {getter}
+        return 0;
+    }
+
 allocate_local_var
 ^^^^^^^^^^^^^^^^^^
 
@@ -217,20 +232,13 @@ fail
 
 .. object conversion
 
-get_converter
-^^^^^^^^^^^^^
-
-Converter argument to ``PyArg_ParseTupleAndKeywords``.
-Accepts a SHROUD_converter_value argument.
-Will append options.PY_array_arg to the name.
-Can be used to override *type.PY_get_converter*.
-Useful with pointer types like ``char **``.
 
 object_created
 ^^^^^^^^^^^^^^
 
 Set to ``True`` when a ``PyObject`` is created by *post_call*.
 This prevents ``Py_BuildValue`` from converting it into an Object.
+For example, when NumPy is used to create an object.
 
 parse_as_object
 ^^^^^^^^^^^^^^^
