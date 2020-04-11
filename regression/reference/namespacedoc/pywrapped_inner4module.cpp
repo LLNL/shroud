@@ -30,6 +30,7 @@
 // splicer begin namespace.inner4.additional_functions
 // splicer end namespace.inner4.additional_functions
 
+// void worker4()
 static char PY_worker4__doc__[] =
 "documentation"
 ;
@@ -40,7 +41,6 @@ PY_worker4(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void worker4()
 // splicer begin namespace.inner4.function.worker4
     outer::inner4::worker4();
     Py_RETURN_NONE;

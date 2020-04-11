@@ -546,7 +546,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -695,7 +695,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -967,7 +967,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -1219,7 +1219,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -1369,7 +1369,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }
@@ -1511,7 +1511,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
-                            "stmt0": "py_native_out",
+                            "stmt0": "py_native_*_out",
                             "stmt1": "py_default"
                         }
                     }

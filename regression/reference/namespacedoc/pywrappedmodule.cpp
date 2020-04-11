@@ -34,6 +34,7 @@ PyObject *PY_init_wrapped_inner4(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void worker3()
 static char PY_worker3__doc__[] =
 "documentation"
 ;
@@ -44,13 +45,13 @@ PY_worker3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void worker3()
 // splicer begin function.worker3
     outer::inner3::worker3();
     Py_RETURN_NONE;
 // splicer end function.worker3
 }
 
+// void worker()
 static char PY_worker__doc__[] =
 "documentation"
 ;
@@ -61,7 +62,6 @@ PY_worker(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void worker()
 // splicer begin function.worker
     outer::worker();
     Py_RETURN_NONE;

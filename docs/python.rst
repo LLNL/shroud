@@ -68,14 +68,6 @@ Expression to get value from an object.
 ex. ``PyInt_AsLong({py_var})``
 Defaults to *None*.
 
-PY_get_converter
-^^^^^^^^^^^^^^^^
-
-Used with descriptor setter.
-Name of converter function with prototype ``(PyObject *, void *)``.
-The returned status should be 1 for a successful conversion and 0 if
-the conversion has failed.
-
 PY_to_object_idtor
 ^^^^^^^^^^^^^^^^^^
 
@@ -128,7 +120,7 @@ The template for a function is:
         PyObject *{PY_param_args},
         PyObject *{PY_param_kwds})
     {
-        {decl}
+        {declare}
 
         if (!PyArg_ParseTupleAndKeywords(
             {PY_param_args}, {PY_param_kwds}, "{PyArg_format}",
@@ -145,6 +137,7 @@ The template for a function is:
           {pre_call}    pre_call declares variables for arguments
 
           call
+          {post_call}
 
           per argument
             // Create Python object from C++
@@ -160,6 +153,29 @@ The template for a function is:
           Py_XDECREF(arr_x);
     }
 
+
+The template for a setter is:
+
+.. code-block:: text
+
+    static PyObject *{PY_getter}(
+        {PY_PyObject} *{PY_param_self},
+        void *SHROUD_UNUSED(closure)) {
+        {setter}
+    }
+
+The template for a getter is:
+
+.. code-block:: text
+
+    static int {PY_setter}("
+        {PY_PyObject} *{PY_param_self},
+        PyObject *{py_var},
+        void *SHROUD_UNUSED(closure)) {
+        {getter}
+        return 0;
+    }
+
 allocate_local_var
 ^^^^^^^^^^^^^^^^^^
 
@@ -172,13 +188,22 @@ c_helper
 ^^^^^^^^
 
 Blank delimited list of helper functions required for the wrapper.
-The name may contain format strings and will be expand before it is used.
-ex. ``to_PyList_{cxx_type}``.
+The name may contain format strings and will be expand before it is
+used.  ex. ``to_PyList_{cxx_type}``.
 The function associated with the helper will be named *hnamefunc0*,
 *hnamefunc1*, ... for each helper listed.
 
-decl
-^^^^
+declare
+^^^^^^^
+
+Code needed to declare local variable.
+
+.. When defined, *typemap.PY_format* is append to the
+   format string for ``PyArg_ParseTupleAndKeywords`` and
+   *c_var* is used to hold the parsed.
+
+If the *declare* block is not defined, a local variable is defined of
+the same type as the function argument.
 
 pre_call
 ^^^^^^^^
@@ -193,6 +218,8 @@ Used to convert C values into C++ values:
 
     {var} = PyObject_IsTrue({var_obj});
 
+Will not be added for class constructor objects.
+since there is no need to build return values.
 
 post_parse
 ^^^^^^^^^^
@@ -205,28 +232,58 @@ fail
 
 .. object conversion
 
-get_converter
-^^^^^^^^^^^^^
-
-Converter argument to ``PyArg_ParseTupleAndKeywords``.
-Accepts a SHROUD_converter_value argument.
-Will append options.PY_array_arg to the name.
-Can be used to override *type.PY_get_converter*.
-Useful with pointer types like ``char **``.
 
 object_created
 ^^^^^^^^^^^^^^
 
 Set to ``True`` when a ``PyObject`` is created by *post_call*.
 This prevents ``Py_BuildValue`` from converting it into an Object.
+For example, when NumPy is used to create an object.
 
-parse_as_object
-^^^^^^^^^^^^^^^
+parse_format
+^^^^^^^^^^^^
 
-When set to ``True``, ``PyArg_ParseTupleAndKeyword`` will
-return the ``PyObject`` associated with the argument.
-The *post_parse* or *pre_call* will operate on the object.
-Used with NumPy.
+Works together with *parse_args* to describe how to parse
+``PyObject`` in ``PyArg_ParseTupleAndKeywords``.
+*parse_format* is used in the *format* arguments and
+*parse_args* is append to the call as a vararg.
+
+.. code-block:: c
+
+    int PyArg_ParseTupleAndKeywords(PyObject *args, PyObject *kw,
+        const char *format, char *keywords[], ...)
+
+The simplest use is to pass the object directly through so that it
+can be operated on by *post_parse* or *pre_call* to convert the object
+into a C/C++ variable. For example, convert a ``PyObject`` into
+an ``int *``.
+
+.. code-block:: python
+
+    parse_format="O",
+    parse_args=["&{pytmp_var}"],
+    declare=[
+        "PyObject * {pytmp_var};",
+    ],
+
+The format field *pytmp_var* is created by Shroud, but must be
+declared if it is used.
+
+It can also be used to provide a *converter* function which converts
+the object:
+
+.. code-block:: python
+
+    parse_format="O&",
+    parse_args=["{hnamefunc0}", "&{py_var}"],
+
+
+parse_args
+^^^^^^^^^^
+
+A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
+Used with *parse_format*.
+    
 
 Predefined Types
 ----------------

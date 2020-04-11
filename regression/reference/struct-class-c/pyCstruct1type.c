@@ -36,23 +36,27 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // splicer end class.Cstruct1.type.del
 }
 
+// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+// ----------------------------------------
+// Argument:  ifield
+// Exact:     py_ctor_native
+// ----------------------------------------
+// Argument:  dfield
+// Exact:     py_ctor_native
 static int
 PY_Cstruct1_tp_init(
   PY_Cstruct1 *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1(int ifield +intent(in)+optional(0), double dfield +intent(in)+optional(0)) +name(Cstruct1_ctor)
 // splicer begin class.Cstruct1.method.cstruct1_ctor
-    int ifield;
-    double dfield;
+    int ifield = 0;
+    double dfield = 0;
     char *SHT_kwlist[] = {
         "ifield",
         "dfield",
         NULL };
 
-    ifield = 0;
-    dfield = 0;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|id:Cstruct1_ctor",
         SHT_kwlist, &ifield, &dfield))
         return -1;
@@ -63,16 +67,19 @@ PY_Cstruct1_tp_init(
         return -1;
     }
     self->idtor = 1;
-    // initialize fields
+
+    // post_call - initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;
     SH_obj->dfield = dfield;
+
     return 0;
 // splicer end class.Cstruct1.method.cstruct1_ctor
 }
 // splicer begin class.Cstruct1.impl.after_methods
 // splicer end class.Cstruct1.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -80,6 +87,7 @@ static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -91,6 +99,7 @@ static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_native
 static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -98,6 +107,7 @@ static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Cstruct1_dfield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

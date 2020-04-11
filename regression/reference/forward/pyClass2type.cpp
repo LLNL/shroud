@@ -36,13 +36,13 @@ PY_Class2_tp_del (PY_Class2 *self)
 // splicer end class.Class2.type.del
 }
 
+// Class2()
 static int
 PY_Class2_tp_init(
   PY_Class2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class2()
 // splicer begin class.Class2.method.ctor
     self->obj = new forward::Class2();
     if (self->obj == nullptr) {
@@ -54,6 +54,11 @@ PY_Class2_tp_init(
 // splicer end class.Class2.method.ctor
 }
 
+// void func1(tutorial::Class1 * arg +intent(in))
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PY_func1__doc__[] =
 "documentation"
 ;
@@ -64,7 +69,6 @@ PY_func1(
   PyObject *args,
   PyObject *kwds)
 {
-// void func1(tutorial::Class1 * arg +intent(in))
 // splicer begin class.Class2.method.func1
     TUT_Class1 arg;
     const char *SHT_kwlist[] = {
@@ -83,6 +87,11 @@ PY_func1(
 // splicer end class.Class2.method.func1
 }
 
+// void acceptClass3(Class3 * arg +intent(in))
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_shadow_*_in
+// Match:     py_shadow_in
 static char PY_acceptClass3__doc__[] =
 "documentation"
 ;
@@ -93,7 +102,6 @@ PY_acceptClass3(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptClass3(Class3 * arg +intent(in))
 // splicer begin class.Class2.method.accept_class3
     PY_Class3 * SHPy_arg;
     const char *SHT_kwlist[] = {

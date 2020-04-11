@@ -15,6 +15,7 @@ import collections
 import copy
 import re
 
+from . import todict
 from . import typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
@@ -49,6 +50,8 @@ token_specification = [
     ("RPAREN", r"\)"),
     ("LCURLY", r"{"),
     ("RCURLY", r"}"),
+    ("LBRACKET", r"\["),
+    ("RBRACKET", r"\]"),
     ("STAR", r"\*"),
     ("EQUALS", r"="),
     ("REF", r"\&"),
@@ -533,11 +536,11 @@ class Parser(ExprParser):
                             self.token.value
                         )
                     )
-            self.attribute(node.attrs)  # function attributes
-        #        elif self.token.typ == 'LBRACKET':
-        #            node.array  = self.constant_expression()
-        else:
-            self.attribute(node.attrs)  # variable attributes
+        while self.token.typ == "LBRACKET":
+            self.next() # consume bracket
+            node.array.append(self.expression())
+            self.mustbe("RBRACKET")
+        self.attribute(node.attrs)  # variable attributes
 
         if self.have("EQUALS"):
             node.init = self.initializer()
@@ -913,6 +916,10 @@ class Declaration(Node):
     """
     specifier = const  int
     init =         a  *a   a=1
+
+    attrs     - Attributes set by the user.
+    metaattrs - Attributes set by Shroud.
+        struct_member - map ctor argument to struct member.
     """
 
     fortran_ranks = [
@@ -933,10 +940,11 @@ class Declaration(Node):
         self.volatile = False
         self.declarator = None
         self.params = None  # None=No parameters, []=empty parameters list
-        self.array = None
+        self.array = []
         self.init = None  # initial value
         self.template_arguments = []
         self.attrs = collections.defaultdict(lambda: None)
+        self.metaattrs = collections.defaultdict(lambda: None)
 
         self.func_const = False
         self.typemap = None
@@ -1012,7 +1020,8 @@ class Declaration(Node):
         return nlevels
 
     def is_indirect(self):
-        """Return number of indirections, pointer or reference.
+        """Return number of indirections.
+        pointer or reference.
         """
         nlevels = 0
         if self.declarator is None:
@@ -1022,6 +1031,20 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
+    def is_array(self):
+        """Return number of indirections.
+        array, pointer or reference.
+        """
+        nlevels = 0
+        if self.array:
+            nlevels += 1
+        if self.declarator is None:
+            return nlevels
+        for ptr in self.declarator.pointer:
+            if ptr.ptr:
+                nlevels += 1
+        return nlevels
+        
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
@@ -1035,13 +1058,15 @@ class Declaration(Node):
 
     def get_indirect(self):
         """Return indirect operators.
-        '*', '**', '&*'
+        '*', '**', '&*', '[]'
         """
         out = ''
         if self.declarator is None:
             return out
         for ptr in self.declarator.pointer:
             out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
         return out
 
     def get_indirect_stmt(self):
@@ -1159,8 +1184,11 @@ class Declaration(Node):
             out.append(")")
             if self.func_const:
                 out.append(" const")
-        elif self.array:
-            out.append("[AAAA]")
+        if self.array:
+            for dim in self.array:
+                out.append("[")
+                out.append(todict.print_node(dim))
+                out.append("]")
         if self.init:
             out.append("=")
             out.append(str(self.init))
@@ -1219,6 +1247,10 @@ class Declaration(Node):
             decl.append(")")
             if self.func_const:
                 decl.append(" const")
+        for dim in self.array:
+            decl.append("[")
+            decl.append(todict.print_node(dim))
+            decl.append("]")
         if use_attrs:
             self.gen_attrs(self.attrs, decl)
 
@@ -1348,7 +1380,33 @@ class Declaration(Node):
             decl.append(")")
             if self.func_const:
                 decl.append(" const")
+        if self.array:
+            for dim in self.array:
+                decl.append("[")
+                decl.append(todict.print_node(dim))
+                decl.append("]")
 
+    def as_cast(self, language="c"):
+        """
+        Ignore const, name.
+        Array as pointer.
+
+        (as_cast) arg
+        """
+        decl = []
+        typ = getattr(self.typemap, language + '_type')
+        decl.append(typ)
+        ptrs = []
+        if self.declarator:
+            for ptr in self.declarator.pointer:
+                ptrs.append("*")   # ptr.ptr)
+        if self.array:
+            ptrs.append("*")
+        if ptrs:
+            decl.append(" ")
+            decl.extend(ptrs)
+        return ''.join(decl)
+        
     ##############
 
     def bind_c(self, intent=None, **kwargs):
@@ -1441,12 +1499,18 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs["allocatable"]
 
+        last_dim = len(self.array)
         if ntypemap.base == "string":
             if attrs["len"] and local:
                 # Also used with function result declaration.
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
                 t.append("character(len=:)")
+            elif self.array:
+                # Convert last dim to CHARACTER len.
+                t.append("character(len={})".
+                         format(todict.print_node(self.array[-1])))
+                last_dim -= 1
             elif not local:
                 t.append("character(len=*)")
             else:
@@ -1496,6 +1560,13 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
+        elif last_dim > 0:
+            decl.append("(")
+            # Convert to column-major order.
+            for dim in reversed(self.array[:last_dim]):
+                decl.append(todict.print_node(dim))
+                decl.append(",")
+            decl[-1] = ")"
 
         return "".join(decl)
 
@@ -1632,6 +1703,7 @@ def create_voidstar(ntypemap, name, const=False):
 def create_struct_ctor(cls):
     """Create a ctor function for a struct (aka C++ class).
     Use with PY_struct_arg==class.
+    Used as __init__ function.
     """
     name = cls.name + "_ctor"
     ast = Declaration()

@@ -31,6 +31,11 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// short short_func(short arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_short_func__doc__[] =
 "documentation"
 ;
@@ -41,7 +46,6 @@ PY_short_func(
   PyObject *args,
   PyObject *kwds)
 {
-// short short_func(short arg1 +intent(in)+value)
 // splicer begin function.short_func
     short arg1;
     const char *SHT_kwlist[] = {
@@ -62,6 +66,11 @@ PY_short_func(
 // splicer end function.short_func
 }
 
+// int int_func(int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_int_func__doc__[] =
 "documentation"
 ;
@@ -72,7 +81,6 @@ PY_int_func(
   PyObject *args,
   PyObject *kwds)
 {
-// int int_func(int arg1 +intent(in)+value)
 // splicer begin function.int_func
     int arg1;
     const char *SHT_kwlist[] = {
@@ -93,6 +101,11 @@ PY_int_func(
 // splicer end function.int_func
 }
 
+// long long_func(long arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_long_func__doc__[] =
 "documentation"
 ;
@@ -103,7 +116,6 @@ PY_long_func(
   PyObject *args,
   PyObject *kwds)
 {
-// long long_func(long arg1 +intent(in)+value)
 // splicer begin function.long_func
     long arg1;
     const char *SHT_kwlist[] = {
@@ -124,6 +136,11 @@ PY_long_func(
 // splicer end function.long_func
 }
 
+// long long long_long_func(long long arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_long_long_func__doc__[] =
 "documentation"
 ;
@@ -134,7 +151,6 @@ PY_long_long_func(
   PyObject *args,
   PyObject *kwds)
 {
-// long long long_long_func(long long arg1 +intent(in)+value)
 // splicer begin function.long_long_func
     long long arg1;
     const char *SHT_kwlist[] = {
@@ -155,6 +171,11 @@ PY_long_long_func(
 // splicer end function.long_long_func
 }
 
+// short int short_int_func(short int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_short_int_func__doc__[] =
 "documentation"
 ;
@@ -165,7 +186,6 @@ PY_short_int_func(
   PyObject *args,
   PyObject *kwds)
 {
-// short int short_int_func(short int arg1 +intent(in)+value)
 // splicer begin function.short_int_func
     short arg1;
     const char *SHT_kwlist[] = {
@@ -186,6 +206,11 @@ PY_short_int_func(
 // splicer end function.short_int_func
 }
 
+// long int long_int_func(long int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_long_int_func__doc__[] =
 "documentation"
 ;
@@ -196,7 +221,6 @@ PY_long_int_func(
   PyObject *args,
   PyObject *kwds)
 {
-// long int long_int_func(long int arg1 +intent(in)+value)
 // splicer begin function.long_int_func
     long arg1;
     const char *SHT_kwlist[] = {
@@ -217,6 +241,11 @@ PY_long_int_func(
 // splicer end function.long_int_func
 }
 
+// long long int long_long_int_func(long long int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_long_long_int_func__doc__[] =
 "documentation"
 ;
@@ -227,7 +256,6 @@ PY_long_long_int_func(
   PyObject *args,
   PyObject *kwds)
 {
-// long long int long_long_int_func(long long int arg1 +intent(in)+value)
 // splicer begin function.long_long_int_func
     long long arg1;
     const char *SHT_kwlist[] = {
@@ -248,6 +276,11 @@ PY_long_long_int_func(
 // splicer end function.long_long_int_func
 }
 
+// unsigned unsigned_func(unsigned arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_unsigned_func__doc__[] =
 "documentation"
 ;
@@ -258,7 +291,6 @@ PY_unsigned_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned unsigned_func(unsigned arg1 +intent(in)+value)
 // splicer begin function.unsigned_func
     unsigned int arg1;
     const char *SHT_kwlist[] = {
@@ -279,6 +311,11 @@ PY_unsigned_func(
 // splicer end function.unsigned_func
 }
 
+// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_ushort_func__doc__[] =
 "documentation"
 ;
@@ -289,7 +326,6 @@ PY_ushort_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
 // splicer begin function.ushort_func
     unsigned short arg1;
     const char *SHT_kwlist[] = {
@@ -310,6 +346,11 @@ PY_ushort_func(
 // splicer end function.ushort_func
 }
 
+// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_uint_func__doc__[] =
 "documentation"
 ;
@@ -320,7 +361,6 @@ PY_uint_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
 // splicer begin function.uint_func
     unsigned int arg1;
     const char *SHT_kwlist[] = {
@@ -341,6 +381,11 @@ PY_uint_func(
 // splicer end function.uint_func
 }
 
+// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_ulong_func__doc__[] =
 "documentation"
 ;
@@ -351,7 +396,6 @@ PY_ulong_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
 // splicer begin function.ulong_func
     unsigned long arg1;
     const char *SHT_kwlist[] = {
@@ -372,6 +416,11 @@ PY_ulong_func(
 // splicer end function.ulong_func
 }
 
+// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_ulong_long_func__doc__[] =
 "documentation"
 ;
@@ -382,7 +431,6 @@ PY_ulong_long_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
 // splicer begin function.ulong_long_func
     unsigned long long arg1;
     const char *SHT_kwlist[] = {
@@ -403,6 +451,11 @@ PY_ulong_long_func(
 // splicer end function.ulong_long_func
 }
 
+// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_ulong_int_func__doc__[] =
 "documentation"
 ;
@@ -413,7 +466,6 @@ PY_ulong_int_func(
   PyObject *args,
   PyObject *kwds)
 {
-// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
 // splicer begin function.ulong_int_func
     unsigned long arg1;
     const char *SHT_kwlist[] = {
@@ -434,6 +486,11 @@ PY_ulong_int_func(
 // splicer end function.ulong_int_func
 }
 
+// int8_t int8_func(int8_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_int8_func__doc__[] =
 "documentation"
 ;
@@ -444,7 +501,6 @@ PY_int8_func(
   PyObject *args,
   PyObject *kwds)
 {
-// int8_t int8_func(int8_t arg1 +intent(in)+value)
 // splicer begin function.int8_func
     int8_t arg1;
     const char *SHT_kwlist[] = {
@@ -465,6 +521,11 @@ PY_int8_func(
 // splicer end function.int8_func
 }
 
+// int16_t int16_func(int16_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_int16_func__doc__[] =
 "documentation"
 ;
@@ -475,7 +536,6 @@ PY_int16_func(
   PyObject *args,
   PyObject *kwds)
 {
-// int16_t int16_func(int16_t arg1 +intent(in)+value)
 // splicer begin function.int16_func
     int16_t arg1;
     const char *SHT_kwlist[] = {
@@ -496,6 +556,11 @@ PY_int16_func(
 // splicer end function.int16_func
 }
 
+// int32_t int32_func(int32_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_int32_func__doc__[] =
 "documentation"
 ;
@@ -506,7 +571,6 @@ PY_int32_func(
   PyObject *args,
   PyObject *kwds)
 {
-// int32_t int32_func(int32_t arg1 +intent(in)+value)
 // splicer begin function.int32_func
     int32_t arg1;
     const char *SHT_kwlist[] = {
@@ -527,6 +591,11 @@ PY_int32_func(
 // splicer end function.int32_func
 }
 
+// int64_t int64_func(int64_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_int64_func__doc__[] =
 "documentation"
 ;
@@ -537,7 +606,6 @@ PY_int64_func(
   PyObject *args,
   PyObject *kwds)
 {
-// int64_t int64_func(int64_t arg1 +intent(in)+value)
 // splicer begin function.int64_func
     int64_t arg1;
     const char *SHT_kwlist[] = {
@@ -558,6 +626,11 @@ PY_int64_func(
 // splicer end function.int64_func
 }
 
+// uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_uint8_func__doc__[] =
 "documentation"
 ;
@@ -568,7 +641,6 @@ PY_uint8_func(
   PyObject *args,
   PyObject *kwds)
 {
-// uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
 // splicer begin function.uint8_func
     uint8_t arg1;
     const char *SHT_kwlist[] = {
@@ -589,6 +661,11 @@ PY_uint8_func(
 // splicer end function.uint8_func
 }
 
+// uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_uint16_func__doc__[] =
 "documentation"
 ;
@@ -599,7 +676,6 @@ PY_uint16_func(
   PyObject *args,
   PyObject *kwds)
 {
-// uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
 // splicer begin function.uint16_func
     uint16_t arg1;
     const char *SHT_kwlist[] = {
@@ -620,6 +696,11 @@ PY_uint16_func(
 // splicer end function.uint16_func
 }
 
+// uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_uint32_func__doc__[] =
 "documentation"
 ;
@@ -630,7 +711,6 @@ PY_uint32_func(
   PyObject *args,
   PyObject *kwds)
 {
-// uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
 // splicer begin function.uint32_func
     uint32_t arg1;
     const char *SHT_kwlist[] = {
@@ -651,6 +731,11 @@ PY_uint32_func(
 // splicer end function.uint32_func
 }
 
+// uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_uint64_func__doc__[] =
 "documentation"
 ;
@@ -661,7 +746,6 @@ PY_uint64_func(
   PyObject *args,
   PyObject *kwds)
 {
-// uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 // splicer begin function.uint64_func
     uint64_t arg1;
     const char *SHT_kwlist[] = {
@@ -682,6 +766,11 @@ PY_uint64_func(
 // splicer end function.uint64_func
 }
 
+// size_t size_func(size_t arg1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
 static char PY_size_func__doc__[] =
 "documentation"
 ;
@@ -692,7 +781,6 @@ PY_size_func(
   PyObject *args,
   PyObject *kwds)
 {
-// size_t size_func(size_t arg1 +intent(in)+value)
 // splicer begin function.size_func
     size_t arg1;
     const char *SHT_kwlist[] = {
@@ -713,6 +801,10 @@ PY_size_func(
 // splicer end function.size_func
 }
 
+// bool bool_func(bool arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_bool_in
 static char PY_bool_func__doc__[] =
 "documentation"
 ;
@@ -723,7 +815,6 @@ PY_bool_func(
   PyObject *args,
   PyObject *kwds)
 {
-// bool bool_func(bool arg +intent(in)+value)
 // splicer begin function.bool_func
     PyObject * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -752,6 +843,11 @@ fail:
 // splicer end function.bool_func
 }
 
+// bool returnBoolAndOthers(int * flag +intent(out))
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"
 ;
@@ -772,7 +868,6 @@ PY_returnBoolAndOthers(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// bool returnBoolAndOthers(int * flag +intent(out))
 // splicer begin function.return_bool_and_others
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHPyResult = nullptr;  // return value object

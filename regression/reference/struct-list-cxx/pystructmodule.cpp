@@ -38,6 +38,11 @@ PyArray_Descr *PY_Cstruct_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// int passStructByValue(Cstruct1 arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_struct_in_list
+// Match:     py_default
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -48,7 +53,6 @@ PY_passStructByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// int passStructByValue(Cstruct1 arg +intent(in)+value)
 // splicer begin function.pass_struct_by_value
     PY_Cstruct1 * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -69,6 +73,11 @@ PY_passStructByValue(
 // splicer end function.pass_struct_by_value
 }
 
+// int passStruct1(Cstruct1 * arg +intent(in))
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_struct_in_list
+// Match:     py_default
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -79,7 +88,6 @@ PY_passStruct1(
   PyObject *args,
   PyObject *kwds)
 {
-// int passStruct1(Cstruct1 * arg +intent(in))
 // splicer begin function.pass_struct1
     PY_Cstruct1 * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -100,6 +108,14 @@ PY_passStruct1(
 // splicer end function.pass_struct1
 }
 
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
+// ----------------------------------------
+// Argument:  s1
+// Requested: py_struct_in_list
+// Match:     py_default
+// ----------------------------------------
+// Argument:  outbuf
+// Exact:     py_char_*_out_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
 ;
@@ -113,7 +129,6 @@ PY_passStruct2(
   PyObject *args,
   PyObject *kwds)
 {
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
 // splicer begin function.pass_struct2
     PY_Cstruct1 * SHPy_s1;
     const char *SHT_kwlist[] = {
@@ -137,6 +152,19 @@ PY_passStruct2(
 // splicer end function.pass_struct2
 }
 
+// void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_struct_out_list
+// Match:     py_default
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  d
+// Requested: py_native_in
+// Match:     py_default
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
 ;
@@ -150,7 +178,6 @@ PY_acceptStructOutPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.accept_struct_out_ptr
     int i;
     double d;
@@ -177,6 +204,11 @@ PY_acceptStructOutPtr(
 // splicer end function.accept_struct_out_ptr
 }
 
+// void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_struct_inout_list
+// Match:     py_default
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;
@@ -187,7 +219,6 @@ PY_acceptStructInOutPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 // splicer begin function.accept_struct_in_out_ptr
     PY_Cstruct1 * SHPy_arg;
     const char *SHT_kwlist[] = {
@@ -209,6 +240,15 @@ PY_acceptStructInOutPtr(
 // splicer end function.accept_struct_in_out_ptr
 }
 
+// Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  d
+// Requested: py_native_in
+// Match:     py_default
 static char PY_returnStructByValue__doc__[] =
 "documentation"
 ;
@@ -219,7 +259,6 @@ PY_returnStructByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.return_struct_by_value
     int i;
     double d;
@@ -243,6 +282,15 @@ PY_returnStructByValue(
 // splicer end function.return_struct_by_value
 }
 
+// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  d
+// Requested: py_native_in
+// Match:     py_default
 static char PY_returnConstStructByValue__doc__[] =
 "documentation"
 ;
@@ -253,7 +301,6 @@ PY_returnConstStructByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.return_const_struct_by_value
     int i;
     double d;
@@ -277,6 +324,15 @@ PY_returnConstStructByValue(
 // splicer end function.return_const_struct_by_value
 }
 
+// Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  d
+// Requested: py_native_in
+// Match:     py_default
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
 ;
@@ -292,7 +348,6 @@ PY_returnStructPtr1(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.return_struct_ptr1
     int i;
     double d;
@@ -315,6 +370,18 @@ PY_returnStructPtr1(
 // splicer end function.return_struct_ptr1
 }
 
+// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  d
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  outbuf
+// Exact:     py_char_*_out_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
 ;
@@ -330,7 +397,6 @@ PY_returnStructPtr2(
   PyObject *args,
   PyObject *kwds)
 {
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
@@ -356,6 +422,7 @@ PY_returnStructPtr2(
 // splicer end function.return_struct_ptr2
 }
 
+// Cstruct_list * get_global_struct_list()
 static char PY_get_global_struct_list__doc__[] =
 "documentation"
 ;
@@ -366,7 +433,6 @@ PY_get_global_struct_list(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Cstruct_list * get_global_struct_list()
 // splicer begin function.get_global_struct_list
     PY_Cstruct_list * SHTPy_rv = nullptr;
 

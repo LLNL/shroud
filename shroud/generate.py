@@ -687,7 +687,7 @@ class GenFunctions(object):
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
             a.attrs["intent"] = "in"
-            a.attrs["optional"] = "0"
+            a.metaattrs["struct_member"] = var
             ast.params.append(a)
         # Python only
         opt = dict(
@@ -697,6 +697,7 @@ class GenFunctions(object):
         )
         node = cls.add_function(name, ast, options=opt)
         node.declgen = node.ast.gen_decl()
+        node._generated = "struct_as_class_ctor"
 
     def update_types_for_class_instantiation(self, cls):
         """Update the references to use instantiated class.

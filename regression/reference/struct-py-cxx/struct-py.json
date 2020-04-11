@@ -34,6 +34,7 @@
                         "_fmtargs": {
                             "x1": {
                                 "fmtpy": {
+                                    "PY_member_object": "XXXPY_member_object",
                                     "c_const": "",
                                     "c_decl": "int x1",
                                     "c_deref": "",
@@ -45,15 +46,17 @@
                                     "cxx_type": "int",
                                     "cxx_var": "x1",
                                     "data_var": "SHData_x1",
+                                    "field_name": "x1",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_x1",
                                     "size_var": "SHSize_x1",
-                                    "stmt0": "py_native_in",
-                                    "stmt1": "py_default"
+                                    "stmt0": "py_ctor_native",
+                                    "stmt1": "py_ctor_native"
                                 }
                             },
                             "y1": {
                                 "fmtpy": {
+                                    "PY_member_object": "XXXPY_member_object",
                                     "c_const": "",
                                     "c_decl": "int y1",
                                     "c_deref": "",
@@ -65,11 +68,12 @@
                                     "cxx_type": "int",
                                     "cxx_var": "y1",
                                     "data_var": "SHData_y1",
+                                    "field_name": "y1",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_y1",
                                     "size_var": "SHSize_y1",
-                                    "stmt0": "py_native_in",
-                                    "stmt1": "py_default"
+                                    "stmt0": "py_ctor_native",
+                                    "stmt1": "py_ctor_native"
                                 }
                             }
                         },
@@ -93,6 +97,7 @@
                                 "vargs": "SHCXX_rv"
                             }
                         },
+                        "_generated": "struct_as_class_ctor",
                         "ast": {
                             "attrs": {
                                 "_constructor": true,
@@ -101,8 +106,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
-                                        "optional": "0"
+                                        "intent": "in"
                                     },
                                     "declarator": {
                                         "name": "x1",
@@ -115,8 +119,7 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
-                                        "optional": "0"
+                                        "intent": "in"
                                     },
                                     "declarator": {
                                         "name": "y1",
@@ -134,7 +137,7 @@
                             "typemap_name": "Cstruct_as_class"
                         },
                         "decl": "Cstruct_as_class_ctor",
-                        "declgen": "Cstruct_as_class(int x1 +intent(in)+optional(0), int y1 +intent(in)+optional(0)) +name(Cstruct_as_class_ctor)",
+                        "declgen": "Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_impl": "PY_Cstruct_as_class_tp_init",

@@ -67,6 +67,19 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+// ----------------------------------------
+// Argument:  argin
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arginout
+// Requested: py_native_*_inout
+// Match:     py_default
+// ----------------------------------------
+// Argument:  argout
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_intargs__doc__[] =
 "documentation"
 ;
@@ -77,7 +90,6 @@ PY_intargs(
   PyObject *args,
   PyObject *kwds)
 {
-// void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 // splicer begin function.intargs
     int argin;
     int arginout;
@@ -103,6 +115,13 @@ PY_intargs(
 // splicer end function.intargs
 }
 
+// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// ----------------------------------------
+// Argument:  in
+// Exact:     py_native_in_dimension_numpy
+// ----------------------------------------
+// Argument:  out
+// Exact:     py_native_out_allocatable_numpy_mold
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -118,7 +137,6 @@ PY_cos_doubles(
   PyObject *args,
   PyObject *kwds)
 {
-// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.cos_doubles
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
@@ -163,6 +181,13 @@ fail:
 // splicer end function.cos_doubles
 }
 
+// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// ----------------------------------------
+// Argument:  in
+// Exact:     py_native_in_dimension_numpy
+// ----------------------------------------
+// Argument:  out
+// Exact:     py_native_out_allocatable_numpy_mold
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -179,7 +204,6 @@ PY_truncate_to_int(
   PyObject *args,
   PyObject *kwds)
 {
-// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.truncate_to_int
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
@@ -225,6 +249,14 @@ fail:
 // splicer end function.truncate_to_int
 }
 
+// void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
+// ----------------------------------------
+// Argument:  nvalues
+// Requested: py_native_*_out
+// Match:     py_default
+// ----------------------------------------
+// Argument:  values
+// Exact:     py_native_out_dimension_numpy
 static char PY_get_values__doc__[] =
 "documentation"
 ;
@@ -243,7 +275,6 @@ PY_get_values(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
     npy_intp SHD_values[1];
     PyArrayObject * SHPy_values = NULL;
@@ -275,6 +306,13 @@ fail:
 // splicer end function.get_values
 }
 
+// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+// ----------------------------------------
+// Argument:  arg1
+// Exact:     py_native_out_dimension_numpy
+// ----------------------------------------
+// Argument:  arg2
+// Exact:     py_native_out_dimension_numpy
 static char PY_get_values2__doc__[] =
 "documentation"
 ;
@@ -291,7 +329,6 @@ PY_get_values2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // splicer begin function.get_values2
     npy_intp SHD_arg1[1];
     PyArrayObject * SHPy_arg1 = NULL;
@@ -333,6 +370,15 @@ fail:
 // splicer end function.get_values2
 }
 
+// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+// ----------------------------------------
+// Argument:  nvar
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  values
+// Requested: py_native_out_allocatable_numpy
+// Match:     py_native_out_dimension_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -343,7 +389,6 @@ PY_iota_allocatable(
   PyObject *args,
   PyObject *kwds)
 {
-// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
 // splicer begin function.iota_allocatable
     int nvar;
     npy_intp SHD_values[1];
@@ -377,6 +422,14 @@ fail:
 // splicer end function.iota_allocatable
 }
 
+// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
+// ----------------------------------------
+// Argument:  nvar
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  values
+// Exact:     py_native_out_dimension_numpy
 static char PY_iota_dimension__doc__[] =
 "documentation"
 ;
@@ -387,7 +440,6 @@ PY_iota_dimension(
   PyObject *args,
   PyObject *kwds)
 {
-// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 // splicer begin function.iota_dimension
     int nvar;
     npy_intp SHD_values[1];
@@ -421,6 +473,14 @@ fail:
 // splicer end function.iota_dimension
 }
 
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// ----------------------------------------
+// Argument:  values
+// Exact:     py_native_in_dimension_numpy
+// ----------------------------------------
+// Argument:  result
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_Sum__doc__[] =
 "documentation"
 ;
@@ -431,7 +491,6 @@ PY_Sum(
   PyObject *args,
   PyObject *kwds)
 {
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     PyObject * SHTPy_values;
     PyArrayObject * SHPy_values = NULL;
@@ -474,6 +533,10 @@ fail:
 // splicer end function.sum
 }
 
+// void fillIntArray(int * out +dimension(3)+intent(out))
+// ----------------------------------------
+// Argument:  out
+// Exact:     py_native_out_dimension_numpy
 static char PY_fillIntArray__doc__[] =
 "documentation"
 ;
@@ -487,7 +550,6 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = NULL;
@@ -513,6 +575,10 @@ fail:
 // splicer end function.fill_int_array
 }
 
+// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// ----------------------------------------
+// Argument:  array
+// Exact:     py_native_inout_dimension_numpy
 static char PY_incrementIntArray__doc__[] =
 "documentation"
 ;
@@ -526,7 +592,6 @@ PY_incrementIntArray(
   PyObject *args,
   PyObject *kwds)
 {
-// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
     PyObject * SHTPy_array;
     PyArrayObject * SHPy_array = NULL;
@@ -560,6 +625,10 @@ fail:
 // splicer end function.increment_int_array
 }
 
+// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// ----------------------------------------
+// Argument:  names
+// Exact:     py_char_**_in
 static char PY_acceptCharArrayIn__doc__[] =
 "documentation"
 ;
@@ -570,7 +639,6 @@ PY_acceptCharArrayIn(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
 // splicer begin function.accept_char_array_in
     char ** names = NULL;
     PyObject * SHTPy_names;

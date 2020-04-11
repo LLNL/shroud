@@ -18,6 +18,7 @@
 typedef struct {
     PyObject *obj;
     void *data;   // points into obj.
+    size_t size;
 } STR_SHROUD_converter_value;
 
 // Helper functions.

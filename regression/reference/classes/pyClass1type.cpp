@@ -36,13 +36,13 @@ PY_Class1_tp_del (PY_Class1 *self)
 // splicer end class.Class1.type.del
 }
 
+// Class1() +name(new)
 static int
 PY_Class1_tp_init_default(
   PY_Class1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1() +name(new)
 // splicer begin class.Class1.method.new_default
     self->obj = new classes::Class1();
     if (self->obj == nullptr) {
@@ -54,13 +54,17 @@ PY_Class1_tp_init_default(
 // splicer end class.Class1.method.new_default
 }
 
+// Class1(int flag +intent(in)+value) +name(new)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_in
+// Match:     py_default
 static int
 PY_Class1_tp_init_flag(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
 {
-// Class1(int flag +intent(in)+value) +name(new)
 // splicer begin class.Class1.method.new_flag
     int flag;
     const char *SHT_kwlist[] = {
@@ -81,6 +85,7 @@ PY_Class1_tp_init_flag(
 // splicer end class.Class1.method.new_flag
 }
 
+// int Method1()
 static char PY_Method1__doc__[] =
 "documentation"
 ;
@@ -95,7 +100,6 @@ PY_Method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int Method1()
 // splicer begin class.Class1.method.method1
     PyObject * SHTPy_rv = nullptr;
 
@@ -108,6 +112,11 @@ PY_Method1(
 // splicer end class.Class1.method.method1
 }
 
+// bool equivalent(const Class1 & obj2 +intent(in)) const
+// ----------------------------------------
+// Argument:  obj2
+// Requested: py_shadow_&_in
+// Match:     py_shadow_in
 static char PY_equivalent__doc__[] =
 "documentation"
 ;
@@ -122,7 +131,6 @@ PY_equivalent(
   PyObject *args,
   PyObject *kwds)
 {
-// bool equivalent(const Class1 & obj2 +intent(in)) const
 // splicer begin class.Class1.method.equivalent
     PY_Class1 * SHPy_obj2;
     const char *SHT_kwlist[] = {
@@ -151,6 +159,7 @@ fail:
 // splicer end class.Class1.method.equivalent
 }
 
+// Class1 * getclass3() const
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -165,7 +174,6 @@ PY_getclass3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1 * getclass3() const
 // splicer begin class.Class1.method.getclass3
     classes::Class1 * SHCXX_rv = self->obj->getclass3();
 
@@ -177,6 +185,11 @@ PY_getclass3(
 // splicer end class.Class1.method.getclass3
 }
 
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -187,7 +200,6 @@ PY_directionFunc(
   PyObject *args,
   PyObject *kwds)
 {
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 // splicer begin class.Class1.method.direction_func
     int arg;
     const char *SHT_kwlist[] = {
@@ -249,6 +261,7 @@ PY_Class1_tp_init(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 
+// Exact:     py_descr_native
 static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -256,6 +269,7 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
+// Exact:     py_descr_native
 static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -263,6 +277,7 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     return rv;
 }
 
+// Exact:     py_descr_native
 static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

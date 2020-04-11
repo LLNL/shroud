@@ -35,6 +35,13 @@ PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
+// ----------------------------------------
+// Argument:  s1
+// Exact:     py_struct_in_class
+// ----------------------------------------
+// Argument:  s2
+// Exact:     py_struct_in_numpy
 static char PY_acceptBothStructs__doc__[] =
 "documentation"
 ;
@@ -45,7 +52,6 @@ PY_acceptBothStructs(
   PyObject *args,
   PyObject *kwds)
 {
-// int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
 // splicer begin function.accept_both_structs
     PY_Cstruct_as_class * SHPy_s1;
     PyObject * SHTPy_s2 = nullptr;

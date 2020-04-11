@@ -36,6 +36,7 @@ PY_Singleton_tp_del (PY_Singleton *self)
 // splicer end class.Singleton.type.del
 }
 
+// static Singleton & getReference()
 static char PY_getReference__doc__[] =
 "documentation"
 ;
@@ -46,7 +47,6 @@ PY_getReference(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// static Singleton & getReference()
 // splicer begin class.Singleton.method.get_reference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
 

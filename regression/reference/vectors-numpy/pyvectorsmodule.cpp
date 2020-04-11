@@ -34,6 +34,10 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_vector_in_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
 ;
@@ -44,7 +48,6 @@ PY_vector_sum(
   PyObject *args,
   PyObject *kwds)
 {
-// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 // splicer begin function.vector_sum
     PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
@@ -85,6 +88,10 @@ fail:
 // splicer end function.vector_sum
 }
 
+// void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_vector_out_numpy
 static char PY_vector_iota_out__doc__[] =
 "documentation"
 ;
@@ -99,7 +106,6 @@ PY_vector_iota_out(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out
     std::vector<int> * SH_arg = nullptr;
     npy_intp SHD_arg[1];
@@ -141,6 +147,10 @@ fail:
 // splicer end function.vector_iota_out
 }
 
+// void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
+// ----------------------------------------
+// Argument:  arg
+// Exact:     py_vector_out_numpy
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
 ;
@@ -155,7 +165,6 @@ PY_vector_iota_out_d(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
 // splicer begin function.vector_iota_out_d
     std::vector<double> * SH_arg = nullptr;
     npy_intp SHD_arg[1];
@@ -197,6 +206,11 @@ fail:
 // splicer end function.vector_iota_out_d
 }
 
+// std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)
+// ----------------------------------------
+// Argument:  n
+// Requested: py_native_in
+// Match:     py_default
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -212,7 +226,6 @@ PY_ReturnVectorAlloc(
   PyObject *args,
   PyObject *kwds)
 {
-// std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)
 // splicer begin function.return_vector_alloc
     int n;
     const char *SHT_kwlist[] = {

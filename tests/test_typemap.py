@@ -28,7 +28,34 @@ class Typemap(unittest.TestCase):
 
         rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
         self.assertIsInstance(rv, util.Scope)
-        self.assertEqual(rv.name, "c_a")
+        self.assertEqual("c_a", rv.name)
+        
+    def test_base(self):
+        # Prefix names with "c" to work with typemap.default_stmts.
+        cf_tree = {}
+        stmts = [
+            dict(
+                name="c_a",
+                field1="field1_from_c_a",
+                field2="field2_from_c_a",
+            ),
+            dict(
+                name="c_b",
+                base="c_a",
+                field2="field2_from_c_b",
+            ),
+        ]
+        typemap.update_stmt_tree(stmts, cf_tree, typemap.default_stmts)
+
+        rv = typemap.lookup_stmts_tree(cf_tree, ["c", "a"])
+        self.assertIsInstance(rv, util.Scope)
+        self.assertEqual("field1_from_c_a", rv.field1)
+        self.assertEqual("field2_from_c_a", rv.field2)
+
+        rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
+        self.assertIsInstance(rv, util.Scope)
+        self.assertEqual("field1_from_c_a", rv.field1)
+        self.assertEqual("field2_from_c_b", rv.field2)
         
     def test_lookup_tree1(self):
         cf_tree = {}

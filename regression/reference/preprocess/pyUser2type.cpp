@@ -37,6 +37,7 @@ PY_User2_tp_del (PY_User2 *self)
 // splicer end class.User2.type.del
 }
 
+// void exfunc()
 #ifdef USE_CLASS3_A
 static PyObject *
 PY_exfunc_0(
@@ -44,7 +45,6 @@ PY_exfunc_0(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void exfunc()
 // splicer begin class.User2.method.exfunc_0
     self->obj->exfunc();
     Py_RETURN_NONE;
@@ -52,6 +52,11 @@ PY_exfunc_0(
 }
 #endif // ifdef USE_CLASS3_A
 
+// void exfunc(int flag +intent(in)+value)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_in
+// Match:     py_default
 #ifndef USE_CLASS3_A
 static PyObject *
 PY_exfunc_1(
@@ -59,7 +64,6 @@ PY_exfunc_1(
   PyObject *args,
   PyObject *kwds)
 {
-// void exfunc(int flag +intent(in)+value)
 // splicer begin class.User2.method.exfunc_1
     int flag;
     const char *SHT_kwlist[] = {

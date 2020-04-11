@@ -510,6 +510,12 @@ PY_array_arg
     Applies to function arguments and to structs when
     **PY_struct_arg** is *class* (struct-as-class).
     Defaults to *numpy*.
+    Added to fmt for functions.
+    Useful for *c_helpers* in statements.
+
+.. code-block:: text
+
+        c_helper="get_from_object_{c_type}_{PY_array_arg}",
 
 PY_module_filename_template
     ``py{library}module.{PY_impl_filename_suffix}``

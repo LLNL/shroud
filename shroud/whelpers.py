@@ -268,36 +268,43 @@ array->rank = 1;
 // Converter to PyObject to char *.
 {PY_helper_static}{hnameproto}
 {{+
+size_t size = 0;
 char *out;
 if (PyUnicode_Check(obj)) {{+
 ^#if PY_MAJOR_VERSION >= 3
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyBytes_AS_STRING(strobj);
+size = PyString_Size(obj);
 value->obj = strobj;  // steal reference
 ^#else
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyString_AsString(strobj);
+size = PyString_Size(obj);
 value->obj = strobj;  // steal reference
 ^#endif
 ^#if PY_MAJOR_VERSION >= 3
 -}} else if (PyByteArray_Check(obj)) {{+
 out = PyBytes_AS_STRING(obj);
+size = PyBytes_GET_SIZE(obj);
 value->obj = obj;
 Py_INCREF(obj);
 ^#else
 -}} else if (PyString_Check(obj)) {{+
 out = PyString_AsString(obj);
+size = PyString_Size(obj);
 value->obj = obj;
 Py_INCREF(obj);
 ^#endif
 -}} else if (obj == Py_None) {{+
 out = NULL;
+size = 0;
 value->obj = NULL;
 -}} else {{+
 PyErr_SetString(PyExc_ValueError, "argument must be a string");
 return 0;
 -}}
 value->data = out;
+value->size = size;
 return 1;
 -}}
 """, fmt),
@@ -316,12 +323,15 @@ return 1;
     ########################################
     CHelpers['PY_converter_type'] = dict(
         scope="utility",
+        c_include="<stddef.h>",
+        cxx_include="<cstddef>",
         source=wformat("""
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
 typedef struct {{+
 PyObject *obj;
 void *data;   // points into obj.
+size_t size;
 -}} {PY_typedef_converter};""", fmt)
     )
     
@@ -634,18 +644,22 @@ def add_to_PyList_helper(arg):
     ########################################
     # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
-    if name not in CHelpers:
+    if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = ntypemap.c_type
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        fmt.Py_ctor = ntypemap.PY_ctor.format(
+            c_deref="", c_var="in[i]",
+            cxx_var="in[i]", cxx_member="X")
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
 
     ########################################
     # Used with intent(inout)
     name = "update_PyList_" + ntypemap.c_type
-    if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    if name not in CHelpers and ntypemap.PY_ctor is not None:
+        fmt.Py_ctor = ntypemap.PY_ctor.format(
+            c_deref="", c_var="in[i]",
+            cxx_var="in[i]", cxx_member="X")
         fmt.hname = name
         fmt.hnameproto = wformat(
             "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
@@ -709,6 +723,7 @@ return 0;
 -}}
 value->obj = {py_tmp};
 value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
+value->size = PyArray_SIZE({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
 -}}""", fmt),
         )
@@ -821,6 +836,7 @@ return 0;
 -}}
 value->obj = {nullptr};
 value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+value->size = {size_var};
 return 1;
 -}}""", fmt),
     )

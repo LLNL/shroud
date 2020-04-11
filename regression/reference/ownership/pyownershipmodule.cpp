@@ -34,6 +34,7 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// int * ReturnIntPtrScalar() +deref(scalar)
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
 ;
@@ -44,7 +45,6 @@ PY_ReturnIntPtrScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrScalar() +deref(scalar)
 // splicer begin function.return_int_ptr_scalar
     PyObject * SHTPy_rv = nullptr;
 
@@ -57,6 +57,7 @@ PY_ReturnIntPtrScalar(
 // splicer end function.return_int_ptr_scalar
 }
 
+// int * ReturnIntPtrPointer() +deref(pointer)
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
 ;
@@ -67,7 +68,6 @@ PY_ReturnIntPtrPointer(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrPointer() +deref(pointer)
 // splicer begin function.return_int_ptr_pointer
     PyObject * SHTPy_rv = nullptr;
 
@@ -85,6 +85,11 @@ fail:
 // splicer end function.return_int_ptr_pointer
 }
 
+// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimPointer__doc__[] =
 "documentation"
 ;
@@ -95,7 +100,6 @@ PY_ReturnIntPtrDimPointer(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 // splicer begin function.return_int_ptr_dim_pointer
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -118,6 +122,11 @@ fail:
 // splicer end function.return_int_ptr_dim_pointer
 }
 
+// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
 "documentation"
 ;
@@ -128,7 +137,6 @@ PY_ReturnIntPtrDimAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 // splicer begin function.return_int_ptr_dim_alloc
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -151,6 +159,11 @@ fail:
 // splicer end function.return_int_ptr_dim_alloc
 }
 
+// int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimDefault__doc__[] =
 "documentation"
 ;
@@ -161,7 +174,6 @@ PY_ReturnIntPtrDimDefault(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 // splicer begin function.return_int_ptr_dim_default
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -184,6 +196,11 @@ fail:
 // splicer end function.return_int_ptr_dim_default
 }
 
+// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
 "documentation"
 ;
@@ -194,7 +211,6 @@ PY_ReturnIntPtrDimPointerNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 // splicer begin function.return_int_ptr_dim_pointer_new
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -217,6 +233,11 @@ fail:
 // splicer end function.return_int_ptr_dim_pointer_new
 }
 
+// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
 "documentation"
 ;
@@ -227,7 +248,6 @@ PY_ReturnIntPtrDimAllocNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 // splicer begin function.return_int_ptr_dim_alloc_new
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -250,6 +270,11 @@ fail:
 // splicer end function.return_int_ptr_dim_alloc_new
 }
 
+// int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// ----------------------------------------
+// Argument:  len
+// Requested: py_native_*_out
+// Match:     py_default
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
 "documentation"
 ;
@@ -260,7 +285,6 @@ PY_ReturnIntPtrDimDefaultNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 // splicer begin function.return_int_ptr_dim_default_new
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
@@ -283,6 +307,11 @@ fail:
 // splicer end function.return_int_ptr_dim_default_new
 }
 
+// void createClassStatic(int flag +intent(in)+value)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_in
+// Match:     py_default
 static char PY_createClassStatic__doc__[] =
 "documentation"
 ;
@@ -293,7 +322,6 @@ PY_createClassStatic(
   PyObject *args,
   PyObject *kwds)
 {
-// void createClassStatic(int flag +intent(in)+value)
 // splicer begin function.create_class_static
     int flag;
     const char *SHT_kwlist[] = {
@@ -309,6 +337,7 @@ PY_createClassStatic(
 // splicer end function.create_class_static
 }
 
+// Class1 * getClassStatic() +owner(library)
 static char PY_getClassStatic__doc__[] =
 "documentation"
 ;
@@ -319,7 +348,6 @@ PY_getClassStatic(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1 * getClassStatic() +owner(library)
 // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
 
@@ -331,6 +359,11 @@ PY_getClassStatic(
 // splicer end function.get_class_static
 }
 
+// Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_in
+// Match:     py_default
 static char PY_getClassNew__doc__[] =
 "documentation"
 ;
@@ -345,7 +378,6 @@ PY_getClassNew(
   PyObject *args,
   PyObject *kwds)
 {
-// Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 // splicer begin function.get_class_new
     int flag;
     const char *SHT_kwlist[] = {

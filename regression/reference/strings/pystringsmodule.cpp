@@ -31,6 +31,11 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void passChar(char status +intent(in)+value)
+// ----------------------------------------
+// Argument:  status
+// Requested: py_schar_in
+// Match:     py_default
 static char PY_passChar__doc__[] =
 "documentation"
 ;
@@ -45,7 +50,6 @@ PY_passChar(
   PyObject *args,
   PyObject *kwds)
 {
-// void passChar(char status +intent(in)+value)
 // splicer begin function.pass_char
     char status;
     const char *SHT_kwlist[] = {
@@ -61,6 +65,7 @@ PY_passChar(
 // splicer end function.pass_char
 }
 
+// char returnChar()
 static char PY_returnChar__doc__[] =
 "documentation"
 ;
@@ -75,7 +80,6 @@ PY_returnChar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// char returnChar()
 // splicer begin function.return_char
     PyObject * SHTPy_rv = nullptr;
 
@@ -88,6 +92,13 @@ PY_returnChar(
 // splicer end function.return_char
 }
 
+// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
+// ----------------------------------------
+// Argument:  dest
+// Exact:     py_char_*_out_charlen
+// ----------------------------------------
+// Argument:  src
+// Exact:     py_char_*_in
 static char PY_passCharPtr__doc__[] =
 "documentation"
 ;
@@ -105,7 +116,6 @@ PY_passCharPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 // splicer begin function.pass_char_ptr
     const char * src;
     const char *SHT_kwlist[] = {
@@ -129,6 +139,10 @@ PY_passCharPtr(
 // splicer end function.pass_char_ptr
 }
 
+// void passCharPtrInOut(char * s +intent(inout))
+// ----------------------------------------
+// Argument:  s
+// Exact:     py_char_*_inout
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -145,7 +159,6 @@ PY_passCharPtrInOut(
   PyObject *args,
   PyObject *kwds)
 {
-// void passCharPtrInOut(char * s +intent(inout))
 // splicer begin function.pass_char_ptr_in_out
     char * s;
     const char *SHT_kwlist[] = {
@@ -166,6 +179,7 @@ PY_passCharPtrInOut(
 // splicer end function.pass_char_ptr_in_out
 }
 
+// const char * getCharPtr1() +deref(allocatable)
 static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
@@ -180,7 +194,6 @@ PY_getCharPtr1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr1() +deref(allocatable)
 // splicer begin function.get_char_ptr1
     PyObject * SHTPy_rv = nullptr;
 
@@ -193,6 +206,7 @@ PY_getCharPtr1(
 // splicer end function.get_char_ptr1
 }
 
+// const char * getCharPtr2() +deref(result_as_arg)+len(30)
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -207,7 +221,6 @@ PY_getCharPtr2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr2() +deref(result_as_arg)+len(30)
 // splicer begin function.get_char_ptr2
     PyObject * SHTPy_rv = nullptr;
 
@@ -220,6 +233,7 @@ PY_getCharPtr2(
 // splicer end function.get_char_ptr2
 }
 
+// const char * getCharPtr3() +deref(result_as_arg)
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
@@ -234,7 +248,6 @@ PY_getCharPtr3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr3() +deref(result_as_arg)
 // splicer begin function.get_char_ptr3
     PyObject * SHTPy_rv = nullptr;
 
@@ -247,6 +260,7 @@ PY_getCharPtr3(
 // splicer end function.get_char_ptr3
 }
 
+// const string getConstStringResult() +deref(allocatable)
 static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
@@ -261,7 +275,6 @@ PY_getConstStringResult(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getConstStringResult() +deref(allocatable)
 // splicer begin function.get_const_string_result
     PyObject * SHTPy_rv = nullptr;
 
@@ -275,6 +288,7 @@ PY_getConstStringResult(
 // splicer end function.get_const_string_result
 }
 
+// const string getConstStringLen() +deref(result_as_arg)+len(30)
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -289,7 +303,6 @@ PY_getConstStringLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getConstStringLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_len
     PyObject * SHTPy_rv = nullptr;
 
@@ -303,6 +316,7 @@ PY_getConstStringLen(
 // splicer end function.get_const_string_len
 }
 
+// const string getConstStringAsArg() +deref(result_as_arg)
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -317,7 +331,6 @@ PY_getConstStringAsArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getConstStringAsArg() +deref(result_as_arg)
 // splicer begin function.get_const_string_as_arg
     PyObject * SHTPy_rv = nullptr;
 
@@ -331,6 +344,7 @@ PY_getConstStringAsArg(
 // splicer end function.get_const_string_as_arg
 }
 
+// const std::string getConstStringAlloc() +deref(allocatable)
 static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
@@ -341,7 +355,6 @@ PY_getConstStringAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string getConstStringAlloc() +deref(allocatable)
 // splicer begin function.get_const_string_alloc
     PyObject * SHTPy_rv = nullptr;
 
@@ -355,6 +368,7 @@ PY_getConstStringAlloc(
 // splicer end function.get_const_string_alloc
 }
 
+// const string & getConstStringRefPure() +deref(allocatable)
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
@@ -369,7 +383,6 @@ PY_getConstStringRefPure(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefPure() +deref(allocatable)
 // splicer begin function.get_const_string_ref_pure
     PyObject * SHTPy_rv = nullptr;
 
@@ -383,6 +396,7 @@ PY_getConstStringRefPure(
 // splicer end function.get_const_string_ref_pure
 }
 
+// const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -400,7 +414,6 @@ PY_getConstStringRefLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ref_len
     PyObject * SHTPy_rv = nullptr;
 
@@ -414,6 +427,7 @@ PY_getConstStringRefLen(
 // splicer end function.get_const_string_ref_len
 }
 
+// const string & getConstStringRefAsArg() +deref(result_as_arg)
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -430,7 +444,6 @@ PY_getConstStringRefAsArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefAsArg() +deref(result_as_arg)
 // splicer begin function.get_const_string_ref_as_arg
     PyObject * SHTPy_rv = nullptr;
 
@@ -444,6 +457,7 @@ PY_getConstStringRefAsArg(
 // splicer end function.get_const_string_ref_as_arg
 }
 
+// const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -458,7 +472,6 @@ PY_getConstStringRefLenEmpty(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ref_len_empty
     PyObject * SHTPy_rv = nullptr;
 
@@ -472,6 +485,7 @@ PY_getConstStringRefLenEmpty(
 // splicer end function.get_const_string_ref_len_empty
 }
 
+// const std::string & getConstStringRefAlloc() +deref(allocatable)
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
@@ -482,7 +496,6 @@ PY_getConstStringRefAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & getConstStringRefAlloc() +deref(allocatable)
 // splicer begin function.get_const_string_ref_alloc
     PyObject * SHTPy_rv = nullptr;
 
@@ -496,6 +509,7 @@ PY_getConstStringRefAlloc(
 // splicer end function.get_const_string_ref_alloc
 }
 
+// const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
@@ -514,7 +528,6 @@ PY_getConstStringPtrLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ptr_len
     PyObject * SHTPy_rv = nullptr;
 
@@ -528,6 +541,7 @@ PY_getConstStringPtrLen(
 // splicer end function.get_const_string_ptr_len
 }
 
+// const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
 ;
@@ -538,7 +552,6 @@ PY_getConstStringPtrAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 // splicer begin function.get_const_string_ptr_alloc
     PyObject * SHTPy_rv = nullptr;
 
@@ -552,6 +565,7 @@ PY_getConstStringPtrAlloc(
 // splicer end function.get_const_string_ptr_alloc
 }
 
+// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
@@ -569,7 +583,6 @@ PY_getConstStringPtrOwnsAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
 // splicer begin function.get_const_string_ptr_owns_alloc
     PyObject * SHTPy_rv = nullptr;
 
@@ -583,6 +596,7 @@ PY_getConstStringPtrOwnsAlloc(
 // splicer end function.get_const_string_ptr_owns_alloc
 }
 
+// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;
@@ -596,7 +610,6 @@ PY_getConstStringPtrOwnsAllocPattern(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // splicer begin function.get_const_string_ptr_owns_alloc_pattern
     PyObject * SHTPy_rv = nullptr;
 
@@ -610,6 +623,11 @@ PY_getConstStringPtrOwnsAllocPattern(
 // splicer end function.get_const_string_ptr_owns_alloc_pattern
 }
 
+// void acceptStringConstReference(const std::string & arg1 +intent(in))
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
@@ -627,7 +645,6 @@ PY_acceptStringConstReference(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptStringConstReference(const std::string & arg1 +intent(in))
 // splicer begin function.accept_string_const_reference
     const char * arg1;
     const char *SHT_kwlist[] = {
@@ -647,6 +664,11 @@ PY_acceptStringConstReference(
 // splicer end function.accept_string_const_reference
 }
 
+// void acceptStringReferenceOut(std::string & arg1 +intent(out))
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_&_out
+// Match:     py_string_out
 static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
 ;
@@ -664,7 +686,6 @@ PY_acceptStringReferenceOut(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void acceptStringReferenceOut(std::string & arg1 +intent(out))
 // splicer begin function.accept_string_reference_out
     PyObject * SHPy_arg1 = nullptr;
 
@@ -681,6 +702,11 @@ PY_acceptStringReferenceOut(
 // splicer end function.accept_string_reference_out
 }
 
+// void acceptStringReference(std::string & arg1 +intent(inout))
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_&_inout
+// Match:     py_string_inout
 static char PY_acceptStringReference__doc__[] =
 "documentation"
 ;
@@ -698,7 +724,6 @@ PY_acceptStringReference(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptStringReference(std::string & arg1 +intent(inout))
 // splicer begin function.accept_string_reference
     char * arg1;
     const char *SHT_kwlist[] = {
@@ -724,6 +749,11 @@ PY_acceptStringReference(
 // splicer end function.accept_string_reference
 }
 
+// void acceptStringPointer(std::string * arg1 +intent(inout))
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_*_inout
+// Match:     py_string_inout
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
@@ -738,7 +768,6 @@ PY_acceptStringPointer(
   PyObject *args,
   PyObject *kwds)
 {
-// void acceptStringPointer(std::string * arg1 +intent(inout))
 // splicer begin function.accept_string_pointer
     char * arg1;
     const char *SHT_kwlist[] = {
@@ -764,6 +793,15 @@ PY_acceptStringPointer(
 // splicer end function.accept_string_pointer
 }
 
+// void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_&_out
+// Match:     py_string_out
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_string_&_out
+// Match:     py_string_out
 static char PY_returnStrings__doc__[] =
 "documentation"
 ;
@@ -778,7 +816,6 @@ PY_returnStrings(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 // splicer begin function.return_strings
     PyObject *SHTPy_rv = nullptr;  // return value object
 
@@ -796,6 +833,10 @@ PY_returnStrings(
 // splicer end function.return_strings
 }
 
+// void explicit1(char * name +intent(in)+len_trim(AAlen))
+// ----------------------------------------
+// Argument:  name
+// Exact:     py_char_*_in
 static char PY_explicit1__doc__[] =
 "documentation"
 ;
@@ -806,7 +847,6 @@ PY_explicit1(
   PyObject *args,
   PyObject *kwds)
 {
-// void explicit1(char * name +intent(in)+len_trim(AAlen))
 // splicer begin function.explicit1
     char * name;
     const char *SHT_kwlist[] = {
@@ -822,6 +862,11 @@ PY_explicit1(
 // splicer end function.explicit1
 }
 
+// void CpassChar(char status +intent(in)+value)
+// ----------------------------------------
+// Argument:  status
+// Requested: py_schar_in
+// Match:     py_default
 static char PY_CpassChar__doc__[] =
 "documentation"
 ;
@@ -836,7 +881,6 @@ PY_CpassChar(
   PyObject *args,
   PyObject *kwds)
 {
-// void CpassChar(char status +intent(in)+value)
 // splicer begin function.cpass_char
     char status;
     const char *SHT_kwlist[] = {
@@ -852,6 +896,7 @@ PY_CpassChar(
 // splicer end function.cpass_char
 }
 
+// char CreturnChar()
 static char PY_CreturnChar__doc__[] =
 "documentation"
 ;
@@ -866,7 +911,6 @@ PY_CreturnChar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// char CreturnChar()
 // splicer begin function.creturn_char
     PyObject * SHTPy_rv = nullptr;
 

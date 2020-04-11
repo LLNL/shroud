@@ -31,6 +31,7 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void NoReturnNoArguments()
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
@@ -41,13 +42,21 @@ PY_NoReturnNoArguments(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void NoReturnNoArguments()
 // splicer begin function.no_return_no_arguments
     tutorial::NoReturnNoArguments();
     Py_RETURN_NONE;
 // splicer end function.no_return_no_arguments
 }
 
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_in
+// Match:     py_default
 static char PY_PassByValue__doc__[] =
 "documentation"
 ;
@@ -58,7 +67,6 @@ PY_PassByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 // splicer begin function.pass_by_value
     double arg1;
     int arg2;
@@ -81,6 +89,15 @@ PY_PassByValue(
 // splicer end function.pass_by_value
 }
 
+// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_string_&_in
+// Match:     py_string_in
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_string_&_in
+// Match:     py_string_in
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
@@ -95,7 +112,6 @@ PY_ConcatenateStrings(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 // splicer begin function.concatenate_strings
     const char * arg1;
     const char * arg2;
@@ -125,6 +141,14 @@ PY_ConcatenateStrings(
 // splicer end function.concatenate_strings
 }
 
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Exact:     py_bool_in
 static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
 "documentation"
 ;
@@ -135,7 +159,6 @@ PY_UseDefaultArguments_arg1_arg2(
   PyObject *args,
   PyObject *kwds)
 {
-// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 // splicer begin function.use_default_arguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
@@ -180,13 +203,17 @@ PY_UseDefaultArguments_arg1_arg2(
 // splicer end function.use_default_arguments
 }
 
+// void OverloadedFunction(const std::string & name +intent(in))
+// ----------------------------------------
+// Argument:  name
+// Requested: py_string_&_in
+// Match:     py_string_in
 static PyObject *
 PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void OverloadedFunction(const std::string & name +intent(in))
 // splicer begin function.overloaded_function_from_name
     const char * name;
     const char *SHT_kwlist[] = {
@@ -205,13 +232,17 @@ PY_OverloadedFunction_from_name(
 // splicer end function.overloaded_function_from_name
 }
 
+// void OverloadedFunction(int indx +intent(in)+value)
+// ----------------------------------------
+// Argument:  indx
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_OverloadedFunction_from_index(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void OverloadedFunction(int indx +intent(in)+value)
 // splicer begin function.overloaded_function_from_index
     int indx;
     const char *SHT_kwlist[] = {
@@ -227,13 +258,17 @@ PY_OverloadedFunction_from_index(
 // splicer end function.overloaded_function_from_index
 }
 
+// void TemplateArgument(int arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_TemplateArgument_int(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void TemplateArgument(int arg +intent(in)+value)
 // splicer begin function.template_argument_int
     int arg;
     const char *SHT_kwlist[] = {
@@ -249,13 +284,17 @@ PY_TemplateArgument_int(
 // splicer end function.template_argument_int
 }
 
+// void TemplateArgument(double arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_TemplateArgument_double(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void TemplateArgument(double arg +intent(in)+value)
 // splicer begin function.template_argument_double
     double arg;
     const char *SHT_kwlist[] = {
@@ -271,26 +310,34 @@ PY_TemplateArgument_double(
 // splicer end function.template_argument_double
 }
 
+// void FortranGenericOverloaded()
 static PyObject *
 PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void FortranGenericOverloaded()
 // splicer begin function.fortran_generic_overloaded_0
     tutorial::FortranGenericOverloaded();
     Py_RETURN_NONE;
 // splicer end function.fortran_generic_overloaded_0
 }
 
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  name
+// Requested: py_string_&_in
+// Match:     py_string_in
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_FortranGenericOverloaded_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
 // splicer begin function.fortran_generic_overloaded_1
     const char * name;
     double arg2;
@@ -312,13 +359,25 @@ PY_FortranGenericOverloaded_1(
 // splicer end function.fortran_generic_overloaded_1
 }
 
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  num
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  offset
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  stride
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_UseDefaultOverload_num_offset_stride(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 // splicer begin function.use_default_overload_num_offset_stride
     Py_ssize_t SH_nargs = 0;
     int num;
@@ -360,13 +419,29 @@ PY_UseDefaultOverload_num_offset_stride(
 // splicer end function.use_default_overload_num_offset_stride
 }
 
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// ----------------------------------------
+// Argument:  type
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  num
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  offset
+// Requested: py_native_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  stride
+// Requested: py_native_in
+// Match:     py_default
 static PyObject *
 PY_UseDefaultOverload_5(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 // splicer begin function.use_default_overload_5
     Py_ssize_t SH_nargs = 0;
     double type;
@@ -411,6 +486,11 @@ PY_UseDefaultOverload_5(
 // splicer end function.use_default_overload_5
 }
 
+// TypeID typefunc(TypeID arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_typefunc__doc__[] =
 "documentation"
 ;
@@ -421,7 +501,6 @@ PY_typefunc(
   PyObject *args,
   PyObject *kwds)
 {
-// TypeID typefunc(TypeID arg +intent(in)+value)
 // splicer begin function.typefunc
     int arg;
     const char *SHT_kwlist[] = {
@@ -442,6 +521,11 @@ PY_typefunc(
 // splicer end function.typefunc
 }
 
+// EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_enumfunc__doc__[] =
 "documentation"
 ;
@@ -452,7 +536,6 @@ PY_enumfunc(
   PyObject *args,
   PyObject *kwds)
 {
-// EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 // splicer begin function.enumfunc
     int arg;
     const char *SHT_kwlist[] = {
@@ -477,6 +560,11 @@ PY_enumfunc(
 // splicer end function.enumfunc
 }
 
+// Color colorfunc(Color arg +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg
+// Requested: py_native_in
+// Match:     py_default
 static char PY_colorfunc__doc__[] =
 "documentation"
 ;
@@ -487,7 +575,6 @@ PY_colorfunc(
   PyObject *args,
   PyObject *kwds)
 {
-// Color colorfunc(Color arg +intent(in)+value)
 // splicer begin function.colorfunc
     int arg;
     const char *SHT_kwlist[] = {
@@ -511,6 +598,15 @@ PY_colorfunc(
 // splicer end function.colorfunc
 }
 
+// void getMinMax(int & min +intent(out), int & max +intent(out))
+// ----------------------------------------
+// Argument:  min
+// Requested: py_native_&_out
+// Match:     py_default
+// ----------------------------------------
+// Argument:  max
+// Requested: py_native_&_out
+// Match:     py_default
 static char PY_getMinMax__doc__[] =
 "documentation"
 ;
@@ -525,7 +621,6 @@ PY_getMinMax(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void getMinMax(int & min +intent(out), int & max +intent(out))
 // splicer begin function.get_min_max
     PyObject *SHTPy_rv = nullptr;  // return value object
 
@@ -542,6 +637,7 @@ PY_getMinMax(
 // splicer end function.get_min_max
 }
 
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -552,7 +648,6 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
     PyObject * SHTPy_rv = nullptr;
 

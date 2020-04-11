@@ -36,6 +36,7 @@ PY_User1_tp_del (PY_User1 *self)
 // splicer end class.User1.type.del
 }
 
+// void method1()
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -46,13 +47,13 @@ PY_method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void method1()
 // splicer begin class.User1.method.method1
     self->obj->method1();
     Py_RETURN_NONE;
 // splicer end class.User1.method.method1
 }
 
+// void method2()
 #if defined(USE_TWO)
 static char PY_method2__doc__[] =
 "documentation"
@@ -64,7 +65,6 @@ PY_method2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void method2()
 // splicer begin class.User1.method.method2
     self->obj->method2();
     Py_RETURN_NONE;
@@ -72,6 +72,11 @@ PY_method2(
 }
 #endif // if defined(USE_TWO)
 
+// void method3def(int i=0 +intent(in)+value)
+// ----------------------------------------
+// Argument:  i
+// Requested: py_native_in
+// Match:     py_default
 #if defined(USE_THREE)
 static char PY_method3def_1__doc__[] =
 "documentation"
@@ -83,7 +88,6 @@ PY_method3def_1(
   PyObject *args,
   PyObject *kwds)
 {
-// void method3def(int i=0 +intent(in)+value)
 // splicer begin class.User1.method.method3def
     Py_ssize_t SH_nargs = 0;
     int i;

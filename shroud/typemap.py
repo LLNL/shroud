@@ -103,7 +103,6 @@ class Typemap(object):
         # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
         # ex. PyFloat_AsDouble({py_var})
-        ("PY_get_converter", None),
         # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
@@ -306,7 +305,6 @@ def initialize():
             PY_format="h",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
-            PY_get_converter="get_from_object_short",
             PYN_typenum="NPY_SHORT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -325,7 +323,6 @@ def initialize():
             PY_format="i",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
-            PY_get_converter="get_from_object_int",
             PYN_typenum="NPY_INT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -344,7 +341,6 @@ def initialize():
             PY_format="l",
             PY_ctor="PyInt_FromLong({c_deref}{c_var})",
             PY_get="PyInt_AsLong({py_var})",
-            PY_get_converter="get_from_object_long",
             PYN_typenum="NPY_LONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -631,7 +627,6 @@ def initialize():
             PY_format="f",
             PY_ctor="PyFloat_FromDouble({c_deref}{c_var})",
             PY_get="PyFloat_AsDouble({py_var})",
-            PY_get_converter="get_from_object_float",
             PYN_typenum="NPY_FLOAT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -650,7 +645,6 @@ def initialize():
             PY_format="d",
             PY_ctor="PyFloat_FromDouble({c_deref}{c_var})",
             PY_get="PyFloat_AsDouble({py_var})",
-            PY_get_converter="get_from_object_double",
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -694,7 +688,6 @@ def initialize():
             PY_format="s",
             PY_ctor="PyString_FromString({c_var})",
 #            PY_get="PyString_AsString({py_var})",
-            PY_get_converter="get_from_object_char",
             PYN_typenum="NPY_INTP",  # void *
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
@@ -1218,6 +1211,11 @@ def update_stmt_tree(stmts, tree, defaults):
             step["_key"] = "_".join(label)
         if "alias" in node:
             step['_node'] = nodes[node["alias"]]
+        elif "base" in node:
+            step['_node'] = node
+            scope = util.Scope(nodes[node["base"]]["scope"])
+            scope.update(node)
+            node["scope"] = scope
         else:
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])

@@ -62,12 +62,12 @@ struct Cstruct_list {
 
         var = map['ivalue']
         var.fmtdict.PY_struct_context = "struct."
-        dims = wrapp.py_struct_dimension(self.struct, var)
+        have_array, dims = wrapp.py_struct_dimension(self.struct, var)
         self.assertEqual("struct.nitems+struct.nitems", dims)
 
         var = map['dvalue']
         var.fmtdict.PY_struct_context = "struct."
-        dims = wrapp.py_struct_dimension(self.struct, var)
+        have_array, dims = wrapp.py_struct_dimension(self.struct, var)
         self.assertEqual("struct.nitems*TWO", dims)
 
 
