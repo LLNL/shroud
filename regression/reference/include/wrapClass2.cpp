@@ -14,6 +14,15 @@
 extern "C" {
 
 
+// void method1(MPI_Comm comm +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  comm
+// Requested: c_unknown_scalar_in
+// Match:     c_default
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);
@@ -21,6 +30,15 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
     SH_this->method1(SHCXX_comm);
 }
 
+// void method2(three::Class1 * c2 +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  c2
+// Requested: c_shadow_pointer_in
+// Match:     c_shadow_in
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);

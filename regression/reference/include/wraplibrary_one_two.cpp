@@ -13,6 +13,11 @@
 extern "C" {
 
 
+// void function1()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void LIB_one_two_function1()
 {
     one::two::function1();

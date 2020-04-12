@@ -13,6 +13,15 @@
 extern "C" {
 
 
+// void method1(CustomType arg1 +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg1
+// Requested: c_native_scalar_in
+// Match:     c_default
 void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)
 {
     three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);

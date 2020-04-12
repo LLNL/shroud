@@ -17,6 +17,7 @@ library: memdoc
 format:
   C_prefix: STR_
 options:
+  debug: True
   literalinclude: True
 
 declarations:

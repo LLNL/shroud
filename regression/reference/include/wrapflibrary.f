@@ -40,6 +40,14 @@ module library_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  comm
+        ! Requested: c_unknown_scalar_in
+        ! Match:     c_default
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -49,6 +57,14 @@ module library_mod
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_class2_method1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  c2
+        ! Requested: c_shadow_pointer_in
+        ! Match:     c_shadow_in
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: SHROUD_class1_capsule, SHROUD_class2_capsule
@@ -62,12 +78,38 @@ module library_mod
 
 contains
 
+    ! void method1(MPI_Comm comm +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  comm
+    ! Requested: f_unknown_scalar_in
+    ! Match:     f_default
+    ! Requested: c_unknown_scalar_in
+    ! Match:     c_default
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
         call c_class2_method1(obj%cxxmem, comm)
     end subroutine class2_method1
 
+    ! void method2(three::Class1 * c2 +intent(in))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  c2
+    ! Requested: f_shadow_pointer_in
+    ! Match:     f_default
+    ! Requested: c_shadow_pointer_in
+    ! Match:     c_shadow_in
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

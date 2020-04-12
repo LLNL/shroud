@@ -13,6 +13,7 @@ library: templates
 cxx_header: templates.hpp
 
 options:
+  debug: True
   wrap_python: True
 
 declarations:
