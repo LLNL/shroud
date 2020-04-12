@@ -993,7 +993,7 @@
                         "f_var": "SHT_rv",
                         "f_var_shape": "(:)",
                         "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result",
                         "stmtc0": "c_native_*_result",
                         "stmtc1": "c_default"
                     },
@@ -1537,7 +1537,7 @@
                         "f_var": "SHT_rv",
                         "f_var_shape": "(:)",
                         "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result",
                         "stmtc0": "c_native_*_result",
                         "stmtc1": "c_default"
                     },

@@ -69,8 +69,7 @@ int CLA_direction_func(int arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_shadow_scalar_in
-// Match:     c_shadow_in
+// Exact:     c_shadow_scalar_in
 void CLA_pass_class_by_value(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value

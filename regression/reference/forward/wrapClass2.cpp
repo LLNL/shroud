@@ -23,8 +23,7 @@ extern "C" {
 // Class2()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor

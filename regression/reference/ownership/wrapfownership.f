@@ -483,8 +483,7 @@ contains
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_*_result
-    ! Match:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -532,8 +531,7 @@ contains
     ! int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_*_result
-    ! Match:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------

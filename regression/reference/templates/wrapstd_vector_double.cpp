@@ -21,8 +21,7 @@ extern "C" {
 // vector()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor

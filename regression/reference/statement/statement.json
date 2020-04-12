@@ -106,7 +106,7 @@
                         "stmt0": "f_string_scalar_result_result_as_arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_result_buf"
+                        "stmtc1": "c_string_scalar_result_buf"
                     }
                 },
                 "ast": {

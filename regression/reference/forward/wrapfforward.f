@@ -168,8 +168,7 @@ contains
     ! Class2()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_ctor
-    ! Match:     f_shadow_result
+    ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function class2_ctor() &
             result(SHT_rv)

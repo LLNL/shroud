@@ -208,8 +208,7 @@ contains
     ! vector()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_ctor
-    ! Match:     f_shadow_result
+    ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function vector_int_ctor() &
             result(SHT_rv)
@@ -312,8 +311,7 @@ contains
     ! vector()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_ctor
-    ! Match:     f_shadow_result
+    ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function vector_double_ctor() &
             result(SHT_rv)

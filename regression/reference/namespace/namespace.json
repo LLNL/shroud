@@ -36,7 +36,7 @@
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_result_buf"
+                        "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",

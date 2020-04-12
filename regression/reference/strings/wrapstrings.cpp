@@ -428,8 +428,7 @@ void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_scalar_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_scalar_result_buf
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.get_const_string_len_bufferify
@@ -454,8 +453,7 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  output
-// Requested: c_string_scalar_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_scalar_result_buf
 void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 {
     // splicer begin function.get_const_string_as_arg_bufferify

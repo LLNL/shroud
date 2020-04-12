@@ -400,8 +400,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_shadow_scalar_in
-    ! Match:     c_shadow_in
+    ! Exact:     c_shadow_scalar_in
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
@@ -595,8 +594,7 @@ contains
     ! Class1() +name(new)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_ctor
-    ! Match:     f_shadow_result
+    ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! start class1_new_default
     function class1_new_default() &
@@ -613,8 +611,7 @@ contains
     ! Class1(int flag +intent(in)+value) +name(new)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_ctor
-    ! Match:     f_shadow_result
+    ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
     ! Argument:  flag
@@ -957,8 +954,7 @@ contains
     ! Argument:  arg
     ! Requested: f_shadow_scalar_in
     ! Match:     f_default
-    ! Requested: c_shadow_scalar_in
-    ! Match:     c_shadow_in
+    ! Exact:     c_shadow_scalar_in
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -1094,8 +1090,7 @@ contains
     ! Result
     ! Requested: f_string_scalar_result_result_as_arg
     ! Match:     f_default
-    ! Requested: c_string_scalar_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
     ! Requested: f_string_&_result

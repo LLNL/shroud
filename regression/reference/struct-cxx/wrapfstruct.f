@@ -377,8 +377,7 @@ contains
     ! Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_*_result
-    ! Match:     f_native_*_result_pointer
+    ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -415,8 +414,7 @@ contains
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_*_result
-    ! Match:     f_native_*_result_pointer
+    ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -460,8 +458,7 @@ contains
     ! Cstruct_list * get_global_struct_list()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_*_result
-    ! Match:     f_native_*_result_pointer
+    ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     function get_global_struct_list() &

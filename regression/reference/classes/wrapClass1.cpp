@@ -22,8 +22,7 @@ extern "C" {
 // Class1() +name(new)
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 // start CLA_Class1_new_default
 CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
 {
@@ -39,8 +38,7 @@ CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
 // Class1(int flag +intent(in)+value) +name(new)
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  flag
 // Requested: c_native_scalar_in

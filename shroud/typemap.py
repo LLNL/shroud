@@ -1160,13 +1160,13 @@ def update_stmt_tree(stmts, tree, defaults):
     impossible to have an intermediate element with that name (since
     they're split on underscore).
 
-    Implement "alias" field.
+    Implement "base" field.  Base must be defined before use.
 
     Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
     based based on the language (c or f) and added as "scope" field.
-    This additional layer of indirection is needed to implement alias.
+    This additional layer of indirection is needed to implement base.
 
     stmts = [
        {name="c_native_in",}           # value1
@@ -1209,9 +1209,9 @@ def update_stmt_tree(stmts, tree, defaults):
             step = step.setdefault(part, {})
             label.append(part)
             step["_key"] = "_".join(label)
-        if "alias" in node:
-            step['_node'] = nodes[node["alias"]]
-        elif "base" in node:
+#        if "alias" in node:
+#            step['_node'] = nodes[node["alias"]]
+        if "base" in node:
             step['_node'] = node
             scope = util.Scope(nodes[node["base"]]["scope"])
             scope.update(node)
@@ -1689,7 +1689,7 @@ fc_statements = [
     # into a Fortran variable before the string is deleted.
     dict(
         name="c_string_scalar_result_buf",
-        alias="c_string_result_buf",
+        base="c_string_result_buf",
     ),
     
     # std::string function()
@@ -2010,7 +2010,7 @@ fc_statements = [
     ),
     dict(
         name="c_shadow_scalar_in",
-        alias="c_shadow_in",
+        base="c_shadow_in",
     ),
     # Return a C_capsule_data_type.
     dict(
@@ -2079,11 +2079,11 @@ fc_statements = [
     ),
     dict(
         name="c_shadow_scalar_ctor",
-        alias="c_shadow_ctor",
+        base="c_shadow_ctor",
     ),
     dict(
         name="f_shadow_ctor",
-        alias="f_shadow_result",
+        base="f_shadow_result",
     ),
     dict(
         # NULL in stddef.h
@@ -2120,6 +2120,6 @@ fc_statements = [
     ),
     dict(
         name="f_struct_*_result",
-        alias="f_native_*_result_pointer",
+        base="f_native_*_result_pointer",
     ),
 ]

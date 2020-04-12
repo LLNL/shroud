@@ -69,8 +69,7 @@ void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var
 // ExClass1()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHC_rv)
 {
@@ -94,8 +93,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
  */
 // ----------------------------------------
 // Result
-// Requested: c_shadow_scalar_ctor
-// Match:     c_shadow_ctor
+// Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  name
 // Requested: c_string_*_in
@@ -125,7 +123,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // ----------------------------------------
 // Result
 // Requested: c_shadow_scalar_ctor_buf
-// Match:     c_shadow_ctor
+// Match:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  name
 // Requested: c_string_*_in_buf

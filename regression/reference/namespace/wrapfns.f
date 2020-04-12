@@ -138,8 +138,7 @@ contains
     ! Result
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_scalar_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
     ! Requested: f_string_&_result_allocatable
