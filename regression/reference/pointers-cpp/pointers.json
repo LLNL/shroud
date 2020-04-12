@@ -1611,6 +1611,8 @@
                     "c_const": "",
                     "function_name": "acceptCharArrayIn",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "accept_char_array_in"
                 },
                 "options": {

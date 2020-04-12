@@ -810,18 +810,6 @@ return 1;""",
             )
         )  # closure
 
-    def document_stmts(self, output, stmt0, stmt1):
-        """A comments to show which py_statements were used.
-        """
-        if stmt0 == stmt1:
-            output.append(
-                "// Exact:     " + stmt0)
-        else:
-            output.append(
-                "// Requested: " + stmt0)
-            output.append(
-                "// Match:     " + stmt1)
-        
     def update_descr_code_blocks(self, name, stmts, fmt, output):
         """Format descr code.
 

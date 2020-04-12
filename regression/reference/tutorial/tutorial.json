@@ -1332,6 +1332,8 @@
                     "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "overloaded_function"
                 },
                 "options": {
@@ -2280,6 +2282,8 @@
                     "c_const": "",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "fortran_generic_overloaded"
                 },
                 "fortran_generic": [
@@ -2631,6 +2635,8 @@
                     "c_const": "",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "fortran_generic_overloaded"
                 },
                 "fortran_generic": [

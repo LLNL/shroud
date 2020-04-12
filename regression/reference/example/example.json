@@ -3254,6 +3254,8 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_0",
+                                            "stmt0": "c",
+                                            "stmt1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "fortran_generic": [
@@ -3675,6 +3677,8 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_1",
+                                            "stmt0": "c",
+                                            "stmt1": "c_default",
                                             "underscore_name": "declare"
                                         },
                                         "fortran_generic": [
@@ -5777,6 +5781,8 @@
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_bufferify",
+                                    "stmt0": "c",
+                                    "stmt1": "c_default",
                                     "underscore_name": "test_names"
                                 },
                                 "options": {
@@ -6073,6 +6079,8 @@
                                     "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag_bufferify",
+                                    "stmt0": "c",
+                                    "stmt1": "c_default",
                                     "underscore_name": "test_names"
                                 },
                                 "options": {

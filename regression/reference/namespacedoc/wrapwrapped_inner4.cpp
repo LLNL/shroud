@@ -17,6 +17,10 @@ extern "C" {
 // splicer end namespace.inner4.C_definitions
 
 // void worker4()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void WWW_inner4_worker4()
 {
     // splicer begin namespace.inner4.function.worker4

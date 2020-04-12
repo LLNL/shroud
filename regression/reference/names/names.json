@@ -1069,6 +1069,8 @@
                     "c_const": "",
                     "function_name": "TestMultilineSplicer",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "test_multiline_splicer"
                 },
                 "options": {

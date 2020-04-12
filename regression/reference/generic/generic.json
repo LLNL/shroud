@@ -142,6 +142,8 @@
                     "F_C_name": "c_generic_real",
                     "c_const": "",
                     "function_name": "GenericReal",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "generic_real"
                 },
                 "fortran_generic": [
@@ -820,6 +822,8 @@
                     "F_C_name": "c_save_pointer",
                     "c_const": "",
                     "function_name": "SavePointer",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "save_pointer"
                 },
                 "fortran_generic": [
@@ -1260,6 +1264,8 @@
                     "F_C_name": "c_save_pointer2",
                     "c_const": "",
                     "function_name": "SavePointer2",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "save_pointer2"
                 },
                 "fortran_generic": [
@@ -1920,6 +1926,8 @@
                     "F_C_name": "c_get_pointer_as_pointer",
                     "c_const": "",
                     "function_name": "GetPointerAsPointer",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
                 "fortran_generic": [

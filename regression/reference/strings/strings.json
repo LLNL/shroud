@@ -569,6 +569,8 @@
                     "c_const": "",
                     "function_name": "passCharPtr",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr"
                 },
                 "options": {
@@ -757,6 +759,8 @@
                     "c_const": "",
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
                 "options": {
@@ -4072,6 +4076,8 @@
                     "c_const": "",
                     "function_name": "acceptStringConstReference",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "accept_string_const_reference"
                 },
                 "options": {
@@ -4258,6 +4264,8 @@
                     "c_const": "",
                     "function_name": "acceptStringReferenceOut",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "accept_string_reference_out"
                 },
                 "options": {
@@ -4446,6 +4454,8 @@
                     "c_const": "",
                     "function_name": "acceptStringReference",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "accept_string_reference"
                 },
                 "options": {
@@ -4631,6 +4641,8 @@
                     "c_const": "",
                     "function_name": "acceptStringPointer",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "accept_string_pointer"
                 },
                 "options": {
@@ -5043,6 +5055,8 @@
                     "c_const": "",
                     "function_name": "explicit2",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "explicit2"
                 },
                 "options": {
@@ -5579,6 +5593,8 @@
                     "c_const": "",
                     "function_name": "CpassCharPtr",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "cpass_char_ptr"
                 },
                 "options": {

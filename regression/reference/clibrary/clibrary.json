@@ -1363,6 +1363,8 @@
                     "c_const": "",
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
                 "options": {
@@ -1552,6 +1554,8 @@
                     "c_const": "",
                     "function_name": "returnOneName",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "return_one_name"
                 },
                 "options": {
@@ -1842,6 +1846,8 @@
                     "c_const": "",
                     "function_name": "returnTwoNames",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "return_two_names"
                 },
                 "options": {
@@ -2118,6 +2124,8 @@
                     "c_const": "",
                     "function_name": "ImpliedTextLen",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "implied_text_len"
                 },
                 "options": {
@@ -3106,6 +3114,8 @@
                     "c_const": "",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "bind_c2"
                 },
                 "options": {
@@ -4510,6 +4520,8 @@
                     "c_const": "",
                     "function_name": "callback3",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "callback3"
                 },
                 "options": {

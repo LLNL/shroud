@@ -52,6 +52,10 @@ void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var
 // splicer end C_definitions
 
 // const std::string & LastFunctionCalled() +deref(allocatable)
+// ----------------------------------------
+// Result
+// Requested: c_string_pointer_result
+// Match:     c_string_result
 const char * NS_last_function_called()
 {
     // splicer begin function.last_function_called
@@ -62,6 +66,14 @@ const char * NS_last_function_called()
 }
 
 // void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_pointer_result_buf_allocatable
+// Match:     c_string_result_buf_allocatable
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify
@@ -71,6 +83,10 @@ void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 }
 
 // void One()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void NS_one()
 {
     // splicer begin function.one

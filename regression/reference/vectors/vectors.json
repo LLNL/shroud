@@ -354,6 +354,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_out",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_out"
                 },
                 "options": {
@@ -548,6 +550,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_out_with_num",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_with_num"
                 },
                 "fstatements": {
@@ -758,6 +762,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_out_with_num2",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_with_num2"
                 },
                 "fstatements": {
@@ -944,6 +950,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_out_alloc",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
                 },
                 "options": {
@@ -1116,6 +1124,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_inout_alloc",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
                 "options": {
@@ -1279,6 +1289,8 @@
                     "c_const": "",
                     "function_name": "vector_increment",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_increment"
                 },
                 "options": {
@@ -1444,6 +1456,8 @@
                     "c_const": "",
                     "function_name": "vector_iota_out_d",
                     "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_d"
                 },
                 "options": {

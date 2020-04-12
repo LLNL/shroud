@@ -27,6 +27,18 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 /**
  * Pass name argument which will build a bufferify function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  s1
+// Requested: c_struct_pointer_in_buf
+// Match:     c_struct
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out_buf
+// Match:     c_char_out_buf
 int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
@@ -43,6 +55,22 @@ int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
  *
  * Generates a bufferify C wrapper function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_struct_pointer_result_buf
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out_buf
+// Match:     c_char_out_buf
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
 {

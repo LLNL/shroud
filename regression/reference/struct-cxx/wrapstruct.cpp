@@ -29,6 +29,14 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // splicer end C_definitions
 
 // int passStructByValue(Cstruct1 arg +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_struct_scalar_in
+// Match:     c_struct
 // start STR_pass_struct_by_value
 int STR_pass_struct_by_value(STR_cstruct1 arg)
 {
@@ -42,6 +50,14 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 // end STR_pass_struct_by_value
 
 // int passStruct1(Cstruct1 * arg +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_struct_pointer_in
+// Match:     c_struct
 // start STR_pass_struct1
 int STR_pass_struct1(STR_cstruct1 * arg)
 {
@@ -58,6 +74,18 @@ int STR_pass_struct1(STR_cstruct1 * arg)
 /**
  * Pass name argument which will build a bufferify function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  s1
+// Requested: c_struct_pointer_in
+// Match:     c_struct
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out
+// Match:     c_default
 int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf)
 {
     // splicer begin function.pass_struct2
@@ -72,6 +100,18 @@ int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf)
 /**
  * Pass name argument which will build a bufferify function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  s1
+// Requested: c_struct_pointer_in_buf
+// Match:     c_struct
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out_buf
+// Match:     c_char_out_buf
 int STR_pass_struct2_bufferify(STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
@@ -85,6 +125,14 @@ int STR_pass_struct2_bufferify(STR_cstruct1 * s1, char * outbuf,
 }
 
 // int acceptStructInPtr(Cstruct1 * arg +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_struct_pointer_in
+// Match:     c_struct
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_ptr
@@ -99,6 +147,22 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 /**
  * Pass name argument which will build a bufferify function.
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_struct_pointer_out
+// Match:     c_struct
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in
+// Match:     c_default
 void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 {
     // splicer begin function.accept_struct_out_ptr
@@ -109,6 +173,14 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 }
 
 // void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_struct_pointer_inout
+// Match:     c_struct
 void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_out_ptr
@@ -119,6 +191,18 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 }
 
 // Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_struct_scalar_result
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in
+// Match:     c_default
 STR_cstruct1 STR_return_struct_by_value(int i, double d)
 {
     // splicer begin function.return_struct_by_value
@@ -130,6 +214,18 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
 }
 
 // const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_struct_scalar_result
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in
+// Match:     c_default
 const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
 {
     // splicer begin function.return_const_struct_by_value
@@ -146,6 +242,18 @@ const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
  *
  * Does not generate a bufferify C wrapper.
  */
+// ----------------------------------------
+// Result
+// Requested: c_struct_pointer_result
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in
+// Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 {
     // splicer begin function.return_struct_ptr1
@@ -162,6 +270,22 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  *
  * Generates a bufferify C wrapper function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_struct_pointer_result
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out
+// Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 {
     // splicer begin function.return_struct_ptr2
@@ -178,6 +302,22 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  *
  * Generates a bufferify C wrapper function.
  */
+// ----------------------------------------
+// Result
+// Requested: c_struct_pointer_result_buf
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  i
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  d
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  outbuf
+// Requested: c_char_pointer_out_buf
+// Match:     c_char_out_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
 {
@@ -191,6 +331,10 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 }
 
 // Cstruct_list * get_global_struct_list()
+// ----------------------------------------
+// Result
+// Requested: c_struct_pointer_result
+// Match:     c_struct_result
 STR_cstruct_list * STR_get_global_struct_list()
 {
     // splicer begin function.get_global_struct_list

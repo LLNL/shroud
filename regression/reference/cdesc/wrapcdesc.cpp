@@ -20,6 +20,13 @@ extern "C" {
 // splicer end C_definitions
 
 // void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Exact:     c_native_pointer_in_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in

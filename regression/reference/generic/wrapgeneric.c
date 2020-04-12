@@ -16,6 +16,22 @@
 // splicer end C_definitions
 
 // void SavePointer2(void * addr +intent(in)+value, int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  addr
+// Requested: c_unknown_pointer_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  type
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  size
+// Requested: c_native_scalar_in
+// Match:     c_default
 void GEN_save_pointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2
