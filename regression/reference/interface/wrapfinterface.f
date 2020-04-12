@@ -22,11 +22,27 @@ module interface_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine function1() &
                 bind(C, name="Function1")
             implicit none
         end subroutine function1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")

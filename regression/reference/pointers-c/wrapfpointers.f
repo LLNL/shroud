@@ -22,6 +22,22 @@ module pointers_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  argin
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arginout
+        ! Requested: c_native_pointer_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  argout
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine intargs(argin, arginout, argout) &
                 bind(C, name="intargs")
             use iso_c_binding, only : C_INT
@@ -31,6 +47,22 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: argout
         end subroutine intargs
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  in
+        ! Requested: c_native_pointer_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  out
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  sizein
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_cos_doubles(in, out, sizein) &
                 bind(C, name="cos_doubles")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -40,6 +72,22 @@ module pointers_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_cos_doubles
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  in
+        ! Requested: c_native_pointer_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  out
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  sizein
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_truncate_to_int(in, out, sizein) &
                 bind(C, name="truncate_to_int")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -49,6 +97,18 @@ module pointers_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_truncate_to_int
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  nvalues
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  values
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine get_values(nvalues, values) &
                 bind(C, name="get_values")
             use iso_c_binding, only : C_INT
@@ -57,6 +117,18 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: values(*)
         end subroutine get_values
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine get_values2(arg1, arg2) &
                 bind(C, name="get_values2")
             use iso_c_binding, only : C_INT
@@ -65,6 +137,18 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: arg2(*)
         end subroutine get_values2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  nvar
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  values
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine iota_allocatable(nvar, values) &
                 bind(C, name="iota_allocatable")
             use iso_c_binding, only : C_INT
@@ -73,6 +157,18 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: values(*)
         end subroutine iota_allocatable
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  nvar
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  values
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine iota_dimension(nvar, values) &
                 bind(C, name="iota_dimension")
             use iso_c_binding, only : C_INT
@@ -81,6 +177,22 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: values(*)
         end subroutine iota_dimension
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  values
+        ! Requested: c_native_pointer_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  result
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         ! start c_sum
         subroutine c_sum(len, values, result) &
                 bind(C, name="Sum")
@@ -92,6 +204,14 @@ module pointers_mod
         end subroutine c_sum
         ! end c_sum
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  out
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         subroutine fill_int_array(out) &
                 bind(C, name="fillIntArray")
             use iso_c_binding, only : C_INT
@@ -99,6 +219,18 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: out(*)
         end subroutine fill_int_array
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  array
+        ! Requested: c_native_pointer_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  sizein
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_increment_int_array(array, sizein) &
                 bind(C, name="incrementIntArray")
             use iso_c_binding, only : C_INT
@@ -107,6 +239,14 @@ module pointers_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_increment_int_array
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  names
+        ! Requested: c_char_**_in
+        ! Match:     c_default
         subroutine c_accept_char_array_in(names) &
                 bind(C, name="acceptCharArrayIn")
             use iso_c_binding, only : C_CHAR
@@ -114,6 +254,13 @@ module pointers_mod
             character(kind=C_CHAR), intent(IN) :: names(*)
         end subroutine c_accept_char_array_in
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  names
+        ! Exact:     c_char_**_in_buf
         subroutine c_accept_char_array_in_bufferify(names, Snames, &
                 Nnames) &
                 bind(C, name="POI_accept_char_array_in_bufferify")
@@ -131,6 +278,24 @@ module pointers_mod
 contains
 
     ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: f_native_pointer_in
+    ! Match:     f_default
+    ! Requested: c_native_pointer_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  out
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     !>
     !! \brief compute cos of IN and save in OUT
     !!
@@ -149,6 +314,24 @@ contains
     end subroutine cos_doubles
 
     ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: f_native_pointer_in
+    ! Match:     f_default
+    ! Requested: c_native_pointer_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  out
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     !>
     !! \brief truncate IN argument and save in OUT
     !!
@@ -168,6 +351,24 @@ contains
     end subroutine truncate_to_int
 
     ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  values
+    ! Requested: f_native_pointer_in
+    ! Match:     f_default
+    ! Requested: c_native_pointer_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  result
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     ! start sum
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
@@ -182,6 +383,18 @@ contains
     ! end sum
 
     ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  array
+    ! Requested: f_native_pointer_inout
+    ! Match:     f_default
+    ! Requested: c_native_pointer_inout
+    ! Match:     c_default
     !>
     !! Increment array in place using intent(INOUT).
     !<
@@ -197,6 +410,17 @@ contains
 
     ! void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  names
+    ! Requested: f_char_**_in
+    ! Match:     f_default
+    ! Exact:     c_char_**_in_buf
     subroutine accept_char_array_in(names)
         use iso_c_binding, only : C_INT, C_LONG
         character(len=*), intent(IN) :: names(:)

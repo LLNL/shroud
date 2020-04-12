@@ -73,6 +73,9 @@ module forward_mod
         ! splicer begin class.Class3.additional_interfaces
         ! splicer end class.Class3.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_shadow_scalar_result
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -83,6 +86,10 @@ module forward_mod
             type(C_PTR) SHT_rv
         end function c_class2_ctor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: SHROUD_class2_capsule
@@ -90,6 +97,14 @@ module forward_mod
             type(SHROUD_class2_capsule), intent(IN) :: self
         end subroutine c_class2_dtor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg
+        ! Requested: c_shadow_pointer_in
+        ! Match:     c_shadow_in
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -99,6 +114,14 @@ module forward_mod
             type(SHROUD_class1_capsule), intent(IN) :: arg
         end subroutine c_class2_func1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg
+        ! Requested: c_shadow_pointer_in
+        ! Match:     c_shadow_in
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
             import :: SHROUD_class2_capsule, SHROUD_class3_capsule
@@ -143,6 +166,11 @@ contains
     ! splicer end class.Class3.additional_functions
 
     ! Class2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_ctor
+    ! Match:     f_shadow_result
+    ! Exact:     c_shadow_ctor
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -154,6 +182,11 @@ contains
     end function class2_ctor
 
     ! ~Class2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_dtor
+    ! Match:     f_default
+    ! Exact:     c_shadow_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor
@@ -162,6 +195,18 @@ contains
     end subroutine class2_dtor
 
     ! void func1(tutorial::Class1 * arg +intent(in))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_shadow_pointer_in
+    ! Match:     f_default
+    ! Requested: c_shadow_pointer_in
+    ! Match:     c_shadow_in
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
@@ -172,6 +217,18 @@ contains
     end subroutine class2_func1
 
     ! void acceptClass3(Class3 * arg +intent(in))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_shadow_pointer_in
+    ! Match:     f_default
+    ! Requested: c_shadow_pointer_in
+    ! Match:     c_shadow_in
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
         type(class3), intent(IN) :: arg

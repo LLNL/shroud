@@ -101,6 +101,10 @@ module preprocess_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_user1_method1(self) &
                 bind(C, name="PRE_User1_method1")
             import :: SHROUD_user1_capsule
@@ -109,6 +113,10 @@ module preprocess_mod
         end subroutine c_user1_method1
 
 #if defined(USE_TWO)
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_User1_method2")
             import :: SHROUD_user1_capsule
@@ -118,6 +126,10 @@ module preprocess_mod
 #endif
 
 #if defined(USE_THREE)
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_user1_method3def_0(self) &
                 bind(C, name="PRE_User1_method3def_0")
             import :: SHROUD_user1_capsule
@@ -127,6 +139,14 @@ module preprocess_mod
 #endif
 
 #if defined(USE_THREE)
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  i
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
@@ -142,6 +162,10 @@ module preprocess_mod
 #ifdef USE_USER2
 
 #ifdef USE_CLASS3_A
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_user2_exfunc_0(self) &
                 bind(C, name="PRE_User2_exfunc_0")
             import :: SHROUD_user2_capsule
@@ -151,6 +175,14 @@ module preprocess_mod
 #endif
 
 #ifndef USE_CLASS3_A
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT
@@ -172,6 +204,12 @@ module preprocess_mod
 contains
 
     ! void method1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine user1_method1(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method1
@@ -181,6 +219,12 @@ contains
 
 #if defined(USE_TWO)
     ! void method2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine user1_method2(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method2
@@ -192,6 +236,12 @@ contains
 #if defined(USE_THREE)
     ! void method3def()
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine user1_method3def_0(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method3def_0
@@ -202,6 +252,18 @@ contains
 
 #if defined(USE_THREE)
     ! void method3def(int i=0 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine user1_method3def_1(obj, i)
         use iso_c_binding, only : C_INT
         class(user1) :: obj
@@ -241,6 +303,12 @@ contains
 
 #ifdef USE_CLASS3_A
     ! void exfunc()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine user2_exfunc_0(obj)
         class(user2) :: obj
         ! splicer begin class.User2.method.exfunc_0
@@ -251,6 +319,18 @@ contains
 
 #ifndef USE_CLASS3_A
     ! void exfunc(int flag +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine user2_exfunc_1(obj, flag)
         use iso_c_binding, only : C_INT
         class(user2) :: obj

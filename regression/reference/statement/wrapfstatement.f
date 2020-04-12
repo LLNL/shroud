@@ -22,6 +22,10 @@ module statement_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         pure function get_name_length() &
                 result(SHT_rv) &
                 bind(C, name="STMT_get_name_length")
@@ -30,6 +34,10 @@ module statement_mod
             integer(C_INT) :: SHT_rv
         end function get_name_length
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_pointer_result
+        ! Match:     c_string_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_get_name_error_pattern")
@@ -38,6 +46,14 @@ module statement_mod
             type(C_PTR) SHT_rv
         end function c_get_name_error_pattern
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_pointer_result_buf
+        ! Match:     c_string_result_buf
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -54,6 +70,18 @@ contains
 
     ! const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Requested: c_string_scalar_result_buf
+    ! Match:     c_string_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_pointer_result
+    ! Match:     f_default
+    ! Requested: c_string_pointer_result_buf
+    ! Match:     c_string_result_buf
     function get_name_error_pattern() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

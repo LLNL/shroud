@@ -29,6 +29,10 @@ module ns_outer_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine one() &
                 bind(C, name="NS_outer_one")
             implicit none

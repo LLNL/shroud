@@ -22,6 +22,10 @@ module testnames_ns1_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_init_ns1() &
                 bind(C, name="TES_ns1_init_ns1")
             implicit none
@@ -34,6 +38,12 @@ module testnames_ns1_mod
 contains
 
     ! void init_ns1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine testnames_init_ns1()
         ! splicer begin namespace.ns1.function.init_ns1
         call c_init_ns1()

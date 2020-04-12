@@ -50,6 +50,10 @@ module name_module
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: SHROUD_names_capsule
@@ -57,6 +61,10 @@ module name_module
             type(SHROUD_names_capsule), intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: SHROUD_names_capsule
@@ -74,6 +82,12 @@ module name_module
 contains
 
     ! void method1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
@@ -82,6 +96,12 @@ contains
     end subroutine names_method1
 
     ! void method2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2

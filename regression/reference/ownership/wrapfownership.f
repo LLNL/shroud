@@ -72,6 +72,10 @@ module ownership_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: SHROUD_class1_capsule
@@ -79,6 +83,10 @@ module ownership_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_dtor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="OWN_Class1_get_flag")
@@ -92,6 +100,10 @@ module ownership_mod
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_raw")
@@ -100,6 +112,10 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_raw
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_scalar")
@@ -108,6 +124,10 @@ module ownership_mod
             integer(C_INT) :: SHT_rv
         end function return_int_ptr_scalar
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_pointer")
@@ -116,6 +136,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_pointer
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_raw")
@@ -125,6 +153,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_raw
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer")
@@ -134,6 +170,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_pointer
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc")
@@ -143,6 +187,13 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_native_pointer_result_buf
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out_buf
+        ! Match:     c_default
         function c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
@@ -154,6 +205,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default")
@@ -163,6 +222,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_default
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_raw_new")
@@ -172,6 +239,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_raw_new
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_new")
@@ -181,6 +256,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_pointer_new
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_new")
@@ -190,6 +273,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc_new
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_pointer_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_pointer_out
+        ! Match:     c_default
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_new")
@@ -199,6 +290,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_default_new
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine create_class_static(flag) &
                 bind(C, name="OWN_create_class_static")
             use iso_c_binding, only : C_INT
@@ -206,6 +305,10 @@ module ownership_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine create_class_static
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_shadow_pointer_result
+        ! Match:     c_shadow_result
         function c_get_class_static(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
@@ -216,6 +319,14 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_get_class_static
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_shadow_pointer_result
+        ! Match:     c_shadow_result
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function c_get_class_new(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_new")
@@ -247,6 +358,11 @@ module ownership_mod
 contains
 
     ! ~Class1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_dtor
+    ! Match:     f_default
+    ! Exact:     c_shadow_dtor
     subroutine class1_dtor(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.dtor
@@ -255,6 +371,12 @@ contains
     end subroutine class1_dtor
 
     ! int getFlag()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -292,6 +414,11 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! int * ReturnIntPtrPointer() +deref(pointer)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_pointer_result_pointer
+    ! Requested: c_native_pointer_result
+    ! Match:     c_default
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -304,6 +431,17 @@ contains
     end function return_int_ptr_pointer
 
     ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_pointer_result_pointer
+    ! Requested: c_native_pointer_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -318,6 +456,16 @@ contains
 
     ! int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_pointer_result_allocatable
+    ! Exact:     c_native_pointer_result_buf
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out_buf
+    ! Match:     c_default
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -333,6 +481,18 @@ contains
     end function return_int_ptr_dim_alloc
 
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_pointer_result
+    ! Match:     f_native_pointer_result_pointer
+    ! Requested: c_native_pointer_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -346,6 +506,17 @@ contains
     end function return_int_ptr_dim_default
 
     ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_pointer_result_pointer
+    ! Requested: c_native_pointer_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -359,6 +530,18 @@ contains
     end function return_int_ptr_dim_pointer_new
 
     ! int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_pointer_result
+    ! Match:     f_native_pointer_result_pointer
+    ! Requested: c_native_pointer_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_pointer_out
+    ! Match:     f_default
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     function return_int_ptr_dim_default_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -372,6 +555,12 @@ contains
     end function return_int_ptr_dim_default_new
 
     ! Class1 * getClassStatic() +owner(library)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_pointer_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_pointer_result
+    ! Match:     c_shadow_result
     function get_class_static() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -383,6 +572,18 @@ contains
     end function get_class_static
 
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_pointer_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_pointer_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

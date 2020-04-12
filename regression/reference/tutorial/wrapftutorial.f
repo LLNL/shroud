@@ -61,6 +61,10 @@ module tutorial_mod
     end interface
     ! end abstract callback1_incr
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
@@ -70,6 +74,18 @@ module tutorial_mod
     end interface
     ! end no_return_no_arguments
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
@@ -82,6 +98,22 @@ module tutorial_mod
         end function pass_by_value
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
                 Larg2, DSHF_rv) &
@@ -97,6 +129,10 @@ module tutorial_mod
         end subroutine c_concatenate_strings_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start c_use_default_arguments
     interface
         function c_use_default_arguments() &
@@ -109,6 +145,14 @@ module tutorial_mod
     end interface
     ! end c_use_default_arguments
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start c_use_default_arguments_arg1
     interface
         function c_use_default_arguments_arg1(arg1) &
@@ -122,6 +166,18 @@ module tutorial_mod
     end interface
     ! end c_use_default_arguments_arg1
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_bool_scalar_in
+    ! Match:     c_default
     ! start c_use_default_arguments_arg1_arg2
     interface
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
@@ -136,6 +192,14 @@ module tutorial_mod
     end interface
     ! end c_use_default_arguments_arg1_arg2
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_pointer_in
+    ! Match:     c_string_in
     interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_overloaded_function_from_name")
@@ -145,6 +209,14 @@ module tutorial_mod
         end subroutine c_overloaded_function_from_name
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 Lname) &
@@ -156,6 +228,14 @@ module tutorial_mod
         end subroutine c_overloaded_function_from_name_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  indx
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_overloaded_function_from_index(indx) &
                 bind(C, name="TUT_overloaded_function_from_index")
@@ -165,6 +245,14 @@ module tutorial_mod
         end subroutine c_overloaded_function_from_index
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_template_argument_int(arg) &
                 bind(C, name="TUT_template_argument_int")
@@ -174,6 +262,14 @@ module tutorial_mod
         end subroutine c_template_argument_int
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_template_argument_double(arg) &
                 bind(C, name="TUT_template_argument_double")
@@ -183,6 +279,10 @@ module tutorial_mod
         end subroutine c_template_argument_double
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     interface
         function c_template_return_int() &
                 result(SHT_rv) &
@@ -193,6 +293,10 @@ module tutorial_mod
         end function c_template_return_int
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     interface
         function c_template_return_double() &
                 result(SHT_rv) &
@@ -203,6 +307,10 @@ module tutorial_mod
         end function c_template_return_double
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_fortran_generic_overloaded_0")
@@ -210,6 +318,18 @@ module tutorial_mod
         end subroutine c_fortran_generic_overloaded_0
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_pointer_in
+    ! Match:     c_string_in
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1")
@@ -220,6 +340,18 @@ module tutorial_mod
         end subroutine c_fortran_generic_overloaded_1
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
                 arg2) &
@@ -232,6 +364,14 @@ module tutorial_mod
         end subroutine c_fortran_generic_overloaded_1_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_num(num) &
                 result(SHT_rv) &
@@ -243,6 +383,18 @@ module tutorial_mod
         end function c_use_default_overload_num
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
@@ -255,6 +407,22 @@ module tutorial_mod
         end function c_use_default_overload_num_offset
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  stride
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_num_offset_stride(num, offset, &
                 stride) &
@@ -269,6 +437,18 @@ module tutorial_mod
         end function c_use_default_overload_num_offset_stride
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
@@ -281,6 +461,22 @@ module tutorial_mod
         end function c_use_default_overload_3
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
@@ -294,6 +490,26 @@ module tutorial_mod
         end function c_use_default_overload_4
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  stride
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
@@ -308,6 +524,14 @@ module tutorial_mod
         end function c_use_default_overload_5
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
@@ -319,6 +543,14 @@ module tutorial_mod
         end function typefunc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function enumfunc(arg) &
                 result(SHT_rv) &
@@ -330,6 +562,14 @@ module tutorial_mod
         end function enumfunc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
@@ -341,6 +581,18 @@ module tutorial_mod
         end function colorfunc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  min
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  max
+    ! Requested: c_native_pointer_out
+    ! Match:     c_default
     ! start get_min_max
     interface
         subroutine get_min_max(min, max) &
@@ -353,6 +605,18 @@ module tutorial_mod
     end interface
     ! end get_min_max
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  incr
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start callback1
     interface
         function callback1(in, incr) &
@@ -368,6 +632,10 @@ module tutorial_mod
     end interface
     ! end callback1
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_pointer_result
+    ! Match:     c_string_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -378,6 +646,14 @@ module tutorial_mod
         end function c_last_function_called
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_pointer_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_last_function_called_bufferify")
@@ -447,6 +723,30 @@ contains
 
     ! const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_scalar_result_buf
+    ! Match:     c_string_result_buf
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_string_pointer_in
+    ! Match:     f_default
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_string_pointer_in
+    ! Match:     f_default
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_pointer_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
     !! is allocated.  It is assumed +owner(library).
@@ -469,6 +769,12 @@ contains
 
     ! double UseDefaultArguments()
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start use_default_arguments
     function use_default_arguments() &
             result(SHT_rv)
@@ -482,6 +788,18 @@ contains
 
     ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start use_default_arguments_arg1
     function use_default_arguments_arg1(arg1) &
             result(SHT_rv)
@@ -495,6 +813,24 @@ contains
     ! end use_default_arguments_arg1
 
     ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_bool_scalar_in
+    ! Match:     f_bool_in
+    ! Requested: c_bool_scalar_in
+    ! Match:     c_default
     ! start use_default_arguments_arg1_arg2
     function use_default_arguments_arg1_arg2(arg1, arg2) &
             result(SHT_rv)
@@ -512,6 +848,18 @@ contains
 
     ! void OverloadedFunction(const std::string & name +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_pointer_in
+    ! Match:     f_default
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -522,6 +870,18 @@ contains
     end subroutine overloaded_function_from_name
 
     ! void OverloadedFunction(int indx +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  indx
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine overloaded_function_from_index(indx)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: indx
@@ -532,6 +892,18 @@ contains
 
     ! void TemplateArgument(int arg +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine template_argument_int(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
@@ -542,6 +914,18 @@ contains
 
     ! void TemplateArgument(double arg +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine template_argument_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -552,6 +936,12 @@ contains
 
     ! int TemplateReturn()
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function template_return_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -563,6 +953,12 @@ contains
 
     ! double TemplateReturn()
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -573,6 +969,12 @@ contains
     end function template_return_double
 
     ! void FortranGenericOverloaded()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine fortran_generic_overloaded_0()
         ! splicer begin function.fortran_generic_overloaded_0
         call c_fortran_generic_overloaded_0()
@@ -581,6 +983,24 @@ contains
 
     ! void FortranGenericOverloaded(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_pointer_in
+    ! Match:     f_default
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
     subroutine fortran_generic_overloaded_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(len=*), intent(IN) :: name
@@ -593,6 +1013,24 @@ contains
 
     ! void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_pointer_in
+    ! Match:     f_default
+    ! Requested: c_string_pointer_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
     subroutine fortran_generic_overloaded_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(len=*), intent(IN) :: name
@@ -605,6 +1043,18 @@ contains
 
     ! int UseDefaultOverload(int num +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_num(num) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -617,6 +1067,24 @@ contains
 
     ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_num_offset(num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -629,6 +1097,30 @@ contains
     end function use_default_overload_num_offset
 
     ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  stride
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_num_offset_stride(num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -644,6 +1136,24 @@ contains
 
     ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_3(type, num) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -657,6 +1167,30 @@ contains
 
     ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_4(type, num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -670,6 +1204,36 @@ contains
     end function use_default_overload_4
 
     ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  num
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  offset
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  stride
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function use_default_overload_5(type, num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -685,6 +1249,18 @@ contains
 
     ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Requested: c_string_scalar_result_buf
+    ! Match:     c_string_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_pointer_result
+    ! Match:     f_default
+    ! Requested: c_string_pointer_result_buf
+    ! Match:     c_string_result_buf
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
