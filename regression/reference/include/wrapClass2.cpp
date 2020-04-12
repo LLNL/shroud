@@ -37,7 +37,7 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  c2
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {

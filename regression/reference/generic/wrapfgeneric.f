@@ -121,7 +121,7 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
@@ -149,7 +149,7 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
@@ -180,11 +180,11 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine get_pointer(addr, type, size) &
@@ -208,11 +208,11 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine c_get_pointer_as_pointer(addr, type, size) &
@@ -405,9 +405,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_pointer_in
+    ! Requested: f_unknown_*_in
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -433,9 +433,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_pointer_in
+    ! Requested: f_unknown_*_in
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -460,9 +460,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_pointer_in
+    ! Requested: f_unknown_*_in
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -486,9 +486,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_pointer_in
+    ! Requested: f_unknown_*_in
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -519,15 +519,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -557,15 +557,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T

@@ -103,7 +103,7 @@ module forward_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  arg
-        ! Requested: c_shadow_pointer_in
+        ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
@@ -120,7 +120,7 @@ module forward_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  arg
-        ! Requested: c_shadow_pointer_in
+        ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
@@ -203,9 +203,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
@@ -225,9 +225,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj

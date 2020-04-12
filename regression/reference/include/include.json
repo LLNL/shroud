@@ -122,7 +122,7 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_shadow_pointer_in",
+                                    "stmt0": "c_shadow_*_in",
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
@@ -130,9 +130,9 @@
                                     "f_type": "type(class1)",
                                     "f_var": "c2",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_shadow_pointer_in",
+                                    "stmt0": "f_shadow_*_in",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_shadow_pointer_in",
+                                    "stmtc0": "c_shadow_*_in",
                                     "stmtc1": "c_shadow_in"
                                 }
                             }

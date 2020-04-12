@@ -104,15 +104,15 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
@@ -198,7 +198,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in
+    ! Requested: c_string_&_in
     ! Match:     c_string_in
     interface
         subroutine c_overloaded_function_from_name(name) &
@@ -215,7 +215,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
@@ -324,7 +324,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in
+    ! Requested: c_string_&_in
     ! Match:     c_string_in
     ! ----------------------------------------
     ! Argument:  arg2
@@ -346,7 +346,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  arg2
@@ -587,11 +587,11 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  min
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_&_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  max
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_&_out
     ! Match:     c_default
     ! start get_min_max
     interface
@@ -634,7 +634,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_string_pointer_result
+    ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
         function c_last_function_called() &
@@ -652,7 +652,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
@@ -731,21 +731,21 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -856,9 +856,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
@@ -991,9 +991,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  arg2
@@ -1021,9 +1021,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  arg2
@@ -1257,9 +1257,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result
+    ! Requested: f_string_&_result
     ! Match:     f_default
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     function last_function_called() &
             result(SHT_rv)

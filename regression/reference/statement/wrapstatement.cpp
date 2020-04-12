@@ -56,7 +56,7 @@ int STMT_get_name_length()
 // const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * STMT_get_name_error_pattern()
 {
@@ -79,7 +79,7 @@ const char * STMT_get_name_error_pattern()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {

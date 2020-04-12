@@ -78,7 +78,7 @@ void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var
 // Match:     c_shadow_ctor
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_*_in
 // Match:     c_string_in
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHC_rv)
@@ -104,7 +104,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Match:     c_shadow_ctor
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_*_in_buf
 // Match:     c_string_in_buf
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
     const char * name, int trim_name,
@@ -141,7 +141,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * AA_example_nested_ExClass2_get_name(
     const AA_example_nested_ExClass2 * self)
@@ -162,7 +162,7 @@ const char * AA_example_nested_ExClass2_get_name(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void AA_example_nested_ExClass2_get_name_bufferify(
     const AA_example_nested_ExClass2 * self, char * SHF_rv, int NSHF_rv)
@@ -183,7 +183,7 @@ void AA_example_nested_ExClass2_get_name_bufferify(
 // const string & getName2() +deref(allocatable)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * AA_example_nested_ExClass2_get_name2(
     AA_example_nested_ExClass2 * self)
@@ -204,7 +204,7 @@ const char * AA_example_nested_ExClass2_get_name2(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
@@ -220,7 +220,7 @@ void AA_example_nested_ExClass2_get_name2_bufferify(
 // string & getName3() const +deref(allocatable)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 char * AA_example_nested_ExClass2_get_name3(
     const AA_example_nested_ExClass2 * self)
@@ -241,7 +241,7 @@ char * AA_example_nested_ExClass2_get_name3(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
     const AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
@@ -257,7 +257,7 @@ void AA_example_nested_ExClass2_get_name3_bufferify(
 // string & getName4() +deref(allocatable)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 char * AA_example_nested_ExClass2_get_name4(
     AA_example_nested_ExClass2 * self)
@@ -278,7 +278,7 @@ char * AA_example_nested_ExClass2_get_name4(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
@@ -313,11 +313,11 @@ int AA_example_nested_ExClass2_get_name_length(
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // ----------------------------------------
 // Argument:  in
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_*_in
 // Match:     c_shadow_in
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,

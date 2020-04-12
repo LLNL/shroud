@@ -36,7 +36,7 @@ void AA_example_nested_local_function1()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 bool AA_example_nested_is_name_valid(const char * name)
 {
@@ -52,7 +52,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 bool AA_example_nested_is_name_valid_bufferify(const char * name,
     int Lname)
@@ -82,7 +82,7 @@ bool AA_example_nested_is_initialized()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 void AA_example_nested_test_names(const char * name)
 {
@@ -99,7 +99,7 @@ void AA_example_nested_test_names(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 void AA_example_nested_test_names_bufferify(const char * name,
     int Lname)
@@ -117,7 +117,7 @@ void AA_example_nested_test_names_bufferify(const char * name,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 // ----------------------------------------
 // Argument:  flag
@@ -138,7 +138,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  flag
@@ -278,7 +278,7 @@ void AA_example_nested_func_ptr1(void ( * get)())
 // Match:     c_default
 // ----------------------------------------
 // Argument:  get
-// Requested: c_native_pointer_in
+// Requested: c_native_*_in
 // Match:     c_default
 void AA_example_nested_func_ptr2(double * ( * get)())
 {
@@ -353,43 +353,43 @@ void AA_example_nested_func_ptr5(void ( * get)(int verylongname1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname1
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname2
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname3
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname4
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname5
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname6
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname7
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname8
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname9
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  verylongname10
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 void AA_example_nested_verylongfunctionname1(int * verylongname1,
     int * verylongname2, int * verylongname3, int * verylongname4,
@@ -473,11 +473,11 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  in
-// Requested: c_native_pointer_in
+// Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  out
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  sizein

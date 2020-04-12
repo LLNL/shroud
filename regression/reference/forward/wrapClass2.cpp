@@ -56,7 +56,7 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
@@ -76,7 +76,7 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
 {

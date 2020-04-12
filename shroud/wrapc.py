@@ -766,7 +766,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            spointer = "pointer" if ast.is_indirect() else "scalar"
+            spointer = ast.get_indirect_stmt()
             if is_ctor:
                 sintent = "ctor"
             else:
@@ -931,7 +931,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs["deref"]
-                spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
+                spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", sgroup, spointer, "result",
                     generated_suffix, result_return_pointer_as,

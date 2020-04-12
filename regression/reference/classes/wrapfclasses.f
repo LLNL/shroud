@@ -162,7 +162,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  obj2
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_&_in
     ! Match:     c_shadow_in
     ! start c_class1_equivalent
     interface
@@ -181,7 +181,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_unknown_pointer_result
+    ! Requested: c_unknown_*_result
     ! Match:     c_default
     ! start c_class1_return_this
     interface
@@ -196,11 +196,11 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in
+    ! Requested: c_string_&_in
     ! Match:     c_string_in
     ! ----------------------------------------
     ! Argument:  flag
@@ -225,11 +225,11 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result_buf
+    ! Requested: c_shadow_*_result_buf
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  flag
@@ -256,7 +256,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! start c_class1_getclass3
     interface
@@ -358,7 +358,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
         function c_singleton_get_reference(SHT_crv) &
@@ -417,7 +417,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     interface
         function c_useclass(arg) &
@@ -433,7 +433,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     interface
         function c_getclass2(SHT_crv) &
@@ -449,7 +449,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     interface
         function c_getclass3(SHT_crv) &
@@ -465,7 +465,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
         function c_get_const_class_reference(SHT_crv) &
@@ -481,7 +481,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
         function c_get_class_reference(SHT_crv) &
@@ -548,7 +548,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_string_pointer_result
+    ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
         function c_last_function_called() &
@@ -566,7 +566,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
@@ -682,9 +682,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  obj2
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_&_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_&_in
     ! Match:     c_shadow_in
     !>
     !! \brief Pass in reference to instance
@@ -727,15 +727,15 @@ contains
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result_buf
+    ! Requested: c_shadow_*_result_buf
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  flag
@@ -768,9 +768,9 @@ contains
     ! Class1 * getclass3() const
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     !>
     !! \brief Test const method
@@ -906,9 +906,9 @@ contains
     ! static Singleton & getReference()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     function singleton_get_reference() &
             result(SHT_rv)
@@ -979,9 +979,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function useclass(arg) &
             result(SHT_rv)
@@ -996,9 +996,9 @@ contains
     ! const Class1 * getclass2()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     function getclass2() &
             result(SHT_rv)
@@ -1013,9 +1013,9 @@ contains
     ! Class1 * getclass3()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     function getclass3() &
             result(SHT_rv)
@@ -1030,9 +1030,9 @@ contains
     ! const Class1 & getConstClassReference()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     function get_const_class_reference() &
             result(SHT_rv)
@@ -1047,9 +1047,9 @@ contains
     ! Class1 & getClassReference()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     function get_class_reference() &
             result(SHT_rv)
@@ -1098,9 +1098,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result
+    ! Requested: f_string_&_result
     ! Match:     f_default
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     function last_function_called() &
             result(SHT_rv)

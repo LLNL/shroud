@@ -427,7 +427,7 @@ bool TYP_bool_func(bool arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  flag
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 bool TYP_return_bool_and_others(int * flag)
 {

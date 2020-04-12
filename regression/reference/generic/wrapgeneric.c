@@ -22,7 +22,7 @@
 // Match:     c_default
 // ----------------------------------------
 // Argument:  addr
-// Requested: c_unknown_pointer_in
+// Requested: c_unknown_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  type

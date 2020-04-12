@@ -63,7 +63,7 @@ module library_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  c2
-        ! Requested: c_shadow_pointer_in
+        ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
@@ -106,9 +106,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  c2
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1

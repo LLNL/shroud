@@ -51,7 +51,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_in_buf_native
+    ! Requested: c_vector_&_in_buf_native
     ! Match:     c_vector_in_buf
     ! start c_vector_sum_bufferify
     interface
@@ -73,7 +73,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     ! start c_vector_iota_out_bufferify
     interface
@@ -92,7 +92,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     ! start c_vector_iota_out_with_num_bufferify
     interface
@@ -114,7 +114,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     ! start c_vector_iota_out_with_num2_bufferify
     interface
@@ -133,7 +133,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_out_buf_allocatable_native
+    ! Requested: c_vector_&_out_buf_allocatable_native
     ! Match:     c_vector_out_buf
     ! start c_vector_iota_out_alloc_bufferify
     interface
@@ -152,7 +152,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_inout_buf_allocatable_native
+    ! Requested: c_vector_&_inout_buf_allocatable_native
     ! Match:     c_vector_inout_buf
     ! start c_vector_iota_inout_alloc_bufferify
     interface
@@ -174,7 +174,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_inout_buf_native
+    ! Requested: c_vector_&_inout_buf_native
     ! Match:     c_vector_inout_buf
     interface
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
@@ -194,7 +194,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     interface
         subroutine c_vector_iota_out_d_bufferify(Darg) &
@@ -211,7 +211,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_vector_pointer_in_buf_string
+    ! Requested: c_vector_&_in_buf_string
     ! Match:     c_vector_in_buf_string
     interface
         function c_vector_string_count_bufferify(arg, Sarg, Narg) &
@@ -236,7 +236,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_vector_pointer_result_buf_allocatable_native
+    ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
     interface
         subroutine c_return_vector_alloc_bufferify(n, DSHF_rv) &
@@ -292,9 +292,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_in_native
+    ! Requested: f_vector_&_in_native
     ! Match:     f_default
-    ! Requested: c_vector_pointer_in_buf_native
+    ! Requested: c_vector_&_in_buf_native
     ! Match:     c_vector_in_buf
     ! start vector_sum
     function vector_sum(arg) &
@@ -318,9 +318,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_out_native
+    ! Requested: f_vector_&_out_native
     ! Match:     f_vector_out
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran input array
@@ -348,9 +348,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_out_native
+    ! Requested: f_vector_&_out_native
     ! Match:     f_vector_out
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran input array
@@ -382,9 +382,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_out_native
+    ! Requested: f_vector_&_out_native
     ! Match:     f_vector_out
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran input array
@@ -417,9 +417,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_out_allocatable_native
+    ! Requested: f_vector_&_out_allocatable_native
     ! Match:     f_vector_out_allocatable
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -448,9 +448,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_inout_allocatable_native
+    ! Requested: f_vector_&_inout_allocatable_native
     ! Match:     f_vector_inout_allocatable
-    ! Requested: c_vector_pointer_inout_buf_native
+    ! Requested: c_vector_&_inout_buf_native
     ! Match:     c_vector_inout_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -481,9 +481,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_inout_native
+    ! Requested: f_vector_&_inout_native
     ! Match:     f_vector_inout
-    ! Requested: c_vector_pointer_inout_buf_native
+    ! Requested: c_vector_&_inout_buf_native
     ! Match:     c_vector_inout_buf
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
@@ -506,9 +506,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_out_native
+    ! Requested: f_vector_&_out_native
     ! Match:     f_vector_out
-    ! Requested: c_vector_pointer_out_buf_native
+    ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran input array
@@ -534,9 +534,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_vector_pointer_in_string
+    ! Requested: f_vector_&_in_string
     ! Match:     f_default
-    ! Requested: c_vector_pointer_in_buf_string
+    ! Requested: c_vector_&_in_buf_string
     ! Match:     c_vector_in_buf_string
     !>
     !! \brief count number of underscore in vector of strings
@@ -569,9 +569,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_vector_pointer_result_allocatable_native
+    ! Requested: f_vector_*_result_allocatable_native
     ! Match:     f_vector_result_allocatable
-    ! Requested: c_vector_pointer_result_buf_allocatable_native
+    ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
     !>
     !! Implement iota function.

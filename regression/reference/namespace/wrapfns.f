@@ -76,7 +76,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -92,7 +92,7 @@ module ns_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf_allocatable
+        ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_last_function_called_bufferify(DSHF_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
@@ -142,9 +142,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)

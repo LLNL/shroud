@@ -47,7 +47,7 @@ module memdoc_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_string_pointer_result
+    ! Requested: c_string_*_result
     ! Match:     c_string_result
     ! start c_get_const_string_ptr_alloc
     interface
@@ -67,7 +67,7 @@ module memdoc_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
@@ -110,9 +110,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &

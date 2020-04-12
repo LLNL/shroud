@@ -103,7 +103,7 @@ module templates_std_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  value
-        ! Requested: c_native_pointer_in
+        ! Requested: c_native_&_in
         ! Match:     c_default
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
@@ -116,7 +116,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  n
@@ -166,7 +166,7 @@ module templates_std_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  value
-        ! Requested: c_native_pointer_in
+        ! Requested: c_native_&_in
         ! Match:     c_default
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
@@ -179,7 +179,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  n
@@ -244,9 +244,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_&_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_&_in
     ! Match:     c_default
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
@@ -261,9 +261,8 @@ contains
     ! cxx_template
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Exact:     f_native_&_result
+    ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  n
@@ -349,9 +348,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_&_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_&_in
     ! Match:     c_default
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
@@ -366,9 +365,8 @@ contains
     ! cxx_template
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Exact:     f_native_&_result
+    ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  n

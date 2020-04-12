@@ -87,7 +87,7 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_*_in
 // Match:     c_shadow_in
 int CLA_useclass(CLA_Class1 * arg)
 {
@@ -102,7 +102,7 @@ int CLA_useclass(CLA_Class1 * arg)
 // const Class1 * getclass2()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_*_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 {
@@ -118,7 +118,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 // Class1 * getclass3()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_*_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 {
@@ -133,7 +133,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 // const Class1 & getConstClassReference()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 {
@@ -150,7 +150,7 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 // Class1 & getClassReference()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv)
 {
@@ -217,7 +217,7 @@ int CLA_get_global_flag()
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * CLA_last_function_called()
 {
@@ -235,7 +235,7 @@ const char * CLA_last_function_called()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

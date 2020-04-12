@@ -106,11 +106,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start pass_by_reference
     interface
@@ -134,11 +134,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_bool_pointer_out
+    ! Requested: c_bool_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg3
-    ! Requested: c_bool_pointer_inout
+    ! Requested: c_bool_*_inout
     ! Match:     c_default
     ! start c_check_bool
     interface
@@ -155,15 +155,15 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_char_pointer_result
+    ! Requested: c_char_*_result
     ! Match:     c_char_result
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     interface
         function c_function4a(arg1, arg2) &
@@ -183,15 +183,15 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: c_char_pointer_result_buf
+    ! Requested: c_char_*_result_buf
     ! Match:     c_char_result_buf
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHF_rv, NSHF_rv) &
@@ -211,7 +211,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! start c_accept_name
     interface
@@ -230,7 +230,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s
-    ! Requested: c_char_pointer_inout
+    ! Requested: c_char_*_inout
     ! Match:     c_default
     interface
         subroutine c_pass_char_ptr_in_out(s) &
@@ -247,7 +247,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s
-    ! Requested: c_char_pointer_inout_buf
+    ! Requested: c_char_*_inout_buf
     ! Match:     c_char_inout_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
@@ -266,7 +266,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     ! start c_return_one_name
     interface
@@ -285,7 +285,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! start c_return_one_name_bufferify
     interface
@@ -305,11 +305,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name2
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         subroutine c_return_two_names(name1, name2) &
@@ -327,11 +327,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! ----------------------------------------
     ! Argument:  name2
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         subroutine c_return_two_names_bufferify(name1, Nname1, name2, &
@@ -352,7 +352,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  text
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  ltext
@@ -376,7 +376,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  text
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! ----------------------------------------
     ! Argument:  ltext
@@ -401,7 +401,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  text
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  ltext
@@ -430,7 +430,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  text
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  ltext
@@ -508,7 +508,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         subroutine c_bind_c2(outbuf) &
@@ -525,7 +525,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         subroutine c_bind_c2_bufferify(outbuf, Noutbuf) &
@@ -543,7 +543,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
@@ -567,7 +567,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! start pass_assumed_type
     interface
@@ -588,7 +588,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! start pass_assumed_type_dim
     interface
@@ -606,11 +606,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         function c_pass_assumed_type_buf(arg, outbuf) &
@@ -630,11 +630,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_unknown_pointer_in_buf
+    ! Requested: c_unknown_*_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
@@ -686,7 +686,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  incr
@@ -710,11 +710,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_unknown_pointer_in
+    ! Requested: c_unknown_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  incr
@@ -722,7 +722,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         subroutine c_callback3(type, in, incr, outbuf) &
@@ -743,11 +743,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  type
-    ! Requested: c_char_pointer_in
+    ! Requested: c_char_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_unknown_pointer_in_buf
+    ! Requested: c_unknown_*_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  incr
@@ -755,7 +755,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         subroutine c_callback3_bufferify(type, in, incr, outbuf, &
@@ -782,7 +782,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arr
-    ! Requested: c_struct_pointer_inout
+    ! Requested: c_struct_*_inout
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  alloc
@@ -822,15 +822,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: f_bool_pointer_out
+    ! Requested: f_bool_*_out
     ! Match:     f_bool_out
-    ! Requested: c_bool_pointer_out
+    ! Requested: c_bool_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg3
-    ! Requested: f_bool_pointer_inout
+    ! Requested: f_bool_*_inout
     ! Match:     f_bool_inout
-    ! Requested: c_bool_pointer_inout
+    ! Requested: c_bool_*_inout
     ! Match:     c_default
     !>
     !! \brief Check intent with bool
@@ -865,9 +865,9 @@ contains
     ! Match:     c_char_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_char_pointer_result
+    ! Requested: f_char_*_result
     ! Match:     f_default
-    ! Requested: c_char_pointer_result_buf
+    ! Requested: c_char_*_result_buf
     ! Match:     c_char_result_buf
     function function4a(arg1, arg2) &
             result(SHT_rv)
@@ -908,9 +908,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s
-    ! Requested: f_char_pointer_inout
+    ! Requested: f_char_*_inout
     ! Match:     f_default
-    ! Requested: c_char_pointer_inout_buf
+    ! Requested: c_char_*_inout_buf
     ! Match:     c_char_inout_buf
     !>
     !! \brief toupper
@@ -937,9 +937,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Test charlen attribute
@@ -968,15 +968,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name1
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! ----------------------------------------
     ! Argument:  name2
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Test charlen attribute
@@ -1005,9 +1005,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  text
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Fill text, at most ltext characters.
@@ -1136,9 +1136,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Rename Fortran name for interface only function
@@ -1163,9 +1163,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Test assumed-type
@@ -1253,9 +1253,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Test function pointer

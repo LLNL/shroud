@@ -76,11 +76,11 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arginout
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  argout
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_intargs(const int argin, int * arginout, int * argout)
 {
@@ -101,11 +101,11 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  in
-// Requested: c_native_pointer_in
+// Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  out
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  sizein
@@ -131,11 +131,11 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  in
-// Requested: c_native_pointer_in
+// Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  out
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  sizein
@@ -163,11 +163,11 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  nvalues
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  values
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_get_values(int * nvalues, int * values)
 {
@@ -189,11 +189,11 @@ void POI_get_values(int * nvalues, int * values)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_get_values2(int * arg1, int * arg2)
 {
@@ -213,7 +213,7 @@ void POI_get_values2(int * arg1, int * arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  values
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_iota_allocatable(int nvar, int * values)
 {
@@ -233,7 +233,7 @@ void POI_iota_allocatable(int nvar, int * values)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  values
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_iota_dimension(int nvar, int * values)
 {
@@ -253,11 +253,11 @@ void POI_iota_dimension(int nvar, int * values)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  values
-// Requested: c_native_pointer_in
+// Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  result
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 // start POI_sum
 void POI_sum(int len, int * values, int * result)
@@ -278,7 +278,7 @@ void POI_sum(int len, int * values, int * result)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  out
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void POI_fill_int_array(int * out)
 {
@@ -297,7 +297,7 @@ void POI_fill_int_array(int * out)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  array
-// Requested: c_native_pointer_inout
+// Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  sizein

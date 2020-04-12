@@ -30,11 +30,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arginout
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  argout
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine intargs(argin, arginout, argout) &
@@ -53,11 +53,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  sizein
@@ -80,11 +80,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  sizein
@@ -107,11 +107,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  nvalues
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  values
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine get_values(nvalues, values) &
@@ -129,11 +129,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg1
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg2
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine get_values2(arg1, arg2) &
@@ -155,7 +155,7 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  values
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine iota_allocatable(nvar, values) &
@@ -177,7 +177,7 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  values
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine iota_dimension(nvar, values) &
@@ -199,11 +199,11 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  values
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  result
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_sum
     interface
@@ -224,7 +224,7 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine fill_int_array(out) &
@@ -241,7 +241,7 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  array
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  sizein
@@ -309,15 +309,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief compute cos of IN and save in OUT
@@ -345,15 +345,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief truncate IN argument and save in OUT
@@ -382,15 +382,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  values
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  result
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start sum
     subroutine sum(values, result)
@@ -414,9 +414,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  array
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     !>
     !! Increment array in place using intent(INOUT).

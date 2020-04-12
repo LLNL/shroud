@@ -154,7 +154,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  rv
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_&_in
         ! Match:     c_string_in
         function yyy_tes_function4(rv) &
                 result(SHT_rv) &
@@ -171,7 +171,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  rv
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
@@ -198,11 +198,11 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_inout
+        ! Requested: c_string_&_inout
         ! Match:     c_string_inout
         ! ----------------------------------------
         ! Argument:  value
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_test_multiline_splicer")
@@ -218,11 +218,11 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_inout_buf
+        ! Requested: c_string_&_inout_buf
         ! Match:     c_string_inout_buf
         ! ----------------------------------------
         ! Argument:  value
-        ! Requested: c_native_pointer_out_buf
+        ! Requested: c_native_*_out_buf
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
                 Nname, value) &
@@ -459,9 +459,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  rv
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     function testnames_function4(rv) &
             result(SHT_rv)
@@ -497,15 +497,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_inout
+    ! Requested: f_string_&_inout
     ! Match:     f_default
-    ! Requested: c_string_pointer_inout_buf
+    ! Requested: c_string_&_inout_buf
     ! Match:     c_string_inout_buf
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out_buf
+    ! Requested: c_native_*_out_buf
     ! Match:     c_default
     !>
     !! Use std::string argument to get bufferified function.

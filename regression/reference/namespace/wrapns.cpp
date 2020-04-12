@@ -54,7 +54,7 @@ void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var
 // const std::string & LastFunctionCalled() +deref(allocatable)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * NS_last_function_called()
 {
@@ -72,7 +72,7 @@ const char * NS_last_function_called()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {

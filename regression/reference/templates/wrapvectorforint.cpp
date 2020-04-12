@@ -54,7 +54,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  value
-// Requested: c_native_pointer_in
+// Requested: c_native_&_in
 // Match:     c_default
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 {
@@ -68,7 +68,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // int & at(size_type n +intent(in)+value)
 // ----------------------------------------
 // Result
-// Requested: c_native_pointer_result
+// Requested: c_native_&_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  n

@@ -101,7 +101,7 @@ void YYY_TES_function3a_1(long i)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  rv
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 int YYY_TES_function4(const char * rv)
 {
@@ -119,7 +119,7 @@ int YYY_TES_function4(const char * rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  rv
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
@@ -152,11 +152,11 @@ void YYY_TES_fiveplus()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_inout
+// Requested: c_string_&_inout
 // Match:     c_string_inout
 // ----------------------------------------
 // Argument:  value
-// Requested: c_native_pointer_out
+// Requested: c_native_*_out
 // Match:     c_default
 void TES_test_multiline_splicer(char * name, int * value)
 {
@@ -176,11 +176,11 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_inout_buf
+// Requested: c_string_&_inout_buf
 // Match:     c_string_inout_buf
 // ----------------------------------------
 // Argument:  value
-// Requested: c_native_pointer_out_buf
+// Requested: c_native_*_out_buf
 // Match:     c_default
 void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     int Nname, int * value)

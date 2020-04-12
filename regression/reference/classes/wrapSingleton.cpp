@@ -20,7 +20,7 @@ extern "C" {
 // static Singleton & getReference()
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
 {

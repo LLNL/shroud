@@ -65,15 +65,15 @@ static void ShroudStrFree(char *src)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_char_pointer_result_buf
+// Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv)
@@ -97,7 +97,7 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  s
-// Requested: c_char_pointer_inout_buf
+// Requested: c_char_*_inout_buf
 // Match:     c_char_inout_buf
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
@@ -123,7 +123,7 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name1
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // start CLI_return_one_name_bufferify
 void CLI_return_one_name_bufferify(char * name1, int Nname1)
@@ -149,11 +149,11 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name1
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
 // Argument:  name2
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * name2, int Nname2)
@@ -176,7 +176,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  text
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
 // Argument:  ltext
@@ -204,7 +204,7 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 {
@@ -228,11 +228,11 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_unknown_pointer_in_buf
+// Requested: c_unknown_*_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     int Noutbuf)
@@ -256,11 +256,11 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  type
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  in
-// Requested: c_unknown_pointer_in_buf
+// Requested: c_unknown_*_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  incr
@@ -268,7 +268,7 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf)

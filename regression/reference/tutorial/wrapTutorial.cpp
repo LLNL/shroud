@@ -117,11 +117,11 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  arg2
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  SHF_rv
@@ -202,7 +202,7 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 void TUT_overloaded_function_from_name(const char * name)
 {
@@ -219,7 +219,7 @@ void TUT_overloaded_function_from_name(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
@@ -323,7 +323,7 @@ void TUT_fortran_generic_overloaded_0()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 // ----------------------------------------
 // Argument:  arg2
@@ -344,7 +344,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  arg2
@@ -567,11 +567,11 @@ int TUT_colorfunc(int arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  min
-// Requested: c_native_pointer_out
+// Requested: c_native_&_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  max
-// Requested: c_native_pointer_out
+// Requested: c_native_&_out
 // Match:     c_default
 // start TUT_get_min_max
 void TUT_get_min_max(int * min, int * max)
@@ -612,7 +612,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * TUT_last_function_called()
 {
@@ -630,7 +630,7 @@ const char * TUT_last_function_called()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

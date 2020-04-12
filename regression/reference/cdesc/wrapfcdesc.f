@@ -84,7 +84,7 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  arg
-        ! Exact:     c_native_pointer_in_cdesc
+        ! Exact:     c_native_*_in_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: SHROUD_array
@@ -107,8 +107,8 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Exact:     f_native_pointer_in_cdesc
-    ! Exact:     c_native_pointer_in_cdesc
+    ! Exact:     f_native_*_in_cdesc
+    ! Exact:     c_native_*_in_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)

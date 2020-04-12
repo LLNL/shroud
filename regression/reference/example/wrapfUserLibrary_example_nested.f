@@ -190,7 +190,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_*_in
         ! Match:     c_string_in
         function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
@@ -209,7 +209,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_*_in_buf
         ! Match:     c_string_in_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
@@ -255,7 +255,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -273,7 +273,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf_allocatable
+        ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
@@ -286,7 +286,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
@@ -304,7 +304,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_result_buf
+        ! Requested: c_string_&_result_buf
         ! Match:     c_string_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
@@ -318,7 +318,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_unknown_pointer_result
+        ! Requested: c_unknown_*_result
         ! Match:     c_default
         function c_exclass1_get_root(self) &
                 result(SHT_rv) &
@@ -370,7 +370,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_unknown_pointer_result
+        ! Requested: c_unknown_*_result
         ! Match:     c_default
         function c_exclass1_get_addr(self) &
                 result(SHT_rv) &
@@ -420,7 +420,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_*_in
         ! Match:     c_string_in
         function c_exclass2_ctor(name, SHT_crv) &
                 result(SHT_rv) &
@@ -439,7 +439,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_*_in_buf
         ! Match:     c_string_in_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
@@ -466,7 +466,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
@@ -484,7 +484,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf
+        ! Requested: c_string_&_result_buf
         ! Match:     c_string_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
@@ -498,7 +498,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
@@ -516,7 +516,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf_allocatable
+        ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
@@ -528,7 +528,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
@@ -546,7 +546,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf_allocatable
+        ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
@@ -558,7 +558,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
@@ -576,7 +576,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf_allocatable
+        ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
@@ -602,11 +602,11 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_shadow_pointer_result
+        ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
         ! Argument:  in
-        ! Requested: c_shadow_pointer_in
+        ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         function c_exclass2_get_class1(self, in, SHT_crv) &
                 result(SHT_rv) &
@@ -622,7 +622,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_unknown_pointer_result
+        ! Requested: c_unknown_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  type
@@ -639,7 +639,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_unknown_pointer_result
+        ! Requested: c_unknown_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  type
@@ -798,7 +798,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_&_in
         ! Match:     c_string_in
         function c_is_name_valid(name) &
                 result(SHT_rv) &
@@ -815,7 +815,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
@@ -845,7 +845,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_&_in
         ! Match:     c_string_in
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
@@ -860,7 +860,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         subroutine c_test_names_bufferify(name, Lname) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
@@ -876,7 +876,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in
+        ! Requested: c_string_&_in
         ! Match:     c_string_in
         ! ----------------------------------------
         ! Argument:  flag
@@ -896,7 +896,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  name
-        ! Requested: c_string_pointer_in_buf
+        ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         ! ----------------------------------------
         ! Argument:  flag
@@ -1016,7 +1016,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  get
-        ! Requested: c_native_pointer_in
+        ! Requested: c_native_*_in
         ! Match:     c_default
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_func_ptr2")
@@ -1076,43 +1076,43 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname1
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname2
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname3
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname4
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname5
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname6
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname7
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname8
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname9
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  verylongname10
-        ! Requested: c_native_pointer_inout
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
@@ -1204,11 +1204,11 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  in
-        ! Requested: c_native_pointer_in
+        ! Requested: c_native_*_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  out
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  sizein
@@ -1292,9 +1292,9 @@ contains
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_*_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_*_in_buf
     ! Match:     c_string_in_buf
     !>
     !! \brief constructor
@@ -1368,9 +1368,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1395,9 +1395,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_result
+    ! Requested: f_string_&_result
     ! Match:     f_default
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
@@ -1412,9 +1412,9 @@ contains
     ! void * getRoot()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_unknown_pointer_result
+    ! Requested: f_unknown_*_result
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_result
+    ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_root(obj) &
             result(SHT_rv)
@@ -1477,9 +1477,9 @@ contains
     ! void * getAddr()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_unknown_pointer_result
+    ! Requested: f_unknown_*_result
     ! Match:     f_default
-    ! Requested: c_unknown_pointer_result
+    ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_addr(obj) &
             result(SHT_rv)
@@ -1559,9 +1559,9 @@ contains
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_*_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_*_in_buf
     ! Match:     c_string_in_buf
     !>
     !! \brief constructor
@@ -1606,9 +1606,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result
+    ! Requested: f_string_&_result
     ! Match:     f_default
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
@@ -1631,9 +1631,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
@@ -1657,9 +1657,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
@@ -1683,9 +1683,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result_allocatable
+    ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
-    ! Requested: c_string_pointer_result_buf_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
@@ -1723,15 +1723,15 @@ contains
     ! ExClass1 * get_class1(const ExClass1 * in +intent(in))
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: f_shadow_pointer_in
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_pointer_in
+    ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
@@ -2039,9 +2039,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     function is_name_valid(name) &
             result(SHT_rv)
@@ -2079,9 +2079,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
@@ -2101,9 +2101,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  name
-    ! Requested: f_string_pointer_in
+    ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_pointer_in_buf
+    ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  flag
@@ -2267,63 +2267,63 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname1
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname2
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname3
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname4
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname5
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname6
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname7
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname8
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname9
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  verylongname10
-    ! Requested: f_native_pointer_inout
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_pointer_inout
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
@@ -2445,15 +2445,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  in
-    ! Requested: f_native_pointer_in
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_pointer_in
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  out
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief Test multidimensional arrays with allocatable

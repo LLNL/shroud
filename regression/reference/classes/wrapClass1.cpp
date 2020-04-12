@@ -105,7 +105,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  obj2
-// Requested: c_shadow_pointer_in
+// Requested: c_shadow_&_in
 // Match:     c_shadow_in
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
@@ -148,11 +148,11 @@ void CLA_Class1_return_this(CLA_Class1 * self)
  */
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 // ----------------------------------------
 // Argument:  flag
@@ -182,11 +182,11 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
  */
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result_buf
+// Requested: c_shadow_*_result_buf
 // Match:     c_shadow_result
 // ----------------------------------------
 // Argument:  name
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  flag
@@ -216,7 +216,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
  */
 // ----------------------------------------
 // Result
-// Requested: c_shadow_pointer_result
+// Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,

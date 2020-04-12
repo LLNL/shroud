@@ -1363,7 +1363,7 @@ fc_statements = [
 
     # XXX only in buf?
     dict(
-        name="c_native_pointer_in_cdesc",
+        name="c_native_*_in_cdesc",
         buf_args=["context"],
         c_helper="array_context", #  ShroudTypeDefines",
         c_pre_call=[
@@ -1377,7 +1377,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_native_pointer_in_cdesc",
+        name="f_native_*_in_cdesc",
         # TARGET required for argument to C_LOC.
         f_attribute=['target'],
         f_helper="array_context ShroudTypeDefines",
@@ -1403,7 +1403,7 @@ fc_statements = [
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
     dict(
-        name="c_native_pointer_result_buf",
+        name="c_native_*_result_buf",
         buf_args=["context"],
         c_helper="array_context copy_array ShroudTypeDefines",
         post_call=[
@@ -1418,7 +1418,7 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
-        name="f_native_pointer_result_allocatable",
+        name="f_native_*_result_allocatable",
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -1436,20 +1436,10 @@ fc_statements = [
         ],
     ),
 
-    dict(
-        name="f_native_pointer_result",
-        alias="f_native_pointer_result_pointer",
-    ),
-
-    dict(
-        name="f_native_pointer_result_scalar",
-        # avoid catching f_native_pointer_result
-    ),
-
     # f_pointer_shape may be blank for a scalar, otherwise it
     # includes a leading comma.
     dict(
-        name="f_native_pointer_result_pointer",
+        name="f_native_*_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1462,6 +1452,20 @@ fc_statements = [
         ],
     ),
     
+    dict(
+        name="f_native_*_result",
+        base="f_native_*_result_pointer",
+    ),
+    dict(
+        name="f_native_&_result",
+        base="f_native_*_result_pointer",   # XXX - change base to &?
+    ),
+
+    dict(
+        name="f_native_*_result_scalar",
+        # avoid catching f_native_*_result
+    ),
+
     dict(
         name="c_char_result",
         return_cptr=True,
@@ -2115,7 +2119,7 @@ fc_statements = [
         # Needed to differentiate from f_struct_pointer_result.
     ),
     dict(
-        name="f_struct_pointer_result",
-        alias="f_native_pointer_result_pointer",
+        name="f_struct_*_result",
+        alias="f_native_*_result_pointer",
     ),
 ]

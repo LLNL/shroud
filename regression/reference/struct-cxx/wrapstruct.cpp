@@ -56,7 +56,7 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_struct_pointer_in
+// Requested: c_struct_*_in
 // Match:     c_struct
 // start STR_pass_struct1
 int STR_pass_struct1(STR_cstruct1 * arg)
@@ -80,11 +80,11 @@ int STR_pass_struct1(STR_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  s1
-// Requested: c_struct_pointer_in
+// Requested: c_struct_*_in
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out
+// Requested: c_char_*_out
 // Match:     c_default
 int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf)
 {
@@ -106,11 +106,11 @@ int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  s1
-// Requested: c_struct_pointer_in_buf
+// Requested: c_struct_*_in_buf
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 int STR_pass_struct2_bufferify(STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
@@ -131,7 +131,7 @@ int STR_pass_struct2_bufferify(STR_cstruct1 * s1, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_struct_pointer_in
+// Requested: c_struct_*_in
 // Match:     c_struct
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 {
@@ -153,7 +153,7 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_struct_pointer_out
+// Requested: c_struct_*_out
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  i
@@ -179,7 +179,7 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_struct_pointer_inout
+// Requested: c_struct_*_inout
 // Match:     c_struct
 void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 {
@@ -244,7 +244,7 @@ const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
  */
 // ----------------------------------------
 // Result
-// Requested: c_struct_pointer_result
+// Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
 // Argument:  i
@@ -272,7 +272,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  */
 // ----------------------------------------
 // Result
-// Requested: c_struct_pointer_result
+// Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
 // Argument:  i
@@ -284,7 +284,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out
+// Requested: c_char_*_out
 // Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 {
@@ -304,7 +304,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  */
 // ----------------------------------------
 // Result
-// Requested: c_struct_pointer_result_buf
+// Requested: c_struct_*_result_buf
 // Match:     c_struct_result
 // ----------------------------------------
 // Argument:  i
@@ -316,7 +316,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  outbuf
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
@@ -333,7 +333,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Cstruct_list * get_global_struct_list()
 // ----------------------------------------
 // Result
-// Requested: c_struct_pointer_result
+// Requested: c_struct_*_result
 // Match:     c_struct_result
 STR_cstruct_list * STR_get_global_struct_list()
 {

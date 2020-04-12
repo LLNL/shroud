@@ -59,7 +59,7 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_in_buf_native
+// Requested: c_vector_&_in_buf_native
 // Match:     c_vector_in_buf
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
@@ -83,7 +83,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_out_buf_native
+// Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
@@ -115,7 +115,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_out_buf_native
+// Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
@@ -148,7 +148,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_out_buf_native
+// Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
@@ -178,7 +178,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_out_buf_native
+// Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
@@ -208,7 +208,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_inout_buf_native
+// Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
@@ -235,7 +235,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_inout_buf_native
+// Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
@@ -264,7 +264,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_out_buf_native
+// Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -292,7 +292,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Requested: c_vector_pointer_in_buf_string
+// Requested: c_vector_&_in_buf_string
 // Match:     c_vector_in_buf_string
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg)

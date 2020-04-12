@@ -36,7 +36,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_string_pointer_result
+        ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
@@ -52,7 +52,7 @@ module statement_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  SHF_rv
-        ! Requested: c_string_pointer_result_buf
+        ! Requested: c_string_&_result_buf
         ! Match:     c_string_result_buf
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
@@ -78,9 +78,9 @@ contains
     ! Match:     c_string_result_buf
     ! ----------------------------------------
     ! Argument:  SHF_rv
-    ! Requested: f_string_pointer_result
+    ! Requested: f_string_&_result
     ! Match:     f_default
-    ! Requested: c_string_pointer_result_buf
+    ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     function get_name_error_pattern() &
             result(SHT_rv)

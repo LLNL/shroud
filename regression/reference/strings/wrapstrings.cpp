@@ -171,11 +171,11 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  dest
-// Requested: c_char_pointer_out
+// Requested: c_char_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  src
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 // start STR_pass_char_ptr
 void STR_pass_char_ptr(char * dest, const char * src)
@@ -200,11 +200,11 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  dest
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
 // Argument:  src
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 // start STR_pass_char_ptr_bufferify
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
@@ -230,7 +230,7 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  s
-// Requested: c_char_pointer_inout
+// Requested: c_char_*_inout
 // Match:     c_default
 void STR_pass_char_ptr_in_out(char * s)
 {
@@ -252,7 +252,7 @@ void STR_pass_char_ptr_in_out(char * s)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  s
-// Requested: c_char_pointer_inout_buf
+// Requested: c_char_*_inout_buf
 // Match:     c_char_inout_buf
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
@@ -271,7 +271,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  */
 // ----------------------------------------
 // Result
-// Requested: c_char_pointer_result
+// Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr1
 const char * STR_get_char_ptr1()
@@ -294,7 +294,7 @@ const char * STR_get_char_ptr1()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_char_pointer_result_buf_allocatable
+// Requested: c_char_*_result_buf_allocatable
 // Match:     c_char_result_buf_allocatable
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -319,7 +319,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_char_pointer_result
+// Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr2
 const char * STR_get_char_ptr2()
@@ -342,7 +342,7 @@ const char * STR_get_char_ptr2()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_char_pointer_result_buf
+// Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 // start STR_get_char_ptr2_bufferify
 void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
@@ -361,7 +361,7 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_char_pointer_result
+// Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr3
 const char * STR_get_char_ptr3()
@@ -384,7 +384,7 @@ const char * STR_get_char_ptr3()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  output
-// Requested: c_char_pointer_result_buf
+// Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 // start STR_get_char_ptr3_bufferify
 void STR_get_char_ptr3_bufferify(char * output, int Noutput)
@@ -493,7 +493,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 // start STR_get_const_string_ref_pure
 const char * STR_get_const_string_ref_pure()
@@ -517,7 +517,7 @@ const char * STR_get_const_string_ref_pure()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 // start STR_get_const_string_ref_pure_bufferify
 void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -539,7 +539,7 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_len()
 {
@@ -569,7 +569,7 @@ const char * STR_get_const_string_ref_len()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -593,7 +593,7 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_as_arg()
 {
@@ -622,7 +622,7 @@ const char * STR_get_const_string_ref_as_arg()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  output
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_as_arg_bufferify(char * output,
     int Noutput)
@@ -645,7 +645,7 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_len_empty()
 {
@@ -672,7 +672,7 @@ const char * STR_get_const_string_ref_len_empty()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
     int NSHF_rv)
@@ -691,7 +691,7 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
 // const std::string & getConstStringRefAlloc() +deref(allocatable)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_alloc()
 {
@@ -709,7 +709,7 @@ const char * STR_get_const_string_ref_alloc()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -730,7 +730,7 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_len()
 {
@@ -756,7 +756,7 @@ const char * STR_get_const_string_ptr_len()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf
+// Requested: c_string_*_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -778,7 +778,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 // const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_alloc()
 {
@@ -796,7 +796,7 @@ const char * STR_get_const_string_ptr_alloc()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -816,7 +816,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_owns_alloc()
 {
@@ -841,7 +841,7 @@ const char * STR_get_const_string_ptr_owns_alloc()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *DSHF_rv)
@@ -858,7 +858,7 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
  */
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_owns_alloc_pattern()
 {
@@ -879,7 +879,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     STR_SHROUD_array *DSHF_rv)
@@ -904,7 +904,7 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_in
+// Requested: c_string_&_in
 // Match:     c_string_in
 void STR_accept_string_const_reference(const char * arg1)
 {
@@ -928,7 +928,7 @@ void STR_accept_string_const_reference(const char * arg1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_in_buf
+// Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 void STR_accept_string_const_reference_bufferify(const char * arg1,
     int Larg1)
@@ -953,7 +953,7 @@ void STR_accept_string_const_reference_bufferify(const char * arg1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_out
+// Requested: c_string_&_out
 // Match:     c_string_out
 void STR_accept_string_reference_out(char * arg1)
 {
@@ -978,7 +978,7 @@ void STR_accept_string_reference_out(char * arg1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_out_buf
+// Requested: c_string_&_out_buf
 // Match:     c_string_out_buf
 void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 {
@@ -1003,7 +1003,7 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_inout
+// Requested: c_string_&_inout
 // Match:     c_string_inout
 // start STR_accept_string_reference
 void STR_accept_string_reference(char * arg1)
@@ -1030,7 +1030,7 @@ void STR_accept_string_reference(char * arg1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_inout_buf
+// Requested: c_string_&_inout_buf
 // Match:     c_string_inout_buf
 // start STR_accept_string_reference_bufferify
 void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
@@ -1055,7 +1055,7 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_inout
+// Requested: c_string_*_inout
 // Match:     c_string_inout
 void STR_accept_string_pointer(char * arg1)
 {
@@ -1077,7 +1077,7 @@ void STR_accept_string_pointer(char * arg1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg1
-// Requested: c_string_pointer_inout_buf
+// Requested: c_string_*_inout_buf
 // Match:     c_string_inout_buf
 void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
     int Narg1)
@@ -1096,7 +1096,7 @@ void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 void STR_explicit1(char * name)
 {
@@ -1112,7 +1112,7 @@ void STR_explicit1(char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_char_pointer_out
+// Requested: c_char_*_out
 // Match:     c_default
 void STR_explicit2(char * name)
 {
@@ -1128,7 +1128,7 @@ void STR_explicit2(char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  name
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
@@ -1174,11 +1174,11 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  dest
-// Requested: c_char_pointer_out_buf
+// Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
 // Argument:  src
-// Requested: c_char_pointer_in
+// Requested: c_char_*_in
 // Match:     c_default
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src)

@@ -26,7 +26,7 @@ extern "C" {
 // Match:     c_default
 // ----------------------------------------
 // Argument:  arg
-// Exact:     c_native_pointer_in_cdesc
+// Exact:     c_native_*_in_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in

@@ -78,7 +78,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_struct_pointer_in
+    ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! start pass_struct1
     interface
@@ -100,11 +100,11 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s1
-    ! Requested: c_struct_pointer_in
+    ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         function c_pass_struct2(s1, outbuf) &
@@ -125,11 +125,11 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s1
-    ! Requested: c_struct_pointer_in_buf
+    ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
@@ -151,7 +151,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_struct_pointer_in
+    ! Requested: c_struct_*_in
     ! Match:     c_struct
     interface
         function accept_struct_in_ptr(arg) &
@@ -171,7 +171,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_struct_pointer_out
+    ! Requested: c_struct_*_out
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  i
@@ -199,7 +199,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: c_struct_pointer_inout
+    ! Requested: c_struct_*_inout
     ! Match:     c_struct
     interface
         subroutine accept_struct_in_out_ptr(arg) &
@@ -262,7 +262,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_struct_pointer_result
+    ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  i
@@ -286,7 +286,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_struct_pointer_result
+    ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  i
@@ -298,7 +298,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out
+    ! Requested: c_char_*_out
     ! Match:     c_default
     interface
         function c_return_struct_ptr2(i, d, outbuf) &
@@ -315,7 +315,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_struct_pointer_result_buf
+    ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  i
@@ -327,7 +327,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
         function c_return_struct_ptr2_bufferify(i, d, outbuf, Noutbuf) &
@@ -345,7 +345,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Result
-    ! Requested: c_struct_pointer_result
+    ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     interface
         function c_get_global_struct_list() &
@@ -374,15 +374,15 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  s1
-    ! Requested: f_struct_pointer_in
+    ! Requested: f_struct_*_in
     ! Match:     f_default
-    ! Requested: c_struct_pointer_in_buf
+    ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! Pass name argument which will build a bufferify function.
@@ -402,9 +402,9 @@ contains
     ! Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_struct_pointer_result
+    ! Requested: f_struct_*_result
+    ! Match:     f_native_*_result_pointer
+    ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  i
@@ -440,9 +440,9 @@ contains
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_struct_pointer_result_buf
+    ! Requested: f_struct_*_result
+    ! Match:     f_native_*_result_pointer
+    ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  i
@@ -458,9 +458,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  outbuf
-    ! Requested: f_char_pointer_out
+    ! Requested: f_char_*_out
     ! Match:     f_default
-    ! Requested: c_char_pointer_out_buf
+    ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
     !! \brief Return a pointer to a struct
@@ -485,9 +485,9 @@ contains
     ! Cstruct_list * get_global_struct_list()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_struct_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_struct_pointer_result
+    ! Requested: f_struct_*_result
+    ! Match:     f_native_*_result_pointer
+    ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     function get_global_struct_list() &
             result(SHT_rv)

@@ -1080,10 +1080,6 @@ class Declaration(Node):
             out += ptr.ptr
         if out == "":
             return "scalar"
-        if out == "*":
-            return "pointer"
-        if out == "&":
-            return "pointer"
         return out
 
     def get_subprogram(self):

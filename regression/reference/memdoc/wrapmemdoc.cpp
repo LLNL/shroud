@@ -57,7 +57,7 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 // ----------------------------------------
 // Result
-// Requested: c_string_pointer_result
+// Requested: c_string_*_result
 // Match:     c_string_result
 // start STR_get_const_string_ptr_alloc
 const char * STR_get_const_string_ptr_alloc()
@@ -77,7 +77,7 @@ const char * STR_get_const_string_ptr_alloc()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  SHF_rv
-// Requested: c_string_pointer_result_buf_allocatable
+// Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 // start STR_get_const_string_ptr_alloc_bufferify
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)

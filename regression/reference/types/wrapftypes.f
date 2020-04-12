@@ -419,7 +419,7 @@ module types_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  flag
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
@@ -470,9 +470,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  flag
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief Function which returns bool with other intent(out) arguments

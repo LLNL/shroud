@@ -102,7 +102,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
@@ -114,7 +114,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
@@ -126,7 +126,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
@@ -138,11 +138,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
@@ -155,11 +155,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
@@ -172,11 +172,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
@@ -189,10 +189,10 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Exact:     c_native_pointer_result_buf
+        ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out_buf
+        ! Requested: c_native_*_out_buf
         ! Match:     c_default
         function c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
@@ -207,11 +207,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
@@ -224,11 +224,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
@@ -241,11 +241,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
@@ -258,11 +258,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
@@ -275,11 +275,11 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_native_pointer_result
+        ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  len
-        ! Requested: c_native_pointer_out
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
@@ -307,7 +307,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_shadow_pointer_result
+        ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         function c_get_class_static(SHT_crv) &
                 result(SHT_rv) &
@@ -321,7 +321,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_shadow_pointer_result
+        ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
         ! Argument:  flag
@@ -416,8 +416,8 @@ contains
     ! int * ReturnIntPtrPointer() +deref(pointer)
     ! ----------------------------------------
     ! Result
-    ! Exact:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Exact:     f_native_*_result_pointer
+    ! Requested: c_native_*_result
     ! Match:     c_default
     function return_int_ptr_pointer() &
             result(SHT_rv)
@@ -433,14 +433,14 @@ contains
     ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
     ! ----------------------------------------
     ! Result
-    ! Exact:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Exact:     f_native_*_result_pointer
+    ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  len
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -458,13 +458,13 @@ contains
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Exact:     f_native_pointer_result_allocatable
-    ! Exact:     c_native_pointer_result_buf
+    ! Exact:     f_native_*_result_allocatable
+    ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  len
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out_buf
+    ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
@@ -483,15 +483,15 @@ contains
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Requested: f_native_*_result
+    ! Match:     f_native_*_result_pointer
+    ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  len
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_default() &
             result(SHT_rv)
@@ -508,14 +508,14 @@ contains
     ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
     ! ----------------------------------------
     ! Result
-    ! Exact:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Exact:     f_native_*_result_pointer
+    ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  len
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
@@ -532,15 +532,15 @@ contains
     ! int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_native_pointer_result
-    ! Match:     f_native_pointer_result_pointer
-    ! Requested: c_native_pointer_result
+    ! Requested: f_native_*_result
+    ! Match:     f_native_*_result_pointer
+    ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  len
-    ! Requested: f_native_pointer_out
+    ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_pointer_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_default_new() &
             result(SHT_rv)
@@ -557,9 +557,9 @@ contains
     ! Class1 * getClassStatic() +owner(library)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     function get_class_static() &
             result(SHT_rv)
@@ -574,9 +574,9 @@ contains
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
     ! ----------------------------------------
     ! Result
-    ! Requested: f_shadow_pointer_result
+    ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
-    ! Requested: c_shadow_pointer_result
+    ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  flag
