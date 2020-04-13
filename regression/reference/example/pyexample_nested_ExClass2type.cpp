@@ -352,11 +352,11 @@ PP_get_class1(
 // void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  type
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  len
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_declare_1__doc__[] =
 "documentation"
@@ -450,7 +450,7 @@ PP_getTypeID(
 // void setValue(int value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_setValue_int(
@@ -476,7 +476,7 @@ PP_setValue_int(
 // void setValue(long value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_setValue_long(
@@ -502,7 +502,7 @@ PP_setValue_long(
 // void setValue(float value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_setValue_float(
@@ -528,7 +528,7 @@ PP_setValue_float(
 // void setValue(double value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_setValue_double(

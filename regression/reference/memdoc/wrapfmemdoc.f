@@ -45,6 +45,10 @@ module memdoc_mod
     end type SHROUD_array
     ! end array_context
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_*_result
+    ! Match:     c_string_result
     ! start c_get_const_string_ptr_alloc
     interface
         function c_get_const_string_ptr_alloc() &
@@ -57,6 +61,14 @@ module memdoc_mod
     end interface
     ! end c_get_const_string_ptr_alloc
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
@@ -88,6 +100,19 @@ module memdoc_mod
 
 contains
 
+    ! const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
+    ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)

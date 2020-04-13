@@ -21,6 +21,9 @@ extern "C" {
 // splicer end class.Class2.C_definitions
 
 // Class2()
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_scalar_ctor
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor
@@ -32,6 +35,9 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 }
 
 // ~Class2()
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
     forward::Class2 *SH_this =
@@ -43,6 +49,14 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 }
 
 // void func1(tutorial::Class1 * arg +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_shadow_*_in
+// Match:     c_shadow_in
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
     forward::Class2 *SH_this =
@@ -55,6 +69,14 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 }
 
 // void acceptClass3(Class3 * arg +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_shadow_*_in
+// Match:     c_shadow_in
 void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this =

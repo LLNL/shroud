@@ -74,6 +74,10 @@ module ns_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="NS_last_function_called")
@@ -82,6 +86,14 @@ module ns_mod
             type(C_PTR) SHT_rv
         end function c_last_function_called
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf_allocatable
+        ! Match:     c_string_result_buf_allocatable
         subroutine c_last_function_called_bufferify(DSHF_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
             import :: SHROUD_array
@@ -89,6 +101,10 @@ module ns_mod
             type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_last_function_called_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine one() &
                 bind(C, name="NS_one")
             implicit none
@@ -118,6 +134,17 @@ contains
 
     ! const std::string & LastFunctionCalled() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv

@@ -49,6 +49,10 @@ module testnames_capi_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_class1_member1(self) &
                 bind(C, name="TES_capi_class1_member1")
             import :: SHROUD_class1_capsule
@@ -59,6 +63,10 @@ module testnames_capi_mod
         ! splicer begin namespace.CAPI.class.Class1.additional_interfaces
         ! splicer end namespace.CAPI.class.Class1.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_worker1() &
                 bind(C, name="TES_capi_worker1")
             implicit none
@@ -71,6 +79,12 @@ module testnames_capi_mod
 contains
 
     ! void Member1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine class1_member1(obj)
         class(class1) :: obj
         ! splicer begin namespace.CAPI.class.Class1.method.member1
@@ -105,6 +119,12 @@ contains
     ! splicer end namespace.CAPI.class.Class1.additional_functions
 
     ! void Worker1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine worker1()
         ! splicer begin namespace.CAPI.function.worker1
         call c_worker1()

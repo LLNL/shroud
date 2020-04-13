@@ -18,6 +18,10 @@ extern "C" {
 // splicer end namespace.outer.C_definitions
 
 // void One()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void NS_outer_one()
 {
     // splicer begin namespace.outer.function.one

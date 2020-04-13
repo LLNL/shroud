@@ -42,6 +42,10 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
  * \brief helper function for Fortran to get length of name.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int STMT_get_name_length()
 {
     // splicer begin function.get_name_length
@@ -50,6 +54,10 @@ int STMT_get_name_length()
 }
 
 // const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
 const char * STMT_get_name_error_pattern()
 {
     // splicer begin function.get_name_error_pattern
@@ -65,6 +73,14 @@ const char * STMT_get_name_error_pattern()
 }
 
 // void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf
+// Match:     c_string_result_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.get_name_error_pattern_bufferify

@@ -22,11 +22,19 @@ module wrapped_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine inner3_worker3() &
                 bind(C, name="WWW_inner3_worker3")
             implicit none
         end subroutine inner3_worker3
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine worker() &
                 bind(C, name="WWW_worker")
             implicit none
@@ -35,6 +43,10 @@ module wrapped_mod
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")
             implicit none

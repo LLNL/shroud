@@ -100,16 +100,32 @@ module top_module
         ! splicer begin class.twoTs_instantiation4.additional_interfaces
         ! splicer end class.twoTs_instantiation4.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine yyy_tes_function1() &
                 bind(C, name="YYY_TES_function1")
             implicit none
         end subroutine yyy_tes_function1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine f_c_name_special() &
                 bind(C, name="c_name_special")
             implicit none
         end subroutine f_c_name_special
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  i
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine yyy_tes_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
             use iso_c_binding, only : C_INT
@@ -117,6 +133,14 @@ module top_module
             integer(C_INT), value, intent(IN) :: i
         end subroutine yyy_tes_function3a_0
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  i
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine yyy_tes_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
             use iso_c_binding, only : C_LONG
@@ -124,6 +148,14 @@ module top_module
             integer(C_LONG), value, intent(IN) :: i
         end subroutine yyy_tes_function3a_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  rv
+        ! Requested: c_string_&_in
+        ! Match:     c_string_in
         function yyy_tes_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -133,6 +165,14 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  rv
+        ! Requested: c_string_&_in_buf
+        ! Match:     c_string_in_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
@@ -143,11 +183,27 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine yyy_tes_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
             implicit none
         end subroutine yyy_tes_fiveplus
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_inout
+        ! Match:     c_string_inout
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_*_out
+        ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_test_multiline_splicer")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -156,6 +212,18 @@ module top_module
             integer(C_INT), intent(OUT) :: value
         end subroutine c_test_multiline_splicer
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_inout_buf
+        ! Match:     c_string_inout_buf
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_*_out_buf
+        ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
                 Nname, value) &
                 bind(C, name="TES_test_multiline_splicer_bufferify")
@@ -167,6 +235,18 @@ module top_module
             integer(C_INT), intent(OUT) :: value
         end subroutine c_test_multiline_splicer_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -175,6 +255,18 @@ module top_module
             integer(C_LONG), value, intent(IN) :: arg2
         end subroutine f_c_name_instantiation1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_function_tu_instantiation2(arg1, arg2) &
                 bind(C, name="TES_function_tu_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -183,6 +275,10 @@ module top_module
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_function_tu_instantiation2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
                 bind(C, name="TES_use_impl_worker_instantiation3")
@@ -286,6 +382,12 @@ contains
     ! splicer end class.twoTs_instantiation4.additional_functions
 
     ! void function1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine testnames_function1()
         ! splicer begin function.function1
         call yyy_tes_function1()
@@ -293,6 +395,12 @@ contains
     end subroutine testnames_function1
 
     ! void function2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine f_name_special()
         ! splicer begin function.function2
         call f_c_name_special()
@@ -300,6 +408,18 @@ contains
     end subroutine f_name_special
 
     ! void function3a(int i +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine F_name_function3a_int(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -309,6 +429,18 @@ contains
     end subroutine F_name_function3a_int
 
     ! void function3a(long i +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine F_name_function3a_long(i)
         use iso_c_binding, only : C_LONG
         integer(C_LONG), value, intent(IN) :: i
@@ -319,6 +451,18 @@ contains
 
     ! int function4(const std::string & rv +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  rv
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
     function testnames_function4(rv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -331,6 +475,12 @@ contains
     end function testnames_function4
 
     ! void function5() +name(fiveplus)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine testnames_fiveplus()
         ! splicer begin function.fiveplus
         call yyy_tes_fiveplus()
@@ -339,6 +489,24 @@ contains
 
     ! void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_inout
+    ! Match:     f_default
+    ! Requested: c_string_&_inout_buf
+    ! Match:     c_string_inout_buf
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out_buf
+    ! Match:     c_default
     !>
     !! Use std::string argument to get bufferified function.
     !<
@@ -354,6 +522,24 @@ contains
 
     ! void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -369,6 +555,24 @@ contains
 
     ! void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -384,6 +588,12 @@ contains
 
     ! int UseImplWorker()
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!

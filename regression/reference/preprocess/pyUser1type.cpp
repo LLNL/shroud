@@ -75,7 +75,7 @@ PY_method2(
 // void method3def(int i=0 +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 #if defined(USE_THREE)
 static char PY_method3def_1__doc__[] =

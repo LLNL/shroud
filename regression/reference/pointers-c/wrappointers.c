@@ -59,6 +59,13 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // splicer end C_definitions
 
 // void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  names
+// Exact:     c_char_**_in_buf
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames)
 {

@@ -84,6 +84,9 @@ module classes_mod
         module procedure singleton_ne
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     c_shadow_scalar_result
     ! start c_class1_new_default
     interface
         function c_class1_new_default(SHT_crv) &
@@ -98,6 +101,13 @@ module classes_mod
     end interface
     ! end c_class1_new_default
 
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     c_shadow_scalar_result
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start c_class1_new_flag
     interface
         function c_class1_new_flag(flag, SHT_crv) &
@@ -113,6 +123,10 @@ module classes_mod
     end interface
     ! end c_class1_new_flag
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -124,6 +138,10 @@ module classes_mod
     end interface
     ! end c_class1_delete
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start c_class1_method1
     interface
         function c_class1_method1(self) &
@@ -138,6 +156,14 @@ module classes_mod
     end interface
     ! end c_class1_method1
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  obj2
+    ! Requested: c_shadow_&_in
+    ! Match:     c_shadow_in
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -153,6 +179,10 @@ module classes_mod
     end interface
     ! end c_class1_equivalent
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
@@ -164,6 +194,18 @@ module classes_mod
     end interface
     ! end c_class1_return_this
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_&_in
+    ! Match:     c_string_in
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_bool_scalar_in
+    ! Match:     c_default
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
@@ -181,6 +223,18 @@ module classes_mod
     end interface
     ! end c_class1_return_this_buffer
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_*_result_buf
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_bool_scalar_in_buf
+    ! Match:     c_default
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
@@ -200,6 +254,10 @@ module classes_mod
     end interface
     ! end c_class1_return_this_buffer_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     ! start c_class1_getclass3
     interface
         function c_class1_getclass3(self, SHT_crv) &
@@ -215,6 +273,14 @@ module classes_mod
     end interface
     ! end c_class1_getclass3
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -230,6 +296,10 @@ module classes_mod
     end interface
     ! end c_class1_direction_func
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -244,6 +314,10 @@ module classes_mod
     end interface
     ! end c_class1_get_m_flag
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -258,6 +332,14 @@ module classes_mod
     end interface
     ! end c_class1_get_test
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  val
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -274,6 +356,10 @@ module classes_mod
     ! splicer begin class.Class1.additional_interfaces
     ! splicer end class.Class1.additional_interfaces
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     interface
         function c_singleton_get_reference(SHT_crv) &
                 result(SHT_rv) &
@@ -289,6 +375,14 @@ module classes_mod
     ! splicer begin class.Singleton.additional_interfaces
     ! splicer end class.Singleton.additional_interfaces
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -300,6 +394,13 @@ module classes_mod
         end function direction_func
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Exact:     c_shadow_scalar_in
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
@@ -309,6 +410,14 @@ module classes_mod
         end subroutine c_pass_class_by_value
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -321,6 +430,10 @@ module classes_mod
         end function c_useclass
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     interface
         function c_getclass2(SHT_crv) &
                 result(SHT_rv) &
@@ -333,6 +446,10 @@ module classes_mod
         end function c_getclass2
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     interface
         function c_getclass3(SHT_crv) &
                 result(SHT_rv) &
@@ -345,6 +462,10 @@ module classes_mod
         end function c_getclass3
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     interface
         function c_get_const_class_reference(SHT_crv) &
                 result(SHT_rv) &
@@ -357,6 +478,10 @@ module classes_mod
         end function c_get_const_class_reference
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     interface
         function c_get_class_reference(SHT_crv) &
                 result(SHT_rv) &
@@ -369,6 +494,13 @@ module classes_mod
         end function c_get_class_reference
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     c_shadow_scalar_result
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
@@ -382,6 +514,14 @@ module classes_mod
         end function c_get_class_copy
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine set_global_flag(arg) &
                 bind(C, name="CLA_set_global_flag")
@@ -391,6 +531,10 @@ module classes_mod
         end subroutine set_global_flag
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     interface
         function get_global_flag() &
                 result(SHT_rv) &
@@ -401,6 +545,10 @@ module classes_mod
         end function get_global_flag
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -411,6 +559,14 @@ module classes_mod
         end function c_last_function_called
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="CLA_last_function_called_bufferify")
@@ -436,6 +592,10 @@ module classes_mod
 contains
 
     ! Class1() +name(new)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
     ! start class1_new_default
     function class1_new_default() &
             result(SHT_rv)
@@ -449,6 +609,16 @@ contains
     ! end class1_new_default
 
     ! Class1(int flag +intent(in)+value) +name(new)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start class1_new_flag
     function class1_new_flag(flag) &
             result(SHT_rv)
@@ -463,6 +633,11 @@ contains
     ! end class1_new_flag
 
     ! ~Class1() +name(delete)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_dtor
+    ! Match:     f_default
+    ! Exact:     c_shadow_dtor
     ! start class1_delete
     subroutine class1_delete(obj)
         class(class1) :: obj
@@ -473,6 +648,12 @@ contains
     ! end class1_delete
 
     ! int Method1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     !>
     !! \brief returns the value of flag member
     !!
@@ -490,6 +671,18 @@ contains
     ! end class1_method1
 
     ! bool equivalent(const Class1 & obj2 +intent(in)) const
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  obj2
+    ! Requested: f_shadow_&_in
+    ! Match:     f_default
+    ! Requested: c_shadow_&_in
+    ! Match:     c_shadow_in
     !>
     !! \brief Pass in reference to instance
     !!
@@ -508,6 +701,12 @@ contains
     ! end class1_equivalent
 
     ! Class1 * returnThis()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -523,6 +722,24 @@ contains
 
     ! Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result_buf
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_bool_scalar_in
+    ! Match:     f_bool_in
+    ! Requested: c_bool_scalar_in_buf
+    ! Match:     c_default
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -546,6 +763,12 @@ contains
     ! end class1_return_this_buffer
 
     ! Class1 * getclass3() const
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     !>
     !! \brief Test const method
     !!
@@ -564,6 +787,18 @@ contains
     ! end class1_getclass3
 
     ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
@@ -578,6 +813,12 @@ contains
     ! end class1_direction_func
 
     ! int getM_flag()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
@@ -591,6 +832,12 @@ contains
     ! end class1_get_m_flag
 
     ! int getTest()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
@@ -604,6 +851,18 @@ contains
     ! end class1_get_test
 
     ! void setTest(int val +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  val
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
@@ -642,6 +901,12 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! static Singleton & getReference()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_&_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     function singleton_get_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -679,6 +944,17 @@ contains
     ! splicer end class.Singleton.additional_functions
 
     ! void passClassByValue(Class1 arg +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_shadow_scalar_in
+    ! Match:     f_default
+    ! Exact:     c_shadow_scalar_in
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -691,6 +967,18 @@ contains
     end subroutine pass_class_by_value
 
     ! int useclass(const Class1 * arg +intent(in))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_shadow_*_in
+    ! Match:     f_default
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
     function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -702,6 +990,12 @@ contains
     end function useclass
 
     ! const Class1 * getclass2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     function getclass2() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -713,6 +1007,12 @@ contains
     end function getclass2
 
     ! Class1 * getclass3()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
     function getclass3() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -724,6 +1024,12 @@ contains
     end function getclass3
 
     ! const Class1 & getConstClassReference()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_&_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     function get_const_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -735,6 +1041,12 @@ contains
     end function get_const_class_reference
 
     ! Class1 & getClassReference()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_&_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_&_result
+    ! Match:     c_shadow_result
     function get_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -746,6 +1058,17 @@ contains
     end function get_class_reference
 
     ! Class1 getClassCopy(int flag +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_scalar_result
+    ! Match:     f_shadow_result
+    ! Exact:     c_shadow_scalar_result
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
@@ -763,6 +1086,17 @@ contains
 
     ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

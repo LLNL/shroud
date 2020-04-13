@@ -36,6 +36,15 @@ PyObject *PY_init_templates_internal(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_scalar_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_scalar_in
+// Match:     py_default
 /**
  * \brief Function template with two template parameters.
  *
@@ -57,11 +66,21 @@ PY_FunctionTU_0(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return nullptr;
+
     FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_0
 }
 
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_scalar_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_scalar_in
+// Match:     py_default
 /**
  * \brief Function template with two template parameters.
  *
@@ -83,11 +102,13 @@ PY_FunctionTU_1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return nullptr;
+
     FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end function.function_tu_1
 }
 
+// int UseImplWorker()
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
 ;
@@ -106,11 +127,15 @@ PY_UseImplWorker_internal_ImplWorker1(
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker1>();
+
+    // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
+// int UseImplWorker()
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;
@@ -129,7 +154,10 @@ PY_UseImplWorker_internal_ImplWorker2(
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker2>();
+
+    // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker2
 }

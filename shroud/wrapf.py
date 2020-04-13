@@ -968,6 +968,7 @@ rv = .false.
         arg_c_decl = []  # declaraion of argument names
         modules = {}  # indexed as [module][variable]
         imports = {}  # indexed as [name]
+        stmts_comments = []
 
         # find subprogram type
         # compute first to get order of arguments correct.
@@ -997,6 +998,13 @@ rv = .false.
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
             ["c", node.generated_suffix], c_result_blk, node)
+        if options.debug:
+            stmts_comments.append(
+                "! ----------------------------------------")
+            stmts_comments.append("! Result")
+            self.document_stmts(
+                stmts_comments, typemap.compute_name(c_stmts),
+                c_result_blk.name)
 
         if c_result_blk.return_type:
             # Change a subroutine into function.
@@ -1040,6 +1048,13 @@ rv = .false.
                            arg.stmts_suffix, deref_clause, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            if options.debug:
+                stmts_comments.append(
+                    "! ----------------------------------------")
+                stmts_comments.append("! Argument:  " + arg.name)
+                self.document_stmts(
+                    stmts_comments, typemap.compute_name(c_stmts),
+                    c_intent_blk.name)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt,
@@ -1105,6 +1120,7 @@ rv = .false.
 
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
+        c_interface.extend(stmts_comments)
         if options.literalinclude:
             append_format(c_interface, "! start {F_C_name}", fmt)
         if self.newlibrary.options.literalinclude2:
@@ -1340,6 +1356,7 @@ rv = .false.
         post_call = []
         modules = {}  # indexed as [module][variable]
         imports = {}
+        stmts_comments = []
 
         if subprogram == "subroutine":
             fmt_result = fmt_func
@@ -1381,6 +1398,15 @@ rv = .false.
             ["c", generated_suffix], c_result_blk, node)
         fmt_result.stmtc0 = typemap.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
+
+        if options.debug:
+            stmts_comments.append(
+                "! ----------------------------------------")
+            stmts_comments.append("! Result")
+            self.document_stmts(
+                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+            self.document_stmts(
+                stmts_comments, fmt_result.stmtc0, fmt_result.stmtc1)
 
         if result_blk.result:
             # Change a subroutine into function.
@@ -1559,7 +1585,16 @@ rv = .false.
             fmt_arg.stmt1 = f_intent_blk.name
             fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
             fmt_arg.stmtc1 = c_intent_blk.name
-            
+
+            if options.debug:
+                stmts_comments.append(
+                    "! ----------------------------------------")
+                stmts_comments.append("! Argument:  " + arg_name)
+                self.document_stmts(
+                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                self.document_stmts(
+                    stmts_comments, fmt_arg.stmtc0, fmt_arg.stmtc1)
+                
             arg_typemap = f_arg.typemap
             base_typemap = arg_typemap
             if c_arg.template_arguments:
@@ -1766,6 +1801,7 @@ rv = .false.
                     impl.append("! %s" % " - ".join(generated))
                 if options.debug_index:
                     impl.append("! function_index=%d" % node._function_index)
+                impl.extend(stmts_comments)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if options.literalinclude:

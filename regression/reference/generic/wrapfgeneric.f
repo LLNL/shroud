@@ -57,6 +57,10 @@ module generic_mod
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     interface
         function get_global_double() &
                 result(SHT_rv) &
@@ -67,6 +71,14 @@ module generic_mod
         end function get_global_double
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     ! start c_generic_real
     interface
         subroutine c_generic_real(arg) &
@@ -78,6 +90,18 @@ module generic_mod
     end interface
     ! end c_generic_real
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &
@@ -91,6 +115,22 @@ module generic_mod
     end interface
 
 #if 1
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_save_pointer(addr, type, size) &
                 bind(C, name="SavePointer")
@@ -103,6 +143,22 @@ module generic_mod
     end interface
 #endif
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine c_save_pointer2(addr, type, size) &
                 bind(C, name="GEN_save_pointer2")
@@ -114,6 +170,22 @@ module generic_mod
         end subroutine c_save_pointer2
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     interface
         subroutine get_pointer(addr, type, size) &
                 bind(C, name="GetPointer")
@@ -126,6 +198,22 @@ module generic_mod
     end interface
 
 #if 0
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     interface
         subroutine c_get_pointer_as_pointer(addr, type, size) &
                 bind(C, name="GetPointerAsPointer")
@@ -178,6 +266,18 @@ contains
 
     ! void GenericReal(float arg +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Single argument generic
     !!
@@ -194,6 +294,18 @@ contains
 
     ! void GenericReal(double arg +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Single argument generic
     !!
@@ -210,6 +322,24 @@ contains
 
     ! long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Two argument generic
     !!
@@ -229,6 +359,24 @@ contains
 
     ! long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Two argument generic
     !!
@@ -249,6 +397,18 @@ contains
 #if 1
     ! void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_*_in
+    ! Match:     f_default
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN), target :: addr(:)
@@ -265,6 +425,18 @@ contains
 #if 1
     ! void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_*_in
+    ! Match:     f_default
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN), target :: addr(:,:)
@@ -280,6 +452,18 @@ contains
 
     ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_*_in
+    ! Match:     f_default
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN), target :: addr(:)
@@ -294,6 +478,18 @@ contains
 
     ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_*_in
+    ! Match:     f_default
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN), target :: addr(:,:)
@@ -309,6 +505,30 @@ contains
 #if 0
     ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_**_out
+    ! Match:     f_default
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(OUT), pointer, target :: addr(:)
@@ -323,6 +543,30 @@ contains
 #if 0
     ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  addr
+    ! Requested: f_unknown_**_out
+    ! Match:     f_default
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(OUT), pointer, target :: addr(:)

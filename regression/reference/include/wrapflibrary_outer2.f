@@ -39,6 +39,10 @@ module library_outer2_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_class0_method(self) &
                 bind(C, name="LIB_outer2_class0_method")
             import :: SHROUD_class0_capsule
@@ -47,6 +51,10 @@ module library_outer2_mod
         end subroutine c_class0_method
 
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine outer_func() &
                 bind(C, name="LIB_outer2_outer_func")
             implicit none
@@ -56,6 +64,13 @@ module library_outer2_mod
 
 contains
 
+    ! void method()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine class0_method(obj)
         class(class0) :: obj
         call c_class0_method(obj%cxxmem)

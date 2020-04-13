@@ -158,7 +158,7 @@ PP_test_names(
 // Match:     py_string_in
 // ----------------------------------------
 // Argument:  flag
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_test_names_flag(
@@ -189,11 +189,11 @@ PP_test_names_flag(
 // void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  j
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_testoptional_2__doc__[] =
 "documentation"
@@ -263,7 +263,7 @@ PP_test_size_t(
 // void testmpi(MPI_Comm comm +intent(in)+value)
 // ----------------------------------------
 // Argument:  comm
-// Requested: py_unknown_in
+// Requested: py_unknown_scalar_in
 // Match:     py_default
 #ifdef HAVE_MPI
 static PyObject *
@@ -309,7 +309,7 @@ PP_testmpi_serial(
 // void FuncPtr1(void ( * get)() +intent(in)+value)
 // ----------------------------------------
 // Argument:  get
-// Requested: py_unknown_in
+// Requested: py_unknown_scalar_in
 // Match:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
@@ -377,7 +377,7 @@ PP_FuncPtr2(
 // void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 // ----------------------------------------
 // Argument:  get
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
@@ -411,7 +411,7 @@ PP_FuncPtr3(
 // void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 // ----------------------------------------
 // Argument:  get
-// Requested: py_unknown_in
+// Requested: py_unknown_scalar_in
 // Match:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"
@@ -542,43 +542,43 @@ PP_verylongfunctionname1(
 // int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 // ----------------------------------------
 // Argument:  verylongname1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname2
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname3
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname4
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname5
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname6
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname7
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname8
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname9
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  verylongname10
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_verylongfunctionname2__doc__[] =
 "documentation"

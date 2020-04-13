@@ -35,6 +35,10 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
 // splicer end C_definitions
 
 // int * ReturnIntPtrRaw() +deref(raw)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
 int * OWN_return_int_ptr_raw()
 {
     // splicer begin function.return_int_ptr_raw
@@ -44,6 +48,10 @@ int * OWN_return_int_ptr_raw()
 }
 
 // int * ReturnIntPtrScalar() +deref(scalar)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
 int OWN_return_int_ptr_scalar()
 {
     // splicer begin function.return_int_ptr_scalar
@@ -53,6 +61,10 @@ int OWN_return_int_ptr_scalar()
 }
 
 // int * ReturnIntPtrPointer() +deref(pointer)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
 int * OWN_return_int_ptr_pointer()
 {
     // splicer begin function.return_int_ptr_pointer
@@ -62,6 +74,14 @@ int * OWN_return_int_ptr_pointer()
 }
 
 // int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_raw(int * len)
 {
     // splicer begin function.return_int_ptr_dim_raw
@@ -71,6 +91,14 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 }
 
 // int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
     // splicer begin function.return_int_ptr_dim_pointer
@@ -80,6 +108,14 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
     // splicer begin function.return_int_ptr_dim_alloc
@@ -89,6 +125,13 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
+// ----------------------------------------
+// Result
+// Exact:     c_native_*_result_buf
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out_buf
+// Match:     c_default
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
 {
@@ -106,6 +149,14 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 }
 
 // int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_default(int * len)
 {
     // splicer begin function.return_int_ptr_dim_default
@@ -115,6 +166,14 @@ int * OWN_return_int_ptr_dim_default(int * len)
 }
 
 // int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_raw_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_raw_new
@@ -124,6 +183,14 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 }
 
 // int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_pointer_new
@@ -133,6 +200,14 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 }
 
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_alloc_new
@@ -142,6 +217,14 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 }
 
 // int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_*_out
+// Match:     c_default
 int * OWN_return_int_ptr_dim_default_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_default_new
@@ -151,6 +234,14 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 }
 
 // void createClassStatic(int flag +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
 void OWN_create_class_static(int flag)
 {
     // splicer begin function.create_class_static
@@ -159,6 +250,10 @@ void OWN_create_class_static(int flag)
 }
 
 // Class1 * getClassStatic() +owner(library)
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
 OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_static
@@ -174,6 +269,14 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
  * \brief Return pointer to new Class1 instance.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
 OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_new

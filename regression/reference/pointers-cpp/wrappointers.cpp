@@ -66,6 +66,22 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // splicer end C_definitions
 
 // void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  argin
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arginout
+// Requested: c_native_*_inout
+// Match:     c_default
+// ----------------------------------------
+// Argument:  argout
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_intargs(const int argin, int * arginout, int * argout)
 {
     // splicer begin function.intargs
@@ -79,6 +95,22 @@ void POI_intargs(const int argin, int * arginout, int * argout)
  *
  * allocate OUT same type as IN implied size of array
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  in
+// Requested: c_native_*_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  out
+// Requested: c_native_*_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  sizein
+// Requested: c_native_scalar_in
+// Match:     c_default
 void POI_cos_doubles(double * in, double * out, int sizein)
 {
     // splicer begin function.cos_doubles
@@ -93,6 +125,22 @@ void POI_cos_doubles(double * in, double * out, int sizein)
  * allocate OUT different type as IN
  * implied size of array
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  in
+// Requested: c_native_*_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  out
+// Requested: c_native_*_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  sizein
+// Requested: c_native_scalar_in
+// Match:     c_default
 void POI_truncate_to_int(double * in, int * out, int sizein)
 {
     // splicer begin function.truncate_to_int
@@ -109,6 +157,18 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  * The Python wrapper will create a NumPy array or list so it must
  * have an explicit dimension (not assumed-length).
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nvalues
+// Requested: c_native_*_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  values
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_get_values(int * nvalues, int * values)
 {
     // splicer begin function.get_values
@@ -123,6 +183,18 @@ void POI_get_values(int * nvalues, int * values)
  * Test two intent(out) arguments.
  * Make sure error handling works with C++.
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg1
+// Requested: c_native_*_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_get_values2(int * arg1, int * arg2)
 {
     // splicer begin function.get_values2
@@ -131,6 +203,18 @@ void POI_get_values2(int * arg1, int * arg2)
 }
 
 // void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nvar
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  values
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_iota_allocatable(int nvar, int * values)
 {
     // splicer begin function.iota_allocatable
@@ -139,6 +223,18 @@ void POI_iota_allocatable(int nvar, int * values)
 }
 
 // void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nvar
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  values
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_iota_dimension(int nvar, int * values)
 {
     // splicer begin function.iota_dimension
@@ -147,6 +243,22 @@ void POI_iota_dimension(int nvar, int * values)
 }
 
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  values
+// Requested: c_native_*_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  result
+// Requested: c_native_*_out
+// Match:     c_default
 // start POI_sum
 void POI_sum(int len, int * values, int * result)
 {
@@ -160,6 +272,14 @@ void POI_sum(int len, int * values, int * result)
 /**
  * Return three values into memory the user provides.
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  out
+// Requested: c_native_*_out
+// Match:     c_default
 void POI_fill_int_array(int * out)
 {
     // splicer begin function.fill_int_array
@@ -171,6 +291,18 @@ void POI_fill_int_array(int * out)
 /**
  * Increment array in place using intent(INOUT).
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  array
+// Requested: c_native_*_inout
+// Match:     c_default
+// ----------------------------------------
+// Argument:  sizein
+// Requested: c_native_scalar_in
+// Match:     c_default
 void POI_increment_int_array(int * array, int sizein)
 {
     // splicer begin function.increment_int_array
@@ -179,6 +311,14 @@ void POI_increment_int_array(int * array, int sizein)
 }
 
 // void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  names
+// Requested: c_char_**_in
+// Match:     c_default
 void POI_accept_char_array_in(char * * names)
 {
     // splicer begin function.accept_char_array_in
@@ -187,6 +327,13 @@ void POI_accept_char_array_in(char * * names)
 }
 
 // void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  names
+// Exact:     c_char_**_in_buf
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames)
 {

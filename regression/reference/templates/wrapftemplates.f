@@ -71,6 +71,18 @@ module templates_mod
         ! splicer begin class.Worker.additional_interfaces
         ! splicer end class.Worker.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -84,6 +96,18 @@ module templates_mod
         ! splicer begin class.user_int.additional_interfaces
         ! splicer end class.user_int.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_function_tu_0(arg1, arg2) &
                 bind(C, name="TEM_function_tu_0")
             use iso_c_binding, only : C_INT, C_LONG
@@ -92,6 +116,18 @@ module templates_mod
             integer(C_LONG), value, intent(IN) :: arg2
         end subroutine c_function_tu_0
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_function_tu_1(arg1, arg2) &
                 bind(C, name="TEM_function_tu_1")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -100,6 +136,10 @@ module templates_mod
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_function_tu_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_use_impl_worker_internal_implworker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker1")
@@ -108,6 +148,10 @@ module templates_mod
             integer(C_INT) :: SHT_rv
         end function c_use_impl_worker_internal_implworker1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_use_impl_worker_internal_implworker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker2")
@@ -153,6 +197,26 @@ contains
     ! splicer begin class.Worker.additional_functions
     ! splicer end class.Worker.additional_functions
 
+    ! void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine user_int_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         class(user_int) :: obj
@@ -189,6 +253,26 @@ contains
     ! splicer begin class.user_int.additional_functions
     ! splicer end class.user_int.additional_functions
 
+    ! void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -202,6 +286,26 @@ contains
         ! splicer end function.function_tu_0
     end subroutine function_tu_0
 
+    ! void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -215,6 +319,14 @@ contains
         ! splicer end function.function_tu_1
     end subroutine function_tu_1
 
+    ! int UseImplWorker()
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -228,6 +340,14 @@ contains
         ! splicer end function.use_impl_worker_internal_ImplWorker1
     end function use_impl_worker_internal_ImplWorker1
 
+    ! int UseImplWorker()
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!

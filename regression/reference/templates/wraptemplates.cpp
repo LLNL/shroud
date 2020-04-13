@@ -23,10 +23,23 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 /**
  * \brief Function template with two template parameters.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg1
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: c_native_scalar_in
+// Match:     c_default
 void TEM_function_tu_0(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
@@ -34,10 +47,23 @@ void TEM_function_tu_0(int arg1, long arg2)
     // splicer end function.function_tu_0
 }
 
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 /**
  * \brief Function template with two template parameters.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg1
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: c_native_scalar_in
+// Match:     c_default
 void TEM_function_tu_1(float arg1, double arg2)
 {
     // splicer begin function.function_tu_1
@@ -45,10 +71,15 @@ void TEM_function_tu_1(float arg1, double arg2)
     // splicer end function.function_tu_1
 }
 
+// int UseImplWorker()
 /**
  * \brief Function which uses a templated T in the implemetation.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker1()
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker1
@@ -57,10 +88,15 @@ int TEM_use_impl_worker_internal_ImplWorker1()
     // splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
+// int UseImplWorker()
 /**
  * \brief Function which uses a templated T in the implemetation.
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker2()
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker2

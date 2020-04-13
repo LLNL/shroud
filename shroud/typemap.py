@@ -1160,13 +1160,13 @@ def update_stmt_tree(stmts, tree, defaults):
     impossible to have an intermediate element with that name (since
     they're split on underscore).
 
-    Implement "alias" field.
+    Implement "base" field.  Base must be defined before use.
 
     Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
     based based on the language (c or f) and added as "scope" field.
-    This additional layer of indirection is needed to implement alias.
+    This additional layer of indirection is needed to implement base.
 
     stmts = [
        {name="c_native_in",}           # value1
@@ -1198,6 +1198,9 @@ def update_stmt_tree(stmts, tree, defaults):
     # XXX - look for duplicate names?
     nodes = {}
     for node in stmts:
+        if node["name"] in nodes:
+            raise RuntimeError("Duplicate key in statements: {}".
+                               format(node["name"]))
         nodes[node["name"]] = node
 
     for node in stmts:
@@ -1209,9 +1212,9 @@ def update_stmt_tree(stmts, tree, defaults):
             step = step.setdefault(part, {})
             label.append(part)
             step["_key"] = "_".join(label)
-        if "alias" in node:
-            step['_node'] = nodes[node["alias"]]
-        elif "base" in node:
+#        if "alias" in node:
+#            step['_node'] = nodes[node["alias"]]
+        if "base" in node:
             step['_node'] = node
             scope = util.Scope(nodes[node["base"]]["scope"])
             scope.update(node)
@@ -1221,7 +1224,30 @@ def update_stmt_tree(stmts, tree, defaults):
             scope = util.Scope(default_scopes[steps[0]])
             scope.update(node)
             node["scope"] = scope
+#    print_tree(tree)
 
+def print_tree(tree, indent=""):
+    """Print statements search tree.
+    Intermediate nodes are prefixed with --.
+    Useful for debugging.
+    """
+    parts = tree.get('_key', 'root').split('_')
+    if "_node" in tree:
+        #        final = '' # + tree["_node"]["scope"].name + '-'
+        print("{}{} -- {}".format(indent, parts[-1], tree.get('_key', '??')))
+    else:
+        print("{}{}".format(indent, parts[-1]))
+    indent += '  '
+    for key in sorted(tree.keys()):
+        if key == '_node':
+            continue
+        if key == 'scope':
+            continue
+        if key == '_key':
+            continue
+        value = tree[key]
+        if isinstance(value, dict):
+            print_tree(value, indent)
 
 def lookup_stmts_tree(tree, path):
     """
@@ -1363,7 +1389,7 @@ fc_statements = [
 
     # XXX only in buf?
     dict(
-        name="c_native_pointer_in_cdesc",
+        name="c_native_*_in_cdesc",
         buf_args=["context"],
         c_helper="array_context", #  ShroudTypeDefines",
         c_pre_call=[
@@ -1377,7 +1403,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_native_pointer_in_cdesc",
+        name="f_native_*_in_cdesc",
         # TARGET required for argument to C_LOC.
         f_attribute=['target'],
         f_helper="array_context ShroudTypeDefines",
@@ -1403,7 +1429,7 @@ fc_statements = [
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
     dict(
-        name="c_native_pointer_result_buf",
+        name="c_native_*_result_buf",
         buf_args=["context"],
         c_helper="array_context copy_array ShroudTypeDefines",
         post_call=[
@@ -1418,7 +1444,7 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
-        name="f_native_pointer_result_allocatable",
+        name="f_native_*_result_allocatable",
         buf_args=["context"],
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -1436,20 +1462,10 @@ fc_statements = [
         ],
     ),
 
-    dict(
-        name="f_native_pointer_result",
-        alias="f_native_pointer_result_pointer",
-    ),
-
-    dict(
-        name="f_native_pointer_result_scalar",
-        # avoid catching f_native_pointer_result
-    ),
-
     # f_pointer_shape may be blank for a scalar, otherwise it
     # includes a leading comma.
     dict(
-        name="f_native_pointer_result_pointer",
+        name="f_native_*_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1462,6 +1478,20 @@ fc_statements = [
         ],
     ),
     
+    dict(
+        name="f_native_*_result",
+        base="f_native_*_result_pointer",
+    ),
+    dict(
+        name="f_native_&_result",
+        base="f_native_*_result_pointer",   # XXX - change base to &?
+    ),
+
+    dict(
+        name="f_native_*_result_scalar",
+        # avoid catching f_native_*_result
+    ),
+
     dict(
         name="c_char_result",
         return_cptr=True,
@@ -1685,7 +1715,7 @@ fc_statements = [
     # into a Fortran variable before the string is deleted.
     dict(
         name="c_string_scalar_result_buf",
-        alias="c_string_result_buf",
+        base="c_string_result_buf",
     ),
     
     # std::string function()
@@ -2006,7 +2036,7 @@ fc_statements = [
     ),
     dict(
         name="c_shadow_scalar_in",
-        alias="c_shadow_in",
+        base="c_shadow_in",
     ),
     # Return a C_capsule_data_type.
     dict(
@@ -2075,11 +2105,11 @@ fc_statements = [
     ),
     dict(
         name="c_shadow_scalar_ctor",
-        alias="c_shadow_ctor",
+        base="c_shadow_ctor",
     ),
     dict(
         name="f_shadow_ctor",
-        alias="f_shadow_result",
+        base="f_shadow_result",
     ),
     dict(
         # NULL in stddef.h
@@ -2115,7 +2145,7 @@ fc_statements = [
         # Needed to differentiate from f_struct_pointer_result.
     ),
     dict(
-        name="f_struct_pointer_result",
-        alias="f_native_pointer_result_pointer",
+        name="f_struct_*_result",
+        base="f_native_*_result_pointer",
     ),
 ]

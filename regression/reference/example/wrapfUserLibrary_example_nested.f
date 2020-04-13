@@ -172,6 +172,9 @@ module userlibrary_example_nested_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_shadow_scalar_result
         function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
@@ -182,6 +185,13 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_0
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_shadow_scalar_result
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_*_in
+        ! Match:     c_string_in
         function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
@@ -193,6 +203,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_shadow_scalar_result_buf
+        ! Match:     c_shadow_scalar_result
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_*_in_buf
+        ! Match:     c_string_in_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
@@ -205,6 +223,10 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: SHROUD_exclass1_capsule
@@ -212,6 +234,14 @@ module userlibrary_example_nested_mod
             type(SHROUD_exclass1_capsule), intent(IN) :: self
         end subroutine c_exclass1_dtor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  incr
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_increment_count")
@@ -223,6 +253,10 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check")
@@ -233,6 +267,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_check
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf_allocatable
+        ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
@@ -242,6 +284,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg")
@@ -252,6 +298,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_arg
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_result_buf
+        ! Match:     c_string_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -262,6 +316,10 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: Nname
         end subroutine c_exclass1_get_name_arg_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
         function c_exclass1_get_root(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_root")
@@ -272,6 +330,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_root
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function c_exclass1_get_value_from_int(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_value_from_int")
@@ -283,6 +349,14 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_value_from_int
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function c_exclass1_get_value_1(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_value_1")
@@ -294,6 +368,10 @@ module userlibrary_example_nested_mod
             integer(C_LONG) :: SHT_rv
         end function c_exclass1_get_value_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
         function c_exclass1_get_addr(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_addr")
@@ -304,6 +382,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_addr
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  in
+        ! Requested: c_bool_scalar_in
+        ! Match:     c_default
         function c_exclass1_has_addr(self, in) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_has_addr")
@@ -315,6 +401,10 @@ module userlibrary_example_nested_mod
             logical(C_BOOL) :: SHT_rv
         end function c_exclass1_has_addr
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_splicer_special")
             import :: SHROUD_exclass1_capsule
@@ -325,6 +415,13 @@ module userlibrary_example_nested_mod
         ! splicer begin namespace.example::nested.class.ExClass1.additional_interfaces
         ! splicer end namespace.example::nested.class.ExClass1.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_shadow_scalar_result
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_*_in
+        ! Match:     c_string_in
         function c_exclass2_ctor(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
@@ -336,6 +433,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_shadow_scalar_result_buf
+        ! Match:     c_shadow_scalar_result
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_*_in_buf
+        ! Match:     c_string_in_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
@@ -348,6 +453,10 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_exclass2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: SHROUD_exclass2_capsule
@@ -355,6 +464,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_exclass2_capsule), intent(IN) :: self
         end subroutine c_exclass2_dtor
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name")
@@ -365,6 +478,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf
+        ! Match:     c_string_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -375,6 +496,10 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass2_get_name_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2")
@@ -385,6 +510,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf_allocatable
+        ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
             import :: SHROUD_array, SHROUD_exclass2_capsule
@@ -393,6 +526,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name2_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3")
@@ -403,6 +540,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name3
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf_allocatable
+        ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
             import :: SHROUD_array, SHROUD_exclass2_capsule
@@ -411,6 +556,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name3_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_string_&_result
+        ! Match:     c_string_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4")
@@ -421,6 +570,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name4
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  SHF_rv
+        ! Requested: c_string_&_result_buf_allocatable
+        ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
             import :: SHROUD_array, SHROUD_exclass2_capsule
@@ -429,6 +586,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         pure function c_exclass2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_length")
@@ -439,6 +600,14 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_name_length
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_shadow_*_result
+        ! Match:     c_shadow_result
+        ! ----------------------------------------
+        ! Argument:  in
+        ! Requested: c_shadow_*_in
+        ! Match:     c_shadow_in
         function c_exclass2_get_class1(self, in, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
@@ -451,6 +620,14 @@ module userlibrary_example_nested_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_class1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  type
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
             use iso_c_binding, only : C_INT
@@ -460,6 +637,18 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: type
         end subroutine c_exclass2_declare_0
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  type
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  len
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -470,6 +659,10 @@ module userlibrary_example_nested_mod
             integer(C_LONG), value, intent(IN) :: len
         end subroutine c_exclass2_declare_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_exclass2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
             import :: SHROUD_exclass2_capsule
@@ -477,6 +670,10 @@ module userlibrary_example_nested_mod
             type(SHROUD_exclass2_capsule), intent(IN) :: self
         end subroutine c_exclass2_destroyall
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         pure function c_exclass2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_type_id")
@@ -487,6 +684,14 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_type_id
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_set_value_int(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_int")
             use iso_c_binding, only : C_INT
@@ -496,6 +701,14 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_int
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_set_value_long(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_long")
             use iso_c_binding, only : C_LONG
@@ -505,6 +718,14 @@ module userlibrary_example_nested_mod
             integer(C_LONG), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_long
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_set_value_float(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_float")
             use iso_c_binding, only : C_FLOAT
@@ -514,6 +735,14 @@ module userlibrary_example_nested_mod
             real(C_FLOAT), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_float
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_exclass2_set_value_double(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_double")
             use iso_c_binding, only : C_DOUBLE
@@ -523,6 +752,10 @@ module userlibrary_example_nested_mod
             real(C_DOUBLE), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_double
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_exclass2_get_value_int(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_value_int")
@@ -533,6 +766,10 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_value_int
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function c_exclass2_get_value_double(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_value_double")
@@ -546,11 +783,23 @@ module userlibrary_example_nested_mod
         ! splicer begin namespace.example::nested.class.ExClass2.additional_interfaces
         ! splicer end namespace.example::nested.class.ExClass2.additional_interfaces
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine local_function1() &
                 bind(C, name="AA_example_nested_local_function1")
             implicit none
         end subroutine local_function1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in
+        ! Match:     c_string_in
         function c_is_name_valid(name) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_name_valid")
@@ -560,6 +809,14 @@ module userlibrary_example_nested_mod
             logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in_buf
+        ! Match:     c_string_in_buf
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_name_valid_bufferify")
@@ -570,6 +827,10 @@ module userlibrary_example_nested_mod
             logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
         function c_is_initialized() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_initialized")
@@ -578,6 +839,14 @@ module userlibrary_example_nested_mod
             logical(C_BOOL) :: SHT_rv
         end function c_is_initialized
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in
+        ! Match:     c_string_in
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
             use iso_c_binding, only : C_CHAR
@@ -585,6 +854,14 @@ module userlibrary_example_nested_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_test_names
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in_buf
+        ! Match:     c_string_in_buf
         subroutine c_test_names_bufferify(name, Lname) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -593,6 +870,18 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: Lname
         end subroutine c_test_names_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in
+        ! Match:     c_string_in
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_test_names_flag(name, flag) &
                 bind(C, name="AA_example_nested_test_names_flag")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -601,6 +890,18 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_test_names_flag
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in_buf
+        ! Match:     c_string_in_buf
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in_buf
+        ! Match:     c_default
         subroutine c_test_names_flag_bufferify(name, Lname, flag) &
                 bind(C, name="AA_example_nested_test_names_flag_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -610,11 +911,23 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_test_names_flag_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_testoptional_0() &
                 bind(C, name="AA_example_nested_testoptional_0")
             implicit none
         end subroutine c_testoptional_0
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  i
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_testoptional_1(i) &
                 bind(C, name="AA_example_nested_testoptional_1")
             use iso_c_binding, only : C_INT
@@ -622,6 +935,18 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: i
         end subroutine c_testoptional_1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  i
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  j
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_testoptional_2(i, j) &
                 bind(C, name="AA_example_nested_testoptional_2")
             use iso_c_binding, only : C_INT, C_LONG
@@ -630,6 +955,10 @@ module userlibrary_example_nested_mod
             integer(C_LONG), value, intent(IN) :: j
         end subroutine c_testoptional_2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
         function test_size_t() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_test_size_t")
@@ -639,6 +968,14 @@ module userlibrary_example_nested_mod
         end function test_size_t
 
 #ifdef HAVE_MPI
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  comm
+        ! Requested: c_unknown_scalar_in
+        ! Match:     c_default
         subroutine c_testmpi_mpi(comm) &
                 bind(C, name="AA_example_nested_testmpi_mpi")
             use iso_c_binding, only : C_INT
@@ -648,12 +985,24 @@ module userlibrary_example_nested_mod
 #endif
 
 #ifndef HAVE_MPI
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_example_nested_testmpi_serial")
             implicit none
         end subroutine c_testmpi_serial
 #endif
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  get
+        ! Requested: c_unknown_scalar_in
+        ! Match:     c_default
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_func_ptr1")
             import :: func_ptr1_get
@@ -661,6 +1010,14 @@ module userlibrary_example_nested_mod
             procedure(func_ptr1_get) :: get
         end subroutine func_ptr1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  get
+        ! Requested: c_native_*_in
+        ! Match:     c_default
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_func_ptr2")
             import :: func_ptr2_get
@@ -668,6 +1025,14 @@ module userlibrary_example_nested_mod
             procedure(func_ptr2_get) :: get
         end subroutine func_ptr2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  get
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_func_ptr3")
             import :: func_ptr3_get
@@ -675,6 +1040,14 @@ module userlibrary_example_nested_mod
             procedure(func_ptr3_get) :: get
         end subroutine c_func_ptr3
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  get
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_func_ptr4")
             import :: custom_funptr
@@ -682,6 +1055,14 @@ module userlibrary_example_nested_mod
             procedure(custom_funptr) :: get
         end subroutine c_func_ptr4
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  get
+        ! Requested: c_unknown_scalar_in
+        ! Match:     c_default
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_func_ptr5")
             import :: func_ptr5_get
@@ -689,6 +1070,50 @@ module userlibrary_example_nested_mod
             procedure(func_ptr5_get) :: get
         end subroutine func_ptr5
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname1
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname2
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname3
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname4
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname5
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname6
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname7
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname8
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname9
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname10
+        ! Requested: c_native_*_inout
+        ! Match:     c_default
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
@@ -708,6 +1133,50 @@ module userlibrary_example_nested_mod
             integer(C_INT), intent(INOUT) :: verylongname10
         end subroutine c_verylongfunctionname1
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname2
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname3
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname4
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname5
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname6
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname7
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname8
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname9
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  verylongname10
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function c_verylongfunctionname2(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
@@ -729,6 +1198,22 @@ module userlibrary_example_nested_mod
             integer(C_INT) :: SHT_rv
         end function c_verylongfunctionname2
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  in
+        ! Requested: c_native_*_in
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  out
+        ! Requested: c_native_*_out
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  sizein
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_cos_doubles(in, out, sizein) &
                 bind(C, name="AA_example_nested_cos_doubles")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -783,6 +1268,10 @@ module userlibrary_example_nested_mod
 contains
 
     ! ExClass1()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
     function exclass1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -795,6 +1284,16 @@ contains
 
     ! ExClass1(const string * name +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_*_in
+    ! Match:     f_default
+    ! Requested: c_string_*_in_buf
+    ! Match:     c_string_in_buf
     !>
     !! \brief constructor
     !!
@@ -816,6 +1315,11 @@ contains
     end function exclass1_ctor_1
 
     ! ~ExClass1()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_dtor
+    ! Match:     f_default
+    ! Exact:     c_shadow_dtor
     !>
     !! \brief destructor
     !!
@@ -829,6 +1333,18 @@ contains
     end subroutine exclass1_dtor
 
     ! int incrementCount(int incr +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  incr
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function exclass1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -842,6 +1358,17 @@ contains
 
     ! const string & getNameErrorCheck() const +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
@@ -857,6 +1384,18 @@ contains
 
     ! void getNameArg(string & name +intent(out)+len(Nname)) const
     ! arg_to_buffer - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(exclass1) :: obj
@@ -868,6 +1407,12 @@ contains
     end subroutine exclass1_get_name_arg
 
     ! void * getRoot()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_unknown_*_result
+    ! Match:     f_default
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
     function exclass1_get_root(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -879,6 +1424,18 @@ contains
     end function exclass1_get_root
 
     ! int getValue(int value +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function exclass1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -891,6 +1448,18 @@ contains
     end function exclass1_get_value_from_int
 
     ! long getValue(long value +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function exclass1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -903,6 +1472,12 @@ contains
     end function exclass1_get_value_1
 
     ! void * getAddr()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_unknown_*_result
+    ! Match:     f_default
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
     function exclass1_get_addr(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -914,6 +1489,18 @@ contains
     end function exclass1_get_addr
 
     ! bool hasAddr(bool in +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: f_bool_scalar_in
+    ! Match:     f_bool_in
+    ! Requested: c_bool_scalar_in
+    ! Match:     c_default
     function exclass1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -928,6 +1515,12 @@ contains
     end function exclass1_has_addr
 
     ! void SplicerSpecial()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine exclass1_splicer_special(obj)
         class(exclass1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
@@ -956,6 +1549,16 @@ contains
 
     ! ExClass2(const string * name +intent(in)+len_trim(trim_name))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_*_in
+    ! Match:     f_default
+    ! Requested: c_string_*_in_buf
+    ! Match:     c_string_in_buf
     !>
     !! \brief constructor
     !!
@@ -973,6 +1576,11 @@ contains
     end function exclass2_ctor
 
     ! ~ExClass2()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_dtor
+    ! Match:     f_default
+    ! Exact:     c_shadow_dtor
     !>
     !! \brief destructor
     !!
@@ -986,6 +1594,17 @@ contains
 
     ! const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -999,6 +1618,17 @@ contains
 
     ! const string & getName2() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1013,6 +1643,17 @@ contains
 
     ! string & getName3() const +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1027,6 +1668,17 @@ contains
 
     ! string & getName4() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1040,6 +1692,12 @@ contains
     end function exclass2_get_name4
 
     ! int GetNameLength() const
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     !>
     !! \brief helper function for Fortran
     !!
@@ -1055,6 +1713,18 @@ contains
     end function exclass2_get_name_length
 
     ! ExClass1 * get_class1(const ExClass1 * in +intent(in))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: f_shadow_*_in
+    ! Match:     f_default
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1070,6 +1740,18 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
     ! fortran_generic - has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_declare_0_int(obj, type)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -1081,6 +1763,18 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
     ! fortran_generic - has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_declare_0_long(obj, type)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -1092,6 +1786,24 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT, C_LONG
         class(exclass2) :: obj
@@ -1104,6 +1816,24 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
     ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  type
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  len
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_INT, C_LONG
         class(exclass2) :: obj
@@ -1115,6 +1845,12 @@ contains
     end subroutine exclass2_declare_1_long
 
     ! void destroyall()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine exclass2_destroyall(obj)
         class(exclass2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.destroyall
@@ -1123,6 +1859,12 @@ contains
     end subroutine exclass2_destroyall
 
     ! TypeID getTypeID() const
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function exclass2_get_type_id(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1135,6 +1877,18 @@ contains
 
     ! void setValue(int value +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -1146,6 +1900,18 @@ contains
 
     ! void setValue(long value +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
         class(exclass2) :: obj
@@ -1157,6 +1923,18 @@ contains
 
     ! void setValue(float value +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
         class(exclass2) :: obj
@@ -1168,6 +1946,18 @@ contains
 
     ! void setValue(double value +intent(in)+value)
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine exclass2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(exclass2) :: obj
@@ -1179,6 +1969,12 @@ contains
 
     ! int getValue()
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function exclass2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1191,6 +1987,12 @@ contains
 
     ! double getValue()
     ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
     function exclass2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1221,6 +2023,18 @@ contains
 
     ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -1232,6 +2046,12 @@ contains
     end function is_name_valid
 
     ! bool isInitialized()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -1243,6 +2063,18 @@ contains
 
     ! void test_names(const std::string & name +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -1253,6 +2085,24 @@ contains
 
     ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -1265,6 +2115,12 @@ contains
 
     ! void testoptional()
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine testoptional_0()
         ! splicer begin namespace.example::nested.function.testoptional_0
         call c_testoptional_0()
@@ -1273,6 +2129,18 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -1282,6 +2150,24 @@ contains
     end subroutine testoptional_1
 
     ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  j
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -1293,6 +2179,18 @@ contains
 
 #ifdef HAVE_MPI
     ! void testmpi(MPI_Comm comm +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  comm
+    ! Requested: f_unknown_scalar_in
+    ! Match:     f_default
+    ! Requested: c_unknown_scalar_in
+    ! Match:     c_default
     subroutine testmpi_mpi(comm)
         integer, value, intent(IN) :: comm
         ! splicer begin namespace.example::nested.function.testmpi_mpi
@@ -1303,6 +2201,12 @@ contains
 
 #ifndef HAVE_MPI
     ! void testmpi()
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine testmpi_serial()
         ! splicer begin namespace.example::nested.function.testmpi_serial
         call c_testmpi_serial()
@@ -1311,6 +2215,12 @@ contains
 #endif
 
     ! void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     !>
     !! \brief abstract argument
     !!
@@ -1323,6 +2233,12 @@ contains
     end subroutine func_ptr3
 
     ! void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     !>
     !! \brief abstract argument
     !!
@@ -1335,6 +2251,72 @@ contains
     end subroutine func_ptr4
 
     ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname1
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname2
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname3
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname4
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname5
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname6
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname7
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname8
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname9
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname10
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -1357,6 +2339,72 @@ contains
     end subroutine verylongfunctionname1
 
     ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname2
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname3
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname4
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname5
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname6
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname7
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname8
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname9
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  verylongname10
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
@@ -1381,6 +2429,24 @@ contains
     end function verylongfunctionname2
 
     ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  in
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  out
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

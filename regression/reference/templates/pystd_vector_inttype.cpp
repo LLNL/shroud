@@ -40,6 +40,7 @@ PY_vector_int_tp_del (PY_vector_int *self)
 // splicer end namespace.std.class.vector.type.del
 }
 
+// vector()
 static int
 PY_vector_int_tp_init(
   PY_vector_int *self,
@@ -57,6 +58,11 @@ PY_vector_int_tp_init(
 // splicer end namespace.std.class.vector.method.ctor
 }
 
+// void push_back(const int & value +intent(in))
+// ----------------------------------------
+// Argument:  value
+// Requested: py_native_&_in
+// Match:     py_default
 static char PY_push_back__doc__[] =
 "documentation"
 ;
@@ -76,11 +82,17 @@ PY_push_back(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:push_back",
         const_cast<char **>(SHT_kwlist), &value))
         return nullptr;
+
     self->obj->push_back(value);
     Py_RETURN_NONE;
 // splicer end namespace.std.class.vector.method.push_back
 }
 
+// int & at(size_type n +intent(in)+value)
+// ----------------------------------------
+// Argument:  n
+// Requested: py_native_scalar_in
+// Match:     py_default
 static char PY_at__doc__[] =
 "documentation"
 ;
@@ -101,10 +113,14 @@ PY_at(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:at",
         const_cast<char **>(SHT_kwlist), &n))
         return nullptr;
+
     int & SHCXX_rv = self->obj->at(n);
+
+    // post_call
     SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT,
         &SHCXX_rv);
     if (SHTPy_rv == nullptr) goto fail;
+
     return (PyObject *) SHTPy_rv;
 
 fail:

@@ -45,6 +45,14 @@ module strings_mod
     end type SHROUD_array
     ! end array_context
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  status
+    ! Requested: c_schar_scalar_in
+    ! Match:     c_default
     interface
         subroutine pass_char(status) &
                 bind(C, name="STR_pass_char")
@@ -54,6 +62,10 @@ module strings_mod
         end subroutine pass_char
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_schar_scalar_result
+    ! Match:     c_default
     interface
         function c_return_char() &
                 result(SHT_rv) &
@@ -64,6 +76,14 @@ module strings_mod
         end function c_return_char
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_schar_*_result_buf
+    ! Match:     c_schar_result_buf
     interface
         subroutine c_return_char_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_return_char_bufferify")
@@ -74,6 +94,18 @@ module strings_mod
         end subroutine c_return_char_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: c_char_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  src
+    ! Requested: c_char_*_in
+    ! Match:     c_default
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
@@ -86,6 +118,18 @@ module strings_mod
     end interface
     ! end c_pass_char_ptr
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
+    ! ----------------------------------------
+    ! Argument:  src
+    ! Requested: c_char_*_in
+    ! Match:     c_default
     ! start c_pass_char_ptr_bufferify
     interface
         subroutine c_pass_char_ptr_bufferify(dest, Ndest, src) &
@@ -99,6 +143,14 @@ module strings_mod
     end interface
     ! end c_pass_char_ptr_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s
+    ! Requested: c_char_*_inout
+    ! Match:     c_default
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_pass_char_ptr_in_out")
@@ -108,6 +160,14 @@ module strings_mod
         end subroutine c_pass_char_ptr_in_out
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s
+    ! Requested: c_char_*_inout_buf
+    ! Match:     c_char_inout_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
                 bind(C, name="STR_pass_char_ptr_in_out_bufferify")
@@ -119,6 +179,10 @@ module strings_mod
         end subroutine c_pass_char_ptr_in_out_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_char_*_result
+    ! Match:     c_char_result
     ! start c_get_char_ptr1
     interface
         function c_get_char_ptr1() &
@@ -131,6 +195,14 @@ module strings_mod
     end interface
     ! end c_get_char_ptr1
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_char_*_result_buf_allocatable
+    ! Match:     c_char_result_buf_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(DSHF_rv) &
@@ -142,6 +214,10 @@ module strings_mod
     end interface
     ! end c_get_char_ptr1_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_char_*_result
+    ! Match:     c_char_result
     ! start c_get_char_ptr2
     interface
         function c_get_char_ptr2() &
@@ -154,6 +230,14 @@ module strings_mod
     end interface
     ! end c_get_char_ptr2
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_char_*_result_buf
+    ! Match:     c_char_result_buf
     ! start c_get_char_ptr2_bufferify
     interface
         subroutine c_get_char_ptr2_bufferify(SHF_rv, NSHF_rv) &
@@ -166,6 +250,10 @@ module strings_mod
     end interface
     ! end c_get_char_ptr2_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_char_*_result
+    ! Match:     c_char_result
     ! start c_get_char_ptr3
     interface
         function c_get_char_ptr3() &
@@ -178,6 +266,14 @@ module strings_mod
     end interface
     ! end c_get_char_ptr3
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: c_char_*_result_buf
+    ! Match:     c_char_result_buf
     ! start c_get_char_ptr3_bufferify
     interface
         subroutine c_get_char_ptr3_bufferify(output, Noutput) &
@@ -190,6 +286,14 @@ module strings_mod
     end interface
     ! end c_get_char_ptr3_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_result_bufferify")
@@ -199,6 +303,14 @@ module strings_mod
         end subroutine c_get_const_string_result_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_len_bufferify")
@@ -209,6 +321,14 @@ module strings_mod
         end subroutine c_get_const_string_len_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
                 bind(C, name="STR_get_const_string_as_arg_bufferify")
@@ -219,6 +339,14 @@ module strings_mod
         end subroutine c_get_const_string_as_arg_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_alloc_bufferify")
@@ -228,6 +356,10 @@ module strings_mod
         end subroutine c_get_const_string_alloc_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     ! start c_get_const_string_ref_pure
     interface
         function c_get_const_string_ref_pure() &
@@ -240,6 +372,14 @@ module strings_mod
     end interface
     ! end c_get_const_string_ref_pure
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
         subroutine c_get_const_string_ref_pure_bufferify(DSHF_rv) &
@@ -251,6 +391,10 @@ module strings_mod
     end interface
     ! end c_get_const_string_ref_pure_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ref_len() &
                 result(SHT_rv) &
@@ -261,6 +405,14 @@ module strings_mod
         end function c_get_const_string_ref_len
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_ref_len_bufferify")
@@ -271,6 +423,10 @@ module strings_mod
         end subroutine c_get_const_string_ref_len_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -281,6 +437,14 @@ module strings_mod
         end function c_get_const_string_ref_as_arg
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 Noutput) &
@@ -292,6 +456,10 @@ module strings_mod
         end subroutine c_get_const_string_ref_as_arg_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
@@ -302,6 +470,14 @@ module strings_mod
         end function c_get_const_string_ref_len_empty
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHF_rv, &
                 NSHF_rv) &
@@ -313,6 +489,10 @@ module strings_mod
         end subroutine c_get_const_string_ref_len_empty_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -323,6 +503,14 @@ module strings_mod
         end function c_get_const_string_ref_alloc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_bufferify")
@@ -332,6 +520,10 @@ module strings_mod
         end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_*_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
@@ -342,6 +534,14 @@ module strings_mod
         end function c_get_const_string_ptr_len
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_len_bufferify")
@@ -352,6 +552,10 @@ module strings_mod
         end subroutine c_get_const_string_ptr_len_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_*_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -362,6 +566,14 @@ module strings_mod
         end function c_get_const_string_ptr_alloc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
@@ -371,6 +583,10 @@ module strings_mod
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_*_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -381,6 +597,14 @@ module strings_mod
         end function c_get_const_string_ptr_owns_alloc
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
@@ -390,6 +614,10 @@ module strings_mod
         end subroutine c_get_const_string_ptr_owns_alloc_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_*_result
+    ! Match:     c_string_result
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
@@ -400,6 +628,14 @@ module strings_mod
         end function c_get_const_string_ptr_owns_alloc_pattern
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
                 DSHF_rv) &
@@ -410,6 +646,14 @@ module strings_mod
         end subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_in
+    ! Match:     c_string_in
     interface
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_accept_string_const_reference")
@@ -419,6 +663,14 @@ module strings_mod
         end subroutine c_accept_string_const_reference
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
                 Larg1) &
@@ -430,6 +682,14 @@ module strings_mod
         end subroutine c_accept_string_const_reference_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_out
+    ! Match:     c_string_out
     interface
         subroutine c_accept_string_reference_out(arg1) &
                 bind(C, name="STR_accept_string_reference_out")
@@ -439,6 +699,14 @@ module strings_mod
         end subroutine c_accept_string_reference_out
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_out_buf
+    ! Match:     c_string_out_buf
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, Narg1) &
                 bind(C, name="STR_accept_string_reference_out_bufferify")
@@ -449,6 +717,14 @@ module strings_mod
         end subroutine c_accept_string_reference_out_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_inout
+    ! Match:     c_string_inout
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
@@ -460,6 +736,14 @@ module strings_mod
     end interface
     ! end c_accept_string_reference
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_&_inout_buf
+    ! Match:     c_string_inout_buf
     ! start c_accept_string_reference_bufferify
     interface
         subroutine c_accept_string_reference_bufferify(arg1, Larg1, &
@@ -474,6 +758,14 @@ module strings_mod
     end interface
     ! end c_accept_string_reference_bufferify
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_*_inout
+    ! Match:     c_string_inout
     interface
         subroutine c_accept_string_pointer(arg1) &
                 bind(C, name="STR_accept_string_pointer")
@@ -483,6 +775,14 @@ module strings_mod
         end subroutine c_accept_string_pointer
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: c_string_*_inout_buf
+    ! Match:     c_string_inout_buf
     interface
         subroutine c_accept_string_pointer_bufferify(arg1, Larg1, Narg1) &
                 bind(C, name="STR_accept_string_pointer_bufferify")
@@ -494,6 +794,14 @@ module strings_mod
         end subroutine c_accept_string_pointer_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_char_*_in
+    ! Match:     c_default
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="STR_explicit1")
@@ -503,6 +811,14 @@ module strings_mod
         end subroutine c_explicit1
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_char_*_out
+    ! Match:     c_default
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
@@ -512,6 +828,14 @@ module strings_mod
         end subroutine c_explicit2
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     interface
         subroutine c_explicit2_bufferify(name, AAtrim) &
                 bind(C, name="STR_explicit2_bufferify")
@@ -522,6 +846,14 @@ module strings_mod
         end subroutine c_explicit2_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  status
+    ! Requested: c_schar_scalar_in
+    ! Match:     c_default
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CpassChar")
@@ -531,6 +863,10 @@ module strings_mod
         end subroutine cpass_char
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_schar_scalar_result
+    ! Match:     c_default
     interface
         function c_creturn_char() &
                 result(SHT_rv) &
@@ -541,6 +877,14 @@ module strings_mod
         end function c_creturn_char
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_schar_*_result_buf
+    ! Match:     c_schar_result_buf
     interface
         subroutine c_creturn_char_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_creturn_char_bufferify")
@@ -551,6 +895,18 @@ module strings_mod
         end subroutine c_creturn_char_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: c_char_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  src
+    ! Requested: c_char_*_in
+    ! Match:     c_default
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -561,6 +917,18 @@ module strings_mod
         end subroutine c_cpass_char_ptr
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
+    ! ----------------------------------------
+    ! Argument:  src
+    ! Requested: c_char_*_in
+    ! Match:     c_default
     interface
         subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src) &
                 bind(C, name="STR_cpass_char_ptr_bufferify")
@@ -594,6 +962,18 @@ contains
 
     ! char returnChar()
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_schar_scalar_result
+    ! Match:     f_default
+    ! Requested: c_schar_scalar_result_buf
+    ! Match:     c_schar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_schar_*_result
+    ! Match:     f_default
+    ! Requested: c_schar_*_result_buf
+    ! Match:     c_schar_result_buf
     !>
     !! \brief return a char argument (non-pointer)
     !!
@@ -609,6 +989,18 @@ contains
 
     ! void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: f_char_*_out
+    ! Match:     f_default
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     !>
     !! \brief strcpy like behavior
     !!
@@ -630,6 +1022,18 @@ contains
 
     ! void passCharPtrInOut(char * s +intent(inout))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s
+    ! Requested: f_char_*_inout
+    ! Match:     f_default
+    ! Requested: c_char_*_inout_buf
+    ! Match:     c_char_inout_buf
     !>
     !! \brief toupper
     !!
@@ -647,6 +1051,18 @@ contains
 
     ! const char * getCharPtr1() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_char_scalar_result_allocatable
+    ! Match:     f_char_result_allocatable
+    ! Requested: c_char_scalar_result_buf
+    ! Match:     c_char_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_char_*_result_allocatable
+    ! Match:     f_char_result_allocatable
+    ! Requested: c_char_*_result_buf_allocatable
+    ! Match:     c_char_result_buf_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -666,6 +1082,18 @@ contains
 
     ! const char * getCharPtr2() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_char_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Requested: c_char_scalar_result_buf
+    ! Match:     c_char_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_char_*_result
+    ! Match:     f_default
+    ! Requested: c_char_*_result_buf
+    ! Match:     c_char_result_buf
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -683,6 +1111,18 @@ contains
 
     ! void getCharPtr3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: f_char_*_result
+    ! Match:     f_default
+    ! Requested: c_char_*_result_buf
+    ! Match:     c_char_result_buf
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -699,6 +1139,17 @@ contains
 
     ! const string getConstStringResult() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
@@ -716,6 +1167,17 @@ contains
 
     ! const string getConstStringLen() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result
+    ! Match:     f_default
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -732,6 +1194,18 @@ contains
 
     ! void getConstStringAsArg(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: f_string_*_result
+    ! Match:     f_default
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -747,6 +1221,17 @@ contains
 
     ! const std::string getConstStringAlloc() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv
@@ -760,6 +1245,17 @@ contains
 
     ! const string & getConstStringRefPure() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
@@ -779,6 +1275,17 @@ contains
 
     ! const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -798,6 +1305,18 @@ contains
 
     ! void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  output
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -815,6 +1334,17 @@ contains
 
     ! const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result
+    ! Match:     f_default
+    ! Requested: c_string_&_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief Test returning empty string reference
     !!
@@ -831,6 +1361,17 @@ contains
 
     ! const std::string & getConstStringRefAlloc() +deref(allocatable)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv
@@ -844,6 +1385,17 @@ contains
 
     ! const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_result_as_arg
+    ! Match:     f_default
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result
+    ! Match:     f_default
+    ! Requested: c_string_*_result_buf
+    ! Match:     c_string_result_buf
     !>
     !! \brief return a 'const string *' as character(30)
     !!
@@ -864,6 +1416,17 @@ contains
 
     ! const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv
@@ -877,6 +1440,17 @@ contains
 
     ! const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -897,6 +1471,17 @@ contains
 
     ! const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_*_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_*_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
@@ -913,6 +1498,18 @@ contains
 
     ! void acceptStringConstReference(const std::string & arg1 +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
     !>
     !! \brief Accept a const string reference
     !!
@@ -931,6 +1528,18 @@ contains
 
     ! void acceptStringReferenceOut(std::string & arg1 +intent(out))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_string_&_out
+    ! Match:     f_default
+    ! Requested: c_string_&_out_buf
+    ! Match:     c_string_out_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -949,6 +1558,18 @@ contains
 
     ! void acceptStringReference(std::string & arg1 +intent(inout))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_string_&_inout
+    ! Match:     f_default
+    ! Requested: c_string_&_inout_buf
+    ! Match:     c_string_inout_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -969,6 +1590,18 @@ contains
 
     ! void acceptStringPointer(std::string * arg1 +intent(inout))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_string_*_inout
+    ! Match:     f_default
+    ! Requested: c_string_*_inout_buf
+    ! Match:     c_string_inout_buf
     !>
     !! \brief Accept a string pointer
     !!
@@ -983,6 +1616,12 @@ contains
     end subroutine accept_string_pointer
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
     subroutine explicit1(name)
         use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
@@ -993,6 +1632,18 @@ contains
 
     ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_char_*_out
+    ! Match:     f_default
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name
@@ -1003,6 +1654,18 @@ contains
 
     ! char CreturnChar()
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_schar_scalar_result
+    ! Match:     f_default
+    ! Requested: c_schar_scalar_result_buf
+    ! Match:     c_schar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_schar_*_result
+    ! Match:     f_default
+    ! Requested: c_schar_*_result_buf
+    ! Match:     c_schar_result_buf
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -1018,6 +1681,18 @@ contains
 
     ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  dest
+    ! Requested: f_char_*_out
+    ! Match:     f_default
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     !>
     !! \brief strcpy like behavior
     !!

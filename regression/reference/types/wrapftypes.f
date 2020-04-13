@@ -22,6 +22,14 @@ module types_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function short_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_func")
@@ -31,6 +39,14 @@ module types_mod
             integer(C_SHORT) :: SHT_rv
         end function short_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int_func")
@@ -40,6 +56,14 @@ module types_mod
             integer(C_INT) :: SHT_rv
         end function int_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_func")
@@ -49,6 +73,14 @@ module types_mod
             integer(C_LONG) :: SHT_rv
         end function long_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function long_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_func")
@@ -58,6 +90,14 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function long_long_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function short_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_int_func")
@@ -67,6 +107,14 @@ module types_mod
             integer(C_SHORT) :: SHT_rv
         end function short_int_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_int_func")
@@ -76,6 +124,14 @@ module types_mod
             integer(C_LONG) :: SHT_rv
         end function long_int_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_int_func")
@@ -85,6 +141,14 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function long_long_int_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function unsigned_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_unsigned_func")
@@ -94,6 +158,14 @@ module types_mod
             integer(C_INT) :: SHT_rv
         end function unsigned_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function ushort_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ushort_func")
@@ -103,6 +175,14 @@ module types_mod
             integer(C_SHORT) :: SHT_rv
         end function ushort_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function uint_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint_func")
@@ -112,6 +192,14 @@ module types_mod
             integer(C_INT) :: SHT_rv
         end function uint_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function ulong_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_func")
@@ -121,6 +209,14 @@ module types_mod
             integer(C_LONG) :: SHT_rv
         end function ulong_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_long_func")
@@ -130,6 +226,14 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function ulong_long_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_int_func")
@@ -139,6 +243,14 @@ module types_mod
             integer(C_LONG) :: SHT_rv
         end function ulong_int_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function int8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int8_func")
@@ -148,6 +260,14 @@ module types_mod
             integer(C_INT8_T) :: SHT_rv
         end function int8_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function int16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int16_func")
@@ -157,6 +277,14 @@ module types_mod
             integer(C_INT16_T) :: SHT_rv
         end function int16_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function int32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int32_func")
@@ -166,6 +294,14 @@ module types_mod
             integer(C_INT32_T) :: SHT_rv
         end function int32_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function int64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int64_func")
@@ -175,6 +311,14 @@ module types_mod
             integer(C_INT64_T) :: SHT_rv
         end function int64_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function uint8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint8_func")
@@ -184,6 +328,14 @@ module types_mod
             integer(C_INT8_T) :: SHT_rv
         end function uint8_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function uint16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint16_func")
@@ -193,6 +345,14 @@ module types_mod
             integer(C_INT16_T) :: SHT_rv
         end function uint16_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function uint32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint32_func")
@@ -202,6 +362,14 @@ module types_mod
             integer(C_INT32_T) :: SHT_rv
         end function uint32_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function uint64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint64_func")
@@ -211,6 +379,14 @@ module types_mod
             integer(C_INT64_T) :: SHT_rv
         end function uint64_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         function size_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_size_func")
@@ -220,6 +396,14 @@ module types_mod
             integer(C_SIZE_T) :: SHT_rv
         end function size_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg
+        ! Requested: c_bool_scalar_in
+        ! Match:     c_default
         function c_bool_func(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_bool_func")
@@ -229,6 +413,14 @@ module types_mod
             logical(C_BOOL) :: SHT_rv
         end function c_bool_func
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_*_out
+        ! Match:     c_default
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
                 bind(C, name="TYP_return_bool_and_others")
@@ -245,6 +437,18 @@ module types_mod
 contains
 
     ! bool bool_func(bool arg +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: f_bool_scalar_in
+    ! Match:     f_bool_in
+    ! Requested: c_bool_scalar_in
+    ! Match:     c_default
     function bool_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -258,6 +462,18 @@ contains
     end function bool_func
 
     ! bool returnBoolAndOthers(int * flag +intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
     !>
     !! \brief Function which returns bool with other intent(out) arguments
     !!

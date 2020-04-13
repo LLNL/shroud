@@ -730,7 +730,7 @@ return 1;""",
 
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
-                 ast.get_indirect(),
+                 ast.get_indirect_stmt(),
         ]
         if have_array:
             stmts.append(options.PY_array_arg)
@@ -810,18 +810,6 @@ return 1;""",
             )
         )  # closure
 
-    def document_stmts(self, output, stmt0, stmt1):
-        """A comments to show which py_statements were used.
-        """
-        if stmt0 == stmt1:
-            output.append(
-                "// Exact:     " + stmt0)
-        else:
-            output.append(
-                "// Requested: " + stmt0)
-            output.append(
-                "// Match:     " + stmt1)
-        
     def update_descr_code_blocks(self, name, stmts, fmt, output):
         """Format descr code.
 
@@ -1180,7 +1168,7 @@ return 1;""",
             implied = attrs["implied"]
             intent = attrs["intent"]
             sgroup = arg_typemap.sgroup
-            spointer = arg.get_indirect()
+            spointer = arg.get_indirect_stmt()
             stmts = None
 
             whelpers.add_to_PyList_helper(arg)
@@ -3728,7 +3716,7 @@ py_statements = [
     # allocatable(nvar)
     dict(
         name="py_native_out_allocatable_numpy",
-        alias="py_native_out_dimension_numpy",
+        base="py_native_out_dimension_numpy",
     ),
 
 ########################################

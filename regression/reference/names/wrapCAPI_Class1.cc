@@ -17,6 +17,10 @@ extern "C" {
 // splicer end namespace.CAPI.class.Class1.C_definitions
 
 // void Member1()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void TES_capi_class1_member1(TES_capi_class1 * self)
 {
     CAPI::Class1 *SH_this = static_cast<CAPI::Class1 *>(self->addr);

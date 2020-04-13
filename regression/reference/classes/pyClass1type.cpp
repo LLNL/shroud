@@ -57,7 +57,7 @@ PY_Class1_tp_init_default(
 // Class1(int flag +intent(in)+value) +name(new)
 // ----------------------------------------
 // Argument:  flag
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static int
 PY_Class1_tp_init_flag(
@@ -188,7 +188,7 @@ PY_getclass3(
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"
@@ -261,7 +261,8 @@ PY_Class1_tp_init(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -269,7 +270,8 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -277,7 +279,8 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

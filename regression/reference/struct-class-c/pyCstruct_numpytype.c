@@ -46,7 +46,8 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // Cstruct_numpy(int nitems +intent(in), int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)
 // ----------------------------------------
 // Argument:  nitems
-// Exact:     py_ctor_native
+// Requested: py_ctor_native_scalar
+// Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  ivalue
 // Exact:     py_ctor_native_*
@@ -96,7 +97,8 @@ PY_Cstruct_numpy_tp_init(
 // splicer begin class.Cstruct_numpy.impl.after_methods
 // splicer end class.Cstruct_numpy.impl.after_methods
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -104,7 +106,8 @@ static PyObject *PY_Cstruct_numpy_nitems_getter(PY_Cstruct_numpy *self,
     return rv;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static int PY_Cstruct_numpy_nitems_setter(PY_Cstruct_numpy *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

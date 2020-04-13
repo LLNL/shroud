@@ -20,6 +20,9 @@ extern "C" {
 // splicer end class.Class1.C_definitions
 
 // Class1() +name(new)
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_scalar_ctor
 // start CLA_Class1_new_default
 CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
 {
@@ -33,6 +36,13 @@ CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
 // end CLA_Class1_new_default
 
 // Class1(int flag +intent(in)+value) +name(new)
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_scalar_ctor
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
 // start CLA_Class1_new_flag
 CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv)
 {
@@ -46,6 +56,9 @@ CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv)
 // end CLA_Class1_new_flag
 
 // ~Class1() +name(delete)
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_dtor
 // start CLA_Class1_delete
 void CLA_Class1_delete(CLA_Class1 * self)
 {
@@ -63,6 +76,10 @@ void CLA_Class1_delete(CLA_Class1 * self)
  * \brief returns the value of flag member
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 // start CLA_Class1_method1
 int CLA_Class1_method1(CLA_Class1 * self)
 {
@@ -80,6 +97,14 @@ int CLA_Class1_method1(CLA_Class1 * self)
  * \brief Pass in reference to instance
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_bool_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  obj2
+// Requested: c_shadow_&_in
+// Match:     c_shadow_in
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {
@@ -99,6 +124,10 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 // start CLA_Class1_return_this
 void CLA_Class1_return_this(CLA_Class1 * self)
 {
@@ -115,6 +144,18 @@ void CLA_Class1_return_this(CLA_Class1 * self)
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  name
+// Requested: c_string_&_in
+// Match:     c_string_in
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_bool_scalar_in
+// Match:     c_default
 // start CLA_Class1_return_this_buffer
 CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     char * name, bool flag, CLA_Class1 * SHC_rv)
@@ -137,6 +178,18 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result_buf
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  name
+// Requested: c_string_&_in_buf
+// Match:     c_string_in_buf
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_bool_scalar_in_buf
+// Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     char * name, int Lname, bool flag, CLA_Class1 * SHC_rv)
@@ -159,6 +212,10 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
  * \brief Test const method
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHC_rv)
@@ -175,6 +232,14 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // end CLA_Class1_getclass3
 
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg
+// Requested: c_native_scalar_in
+// Match:     c_default
 // start CLA_Class1_direction_func
 int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 {
@@ -192,6 +257,10 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 // end CLA_Class1_direction_func
 
 // int getM_flag()
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 // start CLA_Class1_get_m_flag
 int CLA_Class1_get_m_flag(CLA_Class1 * self)
 {
@@ -204,6 +273,10 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
 // end CLA_Class1_get_m_flag
 
 // int getTest()
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 // start CLA_Class1_get_test
 int CLA_Class1_get_test(CLA_Class1 * self)
 {
@@ -216,6 +289,14 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // end CLA_Class1_get_test
 
 // void setTest(int val +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  val
+// Requested: c_native_scalar_in
+// Match:     c_default
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {

@@ -51,11 +51,11 @@ PY_NoReturnNoArguments(
 // double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValue__doc__[] =
 "documentation"
@@ -134,7 +134,8 @@ PY_PassByReference(
 // void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // ----------------------------------------
 // Argument:  arg1
-// Exact:     py_bool_in
+// Requested: py_bool_scalar_in
+// Match:     py_bool_in
 // ----------------------------------------
 // Argument:  arg2
 // Requested: py_bool_*_out

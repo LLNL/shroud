@@ -19,6 +19,10 @@ extern "C" {
 // splicer end C_definitions
 
 // void worker3()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void WWW_inner3_worker3()
 {
     // splicer begin function.worker3
@@ -27,6 +31,10 @@ void WWW_inner3_worker3()
 }
 
 // void worker()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void WWW_worker()
 {
     // splicer begin function.worker

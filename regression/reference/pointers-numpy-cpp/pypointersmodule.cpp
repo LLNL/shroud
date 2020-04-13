@@ -71,7 +71,7 @@ PyObject *PY_error_obj;
 // void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 // ----------------------------------------
 // Argument:  argin
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arginout
@@ -381,12 +381,11 @@ fail:
 // void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
 // ----------------------------------------
 // Argument:  nvar
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  values
-// Requested: py_native_out_allocatable_numpy
-// Match:     py_native_out_dimension_numpy
+// Exact:     py_native_out_allocatable_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -435,7 +434,7 @@ fail:
 // void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 // ----------------------------------------
 // Argument:  nvar
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  values

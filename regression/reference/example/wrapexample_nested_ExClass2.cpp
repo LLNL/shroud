@@ -72,6 +72,13 @@ void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var
  * \brief constructor
  *
  */
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_scalar_ctor
+// ----------------------------------------
+// Argument:  name
+// Requested: c_string_*_in
+// Match:     c_string_in
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHC_rv)
 {
@@ -90,6 +97,14 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
  * \brief constructor
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_shadow_scalar_ctor_buf
+// Match:     c_shadow_scalar_ctor
+// ----------------------------------------
+// Argument:  name
+// Requested: c_string_*_in_buf
+// Match:     c_string_in_buf
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
     const char * name, int trim_name,
     AA_example_nested_ExClass2 * SHC_rv)
@@ -109,6 +124,9 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
  * \brief destructor
  *
  */
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_dtor
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 {
     example::nested::ExClass2 *SH_this =
@@ -120,6 +138,10 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 }
 
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
 const char * AA_example_nested_ExClass2_get_name(
     const AA_example_nested_ExClass2 * self)
 {
@@ -133,6 +155,14 @@ const char * AA_example_nested_ExClass2_get_name(
 }
 
 // void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf
+// Match:     c_string_result_buf
 void AA_example_nested_ExClass2_get_name_bufferify(
     const AA_example_nested_ExClass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -150,6 +180,10 @@ void AA_example_nested_ExClass2_get_name_bufferify(
 }
 
 // const string & getName2() +deref(allocatable)
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
 const char * AA_example_nested_ExClass2_get_name2(
     AA_example_nested_ExClass2 * self)
 {
@@ -163,6 +197,14 @@ const char * AA_example_nested_ExClass2_get_name2(
 }
 
 // void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf_allocatable
+// Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -175,6 +217,10 @@ void AA_example_nested_ExClass2_get_name2_bufferify(
 }
 
 // string & getName3() const +deref(allocatable)
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
 char * AA_example_nested_ExClass2_get_name3(
     const AA_example_nested_ExClass2 * self)
 {
@@ -188,6 +234,14 @@ char * AA_example_nested_ExClass2_get_name3(
 }
 
 // void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf_allocatable
+// Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
     const AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -200,6 +254,10 @@ void AA_example_nested_ExClass2_get_name3_bufferify(
 }
 
 // string & getName4() +deref(allocatable)
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
 char * AA_example_nested_ExClass2_get_name4(
     AA_example_nested_ExClass2 * self)
 {
@@ -213,6 +271,14 @@ char * AA_example_nested_ExClass2_get_name4(
 }
 
 // void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf_allocatable
+// Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -229,6 +295,10 @@ void AA_example_nested_ExClass2_get_name4_bufferify(
  * \brief helper function for Fortran
  *
  */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int AA_example_nested_ExClass2_get_name_length(
     const AA_example_nested_ExClass2 * self)
 {
@@ -240,6 +310,14 @@ int AA_example_nested_ExClass2_get_name_length(
 }
 
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
+// ----------------------------------------
+// Result
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  in
+// Requested: c_shadow_*_in
+// Match:     c_shadow_in
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv)
@@ -258,6 +336,14 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 }
 
 // void * declare(TypeID type +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  type
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_declare_0(
     AA_example_nested_ExClass2 * self, int type)
 {
@@ -270,6 +356,18 @@ void AA_example_nested_ExClass2_declare_0(
 }
 
 // void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  type
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  len
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_declare_1(
     AA_example_nested_ExClass2 * self, int type, SIDRE_SidreLength len)
 {
@@ -282,6 +380,10 @@ void AA_example_nested_ExClass2_declare_1(
 }
 
 // void destroyall()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self)
 {
@@ -293,6 +395,10 @@ void AA_example_nested_ExClass2_destroyall(
 }
 
 // TypeID getTypeID() const
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int AA_example_nested_ExClass2_get_type_id(
     const AA_example_nested_ExClass2 * self)
 {
@@ -306,6 +412,14 @@ int AA_example_nested_ExClass2_get_type_id(
 }
 
 // void setValue(int value +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  value
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_set_value_int(
     AA_example_nested_ExClass2 * self, int value)
 {
@@ -317,6 +431,14 @@ void AA_example_nested_ExClass2_set_value_int(
 }
 
 // void setValue(long value +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  value
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_set_value_long(
     AA_example_nested_ExClass2 * self, long value)
 {
@@ -328,6 +450,14 @@ void AA_example_nested_ExClass2_set_value_long(
 }
 
 // void setValue(float value +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  value
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_set_value_float(
     AA_example_nested_ExClass2 * self, float value)
 {
@@ -339,6 +469,14 @@ void AA_example_nested_ExClass2_set_value_float(
 }
 
 // void setValue(double value +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  value
+// Requested: c_native_scalar_in
+// Match:     c_default
 void AA_example_nested_ExClass2_set_value_double(
     AA_example_nested_ExClass2 * self, double value)
 {
@@ -350,6 +488,10 @@ void AA_example_nested_ExClass2_set_value_double(
 }
 
 // int getValue()
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 int AA_example_nested_ExClass2_get_value_int(
     AA_example_nested_ExClass2 * self)
 {
@@ -362,6 +504,10 @@ int AA_example_nested_ExClass2_get_value_int(
 }
 
 // double getValue()
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
 double AA_example_nested_ExClass2_get_value_double(
     AA_example_nested_ExClass2 * self)
 {

@@ -86,14 +86,14 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_scalar_ctor",
-                                "stmt1": "c_shadow_ctor"
+                                "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
                                 "cxx_type": "forward::Class2",
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
                                 "stmt0": "f_shadow_ctor",
-                                "stmt1": "f_shadow_result",
+                                "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
                             },
@@ -216,7 +216,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_shadow_pointer_in",
+                                    "stmt0": "c_shadow_*_in",
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
@@ -224,9 +224,9 @@
                                     "f_type": "type(class1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_shadow_pointer_in",
+                                    "stmt0": "f_shadow_*_in",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_shadow_pointer_in",
+                                    "stmtc0": "c_shadow_*_in",
                                     "stmtc1": "c_shadow_in"
                                 },
                                 "fmtl": {
@@ -336,7 +336,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_shadow_pointer_in",
+                                    "stmt0": "c_shadow_*_in",
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
@@ -344,9 +344,9 @@
                                     "f_type": "type(class3)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_shadow_pointer_in",
+                                    "stmt0": "f_shadow_*_in",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_shadow_pointer_in",
+                                    "stmtc0": "c_shadow_*_in",
                                     "stmtc1": "c_shadow_in"
                                 },
                                 "fmtl": {

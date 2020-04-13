@@ -40,7 +40,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int", s)
-        self.assertEqual("", r.get_indirect())
+        self.assertEqual("scalar", r.get_indirect_stmt())
 
         r = declast.check_decl("int var1")
         self.assertIsNone(r.get_subprogram())
@@ -75,7 +75,7 @@ class CheckParse(unittest.TestCase):
                     'pointer': []},
                 'specifier': ['int'],
                 'typemap_name': 'int'})
-        self.assertEqual("", r.get_indirect())
+        self.assertEqual("scalar", r.get_indirect_stmt())
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
@@ -88,7 +88,7 @@ class CheckParse(unittest.TestCase):
                     'pointer': []},
                 'specifier': ['int'],
                 'typemap_name': 'int'})
-        self.assertEqual("", r.get_indirect())
+        self.assertEqual("scalar", r.get_indirect_stmt())
         r = declast.check_decl("int *var1 +dimension(:)")
         self.assertIsNone(r.get_subprogram())
         self.assertEqual(1, r.is_pointer())
@@ -131,7 +131,7 @@ class CheckParse(unittest.TestCase):
                         {'const': True, 'ptr': '*'}]},
                 'specifier': ['int'],
                 'typemap_name': 'int'})
-        self.assertEqual("*", r.get_indirect())
+        self.assertEqual("*", r.get_indirect_stmt())
 
         r = declast.check_decl("int **var1")
         s = r.gen_decl()
@@ -144,7 +144,7 @@ class CheckParse(unittest.TestCase):
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
-        self.assertEqual("**", r.get_indirect())
+        self.assertEqual("**", r.get_indirect_stmt())
 
         r = declast.check_decl("int &*var1")
         s = r.gen_decl()
@@ -158,7 +158,7 @@ class CheckParse(unittest.TestCase):
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
-        self.assertEqual("&*", r.get_indirect())
+        self.assertEqual("&*", r.get_indirect_stmt())
         self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("const int * const * const var1")
@@ -175,7 +175,7 @@ class CheckParse(unittest.TestCase):
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
-        self.assertEqual("**", r.get_indirect())
+        self.assertEqual("**", r.get_indirect_stmt())
         self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("long long var2")
@@ -298,7 +298,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char **var1")
         self.assertEqual(2, r.is_indirect())
         self.assertEqual(2, r.is_array())
-        self.assertEqual('**', r.get_indirect())
+        self.assertEqual('**', r.get_indirect_stmt())
         self.assertEqual("char **", r.as_cast())
         s = r.gen_decl()
         self.assertEqual("char * * var1", s)
@@ -333,7 +333,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
-        self.assertEqual('[]', r.get_indirect())
+        self.assertEqual('[]', r.get_indirect_stmt())
         s = r.gen_decl()
         self.assertEqual("char var1[20]", s)
         self.assertEqual(
@@ -355,7 +355,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
-        self.assertEqual('[]', r.get_indirect())
+        self.assertEqual('[]', r.get_indirect_stmt())
         self.assertEqual("char var2[20][10][5]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
@@ -382,7 +382,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_indirect())
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
-        self.assertEqual('[]', r.get_indirect())
+        self.assertEqual('[]', r.get_indirect_stmt())
         self.assertEqual("char var3[DEFINE+3]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
@@ -408,7 +408,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(1, r.is_indirect())
         self.assertEqual(2, r.is_array())
         self.assertEqual("char **", r.as_cast())
-        self.assertEqual('*[]', r.get_indirect())
+        self.assertEqual('*[]', r.get_indirect_stmt())
         s = r.gen_decl()
         self.assertEqual("char * var4[44]", s)
         self.assertEqual(

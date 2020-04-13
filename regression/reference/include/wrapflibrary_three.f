@@ -39,6 +39,14 @@ module library_three_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  arg1
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             use iso_c_binding, only : C_INT
@@ -53,6 +61,19 @@ module library_three_mod
 
 contains
 
+    ! void method1(CustomType arg1 +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg1
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     subroutine class1_method1(obj, arg1)
         use iso_c_binding, only : C_INT
         class(class1) :: obj

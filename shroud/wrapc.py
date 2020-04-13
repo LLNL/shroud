@@ -766,16 +766,13 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            spointer = "pointer" if ast.is_indirect() else "scalar"
+            spointer = ast.get_indirect_stmt()
             if is_ctor:
                 sintent = "ctor"
             else:
                 sintent = "result"
             stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
             result_blk = typemap.lookup_fc_stmts(stmts)
-            # Useful for debugging.  Requested and found path.
-            fmt_result.stmt0 = typemap.compute_name(stmts)
-            fmt_result.stmt1 = result_blk.name
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
@@ -810,7 +807,18 @@ class Wrapc(util.WrapperMixin):
         call_list = []  # arguments to call function
         final_code = []
         return_code = []
+        stmts_comments = []
 
+        # Useful for debugging.  Requested and found path.
+        fmt_result.stmt0 = typemap.compute_name(stmts)
+        fmt_result.stmt1 = result_blk.name
+        if options.debug:
+            stmts_comments.append(
+                "// ----------------------------------------")
+            stmts_comments.append("// Result")
+            self.document_stmts(
+                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+        
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
         result_arg = None
@@ -923,7 +931,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 result_return_pointer_as = c_attrs["deref"]
-                spointer = "pointer" if CXX_ast.is_indirect() else "scalar"
+                spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", sgroup, spointer, "result",
                     generated_suffix, result_return_pointer_as,
@@ -971,6 +979,12 @@ class Wrapc(util.WrapperMixin):
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = typemap.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name
+            if options.debug:
+                stmts_comments.append(
+                    "// ----------------------------------------")
+                stmts_comments.append("// Argument:  " + arg_name)
+                self.document_stmts(
+                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1203,6 +1217,7 @@ class Wrapc(util.WrapperMixin):
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 impl.append("#" + node.cpp_if)
+            impl.extend(stmts_comments)
             if options.literalinclude:
                 append_format(impl, "// start {C_name}", fmt_func)
             append_format(

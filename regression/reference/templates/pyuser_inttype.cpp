@@ -40,6 +40,15 @@ PY_user_int_tp_del (PY_user_int *self)
 // splicer end class.user.type.del
 }
 
+// void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg1
+// Requested: py_native_scalar_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_scalar_in
+// Match:     py_default
 static char PY_nested_double__doc__[] =
 "documentation"
 ;
@@ -61,6 +70,7 @@ PY_nested_double(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:nested",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return nullptr;
+
     self->obj->nested<double>(arg1, arg2);
     Py_RETURN_NONE;
 // splicer end class.user.method.nested_double

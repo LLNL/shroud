@@ -50,6 +50,14 @@ module struct_mod
         type(C_PTR) :: dvalue
     end type cstruct_numpy
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_struct_scalar_in
+    ! Match:     c_struct
     ! start pass_struct_by_value
     interface
         function pass_struct_by_value(arg) &
@@ -64,6 +72,14 @@ module struct_mod
     end interface
     ! end pass_struct_by_value
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_struct_*_in
+    ! Match:     c_struct
     ! start pass_struct1
     interface
         function pass_struct1(arg) &
@@ -78,6 +94,18 @@ module struct_mod
     end interface
     ! end pass_struct1
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s1
+    ! Requested: c_struct_*_in
+    ! Match:     c_struct
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: c_char_*_out
+    ! Match:     c_default
     interface
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
@@ -91,6 +119,18 @@ module struct_mod
         end function c_pass_struct2
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s1
+    ! Requested: c_struct_*_in_buf
+    ! Match:     c_struct
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     interface
         function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
                 result(SHT_rv) &
@@ -105,6 +145,14 @@ module struct_mod
         end function c_pass_struct2_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_struct_*_in
+    ! Match:     c_struct
     interface
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &
@@ -117,6 +165,22 @@ module struct_mod
         end function accept_struct_in_ptr
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_struct_*_out
+    ! Match:     c_struct
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         subroutine accept_struct_out_ptr(arg, i, d) &
                 bind(C, name="acceptStructOutPtr")
@@ -129,6 +193,14 @@ module struct_mod
         end subroutine accept_struct_out_ptr
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg
+    ! Requested: c_struct_*_inout
+    ! Match:     c_struct
     interface
         subroutine accept_struct_in_out_ptr(arg) &
                 bind(C, name="acceptStructInOutPtr")
@@ -138,6 +210,18 @@ module struct_mod
         end subroutine accept_struct_in_out_ptr
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_scalar_result
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function return_struct_by_value(i, d) &
                 result(SHT_rv) &
@@ -151,6 +235,18 @@ module struct_mod
         end function return_struct_by_value
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_scalar_result
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function return_const_struct_by_value(i, d) &
                 result(SHT_rv) &
@@ -164,6 +260,18 @@ module struct_mod
         end function return_const_struct_by_value
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_*_result
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     interface
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &
@@ -176,6 +284,22 @@ module struct_mod
         end function c_return_struct_ptr1
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_*_result
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: c_char_*_out
+    ! Match:     c_default
     interface
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
@@ -189,6 +313,22 @@ module struct_mod
         end function c_return_struct_ptr2
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_*_result_buf
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     interface
         function c_return_struct_ptr2_bufferify(i, d, outbuf, Noutbuf) &
                 result(SHT_rv) &
@@ -203,6 +343,10 @@ module struct_mod
         end function c_return_struct_ptr2_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_struct_*_result
+    ! Match:     c_struct_result
     interface
         function c_get_global_struct_list() &
                 result(SHT_rv) &
@@ -222,6 +366,24 @@ contains
 
     ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  s1
+    ! Requested: f_struct_*_in
+    ! Match:     f_default
+    ! Requested: c_struct_*_in_buf
+    ! Match:     c_struct
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: f_char_*_out
+    ! Match:     f_default
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     !>
     !! Pass name argument which will build a bufferify function.
     !<
@@ -238,6 +400,23 @@ contains
     end function pass_struct2
 
     ! Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_struct_*_result
+    ! Requested: c_struct_*_result
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
     !>
     !! \brief Return a pointer to a struct
     !!
@@ -258,6 +437,29 @@ contains
 
     ! Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
     ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_struct_*_result
+    ! Requested: c_struct_*_result_buf
+    ! Match:     c_struct_result
+    ! ----------------------------------------
+    ! Argument:  i
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  d
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  outbuf
+    ! Requested: f_char_*_out
+    ! Match:     f_default
+    ! Requested: c_char_*_out_buf
+    ! Match:     c_char_out_buf
     !>
     !! \brief Return a pointer to a struct
     !!
@@ -279,6 +481,11 @@ contains
     end function return_struct_ptr2
 
     ! Cstruct_list * get_global_struct_list()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_struct_*_result
+    ! Requested: c_struct_*_result
+    ! Match:     c_struct_result
     function get_global_struct_list() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR, c_f_pointer

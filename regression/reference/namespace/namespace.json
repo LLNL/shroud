@@ -26,7 +26,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_string_pointer_result",
+                        "stmt0": "c_string_&_result",
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
@@ -36,7 +36,7 @@
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_result_buf"
+                        "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -113,7 +113,7 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_string_pointer_result_buf_allocatable",
+                            "stmt0": "c_string_&_result_buf_allocatable",
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
@@ -122,9 +122,9 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_pointer_result_allocatable",
+                            "stmt0": "f_string_&_result_allocatable",
                             "stmt1": "f_string_result_allocatable",
-                            "stmtc0": "c_string_pointer_result_buf_allocatable",
+                            "stmtc0": "c_string_&_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
                     }
@@ -357,7 +357,7 @@
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
-                                            "stmt0": "py_ctor_native",
+                                            "stmt0": "py_ctor_native_scalar",
                                             "stmt1": "py_ctor_native"
                                         }
                                     },
@@ -379,7 +379,7 @@
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
-                                            "stmt0": "py_ctor_native",
+                                            "stmt0": "py_ctor_native_scalar",
                                             "stmt1": "py_ctor_native"
                                         }
                                     }

@@ -13,6 +13,11 @@
 extern "C" {
 
 
+// void outer_func()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void LIB_outer1_outer_func()
 {
     outer1::outer_func();

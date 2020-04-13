@@ -22,6 +22,10 @@ module wrapped_inner1_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine worker() &
                 bind(C, name="WWW_inner1_worker")
             implicit none

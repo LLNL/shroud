@@ -22,6 +22,10 @@ module worker_names
 
     interface
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
         subroutine afunction() &
                 bind(C, name="NAM_afunction")
             implicit none

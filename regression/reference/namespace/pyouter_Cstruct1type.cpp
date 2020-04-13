@@ -39,10 +39,12 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 // ----------------------------------------
 // Argument:  ifield
-// Exact:     py_ctor_native
+// Requested: py_ctor_native_scalar
+// Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  dfield
-// Exact:     py_ctor_native
+// Requested: py_ctor_native_scalar
+// Match:     py_ctor_native
 static int
 PY_Cstruct1_tp_init(
   PY_Cstruct1 *self,
@@ -79,7 +81,8 @@ PY_Cstruct1_tp_init(
 // splicer begin namespace.outer.class.Cstruct1.impl.after_methods
 // splicer end namespace.outer.class.Cstruct1.impl.after_methods
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -87,7 +90,8 @@ static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -99,7 +103,8 @@ static int PY_Cstruct1_ifield_setter(PY_Cstruct1 *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -107,7 +112,8 @@ static PyObject *PY_Cstruct1_dfield_getter(PY_Cstruct1 *self,
     return rv;
 }
 
-// Exact:     py_descr_native
+// Requested: py_descr_native_scalar
+// Match:     py_descr_native
 static int PY_Cstruct1_dfield_setter(PY_Cstruct1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

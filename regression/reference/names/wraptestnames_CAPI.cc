@@ -17,6 +17,10 @@ extern "C" {
 // splicer end namespace.CAPI.C_definitions
 
 // void Worker1()
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
 void TES_capi_worker1()
 {
     // splicer begin namespace.CAPI.function.worker1

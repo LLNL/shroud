@@ -509,7 +509,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_in",
+                            "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -517,9 +517,9 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_pointer_in",
+                            "stmt0": "f_struct_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_pointer_in",
+                            "stmtc0": "c_struct_*_in",
                             "stmtc1": "c_struct"
                         }
                     }
@@ -618,7 +618,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out",
+                            "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         }
                     },
@@ -636,7 +636,7 @@
                             "cxx_var": "s1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_in",
+                            "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         }
                     }
@@ -755,7 +755,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out_buf",
+                            "stmt0": "c_char_*_out_buf",
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
@@ -763,9 +763,9 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_pointer_out",
+                            "stmt0": "f_char_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_out_buf"
                         }
                     },
@@ -783,7 +783,7 @@
                             "cxx_var": "s1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_in_buf",
+                            "stmt0": "c_struct_*_in_buf",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -791,9 +791,9 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_pointer_in",
+                            "stmt0": "f_struct_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_pointer_in_buf",
+                            "stmtc0": "c_struct_*_in_buf",
                             "stmtc1": "c_struct"
                         }
                     }
@@ -904,7 +904,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_in",
+                            "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -912,9 +912,9 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_pointer_in",
+                            "stmt0": "f_struct_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_pointer_in",
+                            "stmtc0": "c_struct_*_in",
                             "stmtc1": "c_struct"
                         }
                     }
@@ -1013,7 +1013,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_out",
+                            "stmt0": "c_struct_*_out",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -1021,9 +1021,9 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_pointer_out",
+                            "stmt0": "f_struct_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_pointer_out",
+                            "stmtc0": "c_struct_*_out",
                             "stmtc1": "c_struct"
                         }
                     },
@@ -1185,7 +1185,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_pointer_inout",
+                            "stmt0": "c_struct_*_inout",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -1193,9 +1193,9 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_pointer_inout",
+                            "stmt0": "f_struct_*_inout",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_pointer_inout",
+                            "stmtc0": "c_struct_*_inout",
                             "stmtc1": "c_struct"
                         }
                     }
@@ -1617,16 +1617,16 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "c_struct_pointer_result",
+                        "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_struct_pointer_result",
-                        "stmt1": "f_native_pointer_result_pointer",
-                        "stmtc0": "c_struct_pointer_result",
+                        "stmt0": "f_struct_*_result",
+                        "stmt1": "f_struct_*_result",
+                        "stmtc0": "c_struct_*_result",
                         "stmtc1": "c_struct_result"
                     }
                 },
@@ -1754,7 +1754,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out",
+                            "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         }
                     }
@@ -1770,16 +1770,16 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "c_struct_pointer_result",
+                        "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_struct_pointer_result",
-                        "stmt1": "f_native_pointer_result_pointer",
-                        "stmtc0": "c_struct_pointer_result_buf",
+                        "stmt0": "f_struct_*_result",
+                        "stmt1": "f_struct_*_result",
+                        "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"
                     }
                 },
@@ -1946,7 +1946,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_char_pointer_out_buf",
+                            "stmt0": "c_char_*_out_buf",
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
@@ -1954,9 +1954,9 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_pointer_out",
+                            "stmt0": "f_char_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_pointer_out_buf",
+                            "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_out_buf"
                         }
                     }
@@ -1972,7 +1972,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "c_struct_pointer_result_buf",
+                        "stmt0": "c_struct_*_result_buf",
                         "stmt1": "c_struct_result"
                     }
                 },
@@ -2081,16 +2081,16 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "c_struct_pointer_result",
+                        "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
                         "cxx_type": "Cstruct_list",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_struct_pointer_result",
-                        "stmt1": "f_native_pointer_result_pointer",
-                        "stmtc0": "c_struct_pointer_result",
+                        "stmt0": "f_struct_*_result",
+                        "stmt1": "f_struct_*_result",
+                        "stmtc0": "c_struct_*_result",
                         "stmtc1": "c_struct_result"
                     }
                 },

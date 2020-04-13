@@ -142,6 +142,8 @@
                     "F_C_name": "c_generic_real",
                     "c_const": "",
                     "function_name": "GenericReal",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "generic_real"
                 },
                 "fortran_generic": [
@@ -689,7 +691,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_pointer_in",
+                            "stmt0": "c_unknown_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -697,9 +699,9 @@
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_unknown_pointer_in",
+                            "stmt0": "f_unknown_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_pointer_in",
+                            "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -820,6 +822,8 @@
                     "F_C_name": "c_save_pointer",
                     "c_const": "",
                     "function_name": "SavePointer",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "save_pointer"
                 },
                 "fortran_generic": [
@@ -1128,7 +1132,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_pointer_in",
+                            "stmt0": "c_unknown_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1136,9 +1140,9 @@
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_unknown_pointer_in",
+                            "stmt0": "f_unknown_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_unknown_pointer_in",
+                            "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1260,6 +1264,8 @@
                     "F_C_name": "c_save_pointer2",
                     "c_const": "",
                     "function_name": "SavePointer2",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "save_pointer2"
                 },
                 "fortran_generic": [
@@ -1620,7 +1626,7 @@
                             "cxx_var": "size",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "c_native_pointer_out",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1628,9 +1634,9 @@
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_pointer_out",
+                            "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1648,7 +1654,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1656,9 +1662,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_pointer_out",
+                            "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1798,7 +1804,7 @@
                             "cxx_var": "size",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "c_native_pointer_out",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1806,9 +1812,9 @@
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_pointer_out",
+                            "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1826,7 +1832,7 @@
                             "cxx_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_native_pointer_out",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1834,9 +1840,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_pointer_out",
+                            "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_pointer_out",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1920,6 +1926,8 @@
                     "F_C_name": "c_get_pointer_as_pointer",
                     "c_const": "",
                     "function_name": "GetPointerAsPointer",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 },
                 "fortran_generic": [
