@@ -1078,6 +1078,8 @@ class Declaration(Node):
             return "scalar"
         for ptr in self.declarator.pointer:
             out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
         if out == "":
             return "scalar"
         return out
