@@ -1198,6 +1198,9 @@ def update_stmt_tree(stmts, tree, defaults):
     # XXX - look for duplicate names?
     nodes = {}
     for node in stmts:
+        if node["name"] in nodes:
+            raise RuntimeError("Duplicate key in statements: {}".
+                               format(node["name"]))
         nodes[node["name"]] = node
 
     for node in stmts:
@@ -1221,7 +1224,30 @@ def update_stmt_tree(stmts, tree, defaults):
             scope = util.Scope(default_scopes[steps[0]])
             scope.update(node)
             node["scope"] = scope
+    print_tree(tree)
 
+def print_tree(tree, indent=""):
+    """Print statements search tree.
+    Intermediate nodes are prefixed with --.
+    Useful for debugging.
+    """
+    parts = tree.get('_key', 'root').split('_')
+    if "_node" in tree:
+        #        final = '' # + tree["_node"]["scope"].name + '-'
+        print("{}{} -- {}".format(indent, parts[-1], tree.get('_key', '??')))
+    else:
+        print("{}{}".format(indent, parts[-1]))
+    indent += '  '
+    for key in sorted(tree.keys()):
+        if key == '_node':
+            continue
+        if key == 'scope':
+            continue
+        if key == '_key':
+            continue
+        value = tree[key]
+        if isinstance(value, dict):
+            print_tree(value, indent)
 
 def lookup_stmts_tree(tree, path):
     """
