@@ -385,8 +385,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  values
-// Requested: py_native_out_allocatable_numpy
-// Match:     py_native_out_dimension_numpy
+// Exact:     py_native_out_allocatable_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;

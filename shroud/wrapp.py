@@ -3716,7 +3716,7 @@ py_statements = [
     # allocatable(nvar)
     dict(
         name="py_native_out_allocatable_numpy",
-        alias="py_native_out_dimension_numpy",
+        base="py_native_out_dimension_numpy",
     ),
 
 ########################################

@@ -683,7 +683,7 @@
                             "py_var": "SHPy_values",
                             "size_var": "nvar",
                             "stmt0": "py_native_out_allocatable_numpy",
-                            "stmt1": "py_native_out_dimension_numpy"
+                            "stmt1": "py_native_out_allocatable_numpy"
                         }
                     }
                 },
