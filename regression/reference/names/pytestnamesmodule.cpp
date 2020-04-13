@@ -72,7 +72,7 @@ PY_function2(
 // void function3a(int i +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PY_function3a_0(
@@ -98,7 +98,7 @@ PY_function3a_0(
 // void function3a(long i +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PY_function3a_1(
@@ -207,11 +207,11 @@ PY_TestMultilineSplicer(
 // void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 /**
  * \brief Function template with two template parameters.
@@ -243,11 +243,11 @@ PY_name_instantiation1(
 // void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 /**
  * \brief Function template with two template parameters.

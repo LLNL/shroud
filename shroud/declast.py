@@ -1056,7 +1056,7 @@ class Declaration(Node):
             return False
         return True
 
-    def get_indirect(self):
+    def XXXget_indirect(self):
         """Return indirect operators.
         '*', '**', '&*', '[]'
         """

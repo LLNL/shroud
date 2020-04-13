@@ -115,7 +115,7 @@ PP_ExClass1_tp_init_1(
 // int incrementCount(int incr +intent(in)+value)
 // ----------------------------------------
 // Argument:  incr
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_incrementCount__doc__[] =
 "documentation"
@@ -221,7 +221,7 @@ PP_getRoot(
 // int getValue(int value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_getValue_from_int(
@@ -252,7 +252,7 @@ PP_getValue_from_int(
 // long getValue(long value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
 PP_getValue_1(
@@ -306,7 +306,8 @@ PP_getAddr(
 // bool hasAddr(bool in +intent(in)+value)
 // ----------------------------------------
 // Argument:  in
-// Exact:     py_bool_in
+// Requested: py_bool_scalar_in
+// Match:     py_bool_in
 static char PP_hasAddr__doc__[] =
 "documentation"
 ;

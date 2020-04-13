@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"
@@ -74,7 +74,8 @@ PY_directionFunc(
 // void passClassByValue(Class1 arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
-// Exact:     py_shadow_in
+// Requested: py_shadow_scalar_in
+// Match:     py_shadow_in
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -192,7 +193,7 @@ PY_getClassReference(
 // void set_global_flag(int arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_set_global_flag__doc__[] =
 "documentation"

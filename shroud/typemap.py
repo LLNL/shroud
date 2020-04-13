@@ -1224,7 +1224,7 @@ def update_stmt_tree(stmts, tree, defaults):
             scope = util.Scope(default_scopes[steps[0]])
             scope.update(node)
             node["scope"] = scope
-    print_tree(tree)
+#    print_tree(tree)
 
 def print_tree(tree, indent=""):
     """Print statements search tree.

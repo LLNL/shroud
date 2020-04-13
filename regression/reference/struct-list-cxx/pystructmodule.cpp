@@ -159,11 +159,11 @@ PY_passStruct2(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  d
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
@@ -243,11 +243,11 @@ PY_acceptStructInOutPtr(
 // Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  d
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructByValue__doc__[] =
 "documentation"
@@ -285,11 +285,11 @@ PY_returnStructByValue(
 // const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  d
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnConstStructByValue__doc__[] =
 "documentation"
@@ -327,11 +327,11 @@ PY_returnConstStructByValue(
 // Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  d
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
@@ -373,11 +373,11 @@ PY_returnStructPtr1(
 // Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 // ----------------------------------------
 // Argument:  i
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  d
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  outbuf

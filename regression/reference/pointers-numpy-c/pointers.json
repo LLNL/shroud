@@ -31,7 +31,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_argin",
                             "size_var": "SHSize_argin",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_scalar_in",
                             "stmt1": "py_default"
                         }
                     },
@@ -660,7 +660,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nvar",
                             "size_var": "SHSize_nvar",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_scalar_in",
                             "stmt1": "py_default"
                         }
                     },
@@ -758,7 +758,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nvar",
                             "size_var": "SHSize_nvar",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_scalar_in",
                             "stmt1": "py_default"
                         }
                     },

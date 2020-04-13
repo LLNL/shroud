@@ -43,11 +43,11 @@ PY_user_int_tp_del (PY_user_int *self)
 // void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  arg2
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_nested_double__doc__[] =
 "documentation"

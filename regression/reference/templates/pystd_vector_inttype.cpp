@@ -91,7 +91,7 @@ PY_push_back(
 // int & at(size_type n +intent(in)+value)
 // ----------------------------------------
 // Argument:  n
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_at__doc__[] =
 "documentation"

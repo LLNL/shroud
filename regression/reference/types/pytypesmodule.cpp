@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 // short short_func(short arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_short_func__doc__[] =
 "documentation"
@@ -69,7 +69,7 @@ PY_short_func(
 // int int_func(int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int_func__doc__[] =
 "documentation"
@@ -104,7 +104,7 @@ PY_int_func(
 // long long_func(long arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_func__doc__[] =
 "documentation"
@@ -139,7 +139,7 @@ PY_long_func(
 // long long long_long_func(long long arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_long_func__doc__[] =
 "documentation"
@@ -174,7 +174,7 @@ PY_long_long_func(
 // short int short_int_func(short int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_short_int_func__doc__[] =
 "documentation"
@@ -209,7 +209,7 @@ PY_short_int_func(
 // long int long_int_func(long int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_int_func__doc__[] =
 "documentation"
@@ -244,7 +244,7 @@ PY_long_int_func(
 // long long int long_long_int_func(long long int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_long_int_func__doc__[] =
 "documentation"
@@ -279,7 +279,7 @@ PY_long_long_int_func(
 // unsigned unsigned_func(unsigned arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_unsigned_func__doc__[] =
 "documentation"
@@ -314,7 +314,7 @@ PY_unsigned_func(
 // unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ushort_func__doc__[] =
 "documentation"
@@ -349,7 +349,7 @@ PY_ushort_func(
 // unsigned int uint_func(unsigned int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint_func__doc__[] =
 "documentation"
@@ -384,7 +384,7 @@ PY_uint_func(
 // unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_func__doc__[] =
 "documentation"
@@ -419,7 +419,7 @@ PY_ulong_func(
 // unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_long_func__doc__[] =
 "documentation"
@@ -454,7 +454,7 @@ PY_ulong_long_func(
 // unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_int_func__doc__[] =
 "documentation"
@@ -489,7 +489,7 @@ PY_ulong_int_func(
 // int8_t int8_func(int8_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int8_func__doc__[] =
 "documentation"
@@ -524,7 +524,7 @@ PY_int8_func(
 // int16_t int16_func(int16_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int16_func__doc__[] =
 "documentation"
@@ -559,7 +559,7 @@ PY_int16_func(
 // int32_t int32_func(int32_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int32_func__doc__[] =
 "documentation"
@@ -594,7 +594,7 @@ PY_int32_func(
 // int64_t int64_func(int64_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int64_func__doc__[] =
 "documentation"
@@ -629,7 +629,7 @@ PY_int64_func(
 // uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint8_func__doc__[] =
 "documentation"
@@ -664,7 +664,7 @@ PY_uint8_func(
 // uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint16_func__doc__[] =
 "documentation"
@@ -699,7 +699,7 @@ PY_uint16_func(
 // uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint32_func__doc__[] =
 "documentation"
@@ -734,7 +734,7 @@ PY_uint32_func(
 // uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint64_func__doc__[] =
 "documentation"
@@ -769,7 +769,7 @@ PY_uint64_func(
 // size_t size_func(size_t arg1 +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg1
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_size_func__doc__[] =
 "documentation"
@@ -804,7 +804,8 @@ PY_size_func(
 // bool bool_func(bool arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
-// Exact:     py_bool_in
+// Requested: py_bool_scalar_in
+// Match:     py_bool_in
 static char PY_bool_func__doc__[] =
 "documentation"
 ;

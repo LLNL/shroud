@@ -225,7 +225,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
                                     "size_var": "SHSize_flag",
-                                    "stmt0": "py_native_in",
+                                    "stmt0": "py_native_scalar_in",
                                     "stmt1": "py_default"
                                 }
                             }
@@ -1080,7 +1080,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_native_in",
+                                    "stmt0": "py_native_scalar_in",
                                     "stmt1": "py_default"
                                 }
                             }
@@ -1657,7 +1657,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_scalar_in",
                             "stmt1": "py_default"
                         }
                     }
@@ -1800,7 +1800,7 @@
                             "py_type": "PY_Class1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_shadow_in",
+                            "stmt0": "py_shadow_scalar_in",
                             "stmt1": "py_shadow_in"
                         }
                     }
@@ -2459,7 +2459,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_native_in",
+                            "stmt0": "py_native_scalar_in",
                             "stmt1": "py_default"
                         }
                     }

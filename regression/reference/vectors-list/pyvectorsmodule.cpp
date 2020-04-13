@@ -208,7 +208,7 @@ fail:
 // std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)
 // ----------------------------------------
 // Argument:  n
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"

@@ -50,7 +50,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_x1",
                                     "size_var": "SHSize_x1",
-                                    "stmt0": "py_ctor_native",
+                                    "stmt0": "py_ctor_native_scalar",
                                     "stmt1": "py_ctor_native"
                                 }
                             },
@@ -72,7 +72,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_y1",
                                     "size_var": "SHSize_y1",
-                                    "stmt0": "py_ctor_native",
+                                    "stmt0": "py_ctor_native_scalar",
                                     "stmt1": "py_ctor_native"
                                 }
                             }

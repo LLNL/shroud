@@ -730,7 +730,7 @@ return 1;""",
 
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
-                 ast.get_indirect(),
+                 ast.get_indirect_stmt(),
         ]
         if have_array:
             stmts.append(options.PY_array_arg)
@@ -1168,7 +1168,7 @@ return 1;""",
             implied = attrs["implied"]
             intent = attrs["intent"]
             sgroup = arg_typemap.sgroup
-            spointer = arg.get_indirect()
+            spointer = arg.get_indirect_stmt()
             stmts = None
 
             whelpers.add_to_PyList_helper(arg)

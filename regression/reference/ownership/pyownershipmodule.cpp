@@ -310,7 +310,7 @@ fail:
 // void createClassStatic(int flag +intent(in)+value)
 // ----------------------------------------
 // Argument:  flag
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_createClassStatic__doc__[] =
 "documentation"
@@ -362,7 +362,7 @@ PY_getClassStatic(
 // Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 // ----------------------------------------
 // Argument:  flag
-// Requested: py_native_in
+// Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_getClassNew__doc__[] =
 "documentation"

@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 // void passChar(char status +intent(in)+value)
 // ----------------------------------------
 // Argument:  status
-// Requested: py_schar_in
+// Requested: py_schar_scalar_in
 // Match:     py_default
 static char PY_passChar__doc__[] =
 "documentation"
@@ -865,7 +865,7 @@ PY_explicit1(
 // void CpassChar(char status +intent(in)+value)
 // ----------------------------------------
 // Argument:  status
-// Requested: py_schar_in
+// Requested: py_schar_scalar_in
 // Match:     py_default
 static char PY_CpassChar__doc__[] =
 "documentation"
