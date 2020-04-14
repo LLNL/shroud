@@ -498,7 +498,7 @@ int rank;        /* number of dimensions */
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
                 fmt,
             ),
-            dependent_helpers=["capsule_data_helper"],
+            dependent_helpers=["capsule_data_helper", "ShroudTypeDefines"],
         )
         CHelpers[name] = helper
 

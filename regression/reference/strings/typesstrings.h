@@ -25,22 +25,6 @@ struct s_STR_SHROUD_capsule_data {
 };
 typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
 
-// helper array_context
-// start array_context
-struct s_STR_SHROUD_array {
-    STR_SHROUD_capsule_data cxx;      /* address of C++ memory */
-    union {
-        const void * base;
-        const char * ccharp;
-    } addr;
-    int type;        /* type of element */
-    size_t elem_len; /* bytes-per-item or character len in c++ */
-    size_t size;     /* size of data in c++ */
-    int rank;        /* number of dimensions */
-};
-typedef struct s_STR_SHROUD_array STR_SHROUD_array;
-// end array_context
-
 /* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
@@ -81,6 +65,22 @@ typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 #define SH_TYPE_CPTR       30
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
+
+// helper array_context
+// start array_context
+struct s_STR_SHROUD_array {
+    STR_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * base;
+        const char * ccharp;
+    } addr;
+    int type;        /* type of element */
+    size_t elem_len; /* bytes-per-item or character len in c++ */
+    size_t size;     /* size of data in c++ */
+    int rank;        /* number of dimensions */
+};
+typedef struct s_STR_SHROUD_array STR_SHROUD_array;
+// end array_context
 
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 
