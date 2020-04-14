@@ -424,6 +424,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug_testsuite=False,
             # They change when a function is inserted.
             flatten_namespace=False,
+            C_force_wrapper=False,
             C_line_length=72,
             F_flatten_namespace=False,
             F_line_length=72,
@@ -590,6 +591,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             file_scope = "_".join(self.scope_file),
             F_arg_c_call="",
             F_C_prefix="c_",
+            F_C_name="-F_C_name-",
             F_derived_member="cxxmem",
             F_name_assign="assign",
             F_name_associated="associated",
@@ -1844,6 +1846,53 @@ def clean_list(lst):
         if line is None:
             lst[i] = ""
 
+def listify(entry, names):
+    """
+    Convert newline delimited strings into a list of strings.
+    Remove trailing newline which will generate a blank line.
+    Or replace None with "" in a list.
+    Accept a dictionary and return a new dictionary.
+
+    splicer:
+      c: |
+        // line 1
+        // line 2
+      c_buf:
+        - // Test adding a blank line below.
+        -
+
+    fstatements:
+      f:
+        local_var: pointer
+        call: |
+           blah blah
+           yada yada yada
+
+    Args:
+        entry - dictionary
+        names - key names which must be lists.
+    """
+    new = {}
+    for key, value in entry.items():
+        if isinstance(value, dict):
+            new[key] = listify(value, names)
+        elif key in names:
+            if isinstance(value, str):
+#              if value[-1] == "\n":
+#                  new[key] = [ value[:-1] ]
+#              else:
+#                  new[key] = [ value ]
+                new[key] = value.split("\n")
+                if value[-1] == "\n":
+                    new[key].pop()
+            elif isinstance(value, list):
+                new[key] = ["" if v is None else v for v in value]
+            else:
+                new[key] = [ str(value) ]
+        else:
+            new[key] = value
+    return new
+
 
 def add_declarations(parent, node):
     if "declarations" not in node:
@@ -1863,6 +1912,20 @@ def add_declarations(parent, node):
             clean_dictionary(dct)
             decl = dct["decl"]
             del dct["decl"]
+
+            if "fstatements" in dct:
+                dct["fstatements"] = listify(dct["fstatements"], [
+                    "pre_call", "call", "post_call", "final", "ret",
+                    "declare",
+                    "post_parse",
+                    "declare_capsule", "post_call_capsule", "fail_capsule",
+                    "declare_keep", "post_call_keep", "fail_keep",
+                    "cleanup", "fail",
+                ])
+            if "splicer" in dct:
+                dct["splicer"] = listify(
+                    dct["splicer"],["c", "c_buf", "f", "py"]
+                )
             declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
         else:

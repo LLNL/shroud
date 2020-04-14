@@ -131,6 +131,45 @@ PY_PassByReference(
 // splicer end function.pass_by_reference
 }
 
+// double PassByValueMacro(int arg2 +intent(in)+value)
+// ----------------------------------------
+// Argument:  arg2
+// Requested: py_native_scalar_in
+// Match:     py_default
+static char PY_PassByValueMacro__doc__[] =
+"documentation"
+;
+
+/**
+ * PassByValueMacro is a #define macro. Force a C wrapper
+ * to allow Fortran to have an actual function to call.
+ */
+static PyObject *
+PY_PassByValueMacro(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_by_value_macro
+    int arg2;
+    char *SHT_kwlist[] = {
+        "arg2",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:PassByValueMacro",
+        SHT_kwlist, &arg2))
+        return NULL;
+
+    double SHCXX_rv = PassByValueMacro(arg2);
+
+    // post_call
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.pass_by_value_macro
+}
+
 // void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // ----------------------------------------
 // Argument:  arg1
@@ -577,6 +616,8 @@ static PyMethodDef PY_methods[] = {
     PY_PassByValue__doc__},
 {"PassByReference", (PyCFunction)PY_PassByReference,
     METH_VARARGS|METH_KEYWORDS, PY_PassByReference__doc__},
+{"PassByValueMacro", (PyCFunction)PY_PassByValueMacro,
+    METH_VARARGS|METH_KEYWORDS, PY_PassByValueMacro__doc__},
 {"checkBool", (PyCFunction)PY_checkBool, METH_VARARGS|METH_KEYWORDS,
     PY_checkBool__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,

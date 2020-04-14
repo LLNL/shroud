@@ -63,6 +63,8 @@ declarations:
     c:
       c_helper: ShroudTypeDefines
       pre_call:
+      - // Test adding a blank line below.
+      -
       - type = convert_type(type);
   fortran_generic:
   - decl: (float *addr+dimension(:))

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Option `C_force_wrapper` to create a C wrapper.
+  This can be used when the function is actually a macro or function pointer.
 - Added option CXX_standard.
   If *2011* or greater then `nullptr` is used instead of `NULL`.
   This makes clang-tidy happy.
@@ -27,6 +29,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   They were using the C++ function name. This was a problem since a
   C++ function may produce several wrapper via overloading or
   adding bufferify arguments.
+- Update fortran_generic generated functions to use the format statement
+  in the fortran_generic clause. This allows the format values to be used
+  in fstatement clauses.
+````
+fortran_generic:
+- decl: (int *value)
+  format:
+    stype: int
+````
+- Allow multi-line scalar values to be used in YAML for inline splicers
+  and fstatements. Convert empty lines from the YAML inserted None into
+  an empty string in inline splicers and fstatements.
+```
+splicer:
+  c: |
+    ! lines of code
+  c_buf:
+  -  Next line is blank, not None
+  -
+```
+- Allow wrap_c=False and wrap_fortran=True. Useful when the Fortran
+  wrapper is defined by a splicer and the C wrapper is not needed.
 - Improved support for templates in the Python wrappers.
 - Added define for PyInt_FromSize_t for Python 3.
 - Do not write Python utility file if it is empty.

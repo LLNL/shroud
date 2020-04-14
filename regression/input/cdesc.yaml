@@ -16,5 +16,81 @@ options:
 
 declarations:
 - decl: void Rank2In(int *arg +intent(in)+rank(2)+cdesc)
+
+######################################################################
+- decl: void GetScalar1(std::string & name+intent(in),
+                        void *value+intent(out)+rank(0)+cdesc)
+  doxygen:
+    description: |
+      Create several Fortran generic functions which call a single
+      C wrapper that checkes the type of the Fortran argument
+      and calls the correct templated function.
+      Adding the string argument forces a bufferified function
+      to be create.
+      XXX The non-bufferified version should not be created since
+      users will not manually create a context struct.
+  splicer:
+    c_buf: |
+      switch(Dvalue->type) {
+      case SH_TYPE_INT: {
+        *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+        break;
+      }
+      case SH_TYPE_LONG: {
+        *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+        break;
+      }
+      case SH_TYPE_FLOAT: {
+        *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+        break;
+      }
+      case SH_TYPE_DOUBLE: {
+        *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+        break;
+      }
+      // default:
+      }
+    c: |
+      // This function should not exist
+  fortran_generic:
+#  # rank(0) needed for C_var_context
+  - decl: (int *value+intent(out)+rank(0)+cdesc)
+#  - decl: (long *value+intent(out)+rank(0)+cdesc)
+#  - decl: (float *value+intent(out)+rank(0)+cdesc)
+  - decl: (double *value+intent(out)+rank(0)+cdesc)
+
+######################################################################
+
+- decl: template<typename DataType> DataType getData();
+  doxygen:
+    description: |
+      Wrapper for function which is templated on the return value.
+  cxx_template:
+  - instantiation: <int>
+  - instantiation: <double>
+
+- decl: void GetScalar2(std::string & name+intent(in),
+                        void *value+intent(out))
+  doxygen:
+    description: |
+      Call a C++ function which is templated on the return value.
+      Create a Fortran function with the result passed in as an
+      argument.  Change the function call clause to directly call the
+      wrapped templated function.  fstatements is required instead of
+      splicer in order to get {stype} expanded.
   options:
-    F_force_wrapper: True
+    wrap_c: False
+  fstatements:
+    f:
+      call:
+      - value = c_get_data_{stype}()
+  splicer:
+    c_buf: |
+      // This function does not need to exist.
+  fortran_generic:
+  - decl: (int *value+intent(out))
+    format:
+       stype: int
+  - decl: (double *value+intent(out))
+    format:
+       stype: double

@@ -126,6 +126,25 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  arg2
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function pass_by_value_macro(arg2) &
+                result(SHT_rv) &
+                bind(C, name="CLI_pass_by_value_macro")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg2
+            real(C_DOUBLE) :: SHT_rv
+        end function pass_by_value_macro
+    end interface
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------

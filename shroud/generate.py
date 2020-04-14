@@ -121,7 +121,7 @@ class VerifyAttrs(object):
             for generic in node.fortran_generic:
                 for garg in generic.decls:
                     generic._has_found_default = False
-                    self.check_arg_attrs(generic, garg)
+                    self.check_arg_attrs(generic, garg, node.options)
                 check_implied_attrs(generic.decls)
         else:
             check_implied_attrs(ast.params)
@@ -212,20 +212,26 @@ class VerifyAttrs(object):
                     "Must be defined in patterns section.".format(free_pattern)
                 )
 
-    def check_arg_attrs(self, node, arg):
+    def check_arg_attrs(self, node, arg, options=None):
         """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to None (pass-by-reference)
                else True (pass-by-value).
 
+        When used for fortran_generic, pass in node's options
+        since FunctionNode for each generic is not yet created
+        via GenFunctions.generic_function.
+
+        options are also passed in for function pointer arguments
+        since node will be None.
+
         Args:
             node - ast.FunctionNode or ast.FortranGeneric
             arg  - declast.Declaration
+            options -
         """
-        if node:
+        if options is None:
             options = node.options
-        else:
-            options = dict()
         argname = arg.name
         attrs = arg.attrs
 
@@ -401,7 +407,7 @@ class VerifyAttrs(object):
 
         if arg.is_function_pointer():
             for arg1 in arg.params:
-                self.check_arg_attrs(None, arg1)
+                self.check_arg_attrs(None, arg1, options)
 
 
 class GenFunctions(object):
@@ -982,6 +988,8 @@ class GenFunctions(object):
             new._PTR_F_C_index = node._function_index
             fmt = new.fmtdict
             # XXX append to existing suffix
+            if generic.fmtdict:
+                fmt.update(generic.fmtdict)
             fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
             options = new.options
@@ -1092,6 +1100,12 @@ class GenFunctions(object):
         """
         options = node.options
         fmt = node.fmtdict
+
+        if options.wrap_c is False:
+            # The user does not require a C wrapper.
+            # This can be the case if the Fortran wrapper is doing all
+            # the work via splicer or fstatements.
+            return
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper

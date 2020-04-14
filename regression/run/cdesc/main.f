@@ -17,6 +17,7 @@ program tester
   call init_fruit
 
   call test_cdesc
+  call test_cdesc2
 
   call fruit_summary
   call fruit_finalize
@@ -38,5 +39,32 @@ contains
     call rank2_in(iarray2d)
 
   end subroutine test_cdesc
+
+  subroutine test_cdesc2
+    ! test values of enumerations
+    integer(C_INT) int_var
+!    integer(C_LONG) long_var
+!    real(C_FLOAT) float_var
+    real(C_DOUBLE) double_var
+
+    call set_case_name("test_cdesc2")
+
+    int_var = 0
+    call get_scalar1("name", int_var)
+    call assert_equals(1, int_var, "get_scalar1 int")
+
+!    long_var = 0
+!    call get_scalar1("name", long_var)
+!    call assert_equals(2, long_var, "get_scalar1 long")
+
+!    float_var = 0
+!    call get_scalar1("name", float_var)
+!    call assert_equals(3.0, float_var, "get_scalar1 float")
+
+    double_var = 0
+    call get_scalar1("name", double_var)
+    call assert_equals(4.0d0, double_var, "get_scalar1 double")
+
+  end subroutine test_cdesc2
 
 end program tester

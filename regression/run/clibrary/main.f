@@ -127,6 +127,10 @@ contains
     rv_double = pass_by_value(1.d0, 4)
     call assert_true(rv_double == 5.d0)
 
+    ! The C macro force the first argument to be 1.0
+    rv_double = pass_by_value_macro(4)
+    call assert_true(rv_double == 5.d0)
+
     call pass_by_reference(3.14d0, int_var)
     call assert_equals(3, int_var)
 

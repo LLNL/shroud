@@ -1388,8 +1388,10 @@ fc_statements = [
 
 
     # XXX only in buf?
+    # Used with intent IN, INOUT, and OUT.
+#    c_native_pointer_cdesc=dict(
     dict(
-        name="c_native_*_in_cdesc",
+        name="c_native_*_cdesc",
         buf_args=["context"],
         c_helper="array_context", #  ShroudTypeDefines",
         c_pre_call=[
@@ -1402,8 +1404,9 @@ fc_statements = [
             "(const_cast<void *>({c_var_context}->addr.base));",
         ],
     ),
+#    f_native_pointer_cdesc=dict(
     dict(
-        name="f_native_*_in_cdesc",
+        name="f_native_*_cdesc",
         # TARGET required for argument to C_LOC.
         f_attribute=['target'],
         f_helper="array_context ShroudTypeDefines",
@@ -1413,10 +1416,21 @@ fc_statements = [
             "{c_var_context}%base_addr = C_LOC({f_var})",
             "{c_var_context}%type = {sh_type}",
             "! {c_var_context}%elem_len = C_SIZEOF()",
-            "{c_var_context}%size = size({f_var})",
+#            "{c_var_context}%size = size({f_var})",
+            "{c_var_context}%size = {size}",
             "{c_var_context}%rank = {rank}",
         ],
     ),
+
+    # void *
+    dict(
+        name="c_unknown_*_cdesc",
+        base="c_native_*_cdesc",
+    ),
+    dict(
+        name="f_unknown_*_cdesc",
+        base="f_native_*_cdesc",
+    ),    
 
     # Function has a result with deref(allocatable).
     #

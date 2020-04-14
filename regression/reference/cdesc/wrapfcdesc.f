@@ -84,7 +84,8 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  arg
-        ! Exact:     c_native_*_in_cdesc
+        ! Requested: c_native_*_in_cdesc
+        ! Match:     c_native_*_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: SHROUD_array
@@ -92,9 +93,86 @@ module cdesc_mod
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_rank2_in
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in
+        ! Match:     c_string_in
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_unknown_*_out_cdesc
+        ! Match:     c_unknown_*_cdesc
+        subroutine c_get_scalar1(name, Dvalue) &
+                bind(C, name="CDE_get_scalar1")
+            use iso_c_binding, only : C_CHAR
+            import :: SHROUD_array
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            type(SHROUD_array), intent(INOUT) :: Dvalue
+        end subroutine c_get_scalar1
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  name
+        ! Requested: c_string_&_in_buf
+        ! Match:     c_string_in_buf
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_unknown_*_out_buf_cdesc
+        ! Match:     c_unknown_*_cdesc
+        subroutine c_get_scalar1_bufferify(name, Lname, Dvalue) &
+                bind(C, name="CDE_get_scalar1_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: SHROUD_array
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            type(SHROUD_array), intent(INOUT) :: Dvalue
+        end subroutine c_get_scalar1_bufferify
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_get_data_int() &
+                result(SHT_rv) &
+                bind(C, name="CDE_get_data_int")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function c_get_data_int
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_get_data_double() &
+                result(SHT_rv) &
+                bind(C, name="CDE_get_data_double")
+            use iso_c_binding, only : C_DOUBLE
+            implicit none
+            real(C_DOUBLE) :: SHT_rv
+        end function c_get_data_double
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
+
+    interface get_scalar1
+        module procedure get_scalar1_0
+        module procedure get_scalar1_1
+    end interface get_scalar1
+
+    interface get_scalar2
+        module procedure get_scalar2_0
+        module procedure get_scalar2_1
+    end interface get_scalar2
 
 contains
 
@@ -107,8 +185,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Exact:     f_native_*_in_cdesc
-    ! Exact:     c_native_*_in_cdesc
+    ! Requested: f_native_*_in_cdesc
+    ! Match:     f_native_*_cdesc
+    ! Requested: c_native_*_in_cdesc
+    ! Match:     c_native_*_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
@@ -122,6 +202,208 @@ contains
         call c_rank2_in(Darg)
         ! splicer end function.rank2_in
     end subroutine rank2_in
+
+    ! void GetScalar1(std::string & name +intent(in), int * value +cdesc+context(Dvalue)+intent(out)+rank(0))
+    ! fortran_generic - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_unknown_*_out_cdesc
+    ! Match:     f_unknown_*_cdesc
+    ! Requested: c_unknown_*_out_buf_cdesc
+    ! Match:     c_unknown_*_cdesc
+    !>
+    !! Create several Fortran generic functions which call a single
+    !! C wrapper that checkes the type of the Fortran argument
+    !! and calls the correct templated function.
+    !! Adding the string argument forces a bufferified function
+    !! to be create.
+    !! XXX The non-bufferified version should not be created since
+    !! users will not manually create a context struct.
+    !<
+    subroutine get_scalar1_0(name, value)
+        use iso_c_binding, only : C_INT, C_LOC
+        character(len=*), intent(IN) :: name
+        integer(C_INT), intent(OUT), target :: value
+        type(SHROUD_array) :: Dvalue
+        ! splicer begin function.get_scalar1_0
+        Dvalue%base_addr = C_LOC(value)
+        Dvalue%type = SH_TYPE_INT
+        ! Dvalue%elem_len = C_SIZEOF()
+        Dvalue%size = 1
+        Dvalue%rank = 0
+        call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
+            Dvalue)
+        ! splicer end function.get_scalar1_0
+    end subroutine get_scalar1_0
+
+    ! void GetScalar1(std::string & name +intent(in), double * value +cdesc+context(Dvalue)+intent(out)+rank(0))
+    ! fortran_generic - arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in_buf
+    ! Match:     c_string_in_buf
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_unknown_*_out_cdesc
+    ! Match:     f_unknown_*_cdesc
+    ! Requested: c_unknown_*_out_buf_cdesc
+    ! Match:     c_unknown_*_cdesc
+    !>
+    !! Create several Fortran generic functions which call a single
+    !! C wrapper that checkes the type of the Fortran argument
+    !! and calls the correct templated function.
+    !! Adding the string argument forces a bufferified function
+    !! to be create.
+    !! XXX The non-bufferified version should not be created since
+    !! users will not manually create a context struct.
+    !<
+    subroutine get_scalar1_1(name, value)
+        use iso_c_binding, only : C_DOUBLE, C_INT, C_LOC
+        character(len=*), intent(IN) :: name
+        real(C_DOUBLE), intent(OUT), target :: value
+        type(SHROUD_array) :: Dvalue
+        ! splicer begin function.get_scalar1_1
+        Dvalue%base_addr = C_LOC(value)
+        Dvalue%type = SH_TYPE_DOUBLE
+        ! Dvalue%elem_len = C_SIZEOF()
+        Dvalue%size = 1
+        Dvalue%rank = 0
+        call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
+            Dvalue)
+        ! splicer end function.get_scalar1_1
+    end subroutine get_scalar1_1
+
+    ! int getData()
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    !>
+    !! Wrapper for function which is templated on the return value.
+    !<
+    function get_data_int() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.get_data_int
+        SHT_rv = c_get_data_int()
+        ! splicer end function.get_data_int
+    end function get_data_int
+
+    ! double getData()
+    ! cxx_template
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    !>
+    !! Wrapper for function which is templated on the return value.
+    !<
+    function get_data_double() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE
+        real(C_DOUBLE) :: SHT_rv
+        ! splicer begin function.get_data_double
+        SHT_rv = c_get_data_double()
+        ! splicer end function.get_data_double
+    end function get_data_double
+
+    ! void GetScalar2(std::string & name +intent(in), int * value +intent(out))
+    ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in
+    ! Match:     c_string_in
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_unknown_*_out
+    ! Match:     f_default
+    ! Requested: c_unknown_*_out
+    ! Match:     c_default
+    !>
+    !! Call a C++ function which is templated on the return value.
+    !! Create a Fortran function with the result passed in as an
+    !! argument.  Change the function call clause to directly call the
+    !! wrapped templated function.  fstatements is required instead of
+    !! splicer in order to get {stype} expanded.
+    !<
+    subroutine get_scalar2_0(name, value)
+        use iso_c_binding, only : C_INT, C_LOC
+        character(len=*), intent(IN) :: name
+        integer(C_INT), intent(OUT), target :: value
+        ! splicer begin function.get_scalar2_0
+        value = c_get_data_int()
+        ! splicer end function.get_scalar2_0
+    end subroutine get_scalar2_0
+
+    ! void GetScalar2(std::string & name +intent(in), double * value +intent(out))
+    ! fortran_generic
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  name
+    ! Requested: f_string_&_in
+    ! Match:     f_default
+    ! Requested: c_string_&_in
+    ! Match:     c_string_in
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: f_unknown_*_out
+    ! Match:     f_default
+    ! Requested: c_unknown_*_out
+    ! Match:     c_default
+    !>
+    !! Call a C++ function which is templated on the return value.
+    !! Create a Fortran function with the result passed in as an
+    !! argument.  Change the function call clause to directly call the
+    !! wrapped templated function.  fstatements is required instead of
+    !! splicer in order to get {stype} expanded.
+    !<
+    subroutine get_scalar2_1(name, value)
+        use iso_c_binding, only : C_DOUBLE, C_LOC
+        character(len=*), intent(IN) :: name
+        real(C_DOUBLE), intent(OUT), target :: value
+        ! splicer begin function.get_scalar2_1
+        value = c_get_data_double()
+        ! splicer end function.get_scalar2_1
+    end subroutine get_scalar2_1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
