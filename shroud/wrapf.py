@@ -1518,6 +1518,10 @@ rv = .false.
                 rank = f_attrs["rank"]
                 if rank is not None:
                     fmt_arg.rank = str(rank)
+                    if rank == 0:
+                        fmt_arg.size = "1"
+                    else:
+                        fmt_arg.size = wformat("size({f_var})", fmt_arg)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
@@ -1754,7 +1758,7 @@ rv = .false.
         call_list = []
         if "f" in node.splicer:
             need_wrapper = True
-            F_force = util.convert_lines_to_list(node.splicer["f"])
+            F_force = node.splicer["f"]
         elif result_blk.call:
             call_list = result_blk.call
         elif C_subprogram == "function":

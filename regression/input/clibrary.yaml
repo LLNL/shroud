@@ -56,6 +56,13 @@ declarations:
 - decl: void PassByReference(double *arg1+intent(in), int *arg2+intent(out))
   options:
     literalinclude: True
+- decl: double PassByValueMacro(int arg2)
+  options:
+    C_force_wrapper: True
+  doxygen:
+    description: |
+      PassByValueMacro is a #define macro. Force a C wrapper
+      to allow Fortran to have an actual function to call.
 
 - decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
   doxygen:

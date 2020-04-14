@@ -705,7 +705,11 @@ class Wrapc(util.WrapperMixin):
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 
-        if self.language == "c" or options.get("C_extern_C", False):
+        if options.C_force_wrapper:
+            # User may force a wrapper.  For example, function is really a
+            # macro or function pointer.
+            need_wrapper = True
+        elif self.language == "c" or options.get("C_extern_C", False):
             # Fortran can call C directly and only needs wrappers when code is
             # inserted. For example, pre_call or post_call.
             need_wrapper = False
@@ -1186,7 +1190,7 @@ class Wrapc(util.WrapperMixin):
         splicer_name = typemap.compute_name(["c", generated_suffix])
         if splicer_name in node.splicer:
             need_wrapper = True
-            C_force = util.convert_lines_to_list(node.splicer[splicer_name])
+            C_force = node.splicer[splicer_name]
             C_code = None
         else:
             # copy-out values, clean up

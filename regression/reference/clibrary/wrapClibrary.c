@@ -58,6 +58,27 @@ static void ShroudStrFree(char *src)
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// double PassByValueMacro(int arg2 +intent(in)+value)
+/**
+ * PassByValueMacro is a #define macro. Force a C wrapper
+ * to allow Fortran to have an actual function to call.
+ */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  arg2
+// Requested: c_native_scalar_in
+// Match:     c_default
+double CLI_pass_by_value_macro(int arg2)
+{
+    // splicer begin function.pass_by_value_macro
+    double SHC_rv = PassByValueMacro(arg2);
+    return SHC_rv;
+    // splicer end function.pass_by_value_macro
+}
+
 // void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // ----------------------------------------
 // Result

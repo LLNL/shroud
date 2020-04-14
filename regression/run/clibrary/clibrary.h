@@ -16,6 +16,9 @@
 /* Size of buffer passed from Fortran */
 #define LENOUTBUF 40
 
+/* A function macro - pass a constant as the first argument */
+#define PassByValueMacro(__arg2) PassByValue(1.0, __arg2)
+
 enum EnumTypeID {
     ENUM0,
     ENUM1,

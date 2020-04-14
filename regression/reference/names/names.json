@@ -937,10 +937,22 @@
                 },
                 "options": {},
                 "splicer": {
-                    "c": "// line 1\n// line 2\n",
-                    "c_buf": "// buf line 1\n// buf line 2\n",
-                    "f": "! line 1\n! line 2\n",
-                    "py": "// py line 1\n// py line 2\n"
+                    "c": [
+                        "// line 1",
+                        "// line 2"
+                    ],
+                    "c_buf": [
+                        "// buf line 1",
+                        "// buf line 2"
+                    ],
+                    "f": [
+                        "! line 1",
+                        "! line 2"
+                    ],
+                    "py": [
+                        "// py line 1",
+                        "// py line 2"
+                    ]
                 }
             },
             {
@@ -1080,10 +1092,22 @@
                     "wrap_python": false
                 },
                 "splicer": {
-                    "c": "// line 1\n// line 2\n",
-                    "c_buf": "// buf line 1\n// buf line 2\n",
-                    "f": "! line 1\n! line 2\n",
-                    "py": "// py line 1\n// py line 2\n"
+                    "c": [
+                        "// line 1",
+                        "// line 2"
+                    ],
+                    "c_buf": [
+                        "// buf line 1",
+                        "// buf line 2"
+                    ],
+                    "f": [
+                        "! line 1",
+                        "! line 2"
+                    ],
+                    "py": [
+                        "// py line 1",
+                        "// py line 2"
+                    ]
                 }
             },
             {

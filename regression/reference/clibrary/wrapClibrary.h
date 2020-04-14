@@ -20,6 +20,8 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
+double CLI_pass_by_value_macro(int arg2);
+
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv);
 

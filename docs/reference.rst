@@ -211,6 +211,15 @@ C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
 
+C_force_wrapper
+  If *true*, always create an explicit C wrapper.
+  When *language* is c++ a C wrapper is always created.
+  When wrapping C, the wrapper is automatically created if there is work for it to do.
+  For example, pre_call or post_call is defined.
+  The user should set this option when wrapping C and the function is really
+  a macro or a function pointer variable. This forces a function to be created
+  allowing Fortran to use the macro or function pointer.
+
 C_line_length
   Control length of output line for generated C.
   This is not an exact line width, but is instead a hint of where

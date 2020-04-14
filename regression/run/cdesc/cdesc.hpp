@@ -11,4 +11,7 @@
 
 void Rank2In(int *arg);
 
+template<typename DataType>
+DataType getData();
+
 #endif // CDESC_HPP

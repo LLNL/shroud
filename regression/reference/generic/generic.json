@@ -1382,6 +1382,8 @@
                     "c": {
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
+                            "// Test adding a blank line below.",
+                            "",
                             "type = convert_type(type);"
                         ]
                     }
@@ -1475,6 +1477,8 @@
                     "c": {
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
+                            "// Test adding a blank line below.",
+                            "",
                             "type = convert_type(type);"
                         ]
                     }
@@ -1571,6 +1575,8 @@
                     "c": {
                         "c_helper": "ShroudTypeDefines",
                         "pre_call": [
+                            "// Test adding a blank line below.",
+                            "",
                             "type = convert_type(type);"
                         ]
                     }

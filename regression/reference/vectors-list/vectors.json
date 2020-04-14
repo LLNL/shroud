@@ -832,9 +832,7 @@
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "options": {
-                    "wrap_c": false
-                }
+                "options": {}
             }
         ],
         "language": "cxx",

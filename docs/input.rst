@@ -88,6 +88,8 @@ the string will span several lines and that newlines should be preserved:
 Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
 ``{cxx_var}`` in this example.
+However, using the pipe, it is not necessary to quote lines that
+contain other YAML meta characters such as colon and curly braces.
 
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a

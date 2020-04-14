@@ -35,6 +35,8 @@
 void GEN_save_pointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2
+    // Test adding a blank line below.
+
     type = convert_type(type);
     SavePointer2(addr, type, size);
     // splicer end function.save_pointer2

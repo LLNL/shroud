@@ -1645,7 +1645,7 @@ return 1;""",
             # Add blank line after declarations.
             declare_code.append("")
         if "py" in node.splicer:
-            PY_force = util.convert_lines_to_list(node.splicer["py"])
+            PY_force = node.splicer["py"]
             PY_impl = None
         else:
             PY_force = None

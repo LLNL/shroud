@@ -29,6 +29,15 @@ extern "C" {
 
 void CDE_rank2_in(CDE_SHROUD_array *Darg);
 
+void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue);
+
+void CDE_get_scalar1_bufferify(char * name, int Lname,
+    CDE_SHROUD_array *Dvalue);
+
+int CDE_get_data_int();
+
+double CDE_get_data_double();
+
 #ifdef __cplusplus
 }
 #endif
