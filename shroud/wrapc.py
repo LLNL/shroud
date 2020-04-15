@@ -80,8 +80,6 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
         # reserved the 0 slot of capsule_order
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
-        whelpers.set_literalinclude(newlibrary.options.literalinclude2)
-        whelpers.add_copy_array_helper_c(fmt_library)
         self.wrap_namespace(newlibrary.wrap_namespace, True)
         self.write_header_utility()
 

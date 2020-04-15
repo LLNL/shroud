@@ -62,11 +62,6 @@ cend   = "// end "
 fstart = "! start "
 fend   = "! end "
 
-_literalinclude = False
-def set_literalinclude(flag):
-    global _literalinclude
-    _literalinclude = flag
-
 _newlibrary = None
 def set_library(library):
     global _newlibrary
@@ -143,7 +138,40 @@ def add_external_helpers():
     fmt.lstart = ""
     fmt.lend = ""
 
-    # Only used with std::string and thus C++
+    # Only used with std::vector and thus C++.
+    name = "copy_array"
+    fmt.hname = name
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
+    if name not in CHelpers:
+        helper = dict(
+            dependent_helpers=["array_context"],
+            c_include="<string.h>",
+            cxx_include="<cstring>",
+            # Create a single C routine which is called from Fortran
+            # via an interface for each cxx_type.
+            cxx_source=wformat(
+                """
+// helper {hname}
+{lstart}// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+// Called from Fortran.
+void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+{{+
+const void *cxx_var = data->addr.base;
+int n = c_var_size < data->size ? c_var_size : data->size;
+n *= data->elem_len;
+{stdlib}memcpy(c_var, cxx_var, n);
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+-}}{lend}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+    ##########
+    
+    # Only used with std::string and thus C++.
     name = "copy_string"
     fmt.hname = name
     if literalinclude:
@@ -169,6 +197,7 @@ if (data->elem_len < n) n = data->elem_len;
             fmt,
         ),
     )
+    ##########
 
     # Deal with allocatable character
     FHelpers[name] = dict(
@@ -538,50 +567,6 @@ integer(C_INT) :: rank = -1
         )
         FHelpers[name] = helper
 
-
-def add_copy_array_helper_c(fmtin):
-    """Create function to copy contents of a vector.
-
-    The function has C_prefix in the name since it is not file static.
-    This allows multiple wrapped libraries to coexist.
-
-    Args:
-        fmtin - format dictionary from the library.
-    """
-    fmt = util.Scope(fmtin)
-    fmt.lstart = ""
-    fmt.lend = ""
-
-    name = "copy_array"
-    fmt.hname = name
-    if _literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
-    if name not in CHelpers:
-        helper = dict(
-            dependent_helpers=["array_context"],
-            c_include="<string.h>",
-            cxx_include="<cstring>",
-            # Create a single C routine which is called from Fortran
-            # via an interface for each cxx_type.
-            cxx_source=wformat(
-                """
-// helper {hname}
-{lstart}// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
-{{+
-const void *cxx_var = data->addr.base;
-int n = c_var_size < data->size ? c_var_size : data->size;
-n *= data->elem_len;
-{stdlib}memcpy(c_var, cxx_var, n);
-{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}{lend}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
 
 def add_all_copy_array_helpers():
     """Create helpers which are type based.
