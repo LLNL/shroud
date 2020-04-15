@@ -348,7 +348,7 @@ class CheckParse(unittest.TestCase):
             "char var1[20]",
             r.gen_arg_as_c())
         self.assertEqual(
-            "character(len=20) :: var1",
+            "character :: var1(20)",
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("char var2[20][10][5]")
@@ -375,7 +375,7 @@ class CheckParse(unittest.TestCase):
             "char var2[20][10][5]",
             r.gen_arg_as_c())
         self.assertEqual(
-            "character(len=5) :: var2(10,20)",
+            "character :: var2(5,10,20)",
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("char var3[DEFINE + 3]")
@@ -400,7 +400,7 @@ class CheckParse(unittest.TestCase):
             "char var3[DEFINE+3]",
             r.gen_arg_as_c())
         self.assertEqual(
-            "character(len=DEFINE+3) :: var3",
+            "character :: var3(DEFINE+3)",
             r.gen_arg_as_fortran())
     
         r = declast.check_decl("char *var4[44]")
@@ -423,7 +423,7 @@ class CheckParse(unittest.TestCase):
             "char * var4[44]",
             r.gen_arg_as_c())
         self.assertEqual(  # XXX - fixme
-            "character(len=44) :: var4",
+            "character :: var4(44)",
             r.gen_arg_as_fortran())
     
     def test_type_vector(self):

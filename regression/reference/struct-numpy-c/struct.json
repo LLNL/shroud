@@ -393,6 +393,91 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapArrays1.h",
+                    "C_impl_filename": "wrapArrays1.c",
+                    "C_name_scope": "Arrays1_",
+                    "C_type_name": "Arrays1",
+                    "F_capsule_data_type": "SHROUD_arrays1_capsule",
+                    "F_derived_name": "arrays1",
+                    "F_name_scope": "arrays1_",
+                    "PY_struct_array_descr_create": "PY_Arrays1_create_array_descr",
+                    "PY_struct_array_descr_name": "Arrays1_dtype",
+                    "PY_struct_array_descr_variable": "PY_Arrays1_array_descr",
+                    "class_scope": "Arrays1::",
+                    "cxx_class": "Arrays1",
+                    "cxx_type": "Arrays1",
+                    "file_scope": "Arrays1"
+                },
+                "name": "Arrays1",
+                "options": {
+                    "wrap_python": false
+                },
+                "scope": "Arrays1::",
+                "typemap_name": "Arrays1",
+                "variables": [
+                    {
+                        "ast": {
+                            "array": [
+                                {
+                                    "constant": "20"
+                                }
+                            ],
+                            "declarator": {
+                                "name": "name",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name",
+                            "variable_lower": "name",
+                            "variable_name": "name",
+                            "variable_upper": "NAME"
+                        },
+                        "name": "name",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "array": [
+                                {
+                                    "constant": "10"
+                                },
+                                {
+                                    "constant": "2"
+                                }
+                            ],
+                            "declarator": {
+                                "name": "count",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "count",
+                            "variable_lower": "count",
+                            "variable_name": "count",
+                            "variable_upper": "COUNT"
+                        },
+                        "name": "count",
+                        "options": {}
+                    }
+                ]
             }
         ],
         "copyright": [

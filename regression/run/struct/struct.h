@@ -58,6 +58,13 @@ struct Cstruct_numpy {
 typedef struct Cstruct_numpy Cstruct_numpy;
 
 /*----------------------------------------------------------------------*/
+struct Arrays1 {
+    char name[20];
+    int count[10][2];
+};
+typedef struct Cstruct_numpy Cstruct_numpy;
+
+/*----------------------------------------------------------------------*/
 
 struct Cstruct_as_class {
     int x1;

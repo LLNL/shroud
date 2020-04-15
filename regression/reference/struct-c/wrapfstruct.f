@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module struct_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
+    use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -49,6 +49,12 @@ module struct_mod
         type(C_PTR) :: ivalue
         type(C_PTR) :: dvalue
     end type cstruct_numpy
+
+
+    type, bind(C) :: arrays1
+        character(kind=C_CHAR) :: name(20)
+        integer(C_INT) :: count(2,10)
+    end type arrays1
 
     ! ----------------------------------------
     ! Result

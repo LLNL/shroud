@@ -38,7 +38,10 @@ contains
 
     call set_case_name("test_struct")
 
-    str1%ifield = 2_C_INT
+    str1 = cstruct1(2, 2.0)
+    call assert_equals(2_C_INT, str1%ifield, "cstruct1 constructor ifield")
+    call assert_equals(2.0_C_DOUBLE, str1%dfield, "cstruct1 constructor dfield")
+    
     str1%dfield = 2.0_C_DOUBLE
     rvi = pass_struct_by_value(str1)
     call assert_equals(4, rvi, "pass_struct_by_value")
@@ -103,5 +106,13 @@ contains
     call assert_equals(35, str2%ifield, "returnStructPtr2")
 
   end subroutine test_struct2
+
+  subroutine test_struct_array
+    type(arrays1) str1
+
+    str1%name = " "
+    str1%count = 0
+    
+  end subroutine test_struct_array
 
 end program tester

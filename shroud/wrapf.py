@@ -163,7 +163,8 @@ class Wrapf(util.WrapperMixin):
             else:
                 output.append(ast.gen_arg_as_fortran())
                 self.update_f_module(
-                    fileinfo.module_use, {}, ntypemap.f_module
+                    fileinfo.module_use, {},
+                    ntypemap.f_c_module or ntypemap.f_module
                 )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
