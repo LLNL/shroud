@@ -441,6 +441,7 @@ def main_with_args(args):
         TypeOut(None, config).write_all_types(def_types, config.yaml_types)
 
     newlibrary = ast.create_library_from_dictionary(allinput)
+    whelpers.set_library(newlibrary)
 
     try:
         generate.generate_functions(newlibrary, config)
@@ -477,7 +478,6 @@ def main_with_args(args):
     TypeOut(newlibrary, config).write_class_types()
 
     try:
-        whelpers.set_library(newlibrary)
         options = newlibrary.options
         if options.wrap_c:
             wrapc.Wrapc(newlibrary, config, splicers["c"]).wrap_library()

@@ -432,8 +432,8 @@ class GenFunctions(object):
         """
         newlibrary = self.newlibrary
         literalinclude2 = newlibrary.options.literalinclude2
-        whelpers.add_external_helpers(newlibrary.fmtdict, literalinclude2)
-        whelpers.add_capsule_helper(newlibrary.fmtdict, literalinclude2)
+        whelpers.add_external_helpers()
+        whelpers.add_capsule_helper()
 
         self.function_index = newlibrary.function_index
 

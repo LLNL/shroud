@@ -122,7 +122,7 @@ extern "C" {
 /* *INDENT-ON* */"""
 
 
-def add_external_helpers(fmtin, literalinclude):
+def add_external_helpers():
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -136,6 +136,9 @@ def add_external_helpers(fmtin, literalinclude):
         fmtin - format dictionary from the library.
         literalinclude - value of top level option.literalinclude2
     """
+    fmtin = _newlibrary.fmtdict
+    literalinclude = _newlibrary.options.literalinclude2
+    
     fmt = util.Scope(fmtin)
     fmt.lstart = ""
     fmt.lend = ""
@@ -379,7 +382,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
     return name
 
 
-def add_capsule_helper(fmtin, literalinclude):
+def add_capsule_helper():
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
@@ -388,6 +391,8 @@ def add_capsule_helper(fmtin, literalinclude):
         fmt - format dictionary from the library.
         literalinclude -
     """
+    fmtin = _newlibrary.fmtdict
+    literalinclude = _newlibrary.options.literalinclude2
     # Add some format strings
     fmt = util.Scope(fmtin)
     fmt.lstart = ""
