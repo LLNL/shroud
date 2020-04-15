@@ -1497,7 +1497,6 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs["allocatable"]
 
-        last_dim = len(self.array)
         if ntypemap.base == "string":
             if attrs["len"] and local:
                 # Also used with function result declaration.
@@ -1505,10 +1504,7 @@ class Declaration(Node):
             elif is_allocatable:
                 t.append("character(len=:)")
             elif self.array:
-                # Convert last dim to CHARACTER len.
-                t.append("character(len={})".
-                         format(todict.print_node(self.array[-1])))
-                last_dim -= 1
+                t.append("character(kind=C_CHAR)")
             elif not local:
                 t.append("character(len=*)")
             else:
@@ -1558,10 +1554,10 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
-        elif last_dim > 0:
+        elif self.array:
             decl.append("(")
             # Convert to column-major order.
-            for dim in reversed(self.array[:last_dim]):
+            for dim in reversed(self.array):
                 decl.append(todict.print_node(dim))
                 decl.append(",")
             decl[-1] = ")"

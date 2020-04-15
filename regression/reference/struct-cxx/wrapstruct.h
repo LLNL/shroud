@@ -54,6 +54,13 @@ struct s_STR_cstruct_numpy {
 };
 typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 
+
+struct s_STR_arrays1 {
+    char name[20];
+    int count[10][2];
+};
+typedef struct s_STR_arrays1 STR_arrays1;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

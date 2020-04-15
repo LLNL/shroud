@@ -107,6 +107,14 @@ declarations:
     PY_array_arg: numpy
 
 ######################################################################
+- decl: struct Arrays1 {
+          char name[20];
+          int count[10][2];
+        };
+  options:
+    wrap_python: False
+
+######################################################################
 splicer_code:
   f:
     module_top:
