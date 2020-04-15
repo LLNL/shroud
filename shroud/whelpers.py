@@ -583,8 +583,15 @@ n *= data->elem_len;
         )
         CHelpers[name] = helper
 
+def add_all_copy_array_helpers():
+    """Create helpers which are type based.
+    """
+    fmt = util.Scope(_newlibrary.fmtdict)
+    for ntypemap in typemap.get_global_types().values():
+        if ntypemap.sgroup == "native":
+            add_copy_array_helper_from_typemap(fmt, ntypemap)
 
-def add_copy_array_helper(fmtin, ast):
+def add_copy_array_helper_from_typemap(fmt, ntypemap):
     """Create Fortran interface to helper function
     which copies an array based on c_type.
     Each interface calls the same C helper.
@@ -593,14 +600,9 @@ def add_copy_array_helper(fmtin, ast):
     This allows multiple wrapped libraries to coexist.
 
     Args:
-        fmtin -
-        ast -
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    fmt = util.Scope(fmtin)
-    ntypemap = ast.typemap
-    if ntypemap.base == "vector":
-        ntypemap = ast.template_arguments[0].typemap
-
     fmt.c_type = ntypemap.c_type
     fmt.f_kind = ntypemap.f_kind
     fmt.f_type = ntypemap.f_type
