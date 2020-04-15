@@ -1590,6 +1590,7 @@ class Preprocess(object):
 
 
 def generate_functions(library, config):
+    whelpers.set_library(library)
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
