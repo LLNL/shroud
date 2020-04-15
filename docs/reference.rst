@@ -50,6 +50,14 @@ sitedir
        Return the installation directory of shroud and exit.
        This path can be used to find cmake/SetupShroud.cmake.
 
+write-helpers BASE
+       Write files which contain the available helper functions
+       into the files BASE.c and BASE.f.
+
+yaml-types FILE
+       Write a YAML file with the default types.
+
+
 Global Fields
 -------------
 

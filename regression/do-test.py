@@ -317,7 +317,10 @@ if __name__ == "__main__":
 
     availTests = [
         TestDesc("none",
-                 cmdline=["--yaml-types", "def_types.yaml"]),
+                 cmdline=[
+                     "--write-helpers", "helpers",
+                     "--yaml-types", "def_types.yaml",
+                 ]),
         TestDesc("tutorial"),
         TestDesc("types"),
         TestDesc("classes"),

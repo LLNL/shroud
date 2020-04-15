@@ -260,7 +260,10 @@ def main():
         "--cmake", default="", help="Create a file with CMake macro"
     )
     parser.add_argument(
-        "--yaml-types", default="", help="Write a YAML file with default types"
+        "--write-helpers", default="", help="Write a file with helper functions."
+    )
+    parser.add_argument(
+        "--yaml-types", default="", help="Write a YAML file with default types."
     )
     parser.add_argument("filename", nargs="*", help="Input file to process.")
 
@@ -297,6 +300,7 @@ def create_wrapper(filename, outdir="", path=None):
         args.path = []
     else:
         args.path = path
+    args.write_helpers = ""
     args.yaml_types = ""
 
     config = main_with_args(args)
@@ -360,6 +364,7 @@ def main_with_args(args):
     config.python_dir = args.outdir_python or args.outdir
     config.lua_dir = args.outdir_lua or args.outdir
     config.yaml_dir = args.outdir_yaml or args.outdir
+    config.write_helpers = args.write_helpers
     config.yaml_types = args.yaml_types
     config.log = log
     #    config.cfiles = []  # list of C/C++ files created
@@ -501,6 +506,14 @@ def main_with_args(args):
                 fp.write(" ".join(config.ffiles))
             fp.write("\n")
 
+    if args.write_helpers:
+        hfile = os.path.join(args.logdir, args.write_helpers + ".c")
+        with open(hfile, "w") as fp:
+            whelpers.write_c_helpers(fp)
+        hfile = os.path.join(args.logdir, args.write_helpers + ".f")
+        with open(hfile, "w") as fp:
+            whelpers.write_f_helpers(fp)
+            
     log.close()
 
     # This helps when running with a pipe, like CMake's execute_process

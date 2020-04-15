@@ -1264,6 +1264,37 @@ integer, parameter, private :: &
 )  # end FHelpers
 
 
+# Routines to dump helper routines to a file.
+
+def gather_helpers(helpers, keys):
+    output = []
+    for name in sorted(helpers.keys()):
+        helper = helpers[name]
+        for key in keys:
+            if key in helper:
+                output.append("")
+                output.append("##### start {} {}".format(name, key))
+                output.append(helper[key])
+                output.append("##### end {} {}".format(name, key))
+    return output
+
+def write_c_helpers(fp):
+    output = gather_helpers(CHelpers, ["source", "c_source", "cxx_source"])
+    wrapper = util.WrapperMixin()
+    wrapper.linelen = 72
+    wrapper.indent = 0
+    wrapper.cont = ""
+    wrapper.write_lines(fp, output)
+
+def write_f_helpers(fp):
+    output = gather_helpers(FHelpers, ["interface", "source"])
+    wrapper = util.WrapperMixin()
+    wrapper.linelen = 72
+    wrapper.indent = 0
+    wrapper.cont = "&"
+    wrapper.write_lines(fp, output)
+
+
 cmake = """
 # Setup Shroud
 # This file defines:
