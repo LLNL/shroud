@@ -574,11 +574,11 @@ def add_all_copy_array_helpers():
     fmt = util.Scope(_newlibrary.fmtdict)
     for ntypemap in typemap.get_global_types().values():
         if ntypemap.sgroup == "native":
-            add_copy_array_helper_from_typemap(fmt, ntypemap)
+            add_copy_array_helper(fmt, ntypemap)
             add_to_PyList_helper(fmt, ntypemap)
             add_to_PyList_helper_vector(fmt, ntypemap)
 
-def add_copy_array_helper_from_typemap(fmt, ntypemap):
+def add_copy_array_helper(fmt, ntypemap):
     """Create Fortran interface to helper function
     which copies an array based on c_type.
     Each interface calls the same C helper.
@@ -590,13 +590,15 @@ def add_copy_array_helper_from_typemap(fmt, ntypemap):
         fmt      - util.Scope
         ntypemap - typemap.Typemap
     """
+    fmt.flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     fmt.f_kind = ntypemap.f_kind
     fmt.f_type = ntypemap.f_type
 
-    name = wformat("copy_array_{c_type}", fmt)
+    name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
     if name not in FHelpers:
+        fmt.hnamefunc = name
         helper = dict(
             # XXX when f_kind == C_SIZE_T
             dependent_helpers=["array_context"],
@@ -605,14 +607,14 @@ def add_copy_array_helper_from_typemap(fmt, ntypemap):
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine SHROUD_copy_array_{c_type}(context, c_var, c_var_size) &+
+subroutine SHROUD_{hnamefunc}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_array_{c_type}
+-end subroutine SHROUD_{hnamefunc}
 -end interface""",
                 fmt,
             ),
