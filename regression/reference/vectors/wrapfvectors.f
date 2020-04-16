@@ -27,8 +27,8 @@ module vectors_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
-    ! helper array_context
     ! start array_context
+    ! helper array_context
     type, bind(C) :: SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx

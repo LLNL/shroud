@@ -62,11 +62,6 @@ cend   = "// end "
 fstart = "! start "
 fend   = "! end "
 
-_literalinclude = False
-def set_literalinclude(flag):
-    global _literalinclude
-    _literalinclude = flag
-
 _newlibrary = None
 def set_library(library):
     global _newlibrary
@@ -122,7 +117,20 @@ extern "C" {
 /* *INDENT-ON* */"""
 
 
-def add_external_helpers(fmtin, literalinclude):
+def add_all_helpers():
+    """Create helper functions.
+    Create helpers for all types.
+    """
+    fmt = util.Scope(_newlibrary.fmtdict)
+    add_external_helpers()
+    add_capsule_helper()
+    for ntypemap in typemap.get_global_types().values():
+        if ntypemap.sgroup == "native":
+            add_copy_array_helper(fmt, ntypemap)
+            add_to_PyList_helper(fmt, ntypemap)
+            add_to_PyList_helper_vector(fmt, ntypemap)
+
+def add_external_helpers():
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -136,11 +144,47 @@ def add_external_helpers(fmtin, literalinclude):
         fmtin - format dictionary from the library.
         literalinclude - value of top level option.literalinclude2
     """
+    fmtin = _newlibrary.fmtdict
+    literalinclude = _newlibrary.options.literalinclude2
+    
     fmt = util.Scope(fmtin)
     fmt.lstart = ""
     fmt.lend = ""
 
-    # Only used with std::string and thus C++
+    # Only used with std::vector and thus C++.
+    name = "copy_array"
+    fmt.hname = name
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
+    if name not in CHelpers:
+        helper = dict(
+            dependent_helpers=["array_context"],
+            c_include="<string.h>",
+            cxx_include="<cstring>",
+            # Create a single C routine which is called from Fortran
+            # via an interface for each cxx_type.
+            cxx_source=wformat(
+                """
+{lstart}// helper {hname}
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+// Called from Fortran.
+void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+{{+
+const void *cxx_var = data->addr.base;
+int n = c_var_size < data->size ? c_var_size : data->size;
+n *= data->elem_len;
+{stdlib}memcpy(c_var, cxx_var, n);
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+-}}{lend}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+    ##########
+    
+    # Only used with std::string and thus C++.
     name = "copy_string"
     fmt.hname = name
     if literalinclude:
@@ -152,8 +196,8 @@ def add_external_helpers(fmtin, literalinclude):
         # XXX - mangle name
         source=wformat(
             """
-// helper {hname}
-{lstart}// Copy the char* or std::string in context into c_var.
+{lstart}// helper {hname}
+// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
@@ -199,8 +243,8 @@ integer(C_SIZE_T), value :: c_var_size
         cxx_include="<cstring> <cstddef>",
         source=wformat(
             """
-// helper {hname}
-{lstart}// Save str metadata into array to allow Fortran to access values.
+{lstart}// helper {hname}
+// Save str metadata into array to allow Fortran to access values.
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
 array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
@@ -364,8 +408,8 @@ def add_shadow_helper(node):
             scope="utility",
             # h_shared_code
             source="""
-// helper {hname}
-{lstart}{cpp_if}struct s_{C_type_name} {{+
+{lstart}// helper {hname}
+{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
@@ -379,15 +423,13 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
     return name
 
 
-def add_capsule_helper(fmtin, literalinclude):
+def add_capsule_helper():
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
-
-    Args:
-        fmt - format dictionary from the library.
-        literalinclude -
     """
+    fmtin = _newlibrary.fmtdict
+    literalinclude = _newlibrary.options.literalinclude2
     # Add some format strings
     fmt = util.Scope(fmtin)
     fmt.lstart = ""
@@ -483,8 +525,8 @@ call array_destructor(cap%mem, .false._C_BOOL)
             # And help with debugging since ccharp will display contents.
             source=wformat(
                 """
-// helper {hname}
-{lstart}struct s_{C_array_type} {{+
+{lstart}// helper {hname}
+struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * base;
@@ -511,8 +553,8 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
         helper = dict(
             derived_type=wformat(
                 """
-! helper {hname}
-{lstart}type, bind(C) :: {F_array_type}+
+{lstart}! helper {hname}
+type, bind(C) :: {F_array_type}+
 ! address of C++ memory
 type({F_capsule_data_type}) :: cxx
 ! address of data in cxx
@@ -534,52 +576,7 @@ integer(C_INT) :: rank = -1
         FHelpers[name] = helper
 
 
-def add_copy_array_helper_c(fmtin):
-    """Create function to copy contents of a vector.
-
-    The function has C_prefix in the name since it is not file static.
-    This allows multiple wrapped libraries to coexist.
-
-    Args:
-        fmtin - format dictionary from the library.
-    """
-    fmt = util.Scope(fmtin)
-    fmt.lstart = ""
-    fmt.lend = ""
-
-    name = "copy_array"
-    fmt.hname = name
-    if _literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
-    if name not in CHelpers:
-        helper = dict(
-            dependent_helpers=["array_context"],
-            c_include="<string.h>",
-            cxx_include="<cstring>",
-            # Create a single C routine which is called from Fortran
-            # via an interface for each cxx_type.
-            cxx_source=wformat(
-                """
-// helper {hname}
-{lstart}// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
-{{+
-const void *cxx_var = data->addr.base;
-int n = c_var_size < data->size ? c_var_size : data->size;
-n *= data->elem_len;
-{stdlib}memcpy(c_var, cxx_var, n);
-{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}{lend}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
-
-
-def add_copy_array_helper(fmtin, ast):
+def add_copy_array_helper(fmt, ntypemap):
     """Create Fortran interface to helper function
     which copies an array based on c_type.
     Each interface calls the same C helper.
@@ -588,21 +585,18 @@ def add_copy_array_helper(fmtin, ast):
     This allows multiple wrapped libraries to coexist.
 
     Args:
-        fmtin -
-        ast -
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    fmt = util.Scope(fmtin)
-    ntypemap = ast.typemap
-    if ntypemap.base == "vector":
-        ntypemap = ast.template_arguments[0].typemap
-
+    fmt.flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     fmt.f_kind = ntypemap.f_kind
     fmt.f_type = ntypemap.f_type
 
-    name = wformat("copy_array_{c_type}", fmt)
+    name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
     if name not in FHelpers:
+        fmt.hnamefunc = name
         helper = dict(
             # XXX when f_kind == C_SIZE_T
             dependent_helpers=["array_context"],
@@ -611,14 +605,14 @@ def add_copy_array_helper(fmtin, ast):
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine SHROUD_copy_array_{c_type}(context, c_var, c_var_size) &+
+subroutine SHROUD_{hnamefunc}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_array_{c_type}
+-end subroutine SHROUD_{hnamefunc}
 -end interface""",
                 fmt,
             ),
@@ -626,27 +620,23 @@ integer(C_SIZE_T), value :: c_var_size
         FHelpers[name] = helper
     return name
 
-def add_to_PyList_helper(arg):
+def add_to_PyList_helper(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
 
     Args:
-        arg - declast.Declaration
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    ntypemap = arg.typemap
-    if ntypemap.base == "vector":
-        add_to_PyList_helper_vector(arg)
-        return
-
-    fmt = util.Scope(_newlibrary.fmtdict)
+    flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     
     ########################################
     # Used with intent(out)
-    name = "to_PyList_" + ntypemap.c_type
+    name = "to_PyList_" + flat_name
     if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.hname = name
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
@@ -655,14 +645,14 @@ def add_to_PyList_helper(arg):
 
     ########################################
     # Used with intent(inout)
-    name = "update_PyList_" + ntypemap.c_type
+    name = "update_PyList_" + flat_name
     if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
         fmt.hname = name
         fmt.hnameproto = wformat(
-            "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
+            "void {PY_helper_prefix}{hname}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
             proto=fmt.hnameproto + ";",
             source=wformat(
@@ -687,17 +677,17 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_" + ntypemap.c_type
+    name = "from_PyObject_" + flat_name
     if name not in CHelpers and ntypemap.PY_get:
         fmt.hname = name
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.fcn_type = ntypemap.c_type
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         CHelpers[name] = create_from_PyObject(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
-    name = "get_from_object_{}_numpy".format(ntypemap.c_type)
+    name = "get_from_object_{}_numpy".format(flat_name)
     if name not in CHelpers:
         fmt.py_tmp = "array"
         fmt.c_type = ntypemap.c_type
@@ -731,11 +721,11 @@ return 1;
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
-    name = "get_from_object_{}_list".format(ntypemap.c_type)
+    name = "get_from_object_{}_list".format(flat_name)
     if name not in CHelpers:
         fmt.size_var = "size"
         fmt.c_var = "in"
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.hname = name
         fmt.hnamefunc = fmt.PY_helper_prefix + name
         CHelpers[name] = create_get_from_object_list(fmt)
@@ -842,26 +832,26 @@ return 1;
     )
     return helper
 
-def add_to_PyList_helper_vector(arg):
+def add_to_PyList_helper_vector(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
 
     Args:
-        arg -
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    ntypemap = arg.typemap
-    if ntypemap.base == "vector":
-        ntypemap = arg.template_arguments[0].typemap
-
-    fmt = util.Scope(_newlibrary.fmtdict)
+    flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     
     # Used with intent(out)
-    name = "to_PyList_vector_" + ntypemap.c_type
+    name = "to_PyList_vector_" + flat_name
     if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        ctor = ntypemap.PY_ctor
+        if ctor is None:
+            ctor = "XXXPy_ctor"
+        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
-        fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
+        fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
@@ -884,12 +874,15 @@ return out;
         CHelpers[name] = helper
 
     # Used with intent(inout)
-    name = "update_PyList_vector_" + ntypemap.c_type
+    name = "update_PyList_vector_" + flat_name
     if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        ctor = ntypemap.PY_ctor
+        if ctor is None:
+            ctor = "XXXPy_ctor"
+        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnamefunc = wformat(
-            "{PY_helper_prefix}update_PyList_{c_type}", fmt)
+            "{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat(
             "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
@@ -918,12 +911,15 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_vector_" + ntypemap.c_type
+    name = "from_PyObject_vector_" + flat_name
     if name not in CHelpers:
-        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        get = ntypemap.PY_get
+        if get is None:
+            get = "XXXPy_get"
+        fmt.Py_get = get.format(py_var="item")
         fmt.hname = name
         fmt.hnamefunc= wformat(
-            "{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
+            "{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
         helper = dict(
@@ -1262,6 +1258,37 @@ integer, parameter, private :: &
     SH_TYPE_OTHER     = 32""",
     ),
 )  # end FHelpers
+
+
+# Routines to dump helper routines to a file.
+
+def gather_helpers(helpers, keys):
+    output = []
+    for name in sorted(helpers.keys()):
+        helper = helpers[name]
+        for key in keys:
+            if key in helper:
+                output.append("")
+                output.append("##### start {} {}".format(name, key))
+                output.append(helper[key])
+                output.append("##### end {} {}".format(name, key))
+    return output
+
+def write_c_helpers(fp):
+    output = gather_helpers(CHelpers, ["source", "c_source", "cxx_source"])
+    wrapper = util.WrapperMixin()
+    wrapper.linelen = 72
+    wrapper.indent = 0
+    wrapper.cont = ""
+    wrapper.write_lines(fp, output)
+
+def write_f_helpers(fp):
+    output = gather_helpers(FHelpers, ["derived_type", "interface", "source"])
+    wrapper = util.WrapperMixin()
+    wrapper.linelen = 72
+    wrapper.indent = 0
+    wrapper.cont = "&"
+    wrapper.write_lines(fp, output)
 
 
 cmake = """

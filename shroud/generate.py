@@ -431,9 +431,7 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
-        literalinclude2 = newlibrary.options.literalinclude2
-        whelpers.add_external_helpers(newlibrary.fmtdict, literalinclude2)
-        whelpers.add_capsule_helper(newlibrary.fmtdict, literalinclude2)
+        whelpers.add_all_helpers()
 
         self.function_index = newlibrary.function_index
 
@@ -1157,8 +1155,6 @@ class GenFunctions(object):
                     arg.set_type(typemap.lookup_type("char_scalar"))
             elif arg_typemap.base == "vector":
                 has_buf_arg = True
-                # Create helpers for vector template.
-                whelpers.add_copy_array_helper(fmt, arg)
 
         # Function Result.
         has_string_result = False
@@ -1177,8 +1173,6 @@ class GenFunctions(object):
             result_name = result_as_arg or fmt.C_string_result_as_arg
         elif result_typemap.base == "vector":
             has_vector_result = True
-            # Create helpers for vector template.
-            whelpers.add_copy_array_helper(fmt, ast)
         elif result_is_ptr and attrs["deref"] == "allocatable":
             has_allocatable_result = True
 
@@ -1593,6 +1587,7 @@ class Preprocess(object):
 
 
 def generate_functions(library, config):
+    whelpers.set_library(library)
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()

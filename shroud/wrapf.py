@@ -1436,7 +1436,6 @@ rv = .false.
                 )
 
         # Function result.
-        whelpers.add_copy_array_helper(fmt_result, ast)
         need_wrapper = self.build_arg_list_impl(
             fmt_result,
             C_node.ast,

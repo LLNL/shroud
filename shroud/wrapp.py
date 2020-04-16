@@ -737,7 +737,6 @@ return 1;""",
         stmt0 = typemap.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
         output = fileinfo.GetSetBody
-        whelpers.add_to_PyList_helper(ast)
         ########################################
         # getter
         output.append("")
@@ -1171,7 +1170,6 @@ return 1;""",
             spointer = arg.get_indirect_stmt()
             stmts = None
 
-            whelpers.add_to_PyList_helper(arg)
             intent_blk = None
             if node._generated == "struct_as_class_ctor":
                 stmts = ["py", "ctor", sgroup, spointer]
@@ -1210,7 +1208,6 @@ return 1;""",
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
-                whelpers.add_to_PyList_helper_vector(arg)
             elif dimension:
                 # ex. (int * arg1 +intent(in) +dimension(:))
                 self.check_dimension_blk(arg)
@@ -1863,7 +1860,6 @@ return 1;""",
                 stmts = ["py", sgroup, "result", options.PY_struct_arg]
             elif result_typemap.base == "vector":
                 stmts = ["py", sgroup, "result", options.PY_array_arg]
-                whelpers.add_to_PyList_helper_vector(ast)
             elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"

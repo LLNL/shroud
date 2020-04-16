@@ -540,6 +540,10 @@ class WrapperMixin(object):
         ^  start line in column 1
         +  indent line
         -  deindent line
+
+        Args:
+             fp
+             lines - list of lines
         """
         for line in lines:
             if isinstance(line, int):

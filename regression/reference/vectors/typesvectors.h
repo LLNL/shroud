@@ -66,8 +66,8 @@ struct s_VEC_SHROUD_capsule_data {
 };
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 
-// helper array_context
 // start array_context
+// helper array_context
 struct s_VEC_SHROUD_array {
     VEC_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
