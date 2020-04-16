@@ -66,8 +66,8 @@ typedef struct s_TUT_SHROUD_capsule_data TUT_SHROUD_capsule_data;
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
 
-// helper array_context
 // start array_context
+// helper array_context
 struct s_TUT_SHROUD_array {
     TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {

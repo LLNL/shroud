@@ -16,8 +16,8 @@
 extern "C" {
 #endif
 
-// helper capsule_CLA_Class1
 // start struct CLA_Class1
+// helper capsule_CLA_Class1
 struct s_CLA_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

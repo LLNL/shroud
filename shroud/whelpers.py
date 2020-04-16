@@ -153,8 +153,8 @@ def add_external_helpers():
             # via an interface for each cxx_type.
             cxx_source=wformat(
                 """
-// helper {hname}
-{lstart}// Copy std::vector into array c_var(c_var_size).
+{lstart}// helper {hname}
+// Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 // Called from Fortran.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
@@ -183,8 +183,8 @@ n *= data->elem_len;
         # XXX - mangle name
         source=wformat(
             """
-// helper {hname}
-{lstart}// Copy the char* or std::string in context into c_var.
+{lstart}// helper {hname}
+// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
@@ -231,8 +231,8 @@ integer(C_SIZE_T), value :: c_var_size
         cxx_include="<cstring> <cstddef>",
         source=wformat(
             """
-// helper {hname}
-{lstart}// Save str metadata into array to allow Fortran to access values.
+{lstart}// helper {hname}
+// Save str metadata into array to allow Fortran to access values.
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
 array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
@@ -396,8 +396,8 @@ def add_shadow_helper(node):
             scope="utility",
             # h_shared_code
             source="""
-// helper {hname}
-{lstart}{cpp_if}struct s_{C_type_name} {{+
+{lstart}// helper {hname}
+{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
@@ -517,8 +517,8 @@ call array_destructor(cap%mem, .false._C_BOOL)
             # And help with debugging since ccharp will display contents.
             source=wformat(
                 """
-// helper {hname}
-{lstart}struct s_{C_array_type} {{+
+{lstart}// helper {hname}
+struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * base;
@@ -545,8 +545,8 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
         helper = dict(
             derived_type=wformat(
                 """
-! helper {hname}
-{lstart}type, bind(C) :: {F_array_type}+
+{lstart}! helper {hname}
+type, bind(C) :: {F_array_type}+
 ! address of C++ memory
 type({F_capsule_data_type}) :: cxx
 ! address of data in cxx
