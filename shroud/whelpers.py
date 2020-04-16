@@ -628,14 +628,15 @@ def add_to_PyList_helper(fmt, ntypemap):
         fmt      - util.Scope
         ntypemap - typemap.Typemap
     """
+    flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     
     ########################################
     # Used with intent(out)
-    name = "to_PyList_" + ntypemap.c_type
+    name = "to_PyList_" + flat_name
     if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.hname = name
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
@@ -644,14 +645,14 @@ def add_to_PyList_helper(fmt, ntypemap):
 
     ########################################
     # Used with intent(inout)
-    name = "update_PyList_" + ntypemap.c_type
+    name = "update_PyList_" + flat_name
     if name not in CHelpers and ntypemap.PY_ctor is not None:
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
         fmt.hname = name
         fmt.hnameproto = wformat(
-            "void {PY_helper_prefix}update_PyList_{c_type}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
+            "void {PY_helper_prefix}{hname}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
             proto=fmt.hnameproto + ";",
             source=wformat(
@@ -676,17 +677,17 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_" + ntypemap.c_type
+    name = "from_PyObject_" + flat_name
     if name not in CHelpers and ntypemap.PY_get:
         fmt.hname = name
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.fcn_type = ntypemap.c_type
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         CHelpers[name] = create_from_PyObject(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
-    name = "get_from_object_{}_numpy".format(ntypemap.c_type)
+    name = "get_from_object_{}_numpy".format(flat_name)
     if name not in CHelpers:
         fmt.py_tmp = "array"
         fmt.c_type = ntypemap.c_type
@@ -720,11 +721,11 @@ return 1;
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
-    name = "get_from_object_{}_list".format(ntypemap.c_type)
+    name = "get_from_object_{}_list".format(flat_name)
     if name not in CHelpers:
         fmt.size_var = "size"
         fmt.c_var = "in"
-        fmt.fcn_suffix = ntypemap.c_type
+        fmt.fcn_suffix = flat_name
         fmt.hname = name
         fmt.hnamefunc = fmt.PY_helper_prefix + name
         CHelpers[name] = create_get_from_object_list(fmt)
@@ -839,17 +840,18 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
         fmt      - util.Scope
         ntypemap - typemap.Typemap
     """
+    flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
     
     # Used with intent(out)
-    name = "to_PyList_vector_" + ntypemap.c_type
+    name = "to_PyList_vector_" + flat_name
     if name not in CHelpers:
         ctor = ntypemap.PY_ctor
         if ctor is None:
             ctor = "XXXPy_ctor"
         fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
-        fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
+        fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
         helper = dict(
             name=fmt.hnamefunc,
@@ -872,7 +874,7 @@ return out;
         CHelpers[name] = helper
 
     # Used with intent(inout)
-    name = "update_PyList_vector_" + ntypemap.c_type
+    name = "update_PyList_vector_" + flat_name
     if name not in CHelpers:
         ctor = ntypemap.PY_ctor
         if ctor is None:
@@ -880,7 +882,7 @@ return out;
         fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnamefunc = wformat(
-            "{PY_helper_prefix}update_PyList_{c_type}", fmt)
+            "{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat(
             "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
@@ -909,7 +911,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_vector_" + ntypemap.c_type
+    name = "from_PyObject_vector_" + flat_name
     if name not in CHelpers:
         get = ntypemap.PY_get
         if get is None:
@@ -917,7 +919,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.Py_get = get.format(py_var="item")
         fmt.hname = name
         fmt.hnamefunc= wformat(
-            "{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
+            "{PY_helper_prefix}{hname}", fmt)
         fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
         helper = dict(

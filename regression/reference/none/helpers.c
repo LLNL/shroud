@@ -826,12 +826,12 @@ static int SHROUD_from_PyObject_uint8_t(PyObject *obj, const char *name,
 }
 ##### end from_PyObject_uint8_t source
 
-##### start from_PyObject_unsigned int source
+##### start from_PyObject_unsigned_int source
 
-// helper from_PyObject_unsigned int
+// helper from_PyObject_unsigned_int
 // Convert obj into an array of type unsigned int
 // Return -1 on error.
-static int SHROUD_from_PyObject_unsigned int(PyObject *obj,
+static int SHROUD_from_PyObject_unsigned_int(PyObject *obj,
     const char *name, unsigned int **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -860,14 +860,14 @@ static int SHROUD_from_PyObject_unsigned int(PyObject *obj,
     *psize = size;
     return 0;
 }
-##### end from_PyObject_unsigned int source
+##### end from_PyObject_unsigned_int source
 
-##### start from_PyObject_unsigned long source
+##### start from_PyObject_unsigned_long source
 
-// helper from_PyObject_unsigned long
+// helper from_PyObject_unsigned_long
 // Convert obj into an array of type unsigned long
 // Return -1 on error.
-static int SHROUD_from_PyObject_unsigned long(PyObject *obj,
+static int SHROUD_from_PyObject_unsigned_long(PyObject *obj,
     const char *name, unsigned long **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -896,14 +896,14 @@ static int SHROUD_from_PyObject_unsigned long(PyObject *obj,
     *psize = size;
     return 0;
 }
-##### end from_PyObject_unsigned long source
+##### end from_PyObject_unsigned_long source
 
-##### start from_PyObject_unsigned short source
+##### start from_PyObject_unsigned_short source
 
-// helper from_PyObject_unsigned short
+// helper from_PyObject_unsigned_short
 // Convert obj into an array of type unsigned short
 // Return -1 on error.
-static int SHROUD_from_PyObject_unsigned short(PyObject *obj,
+static int SHROUD_from_PyObject_unsigned_short(PyObject *obj,
     const char *name, unsigned short **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -932,7 +932,7 @@ static int SHROUD_from_PyObject_unsigned short(PyObject *obj,
     *psize = size;
     return 0;
 }
-##### end from_PyObject_unsigned short source
+##### end from_PyObject_unsigned_short source
 
 ##### start from_PyObject_vector_double cxx_source
 
@@ -1179,12 +1179,12 @@ static int SHROUD_from_PyObject_vector_long(PyObject *obj,
 }
 ##### end from_PyObject_vector_long cxx_source
 
-##### start from_PyObject_vector_long long cxx_source
+##### start from_PyObject_vector_long_long cxx_source
 
-// helper from_PyObject_vector_long long
+// helper from_PyObject_vector_long_long
 // Convert obj into an array of type long long
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_long long(PyObject *obj,
+static int SHROUD_from_PyObject_vector_long_long(PyObject *obj,
     const char *name, std::vector<long long> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -1208,7 +1208,7 @@ static int SHROUD_from_PyObject_vector_long long(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end from_PyObject_vector_long long cxx_source
+##### end from_PyObject_vector_long_long cxx_source
 
 ##### start from_PyObject_vector_short cxx_source
 
@@ -1395,12 +1395,12 @@ static int SHROUD_from_PyObject_vector_uint8_t(PyObject *obj,
 }
 ##### end from_PyObject_vector_uint8_t cxx_source
 
-##### start from_PyObject_vector_unsigned int cxx_source
+##### start from_PyObject_vector_unsigned_int cxx_source
 
-// helper from_PyObject_vector_unsigned int
+// helper from_PyObject_vector_unsigned_int
 // Convert obj into an array of type unsigned int
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_unsigned int(PyObject *obj,
+static int SHROUD_from_PyObject_vector_unsigned_int(PyObject *obj,
     const char *name, std::vector<unsigned int> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -1424,14 +1424,14 @@ static int SHROUD_from_PyObject_vector_unsigned int(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end from_PyObject_vector_unsigned int cxx_source
+##### end from_PyObject_vector_unsigned_int cxx_source
 
-##### start from_PyObject_vector_unsigned long cxx_source
+##### start from_PyObject_vector_unsigned_long cxx_source
 
-// helper from_PyObject_vector_unsigned long
+// helper from_PyObject_vector_unsigned_long
 // Convert obj into an array of type unsigned long
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_unsigned long(PyObject *obj,
+static int SHROUD_from_PyObject_vector_unsigned_long(PyObject *obj,
     const char *name, std::vector<unsigned long> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -1455,14 +1455,14 @@ static int SHROUD_from_PyObject_vector_unsigned long(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end from_PyObject_vector_unsigned long cxx_source
+##### end from_PyObject_vector_unsigned_long cxx_source
 
-##### start from_PyObject_vector_unsigned long long cxx_source
+##### start from_PyObject_vector_unsigned_long_long cxx_source
 
-// helper from_PyObject_vector_unsigned long long
+// helper from_PyObject_vector_unsigned_long_long
 // Convert obj into an array of type unsigned long long
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_unsigned long long(PyObject *obj,
+static int SHROUD_from_PyObject_vector_unsigned_long_long(PyObject *obj,
     const char *name, std::vector<unsigned long long> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -1486,14 +1486,14 @@ static int SHROUD_from_PyObject_vector_unsigned long long(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end from_PyObject_vector_unsigned long long cxx_source
+##### end from_PyObject_vector_unsigned_long_long cxx_source
 
-##### start from_PyObject_vector_unsigned short cxx_source
+##### start from_PyObject_vector_unsigned_short cxx_source
 
-// helper from_PyObject_vector_unsigned short
+// helper from_PyObject_vector_unsigned_short
 // Convert obj into an array of type unsigned short
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_unsigned short(PyObject *obj,
+static int SHROUD_from_PyObject_vector_unsigned_short(PyObject *obj,
     const char *name, std::vector<unsigned short> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -1517,7 +1517,7 @@ static int SHROUD_from_PyObject_vector_unsigned short(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end from_PyObject_vector_unsigned short cxx_source
+##### end from_PyObject_vector_unsigned_short cxx_source
 
 ##### start get_from_object_char source
 
@@ -1880,48 +1880,6 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
 }
 ##### end get_from_object_int_numpy source
 
-##### start get_from_object_long long_list source
-
-// helper get_from_object_long long_list
-// Convert PyObject to long long pointer.
-static int SHROUD_get_from_object_long long_list(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    long long *in;
-    Py_ssize_t size;
-    if (SHROUD_from_PyObject_long long(obj, "in", &in,  &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<long long *>(in);
-    value->size = size;
-    return 1;
-}
-##### end get_from_object_long long_list source
-
-##### start get_from_object_long long_numpy source
-
-// helper get_from_object_long long_numpy
-// Convert PyObject to long long pointer.
-static int SHROUD_get_from_object_long long_numpy(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONGLONG,
-        NPY_ARRAY_IN_ARRAY);
-    if (array == nullptr) {
-        PyErr_SetString(PyExc_ValueError,
-            "must be a 1-D array of long long");
-        return 0;
-    }
-    value->obj = array;
-    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
-        (array));
-    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
-        (array));
-    return 1;
-}
-##### end get_from_object_long long_numpy source
-
 ##### start get_from_object_long_list source
 
 // helper get_from_object_long_list
@@ -1940,6 +1898,48 @@ static int SHROUD_get_from_object_long_list(PyObject *obj,
     return 1;
 }
 ##### end get_from_object_long_list source
+
+##### start get_from_object_long_long_list source
+
+// helper get_from_object_long_long_list
+// Convert PyObject to long long pointer.
+static int SHROUD_get_from_object_long_long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    long long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_long_long(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<long long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_long_long_list source
+
+##### start get_from_object_long_long_numpy source
+
+// helper get_from_object_long_long_numpy
+// Convert PyObject to long long pointer.
+static int SHROUD_get_from_object_long_long_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONGLONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of long long");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_long_long_numpy source
 
 ##### start get_from_object_long_numpy source
 
@@ -2215,16 +2215,16 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
 }
 ##### end get_from_object_uint8_t_numpy source
 
-##### start get_from_object_unsigned int_list source
+##### start get_from_object_unsigned_int_list source
 
-// helper get_from_object_unsigned int_list
+// helper get_from_object_unsigned_int_list
 // Convert PyObject to unsigned int pointer.
-static int SHROUD_get_from_object_unsigned int_list(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     unsigned int *in;
     Py_ssize_t size;
-    if (SHROUD_from_PyObject_unsigned int(obj, "in", &in, 
+    if (SHROUD_from_PyObject_unsigned_int(obj, "in", &in, 
         &size) == -1) {
         return 0;
     }
@@ -2233,13 +2233,13 @@ static int SHROUD_get_from_object_unsigned int_list(PyObject *obj,
     value->size = size;
     return 1;
 }
-##### end get_from_object_unsigned int_list source
+##### end get_from_object_unsigned_int_list source
 
-##### start get_from_object_unsigned int_numpy source
+##### start get_from_object_unsigned_int_numpy source
 
-// helper get_from_object_unsigned int_numpy
+// helper get_from_object_unsigned_int_numpy
 // Convert PyObject to unsigned int pointer.
-static int SHROUD_get_from_object_unsigned int_numpy(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
@@ -2256,18 +2256,38 @@ static int SHROUD_get_from_object_unsigned int_numpy(PyObject *obj,
         (array));
     return 1;
 }
-##### end get_from_object_unsigned int_numpy source
+##### end get_from_object_unsigned_int_numpy source
 
-##### start get_from_object_unsigned long long_list source
+##### start get_from_object_unsigned_long_list source
 
-// helper get_from_object_unsigned long long_list
+// helper get_from_object_unsigned_long_list
+// Convert PyObject to unsigned long pointer.
+static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    unsigned long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_unsigned_long(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<unsigned long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_unsigned_long_list source
+
+##### start get_from_object_unsigned_long_long_list source
+
+// helper get_from_object_unsigned_long_long_list
 // Convert PyObject to unsigned long long pointer.
-static int SHROUD_get_from_object_unsigned long long_list(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_long_long_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     unsigned long long *in;
     Py_ssize_t size;
-    if (SHROUD_from_PyObject_unsigned long long(obj, "in", &in, 
+    if (SHROUD_from_PyObject_unsigned_long_long(obj, "in", &in, 
         &size) == -1) {
         return 0;
     }
@@ -2276,13 +2296,13 @@ static int SHROUD_get_from_object_unsigned long long_list(PyObject *obj,
     value->size = size;
     return 1;
 }
-##### end get_from_object_unsigned long long_list source
+##### end get_from_object_unsigned_long_long_list source
 
-##### start get_from_object_unsigned long long_numpy source
+##### start get_from_object_unsigned_long_long_numpy source
 
-// helper get_from_object_unsigned long long_numpy
+// helper get_from_object_unsigned_long_long_numpy
 // Convert PyObject to unsigned long long pointer.
-static int SHROUD_get_from_object_unsigned long long_numpy
+static int SHROUD_get_from_object_unsigned_long_long_numpy
     (PyObject *obj, LIB_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_LONGLONG,
@@ -2299,33 +2319,13 @@ static int SHROUD_get_from_object_unsigned long long_numpy
         (array));
     return 1;
 }
-##### end get_from_object_unsigned long long_numpy source
+##### end get_from_object_unsigned_long_long_numpy source
 
-##### start get_from_object_unsigned long_list source
+##### start get_from_object_unsigned_long_numpy source
 
-// helper get_from_object_unsigned long_list
+// helper get_from_object_unsigned_long_numpy
 // Convert PyObject to unsigned long pointer.
-static int SHROUD_get_from_object_unsigned long_list(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    unsigned long *in;
-    Py_ssize_t size;
-    if (SHROUD_from_PyObject_unsigned long(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<unsigned long *>(in);
-    value->size = size;
-    return 1;
-}
-##### end get_from_object_unsigned long_list source
-
-##### start get_from_object_unsigned long_numpy source
-
-// helper get_from_object_unsigned long_numpy
-// Convert PyObject to unsigned long pointer.
-static int SHROUD_get_from_object_unsigned long_numpy(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_LONG,
@@ -2342,18 +2342,18 @@ static int SHROUD_get_from_object_unsigned long_numpy(PyObject *obj,
         (array));
     return 1;
 }
-##### end get_from_object_unsigned long_numpy source
+##### end get_from_object_unsigned_long_numpy source
 
-##### start get_from_object_unsigned short_list source
+##### start get_from_object_unsigned_short_list source
 
-// helper get_from_object_unsigned short_list
+// helper get_from_object_unsigned_short_list
 // Convert PyObject to unsigned short pointer.
-static int SHROUD_get_from_object_unsigned short_list(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     unsigned short *in;
     Py_ssize_t size;
-    if (SHROUD_from_PyObject_unsigned short(obj, "in", &in, 
+    if (SHROUD_from_PyObject_unsigned_short(obj, "in", &in, 
         &size) == -1) {
         return 0;
     }
@@ -2362,13 +2362,13 @@ static int SHROUD_get_from_object_unsigned short_list(PyObject *obj,
     value->size = size;
     return 1;
 }
-##### end get_from_object_unsigned short_list source
+##### end get_from_object_unsigned_short_list source
 
-##### start get_from_object_unsigned short_numpy source
+##### start get_from_object_unsigned_short_numpy source
 
-// helper get_from_object_unsigned short_numpy
+// helper get_from_object_unsigned_short_numpy
 // Convert PyObject to unsigned short pointer.
-static int SHROUD_get_from_object_unsigned short_numpy(PyObject *obj,
+static int SHROUD_get_from_object_unsigned_short_numpy(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
     PyObject *array = PyArray_FROM_OTF(obj, NPY_SHORT,
@@ -2385,7 +2385,7 @@ static int SHROUD_get_from_object_unsigned short_numpy(PyObject *obj,
         (array));
     return 1;
 }
-##### end get_from_object_unsigned short_numpy source
+##### end get_from_object_unsigned_short_numpy source
 
 ##### start to_PyList_char source
 
@@ -2597,11 +2597,11 @@ static PyObject *SHROUD_to_PyList_uint8_t(uint8_t *in, size_t size)
 }
 ##### end to_PyList_uint8_t source
 
-##### start to_PyList_unsigned int source
+##### start to_PyList_unsigned_int source
 
-// helper to_PyList_unsigned int
+// helper to_PyList_unsigned_int
 // Convert unsigned int pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_unsigned int
+static PyObject *SHROUD_to_PyList_unsigned_int
     (unsigned int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -2610,13 +2610,13 @@ static PyObject *SHROUD_to_PyList_unsigned int
     }
     return out;
 }
-##### end to_PyList_unsigned int source
+##### end to_PyList_unsigned_int source
 
-##### start to_PyList_unsigned long source
+##### start to_PyList_unsigned_long source
 
-// helper to_PyList_unsigned long
+// helper to_PyList_unsigned_long
 // Convert unsigned long pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_unsigned long
+static PyObject *SHROUD_to_PyList_unsigned_long
     (unsigned long *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -2625,13 +2625,13 @@ static PyObject *SHROUD_to_PyList_unsigned long
     }
     return out;
 }
-##### end to_PyList_unsigned long source
+##### end to_PyList_unsigned_long source
 
-##### start to_PyList_unsigned short source
+##### start to_PyList_unsigned_short source
 
-// helper to_PyList_unsigned short
+// helper to_PyList_unsigned_short
 // Convert unsigned short pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_unsigned short
+static PyObject *SHROUD_to_PyList_unsigned_short
     (unsigned short *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -2640,7 +2640,7 @@ static PyObject *SHROUD_to_PyList_unsigned short
     }
     return out;
 }
-##### end to_PyList_unsigned short source
+##### end to_PyList_unsigned_short source
 
 ##### start to_PyList_vector_double source
 
@@ -2759,10 +2759,10 @@ static PyObject *SHROUD_to_PyList_vector_long(std::vector<long> & in)
 }
 ##### end to_PyList_vector_long source
 
-##### start to_PyList_vector_long long source
+##### start to_PyList_vector_long_long source
 
-// helper to_PyList_vector_long long
-static PyObject *SHROUD_to_PyList_vector_long long
+// helper to_PyList_vector_long_long
+static PyObject *SHROUD_to_PyList_vector_long_long
     (std::vector<long long> & in)
 {
     size_t size = in.size();
@@ -2772,7 +2772,7 @@ static PyObject *SHROUD_to_PyList_vector_long long
     }
     return out;
 }
-##### end to_PyList_vector_long long source
+##### end to_PyList_vector_long_long source
 
 ##### start to_PyList_vector_short source
 
@@ -2863,10 +2863,10 @@ static PyObject *SHROUD_to_PyList_vector_uint8_t
 }
 ##### end to_PyList_vector_uint8_t source
 
-##### start to_PyList_vector_unsigned int source
+##### start to_PyList_vector_unsigned_int source
 
-// helper to_PyList_vector_unsigned int
-static PyObject *SHROUD_to_PyList_vector_unsigned int
+// helper to_PyList_vector_unsigned_int
+static PyObject *SHROUD_to_PyList_vector_unsigned_int
     (std::vector<unsigned int> & in)
 {
     size_t size = in.size();
@@ -2876,12 +2876,12 @@ static PyObject *SHROUD_to_PyList_vector_unsigned int
     }
     return out;
 }
-##### end to_PyList_vector_unsigned int source
+##### end to_PyList_vector_unsigned_int source
 
-##### start to_PyList_vector_unsigned long source
+##### start to_PyList_vector_unsigned_long source
 
-// helper to_PyList_vector_unsigned long
-static PyObject *SHROUD_to_PyList_vector_unsigned long
+// helper to_PyList_vector_unsigned_long
+static PyObject *SHROUD_to_PyList_vector_unsigned_long
     (std::vector<unsigned long> & in)
 {
     size_t size = in.size();
@@ -2891,12 +2891,12 @@ static PyObject *SHROUD_to_PyList_vector_unsigned long
     }
     return out;
 }
-##### end to_PyList_vector_unsigned long source
+##### end to_PyList_vector_unsigned_long source
 
-##### start to_PyList_vector_unsigned long long source
+##### start to_PyList_vector_unsigned_long_long source
 
-// helper to_PyList_vector_unsigned long long
-static PyObject *SHROUD_to_PyList_vector_unsigned long long
+// helper to_PyList_vector_unsigned_long_long
+static PyObject *SHROUD_to_PyList_vector_unsigned_long_long
     (std::vector<unsigned long long> & in)
 {
     size_t size = in.size();
@@ -2906,12 +2906,12 @@ static PyObject *SHROUD_to_PyList_vector_unsigned long long
     }
     return out;
 }
-##### end to_PyList_vector_unsigned long long source
+##### end to_PyList_vector_unsigned_long_long source
 
-##### start to_PyList_vector_unsigned short source
+##### start to_PyList_vector_unsigned_short source
 
-// helper to_PyList_vector_unsigned short
-static PyObject *SHROUD_to_PyList_vector_unsigned short
+// helper to_PyList_vector_unsigned_short
+static PyObject *SHROUD_to_PyList_vector_unsigned_short
     (std::vector<unsigned short> & in)
 {
     size_t size = in.size();
@@ -2921,7 +2921,7 @@ static PyObject *SHROUD_to_PyList_vector_unsigned short
     }
     return out;
 }
-##### end to_PyList_vector_unsigned short source
+##### end to_PyList_vector_unsigned_short source
 
 ##### start update_PyList_double source
 
@@ -3147,12 +3147,12 @@ static void SHROUD_update_PyList_uint8_t
 }
 ##### end update_PyList_uint8_t source
 
-##### start update_PyList_unsigned int source
+##### start update_PyList_unsigned_int source
 
-// helper update_PyList_unsigned int
+// helper update_PyList_unsigned_int
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned int
+static void SHROUD_update_PyList_unsigned_int
     (PyObject *out, unsigned int *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3161,14 +3161,14 @@ static void SHROUD_update_PyList_unsigned int
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_unsigned int source
+##### end update_PyList_unsigned_int source
 
-##### start update_PyList_unsigned long source
+##### start update_PyList_unsigned_long source
 
-// helper update_PyList_unsigned long
+// helper update_PyList_unsigned_long
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned long
+static void SHROUD_update_PyList_unsigned_long
     (PyObject *out, unsigned long *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3177,14 +3177,14 @@ static void SHROUD_update_PyList_unsigned long
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_unsigned long source
+##### end update_PyList_unsigned_long source
 
-##### start update_PyList_unsigned short source
+##### start update_PyList_unsigned_short source
 
-// helper update_PyList_unsigned short
+// helper update_PyList_unsigned_short
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned short
+static void SHROUD_update_PyList_unsigned_short
     (PyObject *out, unsigned short *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3193,14 +3193,14 @@ static void SHROUD_update_PyList_unsigned short
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_unsigned short source
+##### end update_PyList_unsigned_short source
 
 ##### start update_PyList_vector_double source
 
 // helper update_PyList_vector_double
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_double
+static void SHROUD_update_PyList_vector_double
     (PyObject *out, double *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3216,7 +3216,7 @@ static void SHROUD_update_PyList_double
 // helper update_PyList_vector_float
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_float
+static void SHROUD_update_PyList_vector_float
     (PyObject *out, float *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3232,7 +3232,7 @@ static void SHROUD_update_PyList_float
 // helper update_PyList_vector_int
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_int
+static void SHROUD_update_PyList_vector_int
     (PyObject *out, int *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3248,7 +3248,7 @@ static void SHROUD_update_PyList_int
 // helper update_PyList_vector_int16_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_int16_t
+static void SHROUD_update_PyList_vector_int16_t
     (PyObject *out, int16_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3264,7 +3264,7 @@ static void SHROUD_update_PyList_int16_t
 // helper update_PyList_vector_int32_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_int32_t
+static void SHROUD_update_PyList_vector_int32_t
     (PyObject *out, int32_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3280,7 +3280,7 @@ static void SHROUD_update_PyList_int32_t
 // helper update_PyList_vector_int64_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_int64_t
+static void SHROUD_update_PyList_vector_int64_t
     (PyObject *out, int64_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3296,7 +3296,7 @@ static void SHROUD_update_PyList_int64_t
 // helper update_PyList_vector_int8_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_int8_t
+static void SHROUD_update_PyList_vector_int8_t
     (PyObject *out, int8_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3312,7 +3312,7 @@ static void SHROUD_update_PyList_int8_t
 // helper update_PyList_vector_long
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_long
+static void SHROUD_update_PyList_vector_long
     (PyObject *out, long *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3323,12 +3323,12 @@ static void SHROUD_update_PyList_long
 }
 ##### end update_PyList_vector_long source
 
-##### start update_PyList_vector_long long source
+##### start update_PyList_vector_long_long source
 
-// helper update_PyList_vector_long long
+// helper update_PyList_vector_long_long
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_long long
+static void SHROUD_update_PyList_vector_long_long
     (PyObject *out, long long *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3337,14 +3337,14 @@ static void SHROUD_update_PyList_long long
         PyList_SET_ITEM(out, i, XXXPy_ctor);
     }
 }
-##### end update_PyList_vector_long long source
+##### end update_PyList_vector_long_long source
 
 ##### start update_PyList_vector_short source
 
 // helper update_PyList_vector_short
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_short
+static void SHROUD_update_PyList_vector_short
     (PyObject *out, short *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3360,7 +3360,7 @@ static void SHROUD_update_PyList_short
 // helper update_PyList_vector_size_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_size_t
+static void SHROUD_update_PyList_vector_size_t
     (PyObject *out, size_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3376,7 +3376,7 @@ static void SHROUD_update_PyList_size_t
 // helper update_PyList_vector_uint16_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_uint16_t
+static void SHROUD_update_PyList_vector_uint16_t
     (PyObject *out, uint16_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3392,7 +3392,7 @@ static void SHROUD_update_PyList_uint16_t
 // helper update_PyList_vector_uint32_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_uint32_t
+static void SHROUD_update_PyList_vector_uint32_t
     (PyObject *out, uint32_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3408,7 +3408,7 @@ static void SHROUD_update_PyList_uint32_t
 // helper update_PyList_vector_uint64_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_uint64_t
+static void SHROUD_update_PyList_vector_uint64_t
     (PyObject *out, uint64_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3424,7 +3424,7 @@ static void SHROUD_update_PyList_uint64_t
 // helper update_PyList_vector_uint8_t
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_uint8_t
+static void SHROUD_update_PyList_vector_uint8_t
     (PyObject *out, uint8_t *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3435,12 +3435,12 @@ static void SHROUD_update_PyList_uint8_t
 }
 ##### end update_PyList_vector_uint8_t source
 
-##### start update_PyList_vector_unsigned int source
+##### start update_PyList_vector_unsigned_int source
 
-// helper update_PyList_vector_unsigned int
+// helper update_PyList_vector_unsigned_int
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned int
+static void SHROUD_update_PyList_vector_unsigned_int
     (PyObject *out, unsigned int *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3449,14 +3449,14 @@ static void SHROUD_update_PyList_unsigned int
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_vector_unsigned int source
+##### end update_PyList_vector_unsigned_int source
 
-##### start update_PyList_vector_unsigned long source
+##### start update_PyList_vector_unsigned_long source
 
-// helper update_PyList_vector_unsigned long
+// helper update_PyList_vector_unsigned_long
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned long
+static void SHROUD_update_PyList_vector_unsigned_long
     (PyObject *out, unsigned long *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3465,14 +3465,14 @@ static void SHROUD_update_PyList_unsigned long
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_vector_unsigned long source
+##### end update_PyList_vector_unsigned_long source
 
-##### start update_PyList_vector_unsigned long long source
+##### start update_PyList_vector_unsigned_long_long source
 
-// helper update_PyList_vector_unsigned long long
+// helper update_PyList_vector_unsigned_long_long
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned long long
+static void SHROUD_update_PyList_vector_unsigned_long_long
     (PyObject *out, unsigned long long *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3481,14 +3481,14 @@ static void SHROUD_update_PyList_unsigned long long
         PyList_SET_ITEM(out, i, XXXPy_ctor);
     }
 }
-##### end update_PyList_vector_unsigned long long source
+##### end update_PyList_vector_unsigned_long_long source
 
-##### start update_PyList_vector_unsigned short source
+##### start update_PyList_vector_unsigned_short source
 
-// helper update_PyList_vector_unsigned short
+// helper update_PyList_vector_unsigned_short
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
-static void SHROUD_update_PyList_unsigned short
+static void SHROUD_update_PyList_vector_unsigned_short
     (PyObject *out, unsigned short *in, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
@@ -3497,4 +3497,4 @@ static void SHROUD_update_PyList_unsigned short
         PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
     }
 }
-##### end update_PyList_vector_unsigned short source
+##### end update_PyList_vector_unsigned_short source
