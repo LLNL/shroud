@@ -366,6 +366,1159 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
 }
 ##### end from_PyObject_char source
 
+##### start from_PyObject_double source
+
+// helper from_PyObject_double
+// Convert obj into an array of type double
+// Return -1 on error.
+static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
+    double **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    double *in = static_cast<double *>
+        (std::malloc(size * sizeof(double)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_double source
+
+##### start from_PyObject_float source
+
+// helper from_PyObject_float
+// Convert obj into an array of type float
+// Return -1 on error.
+static int SHROUD_from_PyObject_float(PyObject *obj, const char *name,
+    float **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    float *in = static_cast<float *>(std::malloc(size * sizeof(float)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be float", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_float source
+
+##### start from_PyObject_int source
+
+// helper from_PyObject_int
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
+    int **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_int source
+
+##### start from_PyObject_int16_t source
+
+// helper from_PyObject_int16_t
+// Convert obj into an array of type int16_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_int16_t(PyObject *obj, const char *name,
+    int16_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int16_t *in = static_cast<int16_t *>
+        (std::malloc(size * sizeof(int16_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_int16_t source
+
+##### start from_PyObject_int32_t source
+
+// helper from_PyObject_int32_t
+// Convert obj into an array of type int32_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_int32_t(PyObject *obj, const char *name,
+    int32_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int32_t *in = static_cast<int32_t *>
+        (std::malloc(size * sizeof(int32_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_int32_t source
+
+##### start from_PyObject_int64_t source
+
+// helper from_PyObject_int64_t
+// Convert obj into an array of type int64_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_int64_t(PyObject *obj, const char *name,
+    int64_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int64_t *in = static_cast<int64_t *>
+        (std::malloc(size * sizeof(int64_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_int64_t source
+
+##### start from_PyObject_int8_t source
+
+// helper from_PyObject_int8_t
+// Convert obj into an array of type int8_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_int8_t(PyObject *obj, const char *name,
+    int8_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int8_t *in = static_cast<int8_t *>
+        (std::malloc(size * sizeof(int8_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_int8_t source
+
+##### start from_PyObject_long source
+
+// helper from_PyObject_long
+// Convert obj into an array of type long
+// Return -1 on error.
+static int SHROUD_from_PyObject_long(PyObject *obj, const char *name,
+    long **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    long *in = static_cast<long *>(std::malloc(size * sizeof(long)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be long", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_long source
+
+##### start from_PyObject_short source
+
+// helper from_PyObject_short
+// Convert obj into an array of type short
+// Return -1 on error.
+static int SHROUD_from_PyObject_short(PyObject *obj, const char *name,
+    short **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    short *in = static_cast<short *>(std::malloc(size * sizeof(short)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be short", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_short source
+
+##### start from_PyObject_uint16_t source
+
+// helper from_PyObject_uint16_t
+// Convert obj into an array of type uint16_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_uint16_t(PyObject *obj,
+    const char *name, uint16_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint16_t *in = static_cast<uint16_t *>
+        (std::malloc(size * sizeof(uint16_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_uint16_t source
+
+##### start from_PyObject_uint32_t source
+
+// helper from_PyObject_uint32_t
+// Convert obj into an array of type uint32_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_uint32_t(PyObject *obj,
+    const char *name, uint32_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint32_t *in = static_cast<uint32_t *>
+        (std::malloc(size * sizeof(uint32_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_uint32_t source
+
+##### start from_PyObject_uint64_t source
+
+// helper from_PyObject_uint64_t
+// Convert obj into an array of type uint64_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_uint64_t(PyObject *obj,
+    const char *name, uint64_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint64_t *in = static_cast<uint64_t *>
+        (std::malloc(size * sizeof(uint64_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_uint64_t source
+
+##### start from_PyObject_uint8_t source
+
+// helper from_PyObject_uint8_t
+// Convert obj into an array of type uint8_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_uint8_t(PyObject *obj, const char *name,
+    uint8_t **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint8_t *in = static_cast<uint8_t *>
+        (std::malloc(size * sizeof(uint8_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_uint8_t source
+
+##### start from_PyObject_unsigned int source
+
+// helper from_PyObject_unsigned int
+// Convert obj into an array of type unsigned int
+// Return -1 on error.
+static int SHROUD_from_PyObject_unsigned int(PyObject *obj,
+    const char *name, unsigned int **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned int *in = static_cast<unsigned int *>
+        (std::malloc(size * sizeof(unsigned int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned int", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_unsigned int source
+
+##### start from_PyObject_unsigned long source
+
+// helper from_PyObject_unsigned long
+// Convert obj into an array of type unsigned long
+// Return -1 on error.
+static int SHROUD_from_PyObject_unsigned long(PyObject *obj,
+    const char *name, unsigned long **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned long *in = static_cast<unsigned long *>
+        (std::malloc(size * sizeof(unsigned long)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned long", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_unsigned long source
+
+##### start from_PyObject_unsigned short source
+
+// helper from_PyObject_unsigned short
+// Convert obj into an array of type unsigned short
+// Return -1 on error.
+static int SHROUD_from_PyObject_unsigned short(PyObject *obj,
+    const char *name, unsigned short **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned short *in = static_cast<unsigned short *>
+        (std::malloc(size * sizeof(unsigned short)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned short", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
+##### end from_PyObject_unsigned short source
+
+##### start from_PyObject_vector_double cxx_source
+
+// helper from_PyObject_vector_double
+// Convert obj into an array of type double
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_double(PyObject *obj,
+    const char *name, std::vector<double> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyFloat_AsDouble(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_double cxx_source
+
+##### start from_PyObject_vector_float cxx_source
+
+// helper from_PyObject_vector_float
+// Convert obj into an array of type float
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_float(PyObject *obj,
+    const char *name, std::vector<float> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyFloat_AsDouble(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be float", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_float cxx_source
+
+##### start from_PyObject_vector_int cxx_source
+
+// helper from_PyObject_vector_int
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int(PyObject *obj,
+    const char *name, std::vector<int> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_int cxx_source
+
+##### start from_PyObject_vector_int16_t cxx_source
+
+// helper from_PyObject_vector_int16_t
+// Convert obj into an array of type int16_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int16_t(PyObject *obj,
+    const char *name, std::vector<int16_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_int16_t cxx_source
+
+##### start from_PyObject_vector_int32_t cxx_source
+
+// helper from_PyObject_vector_int32_t
+// Convert obj into an array of type int32_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int32_t(PyObject *obj,
+    const char *name, std::vector<int32_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_int32_t cxx_source
+
+##### start from_PyObject_vector_int64_t cxx_source
+
+// helper from_PyObject_vector_int64_t
+// Convert obj into an array of type int64_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int64_t(PyObject *obj,
+    const char *name, std::vector<int64_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_int64_t cxx_source
+
+##### start from_PyObject_vector_int8_t cxx_source
+
+// helper from_PyObject_vector_int8_t
+// Convert obj into an array of type int8_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_int8_t(PyObject *obj,
+    const char *name, std::vector<int8_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_int8_t cxx_source
+
+##### start from_PyObject_vector_long cxx_source
+
+// helper from_PyObject_vector_long
+// Convert obj into an array of type long
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_long(PyObject *obj,
+    const char *name, std::vector<long> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be long", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_long cxx_source
+
+##### start from_PyObject_vector_long long cxx_source
+
+// helper from_PyObject_vector_long long
+// Convert obj into an array of type long long
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_long long(PyObject *obj,
+    const char *name, std::vector<long long> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(XXXPy_get);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be long long", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_long long cxx_source
+
+##### start from_PyObject_vector_short cxx_source
+
+// helper from_PyObject_vector_short
+// Convert obj into an array of type short
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_short(PyObject *obj,
+    const char *name, std::vector<short> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be short", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_short cxx_source
+
+##### start from_PyObject_vector_size_t cxx_source
+
+// helper from_PyObject_vector_size_t
+// Convert obj into an array of type size_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_size_t(PyObject *obj,
+    const char *name, std::vector<size_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(XXXPy_get);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be size_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_size_t cxx_source
+
+##### start from_PyObject_vector_uint16_t cxx_source
+
+// helper from_PyObject_vector_uint16_t
+// Convert obj into an array of type uint16_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_uint16_t(PyObject *obj,
+    const char *name, std::vector<uint16_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_uint16_t cxx_source
+
+##### start from_PyObject_vector_uint32_t cxx_source
+
+// helper from_PyObject_vector_uint32_t
+// Convert obj into an array of type uint32_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_uint32_t(PyObject *obj,
+    const char *name, std::vector<uint32_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_uint32_t cxx_source
+
+##### start from_PyObject_vector_uint64_t cxx_source
+
+// helper from_PyObject_vector_uint64_t
+// Convert obj into an array of type uint64_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_uint64_t(PyObject *obj,
+    const char *name, std::vector<uint64_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_uint64_t cxx_source
+
+##### start from_PyObject_vector_uint8_t cxx_source
+
+// helper from_PyObject_vector_uint8_t
+// Convert obj into an array of type uint8_t
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_uint8_t(PyObject *obj,
+    const char *name, std::vector<uint8_t> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_uint8_t cxx_source
+
+##### start from_PyObject_vector_unsigned int cxx_source
+
+// helper from_PyObject_vector_unsigned int
+// Convert obj into an array of type unsigned int
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_unsigned int(PyObject *obj,
+    const char *name, std::vector<unsigned int> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned int", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_unsigned int cxx_source
+
+##### start from_PyObject_vector_unsigned long cxx_source
+
+// helper from_PyObject_vector_unsigned long
+// Convert obj into an array of type unsigned long
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_unsigned long(PyObject *obj,
+    const char *name, std::vector<unsigned long> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned long", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_unsigned long cxx_source
+
+##### start from_PyObject_vector_unsigned long long cxx_source
+
+// helper from_PyObject_vector_unsigned long long
+// Convert obj into an array of type unsigned long long
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_unsigned long long(PyObject *obj,
+    const char *name, std::vector<unsigned long long> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(XXXPy_get);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned long long",
+                name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_unsigned long long cxx_source
+
+##### start from_PyObject_vector_unsigned short cxx_source
+
+// helper from_PyObject_vector_unsigned short
+// Convert obj into an array of type unsigned short
+// Return -1 on error.
+static int SHROUD_from_PyObject_vector_unsigned short(PyObject *obj,
+    const char *name, std::vector<unsigned short> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyInt_AsLong(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned short", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end from_PyObject_vector_unsigned short cxx_source
+
 ##### start get_from_object_char source
 
 // helper get_from_object_char
@@ -434,6 +1587,806 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
 }
 ##### end get_from_object_charptr source
 
+##### start get_from_object_double_list source
+
+// helper get_from_object_double_list
+// Convert PyObject to double pointer.
+static int SHROUD_get_from_object_double_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    double *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_double(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<double *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_double_list source
+
+##### start get_from_object_double_numpy source
+
+// helper get_from_object_double_numpy
+// Convert PyObject to double pointer.
+static int SHROUD_get_from_object_double_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of double");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_double_numpy source
+
+##### start get_from_object_float_list source
+
+// helper get_from_object_float_list
+// Convert PyObject to float pointer.
+static int SHROUD_get_from_object_float_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    float *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_float(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<float *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_float_list source
+
+##### start get_from_object_float_numpy source
+
+// helper get_from_object_float_numpy
+// Convert PyObject to float pointer.
+static int SHROUD_get_from_object_float_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_FLOAT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of float");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_float_numpy source
+
+##### start get_from_object_int16_t_list source
+
+// helper get_from_object_int16_t_list
+// Convert PyObject to int16_t pointer.
+static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    int16_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_int16_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int16_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_int16_t_list source
+
+##### start get_from_object_int16_t_numpy source
+
+// helper get_from_object_int16_t_numpy
+// Convert PyObject to int16_t pointer.
+static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT16,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of int16_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_int16_t_numpy source
+
+##### start get_from_object_int32_t_list source
+
+// helper get_from_object_int32_t_list
+// Convert PyObject to int32_t pointer.
+static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    int32_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_int32_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int32_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_int32_t_list source
+
+##### start get_from_object_int32_t_numpy source
+
+// helper get_from_object_int32_t_numpy
+// Convert PyObject to int32_t pointer.
+static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT32,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of int32_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_int32_t_numpy source
+
+##### start get_from_object_int64_t_list source
+
+// helper get_from_object_int64_t_list
+// Convert PyObject to int64_t pointer.
+static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    int64_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_int64_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int64_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_int64_t_list source
+
+##### start get_from_object_int64_t_numpy source
+
+// helper get_from_object_int64_t_numpy
+// Convert PyObject to int64_t pointer.
+static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT64,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of int64_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_int64_t_numpy source
+
+##### start get_from_object_int8_t_list source
+
+// helper get_from_object_int8_t_list
+// Convert PyObject to int8_t pointer.
+static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    int8_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_int8_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int8_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_int8_t_list source
+
+##### start get_from_object_int8_t_numpy source
+
+// helper get_from_object_int8_t_numpy
+// Convert PyObject to int8_t pointer.
+static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT8,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of int8_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_int8_t_numpy source
+
+##### start get_from_object_int_list source
+
+// helper get_from_object_int_list
+// Convert PyObject to int pointer.
+static int SHROUD_get_from_object_int_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    int *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_int(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_int_list source
+
+##### start get_from_object_int_numpy source
+
+// helper get_from_object_int_numpy
+// Convert PyObject to int pointer.
+static int SHROUD_get_from_object_int_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError, "must be a 1-D array of int");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_int_numpy source
+
+##### start get_from_object_long long_list source
+
+// helper get_from_object_long long_list
+// Convert PyObject to long long pointer.
+static int SHROUD_get_from_object_long long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    long long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_long long(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<long long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_long long_list source
+
+##### start get_from_object_long long_numpy source
+
+// helper get_from_object_long long_numpy
+// Convert PyObject to long long pointer.
+static int SHROUD_get_from_object_long long_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONGLONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of long long");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_long long_numpy source
+
+##### start get_from_object_long_list source
+
+// helper get_from_object_long_list
+// Convert PyObject to long pointer.
+static int SHROUD_get_from_object_long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_long(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_long_list source
+
+##### start get_from_object_long_numpy source
+
+// helper get_from_object_long_numpy
+// Convert PyObject to long pointer.
+static int SHROUD_get_from_object_long_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of long");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_long_numpy source
+
+##### start get_from_object_short_list source
+
+// helper get_from_object_short_list
+// Convert PyObject to short pointer.
+static int SHROUD_get_from_object_short_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    short *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_short(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<short *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_short_list source
+
+##### start get_from_object_short_numpy source
+
+// helper get_from_object_short_numpy
+// Convert PyObject to short pointer.
+static int SHROUD_get_from_object_short_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_SHORT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of short");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_short_numpy source
+
+##### start get_from_object_size_t_list source
+
+// helper get_from_object_size_t_list
+// Convert PyObject to size_t pointer.
+static int SHROUD_get_from_object_size_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    size_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_size_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<size_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_size_t_list source
+
+##### start get_from_object_size_t_numpy source
+
+// helper get_from_object_size_t_numpy
+// Convert PyObject to size_t pointer.
+static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, None, NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of size_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_size_t_numpy source
+
+##### start get_from_object_uint16_t_list source
+
+// helper get_from_object_uint16_t_list
+// Convert PyObject to uint16_t pointer.
+static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    uint16_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_uint16_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<uint16_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_uint16_t_list source
+
+##### start get_from_object_uint16_t_numpy source
+
+// helper get_from_object_uint16_t_numpy
+// Convert PyObject to uint16_t pointer.
+static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT16,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of uint16_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_uint16_t_numpy source
+
+##### start get_from_object_uint32_t_list source
+
+// helper get_from_object_uint32_t_list
+// Convert PyObject to uint32_t pointer.
+static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    uint32_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_uint32_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<uint32_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_uint32_t_list source
+
+##### start get_from_object_uint32_t_numpy source
+
+// helper get_from_object_uint32_t_numpy
+// Convert PyObject to uint32_t pointer.
+static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT32,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of uint32_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_uint32_t_numpy source
+
+##### start get_from_object_uint64_t_list source
+
+// helper get_from_object_uint64_t_list
+// Convert PyObject to uint64_t pointer.
+static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    uint64_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_uint64_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<uint64_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_uint64_t_list source
+
+##### start get_from_object_uint64_t_numpy source
+
+// helper get_from_object_uint64_t_numpy
+// Convert PyObject to uint64_t pointer.
+static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT64,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of uint64_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_uint64_t_numpy source
+
+##### start get_from_object_uint8_t_list source
+
+// helper get_from_object_uint8_t_list
+// Convert PyObject to uint8_t pointer.
+static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    uint8_t *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_uint8_t(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<uint8_t *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_uint8_t_list source
+
+##### start get_from_object_uint8_t_numpy source
+
+// helper get_from_object_uint8_t_numpy
+// Convert PyObject to uint8_t pointer.
+static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT8,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of uint8_t");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_uint8_t_numpy source
+
+##### start get_from_object_unsigned int_list source
+
+// helper get_from_object_unsigned int_list
+// Convert PyObject to unsigned int pointer.
+static int SHROUD_get_from_object_unsigned int_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    unsigned int *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_unsigned int(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<unsigned int *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_unsigned int_list source
+
+##### start get_from_object_unsigned int_numpy source
+
+// helper get_from_object_unsigned int_numpy
+// Convert PyObject to unsigned int pointer.
+static int SHROUD_get_from_object_unsigned int_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of unsigned int");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_unsigned int_numpy source
+
+##### start get_from_object_unsigned long long_list source
+
+// helper get_from_object_unsigned long long_list
+// Convert PyObject to unsigned long long pointer.
+static int SHROUD_get_from_object_unsigned long long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    unsigned long long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_unsigned long long(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<unsigned long long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_unsigned long long_list source
+
+##### start get_from_object_unsigned long long_numpy source
+
+// helper get_from_object_unsigned long long_numpy
+// Convert PyObject to unsigned long long pointer.
+static int SHROUD_get_from_object_unsigned long long_numpy
+    (PyObject *obj, LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONGLONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of unsigned long long");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_unsigned long long_numpy source
+
+##### start get_from_object_unsigned long_list source
+
+// helper get_from_object_unsigned long_list
+// Convert PyObject to unsigned long pointer.
+static int SHROUD_get_from_object_unsigned long_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    unsigned long *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_unsigned long(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<unsigned long *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_unsigned long_list source
+
+##### start get_from_object_unsigned long_numpy source
+
+// helper get_from_object_unsigned long_numpy
+// Convert PyObject to unsigned long pointer.
+static int SHROUD_get_from_object_unsigned long_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of unsigned long");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_unsigned long_numpy source
+
+##### start get_from_object_unsigned short_list source
+
+// helper get_from_object_unsigned short_list
+// Convert PyObject to unsigned short pointer.
+static int SHROUD_get_from_object_unsigned short_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    unsigned short *in;
+    Py_ssize_t size;
+    if (SHROUD_from_PyObject_unsigned short(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<unsigned short *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_unsigned short_list source
+
+##### start get_from_object_unsigned short_numpy source
+
+// helper get_from_object_unsigned short_numpy
+// Convert PyObject to unsigned short pointer.
+static int SHROUD_get_from_object_unsigned short_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_SHORT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of unsigned short");
+        return 0;
+    }
+    value->obj = array;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_unsigned short_numpy source
+
 ##### start to_PyList_char source
 
 // helper to_PyList_char
@@ -447,3 +2400,1101 @@ static PyObject *SHROUD_to_PyList_char(char * *in, size_t size)
     return out;
 }
 ##### end to_PyList_char source
+
+##### start to_PyList_double source
+
+// helper to_PyList_double
+// Convert double pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_double source
+
+##### start to_PyList_float source
+
+// helper to_PyList_float
+// Convert float pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_float(float *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_float source
+
+##### start to_PyList_int source
+
+// helper to_PyList_int
+// Convert int pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_int source
+
+##### start to_PyList_int16_t source
+
+// helper to_PyList_int16_t
+// Convert int16_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_int16_t(int16_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_int16_t source
+
+##### start to_PyList_int32_t source
+
+// helper to_PyList_int32_t
+// Convert int32_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_int32_t(int32_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_int32_t source
+
+##### start to_PyList_int64_t source
+
+// helper to_PyList_int64_t
+// Convert int64_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_int64_t(int64_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_int64_t source
+
+##### start to_PyList_int8_t source
+
+// helper to_PyList_int8_t
+// Convert int8_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_int8_t(int8_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_int8_t source
+
+##### start to_PyList_long source
+
+// helper to_PyList_long
+// Convert long pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_long(long *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_long source
+
+##### start to_PyList_short source
+
+// helper to_PyList_short
+// Convert short pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_short(short *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_short source
+
+##### start to_PyList_size_t source
+
+// helper to_PyList_size_t
+// Convert size_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_size_t(size_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromSize_t(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_size_t source
+
+##### start to_PyList_uint16_t source
+
+// helper to_PyList_uint16_t
+// Convert uint16_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_uint16_t(uint16_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_uint16_t source
+
+##### start to_PyList_uint32_t source
+
+// helper to_PyList_uint32_t
+// Convert uint32_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_uint32_t(uint32_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_uint32_t source
+
+##### start to_PyList_uint64_t source
+
+// helper to_PyList_uint64_t
+// Convert uint64_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_uint64_t(uint64_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_uint64_t source
+
+##### start to_PyList_uint8_t source
+
+// helper to_PyList_uint8_t
+// Convert uint8_t pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_uint8_t(uint8_t *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_uint8_t source
+
+##### start to_PyList_unsigned int source
+
+// helper to_PyList_unsigned int
+// Convert unsigned int pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_unsigned int
+    (unsigned int *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_unsigned int source
+
+##### start to_PyList_unsigned long source
+
+// helper to_PyList_unsigned long
+// Convert unsigned long pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_unsigned long
+    (unsigned long *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_unsigned long source
+
+##### start to_PyList_unsigned short source
+
+// helper to_PyList_unsigned short
+// Convert unsigned short pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_unsigned short
+    (unsigned short *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_unsigned short source
+
+##### start to_PyList_vector_double source
+
+// helper to_PyList_vector_double
+static PyObject *SHROUD_to_PyList_vector_double
+    (std::vector<double> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_double source
+
+##### start to_PyList_vector_float source
+
+// helper to_PyList_vector_float
+static PyObject *SHROUD_to_PyList_vector_float(std::vector<float> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_float source
+
+##### start to_PyList_vector_int source
+
+// helper to_PyList_vector_int
+static PyObject *SHROUD_to_PyList_vector_int(std::vector<int> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_int source
+
+##### start to_PyList_vector_int16_t source
+
+// helper to_PyList_vector_int16_t
+static PyObject *SHROUD_to_PyList_vector_int16_t
+    (std::vector<int16_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_int16_t source
+
+##### start to_PyList_vector_int32_t source
+
+// helper to_PyList_vector_int32_t
+static PyObject *SHROUD_to_PyList_vector_int32_t
+    (std::vector<int32_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_int32_t source
+
+##### start to_PyList_vector_int64_t source
+
+// helper to_PyList_vector_int64_t
+static PyObject *SHROUD_to_PyList_vector_int64_t
+    (std::vector<int64_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_int64_t source
+
+##### start to_PyList_vector_int8_t source
+
+// helper to_PyList_vector_int8_t
+static PyObject *SHROUD_to_PyList_vector_int8_t
+    (std::vector<int8_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_int8_t source
+
+##### start to_PyList_vector_long source
+
+// helper to_PyList_vector_long
+static PyObject *SHROUD_to_PyList_vector_long(std::vector<long> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_long source
+
+##### start to_PyList_vector_long long source
+
+// helper to_PyList_vector_long long
+static PyObject *SHROUD_to_PyList_vector_long long
+    (std::vector<long long> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, XXXPy_ctor);
+    }
+    return out;
+}
+##### end to_PyList_vector_long long source
+
+##### start to_PyList_vector_short source
+
+// helper to_PyList_vector_short
+static PyObject *SHROUD_to_PyList_vector_short(std::vector<short> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_short source
+
+##### start to_PyList_vector_size_t source
+
+// helper to_PyList_vector_size_t
+static PyObject *SHROUD_to_PyList_vector_size_t
+    (std::vector<size_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromSize_t(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_size_t source
+
+##### start to_PyList_vector_uint16_t source
+
+// helper to_PyList_vector_uint16_t
+static PyObject *SHROUD_to_PyList_vector_uint16_t
+    (std::vector<uint16_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_uint16_t source
+
+##### start to_PyList_vector_uint32_t source
+
+// helper to_PyList_vector_uint32_t
+static PyObject *SHROUD_to_PyList_vector_uint32_t
+    (std::vector<uint32_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_uint32_t source
+
+##### start to_PyList_vector_uint64_t source
+
+// helper to_PyList_vector_uint64_t
+static PyObject *SHROUD_to_PyList_vector_uint64_t
+    (std::vector<uint64_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_uint64_t source
+
+##### start to_PyList_vector_uint8_t source
+
+// helper to_PyList_vector_uint8_t
+static PyObject *SHROUD_to_PyList_vector_uint8_t
+    (std::vector<uint8_t> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_uint8_t source
+
+##### start to_PyList_vector_unsigned int source
+
+// helper to_PyList_vector_unsigned int
+static PyObject *SHROUD_to_PyList_vector_unsigned int
+    (std::vector<unsigned int> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_unsigned int source
+
+##### start to_PyList_vector_unsigned long source
+
+// helper to_PyList_vector_unsigned long
+static PyObject *SHROUD_to_PyList_vector_unsigned long
+    (std::vector<unsigned long> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_unsigned long source
+
+##### start to_PyList_vector_unsigned long long source
+
+// helper to_PyList_vector_unsigned long long
+static PyObject *SHROUD_to_PyList_vector_unsigned long long
+    (std::vector<unsigned long long> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, XXXPy_ctor);
+    }
+    return out;
+}
+##### end to_PyList_vector_unsigned long long source
+
+##### start to_PyList_vector_unsigned short source
+
+// helper to_PyList_vector_unsigned short
+static PyObject *SHROUD_to_PyList_vector_unsigned short
+    (std::vector<unsigned short> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_unsigned short source
+
+##### start update_PyList_double source
+
+// helper update_PyList_double
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_double
+    (PyObject *out, double *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_double source
+
+##### start update_PyList_float source
+
+// helper update_PyList_float
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_float
+    (PyObject *out, float *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_float source
+
+##### start update_PyList_int source
+
+// helper update_PyList_int
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int
+    (PyObject *out, int *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_int source
+
+##### start update_PyList_int16_t source
+
+// helper update_PyList_int16_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int16_t
+    (PyObject *out, int16_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_int16_t source
+
+##### start update_PyList_int32_t source
+
+// helper update_PyList_int32_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int32_t
+    (PyObject *out, int32_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_int32_t source
+
+##### start update_PyList_int64_t source
+
+// helper update_PyList_int64_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int64_t
+    (PyObject *out, int64_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_int64_t source
+
+##### start update_PyList_int8_t source
+
+// helper update_PyList_int8_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int8_t
+    (PyObject *out, int8_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_int8_t source
+
+##### start update_PyList_long source
+
+// helper update_PyList_long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_long
+    (PyObject *out, long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_long source
+
+##### start update_PyList_short source
+
+// helper update_PyList_short
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_short
+    (PyObject *out, short *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_short source
+
+##### start update_PyList_size_t source
+
+// helper update_PyList_size_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_size_t
+    (PyObject *out, size_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromSize_t(in[i]));
+    }
+}
+##### end update_PyList_size_t source
+
+##### start update_PyList_uint16_t source
+
+// helper update_PyList_uint16_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint16_t
+    (PyObject *out, uint16_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_uint16_t source
+
+##### start update_PyList_uint32_t source
+
+// helper update_PyList_uint32_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint32_t
+    (PyObject *out, uint32_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_uint32_t source
+
+##### start update_PyList_uint64_t source
+
+// helper update_PyList_uint64_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint64_t
+    (PyObject *out, uint64_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_uint64_t source
+
+##### start update_PyList_uint8_t source
+
+// helper update_PyList_uint8_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint8_t
+    (PyObject *out, uint8_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_uint8_t source
+
+##### start update_PyList_unsigned int source
+
+// helper update_PyList_unsigned int
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned int
+    (PyObject *out, unsigned int *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_unsigned int source
+
+##### start update_PyList_unsigned long source
+
+// helper update_PyList_unsigned long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned long
+    (PyObject *out, unsigned long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_unsigned long source
+
+##### start update_PyList_unsigned short source
+
+// helper update_PyList_unsigned short
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned short
+    (PyObject *out, unsigned short *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_unsigned short source
+
+##### start update_PyList_vector_double source
+
+// helper update_PyList_vector_double
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_double
+    (PyObject *out, double *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_vector_double source
+
+##### start update_PyList_vector_float source
+
+// helper update_PyList_vector_float
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_float
+    (PyObject *out, float *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_vector_float source
+
+##### start update_PyList_vector_int source
+
+// helper update_PyList_vector_int
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int
+    (PyObject *out, int *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_int source
+
+##### start update_PyList_vector_int16_t source
+
+// helper update_PyList_vector_int16_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int16_t
+    (PyObject *out, int16_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_int16_t source
+
+##### start update_PyList_vector_int32_t source
+
+// helper update_PyList_vector_int32_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int32_t
+    (PyObject *out, int32_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_int32_t source
+
+##### start update_PyList_vector_int64_t source
+
+// helper update_PyList_vector_int64_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int64_t
+    (PyObject *out, int64_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_int64_t source
+
+##### start update_PyList_vector_int8_t source
+
+// helper update_PyList_vector_int8_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_int8_t
+    (PyObject *out, int8_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_int8_t source
+
+##### start update_PyList_vector_long source
+
+// helper update_PyList_vector_long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_long
+    (PyObject *out, long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_long source
+
+##### start update_PyList_vector_long long source
+
+// helper update_PyList_vector_long long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_long long
+    (PyObject *out, long long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, XXXPy_ctor);
+    }
+}
+##### end update_PyList_vector_long long source
+
+##### start update_PyList_vector_short source
+
+// helper update_PyList_vector_short
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_short
+    (PyObject *out, short *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_short source
+
+##### start update_PyList_vector_size_t source
+
+// helper update_PyList_vector_size_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_size_t
+    (PyObject *out, size_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromSize_t(in[i]));
+    }
+}
+##### end update_PyList_vector_size_t source
+
+##### start update_PyList_vector_uint16_t source
+
+// helper update_PyList_vector_uint16_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint16_t
+    (PyObject *out, uint16_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_uint16_t source
+
+##### start update_PyList_vector_uint32_t source
+
+// helper update_PyList_vector_uint32_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint32_t
+    (PyObject *out, uint32_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_uint32_t source
+
+##### start update_PyList_vector_uint64_t source
+
+// helper update_PyList_vector_uint64_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint64_t
+    (PyObject *out, uint64_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_uint64_t source
+
+##### start update_PyList_vector_uint8_t source
+
+// helper update_PyList_vector_uint8_t
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_uint8_t
+    (PyObject *out, uint8_t *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_uint8_t source
+
+##### start update_PyList_vector_unsigned int source
+
+// helper update_PyList_vector_unsigned int
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned int
+    (PyObject *out, unsigned int *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_unsigned int source
+
+##### start update_PyList_vector_unsigned long source
+
+// helper update_PyList_vector_unsigned long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned long
+    (PyObject *out, unsigned long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_unsigned long source
+
+##### start update_PyList_vector_unsigned long long source
+
+// helper update_PyList_vector_unsigned long long
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned long long
+    (PyObject *out, unsigned long long *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, XXXPy_ctor);
+    }
+}
+##### end update_PyList_vector_unsigned long long source
+
+##### start update_PyList_vector_unsigned short source
+
+// helper update_PyList_vector_unsigned short
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_unsigned short
+    (PyObject *out, unsigned short *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+}
+##### end update_PyList_vector_unsigned short source

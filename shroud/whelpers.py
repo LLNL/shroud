@@ -575,6 +575,8 @@ def add_all_copy_array_helpers():
     for ntypemap in typemap.get_global_types().values():
         if ntypemap.sgroup == "native":
             add_copy_array_helper_from_typemap(fmt, ntypemap)
+            add_to_PyList_helper(fmt, ntypemap)
+            add_to_PyList_helper_vector(fmt, ntypemap)
 
 def add_copy_array_helper_from_typemap(fmt, ntypemap):
     """Create Fortran interface to helper function
@@ -618,19 +620,14 @@ integer(C_SIZE_T), value :: c_var_size
         FHelpers[name] = helper
     return name
 
-def add_to_PyList_helper(arg):
+def add_to_PyList_helper(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
 
     Args:
-        arg - declast.Declaration
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    ntypemap = arg.typemap
-    if ntypemap.base == "vector":
-        add_to_PyList_helper_vector(arg)
-        return
-
-    fmt = util.Scope(_newlibrary.fmtdict)
     fmt.c_type = ntypemap.c_type
     
     ########################################
@@ -834,24 +831,23 @@ return 1;
     )
     return helper
 
-def add_to_PyList_helper_vector(arg):
+def add_to_PyList_helper_vector(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
 
     Args:
-        arg -
+        fmt      - util.Scope
+        ntypemap - typemap.Typemap
     """
-    ntypemap = arg.typemap
-    if ntypemap.base == "vector":
-        ntypemap = arg.template_arguments[0].typemap
-
-    fmt = util.Scope(_newlibrary.fmtdict)
     fmt.c_type = ntypemap.c_type
     
     # Used with intent(out)
     name = "to_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        ctor = ntypemap.PY_ctor
+        if ctor is None:
+            ctor = "XXXPy_ctor"
+        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnamefunc = wformat("{PY_helper_prefix}to_PyList_vector_{c_type}", fmt)
         fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
@@ -878,7 +874,10 @@ return out;
     # Used with intent(inout)
     name = "update_PyList_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        ctor = ntypemap.PY_ctor
+        if ctor is None:
+            ctor = "XXXPy_ctor"
+        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
         fmt.hname = name
         fmt.hnamefunc = wformat(
             "{PY_helper_prefix}update_PyList_{c_type}", fmt)
@@ -912,7 +911,10 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_vector_" + ntypemap.c_type
     if name not in CHelpers:
-        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        get = ntypemap.PY_get
+        if get is None:
+            get = "XXXPy_get"
+        fmt.Py_get = get.format(py_var="item")
         fmt.hname = name
         fmt.hnamefunc= wformat(
             "{PY_helper_prefix}from_PyObject_vector_{c_type}", fmt)
