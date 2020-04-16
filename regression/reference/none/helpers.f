@@ -1,4 +1,79 @@
 
+##### start ShroudTypeDefines derived_type
+
+! helper ShroudTypeDefines
+! Shroud type defines from helper ShroudTypeDefines
+integer, parameter, private :: &
+    SH_TYPE_SIGNED_CHAR= 1, &
+    SH_TYPE_SHORT      = 2, &
+    SH_TYPE_INT        = 3, &
+    SH_TYPE_LONG       = 4, &
+    SH_TYPE_LONG_LONG  = 5, &
+    SH_TYPE_SIZE_T     = 6, &
+    SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+    SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+    SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+    SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+    SH_TYPE_INT8_T    =  7, &
+    SH_TYPE_INT16_T   =  8, &
+    SH_TYPE_INT32_T   =  9, &
+    SH_TYPE_INT64_T   = 10, &
+    SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+    SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+    SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+    SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+    SH_TYPE_FLOAT       = 22, &
+    SH_TYPE_DOUBLE      = 23, &
+    SH_TYPE_LONG_DOUBLE = 24, &
+    SH_TYPE_FLOAT_COMPLEX      = 25, &
+    SH_TYPE_DOUBLE_COMPLEX     = 26, &
+    SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+    SH_TYPE_BOOL      = 28, &
+    SH_TYPE_CHAR      = 29, &
+    SH_TYPE_CPTR      = 30, &
+    SH_TYPE_STRUCT    = 31, &
+    SH_TYPE_OTHER     = 32
+##### end ShroudTypeDefines derived_type
+
+##### start array_context derived_type
+
+! helper array_context
+type, bind(C) :: SHROUD_array
+    ! address of C++ memory
+    type(SHROUD_capsule_data) :: cxx
+    ! address of data in cxx
+    type(C_PTR) :: base_addr = C_NULL_PTR
+    ! type of element
+    integer(C_INT) :: type
+    ! bytes-per-item or character len of data in cxx
+    integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+    ! size of data in cxx
+    integer(C_SIZE_T) :: size = 0_C_SIZE_T
+    ! number of dimensions
+    integer(C_INT) :: rank = -1
+end type SHROUD_array
+##### end array_context derived_type
+
+##### start capsule_data_helper derived_type
+
+! helper capsule_data_helper
+type, bind(C) :: SHROUD_capsule_data
+    type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+    integer(C_INT) :: idtor = 0       ! index of destructor
+end type SHROUD_capsule_data
+##### end capsule_data_helper derived_type
+
+##### start capsule_helper derived_type
+
+! helper capsule_helper
+type SHROUD_capsule
+    private
+    type(SHROUD_capsule_data) :: mem
+contains
+    final :: SHROUD_capsule_final
+end type SHROUD_capsule
+##### end capsule_helper derived_type
+
 ##### start capsule_helper source
 
 ! helper capsule_helper

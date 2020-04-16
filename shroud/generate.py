@@ -431,10 +431,7 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
-        literalinclude2 = newlibrary.options.literalinclude2
-        whelpers.add_external_helpers()
-        whelpers.add_capsule_helper()
-        whelpers.add_all_copy_array_helpers()
+        whelpers.add_all_helpers()
 
         self.function_index = newlibrary.function_index
 

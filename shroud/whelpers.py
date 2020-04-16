@@ -117,6 +117,19 @@ extern "C" {
 /* *INDENT-ON* */"""
 
 
+def add_all_helpers():
+    """Create helper functions.
+    Create helpers for all types.
+    """
+    fmt = util.Scope(_newlibrary.fmtdict)
+    add_external_helpers()
+    add_capsule_helper()
+    for ntypemap in typemap.get_global_types().values():
+        if ntypemap.sgroup == "native":
+            add_copy_array_helper(fmt, ntypemap)
+            add_to_PyList_helper(fmt, ntypemap)
+            add_to_PyList_helper_vector(fmt, ntypemap)
+
 def add_external_helpers():
     """Create helper which have generated names.
     For example, code uses format entries
@@ -197,7 +210,6 @@ if (data->elem_len < n) n = data->elem_len;
             fmt,
         ),
     )
-    ##########
 
     # Deal with allocatable character
     FHelpers[name] = dict(
@@ -415,10 +427,6 @@ def add_capsule_helper():
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
-
-    Args:
-        fmt - format dictionary from the library.
-        literalinclude -
     """
     fmtin = _newlibrary.fmtdict
     literalinclude = _newlibrary.options.literalinclude2
@@ -567,16 +575,6 @@ integer(C_INT) :: rank = -1
         )
         FHelpers[name] = helper
 
-
-def add_all_copy_array_helpers():
-    """Create helpers which are type based.
-    """
-    fmt = util.Scope(_newlibrary.fmtdict)
-    for ntypemap in typemap.get_global_types().values():
-        if ntypemap.sgroup == "native":
-            add_copy_array_helper(fmt, ntypemap)
-            add_to_PyList_helper(fmt, ntypemap)
-            add_to_PyList_helper_vector(fmt, ntypemap)
 
 def add_copy_array_helper(fmt, ntypemap):
     """Create Fortran interface to helper function
@@ -1285,7 +1283,7 @@ def write_c_helpers(fp):
     wrapper.write_lines(fp, output)
 
 def write_f_helpers(fp):
-    output = gather_helpers(FHelpers, ["interface", "source"])
+    output = gather_helpers(FHelpers, ["derived_type", "interface", "source"])
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
