@@ -38,11 +38,14 @@ Running a single test
 Running a single Python test.
 
     # Use the Python in the virtual environment
-    setenv PYTHONEXE .../build/temp.linux-x86_64-2.7/venv/bin/python
+    setenv WORK  .../build/temp.linux-x86_64-2.7
+    setenv PYTHONEXE $WORK/venv/bin/python
+
     cd tests
     $PYTHONEXE -m unittest test_ast.CheckAst.test_d_generate1
 
-    setenv PYTHONPATH /g/g14/taylor/shroud/shroud-work/build/temp.linux-x86_64-2.7/run/struct-class-c/python
+    # Run a regression test
+    setenv PYTHONPATH $WORK/run/struct-class-c/python
     cd regression/run/struct-class-c/python
     $PYTHONEXE -m unittest test.Struct.test_Arrays1
 

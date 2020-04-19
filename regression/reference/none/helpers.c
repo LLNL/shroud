@@ -364,6 +364,17 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 static int SHROUD_fill_from_PyObject_double(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
 {
+    double value = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -374,7 +385,7 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
@@ -400,6 +411,17 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
 static int SHROUD_fill_from_PyObject_float(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
 {
+    float value = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -410,7 +432,7 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
@@ -435,6 +457,17 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
 {
+    int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -445,7 +478,7 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -470,6 +503,17 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
 {
+    int16_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -480,7 +524,7 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -506,6 +550,17 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
 {
+    int32_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -516,7 +571,7 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -542,6 +597,17 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
 {
+    int64_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -552,7 +618,7 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -578,6 +644,17 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
 {
+    int8_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -588,7 +665,7 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -614,6 +691,17 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_long(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
 {
+    long value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -624,7 +712,7 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -649,6 +737,17 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
 static int SHROUD_fill_from_PyObject_short(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
 {
+    short value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -659,7 +758,7 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -684,6 +783,17 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
 {
+    uint16_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -694,7 +804,7 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -720,6 +830,17 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
 {
+    uint32_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -730,7 +851,7 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -756,6 +877,17 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
 {
+    uint64_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -766,7 +898,7 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -792,6 +924,17 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
 {
+    uint8_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -802,7 +945,7 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -828,6 +971,17 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
 {
+    unsigned int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -838,7 +992,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -864,6 +1018,17 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
 {
+    unsigned long value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -874,7 +1039,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
@@ -900,6 +1065,17 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
 {
+    unsigned short value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -910,7 +1086,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {

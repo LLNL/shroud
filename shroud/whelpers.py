@@ -46,7 +46,9 @@ Helper functions for C and Fortran wrappers.
  interface = code for INTERFACE
  source    = code for CONTAINS
 
-
+Python helpers
+Most C API functions also return an error indicator, usually NULL if
+they are supposed to return a pointer, or -1 if they return an integer.
 
 """
 
@@ -716,6 +718,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.hname = name
         fmt.fcn_suffix = flat_name
         fmt.fcn_type = ntypemap.c_type
+        fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         CHelpers[name] = fill_from_PyObject(fmt)
 
@@ -780,6 +783,8 @@ return 1;
 
 def fill_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to existing C array.
+
+    If passed a scalar, broadcast to array.
     """
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}fill_from_PyObject_{fcn_suffix}", fmt)
@@ -797,6 +802,17 @@ def fill_from_PyObject(fmt):
 // it returns false and raises the appropriate exception.
 {PY_helper_static}{hnameproto}
 {{+
+{c_type} value = {Py_get_obj};
+if (!PyErr_Occurred()) {{+
+// Broadcast scalar.
+for (Py_ssize_t i = 0; i < insize; ++i) {{+
+in[i] = value;
+-}}
+return 1;
+-}}
+PyErr_Clear();
+
+// Look for sequence.
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
 PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
@@ -806,7 +822,7 @@ Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 if (size > insize) {{+
 size = insize;
 -}}
-for (Py_ssize_t i = 0; i < size; i++) {{+
+for (Py_ssize_t i = 0; i < size; ++i) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};
 if (PyErr_Occurred()) {{+

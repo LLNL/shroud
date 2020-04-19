@@ -217,11 +217,20 @@ class Struct(unittest.TestCase):
     def test_Arrays1(self):
         # getter and setter
         # native creates NumPy arrays
-        s = cstruct.Arrays1()
+        
+        # name - None makes a blank string.
+        # count - broadcast initial scalar.
+        s = cstruct.Arrays1(name=None, count=0)
+        count = s.count
+        self.assertIsInstance(count, np.ndarray)
+        self.assertEqual('int32', count.dtype.name)
+        self.assertEqual(10, count.size)
+        self.assertTrue(all(np.equal(count, 0)))
 
-        # None makes a blank string.
-        s.name = None
         self.assertEqual('', s.name)
+
+        #####
+        s = cstruct.Arrays1()
 
         s.name = "dog"
         name = s.name
@@ -242,6 +251,9 @@ class Struct(unittest.TestCase):
 #        ref = np.array([10,20,30,40,50], dtype=np.intc)
         
         # XXX - Test assigning too few items.
+
+        # No-op
+        s.count = []
         
         with self.assertRaises(TypeError) as context:
             s.count = None
@@ -250,6 +262,22 @@ class Struct(unittest.TestCase):
         with self.assertRaises(TypeError) as context:
             s.name = 1
         self.assertTrue("argument should be string" in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            s.count = [0, 3., "four"]
+        self.assertTrue("argument 'count', index 2 must be int"
+                        in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            s = cstruct.Arrays1(count="one")
+        self.assertTrue("argument 'count', index 0 must be int"
+                        in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s = cstruct.Arrays1(name=10)
+        self.assertTrue("argument should be string or None, not int"
+                        in str(context.exception))
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

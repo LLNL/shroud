@@ -335,3 +335,8 @@ NumPy array contains a pointer to the C++ memory.
 
 The descriptor is created in the wrapper
 :ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
+
+
+.. XXX array members in struct
+   char name[20]    s.name = None   will add set to '\0'
+   int  count[10]   s.count = 0     will broadcast

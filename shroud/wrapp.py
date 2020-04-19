@@ -4353,11 +4353,13 @@ py_statements = [
         parse_args=["&{py_var}"],
         post_call=[
             "if ({py_var} != {nullptr}) {{+",
-            "{hnamefunc0}(\t{py_var},\t \"{c_var}\","
-            "\t SH_obj->{field_name},\t {field_size});",
+            "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\","
+            "\t SH_obj->{field_name},\t {field_size}) == 0)",
+            "+goto fail;-",
             "self->{PY_member_object} = {nullptr};",
             "-}}",
         ],
+        goto_fail=True,
     ),
     
     dict(

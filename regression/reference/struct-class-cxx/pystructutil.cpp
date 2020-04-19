@@ -93,6 +93,17 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
 int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
     int *in, Py_ssize_t insize)
 {
+    int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 1;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
@@ -103,7 +114,7 @@ int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
     if (size > insize) {
         size = insize;
     }
-    for (Py_ssize_t i = 0; i < size; i++) {
+    for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
