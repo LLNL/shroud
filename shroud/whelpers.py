@@ -3,8 +3,7 @@
 # See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
-"""
-Helper functions for C and Fortran wrappers.
+"""Helper functions for C and Fortran wrappers.
 
 
  C helper functions which may be added to a implementation file.
@@ -49,6 +48,10 @@ Helper functions for C and Fortran wrappers.
 Python helpers
 Most C API functions also return an error indicator, usually NULL if
 they are supposed to return a pointer, or -1 if they return an integer.
+
+O& converter - status = converter(PyObject *object, void *address);
+The returned status should be 1 for a successful conversion and 0 if
+the conversion has failed.
 
 """
 
@@ -293,14 +296,14 @@ array->rank = 1;
         source=wformat("""
 // helper {hname}
 // Copy PyObject to char array.
-// Returns true on success.
+// Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
 {PY_typedef_converter} value;
 int i = {PY_helper_prefix}get_from_object_char(obj, &value);
 if (i == 0) {{+
 Py_DECREF(obj);
-return 0;
+return -1;
 -}}
 if (value.data == {nullptr}) {{+
 in[0] = '\\0';
@@ -308,7 +311,7 @@ in[0] = '\\0';
 {stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
 Py_DECREF(value.obj);
 -}}
-return 1;
+return 0;
 -}}""", fmt),
     )
 
@@ -797,9 +800,7 @@ def fill_from_PyObject(fmt):
                 """
 // helper {hname}
 // Convert obj into an array of type {c_type}
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
 {c_type} value = {Py_get_obj};
@@ -808,7 +809,7 @@ if (!PyErr_Occurred()) {{+
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
 in[i] = value;
 -}}
-return 1;
+return 0;
 -}}
 PyErr_Clear();
 
@@ -816,7 +817,7 @@ PyErr_Clear();
 PyObject *seq = PySequence_Fast(obj, "holder");
 if (seq == NULL) {{+
 PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return 0;
+return -1;
 -}}
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 if (size > insize) {{+
@@ -828,11 +829,11 @@ in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
-return 0;
+return -1;
 -}}
 -}}
 Py_DECREF(seq);
-return 1;
+return 0;
 -}}""", fmt),
         )
     return helper

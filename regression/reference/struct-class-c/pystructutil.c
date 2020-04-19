@@ -66,7 +66,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 
 // helper fill_from_PyObject_char
 // Copy PyObject to char array.
-// Returns true on success.
+// Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     char *in, Py_ssize_t insize)
 {
@@ -74,7 +74,7 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     int i = STR_SHROUD_get_from_object_char(obj, &value);
     if (i == 0) {
         Py_DECREF(obj);
-        return 0;
+        return -1;
     }
     if (value.data == NULL) {
         in[0] = '\0';
@@ -82,14 +82,12 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
         strncpy(in, (char *) value.data, insize);
         Py_DECREF(value.obj);
     }
-    return 1;
+    return 0;
 }
 
 // helper fill_from_PyObject_int
 // Convert obj into an array of type int
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
     int *in, Py_ssize_t insize)
 {
@@ -99,7 +97,7 @@ int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -108,7 +106,7 @@ int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -121,11 +119,11 @@ int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int", name, (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 
 // helper from_PyObject_char

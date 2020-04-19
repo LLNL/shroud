@@ -4354,7 +4354,7 @@ py_statements = [
         post_call=[
             "if ({py_var} != {nullptr}) {{+",
             "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\","
-            "\t SH_obj->{field_name},\t {field_size}) == 0)",
+            "\t SH_obj->{field_name},\t {field_size}) == -1)",
             "+goto fail;-",
             "self->{PY_member_object} = {nullptr};",
             "-}}",
@@ -4515,8 +4515,8 @@ py_statements = [
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
-            "if (!{hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size})) {{+",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
@@ -4570,8 +4570,8 @@ py_statements = [
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
-            "if (!{hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size})) {{+",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],

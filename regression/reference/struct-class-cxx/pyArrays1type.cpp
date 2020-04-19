@@ -79,13 +79,13 @@ PY_Arrays1_tp_init(
         Arrays1 *SH_obj = self->obj;
         if (SHPy_name != nullptr) {
             if (STR_SHROUD_fill_from_PyObject_char(SHPy_name, "name",
-                SH_obj->name, 20) == 0)
+                SH_obj->name, 20) == -1)
                 goto fail;
             self->name_obj = nullptr;
         }
         if (SHPy_count != nullptr) {
             if (STR_SHROUD_fill_from_PyObject_int(SHPy_count, "count",
-                SH_obj->count, 10) == 0)
+                SH_obj->count, 10) == -1)
                 goto fail;
             self->count_obj = nullptr;
         }
@@ -121,8 +121,8 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
 {
     Py_XDECREF(self->name_obj);
     self->name_obj = nullptr;
-    if (!STR_SHROUD_fill_from_PyObject_char(value, "name",
-        self->obj->name, 20)) {
+    if (STR_SHROUD_fill_from_PyObject_char(value, "name",
+        self->obj->name, 20) == -1) {
         return -1;
     }
     return 0;
@@ -148,8 +148,8 @@ static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
 {
     Py_XDECREF(self->count_obj);
     self->count_obj = nullptr;
-    if (!STR_SHROUD_fill_from_PyObject_int(value, "count",
-        self->obj->count, 10)) {
+    if (STR_SHROUD_fill_from_PyObject_int(value, "count",
+        self->obj->count, 10) == -1) {
         return -1;
     }
     return 0;
