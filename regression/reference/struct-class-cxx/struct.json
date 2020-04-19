@@ -47,6 +47,7 @@
                                     "cxx_var": "dfield",
                                     "data_var": "SHData_dfield",
                                     "field_name": "dfield",
+                                    "field_size": "2",
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHPy_dfield",
                                     "size_var": "SHSize_dfield",
@@ -69,6 +70,7 @@
                                     "cxx_var": "ifield",
                                     "data_var": "SHData_ifield",
                                     "field_name": "ifield",
+                                    "field_size": "2",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_ifield",
                                     "size_var": "SHSize_ifield",
@@ -256,6 +258,7 @@
                                     "cxx_var": "cfield",
                                     "data_var": "SHData_cfield",
                                     "field_name": "cfield",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_char",
                                     "numpy_type": "NPY_INTP",
                                     "py_var": "SHPy_cfield",
@@ -415,6 +418,7 @@
                                     "cxx_var": "dvalue",
                                     "data_var": "SHData_dvalue",
                                     "field_name": "dvalue",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_list",
                                     "npy_dims": "SHD_dvalue",
                                     "npy_intp_asgn": "SHD_dvalue[0] = nitems*TWO;\n",
@@ -444,6 +448,7 @@
                                     "cxx_var": "ivalue",
                                     "data_var": "SHData_ivalue",
                                     "field_name": "ivalue",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_list",
                                     "npy_dims": "SHD_ivalue",
                                     "npy_intp_asgn": "SHD_ivalue[0] = nitems+nitems;\n",
@@ -473,6 +478,7 @@
                                     "cxx_var": "nitems",
                                     "data_var": "SHData_nitems",
                                     "field_name": "nitems",
+                                    "field_size": "2",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
@@ -495,6 +501,7 @@
                                     "cxx_var": "svalue",
                                     "data_var": "SHData_svalue",
                                     "field_name": "svalue",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_charptr",
                                     "npy_dims": "SHD_svalue",
                                     "npy_intp_asgn": "SHD_svalue[0] = nitems;\n",
@@ -813,6 +820,7 @@
                                     "cxx_var": "dvalue",
                                     "data_var": "SHData_dvalue",
                                     "field_name": "dvalue",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
                                     "npy_dims": "SHD_dvalue",
                                     "npy_intp_asgn": "SHD_dvalue[0] = nitems;\n",
@@ -842,6 +850,7 @@
                                     "cxx_var": "ivalue",
                                     "data_var": "SHData_ivalue",
                                     "field_name": "ivalue",
+                                    "field_size": "2",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_numpy",
                                     "npy_dims": "SHD_ivalue",
                                     "npy_intp_asgn": "SHD_ivalue[0] = nitems;\n",
@@ -871,6 +880,7 @@
                                     "cxx_var": "nitems",
                                     "data_var": "SHData_nitems",
                                     "field_name": "nitems",
+                                    "field_size": "2",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
@@ -1090,18 +1100,163 @@
                     "F_capsule_data_type": "SHROUD_arrays1_capsule",
                     "F_derived_name": "arrays1",
                     "F_name_scope": "arrays1_",
+                    "PY_PyObject": "PY_Arrays1",
+                    "PY_PyTypeObject": "PY_Arrays1_Type",
+                    "PY_capsule_name": "PY_Arrays1_capsule_name",
+                    "PY_from_object_func": "PP_Arrays1_from_Object",
                     "PY_struct_array_descr_create": "PY_Arrays1_create_array_descr",
                     "PY_struct_array_descr_name": "Arrays1_dtype",
                     "PY_struct_array_descr_variable": "PY_Arrays1_array_descr",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Arrays1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Arrays1_to_Object_idtor",
+                    "PY_type_filename": "pyArrays1type.cpp",
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
                     "file_scope": "Arrays1"
                 },
+                "functions": [
+                    {
+                        "_fmtargs": {
+                            "count": {
+                                "fmtpy": {
+                                    "PY_member_object": "count_obj",
+                                    "c_const": "",
+                                    "c_decl": "int count",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "count",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int count",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "count",
+                                    "data_var": "SHData_count",
+                                    "field_name": "count",
+                                    "field_size": "2",
+                                    "hnamefunc0": "STR_SHROUD_fill_from_PyObject_int",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_count",
+                                    "pytmp_var": "SHTPy_count",
+                                    "size_var": "SHSize_count",
+                                    "stmt0": "py_ctor_native_[]",
+                                    "stmt1": "py_ctor_native_[]"
+                                }
+                            },
+                            "name": {
+                                "fmtpy": {
+                                    "PY_member_object": "name_obj",
+                                    "c_const": "",
+                                    "c_decl": "char name",
+                                    "c_deref": "",
+                                    "c_type": "char",
+                                    "c_var": "name",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "char name",
+                                    "cxx_member": ".",
+                                    "cxx_type": "char",
+                                    "cxx_var": "name",
+                                    "data_var": "SHData_name",
+                                    "field_name": "name",
+                                    "field_size": "2",
+                                    "hnamefunc0": "STR_SHROUD_fill_from_PyObject_char",
+                                    "numpy_type": "NPY_INTP",
+                                    "py_var": "SHPy_name",
+                                    "pytmp_var": "SHTPy_name",
+                                    "size_var": "SHSize_name",
+                                    "stmt0": "py_ctor_char_[]",
+                                    "stmt1": "py_ctor_char_[]"
+                                }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtpy": {
+                                "PYN_descr": "PY_Arrays1_array_descr",
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Arrays1_to_Object_idtor",
+                                "PyObject": "PY_Arrays1",
+                                "PyTypeObject": "PY_Arrays1_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "Arrays1",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "_generated": "struct_as_class_ctor",
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "name": "Arrays1_ctor"
+                            },
+                            "params": [
+                                {
+                                    "array": [
+                                        {
+                                            "constant": "20"
+                                        }
+                                    ],
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "name",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "char"
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                {
+                                    "array": [
+                                        {
+                                            "constant": "10"
+                                        }
+                                    ],
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "count",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "Arrays1"
+                            ],
+                            "typemap_name": "Arrays1"
+                        },
+                        "decl": "Arrays1_ctor",
+                        "declgen": "Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)",
+                        "fmtdict": {
+                            "PY_name_impl": "PY_Arrays1_tp_init",
+                            "PY_type_impl": "PY_Arrays1_tp_init",
+                            "PY_type_method": "tp_init",
+                            "function_name": "Arrays1_ctor",
+                            "underscore_name": "arrays1_ctor"
+                        },
+                        "options": {
+                            "wrap_c": false,
+                            "wrap_fortran": false,
+                            "wrap_lua": false
+                        }
+                    }
+                ],
                 "name": "Arrays1",
-                "options": {
-                    "wrap_python": false
-                },
+                "options": {},
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [
@@ -1122,9 +1277,14 @@
                             "typemap_name": "char"
                         },
                         "fmtdict": {
+                            "PY_getter": "PY_Arrays1_name_getter",
+                            "PY_member_object": "name_obj",
+                            "PY_setter": "PY_Arrays1_name_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "name",
+                            "py_var": "SHPy_name",
                             "variable_lower": "name",
                             "variable_name": "name",
                             "variable_upper": "NAME"
@@ -1137,9 +1297,6 @@
                             "array": [
                                 {
                                     "constant": "10"
-                                },
-                                {
-                                    "constant": "2"
                                 }
                             ],
                             "declarator": {
@@ -1152,9 +1309,14 @@
                             "typemap_name": "int"
                         },
                         "fmtdict": {
+                            "PY_getter": "PY_Arrays1_count_getter",
+                            "PY_member_object": "count_obj",
+                            "PY_setter": "PY_Arrays1_count_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "count",
+                            "py_var": "SHPy_count",
                             "variable_lower": "count",
                             "variable_name": "count",
                             "variable_upper": "COUNT"
@@ -1872,7 +2034,7 @@
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "capsule_order": "5",
+                        "capsule_order": "6",
                         "cxx_addr": "",
                         "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
                         "cxx_member": "->",

@@ -53,7 +53,7 @@ module struct_mod
 
     type, bind(C) :: arrays1
         character(kind=C_CHAR) :: name(20)
-        integer(C_INT) :: count(2,10)
+        integer(C_INT) :: count(10)
     end type arrays1
 
     interface

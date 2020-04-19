@@ -12,9 +12,12 @@
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 #include <cstdlib>
+#include <cstring>
 
 // helper get_from_object_char
 // Converter to PyObject to char *.
+// The returned status will be 1 for a successful conversion
+// and 0 if the conversion has failed.
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -50,7 +53,9 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
         size = 0;
         value->obj = NULL;
     } else {
-        PyErr_SetString(PyExc_ValueError, "argument must be a string");
+        PyErr_Format(PyExc_TypeError,
+            "argument should be string or None, not %.200s",
+            Py_TYPE(obj)->tp_name);
         return 0;
     }
     value->data = out;
@@ -58,6 +63,59 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
     return 1;
 }
 
+
+// helper fill_from_PyObject_char
+// Copy PyObject to char array.
+// Returns true on success.
+int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
+    char *in, Py_ssize_t insize)
+{
+    STR_SHROUD_converter_value value;
+    int i = STR_SHROUD_get_from_object_char(obj, &value);
+    if (i == 0) {
+        Py_DECREF(obj);
+        return 0;
+    }
+    if (value.data == nullptr) {
+        in[0] = '\0';
+    } else {
+        std::strncpy(in, static_cast<char *>(value.data), insize);
+        Py_DECREF(value.obj);
+    }
+    return 1;
+}
+
+// helper fill_from_PyObject_int
+// Convert obj into an array of type int
+// Return -1 on error.
+// Returns true on success; on failure,
+// it returns false and raises the appropriate exception.
+int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
+    int *in, Py_ssize_t insize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return 0;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+    return 1;
+}
 
 // helper from_PyObject_char
 // Convert obj into an array of type char *
@@ -280,6 +338,7 @@ const char *PY_Cstruct1_capsule_name = "Cstruct1";
 const char *PY_Cstruct_ptr_capsule_name = "Cstruct_ptr";
 const char *PY_Cstruct_list_capsule_name = "Cstruct_list";
 const char *PY_Cstruct_numpy_capsule_name = "Cstruct_numpy";
+const char *PY_Arrays1_capsule_name = "Arrays1";
 
 
 // Wrap pointer to struct/class.
@@ -471,6 +530,53 @@ int PP_Cstruct_numpy_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct_numpy.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
+{
+    // splicer begin class.Arrays1.utility.to_object
+    PY_Arrays1 *obj = PyObject_New(PY_Arrays1, &PY_Arrays1_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    // Python objects for members.
+    obj->name_obj = nullptr;
+    obj->count_obj = nullptr;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Arrays1.utility.to_object
+}
+
+// converter which may be used with PyBuild.
+PyObject *PP_Arrays1_to_Object(Arrays1 *addr)
+{
+    // splicer begin class.Arrays1.utility.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Arrays1_capsule_name, nullptr);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Arrays1_Type, args, nullptr);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.Arrays1.utility.to_object
+}
+
+// converter which may be used with PyArg_Parse.
+int PP_Arrays1_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.Arrays1.utility.from_object
+    if (obj->ob_type != &PY_Arrays1_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Arrays1 * self = (PY_Arrays1 *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.Arrays1.utility.from_object
+}
+
 // ----------------------------------------
 typedef struct {
     const char *name;
@@ -511,8 +617,15 @@ static void PY_SHROUD_capsule_destructor_4(void *ptr)
     delete cxx_ptr;
 }
 
-// 5 - cxx const Cstruct1 *
+// 5 - cxx Arrays1 *
 static void PY_SHROUD_capsule_destructor_5(void *ptr)
+{
+    Arrays1 * cxx_ptr = static_cast<Arrays1 *>(ptr);
+    delete cxx_ptr;
+}
+
+// 6 - cxx const Cstruct1 *
+static void PY_SHROUD_capsule_destructor_6(void *ptr)
 {
     const Cstruct1 * cxx_ptr = static_cast<const Cstruct1 *>(ptr);
     delete cxx_ptr;
@@ -527,7 +640,8 @@ static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"cxx Cstruct_ptr *", PY_SHROUD_capsule_destructor_2},
     {"cxx Cstruct_list *", PY_SHROUD_capsule_destructor_3},
     {"cxx Cstruct_numpy *", PY_SHROUD_capsule_destructor_4},
-    {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_5},
+    {"cxx Arrays1 *", PY_SHROUD_capsule_destructor_5},
+    {"cxx const Cstruct1 *", PY_SHROUD_capsule_destructor_6},
     {nullptr, nullptr},
 };
 

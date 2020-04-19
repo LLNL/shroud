@@ -394,9 +394,7 @@
                     "file_scope": "Arrays1"
                 },
                 "name": "Arrays1",
-                "options": {
-                    "wrap_python": false
-                },
+                "options": {},
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [
@@ -432,9 +430,6 @@
                             "array": [
                                 {
                                     "constant": "10"
-                                },
-                                {
-                                    "constant": "2"
                                 }
                             ],
                             "declarator": {

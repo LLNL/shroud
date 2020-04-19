@@ -277,6 +277,39 @@ array->rank = 1;
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
+    name = "fill_from_PyObject_char"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["get_from_object_char"],
+        c_include="<string.h>",
+        cxx_include="<cstring>",
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+// helper {hname}
+// Copy PyObject to char array.
+// Returns true on success.
+{PY_helper_static}{hnameproto}
+{{+
+{PY_typedef_converter} value;
+int i = {PY_helper_prefix}get_from_object_char(obj, &value);
+if (i == 0) {{+
+Py_DECREF(obj);
+return 0;
+-}}
+if (value.data == {nullptr}) {{+
+in[0] = '\\0';
+-}} else {{+
+{stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
+Py_DECREF(value.obj);
+-}}
+return 1;
+-}}""", fmt),
+    )
+
     ########################################
     # char **
     name = "get_from_object_charptr"
@@ -310,6 +343,8 @@ array->rank = 1;
         source=wformat("""
 // helper {hname}
 // Converter to PyObject to char *.
+// The returned status will be 1 for a successful conversion
+// and 0 if the conversion has failed.
 {PY_helper_static}{hnameproto}
 {{+
 size_t size = 0;
@@ -344,7 +379,7 @@ out = NULL;
 size = 0;
 value->obj = NULL;
 -}} else {{+
-PyErr_SetString(PyExc_ValueError, "argument must be a string");
+PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
 return 0;
 -}}
 value->data = out;
@@ -672,7 +707,20 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         CHelpers[name] = helper
 
     ########################################
-    # used with intent(in)
+    # Used with intent(in), setter.
+    # Return -1 on error.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
+    name = "fill_from_PyObject_" + flat_name
+    if name not in CHelpers and ntypemap.PY_get:
+        fmt.hname = name
+        fmt.fcn_suffix = flat_name
+        fmt.fcn_type = ntypemap.c_type
+        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        CHelpers[name] = fill_from_PyObject(fmt)
+
+    ########################################
+    # Used with intent(in), setter.
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
@@ -730,6 +778,49 @@ return 1;
         fmt.hnamefunc = fmt.PY_helper_prefix + name
         CHelpers[name] = create_get_from_object_list(fmt)
 
+def fill_from_PyObject(fmt):
+    """Create helper to convert list of PyObjects to existing C array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}fill_from_PyObject_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+// Returns true on success; on failure,
+// it returns false and raises the appropriate exception.
+{PY_helper_static}{hnameproto}
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return 0;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+if (size > insize) {{+
+size = insize;
+-}}
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return 0;
+-}}
+-}}
+Py_DECREF(seq);
+return 1;
+-}}""", fmt),
+        )
+    return helper
+    
 def create_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to C array.
     """

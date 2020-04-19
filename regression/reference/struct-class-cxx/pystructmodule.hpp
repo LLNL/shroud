@@ -24,6 +24,10 @@ typedef struct {
 // Helper functions.
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value);
+int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
+    char *in, Py_ssize_t insize);
+int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
+    int *in, Py_ssize_t insize);
 int STR_SHROUD_from_PyObject_char(PyObject *obj, const char *name,
     char * **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_charptr(PyObject *obj,
@@ -133,6 +137,27 @@ PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
     int idtor);
 PyObject *PP_Cstruct_numpy_to_Object(Cstruct_numpy *addr);
 int PP_Cstruct_numpy_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+extern PyTypeObject PY_Arrays1_Type;
+// splicer begin class.Arrays1.C_declaration
+// splicer end class.Arrays1.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    Arrays1 * obj;
+    int idtor;
+    // Python objects for members.
+    PyObject *name_obj;
+    PyObject *count_obj;
+    // splicer begin class.Arrays1.C_object
+    // splicer end class.Arrays1.C_object
+} PY_Arrays1;
+
+extern const char *PY_Arrays1_capsule_name;
+PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor);
+PyObject *PP_Arrays1_to_Object(Arrays1 *addr);
+int PP_Arrays1_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

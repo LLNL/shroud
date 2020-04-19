@@ -112,6 +112,10 @@ contains
 
     str1%name = " "
     str1%count = 0
+
+    call assert_equals(1, len(str1%name), "test_struct_array")
+    call assert_equals(20, size(str1%name), "test_struct_array")
+    call assert_equals(10, size(str1%count), "test_struct_array")
     
   end subroutine test_struct_array
 

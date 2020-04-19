@@ -115,9 +115,9 @@ class Struct(unittest.TestCase):
         ptr.cfield = b"byte string"
         self.assertEqual("byte string", ptr.cfield)
 
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(TypeError) as context:
             ptr.cfield = 1
-        self.assertTrue("argument must be a string" in str(context.exception))
+        self.assertTrue("argument should be string" in str(context.exception))
 
     def test_cstruct_list(self):
         # Create struct from each argument.
@@ -214,6 +214,42 @@ class Struct(unittest.TestCase):
         ivalue = s.ivalue
         self.assertIs(ivalue, input)
 
+    def test_Arrays1(self):
+        # getter and setter
+        # native creates NumPy arrays
+        s = cstruct.Arrays1()
+
+        # None makes a blank string.
+        s.name = None
+        self.assertEqual('', s.name)
+
+        s.name = "dog"
+        name = s.name
+        self.assertEqual('dog', name)
+
+        ref = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        s.count = ref
+        count = s.count
+        self.assertIsInstance(count, np.ndarray)
+        self.assertEqual('int32', count.dtype.name)
+        self.assertEqual(10, count.size)
+        self.assertTrue(all(np.equal(count, ref)))
+
+        # getting again returns same Object.
+        self.assertIs(count, s.count)
+
+        # XXX - test assigning numpy
+#        ref = np.array([10,20,30,40,50], dtype=np.intc)
+        
+        # XXX - Test assigning too few items.
+        
+        with self.assertRaises(TypeError) as context:
+            s.count = None
+        self.assertTrue("must be iterable" in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s.name = 1
+        self.assertTrue("argument should be string" in str(context.exception))
 
 # creating a new test suite
 newSuite = unittest.TestSuite()
