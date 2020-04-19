@@ -79,12 +79,12 @@ PY_Arrays1_tp_init(
     Arrays1 *SH_obj = self->obj;
     if (SHPy_name != nullptr) {
         STR_SHROUD_fill_from_PyObject_char(SHPy_name, "name",
-            SH_obj->name, 2);
+            SH_obj->name, 20);
         self->name_obj = nullptr;
     }
     if (SHPy_count != nullptr) {
         STR_SHROUD_fill_from_PyObject_int(SHPy_count, "count",
-            SH_obj->count, 2);
+            SH_obj->count, 10);
         self->count_obj = nullptr;
     }
 

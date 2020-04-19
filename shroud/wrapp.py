@@ -1176,10 +1176,13 @@ return 1;""",
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_fmt = arg.metaattrs["struct_member"].fmtdict
+                struct_member = arg.metaattrs["struct_member"]
+                struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
-                fmt_arg.field_size = "2"  # XXX fix me
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
+                field_size = struct_member.ast.get_array_size()
+                if field_size is not None:
+                    fmt_arg.field_size = field_size
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
