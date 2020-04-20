@@ -39,6 +39,24 @@ PyObject *PP_Class1_to_Object(classes::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
+extern PyTypeObject PY_Class2_Type;
+// splicer begin class.Class2.C_declaration
+// splicer end class.Class2.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    classes::Class2 * obj;
+    int idtor;
+    // splicer begin class.Class2.C_object
+    // splicer end class.Class2.C_object
+} PY_Class2;
+
+extern const char *PY_Class2_capsule_name;
+PyObject *PP_Class2_to_Object_idtor(classes::Class2 *addr, int idtor);
+PyObject *PP_Class2_to_Object(classes::Class2 *addr);
+int PP_Class2_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
 extern PyTypeObject PY_Singleton_Type;
 // splicer begin class.Singleton.C_declaration
 // splicer end class.Singleton.C_declaration

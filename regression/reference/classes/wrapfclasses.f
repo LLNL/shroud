@@ -13,13 +13,37 @@
 ! splicer begin file_top
 ! splicer end file_top
 module classes_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! helper capsule_data_helper
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: SHROUD_array
+        ! address of C++ memory
+        type(SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+    end type SHROUD_array
+    ! end array_context
 
     !  enum classes::Class1::DIRECTION
     integer(C_INT), parameter :: class1_up = 2
@@ -45,6 +69,7 @@ module classes_mod
         procedure :: return_this => class1_return_this
         procedure :: return_this_buffer => class1_return_this_buffer
         procedure :: getclass3 => class1_getclass3
+        procedure :: get_name => class1_get_name
         procedure :: direction_func => class1_direction_func
         procedure :: get_m_flag => class1_get_m_flag
         procedure :: get_test => class1_get_test
@@ -55,6 +80,24 @@ module classes_mod
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
+
+    type, bind(C) :: SHROUD_class2_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class2_capsule
+
+    type class2
+        type(SHROUD_class2_capsule) :: cxxmem
+        ! splicer begin class.Class2.component_part
+        ! splicer end class.Class2.component_part
+    contains
+        procedure :: get_name => class2_get_name
+        procedure :: get_instance => class2_get_instance
+        procedure :: set_instance => class2_set_instance
+        procedure :: associated => class2_associated
+        ! splicer begin class.Class2.type_bound_procedure_part
+        ! splicer end class.Class2.type_bound_procedure_part
+    end type class2
 
     type, bind(C) :: SHROUD_singleton_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -76,11 +119,13 @@ module classes_mod
 
     interface operator (.eq.)
         module procedure class1_eq
+        module procedure class2_eq
         module procedure singleton_eq
     end interface
 
     interface operator (.ne.)
         module procedure class1_ne
+        module procedure class2_ne
         module procedure singleton_ne
     end interface
 
@@ -275,6 +320,44 @@ module classes_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
+    ! start c_class1_get_name
+    interface
+        function c_class1_get_name(self) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Class1_get_name")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_class1_capsule
+            implicit none
+            type(SHROUD_class1_capsule), intent(IN) :: self
+            type(C_PTR) SHT_rv
+        end function c_class1_get_name
+    end interface
+    ! end c_class1_get_name
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
+    ! start c_class1_get_name_bufferify
+    interface
+        subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
+                bind(C, name="CLA_Class1_get_name_bufferify")
+            import :: SHROUD_array, SHROUD_class1_capsule
+            implicit none
+            type(SHROUD_class1_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
+        end subroutine c_class1_get_name_bufferify
+    end interface
+    ! end c_class1_get_name_bufferify
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -355,6 +438,43 @@ module classes_mod
 
     ! splicer begin class.Class1.additional_interfaces
     ! splicer end class.Class1.additional_interfaces
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_string_&_result
+    ! Match:     c_string_result
+    interface
+        function c_class2_get_name(self) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Class2_get_name")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_class2_capsule
+            implicit none
+            type(SHROUD_class2_capsule), intent(IN) :: self
+            type(C_PTR) SHT_rv
+        end function c_class2_get_name
+    end interface
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
+    interface
+        subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
+                bind(C, name="CLA_Class2_get_name_bufferify")
+            import :: SHROUD_array, SHROUD_class2_capsule
+            implicit none
+            type(SHROUD_class2_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(OUT) :: DSHF_rv
+        end subroutine c_class2_get_name_bufferify
+    end interface
+
+    ! splicer begin class.Class2.additional_interfaces
+    ! splicer end class.Class2.additional_interfaces
 
     ! ----------------------------------------
     ! Result
@@ -589,6 +709,19 @@ module classes_mod
     end interface class1_new
     ! end interface class1_new
 
+    interface
+        ! helper copy_string
+        ! Copy the char* or std::string in context into c_var.
+        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+             bind(c,name="CLA_ShroudCopyStringAndFree")
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
+            character(kind=C_CHAR), intent(OUT) :: c_var(*)
+            integer(C_SIZE_T), value :: c_var_size
+        end subroutine SHROUD_copy_string_and_free
+    end interface
+
 contains
 
     ! Class1() +name(new)
@@ -786,6 +919,37 @@ contains
     end function class1_getclass3
     ! end class1_getclass3
 
+    ! const std::string & getName() +deref(allocatable)
+    ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
+    !>
+    !! \brief test helper
+    !!
+    !<
+    ! start class1_get_name
+    function class1_get_name(obj) &
+            result(SHT_rv)
+        class(class1) :: obj
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin class.Class1.method.get_name
+        call c_class1_get_name_bufferify(obj%cxxmem, DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end class.Class1.method.get_name
+    end function class1_get_name
+    ! end class1_get_name
+
     ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
     ! ----------------------------------------
     ! Result
@@ -899,6 +1063,61 @@ contains
 
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
+
+    ! const std::string & getName() +deref(allocatable)
+    ! arg_to_buffer
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_string_scalar_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Exact:     c_string_scalar_result_buf
+    ! ----------------------------------------
+    ! Argument:  SHF_rv
+    ! Requested: f_string_&_result_allocatable
+    ! Match:     f_string_result_allocatable
+    ! Requested: c_string_&_result_buf_allocatable
+    ! Match:     c_string_result_buf_allocatable
+    !>
+    !! \brief test helper
+    !!
+    !<
+    function class2_get_name(obj) &
+            result(SHT_rv)
+        class(class2) :: obj
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin class.Class2.method.get_name
+        call c_class2_get_name_bufferify(obj%cxxmem, DSHF_rv)
+        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        ! splicer end class.Class2.method.get_name
+    end function class2_get_name
+
+    ! Return pointer to C++ memory.
+    function class2_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(class2), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function class2_get_instance
+
+    subroutine class2_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class2), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine class2_set_instance
+
+    function class2_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class2), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function class2_associated
+
+    ! splicer begin class.Class2.additional_functions
+    ! splicer end class.Class2.additional_functions
 
     ! static Singleton & getReference()
     ! ----------------------------------------
@@ -1131,6 +1350,28 @@ contains
             rv = .false.
         endif
     end function class1_ne
+
+    function class2_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class2), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class2_eq
+
+    function class2_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class2), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class2_ne
 
     function singleton_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

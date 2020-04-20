@@ -12,6 +12,7 @@ module = Extension(
     'classes',
     sources=[
          'pyClass1type.cpp',
+         'pyClass2type.cpp',
          'pySingletontype.cpp',
          'pyclassesmodule.cpp',
          'pyclassesutil.cpp'

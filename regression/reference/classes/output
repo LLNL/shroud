@@ -1,6 +1,8 @@
 Wrote classes_types.yaml
 Wrote wrapClass1.h
 Wrote wrapClass1.cpp
+Wrote wrapClass2.h
+Wrote wrapClass2.cpp
 Wrote wrapSingleton.h
 Wrote wrapSingleton.cpp
 Wrote wrapclasses.h
@@ -8,6 +10,7 @@ Wrote wrapclasses.cpp
 Wrote typesclasses.h
 Wrote wrapfclasses.f
 Wrote pyClass1type.cpp
+Wrote pyClass2type.cpp
 Wrote pySingletontype.cpp
 Wrote pyclassesmodule.cpp
 Wrote pyclassesutil.cpp

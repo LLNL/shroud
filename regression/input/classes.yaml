@@ -73,10 +73,22 @@ declarations:
 #    wrap_python: False
       wrap_lua: False
 
+  - decl: const std::string& getName();
+    doxygen:
+      brief: test helper
+
   - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
   
   - decl: DIRECTION directionFunc(DIRECTION arg);
   
+##################################################
+
+- decl: class Class2
+  declarations:
+  - decl: const std::string& getName();
+    doxygen:
+      brief: test helper
+
 ##################################################
 
 - decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);

@@ -29,12 +29,19 @@ public:
     Class1 * returnThis();
     Class1 * returnThisBuffer(std::string & name, bool flag);
     Class1 * getclass3() const;
+    const std::string& getName();
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
     DIRECTION directionFunc(Class1::DIRECTION arg);
 };
 
+class Class2
+{
+public:
+    const std::string& getName();
+};
+    
 // Note that this function has the same name as a function in Class1
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
 
