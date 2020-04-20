@@ -275,8 +275,8 @@ array->rank = 1;
     fmt.Py_get = "PyString_AsString(item)"
 #    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
     fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-    fmt.hname = "from_PyObject_char"
-    CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
+    fmt.hname = "create_from_PyObject_char"
+    CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
@@ -727,7 +727,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_" + flat_name
+    name = "create_from_PyObject_" + flat_name
     if ntypemap.PY_get:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
@@ -888,7 +888,7 @@ def create_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
     fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}from_PyObject_{fcn_suffix}", fmt)
+        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
     helper = dict(
@@ -965,7 +965,7 @@ def create_get_from_object_list(fmt):
         name=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
-            "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
+            "create_from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
         ],
         proto=fmt.hnameproto + ";",
         source=wformat("""
@@ -975,7 +975,7 @@ def create_get_from_object_list(fmt):
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
-if ({PY_helper_prefix}from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+if ({PY_helper_prefix}create_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
 return 0;
 -}}
 value->obj = {nullptr};
@@ -1063,7 +1063,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_vector_" + flat_name
+    name = "create_from_PyObject_vector_" + flat_name
     get = ntypemap.PY_get
     if get is None:
         get = "XXXPy_get"

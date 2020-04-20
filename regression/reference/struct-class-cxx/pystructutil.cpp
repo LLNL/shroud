@@ -122,11 +122,11 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     return 0;
 }
 
-// helper from_PyObject_char
+// helper create_from_PyObject_char
 // Convert obj into an array of type char *
 // Return -1 on error.
-int STR_SHROUD_from_PyObject_char(PyObject *obj, const char *name,
-    char * **pin, Py_ssize_t *psize)
+int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
+    const char *name, char * **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -162,7 +162,8 @@ int STR_SHROUD_get_from_object_charptr(PyObject *obj,
 {
     char * *in;
     Py_ssize_t size;
-    if (STR_SHROUD_from_PyObject_char(obj, "in", &in,  &size) == -1) {
+    if (STR_SHROUD_create_from_PyObject_char(obj, "in", &in, 
+        &size) == -1) {
         return 0;
     }
     value->obj = nullptr;
@@ -171,11 +172,11 @@ int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     return 1;
 }
 
-// helper from_PyObject_double
+// helper create_from_PyObject_double
 // Convert obj into an array of type double
 // Return -1 on error.
-int STR_SHROUD_from_PyObject_double(PyObject *obj, const char *name,
-    double **pin, Py_ssize_t *psize)
+int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
+    const char *name, double **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -211,7 +212,8 @@ int STR_SHROUD_get_from_object_double_list(PyObject *obj,
 {
     double *in;
     Py_ssize_t size;
-    if (STR_SHROUD_from_PyObject_double(obj, "in", &in,  &size) == -1) {
+    if (STR_SHROUD_create_from_PyObject_double(obj, "in", &in, 
+        &size) == -1) {
         return 0;
     }
     value->obj = nullptr;
@@ -240,10 +242,10 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     return 1;
 }
 
-// helper from_PyObject_int
+// helper create_from_PyObject_int
 // Convert obj into an array of type int
 // Return -1 on error.
-int STR_SHROUD_from_PyObject_int(PyObject *obj, const char *name,
+int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
     int **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -278,7 +280,8 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
 {
     int *in;
     Py_ssize_t size;
-    if (STR_SHROUD_from_PyObject_int(obj, "in", &in,  &size) == -1) {
+    if (STR_SHROUD_create_from_PyObject_int(obj, "in", &in, 
+        &size) == -1) {
         return 0;
     }
     value->obj = nullptr;

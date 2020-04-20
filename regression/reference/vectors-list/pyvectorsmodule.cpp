@@ -25,10 +25,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// helper from_PyObject_vector_int
+// helper create_from_PyObject_vector_int
 // Convert obj into an array of type int
 // Return -1 on error.
-static int SHROUD_from_PyObject_vector_int(PyObject *obj,
+static int SHROUD_create_from_PyObject_vector_int(PyObject *obj,
     const char *name, std::vector<int> & in)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
@@ -108,7 +108,7 @@ PY_vector_sum(
     {
         // pre_call
         std::vector<int> SH_arg;
-        if (SHROUD_from_PyObject_vector_int(SHTPy_arg, "arg",
+        if (SHROUD_create_from_PyObject_vector_int(SHTPy_arg, "arg",
             SH_arg) == -1)
             goto fail;
 

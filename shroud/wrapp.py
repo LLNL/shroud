@@ -3724,7 +3724,7 @@ py_statements = [
 ## list
     dict(
         name="py_native_in_dimension_list",
-        c_helper="from_PyObject_{cxx_type}",
+        c_helper="create_from_PyObject_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -3750,7 +3750,7 @@ py_statements = [
     dict(
         name="py_native_inout_dimension_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="from_PyObject_{cxx_type} to_PyList_{cxx_type}",
+        c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -3870,7 +3870,7 @@ py_statements = [
 
     dict(
         name="py_char_**_in",
-        c_helper="from_PyObject_char",
+        c_helper="create_from_PyObject_char",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -4181,7 +4181,7 @@ py_statements = [
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
-        c_helper="from_PyObject_vector_{cxx_T}",
+        c_helper="create_from_PyObject_vector_{cxx_T}",
         c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         parse_format="O",

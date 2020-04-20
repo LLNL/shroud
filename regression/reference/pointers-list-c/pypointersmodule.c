@@ -26,11 +26,11 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// helper from_PyObject_char
+// helper create_from_PyObject_char
 // Convert obj into an array of type char *
 // Return -1 on error.
-static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
-    char * **pin, Py_ssize_t *psize)
+static int SHROUD_create_from_PyObject_char(PyObject *obj,
+    const char *name, char * **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -58,11 +58,11 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
     return 0;
 }
 
-// helper from_PyObject_double
+// helper create_from_PyObject_double
 // Convert obj into an array of type double
 // Return -1 on error.
-static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
-    double **pin, Py_ssize_t *psize)
+static int SHROUD_create_from_PyObject_double(PyObject *obj,
+    const char *name, double **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -90,11 +90,11 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
     return 0;
 }
 
-// helper from_PyObject_int
+// helper create_from_PyObject_int
 // Convert obj into an array of type int
 // Return -1 on error.
-static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize)
+static int SHROUD_create_from_PyObject_int(PyObject *obj,
+    const char *name, int **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -234,7 +234,7 @@ PY_cos_doubles(
 
     // post_parse
     Py_ssize_t SHSize_in;
-    if (SHROUD_from_PyObject_double(SHTPy_in, "in", &in, 
+    if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
         &SHSize_in) == -1)
         goto fail;
 
@@ -303,7 +303,7 @@ PY_truncate_to_int(
 
     // post_parse
     Py_ssize_t SHSize_in;
-    if (SHROUD_from_PyObject_double(SHTPy_in, "in", &in, 
+    if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
         &SHSize_in) == -1)
         goto fail;
 
@@ -602,8 +602,8 @@ PY_Sum(
 
     // post_parse
     Py_ssize_t SHSize_values;
-    if (SHROUD_from_PyObject_int(SHTPy_values, "values", &values, 
-        &SHSize_values) == -1)
+    if (SHROUD_create_from_PyObject_int(SHTPy_values, "values",
+        &values,  &SHSize_values) == -1)
         goto fail;
 
     // pre_call
@@ -703,7 +703,7 @@ PY_incrementIntArray(
 
     // post_parse
     Py_ssize_t SHSize_array;
-    if (SHROUD_from_PyObject_int(SHTPy_array, "array", &array, 
+    if (SHROUD_create_from_PyObject_int(SHTPy_array, "array", &array, 
         &SHSize_array) == -1)
         goto fail;
 
@@ -754,7 +754,7 @@ PY_acceptCharArrayIn(
 
     // pre_call
     Py_ssize_t SHSize_names;
-    if (SHROUD_from_PyObject_char(SHTPy_names, "names", &names, 
+    if (SHROUD_create_from_PyObject_char(SHTPy_names, "names", &names, 
         &SHSize_names) == -1)
         goto fail;
 

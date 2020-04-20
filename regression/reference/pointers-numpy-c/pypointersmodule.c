@@ -29,11 +29,11 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// helper from_PyObject_char
+// helper create_from_PyObject_char
 // Convert obj into an array of type char *
 // Return -1 on error.
-static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
-    char * **pin, Py_ssize_t *psize)
+static int SHROUD_create_from_PyObject_char(PyObject *obj,
+    const char *name, char * **pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -651,7 +651,7 @@ PY_acceptCharArrayIn(
 
     // pre_call
     Py_ssize_t SHSize_names;
-    if (SHROUD_from_PyObject_char(SHTPy_names, "names", &names, 
+    if (SHROUD_create_from_PyObject_char(SHTPy_names, "names", &names, 
         &SHSize_names) == -1)
         goto fail;
 
