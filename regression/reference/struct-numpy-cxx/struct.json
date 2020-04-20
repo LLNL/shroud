@@ -405,9 +405,14 @@
                     "F_capsule_data_type": "SHROUD_arrays1_capsule",
                     "F_derived_name": "arrays1",
                     "F_name_scope": "arrays1_",
+                    "PY_PyObject": "PY_Arrays1",
+                    "PY_PyTypeObject": "PY_Arrays1_Type",
+                    "PY_from_object_func": "PP_Arrays1_from_Object",
                     "PY_struct_array_descr_create": "PY_Arrays1_create_array_descr",
                     "PY_struct_array_descr_name": "Arrays1_dtype",
                     "PY_struct_array_descr_variable": "PY_Arrays1_array_descr",
+                    "PY_to_object_func": "PP_Arrays1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Arrays1_to_Object_idtor",
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
@@ -415,7 +420,7 @@
                 },
                 "name": "Arrays1",
                 "options": {
-                    "wrap_python": false
+                    "PY_array_arg": "numpy"
                 },
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
@@ -452,9 +457,6 @@
                             "array": [
                                 {
                                     "constant": "10"
-                                },
-                                {
-                                    "constant": "2"
                                 }
                             ],
                             "declarator": {

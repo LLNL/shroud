@@ -109,10 +109,10 @@ declarations:
 ######################################################################
 - decl: struct Arrays1 {
           char name[20];
-          int count[10][2];
+          int count[10];
         };
   options:
-    wrap_python: False
+    PY_array_arg: numpy
 
 ######################################################################
 splicer_code:

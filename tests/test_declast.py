@@ -41,6 +41,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int", s)
         self.assertEqual("scalar", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
 
         r = declast.check_decl("int var1")
         self.assertIsNone(r.get_subprogram())
@@ -132,6 +133,7 @@ class CheckParse(unittest.TestCase):
                 'specifier': ['int'],
                 'typemap_name': 'int'})
         self.assertEqual("*", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
 
         r = declast.check_decl("int **var1")
         s = r.gen_decl()
@@ -145,6 +147,7 @@ class CheckParse(unittest.TestCase):
                 'typemap_name': 'int'
             })
         self.assertEqual("**", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
 
         r = declast.check_decl("int &*var1")
         s = r.gen_decl()
@@ -334,6 +337,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("20", r.get_array_size())
         s = r.gen_decl()
         self.assertEqual("char var1[20]", s)
         self.assertEqual(
@@ -356,6 +360,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("(20)*(10)*(5)", r.get_array_size())
         self.assertEqual("char var2[20][10][5]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
@@ -383,6 +388,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(1, r.is_array())
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("DEFINE+3", r.get_array_size())
         self.assertEqual("char var3[DEFINE+3]", str(r))
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
@@ -409,6 +415,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(2, r.is_array())
         self.assertEqual("char **", r.as_cast())
         self.assertEqual('*[]', r.get_indirect_stmt())
+        self.assertEqual("44", r.get_array_size())
         s = r.gen_decl()
         self.assertEqual("char * var4[44]", s)
         self.assertEqual(

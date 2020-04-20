@@ -3,8 +3,7 @@
 # See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
-"""
-Helper functions for C and Fortran wrappers.
+"""Helper functions for C and Fortran wrappers.
 
 
  C helper functions which may be added to a implementation file.
@@ -46,7 +45,13 @@ Helper functions for C and Fortran wrappers.
  interface = code for INTERFACE
  source    = code for CONTAINS
 
+Python helpers
+Most C API functions also return an error indicator, usually NULL if
+they are supposed to return a pointer, or -1 if they return an integer.
 
+O& converter - status = converter(PyObject *object, void *address);
+The returned status should be 1 for a successful conversion and 0 if
+the conversion has failed.
 
 """
 
@@ -157,14 +162,13 @@ def add_external_helpers():
     if literalinclude:
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
-    if name not in CHelpers:
-        helper = dict(
-            dependent_helpers=["array_context"],
-            c_include="<string.h>",
-            cxx_include="<cstring>",
-            # Create a single C routine which is called from Fortran
-            # via an interface for each cxx_type.
-            cxx_source=wformat(
+    CHelpers[name] = dict(
+        dependent_helpers=["array_context"],
+        c_include="<string.h>",
+        cxx_include="<cstring>",
+        # Create a single C routine which is called from Fortran
+        # via an interface for each cxx_type.
+        cxx_source=wformat(
                 """
 {lstart}// helper {hname}
 // Copy std::vector into array c_var(c_var_size).
@@ -178,10 +182,9 @@ n *= data->elem_len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}{lend}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
+            fmt,
+        ),
+    )
     ##########
     
     # Only used with std::string and thus C++.
@@ -272,10 +275,43 @@ array->rank = 1;
     fmt.Py_get = "PyString_AsString(item)"
 #    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
     fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
-    fmt.hname = "from_PyObject_char"
-    CHelpers["from_PyObject_char"] = create_from_PyObject(fmt)
+    fmt.hname = "create_from_PyObject_char"
+    CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
+
+    name = "fill_from_PyObject_char"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["get_from_object_char"],
+        c_include="<string.h>",
+        cxx_include="<cstring>",
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+// helper {hname}
+// Copy PyObject to char array.
+// Return 0 on success, -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+{PY_typedef_converter} value;
+int i = {PY_helper_prefix}get_from_object_char(obj, &value);
+if (i == 0) {{+
+Py_DECREF(obj);
+return -1;
+-}}
+if (value.data == {nullptr}) {{+
+in[0] = '\\0';
+-}} else {{+
+{stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
+Py_DECREF(value.obj);
+-}}
+return 0;
+-}}""", fmt),
+    )
 
     ########################################
     # char **
@@ -310,6 +346,8 @@ array->rank = 1;
         source=wformat("""
 // helper {hname}
 // Converter to PyObject to char *.
+// The returned status will be 1 for a successful conversion
+// and 0 if the conversion has failed.
 {PY_helper_static}{hnameproto}
 {{+
 size_t size = 0;
@@ -344,7 +382,7 @@ out = NULL;
 size = 0;
 value->obj = NULL;
 -}} else {{+
-PyErr_SetString(PyExc_ValueError, "argument must be a string");
+PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
 return 0;
 -}}
 value->data = out;
@@ -437,46 +475,43 @@ def add_capsule_helper():
 
     name = "capsule_data_helper"
     fmt.hname = name
-    if name not in FHelpers:
-        helper = dict(
-            derived_type=wformat(
-                """
+    helper = dict(
+        derived_type=wformat(
+            """
 ! helper {hname}
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
 -end type {F_capsule_data_type}""",
-                fmt,
-            ),
-            modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
-        )
-        FHelpers[name] = helper
+            fmt,
+        ),
+        modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
+    )
+    FHelpers[name] = helper
 
-    if name not in CHelpers:
-        helper = dict(
-            scope="utility",
-            source=wformat(
-                """
+    helper = dict(
+        scope="utility",
+        source=wformat(
+            """
 // helper {hname}
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
-                fmt,
-            )
+            fmt,
         )
-        CHelpers[name] = helper
+    )
+    CHelpers[name] = helper
 
     ########################################
     name = "capsule_helper"
     fmt.hname = name
-    if name not in FHelpers:
-        # XXX split helper into to parts, one for each derived type
-        helper = dict(
-            dependent_helpers=["capsule_data_helper"],
-            derived_type=wformat(
-                """
+    # XXX split helper into to parts, one for each derived type
+    helper = dict(
+        dependent_helpers=["capsule_data_helper"],
+        derived_type=wformat(
+            """
 ! helper {hname}
 type {F_capsule_type}+
 private
@@ -484,11 +519,11 @@ type({F_capsule_data_type}) :: mem
 -contains
 +final :: {F_capsule_final_function}
 -end type {F_capsule_type}""",
-                fmt,
-            ),
-            # cannot be declared with both PRIVATE and BIND(C) attributes
-            source=wformat(
-                """
+            fmt,
+        ),
+        # cannot be declared with both PRIVATE and BIND(C) attributes
+        source=wformat(
+            """
 ! helper {hname}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
@@ -504,27 +539,25 @@ logical(C_BOOL), value, intent(IN) :: gc
 -end subroutine array_destructor
 -end interface
 call array_destructor(cap%mem, .false._C_BOOL)
--end subroutine {F_capsule_final_function}
-            """,
-                fmt,
-            ),
-        )
-        FHelpers[name] = helper
+-end subroutine {F_capsule_final_function}""",
+            fmt,
+        ),
+    )
+    FHelpers[name] = helper
 
     ########################################
     name = "array_context"
     fmt.hname = name
-    if name not in CHelpers:
-        if literalinclude:
-            fmt.lstart = "{}{}\n".format(cstart, name)
-            fmt.lend = "\n{}{}".format(cend, name)
-        helper = dict(
-            scope="utility",
-            include="<stddef.h>",
-            # Create a union for addr to avoid some casts.
-            # And help with debugging since ccharp will display contents.
-            source=wformat(
-                """
+    if literalinclude:
+        fmt.lstart = "{}{}\n".format(cstart, name)
+        fmt.lend = "\n{}{}".format(cend, name)
+    helper = dict(
+        scope="utility",
+        include="<stddef.h>",
+        # Create a union for addr to avoid some casts.
+        # And help with debugging since ccharp will display contents.
+        source=wformat(
+            """
 {lstart}// helper {hname}
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
@@ -538,21 +571,20 @@ size_t size;     /* size of data in c++ */
 int rank;        /* number of dimensions */
 -}};
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
-                fmt,
-            ),
-            dependent_helpers=["capsule_data_helper", "ShroudTypeDefines"],
-        )
-        CHelpers[name] = helper
+            fmt,
+        ),
+        dependent_helpers=["capsule_data_helper", "ShroudTypeDefines"],
+    )
+    CHelpers[name] = helper
 
-    if name not in FHelpers:
-        # Create a derived type used to communicate with C wrapper.
-        # Should never be exposed to user.
-        if literalinclude:
-            fmt.lstart = "{}{}\n".format(fstart, name)
-            fmt.lend = "\n{}{}".format(fend, name)
-        helper = dict(
-            derived_type=wformat(
-                """
+    # Create a derived type used to communicate with C wrapper.
+    # Should never be exposed to user.
+    if literalinclude:
+        fmt.lstart = "{}{}\n".format(fstart, name)
+        fmt.lend = "\n{}{}".format(fend, name)
+    helper = dict(
+        derived_type=wformat(
+            """
 {lstart}! helper {hname}
 type, bind(C) :: {F_array_type}+
 ! address of C++ memory
@@ -568,12 +600,12 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T
 ! number of dimensions
 integer(C_INT) :: rank = -1
 -end type {F_array_type}{lend}""",
-                fmt,
-            ),
-            modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),
-            dependent_helpers=["capsule_data_helper"],
-        )
-        FHelpers[name] = helper
+            fmt,
+        ),
+        modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),
+        dependent_helpers=["capsule_data_helper"],
+    )
+    FHelpers[name] = helper
 
 
 def add_copy_array_helper(fmt, ntypemap):
@@ -595,13 +627,12 @@ def add_copy_array_helper(fmt, ntypemap):
 
     name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
-    if name not in FHelpers:
-        fmt.hnamefunc = name
-        helper = dict(
-            # XXX when f_kind == C_SIZE_T
-            dependent_helpers=["array_context"],
-            interface=wformat(
-                """
+    fmt.hnamefunc = name
+    helper = dict(
+        # XXX when f_kind == C_SIZE_T
+        dependent_helpers=["array_context"],
+        interface=wformat(
+            """
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
@@ -614,10 +645,10 @@ type({F_array_type}), intent(IN) :: context
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_{hnamefunc}
 -end interface""",
-                fmt,
-            ),
-        )
-        FHelpers[name] = helper
+            fmt,
+        ),
+    )
+    FHelpers[name] = helper
     return name
 
 def add_to_PyList_helper(fmt, ntypemap):
@@ -630,11 +661,12 @@ def add_to_PyList_helper(fmt, ntypemap):
     """
     flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
-    
+    fmt.numpy_type = ntypemap.PYN_typenum
+
     ########################################
     # Used with intent(out)
     name = "to_PyList_" + flat_name
-    if name not in CHelpers and ntypemap.PY_ctor is not None:
+    if ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
         fmt.Py_ctor = ntypemap.PY_ctor.format(
@@ -646,7 +678,7 @@ def add_to_PyList_helper(fmt, ntypemap):
     ########################################
     # Used with intent(inout)
     name = "update_PyList_" + flat_name
-    if name not in CHelpers and ntypemap.PY_ctor is not None:
+    if ntypemap.PY_ctor is not None:
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
@@ -672,13 +704,31 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         CHelpers[name] = helper
 
     ########################################
-    # used with intent(in)
+    # Used with intent(in), setter.
+    # Return -1 on error.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
+    if ntypemap.PY_get:
+        name = "fill_from_PyObject_" + flat_name + "_list"
+        fmt.hname = name
+        fmt.flat_name = flat_name
+        fmt.fcn_type = ntypemap.c_type
+        fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
+        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        CHelpers[name] = fill_from_PyObject_list(fmt)
+
+        name = "fill_from_PyObject_" + flat_name + "_numpy"
+        fmt.hname = name
+        CHelpers[name] = fill_from_PyObject_numpy(fmt)
+
+    ########################################
+    # Used with intent(in), setter.
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_" + flat_name
-    if name not in CHelpers and ntypemap.PY_get:
+    name = "create_from_PyObject_" + flat_name
+    if ntypemap.PY_get:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
         fmt.fcn_type = ntypemap.c_type
@@ -688,20 +738,19 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
     name = "get_from_object_{}_numpy".format(flat_name)
-    if name not in CHelpers:
-        fmt.py_tmp = "array"
-        fmt.c_type = ntypemap.c_type
-        fmt.numpy_type = ntypemap.PYN_typenum
-        fmt.hname = name
-        fmt.hnamefunc = fmt.PY_helper_prefix + name
-        fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-        helper = dict(
-            name=fmt.hnamefunc,
-            dependent_helpers=["PY_converter_type"],
-            need_numpy=True,
-            proto=fmt.hnameproto + ";",
-            source=wformat("""
+    fmt.py_tmp = "array"
+    fmt.c_type = ntypemap.c_type
+    fmt.numpy_type = ntypemap.PYN_typenum
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+        "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["PY_converter_type"],
+        need_numpy=True,
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
 // helper {hname}
 // Convert PyObject to {c_type} pointer.
 {PY_helper_static}{hnameproto}
@@ -716,25 +765,130 @@ value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast
 value->size = PyArray_SIZE({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
 -}}""", fmt),
-        )
-        CHelpers[name] = helper
+    )
+    CHelpers[name] = helper
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
     name = "get_from_object_{}_list".format(flat_name)
-    if name not in CHelpers:
-        fmt.size_var = "size"
-        fmt.c_var = "in"
-        fmt.fcn_suffix = flat_name
-        fmt.hname = name
-        fmt.hnamefunc = fmt.PY_helper_prefix + name
-        CHelpers[name] = create_get_from_object_list(fmt)
+    fmt.size_var = "size"
+    fmt.c_var = "in"
+    fmt.fcn_suffix = flat_name
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    CHelpers[name] = create_get_from_object_list(fmt)
 
+def fill_from_PyObject_list(fmt):
+    """Create helper to convert list of PyObjects to existing C array.
+
+    If passed a scalar, broadcast to array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}fill_from_PyObject_{flat_name}_list", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type {c_type}
+// Return 0 on success, -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+{c_type} value = {Py_get_obj};
+if (!PyErr_Occurred()) {{+
+// Broadcast scalar.
+for (Py_ssize_t i = 0; i < insize; ++i) {{+
+in[i] = value;
+-}}
+return 0;
+-}}
+PyErr_Clear();
+
+// Look for sequence.
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+if (size > insize) {{+
+size = insize;
+-}}
+for (Py_ssize_t i = 0; i < size; ++i) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+return 0;
+-}}""", fmt),
+    )
+    return helper
+    
+def fill_from_PyObject_numpy(fmt):
+    """Create helper to convert list of PyObjects to existing C array.
+
+    If passed a scalar, broadcast to array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}fill_from_PyObject_{flat_name}_numpy", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+    fmt.py_tmp = "array"
+    fmt.numpy_type
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type {c_type}
+// Return 0 on success, -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+{c_type} value = {Py_get_obj};
+if (!PyErr_Occurred()) {{+
+// Broadcast scalar.
+for (Py_ssize_t i = 0; i < insize; ++i) {{+
+in[i] = value;
+-}}
+return 0;
+-}}
+PyErr_Clear();
+
+PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
+if ({py_tmp} == {nullptr}) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be a 1-D array of {c_type}",\t name);
+return -1;
+-}}
+PyArrayObject *pyarray = {cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2};
+
+{c_type} *data = {cast_static}{c_type} *{cast1}PyArray_DATA(pyarray){cast2};
+npy_intp size = PyArray_SIZE(pyarray);
+if (size > insize) {{+
+size = insize;
+-}}
+for (Py_ssize_t i = 0; i < size; ++i) {{+
+in[i] = data[i];
+-}}
+Py_DECREF(pyarray);
+return 0;
+-}}""", fmt),
+        )
+    return helper
+    
 def create_from_PyObject(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
     fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}from_PyObject_{fcn_suffix}", fmt)
+        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
     helper = dict(
@@ -762,7 +916,7 @@ in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 {stdlib}free(in);
 Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
 return -1;
 -}}
 -}}
@@ -771,7 +925,7 @@ Py_DECREF(seq);
 *psize = size;
 return 0;
 -}}""", fmt),
-        )
+    )
     return helper
     
 def create_to_PyList(fmt):
@@ -811,7 +965,7 @@ def create_get_from_object_list(fmt):
         name=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
-            "from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
+            "create_from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
         ],
         proto=fmt.hnameproto + ";",
         source=wformat("""
@@ -821,7 +975,7 @@ def create_get_from_object_list(fmt):
 {{+
 {c_type} *{c_var};
 Py_ssize_t {size_var};
-if ({PY_helper_prefix}from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+if ({PY_helper_prefix}create_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
 return 0;
 -}}
 value->obj = {nullptr};
@@ -845,19 +999,18 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     
     # Used with intent(out)
     name = "to_PyList_vector_" + flat_name
-    if name not in CHelpers:
-        ctor = ntypemap.PY_ctor
-        if ctor is None:
-            ctor = "XXXPy_ctor"
-        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
-        fmt.hname = name
-        fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
-        fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
-        helper = dict(
-            name=fmt.hnamefunc,
-            proto=fmt.hnameproto + ";",
-            source=wformat(
-                """
+    ctor = ntypemap.PY_ctor
+    if ctor is None:
+        ctor = "XXXPy_ctor"
+    fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
+    fmt.hname = name
+    fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
+    fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+            """
 // helper {hname}
 {PY_helper_static}{hnameproto}
 {{+
@@ -868,28 +1021,27 @@ PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 return out;
 -}}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
+            fmt,
+        ),
+    )
+    CHelpers[name] = helper
 
     # Used with intent(inout)
     name = "update_PyList_vector_" + flat_name
-    if name not in CHelpers:
-        ctor = ntypemap.PY_ctor
-        if ctor is None:
-            ctor = "XXXPy_ctor"
-        fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
-        fmt.hname = name
-        fmt.hnamefunc = wformat(
-            "{PY_helper_prefix}{hname}", fmt)
-        fmt.hnameproto = wformat(
-            "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
-        helper = dict(
-            name=fmt.hnamefunc,
-            proto=fmt.hnameproto + ";",
-            source=wformat(
-                """
+    ctor = ntypemap.PY_ctor
+    if ctor is None:
+        ctor = "XXXPy_ctor"
+    fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
+    fmt.hname = name
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}{hname}", fmt)
+    fmt.hnameproto = wformat(
+        "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+            """
 // helper {hname}
 // Replace members of existing list with new values.
 // out is known to be a PyList of the correct length.
@@ -901,33 +1053,32 @@ Py_DECREF(item);
 PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 -}}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
+            fmt,
+        ),
+    )
+    CHelpers[name] = helper
 
     # used with intent(in)
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "from_PyObject_vector_" + flat_name
-    if name not in CHelpers:
-        get = ntypemap.PY_get
-        if get is None:
-            get = "XXXPy_get"
-        fmt.Py_get = get.format(py_var="item")
-        fmt.hname = name
-        fmt.hnamefunc= wformat(
-            "{PY_helper_prefix}{hname}", fmt)
-        fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
-        helper = dict(
-            name=fmt.hnamefunc,
-##-            cxx_include="<cstdlib>",  # malloc/free
-            cxx_proto=fmt.hnameproto + ";",
-            cxx_source=wformat(
-                """
+    name = "create_from_PyObject_vector_" + flat_name
+    get = ntypemap.PY_get
+    if get is None:
+        get = "XXXPy_get"
+    fmt.Py_get = get.format(py_var="item")
+    fmt.hname = name
+    fmt.hnamefunc= wformat(
+        "{PY_helper_prefix}{hname}", fmt)
+    fmt.hnameproto = wformat(
+        "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+##-        cxx_include="<cstdlib>",  # malloc/free
+        cxx_proto=fmt.hnameproto + ";",
+        cxx_source=wformat(
+            """
 // helper {hname}
 // Convert obj into an array of type {c_type}
 // Return -1 on error.
@@ -951,10 +1102,10 @@ return -1;
 Py_DECREF(seq);
 return 0;
 -}}""",
-                fmt,
-            ),
-        )
-        CHelpers[name] = helper
+            fmt,
+        ),
+    )
+    CHelpers[name] = helper
 
 """
 http://effbot.org/zone/python-capi-sequences.htm

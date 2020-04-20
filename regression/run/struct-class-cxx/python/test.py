@@ -115,9 +115,9 @@ class Struct(unittest.TestCase):
         ptr.cfield = b"byte string"
         self.assertEqual("byte string", ptr.cfield)
 
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(TypeError) as context:
             ptr.cfield = 1
-        self.assertTrue("argument must be a string" in str(context.exception))
+        self.assertTrue("argument should be string" in str(context.exception))
 
     def test_cstruct_list(self):
         # Create struct from each argument.
@@ -213,6 +213,88 @@ class Struct(unittest.TestCase):
         s.ivalue = input
         ivalue = s.ivalue
         self.assertIs(ivalue, input)
+
+    def test_Arrays1(self):
+        # getter and setter
+        # native creates NumPy arrays
+
+        # name - None makes a blank string.
+        # count - broadcast initial scalar.
+        s = cstruct.Arrays1(name=None, count=0)
+        count = s.count
+        self.assertIsInstance(count, np.ndarray)
+        self.assertEqual('int32', count.dtype.name)
+        self.assertEqual(10, count.size)
+        self.assertTrue(all(np.equal(count, 0)))
+
+        self.assertEqual('', s.name)
+
+        #####
+        # Numpy array to constructor.
+        ref = np.array([10,20,30,40,50,60,70,80,90,100], dtype=np.intc)
+        s = cstruct.Arrays1(count=ref)
+        self.assertTrue(all(np.equal(s.count, ref)))
+        
+        #####
+        s = cstruct.Arrays1()
+
+        s.name = "dog"
+        name = s.name
+        self.assertEqual('dog', name)
+
+        # Assign a list, NumPy will convert to array.
+        ref = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        s.count = ref
+        count = s.count
+        self.assertIsInstance(count, np.ndarray)
+        self.assertEqual('int32', count.dtype.name)
+        self.assertEqual(10, count.size)
+        self.assertTrue(all(np.equal(count, ref)))
+
+        # getting again returns same Object.
+        self.assertIs(count, s.count)
+
+        # Assign NumPy array.
+        ref = np.array([10,20,30,40,50,60,70,80,90,100], dtype=np.intc)
+        s.count = ref
+        count = s.count
+        self.assertIsInstance(count, np.ndarray)
+        self.assertEqual('int32', count.dtype.name)
+        self.assertEqual(10, count.size)
+        self.assertTrue(all(np.equal(count, ref)))
+
+        # XXX - test assigning numpy
+#        ref = np.array([10,20,30,40,50], dtype=np.intc)
+        
+        # XXX - Test assigning too few items.
+
+        # No-op
+        s.count = []
+        
+        with self.assertRaises(TypeError) as context:
+            s.count = None
+        self.assertTrue("argument 'count' must be a 1-D array of int"
+                        in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s.name = 1
+        self.assertTrue("argument should be string"
+                        in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s.count = [0, 3., "four"]
+        self.assertTrue("argument 'count' must be a 1-D array of int"
+                        in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s = cstruct.Arrays1(count="one")
+        self.assertTrue("argument 'count' must be a 1-D array of int"
+                        in str(context.exception))
+
+        with self.assertRaises(TypeError) as context:
+            s = cstruct.Arrays1(name=10)
+        self.assertTrue("argument should be string or None, not int"
+                        in str(context.exception))
 
 
 # creating a new test suite

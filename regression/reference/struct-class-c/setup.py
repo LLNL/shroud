@@ -16,6 +16,7 @@ module = Extension(
          'pyCstruct_ptrtype.c',
          'pyCstruct_listtype.c',
          'pyCstruct_numpytype.c',
+         'pyArrays1type.c',
          'pystructmodule.c',
          'pystructutil.c'
     ],

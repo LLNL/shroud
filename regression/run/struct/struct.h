@@ -60,7 +60,8 @@ typedef struct Cstruct_numpy Cstruct_numpy;
 /*----------------------------------------------------------------------*/
 struct Arrays1 {
     char name[20];
-    int count[10][2];
+    int count[10];
+    //    int count[10][2];
 };
 typedef struct Arrays1 Arrays1;
 

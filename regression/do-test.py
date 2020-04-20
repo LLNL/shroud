@@ -432,6 +432,8 @@ if __name__ == "__main__":
                      "--option", "PY_struct_arg=list",
                  ]),
 
+        TestDesc("structlist"),
+
         TestDesc("struct-py-c", yaml="struct-py",
                  cmdline=[
                      "--language", "c",

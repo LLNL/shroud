@@ -57,7 +57,7 @@ typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 
 struct s_STR_arrays1 {
     char name[20];
-    int count[10][2];
+    int count[10];
 };
 typedef struct s_STR_arrays1 STR_arrays1;
 

@@ -16,6 +16,7 @@ module = Extension(
          'pyCstruct_ptrtype.cpp',
          'pyCstruct_listtype.cpp',
          'pyCstruct_numpytype.cpp',
+         'pyArrays1type.cpp',
          'pystructmodule.cpp',
          'pystructutil.cpp'
     ],

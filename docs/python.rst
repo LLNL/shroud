@@ -277,6 +277,11 @@ the object:
     parse_format="O&",
     parse_args=["{hnamefunc0}", "&{py_var}"],
 
+From the Python manual:
+Note that any Python object references which are provided to the
+caller (of `PyArg_Parse`) are borrowed references; do not decrement
+their reference count!
+
 
 parse_args
 ^^^^^^^^^^

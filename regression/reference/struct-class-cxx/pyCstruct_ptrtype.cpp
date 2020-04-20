@@ -41,7 +41,8 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
 // ----------------------------------------
 // Argument:  cfield
-// Exact:     py_ctor_char_*
+// Requested: py_ctor_char_*_numpy
+// Match:     py_ctor_char_*
 static int
 PY_Cstruct_ptr_tp_init(
   PY_Cstruct_ptr *self,

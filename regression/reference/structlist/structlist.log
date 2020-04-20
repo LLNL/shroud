@@ -1,0 +1,9 @@
+Read yaml structlist.yaml
+Close struct_types.yaml
+class Arrays1
+Python method Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)
+Close pyArrays1type.c
+Close pystructmodule.c
+Close pystructutil.c
+Close pystructmodule.h
+Close setup.py

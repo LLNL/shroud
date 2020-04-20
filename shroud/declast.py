@@ -1084,6 +1084,18 @@ class Declaration(Node):
             return "scalar"
         return out
 
+    def get_array_size(self):
+        """Return size of array by multiplying dimensions."""
+        array = self.array
+        if not array:
+            return None
+        if len(array) == 1:
+            return todict.print_node(array[0])
+        out = []
+        for dim in array:
+            out.append("({})".format(todict.print_node(dim)))
+        return '*'.join(out)
+
     def get_subprogram(self):
         """Return Fortran subprogram - subroutine or function.
         Return None for variable declarations.

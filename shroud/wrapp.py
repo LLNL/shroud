@@ -714,6 +714,7 @@ return 1;""",
         fmt.cxx_var_obj = fmt.c_var_obj
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
+        fmt.PY_array_arg = options.PY_array_arg
 
         have_array, fmt.size = py_struct_dimension(parent, node)
         fmt.npy_ndims = "1"
@@ -1172,13 +1173,17 @@ return 1;""",
 
             intent_blk = None
             if node._generated == "struct_as_class_ctor":
-                stmts = ["py", "ctor", sgroup, spointer]
+                stmts = ["py", "ctor", sgroup, spointer, options.PY_array_arg]
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_fmt = arg.metaattrs["struct_member"].fmtdict
+                struct_member = arg.metaattrs["struct_member"]
+                struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
+                field_size = struct_member.ast.get_array_size()
+                if field_size is not None:
+                    fmt_arg.field_size = field_size
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
@@ -3719,7 +3724,7 @@ py_statements = [
 ## list
     dict(
         name="py_native_in_dimension_list",
-        c_helper="from_PyObject_{cxx_type}",
+        c_helper="create_from_PyObject_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -3745,7 +3750,7 @@ py_statements = [
     dict(
         name="py_native_inout_dimension_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="from_PyObject_{cxx_type} to_PyList_{cxx_type}",
+        c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -3865,7 +3870,7 @@ py_statements = [
 
     dict(
         name="py_char_**_in",
-        c_helper="from_PyObject_char",
+        c_helper="create_from_PyObject_char",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         c_local_var="pointer",
@@ -4176,7 +4181,7 @@ py_statements = [
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
-        c_helper="from_PyObject_vector_{cxx_T}",
+        c_helper="create_from_PyObject_vector_{cxx_T}",
         c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         parse_format="O",
@@ -4338,6 +4343,25 @@ py_statements = [
             "  // steal reference",
         ],
     ),
+    dict(
+        # Fill an array struct member.
+        name="base_py_ctor_array_fill",
+        declare=[
+            # Initialize to NULL since it is optional.
+            "PyObject *{py_var} = {nullptr};",
+        ],
+        parse_format="O",
+        parse_args=["&{py_var}"],
+        post_call=[
+            "if ({py_var} != {nullptr}) {{+",
+            "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\","
+            "\t SH_obj->{field_name},\t {field_size}) == -1)",
+            "+goto fail;-",
+            "self->{PY_member_object} = {nullptr};",
+            "-}}",
+        ],
+        goto_fail=True,
+    ),
     
     dict(
         name="py_ctor_native",
@@ -4350,8 +4374,8 @@ py_statements = [
     ),
     dict(
         name="py_ctor_native_[]",
-        base="base_py_ctor_array",
-        c_helper="get_from_object_{c_type}_{PY_array_arg}",
+        base="base_py_ctor_array_fill",
+        c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
@@ -4361,8 +4385,8 @@ py_statements = [
     
     dict(
         name="py_ctor_char_[]",
-        base="base_py_ctor_array",
-        c_helper="get_from_object_char",
+        base="base_py_ctor_array_fill",
+        c_helper="fill_from_PyObject_char",
     ),
     dict(
         name="py_ctor_char_*",
@@ -4486,25 +4510,34 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_native_[]_numpy",
+        name="py_descr_native_[]_list",
         need_numpy = True,
-        setter_helper="get_from_object_{c_type}_numpy",
+        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
         setter=[
-            # XXX - Truncates array, need warning?
-            "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_obj});",
-            "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
-            "{c_var} = {nullptr};",
             "{c_var_obj} = {nullptr};",
-            "// XXXX set error",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
             "return -1;",
             "-}}",
-            "int nsrc = cvalue.len * sizeof({c_type});",
-            "void *dest = {cast_static}{c_type} *{cast1}{c_var}{cast2};",
-            "int ndest = {size} * sizeof({c_type});",
-            "int nm = nsrc < ndest ? nsrc : ndest;",
-            "{stdlib}strncpy(dest,cvalue.data,nm);",
-            "Py_XDECREF(cvalue.obj);",
+        ],
+        getter_helper="to_PyList_{c_type}",
+        getter=[
+            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "return rv;",
+        ]
+    ),
+    dict(
+        name="py_descr_native_[]_numpy",
+        need_numpy = True,
+        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
+        setter=[
+            "Py_XDECREF({c_var_obj});",
+            "{c_var_obj} = {nullptr};",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
+            "return -1;",
+            "-}}",
         ],
         getter=[
             "if ({c_var_obj} == {nullptr}) {{+",
@@ -4552,27 +4585,19 @@ py_statements = [
 
     dict(
         name="py_descr_char_[]",
-        setter_helper="get_from_object_char_numpy",
-        setter=["""{PY_typedef_converter} cvalue;
-Py_XDECREF({c_var_obj});
-if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
-{c_var} = {nullptr};
-{c_var_obj} = {nullptr};
-// XXXX set error
-return -1;
--}}
-char *src = {cast_static}char *{cast1}cvalue.data{cast2};
-int nsrc = {stdlib}strlen(src);
-int ndest = {size};
-int nm = nsrc < ndest ? nsrc : ndest;
-{stdlib}strncpy(dest,src,ndest);
-// XXX null terminate string
-Py_DECREF(cvalue.obj);"""
+        setter_helper="fill_from_PyObject_char", #_{PY_array_arg}",
+        setter=[
+            "Py_XDECREF({c_var_obj});",
+            "{c_var_obj} = {nullptr};",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
+            "return -1;",
+            "-}}",
         ],
-        getter=["""if ({c_var}[0] == '\\0') {{+
-Py_RETURN_NONE;
--}}
-if ({c_var_obj} != {nullptr}) {{+
+        # XXX - PyString_FromStringAndSize({c_var}, sizeof({c_var});
+        # c_var_obj is not cached since if the struct changes the
+        # object should be remade.
+        getter=["""if ({c_var_obj} != {nullptr}) {{+
 Py_INCREF({c_var_obj});
 return {c_var_obj};
 -}}

@@ -93,7 +93,6 @@ subroutine SHROUD_capsule_final(cap)
     end interface
     call array_destructor(cap%mem, .false._C_BOOL)
 end subroutine SHROUD_capsule_final
-            
 ##### end capsule_helper source
 
 ##### start copy_array_double interface

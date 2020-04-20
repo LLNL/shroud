@@ -1,0 +1,37 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Wrap a C library with structs
+# Test without NumPy to make sure no compile dependencies are introduced.
+
+library: struct
+cxx_header: struct.h
+
+language: c
+
+options:
+  debug: True
+  wrap_c: False
+  wrap_fortran: False
+  wrap_python: True
+  PY_write_helper_in_util: True
+
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: cstruct
+
+declarations:
+
+######################################################################
+- decl: struct Arrays1 {
+          char name[20];
+          int count[10];
+        };
+  options:
+    PY_struct_arg: class
+    PY_array_arg: list
