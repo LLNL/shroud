@@ -230,6 +230,12 @@ class Struct(unittest.TestCase):
         self.assertEqual('', s.name)
 
         #####
+        # Numpy array to constructor.
+        ref = np.array([10,20,30,40,50,60,70,80,90,100], dtype=np.intc)
+        s = cstruct.Arrays1(count=ref)
+        self.assertTrue(all(np.equal(s.count, ref)))
+        
+        #####
         s = cstruct.Arrays1()
 
         s.name = "dog"
