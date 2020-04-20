@@ -46,10 +46,12 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)
 // ----------------------------------------
 // Argument:  name
-// Exact:     py_ctor_char_[]
+// Requested: py_ctor_char_[]_numpy
+// Match:     py_ctor_char_[]
 // ----------------------------------------
 // Argument:  count
-// Exact:     py_ctor_native_[]
+// Requested: py_ctor_native_[]_numpy
+// Match:     py_ctor_native_[]
 static int
 PY_Arrays1_tp_init(
   PY_Arrays1 *self,
@@ -84,8 +86,8 @@ PY_Arrays1_tp_init(
             self->name_obj = nullptr;
         }
         if (SHPy_count != nullptr) {
-            if (STR_SHROUD_fill_from_PyObject_int(SHPy_count, "count",
-                SH_obj->count, 10) == -1)
+            if (STR_SHROUD_fill_from_PyObject_int_numpy(SHPy_count,
+                "count", SH_obj->count, 10) == -1)
                 goto fail;
             self->count_obj = nullptr;
         }
@@ -128,7 +130,8 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Requested: py_descr_native_[]_numpy
+// Match:     py_descr_native_[]
 static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -142,13 +145,14 @@ static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     return self->count_obj;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Requested: py_descr_native_[]_numpy
+// Match:     py_descr_native_[]
 static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     Py_XDECREF(self->count_obj);
     self->count_obj = nullptr;
-    if (STR_SHROUD_fill_from_PyObject_int(value, "count",
+    if (STR_SHROUD_fill_from_PyObject_int_numpy(value, "count",
         self->obj->count, 10) == -1) {
         return -1;
     }

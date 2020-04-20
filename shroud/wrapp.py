@@ -714,6 +714,7 @@ return 1;""",
         fmt.cxx_var_obj = fmt.c_var_obj
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
+        fmt.PY_array_arg = options.PY_array_arg
 
         have_array, fmt.size = py_struct_dimension(parent, node)
         fmt.npy_ndims = "1"
@@ -1172,7 +1173,7 @@ return 1;""",
 
             intent_blk = None
             if node._generated == "struct_as_class_ctor":
-                stmts = ["py", "ctor", sgroup, spointer]
+                stmts = ["py", "ctor", sgroup, spointer, options.PY_array_arg]
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
@@ -4374,7 +4375,7 @@ py_statements = [
     dict(
         name="py_ctor_native_[]",
         base="base_py_ctor_array_fill",
-        c_helper="fill_from_PyObject_{c_type}", #_{PY_array_arg}",
+        c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
         name="py_ctor_native_*",
@@ -4509,9 +4510,9 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_native_[]_numpy",
+        name="py_descr_native_[]",
         need_numpy = True,
-        setter_helper="fill_from_PyObject_{c_type}", #_{PY_array_arg}",
+        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",

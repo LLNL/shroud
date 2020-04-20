@@ -111,8 +111,8 @@ declarations:
           char name[20];
           int count[10];
         };
-#  options:
-#    wrap_python: False
+  options:
+    PY_array_arg: numpy
 
 ######################################################################
 splicer_code:

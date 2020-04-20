@@ -419,7 +419,9 @@
                     "file_scope": "Arrays1"
                 },
                 "name": "Arrays1",
-                "options": {},
+                "options": {
+                    "PY_array_arg": "numpy"
+                },
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [

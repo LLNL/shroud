@@ -354,12 +354,12 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 }
 ##### end fill_from_PyObject_char source
 
-##### start fill_from_PyObject_double source
+##### start fill_from_PyObject_double_list source
 
-// helper fill_from_PyObject_double
+// helper fill_from_PyObject_double_list
 // Convert obj into an array of type double
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_double(PyObject *obj,
+static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
 {
     double value = PyFloat_AsDouble(obj);
@@ -397,14 +397,59 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_double source
+##### end fill_from_PyObject_double_list source
 
-##### start fill_from_PyObject_float source
+##### start fill_from_PyObject_double_numpy source
 
-// helper fill_from_PyObject_float
+// helper fill_from_PyObject_double_numpy
+// Convert obj into an array of type double
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
+    const char *name, double *in, Py_ssize_t insize)
+{
+    double value = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_double_numpy source
+
+##### start fill_from_PyObject_float_list source
+
+// helper fill_from_PyObject_float_list
 // Convert obj into an array of type float
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_float(PyObject *obj,
+static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
 {
     float value = PyFloat_AsDouble(obj);
@@ -441,17 +486,17 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_float source
+##### end fill_from_PyObject_float_list source
 
-##### start fill_from_PyObject_int source
+##### start fill_from_PyObject_float_numpy source
 
-// helper fill_from_PyObject_int
-// Convert obj into an array of type int
+// helper fill_from_PyObject_float_numpy
+// Convert obj into an array of type float
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_int(PyObject *obj,
-    const char *name, int *in, Py_ssize_t insize)
+static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
+    const char *name, float *in, Py_ssize_t insize)
 {
-    int value = PyInt_AsLong(obj);
+    float value = PyFloat_AsDouble(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
@@ -474,25 +519,25 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int", name, (int) i);
+                "argument '%s', index %d must be float", name, (int) i);
             return -1;
         }
     }
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_int source
+##### end fill_from_PyObject_float_numpy source
 
-##### start fill_from_PyObject_int16_t source
+##### start fill_from_PyObject_int16_t_list source
 
-// helper fill_from_PyObject_int16_t
+// helper fill_from_PyObject_int16_t_list
 // Convert obj into an array of type int16_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
 {
     int16_t value = PyInt_AsLong(obj);
@@ -530,14 +575,59 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_int16_t source
+##### end fill_from_PyObject_int16_t_list source
 
-##### start fill_from_PyObject_int32_t source
+##### start fill_from_PyObject_int16_t_numpy source
 
-// helper fill_from_PyObject_int32_t
+// helper fill_from_PyObject_int16_t_numpy
+// Convert obj into an array of type int16_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
+    const char *name, int16_t *in, Py_ssize_t insize)
+{
+    int16_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int16_t_numpy source
+
+##### start fill_from_PyObject_int32_t_list source
+
+// helper fill_from_PyObject_int32_t_list
 // Convert obj into an array of type int32_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
 {
     int32_t value = PyInt_AsLong(obj);
@@ -575,14 +665,59 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_int32_t source
+##### end fill_from_PyObject_int32_t_list source
 
-##### start fill_from_PyObject_int64_t source
+##### start fill_from_PyObject_int32_t_numpy source
 
-// helper fill_from_PyObject_int64_t
+// helper fill_from_PyObject_int32_t_numpy
+// Convert obj into an array of type int32_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
+    const char *name, int32_t *in, Py_ssize_t insize)
+{
+    int32_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int32_t_numpy source
+
+##### start fill_from_PyObject_int64_t_list source
+
+// helper fill_from_PyObject_int64_t_list
 // Convert obj into an array of type int64_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
 {
     int64_t value = PyInt_AsLong(obj);
@@ -620,14 +755,59 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_int64_t source
+##### end fill_from_PyObject_int64_t_list source
 
-##### start fill_from_PyObject_int8_t source
+##### start fill_from_PyObject_int64_t_numpy source
 
-// helper fill_from_PyObject_int8_t
+// helper fill_from_PyObject_int64_t_numpy
+// Convert obj into an array of type int64_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
+    const char *name, int64_t *in, Py_ssize_t insize)
+{
+    int64_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int64_t_numpy source
+
+##### start fill_from_PyObject_int8_t_list source
+
+// helper fill_from_PyObject_int8_t_list
 // Convert obj into an array of type int8_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
 {
     int8_t value = PyInt_AsLong(obj);
@@ -665,14 +845,147 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_int8_t source
+##### end fill_from_PyObject_int8_t_list source
 
-##### start fill_from_PyObject_long source
+##### start fill_from_PyObject_int8_t_numpy source
 
-// helper fill_from_PyObject_long
+// helper fill_from_PyObject_int8_t_numpy
+// Convert obj into an array of type int8_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
+    const char *name, int8_t *in, Py_ssize_t insize)
+{
+    int8_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int8_t_numpy source
+
+##### start fill_from_PyObject_int_list source
+
+// helper fill_from_PyObject_int_list
+// Convert obj into an array of type int
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
+    const char *name, int *in, Py_ssize_t insize)
+{
+    int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int_list source
+
+##### start fill_from_PyObject_int_numpy source
+
+// helper fill_from_PyObject_int_numpy
+// Convert obj into an array of type int
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
+    const char *name, int *in, Py_ssize_t insize)
+{
+    int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_int_numpy source
+
+##### start fill_from_PyObject_long_list source
+
+// helper fill_from_PyObject_long_list
 // Convert obj into an array of type long
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_long(PyObject *obj,
+static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
 {
     long value = PyInt_AsLong(obj);
@@ -709,14 +1022,58 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_long source
+##### end fill_from_PyObject_long_list source
 
-##### start fill_from_PyObject_short source
+##### start fill_from_PyObject_long_numpy source
 
-// helper fill_from_PyObject_short
+// helper fill_from_PyObject_long_numpy
+// Convert obj into an array of type long
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
+    const char *name, long *in, Py_ssize_t insize)
+{
+    long value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be long", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_long_numpy source
+
+##### start fill_from_PyObject_short_list source
+
+// helper fill_from_PyObject_short_list
 // Convert obj into an array of type short
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_short(PyObject *obj,
+static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
 {
     short value = PyInt_AsLong(obj);
@@ -753,14 +1110,58 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_short source
+##### end fill_from_PyObject_short_list source
 
-##### start fill_from_PyObject_uint16_t source
+##### start fill_from_PyObject_short_numpy source
 
-// helper fill_from_PyObject_uint16_t
+// helper fill_from_PyObject_short_numpy
+// Convert obj into an array of type short
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
+    const char *name, short *in, Py_ssize_t insize)
+{
+    short value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be short", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_short_numpy source
+
+##### start fill_from_PyObject_uint16_t_list source
+
+// helper fill_from_PyObject_uint16_t_list
 // Convert obj into an array of type uint16_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
 {
     uint16_t value = PyInt_AsLong(obj);
@@ -798,14 +1199,59 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_uint16_t source
+##### end fill_from_PyObject_uint16_t_list source
 
-##### start fill_from_PyObject_uint32_t source
+##### start fill_from_PyObject_uint16_t_numpy source
 
-// helper fill_from_PyObject_uint32_t
+// helper fill_from_PyObject_uint16_t_numpy
+// Convert obj into an array of type uint16_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
+    const char *name, uint16_t *in, Py_ssize_t insize)
+{
+    uint16_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint16_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_uint16_t_numpy source
+
+##### start fill_from_PyObject_uint32_t_list source
+
+// helper fill_from_PyObject_uint32_t_list
 // Convert obj into an array of type uint32_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
 {
     uint32_t value = PyInt_AsLong(obj);
@@ -843,14 +1289,59 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_uint32_t source
+##### end fill_from_PyObject_uint32_t_list source
 
-##### start fill_from_PyObject_uint64_t source
+##### start fill_from_PyObject_uint32_t_numpy source
 
-// helper fill_from_PyObject_uint64_t
+// helper fill_from_PyObject_uint32_t_numpy
+// Convert obj into an array of type uint32_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
+    const char *name, uint32_t *in, Py_ssize_t insize)
+{
+    uint32_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint32_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_uint32_t_numpy source
+
+##### start fill_from_PyObject_uint64_t_list source
+
+// helper fill_from_PyObject_uint64_t_list
 // Convert obj into an array of type uint64_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
 {
     uint64_t value = PyInt_AsLong(obj);
@@ -888,14 +1379,59 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_uint64_t source
+##### end fill_from_PyObject_uint64_t_list source
 
-##### start fill_from_PyObject_uint8_t source
+##### start fill_from_PyObject_uint64_t_numpy source
 
-// helper fill_from_PyObject_uint8_t
+// helper fill_from_PyObject_uint64_t_numpy
+// Convert obj into an array of type uint64_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
+    const char *name, uint64_t *in, Py_ssize_t insize)
+{
+    uint64_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint64_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_uint64_t_numpy source
+
+##### start fill_from_PyObject_uint8_t_list source
+
+// helper fill_from_PyObject_uint8_t_list
 // Convert obj into an array of type uint8_t
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
+static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
 {
     uint8_t value = PyInt_AsLong(obj);
@@ -933,14 +1469,59 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_uint8_t source
+##### end fill_from_PyObject_uint8_t_list source
 
-##### start fill_from_PyObject_unsigned_int source
+##### start fill_from_PyObject_uint8_t_numpy source
 
-// helper fill_from_PyObject_unsigned_int
+// helper fill_from_PyObject_uint8_t_numpy
+// Convert obj into an array of type uint8_t
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
+    const char *name, uint8_t *in, Py_ssize_t insize)
+{
+    uint8_t value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be uint8_t", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_uint8_t_numpy source
+
+##### start fill_from_PyObject_unsigned_int_list source
+
+// helper fill_from_PyObject_unsigned_int_list
 // Convert obj into an array of type unsigned int
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
+static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
 {
     unsigned int value = PyInt_AsLong(obj);
@@ -978,14 +1559,59 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_unsigned_int source
+##### end fill_from_PyObject_unsigned_int_list source
 
-##### start fill_from_PyObject_unsigned_long source
+##### start fill_from_PyObject_unsigned_int_numpy source
 
-// helper fill_from_PyObject_unsigned_long
+// helper fill_from_PyObject_unsigned_int_numpy
+// Convert obj into an array of type unsigned int
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
+    const char *name, unsigned int *in, Py_ssize_t insize)
+{
+    unsigned int value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned int", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_unsigned_int_numpy source
+
+##### start fill_from_PyObject_unsigned_long_list source
+
+// helper fill_from_PyObject_unsigned_long_list
 // Convert obj into an array of type unsigned long
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
+static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
 {
     unsigned long value = PyInt_AsLong(obj);
@@ -1023,14 +1649,59 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_unsigned_long source
+##### end fill_from_PyObject_unsigned_long_list source
 
-##### start fill_from_PyObject_unsigned_short source
+##### start fill_from_PyObject_unsigned_long_numpy source
 
-// helper fill_from_PyObject_unsigned_short
+// helper fill_from_PyObject_unsigned_long_numpy
+// Convert obj into an array of type unsigned long
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
+    const char *name, unsigned long *in, Py_ssize_t insize)
+{
+    unsigned long value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned long", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_unsigned_long_numpy source
+
+##### start fill_from_PyObject_unsigned_short_list source
+
+// helper fill_from_PyObject_unsigned_short_list
 // Convert obj into an array of type unsigned short
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
+static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
 {
     unsigned short value = PyInt_AsLong(obj);
@@ -1068,7 +1739,52 @@ static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
     Py_DECREF(seq);
     return 0;
 }
-##### end fill_from_PyObject_unsigned_short source
+##### end fill_from_PyObject_unsigned_short_list source
+
+##### start fill_from_PyObject_unsigned_short_numpy source
+
+// helper fill_from_PyObject_unsigned_short_numpy
+// Convert obj into an array of type unsigned short
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
+    const char *name, unsigned short *in, Py_ssize_t insize)
+{
+    unsigned short value = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be unsigned short", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_unsigned_short_numpy source
 
 ##### start from_PyObject_char source
 

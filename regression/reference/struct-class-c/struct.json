@@ -50,7 +50,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHPy_dfield",
                                     "size_var": "SHSize_dfield",
-                                    "stmt0": "py_ctor_native_scalar",
+                                    "stmt0": "py_ctor_native_scalar_numpy",
                                     "stmt1": "py_ctor_native"
                                 }
                             },
@@ -72,7 +72,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_ifield",
                                     "size_var": "SHSize_ifield",
-                                    "stmt0": "py_ctor_native_scalar",
+                                    "stmt0": "py_ctor_native_scalar_numpy",
                                     "stmt1": "py_ctor_native"
                                 }
                             }
@@ -261,7 +261,7 @@
                                     "py_var": "SHPy_cfield",
                                     "pytmp_var": "SHTPy_cfield",
                                     "size_var": "SHSize_cfield",
-                                    "stmt0": "py_ctor_char_*",
+                                    "stmt0": "py_ctor_char_*_numpy",
                                     "stmt1": "py_ctor_char_*"
                                 }
                             }
@@ -425,7 +425,7 @@
                                     "py_var": "SHPy_dvalue",
                                     "pytmp_var": "SHTPy_dvalue",
                                     "size_var": "SHSize_dvalue",
-                                    "stmt0": "py_ctor_native_*",
+                                    "stmt0": "py_ctor_native_*_list",
                                     "stmt1": "py_ctor_native_*"
                                 }
                             },
@@ -454,7 +454,7 @@
                                     "py_var": "SHPy_ivalue",
                                     "pytmp_var": "SHTPy_ivalue",
                                     "size_var": "SHSize_ivalue",
-                                    "stmt0": "py_ctor_native_*",
+                                    "stmt0": "py_ctor_native_*_list",
                                     "stmt1": "py_ctor_native_*"
                                 }
                             },
@@ -476,7 +476,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
-                                    "stmt0": "py_ctor_native_scalar",
+                                    "stmt0": "py_ctor_native_scalar_list",
                                     "stmt1": "py_ctor_native"
                                 }
                             },
@@ -505,7 +505,7 @@
                                     "py_var": "SHPy_svalue",
                                     "pytmp_var": "SHTPy_svalue",
                                     "size_var": "SHSize_svalue",
-                                    "stmt0": "py_ctor_char_**",
+                                    "stmt0": "py_ctor_char_**_list",
                                     "stmt1": "py_ctor_char_**"
                                 }
                             }
@@ -823,7 +823,7 @@
                                     "py_var": "SHPy_dvalue",
                                     "pytmp_var": "SHTPy_dvalue",
                                     "size_var": "SHSize_dvalue",
-                                    "stmt0": "py_ctor_native_*",
+                                    "stmt0": "py_ctor_native_*_numpy",
                                     "stmt1": "py_ctor_native_*"
                                 }
                             },
@@ -852,7 +852,7 @@
                                     "py_var": "SHPy_ivalue",
                                     "pytmp_var": "SHTPy_ivalue",
                                     "size_var": "SHSize_ivalue",
-                                    "stmt0": "py_ctor_native_*",
+                                    "stmt0": "py_ctor_native_*_numpy",
                                     "stmt1": "py_ctor_native_*"
                                 }
                             },
@@ -874,7 +874,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
-                                    "stmt0": "py_ctor_native_scalar",
+                                    "stmt0": "py_ctor_native_scalar_numpy",
                                     "stmt1": "py_ctor_native"
                                 }
                             }
@@ -1125,12 +1125,12 @@
                                     "data_var": "SHData_count",
                                     "field_name": "count",
                                     "field_size": "10",
-                                    "hnamefunc0": "STR_SHROUD_fill_from_PyObject_int",
+                                    "hnamefunc0": "STR_SHROUD_fill_from_PyObject_int_numpy",
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_count",
                                     "pytmp_var": "SHTPy_count",
                                     "size_var": "SHSize_count",
-                                    "stmt0": "py_ctor_native_[]",
+                                    "stmt0": "py_ctor_native_[]_numpy",
                                     "stmt1": "py_ctor_native_[]"
                                 }
                             },
@@ -1155,7 +1155,7 @@
                                     "py_var": "SHPy_name",
                                     "pytmp_var": "SHTPy_name",
                                     "size_var": "SHSize_name",
-                                    "stmt0": "py_ctor_char_[]",
+                                    "stmt0": "py_ctor_char_[]_numpy",
                                     "stmt1": "py_ctor_char_[]"
                                 }
                             }
@@ -1246,7 +1246,9 @@
                     }
                 ],
                 "name": "Arrays1",
-                "options": {},
+                "options": {
+                    "PY_array_arg": "numpy"
+                },
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [

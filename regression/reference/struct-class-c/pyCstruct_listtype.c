@@ -43,17 +43,20 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // Cstruct_list(int nitems +intent(in), int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)
 // ----------------------------------------
 // Argument:  nitems
-// Requested: py_ctor_native_scalar
+// Requested: py_ctor_native_scalar_list
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  ivalue
-// Exact:     py_ctor_native_*
+// Requested: py_ctor_native_*_list
+// Match:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  dvalue
-// Exact:     py_ctor_native_*
+// Requested: py_ctor_native_*_list
+// Match:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  svalue
-// Exact:     py_ctor_char_**
+// Requested: py_ctor_char_**_list
+// Match:     py_ctor_char_**
 static int
 PY_Cstruct_list_tp_init(
   PY_Cstruct_list *self,

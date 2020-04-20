@@ -85,11 +85,11 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     return 0;
 }
 
-// helper fill_from_PyObject_int
+// helper fill_from_PyObject_int_numpy
 // Convert obj into an array of type int
 // Return 0 on success, -1 on error.
-int STR_SHROUD_fill_from_PyObject_int(PyObject *obj, const char *name,
-    int *in, Py_ssize_t insize)
+int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
+    const char *name, int *in, Py_ssize_t insize)
 {
     int value = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {

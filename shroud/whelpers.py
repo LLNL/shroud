@@ -707,14 +707,18 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Return -1 on error.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "fill_from_PyObject_" + flat_name
     if ntypemap.PY_get:
+        name = "fill_from_PyObject_" + flat_name + "_list"
         fmt.hname = name
-        fmt.fcn_suffix = flat_name
+        fmt.flat_name = flat_name
         fmt.fcn_type = ntypemap.c_type
         fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        CHelpers[name] = fill_from_PyObject(fmt)
+        CHelpers[name] = fill_from_PyObject_list(fmt)
+
+        name = "fill_from_PyObject_" + flat_name + "_numpy"
+        fmt.hname = name
+        CHelpers[name] = fill_from_PyObject_numpy(fmt)
 
     ########################################
     # Used with intent(in), setter.
@@ -773,13 +777,67 @@ return 1;
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     CHelpers[name] = create_get_from_object_list(fmt)
 
-def fill_from_PyObject(fmt):
+def fill_from_PyObject_list(fmt):
     """Create helper to convert list of PyObjects to existing C array.
 
     If passed a scalar, broadcast to array.
     """
     fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}fill_from_PyObject_{fcn_suffix}", fmt)
+        "{PY_helper_prefix}fill_from_PyObject_{flat_name}_list", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type {c_type}
+// Return 0 on success, -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+{c_type} value = {Py_get_obj};
+if (!PyErr_Occurred()) {{+
+// Broadcast scalar.
+for (Py_ssize_t i = 0; i < insize; ++i) {{+
+in[i] = value;
+-}}
+return 0;
+-}}
+PyErr_Clear();
+
+// Look for sequence.
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+if (size > insize) {{+
+size = insize;
+-}}
+for (Py_ssize_t i = 0; i < size; ++i) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+return 0;
+-}}""", fmt),
+        )
+    return helper
+    
+def fill_from_PyObject_numpy(fmt):
+    """Create helper to convert list of PyObjects to existing C array.
+
+    If passed a scalar, broadcast to array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}fill_from_PyObject_{flat_name}_numpy", fmt)
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
     helper = dict(

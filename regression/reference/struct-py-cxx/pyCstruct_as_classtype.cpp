@@ -39,11 +39,11 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)
 // ----------------------------------------
 // Argument:  x1
-// Requested: py_ctor_native_scalar
+// Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  y1
-// Requested: py_ctor_native_scalar
+// Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 static int
 PY_Cstruct_as_class_tp_init(

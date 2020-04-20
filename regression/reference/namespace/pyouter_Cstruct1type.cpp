@@ -39,11 +39,11 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 // ----------------------------------------
 // Argument:  ifield
-// Requested: py_ctor_native_scalar
+// Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  dfield
-// Requested: py_ctor_native_scalar
+// Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 static int
 PY_Cstruct1_tp_init(
