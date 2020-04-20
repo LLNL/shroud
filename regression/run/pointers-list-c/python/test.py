@@ -106,7 +106,7 @@ class Pointers(unittest.TestCase):
             out = pointers.incrementIntArray(array)
         self.assertTrue('must be iterable' in str(context.exception))
 
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(TypeError) as context:
             array = [ 1, "two", 3 ]
             out = pointers.incrementIntArray(array)
         self.assertTrue('must be int' in str(context.exception))

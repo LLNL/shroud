@@ -130,6 +130,7 @@ test-python : \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
   test-python-struct-class-cxx \
+  test-python-structlist \
   test-python-struct-py-c \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
@@ -218,6 +219,7 @@ phony_explicit:
     $(tempdir)/run/struct-class-c/python/.. \
     $(tempdir)/run/struct-class-cxx/python/.. \
     $(tempdir)/run/struct-list-c/python/.. \
+    $(tempdir)/run/structlist/python/.. \
     $(tempdir)/run/struct-py-c/python/.. \
     $(tempdir)/run/struct-py-cxx/python/.. \
     $(tempdir)/run/templates/.. \

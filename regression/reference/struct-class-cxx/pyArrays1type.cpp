@@ -130,8 +130,7 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     return 0;
 }
 
-// Requested: py_descr_native_[]_numpy
-// Match:     py_descr_native_[]
+// Exact:     py_descr_native_[]_numpy
 static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -145,8 +144,7 @@ static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     return self->count_obj;
 }
 
-// Requested: py_descr_native_[]_numpy
-// Match:     py_descr_native_[]
+// Exact:     py_descr_native_[]_numpy
 static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

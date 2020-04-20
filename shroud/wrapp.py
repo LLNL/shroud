@@ -4510,7 +4510,25 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_native_[]",
+        name="py_descr_native_[]_list",
+        need_numpy = True,
+        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
+        setter=[
+            "Py_XDECREF({c_var_obj});",
+            "{c_var_obj} = {nullptr};",
+            "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
+            "\t {c_var},\t {size}) == -1) {{+",
+            "return -1;",
+            "-}}",
+        ],
+        getter_helper="to_PyList_{c_type}",
+        getter=[
+            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "return rv;",
+        ]
+    ),
+    dict(
+        name="py_descr_native_[]_numpy",
         need_numpy = True,
         setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
         setter=[

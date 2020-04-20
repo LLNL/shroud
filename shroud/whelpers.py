@@ -822,14 +822,14 @@ PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
 return -1;
 -}}
 -}}
 Py_DECREF(seq);
 return 0;
 -}}""", fmt),
-        )
+    )
     return helper
     
 def fill_from_PyObject_numpy(fmt):
@@ -916,7 +916,7 @@ in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 {stdlib}free(in);
 Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
 return -1;
 -}}
 -}}
@@ -925,7 +925,7 @@ Py_DECREF(seq);
 *psize = size;
 return 0;
 -}}""", fmt),
-        )
+    )
     return helper
     
 def create_to_PyList(fmt):

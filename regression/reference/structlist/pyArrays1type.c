@@ -46,11 +46,11 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)
 // ----------------------------------------
 // Argument:  name
-// Requested: py_ctor_char_[]_numpy
+// Requested: py_ctor_char_[]_list
 // Match:     py_ctor_char_[]
 // ----------------------------------------
 // Argument:  count
-// Requested: py_ctor_native_[]_numpy
+// Requested: py_ctor_native_[]_list
 // Match:     py_ctor_native_[]
 static int
 PY_Arrays1_tp_init(
@@ -75,7 +75,7 @@ PY_Arrays1_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 5;
+    self->idtor = 1;
 
     // post_call - initialize fields
     Arrays1 *SH_obj = self->obj;
@@ -86,7 +86,7 @@ PY_Arrays1_tp_init(
         self->name_obj = NULL;
     }
     if (SHPy_count != NULL) {
-        if (STR_SHROUD_fill_from_PyObject_int_numpy(SHPy_count, "count",
+        if (STR_SHROUD_fill_from_PyObject_int_list(SHPy_count, "count",
             SH_obj->count, 10) == -1)
             goto fail;
         self->count_obj = NULL;
@@ -101,7 +101,7 @@ fail:
 // splicer begin class.Arrays1.impl.after_methods
 // splicer end class.Arrays1.impl.after_methods
 
-// Requested: py_descr_char_[]_numpy
+// Requested: py_descr_char_[]_list
 // Match:     py_descr_char_[]
 static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
@@ -115,7 +115,7 @@ static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     return rv;
 }
 
-// Requested: py_descr_char_[]_numpy
+// Requested: py_descr_char_[]_list
 // Match:     py_descr_char_[]
 static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
@@ -129,27 +129,21 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Exact:     py_descr_native_[]_list
 static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
-    if (self->count_obj == NULL) {
-        // Create Numpy object which points to struct member.
-        npy_intp dims[1] = { 10 };
-        self->count_obj = PyArray_SimpleNewFromData(1, dims, NPY_INT,
-            self->obj->count);
-    }
-    Py_INCREF(self->count_obj);
-    return self->count_obj;
+    PyObject *rv = STR_SHROUD_to_PyList_int(self->obj->count, 10);
+    return rv;
 }
 
-// Exact:     py_descr_native_[]_numpy
+// Exact:     py_descr_native_[]_list
 static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     Py_XDECREF(self->count_obj);
     self->count_obj = NULL;
-    if (STR_SHROUD_fill_from_PyObject_int_numpy(value, "count",
+    if (STR_SHROUD_fill_from_PyObject_int_list(value, "count",
         self->obj->count, 10) == -1) {
         return -1;
     }

@@ -49,7 +49,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be string", name,
                 (int) i);
             return -1;

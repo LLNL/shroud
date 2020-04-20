@@ -388,7 +388,7 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
         in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be double", name,
                 (int) i);
             return -1;
@@ -473,7 +473,7 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
         in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be float", name, (int) i);
             return -1;
         }
@@ -557,7 +557,7 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int16_t", name,
                 (int) i);
             return -1;
@@ -642,7 +642,7 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int32_t", name,
                 (int) i);
             return -1;
@@ -727,7 +727,7 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int64_t", name,
                 (int) i);
             return -1;
@@ -812,7 +812,7 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int8_t", name,
                 (int) i);
             return -1;
@@ -897,7 +897,7 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
@@ -981,7 +981,7 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be long", name, (int) i);
             return -1;
         }
@@ -1065,7 +1065,7 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be short", name, (int) i);
             return -1;
         }
@@ -1149,7 +1149,7 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint16_t", name,
                 (int) i);
             return -1;
@@ -1234,7 +1234,7 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint32_t", name,
                 (int) i);
             return -1;
@@ -1319,7 +1319,7 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint64_t", name,
                 (int) i);
             return -1;
@@ -1404,7 +1404,7 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint8_t", name,
                 (int) i);
             return -1;
@@ -1489,7 +1489,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned int", name,
                 (int) i);
             return -1;
@@ -1575,7 +1575,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned long", name,
                 (int) i);
             return -1;
@@ -1661,7 +1661,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned short", name,
                 (int) i);
             return -1;
@@ -1737,7 +1737,7 @@ static int SHROUD_from_PyObject_char(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be string", name,
                 (int) i);
             return -1;
@@ -1773,7 +1773,7 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be double", name,
                 (int) i);
             return -1;
@@ -1808,7 +1808,7 @@ static int SHROUD_from_PyObject_float(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be float", name, (int) i);
             return -1;
         }
@@ -1842,7 +1842,7 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
@@ -1877,7 +1877,7 @@ static int SHROUD_from_PyObject_int16_t(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int16_t", name,
                 (int) i);
             return -1;
@@ -1913,7 +1913,7 @@ static int SHROUD_from_PyObject_int32_t(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int32_t", name,
                 (int) i);
             return -1;
@@ -1949,7 +1949,7 @@ static int SHROUD_from_PyObject_int64_t(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int64_t", name,
                 (int) i);
             return -1;
@@ -1985,7 +1985,7 @@ static int SHROUD_from_PyObject_int8_t(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int8_t", name,
                 (int) i);
             return -1;
@@ -2020,7 +2020,7 @@ static int SHROUD_from_PyObject_long(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be long", name, (int) i);
             return -1;
         }
@@ -2054,7 +2054,7 @@ static int SHROUD_from_PyObject_short(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be short", name, (int) i);
             return -1;
         }
@@ -2089,7 +2089,7 @@ static int SHROUD_from_PyObject_uint16_t(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint16_t", name,
                 (int) i);
             return -1;
@@ -2125,7 +2125,7 @@ static int SHROUD_from_PyObject_uint32_t(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint32_t", name,
                 (int) i);
             return -1;
@@ -2161,7 +2161,7 @@ static int SHROUD_from_PyObject_uint64_t(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint64_t", name,
                 (int) i);
             return -1;
@@ -2197,7 +2197,7 @@ static int SHROUD_from_PyObject_uint8_t(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be uint8_t", name,
                 (int) i);
             return -1;
@@ -2233,7 +2233,7 @@ static int SHROUD_from_PyObject_unsigned_int(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned int", name,
                 (int) i);
             return -1;
@@ -2269,7 +2269,7 @@ static int SHROUD_from_PyObject_unsigned_long(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned long", name,
                 (int) i);
             return -1;
@@ -2305,7 +2305,7 @@ static int SHROUD_from_PyObject_unsigned_short(PyObject *obj,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
+            PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be unsigned short", name,
                 (int) i);
             return -1;
