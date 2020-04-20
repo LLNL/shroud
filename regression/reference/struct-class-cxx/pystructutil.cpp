@@ -101,28 +101,24 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int *data = static_cast<int *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 

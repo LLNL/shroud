@@ -417,29 +417,24 @@ static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of double", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    double *data = static_cast<double *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be double", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_double_numpy source
@@ -506,28 +501,24 @@ static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_FLOAT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of float", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    float *data = static_cast<float *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be float", name, (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_float_numpy source
@@ -595,29 +586,24 @@ static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT16,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int16_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int16_t *data = static_cast<int16_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int16_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_int16_t_numpy source
@@ -685,29 +671,24 @@ static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT32,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int32_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int32_t *data = static_cast<int32_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int32_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_int32_t_numpy source
@@ -775,29 +756,24 @@ static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT64,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int64_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int64_t *data = static_cast<int64_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int64_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_int64_t_numpy source
@@ -865,29 +841,24 @@ static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT8,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int8_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int8_t *data = static_cast<int8_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int8_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_int8_t_numpy source
@@ -954,28 +925,24 @@ static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of int", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    int *data = static_cast<int *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_int_numpy source
@@ -1042,28 +1009,24 @@ static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of long", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    long *data = static_cast<long *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be long", name, (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_long_numpy source
@@ -1130,28 +1093,24 @@ static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_SHORT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of short", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    short *data = static_cast<short *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be short", name, (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_short_numpy source
@@ -1219,29 +1178,24 @@ static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT16,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of uint16_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    uint16_t *data = static_cast<uint16_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be uint16_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_uint16_t_numpy source
@@ -1309,29 +1263,24 @@ static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT32,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of uint32_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    uint32_t *data = static_cast<uint32_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be uint32_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_uint32_t_numpy source
@@ -1399,29 +1348,24 @@ static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT64,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of uint64_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    uint64_t *data = static_cast<uint64_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be uint64_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_uint64_t_numpy source
@@ -1489,29 +1433,24 @@ static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_UINT8,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of uint8_t", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    uint8_t *data = static_cast<uint8_t *>(PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be uint8_t", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_uint8_t_numpy source
@@ -1579,29 +1518,25 @@ static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of unsigned int", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    unsigned int *data = static_cast<unsigned int *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be unsigned int", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_unsigned_int_numpy source
@@ -1669,29 +1604,25 @@ static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_LONG,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of unsigned long", name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    unsigned long *data = static_cast<unsigned long *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be unsigned long", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_unsigned_long_numpy source
@@ -1759,29 +1690,26 @@ static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
     }
     PyErr_Clear();
 
-    // Look for sequence.
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_SHORT,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of unsigned short",
             name);
         return -1;
     }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    unsigned short *data = static_cast<unsigned short *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
     if (size > insize) {
         size = insize;
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_ValueError,
-                "argument '%s', index %d must be unsigned short", name,
-                (int) i);
-            return -1;
-        }
+        in[i] = data[i];
     }
-    Py_DECREF(seq);
+    Py_DECREF(pyarray);
     return 0;
 }
 ##### end fill_from_PyObject_unsigned_short_numpy source

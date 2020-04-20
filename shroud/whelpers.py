@@ -661,7 +661,8 @@ def add_to_PyList_helper(fmt, ntypemap):
     """
     flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
-    
+    fmt.numpy_type = ntypemap.PYN_typenum
+
     ########################################
     # Used with intent(out)
     name = "to_PyList_" + flat_name
@@ -840,6 +841,8 @@ def fill_from_PyObject_numpy(fmt):
         "{PY_helper_prefix}fill_from_PyObject_{flat_name}_numpy", fmt)
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+    fmt.py_tmp = "array"
+    fmt.numpy_type
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
@@ -860,26 +863,22 @@ return 0;
 -}}
 PyErr_Clear();
 
-// Look for sequence.
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+PyObject *{py_tmp} = PyArray_FROM_OTF(obj,\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);
+if ({py_tmp} == {nullptr}) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be a 1-D array of {c_type}",\t name);
 return -1;
 -}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+PyArrayObject *pyarray = {cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2};
+
+{c_type} *data = {cast_static}{c_type} *{cast1}PyArray_DATA(pyarray){cast2};
+npy_intp size = PyArray_SIZE(pyarray);
 if (size > insize) {{+
 size = insize;
 -}}
 for (Py_ssize_t i = 0; i < size; ++i) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-Py_DECREF(seq);
-PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
-return -1;
+in[i] = data[i];
 -}}
--}}
-Py_DECREF(seq);
+Py_DECREF(pyarray);
 return 0;
 -}}""", fmt),
         )
