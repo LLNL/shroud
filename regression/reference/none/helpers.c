@@ -334,7 +334,7 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var, size_t c_v
 
 // helper fill_from_PyObject_char
 // Copy PyObject to char array.
-// Returns true on success.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_char(PyObject *obj,
     const char *name, char *in, Py_ssize_t insize)
 {
@@ -342,7 +342,7 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
     int i = SHROUD_get_from_object_char(obj, &value);
     if (i == 0) {
         Py_DECREF(obj);
-        return 0;
+        return -1;
     }
     if (value.data == nullptr) {
         in[0] = '\0';
@@ -350,7 +350,7 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
         std::strncpy(in, static_cast<char *>(value.data), insize);
         Py_DECREF(value.obj);
     }
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_char source
 
@@ -358,9 +358,7 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 
 // helper fill_from_PyObject_double
 // Convert obj into an array of type double
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_double(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
 {
@@ -370,7 +368,7 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -379,7 +377,7 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -393,11 +391,11 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be double", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_double source
 
@@ -405,9 +403,7 @@ static int SHROUD_fill_from_PyObject_double(PyObject *obj,
 
 // helper fill_from_PyObject_float
 // Convert obj into an array of type float
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_float(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
 {
@@ -417,7 +413,7 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -426,7 +422,7 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -439,11 +435,11 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be float", name, (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_float source
 
@@ -451,9 +447,7 @@ static int SHROUD_fill_from_PyObject_float(PyObject *obj,
 
 // helper fill_from_PyObject_int
 // Convert obj into an array of type int
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
 {
@@ -463,7 +457,7 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -472,7 +466,7 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -485,11 +479,11 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int", name, (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_int source
 
@@ -497,9 +491,7 @@ static int SHROUD_fill_from_PyObject_int(PyObject *obj,
 
 // helper fill_from_PyObject_int16_t
 // Convert obj into an array of type int16_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
 {
@@ -509,7 +501,7 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -518,7 +510,7 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -532,11 +524,11 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int16_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_int16_t source
 
@@ -544,9 +536,7 @@ static int SHROUD_fill_from_PyObject_int16_t(PyObject *obj,
 
 // helper fill_from_PyObject_int32_t
 // Convert obj into an array of type int32_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
 {
@@ -556,7 +546,7 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -565,7 +555,7 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -579,11 +569,11 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int32_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_int32_t source
 
@@ -591,9 +581,7 @@ static int SHROUD_fill_from_PyObject_int32_t(PyObject *obj,
 
 // helper fill_from_PyObject_int64_t
 // Convert obj into an array of type int64_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
 {
@@ -603,7 +591,7 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -612,7 +600,7 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -626,11 +614,11 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int64_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_int64_t source
 
@@ -638,9 +626,7 @@ static int SHROUD_fill_from_PyObject_int64_t(PyObject *obj,
 
 // helper fill_from_PyObject_int8_t
 // Convert obj into an array of type int8_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
 {
@@ -650,7 +636,7 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -659,7 +645,7 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -673,11 +659,11 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int8_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_int8_t source
 
@@ -685,9 +671,7 @@ static int SHROUD_fill_from_PyObject_int8_t(PyObject *obj,
 
 // helper fill_from_PyObject_long
 // Convert obj into an array of type long
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_long(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
 {
@@ -697,7 +681,7 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -706,7 +690,7 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -719,11 +703,11 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be long", name, (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_long source
 
@@ -731,9 +715,7 @@ static int SHROUD_fill_from_PyObject_long(PyObject *obj,
 
 // helper fill_from_PyObject_short
 // Convert obj into an array of type short
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_short(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
 {
@@ -743,7 +725,7 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -752,7 +734,7 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -765,11 +747,11 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be short", name, (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_short source
 
@@ -777,9 +759,7 @@ static int SHROUD_fill_from_PyObject_short(PyObject *obj,
 
 // helper fill_from_PyObject_uint16_t
 // Convert obj into an array of type uint16_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
 {
@@ -789,7 +769,7 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -798,7 +778,7 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -812,11 +792,11 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be uint16_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_uint16_t source
 
@@ -824,9 +804,7 @@ static int SHROUD_fill_from_PyObject_uint16_t(PyObject *obj,
 
 // helper fill_from_PyObject_uint32_t
 // Convert obj into an array of type uint32_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
 {
@@ -836,7 +814,7 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -845,7 +823,7 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -859,11 +837,11 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be uint32_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_uint32_t source
 
@@ -871,9 +849,7 @@ static int SHROUD_fill_from_PyObject_uint32_t(PyObject *obj,
 
 // helper fill_from_PyObject_uint64_t
 // Convert obj into an array of type uint64_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
 {
@@ -883,7 +859,7 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -892,7 +868,7 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -906,11 +882,11 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be uint64_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_uint64_t source
 
@@ -918,9 +894,7 @@ static int SHROUD_fill_from_PyObject_uint64_t(PyObject *obj,
 
 // helper fill_from_PyObject_uint8_t
 // Convert obj into an array of type uint8_t
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
 {
@@ -930,7 +904,7 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -939,7 +913,7 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -953,11 +927,11 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be uint8_t", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_uint8_t source
 
@@ -965,9 +939,7 @@ static int SHROUD_fill_from_PyObject_uint8_t(PyObject *obj,
 
 // helper fill_from_PyObject_unsigned_int
 // Convert obj into an array of type unsigned int
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
 {
@@ -977,7 +949,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -986,7 +958,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -1000,11 +972,11 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be unsigned int", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_unsigned_int source
 
@@ -1012,9 +984,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int(PyObject *obj,
 
 // helper fill_from_PyObject_unsigned_long
 // Convert obj into an array of type unsigned long
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
 {
@@ -1024,7 +994,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -1033,7 +1003,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -1047,11 +1017,11 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be unsigned long", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_unsigned_long source
 
@@ -1059,9 +1029,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long(PyObject *obj,
 
 // helper fill_from_PyObject_unsigned_short
 // Convert obj into an array of type unsigned short
-// Return -1 on error.
-// Returns true on success; on failure,
-// it returns false and raises the appropriate exception.
+// Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
 {
@@ -1071,7 +1039,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
         for (Py_ssize_t i = 0; i < insize; ++i) {
             in[i] = value;
         }
-        return 1;
+        return 0;
     }
     PyErr_Clear();
 
@@ -1080,7 +1048,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
             name);
-        return 0;
+        return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     if (size > insize) {
@@ -1094,11 +1062,11 @@ static int SHROUD_fill_from_PyObject_unsigned_short(PyObject *obj,
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be unsigned short", name,
                 (int) i);
-            return 0;
+            return -1;
         }
     }
     Py_DECREF(seq);
-    return 1;
+    return 0;
 }
 ##### end fill_from_PyObject_unsigned_short source
 
