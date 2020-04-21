@@ -14,13 +14,16 @@
                to help control namespace/scope.
                Useful when to helpers create the same function.
                ex. SHROUD_get_from_object_char_{numpy,list}
- scope       = scope of helper.  Defaults to "file" which are added
-               as file static and may be in several files.
-               "utility" will add to C_header_utility or PY_utility_filename
-               and shared among files. These names need to be unique
-               since they are shared across wrapped libraries.
-               "shared_impl" - Helpers which are written in C and 
+ scope       = scope of helper.
+               "file" (default) added as file static and may be in
+                  several files.
+               "cwrap_include" will add to C_header_utility and shared
+                  among files. These names need to be unique since they
+                  are shared across wrapped libraries.
+               "cwrap_impl" - Helpers which are written in C and 
                   called by Fortran.
+               "pwrap_impl" - Added to PY_utility_filename and shared
+                  among files.
  c_include   = Blank delimited list of files to #include
                in implementation file when wrapping a C library.
  cxx_include = Blank delimited list of files to #include.
@@ -116,7 +119,7 @@ def add_external_helpers():
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        scope="shared_impl",
+        scope="cwrap_impl",
         dependent_helpers=["array_context"],
         c_include="<string.h>",
         cxx_include="<cstring>",
@@ -148,7 +151,7 @@ n *= data->elem_len;
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
-        scope="shared_impl",
+        scope="cwrap_impl",
         dependent_helpers=["array_context"],
         cxx_include="<cstring> <cstddef>",
         # XXX - mangle name
@@ -359,7 +362,7 @@ return 1;
 
     ########################################
     CHelpers['PY_converter_type'] = dict(
-        scope="utility",
+        scope="pwrap_impl",
         c_include="<stddef.h>",
         cxx_include="<cstddef>",
         source=wformat("""
@@ -398,7 +401,7 @@ def add_shadow_helper(node):
             cpp_if = ""
             cpp_endif = ""
         helper = dict(
-            scope="utility",
+            scope="cwrap_include",
             # h_shared_code
             source="""
 {lstart}// helper {hname}
@@ -445,7 +448,7 @@ integer(C_INT) :: idtor = 0       ! index of destructor
     FHelpers[name] = helper
 
     helper = dict(
-        scope="utility",
+        scope="cwrap_include",
         source=wformat(
             """
 // helper {hname}
@@ -507,7 +510,7 @@ call array_destructor(cap%mem, .false._C_BOOL)
         fmt.lstart = "{}{}\n".format(cstart, name)
         fmt.lend = "\n{}{}".format(cend, name)
     helper = dict(
-        scope="utility",
+        scope="cwrap_include",
         include="<stddef.h>",
         # Create a union for addr to avoid some casts.
         # And help with debugging since ccharp will display contents.
@@ -1083,7 +1086,7 @@ CHelpers = dict(
     ShroudTypeDefines=dict(
         # Order derived from TS 29113
         # with the addition of unsigned types
-        scope="utility",
+        scope="cwrap_include",
         source="""
 /* helper ShroudTypeDefines */
 /* Shroud type defines */

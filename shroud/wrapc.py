@@ -235,8 +235,8 @@ class Wrapc(util.WrapperMixin):
             helpers -
         """
         # per class
-        self.helper_source = dict(file=[], utility=[], shared_impl=[])
-        self.helper_include = dict(file={}, utility={}, shared_impl={})
+        self.helper_source = dict(file=[], cwrap_include=[], cwrap_impl=[])
+        self.helper_include = dict(file={}, cwrap_include={}, cwrap_impl={})
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
@@ -256,7 +256,7 @@ class Wrapc(util.WrapperMixin):
         self.write_headers([ fmt.C_header_utility], output)
         # headers required helpers
         self.write_headers_nodes(
-            "c_header", {}, self.helper_include["shared_impl"].keys(), output
+            "c_header", {}, self.helper_include["cwrap_impl"].keys(), output
         )
 
         if self.language == "cxx":
@@ -265,9 +265,9 @@ class Wrapc(util.WrapperMixin):
             #                write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
 
-        if self.helper_source["shared_impl"]:
+        if self.helper_source["cwrap_impl"]:
             write_file = True
-            output.extend(self.helper_source["shared_impl"])
+            output.extend(self.helper_source["cwrap_impl"])
 
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
@@ -302,7 +302,7 @@ class Wrapc(util.WrapperMixin):
 
         # headers required helpers
         self.write_headers_nodes(
-            "c_header", {}, self.helper_include["utility"].keys(), output
+            "c_header", {}, self.helper_include["cwrap_include"].keys(), output
         )
 
         if self.language == "cxx":
@@ -311,7 +311,7 @@ class Wrapc(util.WrapperMixin):
             #                write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
 
-        output.extend(self.helper_source["utility"])
+        output.extend(self.helper_source["cwrap_include"])
 
         if self.shared_proto_c:
             output.extend(self.shared_proto_c)

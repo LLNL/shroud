@@ -2128,9 +2128,9 @@ return 1;""",
             helpers - dictionary of helper names.
         """
         self.helper_summary = dict(
-            include=dict(file={}, utility={}),
-            proto=dict(file=[], utility=[]),
-            source=dict(file=[], utility=[]),
+            include=dict(file={}, pwrap_impl={}),
+            proto=dict(file=[], pwrap_impl=[]),
+            source=dict(file=[], pwrap_impl=[]),
         )
         self.helper_need_numpy = False
 
@@ -2163,8 +2163,8 @@ return 1;""",
         """
         self.gather_helper_code(self.shared_helper)
         return (
-            self.helper_summary["include"]["utility"],
-            self.helper_summary["source"]["utility"]
+            self.helper_summary["include"]["pwrap_impl"],
+            self.helper_summary["source"]["pwrap_impl"]
         )
 
     def find_shared_file_helper_code(self):
