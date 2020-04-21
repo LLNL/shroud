@@ -74,55 +74,6 @@ def set_library(library):
     global _newlibrary
     _newlibrary = library
 
-def XXXwrite_helper_files(self, directory):
-    """This library file is no longer needed.
-
-    Should be written to config.c_fortran_dir
-    """
-    output = [FccHeaders]
-    self.write_output_file("shroudrt.hpp", directory, output)
-
-    output = [FccCSource]
-    self.write_output_file("shroudrt.cpp", directory, output)
-
-
-FccHeaders = """
-#ifndef SHROUDRT_HPP_
-#define SHROUDRT_HPP_
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#ifdef __cplusplus
-}  // extern "C"
-#endif
-
-#endif /* SHROUDRT_HPP_ */
-"""
-
-#
-# C routines used by wrappers
-#
-# shroud_c_loc must be compiled by C but called by Fortran.
-#
-
-FccCSource = """
-/* *INDENT-OFF* */
-#ifdef __cplusplus
-extern "C" {
-#else
-#endif
-/* *INDENT-ON* */
-
-// insert code here
-
-/* *INDENT-OFF* */
-#ifdef __cplusplus
-}  // extern \"C\"
-#endif
-/* *INDENT-ON* */"""
-
 
 def add_all_helpers():
     """Create helper functions.
