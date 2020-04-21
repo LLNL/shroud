@@ -8,7 +8,6 @@
 //
 #include "wrapvectors.h"
 #include <cstdlib>
-#include <cstring>
 #include "typesvectors.h"
 #include "vectors.hpp"
 
@@ -33,22 +32,6 @@ int ShroudLenTrim(const char *src, int nsrc) {
     return i + 1;
 }
 
-
-// start helper copy_array
-// helper copy_array
-// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
-    size_t c_var_size)
-{
-    const void *cxx_var = data->addr.base;
-    int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-    VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-}
-// end helper copy_array
 // splicer begin C_definitions
 // splicer end C_definitions
 

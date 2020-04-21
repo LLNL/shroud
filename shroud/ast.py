@@ -458,6 +458,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_filename_class_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
+            C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
@@ -748,6 +749,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
         self.eval_template("C_header_utility")
+        self.eval_template("C_impl_utility")
 
         self.eval_template("C_memory_dtor_function")
 

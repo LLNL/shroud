@@ -26,6 +26,7 @@ VPATH = \
 
 OBJS = \
     ownership.o \
+    utilownership.o \
     wrapfownership.o \
     wrapownership.o \
     wrapClass1.o \

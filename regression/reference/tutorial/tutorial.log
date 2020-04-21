@@ -32,6 +32,7 @@ C function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
+Close utilTutorial.cpp
 Close typesTutorial.h
 C-interface, Fortran function void NoReturnNoArguments()
 C-interface, Fortran function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

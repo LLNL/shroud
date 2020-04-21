@@ -11,6 +11,7 @@ C function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+
 C function void One()
 Close wrapns.h
 Close wrapns.cpp
+Close utilns.cpp
 Close typesns.h
 C-interface, Fortran function const std::string & LastFunctionCalled() +deref(allocatable)
 C-interface function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))

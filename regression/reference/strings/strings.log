@@ -56,6 +56,7 @@ C function void CpassCharPtr(char * dest +intent(out), const char * src +intent(
 C function void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
 Close wrapstrings.h
 Close wrapstrings.cpp
+Close utilstrings.cpp
 Close typesstrings.h
 C-interface, Fortran function void passChar(char status +intent(in)+value)
 C-interface, Fortran function char returnChar()

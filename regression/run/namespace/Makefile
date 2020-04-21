@@ -25,6 +25,7 @@ VPATH = \
 
 C_OBJS = \
     namespace.o \
+    utilns.o \
     wrapfns_outer.o \
     wrapns.o \
     wrapns_outer.o

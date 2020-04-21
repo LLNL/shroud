@@ -12,6 +12,7 @@ C function int vector_string_count(const std::vector<std::string> & arg +dimensi
 C function void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+dimension(:)+intent(out)) +dimension(:)
 Close wrapvectors.h
 Close wrapvectors.cpp
+Close utilvectors.cpp
 Close typesvectors.h
 Fortran function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 C-interface function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))

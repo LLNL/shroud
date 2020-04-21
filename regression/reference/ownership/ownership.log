@@ -22,6 +22,7 @@ C function Class1 * getClassStatic() +owner(library)
 C function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close wrapownership.h
 Close wrapownership.cpp
+Close utilownership.cpp
 Close typesownership.h
 class Class1
 C-interface, Fortran method ~Class1()

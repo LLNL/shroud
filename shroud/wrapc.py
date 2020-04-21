@@ -81,6 +81,9 @@ class Wrapc(util.WrapperMixin):
         # reserved the 0 slot of capsule_order
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         self.wrap_namespace(newlibrary.wrap_namespace, True)
+
+        self.gather_helper_code(self.shared_helper)
+        self.write_impl_utility()
         self.write_header_utility()
 
     def wrap_namespace(self, node, top=False):
@@ -232,12 +235,48 @@ class Wrapc(util.WrapperMixin):
             helpers -
         """
         # per class
-        self.helper_source = dict(file=[], utility=[])
-        self.helper_include = dict(file={}, utility={})
+        self.helper_source = dict(file=[], utility=[], shared_impl=[])
+        self.helper_include = dict(file={}, utility={}, shared_impl={})
 
         done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
+
+    def write_impl_utility(self):
+        """Write a utility source file with global helpers.
+
+        Helpers which are implemented in C and called from Fortran.
+        Named from fmt.C_impl_utility.
+        """
+        fmt = self.newlibrary.fmtdict
+        fname = fmt.C_impl_utility
+        write_file = False
+        output = []
+
+        self.write_headers([ fmt.C_header_utility], output)
+        # headers required helpers
+        self.write_headers_nodes(
+            "c_header", {}, self.helper_include["shared_impl"].keys(), output
+        )
+
+        if self.language == "cxx":
+            output.append("")
+            #            if self._create_splicer('CXX_declarations', output):
+            #                write_file = True
+            output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+
+        if self.helper_source["shared_impl"]:
+            write_file = True
+            output.extend(self.helper_source["shared_impl"])
+
+        if self.language == "cxx":
+            output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
+
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname)
+            )
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_header_utility(self):
         """Write a utility header file with type definitions.
@@ -246,8 +285,6 @@ class Wrapc(util.WrapperMixin):
         Named from fmt.C_header_utility.
         Contains typedefs for each shadow class.
         """
-        self.gather_helper_code(self.shared_helper)
-
         fmt = self.newlibrary.fmtdict
         fname = fmt.C_header_utility
         output = []

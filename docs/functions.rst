@@ -71,6 +71,10 @@ It's also possible to change just the suffix of files:
         F_impl_filename_library_template: wrapf{library_lower}.{F_filename_suffix}
         F_impl_filename_namespace_template: wrapf{file_scope}.{F_filename_suffix}
 
+A file with helper functions may also be created.
+For C the file is named by the format field *C_impl_utility*.
+It contains files which are implemented in C but are called from Fortran
+via ``BIND(C)``.
 
 How names are created
 ---------------------
@@ -263,7 +267,10 @@ Helper functions
 ----------------
 
 Shroud provides some additional file static function which are inserted 
-at the beginning of the wrapped code.
+at the beginning of the wrapped code. Some helper functions are used to
+communicate between C and Fortran.  They are global and written into
+the *fmt.C_impl_utility* file.  The names of these files will have
+*C_prefix* prefixed to create unique names.
 
 C helper functions
 

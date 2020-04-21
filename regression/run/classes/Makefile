@@ -28,7 +28,8 @@ C_OBJS = \
     wrapclasses.o \
     wrapClass1.o \
     wrapClass2.o \
-    wrapSingleton.o
+    wrapSingleton.o \
+    utilclasses.o
 F_OBJS = \
     wrapfclasses.o \
     fruit.o \

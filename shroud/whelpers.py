@@ -19,6 +19,8 @@
                "utility" will add to C_header_utility or PY_utility_filename
                and shared among files. These names need to be unique
                since they are shared across wrapped libraries.
+               "shared_impl" - Helpers which are written in C and 
+                  called by Fortran.
  c_include   = Blank delimited list of files to #include
                in implementation file when wrapping a C library.
  cxx_include = Blank delimited list of files to #include.
@@ -163,6 +165,7 @@ def add_external_helpers():
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
+        scope="shared_impl",
         dependent_helpers=["array_context"],
         c_include="<string.h>",
         cxx_include="<cstring>",
@@ -194,6 +197,7 @@ n *= data->elem_len;
         fmt.lstart = "{}helper {}\n".format(cstart, name)
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
+        scope="shared_impl",
         dependent_helpers=["array_context"],
         cxx_include="<cstring> <cstddef>",
         # XXX - mangle name

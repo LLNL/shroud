@@ -650,6 +650,7 @@ C_header_filename_suffix
 
 C_header_utility
    A header file with shared Shroud internal typedefs for the library.
+   Default is ``types{library}.{C_header_filename_suffix}``.
 
 C_impl_filename
     Name of generated C++ implementation file for the library.
@@ -659,6 +660,12 @@ C_impl_filename_suffix:
    Suffix added to C implementation files.
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
+
+C_impl_utility
+   A implementation file with shared Shroud helper functions.
+   Typically routines which are implemented in C but called from
+   Fortran via ``BIND(C)``.  The must have global scope.
+   Default is ``util{library}.{C_header_filename_suffix}``.
 
 C_local
     Prefix for C compatible local variable.
