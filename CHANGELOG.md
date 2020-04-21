@@ -56,6 +56,9 @@ splicer:
 - Do not write Python utility file if it is empty.
 - PY_struct_arg now applies to the struct. This allows two structs to use
   "class" and "numpy" in the same YAML file.
+- Prevent duplicate helpers from being created. Helpers which are implemented
+  in C but called from Fortran are written to a new file define by format
+  *C_impl_utility*.
 
 ## v0.11.0 - 2020-01-08
 ### Added

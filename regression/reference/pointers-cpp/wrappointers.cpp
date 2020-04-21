@@ -21,7 +21,7 @@ extern "C" {
 // helper ShroudLenTrim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-int ShroudLenTrim(const char *src, int nsrc) {
+static int ShroudLenTrim(const char *src, int nsrc) {
     int i;
 
     for (i = nsrc - 1; i >= 0; i--) {

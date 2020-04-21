@@ -997,7 +997,7 @@ into the user's argument.
 If the argument is too short, not all values returned by
 the library function will be copied.
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+.. literalinclude:: ../regression/reference/vectors/utilvectors.cpp
    :language: c
    :start-after: start helper copy_array
    :end-before: end helper copy_array

@@ -496,7 +496,7 @@ Finally, the helper function ``SHROUD_copy_string_and_free`` is called
 to set the value of the result and possible free memory for
 **owner(caller)** or intermediate values:
 
-.. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
+.. literalinclude:: ../regression/reference/memdoc/utilmemdoc.cpp
    :language: c++
    :start-after: start helper copy_string
    :end-before: end helper copy_string

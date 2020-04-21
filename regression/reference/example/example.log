@@ -72,6 +72,7 @@ C function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.cpp
+Close utilUserLibrary.cpp
 Close typesUserLibrary.h
 class ExClass1
 C-interface, Fortran method ExClass1()

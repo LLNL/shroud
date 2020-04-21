@@ -300,13 +300,14 @@ class WrapperMixin(object):
                             output, skip={}):
         """Write out headers required by types
 
-        lang_header - "c_header"
-        types - dictionary of Typemap nodes.
-                types[typedef.name] = typedef
-        hlist - list of headers to include
-                From helper routines
-        output - append lines of code.
-        skip - dictionary of headers to ignore.
+        Args:
+            lang_header - "c_header"
+            types - dictionary of Typemap nodes.
+                    types[typedef.name] = typedef
+            hlist - list of headers to include
+                    From helper routines
+            output - append lines of code.
+            skip - dictionary of headers to ignore.
 
         headers[hdr] [ typedef, None, ... ]
         None from helper files

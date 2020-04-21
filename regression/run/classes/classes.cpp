@@ -15,6 +15,8 @@ namespace classes
 {
 
 static std::string last_function_called;
+static std::string class1_name("Class1");
+static std::string class2_name("Class2");
 
 static const Class1 *global_class1;
   
@@ -105,6 +107,20 @@ Class1 * Class1::getclass3() const
     last_function_called = "Class1::getclass3";
     return const_cast<Class1 *>(global_class1);
 }
+
+// The wrappers for these two functions will require the copy_string helper.
+// This is a global function since it is implemented in C but must be
+// called from Fortran.
+// This test is to ensure there is only one copy of the function generated.
+const std::string& Class1:: getName()
+{
+    return class1_name;
+}
+const std::string& Class2:: getName()
+{
+    return class1_name;
+}
+    
 
 Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
 {

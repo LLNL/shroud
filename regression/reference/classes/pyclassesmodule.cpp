@@ -369,6 +369,14 @@ initclasses(void)
     Py_INCREF(&PY_Class1_Type);
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
+    // Class2
+    PY_Class2_Type.tp_new   = PyType_GenericNew;
+    PY_Class2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Class2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Class2_Type);
+    PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
+
     // Singleton
     PY_Singleton_Type.tp_new   = PyType_GenericNew;
     PY_Singleton_Type.tp_alloc = PyType_GenericAlloc;

@@ -185,6 +185,34 @@ PY_getclass3(
 // splicer end class.Class1.method.getclass3
 }
 
+// const std::string & getName() +deref(allocatable)
+static char PY_getName__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief test helper
+ *
+ */
+static PyObject *
+PY_getName(
+  PY_Class1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.Class1.method.get_name
+    PyObject * SHTPy_rv = nullptr;
+
+    const std::string & SHCXX_rv = self->obj->getName();
+
+    // post_call
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.get_name
+}
+
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 // ----------------------------------------
 // Argument:  arg
@@ -308,6 +336,8 @@ static PyMethodDef PY_Class1_methods[] = {
         METH_VARARGS|METH_KEYWORDS, PY_equivalent__doc__},
     {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
         PY_getclass3__doc__},
+    {"getName", (PyCFunction)PY_getName, METH_NOARGS,
+        PY_getName__doc__},
     {"directionFunc", (PyCFunction)PY_directionFunc,
         METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef

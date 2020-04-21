@@ -25,6 +25,7 @@ VPATH = \
 
 C_OBJS = \
     tutorial.o \
+    utilTutorial.o \
     wrapTutorial.o
 F_OBJS = \
     wrapftutorial.o \

@@ -8,7 +8,6 @@
 //
 #include "wrapownership.h"
 #include <cstdlib>
-#include <cstring>
 #include "ownership.hpp"
 #include "typesownership.h"
 
@@ -17,20 +16,6 @@
 
 extern "C" {
 
-
-// helper copy_array
-// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var, 
-    size_t c_var_size)
-{
-    const void *cxx_var = data->addr.base;
-    int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-    OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-}
 // splicer begin C_definitions
 // splicer end C_definitions
 

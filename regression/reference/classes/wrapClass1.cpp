@@ -8,6 +8,7 @@
 //
 #include "wrapClass1.h"
 #include <cstddef>
+#include <cstring>
 #include <string>
 #include "classes.hpp"
 
@@ -16,6 +17,25 @@
 
 extern "C" {
 
+
+// start helper ShroudStrToArray
+// helper ShroudStrToArray
+// Save str metadata into array to allow Fortran to access values.
+static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, int idtor)
+{
+    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.idtor = idtor;
+    if (src->empty()) {
+        array->addr.ccharp = NULL;
+        array->elem_len = 0;
+    } else {
+        array->addr.ccharp = src->data();
+        array->elem_len = src->length();
+    }
+    array->size = 1;
+    array->rank = 1;
+}
+// end helper ShroudStrToArray
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
@@ -230,6 +250,54 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     // splicer end class.Class1.method.getclass3
 }
 // end CLA_Class1_getclass3
+
+// const std::string & getName() +deref(allocatable)
+/**
+ * \brief test helper
+ *
+ */
+// ----------------------------------------
+// Result
+// Requested: c_string_&_result
+// Match:     c_string_result
+// start CLA_Class1_get_name
+const char * CLA_Class1_get_name(CLA_Class1 * self)
+{
+    classes::Class1 *SH_this =
+        static_cast<classes::Class1 *>(self->addr);
+    // splicer begin class.Class1.method.get_name
+    const std::string & SHCXX_rv = SH_this->getName();
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
+    // splicer end class.Class1.method.get_name
+}
+// end CLA_Class1_get_name
+
+// void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+/**
+ * \brief test helper
+ *
+ */
+// ----------------------------------------
+// Result
+// Requested: c_unknown_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  SHF_rv
+// Requested: c_string_&_result_buf_allocatable
+// Match:     c_string_result_buf_allocatable
+// start CLA_Class1_get_name_bufferify
+void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
+    CLA_SHROUD_array *DSHF_rv)
+{
+    classes::Class1 *SH_this =
+        static_cast<classes::Class1 *>(self->addr);
+    // splicer begin class.Class1.method.get_name_bufferify
+    const std::string & SHCXX_rv = SH_this->getName();
+    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
+    // splicer end class.Class1.method.get_name_bufferify
+}
+// end CLA_Class1_get_name_bufferify
 
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 // ----------------------------------------
