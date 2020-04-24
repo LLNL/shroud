@@ -641,7 +641,9 @@ class Wrapc(util.WrapperMixin):
         attrs = ast.attrs
 
         for buf_arg in buf_args:
-            if buf_arg == "arg":
+#            if buf_arg == "arg":
+            # XXX -  c_ptr is the same as arg for 'int **'
+            if buf_arg in ["arg", "c_ptr"]:
                 # vector<int> -> int *
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue

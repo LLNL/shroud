@@ -1621,6 +1621,178 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtargs": {
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "value",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&value",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "c_var": "value",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "value",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "setGlobalInt",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void setGlobalInt(int value)",
+                "declgen": "void setGlobalInt(int value +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "value",
+                    "C_name": "setGlobalInt",
+                    "C_prototype": "int value",
+                    "C_return_type": "void",
+                    "F_C_call": "c_set_global_int",
+                    "F_C_name": "set_global_int",
+                    "F_arg_c_call": "value",
+                    "F_arguments": "value",
+                    "F_name_function": "set_global_int",
+                    "F_name_generic": "set_global_int",
+                    "F_name_impl": "set_global_int",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "setGlobalInt",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "set_global_int"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "nitems",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_native_**_out"
+                        },
+                        "fmtf": {
+                            "c_var": "nitems",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_native_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToScalar(int **nitems+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "nitems",
+                    "C_name": "getPtrToScalar",
+                    "C_prototype": "int * * nitems",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_scalar",
+                    "F_C_name": "c_get_ptr_to_scalar",
+                    "F_arg_c_call": "SHT_ptr",
+                    "F_arguments": "nitems",
+                    "F_name_function": "get_ptr_to_scalar",
+                    "F_name_generic": "get_ptr_to_scalar",
+                    "F_name_impl": "get_ptr_to_scalar",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getPtrToScalar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",

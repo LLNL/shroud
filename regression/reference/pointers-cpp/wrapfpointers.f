@@ -293,6 +293,39 @@ module pointers_mod
         end subroutine c_accept_char_array_in_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine set_global_int(value) &
+                bind(C, name="POI_set_global_int")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: value
+        end subroutine set_global_int
+    end interface
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  nitems
+    ! Exact:     c_native_**_out
+    interface
+        subroutine c_get_ptr_to_scalar(nitems) &
+                bind(C, name="POI_get_ptr_to_scalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: nitems
+        end subroutine c_get_ptr_to_scalar
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -452,6 +485,27 @@ contains
             size(names, kind=C_LONG), len(names, kind=C_INT))
         ! splicer end function.accept_char_array_in
     end subroutine accept_char_array_in
+
+    ! void getPtrToScalar(int * * nitems +intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  nitems
+    ! Exact:     f_native_**_out
+    ! Exact:     c_native_**_out
+    subroutine get_ptr_to_scalar(nitems)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), intent(OUT), pointer :: nitems
+        ! splicer begin function.get_ptr_to_scalar
+        type(C_PTR) :: SHT_ptr
+        call c_get_ptr_to_scalar(SHT_ptr)
+        call c_f_pointer(SHT_ptr, nitems)
+        ! splicer end function.get_ptr_to_scalar
+    end subroutine get_ptr_to_scalar
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

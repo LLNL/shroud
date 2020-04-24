@@ -20,6 +20,7 @@ program tester
   call test_functions
   call test_functions2
   call test_char_arrays
+  call test_out_ptrs
 
   call fruit_summary
   call fruit_finalize
@@ -111,4 +112,17 @@ contains
     call accept_char_array_in(in)
   end subroutine test_char_arrays
 
+  subroutine test_out_ptrs
+    integer(C_INT), pointer :: iscalar
+
+    call set_global_int(0)
+    call get_ptr_to_scalar(iscalar)
+    call assert_equals(0, iscalar)
+
+    ! iscalar points to global_int in pointers.c
+    call set_global_int(5)
+    call assert_equals(5, iscalar)
+    
+  end subroutine test_out_ptrs
+  
 end program tester

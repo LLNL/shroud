@@ -165,3 +165,8 @@ Links
   * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
 
 ..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf
+
+
+
+.. other shroud https://dthompson.us/projects/shroud.html
+   Shroud is a simple secret manager with a command line interface.

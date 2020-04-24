@@ -773,6 +773,36 @@ fail:
     return NULL;
 // splicer end function.accept_char_array_in
 }
+
+// void setGlobalInt(int value +intent(in)+value)
+// ----------------------------------------
+// Argument:  value
+// Requested: py_native_scalar_in
+// Match:     py_default
+static char PY_setGlobalInt__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_setGlobalInt(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.set_global_int
+    int value;
+    char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:setGlobalInt",
+        SHT_kwlist, &value))
+        return NULL;
+
+    setGlobalInt(value);
+    Py_RETURN_NONE;
+// splicer end function.set_global_int
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -795,6 +825,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_incrementIntArray__doc__},
 {"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
+{"setGlobalInt", (PyCFunction)PY_setGlobalInt,
+    METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

@@ -93,3 +93,11 @@ declarations:
 # Python: treat as list of string, even with numpy.
 
 - decl: void acceptCharArrayIn(char **names +intent(in))
+
+######################################################################
+# Routine which return pointers in arguments.
+
+- decl: void setGlobalInt(int value)
+- decl: void getPtrToScalar(int **nitems+intent(out))
+  options:
+    wrap_python: False

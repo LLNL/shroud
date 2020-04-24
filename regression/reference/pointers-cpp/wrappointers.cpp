@@ -344,6 +344,37 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
     // splicer end function.accept_char_array_in_bufferify
 }
 
+// void setGlobalInt(int value +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  value
+// Requested: c_native_scalar_in
+// Match:     c_default
+void POI_set_global_int(int value)
+{
+    // splicer begin function.set_global_int
+    setGlobalInt(value);
+    // splicer end function.set_global_int
+}
+
+// void getPtrToScalar(int * * nitems +intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nitems
+// Exact:     c_native_**_out
+void POI_get_ptr_to_scalar(int * * nitems)
+{
+    // splicer begin function.get_ptr_to_scalar
+    getPtrToScalar(nitems);
+    // splicer end function.get_ptr_to_scalar
+}
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

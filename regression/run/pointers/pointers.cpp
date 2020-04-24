@@ -18,7 +18,7 @@ static char last_function_called[MAXLAST];
 
 // These variables exist to avoid warning errors
 //static std::string global_str;
-//static int global_int;
+static int global_int = 0;
 //static double global_double;
 
 //----------------------------------------------------------------------
@@ -143,6 +143,21 @@ void Rank2Input(int *arg)
 
 void acceptCharArrayIn(char **names)
 {
+}
+
+//----------------------------------------------------------------------
+// Set global_int to use with testing.
+
+void setGlobalInt(int value)
+{
+    global_int = value;
+}
+
+/* Return pointer to a scalar in the argument. */
+
+void getPtrToScalar(int **nitems)
+{
+    *nitems = &global_int;
 }
 
 //----------------------------------------------------------------------

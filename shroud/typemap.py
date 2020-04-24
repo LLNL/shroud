@@ -1386,6 +1386,21 @@ fc_statements = [
         need_wrapper=True
     ),
 
+    dict(
+        name="c_native_**_out",
+        buf_args=["c_ptr"],
+    ),
+    dict(
+        name="f_native_**_out",
+        f_attribute=['pointer'],
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
+        ],
+    ),
 
     # XXX only in buf?
     # Used with intent IN, INOUT, and OUT.

@@ -52,6 +52,10 @@ void POI_accept_char_array_in(char * * names);
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames);
 
+void POI_set_global_int(int value);
+
+void POI_get_ptr_to_scalar(int * * nitems);
+
 #ifdef __cplusplus
 }
 #endif

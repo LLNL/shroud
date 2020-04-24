@@ -887,6 +887,14 @@ rv = .false.
                     ast.typemap.f_c_module or ast.typemap.f_module
                 )
                 continue
+            elif buf_arg == "c_ptr":
+                # Function assigns address to argument.
+                arg_c_names.append(name or ast.name)
+                arg_c_decl.append(
+                    "type(C_PTR), intent(OUT) :: %s" % (name or ast.name)
+                )
+                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+                continue
 
             buf_arg_name = attrs[buf_arg]
             if buf_arg_name is None:
@@ -1214,6 +1222,11 @@ rv = .false.
                 # Pass down the pointer to {F_capsule_data_type}
                 need_wrapper = True
                 append_format(arg_c_call, "{f_var}%{F_derived_member}", fmt)
+                continue
+            elif buf_arg == "c_ptr":
+                # F_pointer must be declared in f_statements.
+                need_wrapper = True
+                append_format(arg_c_call, "{F_pointer}", fmt)
                 continue
 
             need_wrapper = True

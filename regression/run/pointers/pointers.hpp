@@ -30,4 +30,9 @@ void Rank2Input(int *arg);
 
 void acceptCharArrayIn(char **names);
 
+void setGlobalInt(int value);
+void getPtrToScalar(int **nitems);
+
+//void getPtrToArray(int **count+intent(out));
+
 #endif // POINTERS_HPP
