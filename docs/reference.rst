@@ -759,6 +759,9 @@ F_pointer
     The pointer is then set in ``F_result`` using ``c_f_pointer``.
     It must not be the same as any of the routines arguments.
     It defaults to *SHT_ptr*
+    It is defined for each argument in case it is used by the
+    fc_statements. Set to *SHPTR_arg_name*, where *arg_name* is the
+    argument name.
 
 F_result
     The name of the Fortran wrapper's result variable.

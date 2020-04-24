@@ -33,6 +33,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_SHORT)",
                             "f_var": "arg1",
@@ -170,6 +171,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
@@ -307,6 +309,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
@@ -444,6 +447,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG_LONG)",
                             "f_var": "arg1",
@@ -585,6 +589,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_SHORT)",
                             "f_var": "arg1",
@@ -724,6 +729,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
@@ -863,6 +869,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG_LONG)",
                             "f_var": "arg1",
@@ -1006,6 +1013,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
@@ -1143,6 +1151,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_SHORT)",
                             "f_var": "arg1",
@@ -1282,6 +1291,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
@@ -1421,6 +1431,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
@@ -1560,6 +1571,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG_LONG)",
                             "f_var": "arg1",
@@ -1703,6 +1715,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
@@ -1844,6 +1857,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT8_T)",
                             "f_var": "arg1",
@@ -1981,6 +1995,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT16_T)",
                             "f_var": "arg1",
@@ -2118,6 +2133,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT32_T)",
                             "f_var": "arg1",
@@ -2255,6 +2271,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT64_T)",
                             "f_var": "arg1",
@@ -2392,6 +2409,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT8_T)",
                             "f_var": "arg1",
@@ -2529,6 +2547,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT16_T)",
                             "f_var": "arg1",
@@ -2666,6 +2685,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT32_T)",
                             "f_var": "arg1",
@@ -2803,6 +2823,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_INT64_T)",
                             "f_var": "arg1",
@@ -2940,6 +2961,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "arg1",
@@ -3077,6 +3099,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "SH_arg",
                             "f_type": "logical",
                             "f_var": "arg",
@@ -3217,6 +3240,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",

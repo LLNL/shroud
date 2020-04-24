@@ -41,6 +41,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_comm",
                                     "c_var": "comm",
                                     "f_type": "integer",
                                     "f_var": "comm",
@@ -126,6 +127,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_c2",
                                     "c_var": "c2",
                                     "f_type": "type(class1)",
                                     "f_var": "c2",
@@ -343,6 +345,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_pointer": "SHPTR_arg1",
                                             "c_var": "arg1",
                                             "f_type": "integer(C_INT)",
                                             "f_var": "arg1",

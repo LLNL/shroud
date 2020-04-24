@@ -489,6 +489,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
@@ -595,6 +596,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
@@ -841,6 +843,7 @@
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
@@ -869,6 +872,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_s1",
                             "c_var": "s1",
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
@@ -990,6 +994,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
@@ -1099,6 +1104,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
@@ -1127,6 +1133,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
@@ -1155,6 +1162,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
@@ -1271,6 +1279,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
@@ -1356,6 +1365,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
@@ -1384,6 +1394,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
@@ -1503,6 +1514,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
@@ -1531,6 +1543,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
@@ -1651,6 +1664,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
@@ -1679,6 +1693,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
@@ -1979,6 +1994,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
@@ -2007,6 +2023,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
@@ -2036,6 +2053,7 @@
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "f_type": "character(*)",
                             "f_var": "outbuf",

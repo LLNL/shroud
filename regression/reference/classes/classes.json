@@ -201,6 +201,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",
@@ -464,6 +465,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_obj2",
                                     "c_var": "obj2",
                                     "f_type": "type(class1)",
                                     "f_var": "obj2",
@@ -811,6 +813,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "SH_flag",
                                     "f_type": "logical",
                                     "f_var": "flag",
@@ -840,6 +843,7 @@
                                     "stmt1": "c_string_in_buf"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_name",
                                     "c_var": "name",
                                     "f_type": "character(*)",
                                     "f_var": "name",
@@ -1143,6 +1147,7 @@
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_SHF_rv",
                                     "c_var": "SHT_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_type": "character(*)",
@@ -1251,6 +1256,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "arg",
@@ -1532,6 +1538,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
@@ -1807,6 +1814,7 @@
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_SHF_rv",
                                     "c_var": "SHT_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_type": "character(*)",
@@ -2055,6 +2063,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
@@ -2195,6 +2204,7 @@
                             "stmt1": "c_shadow_scalar_in"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(class1)",
                             "f_var": "arg",
@@ -2305,6 +2315,7 @@
                             "stmt1": "c_shadow_in"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "type(class1)",
                             "f_var": "arg",
@@ -2748,6 +2759,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",
@@ -2858,6 +2870,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
@@ -3116,6 +3129,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",

@@ -34,6 +34,7 @@
                             "stmt1": "c_native_*_cdesc"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "f_type": "integer(C_INT)",
@@ -564,6 +565,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -593,6 +595,7 @@
                             "stmt1": "c_unknown_*_cdesc"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_context": "Dvalue",
                             "f_type": "real(C_DOUBLE)",
@@ -1067,6 +1070,7 @@
                 "_fmtargs": {
                     "name": {
                         "fmtf": {
+                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -1079,6 +1083,7 @@
                     },
                     "value": {
                         "fmtf": {
+                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",

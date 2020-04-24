@@ -175,6 +175,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",

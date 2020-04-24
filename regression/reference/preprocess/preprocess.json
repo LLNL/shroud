@@ -177,6 +177,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_i",
                                     "c_var": "i",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "i",
@@ -364,6 +365,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",

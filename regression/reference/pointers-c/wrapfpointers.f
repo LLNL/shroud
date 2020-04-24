@@ -474,9 +474,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
         ! splicer begin function.get_ptr_to_scalar
-        type(C_PTR) :: SHT_ptr
-        call c_get_ptr_to_scalar(SHT_ptr)
-        call c_f_pointer(SHT_ptr, nitems)
+        type(C_PTR) :: SHPTR_nitems
+        call c_get_ptr_to_scalar(SHPTR_nitems)
+        call c_f_pointer(SHPTR_nitems, nitems)
         ! splicer end function.get_ptr_to_scalar
     end subroutine get_ptr_to_scalar
 

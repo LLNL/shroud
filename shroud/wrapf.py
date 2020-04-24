@@ -7,6 +7,10 @@
 """
 Generate Fortran bindings for C++ code.
 
+
+Variables prefixes used by generated code:
+SHPTR_  Fortran pointer, {F_pointer}
+
 """
 from __future__ import print_function
 from __future__ import absolute_import
@@ -1478,6 +1482,7 @@ rv = .false.
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
+            fmt_arg.F_pointer = "SHPTR_" + arg_name
 
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs

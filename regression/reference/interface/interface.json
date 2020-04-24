@@ -68,6 +68,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
@@ -96,6 +97,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
