@@ -123,6 +123,9 @@
                                         "name": "name",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "name"
+                                    },
                                     "specifier": [
                                         "char"
                                     ],
@@ -140,6 +143,9 @@
                                     "declarator": {
                                         "name": "count",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "count"
                                     },
                                     "specifier": [
                                         "int"

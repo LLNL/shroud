@@ -37,7 +37,7 @@ C function Class1 & getClassReference()
 C function Class1 getClassCopy(int flag +intent(in)+value)
 C function void set_global_flag(int arg +intent(in)+value)
 C function int get_global_flag()
-C function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
@@ -74,7 +74,7 @@ C-interface, Fortran function Class1 & getClassReference()
 C-interface, Fortran function Class1 getClassCopy(int flag +intent(in)+value)
 C-interface, Fortran function void set_global_flag(int arg +intent(in)+value)
 C-interface, Fortran function int get_global_flag()
-C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapfclasses.f
 class Class1
@@ -100,7 +100,7 @@ Python function Class1 * getclass3()
 Python function Class1 & getClassReference()
 Python function void set_global_flag(int arg +intent(in)+value)
 Python function int get_global_flag()
-Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+Python function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 Close pyclassesmodule.cpp
 Close pyclassesutil.cpp
 Close pyclassesmodule.hpp

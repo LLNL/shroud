@@ -949,7 +949,7 @@
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_char_scalar_result_result_as_arg",
+                        "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
                         "stmtc1": "c_char_result_buf"
@@ -971,7 +971,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "declarator": {
@@ -1022,14 +1022,14 @@
                             "typemap_name": "char"
                         }
                     ],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],
                     "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)",
+                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function4a",

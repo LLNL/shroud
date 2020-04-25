@@ -595,7 +595,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 }
 // end TUT_callback1
 
-// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 // ----------------------------------------
 // Result
 // Requested: c_string_&_result

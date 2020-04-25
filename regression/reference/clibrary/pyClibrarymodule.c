@@ -234,7 +234,7 @@ fail:
 // splicer end function.check_bool
 }
 
-// char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
+// char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result-as-arg)+len(30)
 // ----------------------------------------
 // Argument:  arg1
 // Exact:     py_char_*_in

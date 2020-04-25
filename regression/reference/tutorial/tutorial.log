@@ -28,7 +28,7 @@ C function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 C function Color colorfunc(Color arg +intent(in)+value)
 C function void getMinMax(int & min +intent(out), int & max +intent(out))
 C function int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
-C function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
@@ -64,7 +64,7 @@ C-interface, Fortran function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+val
 C-interface, Fortran function Color colorfunc(Color arg +intent(in)+value)
 C-interface, Fortran function void getMinMax(int & min +intent(out), int & max +intent(out))
 C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
-C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapftutorial.f
 Python function void NoReturnNoArguments()
@@ -83,7 +83,7 @@ Python function TypeID typefunc(TypeID arg +intent(in)+value)
 Python function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 Python function Color colorfunc(Color arg +intent(in)+value)
 Python function void getMinMax(int & min +intent(out), int & max +intent(out))
-Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+Python function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 Close pyTutorialmodule.cpp
 Close pyTutorialmodule.hpp
 Close setup.py
@@ -108,6 +108,6 @@ Lua function int UseDefaultOverload(double type +intent(in)+value, int num +inte
 Lua function TypeID typefunc(TypeID arg +intent(in)+value)
 Lua function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 Lua function Color colorfunc(Color arg +intent(in)+value)
-Lua function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+Lua function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 Close luaTutorialmodule.hpp
 Close luaTutorialmodule.cpp

@@ -987,7 +987,7 @@
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_char_scalar_result_result_as_arg",
+                        "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
                         "stmtc1": "c_char_result_buf"
@@ -1009,7 +1009,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "const": true,
@@ -1022,14 +1022,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "const char * getCharPtr2() +deref(result_as_arg)+len(30)",
+                "declgen": "const char * getCharPtr2() +deref(result-as-arg)+len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1194,7 +1194,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg"
+                        "deref": "result-as-arg"
                     },
                     "const": true,
                     "declarator": {
@@ -1206,14 +1206,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "const char * getCharPtr3() +deref(result_as_arg)",
+                "declgen": "const char * getCharPtr3() +deref(result-as-arg)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1579,7 +1579,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -1601,7 +1601,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -1610,14 +1610,14 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringLen() +len=30",
-                "declgen": "const string getConstStringLen() +deref(result_as_arg)+len(30)",
+                "declgen": "const string getConstStringLen() +deref(result-as-arg)+len(30)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -1764,7 +1764,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg"
+                        "deref": "result-as-arg"
                     },
                     "const": true,
                     "declarator": {
@@ -1772,14 +1772,14 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "const string getConstStringAsArg() +deref(result_as_arg)",
+                "declgen": "const string getConstStringAsArg() +deref(result-as-arg)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2339,7 +2339,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -2361,7 +2361,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -2374,14 +2374,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "const string & getConstStringRefLen() +deref(result_as_arg)+len(30)",
+                "declgen": "const string & getConstStringRefLen() +deref(result-as-arg)+len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
@@ -2548,7 +2548,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg"
+                        "deref": "result-as-arg"
                     },
                     "const": true,
                     "declarator": {
@@ -2560,14 +2560,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "const string & getConstStringRefAsArg() +deref(result_as_arg)",
+                "declgen": "const string & getConstStringRefAsArg() +deref(result-as-arg)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -2778,7 +2778,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -2800,7 +2800,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -2813,14 +2813,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)",
+                "declgen": "const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
@@ -3156,7 +3156,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -3178,7 +3178,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -3191,14 +3191,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)",
+                "declgen": "const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"

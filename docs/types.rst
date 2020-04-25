@@ -79,11 +79,6 @@ Defaults to *0* indicating no destructor.
 
 .. format field
 
-result_as_arg
-^^^^^^^^^^^^^
-
-Override fields when result should be treated as an argument.
-Defaults to *None*.
 
 Statements
 ----------
@@ -97,16 +92,16 @@ The are broken down into several resolutions.  The first is the
 intent of the argument.  *result* is used as the intent for 
 function results.
 
-intent_in
+in
     Code to add for argument with ``intent(IN)``.
     Can be used to convert types or copy-in semantics.
     For example, ``char *`` to ``std::string``.
 
-intent_out
+out
     Code to add after call when ``intent(OUT)``.
     Used to implement copy-out semantics.
 
-intent_inout
+inout
     Code to add after call when ``intent(INOUT)``.
     Used to implement copy-out semantics.
 

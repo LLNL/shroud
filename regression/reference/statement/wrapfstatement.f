@@ -68,11 +68,11 @@ module statement_mod
 
 contains
 
-    ! const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())
+    ! const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------

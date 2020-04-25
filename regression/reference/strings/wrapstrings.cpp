@@ -298,7 +298,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 }
 // end STR_get_char_ptr1_bufferify
 
-// const char * getCharPtr2() +deref(result_as_arg)+len(30)
+// const char * getCharPtr2() +deref(result-as-arg)+len(30)
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
@@ -340,7 +340,7 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
 }
 // end STR_get_char_ptr2_bufferify
 
-// const char * getCharPtr3() +deref(result_as_arg)
+// const char * getCharPtr3() +deref(result-as-arg)
 /**
  * \brief return a 'const char *' as argument
  *
@@ -513,7 +513,7 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
 }
 // end STR_get_const_string_ref_pure_bufferify
 
-// const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
+// const string & getConstStringRefLen() +deref(result-as-arg)+len(30)
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
@@ -568,7 +568,7 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.get_const_string_ref_len_bufferify
 }
 
-// const string & getConstStringRefAsArg() +deref(result_as_arg)
+// const string & getConstStringRefAsArg() +deref(result-as-arg)
 /**
  * \brief return a 'const string&' as argument
  *
@@ -622,7 +622,7 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
     // splicer end function.get_const_string_ref_as_arg_bufferify
 }
 
-// const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
+// const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)
 /**
  * \brief Test returning empty string reference
  *
@@ -703,7 +703,7 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer end function.get_const_string_ref_alloc_bufferify
 }
 
-// const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
+// const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)
 /**
  * \brief return a 'const string *' as character(30)
  *

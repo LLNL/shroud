@@ -112,6 +112,9 @@
                                         "name": "x1",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "x1"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -124,6 +127,9 @@
                                     "declarator": {
                                         "name": "y1",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "y1"
                                     },
                                     "specifier": [
                                         "int"

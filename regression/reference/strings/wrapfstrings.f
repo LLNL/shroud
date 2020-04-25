@@ -1080,11 +1080,11 @@ contains
     end function get_char_ptr1
     ! end get_char_ptr1
 
-    ! const char * getCharPtr2() +deref(result_as_arg)+len(30)
+    ! const char * getCharPtr2() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_char_scalar_result_result_as_arg
+    ! Requested: f_char_scalar_result_result-as-arg
     ! Match:     f_default
     ! Requested: c_char_scalar_result_buf
     ! Match:     c_char_result_buf
@@ -1165,11 +1165,11 @@ contains
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
-    ! const string getConstStringLen() +deref(result_as_arg)+len(30)
+    ! const string getConstStringLen() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
@@ -1273,11 +1273,11 @@ contains
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
 
-    ! const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
+    ! const string & getConstStringRefLen() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
@@ -1332,11 +1332,11 @@ contains
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
 
-    ! const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
+    ! const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
@@ -1383,11 +1383,11 @@ contains
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
-    ! const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
+    ! const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
