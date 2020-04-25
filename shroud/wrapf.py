@@ -1041,7 +1041,6 @@ rv = .false.
             # XXX look at const, ptr
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
-            fmt.update(arg_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
 
@@ -1200,11 +1199,7 @@ rv = .false.
         for buf_arg in buf_args:
             if buf_arg in ["arg", "argptr"]:
                 # Attributes   None=skip, True=use default, else use value
-                if arg_typemap.f_args:
-                    # TODO - Not sure if this is still needed.
-                    need_wrapper = True
-                    append_format(arg_c_call, arg_typemap.f_args, fmt)
-                elif arg_typemap.f_to_c:
+                if arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
@@ -1649,7 +1644,6 @@ rv = .false.
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            fmt_arg.update(base_typemap.format)
             arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
 
             # Create a local variable for C if necessary.
