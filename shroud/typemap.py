@@ -52,7 +52,6 @@ class Typemap(object):
                                     # when added to class/struct format.
         ("base", "unknown"),  # Base type: 'string'
         ("forward", None),  # Forward declaration
-        ("format", {}),  # Applied to Scope for variable.
         ("typedef", None),  # Initialize from existing type
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor

@@ -930,7 +930,6 @@ class Wrapc(util.WrapperMixin):
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
-            fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
