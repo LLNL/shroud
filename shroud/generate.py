@@ -1247,8 +1247,8 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-                # Special case for wrapf.py
-                f_attrs["deref"] = "result_as_arg"
+                # Special case for wrapf.py to override "allocatable"
+                f_attrs["deref"] = "result-as-arg"
             elif (result_typemap.cxx_type == "std::string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)

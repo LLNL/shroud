@@ -1246,11 +1246,11 @@ contains
         ! splicer end function.use_default_overload_5
     end function use_default_overload_5
 
-    ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+    ! const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------

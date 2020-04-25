@@ -53,7 +53,7 @@ int STMT_get_name_length()
     // splicer end function.get_name_length
 }
 
-// const string & getNameErrorPattern() +deref(result_as_arg)+len(get_name_length())
+// const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())
 // ----------------------------------------
 // Result
 // Requested: c_string_&_result

@@ -114,7 +114,7 @@ static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string & getNameArg() const +deref(result_as_arg)
+// const string & getNameArg() const +deref(result-as-arg)
 static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
@@ -266,7 +266,7 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 static int l_example_nested_ExClass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName

@@ -206,7 +206,7 @@ PY_getCharPtr1(
 // splicer end function.get_char_ptr1
 }
 
-// const char * getCharPtr2() +deref(result_as_arg)+len(30)
+// const char * getCharPtr2() +deref(result-as-arg)+len(30)
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -233,7 +233,7 @@ PY_getCharPtr2(
 // splicer end function.get_char_ptr2
 }
 
-// const char * getCharPtr3() +deref(result_as_arg)
+// const char * getCharPtr3() +deref(result-as-arg)
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
@@ -288,7 +288,7 @@ PY_getConstStringResult(
 // splicer end function.get_const_string_result
 }
 
-// const string getConstStringLen() +deref(result_as_arg)+len(30)
+// const string getConstStringLen() +deref(result-as-arg)+len(30)
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -316,7 +316,7 @@ PY_getConstStringLen(
 // splicer end function.get_const_string_len
 }
 
-// const string getConstStringAsArg() +deref(result_as_arg)
+// const string getConstStringAsArg() +deref(result-as-arg)
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -396,7 +396,7 @@ PY_getConstStringRefPure(
 // splicer end function.get_const_string_ref_pure
 }
 
-// const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
+// const string & getConstStringRefLen() +deref(result-as-arg)+len(30)
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -427,7 +427,7 @@ PY_getConstStringRefLen(
 // splicer end function.get_const_string_ref_len
 }
 
-// const string & getConstStringRefAsArg() +deref(result_as_arg)
+// const string & getConstStringRefAsArg() +deref(result-as-arg)
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -457,7 +457,7 @@ PY_getConstStringRefAsArg(
 // splicer end function.get_const_string_ref_as_arg
 }
 
-// const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
+// const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -509,7 +509,7 @@ PY_getConstStringRefAlloc(
 // splicer end function.get_const_string_ref_alloc
 }
 
-// const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
+// const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;

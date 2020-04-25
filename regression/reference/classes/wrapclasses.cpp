@@ -213,7 +213,7 @@ int CLA_get_global_flag()
     // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 // ----------------------------------------
 // Result
 // Requested: c_string_&_result

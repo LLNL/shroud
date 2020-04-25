@@ -125,7 +125,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
     // splicer end namespace.example::nested.class.ExClass2.method.dtor
 }
 
-// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
 // Result
 // Requested: c_string_&_result

@@ -1303,11 +1303,11 @@ contains
         ! splicer end function.get_class_copy
     end function get_class_copy
 
-    ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+    ! const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
-    ! Requested: f_string_scalar_result_result_as_arg
+    ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------

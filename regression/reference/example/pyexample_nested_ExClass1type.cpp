@@ -171,7 +171,7 @@ PP_getNameErrorCheck(
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
 }
 
-// const string & getNameArg() const +deref(result_as_arg)
+// const string & getNameArg() const +deref(result-as-arg)
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;

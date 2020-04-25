@@ -863,7 +863,7 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "deref": "result_as_arg"
+                                                "deref": "result-as-arg"
                                             },
                                             "const": true,
                                             "declarator": {
@@ -876,14 +876,14 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "result_as_arg",
+                                            "return_pointer_as": "result-as-arg",
                                             "specifier": [
                                                 "string"
                                             ],
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "const string & getNameArg() const +deref(result_as_arg)",
+                                        "declgen": "const string & getNameArg() const +deref(result-as-arg)",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
@@ -2143,7 +2143,7 @@
                                                 "cxx_type": "std::string",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
-                                                "stmt0": "f_string_scalar_result_result_as_arg",
+                                                "stmt0": "f_string_scalar_result_result-as-arg",
                                                 "stmt1": "f_default",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
@@ -2171,7 +2171,7 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "deref": "result_as_arg",
+                                                "deref": "result-as-arg",
                                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                             },
                                             "const": true,
@@ -2185,14 +2185,14 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "result_as_arg",
+                                            "return_pointer_as": "result-as-arg",
                                             "specifier": [
                                                 "string"
                                             ],
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getName() const",
-                                        "declgen": "const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "declgen": "const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",

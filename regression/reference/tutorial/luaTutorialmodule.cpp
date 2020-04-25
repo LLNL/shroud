@@ -338,7 +338,7 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

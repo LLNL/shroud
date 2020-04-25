@@ -205,7 +205,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }
 
-// const string & getNameArg() const +deref(result_as_arg)
+// const string & getNameArg() const +deref(result-as-arg)
 // ----------------------------------------
 // Result
 // Requested: c_string_&_result

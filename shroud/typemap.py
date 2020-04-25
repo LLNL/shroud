@@ -91,8 +91,6 @@ class Typemap(object):
         ("f_cast_keywords", None),  # Dictionary of additional arguments to gen_arg_as_fortran
                                      # dict(is_target=True)
         # e.g. intrinsics such as int and real
-        # override fields when result should be treated as an argument
-        ("result_as_arg", None),
         ("impl_header", []), # implementation header
         ("wrap_header", []), # generated wrapper header
         # Python

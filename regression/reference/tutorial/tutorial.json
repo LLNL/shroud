@@ -4921,7 +4921,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
-                        "stmt0": "f_string_scalar_result_result_as_arg",
+                        "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -4949,7 +4949,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result_as_arg",
+                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "const": true,
@@ -4962,14 +4962,14 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result_as_arg",
+                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "std::string"
                     ],
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)",
+                "declgen": "const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called",
                     "C_prototype": "",
