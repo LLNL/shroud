@@ -19,6 +19,7 @@ static char last_function_called[MAXLAST];
 // These variables exist to avoid warning errors
 //static std::string global_str;
 static int global_int = 0;
+static int global_fixed_array[10];
 //static double global_double;
 
 //----------------------------------------------------------------------
@@ -146,11 +147,23 @@ void acceptCharArrayIn(char **names)
 }
 
 //----------------------------------------------------------------------
-// Set global_int to use with testing.
 
+// Set global_int to use with testing.
 void setGlobalInt(int value)
 {
     global_int = value;
+}
+
+// Used with testing.
+int sumFixedArray(void)
+{
+    int sum = 0;
+    int nitems = sizeof(global_fixed_array)/sizeof(int);
+    for (int i=0; i < nitems; ++i)
+    {
+        sum += global_fixed_array[i];
+    }
+    return sum;
 }
 
 /* Return pointer to a scalar in the argument. */
@@ -158,6 +171,11 @@ void setGlobalInt(int value)
 void getPtrToScalar(int **nitems)
 {
     *nitems = &global_int;
+}
+
+void getPtrToFixedArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
 }
 
 //----------------------------------------------------------------------

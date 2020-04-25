@@ -1319,6 +1319,23 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
+    def set_fmt_fields(self, ast, fmt, is_result=False):
+        """
+        Set format fields for ast.
+        Used with arguments and results.
+
+        Args:
+            ast - declast.Declaration
+                  Abstract Syntax Tree of argument or result
+            fmt - format dictionary
+        """
+        attrs = ast.attrs
+        dim = attrs["dimension"]
+        if dim:
+            # XXX - Assume 1-d
+            fmt.f_var_shape = "(:)"  # assumed_shape
+            fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
 
@@ -1484,6 +1501,7 @@ rv = .false.
             fmt_arg.c_var = arg_name
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
+            self.set_fmt_fields(c_arg, fmt_arg)
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs["allocatable"]
@@ -1700,6 +1718,7 @@ rv = .false.
         # (for example, string lengths).
         return_pointer_as = ast.return_pointer_as
         if subprogram == "function":
+            self.set_fmt_fields(ast, fmt_result, True)
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
             if return_pointer_as == "raw":
@@ -1711,11 +1730,6 @@ rv = .false.
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_pointer_as in ["allocatable", "pointer"]:
-                dim = ast.attrs["dimension"]
-                if dim:
-                    # XXX - Assume 1-d
-                    fmt_result.f_var_shape = "(:)"
-                    fmt_result.f_pointer_shape = ", [{}]".format(dim)
                 if result_typemap.base == "vector":
                     ntypemap = ast.template_arguments[0].typemap
                 else:

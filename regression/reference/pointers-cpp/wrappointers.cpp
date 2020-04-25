@@ -360,6 +360,22 @@ void POI_set_global_int(int value)
     // splicer end function.set_global_int
 }
 
+// int sumFixedArray()
+/**
+ * Used to test values global_array.
+ */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+int POI_sum_fixed_array()
+{
+    // splicer begin function.sum_fixed_array
+    int SHC_rv = sumFixedArray();
+    return SHC_rv;
+    // splicer end function.sum_fixed_array
+}
+
 // void getPtrToScalar(int * * nitems +intent(out))
 // ----------------------------------------
 // Result
@@ -373,6 +389,24 @@ void POI_get_ptr_to_scalar(int * * nitems)
     // splicer begin function.get_ptr_to_scalar
     getPtrToScalar(nitems);
     // splicer end function.get_ptr_to_scalar
+}
+
+// void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
+/**
+ * Return a pointer to an array which is always the same length.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out
+void POI_get_ptr_to_fixed_array(int * * count)
+{
+    // splicer begin function.get_ptr_to_fixed_array
+    getPtrToFixedArray(count);
+    // splicer end function.get_ptr_to_fixed_array
 }
 
 // start release allocated memory

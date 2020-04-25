@@ -820,6 +820,32 @@ PY_setGlobalInt(
     Py_RETURN_NONE;
 // splicer end function.set_global_int
 }
+
+// int sumFixedArray()
+static char PY_sumFixedArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Used to test values global_array.
+ */
+static PyObject *
+PY_sumFixedArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.sum_fixed_array
+    PyObject * SHTPy_rv = nullptr;
+
+    int SHCXX_rv = sumFixedArray();
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.sum_fixed_array
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -844,6 +870,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {"setGlobalInt", (PyCFunction)PY_setGlobalInt,
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
+{"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
+    PY_sumFixedArray__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

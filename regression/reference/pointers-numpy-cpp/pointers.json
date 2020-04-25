@@ -1264,6 +1264,46 @@
                 "options": {}
             },
             {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "sumFixedArray",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int sumFixedArray()",
+                "declgen": "int sumFixedArray()",
+                "doxygen": {
+                    "description": "Used to test values global_array.\n"
+                },
+                "fmtdict": {
+                    "PY_name_impl": "PY_sumFixedArray",
+                    "function_name": "sumFixedArray",
+                    "underscore_name": "sum_fixed_array"
+                },
+                "options": {}
+            },
+            {
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -1301,6 +1341,53 @@
                 "fmtdict": {
                     "function_name": "getPtrToScalar",
                     "underscore_name": "get_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
+                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a pointer to an array which is always the same length.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getPtrToFixedArray",
+                    "underscore_name": "get_ptr_to_fixed_array"
                 },
                 "options": {
                     "wrap_python": false

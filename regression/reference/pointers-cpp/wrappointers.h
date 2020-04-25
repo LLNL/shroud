@@ -54,7 +54,11 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 
 void POI_set_global_int(int value);
 
+int POI_sum_fixed_array();
+
 void POI_get_ptr_to_scalar(int * * nitems);
+
+void POI_get_ptr_to_fixed_array(int * * count);
 
 #ifdef __cplusplus
 }

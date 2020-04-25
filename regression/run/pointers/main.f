@@ -114,6 +114,7 @@ contains
 
   subroutine test_out_ptrs
     integer(C_INT), pointer :: iscalar
+    integer(C_INT), pointer :: iarray(:)
 
     call set_global_int(0)
     call get_ptr_to_scalar(iscalar)
@@ -122,6 +123,15 @@ contains
     ! iscalar points to global_int in pointers.c
     call set_global_int(5)
     call assert_equals(5, iscalar)
+
+    call get_ptr_to_fixed_array(iarray)
+    call assert_equals(10, size(iarray))
+    iarray = 0
+    call assert_equals(0, sum_fixed_array())
+    ! make sure we're assigning to global_array
+    iarray(1) = 1
+    iarray(10) = 2
+    call assert_equals(3, sum_fixed_array())
     
   end subroutine test_out_ptrs
   
