@@ -50,6 +50,7 @@ class Typemap(object):
         ("flat_name", None),  # Name when used by wrapper identifiers
         ("template_suffix", None),  # Name when used by wrapper identifiers
                                     # when added to class/struct format.
+                    # Set from format.template_suffix in YAML for class.
         ("base", "unknown"),  # Base type: 'string'
         ("forward", None),  # Forward declaration
         ("typedef", None),  # Initialize from existing type
@@ -83,7 +84,6 @@ class Typemap(object):
         ),  # Name of module which contains f_derived_type and f_capsule_data_type
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
-        ("f_args", None),  # Argument in Fortran wrapper to call C.
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
         ("f_cast_module", None),  # Fortran modules needed for f_cast

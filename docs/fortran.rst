@@ -164,14 +164,6 @@ None
 Expression to convert from Fortran to C.
 
 
-f_args
-^^^^^^
-
-None
-Argument in Fortran wrapper to call C.
-
-
-
 
 Predefined Types
 ----------------

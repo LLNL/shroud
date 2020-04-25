@@ -1199,11 +1199,7 @@ rv = .false.
         for buf_arg in buf_args:
             if buf_arg in ["arg", "argptr"]:
                 # Attributes   None=skip, True=use default, else use value
-                if arg_typemap.f_args:
-                    # TODO - Not sure if this is still needed.
-                    need_wrapper = True
-                    append_format(arg_c_call, arg_typemap.f_args, fmt)
-                elif arg_typemap.f_to_c:
+                if arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
