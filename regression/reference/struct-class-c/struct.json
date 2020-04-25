@@ -112,6 +112,9 @@
                                         "name": "ifield",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "ifield"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -124,6 +127,9 @@
                                     "declarator": {
                                         "name": "dfield",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "dfield"
                                     },
                                     "specifier": [
                                         "double"
@@ -304,6 +310,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "cfield"
                                     },
                                     "specifier": [
                                         "char"
@@ -545,6 +554,9 @@
                                         "name": "nitems",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "nitems"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -563,6 +575,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "ivalue"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -580,6 +595,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "dvalue"
                                     },
                                     "specifier": [
                                         "double"
@@ -601,6 +619,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "svalue"
                                     },
                                     "specifier": [
                                         "char"
@@ -914,6 +935,9 @@
                                         "name": "nitems",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "nitems"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -932,6 +956,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "ivalue"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -949,6 +976,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "dvalue"
                                     },
                                     "specifier": [
                                         "double"
@@ -1200,6 +1230,9 @@
                                         "name": "name",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "struct_member": "name"
+                                    },
                                     "specifier": [
                                         "char"
                                     ],
@@ -1217,6 +1250,9 @@
                                     "declarator": {
                                         "name": "count",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "count"
                                     },
                                     "specifier": [
                                         "int"
