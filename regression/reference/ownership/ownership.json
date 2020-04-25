@@ -522,6 +522,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
@@ -832,6 +833,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
@@ -943,6 +945,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
@@ -1195,6 +1198,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
@@ -1487,6 +1491,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
@@ -2177,6 +2182,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",
@@ -2365,6 +2371,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",

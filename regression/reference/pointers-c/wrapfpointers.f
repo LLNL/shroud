@@ -271,6 +271,61 @@ module pointers_mod
             integer(C_INT), value, intent(IN) :: Nnames
         end subroutine c_accept_char_array_in_bufferify
 
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  value
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        subroutine set_global_int(value) &
+                bind(C, name="setGlobalInt")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: value
+        end subroutine set_global_int
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function sum_fixed_array() &
+                result(SHT_rv) &
+                bind(C, name="sumFixedArray")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function sum_fixed_array
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  nitems
+        ! Exact:     c_native_**_out
+        subroutine c_get_ptr_to_scalar(nitems) &
+                bind(C, name="getPtrToScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: nitems
+        end subroutine c_get_ptr_to_scalar
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  count
+        ! Exact:     c_native_**_out
+        subroutine c_get_ptr_to_fixed_array(count) &
+                bind(C, name="getPtrToFixedArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+        end subroutine c_get_ptr_to_fixed_array
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -429,6 +484,51 @@ contains
             size(names, kind=C_LONG), len(names, kind=C_INT))
         ! splicer end function.accept_char_array_in
     end subroutine accept_char_array_in
+
+    ! void getPtrToScalar(int * * nitems +intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  nitems
+    ! Exact:     f_native_**_out
+    ! Exact:     c_native_**_out
+    subroutine get_ptr_to_scalar(nitems)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), intent(OUT), pointer :: nitems
+        ! splicer begin function.get_ptr_to_scalar
+        type(C_PTR) :: SHPTR_nitems
+        call c_get_ptr_to_scalar(SHPTR_nitems)
+        call c_f_pointer(SHPTR_nitems, nitems)
+        ! splicer end function.get_ptr_to_scalar
+    end subroutine get_ptr_to_scalar
+
+    ! void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     f_native_**_out
+    ! Exact:     c_native_**_out
+    !>
+    !! Return a pointer to an array which is always the same length.
+    !<
+    subroutine get_ptr_to_fixed_array(count)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), intent(OUT), pointer :: count(:)
+        ! splicer begin function.get_ptr_to_fixed_array
+        type(C_PTR) :: SHPTR_count
+        call c_get_ptr_to_fixed_array(SHPTR_count)
+        call c_f_pointer(SHPTR_count, count, [10])
+        ! splicer end function.get_ptr_to_fixed_array
+    end subroutine get_ptr_to_fixed_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

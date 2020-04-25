@@ -91,6 +91,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
@@ -329,6 +330,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
@@ -357,6 +359,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
@@ -695,6 +698,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -723,6 +727,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
                             "f_var": "size",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)"
@@ -746,6 +751,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
                             "f_var": "type",
                             "pre_call_intent": "T_FLOAT"
@@ -1136,6 +1142,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -1164,6 +1171,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
                             "f_var": "size",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)"
@@ -1187,6 +1195,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
                             "f_var": "type",
                             "pre_call_intent": "SH_TYPE_FLOAT"
@@ -1608,6 +1617,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_type": "type(C_PTR)",
                             "f_var": "addr",
@@ -1636,6 +1646,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_size",
                             "c_var": "size",
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
@@ -1664,6 +1675,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
@@ -1786,6 +1798,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -1814,6 +1827,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_size",
                             "c_var": "size",
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
@@ -1842,6 +1856,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",

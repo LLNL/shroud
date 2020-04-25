@@ -11,6 +11,10 @@ C function void fillIntArray(int * out +dimension(3)+intent(out))
 C function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 C function void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
 C function void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+C function void setGlobalInt(int value +intent(in)+value)
+C function int sumFixedArray()
+C function void getPtrToScalar(int * * nitems +intent(out))
+C function void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
@@ -26,4 +30,8 @@ C-interface, Fortran function void fillIntArray(int * out +dimension(3)+intent(o
 C-interface, Fortran function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 C-interface, Fortran function void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
 C-interface function void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+C-interface, Fortran function void setGlobalInt(int value +intent(in)+value)
+C-interface, Fortran function int sumFixedArray()
+C-interface, Fortran function void getPtrToScalar(int * * nitems +intent(out))
+C-interface, Fortran function void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 Close wrapfpointers.f

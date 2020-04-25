@@ -33,6 +33,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_argin",
                             "c_var": "argin",
                             "f_type": "integer(C_INT)",
                             "f_var": "argin",
@@ -61,6 +62,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arginout",
                             "c_var": "arginout",
                             "f_type": "integer(C_INT)",
                             "f_var": "arginout",
@@ -89,6 +91,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_argout",
                             "c_var": "argout",
                             "f_type": "integer(C_INT)",
                             "f_var": "argout",
@@ -206,9 +209,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_in",
                             "c_var": "in",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
@@ -234,6 +240,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "out",
@@ -263,6 +270,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
@@ -381,9 +389,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_in",
                             "c_var": "in",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
@@ -409,6 +420,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
@@ -438,6 +450,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
@@ -556,6 +569,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_nvalues",
                             "c_var": "nvalues",
                             "f_type": "integer(C_INT)",
                             "f_var": "nvalues",
@@ -584,9 +598,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -691,9 +708,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -719,9 +739,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -827,6 +850,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_nvar",
                             "c_var": "nvar",
                             "f_type": "integer(C_INT)",
                             "f_var": "nvar",
@@ -855,6 +879,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_values",
                             "c_var": "values",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
@@ -955,6 +980,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_nvar",
                             "c_var": "nvar",
                             "f_type": "integer(C_INT)",
                             "f_var": "nvar",
@@ -983,9 +1009,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_pointer_shape": ", [nvar]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1083,6 +1112,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_len",
                             "c_var": "SH_len",
                             "f_var": "len",
                             "pre_call_intent": "size(values,kind=C_INT)"
@@ -1106,6 +1136,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_result",
                             "c_var": "result",
                             "f_type": "integer(C_INT)",
                             "f_var": "result",
@@ -1134,9 +1165,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
@@ -1255,9 +1289,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1344,9 +1381,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_array",
                             "c_var": "array",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "array",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_inout",
                             "stmt1": "f_default",
@@ -1372,6 +1412,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(array,kind=C_INT)"
@@ -1552,9 +1593,12 @@
                             "stmt1": "c_char_**_in_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_names",
                             "c_var": "names",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "character(*)",
                             "f_var": "names",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_**_in",
                             "stmt1": "f_default",
@@ -1619,6 +1663,337 @@
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "value",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&value)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_value",
+                            "c_var": "value",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "value",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "setGlobalInt",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void setGlobalInt(int value)",
+                "declgen": "void setGlobalInt(int value +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "value",
+                    "C_name": "POI_set_global_int",
+                    "C_prototype": "int value",
+                    "C_return_type": "void",
+                    "F_C_call": "c_set_global_int",
+                    "F_C_name": "set_global_int",
+                    "F_arg_c_call": "value",
+                    "F_arguments": "value",
+                    "F_name_function": "set_global_int",
+                    "F_name_generic": "set_global_int",
+                    "F_name_impl": "set_global_int",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "setGlobalInt",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "set_global_int"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "sumFixedArray",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int sumFixedArray()",
+                "declgen": "int sumFixedArray()",
+                "doxygen": {
+                    "description": "Used to test values global_array.\n"
+                },
+                "fmtdict": {
+                    "C_name": "POI_sum_fixed_array",
+                    "C_prototype": "",
+                    "C_return_type": "int",
+                    "F_C_call": "c_sum_fixed_array",
+                    "F_C_name": "sum_fixed_array",
+                    "F_arguments": "",
+                    "F_name_function": "sum_fixed_array",
+                    "F_name_generic": "sum_fixed_array",
+                    "F_name_impl": "sum_fixed_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "sumFixedArray",
+                    "underscore_name": "sum_fixed_array"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(nitems)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_native_**_out"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nitems",
+                            "c_var": "nitems",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_native_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToScalar(int **nitems+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "nitems",
+                    "C_name": "POI_get_ptr_to_scalar",
+                    "C_prototype": "int * * nitems",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_scalar",
+                    "F_C_name": "c_get_ptr_to_scalar",
+                    "F_arg_c_call": "SHPTR_nitems",
+                    "F_arguments": "nitems",
+                    "F_name_function": "get_ptr_to_scalar",
+                    "F_name_generic": "get_ptr_to_scalar",
+                    "F_name_impl": "get_ptr_to_scalar",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getPtrToScalar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(count)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_native_**_out"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "f_pointer_shape": ", [10]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "f_var_shape": "(:)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_native_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
+                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a pointer to an array which is always the same length.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "count",
+                    "C_name": "POI_get_ptr_to_fixed_array",
+                    "C_prototype": "int * * count",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_fixed_array",
+                    "F_C_name": "c_get_ptr_to_fixed_array",
+                    "F_arg_c_call": "SHPTR_count",
+                    "F_arguments": "count",
+                    "F_name_function": "get_ptr_to_fixed_array",
+                    "F_name_generic": "get_ptr_to_fixed_array",
+                    "F_name_impl": "get_ptr_to_fixed_array",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getPtrToFixedArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_fixed_array"
+                },
+                "options": {
                     "wrap_python": false
                 }
             }

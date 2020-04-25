@@ -33,6 +33,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_type": "character",
                             "f_var": "status",
@@ -214,6 +215,7 @@
                             "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character",
                             "f_var": "SHT_rv",
@@ -469,6 +471,7 @@
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "f_type": "character(*)",
                             "f_var": "dest",
@@ -497,6 +500,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_var": "src"
                         }
@@ -700,6 +704,7 @@
                             "stmt1": "c_char_inout_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_s",
                             "c_var": "s",
                             "f_type": "character(*)",
                             "f_var": "s",
@@ -878,6 +883,7 @@
                             "stmt1": "c_char_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -1071,6 +1077,7 @@
                             "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -1248,6 +1255,7 @@
                             "stmt1": "c_char_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -1480,6 +1488,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -1651,6 +1660,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -1806,6 +1816,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -2032,6 +2043,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -2221,6 +2233,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -2416,6 +2429,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -2596,6 +2610,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -2852,6 +2867,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -3039,6 +3055,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -3235,6 +3252,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -3431,6 +3449,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -3620,6 +3639,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -3813,6 +3833,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",
@@ -4017,6 +4038,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4206,6 +4228,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4395,6 +4418,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4583,6 +4607,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4822,6 +4847,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_var": "name"
                         },
@@ -5001,6 +5027,7 @@
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -5087,6 +5114,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_type": "character",
                             "f_var": "status",
@@ -5272,6 +5300,7 @@
                             "stmt1": "c_schar_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "f_type": "character",
                             "f_var": "SHT_rv",
@@ -5494,6 +5523,7 @@
                             "stmt1": "c_char_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "f_type": "character(*)",
                             "f_var": "dest",
@@ -5522,6 +5552,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_var": "src"
                         }

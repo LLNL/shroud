@@ -106,10 +106,13 @@
                             "stmt1": "c_vector_in_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_in_native",
                             "stmt1": "f_default",
@@ -285,12 +288,15 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
@@ -480,12 +486,15 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
@@ -692,12 +701,15 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
@@ -880,12 +892,15 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_out_allocatable_native",
                             "stmt1": "f_vector_out_allocatable",
@@ -1053,12 +1068,15 @@
                             "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_inout_allocatable_native",
                             "stmt1": "f_vector_inout_allocatable",
@@ -1222,12 +1240,15 @@
                             "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_&_inout_native",
                             "stmt1": "f_vector_inout",
@@ -1387,12 +1408,15 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "c_var_dimension": ":",
                             "cxx_T": "double",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
@@ -1565,10 +1589,13 @@
                             "stmt1": "c_vector_in_buf_string"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "cxx_T": "std::string",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "character(*)",
                             "f_var": "arg",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_vector_&_in_string",
                             "stmt1": "f_default",
@@ -1868,12 +1895,15 @@
                             "stmt1": "c_vector_result_buf"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "c_var_dimension": ":",
                             "cxx_T": "int",
+                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "SHT_rv",
+                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_vector_*_result_allocatable_native",
                             "stmt1": "f_vector_result_allocatable",
@@ -1899,6 +1929,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_n",
                             "c_var": "n",
                             "f_type": "integer(C_INT)",
                             "f_var": "n",

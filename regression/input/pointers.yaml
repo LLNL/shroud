@@ -93,3 +93,23 @@ declarations:
 # Python: treat as list of string, even with numpy.
 
 - decl: void acceptCharArrayIn(char **names +intent(in))
+
+######################################################################
+# Routine which return pointers in arguments.
+
+- decl: void setGlobalInt(int value)
+- decl: int sumFixedArray()
+  # (void)
+  doxygen:
+    description: |
+      Used to test values global_array.
+
+- decl: void getPtrToScalar(int **nitems+intent(out))
+  options:
+    wrap_python: False
+- decl: void getPtrToFixedArray(int **count+intent(out)+dimension(10))
+  doxygen:
+    description: |
+      Return a pointer to an array which is always the same length.
+  options:
+    wrap_python: False

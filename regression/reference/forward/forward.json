@@ -220,6 +220,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_type": "type(class1)",
                                     "f_var": "arg",
@@ -340,6 +341,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_type": "type(class3)",
                                     "f_var": "arg",

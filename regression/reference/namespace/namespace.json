@@ -117,6 +117,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
                             "f_type": "character(*)",

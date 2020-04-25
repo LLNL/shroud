@@ -1560,6 +1560,8 @@ class Declaration(Node):
                 decl.append("(:)")
             elif is_pointer:
                 decl.append("(:)")  # XXX - 1d only
+            elif "pointer" in attributes:
+                decl.append("(:)")  # XXX - 1d only
             else:
                 decl.append("(" + dimension + ")")
         elif is_allocatable:
