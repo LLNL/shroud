@@ -529,12 +529,12 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
-        call c_get_pointer_as_pointer(C_LOC(addr), type, size)
+        call c_get_pointer_as_pointer(addr, type, size)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -566,12 +566,12 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
-        call c_get_pointer_as_pointer(C_LOC(addr), type, size)
+        call c_get_pointer_as_pointer(addr, type, size)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

@@ -86,8 +86,7 @@ class Typemap(object):
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
-        ("f_cast_module", None),  # Fortran modules needed for f_cast
-        # e.g. intrinsics such as int and real
+                                # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
         ("wrap_header", []), # generated wrapper header
         # Python
@@ -282,9 +281,7 @@ def initialize():
             cxx_type="void",
             # fortran='subroutine',
             f_type="type(C_PTR)",
-            f_module=dict(iso_c_binding=["C_PTR"]),
-            f_cast="C_LOC({f_var})",    # Cast an argument to a void *.
-            f_cast_module=dict(iso_c_binding=["C_LOC"]),
+            f_c_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
         ),
@@ -1322,6 +1319,7 @@ class FStmts(object):
         f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
         arg_decl=None,
+        arg_c_call=None,
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
     ):
@@ -1334,6 +1332,7 @@ class FStmts(object):
 
         self.need_wrapper = need_wrapper
         self.arg_decl = arg_decl        # argument declaration
+        self.arg_c_call = arg_c_call    # argument to C function.
         self.declare = declare          # local declaration
         self.pre_call = pre_call
         self.call = call
@@ -1439,6 +1438,16 @@ fc_statements = [
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        arg_c_call=["C_LOC({f_var})"],
+    ),
+    dict(
+        # return a type(C_PTR)
+        name="f_unknown_*_result",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_unknown_**_out",

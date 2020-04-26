@@ -3478,7 +3478,7 @@
                     "C_return_type": "void",
                     "F_C_call": "c_pass_void_star_star",
                     "F_C_name": "pass_void_star_star",
-                    "F_arg_c_call": "in,\t out",
+                    "F_arg_c_call": "C_LOC(in),\t out",
                     "F_arguments": "in,\t out",
                     "F_name_function": "pass_void_star_star",
                     "F_name_generic": "pass_void_star_star",

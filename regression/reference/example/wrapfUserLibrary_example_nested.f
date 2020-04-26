@@ -1409,8 +1409,7 @@ contains
     ! void * getRoot()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_unknown_*_result
-    ! Match:     f_unknown_*
+    ! Exact:     f_unknown_*_result
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_root(obj) &
@@ -1474,8 +1473,7 @@ contains
     ! void * getAddr()
     ! ----------------------------------------
     ! Result
-    ! Requested: f_unknown_*_result
-    ! Match:     f_unknown_*
+    ! Exact:     f_unknown_*_result
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_addr(obj) &

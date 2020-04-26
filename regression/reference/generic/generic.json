@@ -2191,7 +2191,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arg_c_call": "addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -2289,7 +2289,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arg_c_call": "addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",

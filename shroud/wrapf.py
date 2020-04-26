@@ -1166,6 +1166,7 @@ rv = .false.
         c_ast,
         f_ast,
         arg_typemap,
+        f_intent_blk,
         buf_args,
         modules,
         imports,
@@ -1184,6 +1185,7 @@ rv = .false.
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
+            f_intent_blk - typemap.FStmts, fc_statements block.
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -1198,8 +1200,11 @@ rv = .false.
         # Add any buffer arguments
         for buf_arg in buf_args:
             if buf_arg in ["arg", "argptr"]:
+                if f_intent_blk.arg_c_call:
+                    for arg in f_intent_blk.arg_c_call:
+                        append_format(arg_c_call, arg, fmt)
                 # Attributes   None=skip, True=use default, else use value
-                if arg_typemap.f_to_c:
+                elif arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
@@ -1208,7 +1213,6 @@ rv = .false.
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports,
-                                         arg_typemap.f_cast_module or
                                          arg_typemap.f_module)
                 else:
                     arg_c_call.append(fmt.c_var)
@@ -1490,6 +1494,7 @@ rv = .false.
             C_node.ast,
             ast,
             result_typemap,
+            result_blk,
             result_blk.buf_args,
             modules,
             imports,
@@ -1679,6 +1684,7 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
+                f_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
@@ -1709,6 +1715,7 @@ rv = .false.
                 C_node.ast, #c_arg,
                 ast, # f_arg,
                 result_typemap,
+                result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,

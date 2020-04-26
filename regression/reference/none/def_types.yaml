@@ -600,14 +600,11 @@ typemap:
       idtor: 0
       cxx_type: void
       c_type: void
-      f_type: type(C_PTR)
-      f_module:
+      f_c_module:
         iso_c_binding:
         - C_PTR
-      f_cast: C_LOC({f_var})
-      f_cast_module:
-        iso_c_binding:
-        - C_LOC
+      f_type: type(C_PTR)
+      f_cast: "{f_var}"
       PY_format: O
       PY_ctor: PyCapsule_New({cxx_var}, NULL, NULL)
       LUA_type: LUA_TNONE
