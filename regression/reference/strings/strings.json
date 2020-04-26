@@ -35,6 +35,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
+                            "f_intent": "IN",
                             "f_type": "character",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
@@ -218,6 +219,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -474,6 +476,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
@@ -503,6 +506,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
@@ -709,6 +713,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
+                            "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
@@ -890,6 +895,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1084,6 +1090,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1262,6 +1269,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1497,6 +1505,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1669,6 +1678,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1825,6 +1835,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2054,6 +2065,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2245,6 +2257,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2441,6 +2454,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2622,6 +2636,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2880,6 +2895,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3070,6 +3086,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3267,6 +3284,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3466,6 +3484,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3657,6 +3676,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3852,6 +3872,7 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4056,6 +4077,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4246,6 +4268,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4436,6 +4459,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4625,6 +4649,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4865,6 +4890,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
@@ -5047,6 +5073,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5134,6 +5161,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
+                            "f_intent": "IN",
                             "f_type": "character",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5321,6 +5349,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5544,6 +5573,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5573,6 +5603,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"

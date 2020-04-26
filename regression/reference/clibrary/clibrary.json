@@ -126,6 +126,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -173,6 +174,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
@@ -328,6 +330,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -375,6 +378,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
@@ -499,6 +503,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
@@ -643,6 +648,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "SH_arg1",
+                            "f_intent": "IN",
                             "f_type": "logical",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_BOOL",
@@ -692,6 +698,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "SH_arg2",
+                            "f_intent": "OUT",
                             "f_type": "logical",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_BOOL",
@@ -740,6 +747,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg3",
                             "c_var": "SH_arg3",
+                            "f_intent": "INOUT",
                             "f_type": "logical",
                             "f_var": "arg3",
                             "sh_type": "SH_TYPE_BOOL",
@@ -1078,6 +1086,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1107,6 +1116,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
@@ -1132,6 +1142,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_OTHER"
@@ -1268,6 +1279,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
@@ -1469,6 +1481,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
+                            "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1661,6 +1674,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "name1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1905,6 +1919,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "name1",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1935,6 +1950,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name2",
                             "c_var": "name2",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "name2",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2195,6 +2211,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "ltext",
                             "pre_call_intent": "len(text,kind=C_INT)",
@@ -2222,6 +2239,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "text",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2329,6 +2347,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_intent": "IN",
                             "f_type": "logical",
                             "f_var": "flag",
                             "pre_call_intent": ".FALSE._C_BOOL",
@@ -2373,6 +2392,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "ltext",
                             "pre_call_intent": "len(text,kind=C_INT)",
@@ -2416,6 +2436,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "text",
                             "sh_type": "SH_TYPE_OTHER"
@@ -2590,6 +2611,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_intent": "IN",
                             "f_type": "logical",
                             "f_var": "flag",
                             "pre_call_intent": ".TRUE._C_BOOL",
@@ -2634,6 +2656,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "ltext",
                             "pre_call_intent": "len_trim(text,kind=C_INT)",
@@ -2677,6 +2700,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "text",
                             "sh_type": "SH_TYPE_OTHER"
@@ -2851,6 +2875,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_intent": "IN",
                             "f_type": "logical",
                             "f_var": "flag",
                             "pre_call_intent": ".TRUE._C_BOOL",
@@ -2992,6 +3017,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_intent": "IN",
                             "f_type": "logical",
                             "f_var": "flag",
                             "pre_call_intent": ".FALSE._C_BOOL",
@@ -3256,6 +3282,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3347,6 +3374,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "in",
                             "sh_type": "SH_TYPE_CPTR",
@@ -3376,6 +3404,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_var": "out",
                             "sh_type": "SH_TYPE_CPTR",
@@ -3490,6 +3519,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_CPTR"
@@ -3603,6 +3633,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_assumed_shape": "(*)",
+                            "f_intent": "IN",
                             "f_pointer_shape": ", [*]",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
@@ -3835,6 +3867,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_CPTR"
@@ -3861,6 +3894,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
@@ -3984,6 +4018,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "incr",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4009,6 +4044,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
@@ -4145,6 +4181,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "in",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4170,6 +4207,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "incr",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4195,6 +4233,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
@@ -4549,6 +4588,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "in",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4574,6 +4614,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "incr",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4600,6 +4641,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
@@ -4629,6 +4671,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_OTHER"
@@ -4791,6 +4834,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_alloc",
                             "c_var": "alloc",
+                            "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "alloc",
                             "sh_type": "SH_TYPE_CPTR"
@@ -4816,6 +4860,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arr",
                             "c_var": "arr",
+                            "f_intent": "INOUT",
                             "f_type": "type(array_info)",
                             "f_var": "arr",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -4845,6 +4890,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_tc",
                             "c_var": "tc",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "tc",
                             "sh_type": "SH_TYPE_INT",

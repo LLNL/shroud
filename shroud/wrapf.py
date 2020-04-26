@@ -1326,12 +1326,15 @@ rv = .false.
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
+        c_attrs = c_ast.attrs
 
         if is_result:
 #            ntypemap = ntypemap
             # XXX - looked up in parent
             pass
         else:
+            fmt.f_intent = c_attrs["intent"].upper()
+            
             ntypemap = f_ast.typemap
             if c_ast.template_arguments:
                 # If a template, use its type
@@ -1340,12 +1343,17 @@ rv = .false.
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         
-        attrs = c_ast.attrs
-        dim = attrs["dimension"]
+        dim = c_attrs["dimension"]
         if dim:
             # XXX - Assume 1-d
             fmt.f_var_shape = "(:)"  # assumed_shape
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+
+        f_attrs = f_ast.attrs
+        dim = f_attrs["dimension"]
+        if dim:
+            # dimensions on Fortran, not C with generic.
+            fmt.f_assumed_shape = "(" + dim + ")"
         return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):

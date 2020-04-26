@@ -37,6 +37,7 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "rank": "2",
@@ -567,6 +568,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
@@ -598,6 +600,7 @@
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_context": "Dvalue",
+                            "f_intent": "OUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
                             "rank": "0",
@@ -1074,6 +1077,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1087,6 +1091,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
+                            "f_intent": "OUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_DOUBLE",

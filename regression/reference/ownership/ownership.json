@@ -527,6 +527,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "sh_type": "SH_TYPE_INT",
@@ -571,6 +572,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_assumed_shape": "(len)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -723,6 +725,7 @@
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "len",
                         "cxx_type": "int",
+                        "f_assumed_shape": "(len)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -840,6 +843,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "sh_type": "SH_TYPE_INT",
@@ -952,6 +956,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "sh_type": "SH_TYPE_INT",
@@ -996,6 +1001,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_assumed_shape": "(len)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1206,6 +1212,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "sh_type": "SH_TYPE_INT",
@@ -1250,6 +1257,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_assumed_shape": "(len)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1500,6 +1508,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
                             "sh_type": "SH_TYPE_INT",
@@ -1544,6 +1553,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_assumed_shape": "(len)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2192,6 +2202,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
@@ -2382,6 +2393,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
