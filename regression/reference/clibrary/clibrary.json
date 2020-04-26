@@ -219,6 +219,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -544,6 +545,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -949,6 +951,7 @@
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
@@ -1104,7 +1107,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "f_var": "arg1"
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "arg2": {
@@ -1127,7 +1132,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
-                            "f_var": "arg2"
+                            "f_type": "character(*)",
+                            "f_var": "arg2",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -1261,7 +1268,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -2186,8 +2195,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_type": "integer(C_INT)",
                             "f_var": "ltext",
-                            "pre_call_intent": "len(text,kind=C_INT)"
+                            "pre_call_intent": "len(text,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "text": {
@@ -2318,8 +2329,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_type": "logical",
                             "f_var": "flag",
-                            "pre_call_intent": ".FALSE._C_BOOL"
+                            "pre_call_intent": ".FALSE._C_BOOL",
+                            "sh_type": "SH_TYPE_BOOL"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2360,8 +2373,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_type": "integer(C_INT)",
                             "f_var": "ltext",
-                            "pre_call_intent": "len(text,kind=C_INT)"
+                            "pre_call_intent": "len(text,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2401,7 +2416,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
-                            "f_var": "text"
+                            "f_type": "character(*)",
+                            "f_var": "text",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -2439,6 +2456,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -2572,8 +2590,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_type": "logical",
                             "f_var": "flag",
-                            "pre_call_intent": ".TRUE._C_BOOL"
+                            "pre_call_intent": ".TRUE._C_BOOL",
+                            "sh_type": "SH_TYPE_BOOL"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2614,8 +2634,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
+                            "f_type": "integer(C_INT)",
                             "f_var": "ltext",
-                            "pre_call_intent": "len_trim(text,kind=C_INT)"
+                            "pre_call_intent": "len_trim(text,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2655,7 +2677,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
-                            "f_var": "text"
+                            "f_type": "character(*)",
+                            "f_var": "text",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "c_const": "const ",
@@ -2693,6 +2717,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -2826,8 +2851,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_type": "logical",
                             "f_var": "flag",
-                            "pre_call_intent": ".TRUE._C_BOOL"
+                            "pre_call_intent": ".TRUE._C_BOOL",
+                            "sh_type": "SH_TYPE_BOOL"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2867,6 +2894,7 @@
                         "cxx_type": "bool",
                         "f_type": "logical",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_BOOL",
                         "stmt0": "f_bool_scalar_result",
                         "stmt1": "f_bool_result",
                         "stmtc0": "c_bool_scalar_result",
@@ -2964,8 +2992,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
+                            "f_type": "logical",
                             "f_var": "flag",
-                            "pre_call_intent": ".FALSE._C_BOOL"
+                            "pre_call_intent": ".FALSE._C_BOOL",
+                            "sh_type": "SH_TYPE_BOOL"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3005,6 +3035,7 @@
                         "cxx_type": "bool",
                         "f_type": "logical",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_BOOL",
                         "stmt0": "f_bool_scalar_result",
                         "stmt1": "f_bool_result",
                         "stmtc0": "c_bool_scalar_result",
@@ -3459,7 +3490,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     }
                 },
@@ -3481,6 +3514,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -3570,8 +3604,10 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_pointer_shape": ", [*]",
+                            "f_type": "type(C_PTR)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)"
+                            "f_var_shape": "(:)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     }
                 },
@@ -3694,6 +3730,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
@@ -3798,7 +3835,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "f_var": "arg"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -3945,7 +3984,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
-                            "f_var": "incr"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "type": {
@@ -3996,6 +4037,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -4103,7 +4145,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "incr": {
@@ -4126,7 +4170,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
-                            "f_var": "incr"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "type": {
@@ -4503,7 +4549,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
-                            "f_var": "in"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "incr": {
@@ -4526,7 +4574,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
-                            "f_var": "incr"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -4579,7 +4629,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
-                            "f_var": "type"
+                            "f_type": "character(*)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -4739,7 +4791,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_alloc",
                             "c_var": "alloc",
-                            "f_var": "alloc"
+                            "f_type": "type(C_PTR)",
+                            "f_var": "alloc",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "arr": {

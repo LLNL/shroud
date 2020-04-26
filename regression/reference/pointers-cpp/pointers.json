@@ -272,8 +272,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
+                            "f_type": "integer(C_INT)",
                             "f_var": "sizein",
-                            "pre_call_intent": "size(in,kind=C_INT)"
+                            "pre_call_intent": "size(in,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -452,8 +454,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
+                            "f_type": "integer(C_INT)",
                             "f_var": "sizein",
-                            "pre_call_intent": "size(in,kind=C_INT)"
+                            "pre_call_intent": "size(in,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -1114,8 +1118,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_len",
                             "c_var": "SH_len",
+                            "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "pre_call_intent": "size(values,kind=C_INT)"
+                            "pre_call_intent": "size(values,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "result": {
@@ -1414,8 +1420,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
+                            "f_type": "integer(C_INT)",
                             "f_var": "sizein",
-                            "pre_call_intent": "size(array,kind=C_INT)"
+                            "pre_call_intent": "size(array,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -1768,6 +1776,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",

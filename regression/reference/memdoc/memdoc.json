@@ -30,6 +30,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",

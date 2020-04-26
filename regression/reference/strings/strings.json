@@ -137,6 +137,7 @@
                         "cxx_type": "char",
                         "f_type": "character",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_schar_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_schar_scalar_result_buf",
@@ -502,7 +503,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
-                            "f_var": "src"
+                            "f_type": "character(*)",
+                            "f_var": "src",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -794,6 +797,7 @@
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_scalar_result_allocatable",
                         "stmt1": "f_char_result_allocatable",
                         "stmtc0": "c_char_scalar_result_buf",
@@ -987,6 +991,7 @@
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
@@ -1408,6 +1413,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -1579,6 +1585,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -1967,6 +1974,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -2144,6 +2152,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -2339,6 +2348,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -2778,6 +2788,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -2971,6 +2982,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -3156,6 +3168,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -3364,6 +3377,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -3551,6 +3565,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -3744,6 +3759,7 @@
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
@@ -4849,7 +4865,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "f_var": "name"
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -5220,6 +5238,7 @@
                         "cxx_type": "char",
                         "f_type": "character",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_schar_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_schar_scalar_result_buf",
@@ -5554,7 +5573,9 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
-                            "f_var": "src"
+                            "f_type": "character(*)",
+                            "f_var": "src",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },

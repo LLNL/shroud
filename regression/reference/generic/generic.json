@@ -33,6 +33,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -524,6 +525,7 @@
                         "cxx_type": "long",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_LONG",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -604,6 +606,7 @@
                         "cxx_type": "long",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_LONG",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -729,8 +732,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)"
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -753,8 +758,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
-                            "pre_call_intent": "T_FLOAT"
+                            "pre_call_intent": "T_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -1173,8 +1180,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)"
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -1197,8 +1206,10 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
-                            "pre_call_intent": "SH_TYPE_FLOAT"
+                            "pre_call_intent": "SH_TYPE_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },

@@ -127,6 +127,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",

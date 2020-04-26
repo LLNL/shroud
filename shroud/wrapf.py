@@ -1314,22 +1314,39 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, ast, fmt, is_result=False):
+    def set_fmt_fields(self, f_ast, c_ast, fmt, is_result=False,
+                       ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
-            ast - declast.Declaration
+            f_ast - declast.Declaration - Fortran argument
+            c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
-        attrs = ast.attrs
+
+        if is_result:
+#            ntypemap = ntypemap
+            # XXX - looked up in parent
+            pass
+        else:
+            ntypemap = f_ast.typemap
+            if c_ast.template_arguments:
+                # If a template, use its type
+                ntypemap = c_ast.template_arguments[0].typemap
+                fmt.cxx_T = ntypemap.name
+        fmt.f_type = ntypemap.f_type
+        fmt.sh_type = ntypemap.sh_type
+        
+        attrs = c_ast.attrs
         dim = attrs["dimension"]
         if dim:
             # XXX - Assume 1-d
             fmt.f_var_shape = "(:)"  # assumed_shape
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+        return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1370,6 +1387,9 @@ rv = .false.
         result_type = node.F_return_type
         subprogram = node.F_subprogram
         result_typemap = node.F_result_typemap
+#        if result_typemap is not node.ast.typemap:
+#            print("BBBBBBBBBB", result_typemap.name, node.ast.typemap.name)
+#            print("       BBB", id(result_typemap), id(node.ast.typemap))
         C_subprogram = C_node.C_subprogram
         generated_suffix = C_node.generated_suffix
         ast = node.ast
@@ -1401,10 +1421,9 @@ rv = .false.
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
-            fmt_result.f_type = result_typemap.f_type
-#            if result_typemap.base == "vector":
-#                fmt_result.f_type = ast.template_arguments[0].typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            self.set_fmt_fields(ast, C_node.ast, fmt_result, True,
+                                result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
@@ -1496,7 +1515,6 @@ rv = .false.
             fmt_arg.c_var = arg_name
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
-            self.set_fmt_fields(c_arg, fmt_arg)
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs["allocatable"]
@@ -1539,10 +1557,12 @@ rv = .false.
             if not is_f_arg:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
+                arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
             else:
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
+                arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
 
                 f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
@@ -1629,15 +1649,6 @@ rv = .false.
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmtc0, fmt_arg.stmtc1)
-                
-            arg_typemap = f_arg.typemap
-            base_typemap = arg_typemap
-            if c_arg.template_arguments:
-                # If a template, use its type
-                arg_typemap = c_arg.template_arguments[0].typemap
-                fmt_arg.cxx_T = arg_typemap.name
-            fmt_arg.f_type = arg_typemap.f_type
-            fmt_arg.sh_type = arg_typemap.sh_type
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
@@ -1685,6 +1696,7 @@ rv = .false.
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
             # End parameters loop.
+        #####
 
         if subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
@@ -1712,7 +1724,6 @@ rv = .false.
         # (for example, string lengths).
         return_pointer_as = ast.return_pointer_as
         if subprogram == "function":
-            self.set_fmt_fields(ast, fmt_result, True)
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
             if return_pointer_as == "raw":

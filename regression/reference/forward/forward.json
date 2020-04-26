@@ -92,6 +92,7 @@
                                 "cxx_type": "forward::Class2",
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_shadow_ctor",
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
