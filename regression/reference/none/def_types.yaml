@@ -608,8 +608,6 @@ typemap:
       f_cast_module:
         iso_c_binding:
         - C_LOC
-      f_cast_keywords:
-        is_target: True
       PY_format: O
       PY_ctor: PyCapsule_New({cxx_var}, NULL, NULL)
       LUA_type: LUA_TNONE

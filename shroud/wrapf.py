@@ -1395,9 +1395,6 @@ rv = .false.
         result_type = node.F_return_type
         subprogram = node.F_subprogram
         result_typemap = node.F_result_typemap
-#        if result_typemap is not node.ast.typemap:
-#            print("BBBBBBBBBB", result_typemap.name, node.ast.typemap.name)
-#            print("       BBB", id(result_typemap), id(node.ast.typemap))
         C_subprogram = C_node.C_subprogram
         generated_suffix = C_node.generated_suffix
         ast = node.ast
@@ -1638,6 +1635,10 @@ rv = .false.
                     # hidden value is returned from C++.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
+                elif f_intent_blk.arg_decl:
+                    for line in f_intent_blk.arg_decl:
+                        append_format(arg_f_decl, line, fmt_arg)
+                    arg_f_names.append(fmt_arg.f_var)
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(
                         attributes=f_intent_blk.f_attribute))

@@ -1410,7 +1410,7 @@ contains
     ! ----------------------------------------
     ! Result
     ! Requested: f_unknown_*_result
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_root(obj) &
@@ -1475,7 +1475,7 @@ contains
     ! ----------------------------------------
     ! Result
     ! Requested: f_unknown_*_result
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     function exclass1_get_addr(obj) &

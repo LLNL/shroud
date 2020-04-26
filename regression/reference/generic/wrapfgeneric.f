@@ -406,7 +406,7 @@ contains
     ! ----------------------------------------
     ! Argument:  addr
     ! Requested: f_unknown_*_in
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
@@ -434,7 +434,7 @@ contains
     ! ----------------------------------------
     ! Argument:  addr
     ! Requested: f_unknown_*_in
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
@@ -461,7 +461,7 @@ contains
     ! ----------------------------------------
     ! Argument:  addr
     ! Requested: f_unknown_*_in
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
@@ -487,7 +487,7 @@ contains
     ! ----------------------------------------
     ! Argument:  addr
     ! Requested: f_unknown_*_in
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
@@ -513,8 +513,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_**_out
-    ! Match:     f_default
+    ! Exact:     f_unknown_**_out
     ! Requested: c_unknown_**_out
     ! Match:     c_default
     ! ----------------------------------------
@@ -531,7 +530,7 @@ contains
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(OUT), pointer, target :: addr(:)
+        real(C_FLOAT), intent(OUT), pointer :: addr(:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
@@ -551,8 +550,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_**_out
-    ! Match:     f_default
+    ! Exact:     f_unknown_**_out
     ! Requested: c_unknown_**_out
     ! Match:     c_default
     ! ----------------------------------------
@@ -569,7 +567,7 @@ contains
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(OUT), pointer, target :: addr(:)
+        real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d

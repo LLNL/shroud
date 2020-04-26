@@ -350,7 +350,7 @@ contains
     ! ----------------------------------------
     ! Argument:  value
     ! Requested: f_unknown_*_out
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_out
     ! Match:     c_default
     !>
@@ -386,7 +386,7 @@ contains
     ! ----------------------------------------
     ! Argument:  value
     ! Requested: f_unknown_*_out
-    ! Match:     f_default
+    ! Match:     f_unknown_*
     ! Requested: c_unknown_*_out
     ! Match:     c_default
     !>

@@ -287,7 +287,7 @@ def initialize():
             f_module=dict(iso_c_binding=["C_PTR"]),
             f_cast="C_LOC({f_var})",    # Cast an argument to a void *.
             f_cast_module=dict(iso_c_binding=["C_LOC"]),
-            f_cast_keywords=dict(is_target=True),
+#            f_cast_keywords=dict(is_target=True),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
         ),
@@ -1324,6 +1324,7 @@ class FStmts(object):
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
+        arg_decl=None,
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
     ):
@@ -1335,7 +1336,8 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
-        self.declare = declare
+        self.arg_decl = arg_decl        # argument declaration
+        self.declare = declare          # local declaration
         self.pre_call = pre_call
         self.call = call
         self.post_call = post_call
@@ -1435,6 +1437,19 @@ fc_statements = [
     ),
 
     # void *
+    dict(
+        name="f_unknown_*",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+    ),
+    dict(
+        name="f_unknown_**_out",
+        arg_decl=[
+            "{f_type}, intent(OUT), pointer :: {f_var}{f_assumed_shape}",
+        ],
+    ),
+    
     dict(
         name="c_unknown_*_cdesc",
         base="c_native_*_cdesc",
