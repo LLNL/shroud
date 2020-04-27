@@ -2017,7 +2017,7 @@
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
                 "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
-                    "description": "Return a pointer to an array which is always the same length.\n"
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -2039,6 +2039,197 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "nitems",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_native_**_out"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nitems",
+                            "c_var": "nitems",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_native_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "nitems",
+                    "C_name": "getRawPtrToScalar",
+                    "C_prototype": "int * * nitems",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_raw_ptr_to_scalar",
+                    "F_C_name": "c_get_raw_ptr_to_scalar",
+                    "F_arg_c_call": "SHPTR_nitems",
+                    "F_arguments": "nitems",
+                    "F_name_function": "get_raw_ptr_to_scalar",
+                    "F_name_generic": "get_raw_ptr_to_scalar",
+                    "F_name_impl": "get_raw_ptr_to_scalar",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getRawPtrToScalar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_raw_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_native_**_out"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "f_assumed_shape": "(10)",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", [10]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "f_var_shape": "(:)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_native_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "count",
+                    "C_name": "getRawPtrToFixedArray",
+                    "C_prototype": "int * * count",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_raw_ptr_to_fixed_array",
+                    "F_C_name": "c_get_raw_ptr_to_fixed_array",
+                    "F_arg_c_call": "SHPTR_count",
+                    "F_arguments": "count",
+                    "F_name_function": "get_raw_ptr_to_fixed_array",
+                    "F_name_generic": "get_raw_ptr_to_fixed_array",
+                    "F_name_impl": "get_raw_ptr_to_fixed_array",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getRawPtrToFixedArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
                 "options": {
                     "wrap_python": false

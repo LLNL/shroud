@@ -35,6 +35,9 @@ int sumFixedArray(void);
 void getPtrToScalar(int **nitems);
 void getPtrToFixedArray(int **count);
 
+void getRawPtrToScalar(int **nitems);
+void getRawPtrToFixedArray(int **count);
+
 //void getPtrToArray(int **count+intent(out));
 
 #endif // POINTERS_HPP

@@ -107,9 +107,21 @@ declarations:
 - decl: void getPtrToScalar(int **nitems+intent(out))
   options:
     wrap_python: False
+
 - decl: void getPtrToFixedArray(int **count+intent(out)+dimension(10))
   doxygen:
     description: |
-      Return a pointer to an array which is always the same length.
+      Return a Fortran pointer to an array which is always the same length.
+  options:
+    wrap_python: False
+
+- decl: void getRawPtrToScalar(int **nitems+intent(out))
+  options:
+    wrap_python: False
+
+- decl: void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))
+  doxygen:
+    description: |
+      Return a type(C_PTR) to an array which is always the same length.
   options:
     wrap_python: False

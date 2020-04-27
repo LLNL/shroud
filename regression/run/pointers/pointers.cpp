@@ -166,14 +166,26 @@ int sumFixedArray(void)
     return sum;
 }
 
+/**** Return a Fortran pointer */
 /* Return pointer to a scalar in the argument. */
-
 void getPtrToScalar(int **nitems)
 {
     *nitems = &global_int;
 }
 
 void getPtrToFixedArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
+
+/**** Return a type(C_PTR) pointer */
+/* Return pointer to a scalar in the argument. */
+void getRawPtrToScalar(int **nitems)
+{
+    *nitems = &global_int;
+}
+
+void getRawPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
 }

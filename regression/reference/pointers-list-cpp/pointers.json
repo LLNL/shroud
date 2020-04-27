@@ -1396,11 +1396,101 @@
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
                 "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
-                    "description": "Return a pointer to an array which is always the same length.\n"
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "fmtdict": {
                     "function_name": "getPtrToFixedArray",
                     "underscore_name": "get_ptr_to_fixed_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +intent(out))",
+                "fmtdict": {
+                    "function_name": "getRawPtrToScalar",
+                    "underscore_name": "get_raw_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToFixedArray",
+                    "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
                 "options": {
                     "wrap_python": false

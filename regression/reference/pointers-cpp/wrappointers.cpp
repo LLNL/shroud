@@ -393,7 +393,7 @@ void POI_get_ptr_to_scalar(int * * nitems)
 
 // void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 /**
- * Return a pointer to an array which is always the same length.
+ * Return a Fortran pointer to an array which is always the same length.
  */
 // ----------------------------------------
 // Result
@@ -407,6 +407,39 @@ void POI_get_ptr_to_fixed_array(int * * count)
     // splicer begin function.get_ptr_to_fixed_array
     getPtrToFixedArray(count);
     // splicer end function.get_ptr_to_fixed_array
+}
+
+// void getRawPtrToScalar(int * * nitems +intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nitems
+// Exact:     c_native_**_out
+void POI_get_raw_ptr_to_scalar(int * * nitems)
+{
+    // splicer begin function.get_raw_ptr_to_scalar
+    getRawPtrToScalar(nitems);
+    // splicer end function.get_raw_ptr_to_scalar
+}
+
+// void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))
+/**
+ * Return a type(C_PTR) to an array which is always the same length.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out
+void POI_get_raw_ptr_to_fixed_array(int * * count)
+{
+    // splicer begin function.get_raw_ptr_to_fixed_array
+    getRawPtrToFixedArray(count);
+    // splicer end function.get_raw_ptr_to_fixed_array
 }
 
 // start release allocated memory
