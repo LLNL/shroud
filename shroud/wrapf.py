@@ -1529,7 +1529,6 @@ rv = .false.
             fmt_arg.c_var = arg_name
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
-            is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
@@ -1537,7 +1536,6 @@ rv = .false.
             deref_clause = c_attrs["deref"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
-            sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]
             else:
@@ -1547,37 +1545,41 @@ rv = .false.
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
-            spointer = c_arg.get_indirect_stmt()
+            is_f_arg = True  # assume C and Fortran arguments match
             if c_attrs["_is_result"]:
-                # This argument is the C function result
-                c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", sgroup, spointer, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
+            if not is_f_arg:
+                # Pass result as an argument to the C++ function.
+                f_arg = c_arg
             else:
-                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
-                f_stmts = ["f", sgroup, spointer, intent, deref_clause, cdesc]
+                # An argument to the C and Fortran function
+                f_index += 1
+                f_arg = f_args[f_index]
+            arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
+                
+            c_sgroup = c_arg.typemap.sgroup
+            c_spointer = c_arg.get_indirect_stmt()
+            if c_attrs["_is_result"]:
+                # This argument is the C function result
+                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, deref_clause]
+#XXX            f_stmts = ["f", c_sgroup, c_spointer, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", c_sgroup, c_spointer, "result", deref_clause]  # + generated_suffix
+
+            else:
+                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
+                f_stmts = ["f", c_sgroup, c_spointer, intent, deref_clause, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
             f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
-            if not is_f_arg:
-                # Pass result as an argument to the C++ function.
-                f_arg = c_arg
-                arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
-            else:
-                # An argument to the C and Fortran function
-                f_index += 1
-                f_arg = f_args[f_index]
-                arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
-
+            if is_f_arg:
                 f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
 
