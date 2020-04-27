@@ -1354,6 +1354,14 @@ rv = .false.
         if dim:
             # dimensions on Fortran, not C with generic.
             fmt.f_assumed_shape = "(" + dim + ")"
+        rank = f_attrs["rank"]
+        if rank is not None:
+            fmt.rank = str(rank)
+            if rank == 0:
+                fmt.size = "1"
+            else:
+                fmt.size = wformat("size({f_var})", fmt)
+
         return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):
@@ -1572,13 +1580,6 @@ rv = .false.
 
                 f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
-                rank = f_attrs["rank"]
-                if rank is not None:
-                    fmt_arg.rank = str(rank)
-                    if rank == 0:
-                        fmt_arg.size = "1"
-                    else:
-                        fmt_arg.size = wformat("size({f_var})", fmt_arg)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
