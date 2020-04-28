@@ -572,7 +572,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_assumed_shape": "(len)",
+                        "f_assumed_shape": "(:)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -725,7 +725,7 @@
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "len",
                         "cxx_type": "int",
-                        "f_assumed_shape": "(len)",
+                        "f_assumed_shape": "(:)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1001,7 +1001,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_assumed_shape": "(len)",
+                        "f_assumed_shape": "(:)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1257,7 +1257,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_assumed_shape": "(len)",
+                        "f_assumed_shape": "(:)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1553,7 +1553,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
-                        "f_assumed_shape": "(len)",
+                        "f_assumed_shape": "(:)",
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",

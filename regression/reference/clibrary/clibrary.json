@@ -3633,7 +3633,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "f_assumed_shape": "(*)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_pointer_shape": ", [*]",
                             "f_type": "type(C_PTR)",

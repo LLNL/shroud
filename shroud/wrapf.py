@@ -1397,8 +1397,7 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            # dimensions on Fortran, not C with generic.
-            fmt.f_assumed_shape = "(" + dim + ")"
+            fmt.f_assumed_shape = "(:)"  # XXX - assumes 1-d
 
         return ntypemap
 

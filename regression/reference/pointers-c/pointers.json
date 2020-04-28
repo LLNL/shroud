@@ -616,7 +616,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
-                            "f_assumed_shape": "(3)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
@@ -728,7 +728,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "f_assumed_shape": "(3)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
@@ -761,7 +761,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
-                            "f_assumed_shape": "(3)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
@@ -1036,7 +1036,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
-                            "f_assumed_shape": "(nvar)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [nvar]",
                             "f_type": "integer(C_INT)",
@@ -1324,7 +1324,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
-                            "f_assumed_shape": "(3)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
@@ -1967,7 +1967,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "f_assumed_shape": "(10)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_pointer_shape": ", [10]",
                             "f_type": "integer(C_INT)",

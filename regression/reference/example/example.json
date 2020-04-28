@@ -9148,7 +9148,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_in",
                                             "c_var": "in",
-                                            "f_assumed_shape": "(:,:)",
+                                            "f_assumed_shape": "(:)",
                                             "f_intent": "IN",
                                             "f_pointer_shape": ", [:,:]",
                                             "f_type": "real(C_DOUBLE)",
@@ -9209,7 +9209,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_out",
                                             "c_var": "out",
-                                            "f_assumed_shape": "(:,:)",
+                                            "f_assumed_shape": "(:)",
                                             "f_intent": "OUT",
                                             "f_pointer_shape": ", [:,:]",
                                             "f_type": "real(C_DOUBLE)",
