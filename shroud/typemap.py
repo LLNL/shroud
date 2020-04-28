@@ -1399,7 +1399,9 @@ fc_statements = [
         # A C function with a 'int **' arguments associates it
         # with a Fortran pointer.
         name="f_native_**_out",
-        f_attribute=['pointer'],
+        arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
+        ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1440,7 +1442,9 @@ fc_statements = [
     dict(
         name="f_native_*_cdesc",
         # TARGET required for argument to C_LOC.
-        f_attribute=['target'],
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
         f_helper="array_context ShroudTypeDefines",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
