@@ -818,6 +818,7 @@ rv = .false.
         node, fileinfo,
         fmt,
         ast,
+        intent_blk,
         buf_args,
         modules,
         imports,
@@ -835,6 +836,7 @@ rv = .false.
             ast - Abstract Syntax Tree from parser
                node.ast for subprograms
                node.params[n] for parameters
+            intent_blk - typemap.CStmts or util.Scope
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -847,7 +849,7 @@ rv = .false.
 
         # Add implied buffer arguments to prototype
         for buf_arg in buf_args:
-            if buf_arg in ["arg", "argptr"]:
+            if buf_arg == "arg":
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if attrs["assumedtype"]:
@@ -866,6 +868,14 @@ rv = .false.
                         "procedure({}) :: {}".format(absiface, ast.name)
                     )
                     imports[absiface] = True
+                elif ast.is_array() > 1:
+                    # Treat too many pointers as a type(C_PTR)
+                    # and let the wrapper sort it out.
+                    intent = ast.attrs["intent"].upper()
+                    arg_c_decl.append(
+                        "type(C_PTR), intent({}) :: {}".format(
+                            intent, name or ast.name))
+                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
                 else:
                     arg_c_decl.append(ast.bind_c())
                     arg_typemap = ast.typemap
@@ -898,6 +908,17 @@ rv = .false.
                     "type(C_PTR), intent(OUT) :: %s" % (name or ast.name)
                 )
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+                continue
+            elif buf_arg == "arg_decl":
+                # Use explicit declaration from CStmt.
+                arg_c_names.append(name or ast.name)
+                for arg in intent_blk.f_arg_decl:
+                    arg_c_decl.append(arg.format(
+                        c_var=name or ast.name,
+                    ))
+                if intent_blk.f_module:
+                    self.update_f_module(
+                        modules, imports, intent_blk.f_module)
                 continue
 
             buf_arg_name = attrs[buf_arg]
@@ -1028,6 +1049,7 @@ rv = .false.
             node, fileinfo,
             fmt_func,
             ast,
+            c_result_blk,
             c_result_blk.buf_args,
             modules,
             imports,
@@ -1071,6 +1093,7 @@ rv = .false.
                 node, fileinfo,
                 fmt,
                 arg,
+                c_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
@@ -1083,6 +1106,7 @@ rv = .false.
                 node, fileinfo,
                 fmt_func,
                 ast,
+                c_result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,
@@ -1209,7 +1233,7 @@ rv = .false.
 
         # Add any buffer arguments
         for buf_arg in buf_args:
-            if buf_arg in ["arg", "argptr"]:
+            if buf_arg in ["arg", "arg_decl"]:
                 # Attributes   None=skip, True=use default, else use value
                 if arg_typemap.f_to_c:
                     need_wrapper = True
@@ -1228,11 +1252,6 @@ rv = .false.
                 # Pass down the pointer to {F_capsule_data_type}
                 need_wrapper = True
                 append_format(arg_c_call, "{f_var}%{F_derived_member}", fmt)
-                continue
-            elif buf_arg == "c_ptr":
-                # F_pointer must be declared in f_statements.
-                need_wrapper = True
-                append_format(arg_c_call, "{F_pointer}", fmt)
                 continue
 
             need_wrapper = True

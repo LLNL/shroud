@@ -106,10 +106,26 @@ contains
          "cat       ", &
          "monkey    "  &
          ]
+    character(10), target :: word1, word2, word3
+    type(C_PTR)  cin(4)
 
     call set_case_name("test_char_arrays")
 
+    ! Call the bufferify function.
+    ! It will copy strings to create char ** variable.
     call accept_char_array_in(in)
+
+    ! Build up a native char ** variable and pass to C.
+    ! Caller is responsibile for explicilty NULL terminating.
+    word1 = "word1" // C_NULL_CHAR
+    word2 = "word2+" // C_NULL_CHAR
+    word3 = "word3long" // C_NULL_CHAR
+    cin(1) = c_loc(word1)
+    cin(2) = c_loc(word2)
+    cin(3) = c_loc(word3)
+    cin(4) = C_NULL_PTR
+    call c_accept_char_array_in(cin)
+    
   end subroutine test_char_arrays
 
   subroutine test_out_ptrs

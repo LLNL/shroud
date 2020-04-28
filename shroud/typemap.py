@@ -1278,6 +1278,13 @@ def lookup_stmts_tree(tree, path):
 
 
 class CStmts(object):
+    """
+
+    Used with buf_args = "arg_decl".
+    c_arg_decl  - Add C declaration to C wrapper.
+    f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
+    f_module    - Add module info to interface block.
+    """
     def __init__(self,
         name="c_default",
         buf_args=[], buf_extra=[],
@@ -1287,6 +1294,9 @@ class CStmts(object):
         destructor_name=None,
         owner="library",
         return_type=None, return_cptr=False,
+        c_arg_decl=[],
+        f_arg_decl=[],
+        f_module=None,
     ):
         self.name = name
         self.buf_args = buf_args
@@ -1307,6 +1317,9 @@ class CStmts(object):
         self.owner = owner
         self.return_type = return_type
         self.return_cptr = return_cptr
+        self.c_arg_decl = c_arg_decl
+        self.f_arg_decl = f_arg_decl
+        self.f_module = f_module
 
 class FStmts(object):
     """
@@ -1383,7 +1396,7 @@ fc_statements = [
 
     dict(
         name="c_native_**_out",
-        buf_args=["c_ptr"],
+#        buf_args=["c_ptr"],
     ),
     dict(
         # deref(pointer)
@@ -1395,6 +1408,7 @@ fc_statements = [
         declare=[
             "type(C_PTR) :: {F_pointer}",
         ],
+        arg_c_call=["{F_pointer}"],
         post_call=[
             "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
         ],
@@ -1406,7 +1420,7 @@ fc_statements = [
             "type(C_PTR), intent({f_intent}) :: {f_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_c_call=["{f_var}"],    # override c_native_**_out and buf_args=c_ptr
+        arg_c_call=["{f_var}"],
     ),
 
     # XXX only in buf?
@@ -1624,8 +1638,8 @@ fc_statements = [
     #####
     dict(
         name='c_char_**_in_buf',
-        # argptr - argument is char *, not char **.
-        buf_args=["argptr", "size", "len"],
+        # arg_decl - argument is char *, not char **.
+        buf_args=["arg_decl", "size", "len"],
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         pre_call=[
@@ -1635,6 +1649,14 @@ fc_statements = [
         post_call=[
             "ShroudStrArrayFree({cxx_var}, {c_var_size});",
         ],
+
+        c_arg_decl=[
+            "char *{c_var}",
+        ],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     #####
     dict(

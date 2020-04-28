@@ -268,9 +268,9 @@ module pointers_mod
     interface
         subroutine c_accept_char_array_in(names) &
                 bind(C, name="POI_accept_char_array_in")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(kind=C_CHAR), intent(IN) :: names(*)
+            type(C_PTR), intent(IN) :: names
         end subroutine c_accept_char_array_in
     end interface
 
