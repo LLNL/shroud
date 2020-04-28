@@ -330,7 +330,8 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  nitems
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
                 bind(C, name="POI_get_ptr_to_scalar")
@@ -346,7 +347,8 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  count
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
                 bind(C, name="POI_get_ptr_to_fixed_array")
@@ -363,7 +365,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  nitems
     ! Requested: c_native_**_out_raw
-    ! Match:     c_native_**_out
+    ! Match:     c_default
     interface
         subroutine get_raw_ptr_to_scalar(nitems) &
                 bind(C, name="POI_get_raw_ptr_to_scalar")
@@ -380,7 +382,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  count
     ! Requested: c_native_**_out_raw
-    ! Match:     c_native_**_out
+    ! Match:     c_default
     interface
         subroutine get_raw_ptr_to_fixed_array(count) &
                 bind(C, name="POI_get_raw_ptr_to_fixed_array")
@@ -560,7 +562,8 @@ contains
     ! ----------------------------------------
     ! Argument:  nitems
     ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
@@ -581,7 +584,8 @@ contains
     ! ----------------------------------------
     ! Argument:  count
     ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<

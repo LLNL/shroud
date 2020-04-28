@@ -1870,7 +1870,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
-                            "stmt1": "c_native_**_out"
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_nitems",
@@ -1882,7 +1882,7 @@
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_native_**_out"
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -1962,7 +1962,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
-                            "stmt1": "c_native_**_out"
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_count",
@@ -1977,7 +1977,7 @@
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_native_**_out"
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2061,7 +2061,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
-                            "stmt1": "c_native_**_out"
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_nitems",
@@ -2073,7 +2073,7 @@
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
                             "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_native_**_out"
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2157,7 +2157,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
-                            "stmt1": "c_native_**_out"
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_count",
@@ -2169,7 +2169,7 @@
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
                             "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_native_**_out"
+                            "stmtc1": "c_default"
                         }
                     }
                 },

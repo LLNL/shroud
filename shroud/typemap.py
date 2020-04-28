@@ -1395,10 +1395,6 @@ fc_statements = [
     ),
 
     dict(
-        name="c_native_**_out",
-#        buf_args=["c_ptr"],
-    ),
-    dict(
         # deref(pointer)
         # A C function with a 'int **' arguments associates it
         # with a Fortran pointer.

@@ -383,7 +383,8 @@ int POI_sum_fixed_array()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  nitems
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_ptr_to_scalar(int * * nitems)
 {
     // splicer begin function.get_ptr_to_scalar
@@ -401,7 +402,8 @@ void POI_get_ptr_to_scalar(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  count
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_ptr_to_fixed_array(int * * count)
 {
     // splicer begin function.get_ptr_to_fixed_array
@@ -419,7 +421,8 @@ void POI_get_ptr_to_fixed_array(int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  nitems
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_raw_ptr_to_scalar(int * * nitems)
 {
     // splicer begin function.get_raw_ptr_to_scalar
@@ -439,7 +442,8 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  count
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_raw_ptr_to_fixed_array(int * * count)
 {
     // splicer begin function.get_raw_ptr_to_fixed_array
