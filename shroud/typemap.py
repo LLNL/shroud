@@ -1386,6 +1386,9 @@ fc_statements = [
         buf_args=["c_ptr"],
     ),
     dict(
+        # deref(pointer)
+        # A C function with a 'int **' arguments associates it
+        # with a Fortran pointer.
         name="f_native_**_out",
         f_attribute=['pointer'],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
@@ -1395,6 +1398,15 @@ fc_statements = [
         post_call=[
             "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
         ],
+    ),
+    dict(
+        # Make argument type(C_PTR) from 'int **'
+        name="f_native_**_out_raw",
+        arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        arg_c_call=["{f_var}"],    # override c_native_**_out and buf_args=c_ptr
     ),
 
     # XXX only in buf?

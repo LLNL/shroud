@@ -2070,8 +2070,8 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nitems",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
+                            "stmt0": "f_native_**_out_raw",
+                            "stmt1": "f_native_**_out_raw",
                             "stmtc0": "c_native_**_out",
                             "stmtc1": "c_native_**_out"
                         }
@@ -2085,6 +2085,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2109,16 +2110,19 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getRawPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getRawPtrToScalar(int * * nitems +intent(out))",
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Called directly via an interface.\n"
+                },
                 "fmtdict": {
                     "C_call_list": "nitems",
                     "C_name": "getRawPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_scalar",
-                    "F_C_name": "c_get_raw_ptr_to_scalar",
-                    "F_arg_c_call": "SHPTR_nitems",
+                    "F_C_name": "get_raw_ptr_to_scalar",
+                    "F_arg_c_call": "nitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_raw_ptr_to_scalar",
                     "F_name_generic": "get_raw_ptr_to_scalar",
@@ -2158,15 +2162,12 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "f_assumed_shape": "(10)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [10]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
+                            "stmt0": "f_native_**_out_raw",
+                            "stmt1": "f_native_**_out_raw",
                             "stmtc0": "c_native_**_out",
                             "stmtc1": "c_native_**_out"
                         }
@@ -2180,7 +2181,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "10",
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2205,10 +2206,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -2216,8 +2217,8 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_fixed_array",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array",
-                    "F_arg_c_call": "SHPTR_count",
+                    "F_C_name": "get_raw_ptr_to_fixed_array",
+                    "F_arg_c_call": "count",
                     "F_arguments": "count",
                     "F_name_function": "get_raw_ptr_to_fixed_array",
                     "F_name_generic": "get_raw_ptr_to_fixed_array",

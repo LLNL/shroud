@@ -362,14 +362,15 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  nitems
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out_raw
+    ! Match:     c_native_**_out
     interface
-        subroutine c_get_raw_ptr_to_scalar(nitems) &
+        subroutine get_raw_ptr_to_scalar(nitems) &
                 bind(C, name="POI_get_raw_ptr_to_scalar")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
-        end subroutine c_get_raw_ptr_to_scalar
+        end subroutine get_raw_ptr_to_scalar
     end interface
 
     ! ----------------------------------------
@@ -378,14 +379,15 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  count
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out_raw
+    ! Match:     c_native_**_out
     interface
-        subroutine c_get_raw_ptr_to_fixed_array(count) &
+        subroutine get_raw_ptr_to_fixed_array(count) &
                 bind(C, name="POI_get_raw_ptr_to_fixed_array")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_raw_ptr_to_fixed_array
+        end subroutine get_raw_ptr_to_fixed_array
     end interface
 
     interface
@@ -592,51 +594,6 @@ contains
         call c_f_pointer(SHPTR_count, count, [10])
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
-
-    ! void getRawPtrToScalar(int * * nitems +intent(out))
-    ! ----------------------------------------
-    ! Result
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  nitems
-    ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
-    subroutine get_raw_ptr_to_scalar(nitems)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: nitems
-        ! splicer begin function.get_raw_ptr_to_scalar
-        type(C_PTR) :: SHPTR_nitems
-        call c_get_raw_ptr_to_scalar(SHPTR_nitems)
-        call c_f_pointer(SHPTR_nitems, nitems)
-        ! splicer end function.get_raw_ptr_to_scalar
-    end subroutine get_raw_ptr_to_scalar
-
-    ! void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))
-    ! ----------------------------------------
-    ! Result
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  count
-    ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
-    !>
-    !! Return a type(C_PTR) to an array which is always the same length.
-    !<
-    subroutine get_raw_ptr_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_raw_ptr_to_fixed_array
-        type(C_PTR) :: SHPTR_count
-        call c_get_raw_ptr_to_fixed_array(SHPTR_count)
-        call c_f_pointer(SHPTR_count, count, [10])
-        ! splicer end function.get_raw_ptr_to_fixed_array
-    end subroutine get_raw_ptr_to_fixed_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

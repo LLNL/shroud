@@ -1415,6 +1415,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1439,8 +1440,11 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getRawPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getRawPtrToScalar(int * * nitems +intent(out))",
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Called directly via an interface.\n"
+                },
                 "fmtdict": {
                     "function_name": "getRawPtrToScalar",
                     "underscore_name": "get_raw_ptr_to_scalar"
@@ -1458,7 +1462,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "10",
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1483,10 +1487,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "function_name": "getRawPtrToFixedArray",

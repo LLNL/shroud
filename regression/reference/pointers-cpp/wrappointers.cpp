@@ -409,7 +409,10 @@ void POI_get_ptr_to_fixed_array(int * * count)
     // splicer end function.get_ptr_to_fixed_array
 }
 
-// void getRawPtrToScalar(int * * nitems +intent(out))
+// void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
+/**
+ * Called directly via an interface.
+ */
 // ----------------------------------------
 // Result
 // Requested: c
@@ -424,9 +427,11 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
     // splicer end function.get_raw_ptr_to_scalar
 }
 
-// void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))
+// void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 /**
  * Return a type(C_PTR) to an array which is always the same length.
+ * Called directly via an interface.
+ * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
 // Result

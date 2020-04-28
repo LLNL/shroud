@@ -15,8 +15,8 @@ C function void setGlobalInt(int value +intent(in)+value)
 C function int sumFixedArray()
 C function void getPtrToScalar(int * * nitems +intent(out))
 C function void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
-C function void getRawPtrToScalar(int * * nitems +intent(out))
-C function void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))
+C function void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
+C function void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
@@ -36,6 +36,6 @@ C-interface, Fortran function void setGlobalInt(int value +intent(in)+value)
 C-interface, Fortran function int sumFixedArray()
 C-interface, Fortran function void getPtrToScalar(int * * nitems +intent(out))
 C-interface, Fortran function void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
-C-interface, Fortran function void getRawPtrToScalar(int * * nitems +intent(out))
-C-interface, Fortran function void getRawPtrToFixedArray(int * * count +dimension(10)+intent(out))
+C-interface, Fortran function void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
+C-interface, Fortran function void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 Close wrapfpointers.f

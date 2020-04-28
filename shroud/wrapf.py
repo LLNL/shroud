@@ -1180,6 +1180,11 @@ rv = .false.
         and any additional declarations for local variables in arg_f_decl.
         modules and imports may also be updated.
 
+        Add call arguments from f_intent_blk if defined,
+        This is used to override the C function arguments and used
+        for cases like pointers and raw/pointer/allocatable.
+        Otherwise, Use buf_args from c_intent_blk.
+
         Args:
             fmt -
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
@@ -1195,16 +1200,18 @@ rv = .false.
         return need_wrapper
         A wrapper will be needed if there is meta data.
         """
+        if f_intent_blk.arg_c_call:
+            for arg in f_intent_blk.arg_c_call:
+                append_format(arg_c_call, arg, fmt)
+            return need_wrapper
+
         c_attrs = c_ast.attrs
 
         # Add any buffer arguments
         for buf_arg in buf_args:
             if buf_arg in ["arg", "argptr"]:
-                if f_intent_blk.arg_c_call:
-                    for arg in f_intent_blk.arg_c_call:
-                        append_format(arg_c_call, arg, fmt)
                 # Attributes   None=skip, True=use default, else use value
-                elif arg_typemap.f_to_c:
+                if arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):

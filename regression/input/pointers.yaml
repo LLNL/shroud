@@ -115,13 +115,18 @@ declarations:
   options:
     wrap_python: False
 
-- decl: void getRawPtrToScalar(int **nitems+intent(out))
+- decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Called directly via an interface.
   options:
     wrap_python: False
 
-- decl: void getRawPtrToFixedArray(int **count+intent(out)+dimension(10))
+- decl: void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))
   doxygen:
     description: |
       Return a type(C_PTR) to an array which is always the same length.
+      Called directly via an interface.
+      # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
   options:
     wrap_python: False

@@ -115,6 +115,7 @@ contains
   subroutine test_out_ptrs
     integer(C_INT), pointer :: iscalar
     integer(C_INT), pointer :: iarray(:)
+    type(C_PTR) :: cptr_scalar, cptr_array
 
     call set_global_int(0)
     call get_ptr_to_scalar(iscalar)
@@ -132,6 +133,16 @@ contains
     iarray(1) = 1
     iarray(10) = 2
     call assert_equals(3, sum_fixed_array())
+
+    call get_raw_ptr_to_scalar(cptr_scalar)
+    call assert_true(c_associated(cptr_scalar))
+    ! associated with global_int in pointers.cpp
+    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
+
+    call get_raw_ptr_to_fixed_array(cptr_array)
+    call assert_true(c_associated(cptr_array))
+    ! associated with global_fixed_array in pointers.cpp
+    call assert_true(c_associated(cptr_array, c_loc(iarray)))
     
   end subroutine test_out_ptrs
   
