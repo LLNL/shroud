@@ -185,8 +185,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  arg
-    ! Requested: f_native_*_in_cdesc
-    ! Match:     f_native_*_cdesc
+    ! Exact:     f_native_*_in_cdesc
     ! Requested: c_native_*_in_cdesc
     ! Match:     c_native_*_cdesc
     subroutine rank2_in(arg)
@@ -219,8 +218,8 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_unknown_*_out_cdesc
-    ! Match:     f_unknown_*_cdesc
+    ! Requested: f_native_*_out_cdesc
+    ! Match:     f_native_*_cdesc
     ! Requested: c_unknown_*_out_buf_cdesc
     ! Match:     c_unknown_*_cdesc
     !>
@@ -264,8 +263,8 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_unknown_*_out_cdesc
-    ! Match:     f_unknown_*_cdesc
+    ! Requested: f_native_*_out_cdesc
+    ! Match:     f_native_*_cdesc
     ! Requested: c_unknown_*_out_buf_cdesc
     ! Match:     c_unknown_*_cdesc
     !>
@@ -349,8 +348,8 @@ contains
     ! Match:     c_string_in
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_unknown_*_out
-    ! Match:     f_unknown_*
+    ! Requested: f_native_*_out
+    ! Match:     f_default
     ! Requested: c_unknown_*_out
     ! Match:     c_default
     !>
@@ -361,9 +360,9 @@ contains
     !! splicer in order to get {stype} expanded.
     !<
     subroutine get_scalar2_0(name, value)
-        use iso_c_binding, only : C_INT, C_LOC
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
-        integer(C_INT), intent(OUT), target :: value
+        integer(C_INT), intent(OUT) :: value
         ! splicer begin function.get_scalar2_0
         value = c_get_data_int()
         ! splicer end function.get_scalar2_0
@@ -385,8 +384,8 @@ contains
     ! Match:     c_string_in
     ! ----------------------------------------
     ! Argument:  value
-    ! Requested: f_unknown_*_out
-    ! Match:     f_unknown_*
+    ! Requested: f_native_*_out
+    ! Match:     f_default
     ! Requested: c_unknown_*_out
     ! Match:     c_default
     !>
@@ -397,9 +396,9 @@ contains
     !! splicer in order to get {stype} expanded.
     !<
     subroutine get_scalar2_1(name, value)
-        use iso_c_binding, only : C_DOUBLE, C_LOC
+        use iso_c_binding, only : C_DOUBLE
         character(len=*), intent(IN) :: name
-        real(C_DOUBLE), intent(OUT), target :: value
+        real(C_DOUBLE), intent(OUT) :: value
         ! splicer begin function.get_scalar2_1
         value = c_get_data_double()
         ! splicer end function.get_scalar2_1

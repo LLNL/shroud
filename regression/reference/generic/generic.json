@@ -713,8 +713,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_unknown_*_in",
-                            "stmt1": "f_unknown_*",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_native_*_in_raw",
                             "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
@@ -853,6 +853,7 @@
                         "decls": [
                             {
                                 "attrs": {
+                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 1
                                 },
@@ -901,12 +902,13 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1),    int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(1)+deref(raw),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
+                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 2
                                 },
@@ -955,7 +957,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2),  int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(2)+deref(raw),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "options": {
@@ -973,6 +975,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -1026,7 +1029,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1061,6 +1064,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -1114,7 +1118,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1167,8 +1171,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_unknown_*_in",
-                            "stmt1": "f_unknown_*",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_native_*_in_raw",
                             "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
@@ -1308,6 +1312,7 @@
                         "decls": [
                             {
                                 "attrs": {
+                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 1
                                 },
@@ -1356,12 +1361,13 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1))"
+                        "generic": "(float *addr+rank(1)+deref(raw))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
+                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 2
                                 },
@@ -1410,7 +1416,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2))"
+                        "generic": "(float *addr+rank(2)+deref(raw))"
                     }
                 ],
                 "fstatements": {
@@ -1438,6 +1444,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -1491,7 +1498,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1536,6 +1543,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -1589,7 +1597,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1836,8 +1844,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_unknown_**_out",
-                            "stmt1": "f_unknown_**_out",
+                            "stmt0": "f_native_**_out_pointer",
+                            "stmt1": "f_native_**_out",
                             "stmtc0": "c_unknown_**_out",
                             "stmtc1": "c_default"
                         }
@@ -2197,7 +2205,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "addr,\t type,\t size",
+                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -2295,7 +2303,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "addr,\t type,\t size",
+                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",

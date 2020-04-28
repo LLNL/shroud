@@ -1395,8 +1395,19 @@ fc_statements = [
     ),
 
     dict(
+        # A C function with a 'int *' argument passes address of array
+        name="f_native_*_in_raw",
+        # same as "f_unknown_*",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        arg_c_call=["C_LOC({f_var})"],
+    ),
+
+    dict(
         # deref(pointer)
-        # A C function with a 'int **' arguments associates it
+        # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
         name="f_native_**_out",
         arg_decl=[
@@ -1456,6 +1467,10 @@ fc_statements = [
             "{c_var_context}%size = {size}",
             "{c_var_context}%rank = {rank}",
         ],
+    ),
+    dict(
+        name="f_native_*_in_cdesc",
+        base="f_native_*_cdesc",
     ),
 
     # void *

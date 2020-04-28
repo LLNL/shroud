@@ -395,7 +395,7 @@ contains
     end function generic_real2_all_long
 
 #if 1
-    ! void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -405,8 +405,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_*_in
-    ! Match:     f_unknown_*
+    ! Exact:     f_native_*_in_raw
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
@@ -423,7 +422,7 @@ contains
 #endif
 
 #if 1
-    ! void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -433,8 +432,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_*_in
-    ! Match:     f_unknown_*
+    ! Exact:     f_native_*_in_raw
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
@@ -450,7 +448,7 @@ contains
     end subroutine save_pointer_float2d
 #endif
 
-    ! void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -460,8 +458,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_*_in
-    ! Match:     f_unknown_*
+    ! Exact:     f_native_*_in_raw
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
@@ -476,7 +473,7 @@ contains
         ! splicer end function.save_pointer2_float1d
     end subroutine save_pointer2_float1d
 
-    ! void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -486,8 +483,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Requested: f_unknown_*_in
-    ! Match:     f_unknown_*
+    ! Exact:     f_native_*_in_raw
     ! Requested: c_unknown_*_in
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
@@ -513,7 +509,8 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Exact:     f_unknown_**_out
+    ! Requested: f_native_**_out_pointer
+    ! Match:     f_native_**_out
     ! Requested: c_unknown_**_out
     ! Match:     c_default
     ! ----------------------------------------
@@ -529,12 +526,14 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
-        call c_get_pointer_as_pointer(addr, type, size)
+        type(C_PTR) :: SHPTR_addr
+        call c_get_pointer_as_pointer(SHPTR_addr, type, size)
+        call c_f_pointer(SHPTR_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -550,7 +549,8 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  addr
-    ! Exact:     f_unknown_**_out
+    ! Requested: f_native_**_out_pointer
+    ! Match:     f_native_**_out
     ! Requested: c_unknown_**_out
     ! Match:     c_default
     ! ----------------------------------------
@@ -566,12 +566,14 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
-        call c_get_pointer_as_pointer(addr, type, size)
+        type(C_PTR) :: SHPTR_addr
+        call c_get_pointer_as_pointer(SHPTR_addr, type, size)
+        call c_f_pointer(SHPTR_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

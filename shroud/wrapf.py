@@ -1570,7 +1570,6 @@ rv = .false.
             allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
-            deref_clause = c_attrs["deref"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             if c_arg.template_arguments:
@@ -1598,18 +1597,23 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
             arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
+            f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
+            c_deref_clause = c_attrs["deref"]
+            f_sgroup = f_arg.typemap.sgroup
+            f_spointer = f_arg.get_indirect_stmt()
+            f_deref_clause = f_attrs["deref"]
             if c_attrs["_is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["f", c_sgroup, c_spointer, "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", c_sgroup, c_spointer, "result", deref_clause]  # + generated_suffix
+                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_clause]
+#XXX            f_stmts = ["f", f_sgroup, f_spointer, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", f_sgroup, f_spointer, "result", f_deref_clause]  # + generated_suffix
 
             else:
                 c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
-                f_stmts = ["f", c_sgroup, c_spointer, intent, deref_clause, cdesc]
+                f_stmts = ["f", f_sgroup, f_spointer, intent, f_deref_clause, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
@@ -1617,7 +1621,6 @@ rv = .false.
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
 
             if is_f_arg:
-                f_attrs = f_arg.attrs
                 implied = f_attrs["implied"]
 
                 if c_arg.ftrim_char_in:
