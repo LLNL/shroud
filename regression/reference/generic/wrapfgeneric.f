@@ -395,7 +395,7 @@ contains
     end function generic_real2_all_long
 
 #if 1
-    ! void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -423,7 +423,7 @@ contains
 #endif
 
 #if 1
-    ! void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -450,7 +450,7 @@ contains
     end subroutine save_pointer_float2d
 #endif
 
-    ! void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -476,7 +476,7 @@ contains
         ! splicer end function.save_pointer2_float1d
     end subroutine save_pointer2_float1d
 
-    ! void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+    ! void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -503,7 +503,7 @@ contains
     end subroutine save_pointer2_float2d
 
 #if 0
-    ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+    ! void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
     ! fortran_generic
     ! ----------------------------------------
     ! Result
@@ -540,7 +540,7 @@ contains
 #endif
 
 #if 0
-    ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+    ! void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
     ! fortran_generic
     ! ----------------------------------------
     ! Result

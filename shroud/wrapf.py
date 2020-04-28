@@ -26,6 +26,17 @@ from . import whelpers
 from . import util
 from .util import wformat, append_format
 
+# convert rank to f_assumed_shape.
+fortran_ranks = [
+    "",
+    "(:)",
+    "(:,:)",
+    "(:,:,:)",
+    "(:,:,:,:)",
+    "(:,:,:,:,:)",
+    "(:,:,:,:,:,:)",
+    "(:,:,:,:,:,:,:)",
+]
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -1377,9 +1388,6 @@ rv = .false.
 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
-        if dim:
-            # dimensions on Fortran, not C with generic.
-            fmt.f_assumed_shape = "(" + dim + ")"
         rank = f_attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
@@ -1387,6 +1395,10 @@ rv = .false.
                 fmt.size = "1"
             else:
                 fmt.size = wformat("size({f_var})", fmt)
+                fmt.f_assumed_shape = fortran_ranks[rank]
+        elif dim:
+            # dimensions on Fortran, not C with generic.
+            fmt.f_assumed_shape = "(" + dim + ")"
 
         return ntypemap
 

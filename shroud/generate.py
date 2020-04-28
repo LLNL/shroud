@@ -1627,13 +1627,6 @@ class CheckImplied(todict.PrintNode):
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
                 )
-            if arg.attrs["dimension"] is None:
-                raise RuntimeError(
-                    "Argument '{}' must have dimension attribute: {}".format(
-#                        str(arg), self.expr
-                        argname, self.expr
-                    )
-                )
             return "size"
         elif node.name in ["len", "len_trim"]:
             # len(arg)  len_trim(arg)

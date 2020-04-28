@@ -710,7 +710,9 @@
                             "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
                             "stmt0": "f_unknown_*_in",
                             "stmt1": "f_unknown_*",
                             "stmtc0": "c_unknown_*_in",
@@ -851,8 +853,8 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":",
-                                    "intent": "in"
+                                    "intent": "in",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -899,14 +901,14 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+dimension(:),    int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(1),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":,:",
-                                    "intent": "in"
+                                    "intent": "in",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -953,7 +955,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(2),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "options": {
@@ -971,8 +973,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1024,7 +1026,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1059,8 +1061,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":,:",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1112,7 +1114,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1162,7 +1164,9 @@
                             "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
                             "stmt0": "f_unknown_*_in",
                             "stmt1": "f_unknown_*",
                             "stmtc0": "c_unknown_*_in",
@@ -1304,8 +1308,8 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":",
-                                    "intent": "in"
+                                    "intent": "in",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -1352,14 +1356,14 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+dimension(:))"
+                        "generic": "(float *addr+rank(1))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":,:",
-                                    "intent": "in"
+                                    "intent": "in",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -1406,7 +1410,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+dimension(:,:))"
+                        "generic": "(float *addr+rank(2))"
                     }
                 ],
                 "fstatements": {
@@ -1434,8 +1438,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1487,7 +1491,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1532,8 +1536,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":,:",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1585,7 +1589,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1829,7 +1833,9 @@
                             "f_intent": "OUT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
                             "stmt0": "f_unknown_**_out",
                             "stmt1": "f_unknown_**_out",
                             "stmtc0": "c_unknown_**_out",
@@ -1986,8 +1992,8 @@
                             {
                                 "attrs": {
                                     "deref": "pointer",
-                                    "dimension": ":",
-                                    "intent": "out"
+                                    "intent": "out",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -2043,15 +2049,15 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float **addr+intent(out)+dimension(:)+deref(pointer))"
+                        "generic": "(float **addr+intent(out)+rank(1)+deref(pointer))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
                                     "deref": "pointer",
-                                    "dimension": ":,:",
-                                    "intent": "out"
+                                    "intent": "out",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -2107,7 +2113,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
+                        "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
                 "options": {
@@ -2126,8 +2132,8 @@
                         {
                             "attrs": {
                                 "deref": "pointer",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -2188,7 +2194,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
                     "F_arg_c_call": "addr,\t type,\t size",
@@ -2224,8 +2230,8 @@
                         {
                             "attrs": {
                                 "deref": "pointer",
-                                "dimension": ":,:",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -2286,7 +2292,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
                     "F_arg_c_call": "addr,\t type,\t size",

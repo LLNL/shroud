@@ -49,13 +49,13 @@ declarations:
 # cannot use size as an dummy argument name
   cpp_if: if 1
   fortran_generic:
-  - decl: (float *addr+dimension(:),    int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(1),    int type+implied(T_FLOAT))
     function_suffix: _float1d
-  - decl: (float *addr+dimension(:,:),  int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(2),  int type+implied(T_FLOAT))
     function_suffix: _float2d
 
-#  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
-#  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
+#  - decl: (double *addr+rank(1),   int type+implied(T_DOUBLE))
+#  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
 - decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
@@ -67,13 +67,13 @@ declarations:
       -
       - type = convert_type(type);
   fortran_generic:
-  - decl: (float *addr+dimension(:))
+  - decl: (float *addr+rank(1))
     function_suffix: _float1d
-  - decl: (float *addr+dimension(:,:))
+  - decl: (float *addr+rank(2))
     function_suffix: _float2d
 
-#  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
-#  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
+#  - decl: (double *addr+rank(1), int type+implied(T_DOUBLE))
+#  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
 - decl: void GetPointer(void **addr+intent(out),
@@ -85,9 +85,9 @@ declarations:
                size_t *size+intent(out)+hidden)
   cpp_if: if 0
   fortran_generic:
-  - decl: (float **addr+intent(out)+dimension(:)+deref(pointer))
+  - decl: (float **addr+intent(out)+rank(1)+deref(pointer))
     function_suffix: _float1d
-  - decl: (float **addr+intent(out)+dimension(:,:)+deref(pointer))
+  - decl: (float **addr+intent(out)+rank(2)+deref(pointer))
     function_suffix: _float2d
 
 
