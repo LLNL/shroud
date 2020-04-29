@@ -970,7 +970,6 @@
                     "underscore_name": "sum"
                 },
                 "options": {
-                    "literalinclude": true,
                     "wrap_lua": false
                 }
             },

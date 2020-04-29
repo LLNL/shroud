@@ -17,6 +17,7 @@ options:
   debug: True
   wrap_python: True
   wrap_lua: False
+  literalinclude: True
 
 declarations:
 
@@ -73,7 +74,6 @@ declarations:
                  int *values +dimension(:)+intent(in),
                  int *result +intent(out))
   options:
-    literalinclude: True
     # unable to deal with dimension
     wrap_lua: False
 

@@ -66,6 +66,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // ----------------------------------------
 // Argument:  names
 // Exact:     c_char_**_in_buf
+// start POI_accept_char_array_in_bufferify
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames)
 {
@@ -75,10 +76,13 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
     ShroudStrArrayFree(SHCXX_names, Snames);
     // splicer end function.accept_char_array_in_bufferify
 }
+// end POI_accept_char_array_in_bufferify
 
+// start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
