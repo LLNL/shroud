@@ -35,6 +35,8 @@ int sumFixedArray(void);
 void getPtrToScalar(int **nitems);
 void getPtrToFixedArray(int **count);
 void getPtrToDynamicArray(int **count, int *len);
+int getlen(void);
+void getPtrToFuncArray(int **count);
 
 void getRawPtrToScalar(int **nitems);
 void getRawPtrToFixedArray(int **count);

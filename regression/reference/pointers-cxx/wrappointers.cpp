@@ -467,6 +467,47 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 }
 // end POI_get_ptr_to_dynamic_array
 
+// int getlen()
+/**
+ * \brief Return length of global_fixed_array.
+ *
+ */
+// ----------------------------------------
+// Result
+// Requested: c_native_scalar_result
+// Match:     c_default
+// start POI_getlen
+int POI_getlen()
+{
+    // splicer begin function.getlen
+    int SHC_rv = getlen();
+    return SHC_rv;
+    // splicer end function.getlen
+}
+// end POI_getlen
+
+// void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))
+/**
+ * Return a Fortran pointer to an array which is the length
+ * is computed by function getlen.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Requested: c_native_**_out
+// Match:     c_default
+// start POI_get_ptr_to_func_array
+void POI_get_ptr_to_func_array(int * * count)
+{
+    // splicer begin function.get_ptr_to_func_array
+    getPtrToFuncArray(count);
+    // splicer end function.get_ptr_to_func_array
+}
+// end POI_get_ptr_to_func_array
+
 // void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 /**
  * Called directly via an interface.

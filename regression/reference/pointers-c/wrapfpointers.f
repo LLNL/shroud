@@ -414,6 +414,41 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! start getlen
+    interface
+        function getlen() &
+                result(SHT_rv) &
+                bind(C, name="getlen")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function getlen
+    end interface
+    ! end getlen
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Requested: c_native_**_out
+    ! Match:     c_default
+    ! start c_get_ptr_to_func_array
+    interface
+        subroutine c_get_ptr_to_func_array(count) &
+                bind(C, name="getPtrToFuncArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+        end subroutine c_get_ptr_to_func_array
+    end interface
+    ! end c_get_ptr_to_func_array
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -745,6 +780,34 @@ contains
         ! splicer end function.get_ptr_to_dynamic_array
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
+
+    ! void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     f_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
+    !>
+    !! Return a Fortran pointer to an array which is the length
+    !! is computed by function getlen.
+    !<
+    ! start get_ptr_to_func_array
+    subroutine get_ptr_to_func_array(count)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), intent(OUT), pointer :: count(:)
+        ! splicer begin function.get_ptr_to_func_array
+        type(C_PTR) :: SHPTR_count
+        call c_get_ptr_to_func_array(SHPTR_count)
+        call c_f_pointer(SHPTR_count, count, [getlen()])
+        ! splicer end function.get_ptr_to_func_array
+    end subroutine get_ptr_to_func_array
+    ! end get_ptr_to_func_array
 
     ! void * returnAddress2(int flag +intent(in)+value)
     ! ----------------------------------------

@@ -158,6 +158,12 @@ contains
     call assert_true( associated(iarray))
     call assert_true( size(iarray) == 10 )
 
+    ! Returns global_array in pointers.c.
+    nullify(iarray)
+    call get_ptr_to_func_array(iarray)
+    call assert_true( associated(iarray))
+    call assert_true( size(iarray) == 10 )
+
     call get_raw_ptr_to_scalar(cptr_scalar)
     call assert_true(c_associated(cptr_scalar))
     ! associated with global_int in pointers.c
