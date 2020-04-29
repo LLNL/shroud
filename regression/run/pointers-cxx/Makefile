@@ -11,11 +11,11 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-cpp \
+    -I$(top)/regression/reference/pointers-cxx \
     -I$(top)/regression/run/pointers
 
 VPATH = \
-    $(top)/regression/reference/pointers-cpp \
+    $(top)/regression/reference/pointers-cxx \
     $(top)/regression/run/fruit
 
 OBJS = \
@@ -25,7 +25,7 @@ OBJS = \
     fruit.o \
     main.o
 
-pointers-cpp : $(OBJS)
+pointers-cxx : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 # Copy all source files from run/pointers, need to avoid VPATH.

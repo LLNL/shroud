@@ -11,12 +11,12 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-list-cpp \
+    -I$(top)/regression/reference/pointers-list-cxx \
     -I$(top)/regression/run/pointers \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/pointers-list-cpp \
+    $(top)/regression/reference/pointers-list-cxx \
     $(top)/regression/run/pointers/python
 
 OBJS = \
