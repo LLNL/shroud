@@ -195,29 +195,6 @@ PP_getNameArg(
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
 }
 
-// void * getRoot()
-static char PP_getRoot__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getRoot(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin namespace.example::nested.class.ExClass1.method.get_root
-    PyObject * SHTPy_rv = nullptr;
-
-    void * SHCXX_rv = self->obj->getRoot();
-
-    // post_call
-    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_root
-}
-
 // int getValue(int value +intent(in)+value)
 // ----------------------------------------
 // Argument:  value
@@ -278,29 +255,6 @@ PP_getValue_1(
 
     return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
-}
-
-// void * getAddr()
-static char PP_getAddr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getAddr(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin namespace.example::nested.class.ExClass1.method.get_addr
-    PyObject * SHTPy_rv = nullptr;
-
-    void * SHCXX_rv = self->obj->getAddr();
-
-    // post_call
-    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.get_addr
 }
 
 // bool hasAddr(bool in +intent(in)+value)
@@ -443,10 +397,6 @@ static PyMethodDef PP_ExClass1_methods[] = {
         METH_NOARGS, PP_getNameErrorCheck__doc__},
     {"getNameArg", (PyCFunction)PP_getNameArg, METH_NOARGS,
         PP_getNameArg__doc__},
-    {"getRoot", (PyCFunction)PP_getRoot, METH_NOARGS,
-        PP_getRoot__doc__},
-    {"getAddr", (PyCFunction)PP_getAddr, METH_NOARGS,
-        PP_getAddr__doc__},
     {"hasAddr", (PyCFunction)PP_hasAddr, METH_VARARGS|METH_KEYWORDS,
         PP_hasAddr__doc__},
     {"SplicerSpecial", (PyCFunction)PP_SplicerSpecial, METH_NOARGS,

@@ -1383,7 +1383,7 @@
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
                 "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
-                    "description": "Return a pointer to an array which is always the same length.\n"
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "fmtdict": {
                     "function_name": "getPtrToFixedArray",
@@ -1391,6 +1391,258 @@
                 },
                 "options": {
                     "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Called directly via an interface.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToScalar",
+                    "underscore_name": "get_raw_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToFixedArray",
+                    "underscore_name": "get_raw_ptr_to_fixed_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int flag",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int flag",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_native_scalar_in",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_unknown_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnAddress1",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void *returnAddress1(int flag)",
+                "declgen": "void * returnAddress1(int flag +intent(in)+value)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnAddress1",
+                    "function_name": "returnAddress1",
+                    "underscore_name": "return_address1"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int flag",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int flag",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_native_scalar_in",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_unknown_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnAddress2",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void *returnAddress2(int flag)",
+                "declgen": "void * returnAddress2(int flag +intent(in)+value)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnAddress2",
+                    "function_name": "returnAddress2",
+                    "underscore_name": "return_address2"
+                },
+                "options": {
+                    "F_force_wrapper": true
                 }
             }
         ],

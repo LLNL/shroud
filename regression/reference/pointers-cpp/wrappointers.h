@@ -60,6 +60,14 @@ void POI_get_ptr_to_scalar(int * * nitems);
 
 void POI_get_ptr_to_fixed_array(int * * count);
 
+void POI_get_raw_ptr_to_scalar(int * * nitems);
+
+void POI_get_raw_ptr_to_fixed_array(int * * count);
+
+void * POI_return_address1(int flag);
+
+void * POI_return_address2(int flag);
+
 #ifdef __cplusplus
 }
 #endif

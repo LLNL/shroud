@@ -166,8 +166,8 @@ int sumFixedArray(void)
     return sum;
 }
 
+/**** Return a Fortran pointer */
 /* Return pointer to a scalar in the argument. */
-
 void getPtrToScalar(int **nitems)
 {
     *nitems = &global_int;
@@ -176,6 +176,30 @@ void getPtrToScalar(int **nitems)
 void getPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
+}
+
+/**** Return a type(C_PTR) pointer */
+/* Return pointer to a scalar in the argument. */
+void getRawPtrToScalar(int **nitems)
+{
+    *nitems = &global_int;
+}
+
+void getRawPtrToFixedArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
+
+//----------------------------------------------------------------------
+
+// Return a raw pointer to global_int.
+void *returnAddress1(int flag)
+{
+    return (void *) &global_int;
+}
+void *returnAddress2(int flag)
+{
+    return (void *) &global_int;
 }
 
 //----------------------------------------------------------------------

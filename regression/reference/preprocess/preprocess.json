@@ -179,6 +179,7 @@
                                 "fmtf": {
                                     "F_pointer": "SHPTR_i",
                                     "c_var": "i",
+                                    "f_intent": "IN",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
@@ -367,6 +368,7 @@
                                 "fmtf": {
                                     "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
+                                    "f_intent": "IN",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",

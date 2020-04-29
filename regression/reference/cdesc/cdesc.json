@@ -37,13 +37,15 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_native_*_in_cdesc",
-                            "stmt1": "f_native_*_cdesc",
+                            "stmt1": "f_native_*_in_cdesc",
                             "stmtc0": "c_native_*_in_cdesc",
                             "stmtc1": "c_native_*_cdesc"
                         }
@@ -567,6 +569,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
@@ -598,13 +601,14 @@
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_context": "Dvalue",
+                            "f_intent": "OUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
                             "rank": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
-                            "stmt0": "f_unknown_*_out_cdesc",
-                            "stmt1": "f_unknown_*_cdesc",
+                            "stmt0": "f_native_*_out_cdesc",
+                            "stmt1": "f_native_*_cdesc",
                             "stmtc0": "c_unknown_*_out_buf_cdesc",
                             "stmtc1": "c_unknown_*_cdesc"
                         }
@@ -885,6 +889,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -983,6 +988,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -1072,6 +1078,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
@@ -1085,10 +1092,11 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
+                            "f_intent": "OUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_unknown_*_out",
+                            "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
                             "stmtc0": "c_unknown_*_out",
                             "stmtc1": "c_default"
@@ -1313,7 +1321,7 @@
                 },
                 "fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t C_LOC(value)",
+                    "F_arg_c_call": "name,\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
@@ -1403,7 +1411,7 @@
                 },
                 "fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t C_LOC(value)",
+                    "F_arg_c_call": "name,\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",

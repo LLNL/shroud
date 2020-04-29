@@ -249,9 +249,9 @@ module pointers_mod
         ! Match:     c_default
         subroutine c_accept_char_array_in(names) &
                 bind(C, name="acceptCharArrayIn")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(kind=C_CHAR), intent(IN) :: names(*)
+            type(C_PTR), intent(IN) :: names
         end subroutine c_accept_char_array_in
 
         ! ----------------------------------------
@@ -304,7 +304,8 @@ module pointers_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  nitems
-        ! Exact:     c_native_**_out
+        ! Requested: c_native_**_out
+        ! Match:     c_default
         subroutine c_get_ptr_to_scalar(nitems) &
                 bind(C, name="getPtrToScalar")
             use iso_c_binding, only : C_PTR
@@ -318,13 +319,78 @@ module pointers_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  count
-        ! Exact:     c_native_**_out
+        ! Requested: c_native_**_out
+        ! Match:     c_default
         subroutine c_get_ptr_to_fixed_array(count) &
                 bind(C, name="getPtrToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
         end subroutine c_get_ptr_to_fixed_array
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  nitems
+        ! Requested: c_native_**_out_raw
+        ! Match:     c_default
+        subroutine get_raw_ptr_to_scalar(nitems) &
+                bind(C, name="getRawPtrToScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: nitems
+        end subroutine get_raw_ptr_to_scalar
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  count
+        ! Requested: c_native_**_out_raw
+        ! Match:     c_default
+        subroutine get_raw_ptr_to_fixed_array(count) &
+                bind(C, name="getRawPtrToFixedArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+        end subroutine get_raw_ptr_to_fixed_array
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        function return_address1(flag) &
+                result(SHT_rv) &
+                bind(C, name="returnAddress1")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(C_PTR) :: SHT_rv
+        end function return_address1
+
+        ! ----------------------------------------
+        ! Result
+        ! Requested: c_unknown_*_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  flag
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        function c_return_address2(flag) &
+                result(SHT_rv) &
+                bind(C, name="returnAddress2")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(C_PTR) :: SHT_rv
+        end function c_return_address2
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -495,7 +561,8 @@ contains
     ! ----------------------------------------
     ! Argument:  nitems
     ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
@@ -516,9 +583,10 @@ contains
     ! ----------------------------------------
     ! Argument:  count
     ! Exact:     f_native_**_out
-    ! Exact:     c_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     !>
-    !! Return a pointer to an array which is always the same length.
+    !! Return a Fortran pointer to an array which is always the same length.
     !<
     subroutine get_ptr_to_fixed_array(count)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -529,6 +597,28 @@ contains
         call c_f_pointer(SHPTR_count, count, [10])
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
+
+    ! void * returnAddress2(int flag +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_unknown_*_result
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    function return_address2(flag) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_address2
+        SHT_rv = c_return_address2(flag)
+        ! splicer end function.return_address2
+    end function return_address2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -12,6 +12,8 @@ Python function void incrementIntArray(int * array +dimension(:)+intent(inout), 
 Python function void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
 Python function void setGlobalInt(int value +intent(in)+value)
 Python function int sumFixedArray()
+Python function void * returnAddress1(int flag +intent(in)+value)
+Python function void * returnAddress2(int flag +intent(in)+value)
 Close pypointersmodule.c
 Close pypointersmodule.h
 Close setup.py

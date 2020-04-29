@@ -26,6 +26,17 @@ from . import whelpers
 from . import util
 from .util import wformat, append_format
 
+# convert rank to f_assumed_shape.
+fortran_ranks = [
+    "",
+    "(:)",
+    "(:,:)",
+    "(:,:,:)",
+    "(:,:,:,:)",
+    "(:,:,:,:,:)",
+    "(:,:,:,:,:,:)",
+    "(:,:,:,:,:,:,:)",
+]
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -818,6 +829,7 @@ rv = .false.
         node, fileinfo,
         fmt,
         ast,
+        intent_blk,
         buf_args,
         modules,
         imports,
@@ -835,6 +847,7 @@ rv = .false.
             ast - Abstract Syntax Tree from parser
                node.ast for subprograms
                node.params[n] for parameters
+            intent_blk - typemap.CStmts or util.Scope
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -847,7 +860,7 @@ rv = .false.
 
         # Add implied buffer arguments to prototype
         for buf_arg in buf_args:
-            if buf_arg in ["arg", "argptr"]:
+            if buf_arg == "arg":
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if attrs["assumedtype"]:
@@ -866,6 +879,14 @@ rv = .false.
                         "procedure({}) :: {}".format(absiface, ast.name)
                     )
                     imports[absiface] = True
+                elif ast.is_array() > 1:
+                    # Treat too many pointers as a type(C_PTR)
+                    # and let the wrapper sort it out.
+                    intent = ast.attrs["intent"].upper()
+                    arg_c_decl.append(
+                        "type(C_PTR), intent({}) :: {}".format(
+                            intent, name or ast.name))
+                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
                 else:
                     arg_c_decl.append(ast.bind_c())
                     arg_typemap = ast.typemap
@@ -898,6 +919,17 @@ rv = .false.
                     "type(C_PTR), intent(OUT) :: %s" % (name or ast.name)
                 )
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
+                continue
+            elif buf_arg == "arg_decl":
+                # Use explicit declaration from CStmt.
+                arg_c_names.append(name or ast.name)
+                for arg in intent_blk.f_arg_decl:
+                    arg_c_decl.append(arg.format(
+                        c_var=name or ast.name,
+                    ))
+                if intent_blk.f_module:
+                    self.update_f_module(
+                        modules, imports, intent_blk.f_module)
                 continue
 
             buf_arg_name = attrs[buf_arg]
@@ -1028,6 +1060,7 @@ rv = .false.
             node, fileinfo,
             fmt_func,
             ast,
+            c_result_blk,
             c_result_blk.buf_args,
             modules,
             imports,
@@ -1071,6 +1104,7 @@ rv = .false.
                 node, fileinfo,
                 fmt,
                 arg,
+                c_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
@@ -1083,6 +1117,7 @@ rv = .false.
                 node, fileinfo,
                 fmt_func,
                 ast,
+                c_result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,
@@ -1166,6 +1201,7 @@ rv = .false.
         c_ast,
         f_ast,
         arg_typemap,
+        f_intent_blk,
         buf_args,
         modules,
         imports,
@@ -1179,11 +1215,17 @@ rv = .false.
         and any additional declarations for local variables in arg_f_decl.
         modules and imports may also be updated.
 
+        Add call arguments from f_intent_blk if defined,
+        This is used to override the C function arguments and used
+        for cases like pointers and raw/pointer/allocatable.
+        Otherwise, Use buf_args from c_intent_blk.
+
         Args:
             fmt -
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
+            f_intent_blk - typemap.FStmts, fc_statements block.
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -1193,11 +1235,16 @@ rv = .false.
         return need_wrapper
         A wrapper will be needed if there is meta data.
         """
+        if f_intent_blk.arg_c_call:
+            for arg in f_intent_blk.arg_c_call:
+                append_format(arg_c_call, arg, fmt)
+            return need_wrapper
+
         c_attrs = c_ast.attrs
 
         # Add any buffer arguments
         for buf_arg in buf_args:
-            if buf_arg in ["arg", "argptr"]:
+            if buf_arg in ["arg", "arg_decl"]:
                 # Attributes   None=skip, True=use default, else use value
                 if arg_typemap.f_to_c:
                     need_wrapper = True
@@ -1208,12 +1255,7 @@ rv = .false.
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports,
-                                         arg_typemap.f_cast_module or arg_typemap.f_module)
-                    if arg_typemap.f_cast_keywords:
-                        # Recreate declaration for argument with additional attributes.
-                        # e.x. is_target=True
-                        arg_f_decl[-1] = f_ast.gen_arg_as_fortran(
-                            **arg_typemap.f_cast_keywords)
+                                         arg_typemap.f_module)
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue
@@ -1221,11 +1263,6 @@ rv = .false.
                 # Pass down the pointer to {F_capsule_data_type}
                 need_wrapper = True
                 append_format(arg_c_call, "{f_var}%{F_derived_member}", fmt)
-                continue
-            elif buf_arg == "c_ptr":
-                # F_pointer must be declared in f_statements.
-                need_wrapper = True
-                append_format(arg_c_call, "{F_pointer}", fmt)
                 continue
 
             need_wrapper = True
@@ -1314,22 +1351,55 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, ast, fmt, is_result=False):
+    def set_fmt_fields(self, f_ast, c_ast, fmt, is_result=False,
+                       ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
-            ast - declast.Declaration
+            f_ast - declast.Declaration - Fortran argument
+            c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
-        attrs = ast.attrs
-        dim = attrs["dimension"]
+        c_attrs = c_ast.attrs
+
+        if is_result:
+#            ntypemap = ntypemap
+            # XXX - looked up in parent
+            pass
+        else:
+            fmt.f_intent = c_attrs["intent"].upper()
+            
+            ntypemap = f_ast.typemap
+            if c_ast.template_arguments:
+                # If a template, use its type
+                ntypemap = c_ast.template_arguments[0].typemap
+                fmt.cxx_T = ntypemap.name
+        fmt.f_type = ntypemap.f_type
+        fmt.sh_type = ntypemap.sh_type
+        
+        dim = c_attrs["dimension"]
         if dim:
             # XXX - Assume 1-d
             fmt.f_var_shape = "(:)"  # assumed_shape
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+
+        f_attrs = f_ast.attrs
+        dim = f_attrs["dimension"]
+        rank = f_attrs["rank"]
+        if rank is not None:
+            fmt.rank = str(rank)
+            if rank == 0:
+                fmt.size = "1"
+            else:
+                fmt.size = wformat("size({f_var})", fmt)
+                fmt.f_assumed_shape = fortran_ranks[rank]
+        elif dim:
+            fmt.f_assumed_shape = "(:)"  # XXX - assumes 1-d
+
+        return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1401,10 +1471,9 @@ rv = .false.
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
-            fmt_result.f_type = result_typemap.f_type
-#            if result_typemap.base == "vector":
-#                fmt_result.f_type = ast.template_arguments[0].typemap.f_type
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            self.set_fmt_fields(ast, C_node.ast, fmt_result, True,
+                                result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
@@ -1470,6 +1539,7 @@ rv = .false.
             C_node.ast,
             ast,
             result_typemap,
+            result_blk,
             result_blk.buf_args,
             modules,
             imports,
@@ -1496,16 +1566,12 @@ rv = .false.
             fmt_arg.c_var = arg_name
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
-            self.set_fmt_fields(c_arg, fmt_arg)
-            is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
-            deref_clause = c_attrs["deref"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
-            sgroup = c_arg.typemap.sgroup
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]
             else:
@@ -1515,27 +1581,14 @@ rv = .false.
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
-            spointer = c_arg.get_indirect_stmt()
+            is_f_arg = True  # assume C and Fortran arguments match
             if c_attrs["_is_result"]:
-                # This argument is the C function result
-                c_stmts = ["c", sgroup, spointer, "result", generated_suffix, deref_clause]
-#XXX            f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", sgroup, spointer, "result", deref_clause]  # + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
-            else:
-                c_stmts = ["c", sgroup, spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
-                f_stmts = ["f", sgroup, spointer, intent, deref_clause, cdesc]
-            c_stmts.extend(specialize)
-            f_stmts.extend(specialize)
-
-            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
-            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
-
             if not is_f_arg:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
@@ -1543,16 +1596,32 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
+            arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
+            f_attrs = f_arg.attrs
+                
+            c_sgroup = c_arg.typemap.sgroup
+            c_spointer = c_arg.get_indirect_stmt()
+            c_deref_clause = c_attrs["deref"]
+            f_sgroup = f_arg.typemap.sgroup
+            f_spointer = f_arg.get_indirect_stmt()
+            f_deref_clause = f_attrs["deref"]
+            if c_attrs["_is_result"]:
+                # This argument is the C function result
+                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_clause]
+#XXX            f_stmts = ["f", f_sgroup, f_spointer, "result", result_deref_clause]  # + generated_suffix
+                f_stmts = ["f", f_sgroup, f_spointer, "result", f_deref_clause]  # + generated_suffix
 
-                f_attrs = f_arg.attrs
+            else:
+                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
+                f_stmts = ["f", f_sgroup, f_spointer, intent, f_deref_clause, cdesc]
+            c_stmts.extend(specialize)
+            f_stmts.extend(specialize)
+
+            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
+            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+
+            if is_f_arg:
                 implied = f_attrs["implied"]
-                rank = f_attrs["rank"]
-                if rank is not None:
-                    fmt_arg.rank = str(rank)
-                    if rank == 0:
-                        fmt_arg.size = "1"
-                    else:
-                        fmt_arg.size = wformat("size({f_var})", fmt_arg)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
@@ -1610,6 +1679,10 @@ rv = .false.
                     # hidden value is returned from C++.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
+                elif f_intent_blk.arg_decl:
+                    for line in f_intent_blk.arg_decl:
+                        append_format(arg_f_decl, line, fmt_arg)
+                    arg_f_names.append(fmt_arg.f_var)
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(
                         attributes=f_intent_blk.f_attribute))
@@ -1629,15 +1702,6 @@ rv = .false.
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmtc0, fmt_arg.stmtc1)
-                
-            arg_typemap = f_arg.typemap
-            base_typemap = arg_typemap
-            if c_arg.template_arguments:
-                # If a template, use its type
-                arg_typemap = c_arg.template_arguments[0].typemap
-                fmt_arg.cxx_T = arg_typemap.name
-            fmt_arg.f_type = arg_typemap.f_type
-            fmt_arg.sh_type = arg_typemap.sh_type
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
@@ -1663,6 +1727,7 @@ rv = .false.
                 c_arg,
                 f_arg,
                 arg_typemap,
+                f_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
@@ -1685,6 +1750,7 @@ rv = .false.
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
             # End parameters loop.
+        #####
 
         if subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
@@ -1692,6 +1758,7 @@ rv = .false.
                 C_node.ast, #c_arg,
                 ast, # f_arg,
                 result_typemap,
+                result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,
@@ -1712,7 +1779,6 @@ rv = .false.
         # (for example, string lengths).
         return_pointer_as = ast.return_pointer_as
         if subprogram == "function":
-            self.set_fmt_fields(ast, fmt_result, True)
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
             if return_pointer_as == "raw":

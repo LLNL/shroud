@@ -33,6 +33,7 @@
                         "cxx_type": "double",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -93,6 +94,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -332,6 +334,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG",
@@ -361,6 +364,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
@@ -524,6 +528,7 @@
                         "cxx_type": "long",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_LONG",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -604,6 +609,7 @@
                         "cxx_type": "long",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_LONG",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -700,11 +706,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_unknown_*_in",
-                            "stmt1": "f_default",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_native_*_in_raw",
                             "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
@@ -729,8 +739,11 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)"
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -753,8 +766,11 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
-                            "pre_call_intent": "T_FLOAT"
+                            "pre_call_intent": "T_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -837,8 +853,9 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":",
-                                    "intent": "in"
+                                    "deref": "raw",
+                                    "intent": "in",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -885,14 +902,15 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+dimension(:),    int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(1)+deref(raw),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":,:",
-                                    "intent": "in"
+                                    "deref": "raw",
+                                    "intent": "in",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -939,7 +957,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(2)+deref(raw),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "options": {
@@ -957,8 +975,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "deref": "raw",
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1010,7 +1029,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1045,8 +1064,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":,:",
-                                "intent": "in"
+                                "deref": "raw",
+                                "intent": "in",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1098,7 +1118,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1144,11 +1164,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_unknown_*_in",
-                            "stmt1": "f_default",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_native_*_in_raw",
                             "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
@@ -1173,8 +1197,11 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)"
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -1197,8 +1224,11 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
                             "f_var": "type",
-                            "pre_call_intent": "SH_TYPE_FLOAT"
+                            "pre_call_intent": "SH_TYPE_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -1282,8 +1312,9 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":",
-                                    "intent": "in"
+                                    "deref": "raw",
+                                    "intent": "in",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -1330,14 +1361,15 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+dimension(:))"
+                        "generic": "(float *addr+rank(1)+deref(raw))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "dimension": ":,:",
-                                    "intent": "in"
+                                    "deref": "raw",
+                                    "intent": "in",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -1384,7 +1416,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+dimension(:,:))"
+                        "generic": "(float *addr+rank(2)+deref(raw))"
                     }
                 ],
                 "fstatements": {
@@ -1412,8 +1444,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "deref": "raw",
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1465,7 +1498,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +dimension(:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1510,8 +1543,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":,:",
-                                "intent": "in"
+                                "deref": "raw",
+                                "intent": "in",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -1563,7 +1597,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +dimension(:,:)+intent(in), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer2",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1619,11 +1653,12 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "f_unknown_**_out",
-                            "stmt1": "f_default",
+                            "stmt1": "f_unknown_**_out",
                             "stmtc0": "c_unknown_**_out",
                             "stmtc1": "c_default"
                         }
@@ -1648,6 +1683,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "size",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
@@ -1677,6 +1713,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
@@ -1800,11 +1837,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "OUT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_unknown_**_out",
-                            "stmt1": "f_default",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_**_out_pointer",
+                            "stmt1": "f_native_**_out",
                             "stmtc0": "c_unknown_**_out",
                             "stmtc1": "c_default"
                         }
@@ -1829,6 +1870,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_size",
                             "c_var": "size",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
@@ -1858,6 +1900,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
+                            "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
@@ -1957,8 +2000,8 @@
                             {
                                 "attrs": {
                                     "deref": "pointer",
-                                    "dimension": ":",
-                                    "intent": "out"
+                                    "intent": "out",
+                                    "rank": 1
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -2014,15 +2057,15 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float **addr+intent(out)+dimension(:)+deref(pointer))"
+                        "generic": "(float **addr+intent(out)+rank(1)+deref(pointer))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
                                     "deref": "pointer",
-                                    "dimension": ":,:",
-                                    "intent": "out"
+                                    "intent": "out",
+                                    "rank": 2
                                 },
                                 "declarator": {
                                     "name": "addr",
@@ -2078,7 +2121,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
+                        "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
                 "options": {
@@ -2097,8 +2140,8 @@
                         {
                             "attrs": {
                                 "deref": "pointer",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "addr",
@@ -2159,10 +2202,10 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -2195,8 +2238,8 @@
                         {
                             "attrs": {
                                 "deref": "pointer",
-                                "dimension": ":,:",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             },
                             "declarator": {
                                 "name": "addr",
@@ -2257,10 +2300,10 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",

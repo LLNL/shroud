@@ -491,6 +491,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -519,6 +520,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -598,6 +600,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -626,6 +629,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -743,6 +747,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
@@ -845,6 +850,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
@@ -874,6 +880,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_s1",
                             "c_var": "s1",
+                            "f_intent": "IN",
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -996,6 +1003,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "IN",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -1024,6 +1032,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -1106,6 +1115,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "OUT",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -1135,6 +1145,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -1164,6 +1175,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
@@ -1281,6 +1293,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_intent": "INOUT",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -1367,6 +1380,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -1396,6 +1410,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
@@ -1424,6 +1439,7 @@
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_scalar_result",
                         "stmt1": "f_struct_scalar_result",
                         "stmtc0": "c_struct_scalar_result",
@@ -1515,6 +1531,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -1544,6 +1561,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
@@ -1572,6 +1590,7 @@
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_scalar_result",
                         "stmt1": "f_struct_scalar_result",
                         "stmtc0": "c_struct_scalar_result",
@@ -1664,6 +1683,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -1693,6 +1713,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
@@ -1721,6 +1742,7 @@
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result",
@@ -1874,6 +1896,7 @@
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result_buf",
@@ -1992,6 +2015,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -2021,6 +2045,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
@@ -2051,6 +2076,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
@@ -2188,6 +2214,7 @@
                         "cxx_type": "Cstruct_list",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result",

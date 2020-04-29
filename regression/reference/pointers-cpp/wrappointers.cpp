@@ -383,7 +383,8 @@ int POI_sum_fixed_array()
 // Match:     c_default
 // ----------------------------------------
 // Argument:  nitems
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_ptr_to_scalar(int * * nitems)
 {
     // splicer begin function.get_ptr_to_scalar
@@ -393,7 +394,7 @@ void POI_get_ptr_to_scalar(int * * nitems)
 
 // void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 /**
- * Return a pointer to an array which is always the same length.
+ * Return a Fortran pointer to an array which is always the same length.
  */
 // ----------------------------------------
 // Result
@@ -401,12 +402,87 @@ void POI_get_ptr_to_scalar(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  count
-// Exact:     c_native_**_out
+// Requested: c_native_**_out
+// Match:     c_default
 void POI_get_ptr_to_fixed_array(int * * count)
 {
     // splicer begin function.get_ptr_to_fixed_array
     getPtrToFixedArray(count);
     // splicer end function.get_ptr_to_fixed_array
+}
+
+// void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
+/**
+ * Called directly via an interface.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nitems
+// Requested: c_native_**_out
+// Match:     c_default
+void POI_get_raw_ptr_to_scalar(int * * nitems)
+{
+    // splicer begin function.get_raw_ptr_to_scalar
+    getRawPtrToScalar(nitems);
+    // splicer end function.get_raw_ptr_to_scalar
+}
+
+// void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
+/**
+ * Return a type(C_PTR) to an array which is always the same length.
+ * Called directly via an interface.
+ * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Requested: c_native_**_out
+// Match:     c_default
+void POI_get_raw_ptr_to_fixed_array(int * * count)
+{
+    // splicer begin function.get_raw_ptr_to_fixed_array
+    getRawPtrToFixedArray(count);
+    // splicer end function.get_raw_ptr_to_fixed_array
+}
+
+// void * returnAddress1(int flag +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_unknown_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
+void * POI_return_address1(int flag)
+{
+    // splicer begin function.return_address1
+    void * SHC_rv = returnAddress1(flag);
+    return SHC_rv;
+    // splicer end function.return_address1
+}
+
+// void * returnAddress2(int flag +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_unknown_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
+void * POI_return_address2(int flag)
+{
+    // splicer begin function.return_address2
+    void * SHC_rv = returnAddress2(flag);
+    return SHC_rv;
+    // splicer end function.return_address2
 }
 
 // start release allocated memory

@@ -829,6 +829,76 @@ PY_sumFixedArray(
     return (PyObject *) SHTPy_rv;
 // splicer end function.sum_fixed_array
 }
+
+// void * returnAddress1(int flag +intent(in)+value)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_scalar_in
+// Match:     py_default
+static char PY_returnAddress1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnAddress1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.return_address1
+    int flag;
+    char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:returnAddress1",
+        SHT_kwlist, &flag))
+        return NULL;
+
+    void * SHCXX_rv = returnAddress1(flag);
+
+    // post_call
+    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_address1
+}
+
+// void * returnAddress2(int flag +intent(in)+value)
+// ----------------------------------------
+// Argument:  flag
+// Requested: py_native_scalar_in
+// Match:     py_default
+static char PY_returnAddress2__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnAddress2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.return_address2
+    int flag;
+    char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:returnAddress2",
+        SHT_kwlist, &flag))
+        return NULL;
+
+    void * SHCXX_rv = returnAddress2(flag);
+
+    // post_call
+    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_address2
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -855,6 +925,10 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
     PY_sumFixedArray__doc__},
+{"returnAddress1", (PyCFunction)PY_returnAddress1,
+    METH_VARARGS|METH_KEYWORDS, PY_returnAddress1__doc__},
+{"returnAddress2", (PyCFunction)PY_returnAddress2,
+    METH_VARARGS|METH_KEYWORDS, PY_returnAddress2__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

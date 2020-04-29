@@ -96,16 +96,11 @@ declarations:
         format:
            F_string_result_as_arg: name
 
-    # XXX deal with forward declare
-    #    - decl: ExClass2 *getRoot()
-      - decl: void *getRoot()
-
       - decl: int  getValue(int value)
         format:
           function_suffix: _from_int
       - decl: long getValue(long value)
 
-      - decl: void *getAddr()
       - decl: bool hasAddr(bool in)
 
       - decl: void SplicerSpecial()

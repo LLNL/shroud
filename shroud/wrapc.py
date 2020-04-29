@@ -622,13 +622,15 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper,
+    def build_proto_list(self, fmt, ast,
+                         intent_blk, buf_args, proto_list, need_wrapper,
                          name=None):
         """Find prototype based on buf_args in fc_statements.
 
         Args:
             fmt - Format dictionary (fmt_arg or fmt_result).
             ast - Abstract Syntax Tree from parser.
+            intent_blk  - typemap.CStmts or util.Scope.
             buf_args - List of arguments/metadata to add.
             proto_list - Prototypes are appended to list.
             need_wrapper -
@@ -641,9 +643,7 @@ class Wrapc(util.WrapperMixin):
         attrs = ast.attrs
 
         for buf_arg in buf_args:
-#            if buf_arg == "arg":
-            # XXX -  c_ptr is the same as arg for 'int **'
-            if buf_arg in ["arg", "c_ptr"]:
+            if buf_arg == "arg":
                 # vector<int> -> int *
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
@@ -654,12 +654,15 @@ class Wrapc(util.WrapperMixin):
                     "" if attrs["value"] else "* ",
                     name or ast.name))
                 continue
+            elif buf_arg == "arg_decl":
+                for arg in intent_blk.c_arg_decl:
+                    proto_list.append(arg.format(
+                        c_var=name or ast.name,
+                    ))
+                continue
 
             need_wrapper = True
-            if buf_arg == "argptr":
-                proto_list.append("char *{}".format(
-                    name or ast.name))
-            elif buf_arg == "size":
+            if buf_arg == "size":
                 fmt.c_var_size = attrs["size"]
                 append_format(proto_list, "long {c_var_size}", fmt)
             elif buf_arg == "capsule":
@@ -909,6 +912,7 @@ class Wrapc(util.WrapperMixin):
         need_wrapper = self.build_proto_list(
             fmt_result,
             ast,
+            result_blk,
             result_blk.buf_args,
             proto_list,
             need_wrapper,
@@ -1029,6 +1033,7 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.build_proto_list(
                 fmt_arg,
                 arg,
+                intent_blk,
                 intent_blk.buf_args or self._default_buf_args,
                 proto_list,
                 need_wrapper,
@@ -1091,6 +1096,7 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.build_proto_list(
                 fmt_result,
                 ast,
+                result_blk,
                 result_blk.buf_extra,
                 proto_tail,
                 need_wrapper,

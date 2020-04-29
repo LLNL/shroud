@@ -51,9 +51,10 @@ be controlled directly by the input YAML file:
     contains
 
       {F_subprogram} {F_name_impl}
-        declare
+        decl_args
+        declare      ! local variables
         pre_call
-        call
+        call  {arg_c_call}
         post_call
       end {F_subprogram} {F_name_impl}
 

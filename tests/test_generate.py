@@ -45,12 +45,6 @@ class CheckImplied(unittest.TestCase):
         self.assertTrue("Unknown argument" in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
-            generate.check_implied("size(scalar)", decls)
-        self.assertTrue(
-            "must have dimension attribute" in str(context.exception)
-        )
-
-        with self.assertRaises(RuntimeError) as context:
             generate.check_implied("len(scalar,1)", decls)
         self.assertTrue("Too many arguments" in str(context.exception))
 

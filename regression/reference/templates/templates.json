@@ -155,6 +155,7 @@
                                 "fmtf": {
                                     "F_pointer": "SHPTR_arg1",
                                     "c_var": "arg1",
+                                    "f_intent": "IN",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "arg1",
                                     "sh_type": "SH_TYPE_INT",
@@ -202,6 +203,7 @@
                                 "fmtf": {
                                     "F_pointer": "SHPTR_arg2",
                                     "c_var": "arg2",
+                                    "f_intent": "IN",
                                     "f_type": "real(C_DOUBLE)",
                                     "f_var": "arg2",
                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -490,6 +492,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_INT",
@@ -537,6 +540,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
@@ -706,6 +710,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT",
@@ -753,6 +758,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE",
@@ -989,6 +995,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -1102,6 +1109,7 @@
                         "cxx_type": "int",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_scalar_result",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
@@ -1251,6 +1259,7 @@
                                         "cxx_type": "std::vector<int>",
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
+                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "f_shadow_ctor",
                                         "stmt1": "f_shadow_ctor",
                                         "stmtc0": "c_shadow_ctor",
@@ -1416,6 +1425,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_value",
                                             "c_var": "value",
+                                            "f_intent": "IN",
                                             "f_type": "integer(C_INT)",
                                             "f_var": "value",
                                             "sh_type": "SH_TYPE_INT",
@@ -1578,6 +1588,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_n",
                                             "c_var": "n",
+                                            "f_intent": "IN",
                                             "f_type": "integer(C_SIZE_T)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -1624,6 +1635,7 @@
                                         "cxx_type": "int",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
+                                        "sh_type": "SH_TYPE_INT",
                                         "stmt0": "f_native_&_result",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result",
@@ -1797,6 +1809,7 @@
                                         "cxx_type": "std::vector<double>",
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
+                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "f_shadow_ctor",
                                         "stmt1": "f_shadow_ctor",
                                         "stmtc0": "c_shadow_ctor",
@@ -1962,6 +1975,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_value",
                                             "c_var": "value",
+                                            "f_intent": "IN",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "value",
                                             "sh_type": "SH_TYPE_DOUBLE",
@@ -2124,6 +2138,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_n",
                                             "c_var": "n",
+                                            "f_intent": "IN",
                                             "f_type": "integer(C_SIZE_T)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -2170,6 +2185,7 @@
                                         "cxx_type": "double",
                                         "f_type": "real(C_DOUBLE)",
                                         "f_var": "SHT_rv",
+                                        "sh_type": "SH_TYPE_DOUBLE",
                                         "stmt0": "f_native_&_result",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result",

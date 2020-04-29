@@ -86,10 +86,7 @@ class Typemap(object):
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
-        ("f_cast_module", None),  # Fortran modules needed for f_cast
-        ("f_cast_keywords", None),  # Dictionary of additional arguments to gen_arg_as_fortran
-                                     # dict(is_target=True)
-        # e.g. intrinsics such as int and real
+                                # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
         ("wrap_header", []), # generated wrapper header
         # Python
@@ -284,10 +281,7 @@ def initialize():
             cxx_type="void",
             # fortran='subroutine',
             f_type="type(C_PTR)",
-            f_module=dict(iso_c_binding=["C_PTR"]),
-            f_cast="C_LOC({f_var})",    # Cast an argument to a void *.
-            f_cast_module=dict(iso_c_binding=["C_LOC"]),
-            f_cast_keywords=dict(is_target=True),
+            f_c_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
         ),
@@ -1284,6 +1278,13 @@ def lookup_stmts_tree(tree, path):
 
 
 class CStmts(object):
+    """
+
+    Used with buf_args = "arg_decl".
+    c_arg_decl  - Add C declaration to C wrapper.
+    f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
+    f_module    - Add module info to interface block.
+    """
     def __init__(self,
         name="c_default",
         buf_args=[], buf_extra=[],
@@ -1293,6 +1294,9 @@ class CStmts(object):
         destructor_name=None,
         owner="library",
         return_type=None, return_cptr=False,
+        c_arg_decl=[],
+        f_arg_decl=[],
+        f_module=None,
     ):
         self.name = name
         self.buf_args = buf_args
@@ -1313,6 +1317,9 @@ class CStmts(object):
         self.owner = owner
         self.return_type = return_type
         self.return_cptr = return_cptr
+        self.c_arg_decl = c_arg_decl
+        self.f_arg_decl = f_arg_decl
+        self.f_module = f_module
 
 class FStmts(object):
     """
@@ -1324,6 +1331,8 @@ class FStmts(object):
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
+        arg_decl=None,
+        arg_c_call=None,
         declare=[], pre_call=[], call=[], post_call=[],
         result=None,  # name of result variable
     ):
@@ -1335,7 +1344,9 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
-        self.declare = declare
+        self.arg_decl = arg_decl        # argument declaration
+        self.arg_c_call = arg_c_call    # argument to C function.
+        self.declare = declare          # local declaration
         self.pre_call = pre_call
         self.call = call
         self.post_call = post_call
@@ -1384,19 +1395,41 @@ fc_statements = [
     ),
 
     dict(
-        name="c_native_**_out",
-        buf_args=["c_ptr"],
+        # A C function with a 'int *' argument passes address of array
+        name="f_native_*_in_raw",
+        # same as "f_unknown_*",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        arg_c_call=["C_LOC({f_var})"],
     ),
+
     dict(
+        # deref(pointer)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer.
         name="f_native_**_out",
-        f_attribute=['pointer'],
+        arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
+        ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
         ],
+        arg_c_call=["{F_pointer}"],
         post_call=[
             "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
         ],
+    ),
+    dict(
+        # Make argument type(C_PTR) from 'int **'
+        name="f_native_**_out_raw",
+        arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        arg_c_call=["{f_var}"],
     ),
 
     # XXX only in buf?
@@ -1420,7 +1453,9 @@ fc_statements = [
     dict(
         name="f_native_*_cdesc",
         # TARGET required for argument to C_LOC.
-        f_attribute=['target'],
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
         f_helper="array_context ShroudTypeDefines",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
@@ -1433,8 +1468,35 @@ fc_statements = [
             "{c_var_context}%rank = {rank}",
         ],
     ),
+    dict(
+        name="f_native_*_in_cdesc",
+        base="f_native_*_cdesc",
+    ),
 
     # void *
+    dict(
+        name="f_unknown_*",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        arg_c_call=["C_LOC({f_var})"],
+    ),
+    dict(
+        # return a type(C_PTR)
+        name="f_unknown_*_result",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="f_unknown_**_out",
+        arg_decl=[
+            "{f_type}, intent(OUT), pointer :: {f_var}{f_assumed_shape}",
+        ],
+    ),
+    
     dict(
         name="c_unknown_*_cdesc",
         base="c_native_*_cdesc",
@@ -1591,8 +1653,8 @@ fc_statements = [
     #####
     dict(
         name='c_char_**_in_buf',
-        # argptr - argument is char *, not char **.
-        buf_args=["argptr", "size", "len"],
+        # arg_decl - argument is char *, not char **.
+        buf_args=["arg_decl", "size", "len"],
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         pre_call=[
@@ -1602,6 +1664,14 @@ fc_statements = [
         post_call=[
             "ShroudStrArrayFree({cxx_var}, {c_var_size});",
         ],
+
+        c_arg_decl=[
+            "char *{c_var}",
+        ],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     #####
     dict(

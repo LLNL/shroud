@@ -94,6 +94,7 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_assumed_shape": "",
             "f_pointer_shape": "",
             "f_var_shape": "",
             "file_scope": "library",
@@ -799,16 +800,7 @@
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
             "c_type": "void",
             "cxx_type": "void",
-            "f_cast": "C_LOC({f_var})",
-            "f_cast_keywords": {
-                "is_target": true
-            },
-            "f_cast_module": {
-                "iso_c_binding": [
-                    "C_LOC"
-                ]
-            },
-            "f_module": {
+            "f_c_module": {
                 "iso_c_binding": [
                     "C_PTR"
                 ]
