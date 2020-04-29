@@ -184,6 +184,18 @@ void getPtrToDynamicArray(int **count, int *len)
     *len = sizeof(global_fixed_array)/sizeof(int);
 }
 
+// Return length of global_fixed_array.
+int getlen(void)
+{
+    return sizeof(global_fixed_array)/sizeof(int);
+}
+
+// length is computed by function getlen.
+void getPtrToFuncArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
+
 /**** Return a type(C_PTR) pointer */
 /* Return pointer to a scalar in the argument. */
 void getRawPtrToScalar(int **nitems)

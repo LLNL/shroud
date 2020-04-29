@@ -124,6 +124,20 @@ declarations:
   options:
     wrap_python: False
 
+- decl: int getlen()
+  doxygen:
+    brief: Return length of global_fixed_array.
+  options:
+    wrap_python: False
+- decl: void getPtrToFuncArray(int **count+intent(out)
+                                          +dimension(getlen()))
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is the length
+      is computed by function getlen.
+  options:
+    wrap_python: False
+
 - decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
   doxygen:
     description: |

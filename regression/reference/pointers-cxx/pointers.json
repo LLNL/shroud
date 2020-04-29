@@ -2191,6 +2191,168 @@
                 }
             },
             {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getlen",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int getlen()",
+                "declgen": "int getlen()",
+                "doxygen": {
+                    "brief": "Return length of global_fixed_array."
+                },
+                "fmtdict": {
+                    "C_name": "POI_getlen",
+                    "C_prototype": "",
+                    "C_return_type": "int",
+                    "F_C_call": "c_getlen",
+                    "F_C_name": "getlen",
+                    "F_arguments": "",
+                    "F_name_function": "getlen",
+                    "F_name_generic": "getlen",
+                    "F_name_impl": "getlen",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "getlen",
+                    "underscore_name": "getlen"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(count)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", [getlen()]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "f_var_shape": "(:)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFuncArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "getlen()",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "count",
+                    "C_name": "POI_get_ptr_to_func_array",
+                    "C_prototype": "int * * count",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_func_array",
+                    "F_C_name": "c_get_ptr_to_func_array",
+                    "F_arg_c_call": "SHPTR_count",
+                    "F_arguments": "count",
+                    "F_name_function": "get_ptr_to_func_array",
+                    "F_name_generic": "get_ptr_to_func_array",
+                    "F_name_impl": "get_ptr_to_func_array",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getPtrToFuncArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_func_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
                 "_fmtargs": {
                     "nitems": {
                         "fmtc": {

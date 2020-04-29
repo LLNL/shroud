@@ -1460,6 +1460,78 @@
             {
                 "ast": {
                     "declarator": {
+                        "name": "getlen",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int getlen()",
+                "declgen": "int getlen()",
+                "doxygen": {
+                    "brief": "Return length of global_fixed_array."
+                },
+                "fmtdict": {
+                    "function_name": "getlen",
+                    "underscore_name": "getlen"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFuncArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "getlen()",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getPtrToFuncArray",
+                    "underscore_name": "get_ptr_to_func_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
                         "name": "getRawPtrToScalar",
                         "pointer": []
                     },
