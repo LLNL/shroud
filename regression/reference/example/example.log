@@ -13,10 +13,8 @@ C method const string & getNameErrorCheck() const +deref(allocatable)
 C method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 C method const string & getNameArg() const +deref(result-as-arg)
 C method void getNameArg(string & name +intent(out)+len(Nname)) const
-C method void * getRoot()
 C method int getValue(int value +intent(in)+value)
 C method long getValue(long value +intent(in)+value)
-C method void * getAddr()
 C method bool hasAddr(bool in +intent(in)+value)
 C method void SplicerSpecial()
 Close wrapexample_nested_ExClass1.h
@@ -85,10 +83,8 @@ C-interface method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv
 C-interface method const string & getNameArg() const +deref(result-as-arg)
 C-interface method void getNameArg(string & name +intent(out)+len(Nname)) const
 Fortran method void getNameArg(string & name +intent(out)+len(Nname)) const
-C-interface, Fortran method void * getRoot()
 C-interface, Fortran method int getValue(int value +intent(in)+value)
 C-interface, Fortran method long getValue(long value +intent(in)+value)
-C-interface, Fortran method void * getAddr()
 C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 class ExClass2
@@ -151,10 +147,8 @@ Python method ~ExClass1()
 Python method int incrementCount(int incr +intent(in)+value)
 Python method const string & getNameErrorCheck() const +deref(allocatable)
 Python method const string & getNameArg() const +deref(result-as-arg)
-Python method void * getRoot()
 Python method int getValue(int value +intent(in)+value)
 Python method long getValue(long value +intent(in)+value)
-Python method void * getAddr()
 Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyexample_nested_ExClass1type.cpp
@@ -205,10 +199,8 @@ Lua method ~ExClass1()
 Lua method int incrementCount(int incr +intent(in)+value)
 Lua method const string & getNameErrorCheck() const +deref(allocatable)
 Lua method const string & getNameArg() const +deref(result-as-arg)
-Lua method void * getRoot()
 Lua method int getValue(int value +intent(in)+value)
 Lua method long getValue(long value +intent(in)+value)
-Lua method void * getAddr()
 Lua method bool hasAddr(bool in +intent(in)+value)
 Lua method void SplicerSpecial()
 Lua method ExClass2(const string * name +intent(in)+len_trim(trim_name))

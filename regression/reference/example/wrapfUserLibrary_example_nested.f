@@ -60,10 +60,8 @@ module userlibrary_example_nested_mod
         procedure :: increment_count => exclass1_increment_count
         procedure :: get_name_error_check => exclass1_get_name_error_check
         procedure :: get_name_arg => exclass1_get_name_arg
-        procedure :: get_root => exclass1_get_root
         procedure :: get_value_from_int => exclass1_get_value_from_int
         procedure :: get_value_1 => exclass1_get_value_1
-        procedure :: get_addr => exclass1_get_addr
         procedure :: has_addr => exclass1_has_addr
         procedure :: splicer_special => exclass1_splicer_special
         procedure :: yadda => exclass1_yadda
@@ -318,20 +316,6 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Result
-        ! Requested: c_unknown_*_result
-        ! Match:     c_default
-        function c_exclass1_get_root(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_root")
-            use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(C_PTR) :: SHT_rv
-        end function c_exclass1_get_root
-
-        ! ----------------------------------------
-        ! Result
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -367,20 +351,6 @@ module userlibrary_example_nested_mod
             integer(C_LONG), value, intent(IN) :: value
             integer(C_LONG) :: SHT_rv
         end function c_exclass1_get_value_1
-
-        ! ----------------------------------------
-        ! Result
-        ! Requested: c_unknown_*_result
-        ! Match:     c_default
-        function c_exclass1_get_addr(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_addr")
-            use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
-            implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(C_PTR) :: SHT_rv
-        end function c_exclass1_get_addr
 
         ! ----------------------------------------
         ! Result
@@ -1406,22 +1376,6 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
 
-    ! void * getRoot()
-    ! ----------------------------------------
-    ! Result
-    ! Exact:     f_unknown_*_result
-    ! Requested: c_unknown_*_result
-    ! Match:     c_default
-    function exclass1_get_root(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        class(exclass1) :: obj
-        type(C_PTR) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_root
-        SHT_rv = c_exclass1_get_root(obj%cxxmem)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_root
-    end function exclass1_get_root
-
     ! int getValue(int value +intent(in)+value)
     ! ----------------------------------------
     ! Result
@@ -1469,22 +1423,6 @@ contains
         SHT_rv = c_exclass1_get_value_1(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_value_1
     end function exclass1_get_value_1
-
-    ! void * getAddr()
-    ! ----------------------------------------
-    ! Result
-    ! Exact:     f_unknown_*_result
-    ! Requested: c_unknown_*_result
-    ! Match:     c_default
-    function exclass1_get_addr(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        class(exclass1) :: obj
-        type(C_PTR) :: SHT_rv
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_addr
-        SHT_rv = c_exclass1_get_addr(obj%cxxmem)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_addr
-    end function exclass1_get_addr
 
     ! bool hasAddr(bool in +intent(in)+value)
     ! ----------------------------------------

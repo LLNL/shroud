@@ -191,6 +191,18 @@ void getRawPtrToFixedArray(int **count)
 }
 
 //----------------------------------------------------------------------
+
+// Return a raw pointer to global_int.
+void *returnAddress1(int flag)
+{
+    return (void *) &global_int;
+}
+void *returnAddress2(int flag)
+{
+    return (void *) &global_int;
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

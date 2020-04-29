@@ -126,6 +126,15 @@ class Pointers(unittest.TestCase):
     def test_acceptCharArrayIn(self):
         pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
 
+    def test_void_ptr_func(self):
+        void = None
+        void = pointers.returnAddress1(1)
+        self.assertEqual('PyCapsule', void.__class__.__name__)
+
+        void = None
+        void = pointers.returnAddress2(1)
+        self.assertEqual('PyCapsule', void.__class__.__name__)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -130,3 +130,12 @@ declarations:
       # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
   options:
     wrap_python: False
+
+######################################################################
+# Return a pointer directly.
+
+- decl: void *returnAddress1(int flag)
+- decl: void *returnAddress2(int flag)
+  options:
+    F_force_wrapper: True
+

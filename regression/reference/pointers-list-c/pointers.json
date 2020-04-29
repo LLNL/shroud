@@ -1499,6 +1499,164 @@
                 "options": {
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int flag",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int flag",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_native_scalar_in",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_unknown_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnAddress1",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void *returnAddress1(int flag)",
+                "declgen": "void * returnAddress1(int flag +intent(in)+value)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnAddress1",
+                    "function_name": "returnAddress1",
+                    "underscore_name": "return_address1"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int flag",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int flag",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_native_scalar_in",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_unknown_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnAddress2",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void *returnAddress2(int flag)",
+                "declgen": "void * returnAddress2(int flag +intent(in)+value)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnAddress2",
+                    "function_name": "returnAddress2",
+                    "underscore_name": "return_address2"
+                },
+                "options": {
+                    "F_force_wrapper": true
+                }
             }
         ],
         "language": "c",

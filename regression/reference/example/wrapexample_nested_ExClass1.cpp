@@ -246,22 +246,6 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
 }
 
-// void * getRoot()
-// ----------------------------------------
-// Result
-// Requested: c_unknown_*_result
-// Match:     c_default
-void * AA_example_nested_ExClass1_get_root(
-    AA_example_nested_ExClass1 * self)
-{
-    example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_root
-    void * SHC_rv = SH_this->getRoot();
-    return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_root
-}
-
 // int getValue(int value +intent(in)+value)
 // ----------------------------------------
 // Result
@@ -300,22 +284,6 @@ long AA_example_nested_ExClass1_get_value_1(
     long SHC_rv = SH_this->getValue(value);
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
-}
-
-// void * getAddr()
-// ----------------------------------------
-// Result
-// Requested: c_unknown_*_result
-// Match:     c_default
-void * AA_example_nested_ExClass1_get_addr(
-    AA_example_nested_ExClass1 * self)
-{
-    example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_addr
-    void * SHC_rv = SH_this->getAddr();
-    return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_addr
 }
 
 // bool hasAddr(bool in +intent(in)+value)

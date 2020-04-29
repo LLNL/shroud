@@ -392,6 +392,44 @@ module pointers_mod
         end subroutine get_raw_ptr_to_fixed_array
     end interface
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function return_address1(flag) &
+                result(SHT_rv) &
+                bind(C, name="POI_return_address1")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(C_PTR) :: SHT_rv
+        end function return_address1
+    end interface
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_return_address2(flag) &
+                result(SHT_rv) &
+                bind(C, name="POI_return_address2")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(C_PTR) :: SHT_rv
+        end function c_return_address2
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -598,6 +636,28 @@ contains
         call c_f_pointer(SHPTR_count, count, [10])
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
+
+    ! void * returnAddress2(int flag +intent(in)+value)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_unknown_*_result
+    ! Requested: c_unknown_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  flag
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    function return_address2(flag) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_address2
+        SHT_rv = c_return_address2(flag)
+        ! splicer end function.return_address2
+    end function return_address2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

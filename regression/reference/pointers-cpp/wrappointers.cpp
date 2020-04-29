@@ -451,6 +451,40 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
     // splicer end function.get_raw_ptr_to_fixed_array
 }
 
+// void * returnAddress1(int flag +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_unknown_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
+void * POI_return_address1(int flag)
+{
+    // splicer begin function.return_address1
+    void * SHC_rv = returnAddress1(flag);
+    return SHC_rv;
+    // splicer end function.return_address1
+}
+
+// void * returnAddress2(int flag +intent(in)+value)
+// ----------------------------------------
+// Result
+// Requested: c_unknown_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  flag
+// Requested: c_native_scalar_in
+// Match:     c_default
+void * POI_return_address2(int flag)
+{
+    // splicer begin function.return_address2
+    void * SHC_rv = returnAddress2(flag);
+    return SHC_rv;
+    // splicer end function.return_address2
+}
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

@@ -56,17 +56,11 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
     const AA_example_nested_ExClass1 * self, char * name, int Nname);
 
-void * AA_example_nested_ExClass1_get_root(
-    AA_example_nested_ExClass1 * self);
-
 int AA_example_nested_ExClass1_get_value_from_int(
     AA_example_nested_ExClass1 * self, int value);
 
 long AA_example_nested_ExClass1_get_value_1(
     AA_example_nested_ExClass1 * self, long value);
-
-void * AA_example_nested_ExClass1_get_addr(
-    AA_example_nested_ExClass1 * self);
 
 bool AA_example_nested_ExClass1_has_addr(
     AA_example_nested_ExClass1 * self, bool in);

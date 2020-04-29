@@ -132,6 +132,7 @@ contains
     integer(C_INT), pointer :: iscalar
     integer(C_INT), pointer :: iarray(:)
     type(C_PTR) :: cptr_scalar, cptr_array
+    type(C_PTR) :: void
 
     call set_global_int(0)
     call get_ptr_to_scalar(iscalar)
@@ -159,6 +160,14 @@ contains
     call assert_true(c_associated(cptr_array))
     ! associated with global_fixed_array in pointers.cpp
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
+
+    ! Return pointer to global_int as a type(C_PTR)
+    ! via interface
+    void = return_address1(1)
+    call assert_true(c_associated(void, cptr_scalar))
+    ! via wrapper
+    void = return_address2(1)
+    call assert_true(c_associated(void, cptr_scalar))
     
   end subroutine test_out_ptrs
   

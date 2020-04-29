@@ -38,6 +38,9 @@ void getPtrToFixedArray(int **count);
 void getRawPtrToScalar(int **nitems);
 void getRawPtrToFixedArray(int **count);
 
+void *returnAddress1(int flag);
+void *returnAddress2(int flag);
+
 //void getPtrToArray(int **count+intent(out));
 
 #endif // POINTERS_HPP

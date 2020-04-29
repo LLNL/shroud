@@ -126,18 +126,6 @@ static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
     // splicer end class.ExClass1.method.getNameArg
 }
 
-// void * getRoot()
-static int l_example_nested_ExClass1_get_root(lua_State *L)
-{
-    // splicer begin class.ExClass1.method.getRoot
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
-        L, 1, "ExClass1.metatable");
-    void * SHCXX_rv = SH_this->self->getRoot();
-    PUSH;
-    return 1;
-    // splicer end class.ExClass1.method.getRoot
-}
-
 // int getValue(int value +intent(in)+value)
 // long getValue(long value +intent(in)+value)
 static int l_example_nested_ExClass1_get_value(lua_State *L)
@@ -176,18 +164,6 @@ static int l_example_nested_ExClass1_get_value(lua_State *L)
     // splicer end class.ExClass1.method.getValue
 }
 
-// void * getAddr()
-static int l_example_nested_ExClass1_get_addr(lua_State *L)
-{
-    // splicer begin class.ExClass1.method.getAddr
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
-        L, 1, "ExClass1.metatable");
-    void * SHCXX_rv = SH_this->self->getAddr();
-    PUSH;
-    return 1;
-    // splicer end class.ExClass1.method.getAddr
-}
-
 // bool hasAddr(bool in +intent(in)+value)
 static int l_example_nested_ExClass1_has_addr(lua_State *L)
 {
@@ -220,9 +196,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"incrementCount", l_example_nested_ExClass1_increment_count},
     {"getNameErrorCheck", l_example_nested_ExClass1_get_name_error_check},
     {"getNameArg", l_example_nested_ExClass1_get_name_arg},
-    {"getRoot", l_example_nested_ExClass1_get_root},
     {"getValue", l_example_nested_ExClass1_get_value},
-    {"getAddr", l_example_nested_ExClass1_get_addr},
     {"hasAddr", l_example_nested_ExClass1_has_addr},
     {"SplicerSpecial", l_example_nested_ExClass1_splicer_special},
     // splicer begin class.ExClass1.register

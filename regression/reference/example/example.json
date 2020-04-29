@@ -1078,95 +1078,6 @@
                                         }
                                     },
                                     {
-                                        "_fmtresult": {
-                                            "fmtc": {
-                                                "c_get_value": "",
-                                                "c_type": "void",
-                                                "c_var": "SHC_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_type": "void",
-                                                "cxx_var": "SHC_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_*_result",
-                                                "stmt1": "c_default"
-                                            },
-                                            "fmtf": {
-                                                "cxx_type": "void",
-                                                "f_type": "type(C_PTR)",
-                                                "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "f_unknown_*_result",
-                                                "stmt1": "f_unknown_*_result",
-                                                "stmtc0": "c_unknown_*_result",
-                                                "stmtc1": "c_default"
-                                            },
-                                            "fmtl": {
-                                                "c_var": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_var": "SHCXX_rv"
-                                            },
-                                            "fmtpy": {
-                                                "c_deref": "*",
-                                                "c_var": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_type": "void",
-                                                "cxx_var": "SHCXX_rv",
-                                                "data_var": "SHData_rv",
-                                                "numpy_type": null,
-                                                "py_var": "SHTPy_rv",
-                                                "size_var": "SHSize_rv",
-                                                "stmt0": "py_unknown_result",
-                                                "stmt1": "py_default"
-                                            }
-                                        },
-                                        "ast": {
-                                            "declarator": {
-                                                "name": "getRoot",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
-                                            },
-                                            "params": [],
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "void *getRoot()",
-                                        "declgen": "void * getRoot()",
-                                        "fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_get_root",
-                                            "C_prototype": "AA_example_nested_ExClass1 * self",
-                                            "C_return_type": "void *",
-                                            "F_C_call": "c_exclass1_get_root",
-                                            "F_C_name": "c_exclass1_get_root",
-                                            "F_arg_c_call": "obj%cxxmem",
-                                            "F_arguments": "obj",
-                                            "F_name_function": "get_root",
-                                            "F_name_generic": "get_root",
-                                            "F_name_impl": "exclass1_get_root",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
-                                            "LUA_name": "getRoot",
-                                            "LUA_name_impl": "l_example_nested_ExClass1_get_root",
-                                            "PY_name_impl": "PP_getRoot",
-                                            "c_const": "",
-                                            "c_deref": "*",
-                                            "c_member": "->",
-                                            "c_var": "self",
-                                            "cxx_rv_decl": "void * SHC_rv",
-                                            "function_name": "getRoot",
-                                            "underscore_name": "get_root"
-                                        },
-                                        "options": {}
-                                    },
-                                    {
                                         "_fmtargs": {
                                             "value": {
                                                 "fmtc": {
@@ -1489,95 +1400,6 @@
                                             "function_name": "getValue",
                                             "function_suffix": "_1",
                                             "underscore_name": "get_value"
-                                        },
-                                        "options": {}
-                                    },
-                                    {
-                                        "_fmtresult": {
-                                            "fmtc": {
-                                                "c_get_value": "",
-                                                "c_type": "void",
-                                                "c_var": "SHC_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_type": "void",
-                                                "cxx_var": "SHC_rv",
-                                                "idtor": "0",
-                                                "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_*_result",
-                                                "stmt1": "c_default"
-                                            },
-                                            "fmtf": {
-                                                "cxx_type": "void",
-                                                "f_type": "type(C_PTR)",
-                                                "f_var": "SHT_rv",
-                                                "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "f_unknown_*_result",
-                                                "stmt1": "f_unknown_*_result",
-                                                "stmtc0": "c_unknown_*_result",
-                                                "stmtc1": "c_default"
-                                            },
-                                            "fmtl": {
-                                                "c_var": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_var": "SHCXX_rv"
-                                            },
-                                            "fmtpy": {
-                                                "c_deref": "*",
-                                                "c_var": "SHCXX_rv",
-                                                "cxx_addr": "",
-                                                "cxx_member": "->",
-                                                "cxx_type": "void",
-                                                "cxx_var": "SHCXX_rv",
-                                                "data_var": "SHData_rv",
-                                                "numpy_type": null,
-                                                "py_var": "SHTPy_rv",
-                                                "size_var": "SHSize_rv",
-                                                "stmt0": "py_unknown_result",
-                                                "stmt1": "py_default"
-                                            }
-                                        },
-                                        "ast": {
-                                            "declarator": {
-                                                "name": "getAddr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
-                                            },
-                                            "params": [],
-                                            "specifier": [
-                                                "void"
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "decl": "void *getAddr()",
-                                        "declgen": "void * getAddr()",
-                                        "fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_get_addr",
-                                            "C_prototype": "AA_example_nested_ExClass1 * self",
-                                            "C_return_type": "void *",
-                                            "F_C_call": "c_exclass1_get_addr",
-                                            "F_C_name": "c_exclass1_get_addr",
-                                            "F_arg_c_call": "obj%cxxmem",
-                                            "F_arguments": "obj",
-                                            "F_name_function": "get_addr",
-                                            "F_name_generic": "get_addr",
-                                            "F_name_impl": "exclass1_get_addr",
-                                            "F_result_clause": "\fresult(SHT_rv)",
-                                            "F_subprogram": "function",
-                                            "LUA_name": "getAddr",
-                                            "LUA_name_impl": "l_example_nested_ExClass1_get_addr",
-                                            "PY_name_impl": "PP_getAddr",
-                                            "c_const": "",
-                                            "c_deref": "*",
-                                            "c_member": "->",
-                                            "c_var": "self",
-                                            "cxx_rv_decl": "void * SHC_rv",
-                                            "function_name": "getAddr",
-                                            "underscore_name": "get_addr"
                                         },
                                         "options": {}
                                     },
@@ -3532,7 +3354,7 @@
                                     },
                                     {
                                         "_default_funcs": [
-                                            29
+                                            27
                                         ],
                                         "_fmtargs": {
                                             "len": {
@@ -3808,7 +3630,7 @@
                                     },
                                     {
                                         "_default_funcs": [
-                                            29
+                                            27
                                         ],
                                         "_generated": "fortran_generic",
                                         "_has_default_arg": true,
@@ -3890,7 +3712,7 @@
                                     },
                                     {
                                         "_default_funcs": [
-                                            29
+                                            27
                                         ],
                                         "_generated": "fortran_generic",
                                         "_has_default_arg": true,
@@ -6297,8 +6119,8 @@
                             },
                             {
                                 "_default_funcs": [
-                                    62,
-                                    63
+                                    60,
+                                    61
                                 ],
                                 "_fmtargs": {
                                     "i": {
