@@ -138,27 +138,34 @@ contains
     call get_ptr_to_scalar(iscalar)
     call assert_equals(0, iscalar)
 
-    ! iscalar points to global_int in pointers.c
+    ! iscalar points to global_int in pointers.c.
     call set_global_int(5)
     call assert_equals(5, iscalar)
 
+    nullify(iarray)
     call get_ptr_to_fixed_array(iarray)
     call assert_equals(10, size(iarray))
     iarray = 0
     call assert_equals(0, sum_fixed_array())
-    ! make sure we're assigning to global_array
+    ! Make sure we're assigning to global_array.
     iarray(1) = 1
     iarray(10) = 2
     call assert_equals(3, sum_fixed_array())
 
+    ! Returns global_array in pointers.c.
+    nullify(iarray)
+    call get_ptr_to_dynamic_array(iarray)
+    call assert_true( associated(iarray))
+    call assert_true( size(iarray) == 10 )
+
     call get_raw_ptr_to_scalar(cptr_scalar)
     call assert_true(c_associated(cptr_scalar))
-    ! associated with global_int in pointers.cpp
+    ! associated with global_int in pointers.c
     call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
 
     call get_raw_ptr_to_fixed_array(cptr_array)
     call assert_true(c_associated(cptr_array))
-    ! associated with global_fixed_array in pointers.cpp
+    ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
 
     ! Return pointer to global_int as a type(C_PTR)

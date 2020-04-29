@@ -441,6 +441,32 @@ void POI_get_ptr_to_fixed_array(int * * count)
 }
 // end POI_get_ptr_to_fixed_array
 
+// void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
+/**
+ * Return a Fortran pointer to an array which is the length of
+ * the argument ncount.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Requested: c_native_**_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  ncount
+// Requested: c_native_*_out
+// Match:     c_default
+// start POI_get_ptr_to_dynamic_array
+void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
+{
+    // splicer begin function.get_ptr_to_dynamic_array
+    getPtrToDynamicArray(count, ncount);
+    // splicer end function.get_ptr_to_dynamic_array
+}
+// end POI_get_ptr_to_dynamic_array
+
 // void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 /**
  * Called directly via an interface.

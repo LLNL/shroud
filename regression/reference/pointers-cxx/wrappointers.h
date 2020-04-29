@@ -60,6 +60,8 @@ void POI_get_ptr_to_scalar(int * * nitems);
 
 void POI_get_ptr_to_fixed_array(int * * count);
 
+void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
+
 void POI_get_raw_ptr_to_scalar(int * * nitems);
 
 void POI_get_raw_ptr_to_fixed_array(int * * count);

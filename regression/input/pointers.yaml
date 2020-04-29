@@ -115,6 +115,15 @@ declarations:
   options:
     wrap_python: False
 
+- decl: void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount),
+                                  int *ncount+intent(out)+hidden)
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is the length of
+      the argument ncount.
+  options:
+    wrap_python: False
+
 - decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
   doxygen:
     description: |

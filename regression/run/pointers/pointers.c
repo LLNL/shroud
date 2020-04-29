@@ -178,6 +178,12 @@ void getPtrToFixedArray(int **count)
     *count = (int *) &global_fixed_array;
 }
 
+void getPtrToDynamicArray(int **count, int *len)
+{
+    *count = (int *) &global_fixed_array;
+    *len = sizeof(global_fixed_array)/sizeof(int);
+}
+
 /**** Return a type(C_PTR) pointer */
 /* Return pointer to a scalar in the argument. */
 void getRawPtrToScalar(int **nitems)

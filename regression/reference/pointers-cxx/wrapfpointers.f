@@ -393,6 +393,30 @@ module pointers_mod
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
+    ! Argument:  count
+    ! Requested: c_native_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  ncount
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! start c_get_ptr_to_dynamic_array
+    interface
+        subroutine c_get_ptr_to_dynamic_array(count, ncount) &
+                bind(C, name="POI_get_ptr_to_dynamic_array")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+            integer(C_INT), intent(OUT) :: ncount
+        end subroutine c_get_ptr_to_dynamic_array
+    end interface
+    ! end c_get_ptr_to_dynamic_array
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
     ! Argument:  nitems
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
@@ -686,6 +710,41 @@ contains
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
     ! end get_ptr_to_fixed_array
+
+    ! void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
+    ! ----------------------------------------
+    ! Result
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     f_native_**_out
+    ! Requested: c_native_**_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  ncount
+    ! Requested: f_native_*_out
+    ! Match:     f_default
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    !>
+    !! Return a Fortran pointer to an array which is the length of
+    !! the argument ncount.
+    !<
+    ! start get_ptr_to_dynamic_array
+    subroutine get_ptr_to_dynamic_array(count)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), intent(OUT), pointer :: count(:)
+        integer(C_INT) :: ncount
+        ! splicer begin function.get_ptr_to_dynamic_array
+        type(C_PTR) :: SHPTR_count
+        call c_get_ptr_to_dynamic_array(SHPTR_count, ncount)
+        call c_f_pointer(SHPTR_count, count, [ncount])
+        ! splicer end function.get_ptr_to_dynamic_array
+    end subroutine get_ptr_to_dynamic_array
+    ! end get_ptr_to_dynamic_array
 
     ! void * returnAddress2(int flag +intent(in)+value)
     ! ----------------------------------------
