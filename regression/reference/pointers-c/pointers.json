@@ -2045,6 +2045,153 @@
             },
             {
                 "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", [ncount]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "f_var_shape": "(:)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "ncount": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "ncount",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_ncount",
+                            "c_var": "ncount",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "ncount",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToDynamicArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "ncount",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "ncount",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
+                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "count,\t ncount",
+                    "C_name": "getPtrToDynamicArray",
+                    "C_prototype": "int * * count,\t int * ncount",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_dynamic_array",
+                    "F_C_name": "c_get_ptr_to_dynamic_array",
+                    "F_arg_c_call": "SHPTR_count,\t ncount",
+                    "F_arguments": "count",
+                    "F_name_function": "get_ptr_to_dynamic_array",
+                    "F_name_generic": "get_ptr_to_dynamic_array",
+                    "F_name_impl": "get_ptr_to_dynamic_array",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "getPtrToDynamicArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_dynamic_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "nitems": {
                         "fmtc": {
                             "c_addr": "",
