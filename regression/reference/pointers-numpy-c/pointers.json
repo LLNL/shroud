@@ -10,7 +10,7 @@
             ""
         ],
         "cxx_header": [
-            "pointers.hpp"
+            "pointers.h"
         ],
         "functions": [
             {
@@ -970,7 +970,6 @@
                     "underscore_name": "sum"
                 },
                 "options": {
-                    "literalinclude": true,
                     "wrap_lua": false
                 }
             },

@@ -10,7 +10,7 @@
             ""
         ],
         "cxx_header": [
-            "pointers.hpp"
+            "pointers.h"
         ],
         "functions": [
             {
@@ -159,13 +159,12 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "data_var": "SHData_in",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_double",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_in_dimension_numpy",
+                            "stmt1": "py_native_in_dimension_numpy"
                         }
                     },
                     "out": {
@@ -179,7 +178,6 @@
                             "cxx_type": "double",
                             "cxx_var": "out",
                             "data_var": "SHData_out",
-                            "hnamefunc0": "SHROUD_to_PyList_double",
                             "npy_descr": "NULL",
                             "npy_descr_code": "",
                             "npy_order": "NPY_CORDER",
@@ -188,8 +186,8 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_list_mold",
-                            "stmt1": "py_native_out_allocatable_list"
+                            "stmt0": "py_native_out_allocatable_numpy_mold",
+                            "stmt1": "py_native_out_allocatable_numpy_mold"
                         }
                     },
                     "sizein": {
@@ -206,7 +204,7 @@
                             "cxx_var": "sizein",
                             "data_var": "SHData_sizein",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "SHSize_in",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_sizein",
                             "size_var": "SHSize_sizein"
                         }
@@ -301,13 +299,12 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "data_var": "SHData_in",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_double",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_in_dimension_numpy",
+                            "stmt1": "py_native_in_dimension_numpy"
                         }
                     },
                     "out": {
@@ -321,7 +318,6 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "data_var": "SHData_out",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_descr": "SHDPy_out",
                             "npy_descr_code": "PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);\n",
                             "npy_order": "NPY_CORDER",
@@ -330,8 +326,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_list_mold",
-                            "stmt1": "py_native_out_allocatable_list"
+                            "stmt0": "py_native_out_allocatable_numpy_mold",
+                            "stmt1": "py_native_out_allocatable_numpy_mold"
                         }
                     },
                     "sizein": {
@@ -348,7 +344,7 @@
                             "cxx_var": "sizein",
                             "data_var": "SHData_sizein",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "SHSize_in",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_sizein",
                             "size_var": "SHSize_sizein"
                         }
@@ -463,7 +459,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "data_var": "SHData_values",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_values",
                             "npy_intp_asgn": "SHD_values[0] = 3;\n",
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
@@ -472,8 +467,8 @@
                             "pointer_shape": "3",
                             "py_var": "SHPy_values",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -550,7 +545,6 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "data_var": "SHData_arg1",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_arg1",
                             "npy_intp_asgn": "SHD_arg1[0] = 3;\n",
                             "npy_intp_decl": "npy_intp SHD_arg1[1];\n",
@@ -559,8 +553,8 @@
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     },
                     "arg2": {
@@ -574,7 +568,6 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "data_var": "SHData_arg2",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_arg2",
                             "npy_intp_asgn": "SHD_arg2[0] = 3;\n",
                             "npy_intp_decl": "npy_intp SHD_arg2[1];\n",
@@ -583,8 +576,8 @@
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -682,7 +675,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "data_var": "SHData_values",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_values",
                             "npy_intp_asgn": "SHD_values[0] = nvar;\n",
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
@@ -690,8 +682,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_values",
                             "size_var": "nvar",
-                            "stmt0": "py_native_out_allocatable_list",
-                            "stmt1": "py_native_out_allocatable_list"
+                            "stmt0": "py_native_out_allocatable_numpy",
+                            "stmt1": "py_native_out_allocatable_numpy"
                         }
                     }
                 },
@@ -781,7 +773,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "data_var": "SHData_values",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_values",
                             "npy_intp_asgn": "SHD_values[0] = nvar;\n",
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
@@ -790,8 +781,8 @@
                             "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -864,7 +855,7 @@
                             "cxx_var": "len",
                             "data_var": "SHData_len",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "SHSize_values",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_values)",
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len"
                         }
@@ -900,13 +891,12 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "data_var": "SHData_values",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_int",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_in_dimension_numpy",
+                            "stmt1": "py_native_in_dimension_numpy"
                         }
                     }
                 },
@@ -980,7 +970,6 @@
                     "underscore_name": "sum"
                 },
                 "options": {
-                    "literalinclude": true,
                     "wrap_lua": false
                 }
             },
@@ -997,7 +986,6 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "data_var": "SHData_out",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
                             "npy_dims": "SHD_out",
                             "npy_intp_asgn": "SHD_out[0] = 3;\n",
                             "npy_intp_decl": "npy_intp SHD_out[1];\n",
@@ -1006,8 +994,8 @@
                             "pointer_shape": "3",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -1066,14 +1054,12 @@
                             "cxx_type": "int",
                             "cxx_var": "array",
                             "data_var": "SHData_array",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_int",
-                            "hnamefunc1": "SHROUD_to_PyList_int",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_array",
                             "pytmp_var": "SHTPy_array",
                             "size_var": "SHSize_array",
-                            "stmt0": "py_native_inout_dimension_list",
-                            "stmt1": "py_native_inout_dimension_list"
+                            "stmt0": "py_native_inout_dimension_numpy",
+                            "stmt1": "py_native_inout_dimension_numpy"
                         }
                     },
                     "sizein": {
@@ -1090,7 +1076,7 @@
                             "cxx_var": "sizein",
                             "data_var": "SHData_sizein",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "SHSize_array",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_array)",
                             "py_var": "SHPy_sizein",
                             "size_var": "SHSize_sizein"
                         }

@@ -162,7 +162,7 @@ Sum
 
 C++ library function from :file:`pointers.cpp`:
 
-.. literalinclude:: ../regression/run/pointers/pointers.cpp
+.. literalinclude:: ../regression/run/pointers/pointers.c
    :language: c
    :start-after: start Sum
    :end-before: end Sum
@@ -182,14 +182,14 @@ This is a C++ file which provides a C API via ``extern "C"``.
 
 :file:`wrappointers.cpp`:
 
-.. literalinclude:: ../regression/reference/pointers-cpp/wrappointers.cpp
+.. literalinclude:: ../regression/reference/pointers-cxx/wrappointers.cpp
    :language: c
    :start-after: start POI_sum
    :end-before: end POI_sum
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/pointers-cpp/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-cxx/wrapfpointers.f
    :language: fortran
    :start-after: start c_sum
    :end-before: end c_sum
@@ -197,7 +197,7 @@ Fortran calls C via the following interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/pointers-cpp/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-cxx/wrapfpointers.f
    :language: fortran
    :start-after: start sum
    :end-before: end sum

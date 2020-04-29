@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-// pointers.cpp
+// pointers.c
 
-#include "pointers.hpp"
+#include "pointers.h"
 
 #include <stdlib.h>
 #include <stdio.h>

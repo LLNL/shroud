@@ -11,13 +11,12 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-list-cpp \
+    -I$(top)/regression/reference/pointers-list-cxx \
     -I$(top)/regression/run/pointers \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/pointers-list-cpp \
-    $(top)/regression/run/pointers \
+    $(top)/regression/reference/pointers-list-cxx \
     $(top)/regression/run/pointers/python
 
 OBJS = \
@@ -29,8 +28,13 @@ CXXFLAGS += $(SHARED)
 all : pointers.so
 # simple
 
+# Convert C file to C++
+pointers.cpp : $(top)/regression/run/pointers/pointers.c
+	cp $^ $@
+pointers.o : pointers.cpp
+
 pointers.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+	$(CXX) $(LD_SHARED) $^ -o $@ $(LIBS)
 
 simple : testpython.o $(OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)

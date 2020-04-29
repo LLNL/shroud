@@ -9,7 +9,7 @@
 #include "wrappointers.h"
 #include <cstdlib>
 #include <cstring>
-#include "pointers.hpp"
+#include "pointers.h"
 #include "typespointers.h"
 
 // splicer begin CXX_definitions
@@ -82,12 +82,14 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Argument:  argout
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_intargs
 void POI_intargs(const int argin, int * arginout, int * argout)
 {
     // splicer begin function.intargs
     intargs(argin, arginout, argout);
     // splicer end function.intargs
 }
+// end POI_intargs
 
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
@@ -111,12 +113,14 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Argument:  sizein
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_cos_doubles
 void POI_cos_doubles(double * in, double * out, int sizein)
 {
     // splicer begin function.cos_doubles
     cos_doubles(in, out, sizein);
     // splicer end function.cos_doubles
 }
+// end POI_cos_doubles
 
 // void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
@@ -141,12 +145,14 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Argument:  sizein
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_truncate_to_int
 void POI_truncate_to_int(double * in, int * out, int sizein)
 {
     // splicer begin function.truncate_to_int
     truncate_to_int(in, out, sizein);
     // splicer end function.truncate_to_int
 }
+// end POI_truncate_to_int
 
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 /**
@@ -169,12 +175,14 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Argument:  values
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_get_values
 void POI_get_values(int * nvalues, int * values)
 {
     // splicer begin function.get_values
     get_values(nvalues, values);
     // splicer end function.get_values
 }
+// end POI_get_values
 
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 /**
@@ -195,12 +203,14 @@ void POI_get_values(int * nvalues, int * values)
 // Argument:  arg2
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_get_values2
 void POI_get_values2(int * arg1, int * arg2)
 {
     // splicer begin function.get_values2
     get_values2(arg1, arg2);
     // splicer end function.get_values2
 }
+// end POI_get_values2
 
 // void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
 // ----------------------------------------
@@ -215,12 +225,14 @@ void POI_get_values2(int * arg1, int * arg2)
 // Argument:  values
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_iota_allocatable
 void POI_iota_allocatable(int nvar, int * values)
 {
     // splicer begin function.iota_allocatable
     iota_allocatable(nvar, values);
     // splicer end function.iota_allocatable
 }
+// end POI_iota_allocatable
 
 // void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 // ----------------------------------------
@@ -235,12 +247,14 @@ void POI_iota_allocatable(int nvar, int * values)
 // Argument:  values
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_iota_dimension
 void POI_iota_dimension(int nvar, int * values)
 {
     // splicer begin function.iota_dimension
     iota_dimension(nvar, values);
     // splicer end function.iota_dimension
 }
+// end POI_iota_dimension
 
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // ----------------------------------------
@@ -280,12 +294,14 @@ void POI_sum(int len, int * values, int * result)
 // Argument:  out
 // Requested: c_native_*_out
 // Match:     c_default
+// start POI_fill_int_array
 void POI_fill_int_array(int * out)
 {
     // splicer begin function.fill_int_array
     fillIntArray(out);
     // splicer end function.fill_int_array
 }
+// end POI_fill_int_array
 
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 /**
@@ -303,12 +319,14 @@ void POI_fill_int_array(int * out)
 // Argument:  sizein
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_increment_int_array
 void POI_increment_int_array(int * array, int sizein)
 {
     // splicer begin function.increment_int_array
     incrementIntArray(array, sizein);
     // splicer end function.increment_int_array
 }
+// end POI_increment_int_array
 
 // void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
 // ----------------------------------------
@@ -319,12 +337,14 @@ void POI_increment_int_array(int * array, int sizein)
 // Argument:  names
 // Requested: c_char_**_in
 // Match:     c_default
+// start POI_accept_char_array_in
 void POI_accept_char_array_in(char * * names)
 {
     // splicer begin function.accept_char_array_in
     acceptCharArrayIn(names);
     // splicer end function.accept_char_array_in
 }
+// end POI_accept_char_array_in
 
 // void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
 // ----------------------------------------
@@ -334,6 +354,7 @@ void POI_accept_char_array_in(char * * names)
 // ----------------------------------------
 // Argument:  names
 // Exact:     c_char_**_in_buf
+// start POI_accept_char_array_in_bufferify
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames)
 {
@@ -343,6 +364,7 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
     ShroudStrArrayFree(SHCXX_names, Snames);
     // splicer end function.accept_char_array_in_bufferify
 }
+// end POI_accept_char_array_in_bufferify
 
 // void setGlobalInt(int value +intent(in)+value)
 // ----------------------------------------
@@ -353,12 +375,14 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Argument:  value
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_set_global_int
 void POI_set_global_int(int value)
 {
     // splicer begin function.set_global_int
     setGlobalInt(value);
     // splicer end function.set_global_int
 }
+// end POI_set_global_int
 
 // int sumFixedArray()
 /**
@@ -368,6 +392,7 @@ void POI_set_global_int(int value)
 // Result
 // Requested: c_native_scalar_result
 // Match:     c_default
+// start POI_sum_fixed_array
 int POI_sum_fixed_array()
 {
     // splicer begin function.sum_fixed_array
@@ -375,6 +400,7 @@ int POI_sum_fixed_array()
     return SHC_rv;
     // splicer end function.sum_fixed_array
 }
+// end POI_sum_fixed_array
 
 // void getPtrToScalar(int * * nitems +intent(out))
 // ----------------------------------------
@@ -385,12 +411,14 @@ int POI_sum_fixed_array()
 // Argument:  nitems
 // Requested: c_native_**_out
 // Match:     c_default
+// start POI_get_ptr_to_scalar
 void POI_get_ptr_to_scalar(int * * nitems)
 {
     // splicer begin function.get_ptr_to_scalar
     getPtrToScalar(nitems);
     // splicer end function.get_ptr_to_scalar
 }
+// end POI_get_ptr_to_scalar
 
 // void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 /**
@@ -404,12 +432,14 @@ void POI_get_ptr_to_scalar(int * * nitems)
 // Argument:  count
 // Requested: c_native_**_out
 // Match:     c_default
+// start POI_get_ptr_to_fixed_array
 void POI_get_ptr_to_fixed_array(int * * count)
 {
     // splicer begin function.get_ptr_to_fixed_array
     getPtrToFixedArray(count);
     // splicer end function.get_ptr_to_fixed_array
 }
+// end POI_get_ptr_to_fixed_array
 
 // void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 /**
@@ -423,12 +453,14 @@ void POI_get_ptr_to_fixed_array(int * * count)
 // Argument:  nitems
 // Requested: c_native_**_out
 // Match:     c_default
+// start POI_get_raw_ptr_to_scalar
 void POI_get_raw_ptr_to_scalar(int * * nitems)
 {
     // splicer begin function.get_raw_ptr_to_scalar
     getRawPtrToScalar(nitems);
     // splicer end function.get_raw_ptr_to_scalar
 }
+// end POI_get_raw_ptr_to_scalar
 
 // void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 /**
@@ -444,12 +476,14 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 // Argument:  count
 // Requested: c_native_**_out
 // Match:     c_default
+// start POI_get_raw_ptr_to_fixed_array
 void POI_get_raw_ptr_to_fixed_array(int * * count)
 {
     // splicer begin function.get_raw_ptr_to_fixed_array
     getRawPtrToFixedArray(count);
     // splicer end function.get_raw_ptr_to_fixed_array
 }
+// end POI_get_raw_ptr_to_fixed_array
 
 // void * returnAddress1(int flag +intent(in)+value)
 // ----------------------------------------
@@ -460,6 +494,7 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
 // Argument:  flag
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_return_address1
 void * POI_return_address1(int flag)
 {
     // splicer begin function.return_address1
@@ -467,6 +502,7 @@ void * POI_return_address1(int flag)
     return SHC_rv;
     // splicer end function.return_address1
 }
+// end POI_return_address1
 
 // void * returnAddress2(int flag +intent(in)+value)
 // ----------------------------------------
@@ -477,6 +513,7 @@ void * POI_return_address1(int flag)
 // Argument:  flag
 // Requested: c_native_scalar_in
 // Match:     c_default
+// start POI_return_address2
 void * POI_return_address2(int flag)
 {
     // splicer begin function.return_address2
@@ -484,6 +521,7 @@ void * POI_return_address2(int flag)
     return SHC_rv;
     // splicer end function.return_address2
 }
+// end POI_return_address2
 
 // start release allocated memory
 // Release library allocated memory.
