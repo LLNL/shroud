@@ -9,7 +9,7 @@
 #include "wrappointers.h"
 #include <cstdlib>
 #include <cstring>
-#include "pointers.hpp"
+#include "pointers.h"
 #include "typespointers.h"
 
 // splicer begin CXX_definitions

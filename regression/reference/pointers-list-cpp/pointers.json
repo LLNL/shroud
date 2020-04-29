@@ -10,7 +10,7 @@
             ""
         ],
         "cxx_header": [
-            "pointers.hpp"
+            "pointers.h"
         ],
         "functions": [
             {

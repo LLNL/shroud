@@ -9,7 +9,7 @@
 #ifndef PYPOINTERSMODULE_HPP
 #define PYPOINTERSMODULE_HPP
 #include <Python.h>
-#include "pointers.hpp"
+#include "pointers.h"
 // splicer begin header.include
 // splicer end header.include
 

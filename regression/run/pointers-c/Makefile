@@ -6,14 +6,13 @@
 #
 # #######################################################################
 #
-# run/pointers-numpy-cpp
+# run/pointers-c
 #
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/pointers-c \
-    -I$(top)/regression/run/pointers \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/pointers
 
 VPATH = \
     $(top)/regression/reference/pointers-c \
@@ -29,10 +28,6 @@ OBJS = \
 
 pointers-c : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-# Convert C++ file to C
-pointers.c : $(top)/regression/run/pointers/pointers.cpp
-	cp $^ $@
 
 clean :
 	rm -f $(OBJS) *.mod pointers

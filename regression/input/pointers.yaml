@@ -9,7 +9,7 @@ copyright:
 # Test pointers to POD and use of NumPy/list
 
 library: pointers
-cxx_header: pointers.hpp
+cxx_header: pointers.h
 
 #language: c
 
