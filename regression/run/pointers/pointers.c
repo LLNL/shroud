@@ -220,6 +220,16 @@ void *returnAddress2(int flag)
     return (void *) &global_int;
 }
 
+int *returnIntPtrToScalar(void)
+{
+    return &global_int;
+}
+
+int *returnIntPtrToFixedArray(void)
+{
+    return (int *) &global_fixed_array;
+}
+
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {

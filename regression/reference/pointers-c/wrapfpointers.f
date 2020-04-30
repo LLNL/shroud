@@ -527,6 +527,38 @@ module pointers_mod
     end interface
     ! end c_return_address2
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start c_return_int_ptr_to_scalar
+    interface
+        function c_return_int_ptr_to_scalar() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_scalar
+    end interface
+    ! end c_return_int_ptr_to_scalar
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start c_return_int_ptr_to_fixed_array
+    interface
+        function c_return_int_ptr_to_fixed_array() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToFixedArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_fixed_array
+    end interface
+    ! end c_return_int_ptr_to_fixed_array
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -832,6 +864,44 @@ contains
         ! splicer end function.return_address2
     end function return_address2
     ! end return_address2
+
+    ! int * returnIntPtrToScalar()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_*_result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_ptr_to_scalar
+    function return_int_ptr_to_scalar() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), pointer :: SHT_rv
+        ! splicer begin function.return_int_ptr_to_scalar
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_scalar()
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_int_ptr_to_scalar
+    end function return_int_ptr_to_scalar
+    ! end return_int_ptr_to_scalar
+
+    ! int * returnIntPtrToFixedArray()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_*_result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_ptr_to_fixed_array
+    function return_int_ptr_to_fixed_array() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), pointer :: SHT_rv
+        ! splicer begin function.return_int_ptr_to_fixed_array
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_fixed_array()
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_int_ptr_to_fixed_array
+    end function return_int_ptr_to_fixed_array
+    ! end return_int_ptr_to_fixed_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

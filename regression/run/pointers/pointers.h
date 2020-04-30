@@ -44,6 +44,9 @@ void getRawPtrToFixedArray(int **count);
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
 
+int *returnIntPtrToScalar(void);
+int *returnIntPtrToFixedArray(void);
+
 //void getPtrToArray(int **count+intent(out));
 
 #endif // POINTERS_HPP

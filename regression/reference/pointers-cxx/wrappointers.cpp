@@ -590,6 +590,36 @@ void * POI_return_address2(int flag)
 }
 // end POI_return_address2
 
+// int * returnIntPtrToScalar()
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_scalar
+int * POI_return_int_ptr_to_scalar()
+{
+    // splicer begin function.return_int_ptr_to_scalar
+    int * SHC_rv = returnIntPtrToScalar();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_scalar
+}
+// end POI_return_int_ptr_to_scalar
+
+// int * returnIntPtrToFixedArray()
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_fixed_array
+int * POI_return_int_ptr_to_fixed_array()
+{
+    // splicer begin function.return_int_ptr_to_fixed_array
+    int * SHC_rv = returnIntPtrToFixedArray();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_fixed_array
+}
+// end POI_return_int_ptr_to_fixed_array
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

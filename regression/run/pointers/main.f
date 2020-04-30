@@ -130,8 +130,8 @@ contains
   end subroutine test_char_arrays
 
   subroutine test_out_ptrs
-    integer(C_INT), pointer :: iscalar
-    integer(C_INT), pointer :: iarray(:)
+    integer(C_INT), pointer :: iscalar, irvscalar
+    integer(C_INT), pointer :: iarray(:), irvarray
     type(C_PTR) :: cptr_scalar, cptr_array
     type(C_PTR) :: void
 
@@ -182,6 +182,12 @@ contains
     ! via wrapper
     void = return_address2(1)
     call assert_true(c_associated(void, cptr_scalar))
+
+    nullify(irvscalar)
+    irvscalar => return_int_ptr_to_scalar()
+    call assert_true(associated(irvscalar, iscalar))
+
+    irvarray => return_int_ptr_to_fixed_array()
     
   end subroutine test_out_ptrs
   

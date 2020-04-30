@@ -22,6 +22,8 @@ C function void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 C function void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 C function void * returnAddress1(int flag +intent(in)+value)
 C function void * returnAddress2(int flag +intent(in)+value)
+C function int * returnIntPtrToScalar()
+C function int * returnIntPtrToFixedArray()
 Close wrappointers.h
 Close wrappointers.c
 Close typespointers.h
@@ -48,4 +50,6 @@ C-interface, Fortran function void getRawPtrToScalar(int * * nitems +deref(raw)+
 C-interface, Fortran function void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 C-interface, Fortran function void * returnAddress1(int flag +intent(in)+value)
 C-interface, Fortran function void * returnAddress2(int flag +intent(in)+value)
+C-interface, Fortran function int * returnIntPtrToScalar()
+C-interface, Fortran function int * returnIntPtrToFixedArray()
 Close wrapfpointers.f

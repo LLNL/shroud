@@ -162,3 +162,5 @@ declarations:
   options:
     F_force_wrapper: True
 
+- decl: int *returnIntPtrToScalar()
+- decl: int *returnIntPtrToFixedArray()

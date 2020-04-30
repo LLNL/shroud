@@ -74,6 +74,10 @@ void * POI_return_address1(int flag);
 
 void * POI_return_address2(int flag);
 
+int * POI_return_int_ptr_to_scalar();
+
+int * POI_return_int_ptr_to_fixed_array();
+
 #ifdef __cplusplus
 }
 #endif
