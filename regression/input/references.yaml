@@ -1,0 +1,26 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test references
+# and pointers with classes.
+
+library: references
+cxx_header: references.hpp
+
+options:
+  debug: True
+  wrap_python: False
+
+declarations:
+##################################################
+- decl: class ArrayWrapper
+  declarations:
+  - decl: void setSize(int size)
+  - decl: int getSize() const
+  - decl: void allocate()
+  - decl: double* getArray()

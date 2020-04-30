@@ -6,3 +6,7 @@ When run with do-test.py, the results are compared against the
 files in the `reference` directory.
 
 Tests which can be compiled are in the `run` directory.
+
+### references
+
+Test C++ references.  Test pointers with classes.
