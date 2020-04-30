@@ -923,7 +923,7 @@ PY_returnIntPtrToScalar(
 // splicer end function.return_int_ptr_to_scalar
 }
 
-// int * returnIntPtrToFixedArray()
+// int * returnIntPtrToFixedArray() +dimension(10)
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;

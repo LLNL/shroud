@@ -2848,8 +2848,11 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_assumed_shape": "(:)",
+                        "f_pointer_shape": ", [10]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "f_var_shape": "(:)",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result",
                         "stmt1": "f_native_*_result",
@@ -2858,6 +2861,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "dimension": "10"
+                    },
                     "declarator": {
                         "name": "returnIntPtrToFixedArray",
                         "pointer": [
@@ -2873,8 +2879,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray()",
-                "declgen": "int * returnIntPtrToFixedArray()",
+                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array",
                     "C_prototype": "",

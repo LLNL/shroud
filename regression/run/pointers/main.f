@@ -131,7 +131,7 @@ contains
 
   subroutine test_out_ptrs
     integer(C_INT), pointer :: iscalar, irvscalar
-    integer(C_INT), pointer :: iarray(:), irvarray
+    integer(C_INT), pointer :: iarray(:), irvarray(:)
     type(C_PTR) :: cptr_scalar, cptr_array
     type(C_PTR) :: void
 
@@ -175,7 +175,7 @@ contains
     ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
 
-    ! Return pointer to global_int as a type(C_PTR)
+    ! Return pointer to global_int as a type(C_PTR).
     ! via interface
     void = return_address1(1)
     call assert_true(c_associated(void, cptr_scalar))
@@ -183,11 +183,17 @@ contains
     void = return_address2(1)
     call assert_true(c_associated(void, cptr_scalar))
 
+    ! Return pointer to global_int as a fortran pointer.
     nullify(irvscalar)
     irvscalar => return_int_ptr_to_scalar()
     call assert_true(associated(irvscalar, iscalar))
 
+    ! Return pointer to global_fixed_int as a fortran pointer.
+    nullify(irvarray)
     irvarray => return_int_ptr_to_fixed_array()
+    call assert_true( associated(irvarray))
+    call assert_true( size(irvarray) == 10 )
+    call assert_true(associated(irvscalar, iscalar))
     
   end subroutine test_out_ptrs
   

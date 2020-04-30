@@ -1846,7 +1846,12 @@
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
+                        "npy_dims": "SHD_rv",
+                        "npy_intp_asgn": "SHD_rv[0] = 10;\n",
+                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                        "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
+                        "pointer_shape": "10",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_list",
@@ -1854,6 +1859,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "dimension": "10"
+                    },
                     "declarator": {
                         "name": "returnIntPtrToFixedArray",
                         "pointer": [
@@ -1869,8 +1877,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray()",
-                "declgen": "int * returnIntPtrToFixedArray()",
+                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
                     "function_name": "returnIntPtrToFixedArray",

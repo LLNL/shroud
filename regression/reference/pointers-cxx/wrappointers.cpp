@@ -605,7 +605,7 @@ int * POI_return_int_ptr_to_scalar()
 }
 // end POI_return_int_ptr_to_scalar
 
-// int * returnIntPtrToFixedArray()
+// int * returnIntPtrToFixedArray() +dimension(10)
 // ----------------------------------------
 // Result
 // Requested: c_native_*_result

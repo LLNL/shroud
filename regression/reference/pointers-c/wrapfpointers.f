@@ -884,7 +884,7 @@ contains
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
 
-    ! int * returnIntPtrToFixedArray()
+    ! int * returnIntPtrToFixedArray() +dimension(10)
     ! ----------------------------------------
     ! Result
     ! Exact:     f_native_*_result
@@ -894,11 +894,11 @@ contains
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), pointer :: SHT_rv
+        integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_to_fixed_array()
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, [10])
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array

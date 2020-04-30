@@ -163,4 +163,4 @@ declarations:
     F_force_wrapper: True
 
 - decl: int *returnIntPtrToScalar()
-- decl: int *returnIntPtrToFixedArray()
+- decl: int *returnIntPtrToFixedArray() +dimension(10)

@@ -825,7 +825,7 @@ fail:
 // splicer end function.return_int_ptr_to_scalar
 }
 
-// int * returnIntPtrToFixedArray()
+// int * returnIntPtrToFixedArray() +dimension(10)
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -837,12 +837,14 @@ PY_returnIntPtrToFixedArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_to_fixed_array
+    npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntPtrToFixedArray();
 
     // post_call
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHCXX_rv);
+    SHD_rv[0] = 10;
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT, SHCXX_rv);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
