@@ -35,6 +35,7 @@ test-fortran : \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
+  test-fortran-references \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
@@ -208,6 +209,7 @@ phony_explicit:
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
+    $(tempdir)/run/references/.. \
     $(tempdir)/run/scope/.. \
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \

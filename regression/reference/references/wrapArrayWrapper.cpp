@@ -17,6 +17,20 @@ extern "C" {
 // splicer begin class.ArrayWrapper.C_definitions
 // splicer end class.ArrayWrapper.C_definitions
 
+// ArrayWrapper()
+// ----------------------------------------
+// Result
+// Exact:     c_shadow_scalar_ctor
+REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv)
+{
+    // splicer begin class.ArrayWrapper.method.ctor
+    ArrayWrapper *SHCXX_rv = new ArrayWrapper();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.ctor
+}
+
 // void setSize(int size +intent(in)+value)
 // ----------------------------------------
 // Result

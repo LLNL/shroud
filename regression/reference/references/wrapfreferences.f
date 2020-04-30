@@ -54,6 +54,19 @@ module references_mod
 
         ! ----------------------------------------
         ! Result
+        ! Exact:     c_shadow_scalar_result
+        function c_arraywrapper_ctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_arraywrapper_ctor
+
+        ! ----------------------------------------
+        ! Result
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -116,6 +129,21 @@ module references_mod
     end interface
 
 contains
+
+    ! ArrayWrapper()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    function arraywrapper_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(arraywrapper) :: SHT_rv
+        ! splicer begin class.ArrayWrapper.method.ctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_arraywrapper_ctor(SHT_rv%cxxmem)
+        ! splicer end class.ArrayWrapper.method.ctor
+    end function arraywrapper_ctor
 
     ! void setSize(int size +intent(in)+value)
     ! ----------------------------------------

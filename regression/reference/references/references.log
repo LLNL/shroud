@@ -1,6 +1,7 @@
 Read yaml references.yaml
 Close references_types.yaml
 class ArrayWrapper
+C method ArrayWrapper()
 C method void setSize(int size +intent(in)+value)
 C method int getSize() const
 C method void allocate()
@@ -10,6 +11,7 @@ Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
 Close typesreferences.h
 class ArrayWrapper
+C-interface, Fortran method ArrayWrapper()
 C-interface, Fortran method void setSize(int size +intent(in)+value)
 C-interface, Fortran method int getSize() const
 C-interface, Fortran method void allocate()

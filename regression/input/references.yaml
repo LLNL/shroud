@@ -20,6 +20,7 @@ declarations:
 ##################################################
 - decl: class ArrayWrapper
   declarations:
+  - decl: ArrayWrapper()
   - decl: void setSize(int size)
   - decl: int getSize() const
   - decl: void allocate()

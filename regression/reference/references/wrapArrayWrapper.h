@@ -27,6 +27,8 @@ extern "C" {
 // splicer begin class.ArrayWrapper.C_declarations
 // splicer end class.ArrayWrapper.C_declarations
 
+REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv);
+
 void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size);
 
 int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self);
