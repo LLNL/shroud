@@ -22,7 +22,6 @@ C function Class1 * getClassStatic() +owner(library)
 C function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close wrapownership.h
 Close wrapownership.cpp
-Close utilownership.cpp
 Close typesownership.h
 class Class1
 C-interface, Fortran method ~Class1()
@@ -43,6 +42,7 @@ C-interface, Fortran function void createClassStatic(int flag +intent(in)+value)
 C-interface, Fortran function Class1 * getClassStatic() +owner(library)
 C-interface, Fortran function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close wrapfownership.f
+Close utilownership.cpp
 class Class1
 Python method ~Class1()
 Close pyClass1type.cpp

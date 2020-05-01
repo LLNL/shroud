@@ -70,7 +70,6 @@ C function void cos_doubles(double * in +intent(in)+rank(2), double * out +alloc
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.cpp
-Close utilUserLibrary.cpp
 Close typesUserLibrary.h
 class ExClass1
 C-interface, Fortran method ExClass1()
@@ -140,6 +139,7 @@ C-interface, Fortran function void cos_doubles(double * in +intent(in)+rank(2), 
 Close wrapfUserLibrary_example_nested.f
 Close wrapfUserLibrary_example.f
 Close wrapfuserlibrary.f
+Close utilUserLibrary.cpp
 class ExClass1
 Python method ExClass1()
 Python method ExClass1(const string * name +intent(in))

@@ -41,7 +41,6 @@ C function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
-Close utilclasses.cpp
 Close typesclasses.h
 class Class1
 C-interface, Fortran method Class1() +name(new)
@@ -77,6 +76,7 @@ C-interface, Fortran function int get_global_flag()
 C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapfclasses.f
+Close utilclasses.cpp
 class Class1
 Python method Class1() +name(new)
 Python method Class1(int flag +intent(in)+value) +name(new)

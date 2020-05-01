@@ -51,7 +51,7 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_begin = "/**"
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
-        self.shared_helper = {}  # All accumulated helpers
+        self.shared_helper = config.shared_helpers  # All accumulated helpers
         self.shared_proto_c = []
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
@@ -83,7 +83,6 @@ class Wrapc(util.WrapperMixin):
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
         self.gather_helper_code(self.shared_helper)
-        self.write_impl_utility()
         self.write_header_utility()
 
     def wrap_namespace(self, node, top=False):
@@ -248,6 +247,7 @@ class Wrapc(util.WrapperMixin):
         Helpers which are implemented in C and called from Fortran.
         Named from fmt.C_impl_utility.
         """
+        self.gather_helper_code(self.shared_helper)
         fmt = self.newlibrary.fmtdict
         fname = fmt.C_impl_utility
         write_file = False

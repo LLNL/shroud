@@ -49,6 +49,7 @@ class Config(object):
         self.cfiles = []  # list of C/C++ files created
         self.ffiles = []  # list of Fortran files created
         self.pyfiles = []  # list of Python module files created
+        self.shared_helpers = {} # All acccumulated C/Fortran helpers
 
 
 class TypeOut(util.WrapperMixin):
@@ -478,11 +479,20 @@ def main_with_args(args):
 
     try:
         options = newlibrary.options
+        # Wrap C functions first to see which actually generate wrappers
+        # based on fc_statements. Then the Fortran wrapper will call
+        # the C function directly or the wrapped function.
+        clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
         if options.wrap_c:
-            wrapc.Wrapc(newlibrary, config, splicers["c"]).wrap_library()
+            clibrary.wrap_library()
 
         if options.wrap_fortran:
             wrapf.Wrapf(newlibrary, config, splicers["f"]).wrap_library()
+
+        # Fortran wrappers may produce C helper functions.
+        # i.e. implemented in C but call from Fortran via BIND(C).
+        # Write C utility file after creating Fortran wrappers.
+        clibrary.write_impl_utility()
 
         if options.wrap_python:
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()
