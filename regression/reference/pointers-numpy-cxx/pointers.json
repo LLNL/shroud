@@ -508,6 +508,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -600,6 +607,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -615,6 +629,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -819,6 +840,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1015,6 +1043,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -1368,6 +1403,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1412,6 +1454,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
                                     }
                                 ]
                             },
@@ -1502,6 +1551,14 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getlen"
                                     }
                                 ]
                             },
@@ -1854,6 +1911,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "constant": "10"
                             }
                         ]
                     },

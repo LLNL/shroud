@@ -126,6 +126,8 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(ast.params)
 
+        self.parse_attrs(node.ast)
+            
     def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
         deref, dimension, free_pattern, owner, rank
@@ -236,7 +238,7 @@ class VerifyAttrs(object):
         attrs = arg.attrs
 
         for attr in attrs:
-            if attr[0] == "_":  # internal attribute
+            if attr[0] == "_":  # Shroud internal attribute.
                 continue
             if attr not in [
                 "allocatable",
@@ -405,9 +407,32 @@ class VerifyAttrs(object):
                 % (arg_typemap.name, arg.gen_decl())
             )
 
+        self.parse_attrs(arg)
+
         if arg.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1, options)
+
+    def parse_attrs(self, ast):
+        """Parse attributes and save the AST.
+        This tree will be traversed by the wrapping classes
+        to convert to language specific code.
+
+        Args:
+            attrs - collections.defaultdict
+            node - Container struct or class.
+        """
+        attrs = ast.attrs
+        metaattrs = ast.metaattrs
+        
+        dim = attrs["dimension"]
+        if dim:
+            # XXX - skip assumed-length and assumed-shape for now.
+            if dim[0] not in ["*", ":"]:
+                try:
+                    metaattrs["dimension"] = declast.check_dimension(dim)
+                except RuntimeError:
+                    raise RuntimeError("Unable to parse dimension: " + dim)
 
 
 class GenFunctions(object):

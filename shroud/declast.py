@@ -299,11 +299,33 @@ class ExprParser(RecursiveDescent):
         self.exit("argument_list", str(params))
         return params
 
+    def dimension_shape(self):
+        """Parse dimension.
+        A comma delimited list of expressions:
+           expr [ , expr ]*
+        Only the upper bound is set.
+        Use with attribute +dimension().
+        Return the shape as a list of expressions.
+        """
+        # similar to argument_list but without parens
+        self.enter("argument_list")
+        shape = []
+        while True:
+            node = self.expression()
+            shape.append(node)
+            if not self.have("COMMA"):
+                break
+        self.exit("argument_list", str(shape))
+        return shape
 
 def check_expr(expr, trace=False):
     a = ExprParser(expr, trace=trace).expression()
     return a
 
+def check_dimension(dim, trace=False):
+    """return a list of expressions"""
+    a = ExprParser(dim, trace=trace).dimension_shape()
+    return a
 
 ######################################################################
 

@@ -67,6 +67,8 @@ class ToDict(visitor.Visitor):
                 # struct_member is a ast.VariableNode, add name instead
                 # to avoid huge dump.
                 metaattrs["struct_member"] = metaattrs["struct_member"].name
+            if "dimension" in metaattrs:
+                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
             d["metaattrs"] = metaattrs
         
         add_true_fields(node, d, ["const", "func_const", "volatile"])
