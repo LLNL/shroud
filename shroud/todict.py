@@ -388,11 +388,14 @@ class PrintNode(visitor.Visitor):
     """
 
     def param_list(self, node):
-        n = [node.name, "("]
-        for arg in node.args:
-            n.append(self.visit(arg))
-            n.append(",")
-        n[-1] = ")"
+        if node.args:
+            n = [node.name, "("]
+            for arg in node.args:
+                n.append(self.visit(arg))
+                n.append(",")
+            n[-1] = ")"
+        else:
+            n = [node.name, "()"]
         return "".join(n)
 
     def comma_list(self, lst):

@@ -19,6 +19,7 @@ import copy
 import os
 import re
 
+from . import ast
 from . import declast
 from . import todict
 from . import typemap
@@ -1355,13 +1356,14 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, f_ast, c_ast, fmt, is_result=False,
+    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, is_result=False,
                        ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            cls   - ast.ClassNode or None
             f_ast - declast.Declaration - Fortran argument
             c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
@@ -1400,6 +1402,7 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
+            ftn_dimension(cls, f_ast, fmt)
             fmt.f_assumed_shape = "(:)"  # XXX - assumes 1-d
 
         return ntypemap
@@ -1475,7 +1478,7 @@ rv = .false.
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            self.set_fmt_fields(ast, C_node.ast, fmt_result, True,
+            self.set_fmt_fields(cls, ast, C_node.ast, fmt_result, True,
                                 result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
@@ -1599,7 +1602,7 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
+            arg_typemap = self.set_fmt_fields(cls, f_arg, c_arg, fmt_arg)
             f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup
@@ -1663,7 +1666,7 @@ rv = .false.
                 elif implied:
                     # implied is computed then passed to C++.
                     fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
-                        f_arg.attrs["implied"], node, f_arg)
+                        implied, node, f_arg)
                     if intermediate:
                         fmt_arg.c_var = "SH_" + fmt_arg.f_var
                         arg_f_decl.append(f_arg.gen_arg_as_fortran(
@@ -2059,6 +2062,83 @@ rv = .false.
         """
         pass
 
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Convert dimension expression to Fortran wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+
+    def __init__(self, cls, fmt):
+        """
+        Args:
+            dim -
+            container -
+            arg -
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fmt = fmt
+
+        self.rank = 0
+        self.shape = []
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        # Look for members of class/struct.
+        if self.cls is not None and node.name in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            fmt_cls = self.cls.fmtdict
+            
+            member = self.cls.map_name_to_node[node.name]
+            fmt_member = member.fmtdict
+            obj = fmt_cls.F_this
+            if isinstance(member, ast.VariableNode):
+                if node.args is not None:
+                    print("{} must not have arguments".format(node.name))
+                else:
+                    return "{}%{}".format(obj, node.name)
+            else: # ast.FunctionNode
+                if node.args is None:
+                    print("{} must have arguments".format(node.name))
+                else:
+                    return (
+                        wformat("{F_this}%{F_name_function}(", member.fmtdict)
+                        + self.comma_list(node.args) + ")"
+                    )
+        elif node.args is None:
+            return node.name
+        else:
+            return self.param_list(node)
+        return
+
+def ftn_dimension(cls, ast, fmt):
+    """Set format fields from dimension attribute.
+
+    Args:
+        cls  - ast.ClassNode or None
+        dim  - declast.Declaration
+        fmt  - util.Scope
+    """
+    if cls is not None:
+        cls.create_node_map()
+    visitor = ToDimension(cls, fmt)
+    visitor.visit(ast.metaattrs["dimension"])
+    if visitor.rank > 0:
+        fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
+    fmt.f_assumed_shape = fortran_ranks[visitor.rank]
+
+######################################################################
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Fortran wrapper code.
@@ -2103,6 +2183,7 @@ class ToImplied(todict.PrintNode):
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "type":
+            # type(arg)
             self.intermediate = True
             self.helper = "ShroudTypeDefines"
             argname = node.args[0].name
@@ -2137,6 +2218,7 @@ def ftn_implied(expr, func, arg):
     visitor = ToImplied(expr, func, arg)
     return visitor.visit(node), visitor.intermediate, visitor.helper
 
+######################################################################
 
 def attr_allocatable(allocatable, node, arg, pre_call):
     """Add the allocatable attribute to the pre_call block.
@@ -2193,6 +2275,7 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             fmt.mold = ",".join(bounds)
             append_format(pre_call, "allocate({f_var}({mold}))", fmt)
 
+######################################################################
 
 class ModuleInfo(object):
     """Contains information to create a Fortran module.

@@ -1192,6 +1192,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.map_name_to_node = {}
         for var in self.variables:
             self.map_name_to_node[var.name] = var
+        for node in self.functions:
+            self.map_name_to_node[node.ast.name] = node
 
 ######################################################################
 
