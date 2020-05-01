@@ -1402,10 +1402,25 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            ftn_dimension(cls, f_ast, fmt)
-            fmt.f_assumed_shape = "(:)"  # XXX - assumes 1-d
+            self.ftn_dimension(cls, f_ast, fmt)
 
         return ntypemap
+
+    def ftn_dimension(self, cls, ast, fmt):
+        """Set format fields from dimension attribute.
+
+        Args:
+            cls  - ast.ClassNode or None
+            dim  - declast.Declaration
+            fmt  - util.Scope
+        """
+        if cls is not None:
+            cls.create_node_map()
+        visitor = ToDimension(cls, fmt)
+        visitor.visit(ast.metaattrs["dimension"])
+        if visitor.rank > 0:
+            fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
+        fmt.f_assumed_shape = fortran_ranks[visitor.rank]
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -2121,22 +2136,6 @@ class ToDimension(todict.PrintNode):
         else:
             return self.param_list(node)
         return
-
-def ftn_dimension(cls, ast, fmt):
-    """Set format fields from dimension attribute.
-
-    Args:
-        cls  - ast.ClassNode or None
-        dim  - declast.Declaration
-        fmt  - util.Scope
-    """
-    if cls is not None:
-        cls.create_node_map()
-    visitor = ToDimension(cls, fmt)
-    visitor.visit(ast.metaattrs["dimension"])
-    if visitor.rank > 0:
-        fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
-    fmt.f_assumed_shape = fortran_ranks[visitor.rank]
 
 ######################################################################
 
