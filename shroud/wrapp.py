@@ -831,23 +831,6 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def check_dimension_blk(self, arg):
-        """Check dimension attribute.
-        Convert it to use Numpy.
-
-        Args:
-            arg - argument node.
-        """
-        intent = arg.attrs["intent"]
-        if intent == "out":
-            dimension = arg.attrs["dimension"]
-            if dimension is None:
-                raise RuntimeError(
-                    "Argument must have non-default dimension attribute")
-            if dimension == "*":
-                raise RuntimeError(
-                    "Argument dimension must not be assumed-length")
-
     def set_fmt_fields(self, ast, fmt, is_result=False):
         """
         Set format fields for ast.
@@ -1162,6 +1145,7 @@ return 1;""",
             self.set_fmt_fields(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
+            rank = arg.attrs["rank"]
             dimension = arg.attrs["dimension"]
             allocatable = attrs["allocatable"]
             hidden = attrs["hidden"]
@@ -1213,9 +1197,8 @@ return 1;""",
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
-            elif dimension:
-                # ex. (int * arg1 +intent(in) +dimension(:))
-                self.check_dimension_blk(arg)
+            elif rank or dimension:
+                # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
                 stmts = ["py", sgroup, spointer, intent]
@@ -3289,9 +3272,10 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
                     moldvar, allocatable
                 )
             )
-        if moldarg.attrs["dimension"] is None:
+        if moldarg.attrs["dimension"] is None and \
+           moldarg.attrs["rank"] is None:
             raise RuntimeError(
-                "Mold argument '{}' must have dimension attribute: {}".format(
+                "Mold argument '{}' must have dimension or rank attribute: {}".format(
                     moldvar, allocatable
                 )
             )

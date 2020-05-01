@@ -88,7 +88,7 @@ class VerifyAttrs(object):
                 "dimension attribute can only be "
                 "used on pointer and references"
             )
-        self.parse_attrs(ast)
+        self.parse_attrs(node, ast)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
@@ -137,7 +137,7 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(ast.params)
 
-        self.parse_attrs(node.ast)
+        self.parse_attrs(node, ast)
             
     def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
@@ -194,20 +194,13 @@ class VerifyAttrs(object):
                     "dimension attribute can only be "
                     "used on pointer and references"
                 )
-            if dimension is True:
-                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
-                # No value was provided, provide default
-                if attrs["allocatable"]:
-                    attrs["dimension"] = ":"
-                else:
-                    attrs["dimension"] = "*"
         elif ntypemap:
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
-                attrs["dimension"] = ":"
+                attrs["rank"] = 1
             elif ntypemap.name == 'char' and is_ptr == 2:
                 # 'char **' -> CHARACTER(*) s(:)
-                attrs["dimension"] = ":"
+                attrs["rank"] = 1
 
         owner = attrs["owner"]
         if owner is not None:
@@ -418,13 +411,13 @@ class VerifyAttrs(object):
                 % (arg_typemap.name, arg.gen_decl())
             )
 
-        self.parse_attrs(arg)
+        self.parse_attrs(node, arg)
 
         if arg.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1, options)
 
-    def parse_attrs(self, ast):
+    def parse_attrs(self, node, ast):
         """Parse attributes and save the AST.
         This tree will be traversed by the wrapping classes
         to convert to language specific code.
@@ -438,12 +431,11 @@ class VerifyAttrs(object):
         
         dim = attrs["dimension"]
         if dim:
-            # XXX - skip assumed-length and assumed-shape for now.
-            if dim[0] not in ["*", ":"]:
-                try:
-                    metaattrs["dimension"] = declast.check_dimension(dim)
-                except RuntimeError:
-                    raise RuntimeError("Unable to parse dimension: " + dim)
+            try:
+                metaattrs["dimension"] = declast.check_dimension(dim)
+            except RuntimeError:
+                raise RuntimeError("Unable to parse dimension: {} at line {}"
+                                   .format(dim, node.linenumber))
 
 
 class GenFunctions(object):

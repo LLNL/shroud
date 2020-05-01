@@ -34,8 +34,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -66,7 +66,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))",
                 "fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)",
@@ -112,11 +112,11 @@
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_in_native",
                             "stmt1": "f_default",
                             "stmtc0": "c_vector_&_in_buf_native",
@@ -148,8 +148,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
                                 "intent": "in",
+                                "rank": 1,
                                 "size": "Sarg"
                             },
                             "const": true,
@@ -182,7 +182,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg))",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
@@ -212,8 +212,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -243,7 +243,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -278,7 +278,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
@@ -294,15 +293,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
                             "stmtc0": "c_vector_&_out_buf_native",
@@ -320,8 +318,8 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -352,7 +350,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -386,8 +384,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -417,7 +415,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -478,7 +476,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
@@ -494,15 +491,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
                             "stmtc0": "c_vector_&_out_buf_native",
@@ -520,8 +516,8 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -552,7 +548,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -609,8 +605,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -640,7 +636,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -695,7 +691,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
@@ -711,15 +706,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
                             "stmtc0": "c_vector_&_out_buf_native",
@@ -737,8 +731,8 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -769,7 +763,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -821,8 +815,8 @@
                         {
                             "attrs": {
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -852,7 +846,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -888,7 +882,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
@@ -904,15 +897,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_out_allocatable_native",
                             "stmt1": "f_vector_out_allocatable",
                             "stmtc0": "c_vector_&_out_buf_native",
@@ -931,8 +923,8 @@
                             "attrs": {
                                 "context": "Darg",
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -963,7 +955,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -998,8 +990,8 @@
                         {
                             "attrs": {
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1029,7 +1021,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1065,7 +1057,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
@@ -1082,15 +1073,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_inout_allocatable_native",
                             "stmt1": "f_vector_inout_allocatable",
                             "stmtc0": "c_vector_&_inout_buf_native",
@@ -1109,8 +1099,8 @@
                             "attrs": {
                                 "context": "Darg",
                                 "deref": "allocatable",
-                                "dimension": ":",
                                 "intent": "inout",
+                                "rank": 1,
                                 "size": "Sarg"
                             },
                             "declarator": {
@@ -1142,7 +1132,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1176,8 +1166,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1207,7 +1197,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))",
+                "declgen": "void vector_increment(std::vector<int> & arg +intent(inout)+rank(1))",
                 "fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
@@ -1239,7 +1229,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
@@ -1256,15 +1245,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_inout_native",
                             "stmt1": "f_vector_inout",
                             "stmtc0": "c_vector_&_inout_buf_native",
@@ -1282,8 +1270,8 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "dimension": ":",
                                 "intent": "inout",
+                                "rank": 1,
                                 "size": "Sarg"
                             },
                             "declarator": {
@@ -1315,7 +1303,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))",
+                "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg))",
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
@@ -1345,8 +1333,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1376,7 +1364,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -1410,7 +1398,6 @@
                             "c_member": "->",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
@@ -1426,15 +1413,14 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
-                            "c_var_dimension": ":",
                             "cxx_T": "double",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_out_native",
                             "stmt1": "f_vector_out",
                             "stmtc0": "c_vector_&_out_buf_native",
@@ -1452,8 +1438,8 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1484,7 +1470,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context(Darg)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context(Darg)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -1529,8 +1515,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -1561,7 +1547,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+rank(1))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1612,11 +1598,11 @@
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "character(*)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
                             "stmt0": "f_vector_&_in_string",
                             "stmt1": "f_default",
                             "stmtc0": "c_vector_&_in_buf_string",
@@ -1648,9 +1634,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
                                 "intent": "in",
                                 "len": "Narg",
+                                "rank": 1,
                                 "size": "Sarg"
                             },
                             "const": true,
@@ -1683,7 +1669,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1716,8 +1702,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1747,7 +1733,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -1772,8 +1758,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1803,7 +1789,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
@@ -1823,11 +1809,11 @@
                     "fmtf": {
                         "cxx_type": "std::vector<{cxx_T}>",
                         "f_assumed_shape": "(:)",
-                        "f_pointer_shape": ", [:]",
                         "f_type": null,
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_OTHER",
+                        "size": "size(SHT_rv)",
                         "stmt0": "f_vector_scalar_result_allocatable",
                         "stmt1": "f_vector_result_allocatable",
                         "stmtc0": "c_vector_scalar_result_buf",
@@ -1837,7 +1823,7 @@
                 "ast": {
                     "attrs": {
                         "deref": "allocatable",
-                        "dimension": ":"
+                        "rank": 1
                     },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
@@ -1874,7 +1860,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+dimension(:)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
@@ -1904,7 +1890,6 @@
                             "c_member": "->",
                             "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)",
@@ -1920,15 +1905,14 @@
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
-                            "c_var_dimension": ":",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "SHT_rv",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(SHT_rv)",
                             "stmt0": "f_vector_*_result_allocatable_native",
                             "stmt1": "f_vector_result_allocatable",
                             "stmtc0": "c_vector_*_result_buf_allocatable_native",
@@ -1983,7 +1967,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "dimension": ":"
+                        "rank": 1
                     },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
@@ -2010,8 +1994,8 @@
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -2041,7 +2025,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+dimension(:)+intent(out)) +dimension(:)",
+                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },

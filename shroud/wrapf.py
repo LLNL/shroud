@@ -864,7 +864,11 @@ rv = .false.
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if attrs["assumedtype"]:
-                    if attrs["dimension"]:
+                    if attrs["rank"]:
+                        arg_c_decl.append(
+                            "type(*) :: {}(*)".format(ast.name)
+                        )
+                    elif attrs["dimension"]:
                         arg_c_decl.append(
                             "type(*) :: {}({})".format(
                                 ast.name, attrs["dimension"])
@@ -1383,7 +1387,6 @@ rv = .false.
         dim = c_attrs["dimension"]
         if dim:
             # XXX - Assume 1-d
-            fmt.f_var_shape = "(:)"  # assumed_shape
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
 
         f_attrs = f_ast.attrs
@@ -1801,7 +1804,7 @@ rv = .false.
                     f_type = ntypemap.f_type
                 arg_f_decl.append("{}, {} :: {}{}".format(
                     f_type, return_pointer_as,
-                    fmt_result.f_var, fmt_result.f_var_shape))
+                    fmt_result.f_var, fmt_result.f_assumed_shape))
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -2163,9 +2166,10 @@ def attr_allocatable(allocatable, node, arg, pre_call):
                     moldvar, allocatable
                 )
             )
-        if moldarg.attrs["dimension"] is None:
+        if moldarg.attrs["dimension"] is None and \
+           moldarg.attrs["rank"] is None:
             raise RuntimeError(
-                "Mold argument '{}' must have dimension attribute: {}".format(
+                "Mold argument '{}' must have dimension or rank attribute: {}".format(
                     moldvar, allocatable
                 )
             )
@@ -2175,7 +2179,10 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             fmt.mold = m.group(0)
             append_format(pre_call, "allocate({f_var}, {mold})", fmt)
         else:
-            rank = len(moldarg.attrs["dimension"].split(","))
+            if moldarg.attrs["rank"]:
+                rank = int(moldarg.attrs["rank"])
+            else:
+                rank = len(moldarg.attrs["dimension"].split(","))
             bounds = []
             for i in range(1, rank + 1):
                 bounds.append(

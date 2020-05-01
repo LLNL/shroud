@@ -566,7 +566,7 @@ module pointers_mod
 
 contains
 
-    ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -604,7 +604,7 @@ contains
     end subroutine cos_doubles
     ! end cos_doubles
 
-    ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -643,7 +643,7 @@ contains
     end subroutine truncate_to_int
     ! end truncate_to_int
 
-    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -675,7 +675,7 @@ contains
     end subroutine sum
     ! end sum
 
-    ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+    ! void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -703,7 +703,7 @@ contains
     end subroutine increment_int_array
     ! end increment_int_array
 
-    ! void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+    ! void acceptCharArrayIn(char * * names +intent(in)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result

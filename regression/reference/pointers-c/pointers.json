@@ -216,11 +216,11 @@
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(in)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -294,8 +294,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -349,8 +349,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -402,11 +402,11 @@
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(in)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -480,8 +480,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -535,8 +535,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -621,7 +621,6 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -740,7 +739,6 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -773,7 +771,6 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1062,7 +1059,6 @@
                             "f_pointer_shape": ", [nvar]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1228,11 +1224,11 @@
                             "c_var": "values",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(values)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -1263,8 +1259,8 @@
                         },
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "values",
@@ -1302,8 +1298,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "C_call_list": "len,\t values,\t result",
                     "C_name": "Sum",
@@ -1356,7 +1352,6 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1454,11 +1449,11 @@
                             "c_var": "array",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "array",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(array)",
                             "stmt0": "f_native_*_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_inout",
@@ -1501,8 +1496,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "array",
@@ -1538,8 +1533,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
+                "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1595,8 +1590,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "names",
@@ -1621,7 +1616,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "fmtdict": {
                     "C_call_list": "names",
                     "C_name": "acceptCharArrayIn",
@@ -1671,11 +1666,11 @@
                             "c_var": "names",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "character(*)",
                             "f_var": "names",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(names)",
                             "stmt0": "f_char_**_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_**_in_buf",
@@ -1692,9 +1687,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
                                 "intent": "in",
                                 "len": "Nnames",
+                                "rank": 1,
                                 "size": "Snames"
                             },
                             "declarator": {
@@ -1721,7 +1716,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))",
                 "fmtdict": {
                     "C_call_list": "SHCXX_names",
                     "C_name": "POI_accept_char_array_in_bufferify",
@@ -2006,7 +2001,6 @@
                             "f_pointer_shape": ", [10]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -2112,7 +2106,6 @@
                             "f_pointer_shape": ", [ncount]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -2329,7 +2322,6 @@
                             "f_pointer_shape": ", [getlen()]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -2909,7 +2901,6 @@
                         "f_pointer_shape": ", [10]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result",
                         "stmt1": "f_native_*_result",

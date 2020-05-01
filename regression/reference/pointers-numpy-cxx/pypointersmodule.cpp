@@ -116,7 +116,7 @@ PY_intargs(
 // splicer end function.intargs
 }
 
-// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
 // Argument:  in
 // Exact:     py_native_in_dimension_numpy
@@ -183,7 +183,7 @@ fail:
 // splicer end function.cos_doubles
 }
 
-// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
 // Argument:  in
 // Exact:     py_native_in_dimension_numpy
@@ -484,7 +484,7 @@ fail:
 // splicer end function.iota_dimension
 }
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
 // Argument:  values
 // Exact:     py_native_in_dimension_numpy
@@ -589,7 +589,7 @@ fail:
 // splicer end function.fill_int_array
 }
 
-// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 // ----------------------------------------
 // Argument:  array
 // Exact:     py_native_inout_dimension_numpy
@@ -640,7 +640,7 @@ fail:
 // splicer end function.increment_int_array
 }
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
 // Argument:  names
 // Exact:     py_char_**_in

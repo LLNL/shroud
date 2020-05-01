@@ -220,8 +220,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -275,8 +275,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -362,8 +362,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -417,8 +417,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -961,8 +961,8 @@
                         },
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "values",
@@ -1000,8 +1000,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum",
@@ -1138,8 +1138,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "array",
@@ -1175,8 +1175,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
+                "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1218,8 +1218,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "names",
@@ -1244,7 +1244,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "fmtdict": {
                     "PY_name_impl": "PY_acceptCharArrayIn",
                     "function_name": "acceptCharArrayIn",

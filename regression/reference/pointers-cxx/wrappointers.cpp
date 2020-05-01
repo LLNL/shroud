@@ -91,7 +91,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 }
 // end POI_intargs
 
-// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief compute cos of IN and save in OUT
  *
@@ -122,7 +122,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 }
 // end POI_cos_doubles
 
-// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief truncate IN argument and save in OUT
  *
@@ -256,7 +256,7 @@ void POI_iota_dimension(int nvar, int * values)
 }
 // end POI_iota_dimension
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -303,7 +303,7 @@ void POI_fill_int_array(int * out)
 }
 // end POI_fill_int_array
 
-// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 /**
  * Increment array in place using intent(INOUT).
  */
@@ -328,7 +328,7 @@ void POI_increment_int_array(int * array, int sizein)
 }
 // end POI_increment_int_array
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -346,7 +346,7 @@ void POI_accept_char_array_in(char * * names)
 }
 // end POI_accept_char_array_in
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+// void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))
 // ----------------------------------------
 // Result
 // Requested: c

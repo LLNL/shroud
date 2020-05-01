@@ -462,7 +462,7 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
     // splicer end namespace.example::nested.function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief Test multidimensional arrays with allocatable
  *

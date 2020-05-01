@@ -64,8 +64,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -96,7 +96,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))",
                 "fmtdict": {
                     "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum",
@@ -144,8 +144,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -175,7 +175,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -198,8 +198,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -229,7 +229,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -275,8 +275,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -306,7 +306,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -347,8 +347,8 @@
                         {
                             "attrs": {
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -378,7 +378,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -402,8 +402,8 @@
                         {
                             "attrs": {
                                 "deref": "allocatable",
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -433,7 +433,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -456,8 +456,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -487,7 +487,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))",
+                "declgen": "void vector_increment(std::vector<int> & arg +intent(inout)+rank(1))",
                 "fmtdict": {
                     "function_name": "vector_increment",
                     "underscore_name": "vector_increment"
@@ -534,8 +534,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -565,7 +565,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -587,8 +587,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -619,7 +619,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+rank(1))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -641,8 +641,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -672,7 +672,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -697,8 +697,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -728,7 +728,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
@@ -792,7 +792,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "dimension": ":"
+                        "rank": 1
                     },
                     "declarator": {
                         "name": "ReturnVectorAlloc",
@@ -829,7 +829,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +dimension(:)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },

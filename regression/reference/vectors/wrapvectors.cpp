@@ -35,7 +35,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
+// int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg))
 // ----------------------------------------
 // Result
 // Requested: c_native_scalar_result_buf
@@ -55,7 +55,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 }
 // end VEC_vector_sum_bufferify
 
-// void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+// void vector_iota_out(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -85,7 +85,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_bufferify
 
-// void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+// void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -118,7 +118,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_with_num_bufferify
 
-// void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+// void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -150,7 +150,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_with_num2_bufferify
 
-// void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
+// void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -180,7 +180,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_alloc_bufferify
 
-// void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
+// void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -211,7 +211,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 }
 // end VEC_vector_iota_inout_alloc_bufferify
 
-// void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
+// void vector_increment(std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -236,7 +236,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     // splicer end function.vector_increment_bufferify
 }
 
-// void vector_iota_out_d(std::vector<double> & arg +context(Darg)+dimension(:)+intent(out))
+// void vector_iota_out_d(std::vector<double> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -264,7 +264,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
     // splicer end function.vector_iota_out_d_bufferify
 }
 
-// int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
+// int vector_string_count(const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg))
 /**
  * \brief count number of underscore in vector of strings
  *
@@ -297,7 +297,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     // splicer end function.vector_string_count_bufferify
 }
 
-// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+dimension(:)+intent(out)) +dimension(:)
+// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)) +rank(1)
 /**
  * Implement iota function.
  * Return a vector as an ALLOCATABLE array.
