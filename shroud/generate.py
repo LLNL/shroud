@@ -51,9 +51,8 @@ class VerifyAttrs(object):
             node - ast.LibraryNode, ast.NameSpaceNode
         """
         for cls in node.classes:
-            if not cls.as_struct:
-                for var in cls.variables:
-                    self.check_var_attrs(cls, var)
+            for var in cls.variables:
+                self.check_var_attrs(cls, var)
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
@@ -64,20 +63,32 @@ class VerifyAttrs(object):
             self.verify_namespace_attrs(ns)
 
     def check_var_attrs(self, cls, node):
-        """
+        """Check attributes for variables.
+        This includes struct and class members.
+
         Args:
             cls -
             node -
         """
-        for attr in node.ast.attrs:
+        ast = node.ast
+        attrs = ast.attrs
+        for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
-            if attr not in ["name", "readonly"]:
+            if attr not in ["name", "readonly", "dimension"]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, node.ast.name, node.linenumber
+                        attr, ast.name, node.linenumber
                     )
                 )
+
+        is_ptr = ast.is_indirect()
+        if attrs["dimension"] and not is_ptr:
+            raise RuntimeError(
+                "dimension attribute can only be "
+                "used on pointer and references"
+            )
+        self.parse_attrs(ast)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
