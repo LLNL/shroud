@@ -1101,8 +1101,8 @@ def create_f_pointer_shape(visitor, fmtin, ntypemap):
         ntypemap - Typemap of container class/struct.
                    Used for obj.
     """
-    name = "create_f_pointer_shape_" + str(f_pointer_shape_count)
     global f_pointer_shape_count
+    name = "create_f_pointer_shape_" + str(f_pointer_shape_count)
     f_pointer_shape_count += 1
 
     fmt = util.Scope(fmtin)
