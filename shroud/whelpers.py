@@ -1123,10 +1123,8 @@ def create_f_pointer_shape(visitor, fmtin, ntypemap):
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
         scope="cwrap_impl",
-#        dependent_helpers=["array_context"],
-#        c_include="<string.h>",
-#        cxx_include="<cstring>",
-        # 'this' argument, always a pointer to a shadow type.
+        include=" ".join(ntypemap.impl_header),
+        # {C_this} argument, always a pointer to a shadow capsule type.
         source=wformat(
                 """
 {lstart}// helper {hname}

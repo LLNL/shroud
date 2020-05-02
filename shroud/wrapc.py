@@ -159,7 +159,7 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         if not self.write_header(ns, cls, c_header):
-            # The header will not be written if it is empty
+            # The header will not be written if it is empty.
             c_header = None
         self.write_impl(ns, cls, c_header, c_impl)
 
@@ -1374,8 +1374,8 @@ class Wrapc(util.WrapperMixin):
             self.capsule_order.append(name)
 
             # include files required by the type
-            if var_typemap and var_typemap.cxx_header:
-                for include in var_typemap.cxx_header.split():
+            if var_typemap:
+                for include in var_typemap.cxx_header:
                     self.capsule_include[include] = True
 
         return self.capsule_code[name][0]
