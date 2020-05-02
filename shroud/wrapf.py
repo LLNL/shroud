@@ -56,6 +56,7 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_cont = "!!"
         self.doxygen_end = "!<"
         self.file_list = []
+        self.shared_helper = config.shared_helpers  # All accumulated helpers
         ModuleInfo.newlibrary = newlibrary
 
     _default_buf_args = ["arg"]
@@ -1350,6 +1351,10 @@ rv = .false.
             for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
+        if intent_blk.c_helper:
+            c_helper = wformat(intent_blk.c_helper, fmt)
+            for helper in c_helper.split():
+                fileinfo.c_helper[helper] = True
         if intent_blk.f_helper:
             f_helper = wformat(intent_blk.f_helper, fmt)
             for helper in f_helper.split():
@@ -2004,6 +2009,9 @@ rv = .false.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
+        # Accumulate all C helpers for later processing.
+        self.shared_helper.update(fileinfo.c_helper)
+
     def write_module(self, fileinfo):
         """ Write Fortran wrapper module.
         This may be for a library or a class.
@@ -2301,6 +2309,7 @@ class ModuleInfo(object):
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
 
+        self.c_helper = {}
         self.f_helper = {}
         self.helper_derived_type = []
         self.helper_source = []
