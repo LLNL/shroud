@@ -48,7 +48,7 @@ class CheckAllocatable(unittest.TestCase):
                 "mold=flag", self.func1, self.func1.ast.params[2], pre_call
             )
         self.assertTrue(
-            "must have dimension attribute" in str(context.exception)
+            "must have dimension or rank attribute" in str(context.exception)
         )
 
     def test_allocatable1d(self):
