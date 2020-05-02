@@ -1362,7 +1362,7 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, modules, fileinfo,
+    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
                        is_result=False,
                        ntypemap=None):
         """
@@ -1370,7 +1370,8 @@ rv = .false.
         Used with arguments and results.
 
         Args:
-            cls   - ast.ClassNode or None
+            cls   - ast.ClassNode or None of enclosing class.
+            fcn   - ast.FunctionNode of calling function.
             f_ast - declast.Declaration - Fortran argument
             c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
@@ -1409,21 +1410,22 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, f_ast, fmt, modules, fileinfo)
+            self.ftn_dimension(cls, fcn, f_ast, fmt, modules, fileinfo)
 
         return ntypemap
 
-    def ftn_dimension(self, cls, ast, fmt, modules, fileinfo):
+    def ftn_dimension(self, cls, fcn, ast, fmt, modules, fileinfo):
         """Set format fields from dimension attribute.
 
         Args:
             cls  - ast.ClassNode or None
-            ast  - declast.Declaration
+            fcn  - ast.FunctionNode of calling function.
+            ast  - declast.Declaration for argument.
             fmt  - util.Scope
         """
         if cls is not None:
             cls.create_node_map()
-        visitor = ToDimension(cls, fmt)
+        visitor = ToDimension(cls, fcn, fmt)
         visitor.visit(ast.metaattrs["dimension"])
         fmt.rank = str(visitor.rank)
         if visitor.rank > 0:
@@ -1433,15 +1435,20 @@ rv = .false.
         if visitor.need_helper:
             # Write C helper in utility file.
             fmt.f_get_shape_func = "SHROUD_get_shape_" + fmt.f_var
-            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls.typemap)
+            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls, fcn)
             fileinfo.c_helper[hname] = True
 
             fmt.f_shape_var = fmt.f_declare_shape_prefix + fmt.f_var
             fmt.f_declare_shape_array = wformat(
                 "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
             fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]
-            fmt.f_get_shape_array = wformat(
-                "call {f_get_shape_func}({F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
+            if cls:
+                fmt.f_get_shape_array = wformat(
+                    "call {f_get_shape_func}("
+                    "{F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
+            else:
+                fmt.f_get_shape_array = wformat(
+                    "call {f_get_shape_func}({f_shape_var})\n", fmt)
             fmt.f_pointer_shape = ", {}".format(fmt.f_shape_var)
             self.set_f_module(modules, "iso_c_binding", "C_INT")
 
@@ -1516,7 +1523,7 @@ rv = .false.
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            self.set_fmt_fields(cls, ast, C_node.ast, fmt_result,
+            self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                                 modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
@@ -1641,7 +1648,7 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
             arg_typemap = self.set_fmt_fields(
-                cls, f_arg, c_arg, fmt_arg, modules, fileinfo)
+                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup
@@ -2114,15 +2121,16 @@ class ToDimension(todict.PrintNode):
       size  -  PyArray_SIZE
     """
 
-    def __init__(self, cls, fmt):
+    def __init__(self, cls, fcn, fmt):
         """
         Args:
-            dim -
-            container -
-            arg -
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
         """
         super(ToDimension, self).__init__()
         self.cls = cls
+        self.fcn = fcn
         self.fmt = fmt
 
         self.rank = 0
@@ -2137,29 +2145,32 @@ class ToDimension(todict.PrintNode):
             self.shape.append(sh)
 
     def visit_Identifier(self, node):
+        argname = node.name
         # Look for members of class/struct.
-        if self.cls is not None and node.name in self.cls.map_name_to_node:
+        if self.cls is not None and argname in self.cls.map_name_to_node:
             # This name is in the same class as the dimension.
             # Make name relative to the class.
             self.need_helper = True
-            member = self.cls.map_name_to_node[node.name]
+            member = self.cls.map_name_to_node[argname]
             if isinstance(member, ast.VariableNode):
                 if node.args is not None:
-                    print("{} must not have arguments".format(node.name))
+                    print("{} must not have arguments".format(argname))
                 else:
                     return "obj->{}".format(node.name)
             else: # ast.FunctionNode
                 if node.args is None:
-                    print("{} must have arguments".format(node.name))
+                    print("{} must have arguments".format(argname))
                 else:
                     return "obj->{}({})".format(
-                        node.name, 
-                        self.comma_list(node.args))
-        elif node.args is None:
-            return node.name
+                        argname, self.comma_list(node.args))
         else:
-            return self.param_list(node)
-        return
+            if self.fcn.ast.find_arg_by_name(argname) is None:
+                self.need_helper = True
+            if node.args is None:
+                return argname  # variable
+            else:
+                return self.param_list(node) # function
+        return "--??--"
 
 ######################################################################
 

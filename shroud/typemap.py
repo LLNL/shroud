@@ -1425,10 +1425,12 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
+            "{f_declare_shape_array}"
             "type(C_PTR) :: {F_pointer}",
         ],
         arg_c_call=["{F_pointer}"],
         post_call=[
+            "{f_get_shape_array}"
             "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
         ],
     ),

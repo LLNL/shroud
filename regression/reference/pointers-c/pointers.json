@@ -2267,7 +2267,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "getlen",
+                        "name": "getLen",
                         "pointer": []
                     },
                     "params": [],
@@ -2276,27 +2276,27 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int getlen()",
-                "declgen": "int getlen()",
+                "decl": "int getLen()",
+                "declgen": "int getLen()",
                 "doxygen": {
                     "brief": "Return length of global_fixed_array."
                 },
                 "fmtdict": {
-                    "C_name": "getlen",
+                    "C_name": "getLen",
                     "C_prototype": "",
                     "C_return_type": "int",
-                    "F_C_call": "c_getlen",
-                    "F_C_name": "getlen",
+                    "F_C_call": "c_get_len",
+                    "F_C_name": "get_len",
                     "F_arguments": "",
-                    "F_name_function": "getlen",
-                    "F_name_generic": "getlen",
-                    "F_name_impl": "getlen",
+                    "F_name_function": "get_len",
+                    "F_name_generic": "get_len",
+                    "F_name_impl": "get_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "getlen",
-                    "underscore_name": "getlen"
+                    "function_name": "getLen",
+                    "underscore_name": "get_len"
                 },
                 "options": {
                     "wrap_python": false
@@ -2325,8 +2325,12 @@
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "f_assumed_shape": "(:)",
+                            "f_declare_shape_array": "integer(C_INT) :: SHAPE_count(1)\ninterface+\nsubroutine SHROUD_get_shape_count(shape)\tbind(C, name=\"POI_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimplicit none\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_count\n-end interface\n",
+                            "f_get_shape_array": "call SHROUD_get_shape_count(SHAPE_count)\n",
+                            "f_get_shape_func": "SHROUD_get_shape_count",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [getlen()]",
+                            "f_pointer_shape": ", SHAPE_count",
+                            "f_shape_var": "SHAPE_count",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
                             "rank": "1",
@@ -2346,7 +2350,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "getlen()",
+                                "dimension": "getLen()",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2364,7 +2368,7 @@
                                 "dimension": [
                                     {
                                         "args": [],
-                                        "name": "getlen"
+                                        "name": "getLen"
                                     }
                                 ]
                             },
@@ -2379,10 +2383,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",

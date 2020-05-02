@@ -74,6 +74,15 @@ class AstNode(object):
         """Return top of AST tree."""
         return self.parent.get_LibraryNode()
 
+    def find_header(self):
+        """Return most recent cxx_header"""
+        if self.cxx_header:
+            return self.cxx_header
+        elif self.parent is not None:
+            return self.parent.find_header()
+        else:
+            return ""
+
 
 ######################################################################
 
@@ -1285,6 +1294,7 @@ class FunctionNode(AstNode):
         # working variables
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
+        self.cxx_header = []
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)

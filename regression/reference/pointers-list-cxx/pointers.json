@@ -1522,7 +1522,7 @@
             {
                 "ast": {
                     "declarator": {
-                        "name": "getlen",
+                        "name": "getLen",
                         "pointer": []
                     },
                     "params": [],
@@ -1531,14 +1531,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int getlen()",
-                "declgen": "int getlen()",
+                "decl": "int getLen()",
+                "declgen": "int getLen()",
                 "doxygen": {
                     "brief": "Return length of global_fixed_array."
                 },
                 "fmtdict": {
-                    "function_name": "getlen",
-                    "underscore_name": "getlen"
+                    "function_name": "getLen",
+                    "underscore_name": "get_len"
                 },
                 "options": {
                     "wrap_python": false
@@ -1553,7 +1553,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "getlen()",
+                                "dimension": "getLen()",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1571,7 +1571,7 @@
                                 "dimension": [
                                     {
                                         "args": [],
-                                        "name": "getlen"
+                                        "name": "getLen"
                                     }
                                 ]
                             },
@@ -1586,10 +1586,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
                 },
                 "fmtdict": {
                     "function_name": "getPtrToFuncArray",

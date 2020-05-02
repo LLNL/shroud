@@ -1081,7 +1081,7 @@ if (PyList_Check(seq))
 """
 
 f_pointer_shape_count = 0
-def create_f_pointer_shape(visitor, fmtin, ntypemap):
+def create_f_pointer_shape(visitor, fmtin, cls, fcn):
     """Create a helper which evaluates dimensions in C++.
     But called from Fortran.
     Return name of created helper.
@@ -1098,8 +1098,8 @@ def create_f_pointer_shape(visitor, fmtin, ntypemap):
         visitor - wrapf.ToDimension
                   Results of processing parsed dimensions.
         fmtin   - util.Scope
-        ntypemap - Typemap of container class/struct.
-                   Used for obj.
+        cls     - ast.ClassNode or None
+        fcn     - ast.FunctionNode of calling function.
     """
     global f_pointer_shape_count
     name = "create_f_pointer_shape_" + str(f_pointer_shape_count)
@@ -1110,22 +1110,23 @@ def create_f_pointer_shape(visitor, fmtin, ntypemap):
     fmt.lend = ""
     fmt.hname = name
     fmt.hnamefunc = wformat("{C_prefix}SHROUD_"+name, fmt)
-    # Cast to c++.
-    fmt.c_var  = fmt.C_this
-    fmt.c_type = ntypemap.c_type
-    fmt.cxx_val = wformat(ntypemap.c_to_cxx, fmt)
-    fmt.cxx_type = ntypemap.cxx_type
 
     fmtdim = []
     for i, dim in enumerate(visitor.shape):
         fmtdim.append("shape[{}] = {};".format(i, dim))
     fmt.dimshape = "\n".join(fmtdim)
-    CHelpers[name] = dict(
-        name=fmt.hnamefunc,
-        scope="cwrap_impl",
-        include=" ".join(ntypemap.impl_header),
+    if cls:
         # {C_this} argument, always a pointer to a shadow capsule type.
-        source=wformat(
+        ntypemap = cls.typemap
+        fmt.c_var  = fmt.C_this
+        fmt.c_type = ntypemap.c_type
+        fmt.cxx_val = wformat(ntypemap.c_to_cxx, fmt)
+        fmt.cxx_type = ntypemap.cxx_type
+        CHelpers[name] = dict(
+            name=fmt.hnamefunc,
+            scope="cwrap_impl",
+            include=" ".join(ntypemap.impl_header),
+            source=wformat(
                 """
 {lstart}// helper {hname}
 // Get shape for output array.
@@ -1135,15 +1136,15 @@ void {hnamefunc}(\t{c_type} *{C_this},\t int *shape)
 {cxx_type} *obj =\t {cxx_val};
 {dimshape}
 -}}{lend}""",
-            fmt,
-        ),
-    )
-    # Add Fortran interface for above function
-    # It is only inserted in the function which calls it and not
-    # at the module level since it is only called from one place.
-    # XXX - maybe create a cache for identical dimensions.
-    FHelpers[name] = dict(
-        source=wformat("""interface+
+                fmt,
+            ),
+        )
+        # Add Fortran interface for above function
+        # It is only inserted in the function which calls it and not
+        # at the module level since it is only called from one place.
+        # XXX - maybe create a cache for identical dimensions.
+        FHelpers[name] = dict(
+            source=wformat("""interface+
 subroutine {f_get_shape_func}({F_this}, shape)\tbind(C, name="{hnamefunc}")+
 use iso_c_binding, only : C_INT
 import {F_capsule_data_type}
@@ -1153,7 +1154,39 @@ integer(C_INT), intent(OUT) :: shape(*)
 -end subroutine {f_get_shape_func}
 -end interface
 """,fmt),
-    )
+        )
+    else:
+        # No class/struct
+        CHelpers[name] = dict(
+            name=fmt.hnamefunc,
+            scope="cwrap_impl",
+            include=" ".join(fcn.find_header()),
+            source=wformat(
+                """
+{lstart}// helper {hname}
+// Get shape for output array.
+// Called from Fortran.
+void {hnamefunc}(\tint *shape)
+{{+
+{dimshape}
+-}}{lend}""",
+                fmt,
+            ),
+        )
+        # Add Fortran interface for above function
+        # It is only inserted in the function which calls it and not
+        # at the module level since it is only called from one place.
+        # XXX - maybe create a cache for identical dimensions.
+        FHelpers[name] = dict(
+            source=wformat("""interface+
+subroutine {f_get_shape_func}(shape)\tbind(C, name="{hnamefunc}")+
+use iso_c_binding, only : C_INT
+implicit none
+integer(C_INT), intent(OUT) :: shape(*)
+-end subroutine {f_get_shape_func}
+-end interface
+""",fmt),
+        )
 
     return name
     

@@ -1744,6 +1744,7 @@ def create_struct_ctor(cls):
 
 def find_arg_by_name(decls, name):
     """Find argument in params with name.
+    Return None if not found.
 
     Args:
         decls - list of Declaration

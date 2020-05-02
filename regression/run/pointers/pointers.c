@@ -185,7 +185,7 @@ void getPtrToDynamicArray(int **count, int *len)
 }
 
 // Return length of global_fixed_array.
-int getlen(void)
+int getLen(void)
 {
     return sizeof(global_fixed_array)/sizeof(int);
 }
