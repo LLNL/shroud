@@ -21,6 +21,7 @@ VPATH = \
 
 #    references.o   # This file is not created
 OBJS = \
+    utilreferences.o \
     wrapfreferences.o \
     wrapreferences.o \
     wrapArrayWrapper.o \

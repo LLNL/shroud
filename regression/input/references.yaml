@@ -24,4 +24,4 @@ declarations:
   - decl: void setSize(int size)
   - decl: int getSize() const
   - decl: void allocate()
-  - decl: double* getArray()
+  - decl: double* getArray() +dimension(getSize())

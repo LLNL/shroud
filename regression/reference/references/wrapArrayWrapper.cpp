@@ -76,7 +76,7 @@ void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
     // splicer end class.ArrayWrapper.method.allocate
 }
 
-// double * getArray()
+// double * getArray() +dimension(getSize())
 // ----------------------------------------
 // Result
 // Requested: c_native_*_result

@@ -30,16 +30,16 @@ contains
 
   subroutine test_arraywrapper
     type(ArrayWrapper) arr1
-!    real(C_DOUBLE), pointer :: arr(:)
+    real(C_DOUBLE), pointer :: arr(:)
 
     arr1 = ArrayWrapper_ctor()
     call arr1%set_size(10)
     call assert_equals(10, arr1%get_size())
 
     call arr1%allocate()
-!    arr = arr1%get_array()
-!    call assert_true(associated(arr))
-!    call assert_equals(10, size(arr))
+    arr => arr1%get_array()
+    call assert_true(associated(arr))
+    call assert_equals(10, size(arr))
     
   end subroutine test_arraywrapper
     

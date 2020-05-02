@@ -5,7 +5,7 @@ C method ArrayWrapper()
 C method void setSize(int size +intent(in)+value)
 C method int getSize() const
 C method void allocate()
-C method double * getArray()
+C method double * getArray() +dimension(getSize())
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -15,5 +15,6 @@ C-interface, Fortran method ArrayWrapper()
 C-interface, Fortran method void setSize(int size +intent(in)+value)
 C-interface, Fortran method int getSize() const
 C-interface, Fortran method void allocate()
-C-interface, Fortran method double * getArray()
+C-interface, Fortran method double * getArray() +dimension(getSize())
 Close wrapfreferences.f
+Close utilreferences.cpp

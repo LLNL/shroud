@@ -198,7 +198,7 @@ contains
         ! splicer end class.ArrayWrapper.method.allocate
     end subroutine arraywrapper_allocate
 
-    ! double * getArray()
+    ! double * getArray() +dimension(getSize())
     ! ----------------------------------------
     ! Result
     ! Exact:     f_native_*_result
@@ -206,13 +206,25 @@ contains
     ! Match:     c_default
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
         class(arraywrapper) :: obj
-        real(C_DOUBLE), pointer :: SHT_rv
+        real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array
+        integer(C_INT) :: GGGG_SHT_rv(1)
+        interface
+            subroutine SHROUD_get_shape_SHT_rv(obj, shape) &
+                bind(C, name="REF_SHROUD_create_f_pointer_shape_0")
+                use iso_c_binding, only : C_INT
+                import SHROUD_arraywrapper_capsule
+                implicit none
+                type(SHROUD_arraywrapper_capsule), intent(IN) :: obj
+                integer(C_INT), intent(OUT) :: shape(*)
+            end subroutine SHROUD_get_shape_SHT_rv
+        end interface
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_arraywrapper_get_array(obj%cxxmem)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        call SHROUD_get_shape_SHT_rv(obj%cxxmem, GGGG_SHT_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, GGGG_SHT_rv)
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 

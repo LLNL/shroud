@@ -283,8 +283,15 @@
                             },
                             "fmtf": {
                                 "cxx_type": "double",
+                                "f_assumed_shape": "(:)",
+                                "f_declare_shape_array": "integer(C_INT) :: GGGG_SHT_rv(1)\ninterface+\nsubroutine SHROUD_get_shape_SHT_rv(obj, shape)\tbind(C, name=\"REF_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimport SHROUD_arraywrapper_capsule\nimplicit none\ntype(SHROUD_arraywrapper_capsule), intent(IN) :: obj\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_SHT_rv\n-end interface\n",
+                                "f_get_shape_array": "call SHROUD_get_shape_SHT_rv(obj%cxxmem, GGGG_SHT_rv)\n",
+                                "f_get_shape_func": "SHROUD_get_shape_SHT_rv",
+                                "f_pointer_shape": ", GGGG_SHT_rv",
+                                "f_shape_var": "GGGG_SHT_rv",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result",
                                 "stmt1": "f_native_*_result",
@@ -293,11 +300,22 @@
                             }
                         },
                         "ast": {
+                            "attrs": {
+                                "dimension": "getSize()"
+                            },
                             "declarator": {
                                 "name": "getArray",
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getSize"
                                     }
                                 ]
                             },
@@ -308,8 +326,8 @@
                             ],
                             "typemap_name": "double"
                         },
-                        "decl": "double* getArray()",
-                        "declgen": "double * getArray()",
+                        "decl": "double* getArray() +dimension(getSize())",
+                        "declgen": "double * getArray() +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "REF_ArrayWrapper_get_array",
                             "C_prototype": "REF_ArrayWrapper * self",
