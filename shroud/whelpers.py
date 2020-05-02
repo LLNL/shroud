@@ -172,6 +172,7 @@ if (data->elem_len < n) n = data->elem_len;
         ),
     )
 
+    # Fortran interface for above function.
     # Deal with allocatable character
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
@@ -1079,6 +1080,70 @@ if (PyList_Check(seq))
         }
 """
 
+f_pointer_shape_count = 0
+def create_f_pointer_shape(visitor, fmtin, ntypemap):
+    """Create a helper which evaluates dimensions in C++.
+    But called from Fortran.
+    Return name of created helper.
+
+    An array is passed into the function along with the 
+    class capsule. The array shape is filled in by
+    evaluating C++ expressions.  Possibly included methods
+    of the class instance.
+
+    The local variable 'obj' in the helper must match
+    the name in wrapf.ToDimension.
+
+    Args:
+        visitor - wrapf.ToDimension
+                  Results of processing parsed dimensions.
+        fmtin   - util.Scope
+        ntypemap - Typemap of container class/struct.
+                   Used for obj.
+    """
+    name = "create_f_pointer_shape_" + str(f_pointer_shape_count)
+    global f_pointer_shape_count
+    f_pointer_shape_count += 1
+
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
+    fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_"+name, fmt)
+    # Cast to c++.
+    fmt.c_var  = fmt.C_this
+    fmt.c_type = ntypemap.c_type
+    fmt.cxx_val = wformat(ntypemap.c_to_cxx, fmt)
+    fmt.cxx_type = ntypemap.cxx_type
+
+    fmtdim = []
+    for i, dim in enumerate(visitor.shape):
+        fmtdim.append("shape[{}] = {};".format(i, dim))
+    fmt.dimshape = "\n".join(fmtdim)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        scope="cwrap_impl",
+#        dependent_helpers=["array_context"],
+#        c_include="<string.h>",
+#        cxx_include="<cstring>",
+        # 'this' argument, always a pointer to a shadow type.
+        source=wformat(
+                """
+{lstart}// helper {hname}
+// Get shape for output array.
+// Called from Fortran.
+void {hnamefunc}(\t{c_type} *{C_this},\t int *shape)
+{{+
+{cxx_type} *obj =\t {cxx_val};
+{dimshape}
+-}}{lend}""",
+            fmt,
+        ),
+    )
+    # Add Fortran interface for above function
+
+    return name
+    
 ######################################################################
 # Static helpers
 

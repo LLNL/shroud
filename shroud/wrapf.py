@@ -10,6 +10,7 @@ Generate Fortran bindings for C++ code.
 
 Variables prefixes used by generated code:
 SHPTR_  Fortran pointer, {F_pointer}
+SHSHAPE_ Array variable with shape for use with c_f_pointer.
 
 """
 from __future__ import print_function
@@ -1361,7 +1362,8 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, is_result=False,
+    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, fileinfo,
+                       is_result=False,
                        ntypemap=None):
         """
         Set format fields for ast.
@@ -1407,16 +1409,16 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, f_ast, fmt)
+            self.ftn_dimension(cls, f_ast, fmt, fileinfo)
 
         return ntypemap
 
-    def ftn_dimension(self, cls, ast, fmt):
+    def ftn_dimension(self, cls, ast, fmt, fileinfo):
         """Set format fields from dimension attribute.
 
         Args:
             cls  - ast.ClassNode or None
-            dim  - declast.Declaration
+            ast  - declast.Declaration
             fmt  - util.Scope
         """
         if cls is not None:
@@ -1427,6 +1429,14 @@ rv = .false.
             fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
         fmt.f_assumed_shape = fortran_ranks[visitor.rank]
 
+        if visitor.need_helper:
+            # Write C helper in utility file.
+            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls.typemap)
+            fileinfo.c_helper[hname] = True
+
+            fmt.f_shape_var = "GGGG"
+            fmt.f_pointer_shape = ", [{}]".format(fmt.f_shape_var)
+        
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
 
@@ -1498,8 +1508,8 @@ rv = .false.
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            self.set_fmt_fields(cls, ast, C_node.ast, fmt_result, True,
-                                result_typemap)
+            self.set_fmt_fields(cls, ast, C_node.ast, fmt_result,
+                                fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
@@ -1622,7 +1632,8 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            arg_typemap = self.set_fmt_fields(cls, f_arg, c_arg, fmt_arg)
+            arg_typemap = self.set_fmt_fields(
+                cls, f_arg, c_arg, fmt_arg, fileinfo)
             f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup
@@ -2108,6 +2119,7 @@ class ToDimension(todict.PrintNode):
 
         self.rank = 0
         self.shape = []
+        self.need_helper = False
 
     def visit_list(self, node):
         # list of dimension expressions
@@ -2121,24 +2133,20 @@ class ToDimension(todict.PrintNode):
         if self.cls is not None and node.name in self.cls.map_name_to_node:
             # This name is in the same class as the dimension.
             # Make name relative to the class.
-            fmt_cls = self.cls.fmtdict
-            
+            self.need_helper = True
             member = self.cls.map_name_to_node[node.name]
-            fmt_member = member.fmtdict
-            obj = fmt_cls.F_this
             if isinstance(member, ast.VariableNode):
                 if node.args is not None:
                     print("{} must not have arguments".format(node.name))
                 else:
-                    return "{}%{}".format(obj, node.name)
+                    return "obj->{}".format(node.name)
             else: # ast.FunctionNode
                 if node.args is None:
                     print("{} must have arguments".format(node.name))
                 else:
-                    return (
-                        wformat("{F_this}%{F_name_function}(", member.fmtdict)
-                        + self.comma_list(node.args) + ")"
-                    )
+                    return "obj->{}({})".format(
+                        node.name, 
+                        self.comma_list(node.args))
         elif node.args is None:
             return node.name
         else:
