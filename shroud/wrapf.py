@@ -1362,7 +1362,7 @@ rv = .false.
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, fileinfo,
+    def set_fmt_fields(self, cls, f_ast, c_ast, fmt, modules, fileinfo,
                        is_result=False,
                        ntypemap=None):
         """
@@ -1409,11 +1409,11 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, f_ast, fmt, fileinfo)
+            self.ftn_dimension(cls, f_ast, fmt, modules, fileinfo)
 
         return ntypemap
 
-    def ftn_dimension(self, cls, ast, fmt, fileinfo):
+    def ftn_dimension(self, cls, ast, fmt, modules, fileinfo):
         """Set format fields from dimension attribute.
 
         Args:
@@ -1425,18 +1425,26 @@ rv = .false.
             cls.create_node_map()
         visitor = ToDimension(cls, fmt)
         visitor.visit(ast.metaattrs["dimension"])
+        fmt.rank = str(visitor.rank)
         if visitor.rank > 0:
             fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
         fmt.f_assumed_shape = fortran_ranks[visitor.rank]
 
         if visitor.need_helper:
             # Write C helper in utility file.
+            fmt.f_get_shape_func = "SHROUD_get_shape_" + fmt.f_var
             hname = whelpers.create_f_pointer_shape(visitor, fmt, cls.typemap)
             fileinfo.c_helper[hname] = True
 
-            fmt.f_shape_var = "GGGG"
-            fmt.f_pointer_shape = ", [{}]".format(fmt.f_shape_var)
-        
+            fmt.f_shape_var = "GGGG_" + fmt.f_var
+            fmt.f_declare_shape_array = wformat(
+                "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
+            fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]
+            fmt.f_get_shape_array = wformat(
+                "call {f_get_shape_func}({F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
+            fmt.f_pointer_shape = ", {}".format(fmt.f_shape_var)
+            self.set_f_module(modules, "iso_c_binding", "C_INT")
+
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
 
@@ -1509,7 +1517,7 @@ rv = .false.
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             self.set_fmt_fields(cls, ast, C_node.ast, fmt_result,
-                                fileinfo, True, result_typemap)
+                                modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
@@ -1633,7 +1641,7 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
             arg_typemap = self.set_fmt_fields(
-                cls, f_arg, c_arg, fmt_arg, fileinfo)
+                cls, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup

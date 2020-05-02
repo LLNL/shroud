@@ -1141,6 +1141,21 @@ void {hnamefunc}(\t{c_type} *{C_this},\t int *shape)
         ),
     )
     # Add Fortran interface for above function
+    # It is only inserted in the function which calls it and not
+    # at the module level since it is only called from one place.
+    # XXX - maybe create a cache for identical dimensions.
+    FHelpers[name] = dict(
+        source=wformat("""interface+
+subroutine {f_get_shape_func}({F_this}, shape)\tbind(C, name="{hnamefunc}")+
+use iso_c_binding, only : C_INT
+import {F_capsule_data_type}
+implicit none
+type({F_capsule_data_type}), intent(IN) :: {F_this}
+integer(C_INT), intent(OUT) :: shape(*)
+-end subroutine {f_get_shape_func}
+-end interface
+""",fmt),
+    )
 
     return name
     
