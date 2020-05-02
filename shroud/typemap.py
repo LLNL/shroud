@@ -838,15 +838,6 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     return ntypemap
 
 
-def find_header(node):
-    """Return most recent cxx_header"""
-    if node.cxx_header:
-        return node.cxx_header
-    elif node.parent is not None:
-        return find_header(node.parent)
-    else:
-        return ""
-
 def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
     Use fields to override defaults.
@@ -871,7 +862,7 @@ def create_class_typemap(node, fields=None):
         base="shadow",
         sgroup="shadow",
         cxx_type=cxx_type,
-        impl_header=find_header(node),
+        impl_header=node.find_header(),
         wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
