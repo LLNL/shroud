@@ -10,7 +10,7 @@ Generate Fortran bindings for C++ code.
 
 Variables prefixes used by generated code:
 SHPTR_  Fortran pointer, {F_pointer}
-SHSHAPE_ Array variable with shape for use with c_f_pointer.
+SHAPE_ Array variable with shape for use with c_f_pointer.
 
 """
 from __future__ import print_function
@@ -1436,7 +1436,7 @@ rv = .false.
             hname = whelpers.create_f_pointer_shape(visitor, fmt, cls.typemap)
             fileinfo.c_helper[hname] = True
 
-            fmt.f_shape_var = "GGGG_" + fmt.f_var
+            fmt.f_shape_var = fmt.f_declare_shape_prefix + fmt.f_var
             fmt.f_declare_shape_array = wformat(
                 "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
             fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]

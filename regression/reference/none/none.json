@@ -96,6 +96,7 @@
             "cxx_class": "",
             "f_assumed_shape": "",
             "f_declare_shape_array": "",
+            "f_declare_shape_prefix": "SHAPE_",
             "f_get_shape_array": "",
             "f_pointer_shape": "",
             "f_shape_var": "",

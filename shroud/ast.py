@@ -613,6 +613,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type="SHROUD_array",
 
             f_assumed_shape="",  # scalar
+            f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",
             f_get_shape_array="",
             f_pointer_shape="",  # scalar
