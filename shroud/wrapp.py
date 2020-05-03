@@ -868,7 +868,8 @@ return 1;""",
 
         dimension = ast.attrs["dimension"]
         if dimension:
-            visitor = ToDimension(cls, fmt)
+            class_context = "self->{}->".format(fmt.PY_type_obj)
+            visitor = ToDimension(cls, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
 
@@ -3173,16 +3174,19 @@ class ToDimension(todict.PrintNode):
     Convert cls references to correct scope.  obj->{argname}
     """
 
-    def __init__(self, cls, fmt):
+    def __init__(self, cls, fmt, context):
         """
         Args:
             cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
             fmt  - util.Scope
+            context - how to access Identifiers in cls.
+                      Different for function arguments and
+                      class/struct members.
         """
         super(ToDimension, self).__init__()
         self.cls = cls
         self.fmt = fmt
+        self.context = context
 
         self.rank = 0
         self.shape = []
@@ -3206,13 +3210,13 @@ class ToDimension(todict.PrintNode):
                 if node.args is None:
                     print("{} must have arguments".format(argname))
                 else:
-                    return "self->{}->{}({})".format(
-                        obj, argname, self.comma_list(node.args))
+                    return "{}{}({})".format(
+                        self.context, argname, self.comma_list(node.args))
             else:
                 if node.args is not None:
                     print("{} must not have arguments".format(argname))
                 else:
-                    return "self->{}->{}".format(obj, argname)
+                    return "{}{}".format(self.context, argname)
         elif node.args is None:
             return argname  # variable
         else:
