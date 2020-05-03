@@ -2156,7 +2156,7 @@ class ToDimension(todict.PrintNode):
                 if node.args is not None:
                     print("{} must not have arguments".format(argname))
                 else:
-                    return "obj->{}".format(node.name)
+                    return "obj->{}".format(argname)
             else: # ast.FunctionNode
                 if node.args is None:
                     print("{} must have arguments".format(argname))

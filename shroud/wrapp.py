@@ -34,6 +34,7 @@ import collections
 import os
 import re
 
+from . import ast
 from . import declast
 from . import todict
 from . import typemap
@@ -831,12 +832,13 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, ast, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            cls - ast.ClassNode or None
             ast - declast.Declaration
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
@@ -867,19 +869,25 @@ return 1;""",
 
         dimension = ast.attrs["dimension"]
         if dimension:
-            # (*), (:), (:,:)
-            if dimension[0] not in ["*", ":"]:
-                fmt.npy_ndims = "1"
-                if is_result:
-                    fmt.npy_dims = "SHD_" + fmt.C_result
-                else:
-                    fmt.npy_dims = "SHD_" + ast.name
-                fmt.pointer_shape = dimension
-                # Dimensions must be in npy_intp type array.
-                # XXX - assumes 1-d
-                fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[1];\n", fmt)
-                fmt.npy_intp_asgn = "{}[0] = {};\n".format(
-                    fmt.npy_dims, dimension)
+            visitor = ToDimension(cls, fmt)
+            visitor.visit(ast.metaattrs["dimension"])
+            fmt.rank = str(visitor.rank)
+
+            fmt.npy_ndims = str(visitor.rank)
+            if is_result:
+                fmt.npy_dims = "SHD_" + fmt.C_result
+            else:
+                fmt.npy_dims = "SHD_" + ast.name
+            fmt.pointer_shape = dimension
+            # Dimensions must be in npy_intp type array.
+            fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[{rank}];\n", fmt)
+
+            # Assign each rank of dimension.
+            fmtdim = []
+            for i, dim in enumerate(visitor.shape):
+                fmtdim.append("{}[{}] = {};\n".format(
+                    fmt.npy_dims, i, dim))
+            fmt.npy_intp_asgn = "\n".join(fmtdim)
 
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
@@ -1067,7 +1075,7 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result, result_blk = self.process_result(node, fmt)
+            fmt_result, result_blk = self.process_result(cls, node, fmt)
         else:
             result_blk = default_scope
 
@@ -1142,7 +1150,7 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
-            self.set_fmt_fields(arg, fmt_arg)
+            self.set_fmt_fields(cls, arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             rank = arg.attrs["rank"]
@@ -1788,7 +1796,7 @@ return 1;""",
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
-    def process_result(self, node, fmt):
+    def process_result(self, cls, node, fmt):
         """Work on formatting for result values.
 
         Return fmt_result
@@ -1838,7 +1846,7 @@ return 1;""",
             #            fmt_pattern = fmt_result
             update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(ast, fmt_result, True)
+            self.set_fmt_fields(cls, ast, fmt_result, True)
             sgroup = result_typemap.sgroup
             stmts = None
             if is_ctor:
@@ -3101,6 +3109,7 @@ def update_fmt_from_typemap(fmt, ntypemap):
 #        fmt.PY_to_object_func = ntypemap.PY_to_object
 #        fmt.PY_from_object_func = ntypemap.PY_from_object
 
+######################################################################
 
 class ToStructDimension(todict.PrintNode):
     """Convert dimension expression in struct to Python wrapper code.
@@ -3144,7 +3153,7 @@ def py_struct_dimension(parent, var):
         var - ast.VariableNode.
     """
     ast = var.ast
-    if ast.array:
+    if ast.array: # Fixed size array.
         if len(ast.array) == 1:
             return True, todict.print_node(ast.array[0])
         else:
@@ -3157,6 +3166,61 @@ def py_struct_dimension(parent, var):
             return True, visitor.visit(node)
         else:
             return False, "1"
+
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Visit dimension expression.
+    Convert cls references to correct scope.  obj->{argname}
+    """
+
+    def __init__(self, cls, fmt):
+        """
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fmt = fmt
+
+        self.rank = 0
+        self.shape = []
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for members of class/struct.
+        if self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            member = self.cls.map_name_to_node[argname]
+            obj = self.fmt.PY_type_obj
+            if isinstance(member, ast.VariableNode):
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "self->{}->{}".format(obj, argname)
+            else: # ast.FunctionNode
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "self->{}->{}({})".format(
+                        obj, argname, self.comma_list(node.args))
+        elif node.args is None:
+            return argname  # variable
+        else:
+            return self.param_list(node) # function
+        return "--??--"
+
+######################################################################
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.
@@ -3231,6 +3295,7 @@ def py_implied(expr, func):
     visitor = ToImplied(expr, func)
     return visitor.visit(node)
 
+######################################################################
 
 def attr_allocatable(language, allocatable, node, arg, fmt_arg):
     """parse allocatable and add values to fmt_arg.
@@ -3315,6 +3380,8 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
             "{npy_dims}[0] = {size_var};\n", fmt_arg)
 
     return mold
+
+######################################################################
 
 def update_code_blocks(symtab, stmts, fmt):
     """ Accumulate info from statements.

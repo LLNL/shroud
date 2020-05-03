@@ -31,12 +31,15 @@ class References(unittest.TestCase):
     def test_ArrayWrapper(self):
         arr1 = references.ArrayWrapper()
         arr1.setSize(10)
-        self.assertEqual(10, arr1.getSize(10))
+        self.assertEqual(10, arr1.getSize())
 
         arr1.allocate()
-        arr = arr1%getArray()
-#    call assert_true(associated(arr))
-#    call assert_equals(10, size(arr))
+        arr = arr1.getArray()
+        self.assertIsInstance(arr, np.ndarray)
+        self.assertEqual('float64', arr.dtype.name)
+        self.assertEqual(1, arr.ndim)
+        self.assertEqual((10,), arr.shape)
+        self.assertEqual(10, arr.size)
 
 
 # creating a new test suite

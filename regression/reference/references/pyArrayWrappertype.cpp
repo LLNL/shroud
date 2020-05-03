@@ -146,7 +146,7 @@ PY_getArray(
     double * SHCXX_rv = self->obj->getArray();
 
     // post_call
-    SHD_rv[0] = getSize();
+    SHD_rv[0] = self->obj->getSize();
     SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_DOUBLE,
         SHCXX_rv);
     if (SHTPy_rv == nullptr) goto fail;

@@ -471,6 +471,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_values",
+                            "rank": "1",
                             "size_var": "SHSize_values",
                             "stmt0": "py_native_out_dimension_list",
                             "stmt1": "py_native_out_dimension_list"
@@ -565,6 +566,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg1",
+                            "rank": "1",
                             "size_var": "SHSize_arg1",
                             "stmt0": "py_native_out_dimension_list",
                             "stmt1": "py_native_out_dimension_list"
@@ -589,6 +591,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg2",
+                            "rank": "1",
                             "size_var": "SHSize_arg2",
                             "stmt0": "py_native_out_dimension_list",
                             "stmt1": "py_native_out_dimension_list"
@@ -810,6 +813,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
+                            "rank": "1",
                             "size_var": "SHSize_values",
                             "stmt0": "py_native_out_dimension_list",
                             "stmt1": "py_native_out_dimension_list"
@@ -1032,6 +1036,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_out",
+                            "rank": "1",
                             "size_var": "SHSize_out",
                             "stmt0": "py_native_out_dimension_list",
                             "stmt1": "py_native_out_dimension_list"
@@ -1910,6 +1915,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "10",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_list",
                         "stmt1": "py_default"

@@ -127,6 +127,7 @@ test-python : \
   test-python-pointers-list-cxx \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
+  test-python-references \
   test-python-struct-numpy-c \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
@@ -210,6 +211,7 @@ phony_explicit:
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
     $(tempdir)/run/references/.. \
+    $(tempdir)/run/references/python/.. \
     $(tempdir)/run/scope/.. \
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \

@@ -598,6 +598,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -758,6 +759,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1048,6 +1050,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1318,6 +1321,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1464,6 +1468,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1628,6 +1633,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"

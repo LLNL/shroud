@@ -30,7 +30,7 @@ CXXFLAGS += $(SHARED)
 all : references.so
 
 references.so : $(OBJS)
-	$(CC) $(LD_SHARED) -o $@ $^ $(LIBS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 clean :
 	rm -f *.so *.o
