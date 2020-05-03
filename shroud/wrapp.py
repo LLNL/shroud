@@ -34,7 +34,6 @@ import collections
 import os
 import re
 
-from . import ast
 from . import declast
 from . import todict
 from . import typemap
@@ -3203,17 +3202,17 @@ class ToDimension(todict.PrintNode):
             # Make name relative to the class.
             member = self.cls.map_name_to_node[argname]
             obj = self.fmt.PY_type_obj
-            if isinstance(member, ast.VariableNode):
-                if node.args is not None:
-                    print("{} must not have arguments".format(argname))
-                else:
-                    return "self->{}->{}".format(obj, argname)
-            else: # ast.FunctionNode
+            if member.may_have_args():
                 if node.args is None:
                     print("{} must have arguments".format(argname))
                 else:
                     return "self->{}->{}({})".format(
                         obj, argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "self->{}->{}".format(obj, argname)
         elif node.args is None:
             return argname  # variable
         else:

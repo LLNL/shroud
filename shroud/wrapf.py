@@ -20,7 +20,6 @@ import copy
 import os
 import re
 
-from . import ast
 from . import declast
 from . import todict
 from . import typemap
@@ -2152,17 +2151,17 @@ class ToDimension(todict.PrintNode):
             # Make name relative to the class.
             self.need_helper = True
             member = self.cls.map_name_to_node[argname]
-            if isinstance(member, ast.VariableNode):
-                if node.args is not None:
-                    print("{} must not have arguments".format(argname))
-                else:
-                    return "obj->{}".format(argname)
-            else: # ast.FunctionNode
+            if member.may_have_args():
                 if node.args is None:
                     print("{} must have arguments".format(argname))
                 else:
                     return "obj->{}({})".format(
                         argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "obj->{}".format(argname)
         else:
             if self.fcn.ast.find_arg_by_name(argname) is None:
                 self.need_helper = True

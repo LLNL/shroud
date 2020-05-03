@@ -83,6 +83,9 @@ class AstNode(object):
         else:
             return ""
 
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return False
 
 ######################################################################
 
@@ -1482,6 +1485,9 @@ class FunctionNode(AstNode):
         """Look for symbols within parent. """
         return self.parent.unqualified_lookup(name)
 
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return True
 
 ######################################################################
 
