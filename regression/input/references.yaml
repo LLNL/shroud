@@ -14,7 +14,7 @@ cxx_header: references.hpp
 
 options:
   debug: True
-  wrap_python: False
+  wrap_python: True
 
 declarations:
 ##################################################

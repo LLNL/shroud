@@ -13,6 +13,14 @@
                     "F_capsule_data_type": "SHROUD_arraywrapper_capsule",
                     "F_derived_name": "arraywrapper",
                     "F_name_scope": "arraywrapper_",
+                    "PY_PyObject": "PY_ArrayWrapper",
+                    "PY_PyTypeObject": "PY_ArrayWrapper_Type",
+                    "PY_capsule_name": "PY_ArrayWrapper_capsule_name",
+                    "PY_from_object_func": "PP_ArrayWrapper_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_ArrayWrapper_to_Object",
+                    "PY_to_object_idtor_func": "PP_ArrayWrapper_to_Object_idtor",
+                    "PY_type_filename": "pyArrayWrappertype.cpp",
                     "class_scope": "ArrayWrapper::",
                     "cxx_class": "ArrayWrapper",
                     "cxx_type": "ArrayWrapper",
@@ -42,6 +50,23 @@
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtpy": {
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_ArrayWrapper_to_Object_idtor",
+                                "PyObject": "PY_ArrayWrapper",
+                                "PyTypeObject": "PY_ArrayWrapper_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "ArrayWrapper",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "ast": {
@@ -70,6 +95,9 @@
                             "F_name_impl": "arraywrapper_ctor",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "PY_name_impl": "PY_ArrayWrapper_tp_init",
+                            "PY_type_impl": "PY_ArrayWrapper_tp_init",
+                            "PY_type_method": "tp_init",
                             "c_const": "",
                             "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
                             "function_name": "ctor",
@@ -107,6 +135,24 @@
                                     "stmt1": "f_default",
                                     "stmtc0": "c_native_scalar_in",
                                     "stmtc1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_decl": "int size",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "size",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int size",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "size",
+                                    "data_var": "SHData_size",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_size",
+                                    "size_var": "SHSize_size",
+                                    "stmt0": "py_native_scalar_in",
+                                    "stmt1": "py_default"
                                 }
                             }
                         },
@@ -151,6 +197,7 @@
                             "F_name_generic": "set_size",
                             "F_name_impl": "arraywrapper_set_size",
                             "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_setSize",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -188,6 +235,20 @@
                                 "stmt1": "f_default",
                                 "stmtc0": "c_native_scalar_result",
                                 "stmtc1": "c_default"
+                            },
+                            "fmtpy": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_native_result",
+                                "stmt1": "py_default"
                             }
                         },
                         "ast": {
@@ -217,6 +278,7 @@
                             "F_name_impl": "arraywrapper_get_size",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "PY_name_impl": "PY_getSize",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -253,6 +315,7 @@
                             "F_name_generic": "allocate",
                             "F_name_impl": "arraywrapper_allocate",
                             "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_allocate",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -297,6 +360,25 @@
                                 "stmt1": "f_native_*_result",
                                 "stmtc0": "c_native_*_result",
                                 "stmtc1": "c_default"
+                            },
+                            "fmtpy": {
+                                "c_deref": "*",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "double",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "npy_dims": "SHD_rv",
+                                "npy_intp_asgn": "SHD_rv[0] = getSize();\n",
+                                "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                "npy_ndims": "1",
+                                "numpy_type": "NPY_DOUBLE",
+                                "pointer_shape": "getSize()",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_native_result_dimension_numpy",
+                                "stmt1": "py_native_result_dimension_numpy"
                             }
                         },
                         "ast": {
@@ -341,6 +423,7 @@
                             "F_name_impl": "arraywrapper_get_array",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "PY_name_impl": "PY_getArray",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

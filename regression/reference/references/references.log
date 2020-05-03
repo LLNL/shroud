@@ -18,3 +18,14 @@ C-interface, Fortran method void allocate()
 C-interface, Fortran method double * getArray() +dimension(getSize())
 Close wrapfreferences.f
 Close utilreferences.cpp
+class ArrayWrapper
+Python method ArrayWrapper()
+Python method void setSize(int size +intent(in)+value)
+Python method int getSize() const
+Python method void allocate()
+Python method double * getArray() +dimension(getSize())
+Close pyArrayWrappertype.cpp
+Close pyreferencesmodule.cpp
+Close pyreferencesutil.cpp
+Close pyreferencesmodule.hpp
+Close setup.py
