@@ -115,7 +115,7 @@ PY_intargs(
 // splicer end function.intargs
 }
 
-// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
 // Argument:  in
 // Exact:     py_native_in_dimension_numpy
@@ -181,7 +181,7 @@ fail:
 // splicer end function.cos_doubles
 }
 
-// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
 // Argument:  in
 // Exact:     py_native_in_dimension_numpy
@@ -472,7 +472,7 @@ fail:
 // splicer end function.iota_dimension
 }
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
 // Argument:  values
 // Exact:     py_native_in_dimension_numpy
@@ -574,7 +574,7 @@ fail:
 // splicer end function.fill_int_array
 }
 
-// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 // ----------------------------------------
 // Argument:  array
 // Exact:     py_native_inout_dimension_numpy
@@ -624,7 +624,7 @@ fail:
 // splicer end function.increment_int_array
 }
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
 // Argument:  names
 // Exact:     py_char_**_in
@@ -796,6 +796,64 @@ PY_returnAddress2(
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_address2
 }
+
+// int * returnIntPtrToScalar()
+static char PY_returnIntPtrToScalar__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_scalar
+    PyObject * SHTPy_rv = NULL;
+
+    int * SHCXX_rv = returnIntPtrToScalar();
+
+    // post_call
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHCXX_rv);
+    if (SHTPy_rv == NULL) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end function.return_int_ptr_to_scalar
+}
+
+// int * returnIntPtrToFixedArray() +dimension(10)
+static char PY_returnIntPtrToFixedArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToFixedArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_fixed_array
+    npy_intp SHD_rv[1];
+    PyObject * SHTPy_rv = NULL;
+
+    int * SHCXX_rv = returnIntPtrToFixedArray();
+
+    // post_call
+    SHD_rv[0] = 10;
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT, SHCXX_rv);
+    if (SHTPy_rv == NULL) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end function.return_int_ptr_to_fixed_array
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -826,6 +884,10 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress1__doc__},
 {"returnAddress2", (PyCFunction)PY_returnAddress2,
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress2__doc__},
+{"returnIntPtrToScalar", (PyCFunction)PY_returnIntPtrToScalar,
+    METH_NOARGS, PY_returnIntPtrToScalar__doc__},
+{"returnIntPtrToFixedArray", (PyCFunction)PY_returnIntPtrToFixedArray,
+    METH_NOARGS, PY_returnIntPtrToFixedArray__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

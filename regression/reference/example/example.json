@@ -8970,13 +8970,13 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_in",
                                             "c_var": "in",
-                                            "f_assumed_shape": "(:)",
+                                            "f_assumed_shape": "(:,:)",
                                             "f_intent": "IN",
-                                            "f_pointer_shape": ", [:,:]",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "in",
-                                            "f_var_shape": "(:)",
+                                            "rank": "2",
                                             "sh_type": "SH_TYPE_DOUBLE",
+                                            "size": "size(in)",
                                             "stmt0": "f_native_*_in",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_native_*_in",
@@ -9031,14 +9031,14 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_out",
                                             "c_var": "out",
-                                            "f_assumed_shape": "(:)",
+                                            "f_assumed_shape": "(:,:)",
                                             "f_intent": "OUT",
-                                            "f_pointer_shape": ", [:,:]",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "out",
-                                            "f_var_shape": "(:)",
                                             "mold": "mold=in",
+                                            "rank": "2",
                                             "sh_type": "SH_TYPE_DOUBLE",
+                                            "size": "size(out)",
                                             "stmt0": "f_native_*_out",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_native_*_out",
@@ -9141,8 +9141,8 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "dimension": ":,:",
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             },
                                             "declarator": {
                                                 "name": "in",
@@ -9160,8 +9160,8 @@
                                         {
                                             "attrs": {
                                                 "allocatable": "mold=in",
-                                                "dimension": ":,:",
-                                                "intent": "out"
+                                                "intent": "out",
+                                                "rank": 2
                                             },
                                             "declarator": {
                                                 "name": "out",
@@ -9197,8 +9197,8 @@
                                     ],
                                     "typemap_name": "void"
                                 },
-                                "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                                "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +rank(2)+allocatable(mold=in), int      sizein +implied(size(in)))",
+                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },

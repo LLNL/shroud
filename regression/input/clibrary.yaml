@@ -195,9 +195,9 @@ declarations:
     wrap_python: false
     literalinclude: True
 
-- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension)
+- decl: void passAssumedTypeDim(void *arg+assumedtype+rank(1))
   doxygen:
-    brief: Test assumed-type with dimension
+    brief: Test assumed-type with rank(1)
   options:
     wrap_python: false
     literalinclude: True
@@ -374,7 +374,7 @@ declarations:
 ##-    wrap_lua: False
 ##-
 ##-# does multidimensional make sense.  Need to call shape
-##-#- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
+##-#- decl: void vector1XXX(std::vector<int> &arg+rank(2))
 ##-
 ##--  decl: int vector_string_count(const std::vector< std::string > &arg)
 ##-   doxygen:

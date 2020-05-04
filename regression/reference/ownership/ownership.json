@@ -576,7 +576,7 @@
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer",
                         "stmt1": "f_native_*_result_pointer",
@@ -598,6 +598,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -613,6 +614,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -729,7 +737,7 @@
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_allocatable",
                         "stmt1": "f_native_*_result_allocatable",
@@ -751,6 +759,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -766,6 +775,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -883,6 +899,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1005,7 +1028,7 @@
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result",
                         "stmt1": "f_native_*_result",
@@ -1027,6 +1050,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1041,6 +1065,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1142,6 +1173,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1261,7 +1299,7 @@
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer",
                         "stmt1": "f_native_*_result_pointer",
@@ -1283,6 +1321,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1299,6 +1338,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1422,6 +1468,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1438,6 +1485,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1557,7 +1611,7 @@
                         "f_pointer_shape": ", [len]",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "f_var_shape": "(:)",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result",
                         "stmt1": "f_native_*_result",
@@ -1579,6 +1633,7 @@
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_result_dimension_numpy",
                         "stmt1": "py_native_result_dimension_numpy"
@@ -1594,6 +1649,13 @@
                         "pointer": [
                             {
                                 "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "name": "len"
                             }
                         ]
                     },
@@ -1739,6 +1801,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1806,6 +1875,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1869,6 +1945,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
                                     }
                                 ]
                             },
@@ -2005,6 +2088,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2072,6 +2162,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2135,6 +2232,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
                                     }
                                 ]
                             },

@@ -22,6 +22,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Parse array syntax for variables and struct members.
 - Change Python setter and getter functions to be driven by py_statements.
 
+### Changed
+- *intent(in)* pointer arguments now use the *rank* attribute instead of
+  using the *dimension* attribute to defined Fortran assumed-shape.
+  ex. ``dimension(:,:)`` should be ``rank(2)``.
+  The dimension attribute must be a list of expressions and should not
+  be assumed-shape or assumed-length and are used with *intent(out)* arguments.
+
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a
   splicer with the same name defined in a *splicer_code* or file splicer.

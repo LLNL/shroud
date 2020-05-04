@@ -32,7 +32,6 @@ C function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
-Close utilTutorial.cpp
 Close typesTutorial.h
 C-interface, Fortran function void NoReturnNoArguments()
 C-interface, Fortran function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -67,6 +66,7 @@ C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * in
 C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapftutorial.f
+Close utilTutorial.cpp
 Python function void NoReturnNoArguments()
 Python function double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Python function const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)

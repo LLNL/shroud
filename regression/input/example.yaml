@@ -299,8 +299,8 @@ declarations:
         C_line_length: 0
 
     - decl: void cos_doubles(
-               double * in   +intent(in)  +dimension(:,:),
-               double * out  +intent(out) +dimension(:,:)+allocatable(mold=in),
+               double * in   +intent(in)  +rank(2),
+               double * out  +intent(out) +rank(2)+allocatable(mold=in),
                int      sizein +implied(size(in)))
       doxygen:
         brief: Test multidimensional arrays with allocatable

@@ -185,7 +185,7 @@ void getPtrToDynamicArray(int **count, int *len)
 }
 
 // Return length of global_fixed_array.
-int getlen(void)
+int getLen(void)
 {
     return sizeof(global_fixed_array)/sizeof(int);
 }
@@ -218,6 +218,16 @@ void *returnAddress1(int flag)
 void *returnAddress2(int flag)
 {
     return (void *) &global_int;
+}
+
+int *returnIntPtrToScalar(void)
+{
+    return &global_int;
+}
+
+int *returnIntPtrToFixedArray(void)
+{
+    return (int *) &global_fixed_array;
 }
 
 //----------------------------------------------------------------------

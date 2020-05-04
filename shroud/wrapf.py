@@ -10,6 +10,7 @@ Generate Fortran bindings for C++ code.
 
 Variables prefixes used by generated code:
 SHPTR_  Fortran pointer, {F_pointer}
+SHAPE_ Array variable with shape for use with c_f_pointer.
 
 """
 from __future__ import print_function
@@ -55,6 +56,7 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_cont = "!!"
         self.doxygen_end = "!<"
         self.file_list = []
+        self.shared_helper = config.shared_helpers  # All accumulated helpers
         ModuleInfo.newlibrary = newlibrary
 
     _default_buf_args = ["arg"]
@@ -864,7 +866,11 @@ rv = .false.
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if attrs["assumedtype"]:
-                    if attrs["dimension"]:
+                    if attrs["rank"]:
+                        arg_c_decl.append(
+                            "type(*) :: {}(*)".format(ast.name)
+                        )
+                    elif attrs["dimension"]:
                         arg_c_decl.append(
                             "type(*) :: {}({})".format(
                                 ast.name, attrs["dimension"])
@@ -1345,19 +1351,26 @@ rv = .false.
             for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
+        if intent_blk.c_helper:
+            c_helper = wformat(intent_blk.c_helper, fmt)
+            for helper in c_helper.split():
+                fileinfo.c_helper[helper] = True
         if intent_blk.f_helper:
             f_helper = wformat(intent_blk.f_helper, fmt)
             for helper in f_helper.split():
                 fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def set_fmt_fields(self, f_ast, c_ast, fmt, is_result=False,
+    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
+                       is_result=False,
                        ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            cls   - ast.ClassNode or None of enclosing class.
+            fcn   - ast.FunctionNode of calling function.
             f_ast - declast.Declaration - Fortran argument
             c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
@@ -1383,7 +1396,6 @@ rv = .false.
         dim = c_attrs["dimension"]
         if dim:
             # XXX - Assume 1-d
-            fmt.f_var_shape = "(:)"  # assumed_shape
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
 
         f_attrs = f_ast.attrs
@@ -1397,9 +1409,47 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            fmt.f_assumed_shape = "(:)"  # XXX - assumes 1-d
+            self.ftn_dimension(cls, fcn, f_ast, fmt, modules, fileinfo)
 
         return ntypemap
+
+    def ftn_dimension(self, cls, fcn, ast, fmt, modules, fileinfo):
+        """Set format fields from dimension attribute.
+
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            ast  - declast.Declaration for argument.
+            fmt  - util.Scope
+        """
+        if cls is not None:
+            cls.create_node_map()
+        visitor = ToDimension(cls, fcn, fmt)
+        visitor.visit(ast.metaattrs["dimension"])
+        fmt.rank = str(visitor.rank)
+        if visitor.rank > 0:
+            fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
+        fmt.f_assumed_shape = fortran_ranks[visitor.rank]
+
+        if visitor.need_helper:
+            # Write C helper in utility file.
+            fmt.f_get_shape_func = "SHROUD_get_shape_" + fmt.f_var
+            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls, fcn)
+            fileinfo.c_helper[hname] = True
+
+            fmt.f_shape_var = fmt.f_declare_shape_prefix + fmt.f_var
+            fmt.f_declare_shape_array = wformat(
+                "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
+            fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]
+            if cls:
+                fmt.f_get_shape_array = wformat(
+                    "call {f_get_shape_func}("
+                    "{F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
+            else:
+                fmt.f_get_shape_array = wformat(
+                    "call {f_get_shape_func}({f_shape_var})\n", fmt)
+            fmt.f_pointer_shape = ", {}".format(fmt.f_shape_var)
+            self.set_f_module(modules, "iso_c_binding", "C_INT")
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1472,8 +1522,8 @@ rv = .false.
             fmt_result.f_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            self.set_fmt_fields(ast, C_node.ast, fmt_result, True,
-                                result_typemap)
+            self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
+                                modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             result_deref_clause = ast.attrs["deref"]
@@ -1596,7 +1646,8 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            arg_typemap = self.set_fmt_fields(f_arg, c_arg, fmt_arg)
+            arg_typemap = self.set_fmt_fields(
+                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
                 
             c_sgroup = c_arg.typemap.sgroup
@@ -1660,7 +1711,7 @@ rv = .false.
                 elif implied:
                     # implied is computed then passed to C++.
                     fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
-                        f_arg.attrs["implied"], node, f_arg)
+                        implied, node, f_arg)
                     if intermediate:
                         fmt_arg.c_var = "SH_" + fmt_arg.f_var
                         arg_f_decl.append(f_arg.gen_arg_as_fortran(
@@ -1801,7 +1852,7 @@ rv = .false.
                     f_type = ntypemap.f_type
                 arg_f_decl.append("{}, {} :: {}{}".format(
                     f_type, return_pointer_as,
-                    fmt_result.f_var, fmt_result.f_var_shape))
+                    fmt_result.f_var, fmt_result.f_assumed_shape))
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes
@@ -1983,6 +2034,9 @@ rv = .false.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
+        # Accumulate all C helpers for later processing.
+        self.shared_helper.update(fileinfo.c_helper)
+
     def write_module(self, fileinfo):
         """ Write Fortran wrapper module.
         This may be for a library or a class.
@@ -2056,6 +2110,68 @@ rv = .false.
         """
         pass
 
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Convert dimension expression to Fortran wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+
+    def __init__(self, cls, fcn, fmt):
+        """
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fcn = fcn
+        self.fmt = fmt
+
+        self.rank = 0
+        self.shape = []
+        self.need_helper = False
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for members of class/struct.
+        if self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            self.need_helper = True
+            member = self.cls.map_name_to_node[argname]
+            if member.may_have_args():
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "obj->{}({})".format(
+                        argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "obj->{}".format(argname)
+        else:
+            if self.fcn.ast.find_arg_by_name(argname) is None:
+                self.need_helper = True
+            if node.args is None:
+                return argname  # variable
+            else:
+                return self.param_list(node) # function
+        return "--??--"
+
+######################################################################
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Fortran wrapper code.
@@ -2100,6 +2216,7 @@ class ToImplied(todict.PrintNode):
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "type":
+            # type(arg)
             self.intermediate = True
             self.helper = "ShroudTypeDefines"
             argname = node.args[0].name
@@ -2134,6 +2251,7 @@ def ftn_implied(expr, func, arg):
     visitor = ToImplied(expr, func, arg)
     return visitor.visit(node), visitor.intermediate, visitor.helper
 
+######################################################################
 
 def attr_allocatable(allocatable, node, arg, pre_call):
     """Add the allocatable attribute to the pre_call block.
@@ -2163,9 +2281,10 @@ def attr_allocatable(allocatable, node, arg, pre_call):
                     moldvar, allocatable
                 )
             )
-        if moldarg.attrs["dimension"] is None:
+        if moldarg.attrs["dimension"] is None and \
+           moldarg.attrs["rank"] is None:
             raise RuntimeError(
-                "Mold argument '{}' must have dimension attribute: {}".format(
+                "Mold argument '{}' must have dimension or rank attribute: {}".format(
                     moldvar, allocatable
                 )
             )
@@ -2175,7 +2294,10 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             fmt.mold = m.group(0)
             append_format(pre_call, "allocate({f_var}, {mold})", fmt)
         else:
-            rank = len(moldarg.attrs["dimension"].split(","))
+            if moldarg.attrs["rank"]:
+                rank = int(moldarg.attrs["rank"])
+            else:
+                rank = len(moldarg.attrs["dimension"].split(","))
             bounds = []
             for i in range(1, rank + 1):
                 bounds.append(
@@ -2186,6 +2308,7 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             fmt.mold = ",".join(bounds)
             append_format(pre_call, "allocate({f_var}({mold}))", fmt)
 
+######################################################################
 
 class ModuleInfo(object):
     """Contains information to create a Fortran module.
@@ -2212,6 +2335,7 @@ class ModuleInfo(object):
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
 
+        self.c_helper = {}
         self.f_helper = {}
         self.helper_derived_type = []
         self.helper_source = []

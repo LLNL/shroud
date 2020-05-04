@@ -426,13 +426,14 @@
                                     "field_name": "dvalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_list",
                                     "npy_dims": "SHD_dvalue",
-                                    "npy_intp_asgn": "SHD_dvalue[0] = nitems*TWO;\n",
+                                    "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems*TWO;\n",
                                     "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems*TWO",
                                     "py_var": "SHPy_dvalue",
                                     "pytmp_var": "SHTPy_dvalue",
+                                    "rank": "1",
                                     "size_var": "SHSize_dvalue",
                                     "stmt0": "py_ctor_native_*_list",
                                     "stmt1": "py_ctor_native_*"
@@ -455,13 +456,14 @@
                                     "field_name": "ivalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_list",
                                     "npy_dims": "SHD_ivalue",
-                                    "npy_intp_asgn": "SHD_ivalue[0] = nitems+nitems;\n",
+                                    "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems+self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems+nitems",
                                     "py_var": "SHPy_ivalue",
                                     "pytmp_var": "SHTPy_ivalue",
+                                    "rank": "1",
                                     "size_var": "SHSize_ivalue",
                                     "stmt0": "py_ctor_native_*_list",
                                     "stmt1": "py_ctor_native_*"
@@ -506,13 +508,14 @@
                                     "field_name": "svalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_charptr",
                                     "npy_dims": "SHD_svalue",
-                                    "npy_intp_asgn": "SHD_svalue[0] = nitems;\n",
+                                    "npy_intp_asgn": "SHD_svalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_svalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_INTP",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_svalue",
                                     "pytmp_var": "SHTPy_svalue",
+                                    "rank": "1",
                                     "size_var": "SHSize_svalue",
                                     "stmt0": "py_ctor_char_**_list",
                                     "stmt1": "py_ctor_char_**"
@@ -576,6 +579,17 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "+",
+                                                "right": {
+                                                    "name": "nitems"
+                                                }
+                                            }
+                                        ],
                                         "struct_member": "ivalue"
                                     },
                                     "specifier": [
@@ -597,6 +611,17 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "*",
+                                                "right": {
+                                                    "name": "TWO"
+                                                }
+                                            }
+                                        ],
                                         "struct_member": "dvalue"
                                     },
                                     "specifier": [
@@ -621,6 +646,11 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "struct_member": "svalue"
                                     },
                                     "specifier": [
@@ -695,6 +725,19 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -726,6 +769,19 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
                                     }
                                 ]
                             },
@@ -763,6 +819,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
                                     }
                                 ]
                             },
@@ -836,13 +899,14 @@
                                     "field_name": "dvalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
                                     "npy_dims": "SHD_dvalue",
-                                    "npy_intp_asgn": "SHD_dvalue[0] = nitems;\n",
+                                    "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_dvalue",
                                     "pytmp_var": "SHTPy_dvalue",
+                                    "rank": "1",
                                     "size_var": "SHSize_dvalue",
                                     "stmt0": "py_ctor_native_*_numpy",
                                     "stmt1": "py_ctor_native_*"
@@ -865,13 +929,14 @@
                                     "field_name": "ivalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_numpy",
                                     "npy_dims": "SHD_ivalue",
-                                    "npy_intp_asgn": "SHD_ivalue[0] = nitems;\n",
+                                    "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
                                     "npy_ndims": "1",
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_ivalue",
                                     "pytmp_var": "SHTPy_ivalue",
+                                    "rank": "1",
                                     "size_var": "SHSize_ivalue",
                                     "stmt0": "py_ctor_native_*_numpy",
                                     "stmt1": "py_ctor_native_*"
@@ -957,6 +1022,11 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "struct_member": "ivalue"
                                     },
                                     "specifier": [
@@ -978,6 +1048,11 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "struct_member": "dvalue"
                                     },
                                     "specifier": [
@@ -1052,6 +1127,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1083,6 +1165,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
                                     }
                                 ]
                             },

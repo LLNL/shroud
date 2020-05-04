@@ -282,7 +282,7 @@ module vectors_mod
 
 contains
 
-    ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
+    ! int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -308,7 +308,7 @@ contains
     end function vector_sum
     ! end vector_sum
 
-    ! void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
+    ! void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -338,7 +338,7 @@ contains
     end subroutine vector_iota_out
     ! end vector_iota_out
 
-    ! void vector_iota_out_with_num(std::vector<int> & arg +dimension(:)+intent(out))
+    ! void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -372,7 +372,7 @@ contains
     end function vector_iota_out_with_num
     ! end vector_iota_out_with_num
 
-    ! void vector_iota_out_with_num2(std::vector<int> & arg +dimension(:)+intent(out))
+    ! void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -407,7 +407,7 @@ contains
     end function vector_iota_out_with_num2
     ! end vector_iota_out_with_num2
 
-    ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
+    ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -438,7 +438,7 @@ contains
     end subroutine vector_iota_out_alloc
     ! end vector_iota_out_alloc
 
-    ! void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))
+    ! void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -471,7 +471,7 @@ contains
     end subroutine vector_iota_inout_alloc
     ! end vector_iota_inout_alloc
 
-    ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
+    ! void vector_increment(std::vector<int> & arg +intent(inout)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -496,7 +496,7 @@ contains
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
-    ! void vector_iota_out_d(std::vector<double> & arg +dimension(:)+intent(out))
+    ! void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -524,7 +524,7 @@ contains
         ! splicer end function.vector_iota_out_d
     end subroutine vector_iota_out_d
 
-    ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
+    ! int vector_string_count(const std::vector<std::string> & arg +intent(in)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -553,7 +553,7 @@ contains
         ! splicer end function.vector_string_count
     end function vector_string_count
 
-    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+dimension(:)
+    ! std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+rank(1)
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result

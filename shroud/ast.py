@@ -74,6 +74,18 @@ class AstNode(object):
         """Return top of AST tree."""
         return self.parent.get_LibraryNode()
 
+    def find_header(self):
+        """Return most recent cxx_header"""
+        if self.cxx_header:
+            return self.cxx_header
+        elif self.parent is not None:
+            return self.parent.find_header()
+        else:
+            return ""
+
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return False
 
 ######################################################################
 
@@ -613,7 +625,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type="SHROUD_array",
 
             f_assumed_shape="",  # scalar
+            f_declare_shape_prefix="SHAPE_",
+            f_declare_shape_array="",
+            f_get_shape_array="",
             f_pointer_shape="",  # scalar
+            f_shape_var="",
             f_var_shape="",      # scalar
 
             LUA_result="rv",
@@ -1192,6 +1208,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.map_name_to_node = {}
         for var in self.variables:
             self.map_name_to_node[var.name] = var
+        for node in self.functions:
+            self.map_name_to_node[node.ast.name] = node
 
 ######################################################################
 
@@ -1279,6 +1297,7 @@ class FunctionNode(AstNode):
         # working variables
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
+        self.cxx_header = []
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
@@ -1466,6 +1485,9 @@ class FunctionNode(AstNode):
         """Look for symbols within parent. """
         return self.parent.unqualified_lookup(name)
 
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return True
 
 ######################################################################
 

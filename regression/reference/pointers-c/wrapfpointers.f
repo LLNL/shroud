@@ -416,17 +416,17 @@ module pointers_mod
     ! Result
     ! Requested: c_native_scalar_result
     ! Match:     c_default
-    ! start getlen
+    ! start get_len
     interface
-        function getlen() &
+        function get_len() &
                 result(SHT_rv) &
-                bind(C, name="getlen")
+                bind(C, name="getLen")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function getlen
+        end function get_len
     end interface
-    ! end getlen
+    ! end get_len
 
     ! ----------------------------------------
     ! Result
@@ -527,6 +527,38 @@ module pointers_mod
     end interface
     ! end c_return_address2
 
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start c_return_int_ptr_to_scalar
+    interface
+        function c_return_int_ptr_to_scalar() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_scalar
+    end interface
+    ! end c_return_int_ptr_to_scalar
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start c_return_int_ptr_to_fixed_array
+    interface
+        function c_return_int_ptr_to_fixed_array() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToFixedArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_fixed_array
+    end interface
+    ! end c_return_int_ptr_to_fixed_array
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -534,7 +566,7 @@ module pointers_mod
 
 contains
 
-    ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -572,7 +604,7 @@ contains
     end subroutine cos_doubles
     ! end cos_doubles
 
-    ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -611,7 +643,7 @@ contains
     end subroutine truncate_to_int
     ! end truncate_to_int
 
-    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -643,7 +675,7 @@ contains
     end subroutine sum
     ! end sum
 
-    ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+    ! void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -671,7 +703,7 @@ contains
     end subroutine increment_int_array
     ! end increment_int_array
 
-    ! void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+    ! void acceptCharArrayIn(char * * names +intent(in)+rank(1))
     ! arg_to_buffer
     ! ----------------------------------------
     ! Result
@@ -781,7 +813,7 @@ contains
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
 
-    ! void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))
+    ! void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -795,16 +827,28 @@ contains
     ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length
-    !! is computed by function getlen.
+    !! is computed by C++ function getLen.
+    !! getLen will be called from C/C++ to compute the shape.
+    !! Note that getLen will be wrapped in Fortran as get_len.
     !<
     ! start get_ptr_to_func_array
     subroutine get_ptr_to_func_array(count)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
         ! splicer begin function.get_ptr_to_func_array
+        integer(C_INT) :: SHAPE_count(1)
+        interface
+            subroutine SHROUD_get_shape_count(shape) &
+                bind(C, name="POI_SHROUD_create_f_pointer_shape_0")
+                use iso_c_binding, only : C_INT
+                implicit none
+                integer(C_INT), intent(OUT) :: shape(*)
+            end subroutine SHROUD_get_shape_count
+        end interface
         type(C_PTR) :: SHPTR_count
         call c_get_ptr_to_func_array(SHPTR_count)
-        call c_f_pointer(SHPTR_count, count, [getlen()])
+        call SHROUD_get_shape_count(SHAPE_count)
+        call c_f_pointer(SHPTR_count, count, SHAPE_count)
         ! splicer end function.get_ptr_to_func_array
     end subroutine get_ptr_to_func_array
     ! end get_ptr_to_func_array
@@ -832,6 +876,44 @@ contains
         ! splicer end function.return_address2
     end function return_address2
     ! end return_address2
+
+    ! int * returnIntPtrToScalar()
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_*_result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_ptr_to_scalar
+    function return_int_ptr_to_scalar() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), pointer :: SHT_rv
+        ! splicer begin function.return_int_ptr_to_scalar
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_scalar()
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_int_ptr_to_scalar
+    end function return_int_ptr_to_scalar
+    ! end return_int_ptr_to_scalar
+
+    ! int * returnIntPtrToFixedArray() +dimension(10)
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     f_native_*_result
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_ptr_to_fixed_array
+    function return_int_ptr_to_fixed_array() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), pointer :: SHT_rv(:)
+        ! splicer begin function.return_int_ptr_to_fixed_array
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_fixed_array()
+        call c_f_pointer(SHT_ptr, SHT_rv, [10])
+        ! splicer end function.return_int_ptr_to_fixed_array
+    end function return_int_ptr_to_fixed_array
+    ! end return_int_ptr_to_fixed_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

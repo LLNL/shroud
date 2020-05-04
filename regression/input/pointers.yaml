@@ -25,7 +25,7 @@ declarations:
                             int * arginout +intent(inout),
                             int * argout   +intent(out))
 
-- decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+- decl: void cos_doubles(double * in     +intent(in)  +rank(1),
                          double * out    +intent(out) +allocatable(mold=in),
                          int      sizein +implied(size(in)))
   doxygen:
@@ -34,7 +34,7 @@ declarations:
       allocate OUT same type as IN
       implied size of array
 
-- decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
+- decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
                              int *    out    +intent(out) +allocatable(mold=in),
                              int      sizein +implied(size(in)))
   doxygen:
@@ -71,7 +71,7 @@ declarations:
 ######################################################################
 
 - decl: void Sum(int len +implied(size(values)),
-                 int *values +dimension(:)+intent(in),
+                 int *values +rank(1)+intent(in),
                  int *result +intent(out))
   options:
     # unable to deal with dimension
@@ -82,7 +82,7 @@ declarations:
     description: |
       Return three values into memory the user provides.
 
-- decl: void incrementIntArray(int * array  +dimension(:)+intent(inout),
+- decl: void incrementIntArray(int * array  +rank(1)+intent(inout),
                                int   sizein +implied(size(array)))
   doxygen:
     description: |
@@ -124,17 +124,19 @@ declarations:
   options:
     wrap_python: False
 
-- decl: int getlen()
+- decl: int getLen()
   doxygen:
     brief: Return length of global_fixed_array.
   options:
     wrap_python: False
 - decl: void getPtrToFuncArray(int **count+intent(out)
-                                          +dimension(getlen()))
+                                          +dimension(getLen()))
   doxygen:
     description: |
       Return a Fortran pointer to an array which is the length
-      is computed by function getlen.
+      is computed by C++ function getLen.
+      getLen will be called from C/C++ to compute the shape.
+      Note that getLen will be wrapped in Fortran as get_len.
   options:
     wrap_python: False
 
@@ -162,3 +164,5 @@ declarations:
   options:
     F_force_wrapper: True
 
+- decl: int *returnIntPtrToScalar()
+- decl: int *returnIntPtrToFixedArray() +dimension(10)

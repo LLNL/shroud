@@ -3,8 +3,8 @@ C function const std::string * getConstStringPtrAlloc() +deref(allocatable)+owne
 C function void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
 Close wrapmemdoc.h
 Close wrapmemdoc.cpp
-Close utilmemdoc.cpp
 Close typesmemdoc.h
 C-interface, Fortran function const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 C-interface function void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
 Close wrapfmemdoc.f
+Close utilmemdoc.cpp

@@ -218,8 +218,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -273,8 +273,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -358,8 +358,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -413,8 +413,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -466,6 +466,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_values",
+                            "rank": "1",
                             "size_var": "SHSize_values",
                             "stmt0": "py_native_out_dimension_numpy",
                             "stmt1": "py_native_out_dimension_numpy"
@@ -505,6 +506,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -552,6 +560,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg1",
+                            "rank": "1",
                             "size_var": "SHSize_arg1",
                             "stmt0": "py_native_out_dimension_numpy",
                             "stmt1": "py_native_out_dimension_numpy"
@@ -575,6 +584,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_arg2",
+                            "rank": "1",
                             "size_var": "SHSize_arg2",
                             "stmt0": "py_native_out_dimension_numpy",
                             "stmt1": "py_native_out_dimension_numpy"
@@ -600,6 +610,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -615,6 +632,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -780,6 +804,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
+                            "rank": "1",
                             "size_var": "SHSize_values",
                             "stmt0": "py_native_out_dimension_numpy",
                             "stmt1": "py_native_out_dimension_numpy"
@@ -816,6 +841,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
                                     }
                                 ]
                             },
@@ -923,8 +955,8 @@
                         },
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "values",
@@ -962,8 +994,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum",
@@ -993,6 +1025,7 @@
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
                             "py_var": "SHPy_out",
+                            "rank": "1",
                             "size_var": "SHSize_out",
                             "stmt0": "py_native_out_dimension_numpy",
                             "stmt1": "py_native_out_dimension_numpy"
@@ -1015,6 +1048,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -1090,8 +1130,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "array",
@@ -1127,8 +1167,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
+                "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1170,8 +1210,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "names",
@@ -1196,7 +1236,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "fmtdict": {
                     "PY_name_impl": "PY_acceptCharArrayIn",
                     "function_name": "acceptCharArrayIn",
@@ -1368,6 +1408,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1412,6 +1459,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
                                     }
                                 ]
                             },
@@ -1460,7 +1514,7 @@
             {
                 "ast": {
                     "declarator": {
-                        "name": "getlen",
+                        "name": "getLen",
                         "pointer": []
                     },
                     "params": [],
@@ -1469,14 +1523,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int getlen()",
-                "declgen": "int getlen()",
+                "decl": "int getLen()",
+                "declgen": "int getLen()",
                 "doxygen": {
                     "brief": "Return length of global_fixed_array."
                 },
                 "fmtdict": {
-                    "function_name": "getlen",
-                    "underscore_name": "getlen"
+                    "function_name": "getLen",
+                    "underscore_name": "get_len"
                 },
                 "options": {
                     "wrap_python": false
@@ -1491,7 +1545,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "getlen()",
+                                "dimension": "getLen()",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1502,6 +1556,14 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
                                     }
                                 ]
                             },
@@ -1516,10 +1578,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
                 },
                 "fmtdict": {
                     "function_name": "getPtrToFuncArray",
@@ -1780,6 +1842,106 @@
                 "options": {
                     "F_force_wrapper": true
                 }
+            },
+            {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result_dimension_numpy",
+                        "stmt1": "py_native_result_dimension_numpy"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnIntPtrToScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntPtrToScalar()",
+                "declgen": "int * returnIntPtrToScalar()",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnIntPtrToScalar",
+                    "function_name": "returnIntPtrToScalar",
+                    "underscore_name": "return_int_ptr_to_scalar"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "npy_dims": "SHD_rv",
+                        "npy_intp_asgn": "SHD_rv[0] = 10;\n",
+                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                        "npy_ndims": "1",
+                        "numpy_type": "NPY_INT",
+                        "pointer_shape": "10",
+                        "py_var": "SHTPy_rv",
+                        "rank": "1",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result_dimension_numpy",
+                        "stmt1": "py_native_result_dimension_numpy"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "dimension": "10"
+                    },
+                    "declarator": {
+                        "name": "returnIntPtrToFixedArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnIntPtrToFixedArray",
+                    "function_name": "returnIntPtrToFixedArray",
+                    "underscore_name": "return_int_ptr_to_fixed_array"
+                },
+                "options": {}
             }
         ],
         "language": "c",

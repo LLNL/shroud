@@ -2364,7 +2364,7 @@ contains
         ! splicer end namespace.example::nested.function.verylongfunctionname2
     end function verylongfunctionname2
 
-    ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -2390,7 +2390,7 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:,:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:,:)
         integer(C_INT) :: SH_sizein
         ! splicer begin namespace.example::nested.function.cos_doubles
         allocate(out, mold=in)

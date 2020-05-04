@@ -51,9 +51,8 @@ class VerifyAttrs(object):
             node - ast.LibraryNode, ast.NameSpaceNode
         """
         for cls in node.classes:
-            if not cls.as_struct:
-                for var in cls.variables:
-                    self.check_var_attrs(cls, var)
+            for var in cls.variables:
+                self.check_var_attrs(cls, var)
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
@@ -64,20 +63,32 @@ class VerifyAttrs(object):
             self.verify_namespace_attrs(ns)
 
     def check_var_attrs(self, cls, node):
-        """
+        """Check attributes for variables.
+        This includes struct and class members.
+
         Args:
             cls -
             node -
         """
-        for attr in node.ast.attrs:
+        ast = node.ast
+        attrs = ast.attrs
+        for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
-            if attr not in ["name", "readonly"]:
+            if attr not in ["name", "readonly", "dimension"]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, node.ast.name, node.linenumber
+                        attr, ast.name, node.linenumber
                     )
                 )
+
+        is_ptr = ast.is_indirect()
+        if attrs["dimension"] and not is_ptr:
+            raise RuntimeError(
+                "dimension attribute can only be "
+                "used on pointer and references"
+            )
+        self.parse_attrs(node, ast)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
@@ -126,6 +137,8 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(ast.params)
 
+        self.parse_attrs(node, ast)
+            
     def check_shared_attrs(self, ast):
         """Check attributes which may be assigned to function or argument:
         deref, dimension, free_pattern, owner, rank
@@ -181,20 +194,13 @@ class VerifyAttrs(object):
                     "dimension attribute can only be "
                     "used on pointer and references"
                 )
-            if dimension is True:
-                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
-                # No value was provided, provide default
-                if attrs["allocatable"]:
-                    attrs["dimension"] = ":"
-                else:
-                    attrs["dimension"] = "*"
         elif ntypemap:
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
-                attrs["dimension"] = ":"
+                attrs["rank"] = 1
             elif ntypemap.name == 'char' and is_ptr == 2:
                 # 'char **' -> CHARACTER(*) s(:)
-                attrs["dimension"] = ":"
+                attrs["rank"] = 1
 
         owner = attrs["owner"]
         if owner is not None:
@@ -236,7 +242,7 @@ class VerifyAttrs(object):
         attrs = arg.attrs
 
         for attr in attrs:
-            if attr[0] == "_":  # internal attribute
+            if attr[0] == "_":  # Shroud internal attribute.
                 continue
             if attr not in [
                 "allocatable",
@@ -405,9 +411,31 @@ class VerifyAttrs(object):
                 % (arg_typemap.name, arg.gen_decl())
             )
 
+        self.parse_attrs(node, arg)
+
         if arg.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1, options)
+
+    def parse_attrs(self, node, ast):
+        """Parse attributes and save the AST.
+        This tree will be traversed by the wrapping classes
+        to convert to language specific code.
+
+        Args:
+            attrs - collections.defaultdict
+            node - Container struct or class.
+        """
+        attrs = ast.attrs
+        metaattrs = ast.metaattrs
+        
+        dim = attrs["dimension"]
+        if dim:
+            try:
+                metaattrs["dimension"] = declast.check_dimension(dim)
+            except RuntimeError:
+                raise RuntimeError("Unable to parse dimension: {} at line {}"
+                                   .format(dim, node.linenumber))
 
 
 class GenFunctions(object):

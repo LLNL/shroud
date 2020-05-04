@@ -635,7 +635,7 @@ PP_verylongfunctionname2(
 // splicer end namespace.example::nested.function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
 // Argument:  in
 // Exact:     py_native_in_dimension_numpy

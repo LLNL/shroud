@@ -862,8 +862,7 @@ def create_class_typemap(node, fields=None):
         base="shadow",
         sgroup="shadow",
         cxx_type=cxx_type,
-        # XXX - look up scope for header...
-        impl_header=node.cxx_header,
+        impl_header=node.find_header(),
         wrap_header=fmt_class.C_header_utility,
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
@@ -1328,6 +1327,7 @@ class FStmts(object):
     def __init__(self,
         name="f_default",
         buf_args=[],
+        c_helper="",
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
         need_wrapper=False,
@@ -1338,6 +1338,7 @@ class FStmts(object):
     ):
         self.name = name
         self.buf_args = buf_args
+        self.c_helper = c_helper
         self.c_local_var = c_local_var
         self.f_attribute = f_attribute
         self.f_helper = f_helper
@@ -1415,10 +1416,12 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
+            "{f_declare_shape_array}"
             "type(C_PTR) :: {F_pointer}",
         ],
         arg_c_call=["{F_pointer}"],
         post_call=[
+            "{f_get_shape_array}"
             "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
         ],
     ),
@@ -1519,7 +1522,7 @@ fc_statements = [
     dict(
         name="c_native_*_result_buf",
         buf_args=["context"],
-        c_helper="array_context copy_array ShroudTypeDefines",
+        c_helper="array_context ShroudTypeDefines",
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
@@ -1534,6 +1537,7 @@ fc_statements = [
     dict(
         name="f_native_*_result_allocatable",
         buf_args=["context"],
+        c_helper="copy_array",
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
@@ -1556,12 +1560,14 @@ fc_statements = [
         name="f_native_*_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
+            "{f_declare_shape_array}"
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
         post_call=[
+            "{f_get_shape_array}"
             "call c_f_pointer({F_pointer}, {F_result}{f_pointer_shape})",
         ],
     ),
@@ -1634,7 +1640,7 @@ fc_statements = [
     dict(
         name="c_char_result_buf_allocatable",
         buf_args=["context"],
-        c_helper="array_context copy_string ShroudTypeDefines",
+        c_helper="array_context ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1677,6 +1683,7 @@ fc_statements = [
     dict(
         name="f_char_result_allocatable",
         need_wrapper=True,
+        c_helper="copy_string",
         f_helper="copy_string",
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
@@ -1795,7 +1802,7 @@ fc_statements = [
         name="c_string_result_buf_allocatable",
         # pass address of string and length back to Fortran
         buf_args=["context"],
-        c_helper="copy_string ShroudStrToArray",
+        c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1823,7 +1830,7 @@ fc_statements = [
         # pass address of string and length back to Fortran
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="copy_string ShroudStrToArray",
+        c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1845,6 +1852,7 @@ fc_statements = [
     dict(
         name="f_string_result_allocatable",
         need_wrapper=True,
+        c_helper="copy_string",
         f_helper="copy_string",
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
@@ -1870,7 +1878,7 @@ fc_statements = [
         name="c_vector_out_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="array_context copy_array ShroudTypeDefines",
+        c_helper="array_context ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1897,7 +1905,7 @@ fc_statements = [
         name="c_vector_inout_buf",
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
-        c_helper="array_context copy_array ShroudTypeDefines",
+        c_helper="array_context ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -2058,6 +2066,7 @@ fc_statements = [
     # copy into user's existing array
     dict(
         name="f_vector_out",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -2067,6 +2076,7 @@ fc_statements = [
     ),
     dict(
         name="f_vector_inout",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -2076,6 +2086,7 @@ fc_statements = [
     ),
     dict(
         name="f_vector_result",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -2086,6 +2097,7 @@ fc_statements = [
     # copy into allocated array
     dict(
         name="f_vector_out_allocatable",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -2096,6 +2108,7 @@ fc_statements = [
     ),
     dict(
         name="f_vector_inout_allocatable",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
@@ -2109,6 +2122,7 @@ fc_statements = [
     # Always return a 1-d array.
     dict(
         name="f_vector_result_allocatable",
+        c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[

@@ -716,9 +716,7 @@ return 1;""",
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
 
-        have_array, fmt.size = py_struct_dimension(parent, node)
-        fmt.npy_ndims = "1"
-        fmt.npy_dims = "dims"
+        have_array = py_struct_dimension(parent, node, fmt)
 
         if not have_array and arg_typemap.PY_get:
             fmt.get = wformat(arg_typemap.PY_get, fmt)
@@ -831,29 +829,13 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def check_dimension_blk(self, arg):
-        """Check dimension attribute.
-        Convert it to use Numpy.
-
-        Args:
-            arg - argument node.
-        """
-        intent = arg.attrs["intent"]
-        if intent == "out":
-            dimension = arg.attrs["dimension"]
-            if dimension is None:
-                raise RuntimeError(
-                    "Argument must have non-default dimension attribute")
-            if dimension == "*":
-                raise RuntimeError(
-                    "Argument dimension must not be assumed-length")
-
-    def set_fmt_fields(self, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, ast, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            cls - ast.ClassNode or None
             ast - declast.Declaration
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
@@ -884,19 +866,26 @@ return 1;""",
 
         dimension = ast.attrs["dimension"]
         if dimension:
-            # (*), (:), (:,:)
-            if dimension[0] not in ["*", ":"]:
-                fmt.npy_ndims = "1"
-                if is_result:
-                    fmt.npy_dims = "SHD_" + fmt.C_result
-                else:
-                    fmt.npy_dims = "SHD_" + ast.name
-                fmt.pointer_shape = dimension
-                # Dimensions must be in npy_intp type array.
-                # XXX - assumes 1-d
-                fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[1];\n", fmt)
-                fmt.npy_intp_asgn = "{}[0] = {};\n".format(
-                    fmt.npy_dims, dimension)
+            class_context = "self->{}->".format(fmt.PY_type_obj)
+            visitor = ToDimension(cls, fmt, class_context)
+            visitor.visit(ast.metaattrs["dimension"])
+            fmt.rank = str(visitor.rank)
+
+            fmt.npy_ndims = str(visitor.rank)
+            if is_result:
+                fmt.npy_dims = "SHD_" + fmt.C_result
+            else:
+                fmt.npy_dims = "SHD_" + ast.name
+            fmt.pointer_shape = dimension
+            # Dimensions must be in npy_intp type array.
+            fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[{rank}];\n", fmt)
+
+            # Assign each rank of dimension.
+            fmtdim = []
+            for i, dim in enumerate(visitor.shape):
+                fmtdim.append("{}[{}] = {};\n".format(
+                    fmt.npy_dims, i, dim))
+            fmt.npy_intp_asgn = "\n".join(fmtdim)
 
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
@@ -1084,7 +1073,7 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result, result_blk = self.process_result(node, fmt)
+            fmt_result, result_blk = self.process_result(cls, node, fmt)
         else:
             result_blk = default_scope
 
@@ -1159,9 +1148,10 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
-            self.set_fmt_fields(arg, fmt_arg)
+            self.set_fmt_fields(cls, arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
+            rank = arg.attrs["rank"]
             dimension = arg.attrs["dimension"]
             allocatable = attrs["allocatable"]
             hidden = attrs["hidden"]
@@ -1213,9 +1203,8 @@ return 1;""",
                 stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
-            elif dimension:
-                # ex. (int * arg1 +intent(in) +dimension(:))
-                self.check_dimension_blk(arg)
+            elif rank or dimension:
+                # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
             else:
                 stmts = ["py", sgroup, spointer, intent]
@@ -1805,7 +1794,7 @@ return 1;""",
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
-    def process_result(self, node, fmt):
+    def process_result(self, cls, node, fmt):
         """Work on formatting for result values.
 
         Return fmt_result
@@ -1855,7 +1844,7 @@ return 1;""",
             #            fmt_pattern = fmt_result
             update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(ast, fmt_result, True)
+            self.set_fmt_fields(cls, ast, fmt_result, True)
             sgroup = result_typemap.sgroup
             stmts = None
             if is_ctor:
@@ -3118,9 +3107,56 @@ def update_fmt_from_typemap(fmt, ntypemap):
 #        fmt.PY_to_object_func = ntypemap.PY_to_object
 #        fmt.PY_from_object_func = ntypemap.PY_from_object
 
+######################################################################
 
-class ToStructDimension(todict.PrintNode):
-    """Convert dimension expression in struct to Python wrapper code.
+def py_struct_dimension(parent, var, fmt):
+    """Return tuple with
+    (True if an array, the dimension of a struct member).
+    Use the ast.array or dimension attribute.
+
+    npy_intp_values = comma separated list of dimensions
+    npy_intp_size   = size of array, multiplied ranks.
+
+    Args:
+        parent - ast.ClassNode.
+        var    - ast.VariableNode.
+        fmt    - util.Scope.
+    """
+    fmt.npy_ndims = "1"
+    fmt.npy_dims = "dims"  # Name of local variables
+    # fmt.npy_intp_asgn     # assign to
+    #    fmt.npy_intp_values     # comma separated list of values
+    ast = var.ast
+    if ast.array: # Fixed size array.
+        metadim = ast.array
+    elif ast.attrs["dimension"] is not None:
+        metadim = ast.metaattrs["dimension"]
+    else:
+        metadim = None
+    if metadim:
+        visitor = ToDimension(parent, var.fmtdict,
+                              var.fmtdict.PY_struct_context)
+        visitor.visit(metadim)
+        fmt.rank = str(visitor.rank)
+        fmt.npy_intp_values = ", ".join(visitor.shape)
+        if visitor.rank == 1:
+            fmt.npy_intp_size = visitor.shape[0]
+        else:
+            fmt.npy_intp_size = "*".join(
+                ["(" + dim + ")" for dim in visitor.shape])
+        return True
+    else:
+        # Scalar
+        fmt.rank = "0"
+        fmt.npy_intp_values = "1"     # comma separated list of values
+        fmt.npy_intp_size   = "1"
+        return False
+
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Visit dimension expression.
+    Convert cls references to correct scope.  obj->{argname}
 
     If a name is a member of the struct, prefix with PY_struct_context.
 
@@ -3130,50 +3166,61 @@ class ToStructDimension(todict.PrintNode):
         double *dvalue  +dimension(nitems*TWO);     # case 2
     }
 
-    case 1:  {PY_struct_context}nitems+{PY_struct_context}nitems
-    case 2:  {PY_struct_context}nitems*TWO
+    case 1:  {context}nitems+{context}nitems
+    case 2:  {context}nitems*TWO
+
     """
 
-    def __init__(self, parent, fmtdict):
-        super(ToStructDimension, self).__init__()
-        self.parent = parent
-        self.fmtdict = fmtdict
-
-    def visit_Identifier(self, node):
+    def __init__(self, cls, fmt, context):
         """
         Args:
-            node - declast.Identifier
+            cls  - ast.ClassNode or None
+            fmt  - util.Scope
+            context - how to access Identifiers in cls.
+                      Different for function arguments and
+                      class/struct members.
         """
-        if node.name in self.parent.map_name_to_node:
-            return self.fmtdict.PY_struct_context + node.name
-        elif node.args:
-            return self.param_list(node)
-        else:
-            return node.name
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fmt = fmt
+        self.context = context
 
-def py_struct_dimension(parent, var):
-    """Return tuple with
-    (True if an array, the dimension of a struct member).
-    Use the ast.array or dimension attribute.
+        self.rank = 0
+        self.shape = []
 
-    Args:
-        parent - ast.ClassNode.
-        var - ast.VariableNode.
-    """
-    ast = var.ast
-    if ast.array:
-        if len(ast.array) == 1:
-            return True, todict.print_node(ast.array[0])
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for members of class/struct.
+        if self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            member = self.cls.map_name_to_node[argname]
+            obj = self.fmt.PY_type_obj
+            if member.may_have_args():
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "{}{}({})".format(
+                        self.context, argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "{}{}".format(self.context, argname)
+        elif node.args is None:
+            return argname  # variable
         else:
-            return True, "()()"
-    else:
-        dim = ast.attrs.get("dimension", None)
-        if dim:
-            node = declast.ExprParser(dim).expression()
-            visitor = ToStructDimension(parent, var.fmtdict)
-            return True, visitor.visit(node)
-        else:
-            return False, "1"
+            return self.param_list(node) # function
+        return "--??--"
+
+######################################################################
 
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.
@@ -3248,6 +3295,7 @@ def py_implied(expr, func):
     visitor = ToImplied(expr, func)
     return visitor.visit(node)
 
+######################################################################
 
 def attr_allocatable(language, allocatable, node, arg, fmt_arg):
     """parse allocatable and add values to fmt_arg.
@@ -3289,9 +3337,10 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
                     moldvar, allocatable
                 )
             )
-        if moldarg.attrs["dimension"] is None:
+        if moldarg.attrs["dimension"] is None and \
+           moldarg.attrs["rank"] is None:
             raise RuntimeError(
-                "Mold argument '{}' must have dimension attribute: {}".format(
+                "Mold argument '{}' must have dimension or rank attribute: {}".format(
                     moldvar, allocatable
                 )
             )
@@ -3331,6 +3380,8 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
             "{npy_dims}[0] = {size_var};\n", fmt_arg)
 
     return mold
+
+######################################################################
 
 def update_code_blocks(symtab, stmts, fmt):
     """ Accumulate info from statements.
@@ -4447,7 +4498,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],
     ),
@@ -4504,7 +4555,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],
     ),
@@ -4517,13 +4568,13 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
         getter_helper="to_PyList_{c_type}",
         getter=[
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ]
     ),
@@ -4535,14 +4586,14 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
         getter=[
             "if ({c_var_obj} == {nullptr}) {{+",
             "// Create Numpy object which points to struct member.",
-            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
             "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "-}}",
             "Py_INCREF({c_var_obj});",
@@ -4573,7 +4624,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
             "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "if (rv != {nullptr}) {{+",
             "Py_INCREF(rv);",
@@ -4590,7 +4641,7 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],

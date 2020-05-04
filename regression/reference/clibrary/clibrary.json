@@ -3635,11 +3635,11 @@
                             "c_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [*]",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
-                            "f_var_shape": "(:)",
-                            "sh_type": "SH_TYPE_CPTR"
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "size": "size(arg)"
                         }
                     }
                 },
@@ -3652,8 +3652,8 @@
                         {
                             "attrs": {
                                 "assumedtype": true,
-                                "dimension": "*",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -3674,10 +3674,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void passAssumedTypeDim(void *arg+assumedtype+dimension)",
-                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+dimension(*)+intent(in))",
+                "decl": "void passAssumedTypeDim(void *arg+assumedtype+rank(1))",
+                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+intent(in)+rank(1))",
                 "doxygen": {
-                    "brief": "Test assumed-type with dimension"
+                    "brief": "Test assumed-type with rank(1)"
                 },
                 "fmtdict": {
                     "C_call_list": "arg",

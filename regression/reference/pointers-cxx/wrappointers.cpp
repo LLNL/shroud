@@ -91,7 +91,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 }
 // end POI_intargs
 
-// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief compute cos of IN and save in OUT
  *
@@ -122,7 +122,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 }
 // end POI_cos_doubles
 
-// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief truncate IN argument and save in OUT
  *
@@ -256,7 +256,7 @@ void POI_iota_dimension(int nvar, int * values)
 }
 // end POI_iota_dimension
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -303,7 +303,7 @@ void POI_fill_int_array(int * out)
 }
 // end POI_fill_int_array
 
-// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 /**
  * Increment array in place using intent(INOUT).
  */
@@ -328,7 +328,7 @@ void POI_increment_int_array(int * array, int sizein)
 }
 // end POI_increment_int_array
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in))
+// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -346,7 +346,7 @@ void POI_accept_char_array_in(char * * names)
 }
 // end POI_accept_char_array_in
 
-// void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))
+// void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))
 // ----------------------------------------
 // Result
 // Requested: c
@@ -467,7 +467,7 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 }
 // end POI_get_ptr_to_dynamic_array
 
-// int getlen()
+// int getLen()
 /**
  * \brief Return length of global_fixed_array.
  *
@@ -476,20 +476,22 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 // Result
 // Requested: c_native_scalar_result
 // Match:     c_default
-// start POI_getlen
-int POI_getlen()
+// start POI_get_len
+int POI_get_len()
 {
-    // splicer begin function.getlen
-    int SHC_rv = getlen();
+    // splicer begin function.get_len
+    int SHC_rv = getLen();
     return SHC_rv;
-    // splicer end function.getlen
+    // splicer end function.get_len
 }
-// end POI_getlen
+// end POI_get_len
 
-// void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))
+// void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length
- * is computed by function getlen.
+ * is computed by C++ function getLen.
+ * getLen will be called from C/C++ to compute the shape.
+ * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Result
@@ -589,6 +591,36 @@ void * POI_return_address2(int flag)
     // splicer end function.return_address2
 }
 // end POI_return_address2
+
+// int * returnIntPtrToScalar()
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_scalar
+int * POI_return_int_ptr_to_scalar()
+{
+    // splicer begin function.return_int_ptr_to_scalar
+    int * SHC_rv = returnIntPtrToScalar();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_scalar
+}
+// end POI_return_int_ptr_to_scalar
+
+// int * returnIntPtrToFixedArray() +dimension(10)
+// ----------------------------------------
+// Result
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_fixed_array
+int * POI_return_int_ptr_to_fixed_array()
+{
+    // splicer begin function.return_int_ptr_to_fixed_array
+    int * SHC_rv = returnIntPtrToFixedArray();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_fixed_array
+}
+// end POI_return_int_ptr_to_fixed_array
 
 // start release allocated memory
 // Release library allocated memory.

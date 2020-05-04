@@ -20,6 +20,7 @@ VPATH = \
 
 OBJS = \
     pointers.o \
+    utilpointers.o \
     wrapfpointers.o \
     wrappointers.o \
     fruit.o \

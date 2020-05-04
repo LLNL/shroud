@@ -216,11 +216,11 @@
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(in)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -294,8 +294,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -349,8 +349,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -402,11 +402,11 @@
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(in)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -480,8 +480,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "in",
@@ -535,8 +535,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -621,7 +621,7 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -663,6 +663,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -733,7 +740,7 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg1",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -766,7 +773,7 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg2",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -794,6 +801,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -809,6 +823,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -1041,7 +1062,7 @@
                             "f_pointer_shape": ", [nvar]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1080,6 +1101,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
                                     }
                                 ]
                             },
@@ -1200,11 +1228,11 @@
                             "c_var": "values",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(values)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -1235,8 +1263,8 @@
                         },
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "values",
@@ -1274,8 +1302,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "C_call_list": "len,\t values,\t result",
                     "C_name": "POI_sum",
@@ -1328,7 +1356,7 @@
                             "f_pointer_shape": ", [3]",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
@@ -1353,6 +1381,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
                                     }
                                 ]
                             },
@@ -1419,11 +1454,11 @@
                             "c_var": "array",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "integer(C_INT)",
                             "f_var": "array",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(array)",
                             "stmt0": "f_native_*_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_inout",
@@ -1466,8 +1501,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "array",
@@ -1503,8 +1538,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
+                "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1560,8 +1595,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "names",
@@ -1586,7 +1621,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "fmtdict": {
                     "C_call_list": "names",
                     "C_name": "POI_accept_char_array_in",
@@ -1636,11 +1671,11 @@
                             "c_var": "names",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_pointer_shape": ", [:]",
                             "f_type": "character(*)",
                             "f_var": "names",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(names)",
                             "stmt0": "f_char_**_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_**_in_buf",
@@ -1657,9 +1692,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": ":",
                                 "intent": "in",
                                 "len": "Nnames",
+                                "rank": 1,
                                 "size": "Snames"
                             },
                             "declarator": {
@@ -1686,7 +1721,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +dimension(:)+intent(in)+len(Nnames)+size(Snames))",
+                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))",
                 "fmtdict": {
                     "C_call_list": "SHCXX_names",
                     "C_name": "POI_accept_char_array_in_bufferify",
@@ -1971,7 +2006,7 @@
                             "f_pointer_shape": ", [10]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -1999,6 +2034,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
                                     }
                                 ]
                             },
@@ -2070,7 +2112,7 @@
                             "f_pointer_shape": ", [ncount]",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -2128,6 +2170,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
                                     }
                                 ]
                             },
@@ -2218,7 +2267,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "getlen",
+                        "name": "getLen",
                         "pointer": []
                     },
                     "params": [],
@@ -2227,27 +2276,27 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int getlen()",
-                "declgen": "int getlen()",
+                "decl": "int getLen()",
+                "declgen": "int getLen()",
                 "doxygen": {
                     "brief": "Return length of global_fixed_array."
                 },
                 "fmtdict": {
-                    "C_name": "POI_getlen",
+                    "C_name": "POI_get_len",
                     "C_prototype": "",
                     "C_return_type": "int",
-                    "F_C_call": "c_getlen",
-                    "F_C_name": "getlen",
+                    "F_C_call": "c_get_len",
+                    "F_C_name": "get_len",
                     "F_arguments": "",
-                    "F_name_function": "getlen",
-                    "F_name_generic": "getlen",
-                    "F_name_impl": "getlen",
+                    "F_name_function": "get_len",
+                    "F_name_generic": "get_len",
+                    "F_name_impl": "get_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "getlen",
-                    "underscore_name": "getlen"
+                    "function_name": "getLen",
+                    "underscore_name": "get_len"
                 },
                 "options": {
                     "wrap_python": false
@@ -2276,11 +2325,15 @@
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "f_assumed_shape": "(:)",
+                            "f_declare_shape_array": "integer(C_INT) :: SHAPE_count(1)\ninterface+\nsubroutine SHROUD_get_shape_count(shape)\tbind(C, name=\"POI_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimplicit none\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_count\n-end interface\n",
+                            "f_get_shape_array": "call SHROUD_get_shape_count(SHAPE_count)\n",
+                            "f_get_shape_func": "SHROUD_get_shape_count",
                             "f_intent": "OUT",
-                            "f_pointer_shape": ", [getlen()]",
+                            "f_pointer_shape": ", SHAPE_count",
+                            "f_shape_var": "SHAPE_count",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
-                            "f_var_shape": "(:)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out",
                             "stmt1": "f_native_**_out",
@@ -2297,7 +2350,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "getlen()",
+                                "dimension": "getLen()",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2308,6 +2361,14 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
                                     }
                                 ]
                             },
@@ -2322,10 +2383,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getlen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getlen())+intent(out))",
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by function getlen.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -2767,6 +2828,145 @@
                 "options": {
                     "F_force_wrapper": true
                 }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_*_result",
+                        "stmt1": "f_native_*_result",
+                        "stmtc0": "c_native_*_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnIntPtrToScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntPtrToScalar()",
+                "declgen": "int * returnIntPtrToScalar()",
+                "fmtdict": {
+                    "C_name": "POI_return_int_ptr_to_scalar",
+                    "C_prototype": "",
+                    "C_return_type": "int *",
+                    "F_C_call": "c_return_int_ptr_to_scalar",
+                    "F_C_name": "c_return_int_ptr_to_scalar",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_to_scalar",
+                    "F_name_generic": "return_int_ptr_to_scalar",
+                    "F_name_impl": "return_int_ptr_to_scalar",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntPtrToScalar",
+                    "underscore_name": "return_int_ptr_to_scalar"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_assumed_shape": "(:)",
+                        "f_pointer_shape": ", [10]",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_*_result",
+                        "stmt1": "f_native_*_result",
+                        "stmtc0": "c_native_*_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "dimension": "10"
+                    },
+                    "declarator": {
+                        "name": "returnIntPtrToFixedArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
+                "fmtdict": {
+                    "C_name": "POI_return_int_ptr_to_fixed_array",
+                    "C_prototype": "",
+                    "C_return_type": "int *",
+                    "F_C_call": "c_return_int_ptr_to_fixed_array",
+                    "F_C_name": "c_return_int_ptr_to_fixed_array",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_to_fixed_array",
+                    "F_name_generic": "return_int_ptr_to_fixed_array",
+                    "F_name_impl": "return_int_ptr_to_fixed_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntPtrToFixedArray",
+                    "underscore_name": "return_int_ptr_to_fixed_array"
+                },
+                "options": {}
             }
         ],
         "language": "cxx",

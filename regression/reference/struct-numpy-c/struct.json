@@ -202,6 +202,19 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -228,6 +241,19 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
                                     }
                                 ]
                             },
@@ -260,6 +286,13 @@
                                     },
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
                                     }
                                 ]
                             },
@@ -347,6 +380,13 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ]
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -373,6 +413,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
                                     }
                                 ]
                             },
