@@ -3129,33 +3129,28 @@ def py_struct_dimension(parent, var, fmt):
     #    fmt.npy_intp_values     # comma separated list of values
     ast = var.ast
     if ast.array: # Fixed size array.
-        if len(ast.array) == 1:
-            size = todict.print_node(ast.array[0])
-            fmt.npy_intp_values = size     # comma separated list of values
-            fmt.npy_intp_size   = size
-            return True
-        else:
-            fmt.size = "()()"
-            return True
+        metadim = ast.array
+    elif ast.attrs["dimension"] is not None:
+        metadim = ast.metaattrs["dimension"]
     else:
-        dim = ast.attrs.get("dimension", None)
-        if dim:
-            visitor = ToDimension(parent, var.fmtdict,
-                                  var.fmtdict.PY_struct_context)
-            visitor.visit(ast.metaattrs["dimension"])
-            fmt.npy_intp_values = ", ".join(visitor.shape)
-            if visitor.rank == 1:
-                fmt.npy_intp_size = visitor.shape[0]
-            else:
-                fmt.npy_intp_size = "*".join(
-                    ["(" + dim + ")" for dim in visitor.shape])
-            return True
+        metadim = None
+    if metadim:
+        visitor = ToDimension(parent, var.fmtdict,
+                              var.fmtdict.PY_struct_context)
+        visitor.visit(metadim)
+        fmt.npy_intp_values = ", ".join(visitor.shape)
+        if visitor.rank == 1:
+            fmt.npy_intp_size = visitor.shape[0]
         else:
-            # Scalar
-            fmt.npy_intp_values = "1"     # comma separated list of values
-            fmt.npy_intp_size   = "1"
-            fmt.size = 1
-            return False
+            fmt.npy_intp_size = "*".join(
+                ["(" + dim + ")" for dim in visitor.shape])
+        return True
+    else:
+        # Scalar
+        fmt.npy_intp_values = "1"     # comma separated list of values
+        fmt.npy_intp_size   = "1"
+        fmt.size = 1
+        return False
 
 ######################################################################
 
