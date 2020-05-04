@@ -7,6 +7,7 @@
 from __future__ import print_function
 
 from shroud import ast
+from shroud import declast
 from shroud import util
 from shroud import wrapp
 
@@ -60,15 +61,39 @@ struct Cstruct_list {
         self.struct.create_node_map()
         map = self.struct.map_name_to_node
 
-        var = map['ivalue']
-        var.fmtdict.PY_struct_context = "struct."
-        have_array, dims = wrapp.py_struct_dimension(self.struct, var)
-        self.assertEqual("struct.nitems+struct.nitems", dims)
+        ##### Scalar
+        var = map['nitems']
+        fmt = var.fmtdict
+        have_array = wrapp.py_struct_dimension(self.struct, var, fmt)
+        self.assertEqual("0", fmt.rank)
+        self.assertEqual("1", fmt.npy_intp_values)
+        self.assertEqual("1", fmt.npy_intp_size)
 
+        #####
+        var = map['ivalue']
+        # done in generate.VerifyAttrs.parse_attrs
+        var.ast.metaattrs["dimension"] = \
+            declast.check_dimension(var.ast.attrs["dimension"])
+        
+        fmt = var.fmtdict
+        fmt.PY_struct_context = "struct."
+        have_array = wrapp.py_struct_dimension(self.struct, var, fmt)
+        self.assertEqual("1", fmt.rank)
+        self.assertEqual("struct.nitems+struct.nitems", fmt.npy_intp_values)
+        self.assertEqual("struct.nitems+struct.nitems", fmt.npy_intp_size)
+
+        #####
         var = map['dvalue']
-        var.fmtdict.PY_struct_context = "struct."
-        have_array, dims = wrapp.py_struct_dimension(self.struct, var)
-        self.assertEqual("struct.nitems*TWO", dims)
+        # done in generate.VerifyAttrs.parse_attrs
+        var.ast.metaattrs["dimension"] = \
+            declast.check_dimension(var.ast.attrs["dimension"])
+        
+        fmt = var.fmtdict
+        fmt.PY_struct_context = "struct."
+        have_array = wrapp.py_struct_dimension(self.struct, var, fmt)
+        self.assertEqual("1", fmt.rank)
+        self.assertEqual("struct.nitems*TWO", fmt.npy_intp_values)
+        self.assertEqual("struct.nitems*TWO", fmt.npy_intp_size)
 
 
 if __name__ == "__main__":

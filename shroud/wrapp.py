@@ -3122,7 +3122,6 @@ def py_struct_dimension(parent, var, fmt):
         var    - ast.VariableNode.
         fmt    - util.Scope.
     """
-    fmt.rank = 1
     fmt.npy_ndims = "1"
     fmt.npy_dims = "dims"  # Name of local variables
     # fmt.npy_intp_asgn     # assign to
@@ -3138,6 +3137,7 @@ def py_struct_dimension(parent, var, fmt):
         visitor = ToDimension(parent, var.fmtdict,
                               var.fmtdict.PY_struct_context)
         visitor.visit(metadim)
+        fmt.rank = str(visitor.rank)
         fmt.npy_intp_values = ", ".join(visitor.shape)
         if visitor.rank == 1:
             fmt.npy_intp_size = visitor.shape[0]
@@ -3147,9 +3147,9 @@ def py_struct_dimension(parent, var, fmt):
         return True
     else:
         # Scalar
+        fmt.rank = "0"
         fmt.npy_intp_values = "1"     # comma separated list of values
         fmt.npy_intp_size   = "1"
-        fmt.size = 1
         return False
 
 ######################################################################
