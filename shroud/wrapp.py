@@ -716,9 +716,7 @@ return 1;""",
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
 
-        have_array, fmt.size = py_struct_dimension(parent, node)
-        fmt.npy_ndims = "1"
-        fmt.npy_dims = "dims"
+        have_array = py_struct_dimension(parent, node, fmt)
 
         if not have_array and arg_typemap.PY_get:
             fmt.get = wformat(arg_typemap.PY_get, fmt)
@@ -3143,29 +3141,53 @@ class ToStructDimension(todict.PrintNode):
         else:
             return node.name
 
-def py_struct_dimension(parent, var):
+def py_struct_dimension(parent, var, fmt):
     """Return tuple with
     (True if an array, the dimension of a struct member).
     Use the ast.array or dimension attribute.
 
+    npy_intp_values = comma separated list of dimensions
+    npy_intp_size   = size of array, multiplied ranks.
+
     Args:
         parent - ast.ClassNode.
-        var - ast.VariableNode.
+        var    - ast.VariableNode.
+        fmt    - util.Scope.
     """
+    fmt.rank = 1
+    fmt.npy_ndims = "1"
+    fmt.npy_dims = "dims"  # Name of local variables
+    # fmt.npy_intp_asgn     # assign to
+    #    fmt.npy_intp_values     # comma separated list of values
     ast = var.ast
     if ast.array: # Fixed size array.
         if len(ast.array) == 1:
-            return True, todict.print_node(ast.array[0])
+            size = todict.print_node(ast.array[0])
+            fmt.npy_intp_values = size     # comma separated list of values
+            fmt.npy_intp_size   = size
+            return True
         else:
-            return True, "()()"
+            fmt.size = "()()"
+            return True
     else:
         dim = ast.attrs.get("dimension", None)
         if dim:
+ #           visitor = ToDimension(parent, var.fmtdict)
+ #           visitor.visit(ast.metaattrs["dimension"],
+ #                         var.fmtdict.PY_struct_context)
+
             node = declast.ExprParser(dim).expression()
             visitor = ToStructDimension(parent, var.fmtdict)
-            return True, visitor.visit(node)
+            size = visitor.visit(node)
+            fmt.npy_intp_values = size  # comma separated list of values
+            fmt.npy_intp_size   = size
+            return True
         else:
-            return False, "1"
+            # Scalar
+            fmt.npy_intp_values = "1"     # comma separated list of values
+            fmt.npy_intp_size   = "1"
+            fmt.size = 1
+            return False
 
 ######################################################################
 
@@ -4501,7 +4523,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],
     ),
@@ -4558,7 +4580,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],
     ),
@@ -4571,13 +4593,13 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
         getter_helper="to_PyList_{c_type}",
         getter=[
-            "PyObject *rv = {hnamefunc0}({c_var}, {size});",
+            "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ]
     ),
@@ -4589,14 +4611,14 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
         getter=[
             "if ({c_var_obj} == {nullptr}) {{+",
             "// Create Numpy object which points to struct member.",
-            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
             "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "-}}",
             "Py_INCREF({c_var_obj});",
@@ -4627,7 +4649,7 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "npy_intp {npy_dims}[1] = {{ {size} }};",
+            "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
             "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "if (rv != {nullptr}) {{+",
             "Py_INCREF(rv);",
@@ -4644,7 +4666,7 @@ py_statements = [
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
             "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\","
-            "\t {c_var},\t {size}) == -1) {{+",
+            "\t {c_var},\t {npy_intp_size}) == -1) {{+",
             "return -1;",
             "-}}",
         ],
