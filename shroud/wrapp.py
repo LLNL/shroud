@@ -3109,38 +3109,6 @@ def update_fmt_from_typemap(fmt, ntypemap):
 
 ######################################################################
 
-class ToStructDimension(todict.PrintNode):
-    """Convert dimension expression in struct to Python wrapper code.
-
-    If a name is a member of the struct, prefix with PY_struct_context.
-
-    struct Cstruct_list {
-        int nitems;
-        int *ivalue     +dimension(nitems+nitems);  # case 1
-        double *dvalue  +dimension(nitems*TWO);     # case 2
-    }
-
-    case 1:  {PY_struct_context}nitems+{PY_struct_context}nitems
-    case 2:  {PY_struct_context}nitems*TWO
-    """
-
-    def __init__(self, parent, fmtdict):
-        super(ToStructDimension, self).__init__()
-        self.parent = parent
-        self.fmtdict = fmtdict
-
-    def visit_Identifier(self, node):
-        """
-        Args:
-            node - declast.Identifier
-        """
-        if node.name in self.parent.map_name_to_node:
-            return self.fmtdict.PY_struct_context + node.name
-        elif node.args:
-            return self.param_list(node)
-        else:
-            return node.name
-
 def py_struct_dimension(parent, var, fmt):
     """Return tuple with
     (True if an array, the dimension of a struct member).
@@ -3172,15 +3140,15 @@ def py_struct_dimension(parent, var, fmt):
     else:
         dim = ast.attrs.get("dimension", None)
         if dim:
- #           visitor = ToDimension(parent, var.fmtdict)
- #           visitor.visit(ast.metaattrs["dimension"],
- #                         var.fmtdict.PY_struct_context)
-
-            node = declast.ExprParser(dim).expression()
-            visitor = ToStructDimension(parent, var.fmtdict)
-            size = visitor.visit(node)
-            fmt.npy_intp_values = size  # comma separated list of values
-            fmt.npy_intp_size   = size
+            visitor = ToDimension(parent, var.fmtdict,
+                                  var.fmtdict.PY_struct_context)
+            visitor.visit(ast.metaattrs["dimension"])
+            fmt.npy_intp_values = ", ".join(visitor.shape)
+            if visitor.rank == 1:
+                fmt.npy_intp_size = visitor.shape[0]
+            else:
+                fmt.npy_intp_size = "*".join(
+                    ["(" + dim + ")" for dim in visitor.shape])
             return True
         else:
             # Scalar
@@ -3194,6 +3162,18 @@ def py_struct_dimension(parent, var, fmt):
 class ToDimension(todict.PrintNode):
     """Visit dimension expression.
     Convert cls references to correct scope.  obj->{argname}
+
+    If a name is a member of the struct, prefix with PY_struct_context.
+
+    struct Cstruct_list {
+        int nitems;
+        int *ivalue     +dimension(nitems+nitems);  # case 1
+        double *dvalue  +dimension(nitems*TWO);     # case 2
+    }
+
+    case 1:  {context}nitems+{context}nitems
+    case 2:  {context}nitems*TWO
+
     """
 
     def __init__(self, cls, fmt, context):
