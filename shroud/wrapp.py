@@ -2091,7 +2091,7 @@ return 1;""",
         # assert scope in ["file", "utility"]
 
         self.helper_need_numpy = (
-            helper_info.get("need_numpy", "False") or self.helper_need_numpy)
+            helper_info.get("need_numpy", False) or self.helper_need_numpy)
 
         lang_key = self.language + "_include"
         if lang_key in helper_info:
@@ -2136,17 +2136,19 @@ return 1;""",
         if self.newlibrary.options.PY_write_helper_in_util:
             self.shared_helper.update(self.c_helper)
             self.c_helper = {}
-            return {}, []
+            return {}, [], False
         self.gather_helper_code(self.c_helper)
         self.shared_helper.update(self.c_helper)
         self.c_helper = {}
         return (
             self.helper_summary["include"]["file"],
-            self.helper_summary["source"]["file"]
+            self.helper_summary["source"]["file"],
+            self.helper_need_numpy
         )
 
     def find_utility_helper_code(self):
-        """Get "utility" helper code.
+        """Get "pwrap_impl" helper code.
+        Added to PY_utility_filename and shared among files.
 
         Return list of code with typedefs.
         """
@@ -2179,7 +2181,9 @@ return 1;""",
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
-        hinclude, hsource = self.find_file_helper_code()
+        hinclude, hsource, helper_need_numpy = self.find_file_helper_code()
+        if helper_need_numpy:
+            self.need_numpy = True
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
@@ -2437,7 +2441,9 @@ extern PyObject *{PY_prefix}error_obj;
 
         fmt.PY_library_doc = "library documentation"
 
-        hinclude, hsource = self.find_file_helper_code()
+        hinclude, hsource, helper_need_numpy = self.find_file_helper_code()
+        if helper_need_numpy:
+            self.need_numpy = True
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
 #        self.shared_helper.update(self.c_helper)  # accumulate all helpers
