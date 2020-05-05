@@ -651,7 +651,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
             # set default values for fields which may be unset.
-            # c_ptr='',
             # c_const='',
             CXX_this_call="",
             CXX_template="",

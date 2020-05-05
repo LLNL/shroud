@@ -918,14 +918,6 @@ rv = .false.
                     ast.typemap.f_c_module or ast.typemap.f_module
                 )
                 continue
-            elif buf_arg == "c_ptr":
-                # Function assigns address to argument.
-                arg_c_names.append(name or ast.name)
-                arg_c_decl.append(
-                    "type(C_PTR), intent(OUT) :: %s" % (name or ast.name)
-                )
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
                 arg_c_names.append(name or ast.name)
