@@ -405,6 +405,7 @@ PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
     obj->idtor = idtor;
     // Python objects for members.
     obj->cfield_obj = nullptr;
+    obj->const_dvalue_obj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_ptr.utility.to_object
 }

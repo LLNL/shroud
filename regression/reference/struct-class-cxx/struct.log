@@ -4,7 +4,7 @@ class Cstruct1
 Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 Close pyCstruct1type.cpp
 class Cstruct_ptr
-Python method Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
+Python method Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)
 Close pyCstruct_ptrtype.cpp
 class Cstruct_list
 Python method Cstruct_list(int nitems +intent(in), int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)

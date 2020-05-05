@@ -82,7 +82,10 @@ declarations:
 ######################################################################
 - decl: struct Cstruct_ptr {
           char *cfield;
+          const double *const_dvalue;
         };
+#          double *dvalue;
+        # dvalue is implied +readonly because of const.
 
 ######################################################################
 - decl: struct Cstruct_list {

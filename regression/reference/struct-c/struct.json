@@ -123,6 +123,36 @@
                         },
                         "name": "cfield",
                         "options": {}
+                    },
+                    {
+                        "ast": {
+                            "attrs": {
+                                "readonly": true
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "const_dvalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "const_dvalue",
+                            "variable_lower": "const_dvalue",
+                            "variable_name": "const_dvalue",
+                            "variable_upper": "CONST_DVALUE"
+                        },
+                        "name": "const_dvalue",
+                        "options": {}
                     }
                 ]
             },

@@ -84,6 +84,7 @@ PyObject_HEAD
     int idtor;
     // Python objects for members.
     PyObject *cfield_obj;
+    PyObject *const_dvalue_obj;
     // splicer begin class.Cstruct_ptr.C_object
     // splicer end class.Cstruct_ptr.C_object
 } PY_Cstruct_ptr;

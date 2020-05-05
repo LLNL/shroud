@@ -34,6 +34,7 @@ typedef struct s_STR_cstruct1 STR_cstruct1;
 
 struct s_STR_cstruct_ptr {
     char * cfield;
+    const double * const_dvalue;
 };
 typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 

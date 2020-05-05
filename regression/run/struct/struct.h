@@ -37,6 +37,8 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 /*----------------------------------------------------------------------*/
 struct Cstruct_ptr {
     char *cfield;
+    //    double *dvalue;              // ptr to scalar
+    const double *const_dvalue;  // ptr to scalar
 };
 typedef struct Cstruct_ptr Cstruct_ptr;
 

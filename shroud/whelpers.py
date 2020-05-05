@@ -805,6 +805,7 @@ def fill_from_PyObject_numpy(fmt):
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
+        need_numpy=True,
         source=wformat(
                 """
 // helper {hname}

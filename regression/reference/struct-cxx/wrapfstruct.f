@@ -33,6 +33,7 @@ module struct_mod
 
     type, bind(C) :: cstruct_ptr
         type(C_PTR) :: cfield
+        type(C_PTR) :: const_dvalue
     end type cstruct_ptr
 
 
