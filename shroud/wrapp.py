@@ -630,10 +630,14 @@ return 1;""",
             )
 
             arg_typemap = ast.typemap
+            if ast.is_pointer():
+                PYN_typenum = "NPY_INTP"
+            else:
+                PYN_typenum = arg_typemap.PYN_typenum
             output.extend(
                 [
                     "obj = (PyObject *) PyArray_DescrFromType({});".format(
-                        arg_typemap.PYN_typenum
+                        PYN_typenum
                     ),
                     "if (obj == {}) goto fail;".format(fmt.nullptr),
                     "PyList_SET_ITEM(ldescr, {}, obj);".format(i),
@@ -708,18 +712,26 @@ return 1;""",
         fmt_var.PY_struct_context = wformat("{PY_param_self}->{PY_type_obj}->", fmt_var)
 
         fmt = util.Scope(fmt_var)
-        fmt.c_var = wformat("{PY_struct_context}{field_name}", fmt_var)
+        # c_var is used with PY_ctor
+        fmt.c_var_raw = wformat("{PY_struct_context}{field_name}", fmt_var)
+        fmt.c_var = fmt.c_var_raw
         fmt.cxx_var = fmt.c_var
         fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
         fmt.cxx_var_obj = fmt.c_var_obj
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
+        fmt.c_type = arg_typemap.c_type
 
         have_array = py_struct_dimension(parent, node, fmt)
 
-        if not have_array and arg_typemap.PY_get:
-            fmt.get = wformat(arg_typemap.PY_get, fmt)
+        if not have_array:
+            if ast.is_pointer() and arg_typemap.base != "string":
+                # Dereference pointer as scalar.
+                # But not 'char *'.
+                fmt.c_var = "*({})".format(fmt.c_var)
+            if arg_typemap.PY_get:
+                fmt.get = wformat(arg_typemap.PY_get, fmt)
         
         if arg_typemap.PYN_descr:
             # class
@@ -727,12 +739,17 @@ return 1;""",
         else:
             fmt.PYN_typenum = arg_typemap.PYN_typenum
 
+        indirect_stmt = ast.get_indirect_stmt()
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
-                 ast.get_indirect_stmt(),
+                 indirect_stmt,
         ]
         if have_array:
             stmts.append(options.PY_array_arg)
+        elif indirect_stmt != "scalar" and arg_typemap.base != "string":
+            # 'double *field' to scalar.
+            stmts.append("scalar")
+
         stmt0 = typemap.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
         output = fileinfo.GetSetBody
@@ -3116,10 +3133,10 @@ def update_fmt_from_typemap(fmt, ntypemap):
 ######################################################################
 
 def py_struct_dimension(parent, var, fmt):
-    """Return tuple with
-    (True if an array, the dimension of a struct member).
+    """Return True if have dimension attribute.
     Use the ast.array or dimension attribute.
 
+    Set format fields.
     npy_intp_values = comma separated list of dimensions
     npy_intp_size   = size of array, multiplied ranks.
 
@@ -4475,6 +4492,24 @@ py_statements = [
             "{c_var} = rv;",
         ],
         getter=[
+            "PyObject * rv = {ctor};",
+            "return rv;",
+        ],
+    ),
+    dict(
+        # 'double *field', check for null pointers.
+        name="py_descr_native_*_scalar",
+        setter=[
+            "{c_type} rv = {get};",
+            "if (PyErr_Occurred()) {{+",
+            "return -1;",
+            "-}}",
+            "*({c_var_raw}) = rv;",
+        ],
+        getter=[
+            "if ({c_var_raw} == {nullptr}) {{+",
+            "Py_RETURN_NONE;",
+            "-}}",
             "PyObject * rv = {ctor};",
             "return rv;",
         ],

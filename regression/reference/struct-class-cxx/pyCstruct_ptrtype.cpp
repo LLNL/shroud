@@ -35,14 +35,19 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
     self->obj = nullptr;
     // Python objects for members.
     Py_XDECREF(self->cfield_obj);
+    Py_XDECREF(self->const_dvalue_obj);
 // splicer end class.Cstruct_ptr.type.del
 }
 
-// Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)
+// Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)
 // ----------------------------------------
 // Argument:  cfield
 // Requested: py_ctor_char_*_numpy
 // Match:     py_ctor_char_*
+// ----------------------------------------
+// Argument:  const_dvalue
+// Requested: py_ctor_native_*_numpy
+// Match:     py_ctor_native_*
 static int
 PY_Cstruct_ptr_tp_init(
   PY_Cstruct_ptr *self,
@@ -51,13 +56,16 @@ PY_Cstruct_ptr_tp_init(
 {
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
     STR_SHROUD_converter_value SHPy_cfield = { nullptr, nullptr, 0 };
+    STR_SHROUD_converter_value SHPy_const_dvalue = { nullptr, nullptr, 0 };
     const char *SHT_kwlist[] = {
         "cfield",
+        "const_dvalue",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&:Cstruct_ptr_ctor",
-        const_cast<char **>(SHT_kwlist), 
-        STR_SHROUD_get_from_object_char, &SHPy_cfield))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "|O&O&:Cstruct_ptr_ctor", const_cast<char **>(SHT_kwlist), 
+        STR_SHROUD_get_from_object_char, &SHPy_cfield,
+        STR_SHROUD_get_from_object_double_numpy, &SHPy_const_dvalue))
         return -1;
 
     self->obj = new Cstruct_ptr;
@@ -71,6 +79,9 @@ PY_Cstruct_ptr_tp_init(
     Cstruct_ptr *SH_obj = self->obj;
     SH_obj->cfield = static_cast<char *>(SHPy_cfield.data);
     self->cfield_obj = SHPy_cfield.obj;  // steal reference
+    SH_obj->const_dvalue = static_cast<double *>
+        (SHPy_const_dvalue.data);
+    self->const_dvalue_obj = SHPy_const_dvalue.obj;  // steal reference
 
     return 0;
 // splicer end class.Cstruct_ptr.method.cstruct_ptr_ctor
@@ -110,9 +121,22 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     return 0;
 }
 
+// Exact:     py_descr_native_*_scalar
+static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
+    void *SHROUD_UNUSED(closure))
+{
+    if (self->obj->const_dvalue == nullptr) {
+        Py_RETURN_NONE;
+    }
+    PyObject * rv = PyFloat_FromDouble(*(self->obj->const_dvalue));
+    return rv;
+}
+
 static PyGetSetDef PY_Cstruct_ptr_getset[] = {
     {(char *)"cfield", (getter)PY_Cstruct_ptr_cfield_getter,
         (setter)PY_Cstruct_ptr_cfield_setter, nullptr, nullptr},
+    {(char *)"const_dvalue", (getter)PY_Cstruct_ptr_const_dvalue_getter,
+        (setter)nullptr, nullptr, nullptr},
     // splicer begin class.Cstruct_ptr.PyGetSetDef
     // splicer end class.Cstruct_ptr.PyGetSetDef
     {nullptr}            /* sentinel */

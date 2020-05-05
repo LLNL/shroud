@@ -119,6 +119,18 @@ class Struct(unittest.TestCase):
             ptr.cfield = 1
         self.assertTrue("argument should be string" in str(context.exception))
 
+        # dvalue pointer is unset
+#        self.assertIs(None, ptr.dvalue)
+#        with self.assertRaises(AttributeError) as context:
+#            ptr.dvalue = 7
+#        self.assertTrue("objects is not writable" in str(context.exception))
+
+        # const_dvalue pointer is unset, and unsettable since it is const.
+        self.assertIs(None, ptr.const_dvalue)
+        with self.assertRaises(AttributeError) as context:
+            ptr.const_dvalue = 7
+        self.assertTrue("objects is not writable" in str(context.exception))
+
     def test_cstruct_list(self):
         # Create struct from each argument.
         iinput = [1,2,3,4,5,6]

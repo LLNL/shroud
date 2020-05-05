@@ -270,6 +270,30 @@
                                     "stmt0": "py_ctor_char_*_numpy",
                                     "stmt1": "py_ctor_char_*"
                                 }
+                            },
+                            "const_dvalue": {
+                                "fmtpy": {
+                                    "PY_member_object": "const_dvalue_obj",
+                                    "c_const": "const ",
+                                    "c_decl": "double const_dvalue",
+                                    "c_deref": "",
+                                    "c_type": "double",
+                                    "c_var": "const_dvalue",
+                                    "cxx_addr": "",
+                                    "cxx_decl": "double const_dvalue",
+                                    "cxx_member": "->",
+                                    "cxx_type": "double",
+                                    "cxx_var": "const_dvalue",
+                                    "data_var": "SHData_const_dvalue",
+                                    "field_name": "const_dvalue",
+                                    "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_const_dvalue",
+                                    "pytmp_var": "SHTPy_const_dvalue",
+                                    "size_var": "SHSize_const_dvalue",
+                                    "stmt0": "py_ctor_native_*_numpy",
+                                    "stmt1": "py_ctor_native_*"
+                                }
                             }
                         },
                         "_fmtresult": {
@@ -318,6 +342,28 @@
                                         "char"
                                     ],
                                     "typemap_name": "char"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "readonly": true
+                                    },
+                                    "const": true,
+                                    "declarator": {
+                                        "name": "const_dvalue",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "const_dvalue"
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
                                 }
                             ],
                             "specifier": [
@@ -326,7 +372,7 @@
                             "typemap_name": "Cstruct_ptr"
                         },
                         "decl": "Cstruct_ptr_ctor",
-                        "declgen": "Cstruct_ptr(char * cfield +intent(in)) +name(Cstruct_ptr_ctor)",
+                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_impl": "PY_Cstruct_ptr_tp_init",
@@ -375,6 +421,41 @@
                             "variable_upper": "CFIELD"
                         },
                         "name": "cfield",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "attrs": {
+                                "readonly": true
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "const_dvalue",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "PY_getter": "PY_Cstruct_ptr_const_dvalue_getter",
+                            "PY_member_object": "const_dvalue_obj",
+                            "PY_setter": "NULL",
+                            "PY_struct_context": "self->obj->",
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "const_dvalue",
+                            "py_var": "SHPy_const_dvalue",
+                            "variable_lower": "const_dvalue",
+                            "variable_name": "const_dvalue",
+                            "variable_upper": "CONST_DVALUE"
+                        },
+                        "name": "const_dvalue",
                         "options": {}
                     }
                 ]
