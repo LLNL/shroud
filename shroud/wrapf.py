@@ -1528,11 +1528,11 @@ rv = .false.
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
-        result_blk = typemap.lookup_fc_stmts(f_stmts)
-        result_blk = typemap.lookup_local_stmts("f", result_blk, node)
+        f_result_blk = typemap.lookup_fc_stmts(f_stmts)
+        f_result_blk = typemap.lookup_local_stmts("f", f_result_blk, node)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = typemap.compute_name(f_stmts)
-        fmt_result.stmt1 = result_blk.name
+        fmt_result.stmt1 = f_result_blk.name
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
@@ -1549,15 +1549,15 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, fmt_result.stmtc0, fmt_result.stmtc1)
 
-        if result_blk.result:
+        if f_result_blk.result:
             # Change a subroutine into function.
             fmt_func.F_subprogram = "function"
-            fmt_func.F_result = result_blk.result
+            fmt_func.F_result = f_result_blk.result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        need_wrapper = need_wrapper or result_blk.need_wrapper
+        need_wrapper = need_wrapper or f_result_blk.need_wrapper
         
         if cls:
             need_wrapper = True
@@ -1581,8 +1581,8 @@ rv = .false.
             C_node.ast,
             ast,
             result_typemap,
-            result_blk,
-            result_blk.buf_args,
+            f_result_blk,
+            f_result_blk.buf_args,
             modules,
             imports,
             arg_f_decl,
@@ -1801,7 +1801,7 @@ rv = .false.
                 C_node.ast, #c_arg,
                 ast, # f_arg,
                 result_typemap,
-                result_blk,
+                f_result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,
@@ -1894,8 +1894,8 @@ rv = .false.
         if "f" in node.splicer:
             need_wrapper = True
             F_force = node.splicer["f"]
-        elif result_blk.call:
-            call_list = result_blk.call
+        elif f_result_blk.call:
+            call_list = f_result_blk.call
         elif C_subprogram == "function":
             call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
@@ -1907,7 +1907,7 @@ rv = .false.
             need_wrapper = self.add_code_from_statements(
                 need_wrapper, fileinfo,
                 fmt_result,
-                result_blk,
+                f_result_blk,
                 modules,
                 imports,
                 declare,
