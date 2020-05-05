@@ -1469,6 +1469,8 @@ fc_statements = [
 #            "{c_var_context}%size = size({f_var})",
             "{c_var_context}%size = {size}",
             "{c_var_context}%rank = {rank}",
+            # This also works with scalars since (1:0) is a zero length array.
+            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
         ],
     ),
     dict(
@@ -1531,6 +1533,7 @@ fc_statements = [
             "{c_var_context}->elem_len = sizeof({cxx_type});",
             "{c_var_context}->size = *{c_var_dimension};",
             "{c_var_context}->rank = 1;",
+            "{c_var_context}->shape[0] = {c_var_context}->size;",
         ],
         return_cptr=True,
     ),
@@ -1893,6 +1896,7 @@ fc_statements = [
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
             "{c_var_context}->rank = 1;",
+            "{c_var_context}->shape[0] = {c_var_context}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1920,6 +1924,7 @@ fc_statements = [
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
             "{c_var_context}->rank = 1;",
+            "{c_var_context}->shape[0] = {c_var_context}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1948,6 +1953,7 @@ fc_statements = [
             "{c_var_context}->elem_len = sizeof({cxx_T});",
             "{c_var_context}->size = {cxx_var}->size();",
             "{c_var_context}->rank = 1;",
+            "{c_var_context}->shape[0] = {c_var_context}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[

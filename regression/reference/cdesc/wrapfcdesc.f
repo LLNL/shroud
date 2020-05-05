@@ -199,6 +199,7 @@ contains
         ! Darg%elem_len = C_SIZEOF()
         Darg%size = size(arg)
         Darg%rank = 2
+        Darg%shape(1:2) = shape(arg)
         call c_rank2_in(Darg)
         ! splicer end function.rank2_in
     end subroutine rank2_in
@@ -243,6 +244,7 @@ contains
         ! Dvalue%elem_len = C_SIZEOF()
         Dvalue%size = 1
         Dvalue%rank = 0
+        Dvalue%shape(1:0) = shape(value)
         call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
             Dvalue)
         ! splicer end function.get_scalar1_0
@@ -288,6 +290,7 @@ contains
         ! Dvalue%elem_len = C_SIZEOF()
         Dvalue%size = 1
         Dvalue%rank = 0
+        Dvalue%shape(1:0) = shape(value)
         call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
             Dvalue)
         ! splicer end function.get_scalar1_1
