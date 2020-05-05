@@ -13,7 +13,7 @@
 ! splicer begin namespace.example::nested.file_top
 ! splicer end namespace.example::nested.file_top
 module userlibrary_example_nested_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin namespace.example::nested.module_use
     ! splicer end namespace.example::nested.module_use
     implicit none
@@ -42,6 +42,7 @@ module userlibrary_example_nested_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T
         ! number of dimensions
         integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
     end type SHROUD_array
 
     type, bind(C) :: SHROUD_exclass1_capsule

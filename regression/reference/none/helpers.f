@@ -51,6 +51,7 @@ type, bind(C) :: SHROUD_array
     integer(C_SIZE_T) :: size = 0_C_SIZE_T
     ! number of dimensions
     integer(C_INT) :: rank = -1
+    integer(C_LONG) :: shape(7) = 0
 end type SHROUD_array
 ##### end array_context derived_type
 
