@@ -716,6 +716,7 @@ return 1;""",
         fmt.c_var_raw = wformat("{PY_struct_context}{field_name}", fmt_var)
         fmt.c_var = fmt.c_var_raw
         fmt.cxx_var = fmt.c_var
+        fmt.c_var_non_const = fmt.c_var
         fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
         fmt.cxx_var_obj = fmt.c_var_obj
         fmt.c_deref = ""  # XXX needed for PY_ctor
@@ -724,14 +725,10 @@ return 1;""",
         fmt.c_type = arg_typemap.c_type
 
         have_array = py_struct_dimension(parent, node, fmt)
+        indirect_stmt = ast.get_indirect_stmt()
 
-        if not have_array:
-            if ast.is_pointer() and arg_typemap.base != "string":
-                # Dereference pointer as scalar.
-                # But not 'char *'.
-                fmt.c_var = "*({})".format(fmt.c_var)
-            if arg_typemap.PY_get:
-                fmt.get = wformat(arg_typemap.PY_get, fmt)
+        if arg_typemap.PY_get:
+            fmt.PY_get = wformat(arg_typemap.PY_get, fmt)
         
         if arg_typemap.PYN_descr:
             # class
@@ -739,16 +736,17 @@ return 1;""",
         else:
             fmt.PYN_typenum = arg_typemap.PYN_typenum
 
-        indirect_stmt = ast.get_indirect_stmt()
         stmts = ['py', 'descr',
                  arg_typemap.sgroup,
                  indirect_stmt,
         ]
-        if have_array:
+        if indirect_stmt != "scalar":
+            # Pointers and static arrays.
             stmts.append(options.PY_array_arg)
-        elif indirect_stmt != "scalar" and arg_typemap.base != "string":
-            # 'double *field' to scalar.
-            stmts.append("scalar")
+            if ast.const:
+                # get a non-const pointer for NumPy
+                fmt.c_var_non_const = wformat(
+                    "{cast_const}{c_type} *{cast1}{c_var}{cast2}", fmt)
 
         stmt0 = typemap.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
@@ -3137,8 +3135,12 @@ def py_struct_dimension(parent, var, fmt):
     Use the ast.array or dimension attribute.
 
     Set format fields.
+    npy_ndims
+    npy_rank        = rank of NumPy array.  Scalars are 1.
     npy_intp_values = comma separated list of dimensions
     npy_intp_size   = size of array, multiplied ranks.
+
+    ex. npy_intp {npy_dims}[{npy_intp_rank}] = {{ {npy_intp_values} }};
 
     Args:
         parent - ast.ClassNode.
@@ -3161,6 +3163,7 @@ def py_struct_dimension(parent, var, fmt):
                               var.fmtdict.PY_struct_context)
         visitor.visit(metadim)
         fmt.rank = str(visitor.rank)
+        fmt.npy_rank = fmt.rank
         fmt.npy_intp_values = ", ".join(visitor.shape)
         if visitor.rank == 1:
             fmt.npy_intp_size = visitor.shape[0]
@@ -3171,6 +3174,7 @@ def py_struct_dimension(parent, var, fmt):
     else:
         # Scalar
         fmt.rank = "0"
+        fmt.npy_rank = "1"
         fmt.npy_intp_values = "1"     # comma separated list of values
         fmt.npy_intp_size   = "1"
         return False
@@ -4485,31 +4489,13 @@ py_statements = [
     dict(
         name="py_descr_native",
         setter=[
-            "{cxx_decl} = {get};",
+            "{cxx_decl} = {PY_get};",
             "if (PyErr_Occurred()) {{+",
             "return -1;",
             "-}}",
             "{c_var} = rv;",
         ],
         getter=[
-            "PyObject * rv = {ctor};",
-            "return rv;",
-        ],
-    ),
-    dict(
-        # 'double *field', check for null pointers.
-        name="py_descr_native_*_scalar",
-        setter=[
-            "{c_type} rv = {get};",
-            "if (PyErr_Occurred()) {{+",
-            "return -1;",
-            "-}}",
-            "*({c_var_raw}) = rv;",
-        ],
-        getter=[
-            "if ({c_var_raw} == {nullptr}) {{+",
-            "Py_RETURN_NONE;",
-            "-}}",
             "PyObject * rv = {ctor};",
             "return rv;",
         ],
@@ -4665,8 +4651,8 @@ py_statements = [
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",
             "-}}",
-            "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
-            "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
+            "npy_intp {npy_dims}[{npy_rank}] = {{ {npy_intp_values} }};",
+            "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_rank},\t {npy_dims},\t {PYN_typenum},\t {c_var_non_const});",
             "if (rv != {nullptr}) {{+",
             "Py_INCREF(rv);",
             "{c_var_obj} = rv;",

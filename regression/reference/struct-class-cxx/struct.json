@@ -345,8 +345,7 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
-                                        "readonly": true
+                                        "intent": "in"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -372,7 +371,7 @@
                             "typemap_name": "Cstruct_ptr"
                         },
                         "decl": "Cstruct_ptr_ctor",
-                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)",
+                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_impl": "PY_Cstruct_ptr_tp_init",
@@ -425,9 +424,6 @@
                     },
                     {
                         "ast": {
-                            "attrs": {
-                                "readonly": true
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "const_dvalue",
@@ -445,7 +441,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_const_dvalue_getter",
                             "PY_member_object": "const_dvalue_obj",
-                            "PY_setter": "nullptr",
+                            "PY_setter": "PY_Cstruct_ptr_const_dvalue_setter",
                             "PY_struct_context": "self->obj->",
                             "c_type": "double",
                             "cxx_type": "double",

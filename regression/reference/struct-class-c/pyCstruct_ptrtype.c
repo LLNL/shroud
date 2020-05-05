@@ -7,6 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.h"
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_STRUCT_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 // splicer begin class.Cstruct_ptr.impl.include
 // splicer end class.Cstruct_ptr.impl.include
 
@@ -39,7 +43,7 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // splicer end class.Cstruct_ptr.type.del
 }
 
-// Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)
+// Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)
 // ----------------------------------------
 // Argument:  cfield
 // Requested: py_ctor_char_*_numpy
@@ -88,7 +92,8 @@ PY_Cstruct_ptr_tp_init(
 // splicer begin class.Cstruct_ptr.impl.after_methods
 // splicer end class.Cstruct_ptr.impl.after_methods
 
-// Exact:     py_descr_char_*
+// Requested: py_descr_char_*_numpy
+// Match:     py_descr_char_*
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -103,7 +108,8 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
-// Exact:     py_descr_char_*
+// Requested: py_descr_char_*_numpy
+// Match:     py_descr_char_*
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -120,22 +126,49 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     return 0;
 }
 
-// Exact:     py_descr_native_*_scalar
+// Exact:     py_descr_native_*_numpy
 static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
     if (self->obj->const_dvalue == NULL) {
         Py_RETURN_NONE;
     }
-    PyObject * rv = PyFloat_FromDouble(*(self->obj->const_dvalue));
+    if (self->const_dvalue_obj != NULL) {
+        Py_INCREF(self->const_dvalue_obj);
+        return self->const_dvalue_obj;
+    }
+    npy_intp dims[1] = { 1 };
+    PyObject *rv = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE,
+        (double *) self->obj->const_dvalue);
+    if (rv != NULL) {
+        Py_INCREF(rv);
+        self->const_dvalue_obj = rv;
+    }
     return rv;
+}
+
+// Exact:     py_descr_native_*_numpy
+static int PY_Cstruct_ptr_const_dvalue_setter(PY_Cstruct_ptr *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    STR_SHROUD_converter_value cvalue;
+    Py_XDECREF(self->const_dvalue_obj);
+    if (STR_SHROUD_get_from_object_double_numpy(value, &cvalue) == 0) {
+        self->obj->const_dvalue = NULL;
+        self->const_dvalue_obj = NULL;
+        // XXXX set error
+        return -1;
+    }
+    self->obj->const_dvalue = (double *) cvalue.data;
+    self->const_dvalue_obj = cvalue.obj;  // steal reference
+    return 0;
 }
 
 static PyGetSetDef PY_Cstruct_ptr_getset[] = {
     {(char *)"cfield", (getter)PY_Cstruct_ptr_cfield_getter,
         (setter)PY_Cstruct_ptr_cfield_setter, NULL, NULL},
     {(char *)"const_dvalue", (getter)PY_Cstruct_ptr_const_dvalue_getter,
-        (setter)NULL, NULL, NULL},
+        (setter)PY_Cstruct_ptr_const_dvalue_setter, NULL, NULL},
     // splicer begin class.Cstruct_ptr.PyGetSetDef
     // splicer end class.Cstruct_ptr.PyGetSetDef
     {NULL}            /* sentinel */

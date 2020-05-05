@@ -125,11 +125,37 @@ class Struct(unittest.TestCase):
 #            ptr.dvalue = 7
 #        self.assertTrue("objects is not writable" in str(context.exception))
 
-        # const_dvalue pointer is unset, and unsettable since it is const.
+        # const_dvalue pointer is unset
         self.assertIs(None, ptr.const_dvalue)
-        with self.assertRaises(AttributeError) as context:
-            ptr.const_dvalue = 7
-        self.assertTrue("objects is not writable" in str(context.exception))
+
+        # assign a scalar
+        ref = 7
+        ptr.const_dvalue = ref
+        dval = ptr.const_dvalue
+        self.assertIsInstance(dval, np.ndarray)
+        self.assertEqual('float64', dval.dtype.name)
+        self.assertEqual(1, dval.size)
+        self.assertTrue(np.allclose(dval, [ref]))
+
+        # assign a list
+        ref = [3., 4.]
+        ptr.const_dvalue = ref
+        dval = ptr.const_dvalue
+        self.assertIsInstance(dval, np.ndarray)
+        self.assertEqual('float64', dval.dtype.name)
+        self.assertEqual(2, dval.size)
+        self.assertTrue(np.allclose(dval, [ref]))
+
+        # assign a NumPy array
+        ref = np.array([10,20,30,40,50], dtype=np.float64)
+        ptr.const_dvalue = ref
+        dval = ptr.const_dvalue
+        self.assertIsInstance(dval, np.ndarray)
+        self.assertEqual('float64', dval.dtype.name)
+        self.assertEqual(5, dval.size)
+        self.assertTrue(np.allclose(dval, [ref]))
+        # In the case of a NumPy array, get back the exact same object.
+        self.assertIs(ref, dval)
 
     def test_cstruct_list(self):
         # Create struct from each argument.

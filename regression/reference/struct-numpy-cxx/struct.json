@@ -136,9 +136,6 @@
                     },
                     {
                         "ast": {
-                            "attrs": {
-                                "readonly": true
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "const_dvalue",
