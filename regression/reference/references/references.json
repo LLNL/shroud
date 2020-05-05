@@ -369,7 +369,7 @@
                                 "cxx_type": "double",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
-                                "npy_dims": "SHD_rv",
+                                "npy_dims_var": "SHD_rv",
                                 "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                                 "npy_rank": "1",
