@@ -76,7 +76,8 @@ struct s_NS_SHROUD_array {
     int type;        /* type of element */
     size_t elem_len; /* bytes-per-item or character len in c++ */
     size_t size;     /* size of data in c++ */
-    int rank;        /* number of dimensions */
+    int rank;        /* number of dimensions, 0=scalar */
+    long shape[7];
 };
 typedef struct s_NS_SHROUD_array NS_SHROUD_array;
 

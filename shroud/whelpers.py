@@ -207,6 +207,7 @@ integer(C_SIZE_T), value :: c_var_size
             """
 {lstart}// helper {hname}
 // Save str metadata into array to allow Fortran to access values.
+// CHARACTER(len=elem_size) src
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
 array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
@@ -219,7 +220,7 @@ array->addr.ccharp = src->data();
 array->elem_len = src->length();
 -}}
 array->size = 1;
-array->rank = 1;
+array->rank = 0;  // scalar
 -}}{lend}""", fmt),
     )
     ##########
@@ -527,7 +528,8 @@ const char * ccharp;
 int type;        /* type of element */
 size_t elem_len; /* bytes-per-item or character len in c++ */
 size_t size;     /* size of data in c++ */
-int rank;        /* number of dimensions */
+int rank;        /* number of dimensions, 0=scalar */
+long shape[7];
 -}};
 typedef struct s_{C_array_type} {C_array_type};{lend}""",
             fmt,
@@ -538,6 +540,8 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
 
     # Create a derived type used to communicate with C wrapper.
     # Should never be exposed to user.
+    # Inspired by futher interoperability with C.
+    # XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T.
     if literalinclude:
         fmt.lstart = "{}{}\n".format(fstart, name)
         fmt.lend = "\n{}{}".format(fend, name)
@@ -558,10 +562,12 @@ integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
 integer(C_SIZE_T) :: size = 0_C_SIZE_T
 ! number of dimensions
 integer(C_INT) :: rank = -1
+integer(C_LONG) :: shape(7) = 0
 -end type {F_array_type}{lend}""",
             fmt,
         ),
-        modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),
+        modules=dict(iso_c_binding=[
+            "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
         dependent_helpers=["capsule_data_helper"],
     )
     FHelpers[name] = helper

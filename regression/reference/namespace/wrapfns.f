@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module ns_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -41,6 +41,7 @@ module ns_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T
         ! number of dimensions
         integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
     end type SHROUD_array
 
     !  enum upper::Color

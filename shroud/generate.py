@@ -89,10 +89,6 @@ class VerifyAttrs(object):
                 "used on pointer and references"
             )
 
-        if is_ptr and ast.const:
-            # 'const double *' avoid assignment of read-only location.
-            attrs["readonly"] = True
-        
         self.parse_attrs(node, ast)
 
     def check_fcn_attrs(self, node):

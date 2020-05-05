@@ -22,6 +22,7 @@ extern "C" {
 // start helper ShroudStrToArray
 // helper ShroudStrToArray
 // Save str metadata into array to allow Fortran to access values.
+// CHARACTER(len=elem_size) src
 static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
 {
     array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
@@ -34,7 +35,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
         array->elem_len = src->length();
     }
     array->size = 1;
-    array->rank = 1;
+    array->rank = 0;  // scalar
 }
 // end helper ShroudStrToArray
 // splicer begin C_definitions

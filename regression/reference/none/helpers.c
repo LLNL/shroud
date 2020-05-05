@@ -211,6 +211,7 @@ static void ShroudStrFree(char *src)
 
 // helper ShroudStrToArray
 // Save str metadata into array to allow Fortran to access values.
+// CHARACTER(len=elem_size) src
 static void ShroudStrToArray(LIB_SHROUD_array *array, const std::string * src, int idtor)
 {
     array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
@@ -223,7 +224,7 @@ static void ShroudStrToArray(LIB_SHROUD_array *array, const std::string * src, i
         array->elem_len = src->length();
     }
     array->size = 1;
-    array->rank = 1;
+    array->rank = 0;  // scalar
 }
 ##### end ShroudStrToArray source
 
@@ -283,7 +284,8 @@ struct s_LIB_SHROUD_array {
     int type;        /* type of element */
     size_t elem_len; /* bytes-per-item or character len in c++ */
     size_t size;     /* size of data in c++ */
-    int rank;        /* number of dimensions */
+    int rank;        /* number of dimensions, 0=scalar */
+    long shape[7];
 };
 typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
 ##### end array_context source

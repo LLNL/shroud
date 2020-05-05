@@ -345,8 +345,7 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
-                                        "readonly": true
+                                        "intent": "in"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -372,7 +371,7 @@
                             "typemap_name": "Cstruct_ptr"
                         },
                         "decl": "Cstruct_ptr_ctor",
-                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)+readonly) +name(Cstruct_ptr_ctor)",
+                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_impl": "PY_Cstruct_ptr_tp_init",
@@ -425,9 +424,6 @@
                     },
                     {
                         "ast": {
-                            "attrs": {
-                                "readonly": true
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "const_dvalue",
@@ -445,7 +441,7 @@
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_const_dvalue_getter",
                             "PY_member_object": "const_dvalue_obj",
-                            "PY_setter": "nullptr",
+                            "PY_setter": "PY_Cstruct_ptr_const_dvalue_setter",
                             "PY_struct_context": "self->obj->",
                             "c_type": "double",
                             "cxx_type": "double",
@@ -506,10 +502,10 @@
                                     "data_var": "SHData_dvalue",
                                     "field_name": "dvalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_list",
-                                    "npy_dims": "SHD_dvalue",
+                                    "npy_dims_var": "SHD_dvalue",
                                     "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems*TWO;\n",
                                     "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
-                                    "npy_ndims": "1",
+                                    "npy_rank": "1",
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems*TWO",
                                     "py_var": "SHPy_dvalue",
@@ -536,10 +532,10 @@
                                     "data_var": "SHData_ivalue",
                                     "field_name": "ivalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_list",
-                                    "npy_dims": "SHD_ivalue",
+                                    "npy_dims_var": "SHD_ivalue",
                                     "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems+self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
-                                    "npy_ndims": "1",
+                                    "npy_rank": "1",
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems+nitems",
                                     "py_var": "SHPy_ivalue",
@@ -588,10 +584,10 @@
                                     "data_var": "SHData_svalue",
                                     "field_name": "svalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_charptr",
-                                    "npy_dims": "SHD_svalue",
+                                    "npy_dims_var": "SHD_svalue",
                                     "npy_intp_asgn": "SHD_svalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_svalue[1];\n",
-                                    "npy_ndims": "1",
+                                    "npy_rank": "1",
                                     "numpy_type": "NPY_INTP",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_svalue",
@@ -979,10 +975,10 @@
                                     "data_var": "SHData_dvalue",
                                     "field_name": "dvalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
-                                    "npy_dims": "SHD_dvalue",
+                                    "npy_dims_var": "SHD_dvalue",
                                     "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
-                                    "npy_ndims": "1",
+                                    "npy_rank": "1",
                                     "numpy_type": "NPY_DOUBLE",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_dvalue",
@@ -1009,10 +1005,10 @@
                                     "data_var": "SHData_ivalue",
                                     "field_name": "ivalue",
                                     "hnamefunc0": "STR_SHROUD_get_from_object_int_numpy",
-                                    "npy_dims": "SHD_ivalue",
+                                    "npy_dims_var": "SHD_ivalue",
                                     "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems;\n",
                                     "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
-                                    "npy_ndims": "1",
+                                    "npy_rank": "1",
                                     "numpy_type": "NPY_INT",
                                     "pointer_shape": "nitems",
                                     "py_var": "SHPy_ivalue",
