@@ -142,7 +142,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_kwds = False
         fmt_library.PY_member_object = "XXXPY_member_object"
 
-        fmt_library.npy_ndims = "0"   # number of dimensions
+        fmt_library.npy_rank = "0"   # number of dimensions
         fmt_library.npy_dims = fmt_library.nullptr # shape variable
         fmt_library.npy_intp_decl = ""     # shape array definition
         fmt_library.npy_intp_asgn = ""     # shape array assignment
@@ -867,7 +867,7 @@ return 1;""",
             vtypemap = ast.template_arguments[0].typemap
             fmt.numpy_type = vtypemap.PYN_typenum
             fmt.cxx_T = ast.template_arguments[0].typemap.name
-            fmt.npy_ndims = "1"
+            fmt.npy_rank = "1"
             if is_result:
                 fmt.npy_dims = "SHD_" + fmt.C_result
             else:
@@ -886,14 +886,14 @@ return 1;""",
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
 
-            fmt.npy_ndims = str(visitor.rank)
+            fmt.npy_rank = str(visitor.rank)
             if is_result:
                 fmt.npy_dims = "SHD_" + fmt.C_result
             else:
                 fmt.npy_dims = "SHD_" + ast.name
             fmt.pointer_shape = dimension
             # Dimensions must be in npy_intp type array.
-            fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[{rank}];\n", fmt)
+            fmt.npy_intp_decl = wformat("npy_intp {npy_dims}[{npy_rank}];\n", fmt)
 
             # Assign each rank of dimension.
             fmtdim = []
@@ -3135,7 +3135,6 @@ def py_struct_dimension(parent, var, fmt):
     Use the ast.array or dimension attribute.
 
     Set format fields.
-    npy_ndims
     npy_rank        = rank of NumPy array.  Scalars are 1.
     npy_intp_values = comma separated list of dimensions
     npy_intp_size   = size of array, multiplied ranks.
@@ -3147,7 +3146,6 @@ def py_struct_dimension(parent, var, fmt):
         var    - ast.VariableNode.
         fmt    - util.Scope.
     """
-    fmt.npy_ndims = "1"
     fmt.npy_dims = "dims"  # Name of local variables
     # fmt.npy_intp_asgn     # assign to
     #    fmt.npy_intp_values     # comma separated list of values
@@ -3399,10 +3397,10 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
         # XXX - assume expression.
         # XXX - assume 1-d
         fmt_arg.size_var = allocatable
-        fmt_arg.npy_ndims = "1"
+        fmt_arg.npy_rank = "1"
         fmt_arg.npy_dims = "SHD_" + arg.name
         fmt_arg.npy_intp_decl = wformat(
-            "npy_intp {npy_dims}[{npy_ndims}];\n", fmt_arg)
+            "npy_intp {npy_dims}[{npy_rank}];\n", fmt_arg)
         fmt_arg.npy_intp_asgn = wformat(
             "{npy_dims}[0] = {size_var};\n", fmt_arg)
 
@@ -3732,7 +3730,7 @@ py_statements = [
         post_parse=[
             "{npy_intp_asgn}"  # Must contain a newline if non-blank.
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
-            "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
+            "{npy_rank}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
         c_pre_call=[
             "{c_type} * {c_var} = PyArray_DATA({py_var});",
@@ -3757,7 +3755,7 @@ py_statements = [
         post_call=[
             "{npy_intp_asgn}"
             "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_addr}{cxx_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
@@ -4112,7 +4110,7 @@ py_statements = [
             "Py_INCREF({PYN_descr});",
             "{py_var} = "
             "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
-            " {npy_ndims}, {npy_dims}, \t{nullptr}, {cxx_var}, 0, {nullptr});",
+            " {npy_rank}, {npy_dims}, \t{nullptr}, {cxx_var}, 0, {nullptr});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4364,7 +4362,7 @@ py_statements = [
 #            "{npy_intp_asgn}"
             "{npy_dims}[0] = {cxx_var}->size();",
             "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_var}->data());",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
@@ -4389,7 +4387,7 @@ py_statements = [
 #            "{npy_intp_asgn}"
             "{npy_dims}[0] = {cxx_var}->size();",
             "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_var}->data());",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
@@ -4621,7 +4619,7 @@ py_statements = [
             "if ({c_var_obj} == {nullptr}) {{+",
             "// Create Numpy object which points to struct member.",
             "npy_intp {npy_dims}[{rank}] = {{ {npy_intp_values} }};",
-            "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_ndims},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
+            "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_rank},\t {npy_dims},\t {PYN_typenum},\t {c_var});",
             "-}}",
             "Py_INCREF({c_var_obj});",
             "return {c_var_obj};",

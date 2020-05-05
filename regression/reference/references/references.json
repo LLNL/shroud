@@ -372,7 +372,7 @@
                                 "npy_dims": "SHD_rv",
                                 "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                "npy_ndims": "1",
+                                "npy_rank": "1",
                                 "numpy_type": "NPY_DOUBLE",
                                 "pointer_shape": "getSize()",
                                 "py_var": "SHTPy_rv",
