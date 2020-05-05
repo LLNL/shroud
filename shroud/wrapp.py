@@ -724,7 +724,7 @@ return 1;""",
         fmt.PY_array_arg = options.PY_array_arg
         fmt.c_type = arg_typemap.c_type
 
-        have_array = py_struct_dimension(parent, node, fmt)
+        py_struct_dimension(parent, node, fmt)
         indirect_stmt = ast.get_indirect_stmt()
 
         if arg_typemap.PY_get:
@@ -3131,8 +3131,8 @@ def update_fmt_from_typemap(fmt, ntypemap):
 ######################################################################
 
 def py_struct_dimension(parent, var, fmt):
-    """Return True if have dimension attribute.
-    Use the ast.array or dimension attribute.
+    """
+    Process ast.array or the dimension attribute.
 
     Set format fields.
     npy_rank        = rank of NumPy array.  Scalars are 1.
@@ -3168,14 +3168,12 @@ def py_struct_dimension(parent, var, fmt):
         else:
             fmt.npy_intp_size = "*".join(
                 ["(" + dim + ")" for dim in visitor.shape])
-        return True
     else:
         # Scalar
         fmt.rank = "0"
         fmt.npy_rank = "1"
         fmt.npy_intp_values = "1"     # comma separated list of values
         fmt.npy_intp_size   = "1"
-        return False
 
 ######################################################################
 
