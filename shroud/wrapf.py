@@ -1576,19 +1576,20 @@ rv = .false.
                 )
 
         # Function result.
-        need_wrapper = self.build_arg_list_impl(
-            fmt_result,
-            C_node.ast,
-            ast,
-            result_typemap,
-            f_result_blk,
-            f_result_blk.buf_args,
-            modules,
-            imports,
-            arg_f_decl,
-            arg_c_call,
-            need_wrapper,
-        )
+        if C_node.F_subprogram == "function":
+            need_wrapper = self.build_arg_list_impl(
+                fmt_result,
+                C_node.ast,
+                ast,
+                result_typemap,
+                f_result_blk,
+                c_result_blk.buf_args,
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
+            )
 
         # Fortran and C arguments may have different types (fortran generic)
         #

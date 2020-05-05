@@ -1326,7 +1326,6 @@ class FStmts(object):
     """
     def __init__(self,
         name="f_default",
-        buf_args=[],
         c_helper="",
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
@@ -1337,7 +1336,6 @@ class FStmts(object):
         result=None,  # name of result variable
     ):
         self.name = name
-        self.buf_args = buf_args
         self.c_helper = c_helper
         self.c_local_var = c_local_var
         self.f_attribute = f_attribute
@@ -1539,7 +1537,6 @@ fc_statements = [
     ),
     dict(
         name="f_native_*_result_allocatable",
-        buf_args=["context"],
         c_helper="copy_array",
         f_helper="array_context copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
