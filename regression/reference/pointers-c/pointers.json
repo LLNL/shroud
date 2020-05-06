@@ -609,6 +609,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -728,6 +729,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -761,6 +763,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -1050,6 +1053,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -1344,6 +1348,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -1994,6 +1999,7 @@
                             "cxx_type": "int",
                             "cxx_var": "count",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
@@ -2100,6 +2106,7 @@
                             "cxx_type": "int",
                             "cxx_var": "count",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
@@ -2317,6 +2324,7 @@
                             "cxx_type": "int",
                             "cxx_var": "count",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"

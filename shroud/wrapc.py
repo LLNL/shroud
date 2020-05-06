@@ -998,6 +998,8 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
+            self.set_fmt_fields(cls, node, arg, fmt_arg)
+            
             is_result = c_attrs["_is_result"]
             if is_result:
                 # This argument is the C function result
@@ -1580,13 +1582,12 @@ class ToDimension(todict.PrintNode):
                 else:
                     return "{}{}".format(self.context, argname)
         else:
+            deref = ''
             arg = self.fcn.ast.find_arg_by_name(argname)
-            # If argument is a pointer, then dereference it.
-            # i.e.  int *len +intent(out)
-            if arg.is_pointer():
+            if arg and arg.is_pointer():
+                # If argument is a pointer, then dereference it.
+                # i.e.  int *len +intent(out)
                 deref = '*'
-            else:
-                deref = ''
             if node.args is None:
                 return deref + argname  # variable
             else:
