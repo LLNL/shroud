@@ -1439,7 +1439,7 @@ fc_statements = [
     dict(
         name="c_native_*_cdesc",
         buf_args=["context"],
-        c_helper="array_context", #  ShroudTypeDefines",
+#        c_helper="ShroudTypeDefines",
         c_pre_call=[
             "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
         ],
@@ -1457,7 +1457,7 @@ fc_statements = [
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper="array_context ShroudTypeDefines",
+        f_helper="ShroudTypeDefines",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
         pre_call=[
@@ -1519,10 +1519,13 @@ fc_statements = [
     #        c_step1(context)
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
+    #
+    #        c_step1(context)
+    #        call c_f_pointer(c_ptr, f_ptr, shape)
     dict(
         name="c_native_*_result_buf",
         buf_args=["context"],
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
@@ -1538,7 +1541,7 @@ fc_statements = [
     dict(
         name="f_native_*_result_allocatable",
         c_helper="copy_array",
-        f_helper="array_context copy_array_{cxx_type}",
+        f_helper="copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1640,7 +1643,7 @@ fc_statements = [
     dict(
         name="c_char_result_buf_allocatable",
         buf_args=["context"],
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1878,7 +1881,7 @@ fc_statements = [
         name="c_vector_out_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1906,7 +1909,7 @@ fc_statements = [
         name="c_vector_inout_buf",
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -1935,7 +1938,7 @@ fc_statements = [
         name="c_vector_result_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"

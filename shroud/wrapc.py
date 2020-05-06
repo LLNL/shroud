@@ -185,6 +185,12 @@ class Wrapc(util.WrapperMixin):
             self.wrap_function(None, node)
         self._pop_splicer("function")
 
+    def add_c_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for helper in c_helper.split():
+            self.c_helper[helper] = True
+        
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
 
@@ -678,6 +684,7 @@ class Wrapc(util.WrapperMixin):
                 if attrs["dimension"]:
                     # XXX - assumes dimension is a single variable.
                     fmt.c_var_dimension = attrs["dimension"]
+                self.add_c_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 fmt.c_var_trim = attrs["len_trim"]
                 append_format(proto_list, "int {c_var_trim}", fmt)
@@ -720,9 +727,7 @@ class Wrapc(util.WrapperMixin):
                 append_format(post_call, line, fmt)
 
         if intent_blk.c_helper:
-            c_helper = wformat(intent_blk.c_helper, fmt)
-            for helper in c_helper.split():
-                self.c_helper[helper] = True
+            self.add_c_helper(intent_blk.c_helper, fmt)
         return need_wrapper
 
     def wrap_function(self, cls, node):

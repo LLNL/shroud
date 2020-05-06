@@ -960,6 +960,7 @@ rv = .false.
                     "type(%s), intent(%s) :: %s"
                     % (fmt.F_array_type, intent, buf_arg_name)
                 )
+                fileinfo.add_f_helper("array_context", fmt)
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":
@@ -1195,6 +1196,7 @@ rv = .false.
 
     def build_arg_list_impl(
         self,
+        fileinfo,
         fmt,
         c_ast,
         f_ast,
@@ -1219,6 +1221,7 @@ rv = .false.
         Otherwise, Use buf_args from c_intent_blk.
 
         Args:
+            fileinfo - ModuleInfo
             fmt -
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
@@ -1284,6 +1287,7 @@ rv = .false.
                 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 if c_attrs["dimension"]:
                     fmt.c_var_dimension = c_attrs["dimension"]
+                fileinfo.add_f_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_INT")
@@ -1344,13 +1348,9 @@ rv = .false.
                 append_format(post_call, line, fmt)
 
         if intent_blk.c_helper:
-            c_helper = wformat(intent_blk.c_helper, fmt)
-            for helper in c_helper.split():
-                fileinfo.c_helper[helper] = True
+            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
         if intent_blk.f_helper:
-            f_helper = wformat(intent_blk.f_helper, fmt)
-            for helper in f_helper.split():
-                fileinfo.f_helper[helper] = True
+            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
@@ -1578,6 +1578,7 @@ rv = .false.
         # Function result.
         if C_node.F_subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
+                fileinfo,
                 fmt_result,
                 C_node.ast,
                 ast,
@@ -1767,6 +1768,7 @@ rv = .false.
                 )
 
             need_wrapper = self.build_arg_list_impl(
+                fileinfo,
                 fmt_arg,
                 c_arg,
                 f_arg,
@@ -1798,6 +1800,7 @@ rv = .false.
 
         if subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
+                fileinfo,
                 fmt_result,
                 C_node.ast, #c_arg,
                 ast, # f_arg,
@@ -2364,3 +2367,16 @@ class ModuleInfo(object):
 
         output.append(-1)
         output.append("")
+
+    def add_c_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for helper in c_helper.split():
+            self.c_helper[helper] = True
+
+    def add_f_helper(self, helpers, fmt):
+        """Add a list of Fortran helpers."""
+        f_helper = wformat(helpers, fmt)
+        for helper in f_helper.split():
+            self.f_helper[helper] = True
+        
