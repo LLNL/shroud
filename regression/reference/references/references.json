@@ -340,6 +340,7 @@
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_native_*_result",
                                 "stmt1": "c_default"

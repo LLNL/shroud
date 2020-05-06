@@ -566,6 +566,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -725,6 +726,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -872,6 +874,8 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -882,6 +886,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result_buf",
                         "stmt1": "c_native_*_result_buf"
@@ -1018,6 +1023,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -1158,6 +1164,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "2",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -1289,6 +1296,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "2",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -1449,6 +1457,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "2",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"
@@ -1601,6 +1610,7 @@
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "2",
+                        "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_native_*_result",
                         "stmt1": "c_default"

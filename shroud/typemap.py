@@ -1532,9 +1532,9 @@ fc_statements = [
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_type});",
-            "{c_var_context}->size = *{c_var_dimension};",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{c_var_context}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_context}->size = {c_array_size};",
         ],
         return_cptr=True,
     ),

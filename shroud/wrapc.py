@@ -14,6 +14,7 @@ from __future__ import absolute_import
 import os
 
 from . import declast
+from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -730,6 +731,41 @@ class Wrapc(util.WrapperMixin):
             self.add_c_helper(intent_blk.c_helper, fmt)
         return need_wrapper
 
+    def set_fmt_fields(self, cls, fcn, ast, fmt):
+        """
+        Set format fields for ast.
+        Used with arguments and results.
+
+        Args:
+            cls   - ast.ClassNode or None of enclosing class.
+            fcn   - ast.FunctionNode of calling function.
+        """
+        attrs = ast.attrs
+        dim = attrs["dimension"]
+        if dim:
+            if cls is not None:
+                cls.create_node_map()
+                class_context = wformat("{CXX_this}->", fmt)
+            else:
+                class_context = ""
+            visitor = ToDimension(cls, fcn, fmt, class_context)
+            visitor.visit(ast.metaattrs["dimension"])
+            fmt.rank = str(visitor.rank)
+
+            if ast.attrs["context"]:
+                # Assign each rank of dimension.
+                fmt.c_var_context = attrs["context"]
+                fmtdim = []
+                fmtsize = []
+                #            fmt.c_var_context = 'FIXME'  ###### XXX
+                for i, dim in enumerate(visitor.shape):
+                    fmtdim.append("{}->shape[{}] = {};".format(
+                        fmt.c_var_context, i, dim))
+                    fmtsize.append("{}->shape[{}]".format(
+                        fmt.c_var_context, i, dim))
+                fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                fmt.c_array_size = "*\t".join(fmtsize)
+        
     def wrap_function(self, cls, node):
         """Wrap a C++ function with C.
 
@@ -922,6 +958,7 @@ class Wrapc(util.WrapperMixin):
             proto_list,
             need_wrapper,
         )
+        self.set_fmt_fields(cls, node, ast, fmt_result)
 
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
@@ -1488,6 +1525,75 @@ class Wrapc(util.WrapperMixin):
             )
             atypemap.idtor = fmt.idtor
 
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Convert dimension expression to Fortran wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+
+    def __init__(self, cls, fcn, fmt, context):
+        """
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
+            context - how to access Identifiers in cls.
+                      Different for function arguments and
+                      class/struct members.
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fcn = fcn
+        self.fmt = fmt
+        self.context = context
+
+        self.rank = 0
+        self.shape = []
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for members of class/struct.
+        if self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            member = self.cls.map_name_to_node[argname]
+            if member.may_have_args():
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "{}{}({})".format(
+                        self.context, argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "{}{}".format(self.context, argname)
+        else:
+            arg = self.fcn.ast.find_arg_by_name(argname)
+            # If argument is a pointer, then dereference it.
+            # i.e.  int *len +intent(out)
+            if arg.is_pointer():
+                deref = '*'
+            else:
+                deref = ''
+            if node.args is None:
+                return deref + argname  # variable
+            else:
+                return deref + self.param_list(node) # function
+        return "--??--"
+
+######################################################################
 
 def compute_c_deref(arg, local_var, fmt):
     """Compute format fields to dereference C argument."""
