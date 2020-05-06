@@ -86,6 +86,8 @@
             "PY_type_obj": "obj",
             "PY_typedef_converter": "LIB_SHROUD_converter_value",
             "YAML_type_filename": "library_types.yaml",
+            "c_array_shape": "",
+            "c_array_size": "",
             "c_temp": "SHT_",
             "cast1": ">\t(",
             "cast2": ")",
@@ -108,6 +110,7 @@
             "library_upper": "LIBRARY",
             "namespace_scope": "",
             "nullptr": "nullptr",
+            "rank": "0",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
