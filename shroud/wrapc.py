@@ -670,27 +670,19 @@ class Wrapc(util.WrapperMixin):
 
             need_wrapper = True
             if buf_arg == "size":
-                fmt.c_var_size = attrs["size"]
                 append_format(proto_list, "long {c_var_size}", fmt)
             elif buf_arg == "capsule":
-                fmt.c_var_capsule = attrs["capsule"]
                 append_format(
                     proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
                 )
             elif buf_arg == "context":
-                fmt.c_var_context = attrs["context"]
                 append_format(
                     proto_list, "{C_array_type} *{c_var_context}", fmt
                 )
-                if attrs["dimension"]:
-                    # XXX - assumes dimension is a single variable.
-                    fmt.c_var_dimension = attrs["dimension"]
                 self.add_c_helper("array_context", fmt)
             elif buf_arg == "len_trim":
-                fmt.c_var_trim = attrs["len_trim"]
                 append_format(proto_list, "int {c_var_trim}", fmt)
             elif buf_arg == "len":
-                fmt.c_var_len = attrs["len"]
                 append_format(proto_list, "int {c_var_len}", fmt)
             else:
                 raise RuntimeError(
@@ -741,6 +733,19 @@ class Wrapc(util.WrapperMixin):
             fcn   - ast.FunctionNode of calling function.
         """
         attrs = ast.attrs
+
+        # Define buf_arg variables
+        if attrs["capsule"]:
+            fmt.c_var_capsule = attrs["capsule"]
+        if attrs["context"]:
+            fmt.c_var_context = attrs["context"]
+        if attrs["len"]:
+            fmt.c_var_len = attrs["len"]
+        if attrs["len_trim"]:
+            fmt.c_var_trim = attrs["len_trim"]
+        if attrs["size"]:
+            fmt.c_var_size = attrs["size"]
+        
         dim = attrs["dimension"]
         if dim:
             if cls is not None:
@@ -950,6 +955,8 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
+        self.set_fmt_fields(cls, node, ast, fmt_result)
+
         need_wrapper = self.build_proto_list(
             fmt_result,
             ast,
@@ -958,8 +965,6 @@ class Wrapc(util.WrapperMixin):
             proto_list,
             need_wrapper,
         )
-        self.set_fmt_fields(cls, node, ast, fmt_result)
-
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
         #    c_var_len  - variable with length of c_var
