@@ -102,6 +102,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": "get_name_length()",
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -180,6 +181,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",

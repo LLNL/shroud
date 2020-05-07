@@ -219,6 +219,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character",
                             "f_var": "SHT_rv",
@@ -476,6 +477,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "dest",
@@ -713,6 +715,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
+                            "c_var_len": "Ns",
+                            "c_var_trim": "Ls",
                             "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "s",
@@ -995,6 +999,7 @@
                         "stmt1": "c_char_result"
                     },
                     "fmtf": {
+                        "c_var_len": "30",
                         "cxx_type": "char",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -1091,6 +1096,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -1271,6 +1277,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -1593,6 +1600,7 @@
                 "C_error_pattern": "C_invalid_name",
                 "_fmtresult": {
                     "fmtf": {
+                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -1680,6 +1688,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -1838,6 +1847,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -2362,6 +2372,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -2458,6 +2469,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -2641,6 +2653,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "output",
@@ -2806,6 +2819,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -2901,6 +2915,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -3190,6 +3205,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -3292,6 +3308,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -4086,6 +4103,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4277,6 +4295,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_len": "Narg1",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4468,6 +4487,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "c_var_trim": "Larg1",
                             "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4658,6 +4679,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "c_var_trim": "Larg1",
                             "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -4900,6 +4923,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_trim": "AAlen",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -5084,6 +5108,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "AAtrim",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -5360,6 +5385,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character",
                             "f_var": "SHT_rv",
@@ -5584,6 +5610,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "dest",

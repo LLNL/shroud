@@ -924,6 +924,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
@@ -2154,6 +2155,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "outbuf",

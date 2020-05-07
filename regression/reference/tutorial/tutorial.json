@@ -566,6 +566,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg1",
@@ -597,6 +598,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "c_var_trim": "Larg2",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "arg2",
@@ -1299,6 +1301,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -2599,6 +2602,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",
@@ -4974,6 +4978,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": "30",
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -5073,6 +5078,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",

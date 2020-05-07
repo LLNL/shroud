@@ -1674,6 +1674,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_names",
                             "c_var": "names",
+                            "c_var_len": "Nnames",
+                            "c_var_size": "Snames",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_type": "character(*)",

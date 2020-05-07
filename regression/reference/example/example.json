@@ -336,6 +336,7 @@
                                                 "fmtf": {
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_trim": "Lname",
                                                     "f_intent": "IN",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
@@ -935,6 +936,7 @@
                                                 "fmtf": {
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_len": "Nname",
                                                     "f_intent": "OUT",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
@@ -1838,6 +1840,7 @@
                                                 "fmtf": {
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_trim": "trim_name",
                                                     "f_intent": "IN",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
@@ -1982,6 +1985,7 @@
                                                 "stmt1": "c_string_result"
                                             },
                                             "fmtf": {
+                                                "c_var_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "cxx_type": "std::string",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -2085,6 +2089,7 @@
                                                 "fmtf": {
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
+                                                    "c_var_len": "NSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_type": "character(*)",
                                                     "f_var": "SHT_rv",
@@ -5311,6 +5316,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_type": "character(*)",
                                             "f_var": "name",
@@ -5615,6 +5621,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_type": "character(*)",
                                             "f_var": "name",
@@ -5902,6 +5909,7 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_type": "character(*)",
                                             "f_var": "name",

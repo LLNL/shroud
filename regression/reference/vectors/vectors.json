@@ -109,6 +109,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
@@ -1073,6 +1074,7 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
@@ -1245,6 +1247,7 @@
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
@@ -1595,6 +1598,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "c_var_len": "Narg",
+                            "c_var_size": "Sarg",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",

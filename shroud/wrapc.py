@@ -733,18 +733,7 @@ class Wrapc(util.WrapperMixin):
             fcn   - ast.FunctionNode of calling function.
         """
         attrs = ast.attrs
-
-        # Define buf_arg variables
-        if attrs["capsule"]:
-            fmt.c_var_capsule = attrs["capsule"]
-        if attrs["context"]:
-            fmt.c_var_context = attrs["context"]
-        if attrs["len"]:
-            fmt.c_var_len = attrs["len"]
-        if attrs["len_trim"]:
-            fmt.c_var_trim = attrs["len_trim"]
-        if attrs["size"]:
-            fmt.c_var_size = attrs["size"]
+        typemap.assign_buf_variable_names(attrs, fmt)
         
         dim = attrs["dimension"]
         if dim:

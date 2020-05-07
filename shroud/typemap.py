@@ -1096,6 +1096,21 @@ def create_buf_variable_names(options, blk, attrs, c_var):
                 c_var=c_var
             )
 
+def assign_buf_variable_names(attrs, fmt):
+    """
+    Transfer names from attribute to fmt.
+    """
+    if attrs["capsule"]:
+        fmt.c_var_capsule = attrs["capsule"]
+    if attrs["context"]:
+        fmt.c_var_context = attrs["context"]
+    if attrs["len"]:
+        fmt.c_var_len = attrs["len"]
+    if attrs["len_trim"]:
+        fmt.c_var_trim = attrs["len_trim"]
+    if attrs["size"]:
+        fmt.c_var_size = attrs["size"]
+            
 
 def compute_return_prefix(arg, local_var):
     """Compute how to access variable: dereference, address, as-is"""

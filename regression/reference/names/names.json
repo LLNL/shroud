@@ -677,6 +677,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_rv",
                             "c_var": "rv",
+                            "c_var_trim": "Lrv",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "rv",
@@ -986,6 +987,8 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "Nname",
+                            "c_var_trim": "Lname",
                             "f_intent": "INOUT",
                             "f_type": "character(*)",
                             "f_var": "name",

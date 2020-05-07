@@ -1267,19 +1267,16 @@ rv = .false.
                 continue
 
             need_wrapper = True
-            #            buf_arg_name = c_attrs[buf_arg]
             if buf_arg == "size":
                 append_format(arg_c_call, "size({f_var}, kind=C_LONG)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_LONG")
             elif buf_arg == "capsule":
-                fmt.c_var_capsule = c_attrs["capsule"]
                 append_format(
                     arg_f_decl, "type({F_capsule_type}) :: {c_var_capsule}", fmt
                 )
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
             elif buf_arg == "context":
-                fmt.c_var_context = c_attrs["context"]
                 append_format(
                     arg_f_decl, "type({F_array_type}) :: {c_var_context}", fmt
                 )
@@ -1369,6 +1366,7 @@ rv = .false.
             fmt - format dictionary
         """
         c_attrs = c_ast.attrs
+        typemap.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
 #            ntypemap = ntypemap
