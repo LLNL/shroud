@@ -37,6 +37,9 @@ int * OWN_return_int_ptr_dim_raw(int * len);
 
 int * OWN_return_int_ptr_dim_pointer(int * len);
 
+int * OWN_return_int_ptr_dim_pointer_bufferify(
+    OWN_SHROUD_array *DSHC_rv, int * len);
+
 int * OWN_return_int_ptr_dim_alloc(int * len);
 
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
@@ -44,13 +47,22 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 
 int * OWN_return_int_ptr_dim_default(int * len);
 
+int * OWN_return_int_ptr_dim_default_bufferify(
+    OWN_SHROUD_array *DSHC_rv, int * len);
+
 int * OWN_return_int_ptr_dim_raw_new(int * len);
 
 int * OWN_return_int_ptr_dim_pointer_new(int * len);
 
+int * OWN_return_int_ptr_dim_pointer_new_bufferify(
+    OWN_SHROUD_array *DSHC_rv, int * len);
+
 int * OWN_return_int_ptr_dim_alloc_new(int * len);
 
 int * OWN_return_int_ptr_dim_default_new(int * len);
+
+int * OWN_return_int_ptr_dim_default_new_bufferify(
+    OWN_SHROUD_array *DSHC_rv, int * len);
 
 void OWN_create_class_static(int flag);
 

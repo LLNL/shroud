@@ -13,12 +13,38 @@
 ! splicer begin file_top
 ! splicer end file_top
 module pointers_mod
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! helper capsule_data_helper
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: SHROUD_array
+        ! address of C++ memory
+        type(SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type SHROUD_array
+    ! end array_context
 
     ! ----------------------------------------
     ! Result
@@ -559,6 +585,23 @@ module pointers_mod
     end interface
     ! end c_return_int_ptr_to_fixed_array
 
+    ! ----------------------------------------
+    ! Result
+    ! Exact:     c_native_*_result_buf
+    ! start c_return_int_ptr_to_fixed_array_bufferify
+    interface
+        function c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv) &
+                result(SHT_rv) &
+                bind(C, name="POI_return_int_ptr_to_fixed_array_bufferify")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_fixed_array_bufferify
+    end interface
+    ! end c_return_int_ptr_to_fixed_array_bufferify
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -897,19 +940,20 @@ contains
     ! end return_int_ptr_to_scalar
 
     ! int * returnIntPtrToFixedArray() +dimension(10)
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Exact:     f_native_*_result
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Exact:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        type(SHROUD_array) :: DSHC_rv
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_fixed_array()
+        SHT_ptr = c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv)
         call c_f_pointer(SHT_ptr, SHT_rv, [10])
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array

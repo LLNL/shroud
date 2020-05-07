@@ -78,6 +78,9 @@ int * POI_return_int_ptr_to_scalar();
 
 int * POI_return_int_ptr_to_fixed_array();
 
+int * POI_return_int_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *DSHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

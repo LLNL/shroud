@@ -1113,7 +1113,7 @@ class GenFunctions(object):
                 del c_attrs[name]
 
     def arg_to_buffer(self, node, ordered_functions):
-        """Look for function which have implied arguments.
+        """Look for function which have buffer arguments.
         This includes functions with string or vector arguments.
         If found then create a new C function that
         will add arguments buf_args (typically a buffer and length).
@@ -1188,7 +1188,7 @@ class GenFunctions(object):
         # Function Result.
         has_string_result = False
         has_vector_result = False
-        has_allocatable_result = False
+        need_cdesc_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1202,12 +1202,15 @@ class GenFunctions(object):
             result_name = result_as_arg or fmt.C_string_result_as_arg
         elif result_typemap.base == "vector":
             has_vector_result = True
-        elif result_is_ptr and attrs["deref"] == "allocatable":
-            has_allocatable_result = True
+        elif result_is_ptr:
+            if attrs["deref"] in ["allocatable"]:
+                need_cdesc_result = True
+            elif attrs["dimension"]:
+                need_cdesc_result = True
 
-        # Functions with these arguments need wrappers.
+        # Functions with these results need wrappers.
         if not (has_string_result or has_vector_result or
-                has_allocatable_result or has_buf_arg):
+                need_cdesc_result or has_buf_arg):
             return
 
         # XXX       options = node['options']
@@ -1312,7 +1315,7 @@ class GenFunctions(object):
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"
-        elif has_allocatable_result:
+        elif need_cdesc_result:
             # Non-string and Non-char results
             # XXX - c_var is duplicated in wrapc.py wrap_function
             fmt_func = C_new.fmtdict

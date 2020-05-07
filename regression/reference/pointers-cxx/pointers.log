@@ -24,6 +24,7 @@ C function void * returnAddress1(int flag +intent(in)+value)
 C function void * returnAddress2(int flag +intent(in)+value)
 C function int * returnIntPtrToScalar()
 C function int * returnIntPtrToFixedArray() +dimension(10)
+C function int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
@@ -52,5 +53,6 @@ C-interface, Fortran function void * returnAddress1(int flag +intent(in)+value)
 C-interface, Fortran function void * returnAddress2(int flag +intent(in)+value)
 C-interface, Fortran function int * returnIntPtrToScalar()
 C-interface, Fortran function int * returnIntPtrToFixedArray() +dimension(10)
+C-interface function int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
 Close wrapfpointers.f
 Close utilpointers.cpp

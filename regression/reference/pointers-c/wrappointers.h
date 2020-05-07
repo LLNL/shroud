@@ -23,4 +23,7 @@
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames);
 
+int * POI_return_int_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *DSHC_rv);
+
 #endif  // WRAPPOINTERS_H
