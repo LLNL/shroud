@@ -526,7 +526,7 @@ contains
         ! splicer begin function.return_int_ptr_dim_pointer
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
@@ -577,7 +577,7 @@ contains
         ! splicer begin function.return_int_ptr_dim_default
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_bufferify(DSHC_rv, len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default
     end function return_int_ptr_dim_default
 
@@ -603,7 +603,7 @@ contains
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
             len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
 
@@ -629,7 +629,7 @@ contains
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
             len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default_new
     end function return_int_ptr_dim_default_new
 

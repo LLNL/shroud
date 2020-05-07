@@ -248,22 +248,10 @@ contains
         type(SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array
-        integer(C_INT) :: SHAPE_SHT_rv(1)
-        interface
-            subroutine SHROUD_get_shape_SHT_rv(obj, shape) &
-                bind(C, name="REF_SHROUD_create_f_pointer_shape_0")
-                use iso_c_binding, only : C_INT
-                import SHROUD_arraywrapper_capsule
-                implicit none
-                type(SHROUD_arraywrapper_capsule), intent(IN) :: obj
-                integer(C_INT), intent(OUT) :: shape(*)
-            end subroutine SHROUD_get_shape_SHT_rv
-        end interface
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_arraywrapper_get_array_bufferify(obj%cxxmem, &
             DSHC_rv)
-        call SHROUD_get_shape_SHT_rv(obj%cxxmem, SHAPE_SHT_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, SHAPE_SHT_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 

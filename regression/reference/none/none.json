@@ -96,6 +96,7 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_array_shape": "",
             "f_assumed_shape": "",
             "f_declare_shape_array": "",
             "f_declare_shape_prefix": "SHAPE_",

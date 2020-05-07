@@ -627,6 +627,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_array_shape="",
             c_array_size="",
 
+            f_array_shape="",
             f_assumed_shape="",  # scalar
             f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",

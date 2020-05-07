@@ -954,7 +954,7 @@ contains
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, [10])
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array

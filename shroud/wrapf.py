@@ -1399,17 +1399,18 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, fcn, f_ast, fmt, modules, fileinfo)
+            self.ftn_dimension(cls, fcn, f_ast, c_ast, fmt, modules, fileinfo)
 
         return ntypemap
 
-    def ftn_dimension(self, cls, fcn, ast, fmt, modules, fileinfo):
+    def ftn_dimension(self, cls, fcn, ast, c_ast, fmt, modules, fileinfo):
         """Set format fields from dimension attribute.
 
         Args:
             cls  - ast.ClassNode or None
             fcn  - ast.FunctionNode of calling function.
-            ast  - declast.Declaration for argument.
+            ast  - declast.Declaration for Fortran argument.
+            c_ast - declast.Declaration for C argument.
             fmt  - util.Scope
         """
         if cls is not None:
@@ -1419,6 +1420,9 @@ rv = .false.
         fmt.rank = str(visitor.rank)
         if visitor.rank > 0:
             fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
+            if c_ast.attrs["context"]:
+                fmt.f_array_shape = wformat(
+                    ", {c_var_context}%shape(1:{rank})", fmt)
         fmt.f_assumed_shape = fortran_ranks[visitor.rank]
 
         if visitor.need_helper:
