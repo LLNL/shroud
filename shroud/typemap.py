@@ -1072,8 +1072,10 @@ def create_buf_variable_names(options, blk, attrs, c_var):
     If user has not explicitly set, then compute from option template.
     """
     for buf_arg in blk.buf_args:
-        if attrs[buf_arg] is not None:
-            # Do not override user specified variable name.
+        if attrs[buf_arg] is not None and \
+           attrs[buf_arg] is not True:
+            # None - Not set.
+            # True - Do not override user specified variable name.
             pass
         elif buf_arg == "size":
             attrs["size"] = options.C_var_size_template.format(
@@ -1293,6 +1295,7 @@ def lookup_stmts_tree(tree, path):
 
 class CStmts(object):
     """
+    arg_call    - List of arguments passed to C function.
 
     Used with buf_args = "arg_decl".
     c_arg_decl  - Add C declaration to C wrapper.
@@ -1304,6 +1307,7 @@ class CStmts(object):
         buf_args=[], buf_extra=[],
         c_header=[], c_helper="", c_local_var=None,
         cxx_header=[], cxx_local_var=None,
+        arg_call=[],
         pre_call=[], call=[], post_call=[], final=[], ret=[],
         destructor_name=None,
         owner="library",
@@ -1323,6 +1327,7 @@ class CStmts(object):
 
         self.pre_call = pre_call
         self.call = call
+        self.arg_call = arg_call
         self.post_call = post_call
         self.final = final
         self.ret = ret
@@ -1420,6 +1425,44 @@ fc_statements = [
     ),
 
     dict(
+        # double **count _intent(out)+dimension(ncount)
+        name="c_native_**_out_buf",
+        buf_args=["context"],
+        c_helper="ShroudTypeDefines",
+        pre_call=[
+            "{cxx_type} *{cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.base = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_type});",
+            "{c_var_context}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_context}->size = {c_array_size};",
+        ],
+        # XXX - similar to c_native_*_result_buf
+    ),
+    dict(
+        # deref(pointer)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer to a scalar.
+        name="f_XXX_native_**_out",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        arg_c_call=["{F_pointer}"],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {f_var})",
+        ],
+    ),
+    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
@@ -1427,15 +1470,9 @@ fc_statements = [
         arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        declare=[
-            "{f_declare_shape_array}"
-            "type(C_PTR) :: {F_pointer}",
-        ],
-        arg_c_call=["{F_pointer}"],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
         post_call=[
-            "{f_get_shape_array}"
-            "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
+            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(

@@ -1824,6 +1824,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "addr",
+                            "c_var_context": "FIXME",
                             "cxx_addr": "",
                             "cxx_cast_to_void_ptr": "addr",
                             "cxx_member": "->",
@@ -1837,6 +1838,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "c_var_context": "FIXME",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "OUT",
                             "f_type": "real(C_FLOAT)",
@@ -1920,6 +1922,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "context": "FIXME",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1981,7 +1984,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointerAsPointer",
@@ -2205,7 +2208,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
+                    "F_arg_c_call": "addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -2303,7 +2306,7 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "SHPTR_addr,\t type,\t size",
+                    "F_arg_c_call": "addr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",

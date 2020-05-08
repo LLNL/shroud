@@ -397,6 +397,24 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  nitems
+    ! Exact:     c_native_**_out_buf
+    ! start c_get_ptr_to_scalar_bufferify
+    interface
+        subroutine c_get_ptr_to_scalar_bufferify(Dnitems) &
+                bind(C, name="POI_get_ptr_to_scalar_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dnitems
+        end subroutine c_get_ptr_to_scalar_bufferify
+    end interface
+    ! end c_get_ptr_to_scalar_bufferify
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -413,6 +431,24 @@ module pointers_mod
         end subroutine c_get_ptr_to_fixed_array
     end interface
     ! end c_get_ptr_to_fixed_array
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     c_native_**_out_buf
+    ! start c_get_ptr_to_fixed_array_bufferify
+    interface
+        subroutine c_get_ptr_to_fixed_array_bufferify(Dcount) &
+                bind(C, name="POI_get_ptr_to_fixed_array_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dcount
+        end subroutine c_get_ptr_to_fixed_array_bufferify
+    end interface
+    ! end c_get_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
     ! Result
@@ -437,6 +473,30 @@ module pointers_mod
         end subroutine c_get_ptr_to_dynamic_array
     end interface
     ! end c_get_ptr_to_dynamic_array
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     c_native_**_out_buf
+    ! ----------------------------------------
+    ! Argument:  ncount
+    ! Requested: c_native_*_out_buf
+    ! Match:     c_default
+    ! start c_get_ptr_to_dynamic_array_bufferify
+    interface
+        subroutine c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount) &
+                bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dcount
+            integer(C_INT), intent(OUT) :: ncount
+        end subroutine c_get_ptr_to_dynamic_array_bufferify
+    end interface
+    ! end c_get_ptr_to_dynamic_array_bufferify
 
     ! ----------------------------------------
     ! Result
@@ -475,6 +535,24 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Exact:     c_native_**_out_buf
+    ! start c_get_ptr_to_func_array_bufferify
+    interface
+        subroutine c_get_ptr_to_func_array_bufferify(Dcount) &
+                bind(C, name="POI_get_ptr_to_func_array_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dcount
+        end subroutine c_get_ptr_to_func_array_bufferify
+    end interface
+    ! end c_get_ptr_to_func_array_bufferify
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -494,6 +572,25 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  nitems
+    ! Requested: c_native_**_out_buf_raw
+    ! Match:     c_native_**_out_buf
+    ! start c_get_raw_ptr_to_scalar_bufferify
+    interface
+        subroutine c_get_raw_ptr_to_scalar_bufferify(Dnitems) &
+                bind(C, name="POI_get_raw_ptr_to_scalar_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dnitems
+        end subroutine c_get_raw_ptr_to_scalar_bufferify
+    end interface
+    ! end c_get_raw_ptr_to_scalar_bufferify
+
+    ! ----------------------------------------
+    ! Result
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -510,6 +607,25 @@ module pointers_mod
         end subroutine get_raw_ptr_to_fixed_array
     end interface
     ! end get_raw_ptr_to_fixed_array
+
+    ! ----------------------------------------
+    ! Result
+    ! Requested: c_unknown_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  count
+    ! Requested: c_native_**_out_buf_raw
+    ! Match:     c_native_**_out_buf
+    ! start c_get_raw_ptr_to_fixed_array_bufferify
+    interface
+        subroutine c_get_raw_ptr_to_fixed_array_bufferify(Dcount) &
+                bind(C, name="POI_get_raw_ptr_to_fixed_array_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dcount
+        end subroutine c_get_raw_ptr_to_fixed_array_bufferify
+    end interface
+    ! end c_get_raw_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
     ! Result
@@ -771,6 +887,7 @@ contains
     ! end accept_char_array_in
 
     ! void getPtrToScalar(int * * nitems +intent(out))
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -780,21 +897,21 @@ contains
     ! ----------------------------------------
     ! Argument:  nitems
     ! Exact:     f_native_**_out
-    ! Requested: c_native_**_out
-    ! Match:     c_default
+    ! Exact:     c_native_**_out_buf
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
+        type(SHROUD_array) :: Dnitems
         ! splicer begin function.get_ptr_to_scalar
-        type(C_PTR) :: SHPTR_nitems
-        call c_get_ptr_to_scalar(SHPTR_nitems)
-        call c_f_pointer(SHPTR_nitems, nitems)
+        call c_get_ptr_to_scalar_bufferify(Dnitems)
+        call c_f_pointer(Dnitems%base_addr, nitems)
         ! splicer end function.get_ptr_to_scalar
     end subroutine get_ptr_to_scalar
     ! end get_ptr_to_scalar
 
     ! void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -804,24 +921,24 @@ contains
     ! ----------------------------------------
     ! Argument:  count
     ! Exact:     f_native_**_out
-    ! Requested: c_native_**_out
-    ! Match:     c_default
+    ! Exact:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
     ! start get_ptr_to_fixed_array
     subroutine get_ptr_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
+        type(SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_fixed_array
-        type(C_PTR) :: SHPTR_count
-        call c_get_ptr_to_fixed_array(SHPTR_count)
-        call c_f_pointer(SHPTR_count, count, [10])
+        call c_get_ptr_to_fixed_array_bufferify(Dcount)
+        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
     ! end get_ptr_to_fixed_array
 
     ! void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -831,13 +948,12 @@ contains
     ! ----------------------------------------
     ! Argument:  count
     ! Exact:     f_native_**_out
-    ! Requested: c_native_**_out
-    ! Match:     c_default
+    ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  ncount
     ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Requested: c_native_*_out
+    ! Requested: c_native_*_out_buf
     ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length of
@@ -845,18 +961,19 @@ contains
     !<
     ! start get_ptr_to_dynamic_array
     subroutine get_ptr_to_dynamic_array(count)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
+        type(SHROUD_array) :: Dcount
         integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_array
-        type(C_PTR) :: SHPTR_count
-        call c_get_ptr_to_dynamic_array(SHPTR_count, ncount)
-        call c_f_pointer(SHPTR_count, count, [ncount])
+        call c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount)
+        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_array
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
 
     ! void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Requested: f_subroutine
@@ -866,8 +983,7 @@ contains
     ! ----------------------------------------
     ! Argument:  count
     ! Exact:     f_native_**_out
-    ! Requested: c_native_**_out
-    ! Match:     c_default
+    ! Exact:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
@@ -876,22 +992,12 @@ contains
     !<
     ! start get_ptr_to_func_array
     subroutine get_ptr_to_func_array(count)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
+        type(SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_func_array
-        integer(C_INT) :: SHAPE_count(1)
-        interface
-            subroutine SHROUD_get_shape_count(shape) &
-                bind(C, name="POI_SHROUD_create_f_pointer_shape_0")
-                use iso_c_binding, only : C_INT
-                implicit none
-                integer(C_INT), intent(OUT) :: shape(*)
-            end subroutine SHROUD_get_shape_count
-        end interface
-        type(C_PTR) :: SHPTR_count
-        call c_get_ptr_to_func_array(SHPTR_count)
-        call SHROUD_get_shape_count(SHAPE_count)
-        call c_f_pointer(SHPTR_count, count, SHAPE_count)
+        call c_get_ptr_to_func_array_bufferify(Dcount)
+        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
         ! splicer end function.get_ptr_to_func_array
     end subroutine get_ptr_to_func_array
     ! end get_ptr_to_func_array

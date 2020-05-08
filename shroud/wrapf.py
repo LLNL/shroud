@@ -1387,6 +1387,9 @@ rv = .false.
         if dim:
             # XXX - Assume 1-d
             fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+        if c_attrs["context"]:
+            if not fmt.c_var_context:
+                fmt.c_var_context = "FIXME"
 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

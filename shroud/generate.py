@@ -1003,10 +1003,26 @@ class GenFunctions(object):
           - decl: (double arg)
             function_suffix: double
 
+        XXX - needs refinement.
+        From generic.yaml
+        - decl: void GetPointerAsPointer(
+               void **addr+intent(out),
+               int *type+intent(out)+hidden,
+               size_t *size+intent(out)+hidden)
+          fortran_generic:
+          - decl: (float **addr+intent(out)+rank(1)+deref(pointer))
+          - decl: (float **addr+intent(out)+rank(2)+deref(pointer))
+        The C wrapper must pass down a context argument to allow
+        the shape information to be returned. Normally, this would be
+        added by arg_to_buffer, but since the C argument is 'void **'
+        it will not be.  But the generic function does have
+        an argument which meets the critieria.
+
         Args:
             node - ast.FunctionNode
             ordered_functions -
         """
+        context_args = {}
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
@@ -1025,6 +1041,17 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
             new.ast.params = generic.decls
+
+            for arg in generic.decls:
+                # double **arg +intent(out)+rank(1)
+                if (arg.typemap.sgroup == "native" and
+                    arg.attrs["intent"] == "out" and
+                    arg.get_indirect_stmt() == "**"):
+                    context_args[arg.name] = True
+                
+        for argname in context_args.keys():
+            arg = node.ast.find_arg_by_name(argname)
+            arg.attrs["context"] = "FIXME"
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1184,6 +1211,12 @@ class GenFunctions(object):
                     arg.set_type(typemap.lookup_type("char_scalar"))
             elif arg_typemap.base == "vector":
                 has_buf_arg = True
+            elif (arg_typemap.sgroup == "native" and
+                  arg.attrs["intent"] == "out" and
+                  arg.get_indirect_stmt() == "**"):
+#                 arg.attrs["dimension"]:
+                # double **values +intent(out) +dimension(nvalues)
+                has_buf_arg = True
 
         # Function Result.
         has_string_result = False
@@ -1252,6 +1285,11 @@ class GenFunctions(object):
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
+            elif (sgroup == "native" and
+                  arg.attrs["intent"] == "out" and
+                  arg.get_indirect_stmt() == "**"):
+#                 arg.attrs["dimension"]:
+                attrs["context"] = True
             arg_typemap, sp = typemap.lookup_c_statements(arg)
 
             # Set names for implied buffer arguments.

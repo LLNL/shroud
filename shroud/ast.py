@@ -625,7 +625,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type="SHROUD_array",
 
             c_array_shape="",
-            c_array_size="",
+            c_array_size="1",
 
             f_array_shape="",
             f_assumed_shape="",  # scalar

@@ -751,15 +751,15 @@ class Wrapc(util.WrapperMixin):
                 fmt.c_var_context = attrs["context"]
                 fmtdim = []
                 fmtsize = []
-                #            fmt.c_var_context = 'FIXME'  ###### XXX
                 for i, dim in enumerate(visitor.shape):
                     fmtdim.append("{}->shape[{}] = {};".format(
                         fmt.c_var_context, i, dim))
                     fmtsize.append("{}->shape[{}]".format(
                         fmt.c_var_context, i, dim))
                 fmt.c_array_shape = "\n" + "\n".join(fmtdim)
-                fmt.c_array_size = "*\t".join(fmtsize)
-        
+                if fmtsize:
+                    fmt.c_array_size = "*\t".join(fmtsize)
+                    
     def wrap_function(self, cls, node):
         """Wrap a C++ function with C.
 
@@ -1103,7 +1103,10 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if cxx_local_var == "scalar":
+                if intent_blk.arg_call:
+                    for arg_call in intent_blk.arg_call:
+                        append_format(call_list, arg_call, fmt_arg)
+                elif cxx_local_var == "scalar":
                     if arg.is_pointer():
                         call_list.append("&" + fmt_arg.cxx_var)
                     else:

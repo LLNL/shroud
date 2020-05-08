@@ -1912,18 +1912,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_nitems",
-                            "c_var": "nitems",
-                            "f_intent": "OUT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "nitems",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -1966,9 +1954,9 @@
                     "C_name": "getPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_ptr_to_scalar",
+                    "F_C_call": "c_get_ptr_to_scalar_bufferify",
                     "F_C_name": "c_get_ptr_to_scalar",
-                    "F_arg_c_call": "SHPTR_nitems",
+                    "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
@@ -1983,6 +1971,98 @@
                     "underscore_name": "get_ptr_to_scalar"
                 },
                 "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "nitems",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nitems",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dnitems",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToScalar(int **nitems+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +context(Dnitems)+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "&nitems",
+                    "C_name": "POI_get_ptr_to_scalar_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dnitems",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_scalar_bufferify",
+                    "c_const": "",
+                    "function_name": "getPtrToScalar",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 }
             },
@@ -2005,21 +2085,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_count",
-                            "c_var": "count",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_pointer_shape": ", [10]",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "count",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2073,9 +2138,9 @@
                     "C_name": "getPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_ptr_to_fixed_array",
+                    "F_C_call": "c_get_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_get_ptr_to_fixed_array",
-                    "F_arg_c_call": "SHPTR_count",
+                    "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
@@ -2098,6 +2163,117 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_array_shape": "\nDcount->shape[0] = 10;",
+                            "c_array_size": "Dcount->shape[0]",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "c_var_dimension": "10",
+                            "f_array_shape": ", Dcount%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", [10]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
+                "declgen": "void getPtrToFixedArray(int * * count +context(Dcount)+dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&count",
+                    "C_name": "POI_get_ptr_to_fixed_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
+                    "c_const": "",
+                    "function_name": "getPtrToFixedArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_fixed_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2112,21 +2288,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_count",
-                            "c_var": "count",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_pointer_shape": ", [ncount]",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "count",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     },
                     "ncount": {
@@ -2145,18 +2306,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_ncount",
-                            "c_var": "ncount",
-                            "f_intent": "OUT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "ncount",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2228,9 +2377,9 @@
                     "C_name": "getPtrToDynamicArray",
                     "C_prototype": "int * * count,\t int * ncount",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_ptr_to_dynamic_array",
+                    "F_C_call": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_array",
-                    "F_arg_c_call": "SHPTR_count,\t ncount",
+                    "F_arg_c_call": "Dcount,\t ncount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
@@ -2245,6 +2394,166 @@
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
                 "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nDcount->shape[0] = *ncount;",
+                            "c_array_size": "Dcount->shape[0]",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "c_var_dimension": "ncount",
+                            "f_array_shape": ", Dcount%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", [ncount]",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    },
+                    "ncount": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "ncount",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_ncount",
+                            "c_var": "ncount",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "ncount",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToDynamicArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "dimension": "ncount",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "ncount",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
+                "declgen": "void getPtrToDynamicArray(int * * count +context(Dcount)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&count,\t ncount",
+                    "C_name": "POI_get_ptr_to_dynamic_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
+                    "c_const": "",
+                    "function_name": "getPtrToDynamicArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_dynamic_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 }
             },
@@ -2330,25 +2639,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_count",
-                            "c_var": "count",
-                            "f_assumed_shape": "(:)",
-                            "f_declare_shape_array": "integer(C_INT) :: SHAPE_count(1)\ninterface+\nsubroutine SHROUD_get_shape_count(shape)\tbind(C, name=\"POI_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimplicit none\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_count\n-end interface\n",
-                            "f_get_shape_array": "call SHROUD_get_shape_count(SHAPE_count)\n",
-                            "f_get_shape_func": "SHROUD_get_shape_count",
-                            "f_intent": "OUT",
-                            "f_pointer_shape": ", SHAPE_count",
-                            "f_shape_var": "SHAPE_count",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "count",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out",
-                            "stmt1": "f_native_**_out",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2403,9 +2693,9 @@
                     "C_name": "getPtrToFuncArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_ptr_to_func_array",
+                    "F_C_call": "c_get_ptr_to_func_array_bufferify",
                     "F_C_name": "c_get_ptr_to_func_array",
-                    "F_arg_c_call": "SHPTR_count",
+                    "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
@@ -2420,6 +2710,122 @@
                     "underscore_name": "get_ptr_to_func_array"
                 },
                 "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nDcount->shape[0] = getLen();",
+                            "c_array_size": "Dcount->shape[0]",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "c_var_dimension": "getLen()",
+                            "f_array_shape": ", Dcount%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_declare_shape_array": "integer(C_INT) :: SHAPE_count(1)\ninterface+\nsubroutine SHROUD_get_shape_count(shape)\tbind(C, name=\"POI_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimplicit none\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_count\n-end interface\n",
+                            "f_get_shape_array": "call SHROUD_get_shape_count(SHAPE_count)\n",
+                            "f_get_shape_func": "SHROUD_get_shape_count",
+                            "f_intent": "OUT",
+                            "f_pointer_shape": ", SHAPE_count",
+                            "f_shape_var": "SHAPE_count",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFuncArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "dimension": "getLen()",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
+                "declgen": "void getPtrToFuncArray(int * * count +context(Dcount)+dimension(getLen())+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&count",
+                    "C_name": "POI_get_ptr_to_func_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_func_array_bufferify",
+                    "c_const": "",
+                    "function_name": "getPtrToFuncArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_func_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 }
             },
@@ -2441,18 +2847,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_nitems",
-                            "c_var": "nitems",
-                            "f_intent": "OUT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "nitems",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_raw",
-                            "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2499,7 +2893,7 @@
                     "C_name": "getRawPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_raw_ptr_to_scalar",
+                    "F_C_call": "c_get_raw_ptr_to_scalar_bufferify",
                     "F_C_name": "get_raw_ptr_to_scalar",
                     "F_arg_c_call": "nitems",
                     "F_arguments": "nitems",
@@ -2521,6 +2915,102 @@
             },
             {
                 "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "nitems",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nitems",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out_raw",
+                            "stmt1": "f_native_**_out_raw",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dnitems",
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Called directly via an interface.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&nitems",
+                    "C_name": "POI_get_raw_ptr_to_scalar_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dnitems",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_raw_ptr_to_scalar_bufferify",
+                    "c_const": "",
+                    "function_name": "getRawPtrToScalar",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_raw_ptr_to_scalar"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "count": {
                         "fmtc": {
                             "c_addr": "",
@@ -2537,18 +3027,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_pointer": "SHPTR_count",
-                            "c_var": "count",
-                            "f_intent": "OUT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "count",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_raw",
-                            "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
-                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -2595,7 +3073,7 @@
                     "C_name": "getRawPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_raw_ptr_to_fixed_array",
+                    "F_C_call": "c_get_raw_ptr_to_fixed_array_bufferify",
                     "F_C_name": "get_raw_ptr_to_fixed_array",
                     "F_arg_c_call": "count",
                     "F_arguments": "count",
@@ -2612,6 +3090,102 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
                 "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "count",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out_raw",
+                            "stmt1": "f_native_**_out_raw",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToFixedArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&count",
+                    "C_name": "POI_get_raw_ptr_to_fixed_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_raw_ptr_to_fixed_array_bufferify",
+                    "c_const": "",
+                    "function_name": "getRawPtrToFixedArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_raw_ptr_to_fixed_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 }
             },
