@@ -44,21 +44,23 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // splicer end class.Cstruct_list.type.del
 }
 
-// Cstruct_list(int nitems +intent(in), int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)
 // ----------------------------------------
-// Argument:  nitems
+// Function:  Cstruct_list +name(Cstruct_list_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int nitems +intent(in)
 // Requested: py_ctor_native_scalar_list
 // Match:     py_ctor_native
 // ----------------------------------------
-// Argument:  ivalue
+// Argument:  int * ivalue +dimension(nitems+nitems)+intent(in)
 // Requested: py_ctor_native_*_list
 // Match:     py_ctor_native_*
 // ----------------------------------------
-// Argument:  dvalue
+// Argument:  double * dvalue +dimension(nitems*TWO)+intent(in)
 // Requested: py_ctor_native_*_list
 // Match:     py_ctor_native_*
 // ----------------------------------------
-// Argument:  svalue
+// Argument:  char * * svalue +dimension(nitems)+intent(in)
 // Requested: py_ctor_char_**_list
 // Match:     py_ctor_char_**
 static int

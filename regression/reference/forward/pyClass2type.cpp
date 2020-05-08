@@ -36,7 +36,9 @@ PY_Class2_tp_del (PY_Class2 *self)
 // splicer end class.Class2.type.del
 }
 
-// Class2()
+// ----------------------------------------
+// Function:  Class2
+// Exact:     py_default
 static int
 PY_Class2_tp_init(
   PY_Class2 *self,
@@ -54,9 +56,11 @@ PY_Class2_tp_init(
 // splicer end class.Class2.method.ctor
 }
 
-// void func1(tutorial::Class1 * arg +intent(in))
 // ----------------------------------------
-// Argument:  arg
+// Function:  void func1
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  tutorial::Class1 * arg +intent(in)
 // Requested: py_shadow_*_in
 // Match:     py_shadow_in
 static char PY_func1__doc__[] =
@@ -87,9 +91,11 @@ PY_func1(
 // splicer end class.Class2.method.func1
 }
 
-// void acceptClass3(Class3 * arg +intent(in))
 // ----------------------------------------
-// Argument:  arg
+// Function:  void acceptClass3
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Class3 * arg +intent(in)
 // Requested: py_shadow_*_in
 // Match:     py_shadow_in
 static char PY_acceptClass3__doc__[] =

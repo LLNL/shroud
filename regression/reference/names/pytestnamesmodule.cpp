@@ -36,7 +36,9 @@ PyObject *PY_init_testnames_std(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// void function1()
+// ----------------------------------------
+// Function:  void function1
+// Exact:     py_default
 static char PY_function1__doc__[] =
 "documentation"
 ;
@@ -52,7 +54,9 @@ PY_function1(
 // splicer end function.function1
 }
 
-// void function2()
+// ----------------------------------------
+// Function:  void function2
+// Exact:     py_default
 static char PY_function2__doc__[] =
 "documentation"
 ;
@@ -69,9 +73,11 @@ PY_function2(
 // splicer end function.function2
 }
 
-// void function3a(int i +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  void function3a
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -95,9 +101,11 @@ PY_function3a_0(
 // splicer end function.function3a_0
 }
 
-// void function3a(long i +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  void function3a
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  long i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -121,9 +129,12 @@ PY_function3a_1(
 // splicer end function.function3a_1
 }
 
-// int function4(const std::string & rv +intent(in))
 // ----------------------------------------
-// Argument:  rv
+// Function:  int function4
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const std::string & rv +intent(in)
 // Requested: py_string_&_in
 // Match:     py_string_in
 static char PY_function4__doc__[] =
@@ -159,7 +170,9 @@ PY_function4(
 // splicer end function.function4
 }
 
-// void function5() +name(fiveplus)
+// ----------------------------------------
+// Function:  void function5 +name(fiveplus)
+// Exact:     py_default
 static char PY_fiveplus__doc__[] =
 "documentation"
 ;
@@ -176,13 +189,15 @@ PY_fiveplus(
 // splicer end function.fiveplus
 }
 
-// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 // ----------------------------------------
-// Argument:  name
+// Function:  void TestMultilineSplicer
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(inout)
 // Requested: py_string_&_inout
 // Match:     py_string_inout
 // ----------------------------------------
-// Argument:  value
+// Argument:  int * value +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_TestMultilineSplicer__doc__[] =
@@ -204,13 +219,15 @@ PY_TestMultilineSplicer(
 // splicer end function.test_multiline_splicer
 }
 
-// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void FunctionTU
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  long arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -240,13 +257,15 @@ PY_name_instantiation1(
 // splicer end function.function_tu_0
 }
 
-// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void FunctionTU
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  float arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  double arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -276,7 +295,10 @@ PY_FunctionTU_instantiation2(
 // splicer end function.function_tu_instantiation2
 }
 
-// int UseImplWorker()
+// ----------------------------------------
+// Function:  int UseImplWorker
+// Requested: py_native_result
+// Match:     py_default
 static char PY_UseImplWorker_instantiation3__doc__[] =
 "documentation"
 ;

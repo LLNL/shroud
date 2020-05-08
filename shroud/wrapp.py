@@ -1090,7 +1090,18 @@ return 1;""",
         if CXX_subprogram == "function":
             fmt_result, result_blk = self.process_result(cls, node, fmt)
         else:
+            fmt_result = fmt
             result_blk = default_scope
+            fmt_result.stmt0 = result_blk.name
+            fmt_result.stmt1 = result_blk.name
+        if options.debug:
+            stmts_comments = []
+            stmts_comments.append(
+                "// ----------------------------------------")
+            stmts_comments.append(
+                "// Function:  " + ast.gen_decl(params=None))
+            self.document_stmts(
+                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
 
         PY_code = []
 
@@ -1109,7 +1120,6 @@ return 1;""",
         post_call_code = []  # Create objects passed to PyBuildValue
         cleanup_code = []
         fail_code = []
-        stmts_comments = []
 
         cxx_call_list = []
 
@@ -1232,7 +1242,7 @@ return 1;""",
                 # Add some debug comments to function.
                 stmts_comments.append(
                     "// ----------------------------------------")
-                stmts_comments.append("// Argument:  " + arg_name)
+                stmts_comments.append("// Argument:  " + arg.gen_decl())
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
@@ -1698,7 +1708,6 @@ return 1;""",
         body = fileinfo.MethodBody
         body.append("")
         if node and node.options.debug:
-            body.append("// " + node.declgen)
             body.extend(stmts_comments)
         if cpp_if:
             body.append("#" + node.cpp_if)
@@ -1865,6 +1874,8 @@ return 1;""",
             if is_ctor:
                 # Code added by create_ctor_function.
                 result_blk = default_scope
+                fmt_result.stmt0 = result_blk.name
+                fmt_result.stmt1 = result_blk.name
             elif result_typemap.base == "struct":
                 stmts = ["py", sgroup, "result", options.PY_struct_arg]
             elif result_typemap.base == "vector":
@@ -1881,7 +1892,7 @@ return 1;""",
                 # Useful for debugging.  Requested and found path.
                 fmt_result.stmt0 = typemap.compute_name(stmts)
                 fmt_result.stmt1 = result_blk.name
-            
+                
         return fmt_result, result_blk
 
     def XXXadd_stmt_capsule(self, stmts, fmt):

@@ -1280,6 +1280,8 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
+                                        "stmt0": "py_default",
+                                        "stmt1": "py_default",
                                         "vargs": "SHCXX_rv"
                                     }
                                 },
@@ -1830,6 +1832,8 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
+                                        "stmt0": "py_default",
+                                        "stmt1": "py_default",
                                         "vargs": "SHCXX_rv"
                                     }
                                 },

@@ -35,12 +35,15 @@ PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
 // ----------------------------------------
-// Argument:  s1
+// Function:  int acceptBothStructs
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct_as_class * s1 +intent(in)
 // Exact:     py_struct_in_class
 // ----------------------------------------
-// Argument:  s2
+// Argument:  Cstruct_as_numpy * s2 +intent(in)
 // Exact:     py_struct_in_numpy
 static char PY_acceptBothStructs__doc__[] =
 "documentation"

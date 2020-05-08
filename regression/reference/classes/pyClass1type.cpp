@@ -36,7 +36,9 @@ PY_Class1_tp_del (PY_Class1 *self)
 // splicer end class.Class1.type.del
 }
 
-// Class1() +name(new)
+// ----------------------------------------
+// Function:  Class1 +name(new)
+// Exact:     py_default
 static int
 PY_Class1_tp_init_default(
   PY_Class1 *self,
@@ -54,9 +56,11 @@ PY_Class1_tp_init_default(
 // splicer end class.Class1.method.new_default
 }
 
-// Class1(int flag +intent(in)+value) +name(new)
 // ----------------------------------------
-// Argument:  flag
+// Function:  Class1 +name(new)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static int
@@ -85,7 +89,10 @@ PY_Class1_tp_init_flag(
 // splicer end class.Class1.method.new_flag
 }
 
-// int Method1()
+// ----------------------------------------
+// Function:  int Method1
+// Requested: py_native_result
+// Match:     py_default
 static char PY_Method1__doc__[] =
 "documentation"
 ;
@@ -112,9 +119,11 @@ PY_Method1(
 // splicer end class.Class1.method.method1
 }
 
-// bool equivalent(const Class1 & obj2 +intent(in)) const
 // ----------------------------------------
-// Argument:  obj2
+// Function:  bool equivalent
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  const Class1 & obj2 +intent(in)
 // Requested: py_shadow_&_in
 // Match:     py_shadow_in
 static char PY_equivalent__doc__[] =
@@ -159,7 +168,9 @@ fail:
 // splicer end class.Class1.method.equivalent
 }
 
-// Class1 * getclass3() const
+// ----------------------------------------
+// Function:  Class1 * getclass3
+// Exact:     py_shadow_result
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -185,7 +196,10 @@ PY_getclass3(
 // splicer end class.Class1.method.getclass3
 }
 
-// const std::string & getName() +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string & getName +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -213,9 +227,12 @@ PY_getName(
 // splicer end class.Class1.method.get_name
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  DIRECTION directionFunc
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  DIRECTION arg +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =

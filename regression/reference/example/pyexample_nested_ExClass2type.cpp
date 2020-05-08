@@ -148,9 +148,11 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end namespace.example::nested.class.ExClass2.type.del
 }
 
-// ExClass2(const string * name +intent(in)+len_trim(trim_name))
 // ----------------------------------------
-// Argument:  name
+// Function:  ExClass2
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const string * name +intent(in)+len_trim(trim_name)
 // Requested: py_string_*_in
 // Match:     py_string_in
 /**
@@ -186,7 +188,10 @@ PP_ExClass2_tp_init(
 // splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
 
-// const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// ----------------------------------------
+// Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getName__doc__[] =
 "documentation"
 ;
@@ -210,7 +215,10 @@ PP_getName(
 // splicer end namespace.example::nested.class.ExClass2.method.get_name
 }
 
-// const string & getName2() +deref(allocatable)
+// ----------------------------------------
+// Function:  const string & getName2 +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getName2__doc__[] =
 "documentation"
 ;
@@ -234,7 +242,10 @@ PP_getName2(
 // splicer end namespace.example::nested.class.ExClass2.method.get_name2
 }
 
-// string & getName3() const +deref(allocatable)
+// ----------------------------------------
+// Function:  string & getName3 +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getName3__doc__[] =
 "documentation"
 ;
@@ -258,7 +269,10 @@ PP_getName3(
 // splicer end namespace.example::nested.class.ExClass2.method.get_name3
 }
 
-// string & getName4() +deref(allocatable)
+// ----------------------------------------
+// Function:  string & getName4 +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getName4__doc__[] =
 "documentation"
 ;
@@ -282,7 +296,10 @@ PP_getName4(
 // splicer end namespace.example::nested.class.ExClass2.method.get_name4
 }
 
-// int GetNameLength() const
+// ----------------------------------------
+// Function:  int GetNameLength
+// Requested: py_native_result
+// Match:     py_default
 static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
@@ -309,9 +326,11 @@ PP_GetNameLength(
 // splicer end namespace.example::nested.class.ExClass2.method.get_name_length
 }
 
-// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 // ----------------------------------------
-// Argument:  in
+// Function:  ExClass1 * get_class1
+// Exact:     py_shadow_result
+// ----------------------------------------
+// Argument:  const ExClass1 * in +intent(in)
 // Requested: py_shadow_*_in
 // Match:     py_shadow_in
 static char PP_get_class1__doc__[] =
@@ -349,13 +368,15 @@ PP_get_class1(
 // splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
 
-// void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  type
+// Function:  void * declare
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  TypeID type +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  len
+// Argument:  SidreLength len=1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_declare_1__doc__[] =
@@ -407,7 +428,9 @@ PP_declare_1(
 // splicer end namespace.example::nested.class.ExClass2.method.declare
 }
 
-// void destroyall()
+// ----------------------------------------
+// Function:  void destroyall
+// Exact:     py_default
 static char PP_destroyall__doc__[] =
 "documentation"
 ;
@@ -424,7 +447,10 @@ PP_destroyall(
 // splicer end namespace.example::nested.class.ExClass2.method.destroyall
 }
 
-// TypeID getTypeID() const
+// ----------------------------------------
+// Function:  TypeID getTypeID
+// Requested: py_native_result
+// Match:     py_default
 static char PP_getTypeID__doc__[] =
 "documentation"
 ;
@@ -447,9 +473,11 @@ PP_getTypeID(
 // splicer end namespace.example::nested.class.ExClass2.method.get_type_id
 }
 
-// void setValue(int value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  void setValue
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -473,9 +501,11 @@ PP_setValue_int(
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_int
 }
 
-// void setValue(long value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  void setValue
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  long value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -499,9 +529,11 @@ PP_setValue_long(
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_long
 }
 
-// void setValue(float value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  void setValue
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  float value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -525,9 +557,11 @@ PP_setValue_float(
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_float
 }
 
-// void setValue(double value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  void setValue
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -551,7 +585,10 @@ PP_setValue_double(
 // splicer end namespace.example::nested.class.ExClass2.method.set_value_double
 }
 
-// int getValue()
+// ----------------------------------------
+// Function:  int getValue
+// Requested: py_native_result
+// Match:     py_default
 static PyObject *
 PP_getValue_int(
   PP_ExClass2 *self,
@@ -570,7 +607,10 @@ PP_getValue_int(
 // splicer end namespace.example::nested.class.ExClass2.method.get_value_int
 }
 
-// double getValue()
+// ----------------------------------------
+// Function:  double getValue
+// Requested: py_native_result
+// Match:     py_default
 static PyObject *
 PP_getValue_double(
   PP_ExClass2 *self,

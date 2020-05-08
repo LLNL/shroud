@@ -40,7 +40,9 @@ PY_ArrayWrapper_tp_del (PY_ArrayWrapper *self)
 // splicer end class.ArrayWrapper.type.del
 }
 
-// ArrayWrapper()
+// ----------------------------------------
+// Function:  ArrayWrapper
+// Exact:     py_default
 static int
 PY_ArrayWrapper_tp_init(
   PY_ArrayWrapper *self,
@@ -58,9 +60,11 @@ PY_ArrayWrapper_tp_init(
 // splicer end class.ArrayWrapper.method.ctor
 }
 
-// void setSize(int size +intent(in)+value)
 // ----------------------------------------
-// Argument:  size
+// Function:  void setSize
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int size +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_setSize__doc__[] =
@@ -88,7 +92,10 @@ PY_setSize(
 // splicer end class.ArrayWrapper.method.set_size
 }
 
-// int getSize() const
+// ----------------------------------------
+// Function:  int getSize
+// Requested: py_native_result
+// Match:     py_default
 static char PY_getSize__doc__[] =
 "documentation"
 ;
@@ -111,7 +118,9 @@ PY_getSize(
 // splicer end class.ArrayWrapper.method.get_size
 }
 
-// void allocate()
+// ----------------------------------------
+// Function:  void allocate
+// Exact:     py_default
 static char PY_allocate__doc__[] =
 "documentation"
 ;
@@ -128,7 +137,9 @@ PY_allocate(
 // splicer end class.ArrayWrapper.method.allocate
 }
 
-// double * getArray() +dimension(getSize())
+// ----------------------------------------
+// Function:  double * getArray +dimension(getSize())
+// Exact:     py_native_result_dimension_numpy
 static char PY_getArray__doc__[] =
 "documentation"
 ;

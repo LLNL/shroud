@@ -40,7 +40,9 @@ PY_vector_double_tp_del (PY_vector_double *self)
 // splicer end namespace.std.class.vector.type.del
 }
 
-// vector()
+// ----------------------------------------
+// Function:  vector
+// Exact:     py_default
 static int
 PY_vector_double_tp_init(
   PY_vector_double *self,
@@ -58,9 +60,11 @@ PY_vector_double_tp_init(
 // splicer end namespace.std.class.vector.method.ctor
 }
 
-// void push_back(const double & value +intent(in))
 // ----------------------------------------
-// Argument:  value
+// Function:  void push_back
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const double & value +intent(in)
 // Requested: py_native_&_in
 // Match:     py_default
 static char PY_push_back__doc__[] =
@@ -88,9 +92,11 @@ PY_push_back(
 // splicer end namespace.std.class.vector.method.push_back
 }
 
-// double & at(size_type n +intent(in)+value)
 // ----------------------------------------
-// Argument:  n
+// Function:  double & at
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  size_type n +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_at__doc__[] =

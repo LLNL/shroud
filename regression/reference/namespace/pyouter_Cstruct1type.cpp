@@ -36,13 +36,15 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 // splicer end namespace.outer.class.Cstruct1.type.del
 }
 
-// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 // ----------------------------------------
-// Argument:  ifield
+// Function:  Cstruct1 +name(Cstruct1_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int ifield +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
-// Argument:  dfield
+// Argument:  double dfield +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 static int

@@ -43,13 +43,15 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // splicer end class.Arrays1.type.del
 }
 
-// Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)
 // ----------------------------------------
-// Argument:  name
+// Function:  Arrays1 +name(Arrays1_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char name[20] +intent(in)
 // Requested: py_ctor_char_[]_numpy
 // Match:     py_ctor_char_[]
 // ----------------------------------------
-// Argument:  count
+// Argument:  int count[10] +intent(in)
 // Requested: py_ctor_native_[]_numpy
 // Match:     py_ctor_native_[]
 static int

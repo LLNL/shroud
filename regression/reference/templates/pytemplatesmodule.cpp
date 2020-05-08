@@ -36,13 +36,15 @@ PyObject *PY_init_templates_internal(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void FunctionTU
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  long arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -72,13 +74,15 @@ PY_FunctionTU_0(
 // splicer end function.function_tu_0
 }
 
-// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void FunctionTU
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  float arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  double arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -108,7 +112,10 @@ PY_FunctionTU_1(
 // splicer end function.function_tu_1
 }
 
-// int UseImplWorker()
+// ----------------------------------------
+// Function:  int UseImplWorker
+// Requested: py_native_result
+// Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
 ;
@@ -135,7 +142,10 @@ PY_UseImplWorker_internal_ImplWorker1(
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
-// int UseImplWorker()
+// ----------------------------------------
+// Function:  int UseImplWorker
+// Requested: py_native_result
+// Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;

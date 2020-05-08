@@ -31,9 +31,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// short short_func(short arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  short short_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  short arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_short_func__doc__[] =
@@ -66,9 +69,12 @@ PY_short_func(
 // splicer end function.short_func
 }
 
-// int int_func(int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  int int_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int_func__doc__[] =
@@ -101,9 +107,12 @@ PY_int_func(
 // splicer end function.int_func
 }
 
-// long long_func(long arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  long long_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  long arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_func__doc__[] =
@@ -136,9 +145,12 @@ PY_long_func(
 // splicer end function.long_func
 }
 
-// long long long_long_func(long long arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  long long long_long_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  long long arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_long_func__doc__[] =
@@ -171,9 +183,12 @@ PY_long_long_func(
 // splicer end function.long_long_func
 }
 
-// short int short_int_func(short int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  short int short_int_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  short int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_short_int_func__doc__[] =
@@ -206,9 +221,12 @@ PY_short_int_func(
 // splicer end function.short_int_func
 }
 
-// long int long_int_func(long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  long int long_int_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  long int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_int_func__doc__[] =
@@ -241,9 +259,12 @@ PY_long_int_func(
 // splicer end function.long_int_func
 }
 
-// long long int long_long_int_func(long long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  long long int long_long_int_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  long long int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_long_long_int_func__doc__[] =
@@ -276,9 +297,12 @@ PY_long_long_int_func(
 // splicer end function.long_long_int_func
 }
 
-// unsigned unsigned_func(unsigned arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned unsigned_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_unsigned_func__doc__[] =
@@ -311,9 +335,12 @@ PY_unsigned_func(
 // splicer end function.unsigned_func
 }
 
-// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned short ushort_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned short arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ushort_func__doc__[] =
@@ -346,9 +373,12 @@ PY_ushort_func(
 // splicer end function.ushort_func
 }
 
-// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned int uint_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint_func__doc__[] =
@@ -381,9 +411,12 @@ PY_uint_func(
 // splicer end function.uint_func
 }
 
-// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned long ulong_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned long arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_func__doc__[] =
@@ -416,9 +449,12 @@ PY_ulong_func(
 // splicer end function.ulong_func
 }
 
-// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned long long ulong_long_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned long long arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_long_func__doc__[] =
@@ -451,9 +487,12 @@ PY_ulong_long_func(
 // splicer end function.ulong_long_func
 }
 
-// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  unsigned long int ulong_int_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  unsigned long int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ulong_int_func__doc__[] =
@@ -486,9 +525,12 @@ PY_ulong_int_func(
 // splicer end function.ulong_int_func
 }
 
-// int8_t int8_func(int8_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  int8_t int8_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int8_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int8_func__doc__[] =
@@ -521,9 +563,12 @@ PY_int8_func(
 // splicer end function.int8_func
 }
 
-// int16_t int16_func(int16_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  int16_t int16_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int16_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int16_func__doc__[] =
@@ -556,9 +601,12 @@ PY_int16_func(
 // splicer end function.int16_func
 }
 
-// int32_t int32_func(int32_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  int32_t int32_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int32_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int32_func__doc__[] =
@@ -591,9 +639,12 @@ PY_int32_func(
 // splicer end function.int32_func
 }
 
-// int64_t int64_func(int64_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  int64_t int64_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int64_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_int64_func__doc__[] =
@@ -626,9 +677,12 @@ PY_int64_func(
 // splicer end function.int64_func
 }
 
-// uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  uint8_t uint8_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  uint8_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint8_func__doc__[] =
@@ -661,9 +715,12 @@ PY_uint8_func(
 // splicer end function.uint8_func
 }
 
-// uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  uint16_t uint16_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  uint16_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint16_func__doc__[] =
@@ -696,9 +753,12 @@ PY_uint16_func(
 // splicer end function.uint16_func
 }
 
-// uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  uint32_t uint32_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  uint32_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint32_func__doc__[] =
@@ -731,9 +791,12 @@ PY_uint32_func(
 // splicer end function.uint32_func
 }
 
-// uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  uint64_t uint64_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  uint64_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_uint64_func__doc__[] =
@@ -766,9 +829,12 @@ PY_uint64_func(
 // splicer end function.uint64_func
 }
 
-// size_t size_func(size_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  size_t size_func
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  size_t arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_size_func__doc__[] =
@@ -801,9 +867,11 @@ PY_size_func(
 // splicer end function.size_func
 }
 
-// bool bool_func(bool arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  bool bool_func
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  bool arg +intent(in)+value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 static char PY_bool_func__doc__[] =
@@ -844,9 +912,11 @@ fail:
 // splicer end function.bool_func
 }
 
-// bool returnBoolAndOthers(int * flag +intent(out))
 // ----------------------------------------
-// Argument:  flag
+// Function:  bool returnBoolAndOthers
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  int * flag +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_returnBoolAndOthers__doc__[] =

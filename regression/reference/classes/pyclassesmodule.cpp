@@ -31,9 +31,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  Class1::DIRECTION directionFunc
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Class1::DIRECTION arg +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
@@ -71,9 +74,11 @@ PY_directionFunc(
 // splicer end function.direction_func
 }
 
-// void passClassByValue(Class1 arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  void passClassByValue
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Class1 arg +intent(in)+value
 // Requested: py_shadow_scalar_in
 // Match:     py_shadow_in
 static char PY_passClassByValue__doc__[] =
@@ -108,9 +113,12 @@ PY_passClassByValue(
 // splicer end function.pass_class_by_value
 }
 
-// int useclass(const Class1 * arg +intent(in))
 // ----------------------------------------
-// Argument:  arg
+// Function:  int useclass
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const Class1 * arg +intent(in)
 // Requested: py_shadow_*_in
 // Match:     py_shadow_in
 static char PY_useclass__doc__[] =
@@ -146,7 +154,9 @@ PY_useclass(
 // splicer end function.useclass
 }
 
-// Class1 * getclass3()
+// ----------------------------------------
+// Function:  Class1 * getclass3
+// Exact:     py_shadow_result
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -168,7 +178,9 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
-// Class1 & getClassReference()
+// ----------------------------------------
+// Function:  Class1 & getClassReference
+// Exact:     py_shadow_result
 static char PY_getClassReference__doc__[] =
 "documentation"
 ;
@@ -190,9 +202,11 @@ PY_getClassReference(
 // splicer end function.get_class_reference
 }
 
-// void set_global_flag(int arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  void set_global_flag
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int arg +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_set_global_flag__doc__[] =
@@ -220,7 +234,10 @@ PY_set_global_flag(
 // splicer end function.set_global_flag
 }
 
-// int get_global_flag()
+// ----------------------------------------
+// Function:  int get_global_flag
+// Requested: py_native_result
+// Match:     py_default
 static char PY_get_global_flag__doc__[] =
 "documentation"
 ;
@@ -243,7 +260,10 @@ PY_get_global_flag(
 // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+// ----------------------------------------
+// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Requested: py_string_result
+// Match:     py_default
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

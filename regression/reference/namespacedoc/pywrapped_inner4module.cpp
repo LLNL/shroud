@@ -30,7 +30,9 @@
 // splicer begin namespace.inner4.additional_functions
 // splicer end namespace.inner4.additional_functions
 
-// void worker4()
+// ----------------------------------------
+// Function:  void worker4
+// Exact:     py_default
 static char PY_worker4__doc__[] =
 "documentation"
 ;

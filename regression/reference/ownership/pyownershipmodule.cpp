@@ -34,7 +34,10 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// int * ReturnIntPtrScalar() +deref(scalar)
+// ----------------------------------------
+// Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Requested: py_native_result
+// Match:     py_default
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
 ;
@@ -57,7 +60,9 @@ PY_ReturnIntPtrScalar(
 // splicer end function.return_int_ptr_scalar
 }
 
-// int * ReturnIntPtrPointer() +deref(pointer)
+// ----------------------------------------
+// Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Exact:     py_native_result_dimension_numpy
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
 ;
@@ -85,9 +90,11 @@ fail:
 // splicer end function.return_int_ptr_pointer
 }
 
-// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimPointer__doc__[] =
@@ -122,9 +129,11 @@ fail:
 // splicer end function.return_int_ptr_dim_pointer
 }
 
-// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
@@ -159,9 +168,11 @@ fail:
 // splicer end function.return_int_ptr_dim_alloc
 }
 
-// int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimDefault +dimension(len)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimDefault__doc__[] =
@@ -196,9 +207,11 @@ fail:
 // splicer end function.return_int_ptr_dim_default
 }
 
-// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
@@ -233,9 +246,11 @@ fail:
 // splicer end function.return_int_ptr_dim_pointer_new
 }
 
-// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
@@ -270,9 +285,11 @@ fail:
 // splicer end function.return_int_ptr_dim_alloc_new
 }
 
-// int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 // ----------------------------------------
-// Argument:  len
+// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Exact:     py_native_result_dimension_numpy
+// ----------------------------------------
+// Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
@@ -307,9 +324,11 @@ fail:
 // splicer end function.return_int_ptr_dim_default_new
 }
 
-// void createClassStatic(int flag +intent(in)+value)
 // ----------------------------------------
-// Argument:  flag
+// Function:  void createClassStatic
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_createClassStatic__doc__[] =
@@ -337,7 +356,9 @@ PY_createClassStatic(
 // splicer end function.create_class_static
 }
 
-// Class1 * getClassStatic() +owner(library)
+// ----------------------------------------
+// Function:  Class1 * getClassStatic +owner(library)
+// Exact:     py_shadow_result
 static char PY_getClassStatic__doc__[] =
 "documentation"
 ;
@@ -359,9 +380,11 @@ PY_getClassStatic(
 // splicer end function.get_class_static
 }
 
-// Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 // ----------------------------------------
-// Argument:  flag
+// Function:  Class1 * getClassNew +owner(caller)
+// Exact:     py_shadow_result
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_getClassNew__doc__[] =

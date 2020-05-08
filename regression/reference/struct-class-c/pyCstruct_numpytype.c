@@ -43,17 +43,19 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // splicer end class.Cstruct_numpy.type.del
 }
 
-// Cstruct_numpy(int nitems +intent(in), int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)
 // ----------------------------------------
-// Argument:  nitems
+// Function:  Cstruct_numpy +name(Cstruct_numpy_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int nitems +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
-// Argument:  ivalue
+// Argument:  int * ivalue +dimension(nitems)+intent(in)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 // ----------------------------------------
-// Argument:  dvalue
+// Argument:  double * dvalue +dimension(nitems)+intent(in)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 static int

@@ -37,7 +37,9 @@ PY_User2_tp_del (PY_User2 *self)
 // splicer end class.User2.type.del
 }
 
-// void exfunc()
+// ----------------------------------------
+// Function:  void exfunc
+// Exact:     py_default
 #ifdef USE_CLASS3_A
 static PyObject *
 PY_exfunc_0(
@@ -52,9 +54,11 @@ PY_exfunc_0(
 }
 #endif // ifdef USE_CLASS3_A
 
-// void exfunc(int flag +intent(in)+value)
 // ----------------------------------------
-// Argument:  flag
+// Function:  void exfunc
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 #ifndef USE_CLASS3_A
