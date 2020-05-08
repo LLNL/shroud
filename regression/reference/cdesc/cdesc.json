@@ -569,6 +569,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "name",

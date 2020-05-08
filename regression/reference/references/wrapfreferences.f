@@ -13,13 +13,36 @@
 ! splicer begin file_top
 ! splicer end file_top
 module references_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! helper capsule_data_helper
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    ! helper array_context
+    type, bind(C) :: SHROUD_array
+        ! address of C++ memory
+        type(SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type SHROUD_array
 
     type, bind(C) :: SHROUD_arraywrapper_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -121,6 +144,20 @@ module references_mod
             type(C_PTR) SHT_rv
         end function c_arraywrapper_get_array
 
+        ! ----------------------------------------
+        ! Result
+        ! Exact:     c_native_*_result_buf
+        function c_arraywrapper_get_array_bufferify(self, DSHC_rv) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_get_array_bufferify")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_array, SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(C_PTR) SHT_rv
+        end function c_arraywrapper_get_array_bufferify
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -199,32 +236,22 @@ contains
     end subroutine arraywrapper_allocate
 
     ! double * getArray() +dimension(getSize())
+    ! arg_to_buffer
     ! ----------------------------------------
     ! Result
     ! Exact:     f_native_*_result
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
         class(arraywrapper) :: obj
+        type(SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array
-        integer(C_INT) :: SHAPE_SHT_rv(1)
-        interface
-            subroutine SHROUD_get_shape_SHT_rv(obj, shape) &
-                bind(C, name="REF_SHROUD_create_f_pointer_shape_0")
-                use iso_c_binding, only : C_INT
-                import SHROUD_arraywrapper_capsule
-                implicit none
-                type(SHROUD_arraywrapper_capsule), intent(IN) :: obj
-                integer(C_INT), intent(OUT) :: shape(*)
-            end subroutine SHROUD_get_shape_SHT_rv
-        end interface
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_arraywrapper_get_array(obj%cxxmem)
-        call SHROUD_get_shape_SHT_rv(obj%cxxmem, SHAPE_SHT_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, SHAPE_SHT_rv)
+        SHT_ptr = c_arraywrapper_get_array_bufferify(obj%cxxmem, &
+            DSHC_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 

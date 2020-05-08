@@ -624,6 +624,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             F_array_type="SHROUD_array",
 
+            c_array_shape="",
+            c_array_size="1",
+
+            f_array_shape="",
             f_assumed_shape="",  # scalar
             f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",
@@ -632,6 +636,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_shape_var="",
             f_var_shape="",      # scalar
 
+            rank="0",            # scalar
+            
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
@@ -651,7 +657,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
             # set default values for fields which may be unset.
-            # c_ptr='',
             # c_const='',
             CXX_this_call="",
             CXX_template="",

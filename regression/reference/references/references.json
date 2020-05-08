@@ -340,26 +340,25 @@
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_native_*_result",
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var_context": "DSHC_rv",
+                                "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
+                                "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_declare_shape_array": "integer(C_INT) :: SHAPE_SHT_rv(1)\ninterface+\nsubroutine SHROUD_get_shape_SHT_rv(obj, shape)\tbind(C, name=\"REF_SHROUD_create_f_pointer_shape_0\")+\nuse iso_c_binding, only : C_INT\nimport SHROUD_arraywrapper_capsule\nimplicit none\ntype(SHROUD_arraywrapper_capsule), intent(IN) :: obj\ninteger(C_INT), intent(OUT) :: shape(*)\n-end subroutine SHROUD_get_shape_SHT_rv\n-end interface\n",
-                                "f_get_shape_array": "call SHROUD_get_shape_SHT_rv(obj%cxxmem, SHAPE_SHT_rv)\n",
-                                "f_get_shape_func": "SHROUD_get_shape_SHT_rv",
-                                "f_pointer_shape": ", SHAPE_SHT_rv",
-                                "f_shape_var": "SHAPE_SHT_rv",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result",
                                 "stmt1": "f_native_*_result",
-                                "stmtc0": "c_native_*_result",
-                                "stmtc1": "c_default"
+                                "stmtc0": "c_native_*_result_buf",
+                                "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
                                 "c_deref": "*",
@@ -415,9 +414,9 @@
                             "C_name": "REF_ArrayWrapper_get_array",
                             "C_prototype": "REF_ArrayWrapper * self",
                             "C_return_type": "double *",
-                            "F_C_call": "c_arraywrapper_get_array",
+                            "F_C_call": "c_arraywrapper_get_array_bufferify",
                             "F_C_name": "c_arraywrapper_get_array",
-                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array",
                             "F_name_generic": "get_array",
@@ -434,6 +433,78 @@
                             "underscore_name": "get_array"
                         },
                         "options": {}
+                    },
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_array_shape": "\nDSHC_rv->shape[0] = SH_this->getSize();",
+                                "c_array_size": "DSHC_rv->shape[0]",
+                                "c_get_value": "",
+                                "c_type": "double",
+                                "c_var": "SHC_rv",
+                                "c_var_context": "DSHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "double",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "c_native_*_result_buf",
+                                "stmt1": "c_native_*_result_buf"
+                            }
+                        },
+                        "_generated": "arg_to_buffer",
+                        "ast": {
+                            "attrs": {
+                                "context": "DSHC_rv",
+                                "dimension": "getSize()"
+                            },
+                            "declarator": {
+                                "name": "getArray",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getSize"
+                                    }
+                                ]
+                            },
+                            "params": [],
+                            "return_pointer_as": "pointer",
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "decl": "double* getArray() +dimension(getSize())",
+                        "declgen": "double * getArray() +context(DSHC_rv)+dimension(getSize())",
+                        "fmtdict": {
+                            "C_name": "REF_ArrayWrapper_get_array_bufferify",
+                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *DSHC_rv",
+                            "C_return_type": "double *",
+                            "F_C_name": "c_arraywrapper_get_array_bufferify",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "double * SHC_rv",
+                            "function_name": "getArray",
+                            "function_suffix": "_bufferify",
+                            "underscore_name": "get_array"
+                        },
+                        "options": {
+                            "wrap_c": true,
+                            "wrap_fortran": false,
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        }
                     }
                 ],
                 "name": "ArrayWrapper",

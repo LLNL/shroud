@@ -78,6 +78,208 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 }
 // end POI_accept_char_array_in_bufferify
 
+// void getPtrToScalar(int * * nitems +context(Dnitems)+intent(out))
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nitems
+// Exact:     c_native_**_out_buf
+// start POI_get_ptr_to_scalar_bufferify
+void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
+{
+    // splicer begin function.get_ptr_to_scalar_bufferify
+    int *nitems;
+    getPtrToScalar(&nitems);
+    Dnitems->cxx.addr  = nitems;
+    Dnitems->cxx.idtor = 0;
+    Dnitems->addr.base = nitems;
+    Dnitems->type = SH_TYPE_INT;
+    Dnitems->elem_len = sizeof(int);
+    Dnitems->rank = 0;
+    Dnitems->size = 1;
+    // splicer end function.get_ptr_to_scalar_bufferify
+}
+// end POI_get_ptr_to_scalar_bufferify
+
+// void getPtrToFixedArray(int * * count +context(Dcount)+dimension(10)+intent(out))
+/**
+ * Return a Fortran pointer to an array which is always the same length.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out_buf
+// start POI_get_ptr_to_fixed_array_bufferify
+void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
+{
+    // splicer begin function.get_ptr_to_fixed_array_bufferify
+    int *count;
+    getPtrToFixedArray(&count);
+    Dcount->cxx.addr  = count;
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 1;
+    Dcount->shape[0] = 10;
+    Dcount->size = Dcount->shape[0];
+    // splicer end function.get_ptr_to_fixed_array_bufferify
+}
+// end POI_get_ptr_to_fixed_array_bufferify
+
+// void getPtrToDynamicArray(int * * count +context(Dcount)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
+/**
+ * Return a Fortran pointer to an array which is the length of
+ * the argument ncount.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out_buf
+// ----------------------------------------
+// Argument:  ncount
+// Requested: c_native_*_out_buf
+// Match:     c_default
+// start POI_get_ptr_to_dynamic_array_bufferify
+void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
+    int * ncount)
+{
+    // splicer begin function.get_ptr_to_dynamic_array_bufferify
+    int *count;
+    getPtrToDynamicArray(&count, ncount);
+    Dcount->cxx.addr  = count;
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 1;
+    Dcount->shape[0] = *ncount;
+    Dcount->size = Dcount->shape[0];
+    // splicer end function.get_ptr_to_dynamic_array_bufferify
+}
+// end POI_get_ptr_to_dynamic_array_bufferify
+
+// void getPtrToFuncArray(int * * count +context(Dcount)+dimension(getLen())+intent(out))
+/**
+ * Return a Fortran pointer to an array which is the length
+ * is computed by C++ function getLen.
+ * getLen will be called from C/C++ to compute the shape.
+ * Note that getLen will be wrapped in Fortran as get_len.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out_buf
+// start POI_get_ptr_to_func_array_bufferify
+void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
+{
+    // splicer begin function.get_ptr_to_func_array_bufferify
+    int *count;
+    getPtrToFuncArray(&count);
+    Dcount->cxx.addr  = count;
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 1;
+    Dcount->shape[0] = getLen();
+    Dcount->size = Dcount->shape[0];
+    // splicer end function.get_ptr_to_func_array_bufferify
+}
+// end POI_get_ptr_to_func_array_bufferify
+
+// void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))
+/**
+ * Called directly via an interface.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  nitems
+// Exact:     c_native_**_out_buf
+// start POI_get_raw_ptr_to_scalar_bufferify
+void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
+{
+    // splicer begin function.get_raw_ptr_to_scalar_bufferify
+    int *nitems;
+    getRawPtrToScalar(&nitems);
+    Dnitems->cxx.addr  = nitems;
+    Dnitems->cxx.idtor = 0;
+    Dnitems->addr.base = nitems;
+    Dnitems->type = SH_TYPE_INT;
+    Dnitems->elem_len = sizeof(int);
+    Dnitems->rank = 0;
+    Dnitems->size = 1;
+    // splicer end function.get_raw_ptr_to_scalar_bufferify
+}
+// end POI_get_raw_ptr_to_scalar_bufferify
+
+// void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))
+/**
+ * Return a type(C_PTR) to an array which is always the same length.
+ * Called directly via an interface.
+ * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+ */
+// ----------------------------------------
+// Result
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  count
+// Exact:     c_native_**_out_buf
+// start POI_get_raw_ptr_to_fixed_array_bufferify
+void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
+{
+    // splicer begin function.get_raw_ptr_to_fixed_array_bufferify
+    int *count;
+    getRawPtrToFixedArray(&count);
+    Dcount->cxx.addr  = count;
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 0;
+    Dcount->size = 1;
+    // splicer end function.get_raw_ptr_to_fixed_array_bufferify
+}
+// end POI_get_raw_ptr_to_fixed_array_bufferify
+
+// int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
+// ----------------------------------------
+// Result
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_fixed_array_bufferify
+int * POI_return_int_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_fixed_array_bufferify
+    int * SHC_rv = returnIntPtrToFixedArray();
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 1;
+    DSHC_rv->shape[0] = 10;
+    DSHC_rv->size = DSHC_rv->shape[0];
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_fixed_array_bufferify
+}
+// end POI_return_int_ptr_to_fixed_array_bufferify
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

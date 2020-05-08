@@ -37,6 +37,9 @@ void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self);
 
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self);
 
+double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *DSHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

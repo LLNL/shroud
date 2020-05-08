@@ -14,6 +14,7 @@ from __future__ import absolute_import
 import os
 
 from . import declast
+from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -185,6 +186,12 @@ class Wrapc(util.WrapperMixin):
             self.wrap_function(None, node)
         self._pop_splicer("function")
 
+    def add_c_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for helper in c_helper.split():
+            self.c_helper[helper] = True
+        
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
 
@@ -663,26 +670,19 @@ class Wrapc(util.WrapperMixin):
 
             need_wrapper = True
             if buf_arg == "size":
-                fmt.c_var_size = attrs["size"]
                 append_format(proto_list, "long {c_var_size}", fmt)
             elif buf_arg == "capsule":
-                fmt.c_var_capsule = attrs["capsule"]
                 append_format(
                     proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
                 )
             elif buf_arg == "context":
-                fmt.c_var_context = attrs["context"]
                 append_format(
                     proto_list, "{C_array_type} *{c_var_context}", fmt
                 )
-                if attrs["dimension"]:
-                    # XXX - assumes dimension is a single variable.
-                    fmt.c_var_dimension = attrs["dimension"]
+                self.add_c_helper("array_context", fmt)
             elif buf_arg == "len_trim":
-                fmt.c_var_trim = attrs["len_trim"]
                 append_format(proto_list, "int {c_var_trim}", fmt)
             elif buf_arg == "len":
-                fmt.c_var_len = attrs["len"]
                 append_format(proto_list, "int {c_var_len}", fmt)
             else:
                 raise RuntimeError(
@@ -720,11 +720,46 @@ class Wrapc(util.WrapperMixin):
                 append_format(post_call, line, fmt)
 
         if intent_blk.c_helper:
-            c_helper = wformat(intent_blk.c_helper, fmt)
-            for helper in c_helper.split():
-                self.c_helper[helper] = True
+            self.add_c_helper(intent_blk.c_helper, fmt)
         return need_wrapper
 
+    def set_fmt_fields(self, cls, fcn, ast, fmt):
+        """
+        Set format fields for ast.
+        Used with arguments and results.
+
+        Args:
+            cls   - ast.ClassNode or None of enclosing class.
+            fcn   - ast.FunctionNode of calling function.
+        """
+        attrs = ast.attrs
+        typemap.assign_buf_variable_names(attrs, fmt)
+        
+        dim = attrs["dimension"]
+        if dim:
+            if cls is not None:
+                cls.create_node_map()
+                class_context = wformat("{CXX_this}->", fmt)
+            else:
+                class_context = ""
+            visitor = ToDimension(cls, fcn, fmt, class_context)
+            visitor.visit(ast.metaattrs["dimension"])
+            fmt.rank = str(visitor.rank)
+
+            if ast.attrs["context"]:
+                # Assign each rank of dimension.
+                fmt.c_var_context = attrs["context"]
+                fmtdim = []
+                fmtsize = []
+                for i, dim in enumerate(visitor.shape):
+                    fmtdim.append("{}->shape[{}] = {};".format(
+                        fmt.c_var_context, i, dim))
+                    fmtsize.append("{}->shape[{}]".format(
+                        fmt.c_var_context, i, dim))
+                fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                if fmtsize:
+                    fmt.c_array_size = "*\t".join(fmtsize)
+                    
     def wrap_function(self, cls, node):
         """Wrap a C++ function with C.
 
@@ -909,6 +944,8 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
+        self.set_fmt_fields(cls, node, ast, fmt_result)
+
         need_wrapper = self.build_proto_list(
             fmt_result,
             ast,
@@ -917,7 +954,6 @@ class Wrapc(util.WrapperMixin):
             proto_list,
             need_wrapper,
         )
-
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
         #    c_var_len  - variable with length of c_var
@@ -956,6 +992,8 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = "0"
             cxx_local_var = ""
 
+            self.set_fmt_fields(cls, node, arg, fmt_arg)
+            
             is_result = c_attrs["_is_result"]
             if is_result:
                 # This argument is the C function result
@@ -1065,7 +1103,10 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if cxx_local_var == "scalar":
+                if intent_blk.arg_call:
+                    for arg_call in intent_blk.arg_call:
+                        append_format(call_list, arg_call, fmt_arg)
+                elif cxx_local_var == "scalar":
                     if arg.is_pointer():
                         call_list.append("&" + fmt_arg.cxx_var)
                     else:
@@ -1483,6 +1524,74 @@ class Wrapc(util.WrapperMixin):
             )
             atypemap.idtor = fmt.idtor
 
+######################################################################
+
+class ToDimension(todict.PrintNode):
+    """Convert dimension expression to Fortran wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+
+    def __init__(self, cls, fcn, fmt, context):
+        """
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
+            context - how to access Identifiers in cls.
+                      Different for function arguments and
+                      class/struct members.
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fcn = fcn
+        self.fmt = fmt
+        self.context = context
+
+        self.rank = 0
+        self.shape = []
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for members of class/struct.
+        if self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            member = self.cls.map_name_to_node[argname]
+            if member.may_have_args():
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "{}{}({})".format(
+                        self.context, argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "{}{}".format(self.context, argname)
+        else:
+            deref = ''
+            arg = self.fcn.ast.find_arg_by_name(argname)
+            if arg and arg.is_pointer():
+                # If argument is a pointer, then dereference it.
+                # i.e.  int *len +intent(out)
+                deref = '*'
+            if node.args is None:
+                return deref + argname  # variable
+            else:
+                return deref + self.param_list(node) # function
+        return "--??--"
+
+######################################################################
 
 def compute_c_deref(arg, local_var, fmt):
     """Compute format fields to dereference C argument."""

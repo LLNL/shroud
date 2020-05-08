@@ -526,14 +526,13 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
-        type(C_PTR) :: SHPTR_addr
-        call c_get_pointer_as_pointer(SHPTR_addr, type, size)
-        call c_f_pointer(SHPTR_addr, addr)
+        call c_get_pointer_as_pointer(addr, type, size)
+        call c_f_pointer(FIXME%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -566,14 +565,13 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
-        type(C_PTR) :: SHPTR_addr
-        call c_get_pointer_as_pointer(SHPTR_addr, type, size)
-        call c_f_pointer(SHPTR_addr, addr)
+        call c_get_pointer_as_pointer(addr, type, size)
+        call c_f_pointer(FIXME%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

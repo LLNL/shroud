@@ -91,6 +91,7 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
+                        "c_var_len": "get_name_length()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "std::string",
@@ -101,6 +102,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtf": {
+                        "c_var_len": "get_name_length()",
                         "cxx_type": "std::string",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
@@ -179,6 +181,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
+                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
@@ -194,6 +197,7 @@
                     "fmtc": {
                         "c_type": "void",
                         "c_var": "SHC_rv",
+                        "c_var_len": "get_name_length()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_type": "void",

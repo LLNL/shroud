@@ -1003,10 +1003,26 @@ class GenFunctions(object):
           - decl: (double arg)
             function_suffix: double
 
+        XXX - needs refinement.
+        From generic.yaml
+        - decl: void GetPointerAsPointer(
+               void **addr+intent(out),
+               int *type+intent(out)+hidden,
+               size_t *size+intent(out)+hidden)
+          fortran_generic:
+          - decl: (float **addr+intent(out)+rank(1)+deref(pointer))
+          - decl: (float **addr+intent(out)+rank(2)+deref(pointer))
+        The C wrapper must pass down a context argument to allow
+        the shape information to be returned. Normally, this would be
+        added by arg_to_buffer, but since the C argument is 'void **'
+        it will not be.  But the generic function does have
+        an argument which meets the critieria.
+
         Args:
             node - ast.FunctionNode
             ordered_functions -
         """
+        context_args = {}
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
@@ -1025,6 +1041,17 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
             new.ast.params = generic.decls
+
+            for arg in generic.decls:
+                # double **arg +intent(out)+rank(1)
+                if (arg.typemap.sgroup == "native" and
+                    arg.attrs["intent"] == "out" and
+                    arg.get_indirect_stmt() == "**"):
+                    context_args[arg.name] = True
+                
+        for argname in context_args.keys():
+            arg = node.ast.find_arg_by_name(argname)
+            arg.attrs["context"] = "FIXME"
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1113,7 +1140,7 @@ class GenFunctions(object):
                 del c_attrs[name]
 
     def arg_to_buffer(self, node, ordered_functions):
-        """Look for function which have implied arguments.
+        """Look for function which have buffer arguments.
         This includes functions with string or vector arguments.
         If found then create a new C function that
         will add arguments buf_args (typically a buffer and length).
@@ -1184,11 +1211,17 @@ class GenFunctions(object):
                     arg.set_type(typemap.lookup_type("char_scalar"))
             elif arg_typemap.base == "vector":
                 has_buf_arg = True
+            elif (arg_typemap.sgroup == "native" and
+                  arg.attrs["intent"] == "out" and
+                  arg.get_indirect_stmt() == "**"):
+#                 arg.attrs["dimension"]:
+                # double **values +intent(out) +dimension(nvalues)
+                has_buf_arg = True
 
         # Function Result.
         has_string_result = False
         has_vector_result = False
-        has_allocatable_result = False
+        need_cdesc_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1202,12 +1235,15 @@ class GenFunctions(object):
             result_name = result_as_arg or fmt.C_string_result_as_arg
         elif result_typemap.base == "vector":
             has_vector_result = True
-        elif result_is_ptr and attrs["deref"] == "allocatable":
-            has_allocatable_result = True
+        elif result_is_ptr:
+            if attrs["deref"] in ["allocatable"]:
+                need_cdesc_result = True
+            elif attrs["dimension"]:
+                need_cdesc_result = True
 
-        # Functions with these arguments need wrappers.
+        # Functions with these results need wrappers.
         if not (has_string_result or has_vector_result or
-                has_allocatable_result or has_buf_arg):
+                need_cdesc_result or has_buf_arg):
             return
 
         # XXX       options = node['options']
@@ -1249,6 +1285,11 @@ class GenFunctions(object):
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
+            elif (sgroup == "native" and
+                  arg.attrs["intent"] == "out" and
+                  arg.get_indirect_stmt() == "**"):
+#                 arg.attrs["dimension"]:
+                attrs["context"] = True
             arg_typemap, sp = typemap.lookup_c_statements(arg)
 
             # Set names for implied buffer arguments.
@@ -1312,7 +1353,7 @@ class GenFunctions(object):
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"
-        elif has_allocatable_result:
+        elif need_cdesc_result:
             # Non-string and Non-char results
             # XXX - c_var is duplicated in wrapc.py wrap_function
             fmt_func = C_new.fmtdict

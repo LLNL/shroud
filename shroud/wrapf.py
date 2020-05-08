@@ -918,14 +918,6 @@ rv = .false.
                     ast.typemap.f_c_module or ast.typemap.f_module
                 )
                 continue
-            elif buf_arg == "c_ptr":
-                # Function assigns address to argument.
-                arg_c_names.append(name or ast.name)
-                arg_c_decl.append(
-                    "type(C_PTR), intent(OUT) :: %s" % (name or ast.name)
-                )
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
                 arg_c_names.append(name or ast.name)
@@ -968,6 +960,7 @@ rv = .false.
                     "type(%s), intent(%s) :: %s"
                     % (fmt.F_array_type, intent, buf_arg_name)
                 )
+                fileinfo.add_f_helper("array_context", fmt)
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":
@@ -1203,6 +1196,7 @@ rv = .false.
 
     def build_arg_list_impl(
         self,
+        fileinfo,
         fmt,
         c_ast,
         f_ast,
@@ -1227,6 +1221,7 @@ rv = .false.
         Otherwise, Use buf_args from c_intent_blk.
 
         Args:
+            fileinfo - ModuleInfo
             fmt -
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
@@ -1272,19 +1267,16 @@ rv = .false.
                 continue
 
             need_wrapper = True
-            #            buf_arg_name = c_attrs[buf_arg]
             if buf_arg == "size":
                 append_format(arg_c_call, "size({f_var}, kind=C_LONG)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_LONG")
             elif buf_arg == "capsule":
-                fmt.c_var_capsule = c_attrs["capsule"]
                 append_format(
                     arg_f_decl, "type({F_capsule_type}) :: {c_var_capsule}", fmt
                 )
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
             elif buf_arg == "context":
-                fmt.c_var_context = c_attrs["context"]
                 append_format(
                     arg_f_decl, "type({F_array_type}) :: {c_var_context}", fmt
                 )
@@ -1292,6 +1284,7 @@ rv = .false.
                 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 if c_attrs["dimension"]:
                     fmt.c_var_dimension = c_attrs["dimension"]
+                fileinfo.add_f_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_INT")
@@ -1352,13 +1345,9 @@ rv = .false.
                 append_format(post_call, line, fmt)
 
         if intent_blk.c_helper:
-            c_helper = wformat(intent_blk.c_helper, fmt)
-            for helper in c_helper.split():
-                fileinfo.c_helper[helper] = True
+            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
         if intent_blk.f_helper:
-            f_helper = wformat(intent_blk.f_helper, fmt)
-            for helper in f_helper.split():
-                fileinfo.f_helper[helper] = True
+            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
@@ -1377,6 +1366,7 @@ rv = .false.
             fmt - format dictionary
         """
         c_attrs = c_ast.attrs
+        typemap.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
 #            ntypemap = ntypemap
@@ -1393,10 +1383,9 @@ rv = .false.
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         
-        dim = c_attrs["dimension"]
-        if dim:
-            # XXX - Assume 1-d
-            fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
+        if c_attrs["context"]:
+            if not fmt.c_var_context:
+                fmt.c_var_context = "FIXME"
 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
@@ -1409,47 +1398,15 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, fcn, f_ast, fmt, modules, fileinfo)
+            rank = len(f_ast.metaattrs["dimension"])
+            fmt.rank = str(rank)
+            if rank > 0:
+                if c_ast.attrs["context"]:
+                    fmt.f_array_shape = wformat(
+                        ", {c_var_context}%shape(1:{rank})", fmt)
+            fmt.f_assumed_shape = fortran_ranks[rank]
 
         return ntypemap
-
-    def ftn_dimension(self, cls, fcn, ast, fmt, modules, fileinfo):
-        """Set format fields from dimension attribute.
-
-        Args:
-            cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
-            ast  - declast.Declaration for argument.
-            fmt  - util.Scope
-        """
-        if cls is not None:
-            cls.create_node_map()
-        visitor = ToDimension(cls, fcn, fmt)
-        visitor.visit(ast.metaattrs["dimension"])
-        fmt.rank = str(visitor.rank)
-        if visitor.rank > 0:
-            fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
-        fmt.f_assumed_shape = fortran_ranks[visitor.rank]
-
-        if visitor.need_helper:
-            # Write C helper in utility file.
-            fmt.f_get_shape_func = "SHROUD_get_shape_" + fmt.f_var
-            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls, fcn)
-            fileinfo.c_helper[hname] = True
-
-            fmt.f_shape_var = fmt.f_declare_shape_prefix + fmt.f_var
-            fmt.f_declare_shape_array = wformat(
-                "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
-            fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]
-            if cls:
-                fmt.f_get_shape_array = wformat(
-                    "call {f_get_shape_func}("
-                    "{F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
-            else:
-                fmt.f_get_shape_array = wformat(
-                    "call {f_get_shape_func}({f_shape_var})\n", fmt)
-            fmt.f_pointer_shape = ", {}".format(fmt.f_shape_var)
-            self.set_f_module(modules, "iso_c_binding", "C_INT")
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1536,11 +1493,11 @@ rv = .false.
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
-        result_blk = typemap.lookup_fc_stmts(f_stmts)
-        result_blk = typemap.lookup_local_stmts("f", result_blk, node)
+        f_result_blk = typemap.lookup_fc_stmts(f_stmts)
+        f_result_blk = typemap.lookup_local_stmts("f", f_result_blk, node)
         # Useful for debugging.  Requested and found path.
         fmt_result.stmt0 = typemap.compute_name(f_stmts)
-        fmt_result.stmt1 = result_blk.name
+        fmt_result.stmt1 = f_result_blk.name
 
         c_result_blk = typemap.lookup_fc_stmts(c_stmts)
         c_result_blk = typemap.lookup_local_stmts(
@@ -1557,15 +1514,15 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, fmt_result.stmtc0, fmt_result.stmtc1)
 
-        if result_blk.result:
+        if f_result_blk.result:
             # Change a subroutine into function.
             fmt_func.F_subprogram = "function"
-            fmt_func.F_result = result_blk.result
+            fmt_func.F_result = f_result_blk.result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
         
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        need_wrapper = need_wrapper or result_blk.need_wrapper
+        need_wrapper = need_wrapper or f_result_blk.need_wrapper
         
         if cls:
             need_wrapper = True
@@ -1584,19 +1541,21 @@ rv = .false.
                 )
 
         # Function result.
-        need_wrapper = self.build_arg_list_impl(
-            fmt_result,
-            C_node.ast,
-            ast,
-            result_typemap,
-            result_blk,
-            result_blk.buf_args,
-            modules,
-            imports,
-            arg_f_decl,
-            arg_c_call,
-            need_wrapper,
-        )
+        if C_node.F_subprogram == "function":
+            need_wrapper = self.build_arg_list_impl(
+                fileinfo,
+                fmt_result,
+                C_node.ast,
+                ast,
+                result_typemap,
+                f_result_blk,
+                c_result_blk.buf_args,
+                modules,
+                imports,
+                arg_f_decl,
+                arg_c_call,
+                need_wrapper,
+            )
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1774,6 +1733,7 @@ rv = .false.
                 )
 
             need_wrapper = self.build_arg_list_impl(
+                fileinfo,
                 fmt_arg,
                 c_arg,
                 f_arg,
@@ -1805,11 +1765,12 @@ rv = .false.
 
         if subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
+                fileinfo,
                 fmt_result,
                 C_node.ast, #c_arg,
                 ast, # f_arg,
                 result_typemap,
-                result_blk,
+                f_result_blk,
                 c_result_blk.buf_extra,
                 modules,
                 imports,
@@ -1902,8 +1863,8 @@ rv = .false.
         if "f" in node.splicer:
             need_wrapper = True
             F_force = node.splicer["f"]
-        elif result_blk.call:
-            call_list = result_blk.call
+        elif f_result_blk.call:
+            call_list = f_result_blk.call
         elif C_subprogram == "function":
             call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
@@ -1915,7 +1876,7 @@ rv = .false.
             need_wrapper = self.add_code_from_statements(
                 need_wrapper, fileinfo,
                 fmt_result,
-                result_blk,
+                f_result_blk,
                 modules,
                 imports,
                 declare,
@@ -2109,67 +2070,6 @@ rv = .false.
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
-
-######################################################################
-
-class ToDimension(todict.PrintNode):
-    """Convert dimension expression to Fortran wrapper code.
-
-    expression has already been checked for errors by generate.check_implied.
-    Convert functions:
-      size  -  PyArray_SIZE
-    """
-
-    def __init__(self, cls, fcn, fmt):
-        """
-        Args:
-            cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
-            fmt  - util.Scope
-        """
-        super(ToDimension, self).__init__()
-        self.cls = cls
-        self.fcn = fcn
-        self.fmt = fmt
-
-        self.rank = 0
-        self.shape = []
-        self.need_helper = False
-
-    def visit_list(self, node):
-        # list of dimension expressions
-        self.rank = len(node)
-        for dim in node:
-            sh = self.visit(dim)
-            self.shape.append(sh)
-
-    def visit_Identifier(self, node):
-        argname = node.name
-        # Look for members of class/struct.
-        if self.cls is not None and argname in self.cls.map_name_to_node:
-            # This name is in the same class as the dimension.
-            # Make name relative to the class.
-            self.need_helper = True
-            member = self.cls.map_name_to_node[argname]
-            if member.may_have_args():
-                if node.args is None:
-                    print("{} must have arguments".format(argname))
-                else:
-                    return "obj->{}({})".format(
-                        argname, self.comma_list(node.args))
-            else:
-                if node.args is not None:
-                    print("{} must not have arguments".format(argname))
-                else:
-                    return "obj->{}".format(argname)
-        else:
-            if self.fcn.ast.find_arg_by_name(argname) is None:
-                self.need_helper = True
-            if node.args is None:
-                return argname  # variable
-            else:
-                return self.param_list(node) # function
-        return "--??--"
 
 ######################################################################
 
@@ -2371,3 +2271,16 @@ class ModuleInfo(object):
 
         output.append(-1)
         output.append("")
+
+    def add_c_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for helper in c_helper.split():
+            self.c_helper[helper] = True
+
+    def add_f_helper(self, helpers, fmt):
+        """Add a list of Fortran helpers."""
+        f_helper = wformat(helpers, fmt)
+        for helper in f_helper.split():
+            self.f_helper[helper] = True
+        

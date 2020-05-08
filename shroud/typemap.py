@@ -1072,8 +1072,10 @@ def create_buf_variable_names(options, blk, attrs, c_var):
     If user has not explicitly set, then compute from option template.
     """
     for buf_arg in blk.buf_args:
-        if attrs[buf_arg] is not None:
-            # Do not override user specified variable name.
+        if attrs[buf_arg] is not None and \
+           attrs[buf_arg] is not True:
+            # None - Not set.
+            # True - Do not override user specified variable name.
             pass
         elif buf_arg == "size":
             attrs["size"] = options.C_var_size_template.format(
@@ -1096,6 +1098,21 @@ def create_buf_variable_names(options, blk, attrs, c_var):
                 c_var=c_var
             )
 
+def assign_buf_variable_names(attrs, fmt):
+    """
+    Transfer names from attribute to fmt.
+    """
+    if attrs["capsule"]:
+        fmt.c_var_capsule = attrs["capsule"]
+    if attrs["context"]:
+        fmt.c_var_context = attrs["context"]
+    if attrs["len"]:
+        fmt.c_var_len = attrs["len"]
+    if attrs["len_trim"]:
+        fmt.c_var_trim = attrs["len_trim"]
+    if attrs["size"]:
+        fmt.c_var_size = attrs["size"]
+            
 
 def compute_return_prefix(arg, local_var):
     """Compute how to access variable: dereference, address, as-is"""
@@ -1278,6 +1295,7 @@ def lookup_stmts_tree(tree, path):
 
 class CStmts(object):
     """
+    arg_call    - List of arguments passed to C function.
 
     Used with buf_args = "arg_decl".
     c_arg_decl  - Add C declaration to C wrapper.
@@ -1289,6 +1307,7 @@ class CStmts(object):
         buf_args=[], buf_extra=[],
         c_header=[], c_helper="", c_local_var=None,
         cxx_header=[], cxx_local_var=None,
+        arg_call=[],
         pre_call=[], call=[], post_call=[], final=[], ret=[],
         destructor_name=None,
         owner="library",
@@ -1308,6 +1327,7 @@ class CStmts(object):
 
         self.pre_call = pre_call
         self.call = call
+        self.arg_call = arg_call
         self.post_call = post_call
         self.final = final
         self.ret = ret
@@ -1326,7 +1346,6 @@ class FStmts(object):
     """
     def __init__(self,
         name="f_default",
-        buf_args=[],
         c_helper="",
         c_local_var=None,
         f_attribute=[], f_helper="", f_module=None,
@@ -1337,7 +1356,6 @@ class FStmts(object):
         result=None,  # name of result variable
     ):
         self.name = name
-        self.buf_args = buf_args
         self.c_helper = c_helper
         self.c_local_var = c_local_var
         self.f_attribute = f_attribute
@@ -1407,6 +1425,44 @@ fc_statements = [
     ),
 
     dict(
+        # double **count _intent(out)+dimension(ncount)
+        name="c_native_**_out_buf",
+        buf_args=["context"],
+        c_helper="ShroudTypeDefines",
+        pre_call=[
+            "{cxx_type} *{cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.base = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = sizeof({cxx_type});",
+            "{c_var_context}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_context}->size = {c_array_size};",
+        ],
+        # XXX - similar to c_native_*_result_buf
+    ),
+    dict(
+        # deref(pointer)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer to a scalar.
+        name="f_XXX_native_**_out",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        arg_c_call=["{F_pointer}"],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {f_var})",
+        ],
+    ),
+    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
@@ -1414,15 +1470,9 @@ fc_statements = [
         arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        declare=[
-            "{f_declare_shape_array}"
-            "type(C_PTR) :: {F_pointer}",
-        ],
-        arg_c_call=["{F_pointer}"],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
         post_call=[
-            "{f_get_shape_array}"
-            "call c_f_pointer({F_pointer}, {f_var}{f_pointer_shape})",
+            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(
@@ -1441,7 +1491,7 @@ fc_statements = [
     dict(
         name="c_native_*_cdesc",
         buf_args=["context"],
-        c_helper="array_context", #  ShroudTypeDefines",
+#        c_helper="ShroudTypeDefines",
         c_pre_call=[
             "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
         ],
@@ -1459,7 +1509,7 @@ fc_statements = [
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper="array_context ShroudTypeDefines",
+        f_helper="ShroudTypeDefines",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
         pre_call=[
@@ -1521,27 +1571,29 @@ fc_statements = [
     #        c_step1(context)
     #        allocate(Fout(len))
     #        c_step2(context, Fout, size(len))
+    #
+    #        c_step1(context)
+    #        call c_f_pointer(c_ptr, f_ptr, shape)
     dict(
         name="c_native_*_result_buf",
         buf_args=["context"],
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         post_call=[
             "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
             "{c_var_context}->elem_len = sizeof({cxx_type});",
-            "{c_var_context}->size = *{c_var_dimension};",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{c_var_context}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_context}->size = {c_array_size};",
         ],
         return_cptr=True,
     ),
     dict(
         name="f_native_*_result_allocatable",
-        buf_args=["context"],
         c_helper="copy_array",
-        f_helper="array_context copy_array_{cxx_type}",
+        f_helper="copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
@@ -1563,15 +1615,13 @@ fc_statements = [
         name="f_native_*_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
-            "{f_declare_shape_array}"
             "type(C_PTR) :: {F_pointer}",
         ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
         post_call=[
-            "{f_get_shape_array}"
-            "call c_f_pointer({F_pointer}, {F_result}{f_pointer_shape})",
+            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
         ],
     ),
     
@@ -1643,7 +1693,7 @@ fc_statements = [
     dict(
         name="c_char_result_buf_allocatable",
         buf_args=["context"],
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
@@ -1881,7 +1931,7 @@ fc_statements = [
         name="c_vector_out_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
@@ -1909,7 +1959,7 @@ fc_statements = [
         name="c_vector_inout_buf",
         buf_args=["arg", "size", "context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
             "\t{c_var}, {c_var} + {c_var_size});"
@@ -1938,7 +1988,7 @@ fc_statements = [
         name="c_vector_result_buf",
         buf_args=["context"],
         cxx_local_var="pointer",
-        c_helper="array_context ShroudTypeDefines",
+        c_helper="ShroudTypeDefines",
         pre_call=[
             "{c_const}std::vector<{cxx_T}>"
             "\t *{cxx_var} = new std::vector<{cxx_T}>;"
