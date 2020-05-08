@@ -17,9 +17,8 @@ extern "C" {
 // splicer begin class.Singleton.C_definitions
 // splicer end class.Singleton.C_definitions
 
-// static Singleton & getReference()
 // ----------------------------------------
-// Result
+// Function:  static Singleton & getReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)

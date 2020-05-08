@@ -41,11 +41,11 @@ module library_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  comm
+        ! Argument:  MPI_Comm comm +intent(in)+value
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine c_class2_method1(self, comm) &
@@ -58,11 +58,11 @@ module library_mod
         end subroutine c_class2_method1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  c2
+        ! Argument:  three::Class1 * c2 +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_method2(self, c2) &
@@ -78,15 +78,15 @@ module library_mod
 
 contains
 
-    ! void method1(MPI_Comm comm +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method1
+    ! void method1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  comm
+    ! Argument:  MPI_Comm comm +intent(in)+value
     ! Requested: f_unknown_scalar_in
     ! Match:     f_default
     ! Requested: c_unknown_scalar_in
@@ -97,15 +97,15 @@ contains
         call c_class2_method1(obj%cxxmem, comm)
     end subroutine class2_method1
 
-    ! void method2(three::Class1 * c2 +intent(in))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method2
+    ! void method2
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  c2
+    ! Argument:  three::Class1 * c2 +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     ! Requested: c_shadow_*_in

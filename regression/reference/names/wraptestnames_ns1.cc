@@ -16,9 +16,8 @@ extern "C" {
 // splicer begin namespace.ns1.C_definitions
 // splicer end namespace.ns1.C_definitions
 
-// void init_ns1()
 // ----------------------------------------
-// Result
+// Function:  void init_ns1
 // Requested: c
 // Match:     c_default
 void TES_ns1_init_ns1()

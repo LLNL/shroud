@@ -17,9 +17,8 @@ extern "C" {
 // splicer begin class.User1.C_definitions
 // splicer end class.User1.C_definitions
 
-// void method1()
 // ----------------------------------------
-// Result
+// Function:  void method1
 // Requested: c
 // Match:     c_default
 void PRE_User1_method1(PRE_User1 * self)
@@ -30,10 +29,9 @@ void PRE_User1_method1(PRE_User1 * self)
     // splicer end class.User1.method.method1
 }
 
-// void method2()
 #if defined(USE_TWO)
 // ----------------------------------------
-// Result
+// Function:  void method2
 // Requested: c
 // Match:     c_default
 void PRE_User1_method2(PRE_User1 * self)
@@ -45,10 +43,9 @@ void PRE_User1_method2(PRE_User1 * self)
 }
 #endif  // if defined(USE_TWO)
 
-// void method3def()
 #if defined(USE_THREE)
 // ----------------------------------------
-// Result
+// Function:  void method3def
 // Requested: c
 // Match:     c_default
 void PRE_User1_method3def_0(PRE_User1 * self)
@@ -60,14 +57,13 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 }
 #endif  // if defined(USE_THREE)
 
-// void method3def(int i=0 +intent(in)+value)
 #if defined(USE_THREE)
 // ----------------------------------------
-// Result
+// Function:  void method3def
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  i
+// Argument:  int i=0 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void PRE_User1_method3def_1(PRE_User1 * self, int i)

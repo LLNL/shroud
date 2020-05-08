@@ -35,13 +35,12 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg))
 // ----------------------------------------
-// Result
+// Function:  int vector_sum
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_native
 // Match:     c_vector_in_buf
 // start VEC_vector_sum_bufferify
@@ -55,17 +54,16 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 }
 // end VEC_vector_sum_bufferify
 
-// void vector_iota_out(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_out
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_bufferify
@@ -86,7 +84,6 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_bufferify
 
-// void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -94,11 +91,11 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
  * by setting fstatements for both C and Fortran.
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_out_with_num
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_with_num_bufferify
@@ -120,7 +117,6 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_with_num_bufferify
 
-// void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -128,11 +124,11 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
  * by setting fstatements for the Fortran wrapper only.
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_out_with_num2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_with_num2_bufferify
@@ -153,17 +149,16 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_with_num2_bufferify
 
-// void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_out_alloc
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_alloc_bufferify
@@ -184,17 +179,16 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 }
 // end VEC_vector_iota_out_alloc_bufferify
 
-// void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_inout_alloc
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
 // start VEC_vector_iota_inout_alloc_bufferify
@@ -216,13 +210,12 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 }
 // end VEC_vector_iota_inout_alloc_bufferify
 
-// void vector_increment(std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg))
 // ----------------------------------------
-// Result
+// Function:  void vector_increment
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
@@ -242,17 +235,16 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     // splicer end function.vector_increment_bufferify
 }
 
-// void vector_iota_out_d(std::vector<double> & arg +context(Darg)+intent(out)+rank(1))
 /**
  * \brief Copy vector into Fortran input array
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void vector_iota_out_d
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
@@ -271,17 +263,16 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
     // splicer end function.vector_iota_out_d_bufferify
 }
 
-// int vector_string_count(const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg))
 /**
  * \brief count number of underscore in vector of strings
  *
  */
 // ----------------------------------------
-// Result
+// Function:  int vector_string_count
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_string
 // Match:     c_vector_in_buf_string
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
@@ -304,22 +295,21 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     // splicer end function.vector_string_count_bufferify
 }
 
-// void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)) +rank(1)
 /**
  * Implement iota function.
  * Return a vector as an ALLOCATABLE array.
  * Copy results into the new array.
  */
 // ----------------------------------------
-// Result
+// Function:  void ReturnVectorAlloc +rank(1)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  n
+// Argument:  int n +intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf
 void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)

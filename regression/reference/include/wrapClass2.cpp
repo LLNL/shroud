@@ -14,13 +14,12 @@
 extern "C" {
 
 
-// void method1(MPI_Comm comm +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void method1
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  comm
+// Argument:  MPI_Comm comm +intent(in)+value
 // Requested: c_unknown_scalar_in
 // Match:     c_default
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
@@ -30,13 +29,12 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
     SH_this->method1(SHCXX_comm);
 }
 
-// void method2(three::Class1 * c2 +intent(in))
 // ----------------------------------------
-// Result
+// Function:  void method2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  c2
+// Argument:  three::Class1 * c2 +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)

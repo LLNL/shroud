@@ -18,9 +18,8 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void AFunction()
 // ----------------------------------------
-// Result
+// Function:  void AFunction
 // Requested: c
 // Match:     c_default
 void NAM_afunction()

@@ -40,7 +40,7 @@ module library_outer2_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_class0_method(self) &
@@ -52,7 +52,7 @@ module library_outer2_mod
 
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void outer_func
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine outer_func() &
@@ -64,9 +64,9 @@ module library_outer2_mod
 
 contains
 
-    ! void method()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method
+    ! void method
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

@@ -101,7 +101,7 @@ module top_module
         ! splicer end class.twoTs_instantiation4.additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine yyy_tes_function1() &
@@ -110,7 +110,7 @@ module top_module
         end subroutine yyy_tes_function1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine f_c_name_special() &
@@ -119,11 +119,11 @@ module top_module
         end subroutine f_c_name_special
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function3a
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  i
+        ! Argument:  int i +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine yyy_tes_function3a_0(i) &
@@ -134,11 +134,11 @@ module top_module
         end subroutine yyy_tes_function3a_0
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function3a
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  i
+        ! Argument:  long i +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine yyy_tes_function3a_1(i) &
@@ -149,11 +149,11 @@ module top_module
         end subroutine yyy_tes_function3a_1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int function4
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  rv
+        ! Argument:  const std::string & rv +intent(in)
         ! Requested: c_string_&_in
         ! Match:     c_string_in
         function yyy_tes_function4(rv) &
@@ -166,11 +166,11 @@ module top_module
         end function yyy_tes_function4
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int function4
         ! Requested: c_native_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  rv
+        ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
         ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
@@ -184,7 +184,7 @@ module top_module
         end function yyy_tes_function4_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function5 +name(fiveplus)
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine yyy_tes_fiveplus() &
@@ -193,15 +193,15 @@ module top_module
         end subroutine yyy_tes_fiveplus
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void TestMultilineSplicer
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  std::string & name +intent(inout)
         ! Requested: c_string_&_inout
         ! Match:     c_string_inout
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
@@ -213,15 +213,15 @@ module top_module
         end subroutine c_test_multiline_splicer
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void TestMultilineSplicer
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
         ! Requested: c_string_&_inout_buf
         ! Match:     c_string_inout_buf
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
@@ -236,15 +236,15 @@ module top_module
         end subroutine c_test_multiline_splicer_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FunctionTU
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg1
+        ! Argument:  int arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg2
+        ! Argument:  long arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine f_c_name_instantiation1(arg1, arg2) &
@@ -256,15 +256,15 @@ module top_module
         end subroutine f_c_name_instantiation1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FunctionTU
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg1
+        ! Argument:  float arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg2
+        ! Argument:  double arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_function_tu_instantiation2(arg1, arg2) &
@@ -276,7 +276,7 @@ module top_module
         end subroutine c_function_tu_instantiation2
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int UseImplWorker
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_instantiation3() &
@@ -381,9 +381,9 @@ contains
     ! splicer begin class.twoTs_instantiation4.additional_functions
     ! splicer end class.twoTs_instantiation4.additional_functions
 
-    ! void function1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void function1
+    ! void function1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -394,9 +394,9 @@ contains
         ! splicer end function.function1
     end subroutine testnames_function1
 
-    ! void function2()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void function2
+    ! void function2
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -407,15 +407,15 @@ contains
         ! splicer end function.function2
     end subroutine f_name_special
 
-    ! void function3a(int i +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void function3a
+    ! void function3a
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -428,15 +428,15 @@ contains
         ! splicer end function.function3a_0
     end subroutine F_name_function3a_int
 
-    ! void function3a(long i +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void function3a
+    ! void function3a
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  long i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -449,18 +449,19 @@ contains
         ! splicer end function.function3a_1
     end subroutine F_name_function3a_long
 
-    ! int function4(const std::string & rv +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  int function4
+    ! int function4
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  rv
+    ! Argument:  const std::string & rv +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     function testnames_function4(rv) &
@@ -474,9 +475,9 @@ contains
         ! splicer end function.function4
     end function testnames_function4
 
-    ! void function5() +name(fiveplus)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void function5 +name(fiveplus)
+    ! void function5 +name(fiveplus)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -487,22 +488,23 @@ contains
         ! splicer end function.fiveplus
     end subroutine testnames_fiveplus
 
-    ! void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void TestMultilineSplicer
+    ! void TestMultilineSplicer
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  std::string & name +intent(inout)
     ! Requested: f_string_&_inout
     ! Match:     f_default
+    ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
     ! Requested: c_string_&_inout_buf
     ! Match:     c_string_inout_buf
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  int * value +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out_buf
@@ -520,22 +522,22 @@ contains
         ! splicer end function.test_multiline_splicer
     end subroutine test_multiline_splicer
 
-    ! void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void FunctionTU
+    ! void FunctionTU
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  int arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg2
+    ! Argument:  long arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -553,22 +555,22 @@ contains
         ! splicer end function.function_tu_0
     end subroutine f_name_instantiation1
 
-    ! void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void FunctionTU
+    ! void FunctionTU
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  float arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg2
+    ! Argument:  double arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -586,10 +588,10 @@ contains
         ! splicer end function.function_tu_instantiation2
     end subroutine function_tu_instantiation2
 
-    ! int UseImplWorker()
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  int UseImplWorker
+    ! int UseImplWorker
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

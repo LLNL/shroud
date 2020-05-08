@@ -15,21 +15,20 @@
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void SavePointer2(void * addr +intent(in)+value, int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void SavePointer2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  addr
+// Argument:  void * addr +intent(in)+value
 // Requested: c_unknown_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  type
+// Argument:  int type +implied(type(addr))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  size
+// Argument:  size_t size +implied(size(addr))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void GEN_save_pointer2(void * addr, int type, size_t size)

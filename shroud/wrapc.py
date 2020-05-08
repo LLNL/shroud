@@ -894,7 +894,8 @@ class Wrapc(util.WrapperMixin):
         if options.debug:
             stmts_comments.append(
                 "// ----------------------------------------")
-            stmts_comments.append("// Result")
+            c_decl = ast.gen_decl(params=None)
+            stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
                 stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
         
@@ -1064,7 +1065,8 @@ class Wrapc(util.WrapperMixin):
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
-                stmts_comments.append("// Argument:  " + arg_name)
+                c_decl = arg.gen_decl()
+                stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
@@ -1297,7 +1299,6 @@ class Wrapc(util.WrapperMixin):
             impl = self.impl
             impl.append("")
             if options.debug:
-                impl.append("// " + node.declgen)
                 if options.debug_index:
                     impl.append("// function_index=%d" % node._function_index)
             if options.doxygen and node.doxygen:

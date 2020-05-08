@@ -65,21 +65,20 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 // ----------------------------------------
-// Result
+// Function:  void intargs
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  argin
+// Argument:  const int argin +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arginout
+// Argument:  int * arginout +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
-// Argument:  argout
+// Argument:  int * argout +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_intargs
@@ -91,26 +90,25 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 }
 // end POI_intargs
 
-// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief compute cos of IN and save in OUT
  *
  * allocate OUT same type as IN implied size of array
  */
 // ----------------------------------------
-// Result
+// Function:  void cos_doubles
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  in
+// Argument:  double * in +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  out
+// Argument:  double * out +allocatable(mold=in)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  sizein
+// Argument:  int sizein +implied(size(in))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_cos_doubles
@@ -122,7 +120,6 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 }
 // end POI_cos_doubles
 
-// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief truncate IN argument and save in OUT
  *
@@ -130,19 +127,19 @@ void POI_cos_doubles(double * in, double * out, int sizein)
  * implied size of array
  */
 // ----------------------------------------
-// Result
+// Function:  void truncate_to_int
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  in
+// Argument:  double * in +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  out
+// Argument:  int * out +allocatable(mold=in)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  sizein
+// Argument:  int sizein +implied(size(in))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_truncate_to_int
@@ -154,7 +151,6 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 }
 // end POI_truncate_to_int
 
-// void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 /**
  * \brief fill values into array
  *
@@ -164,15 +160,15 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  * have an explicit dimension (not assumed-length).
  */
 // ----------------------------------------
-// Result
+// Function:  void get_values
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nvalues
+// Argument:  int * nvalues +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +dimension(3)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_values
@@ -184,7 +180,6 @@ void POI_get_values(int * nvalues, int * values)
 }
 // end POI_get_values
 
-// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 /**
  * \brief fill values into two arrays
  *
@@ -192,15 +187,15 @@ void POI_get_values(int * nvalues, int * values)
  * Make sure error handling works with C++.
  */
 // ----------------------------------------
-// Result
+// Function:  void get_values2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int * arg1 +dimension(3)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  int * arg2 +dimension(3)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_values2
@@ -212,17 +207,16 @@ void POI_get_values2(int * arg1, int * arg2)
 }
 // end POI_get_values2
 
-// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void iota_allocatable
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nvar
+// Argument:  int nvar +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +allocatable(nvar)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_iota_allocatable
@@ -234,17 +228,16 @@ void POI_iota_allocatable(int nvar, int * values)
 }
 // end POI_iota_allocatable
 
-// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void iota_dimension
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nvar
+// Argument:  int nvar +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +dimension(nvar)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_iota_dimension
@@ -256,21 +249,20 @@ void POI_iota_dimension(int nvar, int * values)
 }
 // end POI_iota_dimension
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
-// Result
+// Function:  void Sum
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  len
+// Argument:  int len +implied(size(values))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  result
+// Argument:  int * result +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_sum
@@ -282,16 +274,15 @@ void POI_sum(int len, int * values, int * result)
 }
 // end POI_sum
 
-// void fillIntArray(int * out +dimension(3)+intent(out))
 /**
  * Return three values into memory the user provides.
  */
 // ----------------------------------------
-// Result
+// Function:  void fillIntArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  out
+// Argument:  int * out +dimension(3)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_fill_int_array
@@ -303,20 +294,19 @@ void POI_fill_int_array(int * out)
 }
 // end POI_fill_int_array
 
-// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 /**
  * Increment array in place using intent(INOUT).
  */
 // ----------------------------------------
-// Result
+// Function:  void incrementIntArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  array
+// Argument:  int * array +intent(inout)+rank(1)
 // Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
-// Argument:  sizein
+// Argument:  int sizein +implied(size(array))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_increment_int_array
@@ -328,13 +318,12 @@ void POI_increment_int_array(int * array, int sizein)
 }
 // end POI_increment_int_array
 
-// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
-// Result
+// Function:  void acceptCharArrayIn
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  names
+// Argument:  char * * names +intent(in)+rank(1)
 // Requested: c_char_**_in
 // Match:     c_default
 // start POI_accept_char_array_in
@@ -346,13 +335,12 @@ void POI_accept_char_array_in(char * * names)
 }
 // end POI_accept_char_array_in
 
-// void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))
 // ----------------------------------------
-// Result
+// Function:  void acceptCharArrayIn
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  names
+// Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
 // Exact:     c_char_**_in_buf
 // start POI_accept_char_array_in_bufferify
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
@@ -366,13 +354,12 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 }
 // end POI_accept_char_array_in_bufferify
 
-// void setGlobalInt(int value +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void setGlobalInt
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  value
+// Argument:  int value +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_set_global_int
@@ -384,12 +371,11 @@ void POI_set_global_int(int value)
 }
 // end POI_set_global_int
 
-// int sumFixedArray()
 /**
  * Used to test values global_array.
  */
 // ----------------------------------------
-// Result
+// Function:  int sumFixedArray
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start POI_sum_fixed_array
@@ -402,13 +388,12 @@ int POI_sum_fixed_array()
 }
 // end POI_sum_fixed_array
 
-// void getPtrToScalar(int * * nitems +intent(out))
 // ----------------------------------------
-// Result
+// Function:  void getPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_scalar
@@ -420,13 +405,12 @@ void POI_get_ptr_to_scalar(int * * nitems)
 }
 // end POI_get_ptr_to_scalar
 
-// void getPtrToScalar(int * * nitems +context(Dnitems)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void getPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +context(Dnitems)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_scalar_bufferify
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -445,16 +429,15 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 }
 // end POI_get_ptr_to_scalar_bufferify
 
-// void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
 /**
  * Return a Fortran pointer to an array which is always the same length.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +dimension(10)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_fixed_array
@@ -466,16 +449,15 @@ void POI_get_ptr_to_fixed_array(int * * count)
 }
 // end POI_get_ptr_to_fixed_array
 
-// void getPtrToFixedArray(int * * count +context(Dcount)+dimension(10)+intent(out))
 /**
  * Return a Fortran pointer to an array which is always the same length.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_array_bufferify
 void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -495,21 +477,20 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_ptr_to_fixed_array_bufferify
 
-// void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length of
  * the argument ncount.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToDynamicArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +dimension(ncount)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  ncount
+// Argument:  int * ncount +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array
@@ -521,20 +502,19 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 }
 // end POI_get_ptr_to_dynamic_array
 
-// void getPtrToDynamicArray(int * * count +context(Dcount)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length of
  * the argument ncount.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToDynamicArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  ncount
+// Argument:  int * ncount +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
@@ -556,13 +536,12 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 }
 // end POI_get_ptr_to_dynamic_array_bufferify
 
-// int getLen()
 /**
  * \brief Return length of global_fixed_array.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  int getLen
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start POI_get_len
@@ -575,7 +554,6 @@ int POI_get_len()
 }
 // end POI_get_len
 
-// void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
@@ -583,11 +561,11 @@ int POI_get_len()
  * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFuncArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +dimension(getLen())+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_func_array
@@ -599,7 +577,6 @@ void POI_get_ptr_to_func_array(int * * count)
 }
 // end POI_get_ptr_to_func_array
 
-// void getPtrToFuncArray(int * * count +context(Dcount)+dimension(getLen())+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
@@ -607,11 +584,11 @@ void POI_get_ptr_to_func_array(int * * count)
  * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFuncArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_func_array_bufferify
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
@@ -631,16 +608,15 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_ptr_to_func_array_bufferify
 
-// void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 /**
  * Called directly via an interface.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_scalar
@@ -652,16 +628,15 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 }
 // end POI_get_raw_ptr_to_scalar
 
-// void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))
 /**
  * Called directly via an interface.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_bufferify
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -680,18 +655,17 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 }
 // end POI_get_raw_ptr_to_scalar_bufferify
 
-// void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 /**
  * Return a type(C_PTR) to an array which is always the same length.
  * Called directly via an interface.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_fixed_array
@@ -703,18 +677,17 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
 }
 // end POI_get_raw_ptr_to_fixed_array
 
-// void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))
 /**
  * Return a type(C_PTR) to an array which is always the same length.
  * Called directly via an interface.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_bufferify
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -733,13 +706,12 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_raw_ptr_to_fixed_array_bufferify
 
-// void * returnAddress1(int flag +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void * returnAddress1
 // Requested: c_unknown_*_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  flag
+// Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_return_address1
@@ -752,13 +724,12 @@ void * POI_return_address1(int flag)
 }
 // end POI_return_address1
 
-// void * returnAddress2(int flag +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void * returnAddress2
 // Requested: c_unknown_*_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  flag
+// Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_return_address2
@@ -771,9 +742,8 @@ void * POI_return_address2(int flag)
 }
 // end POI_return_address2
 
-// int * returnIntPtrToScalar()
 // ----------------------------------------
-// Result
+// Function:  int * returnIntPtrToScalar
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_scalar
@@ -786,9 +756,8 @@ int * POI_return_int_ptr_to_scalar()
 }
 // end POI_return_int_ptr_to_scalar
 
-// int * returnIntPtrToFixedArray() +dimension(10)
 // ----------------------------------------
-// Result
+// Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_array
@@ -801,9 +770,8 @@ int * POI_return_int_ptr_to_fixed_array()
 }
 // end POI_return_int_ptr_to_fixed_array
 
-// int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
 // ----------------------------------------
-// Result
+// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(

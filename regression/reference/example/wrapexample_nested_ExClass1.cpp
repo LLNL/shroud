@@ -55,9 +55,8 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // splicer begin namespace.example::nested.class.ExClass1.C_definitions
 // splicer end namespace.example::nested.class.ExClass1.C_definitions
 
-// ExClass1()
 // ----------------------------------------
-// Result
+// Function:  ExClass1
 // Exact:     c_shadow_scalar_ctor
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHC_rv)
@@ -71,7 +70,6 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
 
-// ExClass1(const string * name +intent(in))
 /**
  * \brief constructor
  *
@@ -81,10 +79,10 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
  * \return return new instance
  */
 // ----------------------------------------
-// Result
+// Function:  ExClass1
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
-// Argument:  name
+// Argument:  const string * name +intent(in)
 // Requested: c_string_*_in
 // Match:     c_string_in
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
@@ -100,7 +98,6 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
 
-// ExClass1(const string * name +intent(in)+len_trim(Lname))
 /**
  * \brief constructor
  *
@@ -110,11 +107,11 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
  * \return return new instance
  */
 // ----------------------------------------
-// Result
+// Function:  ExClass1
 // Requested: c_shadow_scalar_ctor_buf
 // Match:     c_shadow_scalar_ctor
 // ----------------------------------------
-// Argument:  name
+// Argument:  const string * name +intent(in)+len_trim(Lname)
 // Requested: c_string_*_in_buf
 // Match:     c_string_in_buf
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
@@ -130,14 +127,13 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
 }
 
-// ~ExClass1()
 /**
  * \brief destructor
  *
  * longer description joined with previous line
  */
 // ----------------------------------------
-// Result
+// Function:  ~ExClass1
 // Exact:     c_shadow_dtor
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 {
@@ -149,13 +145,12 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
     // splicer end namespace.example::nested.class.ExClass1.method.dtor
 }
 
-// int incrementCount(int incr +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int incrementCount
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  incr
+// Argument:  int incr +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int AA_example_nested_ExClass1_increment_count(
@@ -169,9 +164,8 @@ int AA_example_nested_ExClass1_increment_count(
     // splicer end namespace.example::nested.class.ExClass1.method.increment_count
 }
 
-// const string & getNameErrorCheck() const +deref(allocatable)
 // ----------------------------------------
-// Result
+// Function:  const string & getNameErrorCheck +deref(allocatable)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * AA_example_nested_ExClass1_get_name_error_check(
@@ -186,13 +180,12 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
 }
 
-// void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 // ----------------------------------------
-// Result
+// Function:  void getNameErrorCheck
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
@@ -206,9 +199,8 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }
 
-// const string & getNameArg() const +deref(result-as-arg)
 // ----------------------------------------
-// Result
+// Function:  const string & getNameArg +deref(result-as-arg)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * AA_example_nested_ExClass1_get_name_arg(
@@ -223,13 +215,12 @@ const char * AA_example_nested_ExClass1_get_name_arg(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
 }
 
-// void getNameArg(string & name +intent(out)+len(Nname)) const
 // ----------------------------------------
-// Result
+// Function:  void getNameArg
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  string & name +intent(out)+len(Nname)
 // Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
@@ -247,13 +238,12 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
 }
 
-// int getValue(int value +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int getValue
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  value
+// Argument:  int value +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int AA_example_nested_ExClass1_get_value_from_int(
@@ -267,13 +257,12 @@ int AA_example_nested_ExClass1_get_value_from_int(
     // splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
 }
 
-// long getValue(long value +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  long getValue
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  value
+// Argument:  long value +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 long AA_example_nested_ExClass1_get_value_1(
@@ -287,13 +276,12 @@ long AA_example_nested_ExClass1_get_value_1(
     // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
 }
 
-// bool hasAddr(bool in +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  bool hasAddr
 // Requested: c_bool_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  in
+// Argument:  bool in +intent(in)+value
 // Requested: c_bool_scalar_in
 // Match:     c_default
 bool AA_example_nested_ExClass1_has_addr(
@@ -307,9 +295,8 @@ bool AA_example_nested_ExClass1_has_addr(
     // splicer end namespace.example::nested.class.ExClass1.method.has_addr
 }
 
-// void SplicerSpecial()
 // ----------------------------------------
-// Result
+// Function:  void SplicerSpecial
 // Requested: c
 // Match:     c_default
 void AA_example_nested_ExClass1_splicer_special(

@@ -58,13 +58,12 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void acceptCharArrayIn(char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames))
 // ----------------------------------------
-// Result
+// Function:  void acceptCharArrayIn
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  names
+// Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
 // Exact:     c_char_**_in_buf
 // start POI_accept_char_array_in_bufferify
 void POI_accept_char_array_in_bufferify(char *names, long Snames,
@@ -78,13 +77,12 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 }
 // end POI_accept_char_array_in_bufferify
 
-// void getPtrToScalar(int * * nitems +context(Dnitems)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void getPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +context(Dnitems)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_scalar_bufferify
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -103,16 +101,15 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 }
 // end POI_get_ptr_to_scalar_bufferify
 
-// void getPtrToFixedArray(int * * count +context(Dcount)+dimension(10)+intent(out))
 /**
  * Return a Fortran pointer to an array which is always the same length.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_array_bufferify
 void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -132,20 +129,19 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_ptr_to_fixed_array_bufferify
 
-// void getPtrToDynamicArray(int * * count +context(Dcount)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length of
  * the argument ncount.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToDynamicArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  ncount
+// Argument:  int * ncount +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
@@ -167,7 +163,6 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 }
 // end POI_get_ptr_to_dynamic_array_bufferify
 
-// void getPtrToFuncArray(int * * count +context(Dcount)+dimension(getLen())+intent(out))
 /**
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
@@ -175,11 +170,11 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
  * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
-// Result
+// Function:  void getPtrToFuncArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_func_array_bufferify
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
@@ -199,16 +194,15 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_ptr_to_func_array_bufferify
 
-// void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))
 /**
  * Called directly via an interface.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToScalar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  nitems
+// Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_bufferify
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -227,18 +221,17 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 }
 // end POI_get_raw_ptr_to_scalar_bufferify
 
-// void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))
 /**
  * Return a type(C_PTR) to an array which is always the same length.
  * Called directly via an interface.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
-// Result
+// Function:  void getRawPtrToFixedArray
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  count
+// Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_bufferify
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -257,9 +250,8 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_raw_ptr_to_fixed_array_bufferify
 
-// int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
 // ----------------------------------------
-// Result
+// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(

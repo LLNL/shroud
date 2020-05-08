@@ -20,9 +20,8 @@ extern "C" {
 // splicer begin class.Class2.C_definitions
 // splicer end class.Class2.C_definitions
 
-// Class2()
 // ----------------------------------------
-// Result
+// Function:  Class2
 // Exact:     c_shadow_scalar_ctor
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
@@ -34,9 +33,8 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
     // splicer end class.Class2.method.ctor
 }
 
-// ~Class2()
 // ----------------------------------------
-// Result
+// Function:  ~Class2
 // Exact:     c_shadow_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
@@ -48,13 +46,12 @@ void FOR_Class2_dtor(FOR_Class2 * self)
     // splicer end class.Class2.method.dtor
 }
 
-// void func1(tutorial::Class1 * arg +intent(in))
 // ----------------------------------------
-// Result
+// Function:  void func1
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  tutorial::Class1 * arg +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
@@ -68,13 +65,12 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
     // splicer end class.Class2.method.func1
 }
 
-// void acceptClass3(Class3 * arg +intent(in))
 // ----------------------------------------
-// Result
+// Function:  void acceptClass3
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  Class3 * arg +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)

@@ -30,7 +30,7 @@ module ns_outer_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void One
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine one() &

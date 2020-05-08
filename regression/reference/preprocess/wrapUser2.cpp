@@ -18,10 +18,9 @@ extern "C" {
 // splicer begin class.User2.C_definitions
 // splicer end class.User2.C_definitions
 
-// void exfunc()
 #ifdef USE_CLASS3_A
 // ----------------------------------------
-// Result
+// Function:  void exfunc
 // Requested: c
 // Match:     c_default
 void PRE_User2_exfunc_0(PRE_User2 * self)
@@ -33,14 +32,13 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 }
 #endif  // ifdef USE_CLASS3_A
 
-// void exfunc(int flag +intent(in)+value)
 #ifndef USE_CLASS3_A
 // ----------------------------------------
-// Result
+// Function:  void exfunc
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  flag
+// Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)

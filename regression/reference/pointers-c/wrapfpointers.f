@@ -47,19 +47,19 @@ module pointers_mod
     ! end array_context
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void intargs
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  argin
+    ! Argument:  const int argin +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arginout
+    ! Argument:  int * arginout +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  argout
+    ! Argument:  int * argout +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start intargs
@@ -76,19 +76,19 @@ module pointers_mod
     ! end intargs
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void cos_doubles
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  double * out +allocatable(mold=in)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  sizein
+    ! Argument:  int sizein +implied(size(in))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cos_doubles
@@ -105,19 +105,19 @@ module pointers_mod
     ! end c_cos_doubles
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void truncate_to_int
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  int * out +allocatable(mold=in)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  sizein
+    ! Argument:  int sizein +implied(size(in))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_truncate_to_int
@@ -134,15 +134,15 @@ module pointers_mod
     ! end c_truncate_to_int
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void get_values
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nvalues
+    ! Argument:  int * nvalues +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  values
+    ! Argument:  int * values +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start get_values
@@ -158,15 +158,15 @@ module pointers_mod
     ! end get_values
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void get_values2
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg2
+    ! Argument:  int * arg2 +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start get_values2
@@ -182,15 +182,15 @@ module pointers_mod
     ! end get_values2
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void iota_allocatable
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nvar
+    ! Argument:  int nvar +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  values
+    ! Argument:  int * values +allocatable(nvar)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start iota_allocatable
@@ -206,15 +206,15 @@ module pointers_mod
     ! end iota_allocatable
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void iota_dimension
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nvar
+    ! Argument:  int nvar +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  values
+    ! Argument:  int * values +dimension(nvar)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start iota_dimension
@@ -230,19 +230,19 @@ module pointers_mod
     ! end iota_dimension
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void Sum
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  len
+    ! Argument:  int len +implied(size(values))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  values
+    ! Argument:  int * values +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  result
+    ! Argument:  int * result +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_sum
@@ -259,11 +259,11 @@ module pointers_mod
     ! end c_sum
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void fillIntArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  int * out +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start fill_int_array
@@ -278,15 +278,15 @@ module pointers_mod
     ! end fill_int_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void incrementIntArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  array
+    ! Argument:  int * array +intent(inout)+rank(1)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  sizein
+    ! Argument:  int sizein +implied(size(array))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_increment_int_array
@@ -302,11 +302,11 @@ module pointers_mod
     ! end c_increment_int_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptCharArrayIn
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  names
+    ! Argument:  char * * names +intent(in)+rank(1)
     ! Requested: c_char_**_in
     ! Match:     c_default
     ! start c_accept_char_array_in
@@ -321,11 +321,11 @@ module pointers_mod
     ! end c_accept_char_array_in
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptCharArrayIn
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  names
+    ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
     ! Exact:     c_char_**_in_buf
     ! start c_accept_char_array_in_bufferify
     interface
@@ -342,11 +342,11 @@ module pointers_mod
     ! end c_accept_char_array_in_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void setGlobalInt
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  int value +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start set_global_int
@@ -361,7 +361,7 @@ module pointers_mod
     ! end set_global_int
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int sumFixedArray
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start sum_fixed_array
@@ -377,11 +377,11 @@ module pointers_mod
     ! end sum_fixed_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToScalar
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nitems
+    ! Argument:  int * * nitems +intent(out)
     ! Requested: c_native_**_out
     ! Match:     c_default
     ! start c_get_ptr_to_scalar
@@ -396,11 +396,11 @@ module pointers_mod
     ! end c_get_ptr_to_scalar
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToScalar
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nitems
+    ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start c_get_ptr_to_scalar_bufferify
     interface
@@ -414,11 +414,11 @@ module pointers_mod
     ! end c_get_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFixedArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(10)+intent(out)
     ! Requested: c_native_**_out
     ! Match:     c_default
     ! start c_get_ptr_to_fixed_array
@@ -433,11 +433,11 @@ module pointers_mod
     ! end c_get_ptr_to_fixed_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFixedArray
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
@@ -451,15 +451,15 @@ module pointers_mod
     ! end c_get_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToDynamicArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Requested: c_native_**_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  ncount
+    ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array
@@ -475,14 +475,14 @@ module pointers_mod
     ! end c_get_ptr_to_dynamic_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToDynamicArray
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  ncount
+    ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
@@ -499,7 +499,7 @@ module pointers_mod
     ! end c_get_ptr_to_dynamic_array_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int getLen
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start get_len
@@ -515,11 +515,11 @@ module pointers_mod
     ! end get_len
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFuncArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Requested: c_native_**_out
     ! Match:     c_default
     ! start c_get_ptr_to_func_array
@@ -534,11 +534,11 @@ module pointers_mod
     ! end c_get_ptr_to_func_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFuncArray
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start c_get_ptr_to_func_array_bufferify
     interface
@@ -552,11 +552,11 @@ module pointers_mod
     ! end c_get_ptr_to_func_array_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getRawPtrToScalar
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nitems
+    ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
     ! start get_raw_ptr_to_scalar
@@ -571,11 +571,11 @@ module pointers_mod
     ! end get_raw_ptr_to_scalar
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getRawPtrToScalar
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nitems
+    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
     ! start c_get_raw_ptr_to_scalar_bufferify
@@ -590,11 +590,11 @@ module pointers_mod
     ! end c_get_raw_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getRawPtrToFixedArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
     ! start get_raw_ptr_to_fixed_array
@@ -609,11 +609,11 @@ module pointers_mod
     ! end get_raw_ptr_to_fixed_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getRawPtrToFixedArray
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
     ! start c_get_raw_ptr_to_fixed_array_bufferify
@@ -628,11 +628,11 @@ module pointers_mod
     ! end c_get_raw_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * returnAddress1
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  flag
+    ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start return_address1
@@ -649,11 +649,11 @@ module pointers_mod
     ! end return_address1
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * returnAddress2
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  flag
+    ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_return_address2
@@ -670,7 +670,7 @@ module pointers_mod
     ! end c_return_address2
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int * returnIntPtrToScalar
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start c_return_int_ptr_to_scalar
@@ -686,7 +686,7 @@ module pointers_mod
     ! end c_return_int_ptr_to_scalar
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start c_return_int_ptr_to_fixed_array
@@ -702,7 +702,7 @@ module pointers_mod
     ! end c_return_int_ptr_to_fixed_array
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Exact:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
@@ -725,21 +725,21 @@ module pointers_mod
 
 contains
 
-    ! void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void cos_doubles
+    ! void cos_doubles
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  double * out +allocatable(mold=in)+intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out
@@ -763,21 +763,21 @@ contains
     end subroutine cos_doubles
     ! end cos_doubles
 
-    ! void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void truncate_to_int
+    ! void truncate_to_int
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  int * out +allocatable(mold=in)+intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out
@@ -802,21 +802,21 @@ contains
     end subroutine truncate_to_int
     ! end truncate_to_int
 
-    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void Sum
+    ! void Sum
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  values
+    ! Argument:  int * values +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  result
+    ! Argument:  int * result +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out
@@ -834,15 +834,15 @@ contains
     end subroutine sum
     ! end sum
 
-    ! void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void incrementIntArray
+    ! void incrementIntArray
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  array
+    ! Argument:  int * array +intent(inout)+rank(1)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
@@ -862,18 +862,19 @@ contains
     end subroutine increment_int_array
     ! end increment_int_array
 
-    ! void acceptCharArrayIn(char * * names +intent(in)+rank(1))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptCharArrayIn
+    ! void acceptCharArrayIn
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  names
+    ! Argument:  char * * names +intent(in)+rank(1)
     ! Requested: f_char_**_in
     ! Match:     f_default
+    ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
     ! Exact:     c_char_**_in_buf
     ! start accept_char_array_in
     subroutine accept_char_array_in(names)
@@ -886,17 +887,18 @@ contains
     end subroutine accept_char_array_in
     ! end accept_char_array_in
 
-    ! void getPtrToScalar(int * * nitems +intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToScalar
+    ! void getPtrToScalar
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  nitems
+    ! Argument:  int * * nitems +intent(out)
     ! Exact:     f_native_**_out
+    ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
@@ -910,17 +912,18 @@ contains
     end subroutine get_ptr_to_scalar
     ! end get_ptr_to_scalar
 
-    ! void getPtrToFixedArray(int * * count +dimension(10)+intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFixedArray
+    ! void getPtrToFixedArray
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(10)+intent(out)
     ! Exact:     f_native_**_out
+    ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is always the same length.
@@ -937,20 +940,21 @@ contains
     end subroutine get_ptr_to_fixed_array
     ! end get_ptr_to_fixed_array
 
-    ! void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToDynamicArray
+    ! void getPtrToDynamicArray
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Exact:     f_native_**_out
+    ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  ncount
+    ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out_buf
@@ -972,17 +976,18 @@ contains
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
 
-    ! void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getPtrToFuncArray
+    ! void getPtrToFuncArray
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  count
+    ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Exact:     f_native_**_out
+    ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is the length
@@ -1002,14 +1007,14 @@ contains
     end subroutine get_ptr_to_func_array
     ! end get_ptr_to_func_array
 
-    ! void * returnAddress2(int flag +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * returnAddress2
+    ! void * returnAddress2
     ! Exact:     f_unknown_*_result
     ! Requested: c_unknown_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  flag
+    ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1026,9 +1031,9 @@ contains
     end function return_address2
     ! end return_address2
 
-    ! int * returnIntPtrToScalar()
     ! ----------------------------------------
-    ! Result
+    ! Function:  int * returnIntPtrToScalar
+    ! int * returnIntPtrToScalar
     ! Exact:     f_native_*_result
     ! Requested: c_native_*_result
     ! Match:     c_default
@@ -1045,11 +1050,12 @@ contains
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
 
-    ! int * returnIntPtrToFixedArray() +dimension(10)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  int * returnIntPtrToFixedArray +dimension(10)
+    ! int * returnIntPtrToFixedArray +dimension(10)
     ! Exact:     f_native_*_result
+    ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Exact:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &

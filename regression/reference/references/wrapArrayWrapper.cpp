@@ -17,9 +17,8 @@ extern "C" {
 // splicer begin class.ArrayWrapper.C_definitions
 // splicer end class.ArrayWrapper.C_definitions
 
-// ArrayWrapper()
 // ----------------------------------------
-// Result
+// Function:  ArrayWrapper
 // Exact:     c_shadow_scalar_ctor
 REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv)
 {
@@ -31,13 +30,12 @@ REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv)
     // splicer end class.ArrayWrapper.method.ctor
 }
 
-// void setSize(int size +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void setSize
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  size
+// Argument:  int size +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size)
@@ -48,9 +46,8 @@ void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size)
     // splicer end class.ArrayWrapper.method.set_size
 }
 
-// int getSize() const
 // ----------------------------------------
-// Result
+// Function:  int getSize
 // Requested: c_native_scalar_result
 // Match:     c_default
 int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self)
@@ -63,9 +60,8 @@ int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self)
     // splicer end class.ArrayWrapper.method.get_size
 }
 
-// void allocate()
 // ----------------------------------------
-// Result
+// Function:  void allocate
 // Requested: c
 // Match:     c_default
 void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
@@ -76,9 +72,8 @@ void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
     // splicer end class.ArrayWrapper.method.allocate
 }
 
-// double * getArray() +dimension(getSize())
 // ----------------------------------------
-// Result
+// Function:  double * getArray +dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
@@ -90,9 +85,8 @@ double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
     // splicer end class.ArrayWrapper.method.get_array
 }
 
-// double * getArray() +context(DSHC_rv)+dimension(getSize())
 // ----------------------------------------
-// Result
+// Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
 // Exact:     c_native_*_result_buf
 double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *DSHC_rv)

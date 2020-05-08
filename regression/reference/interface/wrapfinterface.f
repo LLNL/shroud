@@ -23,7 +23,7 @@ module interface_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void Function1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine function1() &
@@ -32,15 +32,15 @@ module interface_mod
         end subroutine function1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  double Function2
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg1
+        ! Argument:  double arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg2
+        ! Argument:  int arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function function2(arg1, arg2) &

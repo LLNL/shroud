@@ -17,9 +17,8 @@ extern "C" {
 // splicer begin namespace.outer.C_definitions
 // splicer end namespace.outer.C_definitions
 
-// void One()
 // ----------------------------------------
-// Result
+// Function:  void One
 // Requested: c
 // Match:     c_default
 void NS_outer_one()

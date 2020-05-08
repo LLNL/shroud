@@ -23,7 +23,7 @@ module wrapped_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void worker3
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine inner3_worker3() &
@@ -32,7 +32,7 @@ module wrapped_mod
         end subroutine inner3_worker3
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void worker
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine worker() &
@@ -44,7 +44,7 @@ module wrapped_mod
         ! splicer end additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void worker4
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine inner4_worker4() &

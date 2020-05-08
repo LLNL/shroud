@@ -23,7 +23,7 @@ module testnames_ns1_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void init_ns1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_init_ns1() &
@@ -37,9 +37,9 @@ module testnames_ns1_mod
 
 contains
 
-    ! void init_ns1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void init_ns1
+    ! void init_ns1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

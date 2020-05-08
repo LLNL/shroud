@@ -17,17 +17,16 @@ extern "C" {
 // splicer begin class.user.C_definitions
 // splicer end class.user.C_definitions
 
-// void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void nested
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,

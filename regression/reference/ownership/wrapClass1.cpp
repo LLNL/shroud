@@ -18,9 +18,8 @@ extern "C" {
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
-// ~Class1()
 // ----------------------------------------
-// Result
+// Function:  ~Class1
 // Exact:     c_shadow_dtor
 void OWN_Class1_dtor(OWN_Class1 * self)
 {
@@ -31,9 +30,8 @@ void OWN_Class1_dtor(OWN_Class1 * self)
     // splicer end class.Class1.method.dtor
 }
 
-// int getFlag()
 // ----------------------------------------
-// Result
+// Function:  int getFlag
 // Requested: c_native_scalar_result
 // Match:     c_default
 int OWN_Class1_get_flag(OWN_Class1 * self)

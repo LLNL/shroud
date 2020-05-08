@@ -58,17 +58,16 @@ static void ShroudStrFree(char *src)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// double PassByValueMacro(int arg2 +intent(in)+value)
 /**
  * PassByValueMacro is a #define macro. Force a C wrapper
  * to allow Fortran to have an actual function to call.
  */
 // ----------------------------------------
-// Result
+// Function:  double PassByValueMacro
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  int arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 double CLI_pass_by_value_macro(int arg2)
@@ -79,21 +78,20 @@ double CLI_pass_by_value_macro(int arg2)
     // splicer end function.pass_by_value_macro
 }
 
-// void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // ----------------------------------------
-// Result
+// Function:  void Function4a +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  const char * arg1 +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  const char * arg2 +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
@@ -105,7 +103,6 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     // splicer end function.function4a_bufferify
 }
 
-// void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 /**
  * \brief toupper
  *
@@ -113,11 +110,11 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
  * For Python, return a new string since strings are immutable.
  */
 // ----------------------------------------
-// Result
+// Function:  void passCharPtrInOut
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  s
+// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
 // Requested: c_char_*_inout_buf
 // Match:     c_char_inout_buf
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
@@ -130,7 +127,6 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
     // splicer end function.pass_char_ptr_in_out_bufferify
 }
 
-// void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))
 /**
  * \brief Test charlen attribute
  *
@@ -139,11 +135,11 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  * The function will copy into the user provided buffer.
  */
 // ----------------------------------------
-// Result
+// Function:  void returnOneName
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name1
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // start CLI_return_one_name_bufferify
@@ -156,7 +152,6 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
 }
 // end CLI_return_one_name_bufferify
 
-// void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))
 /**
  * \brief Test charlen attribute
  *
@@ -165,15 +160,15 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
  * The function will copy into the user provided buffer.
  */
 // ----------------------------------------
-// Result
+// Function:  void returnTwoNames
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name1
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
-// Argument:  name2
+// Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_return_two_names_bufferify(char * name1, int Nname1,
@@ -186,21 +181,20 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
     // splicer end function.return_two_names_bufferify
 }
 
-// void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len(Ntext), int ltext +implied(len(text))+intent(in)+value)
 /**
  * \brief Fill text, at most ltext characters.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void ImpliedTextLen
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  text
+// Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
-// Argument:  ltext
+// Argument:  int ltext +implied(len(text))+intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // start CLI_implied_text_len_bufferify
@@ -213,18 +207,17 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
 }
 // end CLI_implied_text_len_bufferify
 
-// void bindC2(char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Rename Fortran name for interface only function
  *
  * This creates a Fortran bufferify function and an interface.
  */
 // ----------------------------------------
-// Result
+// Function:  void bindC2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
@@ -235,7 +228,6 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
     // splicer end function.bind_c2_bufferify
 }
 
-// int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Test assumed-type
  *
@@ -244,15 +236,15 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
  * return the value passed in.
  */
 // ----------------------------------------
-// Result
+// Function:  int passAssumedTypeBuf
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  void * arg +assumedtype+intent(in)
 // Requested: c_unknown_*_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
@@ -265,30 +257,29 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     // splicer end function.pass_assumed_type_buf_bufferify
 }
 
-// void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Test function pointer
  *
  * A bufferify function will be created.
  */
 // ----------------------------------------
-// Result
+// Function:  void callback3
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  type
+// Argument:  const char * type +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  in
+// Argument:  void * in +assumedtype+intent(in)
 // Requested: c_unknown_*_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  incr
+// Argument:  void ( * incr)(int *) +external+intent(in)+value
 // Requested: c_unknown_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void CLI_callback3_bufferify(const char * type, void * in,

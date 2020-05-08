@@ -19,13 +19,12 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// short short_func(short arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  short short_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  short arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 short TYP_short_func(short arg1)
@@ -36,13 +35,12 @@ short TYP_short_func(short arg1)
     // splicer end function.short_func
 }
 
-// int int_func(int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TYP_int_func(int arg1)
@@ -53,13 +51,12 @@ int TYP_int_func(int arg1)
     // splicer end function.int_func
 }
 
-// long long_func(long arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  long long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 long TYP_long_func(long arg1)
@@ -70,13 +67,12 @@ long TYP_long_func(long arg1)
     // splicer end function.long_func
 }
 
-// long long long_long_func(long long arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  long long long_long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  long long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 long long TYP_long_long_func(long long arg1)
@@ -87,13 +83,12 @@ long long TYP_long_long_func(long long arg1)
     // splicer end function.long_long_func
 }
 
-// short int short_int_func(short int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  short int short_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  short int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 short TYP_short_int_func(short arg1)
@@ -104,13 +99,12 @@ short TYP_short_int_func(short arg1)
     // splicer end function.short_int_func
 }
 
-// long int long_int_func(long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  long int long_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 long TYP_long_int_func(long arg1)
@@ -121,13 +115,12 @@ long TYP_long_int_func(long arg1)
     // splicer end function.long_int_func
 }
 
-// long long int long_long_int_func(long long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  long long int long_long_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  long long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 long long TYP_long_long_int_func(long long arg1)
@@ -138,13 +131,12 @@ long long TYP_long_long_int_func(long long arg1)
     // splicer end function.long_long_int_func
 }
 
-// unsigned unsigned_func(unsigned arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned unsigned_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned int TYP_unsigned_func(unsigned int arg1)
@@ -155,13 +147,12 @@ unsigned int TYP_unsigned_func(unsigned int arg1)
     // splicer end function.unsigned_func
 }
 
-// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned short ushort_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned short arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned short TYP_ushort_func(unsigned short arg1)
@@ -172,13 +163,12 @@ unsigned short TYP_ushort_func(unsigned short arg1)
     // splicer end function.ushort_func
 }
 
-// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned int uint_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned int TYP_uint_func(unsigned int arg1)
@@ -189,13 +179,12 @@ unsigned int TYP_uint_func(unsigned int arg1)
     // splicer end function.uint_func
 }
 
-// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned long ulong_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned long TYP_ulong_func(unsigned long arg1)
@@ -206,13 +195,12 @@ unsigned long TYP_ulong_func(unsigned long arg1)
     // splicer end function.ulong_func
 }
 
-// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned long long ulong_long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned long long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned long long TYP_ulong_long_func(unsigned long long arg1)
@@ -223,13 +211,12 @@ unsigned long long TYP_ulong_long_func(unsigned long long arg1)
     // splicer end function.ulong_long_func
 }
 
-// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  unsigned long int ulong_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  unsigned long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 unsigned long TYP_ulong_int_func(unsigned long arg1)
@@ -240,13 +227,12 @@ unsigned long TYP_ulong_int_func(unsigned long arg1)
     // splicer end function.ulong_int_func
 }
 
-// int8_t int8_func(int8_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int8_t int8_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int8_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int8_t TYP_int8_func(int8_t arg1)
@@ -257,13 +243,12 @@ int8_t TYP_int8_func(int8_t arg1)
     // splicer end function.int8_func
 }
 
-// int16_t int16_func(int16_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int16_t int16_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int16_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int16_t TYP_int16_func(int16_t arg1)
@@ -274,13 +259,12 @@ int16_t TYP_int16_func(int16_t arg1)
     // splicer end function.int16_func
 }
 
-// int32_t int32_func(int32_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int32_t int32_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int32_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int32_t TYP_int32_func(int32_t arg1)
@@ -291,13 +275,12 @@ int32_t TYP_int32_func(int32_t arg1)
     // splicer end function.int32_func
 }
 
-// int64_t int64_func(int64_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int64_t int64_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int64_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int64_t TYP_int64_func(int64_t arg1)
@@ -308,13 +291,12 @@ int64_t TYP_int64_func(int64_t arg1)
     // splicer end function.int64_func
 }
 
-// uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  uint8_t uint8_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  uint8_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 uint8_t TYP_uint8_func(uint8_t arg1)
@@ -325,13 +307,12 @@ uint8_t TYP_uint8_func(uint8_t arg1)
     // splicer end function.uint8_func
 }
 
-// uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  uint16_t uint16_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  uint16_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 uint16_t TYP_uint16_func(uint16_t arg1)
@@ -342,13 +323,12 @@ uint16_t TYP_uint16_func(uint16_t arg1)
     // splicer end function.uint16_func
 }
 
-// uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  uint32_t uint32_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  uint32_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 uint32_t TYP_uint32_func(uint32_t arg1)
@@ -359,13 +339,12 @@ uint32_t TYP_uint32_func(uint32_t arg1)
     // splicer end function.uint32_func
 }
 
-// uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  uint64_t uint64_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  uint64_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 uint64_t TYP_uint64_func(uint64_t arg1)
@@ -376,13 +355,12 @@ uint64_t TYP_uint64_func(uint64_t arg1)
     // splicer end function.uint64_func
 }
 
-// size_t size_func(size_t arg1 +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  size_t size_func
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  size_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 size_t TYP_size_func(size_t arg1)
@@ -393,13 +371,12 @@ size_t TYP_size_func(size_t arg1)
     // splicer end function.size_func
 }
 
-// bool bool_func(bool arg +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  bool bool_func
 // Requested: c_bool_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  bool arg +intent(in)+value
 // Requested: c_bool_scalar_in
 // Match:     c_default
 bool TYP_bool_func(bool arg)
@@ -410,7 +387,6 @@ bool TYP_bool_func(bool arg)
     // splicer end function.bool_func
 }
 
-// bool returnBoolAndOthers(int * flag +intent(out))
 /**
  * \brief Function which returns bool with other intent(out) arguments
  *
@@ -422,11 +398,11 @@ bool TYP_bool_func(bool arg)
  * local C variable to avoid duplicate names in wrapper.
  */
 // ----------------------------------------
-// Result
+// Function:  bool returnBoolAndOthers
 // Requested: c_bool_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  flag
+// Argument:  int * flag +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 bool TYP_return_bool_and_others(int * flag)

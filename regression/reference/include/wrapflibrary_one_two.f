@@ -17,7 +17,7 @@ module library_one_two_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void function1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine function1() &

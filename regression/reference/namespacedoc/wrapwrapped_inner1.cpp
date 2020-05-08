@@ -16,9 +16,8 @@ extern "C" {
 // splicer begin namespace.inner1.C_definitions
 // splicer end namespace.inner1.C_definitions
 
-// void worker()
 // ----------------------------------------
-// Result
+// Function:  void worker
 // Requested: c
 // Match:     c_default
 void WWW_inner1_worker()

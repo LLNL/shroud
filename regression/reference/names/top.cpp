@@ -38,9 +38,8 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void function1()
 // ----------------------------------------
-// Result
+// Function:  void function1
 // Requested: c
 // Match:     c_default
 void YYY_TES_function1()
@@ -50,9 +49,8 @@ void YYY_TES_function1()
     // splicer end function.function1
 }
 
-// void function2()
 // ----------------------------------------
-// Result
+// Function:  void function2
 // Requested: c
 // Match:     c_default
 void c_name_special()
@@ -62,13 +60,12 @@ void c_name_special()
     // splicer end function.function2
 }
 
-// void function3a(int i +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void function3a
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  i
+// Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void YYY_TES_function3a_0(int i)
@@ -78,13 +75,12 @@ void YYY_TES_function3a_0(int i)
     // splicer end function.function3a_0
 }
 
-// void function3a(long i +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  void function3a
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  i
+// Argument:  long i +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void YYY_TES_function3a_1(long i)
@@ -94,13 +90,12 @@ void YYY_TES_function3a_1(long i)
     // splicer end function.function3a_1
 }
 
-// int function4(const std::string & rv +intent(in))
 // ----------------------------------------
-// Result
+// Function:  int function4
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  rv
+// Argument:  const std::string & rv +intent(in)
 // Requested: c_string_&_in
 // Match:     c_string_in
 int YYY_TES_function4(const char * rv)
@@ -112,13 +107,12 @@ int YYY_TES_function4(const char * rv)
     // splicer end function.function4
 }
 
-// int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 // ----------------------------------------
-// Result
+// Function:  int function4
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  rv
+// Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
 // Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
@@ -130,9 +124,8 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
     // splicer end function.function4_bufferify
 }
 
-// void function5() +name(fiveplus)
 // ----------------------------------------
-// Result
+// Function:  void function5 +name(fiveplus)
 // Requested: c
 // Match:     c_default
 void YYY_TES_fiveplus()
@@ -142,20 +135,19 @@ void YYY_TES_fiveplus()
     // splicer end function.fiveplus
 }
 
-// void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 /**
  * Use std::string argument to get bufferified function.
  */
 // ----------------------------------------
-// Result
+// Function:  void TestMultilineSplicer
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  std::string & name +intent(inout)
 // Requested: c_string_&_inout
 // Match:     c_string_inout
 // ----------------------------------------
-// Argument:  value
+// Argument:  int * value +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 void TES_test_multiline_splicer(char * name, int * value)
@@ -166,20 +158,19 @@ void TES_test_multiline_splicer(char * name, int * value)
     // splicer end function.test_multiline_splicer
 }
 
-// void TestMultilineSplicer(std::string & name +intent(inout)+len(Nname)+len_trim(Lname), int * value +intent(out))
 /**
  * Use std::string argument to get bufferified function.
  */
 // ----------------------------------------
-// Result
+// Function:  void TestMultilineSplicer
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
 // Requested: c_string_&_inout_buf
 // Match:     c_string_inout_buf
 // ----------------------------------------
-// Argument:  value
+// Argument:  int * value +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 void TES_test_multiline_splicer_bufferify(char * name, int Lname,
@@ -191,21 +182,20 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     // splicer end function.test_multiline_splicer_bufferify
 }
 
-// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 /**
  * \brief Function template with two template parameters.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void FunctionTU
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  long arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void c_name_instantiation1(int arg1, long arg2)
@@ -215,21 +205,20 @@ void c_name_instantiation1(int arg1, long arg2)
     // splicer end function.function_tu_0
 }
 
-// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 /**
  * \brief Function template with two template parameters.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void FunctionTU
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  float arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TES_function_tu_instantiation2(float arg1, double arg2)
@@ -239,13 +228,12 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
     // splicer end function.function_tu_instantiation2
 }
 
-// int UseImplWorker()
 /**
  * \brief Function which uses a templated T in the implemetation.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  int UseImplWorker
 // Requested: c_native_scalar_result
 // Match:     c_default
 int TES_use_impl_worker_instantiation3()
