@@ -14,9 +14,8 @@
 extern "C" {
 
 
-// void method()
 // ----------------------------------------
-// Result
+// Function:  void method
 // Requested: c
 // Match:     c_default
 void LIB_outer2_class0_method(LIB_outer2_class0 * self)

@@ -34,9 +34,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// int passStructByValue(Cstruct1 arg +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  int passStructByValue
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 arg +intent(in)+value
 // Exact:     py_struct_in_class
 static char PY_passStructByValue__doc__[] =
 "documentation"
@@ -71,9 +74,12 @@ PY_passStructByValue(
 // splicer end function.pass_struct_by_value
 }
 
-// int passStruct1(Cstruct1 * arg +intent(in))
 // ----------------------------------------
-// Argument:  arg
+// Function:  int passStruct1
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * arg +intent(in)
 // Exact:     py_struct_in_class
 static char PY_passStruct1__doc__[] =
 "documentation"
@@ -108,12 +114,15 @@ PY_passStruct1(
 // splicer end function.pass_struct1
 }
 
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
 // ----------------------------------------
-// Argument:  s1
+// Function:  int passStruct2
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * s1 +intent(in)
 // Exact:     py_struct_in_class
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
@@ -154,16 +163,18 @@ PY_passStruct2(
 // splicer end function.pass_struct2
 }
 
-// void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg
+// Function:  void acceptStructOutPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * arg +intent(out)
 // Exact:     py_struct_out_class
 // ----------------------------------------
-// Argument:  i
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_acceptStructOutPtr__doc__[] =
@@ -209,9 +220,11 @@ fail:
 // splicer end function.accept_struct_out_ptr
 }
 
-// void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 // ----------------------------------------
-// Argument:  arg
+// Function:  void acceptStructInOutPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * arg +intent(inout)
 // Exact:     py_struct_inout_class
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
@@ -242,13 +255,15 @@ PY_acceptStructInOutPtr(
 // splicer end function.accept_struct_in_out_ptr
 }
 
-// Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  Cstruct1 returnStructByValue
+// Exact:     py_struct_result_class
+// ----------------------------------------
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructByValue__doc__[] =
@@ -299,13 +314,15 @@ fail:
 // splicer end function.return_struct_by_value
 }
 
-// const Cstruct1 returnConstStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  const Cstruct1 returnConstStructByValue
+// Exact:     py_struct_result_class
+// ----------------------------------------
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnConstStructByValue__doc__[] =
@@ -356,13 +373,15 @@ fail:
 // splicer end function.return_const_struct_by_value
 }
 
-// Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  Cstruct1 * returnStructPtr1
+// Exact:     py_struct_result_class
+// ----------------------------------------
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructPtr1__doc__[] =
@@ -407,17 +426,19 @@ fail:
 // splicer end function.return_struct_ptr1
 }
 
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 // ----------------------------------------
-// Argument:  i
+// Function:  Cstruct1 * returnStructPtr2
+// Exact:     py_struct_result_class
+// ----------------------------------------
+// Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
@@ -466,7 +487,9 @@ fail:
 // splicer end function.return_struct_ptr2
 }
 
-// Cstruct_list * get_global_struct_list()
+// ----------------------------------------
+// Function:  Cstruct_list * get_global_struct_list
+// Exact:     py_struct_result_class
 static char PY_get_global_struct_list__doc__[] =
 "documentation"
 ;

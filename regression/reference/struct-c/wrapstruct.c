@@ -23,20 +23,19 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * Pass name argument which will build a bufferify function.
  */
 // ----------------------------------------
-// Result
+// Function:  int passStruct2
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  s1
+// Argument:  Cstruct1 * s1 +intent(in)
 // Requested: c_struct_*_in_buf
 // Match:     c_struct
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
@@ -49,26 +48,25 @@ int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
     // splicer end function.pass_struct2_bufferify
 }
 
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * \brief Return a pointer to a struct
  *
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Result
+// Function:  Cstruct1 * returnStructPtr2
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
 // ----------------------------------------
-// Argument:  i
+// Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  d
+// Argument:  double d +intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  outbuf
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,

@@ -52,7 +52,9 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 // splicer end namespace.example::nested.class.ExClass1.type.richcompare
 }
 
-// ExClass1()
+// ----------------------------------------
+// Function:  ExClass1
+// Exact:     py_default
 static int
 PP_ExClass1_tp_init_0(
   PP_ExClass1 *self,
@@ -70,9 +72,11 @@ PP_ExClass1_tp_init_0(
 // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
 
-// ExClass1(const string * name +intent(in))
 // ----------------------------------------
-// Argument:  name
+// Function:  ExClass1
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const string * name +intent(in)
 // Requested: py_string_*_in
 // Match:     py_string_in
 /**
@@ -112,9 +116,12 @@ PP_ExClass1_tp_init_1(
 // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
 
-// int incrementCount(int incr +intent(in)+value)
 // ----------------------------------------
-// Argument:  incr
+// Function:  int incrementCount
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int incr +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_incrementCount__doc__[] =
@@ -147,7 +154,10 @@ PP_incrementCount(
 // splicer end namespace.example::nested.class.ExClass1.method.increment_count
 }
 
-// const string & getNameErrorCheck() const +deref(allocatable)
+// ----------------------------------------
+// Function:  const string & getNameErrorCheck +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -171,7 +181,10 @@ PP_getNameErrorCheck(
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
 }
 
-// const string & getNameArg() const +deref(result-as-arg)
+// ----------------------------------------
+// Function:  const string & getNameArg +deref(result-as-arg)
+// Requested: py_string_result
+// Match:     py_default
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;
@@ -195,9 +208,12 @@ PP_getNameArg(
 // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
 }
 
-// int getValue(int value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  int getValue
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -226,9 +242,12 @@ PP_getValue_from_int(
 // splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
 }
 
-// long getValue(long value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  long getValue
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  long value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -257,9 +276,11 @@ PP_getValue_1(
 // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
 }
 
-// bool hasAddr(bool in +intent(in)+value)
 // ----------------------------------------
-// Argument:  in
+// Function:  bool hasAddr
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  bool in +intent(in)+value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 static char PP_hasAddr__doc__[] =
@@ -300,7 +321,9 @@ fail:
 // splicer end namespace.example::nested.class.ExClass1.method.has_addr
 }
 
-// void SplicerSpecial()
+// ----------------------------------------
+// Function:  void SplicerSpecial
+// Exact:     py_default
 static char PP_SplicerSpecial__doc__[] =
 "documentation"
 ;

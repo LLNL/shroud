@@ -85,17 +85,16 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void passChar(char status +intent(in)+value)
 /**
  * \brief pass a single char argument as a scalar.
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void passChar
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  status
+// Argument:  char status +intent(in)+value
 // Requested: c_schar_scalar_in
 // Match:     c_default
 void STR_pass_char(char status)
@@ -105,13 +104,12 @@ void STR_pass_char(char status)
     // splicer end function.pass_char
 }
 
-// char returnChar()
 /**
  * \brief return a char argument (non-pointer)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  char returnChar
 // Requested: c_schar_scalar_result
 // Match:     c_default
 char STR_return_char()
@@ -122,17 +120,16 @@ char STR_return_char()
     // splicer end function.return_char
 }
 
-// void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void returnChar
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_schar_scalar_result_buf
 // Match:     c_schar_result_buf
 void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
@@ -144,7 +141,6 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.return_char_bufferify
 }
 
-// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
@@ -153,15 +149,15 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
  * In Python, src must not be over 40 characters, defined by charlen.
  */
 // ----------------------------------------
-// Result
+// Function:  void passCharPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  dest
+// Argument:  char * dest +charlen(40)+intent(out)
 // Requested: c_char_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  src
+// Argument:  const char * src +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // start STR_pass_char_ptr
@@ -173,7 +169,6 @@ void STR_pass_char_ptr(char * dest, const char * src)
 }
 // end STR_pass_char_ptr
 
-// void passCharPtr(char * dest +charlen(40)+intent(out)+len(Ndest), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
@@ -182,15 +177,15 @@ void STR_pass_char_ptr(char * dest, const char * src)
  * In Python, src must not be over 40 characters, defined by charlen.
  */
 // ----------------------------------------
-// Result
+// Function:  void passCharPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  dest
+// Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
-// Argument:  src
+// Argument:  const char * src +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // start STR_pass_char_ptr_bufferify
@@ -204,7 +199,6 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
 }
 // end STR_pass_char_ptr_bufferify
 
-// void passCharPtrInOut(char * s +intent(inout))
 /**
  * \brief toupper
  *
@@ -212,11 +206,11 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
  * For Python, return a new string since strings are immutable.
  */
 // ----------------------------------------
-// Result
+// Function:  void passCharPtrInOut
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  s
+// Argument:  char * s +intent(inout)
 // Requested: c_char_*_inout
 // Match:     c_default
 void STR_pass_char_ptr_in_out(char * s)
@@ -226,7 +220,6 @@ void STR_pass_char_ptr_in_out(char * s)
     // splicer end function.pass_char_ptr_in_out
 }
 
-// void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 /**
  * \brief toupper
  *
@@ -234,11 +227,11 @@ void STR_pass_char_ptr_in_out(char * s)
  * For Python, return a new string since strings are immutable.
  */
 // ----------------------------------------
-// Result
+// Function:  void passCharPtrInOut
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  s
+// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
 // Requested: c_char_*_inout_buf
 // Match:     c_char_inout_buf
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
@@ -251,13 +244,12 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
     // splicer end function.pass_char_ptr_in_out_bufferify
 }
 
-// const char * getCharPtr1() +deref(allocatable)
 /**
  * \brief return a 'const char *' as character(*)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const char * getCharPtr1 +deref(allocatable)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr1
@@ -270,17 +262,16 @@ const char * STR_get_char_ptr1()
 }
 // end STR_get_char_ptr1
 
-// void getCharPtr1(const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const char *' as character(*)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getCharPtr1
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Requested: c_char_*_result_buf_allocatable
 // Match:     c_char_result_buf_allocatable
 // start STR_get_char_ptr1_bufferify
@@ -299,13 +290,12 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 }
 // end STR_get_char_ptr1_bufferify
 
-// const char * getCharPtr2() +deref(result-as-arg)+len(30)
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr2
@@ -318,17 +308,16 @@ const char * STR_get_char_ptr2()
 }
 // end STR_get_char_ptr2
 
-// void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getCharPtr2 +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 // start STR_get_char_ptr2_bufferify
@@ -341,13 +330,12 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
 }
 // end STR_get_char_ptr2_bufferify
 
-// const char * getCharPtr3() +deref(result-as-arg)
 /**
  * \brief return a 'const char *' as argument
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const char * getCharPtr3 +deref(result-as-arg)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr3
@@ -360,17 +348,16 @@ const char * STR_get_char_ptr3()
 }
 // end STR_get_char_ptr3
 
-// void getCharPtr3(char * output +intent(out)+len(Noutput))
 /**
  * \brief return a 'const char *' as argument
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getCharPtr3
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  output
+// Argument:  char * output +intent(out)+len(Noutput)
 // Requested: c_char_*_result_buf
 // Match:     c_char_result_buf
 // start STR_get_char_ptr3_bufferify
@@ -383,17 +370,16 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
 }
 // end STR_get_char_ptr3_bufferify
 
-// void getConstStringResult(const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringResult
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_buf_allocatable
 void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -404,17 +390,16 @@ void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer end function.get_const_string_result_bufferify
 }
 
-// void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief return a 'const string' as argument
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringLen +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
 // Exact:     c_string_scalar_result_buf
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -429,17 +414,16 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.get_const_string_len_bufferify
 }
 
-// void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 /**
  * \brief return a 'const string' as argument
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringAsArg
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  output
+// Argument:  string * output +intent(out)+len(Noutput)
 // Exact:     c_string_scalar_result_buf
 void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 {
@@ -454,13 +438,12 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
     // splicer end function.get_const_string_as_arg_bufferify
 }
 
-// void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void getConstStringAlloc
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_buf_allocatable
 void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -471,13 +454,12 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer end function.get_const_string_alloc_bufferify
 }
 
-// const string & getConstStringRefPure() +deref(allocatable)
 /**
  * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const string & getConstStringRefPure +deref(allocatable)
 // Requested: c_string_&_result
 // Match:     c_string_result
 // start STR_get_const_string_ref_pure
@@ -491,17 +473,16 @@ const char * STR_get_const_string_ref_pure()
 }
 // end STR_get_const_string_ref_pure
 
-// void getConstStringRefPure(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringRefPure
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 // start STR_get_const_string_ref_pure_bufferify
@@ -514,7 +495,6 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
 }
 // end STR_get_const_string_ref_pure_bufferify
 
-// const string & getConstStringRefLen() +deref(result-as-arg)+len(30)
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
@@ -523,7 +503,7 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
  * The function will not be ALLOCATABLE.
  */
 // ----------------------------------------
-// Result
+// Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_len()
@@ -540,7 +520,6 @@ const char * STR_get_const_string_ref_len()
     // splicer end function.get_const_string_ref_len
 }
 
-// void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
@@ -549,11 +528,11 @@ const char * STR_get_const_string_ref_len()
  * The function will not be ALLOCATABLE.
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringRefLen +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
@@ -569,7 +548,6 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.get_const_string_ref_len_bufferify
 }
 
-// const string & getConstStringRefAsArg() +deref(result-as-arg)
 /**
  * \brief return a 'const string&' as argument
  *
@@ -577,7 +555,7 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Result
+// Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_as_arg()
@@ -594,7 +572,6 @@ const char * STR_get_const_string_ref_as_arg()
     // splicer end function.get_const_string_ref_as_arg
 }
 
-// void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
 /**
  * \brief return a 'const string&' as argument
  *
@@ -602,11 +579,11 @@ const char * STR_get_const_string_ref_as_arg()
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringRefAsArg
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  output
+// Argument:  string & output +intent(out)+len(Noutput)
 // Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_as_arg_bufferify(char * output,
@@ -623,13 +600,12 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
     // splicer end function.get_const_string_ref_as_arg_bufferify
 }
 
-// const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)
 /**
  * \brief Test returning empty string reference
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_len_empty()
@@ -646,17 +622,16 @@ const char * STR_get_const_string_ref_len_empty()
     // splicer end function.get_const_string_ref_len_empty
 }
 
-// void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief Test returning empty string reference
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringRefLenEmpty +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_string_&_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
@@ -673,9 +648,8 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
     // splicer end function.get_const_string_ref_len_empty_bufferify
 }
 
-// const std::string & getConstStringRefAlloc() +deref(allocatable)
 // ----------------------------------------
-// Result
+// Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * STR_get_const_string_ref_alloc()
@@ -687,13 +661,12 @@ const char * STR_get_const_string_ref_alloc()
     // splicer end function.get_const_string_ref_alloc
 }
 
-// void getConstStringRefAlloc(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // ----------------------------------------
-// Result
+// Function:  void getConstStringRefAlloc
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -704,7 +677,6 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer end function.get_const_string_ref_alloc_bufferify
 }
 
-// const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)
 /**
  * \brief return a 'const string *' as character(30)
  *
@@ -714,7 +686,7 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  * because +len(30) so the contents are copied before returning.
  */
 // ----------------------------------------
-// Result
+// Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
 // Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_len()
@@ -726,7 +698,6 @@ const char * STR_get_const_string_ptr_len()
     // splicer end function.get_const_string_ptr_len
 }
 
-// void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief return a 'const string *' as character(30)
  *
@@ -736,11 +707,11 @@ const char * STR_get_const_string_ptr_len()
  * because +len(30) so the contents are copied before returning.
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringPtrLen +len(30)
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_string_*_result_buf
 // Match:     c_string_result_buf
 void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
@@ -760,9 +731,8 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.get_const_string_ptr_len_bufferify
 }
 
-// const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 // ----------------------------------------
-// Result
+// Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
 // Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_alloc()
@@ -774,13 +744,12 @@ const char * STR_get_const_string_ptr_alloc()
     // splicer end function.get_const_string_ptr_alloc
 }
 
-// void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
 // ----------------------------------------
-// Result
+// Function:  void getConstStringPtrAlloc
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
 // Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -791,7 +760,6 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 
-// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
 /**
  * It is the caller's responsibility to release the string
  * created by the C++ library.
@@ -800,7 +768,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  * the return from the C wrapper.
  */
 // ----------------------------------------
-// Result
+// Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
 // Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_owns_alloc()
@@ -812,7 +780,6 @@ const char * STR_get_const_string_ptr_owns_alloc()
     // splicer end function.get_const_string_ptr_owns_alloc
 }
 
-// void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
 /**
  * It is the caller's responsibility to release the string
  * created by the C++ library.
@@ -821,11 +788,11 @@ const char * STR_get_const_string_ptr_owns_alloc()
  * the return from the C wrapper.
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringPtrOwnsAlloc
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
 // Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_owns_alloc_bufferify(
@@ -837,12 +804,11 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
     // splicer end function.get_const_string_ptr_owns_alloc_bufferify
 }
 
-// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 /**
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
 // ----------------------------------------
-// Result
+// Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // Requested: c_string_*_result
 // Match:     c_string_result
 const char * STR_get_const_string_ptr_owns_alloc_pattern()
@@ -854,16 +820,15 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern()
     // splicer end function.get_const_string_ptr_owns_alloc_pattern
 }
 
-// void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))
 /**
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
 // ----------------------------------------
-// Result
+// Function:  void getConstStringPtrOwnsAllocPattern
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
 // Requested: c_string_*_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
@@ -875,7 +840,6 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify
 }
 
-// void acceptStringConstReference(const std::string & arg1 +intent(in))
 /**
  * \brief Accept a const string reference
  *
@@ -884,11 +848,11 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
  * Will copy in.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringConstReference
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  const std::string & arg1 +intent(in)
 // Requested: c_string_&_in
 // Match:     c_string_in
 void STR_accept_string_const_reference(const char * arg1)
@@ -899,7 +863,6 @@ void STR_accept_string_const_reference(const char * arg1)
     // splicer end function.accept_string_const_reference
 }
 
-// void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 /**
  * \brief Accept a const string reference
  *
@@ -908,11 +871,11 @@ void STR_accept_string_const_reference(const char * arg1)
  * Will copy in.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringConstReference
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
 // Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 void STR_accept_string_const_reference_bufferify(const char * arg1,
@@ -924,7 +887,6 @@ void STR_accept_string_const_reference_bufferify(const char * arg1,
     // splicer end function.accept_string_const_reference_bufferify
 }
 
-// void acceptStringReferenceOut(std::string & arg1 +intent(out))
 /**
  * \brief Accept a string reference
  *
@@ -933,11 +895,11 @@ void STR_accept_string_const_reference_bufferify(const char * arg1,
  * Must copy out.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringReferenceOut
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string & arg1 +intent(out)
 // Requested: c_string_&_out
 // Match:     c_string_out
 void STR_accept_string_reference_out(char * arg1)
@@ -949,7 +911,6 @@ void STR_accept_string_reference_out(char * arg1)
     // splicer end function.accept_string_reference_out
 }
 
-// void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))
 /**
  * \brief Accept a string reference
  *
@@ -958,11 +919,11 @@ void STR_accept_string_reference_out(char * arg1)
  * Must copy out.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringReferenceOut
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string & arg1 +intent(out)+len(Narg1)
 // Requested: c_string_&_out_buf
 // Match:     c_string_out_buf
 void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
@@ -974,7 +935,6 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
     // splicer end function.accept_string_reference_out_bufferify
 }
 
-// void acceptStringReference(std::string & arg1 +intent(inout))
 /**
  * \brief Accept a string reference
  *
@@ -983,11 +943,11 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
  * Must copy in and copy out.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringReference
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string & arg1 +intent(inout)
 // Requested: c_string_&_inout
 // Match:     c_string_inout
 // start STR_accept_string_reference
@@ -1001,7 +961,6 @@ void STR_accept_string_reference(char * arg1)
 }
 // end STR_accept_string_reference
 
-// void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))
 /**
  * \brief Accept a string reference
  *
@@ -1010,11 +969,11 @@ void STR_accept_string_reference(char * arg1)
  * Must copy in and copy out.
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringReference
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
 // Requested: c_string_&_inout_buf
 // Match:     c_string_inout_buf
 // start STR_accept_string_reference_bufferify
@@ -1029,17 +988,16 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
 }
 // end STR_accept_string_reference_bufferify
 
-// void acceptStringPointer(std::string * arg1 +intent(inout))
 /**
  * \brief Accept a string pointer
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringPointer
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string * arg1 +intent(inout)
 // Requested: c_string_*_inout
 // Match:     c_string_inout
 void STR_accept_string_pointer(char * arg1)
@@ -1051,17 +1009,16 @@ void STR_accept_string_pointer(char * arg1)
     // splicer end function.accept_string_pointer
 }
 
-// void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))
 /**
  * \brief Accept a string pointer
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void acceptStringPointer
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg1
+// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
 // Requested: c_string_*_inout_buf
 // Match:     c_string_inout_buf
 void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
@@ -1074,13 +1031,12 @@ void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
     // splicer end function.accept_string_pointer_bufferify
 }
 
-// void explicit1(char * name +intent(in)+len_trim(AAlen))
 // ----------------------------------------
-// Result
+// Function:  void explicit1
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  char * name +intent(in)+len_trim(AAlen)
 // Requested: c_char_*_in
 // Match:     c_default
 void STR_explicit1(char * name)
@@ -1090,13 +1046,12 @@ void STR_explicit1(char * name)
     // splicer end function.explicit1
 }
 
-// void explicit2(char * name +intent(out)+len(AAtrim))
 // ----------------------------------------
-// Result
+// Function:  void explicit2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  char * name +intent(out)+len(AAtrim)
 // Requested: c_char_*_out
 // Match:     c_default
 void STR_explicit2(char * name)
@@ -1106,13 +1061,12 @@ void STR_explicit2(char * name)
     // splicer end function.explicit2
 }
 
-// void explicit2(char * name +intent(out)+len(AAtrim))
 // ----------------------------------------
-// Result
+// Function:  void explicit2
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  char * name +intent(out)+len(AAtrim)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 void STR_explicit2_bufferify(char * name, int AAtrim)
@@ -1123,17 +1077,16 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
     // splicer end function.explicit2_bufferify
 }
 
-// void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer), extern "C"
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void CreturnChar
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
 // Requested: c_schar_scalar_result_buf
 // Match:     c_schar_result_buf
 void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
@@ -1145,7 +1098,6 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
     // splicer end function.creturn_char_bufferify
 }
 
-// void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
@@ -1154,15 +1106,15 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
  * extern "C"
  */
 // ----------------------------------------
-// Result
+// Function:  void CpassCharPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  dest
+// Argument:  char * dest +intent(out)+len(Ndest)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
 // ----------------------------------------
-// Argument:  src
+// Argument:  const char * src +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,

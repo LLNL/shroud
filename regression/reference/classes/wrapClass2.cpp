@@ -40,13 +40,12 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // splicer begin class.Class2.C_definitions
 // splicer end class.Class2.C_definitions
 
-// const std::string & getName() +deref(allocatable)
 /**
  * \brief test helper
  *
  */
 // ----------------------------------------
-// Result
+// Function:  const std::string & getName +deref(allocatable)
 // Requested: c_string_&_result
 // Match:     c_string_result
 const char * CLA_Class2_get_name(CLA_Class2 * self)
@@ -60,17 +59,16 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
     // splicer end class.Class2.method.get_name
 }
 
-// void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief test helper
  *
  */
 // ----------------------------------------
-// Result
+// Function:  void getName
 // Requested: c_unknown_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  SHF_rv
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Requested: c_string_&_result_buf_allocatable
 // Match:     c_string_result_buf_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,

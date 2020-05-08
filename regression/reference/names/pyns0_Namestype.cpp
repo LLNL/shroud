@@ -36,7 +36,9 @@ PY_Names_tp_del (PY_Names *self)
 // splicer end namespace.ns0.class.Names.type.del
 }
 
-// void method1()
+// ----------------------------------------
+// Function:  void method1
+// Exact:     py_default
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -53,7 +55,9 @@ PY_method1(
 // splicer end namespace.ns0.class.Names.method.method1
 }
 
-// void method2()
+// ----------------------------------------
+// Function:  void method2
+// Exact:     py_default
 static char PY_method2__doc__[] =
 "documentation"
 ;

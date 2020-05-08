@@ -13,9 +13,8 @@
 extern "C" {
 
 
-// void function1()
 // ----------------------------------------
-// Result
+// Function:  void function1
 // Requested: c
 // Match:     c_default
 void LIB_one_two_function1()

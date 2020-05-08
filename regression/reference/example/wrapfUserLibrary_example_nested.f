@@ -172,7 +172,7 @@ module userlibrary_example_nested_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass1
         ! Exact:     c_shadow_scalar_result
         function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
@@ -185,10 +185,10 @@ module userlibrary_example_nested_mod
         end function c_exclass1_ctor_0
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass1
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const string * name +intent(in)
         ! Requested: c_string_*_in
         ! Match:     c_string_in
         function c_exclass1_ctor_1(name, SHT_crv) &
@@ -203,11 +203,11 @@ module userlibrary_example_nested_mod
         end function c_exclass1_ctor_1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass1
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const string * name +intent(in)+len_trim(Lname)
         ! Requested: c_string_*_in_buf
         ! Match:     c_string_in_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
@@ -223,7 +223,7 @@ module userlibrary_example_nested_mod
         end function c_exclass1_ctor_1_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ~ExClass1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_exclass1_dtor(self) &
@@ -234,11 +234,11 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass1_dtor
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int incrementCount
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  incr
+        ! Argument:  int incr +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_increment_count(self, incr) &
@@ -253,7 +253,7 @@ module userlibrary_example_nested_mod
         end function c_exclass1_increment_count
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  const string & getNameErrorCheck +deref(allocatable)
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass1_get_name_error_check(self) &
@@ -267,11 +267,11 @@ module userlibrary_example_nested_mod
         end function c_exclass1_get_name_error_check
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getNameErrorCheck
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SHF_rv
+        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
@@ -284,7 +284,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  const string & getNameArg +deref(result-as-arg)
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass1_get_name_arg(self) &
@@ -298,11 +298,11 @@ module userlibrary_example_nested_mod
         end function c_exclass1_get_name_arg
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getNameArg
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  string & name +intent(out)+len(Nname)
         ! Requested: c_string_&_result_buf
         ! Match:     c_string_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
@@ -316,11 +316,11 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass1_get_name_arg_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int getValue
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  int value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_get_value_from_int(self, value) &
@@ -335,11 +335,11 @@ module userlibrary_example_nested_mod
         end function c_exclass1_get_value_from_int
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  long getValue
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  long value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_get_value_1(self, value) &
@@ -354,11 +354,11 @@ module userlibrary_example_nested_mod
         end function c_exclass1_get_value_1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  bool hasAddr
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  in
+        ! Argument:  bool in +intent(in)+value
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
         function c_exclass1_has_addr(self, in) &
@@ -373,7 +373,7 @@ module userlibrary_example_nested_mod
         end function c_exclass1_has_addr
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void SplicerSpecial
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_exclass1_splicer_special(self) &
@@ -387,10 +387,10 @@ module userlibrary_example_nested_mod
         ! splicer end namespace.example::nested.class.ExClass1.additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass2
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const string * name +intent(in)+len_trim(trim_name)
         ! Requested: c_string_*_in
         ! Match:     c_string_in
         function c_exclass2_ctor(name, SHT_crv) &
@@ -405,11 +405,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_ctor
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass2
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const string * name +intent(in)+len_trim(trim_name)
         ! Requested: c_string_*_in_buf
         ! Match:     c_string_in_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
@@ -425,7 +425,7 @@ module userlibrary_example_nested_mod
         end function c_exclass2_ctor_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ~ExClass2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_exclass2_dtor(self) &
@@ -436,7 +436,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_dtor
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass2_get_name(self) &
@@ -450,11 +450,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SHF_rv
+        ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
         ! Requested: c_string_&_result_buf
         ! Match:     c_string_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
@@ -468,7 +468,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_get_name_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  const string & getName2 +deref(allocatable)
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_exclass2_get_name2(self) &
@@ -482,11 +482,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name2
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getName2
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SHF_rv
+        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
@@ -498,7 +498,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_get_name2_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  string & getName3 +deref(allocatable)
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         pure function c_exclass2_get_name3(self) &
@@ -512,11 +512,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name3
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getName3
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SHF_rv
+        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
@@ -528,7 +528,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_get_name3_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  string & getName4 +deref(allocatable)
         ! Requested: c_string_&_result
         ! Match:     c_string_result
         function c_exclass2_get_name4(self) &
@@ -542,11 +542,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name4
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void getName4
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SHF_rv
+        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Requested: c_string_&_result_buf_allocatable
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
@@ -558,7 +558,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_get_name4_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int GetNameLength
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_name_length(self) &
@@ -572,11 +572,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name_length
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ExClass1 * get_class1
         ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
-        ! Argument:  in
+        ! Argument:  const ExClass1 * in +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         function c_exclass2_get_class1(self, in, SHT_crv) &
@@ -592,11 +592,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_class1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void * declare
         ! Requested: c_unknown_*_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  type
+        ! Argument:  TypeID type +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_declare_0(self, type) &
@@ -609,15 +609,15 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_declare_0
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void * declare
         ! Requested: c_unknown_*_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  type
+        ! Argument:  TypeID type +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  len
+        ! Argument:  SidreLength len=1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_declare_1(self, type, len) &
@@ -631,7 +631,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_declare_1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void destroyall
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_exclass2_destroyall(self) &
@@ -642,7 +642,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_destroyall
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  TypeID getTypeID
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_type_id(self) &
@@ -656,11 +656,11 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_type_id
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void setValue
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  int value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_int(self, value) &
@@ -673,11 +673,11 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_set_value_int
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void setValue
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  long value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_long(self, value) &
@@ -690,11 +690,11 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_set_value_long
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void setValue
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  float value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_float(self, value) &
@@ -707,11 +707,11 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_set_value_float
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void setValue
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  value
+        ! Argument:  double value +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_double(self, value) &
@@ -724,7 +724,7 @@ module userlibrary_example_nested_mod
         end subroutine c_exclass2_set_value_double
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int getValue
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_int(self) &
@@ -738,7 +738,7 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_value_int
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  double getValue
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_double(self) &
@@ -755,7 +755,7 @@ module userlibrary_example_nested_mod
         ! splicer end namespace.example::nested.class.ExClass2.additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void local_function1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine local_function1() &
@@ -764,11 +764,11 @@ module userlibrary_example_nested_mod
         end subroutine local_function1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  bool isNameValid
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)
         ! Requested: c_string_&_in
         ! Match:     c_string_in
         function c_is_name_valid(name) &
@@ -781,11 +781,11 @@ module userlibrary_example_nested_mod
         end function c_is_name_valid
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  bool isNameValid
         ! Requested: c_bool_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
         ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         function c_is_name_valid_bufferify(name, Lname) &
@@ -799,7 +799,7 @@ module userlibrary_example_nested_mod
         end function c_is_name_valid_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  bool isInitialized
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         function c_is_initialized() &
@@ -811,11 +811,11 @@ module userlibrary_example_nested_mod
         end function c_is_initialized
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void test_names
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)
         ! Requested: c_string_&_in
         ! Match:     c_string_in
         subroutine c_test_names(name) &
@@ -826,11 +826,11 @@ module userlibrary_example_nested_mod
         end subroutine c_test_names
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void test_names
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
         ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         subroutine c_test_names_bufferify(name, Lname) &
@@ -842,15 +842,15 @@ module userlibrary_example_nested_mod
         end subroutine c_test_names_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void test_names
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)
         ! Requested: c_string_&_in
         ! Match:     c_string_in
         ! ----------------------------------------
-        ! Argument:  flag
+        ! Argument:  int flag +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_test_names_flag(name, flag) &
@@ -862,15 +862,15 @@ module userlibrary_example_nested_mod
         end subroutine c_test_names_flag
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void test_names
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  name
+        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
         ! Requested: c_string_&_in_buf
         ! Match:     c_string_in_buf
         ! ----------------------------------------
-        ! Argument:  flag
+        ! Argument:  int flag +intent(in)+value
         ! Requested: c_native_scalar_in_buf
         ! Match:     c_default
         subroutine c_test_names_flag_bufferify(name, Lname, flag) &
@@ -883,7 +883,7 @@ module userlibrary_example_nested_mod
         end subroutine c_test_names_flag_bufferify
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void testoptional
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_testoptional_0() &
@@ -892,11 +892,11 @@ module userlibrary_example_nested_mod
         end subroutine c_testoptional_0
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void testoptional
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  i
+        ! Argument:  int i=1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_testoptional_1(i) &
@@ -907,15 +907,15 @@ module userlibrary_example_nested_mod
         end subroutine c_testoptional_1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void testoptional
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  i
+        ! Argument:  int i=1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  j
+        ! Argument:  long j=2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_testoptional_2(i, j) &
@@ -927,7 +927,7 @@ module userlibrary_example_nested_mod
         end subroutine c_testoptional_2
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  size_t test_size_t
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function test_size_t() &
@@ -940,11 +940,11 @@ module userlibrary_example_nested_mod
 
 #ifdef HAVE_MPI
         ! ----------------------------------------
-        ! Result
+        ! Function:  void testmpi
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  comm
+        ! Argument:  MPI_Comm comm +intent(in)+value
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine c_testmpi_mpi(comm) &
@@ -957,7 +957,7 @@ module userlibrary_example_nested_mod
 
 #ifndef HAVE_MPI
         ! ----------------------------------------
-        ! Result
+        ! Function:  void testmpi
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_testmpi_serial() &
@@ -967,11 +967,11 @@ module userlibrary_example_nested_mod
 #endif
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FuncPtr1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  get
+        ! Argument:  void ( * get)() +intent(in)+value
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine func_ptr1(get) &
@@ -982,11 +982,11 @@ module userlibrary_example_nested_mod
         end subroutine func_ptr1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FuncPtr2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  get
+        ! Argument:  double * ( * get)() +intent(in)
         ! Requested: c_native_*_in
         ! Match:     c_default
         subroutine func_ptr2(get) &
@@ -997,11 +997,11 @@ module userlibrary_example_nested_mod
         end subroutine func_ptr2
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FuncPtr3
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  get
+        ! Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_func_ptr3(get) &
@@ -1012,11 +1012,11 @@ module userlibrary_example_nested_mod
         end subroutine c_func_ptr3
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FuncPtr4
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  get
+        ! Argument:  double ( * get)(double +value, int +value) +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_func_ptr4(get) &
@@ -1027,11 +1027,11 @@ module userlibrary_example_nested_mod
         end subroutine c_func_ptr4
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void FuncPtr5
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  get
+        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine func_ptr5(get) &
@@ -1042,47 +1042,47 @@ module userlibrary_example_nested_mod
         end subroutine func_ptr5
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void verylongfunctionname1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname1
+        ! Argument:  int * verylongname1 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname2
+        ! Argument:  int * verylongname2 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname3
+        ! Argument:  int * verylongname3 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname4
+        ! Argument:  int * verylongname4 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname5
+        ! Argument:  int * verylongname5 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname6
+        ! Argument:  int * verylongname6 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname7
+        ! Argument:  int * verylongname7 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname8
+        ! Argument:  int * verylongname8 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname9
+        ! Argument:  int * verylongname9 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname10
+        ! Argument:  int * verylongname10 +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
@@ -1105,47 +1105,47 @@ module userlibrary_example_nested_mod
         end subroutine c_verylongfunctionname1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  int verylongfunctionname2
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname1
+        ! Argument:  int verylongname1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname2
+        ! Argument:  int verylongname2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname3
+        ! Argument:  int verylongname3 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname4
+        ! Argument:  int verylongname4 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname5
+        ! Argument:  int verylongname5 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname6
+        ! Argument:  int verylongname6 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname7
+        ! Argument:  int verylongname7 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname8
+        ! Argument:  int verylongname8 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname9
+        ! Argument:  int verylongname9 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  verylongname10
+        ! Argument:  int verylongname10 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_verylongfunctionname2(verylongname1, verylongname2, &
@@ -1170,19 +1170,19 @@ module userlibrary_example_nested_mod
         end function c_verylongfunctionname2
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void cos_doubles
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  in
+        ! Argument:  double * in +intent(in)+rank(2)
         ! Requested: c_native_*_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  out
+        ! Argument:  double * out +allocatable(mold=in)+intent(out)+rank(2)
         ! Requested: c_native_*_out
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  sizein
+        ! Argument:  int sizein +implied(size(in))+intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_cos_doubles(in, out, sizein) &
@@ -1238,9 +1238,9 @@ module userlibrary_example_nested_mod
 
 contains
 
-    ! ExClass1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  ExClass1
+    ! ExClass1
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function exclass1_ctor_0() &
@@ -1253,16 +1253,17 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
     end function exclass1_ctor_0
 
-    ! ExClass1(const string * name +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  ExClass1
+    ! ExClass1
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  const string * name +intent(in)
     ! Requested: f_string_*_in
     ! Match:     f_default
+    ! Argument:  const string * name +intent(in)+len_trim(Lname)
     ! Requested: c_string_*_in_buf
     ! Match:     c_string_in_buf
     !>
@@ -1285,9 +1286,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 
-    ! ~ExClass1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  ~ExClass1
+    ! ~ExClass1
     ! Requested: f_shadow_dtor
     ! Match:     f_default
     ! Exact:     c_shadow_dtor
@@ -1303,15 +1304,15 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.delete
     end subroutine exclass1_dtor
 
-    ! int incrementCount(int incr +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  int incrementCount
+    ! int incrementCount
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  incr
+    ! Argument:  int incr +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1327,15 +1328,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getNameErrorCheck() const +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getNameErrorCheck +deref(allocatable)
+    ! const string & getNameErrorCheck +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getNameErrorCheck
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1353,16 +1355,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
-    ! void getNameArg(string & name +intent(out)+len(Nname)) const
-    ! arg_to_buffer - arg_to_buffer
+    ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getNameArg
+    ! void getNameArg
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  string & name +intent(out)+len(Nname)
     ! Requested: f_string_&_result
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
@@ -1377,15 +1379,15 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
 
-    ! int getValue(int value +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  int getValue
+    ! int getValue
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  int value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1401,15 +1403,15 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
     end function exclass1_get_value_from_int
 
-    ! long getValue(long value +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  long getValue
+    ! long getValue
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  long value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1425,15 +1427,15 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.get_value_1
     end function exclass1_get_value_1
 
-    ! bool hasAddr(bool in +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  bool hasAddr
+    ! bool hasAddr
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  bool in +intent(in)+value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     ! Requested: c_bool_scalar_in
@@ -1451,9 +1453,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
     end function exclass1_has_addr
 
-    ! void SplicerSpecial()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void SplicerSpecial
+    ! void SplicerSpecial
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1484,14 +1486,14 @@ contains
       insert extra functions here
     ! splicer end namespace.example::nested.class.ExClass1.additional_functions
 
-    ! ExClass2(const string * name +intent(in)+len_trim(trim_name))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  ExClass2
+    ! ExClass2
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  const string * name +intent(in)+len_trim(trim_name)
     ! Requested: f_string_*_in
     ! Match:     f_default
     ! Requested: c_string_*_in_buf
@@ -1512,9 +1514,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
     end function exclass2_ctor
 
-    ! ~ExClass2()
     ! ----------------------------------------
-    ! Result
+    ! Function:  ~ExClass2
+    ! ~ExClass2
     ! Requested: f_shadow_dtor
     ! Match:     f_default
     ! Exact:     c_shadow_dtor
@@ -1529,15 +1531,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.delete
     end subroutine exclass2_dtor
 
-    ! const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+    ! const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
@@ -1553,15 +1556,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name
     end function exclass2_get_name
 
-    ! const string & getName2() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getName2 +deref(allocatable)
+    ! const string & getName2 +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getName2
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1578,15 +1582,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function exclass2_get_name2
 
-    ! string & getName3() const +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  string & getName3 +deref(allocatable)
+    ! string & getName3 +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getName3
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1603,15 +1608,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function exclass2_get_name3
 
-    ! string & getName4() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  string & getName4 +deref(allocatable)
+    ! string & getName4 +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getName4
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1628,9 +1634,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function exclass2_get_name4
 
-    ! int GetNameLength() const
     ! ----------------------------------------
-    ! Result
+    ! Function:  int GetNameLength
+    ! int GetNameLength
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1649,15 +1655,15 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name_length
     end function exclass2_get_name_length
 
-    ! ExClass1 * get_class1(const ExClass1 * in +intent(in))
     ! ----------------------------------------
-    ! Result
+    ! Function:  ExClass1 * get_class1
+    ! ExClass1 * get_class1
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  const ExClass1 * in +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     ! Requested: c_shadow_*_in
@@ -1675,16 +1681,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_class1
     end function exclass2_get_class1
 
-    ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
-    ! fortran_generic - has_default_arg
+    ! Generated by fortran_generic - has_default_arg
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * declare
+    ! void * declare
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  type
+    ! Argument:  TypeID type +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1698,16 +1704,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_int
     end subroutine exclass2_declare_0_int
 
-    ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
-    ! fortran_generic - has_default_arg
+    ! Generated by fortran_generic - has_default_arg
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * declare
+    ! void * declare
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  type
+    ! Argument:  TypeID type +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1721,24 +1727,25 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_long
     end subroutine exclass2_declare_0_long
 
-    ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
-    ! fortran_generic
+    ! Generated by fortran_generic
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * declare
+    ! void * declare
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  type
+    ! Argument:  TypeID type +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  len
+    ! Argument:  int len=1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Argument:  SidreLength len=1 +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_1_int(obj, type, len)
@@ -1751,24 +1758,25 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_int
     end subroutine exclass2_declare_1_int
 
-    ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
-    ! fortran_generic
+    ! Generated by fortran_generic
     ! ----------------------------------------
-    ! Result
+    ! Function:  void * declare
+    ! void * declare
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  type
+    ! Argument:  TypeID type +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  len
+    ! Argument:  long len=1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Argument:  SidreLength len=1 +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_1_long(obj, type, len)
@@ -1781,9 +1789,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_long
     end subroutine exclass2_declare_1_long
 
-    ! void destroyall()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void destroyall
+    ! void destroyall
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1795,9 +1803,9 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.destroyall
     end subroutine exclass2_destroyall
 
-    ! TypeID getTypeID() const
     ! ----------------------------------------
-    ! Result
+    ! Function:  TypeID getTypeID
+    ! TypeID getTypeID
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1812,16 +1820,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_type_id
     end function exclass2_get_type_id
 
-    ! void setValue(int value +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void setValue
+    ! void setValue
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  int value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1835,16 +1843,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_int
     end subroutine exclass2_set_value_int
 
-    ! void setValue(long value +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void setValue
+    ! void setValue
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  long value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1858,16 +1866,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_long
     end subroutine exclass2_set_value_long
 
-    ! void setValue(float value +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void setValue
+    ! void setValue
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  float value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1881,16 +1889,16 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_float
     end subroutine exclass2_set_value_float
 
-    ! void setValue(double value +intent(in)+value)
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  void setValue
+    ! void setValue
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  value
+    ! Argument:  double value +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -1904,10 +1912,10 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_double
     end subroutine exclass2_set_value_double
 
-    ! int getValue()
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  int getValue
+    ! int getValue
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1922,10 +1930,10 @@ contains
         ! splicer end namespace.example::nested.class.ExClass2.method.get_value_int
     end function exclass2_get_value_int
 
-    ! double getValue()
-    ! cxx_template
+    ! Generated by cxx_template
     ! ----------------------------------------
-    ! Result
+    ! Function:  double getValue
+    ! double getValue
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1958,18 +1966,19 @@ contains
     ! splicer begin namespace.example::nested.class.ExClass2.additional_functions
     ! splicer end namespace.example::nested.class.ExClass2.additional_functions
 
-    ! bool isNameValid(const std::string & name +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  bool isNameValid
+    ! bool isNameValid
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  const std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     function is_name_valid(name) &
@@ -1982,9 +1991,9 @@ contains
         ! splicer end namespace.example::nested.function.is_name_valid
     end function is_name_valid
 
-    ! bool isInitialized()
     ! ----------------------------------------
-    ! Result
+    ! Function:  bool isInitialized
+    ! bool isInitialized
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -1998,18 +2007,19 @@ contains
         ! splicer end namespace.example::nested.function.is_initialized
     end function is_initialized
 
-    ! void test_names(const std::string & name +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void test_names
+    ! void test_names
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  const std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     subroutine test_names(name)
@@ -2020,22 +2030,23 @@ contains
         ! splicer end namespace.example::nested.function.test_names
     end subroutine test_names
 
-    ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void test_names
+    ! void test_names
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  const std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     ! ----------------------------------------
-    ! Argument:  flag
+    ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in_buf
@@ -2050,10 +2061,10 @@ contains
         ! splicer end namespace.example::nested.function.test_names_flag
     end subroutine test_names_flag
 
-    ! void testoptional()
-    ! has_default_arg
+    ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Result
+    ! Function:  void testoptional
+    ! void testoptional
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -2064,16 +2075,16 @@ contains
         ! splicer end namespace.example::nested.function.testoptional_0
     end subroutine testoptional_0
 
-    ! void testoptional(int i=1 +intent(in)+value)
-    ! has_default_arg
+    ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Result
+    ! Function:  void testoptional
+    ! void testoptional
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i=1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -2086,21 +2097,21 @@ contains
         ! splicer end namespace.example::nested.function.testoptional_1
     end subroutine testoptional_1
 
-    ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void testoptional
+    ! void testoptional
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i=1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  j
+    ! Argument:  long j=2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -2115,15 +2126,15 @@ contains
     end subroutine testoptional_2
 
 #ifdef HAVE_MPI
-    ! void testmpi(MPI_Comm comm +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void testmpi
+    ! void testmpi
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  comm
+    ! Argument:  MPI_Comm comm +intent(in)+value
     ! Requested: f_unknown_scalar_in
     ! Match:     f_default
     ! Requested: c_unknown_scalar_in
@@ -2137,9 +2148,9 @@ contains
 #endif
 
 #ifndef HAVE_MPI
-    ! void testmpi()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void testmpi
+    ! void testmpi
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -2151,9 +2162,9 @@ contains
     end subroutine testmpi_serial
 #endif
 
-    ! void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void FuncPtr3
+    ! void FuncPtr3
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -2169,9 +2180,9 @@ contains
         ! splicer end namespace.example::nested.function.func_ptr3
     end subroutine func_ptr3
 
-    ! void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void FuncPtr4
+    ! void FuncPtr4
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -2187,69 +2198,69 @@ contains
         ! splicer end namespace.example::nested.function.func_ptr4
     end subroutine func_ptr4
 
-    ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void verylongfunctionname1
+    ! void verylongfunctionname1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname1
+    ! Argument:  int * verylongname1 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname2
+    ! Argument:  int * verylongname2 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname3
+    ! Argument:  int * verylongname3 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname4
+    ! Argument:  int * verylongname4 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname5
+    ! Argument:  int * verylongname5 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname6
+    ! Argument:  int * verylongname6 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname7
+    ! Argument:  int * verylongname7 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname8
+    ! Argument:  int * verylongname8 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname9
+    ! Argument:  int * verylongname9 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname10
+    ! Argument:  int * verylongname10 +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Requested: c_native_*_inout
@@ -2275,69 +2286,69 @@ contains
         ! splicer end namespace.example::nested.function.verylongfunctionname1
     end subroutine verylongfunctionname1
 
-    ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  int verylongfunctionname2
+    ! int verylongfunctionname2
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname1
+    ! Argument:  int verylongname1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname2
+    ! Argument:  int verylongname2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname3
+    ! Argument:  int verylongname3 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname4
+    ! Argument:  int verylongname4 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname5
+    ! Argument:  int verylongname5 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname6
+    ! Argument:  int verylongname6 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname7
+    ! Argument:  int verylongname7 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname8
+    ! Argument:  int verylongname8 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname9
+    ! Argument:  int verylongname9 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  verylongname10
+    ! Argument:  int verylongname10 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -2365,21 +2376,21 @@ contains
         ! splicer end namespace.example::nested.function.verylongfunctionname2
     end function verylongfunctionname2
 
-    ! void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void cos_doubles
+    ! void cos_doubles
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  in
+    ! Argument:  double * in +intent(in)+rank(2)
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  out
+    ! Argument:  double * out +allocatable(mold=in)+intent(out)+rank(2)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Requested: c_native_*_out

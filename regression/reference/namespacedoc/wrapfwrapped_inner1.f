@@ -23,7 +23,7 @@ module wrapped_inner1_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void worker
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine worker() &

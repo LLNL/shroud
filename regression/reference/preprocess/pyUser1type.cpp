@@ -36,7 +36,9 @@ PY_User1_tp_del (PY_User1 *self)
 // splicer end class.User1.type.del
 }
 
-// void method1()
+// ----------------------------------------
+// Function:  void method1
+// Exact:     py_default
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -53,7 +55,9 @@ PY_method1(
 // splicer end class.User1.method.method1
 }
 
-// void method2()
+// ----------------------------------------
+// Function:  void method2
+// Exact:     py_default
 #if defined(USE_TWO)
 static char PY_method2__doc__[] =
 "documentation"
@@ -72,9 +76,11 @@ PY_method2(
 }
 #endif // if defined(USE_TWO)
 
-// void method3def(int i=0 +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  void method3def
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int i=0 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 #if defined(USE_THREE)

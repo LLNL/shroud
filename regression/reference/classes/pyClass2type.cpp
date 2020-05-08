@@ -36,7 +36,10 @@ PY_Class2_tp_del (PY_Class2 *self)
 // splicer end class.Class2.type.del
 }
 
-// const std::string & getName() +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string & getName +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PY_getName__doc__[] =
 "documentation"
 ;

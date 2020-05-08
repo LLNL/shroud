@@ -40,13 +40,15 @@ PY_user_int_tp_del (PY_user_int *self)
 // splicer end class.user.type.del
 }
 
-// void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void nested
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  double arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_nested_double__doc__[] =

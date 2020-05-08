@@ -20,13 +20,12 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Rank2In(int * arg +cdesc+context(Darg)+intent(in)+rank(2))
 // ----------------------------------------
-// Result
+// Function:  void Rank2In
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  arg
+// Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
 // Requested: c_native_*_in_cdesc
 // Match:     c_native_*_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
@@ -37,7 +36,6 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
     // splicer end function.rank2_in
 }
 
-// void GetScalar1(std::string & name +intent(in), void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value)
 /**
  * Create several Fortran generic functions which call a single
  * C wrapper that checkes the type of the Fortran argument
@@ -48,15 +46,15 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
  * users will not manually create a context struct.
  */
 // ----------------------------------------
-// Result
+// Function:  void GetScalar1
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  std::string & name +intent(in)
 // Requested: c_string_&_in
 // Match:     c_string_in
 // ----------------------------------------
-// Argument:  value
+// Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Requested: c_unknown_*_out_cdesc
 // Match:     c_unknown_*_cdesc
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
@@ -66,7 +64,6 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
     // splicer end function.get_scalar1
 }
 
-// void GetScalar1(std::string & name +intent(in)+len_trim(Lname), void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value)
 /**
  * Create several Fortran generic functions which call a single
  * C wrapper that checkes the type of the Fortran argument
@@ -77,15 +74,15 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
  * users will not manually create a context struct.
  */
 // ----------------------------------------
-// Result
+// Function:  void GetScalar1
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  name
+// Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Requested: c_string_&_in_buf
 // Match:     c_string_in_buf
 // ----------------------------------------
-// Argument:  value
+// Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Requested: c_unknown_*_out_buf_cdesc
 // Match:     c_unknown_*_cdesc
 void CDE_get_scalar1_bufferify(char * name, int Lname,
@@ -114,12 +111,11 @@ void CDE_get_scalar1_bufferify(char * name, int Lname,
     // splicer end function.get_scalar1_bufferify
 }
 
-// int getData()
 /**
  * Wrapper for function which is templated on the return value.
  */
 // ----------------------------------------
-// Result
+// Function:  int getData
 // Requested: c_native_scalar_result
 // Match:     c_default
 int CDE_get_data_int()
@@ -130,12 +126,11 @@ int CDE_get_data_int()
     // splicer end function.get_data_int
 }
 
-// double getData()
 /**
  * Wrapper for function which is templated on the return value.
  */
 // ----------------------------------------
-// Result
+// Function:  double getData
 // Requested: c_native_scalar_result
 // Match:     c_default
 double CDE_get_data_double()

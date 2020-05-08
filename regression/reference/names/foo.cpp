@@ -17,9 +17,8 @@ extern "C" {
 // splicer begin namespace.ns0.class.Names.C_definitions
 // splicer end namespace.ns0.class.Names.C_definitions
 
-// void method1()
 // ----------------------------------------
-// Result
+// Function:  void method1
 // Requested: c
 // Match:     c_default
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
@@ -30,9 +29,8 @@ void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
     // splicer end namespace.ns0.class.Names.method.method1
 }
 
-// void method2()
 // ----------------------------------------
-// Result
+// Function:  void method2
 // Requested: c
 // Match:     c_default
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2)

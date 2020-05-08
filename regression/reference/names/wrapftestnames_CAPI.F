@@ -50,7 +50,7 @@ module testnames_capi_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void Member1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_class1_member1(self) &
@@ -64,7 +64,7 @@ module testnames_capi_mod
         ! splicer end namespace.CAPI.class.Class1.additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void Worker1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_worker1() &
@@ -78,9 +78,9 @@ module testnames_capi_mod
 
 contains
 
-    ! void Member1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void Member1
+    ! void Member1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -118,9 +118,9 @@ contains
     ! splicer begin namespace.CAPI.class.Class1.additional_functions
     ! splicer end namespace.CAPI.class.Class1.additional_functions
 
-    ! void Worker1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void Worker1
+    ! void Worker1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

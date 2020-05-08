@@ -30,7 +30,9 @@
 // splicer begin namespace.ns1.additional_functions
 // splicer end namespace.ns1.additional_functions
 
-// void init_ns1()
+// ----------------------------------------
+// Function:  void init_ns1
+// Exact:     py_default
 static char PY_init_ns1__doc__[] =
 "documentation"
 ;

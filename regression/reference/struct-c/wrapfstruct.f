@@ -58,11 +58,11 @@ module struct_mod
     end type arrays1
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int passStructByValue
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Cstruct1 arg +intent(in)+value
     ! Requested: c_struct_scalar_in
     ! Match:     c_struct
     ! start pass_struct_by_value
@@ -80,11 +80,11 @@ module struct_mod
     ! end pass_struct_by_value
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int passStruct1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Cstruct1 * arg +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! start pass_struct1
@@ -102,15 +102,15 @@ module struct_mod
     ! end pass_struct1
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int passStruct2
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s1
+    ! Argument:  Cstruct1 * s1 +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     interface
@@ -127,15 +127,15 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int passStruct2
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s1
+    ! Argument:  Cstruct1 * s1 +intent(in)
     ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
@@ -153,11 +153,11 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  int acceptStructInPtr
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Cstruct1 * arg +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     interface
@@ -173,19 +173,19 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStructOutPtr
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Cstruct1 * arg +intent(out)
     ! Requested: c_struct_*_out
     ! Match:     c_struct
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -201,11 +201,11 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStructInOutPtr
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Cstruct1 * arg +intent(inout)
     ! Requested: c_struct_*_inout
     ! Match:     c_struct
     interface
@@ -218,15 +218,15 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 returnStructByValue
     ! Requested: c_struct_scalar_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -243,15 +243,15 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const Cstruct1 returnConstStructByValue
     ! Requested: c_struct_scalar_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -268,15 +268,15 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 * returnStructPtr1
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -292,19 +292,19 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 * returnStructPtr2
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     interface
@@ -321,19 +321,19 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 * returnStructPtr2
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
@@ -351,7 +351,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct_list * get_global_struct_list
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     interface
@@ -371,24 +371,25 @@ module struct_mod
 
 contains
 
-    ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  int passStruct2
+    ! int passStruct2
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s1
+    ! Argument:  Cstruct1 * s1 +intent(in)
     ! Requested: f_struct_*_in
     ! Match:     f_default
     ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
@@ -406,20 +407,20 @@ contains
         ! splicer end function.pass_struct2
     end function pass_struct2
 
-    ! Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 * returnStructPtr1
+    ! Cstruct1 * returnStructPtr1
     ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in
@@ -442,29 +443,30 @@ contains
         ! splicer end function.return_struct_ptr1
     end function return_struct_ptr1
 
-    ! Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct1 * returnStructPtr2
+    ! Cstruct1 * returnStructPtr2
     ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  i
+    ! Argument:  int i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  d
+    ! Argument:  double d +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  outbuf
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
+    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
@@ -487,9 +489,9 @@ contains
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2
 
-    ! Cstruct_list * get_global_struct_list()
     ! ----------------------------------------
-    ! Result
+    ! Function:  Cstruct_list * get_global_struct_list
+    ! Cstruct_list * get_global_struct_list
     ! Exact:     f_struct_*_result
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result

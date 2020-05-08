@@ -18,9 +18,8 @@ extern "C" {
 // splicer begin namespace.std.class.vector.C_definitions
 // splicer end namespace.std.class.vector.C_definitions
 
-// vector()
 // ----------------------------------------
-// Result
+// Function:  vector
 // Exact:     c_shadow_scalar_ctor
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 {
@@ -32,9 +31,8 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
     // splicer end namespace.std.class.vector.method.ctor
 }
 
-// ~vector()
 // ----------------------------------------
-// Result
+// Function:  ~vector
 // Exact:     c_shadow_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)
 {
@@ -46,13 +44,12 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
     // splicer end namespace.std.class.vector.method.dtor
 }
 
-// void push_back(const int & value +intent(in))
 // ----------------------------------------
-// Result
+// Function:  void push_back
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  value
+// Argument:  const int & value +intent(in)
 // Requested: c_native_&_in
 // Match:     c_default
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
@@ -64,13 +61,12 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
     // splicer end namespace.std.class.vector.method.push_back
 }
 
-// int & at(size_type n +intent(in)+value)
 // ----------------------------------------
-// Result
+// Function:  int & at
 // Requested: c_native_&_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  n
+// Argument:  size_type n +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 int * TEM_vector_int_at(TEM_vector_int * self, size_t n)

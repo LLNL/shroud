@@ -51,7 +51,7 @@ module name_module
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine xxx_tes_names_method1(self) &
@@ -62,7 +62,7 @@ module name_module
         end subroutine xxx_tes_names_method1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine xxx_tes_names_method2(self2) &
@@ -81,9 +81,9 @@ module name_module
 
 contains
 
-    ! void method1()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method1
+    ! void method1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -95,9 +95,9 @@ contains
         ! splicer end namespace.ns0.class.Names.method.type_method1
     end subroutine names_method1
 
-    ! void method2()
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method2
+    ! void method2
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

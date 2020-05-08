@@ -74,7 +74,7 @@ module forward_mod
         ! splicer end class.Class3.additional_interfaces
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  Class2
         ! Exact:     c_shadow_scalar_result
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -87,7 +87,7 @@ module forward_mod
         end function c_class2_ctor
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  ~Class2
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         subroutine c_class2_dtor(self) &
@@ -98,11 +98,11 @@ module forward_mod
         end subroutine c_class2_dtor
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void func1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg
+        ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_func1(self, arg) &
@@ -115,11 +115,11 @@ module forward_mod
         end subroutine c_class2_func1
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void acceptClass3
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg
+        ! Argument:  Class3 * arg +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         subroutine c_class2_accept_class3(self, arg) &
@@ -165,9 +165,9 @@ contains
     ! splicer begin class.Class3.additional_functions
     ! splicer end class.Class3.additional_functions
 
-    ! Class2()
     ! ----------------------------------------
-    ! Result
+    ! Function:  Class2
+    ! Class2
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function class2_ctor() &
@@ -180,9 +180,9 @@ contains
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 
-    ! ~Class2()
     ! ----------------------------------------
-    ! Result
+    ! Function:  ~Class2
+    ! ~Class2
     ! Requested: f_shadow_dtor
     ! Match:     f_default
     ! Exact:     c_shadow_dtor
@@ -193,15 +193,15 @@ contains
         ! splicer end class.Class2.method.dtor
     end subroutine class2_dtor
 
-    ! void func1(tutorial::Class1 * arg +intent(in))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void func1
+    ! void func1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     ! Requested: c_shadow_*_in
@@ -215,15 +215,15 @@ contains
         ! splicer end class.Class2.method.func1
     end subroutine class2_func1
 
-    ! void acceptClass3(Class3 * arg +intent(in))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptClass3
+    ! void acceptClass3
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg
+    ! Argument:  Class3 * arg +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     ! Requested: c_shadow_*_in

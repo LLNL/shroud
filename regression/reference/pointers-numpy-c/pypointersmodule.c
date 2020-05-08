@@ -67,17 +67,19 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 // ----------------------------------------
-// Argument:  argin
+// Function:  void intargs
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const int argin +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arginout
+// Argument:  int * arginout +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  argout
+// Argument:  int * argout +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_intargs__doc__[] =
@@ -115,12 +117,14 @@ PY_intargs(
 // splicer end function.intargs
 }
 
-// void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
-// Argument:  in
+// Function:  void cos_doubles
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  out
+// Argument:  double * out +allocatable(mold=in)+intent(out)
 // Exact:     py_native_out_allocatable_numpy_mold
 static char PY_cos_doubles__doc__[] =
 "documentation"
@@ -181,12 +185,14 @@ fail:
 // splicer end function.cos_doubles
 }
 
-// void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
-// Argument:  in
+// Function:  void truncate_to_int
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  out
+// Argument:  int * out +allocatable(mold=in)+intent(out)
 // Exact:     py_native_out_allocatable_numpy_mold
 static char PY_truncate_to_int__doc__[] =
 "documentation"
@@ -249,13 +255,15 @@ fail:
 // splicer end function.truncate_to_int
 }
 
-// void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // ----------------------------------------
-// Argument:  nvalues
+// Function:  void get_values
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * nvalues +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +dimension(3)+intent(out)
 // Exact:     py_native_out_dimension_numpy
 static char PY_get_values__doc__[] =
 "documentation"
@@ -306,12 +314,14 @@ fail:
 // splicer end function.get_values
 }
 
-// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void get_values2
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * arg1 +dimension(3)+intent(out)
 // Exact:     py_native_out_dimension_numpy
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  int * arg2 +dimension(3)+intent(out)
 // Exact:     py_native_out_dimension_numpy
 static char PY_get_values2__doc__[] =
 "documentation"
@@ -370,13 +380,15 @@ fail:
 // splicer end function.get_values2
 }
 
-// void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
 // ----------------------------------------
-// Argument:  nvar
+// Function:  void iota_allocatable
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int nvar +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +allocatable(nvar)+intent(out)
 // Exact:     py_native_out_allocatable_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
@@ -421,13 +433,15 @@ fail:
 // splicer end function.iota_allocatable
 }
 
-// void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 // ----------------------------------------
-// Argument:  nvar
+// Function:  void iota_dimension
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int nvar +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  values
+// Argument:  int * values +dimension(nvar)+intent(out)
 // Exact:     py_native_out_dimension_numpy
 static char PY_iota_dimension__doc__[] =
 "documentation"
@@ -472,12 +486,14 @@ fail:
 // splicer end function.iota_dimension
 }
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 // ----------------------------------------
-// Argument:  values
+// Function:  void Sum
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * values +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  result
+// Argument:  int * result +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_Sum__doc__[] =
@@ -532,9 +548,11 @@ fail:
 // splicer end function.sum
 }
 
-// void fillIntArray(int * out +dimension(3)+intent(out))
 // ----------------------------------------
-// Argument:  out
+// Function:  void fillIntArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * out +dimension(3)+intent(out)
 // Exact:     py_native_out_dimension_numpy
 static char PY_fillIntArray__doc__[] =
 "documentation"
@@ -574,9 +592,11 @@ fail:
 // splicer end function.fill_int_array
 }
 
-// void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
 // ----------------------------------------
-// Argument:  array
+// Function:  void incrementIntArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * array +intent(inout)+rank(1)
 // Exact:     py_native_inout_dimension_numpy
 static char PY_incrementIntArray__doc__[] =
 "documentation"
@@ -624,9 +644,11 @@ fail:
 // splicer end function.increment_int_array
 }
 
-// void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 // ----------------------------------------
-// Argument:  names
+// Function:  void acceptCharArrayIn
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * * names +intent(in)+rank(1)
 // Exact:     py_char_**_in
 static char PY_acceptCharArrayIn__doc__[] =
 "documentation"
@@ -671,9 +693,11 @@ fail:
 // splicer end function.accept_char_array_in
 }
 
-// void setGlobalInt(int value +intent(in)+value)
 // ----------------------------------------
-// Argument:  value
+// Function:  void setGlobalInt
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int value +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_setGlobalInt__doc__[] =
@@ -701,7 +725,10 @@ PY_setGlobalInt(
 // splicer end function.set_global_int
 }
 
-// int sumFixedArray()
+// ----------------------------------------
+// Function:  int sumFixedArray
+// Requested: py_native_result
+// Match:     py_default
 static char PY_sumFixedArray__doc__[] =
 "documentation"
 ;
@@ -727,9 +754,12 @@ PY_sumFixedArray(
 // splicer end function.sum_fixed_array
 }
 
-// void * returnAddress1(int flag +intent(in)+value)
 // ----------------------------------------
-// Argument:  flag
+// Function:  void * returnAddress1
+// Requested: py_unknown_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnAddress1__doc__[] =
@@ -762,9 +792,12 @@ PY_returnAddress1(
 // splicer end function.return_address1
 }
 
-// void * returnAddress2(int flag +intent(in)+value)
 // ----------------------------------------
-// Argument:  flag
+// Function:  void * returnAddress2
+// Requested: py_unknown_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnAddress2__doc__[] =
@@ -797,7 +830,9 @@ PY_returnAddress2(
 // splicer end function.return_address2
 }
 
-// int * returnIntPtrToScalar()
+// ----------------------------------------
+// Function:  int * returnIntPtrToScalar
+// Exact:     py_native_result_dimension_numpy
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -825,7 +860,9 @@ fail:
 // splicer end function.return_int_ptr_to_scalar
 }
 
-// int * returnIntPtrToFixedArray() +dimension(10)
+// ----------------------------------------
+// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Exact:     py_native_result_dimension_numpy
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;

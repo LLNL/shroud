@@ -16,9 +16,8 @@ extern "C" {
 // splicer begin namespace.CAPI.class.Class1.C_definitions
 // splicer end namespace.CAPI.class.Class1.C_definitions
 
-// void Member1()
 // ----------------------------------------
-// Result
+// Function:  void Member1
 // Requested: c
 // Match:     c_default
 void TES_capi_class1_member1(TES_capi_class1 * self)

@@ -1228,6 +1228,9 @@ class Declaration(Node):
 
     def gen_decl(self, **kwargs):
         """Return a string of the unparsed declaration.
+
+        Args:
+            params - None do not print parameters.
         """
         decl = []
         self.gen_decl_work(decl, **kwargs)

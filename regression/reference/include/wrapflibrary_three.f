@@ -40,11 +40,11 @@ module library_three_mod
     interface
 
         ! ----------------------------------------
-        ! Result
+        ! Function:  void method1
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  arg1
+        ! Argument:  CustomType arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_class1_method1(self, arg1) &
@@ -61,15 +61,15 @@ module library_three_mod
 
 contains
 
-    ! void method1(CustomType arg1 +intent(in)+value)
     ! ----------------------------------------
-    ! Result
+    ! Function:  void method1
+    ! void method1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  CustomType arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Requested: c_native_scalar_in

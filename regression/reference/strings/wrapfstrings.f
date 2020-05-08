@@ -47,11 +47,11 @@ module strings_mod
     ! end array_context
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passChar
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  status
+    ! Argument:  char status +intent(in)+value
     ! Requested: c_schar_scalar_in
     ! Match:     c_default
     interface
@@ -64,7 +64,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  char returnChar
     ! Requested: c_schar_scalar_result
     ! Match:     c_default
     interface
@@ -78,11 +78,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void returnChar
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_schar_*_result_buf
     ! Match:     c_schar_result_buf
     interface
@@ -96,15 +96,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtr
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +charlen(40)+intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  src
+    ! Argument:  const char * src +intent(in)
     ! Requested: c_char_*_in
     ! Match:     c_default
     ! start c_pass_char_ptr
@@ -120,15 +120,15 @@ module strings_mod
     ! end c_pass_char_ptr
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtr
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! ----------------------------------------
-    ! Argument:  src
+    ! Argument:  const char * src +intent(in)
     ! Requested: c_char_*_in
     ! Match:     c_default
     ! start c_pass_char_ptr_bufferify
@@ -145,11 +145,11 @@ module strings_mod
     ! end c_pass_char_ptr_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtrInOut
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s
+    ! Argument:  char * s +intent(inout)
     ! Requested: c_char_*_inout
     ! Match:     c_default
     interface
@@ -162,11 +162,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtrInOut
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s
+    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
     ! Requested: c_char_*_inout_buf
     ! Match:     c_char_inout_buf
     interface
@@ -181,7 +181,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const char * getCharPtr1 +deref(allocatable)
     ! Requested: c_char_*_result
     ! Match:     c_char_result
     ! start c_get_char_ptr1
@@ -197,11 +197,11 @@ module strings_mod
     ! end c_get_char_ptr1
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getCharPtr1
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: c_char_*_result_buf_allocatable
     ! Match:     c_char_result_buf_allocatable
     ! start c_get_char_ptr1_bufferify
@@ -216,7 +216,7 @@ module strings_mod
     ! end c_get_char_ptr1_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
     ! Requested: c_char_*_result
     ! Match:     c_char_result
     ! start c_get_char_ptr2
@@ -232,11 +232,11 @@ module strings_mod
     ! end c_get_char_ptr2
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getCharPtr2 +len(30)
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_char_*_result_buf
     ! Match:     c_char_result_buf
     ! start c_get_char_ptr2_bufferify
@@ -252,7 +252,7 @@ module strings_mod
     ! end c_get_char_ptr2_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const char * getCharPtr3 +deref(result-as-arg)
     ! Requested: c_char_*_result
     ! Match:     c_char_result
     ! start c_get_char_ptr3
@@ -268,11 +268,11 @@ module strings_mod
     ! end c_get_char_ptr3
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getCharPtr3
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  char * output +intent(out)+len(Noutput)
     ! Requested: c_char_*_result_buf
     ! Match:     c_char_result_buf
     ! start c_get_char_ptr3_bufferify
@@ -288,11 +288,11 @@ module strings_mod
     ! end c_get_char_ptr3_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringResult
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -305,11 +305,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringLen +len(30)
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_string_*_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -323,11 +323,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringAsArg
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  string * output +intent(out)+len(Noutput)
     ! Requested: c_string_*_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -341,11 +341,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringAlloc
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -358,7 +358,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefPure +deref(allocatable)
     ! Requested: c_string_&_result
     ! Match:     c_string_result
     ! start c_get_const_string_ref_pure
@@ -374,11 +374,11 @@ module strings_mod
     ! end c_get_const_string_ref_pure
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefPure
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     ! start c_get_const_string_ref_pure_bufferify
@@ -393,7 +393,7 @@ module strings_mod
     ! end c_get_const_string_ref_pure_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
     ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
@@ -407,11 +407,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefLen +len(30)
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -425,7 +425,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
     ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
@@ -439,11 +439,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefAsArg
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  string & output +intent(out)+len(Noutput)
     ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -458,7 +458,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
     ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
@@ -472,11 +472,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefLenEmpty +len(30)
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -491,7 +491,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
     ! Requested: c_string_&_result
     ! Match:     c_string_result
     interface
@@ -505,11 +505,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefAlloc
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -522,7 +522,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
     ! Requested: c_string_*_result
     ! Match:     c_string_result
     interface
@@ -536,11 +536,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringPtrLen +len(30)
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_string_*_result_buf
     ! Match:     c_string_result_buf
     interface
@@ -554,7 +554,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! Requested: c_string_*_result
     ! Match:     c_string_result
     interface
@@ -568,11 +568,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringPtrAlloc
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -585,7 +585,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
     ! Requested: c_string_*_result
     ! Match:     c_string_result
     interface
@@ -599,11 +599,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringPtrOwnsAlloc
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -616,7 +616,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! Requested: c_string_*_result
     ! Match:     c_string_result
     interface
@@ -630,11 +630,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringPtrOwnsAllocPattern
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     interface
@@ -648,11 +648,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringConstReference
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  const std::string & arg1 +intent(in)
     ! Requested: c_string_&_in
     ! Match:     c_string_in
     interface
@@ -665,11 +665,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringConstReference
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     interface
@@ -684,11 +684,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReferenceOut
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(out)
     ! Requested: c_string_&_out
     ! Match:     c_string_out
     interface
@@ -701,11 +701,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReferenceOut
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
     ! Requested: c_string_&_out_buf
     ! Match:     c_string_out_buf
     interface
@@ -719,11 +719,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReference
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(inout)
     ! Requested: c_string_&_inout
     ! Match:     c_string_inout
     ! start c_accept_string_reference
@@ -738,11 +738,11 @@ module strings_mod
     ! end c_accept_string_reference
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReference
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
     ! Requested: c_string_&_inout_buf
     ! Match:     c_string_inout_buf
     ! start c_accept_string_reference_bufferify
@@ -760,11 +760,11 @@ module strings_mod
     ! end c_accept_string_reference_bufferify
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringPointer
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string * arg1 +intent(inout)
     ! Requested: c_string_*_inout
     ! Match:     c_string_inout
     interface
@@ -777,11 +777,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringPointer
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
     ! Requested: c_string_*_inout_buf
     ! Match:     c_string_inout_buf
     interface
@@ -796,11 +796,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void explicit1
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Requested: c_char_*_in
     ! Match:     c_default
     interface
@@ -813,11 +813,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void explicit2
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Requested: c_char_*_out
     ! Match:     c_default
     interface
@@ -830,11 +830,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void explicit2
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     interface
@@ -848,11 +848,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void CpassChar
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  status
+    ! Argument:  char status +intent(in)+value
     ! Requested: c_schar_scalar_in
     ! Match:     c_default
     interface
@@ -865,7 +865,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  char CreturnChar
     ! Requested: c_schar_scalar_result
     ! Match:     c_default
     interface
@@ -879,11 +879,11 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void CreturnChar
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: c_schar_*_result_buf
     ! Match:     c_schar_result_buf
     interface
@@ -897,15 +897,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void CpassCharPtr
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  src
+    ! Argument:  const char * src +intent(in)
     ! Requested: c_char_*_in
     ! Match:     c_default
     interface
@@ -919,15 +919,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Result
+    ! Function:  void CpassCharPtr
     ! Requested: c_unknown_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +intent(out)+len(Ndest)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     ! ----------------------------------------
-    ! Argument:  src
+    ! Argument:  const char * src +intent(in)
     ! Requested: c_char_*_in
     ! Match:     c_default
     interface
@@ -961,16 +961,17 @@ module strings_mod
 
 contains
 
-    ! char returnChar()
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  char returnChar
+    ! char returnChar
     ! Requested: f_schar_scalar_result
     ! Match:     f_default
+    ! Function:  void returnChar
     ! Requested: c_schar_scalar_result_buf
     ! Match:     c_schar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_schar_*_result
     ! Match:     f_default
     ! Requested: c_schar_*_result_buf
@@ -988,18 +989,19 @@ contains
         ! splicer end function.return_char
     end function return_char
 
-    ! void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtr
+    ! void passCharPtr
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +charlen(40)+intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
+    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>
@@ -1021,18 +1023,19 @@ contains
     end subroutine pass_char_ptr
     ! end pass_char_ptr
 
-    ! void passCharPtrInOut(char * s +intent(inout))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void passCharPtrInOut
+    ! void passCharPtrInOut
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  s
+    ! Argument:  char * s +intent(inout)
     ! Requested: f_char_*_inout
     ! Match:     f_default
+    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
     ! Requested: c_char_*_inout_buf
     ! Match:     c_char_inout_buf
     !>
@@ -1050,16 +1053,17 @@ contains
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
-    ! const char * getCharPtr1() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const char * getCharPtr1 +deref(allocatable)
+    ! const char * getCharPtr1 +deref(allocatable)
     ! Requested: f_char_scalar_result_allocatable
     ! Match:     f_char_result_allocatable
+    ! Function:  void getCharPtr1
     ! Requested: c_char_scalar_result_buf
     ! Match:     c_char_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_char_*_result_allocatable
     ! Match:     f_char_result_allocatable
     ! Requested: c_char_*_result_buf_allocatable
@@ -1081,16 +1085,17 @@ contains
     end function get_char_ptr1
     ! end get_char_ptr1
 
-    ! const char * getCharPtr2() +deref(result-as-arg)+len(30)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
+    ! const char * getCharPtr2 +deref(result-as-arg)+len(30)
     ! Requested: f_char_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getCharPtr2 +len(30)
     ! Requested: c_char_scalar_result_buf
     ! Match:     c_char_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_char_*_result
     ! Match:     f_default
     ! Requested: c_char_*_result_buf
@@ -1110,16 +1115,16 @@ contains
     end function get_char_ptr2
     ! end get_char_ptr2
 
-    ! void getCharPtr3(char * output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
+    ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getCharPtr3
+    ! void getCharPtr3
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  char * output +intent(out)+len(Noutput)
     ! Requested: f_char_*_result
     ! Match:     f_default
     ! Requested: c_char_*_result_buf
@@ -1138,15 +1143,16 @@ contains
     end subroutine get_char_ptr3
     ! end get_char_ptr3
 
-    ! const string getConstStringResult() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string getConstStringResult +deref(allocatable)
+    ! const string getConstStringResult +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringResult
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
@@ -1166,15 +1172,16 @@ contains
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
-    ! const string getConstStringLen() +deref(result-as-arg)+len(30)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string getConstStringLen +deref(result-as-arg)+len(30)
+    ! const string getConstStringLen +deref(result-as-arg)+len(30)
     ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getConstStringLen +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_*_result
     ! Match:     f_default
     ! Requested: c_string_*_result_buf
@@ -1193,16 +1200,16 @@ contains
         ! splicer end function.get_const_string_len
     end function get_const_string_len
 
-    ! void getConstStringAsArg(string * output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
+    ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringAsArg
+    ! void getConstStringAsArg
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  string * output +intent(out)+len(Noutput)
     ! Requested: f_string_*_result
     ! Match:     f_default
     ! Requested: c_string_*_result_buf
@@ -1220,15 +1227,16 @@ contains
         ! splicer end function.get_const_string_as_arg
     end subroutine get_const_string_as_arg
 
-    ! const std::string getConstStringAlloc() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string getConstStringAlloc +deref(allocatable)
+    ! const std::string getConstStringAlloc +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
@@ -1244,15 +1252,16 @@ contains
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
-    ! const string & getConstStringRefPure() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefPure +deref(allocatable)
+    ! const string & getConstStringRefPure +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringRefPure
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1274,15 +1283,16 @@ contains
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
 
-    ! const string & getConstStringRefLen() +deref(result-as-arg)+len(30)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
+    ! const string & getConstStringRefLen +deref(result-as-arg)+len(30)
     ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getConstStringRefLen +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
@@ -1304,16 +1314,16 @@ contains
         ! splicer end function.get_const_string_ref_len
     end function get_const_string_ref_len
 
-    ! void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
+    ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void getConstStringRefAsArg
+    ! void getConstStringRefAsArg
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  output
+    ! Argument:  string & output +intent(out)+len(Noutput)
     ! Requested: f_string_&_result
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
@@ -1333,15 +1343,16 @@ contains
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
 
-    ! const string & getConstStringRefLenEmpty() +deref(result-as-arg)+len(30)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
+    ! const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
     ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getConstStringRefLenEmpty +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
@@ -1360,15 +1371,16 @@ contains
         ! splicer end function.get_const_string_ref_len_empty
     end function get_const_string_ref_len_empty
 
-    ! const std::string & getConstStringRefAlloc() +deref(allocatable)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
+    ! const std::string & getConstStringRefAlloc +deref(allocatable)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringRefAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Requested: f_string_&_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
@@ -1384,15 +1396,16 @@ contains
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
-    ! const string * getConstStringPtrLen() +deref(result-as-arg)+len(30)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
+    ! const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
     ! Requested: f_string_scalar_result_result-as-arg
     ! Match:     f_default
+    ! Function:  void getConstStringPtrLen +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_*_result
     ! Match:     f_default
     ! Requested: c_string_*_result_buf
@@ -1415,15 +1428,16 @@ contains
         ! splicer end function.get_const_string_ptr_len
     end function get_const_string_ptr_len
 
-    ! const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
+    ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
@@ -1439,15 +1453,16 @@ contains
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
-    ! const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
+    ! const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringPtrOwnsAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
     ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
@@ -1470,15 +1485,16 @@ contains
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
-    ! const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+    ! const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! Requested: f_string_scalar_result_allocatable
     ! Match:     f_string_result_allocatable
+    ! Function:  void getConstStringPtrOwnsAllocPattern
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
     ! Requested: f_string_*_result_allocatable
     ! Match:     f_string_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
@@ -1497,18 +1513,19 @@ contains
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 
-    ! void acceptStringConstReference(const std::string & arg1 +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringConstReference
+    ! void acceptStringConstReference
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  const std::string & arg1 +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
     ! Requested: c_string_&_in_buf
     ! Match:     c_string_in_buf
     !>
@@ -1527,18 +1544,19 @@ contains
         ! splicer end function.accept_string_const_reference
     end subroutine accept_string_const_reference
 
-    ! void acceptStringReferenceOut(std::string & arg1 +intent(out))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReferenceOut
+    ! void acceptStringReferenceOut
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(out)
     ! Requested: f_string_&_out
     ! Match:     f_default
+    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
     ! Requested: c_string_&_out_buf
     ! Match:     c_string_out_buf
     !>
@@ -1557,18 +1575,19 @@ contains
         ! splicer end function.accept_string_reference_out
     end subroutine accept_string_reference_out
 
-    ! void acceptStringReference(std::string & arg1 +intent(inout))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringReference
+    ! void acceptStringReference
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string & arg1 +intent(inout)
     ! Requested: f_string_&_inout
     ! Match:     f_default
+    ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
     ! Requested: c_string_&_inout_buf
     ! Match:     c_string_inout_buf
     !>
@@ -1589,18 +1608,19 @@ contains
     end subroutine accept_string_reference
     ! end accept_string_reference
 
-    ! void acceptStringPointer(std::string * arg1 +intent(inout))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void acceptStringPointer
+    ! void acceptStringPointer
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  arg1
+    ! Argument:  std::string * arg1 +intent(inout)
     ! Requested: f_string_*_inout
     ! Match:     f_default
+    ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
     ! Requested: c_string_*_inout_buf
     ! Match:     c_string_inout_buf
     !>
@@ -1616,9 +1636,9 @@ contains
         ! splicer end function.accept_string_pointer
     end subroutine accept_string_pointer
 
-    ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! ----------------------------------------
-    ! Result
+    ! Function:  void explicit1
+    ! void explicit1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1631,16 +1651,16 @@ contains
         ! splicer end function.explicit1
     end subroutine explicit1
 
-    ! void explicit2(char * name +intent(out)+len(AAtrim))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void explicit2
+    ! void explicit2
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  name
+    ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Requested: c_char_*_out_buf
@@ -1653,16 +1673,17 @@ contains
         ! splicer end function.explicit2
     end subroutine explicit2
 
-    ! char CreturnChar()
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  char CreturnChar
+    ! char CreturnChar
     ! Requested: f_schar_scalar_result
     ! Match:     f_default
+    ! Function:  void CreturnChar
     ! Requested: c_schar_scalar_result_buf
     ! Match:     c_schar_result_buf
     ! ----------------------------------------
-    ! Argument:  SHF_rv
+    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_schar_*_result
     ! Match:     f_default
     ! Requested: c_schar_*_result_buf
@@ -1680,18 +1701,19 @@ contains
         ! splicer end function.creturn_char
     end function creturn_char
 
-    ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
-    ! arg_to_buffer
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Result
+    ! Function:  void CpassCharPtr
+    ! void CpassCharPtr
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  dest
+    ! Argument:  char * dest +intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
+    ! Argument:  char * dest +intent(out)+len(Ndest)
     ! Requested: c_char_*_out_buf
     ! Match:     c_char_out_buf
     !>

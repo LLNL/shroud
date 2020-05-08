@@ -36,7 +36,9 @@ PY_Singleton_tp_del (PY_Singleton *self)
 // splicer end class.Singleton.type.del
 }
 
-// static Singleton & getReference()
+// ----------------------------------------
+// Function:  static Singleton & getReference
+// Exact:     py_shadow_result
 static char PY_getReference__doc__[] =
 "documentation"
 ;

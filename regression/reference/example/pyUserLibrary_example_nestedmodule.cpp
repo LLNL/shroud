@@ -34,7 +34,9 @@
 // splicer begin namespace.example::nested.additional_functions
 // splicer end namespace.example::nested.additional_functions
 
-// void local_function1()
+// ----------------------------------------
+// Function:  void local_function1
+// Exact:     py_default
 static char PP_local_function1__doc__[] =
 "documentation"
 ;
@@ -51,9 +53,11 @@ PP_local_function1(
 // splicer end namespace.example::nested.function.local_function1
 }
 
-// bool isNameValid(const std::string & name +intent(in))
 // ----------------------------------------
-// Argument:  name
+// Function:  bool isNameValid
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  const std::string & name +intent(in)
 // Requested: py_string_&_in
 // Match:     py_string_in
 static char PP_isNameValid__doc__[] =
@@ -94,7 +98,9 @@ fail:
 // splicer end namespace.example::nested.function.is_name_valid
 }
 
-// bool isInitialized()
+// ----------------------------------------
+// Function:  bool isInitialized
+// Exact:     py_bool_result
 static char PP_isInitialized__doc__[] =
 "documentation"
 ;
@@ -122,9 +128,11 @@ fail:
 // splicer end namespace.example::nested.function.is_initialized
 }
 
-// void test_names(const std::string & name +intent(in))
 // ----------------------------------------
-// Argument:  name
+// Function:  void test_names
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const std::string & name +intent(in)
 // Requested: py_string_&_in
 // Match:     py_string_in
 static PyObject *
@@ -151,13 +159,15 @@ PP_test_names(
 // splicer end namespace.example::nested.function.test_names
 }
 
-// void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
 // ----------------------------------------
-// Argument:  name
+// Function:  void test_names
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const std::string & name +intent(in)
 // Requested: py_string_&_in
 // Match:     py_string_in
 // ----------------------------------------
-// Argument:  flag
+// Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -186,13 +196,15 @@ PP_test_names_flag(
 // splicer end namespace.example::nested.function.test_names_flag
 }
 
-// void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  i
+// Function:  void testoptional
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int i=1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  j
+// Argument:  long j=2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_testoptional_2__doc__[] =
@@ -237,7 +249,10 @@ PP_testoptional_2(
 // splicer end namespace.example::nested.function.testoptional
 }
 
-// size_t test_size_t()
+// ----------------------------------------
+// Function:  size_t test_size_t
+// Requested: py_native_result
+// Match:     py_default
 static char PP_test_size_t__doc__[] =
 "documentation"
 ;
@@ -260,9 +275,11 @@ PP_test_size_t(
 // splicer end namespace.example::nested.function.test_size_t
 }
 
-// void testmpi(MPI_Comm comm +intent(in)+value)
 // ----------------------------------------
-// Argument:  comm
+// Function:  void testmpi
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  MPI_Comm comm +intent(in)+value
 // Requested: py_unknown_scalar_in
 // Match:     py_default
 #ifdef HAVE_MPI
@@ -291,7 +308,9 @@ PP_testmpi_mpi(
 }
 #endif // ifdef HAVE_MPI
 
-// void testmpi()
+// ----------------------------------------
+// Function:  void testmpi
+// Exact:     py_default
 #ifndef HAVE_MPI
 static PyObject *
 PP_testmpi_serial(
@@ -306,9 +325,11 @@ PP_testmpi_serial(
 }
 #endif // ifndef HAVE_MPI
 
-// void FuncPtr1(void ( * get)() +intent(in)+value)
 // ----------------------------------------
-// Argument:  get
+// Function:  void FuncPtr1
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void ( * get)() +intent(in)+value
 // Requested: py_unknown_scalar_in
 // Match:     py_default
 static char PP_FuncPtr1__doc__[] =
@@ -340,9 +361,11 @@ PP_FuncPtr1(
 // splicer end namespace.example::nested.function.func_ptr1
 }
 
-// void FuncPtr2(double * ( * get)() +intent(in))
 // ----------------------------------------
-// Argument:  get
+// Function:  void FuncPtr2
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * ( * get)() +intent(in)
 // Requested: py_native_*_in
 // Match:     py_default
 static char PP_FuncPtr2__doc__[] =
@@ -374,9 +397,11 @@ PP_FuncPtr2(
 // splicer end namespace.example::nested.function.func_ptr2
 }
 
-// void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 // ----------------------------------------
-// Argument:  get
+// Function:  void FuncPtr3
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_FuncPtr3__doc__[] =
@@ -408,9 +433,11 @@ PP_FuncPtr3(
 // splicer end namespace.example::nested.function.func_ptr3
 }
 
-// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 // ----------------------------------------
-// Argument:  get
+// Function:  void FuncPtr5
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
 // Requested: py_unknown_scalar_in
 // Match:     py_default
 static char PP_FuncPtr5__doc__[] =
@@ -441,45 +468,47 @@ PP_FuncPtr5(
 // splicer end namespace.example::nested.function.func_ptr5
 }
 
-// void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // ----------------------------------------
-// Argument:  verylongname1
+// Function:  void verylongfunctionname1
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * verylongname1 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname2
+// Argument:  int * verylongname2 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname3
+// Argument:  int * verylongname3 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname4
+// Argument:  int * verylongname4 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname5
+// Argument:  int * verylongname5 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname6
+// Argument:  int * verylongname6 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname7
+// Argument:  int * verylongname7 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname8
+// Argument:  int * verylongname8 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname9
+// Argument:  int * verylongname9 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname10
+// Argument:  int * verylongname10 +intent(inout)
 // Requested: py_native_*_inout
 // Match:     py_default
 static char PP_verylongfunctionname1__doc__[] =
@@ -539,45 +568,48 @@ PP_verylongfunctionname1(
 // splicer end namespace.example::nested.function.verylongfunctionname1
 }
 
-// int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 // ----------------------------------------
-// Argument:  verylongname1
+// Function:  int verylongfunctionname2
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int verylongname1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname2
+// Argument:  int verylongname2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname3
+// Argument:  int verylongname3 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname4
+// Argument:  int verylongname4 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname5
+// Argument:  int verylongname5 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname6
+// Argument:  int verylongname6 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname7
+// Argument:  int verylongname7 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname8
+// Argument:  int verylongname8 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname9
+// Argument:  int verylongname9 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  verylongname10
+// Argument:  int verylongname10 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_verylongfunctionname2__doc__[] =
@@ -635,12 +667,14 @@ PP_verylongfunctionname2(
 // splicer end namespace.example::nested.function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
 // ----------------------------------------
-// Argument:  in
+// Function:  void cos_doubles
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * in +intent(in)+rank(2)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  out
+// Argument:  double * out +allocatable(mold=in)+intent(out)+rank(2)
 // Exact:     py_native_out_allocatable_numpy_mold
 static char PP_cos_doubles__doc__[] =
 "documentation"

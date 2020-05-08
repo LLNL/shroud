@@ -30,7 +30,9 @@
 // splicer begin namespace.outer.additional_functions
 // splicer end namespace.outer.additional_functions
 
-// void One()
+// ----------------------------------------
+// Function:  void One
+// Exact:     py_default
 static char PY_One__doc__[] =
 "documentation"
 ;

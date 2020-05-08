@@ -31,7 +31,9 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// void NoReturnNoArguments()
+// ----------------------------------------
+// Function:  void NoReturnNoArguments
+// Exact:     py_default
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
@@ -48,13 +50,16 @@ PY_NoReturnNoArguments(
 // splicer end function.no_return_no_arguments
 }
 
-// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  double PassByValue
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  double arg1 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  int arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValue__doc__[] =
@@ -89,13 +94,15 @@ PY_PassByValue(
 // splicer end function.pass_by_value
 }
 
-// void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void PassByReference
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * arg1 +intent(in)
 // Requested: py_native_*_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  int * arg2 +intent(out)
 // Requested: py_native_*_out
 // Match:     py_default
 static char PY_PassByReference__doc__[] =
@@ -131,9 +138,12 @@ PY_PassByReference(
 // splicer end function.pass_by_reference
 }
 
-// double PassByValueMacro(int arg2 +intent(in)+value)
 // ----------------------------------------
-// Argument:  arg2
+// Function:  double PassByValueMacro
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int arg2 +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValueMacro__doc__[] =
@@ -170,17 +180,19 @@ PY_PassByValueMacro(
 // splicer end function.pass_by_value_macro
 }
 
-// void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // ----------------------------------------
-// Argument:  arg1
+// Function:  void checkBool
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const bool arg1 +intent(in)+value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  bool * arg2 +intent(out)
 // Requested: py_bool_*_out
 // Match:     py_bool_out
 // ----------------------------------------
-// Argument:  arg3
+// Argument:  bool * arg3 +intent(inout)
 // Requested: py_bool_*_inout
 // Match:     py_bool_inout
 static char PY_checkBool__doc__[] =
@@ -234,12 +246,15 @@ fail:
 // splicer end function.check_bool
 }
 
-// char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result-as-arg)+len(30)
 // ----------------------------------------
-// Argument:  arg1
+// Function:  char * Function4a +deref(result-as-arg)+len(30)
+// Requested: py_char_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const char * arg1 +intent(in)
 // Exact:     py_char_*_in
 // ----------------------------------------
-// Argument:  arg2
+// Argument:  const char * arg2 +intent(in)
 // Exact:     py_char_*_in
 static char PY_Function4a__doc__[] =
 "documentation"
@@ -273,9 +288,11 @@ PY_Function4a(
 // splicer end function.function4a
 }
 
-// void acceptName(const char * name +intent(in))
 // ----------------------------------------
-// Argument:  name
+// Function:  void acceptName
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const char * name +intent(in)
 // Exact:     py_char_*_in
 static char PY_acceptName__doc__[] =
 "documentation"
@@ -302,9 +319,11 @@ PY_acceptName(
 // splicer end function.accept_name
 }
 
-// void passCharPtrInOut(char * s +intent(inout))
 // ----------------------------------------
-// Argument:  s
+// Function:  void passCharPtrInOut
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * s +intent(inout)
 // Exact:     py_char_*_inout
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
@@ -342,9 +361,11 @@ PY_passCharPtrInOut(
 // splicer end function.pass_char_ptr_in_out
 }
 
-// void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 // ----------------------------------------
-// Argument:  name1
+// Function:  void returnOneName
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_returnOneName__doc__[] =
 "documentation"
@@ -378,12 +399,14 @@ PY_returnOneName(
 // splicer end function.return_one_name
 }
 
-// void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
 // ----------------------------------------
-// Argument:  name1
+// Function:  void returnTwoNames
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
 // ----------------------------------------
-// Argument:  name2
+// Argument:  char * name2 +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_returnTwoNames__doc__[] =
 "documentation"
@@ -418,9 +441,11 @@ PY_returnTwoNames(
 // splicer end function.return_two_names
 }
 
-// void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)
 // ----------------------------------------
-// Argument:  text
+// Function:  void ImpliedTextLen
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
@@ -452,9 +477,12 @@ PY_ImpliedTextLen(
 // splicer end function.implied_text_len
 }
 
-// int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
 // ----------------------------------------
-// Argument:  text
+// Function:  int ImpliedLen
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const char * text +intent(in)
 // Exact:     py_char_*_in
 static char PY_ImpliedLen__doc__[] =
 "documentation"
@@ -496,9 +524,12 @@ PY_ImpliedLen(
 // splicer end function.implied_len
 }
 
-// int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)
 // ----------------------------------------
-// Argument:  text
+// Function:  int ImpliedLenTrim
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const char * text +intent(in)
 // Exact:     py_char_*_in
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
@@ -540,7 +571,9 @@ PY_ImpliedLenTrim(
 // splicer end function.implied_len_trim
 }
 
-// bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)
+// ----------------------------------------
+// Function:  bool ImpliedBoolTrue
+// Exact:     py_bool_result
 static char PY_ImpliedBoolTrue__doc__[] =
 "documentation"
 ;
@@ -575,7 +608,9 @@ fail:
 // splicer end function.implied_bool_true
 }
 
-// bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)
+// ----------------------------------------
+// Function:  bool ImpliedBoolFalse
+// Exact:     py_bool_result
 static char PY_ImpliedBoolFalse__doc__[] =
 "documentation"
 ;

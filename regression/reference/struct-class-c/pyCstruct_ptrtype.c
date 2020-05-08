@@ -43,13 +43,15 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // splicer end class.Cstruct_ptr.type.del
 }
 
-// Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)
 // ----------------------------------------
-// Argument:  cfield
+// Function:  Cstruct_ptr +name(Cstruct_ptr_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * cfield +intent(in)
 // Requested: py_ctor_char_*_numpy
 // Match:     py_ctor_char_*
 // ----------------------------------------
-// Argument:  const_dvalue
+// Argument:  const double * const_dvalue +intent(in)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 static int

@@ -36,13 +36,15 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // splicer end class.Cstruct_as_class.type.del
 }
 
-// Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)
 // ----------------------------------------
-// Argument:  x1
+// Function:  Cstruct_as_class +name(Cstruct_as_class_ctor)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int x1 +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
-// Argument:  y1
+// Argument:  int y1 +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 static int

@@ -34,9 +34,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))
 // ----------------------------------------
-// Argument:  arg
+// Function:  int vector_sum
+// Requested: py_native_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const std::vector<int> & arg +intent(in)+rank(1)
 // Exact:     py_vector_in_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
@@ -88,9 +91,11 @@ fail:
 // splicer end function.vector_sum
 }
 
-// void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))
 // ----------------------------------------
-// Argument:  arg
+// Function:  void vector_iota_out
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Exact:     py_vector_out_numpy
 static char PY_vector_iota_out__doc__[] =
 "documentation"
@@ -147,9 +152,11 @@ fail:
 // splicer end function.vector_iota_out
 }
 
-// void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))
 // ----------------------------------------
-// Argument:  arg
+// Function:  void vector_iota_out_d
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Exact:     py_vector_out_numpy
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
@@ -206,9 +213,11 @@ fail:
 // splicer end function.vector_iota_out_d
 }
 
-// std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +rank(1)
 // ----------------------------------------
-// Argument:  n
+// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Exact:     py_vector_result_numpy
+// ----------------------------------------
+// Argument:  int n +intent(in)+value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ReturnVectorAlloc__doc__[] =

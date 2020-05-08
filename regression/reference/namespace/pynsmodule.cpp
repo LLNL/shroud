@@ -33,7 +33,10 @@ PyObject *PY_init_ns_nswork(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
-// const std::string & LastFunctionCalled() +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string & LastFunctionCalled +deref(allocatable)
+// Requested: py_string_result
+// Match:     py_default
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -57,7 +60,9 @@ PY_LastFunctionCalled(
 // splicer end function.last_function_called
 }
 
-// void One()
+// ----------------------------------------
+// Function:  void One
+// Exact:     py_default
 static char PY_One__doc__[] =
 "documentation"
 ;
