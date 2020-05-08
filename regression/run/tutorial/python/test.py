@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# test the tutorial module
+# Test Python API generated from tutorial.yaml.
 #
 from __future__ import print_function
 

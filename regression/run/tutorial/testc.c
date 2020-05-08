@@ -4,6 +4,8 @@
  * See the top-level COPYRIGHT file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
+ *
+ * Test C API generated from tutorial.yaml.
  */
 
 #include <wrapTutorial.h>

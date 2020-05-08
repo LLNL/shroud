@@ -5,7 +5,8 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test the vectors module
+# Test Python API generated from vectors.yaml.
+# vectors-list
 #
 from __future__ import print_function
 

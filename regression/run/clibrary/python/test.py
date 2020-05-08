@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# test the clibrary module
+# Test Python API generated from clibrary.yaml.
 #
 from __future__ import print_function
 

@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test the strings module
+# Test Python API generated from strings.yaml.
 #
 from __future__ import print_function
 
