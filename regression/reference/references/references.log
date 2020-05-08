@@ -19,7 +19,6 @@ C-interface, Fortran method void allocate()
 C-interface, Fortran method double * getArray() +dimension(getSize())
 C-interface method double * getArray() +context(DSHC_rv)+dimension(getSize())
 Close wrapfreferences.f
-Close utilreferences.cpp
 class ArrayWrapper
 Python method ArrayWrapper()
 Python method void setSize(int size +intent(in)+value)

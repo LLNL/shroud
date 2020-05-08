@@ -243,7 +243,7 @@ contains
     ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
         class(arraywrapper) :: obj
         type(SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)

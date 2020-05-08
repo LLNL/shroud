@@ -67,4 +67,3 @@ C-interface, Fortran function int * returnIntPtrToScalar()
 C-interface, Fortran function int * returnIntPtrToFixedArray() +dimension(10)
 C-interface function int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)
 Close wrapfpointers.f
-Close utilpointers.c

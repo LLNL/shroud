@@ -1383,10 +1383,6 @@ rv = .false.
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         
-        dim = c_attrs["dimension"]
-        if dim:
-            # XXX - Assume 1-d
-            fmt.f_pointer_shape = ", [{}]".format(dim)  # for c_f_pointer
         if c_attrs["context"]:
             if not fmt.c_var_context:
                 fmt.c_var_context = "FIXME"
@@ -1402,51 +1398,15 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            self.ftn_dimension(cls, fcn, f_ast, c_ast, fmt, modules, fileinfo)
+            rank = len(f_ast.metaattrs["dimension"])
+            fmt.rank = str(rank)
+            if rank > 0:
+                if c_ast.attrs["context"]:
+                    fmt.f_array_shape = wformat(
+                        ", {c_var_context}%shape(1:{rank})", fmt)
+            fmt.f_assumed_shape = fortran_ranks[rank]
 
         return ntypemap
-
-    def ftn_dimension(self, cls, fcn, ast, c_ast, fmt, modules, fileinfo):
-        """Set format fields from dimension attribute.
-
-        Args:
-            cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
-            ast  - declast.Declaration for Fortran argument.
-            c_ast - declast.Declaration for C argument.
-            fmt  - util.Scope
-        """
-        if cls is not None:
-            cls.create_node_map()
-        visitor = ToDimension(cls, fcn, fmt)
-        visitor.visit(ast.metaattrs["dimension"])
-        fmt.rank = str(visitor.rank)
-        if visitor.rank > 0:
-            fmt.f_pointer_shape = ", [{}]".format(", ".join(visitor.shape))
-            if c_ast.attrs["context"]:
-                fmt.f_array_shape = wformat(
-                    ", {c_var_context}%shape(1:{rank})", fmt)
-        fmt.f_assumed_shape = fortran_ranks[visitor.rank]
-
-        if visitor.need_helper:
-            # Write C helper in utility file.
-            fmt.f_get_shape_func = "SHROUD_get_shape_" + fmt.f_var
-            hname = whelpers.create_f_pointer_shape(visitor, fmt, cls, fcn)
-            fileinfo.c_helper[hname] = True
-
-            fmt.f_shape_var = fmt.f_declare_shape_prefix + fmt.f_var
-            fmt.f_declare_shape_array = wformat(
-                "integer(C_INT) :: {f_shape_var}({rank})\n", fmt)
-            fmt.f_declare_shape_array += whelpers.FHelpers[hname]["source"]
-            if cls:
-                fmt.f_get_shape_array = wformat(
-                    "call {f_get_shape_func}("
-                    "{F_this}%{F_derived_member}, {f_shape_var})\n", fmt)
-            else:
-                fmt.f_get_shape_array = wformat(
-                    "call {f_get_shape_func}({f_shape_var})\n", fmt)
-            fmt.f_pointer_shape = ", {}".format(fmt.f_shape_var)
-            self.set_f_module(modules, "iso_c_binding", "C_INT")
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -2110,67 +2070,6 @@ rv = .false.
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
-
-######################################################################
-
-class ToDimension(todict.PrintNode):
-    """Convert dimension expression to Fortran wrapper code.
-
-    expression has already been checked for errors by generate.check_implied.
-    Convert functions:
-      size  -  PyArray_SIZE
-    """
-
-    def __init__(self, cls, fcn, fmt):
-        """
-        Args:
-            cls  - ast.ClassNode or None
-            fcn  - ast.FunctionNode of calling function.
-            fmt  - util.Scope
-        """
-        super(ToDimension, self).__init__()
-        self.cls = cls
-        self.fcn = fcn
-        self.fmt = fmt
-
-        self.rank = 0
-        self.shape = []
-        self.need_helper = False
-
-    def visit_list(self, node):
-        # list of dimension expressions
-        self.rank = len(node)
-        for dim in node:
-            sh = self.visit(dim)
-            self.shape.append(sh)
-
-    def visit_Identifier(self, node):
-        argname = node.name
-        # Look for members of class/struct.
-        if self.cls is not None and argname in self.cls.map_name_to_node:
-            # This name is in the same class as the dimension.
-            # Make name relative to the class.
-            self.need_helper = True
-            member = self.cls.map_name_to_node[argname]
-            if member.may_have_args():
-                if node.args is None:
-                    print("{} must have arguments".format(argname))
-                else:
-                    return "obj->{}({})".format(
-                        argname, self.comma_list(node.args))
-            else:
-                if node.args is not None:
-                    print("{} must not have arguments".format(argname))
-                else:
-                    return "obj->{}".format(argname)
-        else:
-            if self.fcn.ast.find_arg_by_name(argname) is None:
-                self.need_helper = True
-            if node.args is None:
-                return argname  # variable
-            else:
-                return self.param_list(node) # function
-        return "--??--"
 
 ######################################################################
 
