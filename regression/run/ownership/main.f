@@ -4,7 +4,9 @@
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
-
+!
+! Test Fortran API generated from ownership.yaml.
+!
 program tester
   use fruit
   use iso_c_binding

@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test references
+# Test Python API generated from references.yaml.
 #
 from __future__ import print_function
 

@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test the pointers module
+# Test Python API generated from pointers.yaml.
 #
 from __future__ import print_function
 

@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test struct-cxx
+# Test Python API generated from structlist.yaml.
 #
 from __future__ import print_function
 

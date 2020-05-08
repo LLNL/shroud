@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# test the templates module
+# Test Python API generated from templates.yaml.
 #
 from __future__ import print_function
 

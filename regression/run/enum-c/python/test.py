@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# test enum.yaml
+# Test Python API generated from enum.yaml.
 #
 from __future__ import print_function
 
