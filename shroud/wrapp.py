@@ -1185,7 +1185,6 @@ return 1;""",
             as_object = False
             rank = arg.attrs["rank"]
             dimension = arg.attrs["dimension"]
-            allocatable = attrs["allocatable"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
             intent = attrs["intent"]
@@ -1214,17 +1213,6 @@ return 1;""",
             elif implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
-            elif allocatable:
-                # Allocate NumPy Array.
-                # Assumes intent(out)
-                # ex. (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
-                mold = attr_allocatable(
-                    self.language, allocatable, node, arg, fmt_arg)
-                if intent != "out":
-                    raise RuntimeError(
-                        "Argument {} must have intent(out) with +allocatable".
-                        format(arg.name))
-                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg, mold]
             elif sgroup == "char":
                 stmts = ["py", sgroup, spointer, intent]
                 charlen = arg.attrs["charlen"]
@@ -1356,7 +1344,7 @@ return 1;""",
 
             if intent in ["inout", "out"]:
                 if intent == "out":
-                    if allocatable or dimension or create_out_decl:
+                    if dimension or create_out_decl:
                         # If an array, a local NumPy array has already been defined.
                         pass
                     elif intent_blk.c_local_var:
@@ -3351,92 +3339,6 @@ def py_implied(expr, func):
 
 ######################################################################
 
-def attr_allocatable(language, allocatable, node, arg, fmt_arg):
-    """parse allocatable and add values to fmt_arg.
-    Return 'mold' if allocatable is (mold=var), else 
-    return ''.
-
-    arguments to PyArray_NewLikeArray
-      (prototype, order, descr, subok)
-    descr_args - code to create PyArray_Descr.
-
-    Valid values of allocatable:
-       mold=name
-       expression  i.e. nvar
-
-    Args:
-        language -
-        allocatable -
-        node -
-        arg -
-        fmt_arg - format dictionary for arg.
-    """
-    fmtargs = node._fmtargs
-
-    p = re.compile(r"mold\s*=\s*(\w+)")
-    m = p.match(allocatable)
-    if m is not None:
-        # py_native_out_alloctable_numpy
-        mold = 'mold'
-        prototype = "--NONE--"
-        order = "NPY_CORDER"
-        descr = "NULL"
-        subok = "0"
-        descr_code = ""
-        moldvar = m.group(1)
-        moldarg = node.ast.find_arg_by_name(moldvar)
-        if moldarg is None:
-            raise RuntimeError(
-                "Mold argument '{}' does not exist: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        if moldarg.attrs["dimension"] is None and \
-           moldarg.attrs["rank"] is None:
-            raise RuntimeError(
-                "Mold argument '{}' must have dimension or rank attribute: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        fmt = fmtargs[moldvar]["fmtpy"]
-        # copy from the numpy array for the argument
-        prototype = fmt.py_var
-        fmt_arg.size_var = fmt.size_var
-
-        # Create Descr if types are different
-        if arg.typemap.name != moldarg.typemap.name:
-            arg_typemap = arg.typemap
-            descr = "SHDPy_" + arg.name
-            descr_code = (
-                "PyArray_Descr * {} = "
-                "PyArray_DescrFromType({});\n".format(
-                    descr, arg_typemap.PYN_typenum
-                )
-            )
-        # Arguments used with numpy.
-        fmt_arg.npy_prototype = prototype
-        fmt_arg.npy_order = order
-        fmt_arg.npy_descr = descr
-        fmt_arg.npy_subok = subok
-        fmt_arg.npy_descr_code = descr_code
-    else:
-        # py_native_out_dimension_numpy
-        # allocatable is an expression.
-        mold = ''
-        # XXX - assume expression.
-        # XXX - assume 1-d
-        fmt_arg.size_var = allocatable
-        fmt_arg.npy_rank = "1"
-        fmt_arg.npy_dims_var = "SHD_" + arg.name
-        fmt_arg.npy_intp_decl = wformat(
-            "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt_arg)
-        fmt_arg.npy_intp_asgn = wformat(
-            "{npy_dims_var}[0] = {size_var};\n", fmt_arg)
-
-    return mold
-
-######################################################################
-
 def update_code_blocks(symtab, stmts, fmt):
     """ Accumulate info from statements.
     Append to lists in symtab.
@@ -3796,33 +3698,6 @@ py_statements = [
         declare_capsule=declare_capsule,
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
-    ),
-
-########################################
-## allocatable
-## setup by attr_allocatable.
-    # allocatable(mold=var)
-    dict(
-        name="py_native_out_allocatable_numpy_mold",
-        need_numpy=True,
-        declare=["PyArrayObject * {py_var} = {nullptr};"],
-        c_local_var="pointer",
-        pre_call=[
-            "{npy_descr_code}"
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
-            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
-            "if ({py_var} == {nullptr})",
-            "+goto fail;-",
-            "{cxx_type} * {cxx_var} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
-            ],
-        object_created=True,
-        fail=["Py_XDECREF({py_var});"],
-        goto_fail=True,
-    ),
-    # allocatable(nvar)
-    dict(
-        name="py_native_out_allocatable_numpy",
-        base="py_native_out_dimension_numpy",
     ),
 
 ########################################

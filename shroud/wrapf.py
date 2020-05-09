@@ -1586,7 +1586,6 @@ rv = .false.
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
             c_attrs = c_arg.attrs
-            allocatable = c_attrs["allocatable"]
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
@@ -1700,10 +1699,12 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
                 elif f_intent_blk.arg_decl:
+                    # Explicit declarations from fc_statements.
                     for line in f_intent_blk.arg_decl:
                         append_format(arg_f_decl, line, fmt_arg)
                     arg_f_names.append(fmt_arg.f_var)
                 else:
+                    # Generate declaration from argument.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(
                         attributes=f_intent_blk.f_attribute))
                     arg_f_names.append(fmt_arg.f_var)
@@ -1771,9 +1772,6 @@ rv = .false.
                 pre_call,
                 post_call,
             )
-
-            if allocatable:
-                attr_allocatable(allocatable, C_node, f_arg, pre_call)
             # End parameters loop.
         #####
 
@@ -2229,63 +2227,6 @@ def ftn_implied(expr, func, arg):
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func, arg)
     return visitor.visit(node), visitor.intermediate, visitor.helper
-
-######################################################################
-
-def attr_allocatable(allocatable, node, arg, pre_call):
-    """Add the allocatable attribute to the pre_call block.
-
-    Valid values of allocatable:
-       mold=name
-
-    Args:
-        allocatable -
-        node -
-        arg -
-        pre_call -
-    """
-    fmtargs = node._fmtargs
-
-    if allocatable is True:
-        # Only do regex on strings
-        return
-    p = re.compile(r"mold\s*=\s*(\w+)")
-    m = p.match(allocatable)
-    if m is not None:
-        moldvar = m.group(1)
-        moldarg = node.ast.find_arg_by_name(moldvar)
-        if moldarg is None:
-            raise RuntimeError(
-                "Mold argument '{}' does not exist: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        if moldarg.attrs["dimension"] is None and \
-           moldarg.attrs["rank"] is None:
-            raise RuntimeError(
-                "Mold argument '{}' must have dimension or rank attribute: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        fmt = fmtargs[arg.name]["fmtf"]
-        if node.options.F_standard >= 2008:
-            # f2008 supports the mold option which makes this easier
-            fmt.mold = m.group(0)
-            append_format(pre_call, "allocate({f_var}, {mold})", fmt)
-        else:
-            if moldarg.attrs["rank"]:
-                rank = int(moldarg.attrs["rank"])
-            else:
-                rank = len(moldarg.attrs["dimension"].split(","))
-            bounds = []
-            for i in range(1, rank + 1):
-                bounds.append(
-                    "lbound({var},{dim}):ubound({var},{dim})".format(
-                        var=moldvar, dim=i
-                    )
-                )
-            fmt.mold = ",".join(bounds)
-            append_format(pre_call, "allocate({f_var}({mold}))", fmt)
 
 ######################################################################
 
