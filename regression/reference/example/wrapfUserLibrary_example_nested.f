@@ -1178,8 +1178,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_native_*_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * out +allocatable(mold=in)+intent(out)+rank(2)
-        ! Requested: c_native_*_out
+        ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
+        ! Requested: c_native_*_out_allocatable
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int sizein +implied(size(in))+intent(in)+value
@@ -2390,9 +2390,8 @@ contains
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * out +allocatable(mold=in)+intent(out)+rank(2)
-    ! Requested: f_native_*_out
-    ! Match:     f_default
+    ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
+    ! Exact:     f_native_*_out_allocatable
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>
@@ -2402,10 +2401,10 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:,:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:,:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin namespace.example::nested.function.cos_doubles
-        allocate(out, mold=in)
+        allocate(out(shape(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end namespace.example::nested.function.cos_doubles

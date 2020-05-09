@@ -758,7 +758,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
     // splicer end function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)
+// void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 /**
  * \brief Test multidimensional arrays with allocatable
  *
