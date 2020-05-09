@@ -113,8 +113,8 @@ module pointers_mod
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * out +allocatable(mold=in)+intent(out)
-    ! Requested: c_native_*_out
+    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+intent(in)+value
@@ -776,9 +776,8 @@ contains
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * out +allocatable(mold=in)+intent(out)
-    ! Requested: f_native_*_out
-    ! Match:     f_default
+    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+    ! Exact:     f_native_*_out_allocatable
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>
@@ -794,7 +793,7 @@ contains
         integer(C_INT), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin function.truncate_to_int
-        allocate(out(lbound(in,1):ubound(in,1)))
+        allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_truncate_to_int(in, out, SH_sizein)
         ! splicer end function.truncate_to_int

@@ -442,6 +442,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -449,13 +450,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_array_allocate": "(size(in))",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
+                            "stmt0": "f_native_*_out_allocatable",
+                            "stmt1": "f_native_*_out_allocatable",
                             "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
@@ -514,7 +517,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "mold=in",
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -522,6 +526,18 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
                                     }
                                 ]
                             },
@@ -551,8 +567,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"

@@ -135,7 +135,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------

@@ -35,7 +35,7 @@ declarations:
       implied size of array
 
 - decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
-                             int *    out    +intent(out) +allocatable(mold=in),
+                             int *    out    +intent(out) +deref(allocatable)+dimension(size(in)),
                              int      sizein +implied(size(in)))
   doxygen:
     brief: truncate IN argument and save in OUT

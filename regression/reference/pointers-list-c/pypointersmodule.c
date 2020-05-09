@@ -278,9 +278,8 @@ fail:
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_list
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
-// Requested: py_native_out_allocatable_list_mold
-// Match:     py_native_out_allocatable_list
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -300,6 +299,7 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
+    PyObject *SHPy_out = NULL;
     int * out = NULL;
     char *SHT_kwlist[] = {
         "in",
@@ -316,7 +316,7 @@ PY_truncate_to_int(
         goto fail;
 
     // pre_call
-    out = malloc(sizeof(int) * SHSize_in);
+    out = malloc(sizeof(int) * (SHSize_in));
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -326,17 +326,19 @@ PY_truncate_to_int(
     truncate_to_int(in, out, sizein);
 
     // post_call
-    PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+    SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
     free(in);
     free(out);
+    out = NULL;
 
     return (PyObject *) SHPy_out;
 
 fail:
     if (in != NULL) free(in);
+    Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
 // splicer end function.truncate_to_int

@@ -282,9 +282,8 @@ fail:
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_list
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
-// Requested: py_native_out_allocatable_list_mold
-// Match:     py_native_out_allocatable_list
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -304,6 +303,7 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = nullptr;
     double * in = nullptr;
+    PyObject *SHPy_out = nullptr;
     int * out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
@@ -320,7 +320,8 @@ PY_truncate_to_int(
         goto fail;
     {
         // pre_call
-        out = static_cast<int *>(std::malloc(sizeof(int) * SHSize_in));
+        out = static_cast<int *>(std::malloc(
+            sizeof(int) * (SHSize_in)));
         if (out == nullptr) {
             PyErr_NoMemory();
             goto fail;
@@ -330,18 +331,20 @@ PY_truncate_to_int(
         truncate_to_int(in, out, sizein);
 
         // post_call
-        PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+        SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
         if (SHPy_out == nullptr) goto fail;
 
         // cleanup
         std::free(in);
         std::free(out);
+        out = nullptr;
 
         return (PyObject *) SHPy_out;
     }
 
 fail:
     if (in != nullptr) std::free(in);
+    Py_XDECREF(SHPy_out);
     if (out != nullptr) std::free(out);
     return nullptr;
 // splicer end function.truncate_to_int

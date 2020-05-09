@@ -199,8 +199,8 @@ fail:
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
-// Exact:     py_native_out_allocatable_numpy_mold
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_numpy
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -220,6 +220,7 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = nullptr;
+    npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
@@ -237,14 +238,17 @@ PY_truncate_to_int(
             "in must be a 1-D array of double");
         goto fail;
     }
+    SHD_out[0] = PyArray_SIZE(SHPy_in);
+    SHPy_out = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_out, NPY_INT));
+    if (SHPy_out == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "out must be a 1-D array of int");
+        goto fail;
+    }
     {
         // pre_call
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
-        SHPy_out = reinterpret_cast<PyArrayObject *>
-            (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, SHDPy_out, 0));
-        if (SHPy_out == nullptr)
-            goto fail;
         int * out = static_cast<int *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 
