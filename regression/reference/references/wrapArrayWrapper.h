@@ -40,6 +40,12 @@ double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self);
 double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *DSHC_rv);
 
+double * REF_ArrayWrapper_get_array_const(
+    const REF_ArrayWrapper * self);
+
+double * REF_ArrayWrapper_get_array_const_bufferify(
+    const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

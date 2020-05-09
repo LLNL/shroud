@@ -40,6 +40,7 @@ public:
 
     /// Access the array
     double* getArray() { return arr; }
+    double* getArrayConst() const { return arr; }
 
 private:
     double* arr {nullptr};   

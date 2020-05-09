@@ -169,6 +169,39 @@ fail:
     return nullptr;
 // splicer end class.ArrayWrapper.method.get_array
 }
+
+// ----------------------------------------
+// Function:  double * getArrayConst +dimension(getSize())
+// Exact:     py_native_result_dimension_numpy
+static char PY_getArrayConst__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getArrayConst(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.get_array_const
+    npy_intp SHD_rv[1];
+    PyObject * SHTPy_rv = nullptr;
+
+    double * SHCXX_rv = self->obj->getArrayConst();
+
+    // post_call
+    SHD_rv[0] = self->obj->getSize();
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_DOUBLE,
+        SHCXX_rv);
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.get_array_const
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -180,6 +213,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_allocate__doc__},
     {"getArray", (PyCFunction)PY_getArray, METH_NOARGS,
         PY_getArray__doc__},
+    {"getArrayConst", (PyCFunction)PY_getArrayConst, METH_NOARGS,
+        PY_getArrayConst__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

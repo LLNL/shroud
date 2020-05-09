@@ -41,6 +41,17 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr.shape)
         self.assertEqual(10, arr.size)
 
+        arrconst = arr1.getArrayConst()
+        self.assertIsInstance(arrconst, np.ndarray)
+        self.assertEqual('float64', arrconst.dtype.name)
+        self.assertEqual(1, arrconst.ndim)
+        self.assertEqual((10,), arrconst.shape)
+        self.assertEqual(10, arrconst.size)
+
+        # Both getArray and getArrayConst return a NumPy array to the
+        # same pointer. But a new array is created each time.
+        self.assertIsNot(arr, arrconst)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -1388,7 +1388,7 @@ default_stmts = dict(
 # sgroup     "native", "string", "char"
 # spointer   "pointer" ""
 # intent     "in", "out", "inout", "result"
-# attribute  "allocatable"
+# deref      "allocatable", "pointer"
 
 fc_statements = [
     dict(

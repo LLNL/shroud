@@ -106,4 +106,40 @@ double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
     // splicer end class.ArrayWrapper.method.get_array_bufferify
 }
 
+// ----------------------------------------
+// Function:  double * getArrayConst +dimension(getSize())
+// Requested: c_native_*_result
+// Match:     c_default
+double * REF_ArrayWrapper_get_array_const(const REF_ArrayWrapper * self)
+{
+    const ArrayWrapper *SH_this =
+        static_cast<const ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.get_array_const
+    double * SHC_rv = SH_this->getArrayConst();
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.get_array_const
+}
+
+// ----------------------------------------
+// Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
+// Exact:     c_native_*_result_buf
+double * REF_ArrayWrapper_get_array_const_bufferify(
+    const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv)
+{
+    const ArrayWrapper *SH_this =
+        static_cast<const ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.get_array_const_bufferify
+    double * SHC_rv = SH_this->getArrayConst();
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_DOUBLE;
+    DSHC_rv->elem_len = sizeof(double);
+    DSHC_rv->rank = 1;
+    DSHC_rv->shape[0] = SH_this->getSize();
+    DSHC_rv->size = DSHC_rv->shape[0];
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.get_array_const_bufferify
+}
+
 }  // extern "C"
