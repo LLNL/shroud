@@ -1400,13 +1400,16 @@ rv = .false.
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
         elif dim:
-            rank = len(f_ast.metaattrs["dimension"])
+            visitor = ToDimension(cls, fcn, fmt)
+            visitor.visit(f_ast.metaattrs["dimension"])
+            rank = visitor.rank
             fmt.rank = str(rank)
             if rank > 0:
+                fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if c_ast.attrs["context"]:
                     fmt.f_array_shape = wformat(
                         ", {c_var_context}%shape(1:{rank})", fmt)
-            fmt.f_assumed_shape = fortran_ranks[rank]
 
         return ntypemap
 
@@ -2083,6 +2086,72 @@ rv = .false.
 
 ######################################################################
 
+class ToDimension(todict.PrintNode):
+    """Convert dimension expression to Fortran wrapper code.
+
+    1) double * out +intent(out) +deref(allocatable)+dimension(size(in))
+    Allocate array before it is passed to C library which will write 
+    to it.
+
+    """
+
+    def __init__(self, cls, fcn, fmt):
+        """
+        Args:
+            cls  - ast.ClassNode or None
+            fcn  - ast.FunctionNode of calling function.
+            fmt  - util.Scope
+        """
+        super(ToDimension, self).__init__()
+        self.cls = cls
+        self.fcn = fcn
+        self.fmt = fmt
+
+        self.rank = 0
+        self.shape = []
+        self.need_helper = False
+
+    def visit_list(self, node):
+        # list of dimension expressions
+        self.rank = len(node)
+        for dim in node:
+            sh = self.visit(dim)
+            self.shape.append(sh)
+
+    def visit_Identifier(self, node):
+        argname = node.name
+        # Look for Fortran intrinsics
+        if argname == "size" and node.args:
+            # size(in)
+            return self.param_list(node) # function
+        # Look for members of class/struct.
+        elif self.cls is not None and argname in self.cls.map_name_to_node:
+            # This name is in the same class as the dimension.
+            # Make name relative to the class.
+            self.need_helper = True
+            member = self.cls.map_name_to_node[argname]
+            if member.may_have_args():
+                if node.args is None:
+                    print("{} must have arguments".format(argname))
+                else:
+                    return "obj->{}({})".format(
+                        argname, self.comma_list(node.args))
+            else:
+                if node.args is not None:
+                    print("{} must not have arguments".format(argname))
+                else:
+                    return "obj->{}".format(argname)
+        else:
+            if self.fcn.ast.find_arg_by_name(argname) is None:
+                self.need_helper = True
+            if node.args is None:
+                return argname  # variable
+            else:
+                return self.param_list(node) # function
+        return "--??--"
+
+######################################################################
+
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Fortran wrapper code.
 
@@ -2109,15 +2178,15 @@ class ToImplied(todict.PrintNode):
         self.helper = ""  # blank delimited string of Fortran helper
 
     def visit_Identifier(self, node):
-        # Look for functions
-        if node.name == "true":
+        argname = node.name
+        if argname == "true":
             return ".TRUE._C_BOOL"
-        elif node.name == "false":
+        elif argname == "false":
             return ".FALSE._C_BOOL"
         elif node.args is None:
-            return node.name
-        ### functions
-        elif node.name == "size":
+            return argname
+        # Look for functions
+        elif argname == "size":
             # size(arg)
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
@@ -2125,7 +2194,7 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
-        elif node.name == "type":
+        elif argname == "type":
             # type(arg)
             self.intermediate = True
             self.helper = "ShroudTypeDefines"
@@ -2133,13 +2202,13 @@ class ToImplied(todict.PrintNode):
             typearg = self.func.ast.find_arg_by_name(argname)
             arg_typemap = typearg.typemap
             return arg_typemap.sh_type
-        elif node.name == "len":
+        elif argname == "len":
             # len(arg)
             self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "len({},kind={})".format(argname, arg_typemap.f_kind)
-        elif node.name == "len_trim":
+        elif argname == "len_trim":
             # len_trim(arg)
             self.intermediate = True
             argname = node.args[0].name

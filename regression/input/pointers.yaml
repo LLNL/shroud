@@ -26,7 +26,7 @@ declarations:
                             int * argout   +intent(out))
 
 - decl: void cos_doubles(double * in     +intent(in)  +rank(1),
-                         double * out    +intent(out) +allocatable(mold=in),
+                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
                          int      sizein +implied(size(in)))
   doxygen:
     brief: compute cos of IN and save in OUT

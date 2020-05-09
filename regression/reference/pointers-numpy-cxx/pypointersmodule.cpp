@@ -125,8 +125,8 @@ PY_intargs(
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_numpy
 // ----------------------------------------
-// Argument:  double * out +allocatable(mold=in)+intent(out)
-// Exact:     py_native_out_allocatable_numpy_mold
+// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_numpy
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -145,6 +145,7 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = nullptr;
+    npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
@@ -162,13 +163,17 @@ PY_cos_doubles(
             "in must be a 1-D array of double");
         goto fail;
     }
+    SHD_out[0] = PyArray_SIZE(SHPy_in);
+    SHPy_out = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_out, NPY_DOUBLE));
+    if (SHPy_out == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "out must be a 1-D array of double");
+        goto fail;
+    }
     {
         // pre_call
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        SHPy_out = reinterpret_cast<PyArrayObject *>
-            (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0));
-        if (SHPy_out == nullptr)
-            goto fail;
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 

@@ -104,7 +104,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * out +allocatable(mold=in)+intent(out)
+// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------

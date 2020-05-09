@@ -609,7 +609,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
                             "stmt0": "f_native_*_out_cdesc",
-                            "stmt1": "f_native_*_cdesc",
+                            "stmt1": "f_native_*_out_cdesc",
                             "stmtc0": "c_unknown_*_out_buf_cdesc",
                             "stmtc1": "c_unknown_*_cdesc"
                         }

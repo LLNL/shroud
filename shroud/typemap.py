@@ -1425,6 +1425,18 @@ fc_statements = [
     ),
 
     dict(
+        # double * out +intent(out) +deref(allocatable)+dimension(size(in)),
+        # Allocate array then pass to C wrapper.
+        name="f_native_*_out_allocatable",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        pre_call=[
+            "allocate({f_var}{f_array_allocate})",
+        ],
+    ),
+    
+    dict(
         # double **count _intent(out)+dimension(ncount)
         name="c_native_**_out_buf",
         buf_args=["context"],
@@ -1525,6 +1537,10 @@ fc_statements = [
     ),
     dict(
         name="f_native_*_in_cdesc",
+        base="f_native_*_cdesc",
+    ),
+    dict(
+        name="f_native_*_out_cdesc",
         base="f_native_*_cdesc",
     ),
 

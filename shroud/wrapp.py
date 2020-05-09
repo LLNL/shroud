@@ -844,13 +844,14 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
             cls - ast.ClassNode or None
+            fcn   - ast.FunctionNode of calling function.
             ast - declast.Declaration
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
@@ -882,7 +883,7 @@ return 1;""",
         dimension = ast.attrs["dimension"]
         if dimension:
             class_context = "self->{}->".format(fmt.PY_type_obj)
-            visitor = ToDimension(cls, fmt, class_context)
+            visitor = ToDimension(cls, fcn, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
 
@@ -891,16 +892,22 @@ return 1;""",
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
                 fmt.npy_dims_var = "SHD_" + ast.name
-            fmt.pointer_shape = dimension
             # Dimensions must be in npy_intp type array.
-            fmt.npy_intp_decl = wformat("npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
+            fmt.npy_intp_decl = wformat(
+                "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
 
             # Assign each rank of dimension.
             fmtdim = []
+            fmtsize = []
             for i, dim in enumerate(visitor.shape):
                 fmtdim.append("{}[{}] = {};\n".format(
                     fmt.npy_dims_var, i, dim))
+                fmtsize.append("({})".format(dim))
             fmt.npy_intp_asgn = "\n".join(fmtdim)
+            if len(fmtsize) > 1:
+                fmt.pointer_shape = "*\t".join(fmtsize)
+            else:
+                fmt.pointer_shape = visitor.shape[0]
 
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
@@ -1173,7 +1180,7 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
-            self.set_fmt_fields(cls, arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             rank = arg.attrs["rank"]
@@ -1868,7 +1875,7 @@ return 1;""",
             #            fmt_pattern = fmt_result
             update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(cls, ast, fmt_result, True)
+            self.set_fmt_fields(cls, node, ast, fmt_result, True)
             sgroup = result_typemap.sgroup
             stmts = None
             if is_ctor:
@@ -3168,7 +3175,7 @@ def py_struct_dimension(parent, var, fmt):
     else:
         metadim = None
     if metadim:
-        visitor = ToDimension(parent, var.fmtdict,
+        visitor = ToDimension(parent, None, var.fmtdict,
                               var.fmtdict.PY_struct_context)
         visitor.visit(metadim)
         fmt.rank = str(visitor.rank)
@@ -3205,10 +3212,12 @@ class ToDimension(todict.PrintNode):
 
     """
 
-    def __init__(self, cls, fmt, context):
+    def __init__(self, cls, fcn, fmt, context):
         """
         Args:
             cls  - ast.ClassNode or None
+            fcn   - ast.FunctionNode of calling function
+                    or None for struct.
             fmt  - util.Scope
             context - how to access Identifiers in cls.
                       Different for function arguments and
@@ -3216,6 +3225,7 @@ class ToDimension(todict.PrintNode):
         """
         super(ToDimension, self).__init__()
         self.cls = cls
+        self.fcn = fcn
         self.fmt = fmt
         self.context = context
 
@@ -3231,8 +3241,17 @@ class ToDimension(todict.PrintNode):
 
     def visit_Identifier(self, node):
         argname = node.name
+        if self.fcn and argname == "size" and node.args:
+            # size(in)
+            argname = node.args[0].name
+            #            arg = self.func.ast.find_arg_by_name(argname)
+            fmt = self.fcn._fmtargs[argname]["fmtpy"]
+            if self.fcn.options.PY_array_arg == "numpy":
+                return wformat("PyArray_SIZE({py_var})", fmt)
+            else:
+                return fmt.size_var
         # Look for members of class/struct.
-        if self.cls is not None and argname in self.cls.map_name_to_node:
+        elif self.cls is not None and argname in self.cls.map_name_to_node:
             # This name is in the same class as the dimension.
             # Make name relative to the class.
             member = self.cls.map_name_to_node[argname]
@@ -3276,11 +3295,12 @@ class ToImplied(todict.PrintNode):
         Args:
             node - declast.Identifier
         """
+        argname = node.name
         # Look for functions
         if node.args is None:
-            return node.name
+            return argname
         ### functions
-        elif node.name == "size":
+        elif argname == "size":
             # size(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
@@ -3289,7 +3309,7 @@ class ToImplied(todict.PrintNode):
                 return wformat("PyArray_SIZE({py_var})", fmt)
             else:
                 return fmt.size_var
-        elif node.name == "len":
+        elif argname == "len":
             # len(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
@@ -3305,7 +3325,7 @@ class ToImplied(todict.PrintNode):
                 return arg.attrs["charlen"]
             # XXX - need code for len_trim?
             return wformat("strlen({cxx_var})", fmt)
-        elif node.name == "len_trim":
+        elif argname == "len_trim":
             # len_trim(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
