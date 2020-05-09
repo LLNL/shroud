@@ -493,8 +493,8 @@ fail:
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int * values +allocatable(nvar)+intent(out)
-// Exact:     py_native_out_allocatable_list
+// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -507,6 +507,7 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
+    PyObject *SHPy_values = nullptr;
     int * values = nullptr;
     const char *SHT_kwlist[] = {
         "nvar",
@@ -517,7 +518,7 @@ PY_iota_allocatable(
         return nullptr;
     {
         // pre_call
-        values = static_cast<int *>(std::malloc(sizeof(int) * nvar));
+        values = static_cast<int *>(std::malloc(sizeof(int) * (nvar)));
         if (values == nullptr) {
             PyErr_NoMemory();
             goto fail;
@@ -526,16 +527,18 @@ PY_iota_allocatable(
         iota_allocatable(nvar, values);
 
         // post_call
-        PyObject *SHPy_values = SHROUD_to_PyList_int(values, nvar);
+        SHPy_values = SHROUD_to_PyList_int(values, nvar);
         if (SHPy_values == nullptr) goto fail;
 
         // cleanup
         std::free(values);
+        values = nullptr;
 
         return (PyObject *) SHPy_values;
     }
 
 fail:
+    Py_XDECREF(SHPy_values);
     if (values != nullptr) std::free(values);
     return nullptr;
 // splicer end function.iota_allocatable

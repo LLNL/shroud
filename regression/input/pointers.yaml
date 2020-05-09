@@ -64,7 +64,8 @@ declarations:
 ## test +allocatable(nvar)
 
 - decl: void iota_allocatable
-            (int nvar, int *values+intent(out)+allocatable(nvar))
+            (int nvar,
+             int *values+intent(out)+deref(allocatable)+dimension(nvar))
 - decl: void iota_dimension
             (int nvar, int *values+intent(out)+dimension(nvar))
 

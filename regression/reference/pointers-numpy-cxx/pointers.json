@@ -732,10 +732,12 @@
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
+                            "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
-                            "size_var": "nvar",
-                            "stmt0": "py_native_out_allocatable_numpy",
-                            "stmt1": "py_native_out_allocatable_numpy"
+                            "rank": "1",
+                            "size_var": "SHSize_values",
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -761,7 +763,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "nvar",
+                                "deref": "allocatable",
+                                "dimension": "nvar",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -769,6 +772,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
                                     }
                                 ]
                             },
@@ -783,8 +793,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+allocatable(nvar))",
-                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))",
+                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
+                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_allocatable",
                     "function_name": "iota_allocatable",

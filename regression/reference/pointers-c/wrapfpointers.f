@@ -190,20 +190,20 @@ module pointers_mod
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +allocatable(nvar)+intent(out)
-    ! Requested: c_native_*_out
+    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
-    ! start iota_allocatable
+    ! start c_iota_allocatable
     interface
-        subroutine iota_allocatable(nvar, values) &
+        subroutine c_iota_allocatable(nvar, values) &
                 bind(C, name="iota_allocatable")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: nvar
             integer(C_INT), intent(OUT) :: values(*)
-        end subroutine iota_allocatable
+        end subroutine c_iota_allocatable
     end interface
-    ! end iota_allocatable
+    ! end c_iota_allocatable
 
     ! ----------------------------------------
     ! Function:  void iota_dimension
@@ -799,6 +799,36 @@ contains
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
+
+    ! ----------------------------------------
+    ! Function:  void iota_allocatable
+    ! void iota_allocatable
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvar +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+    ! Exact:     f_native_*_out_allocatable
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! start iota_allocatable
+    subroutine iota_allocatable(nvar, values)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: nvar
+        integer(C_INT), intent(OUT), allocatable :: values(:)
+        ! splicer begin function.iota_allocatable
+        allocate(values(nvar))
+        call c_iota_allocatable(nvar, values)
+        ! splicer end function.iota_allocatable
+    end subroutine iota_allocatable
+    ! end iota_allocatable
 
     ! ----------------------------------------
     ! Function:  void Sum

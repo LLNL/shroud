@@ -395,8 +395,8 @@ fail:
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int * values +allocatable(nvar)+intent(out)
-// Exact:     py_native_out_allocatable_numpy
+// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+// Exact:     py_native_out_dimension_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
