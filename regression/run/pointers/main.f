@@ -59,6 +59,7 @@ contains
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
     call assert_true(allocated(out_int))
     call assert_true(all(out_int == [1, 2, 3, 4]))
+    deallocate(out_int)
 
     values1 = 0
     call get_values(nvalues, values1)
@@ -71,10 +72,12 @@ contains
     call assert_true(all(values1(1:3) == [1, 2, 3]))
     call assert_true(all(values2(1:3) == [11, 12, 13]))
 
-    values1 = 0
-    call iota_allocatable(nvalues, values1)
-    call assert_equals(3, nvalues)
-    call assert_true(all(values1(1:3) == [1, 2, 3]))
+    call assert_false(allocated(out_int), "iot_allocatable")
+    call iota_allocatable(nvalues, out_int)
+    call assert_equals(3, nvalues, "iot_allocatable")
+    call assert_true(allocated(out_int), "iot_allocatable")
+    call assert_true(all(out_int(1:3) == [1, 2, 3]), "iot_allocatable")
+    deallocate(out_int)
 
     values1 = 0
     call iota_dimension(nvalues, values1)

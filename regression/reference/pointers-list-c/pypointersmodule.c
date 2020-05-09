@@ -206,9 +206,8 @@ PY_intargs(
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_list
 // ----------------------------------------
-// Argument:  double * out +allocatable(mold=in)+intent(out)
-// Requested: py_native_out_allocatable_list_mold
-// Match:     py_native_out_allocatable_list
+// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -227,6 +226,7 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
+    PyObject *SHPy_out = NULL;
     double * out = NULL;
     char *SHT_kwlist[] = {
         "in",
@@ -243,7 +243,7 @@ PY_cos_doubles(
         goto fail;
 
     // pre_call
-    out = malloc(sizeof(double) * SHSize_in);
+    out = malloc(sizeof(double) * (SHSize_in));
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -253,17 +253,19 @@ PY_cos_doubles(
     cos_doubles(in, out, sizein);
 
     // post_call
-    PyObject *SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
+    SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
     free(in);
     free(out);
+    out = NULL;
 
     return (PyObject *) SHPy_out;
 
 fail:
     if (in != NULL) free(in);
+    Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
 // splicer end function.cos_doubles
@@ -276,9 +278,8 @@ fail:
 // Argument:  double * in +intent(in)+rank(1)
 // Exact:     py_native_in_dimension_list
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
-// Requested: py_native_out_allocatable_list_mold
-// Match:     py_native_out_allocatable_list
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -298,6 +299,7 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
+    PyObject *SHPy_out = NULL;
     int * out = NULL;
     char *SHT_kwlist[] = {
         "in",
@@ -314,7 +316,7 @@ PY_truncate_to_int(
         goto fail;
 
     // pre_call
-    out = malloc(sizeof(int) * SHSize_in);
+    out = malloc(sizeof(int) * (SHSize_in));
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -324,17 +326,19 @@ PY_truncate_to_int(
     truncate_to_int(in, out, sizein);
 
     // post_call
-    PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+    SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
     free(in);
     free(out);
+    out = NULL;
 
     return (PyObject *) SHPy_out;
 
 fail:
     if (in != NULL) free(in);
+    Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
 // splicer end function.truncate_to_int
@@ -479,8 +483,8 @@ fail:
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int * values +allocatable(nvar)+intent(out)
-// Exact:     py_native_out_allocatable_list
+// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+// Exact:     py_native_out_dimension_list
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -493,6 +497,7 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
+    PyObject *SHPy_values = NULL;
     int * values = NULL;
     char *SHT_kwlist[] = {
         "nvar",
@@ -503,7 +508,7 @@ PY_iota_allocatable(
         return NULL;
 
     // pre_call
-    values = malloc(sizeof(int) * nvar);
+    values = malloc(sizeof(int) * (nvar));
     if (values == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -512,15 +517,17 @@ PY_iota_allocatable(
     iota_allocatable(nvar, values);
 
     // post_call
-    PyObject *SHPy_values = SHROUD_to_PyList_int(values, nvar);
+    SHPy_values = SHROUD_to_PyList_int(values, nvar);
     if (SHPy_values == NULL) goto fail;
 
     // cleanup
     free(values);
+    values = NULL;
 
     return (PyObject *) SHPy_values;
 
 fail:
+    Py_XDECREF(SHPy_values);
     if (values != NULL) free(values);
     return NULL;
 // splicer end function.iota_allocatable

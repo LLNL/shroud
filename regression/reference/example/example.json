@@ -9041,6 +9041,7 @@
                                             "cxx_type": "double",
                                             "cxx_var": "out",
                                             "idtor": "0",
+                                            "rank": "1",
                                             "sh_type": "SH_TYPE_DOUBLE",
                                             "stmt0": "c_native_*_out",
                                             "stmt1": "c_default"
@@ -9048,16 +9049,15 @@
                                         "fmtf": {
                                             "F_pointer": "SHPTR_out",
                                             "c_var": "out",
-                                            "f_assumed_shape": "(:,:)",
+                                            "f_array_allocate": "(shape(in))",
+                                            "f_assumed_shape": "(:)",
                                             "f_intent": "OUT",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "out",
-                                            "mold": "mold=in",
-                                            "rank": "2",
+                                            "rank": "1",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "size": "size(out)",
-                                            "stmt0": "f_native_*_out",
-                                            "stmt1": "f_default",
+                                            "stmt0": "f_native_*_out_allocatable",
+                                            "stmt1": "f_native_*_out_allocatable",
                                             "stmtc0": "c_native_*_out",
                                             "stmtc1": "c_default"
                                         },
@@ -9082,16 +9082,17 @@
                                             "cxx_type": "double",
                                             "cxx_var": "out",
                                             "data_var": "SHData_out",
-                                            "npy_descr": "NULL",
-                                            "npy_descr_code": "",
-                                            "npy_order": "NPY_CORDER",
-                                            "npy_prototype": "SHPy_in",
-                                            "npy_subok": "0",
+                                            "npy_dims_var": "SHD_out",
+                                            "npy_intp_asgn": "SHD_out[0] = shape(in);\n",
+                                            "npy_intp_decl": "npy_intp SHD_out[1];\n",
+                                            "npy_rank": "1",
                                             "numpy_type": "NPY_DOUBLE",
+                                            "pointer_shape": "shape(in)",
                                             "py_var": "SHPy_out",
-                                            "size_var": "SHSize_in",
-                                            "stmt0": "py_native_out_allocatable_numpy_mold",
-                                            "stmt1": "py_native_out_allocatable_numpy_mold"
+                                            "rank": "1",
+                                            "size_var": "SHSize_out",
+                                            "stmt0": "py_native_out_dimension_numpy",
+                                            "stmt1": "py_native_out_dimension_numpy"
                                         }
                                     },
                                     "sizein": {
@@ -9176,15 +9177,27 @@
                                         },
                                         {
                                             "attrs": {
-                                                "allocatable": "mold=in",
-                                                "intent": "out",
-                                                "rank": 2
+                                                "deref": "allocatable",
+                                                "dimension": "shape(in)",
+                                                "intent": "out"
                                             },
                                             "declarator": {
                                                 "name": "out",
                                                 "pointer": [
                                                     {
                                                         "ptr": "*"
+                                                    }
+                                                ]
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
                                                     }
                                                 ]
                                             },
@@ -9214,8 +9227,8 @@
                                     ],
                                     "typemap_name": "void"
                                 },
-                                "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +rank(2)+allocatable(mold=in), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +allocatable(mold=in)+intent(out)+rank(2), int sizein +implied(size(in))+intent(in)+value)",
+                                "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +deref(allocatable)+dimension(shape(in)), int      sizein +implied(size(in)))",
+                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },

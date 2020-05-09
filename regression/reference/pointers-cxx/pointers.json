@@ -240,6 +240,7 @@
                             "cxx_type": "double",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -247,13 +248,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_array_allocate": "(size(in))",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
+                            "stmt0": "f_native_*_out_allocatable",
+                            "stmt1": "f_native_*_out_allocatable",
                             "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
@@ -312,7 +315,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "mold=in",
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -320,6 +324,18 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
                                     }
                                 ]
                             },
@@ -349,8 +365,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -426,6 +442,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -433,13 +450,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_array_allocate": "(size(in))",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
+                            "stmt0": "f_native_*_out_allocatable",
+                            "stmt1": "f_native_*_out_allocatable",
                             "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
@@ -498,7 +517,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "mold=in",
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -506,6 +526,18 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
                                     }
                                 ]
                             },
@@ -535,8 +567,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -617,6 +649,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
@@ -736,6 +769,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
@@ -769,6 +803,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
@@ -918,6 +953,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
@@ -925,12 +961,15 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_array_allocate": "(nvar)",
+                            "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
+                            "stmt0": "f_native_*_out_allocatable",
+                            "stmt1": "f_native_*_out_allocatable",
                             "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
@@ -958,7 +997,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "nvar",
+                                "deref": "allocatable",
+                                "dimension": "nvar",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -966,6 +1006,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
                                     }
                                 ]
                             },
@@ -980,15 +1027,15 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+allocatable(nvar))",
-                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))",
+                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
+                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "C_call_list": "nvar,\t values",
                     "C_name": "POI_iota_allocatable",
                     "C_prototype": "int nvar,\t int * values",
                     "C_return_type": "void",
                     "F_C_call": "c_iota_allocatable",
-                    "F_C_name": "iota_allocatable",
+                    "F_C_name": "c_iota_allocatable",
                     "F_arg_c_call": "nvar,\t values",
                     "F_arguments": "nvar,\t values",
                     "F_name_function": "iota_allocatable",
@@ -1058,6 +1105,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
+                            "f_array_allocate": "(nvar)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
@@ -1352,6 +1400,7 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
+                            "f_array_allocate": "(3)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": "integer(C_INT)",
@@ -2181,6 +2230,7 @@
                             "c_var": "count",
                             "c_var_context": "Dcount",
                             "c_var_dimension": "10",
+                            "f_array_allocate": "(10)",
                             "f_array_shape": ", Dcount%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -2419,6 +2469,7 @@
                             "c_var": "count",
                             "c_var_context": "Dcount",
                             "c_var_dimension": "ncount",
+                            "f_array_allocate": "(ncount)",
                             "f_array_shape": ", Dcount%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -2734,6 +2785,7 @@
                             "c_var": "count",
                             "c_var_context": "Dcount",
                             "c_var_dimension": "getLen()",
+                            "f_array_allocate": "(getLen())",
                             "f_array_shape": ", Dcount%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3484,6 +3536,7 @@
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "10",
                         "cxx_type": "int",
+                        "f_array_allocate": "(10)",
                         "f_array_shape": ", DSHC_rv%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",

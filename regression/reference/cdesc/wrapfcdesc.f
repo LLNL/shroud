@@ -221,8 +221,7 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
-    ! Requested: f_native_*_out_cdesc
-    ! Match:     f_native_*_cdesc
+    ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Requested: c_unknown_*_out_buf_cdesc
     ! Match:     c_unknown_*_cdesc
@@ -269,8 +268,7 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
-    ! Requested: f_native_*_out_cdesc
-    ! Match:     f_native_*_cdesc
+    ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Requested: c_unknown_*_out_buf_cdesc
     ! Match:     c_unknown_*_cdesc

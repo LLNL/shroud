@@ -178,16 +178,17 @@
                             "cxx_type": "double",
                             "cxx_var": "out",
                             "data_var": "SHData_out",
-                            "npy_descr": "NULL",
-                            "npy_descr_code": "",
-                            "npy_order": "NPY_CORDER",
-                            "npy_prototype": "SHPy_in",
-                            "npy_subok": "0",
+                            "npy_dims_var": "SHD_out",
+                            "npy_intp_asgn": "SHD_out[0] = PyArray_SIZE(SHPy_in);\n",
+                            "npy_intp_decl": "npy_intp SHD_out[1];\n",
+                            "npy_rank": "1",
                             "numpy_type": "NPY_DOUBLE",
+                            "pointer_shape": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_out",
-                            "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_numpy_mold",
-                            "stmt1": "py_native_out_allocatable_numpy_mold"
+                            "rank": "1",
+                            "size_var": "SHSize_out",
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     },
                     "sizein": {
@@ -236,7 +237,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "mold=in",
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -244,6 +246,18 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
                                     }
                                 ]
                             },
@@ -273,8 +287,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -318,16 +332,17 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "data_var": "SHData_out",
-                            "npy_descr": "SHDPy_out",
-                            "npy_descr_code": "PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);\n",
-                            "npy_order": "NPY_CORDER",
-                            "npy_prototype": "SHPy_in",
-                            "npy_subok": "0",
+                            "npy_dims_var": "SHD_out",
+                            "npy_intp_asgn": "SHD_out[0] = PyArray_SIZE(SHPy_in);\n",
+                            "npy_intp_decl": "npy_intp SHD_out[1];\n",
+                            "npy_rank": "1",
                             "numpy_type": "NPY_INT",
+                            "pointer_shape": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_out",
-                            "size_var": "SHSize_in",
-                            "stmt0": "py_native_out_allocatable_numpy_mold",
-                            "stmt1": "py_native_out_allocatable_numpy_mold"
+                            "rank": "1",
+                            "size_var": "SHSize_out",
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     },
                     "sizein": {
@@ -376,7 +391,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "mold=in",
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -384,6 +400,18 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
                                     }
                                 ]
                             },
@@ -413,8 +441,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -704,10 +732,12 @@
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
+                            "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
-                            "size_var": "nvar",
-                            "stmt0": "py_native_out_allocatable_numpy",
-                            "stmt1": "py_native_out_allocatable_numpy"
+                            "rank": "1",
+                            "size_var": "SHSize_values",
+                            "stmt0": "py_native_out_dimension_numpy",
+                            "stmt1": "py_native_out_dimension_numpy"
                         }
                     }
                 },
@@ -733,7 +763,8 @@
                         },
                         {
                             "attrs": {
-                                "allocatable": "nvar",
+                                "deref": "allocatable",
+                                "dimension": "nvar",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -741,6 +772,13 @@
                                 "pointer": [
                                     {
                                         "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
                                     }
                                 ]
                             },
@@ -755,8 +793,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+allocatable(nvar))",
-                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))",
+                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
+                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_allocatable",
                     "function_name": "iota_allocatable",

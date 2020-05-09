@@ -844,13 +844,14 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
             cls - ast.ClassNode or None
+            fcn   - ast.FunctionNode of calling function.
             ast - declast.Declaration
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
@@ -882,7 +883,7 @@ return 1;""",
         dimension = ast.attrs["dimension"]
         if dimension:
             class_context = "self->{}->".format(fmt.PY_type_obj)
-            visitor = ToDimension(cls, fmt, class_context)
+            visitor = ToDimension(cls, fcn, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
 
@@ -891,16 +892,22 @@ return 1;""",
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
                 fmt.npy_dims_var = "SHD_" + ast.name
-            fmt.pointer_shape = dimension
             # Dimensions must be in npy_intp type array.
-            fmt.npy_intp_decl = wformat("npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
+            fmt.npy_intp_decl = wformat(
+                "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
 
             # Assign each rank of dimension.
             fmtdim = []
+            fmtsize = []
             for i, dim in enumerate(visitor.shape):
                 fmtdim.append("{}[{}] = {};\n".format(
                     fmt.npy_dims_var, i, dim))
+                fmtsize.append("({})".format(dim))
             fmt.npy_intp_asgn = "\n".join(fmtdim)
+            if len(fmtsize) > 1:
+                fmt.pointer_shape = "*\t".join(fmtsize)
+            else:
+                fmt.pointer_shape = visitor.shape[0]
 
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
@@ -1173,12 +1180,11 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
-            self.set_fmt_fields(cls, arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             rank = arg.attrs["rank"]
             dimension = arg.attrs["dimension"]
-            allocatable = attrs["allocatable"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
             intent = attrs["intent"]
@@ -1207,17 +1213,6 @@ return 1;""",
             elif implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
-            elif allocatable:
-                # Allocate NumPy Array.
-                # Assumes intent(out)
-                # ex. (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
-                mold = attr_allocatable(
-                    self.language, allocatable, node, arg, fmt_arg)
-                if intent != "out":
-                    raise RuntimeError(
-                        "Argument {} must have intent(out) with +allocatable".
-                        format(arg.name))
-                stmts = ["py", sgroup, "out", "allocatable", node.options.PY_array_arg, mold]
             elif sgroup == "char":
                 stmts = ["py", sgroup, spointer, intent]
                 charlen = arg.attrs["charlen"]
@@ -1349,7 +1344,7 @@ return 1;""",
 
             if intent in ["inout", "out"]:
                 if intent == "out":
-                    if allocatable or dimension or create_out_decl:
+                    if dimension or create_out_decl:
                         # If an array, a local NumPy array has already been defined.
                         pass
                     elif intent_blk.c_local_var:
@@ -1868,7 +1863,7 @@ return 1;""",
             #            fmt_pattern = fmt_result
             update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(cls, ast, fmt_result, True)
+            self.set_fmt_fields(cls, node, ast, fmt_result, True)
             sgroup = result_typemap.sgroup
             stmts = None
             if is_ctor:
@@ -3168,7 +3163,7 @@ def py_struct_dimension(parent, var, fmt):
     else:
         metadim = None
     if metadim:
-        visitor = ToDimension(parent, var.fmtdict,
+        visitor = ToDimension(parent, None, var.fmtdict,
                               var.fmtdict.PY_struct_context)
         visitor.visit(metadim)
         fmt.rank = str(visitor.rank)
@@ -3205,10 +3200,12 @@ class ToDimension(todict.PrintNode):
 
     """
 
-    def __init__(self, cls, fmt, context):
+    def __init__(self, cls, fcn, fmt, context):
         """
         Args:
             cls  - ast.ClassNode or None
+            fcn   - ast.FunctionNode of calling function
+                    or None for struct.
             fmt  - util.Scope
             context - how to access Identifiers in cls.
                       Different for function arguments and
@@ -3216,6 +3213,7 @@ class ToDimension(todict.PrintNode):
         """
         super(ToDimension, self).__init__()
         self.cls = cls
+        self.fcn = fcn
         self.fmt = fmt
         self.context = context
 
@@ -3231,8 +3229,17 @@ class ToDimension(todict.PrintNode):
 
     def visit_Identifier(self, node):
         argname = node.name
+        if self.fcn and argname == "size" and node.args:
+            # size(in)
+            argname = node.args[0].name
+            #            arg = self.func.ast.find_arg_by_name(argname)
+            fmt = self.fcn._fmtargs[argname]["fmtpy"]
+            if self.fcn.options.PY_array_arg == "numpy":
+                return wformat("PyArray_SIZE({py_var})", fmt)
+            else:
+                return fmt.size_var
         # Look for members of class/struct.
-        if self.cls is not None and argname in self.cls.map_name_to_node:
+        elif self.cls is not None and argname in self.cls.map_name_to_node:
             # This name is in the same class as the dimension.
             # Make name relative to the class.
             member = self.cls.map_name_to_node[argname]
@@ -3276,11 +3283,12 @@ class ToImplied(todict.PrintNode):
         Args:
             node - declast.Identifier
         """
+        argname = node.name
         # Look for functions
         if node.args is None:
-            return node.name
+            return argname
         ### functions
-        elif node.name == "size":
+        elif argname == "size":
             # size(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
@@ -3289,7 +3297,7 @@ class ToImplied(todict.PrintNode):
                 return wformat("PyArray_SIZE({py_var})", fmt)
             else:
                 return fmt.size_var
-        elif node.name == "len":
+        elif argname == "len":
             # len(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
@@ -3305,7 +3313,7 @@ class ToImplied(todict.PrintNode):
                 return arg.attrs["charlen"]
             # XXX - need code for len_trim?
             return wformat("strlen({cxx_var})", fmt)
-        elif node.name == "len_trim":
+        elif argname == "len_trim":
             # len_trim(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
@@ -3328,92 +3336,6 @@ def py_implied(expr, func):
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func)
     return visitor.visit(node)
-
-######################################################################
-
-def attr_allocatable(language, allocatable, node, arg, fmt_arg):
-    """parse allocatable and add values to fmt_arg.
-    Return 'mold' if allocatable is (mold=var), else 
-    return ''.
-
-    arguments to PyArray_NewLikeArray
-      (prototype, order, descr, subok)
-    descr_args - code to create PyArray_Descr.
-
-    Valid values of allocatable:
-       mold=name
-       expression  i.e. nvar
-
-    Args:
-        language -
-        allocatable -
-        node -
-        arg -
-        fmt_arg - format dictionary for arg.
-    """
-    fmtargs = node._fmtargs
-
-    p = re.compile(r"mold\s*=\s*(\w+)")
-    m = p.match(allocatable)
-    if m is not None:
-        # py_native_out_alloctable_numpy
-        mold = 'mold'
-        prototype = "--NONE--"
-        order = "NPY_CORDER"
-        descr = "NULL"
-        subok = "0"
-        descr_code = ""
-        moldvar = m.group(1)
-        moldarg = node.ast.find_arg_by_name(moldvar)
-        if moldarg is None:
-            raise RuntimeError(
-                "Mold argument '{}' does not exist: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        if moldarg.attrs["dimension"] is None and \
-           moldarg.attrs["rank"] is None:
-            raise RuntimeError(
-                "Mold argument '{}' must have dimension or rank attribute: {}".format(
-                    moldvar, allocatable
-                )
-            )
-        fmt = fmtargs[moldvar]["fmtpy"]
-        # copy from the numpy array for the argument
-        prototype = fmt.py_var
-        fmt_arg.size_var = fmt.size_var
-
-        # Create Descr if types are different
-        if arg.typemap.name != moldarg.typemap.name:
-            arg_typemap = arg.typemap
-            descr = "SHDPy_" + arg.name
-            descr_code = (
-                "PyArray_Descr * {} = "
-                "PyArray_DescrFromType({});\n".format(
-                    descr, arg_typemap.PYN_typenum
-                )
-            )
-        # Arguments used with numpy.
-        fmt_arg.npy_prototype = prototype
-        fmt_arg.npy_order = order
-        fmt_arg.npy_descr = descr
-        fmt_arg.npy_subok = subok
-        fmt_arg.npy_descr_code = descr_code
-    else:
-        # py_native_out_dimension_numpy
-        # allocatable is an expression.
-        mold = ''
-        # XXX - assume expression.
-        # XXX - assume 1-d
-        fmt_arg.size_var = allocatable
-        fmt_arg.npy_rank = "1"
-        fmt_arg.npy_dims_var = "SHD_" + arg.name
-        fmt_arg.npy_intp_decl = wformat(
-            "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt_arg)
-        fmt_arg.npy_intp_asgn = wformat(
-            "{npy_dims_var}[0] = {size_var};\n", fmt_arg)
-
-    return mold
 
 ######################################################################
 
@@ -3776,33 +3698,6 @@ py_statements = [
         declare_capsule=declare_capsule,
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
-    ),
-
-########################################
-## allocatable
-## setup by attr_allocatable.
-    # allocatable(mold=var)
-    dict(
-        name="py_native_out_allocatable_numpy_mold",
-        need_numpy=True,
-        declare=["PyArrayObject * {py_var} = {nullptr};"],
-        c_local_var="pointer",
-        pre_call=[
-            "{npy_descr_code}"
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
-            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
-            "if ({py_var} == {nullptr})",
-            "+goto fail;-",
-            "{cxx_type} * {cxx_var} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
-            ],
-        object_created=True,
-        fail=["Py_XDECREF({py_var});"],
-        goto_fail=True,
-    ),
-    # allocatable(nvar)
-    dict(
-        name="py_native_out_allocatable_numpy",
-        base="py_native_out_dimension_numpy",
     ),
 
 ########################################

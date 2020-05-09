@@ -33,60 +33,6 @@ class CheckAllocatable(unittest.TestCase):
         )
         self.func1 = node
 
-    def test_errors(self):
-        self.library.options.F_standard = 2003
-        pre_call = []
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapf.attr_allocatable(
-                "mold=none", self.func1, self.func1.ast.params[2], pre_call
-            )
-        self.assertTrue("does not exist" in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapf.attr_allocatable(
-                "mold=flag", self.func1, self.func1.ast.params[2], pre_call
-            )
-        self.assertTrue(
-            "must have dimension or rank attribute" in str(context.exception)
-        )
-
-    def test_allocatable1d(self):
-        self.library.options.F_standard = 2003
-        pre_call = []
-        wrapf.attr_allocatable(
-            "mold=in1", self.func1, self.func1.ast.params[2], pre_call
-        )
-        self.assertEqual(
-            "allocate(out(lbound(in1,1):ubound(in1,1)))", pre_call[0]
-        )
-
-        self.library.options.F_standard = 2008
-        pre_call = []
-        wrapf.attr_allocatable(
-            "mold=in1", self.func1, self.func1.ast.params[2], pre_call
-        )
-        self.assertEqual("allocate(out, mold=in1)", pre_call[0])
-
-    def test_allocatable2d(self):
-        self.library.options.F_standard = 2003
-        pre_call = []
-        wrapf.attr_allocatable(
-            "mold=in2", self.func1, self.func1.ast.params[2], pre_call
-        )
-        self.assertEqual(
-            "allocate(out(lbound(in2,1):ubound(in2,1),"
-            "lbound(in2,2):ubound(in2,2)))",
-            pre_call[0],
-        )
-
-        self.library.options.F_standard = 2008
-        pre_call = []
-        wrapf.attr_allocatable(
-            "mold=in2", self.func1, self.func1.ast.params[2], pre_call
-        )
-        self.assertEqual("allocate(out, mold=in2)", pre_call[0])
-
 
 if __name__ == "__main__":
     unittest.main()

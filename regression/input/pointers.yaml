@@ -26,7 +26,7 @@ declarations:
                             int * argout   +intent(out))
 
 - decl: void cos_doubles(double * in     +intent(in)  +rank(1),
-                         double * out    +intent(out) +allocatable(mold=in),
+                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
                          int      sizein +implied(size(in)))
   doxygen:
     brief: compute cos of IN and save in OUT
@@ -35,7 +35,7 @@ declarations:
       implied size of array
 
 - decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
-                             int *    out    +intent(out) +allocatable(mold=in),
+                             int *    out    +intent(out) +deref(allocatable)+dimension(size(in)),
                              int      sizein +implied(size(in)))
   doxygen:
     brief: truncate IN argument and save in OUT
@@ -64,7 +64,8 @@ declarations:
 ## test +allocatable(nvar)
 
 - decl: void iota_allocatable
-            (int nvar, int *values+intent(out)+allocatable(nvar))
+            (int nvar,
+             int *values+intent(out)+deref(allocatable)+dimension(nvar))
 - decl: void iota_dimension
             (int nvar, int *values+intent(out)+dimension(nvar))
 

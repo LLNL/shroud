@@ -104,7 +104,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * out +allocatable(mold=in)+intent(out)
+// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
@@ -135,7 +135,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * out +allocatable(mold=in)+intent(out)
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
@@ -216,7 +216,7 @@ void POI_get_values2(int * arg1, int * arg2)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * values +allocatable(nvar)+intent(out)
+// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_iota_allocatable

@@ -1,10 +1,10 @@
 Read yaml pointers.yaml
 Python function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
-Python function void cos_doubles(double * in +intent(in)+rank(1), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-Python function void truncate_to_int(double * in +intent(in)+rank(1), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Python function void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 Python function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
-Python function void iota_allocatable(int nvar +intent(in)+value, int * values +allocatable(nvar)+intent(out))
+Python function void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))
 Python function void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))
 Python function void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))
 Python function void fillIntArray(int * out +dimension(3)+intent(out))
