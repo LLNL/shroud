@@ -18,21 +18,30 @@ extern "C" {
 
 // helper capsule_FOR_Class2
 struct s_FOR_Class2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_FOR_Class2 FOR_Class2;
 
 // helper capsule_FOR_Class3
 struct s_FOR_Class3 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_FOR_Class3 FOR_Class3;
 
 // helper capsule_data_helper
 struct s_FOR_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_FOR_SHROUD_capsule_data FOR_SHROUD_capsule_data;

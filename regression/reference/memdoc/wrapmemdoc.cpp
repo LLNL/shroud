@@ -25,7 +25,7 @@ extern "C" {
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -78,7 +78,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

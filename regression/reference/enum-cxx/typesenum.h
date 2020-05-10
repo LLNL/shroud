@@ -18,7 +18,10 @@ extern "C" {
 
 // helper capsule_data_helper
 struct s_ENU_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_ENU_SHROUD_capsule_data ENU_SHROUD_capsule_data;

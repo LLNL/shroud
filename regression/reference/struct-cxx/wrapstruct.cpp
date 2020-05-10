@@ -335,7 +335,7 @@ STR_cstruct_list * STR_get_global_struct_list()
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

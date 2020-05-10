@@ -24,7 +24,7 @@ extern "C" {
 // Match:     c_default
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {
-    Class2 *SH_this = static_cast<Class2 *>(self->addr);
+    Class2 *SH_this = static_cast<Class2 *>(self->addr.base);
     MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
     SH_this->method1(SHCXX_comm);
 }
@@ -39,8 +39,9 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // Match:     c_shadow_in
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {
-    Class2 *SH_this = static_cast<Class2 *>(self->addr);
-    three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>(c2->addr);
+    Class2 *SH_this = static_cast<Class2 *>(self->addr.base);
+    three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>
+        (c2->addr.base);
     SH_this->method2(SHCXX_c2);
 }
 

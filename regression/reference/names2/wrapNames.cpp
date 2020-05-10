@@ -32,7 +32,7 @@ void NAM_afunction()
 // Release library allocated memory.
 void NAM_SHROUD_memory_destructor(NAM_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

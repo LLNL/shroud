@@ -42,7 +42,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -607,7 +607,7 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // Release library allocated memory.
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
 {
-    void *ptr = cap->addr;
+    void *ptr = cap->addr.base;
     switch (cap->idtor) {
     case 0:   // --none--
     {
@@ -626,7 +626,7 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

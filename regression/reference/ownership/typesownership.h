@@ -61,7 +61,10 @@ extern "C" {
 
 // helper capsule_data_helper
 struct s_OWN_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_OWN_SHROUD_capsule_data OWN_SHROUD_capsule_data;
@@ -83,7 +86,10 @@ typedef struct s_OWN_SHROUD_array OWN_SHROUD_array;
 
 // helper capsule_OWN_Class1
 struct s_OWN_Class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_OWN_Class1 OWN_Class1;

@@ -69,7 +69,7 @@ static void ShroudStrFree(char *src)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -279,7 +279,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 {
     // splicer begin function.get_char_ptr1_bufferify
     const char * SHC_rv = getCharPtr1();
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
+    DSHF_rv->cxx.addr.cbase = SHC_rv;
     DSHF_rv->cxx.idtor = 0;
     DSHF_rv->addr.ccharp = SHC_rv;
     DSHF_rv->type = SH_TYPE_OTHER;
@@ -1130,7 +1130,7 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
-    void *ptr = cap->addr;
+    void *ptr = cap->addr.base;
     switch (cap->idtor) {
     case 0:   // --none--
     {
@@ -1163,7 +1163,7 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

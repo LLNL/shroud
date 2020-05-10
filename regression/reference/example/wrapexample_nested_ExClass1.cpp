@@ -40,7 +40,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -64,7 +64,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
@@ -92,7 +92,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     const std::string SHCXX_name(name);
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
@@ -121,7 +121,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     const std::string SHCXX_name(name, Lname);
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
@@ -138,10 +138,10 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.dtor
     delete SH_this;
-    self->addr = nullptr;
+    self->addr.base = nullptr;
     // splicer end namespace.example::nested.class.ExClass1.method.dtor
 }
 
@@ -157,7 +157,7 @@ int AA_example_nested_ExClass1_increment_count(
     AA_example_nested_ExClass1 * self, int incr)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.increment_count
     int SHC_rv = SH_this->incrementCount(incr);
     return SHC_rv;
@@ -172,7 +172,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
     const AA_example_nested_ExClass1 * self)
 {
     const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
+        static_cast<const example::nested::ExClass1 *>(self->addr.cbase);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     const char * SHC_rv = SHCXX_rv.c_str();
@@ -192,7 +192,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self, AA_SHROUD_array *DSHF_rv)
 {
     const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
+        static_cast<const example::nested::ExClass1 *>(self->addr.cbase);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
@@ -207,7 +207,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
     const AA_example_nested_ExClass1 * self)
 {
     const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
+        static_cast<const example::nested::ExClass1 *>(self->addr.cbase);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
     const std::string & SHCXX_rv = SH_this->getNameArg();
     const char * SHC_rv = SHCXX_rv.c_str();
@@ -227,7 +227,7 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
     const AA_example_nested_ExClass1 * self, char * name, int Nname)
 {
     const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
+        static_cast<const example::nested::ExClass1 *>(self->addr.cbase);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
     const std::string & SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
@@ -250,7 +250,7 @@ int AA_example_nested_ExClass1_get_value_from_int(
     AA_example_nested_ExClass1 * self, int value)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
     int SHC_rv = SH_this->getValue(value);
     return SHC_rv;
@@ -269,7 +269,7 @@ long AA_example_nested_ExClass1_get_value_1(
     AA_example_nested_ExClass1 * self, long value)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
     long SHC_rv = SH_this->getValue(value);
     return SHC_rv;
@@ -288,7 +288,7 @@ bool AA_example_nested_ExClass1_has_addr(
     AA_example_nested_ExClass1 * self, bool in)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.has_addr
     bool SHC_rv = SH_this->hasAddr(in);
     return SHC_rv;
@@ -303,7 +303,7 @@ void AA_example_nested_ExClass1_splicer_special(
     AA_example_nested_ExClass1 * self)
 {
     example::nested::ExClass1 *SH_this =
-        static_cast<example::nested::ExClass1 *>(self->addr);
+        static_cast<example::nested::ExClass1 *>(self->addr.base);
     // splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
     //   splicer for SplicerSpecial
     // splicer end namespace.example::nested.class.ExClass1.method.splicer_special

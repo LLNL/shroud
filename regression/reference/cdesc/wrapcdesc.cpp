@@ -144,7 +144,7 @@ double CDE_get_data_double()
 // Release library allocated memory.
 void CDE_SHROUD_memory_destructor(CDE_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

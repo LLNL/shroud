@@ -21,7 +21,7 @@ extern "C" {
 // Release library allocated memory.
 void REF_SHROUD_memory_destructor(REF_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

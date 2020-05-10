@@ -25,7 +25,7 @@ extern "C" {
 // Match:     c_default
 void PRE_User2_exfunc_0(PRE_User2 * self)
 {
-    User2 *SH_this = static_cast<User2 *>(self->addr);
+    User2 *SH_this = static_cast<User2 *>(self->addr.base);
     // splicer begin class.User2.method.exfunc_0
     SH_this->exfunc();
     // splicer end class.User2.method.exfunc_0
@@ -43,7 +43,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // Match:     c_default
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {
-    User2 *SH_this = static_cast<User2 *>(self->addr);
+    User2 *SH_this = static_cast<User2 *>(self->addr.base);
     // splicer begin class.User2.method.exfunc_1
     SH_this->exfunc(flag);
     // splicer end class.User2.method.exfunc_1

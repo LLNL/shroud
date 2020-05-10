@@ -45,7 +45,7 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Release library allocated memory.
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr.base = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

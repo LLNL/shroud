@@ -20,7 +20,10 @@ extern "C" {
 
 // helper capsule_data_helper
 struct s_NS_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_NS_SHROUD_capsule_data NS_SHROUD_capsule_data;
@@ -83,7 +86,10 @@ typedef struct s_NS_SHROUD_array NS_SHROUD_array;
 
 // helper capsule_NS_nswork_ClassWork
 struct s_NS_nswork_ClassWork {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;

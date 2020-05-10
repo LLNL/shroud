@@ -62,7 +62,7 @@ static int l_Class2_func1(lua_State *L)
     // splicer begin class.Class2.method.func1
     tutorial::Class1 * arg = static_cast<tutorial::Class1 *>(
         (l_Class2_Type *) luaL_checkudata(
-        L, 1, "Class2.metatable")->addr);
+        L, 1, "Class2.metatable")->addr.base);
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
         L, 1, "Class2.metatable");
     SH_this->self->func1(arg);
@@ -76,7 +76,7 @@ static int l_Class2_accept_class3(lua_State *L)
     // splicer begin class.Class2.method.acceptClass3
     forward::Class3 * arg = static_cast<forward::Class3 *>(
         (l_Class2_Type *) luaL_checkudata(
-        L, 1, "Class2.metatable")->addr);
+        L, 1, "Class2.metatable")->addr.base);
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
         L, 1, "Class2.metatable");
     SH_this->self->acceptClass3(arg);

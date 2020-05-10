@@ -94,7 +94,7 @@ void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 // Release library allocated memory.
 void STMT_SHROUD_memory_destructor(STMT_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

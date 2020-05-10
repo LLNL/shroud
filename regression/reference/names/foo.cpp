@@ -23,7 +23,7 @@ extern "C" {
 // Match:     c_default
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 {
-    ns0::Names *SH_this = static_cast<ns0::Names *>(self->addr);
+    ns0::Names *SH_this = static_cast<ns0::Names *>(self->addr.base);
     // splicer begin namespace.ns0.class.Names.method.method1
     SH_this->method1();
     // splicer end namespace.ns0.class.Names.method.method1
@@ -35,7 +35,7 @@ void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 // Match:     c_default
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2)
 {
-    ns0::Names *SH_this2 = static_cast<ns0::Names *>(self2->addr);
+    ns0::Names *SH_this2 = static_cast<ns0::Names *>(self2->addr.base);
     // splicer begin namespace.ns0.class.Names.method.method2
     SH_this->method2();
     // splicer end namespace.ns0.class.Names.method.method2

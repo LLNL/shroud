@@ -21,7 +21,7 @@ extern "C" {
 // Release library allocated memory.
 void PRE_SHROUD_memory_destructor(PRE_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

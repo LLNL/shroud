@@ -18,21 +18,30 @@ extern "C" {
 
 // helper capsule_SCO_Class1
 struct s_SCO_Class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_Class1 SCO_Class1;
 
 // helper capsule_SCO_Class2
 struct s_SCO_Class2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_Class2 SCO_Class2;
 
 // helper capsule_data_helper
 struct s_SCO_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_SCO_SHROUD_capsule_data SCO_SHROUD_capsule_data;

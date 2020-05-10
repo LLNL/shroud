@@ -18,7 +18,10 @@ extern "C" {
 
 // helper capsule_PRE_User1
 struct s_PRE_User1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_PRE_User1 PRE_User1;
@@ -26,7 +29,10 @@ typedef struct s_PRE_User1 PRE_User1;
 // helper capsule_PRE_User2
 #ifdef USE_USER2
 struct s_PRE_User2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_PRE_User2 PRE_User2;
@@ -34,7 +40,10 @@ typedef struct s_PRE_User2 PRE_User2;
 
 // helper capsule_data_helper
 struct s_PRE_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_PRE_SHROUD_capsule_data PRE_SHROUD_capsule_data;

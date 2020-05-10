@@ -23,7 +23,7 @@ extern "C" {
 // Match:     c_default
 void PRE_User1_method1(PRE_User1 * self)
 {
-    User1 *SH_this = static_cast<User1 *>(self->addr);
+    User1 *SH_this = static_cast<User1 *>(self->addr.base);
     // splicer begin class.User1.method.method1
     SH_this->method1();
     // splicer end class.User1.method.method1
@@ -36,7 +36,7 @@ void PRE_User1_method1(PRE_User1 * self)
 // Match:     c_default
 void PRE_User1_method2(PRE_User1 * self)
 {
-    User1 *SH_this = static_cast<User1 *>(self->addr);
+    User1 *SH_this = static_cast<User1 *>(self->addr.base);
     // splicer begin class.User1.method.method2
     SH_this->method2();
     // splicer end class.User1.method.method2
@@ -50,7 +50,7 @@ void PRE_User1_method2(PRE_User1 * self)
 // Match:     c_default
 void PRE_User1_method3def_0(PRE_User1 * self)
 {
-    User1 *SH_this = static_cast<User1 *>(self->addr);
+    User1 *SH_this = static_cast<User1 *>(self->addr.base);
     // splicer begin class.User1.method.method3def_0
     SH_this->method3def();
     // splicer end class.User1.method.method3def_0
@@ -68,7 +68,7 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // Match:     c_default
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {
-    User1 *SH_this = static_cast<User1 *>(self->addr);
+    User1 *SH_this = static_cast<User1 *>(self->addr.base);
     // splicer begin class.User1.method.method3def_1
     SH_this->method3def(i);
     // splicer end class.User1.method.method3def_1

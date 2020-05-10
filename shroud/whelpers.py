@@ -210,7 +210,7 @@ integer(C_SIZE_T), value :: c_var_size
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
-array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+array->cxx.addr.cbase = src;
 array->cxx.idtor = idtor;
 if (src->empty()) {{+
 array->addr.ccharp = NULL;
@@ -402,13 +402,17 @@ def add_shadow_helper(node):
         else:
             cpp_if = ""
             cpp_endif = ""
+        # Address union accessed by fmt.capsule_addr.
         helper = dict(
             scope="cwrap_include",
             # h_shared_code
             source="""
 {lstart}// helper {hname}
 {cpp_if}struct s_{C_type_name} {{+
-void *addr;     /* address of C++ memory */
+union {{+
+void *base; /* address of C++ memory */
+const void *cbase;
+-}} addr;
 int idtor;      /* index of destructor */
 -}};
 typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
@@ -449,13 +453,17 @@ integer(C_INT) :: idtor = 0       ! index of destructor
     )
     FHelpers[name] = helper
 
+    # Address union accessed by fmt.capsule_addr.
     helper = dict(
         scope="cwrap_include",
         source=wformat(
             """
 // helper {hname}
 struct s_{C_capsule_data_type} {{+
-void *addr;     /* address of C++ memory */
+union {{+
+void *base; /* address of C++ memory */
+const void *cbase;
+-}} addr;
 int idtor;      /* index of destructor */
 -}};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",

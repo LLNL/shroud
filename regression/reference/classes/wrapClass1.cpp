@@ -24,7 +24,7 @@ extern "C" {
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -48,7 +48,7 @@ CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.new_default
@@ -67,7 +67,7 @@ CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.new_flag
@@ -81,10 +81,10 @@ CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv)
 void CLA_Class1_delete(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.delete
     delete SH_this;
-    self->addr = nullptr;
+    self->addr.base = nullptr;
     // splicer end class.Class1.method.delete
 }
 // end CLA_Class1_delete
@@ -101,7 +101,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 int CLA_Class1_method1(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.method1
     int SHC_rv = SH_this->Method1();
     return SHC_rv;
@@ -125,10 +125,10 @@ int CLA_Class1_method1(CLA_Class1 * self)
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {
     const classes::Class1 *SH_this =
-        static_cast<const classes::Class1 *>(self->addr);
+        static_cast<const classes::Class1 *>(self->addr.cbase);
     // splicer begin class.Class1.method.equivalent
     const classes::Class1 * SHCXX_obj2 =
-        static_cast<const classes::Class1 *>(obj2->addr);
+        static_cast<const classes::Class1 *>(obj2->addr.cbase);
     bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
     return SHC_rv;
     // splicer end class.Class1.method.equivalent
@@ -147,7 +147,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 void CLA_Class1_return_this(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.return_this
     SH_this->returnThis();
     // splicer end class.Class1.method.return_this
@@ -175,12 +175,12 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     char * name, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.return_this_buffer
     std::string SHCXX_name(name);
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer
@@ -208,12 +208,12 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     char * name, int Lname, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.return_this_buffer_bufferify
     std::string SHCXX_name(name, Lname);
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer_bufferify
@@ -233,10 +233,10 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHC_rv)
 {
     const classes::Class1 *SH_this =
-        static_cast<const classes::Class1 *>(self->addr);
+        static_cast<const classes::Class1 *>(self->addr.cbase);
     // splicer begin class.Class1.method.getclass3
     classes::Class1 * SHCXX_rv = SH_this->getclass3();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.getclass3
@@ -255,7 +255,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 const char * CLA_Class1_get_name(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.get_name
     const std::string & SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
@@ -281,7 +281,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *DSHF_rv)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
@@ -301,7 +301,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.direction_func
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
@@ -321,7 +321,7 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 int CLA_Class1_get_m_flag(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.get_m_flag
     return SH_this->m_flag;
     // splicer end class.Class1.method.get_m_flag
@@ -336,7 +336,7 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
 int CLA_Class1_get_test(CLA_Class1 * self)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.get_test
     return SH_this->m_test;
     // splicer end class.Class1.method.get_test
@@ -355,7 +355,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {
     classes::Class1 *SH_this =
-        static_cast<classes::Class1 *>(self->addr);
+        static_cast<classes::Class1 *>(self->addr.base);
     // splicer begin class.Class1.method.set_test
     SH_this->m_test = val;
     return;

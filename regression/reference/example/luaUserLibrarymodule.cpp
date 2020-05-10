@@ -310,7 +310,7 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
     // splicer begin class.ExClass2.method.get_class1
     const example::nested::ExClass1 * in =
         static_cast<example::nested::ExClass1 *>((l_ExClass2_Type *)
-        luaL_checkudata(L, 1, "ExClass2.metatable")->addr);
+        luaL_checkudata(L, 1, "ExClass2.metatable")->addr.base);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
     example::nested::ExClass1 * SHCXX_rv =

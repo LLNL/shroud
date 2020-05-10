@@ -20,7 +20,10 @@ extern "C" {
 
 // helper capsule_data_helper
 struct s_CLA_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_SHROUD_capsule_data CLA_SHROUD_capsule_data;
@@ -86,7 +89,10 @@ typedef struct s_CLA_SHROUD_array CLA_SHROUD_array;
 // start struct CLA_Class1
 // helper capsule_CLA_Class1
 struct s_CLA_Class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Class1 CLA_Class1;
@@ -94,14 +100,20 @@ typedef struct s_CLA_Class1 CLA_Class1;
 
 // helper capsule_CLA_Class2
 struct s_CLA_Class2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Class2 CLA_Class2;
 
 // helper capsule_CLA_Singleton
 struct s_CLA_Singleton {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Singleton CLA_Singleton;

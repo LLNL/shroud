@@ -99,7 +99,7 @@ int * OWN_return_int_ptr_dim_pointer_bufferify(
 {
     // splicer begin function.return_int_ptr_dim_pointer_bufferify
     int * SHC_rv = ReturnIntPtrDimPointer(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -139,7 +139,7 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 {
     // splicer begin function.return_int_ptr_dim_alloc_bufferify
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -179,7 +179,7 @@ int * OWN_return_int_ptr_dim_default_bufferify(
 {
     // splicer begin function.return_int_ptr_dim_default_bufferify
     int * SHC_rv = ReturnIntPtrDimDefault(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -235,7 +235,7 @@ int * OWN_return_int_ptr_dim_pointer_new_bufferify(
 {
     // splicer begin function.return_int_ptr_dim_pointer_new_bufferify
     int * SHC_rv = ReturnIntPtrDimPointerNew(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 2;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -291,7 +291,7 @@ int * OWN_return_int_ptr_dim_default_new_bufferify(
 {
     // splicer begin function.return_int_ptr_dim_default_new_bufferify
     int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 2;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -326,7 +326,7 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.get_class_static
@@ -348,7 +348,7 @@ OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.get_class_new
@@ -357,7 +357,7 @@ OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 // Release library allocated memory.
 void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
 {
-    void *ptr = cap->addr;
+    void *ptr = cap->addr.base;
     switch (cap->idtor) {
     case 0:   // --none--
     {
@@ -382,7 +382,7 @@ void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

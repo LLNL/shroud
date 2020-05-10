@@ -25,7 +25,7 @@ extern "C" {
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -83,7 +83,7 @@ void NS_one()
 // Release library allocated memory.
 void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

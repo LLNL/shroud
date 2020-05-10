@@ -24,7 +24,7 @@ extern "C" {
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -51,7 +51,7 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 const char * CLA_Class2_get_name(CLA_Class2 * self)
 {
     classes::Class2 *SH_this =
-        static_cast<classes::Class2 *>(self->addr);
+        static_cast<classes::Class2 *>(self->addr.base);
     // splicer begin class.Class2.method.get_name
     const std::string & SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
@@ -75,7 +75,7 @@ void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *DSHF_rv)
 {
     classes::Class2 *SH_this =
-        static_cast<classes::Class2 *>(self->addr);
+        static_cast<classes::Class2 *>(self->addr.base);
     // splicer begin class.Class2.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);

@@ -903,7 +903,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 
     # void pointer in struct -> class instance pointer
     ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>\t({c_var}->addr)" % ntypemap.cxx_type
+        "static_cast<{c_const}%s *>\t({c_var}->addr.base)" % ntypemap.cxx_type
     )
 
     # some default for ntypemap.f_capsule_data_type
@@ -1446,7 +1446,7 @@ fc_statements = [
         ],
         arg_call=["&{cxx_var}"],
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
@@ -1595,7 +1595,7 @@ fc_statements = [
         buf_args=["context"],
         c_helper="ShroudTypeDefines",
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
@@ -1715,11 +1715,12 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_context}->elem_len = {cxx_var} == "
+            "{nullptr} ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_context}->size = 1;",
             "{c_var_context}->rank = 0;",
         ],
@@ -1954,7 +1955,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -1982,7 +1983,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -2011,7 +2012,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr.{capsule_addr} = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -2213,7 +2214,7 @@ fc_statements = [
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
+            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr.{capsule_addr});",
         ],
     ),
     dict(
@@ -2226,7 +2227,7 @@ fc_statements = [
         buf_extra=["shadow"],
         c_local_var="pointer",
         post_call=[
-            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->addr.{capsule_addr} = {cxx_addr}{cxx_var};",
             "{c_var}->idtor = {idtor};",
         ],
         ret=[
@@ -2249,7 +2250,7 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->addr.{capsule_addr} = {cxx_addr}{cxx_var};",
             "{c_var}->idtor = {idtor};",
         ],
         ret=[
@@ -2277,7 +2278,7 @@ fc_statements = [
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->addr.{capsule_addr} = {cxx_var};",
             "{c_var}->idtor = {idtor};",
         ],
         ret=[
@@ -2300,7 +2301,7 @@ fc_statements = [
         cxx_header=["<cstddef>"],
         call=[
             "delete {CXX_this};",
-            "{C_this}->addr = {nullptr};",
+            "{C_this}->addr.base = {nullptr};",
         ],
         return_type="void",
     ),

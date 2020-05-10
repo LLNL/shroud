@@ -826,11 +826,6 @@ class Wrapc(util.WrapperMixin):
         #            # i.e. This method returns a wrapped type
         #            self.header_forward[result_typemap.c_type] = True
 
-        if result_is_const:
-            fmt_func.c_const = "const "
-        else:
-            fmt_func.c_const = ""
-
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -878,6 +873,13 @@ class Wrapc(util.WrapperMixin):
             compute_cxx_deref(
                 CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
+
+            if result_is_const:
+                fmt_result.c_const = "const "
+                fmt_result.capsule_addr = "cbase"
+            else:
+                fmt_result.c_const = ""
+                fmt_result.capsule_addr = "base"
         result_blk = typemap.lookup_local_stmts(
             ["c", generated_suffix], result_blk, node)
 
@@ -915,8 +917,10 @@ class Wrapc(util.WrapperMixin):
             else:
                 if is_const:
                     fmt_func.c_const = "const "
+                    fmt_func.capsule_addr = "cbase"
                 else:
                     fmt_func.c_const = ""
+                    fmt_func.capsule_addr = "base"
                 fmt_func.c_deref = "*"
                 fmt_func.c_member = "->"
                 fmt_func.c_var = fmt_func.C_this
@@ -939,7 +943,8 @@ class Wrapc(util.WrapperMixin):
                     append_format(
                         setup_this,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
-                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
+                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>"
+                        "({c_var}->addr.{capsule_addr});",
                         fmt_func,
                     )
 
@@ -985,8 +990,10 @@ class Wrapc(util.WrapperMixin):
 
             if arg.const:
                 fmt_arg.c_const = "const "
+                fmt_arg.capsule_addr = "cbase"
             else:
                 fmt_arg.c_const = ""
+                fmt_arg.capsule_addr = "base"
             compute_c_deref(arg, None, fmt_arg)
             fmt_arg.cxx_type = arg_typemap.cxx_type
             fmt_arg.sh_type = arg_typemap.sh_type
@@ -1078,23 +1085,6 @@ class Wrapc(util.WrapperMixin):
                 proto_list,
                 need_wrapper,
             )
-
-            if self.language == "c":
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
-                    "{cxx_addr}{cxx_var}", fmt_arg
-                )
-            elif arg.const:
-                # cast away constness
-                fmt_arg.cxx_type = arg_typemap.cxx_type
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
-                    "static_cast<void *>\t(const_cast<"
-                    "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
-                    fmt_arg,
-                )
-            else:
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
-                    "static_cast<void *>({cxx_addr}{cxx_var})", fmt_arg
-                )
 
             self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
 
@@ -1208,19 +1198,7 @@ class Wrapc(util.WrapperMixin):
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
                     # For example, with struct and shadow.
-                    if result_is_const:
-                        # cast away constness
-                        fmt_result.cxx_type = result_typemap.cxx_type
-                        fmt_result.cxx_cast_to_void_ptr = wformat(
-                            "static_cast<void *>\t(const_cast<"
-                            "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
-                            fmt_result,
-                        )
-                    else:
-                        fmt_result.cxx_cast_to_void_ptr = wformat(
-                            "static_cast<void *>({cxx_addr}{cxx_var})",
-                            fmt_result,
-                        )
+                    pass
                 elif result_typemap.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
@@ -1371,7 +1349,7 @@ class Wrapc(util.WrapperMixin):
         if len(self.capsule_order) > 1:
             # If more than slot 0 is added, create switch statement
             append_format(
-                output, "void *ptr = cap->addr;\n" "switch (cap->idtor) {{", fmt
+                output, "void *ptr = cap->addr.base;\n" "switch (cap->idtor) {{", fmt
             )
 
             for i, name in enumerate(self.capsule_order):
@@ -1394,7 +1372,7 @@ class Wrapc(util.WrapperMixin):
         else:
             self.header_impl_include["<stdlib.h>"] = True
         append_format(output,
-                      "cap->addr = {nullptr};\n"
+                      "cap->addr.base = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"
                       "-}}",
                       fmt

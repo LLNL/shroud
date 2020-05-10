@@ -24,7 +24,7 @@ REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr.base = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.ctor
@@ -40,7 +40,8 @@ REF_ArrayWrapper * REF_ArrayWrapper_ctor(REF_ArrayWrapper * SHC_rv)
 // Match:     c_default
 void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size)
 {
-    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    ArrayWrapper *SH_this =
+        static_cast<ArrayWrapper *>(self->addr.base);
     // splicer begin class.ArrayWrapper.method.set_size
     SH_this->setSize(size);
     // splicer end class.ArrayWrapper.method.set_size
@@ -53,7 +54,7 @@ void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size)
 int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+        static_cast<const ArrayWrapper *>(self->addr.cbase);
     // splicer begin class.ArrayWrapper.method.get_size
     int SHC_rv = SH_this->getSize();
     return SHC_rv;
@@ -66,7 +67,8 @@ int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self)
 // Match:     c_default
 void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
 {
-    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    ArrayWrapper *SH_this =
+        static_cast<ArrayWrapper *>(self->addr.base);
     // splicer begin class.ArrayWrapper.method.allocate
     SH_this->allocate();
     // splicer end class.ArrayWrapper.method.allocate
@@ -78,7 +80,8 @@ void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
 // Match:     c_default
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
 {
-    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    ArrayWrapper *SH_this =
+        static_cast<ArrayWrapper *>(self->addr.base);
     // splicer begin class.ArrayWrapper.method.get_array
     double * SHC_rv = SH_this->getArray();
     return SHC_rv;
@@ -91,10 +94,11 @@ double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
 double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *DSHC_rv)
 {
-    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    ArrayWrapper *SH_this =
+        static_cast<ArrayWrapper *>(self->addr.base);
     // splicer begin class.ArrayWrapper.method.get_array_bufferify
     double * SHC_rv = SH_this->getArray();
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_DOUBLE;

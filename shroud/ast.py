@@ -667,10 +667,16 @@ class LibraryNode(AstNode, NamespaceMixin):
             namespace_scope="",
         )
 
+        # If a format field cannot be found and produces an error like
+        # Error with template: 'static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
+        # files will not be generated and it can be difficult to trace where the
+        # error occurred.  But changing this condition to True, files will
+        # be generated and it possible understand where the error is.
         if False:
             # Add default values to format to aid debugging.
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
+                c_const="XXXc_const",
                 c_val="XXXc_val",
                 c_var="XXXc_var",
                 c_var_context="XXXc_var_context",

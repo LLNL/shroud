@@ -418,7 +418,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
     // splicer begin function.get_ptr_to_scalar_bufferify
     int *nitems;
     getPtrToScalar(&nitems);
-    Dnitems->cxx.addr  = nitems;
+    Dnitems->cxx.addr.base = nitems;
     Dnitems->cxx.idtor = 0;
     Dnitems->addr.base = nitems;
     Dnitems->type = SH_TYPE_INT;
@@ -465,7 +465,7 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
     // splicer begin function.get_ptr_to_fixed_array_bufferify
     int *count;
     getPtrToFixedArray(&count);
-    Dcount->cxx.addr  = count;
+    Dcount->cxx.addr.base = count;
     Dcount->cxx.idtor = 0;
     Dcount->addr.base = count;
     Dcount->type = SH_TYPE_INT;
@@ -524,7 +524,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
     // splicer begin function.get_ptr_to_dynamic_array_bufferify
     int *count;
     getPtrToDynamicArray(&count, ncount);
-    Dcount->cxx.addr  = count;
+    Dcount->cxx.addr.base = count;
     Dcount->cxx.idtor = 0;
     Dcount->addr.base = count;
     Dcount->type = SH_TYPE_INT;
@@ -596,7 +596,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
     // splicer begin function.get_ptr_to_func_array_bufferify
     int *count;
     getPtrToFuncArray(&count);
-    Dcount->cxx.addr  = count;
+    Dcount->cxx.addr.base = count;
     Dcount->cxx.idtor = 0;
     Dcount->addr.base = count;
     Dcount->type = SH_TYPE_INT;
@@ -644,7 +644,7 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
     // splicer begin function.get_raw_ptr_to_scalar_bufferify
     int *nitems;
     getRawPtrToScalar(&nitems);
-    Dnitems->cxx.addr  = nitems;
+    Dnitems->cxx.addr.base = nitems;
     Dnitems->cxx.idtor = 0;
     Dnitems->addr.base = nitems;
     Dnitems->type = SH_TYPE_INT;
@@ -695,7 +695,7 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
     // splicer begin function.get_raw_ptr_to_fixed_array_bufferify
     int *count;
     getRawPtrToFixedArray(&count);
-    Dcount->cxx.addr  = count;
+    Dcount->cxx.addr.base = count;
     Dcount->cxx.idtor = 0;
     Dcount->addr.base = count;
     Dcount->type = SH_TYPE_INT;
@@ -779,7 +779,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 {
     // splicer begin function.return_int_ptr_to_fixed_array_bufferify
     int * SHC_rv = returnIntPtrToFixedArray();
-    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.addr.base = SHC_rv;
     DSHC_rv->cxx.idtor = 0;
     DSHC_rv->addr.base = SHC_rv;
     DSHC_rv->type = SH_TYPE_INT;
@@ -796,7 +796,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

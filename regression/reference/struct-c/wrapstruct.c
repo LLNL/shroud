@@ -83,7 +83,7 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr.base = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

@@ -17,6 +17,6 @@
 // Release library allocated memory.
 void ENU_SHROUD_memory_destructor(ENU_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr.base = NULL;
     cap->idtor = 0;  // avoid deleting again
 }

@@ -17,7 +17,10 @@ extern "C" {
 
 // from typesTutorial.h
 struct s_TUT_Class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TUT_Class1 TUT_Class1;

@@ -18,35 +18,50 @@ extern "C" {
 
 // helper capsule_LIB_Class2
 struct s_LIB_Class2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_Class2 LIB_Class2;
 
 // helper capsule_LIB_outer1_class0
 struct s_LIB_outer1_class0 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_outer1_class0 LIB_outer1_class0;
 
 // helper capsule_LIB_outer2_class0
 struct s_LIB_outer2_class0 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_outer2_class0 LIB_outer2_class0;
 
 // helper capsule_LIB_three_Class1
 struct s_LIB_three_Class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_three_Class1 LIB_three_Class1;
 
 // helper capsule_data_helper
 struct s_LIB_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;

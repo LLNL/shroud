@@ -18,77 +18,110 @@ extern "C" {
 
 // helper capsule_TES_Names2
 struct s_TES_Names2 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_Names2 TES_Names2;
 
 // helper capsule_TES_capi_class1
 struct s_TES_capi_class1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_capi_class1 TES_capi_class1;
 
 // helper capsule_TES_internal_ImplWorker1
 struct s_TES_internal_ImplWorker1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_internal_ImplWorker1 TES_internal_ImplWorker1;
 
 // helper capsule_TES_ns0_Names
 struct s_TES_ns0_Names {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_ns0_Names TES_ns0_Names;
 
 // helper capsule_TES_std_Vvv1
 struct s_TES_std_Vvv1 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_std_Vvv1 TES_std_Vvv1;
 
 // helper capsule_TES_std_vector_double
 struct s_TES_std_vector_double {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_std_vector_double TES_std_vector_double;
 
 // helper capsule_TES_std_vector_instantiation3
 struct s_TES_std_vector_instantiation3 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_std_vector_instantiation3 TES_std_vector_instantiation3;
 
 // helper capsule_TES_std_vector_instantiation5
 struct s_TES_std_vector_instantiation5 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_std_vector_instantiation5 TES_std_vector_instantiation5;
 
 // helper capsule_TES_twoTs_0
 struct s_TES_twoTs_0 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_twoTs_0 TES_twoTs_0;
 
 // helper capsule_TES_twoTs_instantiation4
 struct s_TES_twoTs_instantiation4 {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_twoTs_instantiation4 TES_twoTs_instantiation4;
 
 // helper capsule_data_helper
 struct s_TES_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_TES_SHROUD_capsule_data TES_SHROUD_capsule_data;

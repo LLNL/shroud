@@ -247,7 +247,7 @@ int TES_use_impl_worker_instantiation3()
 // Release library allocated memory.
 void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

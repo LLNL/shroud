@@ -23,7 +23,8 @@ extern "C" {
 // Match:     c_default
 void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)
 {
-    three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);
+    three::Class1 *SH_this =
+        static_cast<three::Class1 *>(self->addr.base);
     SH_this->method1(arg1);
 }
 

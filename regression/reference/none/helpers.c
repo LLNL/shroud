@@ -214,7 +214,7 @@ static void ShroudStrFree(char *src)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(LIB_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr.cbase = src;
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -294,7 +294,10 @@ typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
 
 // helper capsule_data_helper
 struct s_LIB_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
+    union {
+        void *base; /* address of C++ memory */
+        const void *cbase;
+    } addr;
     int idtor;      /* index of destructor */
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;

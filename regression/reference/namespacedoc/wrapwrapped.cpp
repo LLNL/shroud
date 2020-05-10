@@ -43,7 +43,7 @@ void WWW_worker()
 // Release library allocated memory.
 void WWW_SHROUD_memory_destructor(WWW_SHROUD_capsule_data *cap)
 {
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

@@ -24,7 +24,7 @@ extern "C" {
 // Release library allocated memory.
 void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap)
 {
-    void *ptr = cap->addr;
+    void *ptr = cap->addr.base;
     switch (cap->idtor) {
     case 0:   // --none--
     {
@@ -51,7 +51,7 @@ void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->addr = nullptr;
+    cap->addr.base = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
 

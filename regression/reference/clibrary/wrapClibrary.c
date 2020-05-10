@@ -295,7 +295,7 @@ void CLI_callback3_bufferify(const char * type, void * in,
 // Release library allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr.base = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory

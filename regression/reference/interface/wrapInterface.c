@@ -16,6 +16,6 @@
 // Release library allocated memory.
 void INT_SHROUD_memory_destructor(INT_SHROUD_capsule_data *cap)
 {
-    cap->addr = NULL;
+    cap->addr.base = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
