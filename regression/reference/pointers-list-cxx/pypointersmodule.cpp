@@ -1009,6 +1009,58 @@ PY_returnIntPtrToFixedArray(
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_to_fixed_array
 }
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToConstScalar
+// Requested: py_native_result_dimension_list
+// Match:     py_default
+static char PY_returnIntPtrToConstScalar__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToConstScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_const_scalar
+    PyObject * SHTPy_rv = nullptr;
+
+    const int * SHCXX_rv = returnIntPtrToConstScalar();
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_to_const_scalar
+}
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Requested: py_native_result_dimension_list
+// Match:     py_default
+static char PY_returnIntPtrToFixedConstArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToFixedConstArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_fixed_const_array
+    PyObject * SHTPy_rv = nullptr;
+
+    const int * SHCXX_rv = returnIntPtrToFixedConstArray();
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_to_fixed_const_array
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -1043,6 +1095,11 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_returnIntPtrToScalar__doc__},
 {"returnIntPtrToFixedArray", (PyCFunction)PY_returnIntPtrToFixedArray,
     METH_NOARGS, PY_returnIntPtrToFixedArray__doc__},
+{"returnIntPtrToConstScalar", (PyCFunction)PY_returnIntPtrToConstScalar,
+    METH_NOARGS, PY_returnIntPtrToConstScalar__doc__},
+{"returnIntPtrToFixedConstArray",
+    (PyCFunction)PY_returnIntPtrToFixedConstArray, METH_NOARGS,
+    PY_returnIntPtrToFixedConstArray__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

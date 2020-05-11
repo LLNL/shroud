@@ -1659,7 +1659,7 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_nonconst_ptr": "(Cstruct1 *) &SHC_rv",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",

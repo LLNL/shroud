@@ -792,6 +792,56 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 }
 // end POI_return_int_ptr_to_fixed_array_bufferify
 
+// ----------------------------------------
+// Function:  const int * returnIntPtrToConstScalar
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_const_scalar
+const int * POI_return_int_ptr_to_const_scalar()
+{
+    // splicer begin function.return_int_ptr_to_const_scalar
+    const int * SHC_rv = returnIntPtrToConstScalar();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_const_scalar
+}
+// end POI_return_int_ptr_to_const_scalar
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_ptr_to_fixed_const_array
+const int * POI_return_int_ptr_to_fixed_const_array()
+{
+    // splicer begin function.return_int_ptr_to_fixed_const_array
+    const int * SHC_rv = returnIntPtrToFixedConstArray();
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_fixed_const_array
+}
+// end POI_return_int_ptr_to_fixed_const_array
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_fixed_const_array_bufferify
+const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
+    const int * SHC_rv = returnIntPtrToFixedConstArray();
+    DSHC_rv->cxx.addr  = const_cast<int *>(SHC_rv);
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 1;
+    DSHC_rv->shape[0] = 10;
+    DSHC_rv->size = DSHC_rv->shape[0];
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
+}
+// end POI_return_int_ptr_to_fixed_const_array_bufferify
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

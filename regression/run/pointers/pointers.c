@@ -230,6 +230,16 @@ int *returnIntPtrToFixedArray(void)
     return (int *) &global_fixed_array;
 }
 
+const int *returnIntPtrToConstScalar(void)
+{
+    return &global_int;
+}
+
+const int *returnIntPtrToFixedConstArray(void)
+{
+    return (int *) &global_fixed_array;
+}
+
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {

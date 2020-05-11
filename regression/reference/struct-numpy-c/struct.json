@@ -1271,7 +1271,7 @@
                         "cxx_addr": "",
                         "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_nonconst_ptr": "(Cstruct1 *) &SHCXX_rv",
                         "cxx_type": "Cstruct1",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",

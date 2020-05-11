@@ -918,7 +918,12 @@ return 1;""",
         cxx_addr is used with references.
         """
         if self.language == "c":
-            fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+            if ast.const:
+                fmt.cxx_nonconst_ptr = wformat(
+                    "({cxx_type} *) {cxx_addr}{cxx_var}", fmt)
+            else:
+                fmt.cxx_nonconst_ptr = wformat(
+                    "{cxx_addr}{cxx_var}", fmt)
         elif ast.const:
             # cast away constness
             fmt.cxx_nonconst_ptr = wformat(

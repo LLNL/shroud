@@ -46,6 +46,8 @@ void *returnAddress2(int flag);
 
 int *returnIntPtrToScalar(void);
 int *returnIntPtrToFixedArray(void);
+const int *returnIntPtrToConstScalar(void);
+const int *returnIntPtrToFixedConstArray(void);
 
 //void getPtrToArray(int **count+intent(out));
 

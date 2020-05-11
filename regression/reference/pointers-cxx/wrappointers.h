@@ -94,6 +94,13 @@ int * POI_return_int_ptr_to_fixed_array();
 int * POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
+const int * POI_return_int_ptr_to_const_scalar();
+
+const int * POI_return_int_ptr_to_fixed_const_array();
+
+const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *DSHC_rv);
+
 #ifdef __cplusplus
 }
 #endif
