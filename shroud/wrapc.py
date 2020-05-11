@@ -826,11 +826,6 @@ class Wrapc(util.WrapperMixin):
         #            # i.e. This method returns a wrapped type
         #            self.header_forward[result_typemap.c_type] = True
 
-        if result_is_const:
-            fmt_func.c_const = "const "
-        else:
-            fmt_func.c_const = ""
-
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -870,6 +865,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.c_var
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            if result_is_const:
+                fmt_result.c_const = "const "
+            else:
+                fmt_result.c_const = ""
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1080,20 +1079,18 @@ class Wrapc(util.WrapperMixin):
             )
 
             if self.language == "c":
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                fmt_arg.cxx_nonconst_ptr = wformat(
                     "{cxx_addr}{cxx_var}", fmt_arg
                 )
             elif arg.const:
                 # cast away constness
-                fmt_arg.cxx_type = arg_typemap.cxx_type
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
-                    "static_cast<void *>\t(const_cast<"
-                    "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
+                fmt_arg.cxx_nonconst_ptr = wformat(
+                    "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
                     fmt_arg,
                 )
             else:
-                fmt_arg.cxx_cast_to_void_ptr = wformat(
-                    "static_cast<void *>({cxx_addr}{cxx_var})", fmt_arg
+                fmt_arg.cxx_nonconst_ptr = wformat(
+                    "{cxx_addr}{cxx_var}", fmt_arg
                 )
 
             self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
@@ -1210,15 +1207,13 @@ class Wrapc(util.WrapperMixin):
                     # For example, with struct and shadow.
                     if result_is_const:
                         # cast away constness
-                        fmt_result.cxx_type = result_typemap.cxx_type
-                        fmt_result.cxx_cast_to_void_ptr = wformat(
-                            "static_cast<void *>\t(const_cast<"
-                            "{cxx_type} *>\t({cxx_addr}{cxx_var}))",
+                        fmt_result.cxx_nonconst_ptr = wformat(
+                            "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
                             fmt_result,
                         )
                     else:
-                        fmt_result.cxx_cast_to_void_ptr = wformat(
-                            "static_cast<void *>({cxx_addr}{cxx_var})",
+                        fmt_result.cxx_nonconst_ptr = wformat(
+                            "{cxx_addr}{cxx_var}",
                             fmt_result,
                         )
                 elif result_typemap.cxx_to_c is not None:

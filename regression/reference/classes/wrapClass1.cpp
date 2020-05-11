@@ -24,7 +24,7 @@ extern "C" {
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr = const_cast<std::string *>(src);
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -180,7 +180,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     std::string SHCXX_name(name);
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer
@@ -213,7 +213,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     std::string SHCXX_name(name, Lname);
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer_bufferify
@@ -236,7 +236,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
         static_cast<const classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.getclass3
     classes::Class1 * SHCXX_rv = SH_this->getclass3();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.getclass3

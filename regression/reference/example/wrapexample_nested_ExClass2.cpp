@@ -41,7 +41,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr = const_cast<std::string *>(src);
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;
@@ -305,7 +305,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 * SHCXX_rv = SH_this->get_class1(
         SHCXX_in);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1

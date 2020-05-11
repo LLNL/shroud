@@ -42,7 +42,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, int idtor)
 {
-    array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+    array->cxx.addr = const_cast<std::string *>(src);
     array->cxx.idtor = idtor;
     if (src->empty()) {
         array->addr.ccharp = NULL;

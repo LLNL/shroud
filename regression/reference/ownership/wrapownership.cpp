@@ -326,7 +326,7 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.get_class_static
@@ -348,7 +348,7 @@ OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.get_class_new
