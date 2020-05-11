@@ -29,19 +29,28 @@ program tester
 contains
 
   subroutine test_arraywrapper
-    type(ArrayWrapper) arr1
+    type(ArrayWrapper) arrinst  ! instance
     real(C_DOUBLE), pointer :: arr(:), arrconst(:)
+    real(C_DOUBLE), pointer :: arr3(:), arr4(:)
 
-    arr1 = ArrayWrapper_ctor()
-    call arr1%set_size(10)
-    call assert_equals(10, arr1%get_size())
+    arrinst = ArrayWrapper_ctor()
+    call arrinst%set_size(10)
+    call assert_equals(10, arrinst%get_size())
 
-    call arr1%allocate()
-    arr => arr1%get_array()
+    call arrinst%allocate()
+    arr => arrinst%get_array()
     call assert_true(associated(arr))
     call assert_equals(10, size(arr))
 
-    arrconst => arr1%get_array_const()
+    arrconst => arrinst%get_array_const()
+    call assert_true(associated(arrconst, arr))
+    call assert_equals(10, size(arrconst))
+
+    arr3 => arrinst%get_array_c()
+    call assert_true(associated(arrconst, arr))
+    call assert_equals(10, size(arrconst))
+
+    arr4 => arrinst%get_array_const_c()
     call assert_true(associated(arrconst, arr))
     call assert_equals(10, size(arrconst))
     

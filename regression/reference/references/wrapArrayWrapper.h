@@ -46,6 +46,17 @@ double * REF_ArrayWrapper_get_array_const(
 double * REF_ArrayWrapper_get_array_const_bufferify(
     const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
 
+const double * REF_ArrayWrapper_get_array_c(REF_ArrayWrapper * self);
+
+const double * REF_ArrayWrapper_get_array_c_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
+
+const double * REF_ArrayWrapper_get_array_const_c(
+    const REF_ArrayWrapper * self);
+
+const double * REF_ArrayWrapper_get_array_const_c_bufferify(
+    const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

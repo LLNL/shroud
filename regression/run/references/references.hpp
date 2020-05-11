@@ -39,8 +39,10 @@ public:
     }
 
     /// Access the array
-    double* getArray() { return arr; }
-    double* getArrayConst() const { return arr; }
+    double *getArray() { return arr; }
+    double *getArrayConst() const { return arr; }
+    const double *getArrayC() { return arr; }
+    const double *getArrayConstC() const { return arr; }
 
 private:
     double* arr {nullptr};   

@@ -202,6 +202,72 @@ fail:
     return nullptr;
 // splicer end class.ArrayWrapper.method.get_array_const
 }
+
+// ----------------------------------------
+// Function:  const double * getArrayC +dimension(getSize())
+// Exact:     py_native_result_dimension_numpy
+static char PY_getArrayC__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getArrayC(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.get_array_c
+    npy_intp SHD_rv[1];
+    PyObject * SHTPy_rv = nullptr;
+
+    const double * SHCXX_rv = self->obj->getArrayC();
+
+    // post_call
+    SHD_rv[0] = self->obj->getSize();
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_DOUBLE,
+        const_cast<double *>(SHCXX_rv));
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.get_array_c
+}
+
+// ----------------------------------------
+// Function:  const double * getArrayConstC +dimension(getSize())
+// Exact:     py_native_result_dimension_numpy
+static char PY_getArrayConstC__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getArrayConstC(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.get_array_const_c
+    npy_intp SHD_rv[1];
+    PyObject * SHTPy_rv = nullptr;
+
+    const double * SHCXX_rv = self->obj->getArrayConstC();
+
+    // post_call
+    SHD_rv[0] = self->obj->getSize();
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_DOUBLE,
+        const_cast<double *>(SHCXX_rv));
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.get_array_const_c
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -215,6 +281,10 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_getArray__doc__},
     {"getArrayConst", (PyCFunction)PY_getArrayConst, METH_NOARGS,
         PY_getArrayConst__doc__},
+    {"getArrayC", (PyCFunction)PY_getArrayC, METH_NOARGS,
+        PY_getArrayC__doc__},
+    {"getArrayConstC", (PyCFunction)PY_getArrayConstC, METH_NOARGS,
+        PY_getArrayConstC__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

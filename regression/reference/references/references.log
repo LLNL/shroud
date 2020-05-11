@@ -9,6 +9,10 @@ C method double * getArray() +dimension(getSize())
 C method double * getArray() +context(DSHC_rv)+dimension(getSize())
 C method double * getArrayConst() const +dimension(getSize())
 C method double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())
+C method const double * getArrayC() +dimension(getSize())
+C method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
+C method const double * getArrayConstC() const +dimension(getSize())
+C method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -22,6 +26,10 @@ C-interface, Fortran method double * getArray() +dimension(getSize())
 C-interface method double * getArray() +context(DSHC_rv)+dimension(getSize())
 C-interface, Fortran method double * getArrayConst() const +dimension(getSize())
 C-interface method double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method const double * getArrayC() +dimension(getSize())
+C-interface method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method const double * getArrayConstC() const +dimension(getSize())
+C-interface method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
 Close wrapfreferences.f
 class ArrayWrapper
 Python method ArrayWrapper()
@@ -30,6 +38,8 @@ Python method int getSize() const
 Python method void allocate()
 Python method double * getArray() +dimension(getSize())
 Python method double * getArrayConst() const +dimension(getSize())
+Python method const double * getArrayC() +dimension(getSize())
+Python method const double * getArrayConstC() const +dimension(getSize())
 Close pyArrayWrappertype.cpp
 Close pyreferencesmodule.cpp
 Close pyreferencesutil.cpp

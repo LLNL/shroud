@@ -759,7 +759,23 @@ class Wrapc(util.WrapperMixin):
                 fmt.c_array_shape = "\n" + "\n".join(fmtdim)
                 if fmtsize:
                     fmt.c_array_size = "*\t".join(fmtsize)
-                    
+
+    def set_cxx_nonconst_ptr(self, ast, fmt):
+        """Set fmt.cxx_nonconst_ptr.
+        A non-const pointer to cxx_var (which may be same as c_var).
+        cxx_addr is used with references.
+        """
+        if self.language == "c":
+            fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+        elif ast.const:
+            # cast away constness
+            fmt.cxx_nonconst_ptr = wformat(
+                "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
+                fmt
+            )
+        else:
+            fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+        
     def wrap_function(self, cls, node):
         """Wrap a C++ function with C.
 
@@ -1078,21 +1094,7 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper,
             )
 
-            if self.language == "c":
-                fmt_arg.cxx_nonconst_ptr = wformat(
-                    "{cxx_addr}{cxx_var}", fmt_arg
-                )
-            elif arg.const:
-                # cast away constness
-                fmt_arg.cxx_nonconst_ptr = wformat(
-                    "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
-                    fmt_arg,
-                )
-            else:
-                fmt_arg.cxx_nonconst_ptr = wformat(
-                    "{cxx_addr}{cxx_var}", fmt_arg
-                )
-
+            self.set_cxx_nonconst_ptr(arg, fmt_arg)
             self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
 
             need_wrapper = self.add_code_from_statements(
@@ -1205,17 +1207,7 @@ class Wrapc(util.WrapperMixin):
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
                     # For example, with struct and shadow.
-                    if result_is_const:
-                        # cast away constness
-                        fmt_result.cxx_nonconst_ptr = wformat(
-                            "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
-                            fmt_result,
-                        )
-                    else:
-                        fmt_result.cxx_nonconst_ptr = wformat(
-                            "{cxx_addr}{cxx_var}",
-                            fmt_result,
-                        )
+                    pass
                 elif result_typemap.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
@@ -1228,7 +1220,8 @@ class Wrapc(util.WrapperMixin):
                     append_format(
                         return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                     )
-
+                self.set_cxx_nonconst_ptr(ast, fmt_result)
+                    
                 if result_typemap.impl_header is not None:
                     for hdr in result_typemap.impl_header:
                         self.header_impl_include[hdr] = True

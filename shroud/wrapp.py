@@ -912,6 +912,22 @@ return 1;""",
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
 
+    def set_cxx_nonconst_ptr(self, ast, fmt):
+        """Set fmt.cxx_nonconst_ptr.
+        A non-const pointer to cxx_var (which may be same as c_var).
+        cxx_addr is used with references.
+        """
+        if self.language == "c":
+            fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+        elif ast.const:
+            # cast away constness
+            fmt.cxx_nonconst_ptr = wformat(
+                "const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})",
+                fmt
+            )
+        else:
+            fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+
     def implied_blk(self, node, arg, pre_call):
         """Add the implied attribute to the pre_call block.
 
@@ -1864,6 +1880,7 @@ return 1;""",
             update_fmt_from_typemap(fmt_result, result_typemap)
 
             self.set_fmt_fields(cls, node, ast, fmt_result, True)
+            self.set_cxx_nonconst_ptr(ast, fmt_result)
             sgroup = result_typemap.sgroup
             stmts = None
             if is_ctor:
@@ -3687,7 +3704,7 @@ py_statements = [
             "{npy_intp_asgn}"
             "{py_var} = "
             "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
-            "\t {numpy_type},\t {cxx_addr}{cxx_var});",
+            "\t {numpy_type},\t {cxx_nonconst_ptr});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
