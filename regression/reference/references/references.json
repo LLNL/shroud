@@ -30,6 +30,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "REF_ArrayWrapper",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -100,7 +101,6 @@
                             "PY_name_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_method": "tp_init",
-                            "c_const": "",
                             "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
                             "function_name": "ctor",
                             "underscore_name": "ctor"
@@ -117,8 +117,8 @@
                                     "c_member": ".",
                                     "c_var": "size",
                                     "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&size)",
                                     "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&size",
                                     "cxx_type": "int",
                                     "cxx_var": "size",
                                     "idtor": "0",
@@ -216,6 +216,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -334,6 +335,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
@@ -442,6 +444,7 @@
                             "fmtc": {
                                 "c_array_shape": "\nDSHC_rv->shape[0] = SH_this->getSize();",
                                 "c_array_size": "DSHC_rv->shape[0]",
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",

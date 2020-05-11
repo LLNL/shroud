@@ -77,6 +77,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "FOR_Class2",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -99,7 +100,7 @@
                                 "stmtc1": "c_shadow_ctor"
                             },
                             "fmtl": {
-                                "c_var": "static_cast<void *>(\tSHCXX_rv)",
+                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_var": "SHCXX_rv"
@@ -155,7 +156,6 @@
                             "PY_name_impl": "PY_Class2_tp_init",
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
-                            "c_const": "",
                             "cxx_rv_decl": "forward::Class2 SHCXX_rv",
                             "function_name": "ctor",
                             "underscore_name": "ctor"
@@ -213,8 +213,8 @@
                                     "c_member": "->",
                                     "c_var": "arg",
                                     "cxx_addr": "",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                                     "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_arg",
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
@@ -335,8 +335,8 @@
                                     "c_member": "->",
                                     "c_var": "arg",
                                     "cxx_addr": "",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
                                     "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_arg",
                                     "cxx_type": "forward::Class3",
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",

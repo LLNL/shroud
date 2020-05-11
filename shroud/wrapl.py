@@ -55,6 +55,12 @@ class Wrapl(util.WrapperMixin):
         fmt_library.LUA_metadata = "XXLUA_metadata"
         fmt_library.LUA_userdata_type = "XXLUA_userdata_type"
 
+        # XXX - Without this c_const is undefined.
+        #       Need to sort out where it should be set.
+        #       Start with difference bewteen const method and const result.
+        #       const double *get() const
+        fmt_library.c_const="LUAc_const"
+
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
         self.body_lines = []

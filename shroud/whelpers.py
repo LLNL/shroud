@@ -210,7 +210,7 @@ integer(C_SIZE_T), value :: c_var_size
 // CHARACTER(len=elem_size) src
 static void ShroudStrToArray({C_array_type} *array, const std::string * src, int idtor)
 {{+
-array->cxx.addr = static_cast<void *>(const_cast<std::string *>(src));
+array->cxx.addr = const_cast<std::string *>(src);
 array->cxx.idtor = idtor;
 if (src->empty()) {{+
 array->addr.ccharp = NULL;

@@ -23,8 +23,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -66,6 +66,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "short",
                         "c_var": "SHC_rv",
@@ -146,7 +147,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_short_func",
-                    "c_const": "",
                     "cxx_rv_decl": "short SHC_rv",
                     "function_name": "short_func",
                     "underscore_name": "short_func"
@@ -163,8 +163,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -206,6 +206,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -286,7 +287,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int_func",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "int_func",
                     "underscore_name": "int_func"
@@ -303,8 +303,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -346,6 +346,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "long",
                         "c_var": "SHC_rv",
@@ -426,7 +427,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_func",
-                    "c_const": "",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "long_func",
                     "underscore_name": "long_func"
@@ -443,8 +443,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -486,6 +486,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "long long",
                         "c_var": "SHC_rv",
@@ -570,7 +571,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_long_func",
-                    "c_const": "",
                     "cxx_rv_decl": "long long SHC_rv",
                     "function_name": "long_long_func",
                     "underscore_name": "long_long_func"
@@ -587,8 +587,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "short",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -630,6 +630,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "short",
                         "c_var": "SHC_rv",
@@ -712,7 +713,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_short_int_func",
-                    "c_const": "",
                     "cxx_rv_decl": "short SHC_rv",
                     "function_name": "short_int_func",
                     "underscore_name": "short_int_func"
@@ -729,8 +729,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -772,6 +772,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "long",
                         "c_var": "SHC_rv",
@@ -854,7 +855,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_int_func",
-                    "c_const": "",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "long_int_func",
                     "underscore_name": "long_int_func"
@@ -871,8 +871,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -914,6 +914,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "long long",
                         "c_var": "SHC_rv",
@@ -1000,7 +1001,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_long_int_func",
-                    "c_const": "",
                     "cxx_rv_decl": "long long SHC_rv",
                     "function_name": "long_long_int_func",
                     "underscore_name": "long_long_int_func"
@@ -1017,8 +1017,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1060,6 +1060,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned int",
                         "c_var": "SHC_rv",
@@ -1140,7 +1141,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_unsigned_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned int SHC_rv",
                     "function_name": "unsigned_func",
                     "underscore_name": "unsigned_func"
@@ -1157,8 +1157,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned short",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1200,6 +1200,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned short",
                         "c_var": "SHC_rv",
@@ -1282,7 +1283,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ushort_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned short SHC_rv",
                     "function_name": "ushort_func",
                     "underscore_name": "ushort_func"
@@ -1299,8 +1299,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned int",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1342,6 +1342,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned int",
                         "c_var": "SHC_rv",
@@ -1424,7 +1425,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned int SHC_rv",
                     "function_name": "uint_func",
                     "underscore_name": "uint_func"
@@ -1441,8 +1441,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1484,6 +1484,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long",
                         "c_var": "SHC_rv",
@@ -1566,7 +1567,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned long SHC_rv",
                     "function_name": "ulong_func",
                     "underscore_name": "ulong_func"
@@ -1583,8 +1583,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1626,6 +1626,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long long",
                         "c_var": "SHC_rv",
@@ -1712,7 +1713,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_long_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned long long SHC_rv",
                     "function_name": "ulong_long_func",
                     "underscore_name": "ulong_long_func"
@@ -1729,8 +1729,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "unsigned long",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1772,6 +1772,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "unsigned long",
                         "c_var": "SHC_rv",
@@ -1856,7 +1857,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_int_func",
-                    "c_const": "",
                     "cxx_rv_decl": "unsigned long SHC_rv",
                     "function_name": "ulong_int_func",
                     "underscore_name": "ulong_int_func"
@@ -1873,8 +1873,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int8_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -1916,6 +1916,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int8_t",
                         "c_var": "SHC_rv",
@@ -1996,7 +1997,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int8_func",
-                    "c_const": "",
                     "cxx_rv_decl": "int8_t SHC_rv",
                     "function_name": "int8_func",
                     "underscore_name": "int8_func"
@@ -2013,8 +2013,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int16_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2056,6 +2056,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int16_t",
                         "c_var": "SHC_rv",
@@ -2136,7 +2137,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int16_func",
-                    "c_const": "",
                     "cxx_rv_decl": "int16_t SHC_rv",
                     "function_name": "int16_func",
                     "underscore_name": "int16_func"
@@ -2153,8 +2153,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int32_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2196,6 +2196,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int32_t",
                         "c_var": "SHC_rv",
@@ -2276,7 +2277,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int32_func",
-                    "c_const": "",
                     "cxx_rv_decl": "int32_t SHC_rv",
                     "function_name": "int32_func",
                     "underscore_name": "int32_func"
@@ -2293,8 +2293,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int64_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2336,6 +2336,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int64_t",
                         "c_var": "SHC_rv",
@@ -2416,7 +2417,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int64_func",
-                    "c_const": "",
                     "cxx_rv_decl": "int64_t SHC_rv",
                     "function_name": "int64_func",
                     "underscore_name": "int64_func"
@@ -2433,8 +2433,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint8_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2476,6 +2476,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint8_t",
                         "c_var": "SHC_rv",
@@ -2556,7 +2557,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint8_func",
-                    "c_const": "",
                     "cxx_rv_decl": "uint8_t SHC_rv",
                     "function_name": "uint8_func",
                     "underscore_name": "uint8_func"
@@ -2573,8 +2573,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint16_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2616,6 +2616,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint16_t",
                         "c_var": "SHC_rv",
@@ -2696,7 +2697,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint16_func",
-                    "c_const": "",
                     "cxx_rv_decl": "uint16_t SHC_rv",
                     "function_name": "uint16_func",
                     "underscore_name": "uint16_func"
@@ -2713,8 +2713,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint32_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2756,6 +2756,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint32_t",
                         "c_var": "SHC_rv",
@@ -2836,7 +2837,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint32_func",
-                    "c_const": "",
                     "cxx_rv_decl": "uint32_t SHC_rv",
                     "function_name": "uint32_func",
                     "underscore_name": "uint32_func"
@@ -2853,8 +2853,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "uint64_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -2896,6 +2896,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "uint64_t",
                         "c_var": "SHC_rv",
@@ -2976,7 +2977,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint64_func",
-                    "c_const": "",
                     "cxx_rv_decl": "uint64_t SHC_rv",
                     "function_name": "uint64_func",
                     "underscore_name": "uint64_func"
@@ -2993,8 +2993,8 @@
                             "c_member": ".",
                             "c_var": "arg1",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "size_t",
                             "cxx_var": "arg1",
                             "idtor": "0",
@@ -3036,6 +3036,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "size_t",
                         "c_var": "SHC_rv",
@@ -3116,7 +3117,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_size_func",
-                    "c_const": "",
                     "cxx_rv_decl": "size_t SHC_rv",
                     "function_name": "size_func",
                     "underscore_name": "size_func"
@@ -3133,8 +3133,8 @@
                             "c_member": ".",
                             "c_var": "arg",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg)",
                             "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "bool",
                             "cxx_var": "arg",
                             "idtor": "0",
@@ -3178,6 +3178,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
@@ -3259,7 +3260,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_bool_func",
-                    "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "bool_func",
                     "underscore_name": "bool_func"
@@ -3276,8 +3276,8 @@
                             "c_member": "->",
                             "c_var": "flag",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(flag)",
                             "cxx_member": "->",
+                            "cxx_nonconst_ptr": "flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "idtor": "0",
@@ -3319,6 +3319,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
@@ -3407,7 +3408,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnBoolAndOthers",
-                    "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "returnBoolAndOthers",
                     "underscore_name": "return_bool_and_others"

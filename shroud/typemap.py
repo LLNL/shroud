@@ -1715,7 +1715,7 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
+            "{c_var_context}->cxx.addr = {cxx_nonconst_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.ccharp = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
@@ -1954,7 +1954,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -1982,7 +1982,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -2011,7 +2011,7 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
+            "{c_var_context}->cxx.addr  = {cxx_var};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
@@ -2226,7 +2226,7 @@ fc_statements = [
         buf_extra=["shadow"],
         c_local_var="pointer",
         post_call=[
-            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
         ret=[
@@ -2249,7 +2249,7 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{c_var}->addr = {cxx_cast_to_void_ptr};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
         ],
         ret=[
