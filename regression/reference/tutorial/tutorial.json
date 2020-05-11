@@ -97,7 +97,6 @@
                     "LUA_name": "NoReturnNoArguments",
                     "LUA_name_impl": "l_no_return_no_arguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
-                    "c_const": "",
                     "function_name": "NoReturnNoArguments",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -232,6 +231,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -334,7 +334,6 @@
                     "LUA_name": "PassByValue",
                     "LUA_name_impl": "l_pass_by_value",
                     "PY_name_impl": "PY_PassByValue",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "PassByValue",
                     "underscore_name": "pass_by_value"
@@ -612,6 +611,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -709,7 +709,6 @@
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_concatenate_strings_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "ConcatenateStrings",
                     "function_suffix": "_bufferify",
@@ -725,6 +724,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -780,7 +780,6 @@
                     "F_name_impl": "use_default_arguments",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
                     "function_suffix": "",
@@ -829,6 +828,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -902,7 +902,6 @@
                     "F_name_impl": "use_default_arguments_arg1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1",
@@ -1045,6 +1044,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -1160,7 +1160,6 @@
                     "LUA_name": "UseDefaultArguments",
                     "LUA_name_impl": "l_use_default_arguments",
                     "PY_name_impl": "PY_UseDefaultArguments_arg1_arg2",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1_arg2",
@@ -1267,7 +1266,6 @@
                     "LUA_name": "OverloadedFunction",
                     "LUA_name_impl": "l_overloaded_function",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
-                    "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
                     "stmt0": "f_subroutine",
@@ -1355,7 +1353,6 @@
                     "C_prototype": "const char * name,\t int Lname",
                     "C_return_type": "void",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
-                    "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name_bufferify",
                     "stmt0": "c",
@@ -1474,7 +1471,6 @@
                     "F_name_impl": "overloaded_function_from_index",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
-                    "c_const": "",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_index",
                     "stmt0": "f_subroutine",
@@ -1669,7 +1665,6 @@
                     "LUA_name": "TemplateArgument",
                     "LUA_name_impl": "l_template_argument",
                     "PY_name_impl": "PY_TemplateArgument_int",
-                    "c_const": "",
                     "function_name": "TemplateArgument",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1820,7 +1815,6 @@
                     "F_name_impl": "template_argument_double",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_TemplateArgument_double",
-                    "c_const": "",
                     "function_name": "TemplateArgument",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1931,6 +1925,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1982,7 +1977,6 @@
                     "F_name_impl": "template_return_int",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "TemplateReturn",
                     "template_suffix": "_int",
@@ -2027,6 +2021,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -2078,7 +2073,6 @@
                     "F_name_impl": "template_return_double",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "TemplateReturn",
                     "template_suffix": "_double",
@@ -2153,7 +2147,6 @@
                     "LUA_name": "FortranGenericOverloaded",
                     "LUA_name_impl": "l_fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_0",
-                    "c_const": "",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
@@ -2313,7 +2306,6 @@
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
-                    "c_const": "",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
                     "stmt0": "c",
@@ -2671,7 +2663,6 @@
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
                     "C_return_type": "void",
                     "F_C_name": "c_fortran_generic_overloaded_1_bufferify",
-                    "c_const": "",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_bufferify",
                     "stmt0": "c",
@@ -2799,6 +2790,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2871,7 +2863,6 @@
                     "F_name_impl": "use_default_overload_num",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num",
@@ -2949,6 +2940,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3036,7 +3028,6 @@
                     "F_name_impl": "use_default_overload_num_offset",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset",
@@ -3235,6 +3226,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3364,7 +3356,6 @@
                     "LUA_name": "UseDefaultOverload",
                     "LUA_name_impl": "l_use_default_overload",
                     "PY_name_impl": "PY_UseDefaultOverload_num_offset_stride",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset_stride",
@@ -3437,6 +3428,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3518,7 +3510,6 @@
                     "F_name_impl": "use_default_overload_3",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_3",
@@ -3626,6 +3617,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3722,7 +3714,6 @@
                     "F_name_impl": "use_default_overload_4",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_4",
@@ -3980,6 +3971,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -4116,7 +4108,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_UseDefaultOverload_5",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_5",
@@ -4188,6 +4179,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -4276,7 +4268,6 @@
                     "LUA_name": "typefunc",
                     "LUA_name_impl": "l_typefunc",
                     "PY_name_impl": "PY_typefunc",
-                    "c_const": "",
                     "cxx_rv_decl": "tutorial::TypeID SHC_rv",
                     "function_name": "typefunc",
                     "underscore_name": "typefunc"
@@ -4350,6 +4341,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
@@ -4440,7 +4432,6 @@
                     "LUA_name": "enumfunc",
                     "LUA_name_impl": "l_enumfunc",
                     "PY_name_impl": "PY_enumfunc",
-                    "c_const": "",
                     "cxx_rv_decl": "tutorial::EnumTypeID SHCXX_rv",
                     "function_name": "enumfunc",
                     "underscore_name": "enumfunc"
@@ -4514,6 +4505,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
@@ -4604,7 +4596,6 @@
                     "LUA_name": "colorfunc",
                     "LUA_name_impl": "l_colorfunc",
                     "PY_name_impl": "PY_colorfunc",
-                    "c_const": "",
                     "cxx_rv_decl": "tutorial::Color SHCXX_rv",
                     "function_name": "colorfunc",
                     "underscore_name": "colorfunc"
@@ -4775,7 +4766,6 @@
                     "F_name_impl": "get_min_max",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_getMinMax",
-                    "c_const": "",
                     "function_name": "getMinMax",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -4849,6 +4839,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -4949,7 +4940,6 @@
                     "F_name_impl": "callback1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "callback1",
                     "underscore_name": "callback1"
@@ -4963,6 +4953,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -5048,7 +5039,6 @@
                     "LUA_name": "LastFunctionCalled",
                     "LUA_name_impl": "l_last_function_called",
                     "PY_name_impl": "PY_LastFunctionCalled",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
@@ -5092,6 +5082,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
@@ -5147,7 +5138,6 @@
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "function_suffix": "_bufferify",

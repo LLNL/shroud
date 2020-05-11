@@ -631,7 +631,6 @@
                     "F_name_impl": "function_tu_0",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_0",
-                    "c_const": "",
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -849,7 +848,6 @@
                     "F_name_impl": "function_tu_1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_1",
-                    "c_const": "",
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -979,6 +977,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1048,7 +1047,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker1",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseImplWorker",
                     "template_suffix": "_internal_ImplWorker1",
@@ -1093,6 +1091,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1162,7 +1161,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker2",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseImplWorker",
                     "template_suffix": "_internal_ImplWorker2",
@@ -1244,6 +1242,7 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_type": "TEM_vector_int",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "",
@@ -1314,7 +1313,6 @@
                                     "PY_name_impl": "PY_vector_int_tp_init",
                                     "PY_type_impl": "PY_vector_int_tp_init",
                                     "PY_type_method": "tp_init",
-                                    "c_const": "",
                                     "cxx_rv_decl": "std::vector<int> SHCXX_rv",
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
@@ -1621,6 +1619,7 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "&",
                                         "c_type": "int",
                                         "c_var": "SHC_rv",
@@ -1796,6 +1795,7 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_type": "TEM_vector_double",
                                         "c_var": "SHC_rv",
                                         "cxx_addr": "",
@@ -1866,7 +1866,6 @@
                                     "PY_name_impl": "PY_vector_double_tp_init",
                                     "PY_type_impl": "PY_vector_double_tp_init",
                                     "PY_type_method": "tp_init",
-                                    "c_const": "",
                                     "cxx_rv_decl": "std::vector<double> SHCXX_rv",
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
@@ -2173,6 +2172,7 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "&",
                                         "c_type": "double",
                                         "c_var": "SHC_rv",

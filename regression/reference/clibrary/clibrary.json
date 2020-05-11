@@ -92,7 +92,6 @@
                     "F_name_impl": "no_return_no_arguments",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_NoReturnNoArguments",
-                    "c_const": "",
                     "function_name": "NoReturnNoArguments",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -205,6 +204,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -299,7 +299,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_PassByValue",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "PassByValue",
                     "underscore_name": "pass_by_value"
@@ -469,7 +468,6 @@
                     "F_name_impl": "pass_by_reference",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_PassByReference",
-                    "c_const": "",
                     "function_name": "PassByReference",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -534,6 +532,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -617,7 +616,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_PassByValueMacro",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "PassByValueMacro",
                     "underscore_name": "pass_by_value_macro"
@@ -858,7 +856,6 @@
                     "F_name_impl": "check_bool",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_checkBool",
-                    "c_const": "",
                     "function_name": "checkBool",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -943,6 +940,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
@@ -1058,7 +1056,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_Function4a",
-                    "c_const": "",
                     "cxx_rv_decl": "char * SHC_rv",
                     "function_name": "Function4a",
                     "underscore_name": "function4a"
@@ -1154,6 +1151,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
@@ -1248,7 +1246,6 @@
                     "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_function4a_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "char * SHC_rv",
                     "function_name": "Function4a",
                     "function_suffix": "_bufferify",
@@ -1353,7 +1350,6 @@
                     "F_name_impl": "accept_name",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_acceptName",
-                    "c_const": "",
                     "function_name": "acceptName",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1451,7 +1447,6 @@
                     "F_name_impl": "pass_char_ptr_in_out",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passCharPtrInOut",
-                    "c_const": "",
                     "function_name": "passCharPtrInOut",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1543,7 +1538,6 @@
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
                     "C_return_type": "void",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
-                    "c_const": "",
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -1645,7 +1639,6 @@
                     "F_name_impl": "return_one_name",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_returnOneName",
-                    "c_const": "",
                     "function_name": "returnOneName",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1737,7 +1730,6 @@
                     "C_prototype": "char * name1,\t int Nname1",
                     "C_return_type": "void",
                     "F_C_name": "c_return_one_name_bufferify",
-                    "c_const": "",
                     "function_name": "returnOneName",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -1893,7 +1885,6 @@
                     "F_name_impl": "return_two_names",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_returnTwoNames",
-                    "c_const": "",
                     "function_name": "returnTwoNames",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2035,7 +2026,6 @@
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
                     "C_return_type": "void",
                     "F_C_name": "c_return_two_names_bufferify",
-                    "c_const": "",
                     "function_name": "returnTwoNames",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2186,7 +2176,6 @@
                     "F_name_impl": "implied_text_len",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_ImpliedTextLen",
-                    "c_const": "",
                     "function_name": "ImpliedTextLen",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2320,7 +2309,6 @@
                     "C_prototype": "char * text,\t int Ntext,\t int ltext",
                     "C_return_type": "void",
                     "F_C_name": "c_implied_text_len_bufferify",
-                    "c_const": "",
                     "function_name": "ImpliedTextLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2471,6 +2459,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2590,7 +2579,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedLen",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "ImpliedLen",
                     "underscore_name": "implied_len"
@@ -2735,6 +2723,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2854,7 +2843,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedLenTrim",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "ImpliedLenTrim",
                     "underscore_name": "implied_len_trim"
@@ -2913,6 +2901,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
@@ -2998,7 +2987,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedBoolTrue",
-                    "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "ImpliedBoolTrue",
                     "underscore_name": "implied_bool_true"
@@ -3055,6 +3043,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
@@ -3140,7 +3129,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ImpliedBoolFalse",
-                    "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "ImpliedBoolFalse",
                     "underscore_name": "implied_bool_false"
@@ -3176,7 +3164,6 @@
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "bindC1",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3257,7 +3244,6 @@
                     "F_name_generic": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "bindC2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3349,7 +3335,6 @@
                     "C_return_type": "void",
                     "F_C_name": "c_bind_c2_bufferify",
                     "F_name_impl": "Fortran_bindC2a",
-                    "c_const": "",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3495,7 +3480,6 @@
                     "F_name_generic": "pass_void_star_star",
                     "F_name_impl": "pass_void_star_star",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "passVoidStarStar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3539,6 +3523,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3612,7 +3597,6 @@
                     "F_name_impl": "pass_assumed_type",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedType",
                     "underscore_name": "pass_assumed_type"
@@ -3703,7 +3687,6 @@
                     "F_name_generic": "pass_assumed_type_dim",
                     "F_name_impl": "pass_assumed_type_dim",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "passAssumedTypeDim",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3757,6 +3740,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3847,7 +3831,6 @@
                     "F_name_impl": "pass_assumed_type_buf",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeBuf",
                     "underscore_name": "pass_assumed_type_buf"
@@ -3919,6 +3902,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3995,7 +3979,6 @@
                     "C_prototype": "void * arg,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_assumed_type_buf_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeBuf",
                     "function_suffix": "_bufferify",
@@ -4069,6 +4052,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -4160,7 +4144,6 @@
                     "F_name_impl": "callback1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "callback1",
                     "underscore_name": "callback1"
@@ -4355,7 +4338,6 @@
                     "F_name_generic": "callback2",
                     "F_name_impl": "callback2",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "callback2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -4565,7 +4547,6 @@
                     "F_name_generic": "callback3",
                     "F_name_impl": "callback3",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "callback3",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -4811,7 +4792,6 @@
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "void",
                     "F_C_name": "c_callback3_bufferify",
-                    "c_const": "",
                     "function_name": "callback3",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5029,7 +5009,6 @@
                     "F_name_generic": "callback_set_alloc",
                     "F_name_impl": "callback_set_alloc",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "callback_set_alloc",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",

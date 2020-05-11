@@ -35,7 +35,6 @@
                     "F_name_generic": "afunction",
                     "F_name_impl": "afunction",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "AFunction",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",

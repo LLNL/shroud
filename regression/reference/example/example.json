@@ -70,6 +70,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -92,7 +93,7 @@
                                                 "stmtc1": "c_shadow_ctor"
                                             },
                                             "fmtl": {
-                                                "c_var": "static_cast<void *>(\tSHCXX_rv)",
+                                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv"
@@ -149,7 +150,6 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_method": "tp_init",
-                                            "c_const": "",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_0",
@@ -207,6 +207,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -229,7 +230,7 @@
                                                 "stmtc1": "c_shadow_ctor"
                                             },
                                             "fmtl": {
-                                                "c_var": "static_cast<void *>(\tSHCXX_rv)",
+                                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv"
@@ -309,7 +310,6 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_method": "tp_init",
-                                            "c_const": "",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1",
@@ -354,6 +354,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -413,7 +414,6 @@
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
-                                            "c_const": "",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1_bufferify",
@@ -535,6 +535,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "int",
                                                 "c_var": "SHC_rv",
@@ -636,6 +637,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -766,6 +768,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -839,6 +842,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -954,6 +958,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -1147,6 +1152,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "int",
                                                 "c_var": "SHC_rv",
@@ -1311,6 +1317,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "long",
                                                 "c_var": "SHC_rv",
@@ -1475,6 +1482,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "bool",
                                                 "c_var": "SHC_rv",
@@ -1714,6 +1722,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -1736,7 +1745,7 @@
                                                 "stmtc1": "c_shadow_ctor"
                                             },
                                             "fmtl": {
-                                                "c_var": "static_cast<void *>(\tSHCXX_rv)",
+                                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv"
@@ -1816,7 +1825,6 @@
                                             "PY_name_impl": "PP_ExClass2_tp_init",
                                             "PY_type_impl": "PP_ExClass2_tp_init",
                                             "PY_type_method": "tp_init",
-                                            "c_const": "",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "underscore_name": "ctor"
@@ -1860,6 +1868,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass2",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -1916,7 +1925,6 @@
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
-                                            "c_const": "",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_bufferify",
@@ -1976,6 +1984,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -2109,6 +2118,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "c_var_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
@@ -2184,6 +2194,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "const ",
                                                 "c_rv_decl": "const char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -2313,6 +2324,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2385,6 +2397,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_rv_decl": "char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -2514,6 +2527,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2586,6 +2600,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_rv_decl": "char * SHC_rv",
                                                 "c_type": "char",
                                                 "c_val": "SHCXX_rv.c_str()",
@@ -2714,6 +2729,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "void",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "&",
@@ -2785,6 +2801,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "int",
                                                 "c_var": "SHC_rv",
@@ -2944,6 +2961,7 @@
                                         },
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_type": "AA_example_nested_ExClass1",
                                                 "c_var": "SHC_rv",
                                                 "cxx_addr": "",
@@ -3851,6 +3869,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_rv_decl": "int SHC_rv",
                                                 "c_type": "int",
@@ -4810,6 +4829,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "int",
                                                 "c_var": "SHC_rv",
@@ -4933,6 +4953,7 @@
                                     {
                                         "_fmtresult": {
                                             "fmtc": {
+                                                "c_const": "",
                                                 "c_get_value": "",
                                                 "c_type": "double",
                                                 "c_var": "SHC_rv",
@@ -5128,7 +5149,6 @@
                                     "LUA_name": "local_function1",
                                     "LUA_name_impl": "l_example_nested_local_function1",
                                     "PY_name_impl": "PP_local_function1",
-                                    "c_const": "",
                                     "function_name": "local_function1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -5188,6 +5208,7 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "bool",
                                         "c_var": "SHC_rv",
@@ -5281,7 +5302,6 @@
                                     "LUA_name": "isNameValid",
                                     "LUA_name_impl": "l_example_nested_is_name_valid",
                                     "PY_name_impl": "PP_isNameValid",
-                                    "c_const": "",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isNameValid",
                                     "underscore_name": "is_name_valid"
@@ -5336,6 +5356,7 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "bool",
                                         "c_var": "SHC_rv",
@@ -5390,7 +5411,6 @@
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "bool",
                                     "F_C_name": "c_is_name_valid_bufferify",
-                                    "c_const": "",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isNameValid",
                                     "function_suffix": "_bufferify",
@@ -5417,6 +5437,7 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "bool",
                                         "c_var": "SHC_rv",
@@ -5489,7 +5510,6 @@
                                     "LUA_name": "isInitialized",
                                     "LUA_name_impl": "l_example_nested_is_initialized",
                                     "PY_name_impl": "PP_isInitialized",
-                                    "c_const": "",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isInitialized",
                                     "underscore_name": "is_initialized"
@@ -5593,7 +5613,6 @@
                                     "LUA_name": "test_names",
                                     "LUA_name_impl": "l_example_nested_test_names",
                                     "PY_name_impl": "PP_test_names",
-                                    "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "",
                                     "stmt0": "f_subroutine",
@@ -5681,7 +5700,6 @@
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_bufferify",
-                                    "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_bufferify",
                                     "stmt0": "c",
@@ -5851,7 +5869,6 @@
                                     "F_name_impl": "test_names_flag",
                                     "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_test_names_flag",
-                                    "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag",
                                     "stmt0": "f_subroutine",
@@ -5984,7 +6001,6 @@
                                     "C_prototype": "const char * name,\t int Lname,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_name": "c_test_names_flag_bufferify",
-                                    "c_const": "",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag_bufferify",
                                     "stmt0": "c",
@@ -6025,7 +6041,6 @@
                                     "F_name_generic": "testoptional",
                                     "F_name_impl": "testoptional_0",
                                     "F_subprogram": "subroutine",
-                                    "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_0",
                                     "stmt0": "f_subroutine",
@@ -6118,7 +6133,6 @@
                                     "F_name_generic": "testoptional",
                                     "F_name_impl": "testoptional_1",
                                     "F_subprogram": "subroutine",
-                                    "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_1",
                                     "stmt0": "f_subroutine",
@@ -6325,7 +6339,6 @@
                                     "LUA_name": "testoptional",
                                     "LUA_name_impl": "l_example_nested_testoptional",
                                     "PY_name_impl": "PP_testoptional_2",
-                                    "c_const": "",
                                     "function_name": "testoptional",
                                     "function_suffix": "_2",
                                     "stmt0": "f_subroutine",
@@ -6339,6 +6352,7 @@
                             {
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "size_t",
                                         "c_var": "SHC_rv",
@@ -6410,7 +6424,6 @@
                                     "LUA_name": "test_size_t",
                                     "LUA_name_impl": "l_example_nested_test_size_t",
                                     "PY_name_impl": "PP_test_size_t",
-                                    "c_const": "",
                                     "cxx_rv_decl": "size_t SHC_rv",
                                     "function_name": "test_size_t",
                                     "underscore_name": "test_size_t"
@@ -6527,7 +6540,6 @@
                                     "LUA_name": "testmpi",
                                     "LUA_name_impl": "l_example_nested_testmpi",
                                     "PY_name_impl": "PP_testmpi_mpi",
-                                    "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_mpi",
                                     "stmt0": "f_subroutine",
@@ -6565,7 +6577,6 @@
                                     "F_name_impl": "testmpi_serial",
                                     "F_subprogram": "subroutine",
                                     "PY_name_impl": "PP_testmpi_serial",
-                                    "c_const": "",
                                     "function_name": "testmpi",
                                     "function_suffix": "_serial",
                                     "stmt0": "f_subroutine",
@@ -6689,7 +6700,6 @@
                                     "LUA_name": "FuncPtr1",
                                     "LUA_name_impl": "l_example_nested_func_ptr1",
                                     "PY_name_impl": "PP_FuncPtr1",
-                                    "c_const": "",
                                     "function_name": "FuncPtr1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -6815,7 +6825,6 @@
                                     "LUA_name": "FuncPtr2",
                                     "LUA_name_impl": "l_example_nested_func_ptr2",
                                     "PY_name_impl": "PP_FuncPtr2",
-                                    "c_const": "",
                                     "function_name": "FuncPtr2",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -6961,7 +6970,6 @@
                                     "LUA_name": "FuncPtr3",
                                     "LUA_name_impl": "l_example_nested_func_ptr3",
                                     "PY_name_impl": "PP_FuncPtr3",
-                                    "c_const": "",
                                     "function_name": "FuncPtr3",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -7073,7 +7081,6 @@
                                     "F_name_generic": "func_ptr4",
                                     "F_name_impl": "func_ptr4",
                                     "F_subprogram": "subroutine",
-                                    "c_const": "",
                                     "function_name": "FuncPtr4",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -7330,7 +7337,6 @@
                                     "LUA_name": "FuncPtr5",
                                     "LUA_name_impl": "l_example_nested_func_ptr5",
                                     "PY_name_impl": "PP_FuncPtr5",
-                                    "c_const": "",
                                     "function_name": "FuncPtr5",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -8133,7 +8139,6 @@
                                     "LUA_name": "verylongfunctionname1",
                                     "LUA_name_impl": "l_example_nested_verylongfunctionname1",
                                     "PY_name_impl": "PP_verylongfunctionname1",
-                                    "c_const": "",
                                     "function_name": "verylongfunctionname1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
@@ -8740,6 +8745,7 @@
                                 },
                                 "_fmtresult": {
                                     "fmtc": {
+                                        "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "int",
                                         "c_var": "SHC_rv",
@@ -8954,7 +8960,6 @@
                                     "LUA_name": "verylongfunctionname2",
                                     "LUA_name_impl": "l_example_nested_verylongfunctionname2",
                                     "PY_name_impl": "PP_verylongfunctionname2",
-                                    "c_const": "",
                                     "cxx_rv_decl": "int SHC_rv",
                                     "function_name": "verylongfunctionname2",
                                     "underscore_name": "verylongfunctionname2"
@@ -9248,7 +9253,6 @@
                                     "LUA_name": "cos_doubles",
                                     "LUA_name_impl": "l_example_nested_cos_doubles",
                                     "PY_name_impl": "PP_cos_doubles",
-                                    "c_const": "",
                                     "function_name": "cos_doubles",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",

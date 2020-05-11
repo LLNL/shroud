@@ -578,6 +578,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -643,7 +644,6 @@
                     "F_name_impl": "pass_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStructByValue",
                     "underscore_name": "pass_struct_by_value"
@@ -687,6 +687,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -755,7 +756,6 @@
                     "F_name_impl": "pass_struct1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
@@ -805,6 +805,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -894,7 +895,6 @@
                     "F_name_impl": "pass_struct2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
@@ -968,6 +968,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1043,7 +1044,6 @@
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_struct2_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
                     "function_suffix": "_bufferify",
@@ -1091,6 +1091,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1159,7 +1160,6 @@
                     "F_name_impl": "accept_struct_in_ptr",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
@@ -1336,7 +1336,6 @@
                     "F_name_generic": "accept_struct_out_ptr",
                     "F_name_impl": "accept_struct_out_ptr",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "acceptStructOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1423,7 +1422,6 @@
                     "F_name_generic": "accept_struct_in_out_ptr",
                     "F_name_impl": "accept_struct_in_out_ptr",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "acceptStructInOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1498,6 +1496,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
@@ -1577,7 +1576,6 @@
                     "F_name_impl": "return_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "Cstruct1 SHC_rv",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
@@ -1649,6 +1647,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
@@ -1729,7 +1728,6 @@
                     "F_name_impl": "return_const_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const Cstruct1 SHC_rv",
                     "function_name": "returnConstStructByValue",
                     "underscore_name": "return_const_struct_by_value"
@@ -1801,6 +1799,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
@@ -1889,7 +1888,6 @@
                     "F_name_impl": "return_struct_ptr1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
@@ -1955,6 +1953,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
@@ -2061,7 +2060,6 @@
                     "F_name_impl": "return_struct_ptr2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
@@ -2165,6 +2163,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
@@ -2258,7 +2257,6 @@
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "Cstruct1 *",
                     "F_C_name": "c_return_struct_ptr2_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2",
                     "function_suffix": "_bufferify",
@@ -2274,6 +2272,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "Cstruct_list",
                         "c_var": "SHC_rv",
@@ -2327,7 +2326,6 @@
                     "F_name_impl": "get_global_struct_list",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "Cstruct_list * SHC_rv",
                     "function_name": "get_global_struct_list",
                     "underscore_name": "get_global_struct_list"

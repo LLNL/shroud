@@ -17,6 +17,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -65,7 +66,6 @@
                     "F_name_impl": "get_global_double",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "GetGlobalDouble",
                     "underscore_name": "get_global_double"
@@ -143,7 +143,6 @@
                     "C_prototype": "double arg",
                     "C_return_type": "void",
                     "F_C_name": "c_generic_real",
-                    "c_const": "",
                     "function_name": "GenericReal",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -377,6 +376,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "long",
                         "c_var": "SHC_rv",
@@ -443,7 +443,6 @@
                     "C_prototype": "long arg1,\t long arg2",
                     "C_return_type": "long",
                     "F_C_name": "c_generic_real2",
-                    "c_const": "",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "GenericReal2",
                     "underscore_name": "generic_real2"
@@ -842,7 +841,6 @@
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_name": "c_save_pointer",
-                    "c_const": "",
                     "function_name": "SavePointer",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -1301,7 +1299,6 @@
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_name": "c_save_pointer2",
-                    "c_const": "",
                     "function_name": "SavePointer2",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -1805,7 +1802,6 @@
                     "F_name_generic": "get_pointer",
                     "F_name_impl": "get_pointer",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "GetPointer",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1991,7 +1987,6 @@
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
                     "F_C_name": "c_get_pointer_as_pointer",
-                    "c_const": "",
                     "function_name": "GetPointerAsPointer",
                     "stmt0": "c",
                     "stmt1": "c_default",

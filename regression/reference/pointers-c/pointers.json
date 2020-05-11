@@ -182,7 +182,6 @@
                     "F_name_generic": "intargs",
                     "F_name_impl": "intargs",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "intargs",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -384,7 +383,6 @@
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "cos_doubles",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -586,7 +584,6 @@
                     "F_name_generic": "truncate_to_int",
                     "F_name_impl": "truncate_to_int",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "truncate_to_int",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -736,7 +733,6 @@
                     "F_name_generic": "get_values",
                     "F_name_impl": "get_values",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "get_values",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -898,7 +894,6 @@
                     "F_name_generic": "get_values2",
                     "F_name_impl": "get_values2",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "get_values2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1042,7 +1037,6 @@
                     "F_name_generic": "iota_allocatable",
                     "F_name_impl": "iota_allocatable",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "iota_allocatable",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1185,7 +1179,6 @@
                     "F_name_generic": "iota_dimension",
                     "F_name_impl": "iota_dimension",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "iota_dimension",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1365,7 +1358,6 @@
                     "F_name_generic": "sum",
                     "F_name_impl": "sum",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "Sum",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1469,7 +1461,6 @@
                     "F_name_generic": "fill_int_array",
                     "F_name_impl": "fill_int_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "fillIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1605,7 +1596,6 @@
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "incrementIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1684,7 +1674,6 @@
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "acceptCharArrayIn",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1779,7 +1768,6 @@
                     "C_prototype": "char *names,\t long Snames,\t int Nnames",
                     "C_return_type": "void",
                     "F_C_name": "c_accept_char_array_in_bufferify",
-                    "c_const": "",
                     "function_name": "acceptCharArrayIn",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -1867,7 +1855,6 @@
                     "F_name_generic": "set_global_int",
                     "F_name_impl": "set_global_int",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "setGlobalInt",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -1880,6 +1867,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1931,7 +1919,6 @@
                     "F_name_impl": "sum_fixed_array",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "sumFixedArray",
                     "underscore_name": "sum_fixed_array"
@@ -2006,7 +1993,6 @@
                     "F_name_generic": "get_ptr_to_scalar",
                     "F_name_impl": "get_ptr_to_scalar",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2096,7 +2082,6 @@
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
                     "F_C_name": "c_get_ptr_to_scalar_bufferify",
-                    "c_const": "",
                     "function_name": "getPtrToScalar",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2190,7 +2175,6 @@
                     "F_name_generic": "get_ptr_to_fixed_array",
                     "F_name_impl": "get_ptr_to_fixed_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2299,7 +2283,6 @@
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
                     "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
-                    "c_const": "",
                     "function_name": "getPtrToFixedArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2429,7 +2412,6 @@
                     "F_name_generic": "get_ptr_to_dynamic_array",
                     "F_name_impl": "get_ptr_to_dynamic_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getPtrToDynamicArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2587,7 +2569,6 @@
                     "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
                     "C_return_type": "void",
                     "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
-                    "c_const": "",
                     "function_name": "getPtrToDynamicArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2604,6 +2585,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2655,7 +2637,6 @@
                     "F_name_impl": "get_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "getLen",
                     "underscore_name": "get_len"
@@ -2745,7 +2726,6 @@
                     "F_name_generic": "get_ptr_to_func_array",
                     "F_name_impl": "get_ptr_to_func_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getPtrToFuncArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2855,7 +2835,6 @@
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
                     "F_C_name": "c_get_ptr_to_func_array_bufferify",
-                    "c_const": "",
                     "function_name": "getPtrToFuncArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2941,7 +2920,6 @@
                     "F_name_generic": "get_raw_ptr_to_scalar",
                     "F_name_impl": "get_raw_ptr_to_scalar",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getRawPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3035,7 +3013,6 @@
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
                     "F_C_name": "c_get_raw_ptr_to_scalar_bufferify",
-                    "c_const": "",
                     "function_name": "getRawPtrToScalar",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3121,7 +3098,6 @@
                     "F_name_generic": "get_raw_ptr_to_fixed_array",
                     "F_name_impl": "get_raw_ptr_to_fixed_array",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "getRawPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -3215,7 +3191,6 @@
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
                     "F_C_name": "c_get_raw_ptr_to_fixed_array_bufferify",
-                    "c_const": "",
                     "function_name": "getRawPtrToFixedArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3264,6 +3239,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
@@ -3333,7 +3309,6 @@
                     "F_name_impl": "return_address1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "void * SHC_rv",
                     "function_name": "returnAddress1",
                     "underscore_name": "return_address1"
@@ -3375,6 +3350,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
@@ -3444,7 +3420,6 @@
                     "F_name_impl": "return_address2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "void * SHC_rv",
                     "function_name": "returnAddress2",
                     "underscore_name": "return_address2"
@@ -3456,6 +3431,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3509,7 +3485,6 @@
                     "F_name_impl": "return_int_ptr_to_scalar",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToScalar",
                     "underscore_name": "return_int_ptr_to_scalar"
@@ -3519,6 +3494,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3590,7 +3566,6 @@
                     "F_name_impl": "return_int_ptr_to_fixed_array",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray",
                     "underscore_name": "return_int_ptr_to_fixed_array"
@@ -3602,6 +3577,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = 10;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3652,7 +3628,6 @@
                     "C_prototype": "POI_SHROUD_array *DSHC_rv",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray",
                     "function_suffix": "_bufferify",

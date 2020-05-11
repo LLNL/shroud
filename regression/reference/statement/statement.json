@@ -16,6 +16,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -70,7 +71,6 @@
                     "F_name_impl": "get_name_length",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "GetNameLength",
                     "underscore_name": "get_name_length"
@@ -87,6 +87,7 @@
                 "PY_error_pattern": "PY_invalid_name",
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -149,7 +150,6 @@
                     "F_name_impl": "get_name_error_pattern",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getNameErrorPattern",
                     "underscore_name": "get_name_error_pattern"
@@ -195,6 +195,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "c_var_len": "get_name_length()",
@@ -250,7 +251,6 @@
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_name_error_pattern_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getNameErrorPattern",
                     "function_suffix": "_bufferify",

@@ -78,6 +78,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -198,6 +199,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -237,7 +239,6 @@
                     "C_prototype": "",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_raw",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrRaw",
                     "underscore_name": "return_int_ptr_raw"
@@ -251,6 +252,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -321,7 +323,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrScalar",
                     "underscore_name": "return_int_ptr_scalar"
@@ -333,6 +334,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -404,7 +406,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrPointer",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrPointer",
                     "underscore_name": "return_int_ptr_pointer"
@@ -436,6 +437,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -494,7 +496,6 @@
                     "C_prototype": "int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_raw",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRaw",
                     "underscore_name": "return_int_ptr_dim_raw"
@@ -546,6 +547,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -659,7 +661,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "underscore_name": "return_int_ptr_dim_pointer"
@@ -705,6 +706,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -777,7 +779,6 @@
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "function_suffix": "_bufferify",
@@ -831,6 +832,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -944,7 +946,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "underscore_name": "return_int_ptr_dim_alloc"
@@ -990,6 +991,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1062,7 +1064,6 @@
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "function_suffix": "_bufferify",
@@ -1116,6 +1117,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1228,7 +1230,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "underscore_name": "return_int_ptr_dim_default"
@@ -1274,6 +1275,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1345,7 +1347,6 @@
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "function_suffix": "_bufferify",
@@ -1381,6 +1382,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1449,7 +1451,6 @@
                     "C_prototype": "int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_raw_new",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRawNew",
                     "underscore_name": "return_int_ptr_dim_raw_new"
@@ -1501,6 +1502,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1615,7 +1617,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "underscore_name": "return_int_ptr_dim_pointer_new"
@@ -1661,6 +1662,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1734,7 +1736,6 @@
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "function_suffix": "_bufferify",
@@ -1788,6 +1789,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -1878,7 +1880,6 @@
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAllocNew",
                     "underscore_name": "return_int_ptr_dim_alloc_new"
@@ -1929,6 +1930,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2042,7 +2044,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "underscore_name": "return_int_ptr_dim_default_new"
@@ -2088,6 +2089,7 @@
                     "fmtc": {
                         "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
                         "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2160,7 +2162,6 @@
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "function_suffix": "_bufferify",
@@ -2839,7 +2840,6 @@
                     "F_name_impl": "create_class_static",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_createClassStatic",
-                    "c_const": "",
                     "function_name": "createClassStatic",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2854,6 +2854,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2928,7 +2929,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassStatic",
-                    "c_const": "",
                     "cxx_rv_decl": "Class1 * SHCXX_rv",
                     "function_name": "getClassStatic",
                     "underscore_name": "get_class_static"
@@ -2990,6 +2990,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "OWN_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -3083,7 +3084,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassNew",
-                    "c_const": "",
                     "cxx_rv_decl": "Class1 * SHCXX_rv",
                     "function_name": "getClassNew",
                     "underscore_name": "get_class_new"

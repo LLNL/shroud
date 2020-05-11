@@ -13,6 +13,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
@@ -73,7 +74,6 @@
                     "F_name_impl": "get_const_string_ptr_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
                     "underscore_name": "get_const_string_ptr_alloc"
@@ -117,6 +117,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -171,7 +172,6 @@
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
                     "function_suffix": "_bufferify",

@@ -98,7 +98,6 @@
                     "F_name_generic": "rank2_in",
                     "F_name_impl": "rank2_in",
                     "F_subprogram": "subroutine",
-                    "c_const": "",
                     "function_name": "Rank2In",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -210,7 +209,6 @@
                     "C_prototype": "char * name,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
                     "F_C_name": "c_get_scalar1",
-                    "c_const": "",
                     "function_name": "GetScalar1",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -680,7 +678,6 @@
                     "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
                     "F_C_name": "c_get_scalar1_bufferify",
-                    "c_const": "",
                     "function_name": "GetScalar1",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -874,6 +871,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -928,7 +926,6 @@
                     "F_name_impl": "get_data_int",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "getData",
                     "template_suffix": "_int",
@@ -973,6 +970,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
@@ -1027,7 +1025,6 @@
                     "F_name_impl": "get_data_double",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "getData",
                     "template_suffix": "_double",

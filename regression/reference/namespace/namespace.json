@@ -16,6 +16,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -90,7 +91,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_LastFunctionCalled",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
@@ -134,6 +134,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -187,7 +188,6 @@
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "function_suffix": "_bufferify",
@@ -226,7 +226,6 @@
                     "F_name_impl": "one",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_One",
-                    "c_const": "",
                     "function_name": "One",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -572,7 +571,6 @@
                             "F_name_impl": "one",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_One",
-                            "c_const": "",
                             "function_name": "One",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",

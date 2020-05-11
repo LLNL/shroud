@@ -104,6 +104,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -176,7 +177,6 @@
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
-                            "c_const": "",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_default",
@@ -237,6 +237,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -325,7 +326,6 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
-                            "c_const": "",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_flag",
@@ -376,6 +376,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -510,6 +511,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "bool",
                                 "c_var": "SHC_rv",
@@ -702,6 +704,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -871,6 +874,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -965,6 +969,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
@@ -1055,6 +1060,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "const ",
                                 "c_rv_decl": "const char * SHC_rv",
                                 "c_type": "char",
                                 "c_val": "SHCXX_rv.c_str()",
@@ -1179,6 +1185,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "void",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1307,6 +1314,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_rv_decl": "int SHC_rv",
                                 "c_type": "int",
@@ -1402,6 +1410,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1472,6 +1481,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1729,6 +1739,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "const ",
                                 "c_rv_decl": "const char * SHC_rv",
                                 "c_type": "char",
                                 "c_val": "SHCXX_rv.c_str()",
@@ -1853,6 +1864,7 @@
                         },
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "void",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -1959,6 +1971,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_const": "",
                                 "c_type": "CLA_Singleton",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -2122,6 +2135,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_rv_decl": "int SHC_rv",
                         "c_type": "int",
@@ -2204,7 +2218,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_directionFunc",
-                    "c_const": "",
                     "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                     "function_name": "directionFunc",
                     "underscore_name": "direction_func"
@@ -2311,7 +2324,6 @@
                     "F_name_impl": "pass_class_by_value",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_passClassByValue",
-                    "c_const": "",
                     "function_name": "passClassByValue",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2380,6 +2392,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -2464,7 +2477,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_useclass",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "useclass",
                     "underscore_name": "useclass"
@@ -2476,6 +2488,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2530,7 +2543,6 @@
                     "F_name_impl": "getclass2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const classes::Class1 * SHCXX_rv",
                     "function_name": "getclass2",
                     "underscore_name": "getclass2"
@@ -2543,6 +2555,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2614,7 +2627,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getclass3",
-                    "c_const": "",
                     "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                     "function_name": "getclass3",
                     "underscore_name": "getclass3"
@@ -2626,6 +2638,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2680,7 +2693,6 @@
                     "F_name_impl": "get_const_class_reference",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const classes::Class1 & SHCXX_rv",
                     "function_name": "getConstClassReference",
                     "underscore_name": "get_const_class_reference"
@@ -2693,6 +2705,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2764,7 +2777,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassReference",
-                    "c_const": "",
                     "cxx_rv_decl": "classes::Class1 & SHCXX_rv",
                     "function_name": "getClassReference",
                     "underscore_name": "get_class_reference"
@@ -2808,6 +2820,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "CLA_Class1",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -2876,7 +2889,6 @@
                     "F_name_impl": "get_class_copy",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "c_const": "",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "getClassCopy",
                     "underscore_name": "get_class_copy"
@@ -2979,7 +2991,6 @@
                     "F_name_impl": "set_global_flag",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_set_global_flag",
-                    "c_const": "",
                     "function_name": "set_global_flag",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -2992,6 +3003,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
@@ -3055,7 +3067,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_get_global_flag",
-                    "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
@@ -3065,6 +3076,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
@@ -3142,7 +3154,6 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_LastFunctionCalled",
-                    "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
@@ -3186,6 +3197,7 @@
                 },
                 "_fmtresult": {
                     "fmtc": {
+                        "c_const": "",
                         "c_type": "void",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
@@ -3241,7 +3253,6 @@
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_last_function_called_bufferify",
-                    "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "function_suffix": "_bufferify",

@@ -826,11 +826,6 @@ class Wrapc(util.WrapperMixin):
         #            # i.e. This method returns a wrapped type
         #            self.header_forward[result_typemap.c_type] = True
 
-        if result_is_const:
-            fmt_func.c_const = "const "
-        else:
-            fmt_func.c_const = ""
-
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -870,6 +865,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.c_var
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            if result_is_const:
+                fmt_result.c_const = "const "
+            else:
+                fmt_result.c_const = ""
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
