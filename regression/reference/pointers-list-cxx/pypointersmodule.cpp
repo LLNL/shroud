@@ -206,10 +206,10 @@ PY_intargs(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_list
+// Exact:     py_native_*_in_pointer_list
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_allocatable_list
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -280,10 +280,10 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_list
+// Exact:     py_native_*_in_pointer_list
 // ----------------------------------------
 // Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_allocatable_list
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -359,7 +359,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_pointer_list
 static char PY_get_values__doc__[] =
 "documentation"
 ;
@@ -418,10 +418,10 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_pointer_list
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_pointer_list
 static char PY_get_values2__doc__[] =
 "documentation"
 ;
@@ -494,7 +494,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_allocatable_list
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -553,7 +553,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_pointer_list
 static char PY_iota_dimension__doc__[] =
 "documentation"
 ;
@@ -608,7 +608,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * values +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_list
+// Exact:     py_native_*_in_pointer_list
 // ----------------------------------------
 // Argument:  int * result +intent(out)
 // Requested: py_native_*_out
@@ -667,7 +667,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_list
+// Exact:     py_native_*_out_pointer_list
 static char PY_fillIntArray__doc__[] =
 "documentation"
 ;
@@ -718,7 +718,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
-// Exact:     py_native_inout_dimension_list
+// Exact:     py_native_*_inout_pointer_list
 static char PY_incrementIntArray__doc__[] =
 "documentation"
 ;

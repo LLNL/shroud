@@ -167,8 +167,8 @@
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_*_in_pointer_list",
+                            "stmt1": "py_native_*_in_pointer_list"
                         }
                     },
                     "out": {
@@ -192,8 +192,8 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_allocatable_list",
+                            "stmt1": "py_native_*_out_allocatable_list"
                         }
                     },
                     "sizein": {
@@ -324,8 +324,8 @@
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_*_in_pointer_list",
+                            "stmt1": "py_native_*_in_pointer_list"
                         }
                     },
                     "out": {
@@ -349,8 +349,8 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_allocatable_list",
+                            "stmt1": "py_native_*_out_allocatable_list"
                         }
                     },
                     "sizein": {
@@ -506,8 +506,8 @@
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_pointer_list",
+                            "stmt1": "py_native_*_out_pointer_list"
                         }
                     }
                 },
@@ -601,8 +601,8 @@
                             "py_var": "SHPy_arg1",
                             "rank": "1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_pointer_list",
+                            "stmt1": "py_native_*_out_pointer_list"
                         }
                     },
                     "arg2": {
@@ -626,8 +626,8 @@
                             "py_var": "SHPy_arg2",
                             "rank": "1",
                             "size_var": "SHSize_arg2",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_pointer_list",
+                            "stmt1": "py_native_*_out_pointer_list"
                         }
                     }
                 },
@@ -749,8 +749,8 @@
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_allocatable_list",
+                            "stmt1": "py_native_*_out_allocatable_list"
                         }
                     }
                 },
@@ -858,8 +858,8 @@
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_pointer_list",
+                            "stmt1": "py_native_*_out_pointer_list"
                         }
                     }
                 },
@@ -982,8 +982,8 @@
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
                             "size_var": "SHSize_values",
-                            "stmt0": "py_native_in_dimension_list",
-                            "stmt1": "py_native_in_dimension_list"
+                            "stmt0": "py_native_*_in_pointer_list",
+                            "stmt1": "py_native_*_in_pointer_list"
                         }
                     }
                 },
@@ -1083,8 +1083,8 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_native_out_dimension_list",
-                            "stmt1": "py_native_out_dimension_list"
+                            "stmt0": "py_native_*_out_pointer_list",
+                            "stmt1": "py_native_*_out_pointer_list"
                         }
                     }
                 },
@@ -1157,8 +1157,8 @@
                             "py_var": "SHPy_array",
                             "pytmp_var": "SHTPy_array",
                             "size_var": "SHSize_array",
-                            "stmt0": "py_native_inout_dimension_list",
-                            "stmt1": "py_native_inout_dimension_list"
+                            "stmt0": "py_native_*_inout_pointer_list",
+                            "stmt1": "py_native_*_inout_pointer_list"
                         }
                     },
                     "sizein": {
