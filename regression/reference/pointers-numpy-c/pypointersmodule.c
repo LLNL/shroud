@@ -839,7 +839,7 @@ PY_returnAddress2(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -869,7 +869,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -901,7 +901,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
 ;
@@ -932,7 +932,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
 ;

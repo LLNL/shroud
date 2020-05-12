@@ -94,7 +94,7 @@ PY_push_back(
 
 // ----------------------------------------
 // Function:  int & at
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_&_result_pointer_numpy
 // ----------------------------------------
 // Argument:  size_type n +intent(in)+value
 // Requested: py_native_scalar_in

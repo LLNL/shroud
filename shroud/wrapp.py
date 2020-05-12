@@ -1852,6 +1852,7 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
+        attrs = ast.attrs
         is_ctor = ast.is_ctor()
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
@@ -1909,7 +1910,10 @@ return 1;""",
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                stmts = ["py", sgroup, "result", "dimension", options.PY_array_arg]
+                spointer = ast.get_indirect_stmt()
+                deref = attrs["deref"] or "pointer"
+                stmts = ["py", sgroup, spointer, "result",
+                         deref, options.PY_array_arg]
             else:
                 stmts = ["py", sgroup, "result"]
             if stmts is not None:
@@ -3707,7 +3711,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_result_dimension_list",
+        name="py_native_*_result_pointer_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -3724,7 +3728,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_native_result_dimension_numpy",
+        name="py_native_*_result_pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -3745,6 +3749,14 @@ py_statements = [
         declare_capsule=declare_capsule,
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
+    ),
+    dict(
+        name="py_native_&_result_pointer_numpy",
+        base="py_native_*_result_pointer_numpy",
+    ),
+    dict(
+        name="py_native_*_result_allocatable_numpy",
+        base="py_native_*_result_pointer_numpy",
     ),
 
 ########################################

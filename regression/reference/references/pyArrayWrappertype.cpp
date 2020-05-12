@@ -139,7 +139,7 @@ PY_allocate(
 
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_getArray__doc__[] =
 "documentation"
 ;
@@ -172,7 +172,7 @@ fail:
 
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConst__doc__[] =
 "documentation"
 ;
@@ -205,7 +205,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayC__doc__[] =
 "documentation"
 ;
@@ -238,7 +238,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConstC__doc__[] =
 "documentation"
 ;
