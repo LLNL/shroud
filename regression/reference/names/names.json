@@ -540,6 +540,7 @@
                             "stmt1": "c_string_in"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": "char",
@@ -565,6 +566,7 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -587,6 +589,7 @@
                         "c_var": "ARG_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&ARG_rv",
                         "cxx_type": "int",
                         "cxx_var": "ARG_rv",
                         "data_var": "SHData_rv",
@@ -693,6 +696,7 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -812,6 +816,7 @@
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "char",
@@ -846,6 +851,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int value",
                             "c_deref": "",
@@ -1748,6 +1754,7 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
@@ -1770,6 +1777,7 @@
                         "c_var": "ARG_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&ARG_rv",
                         "cxx_type": "int",
                         "cxx_var": "ARG_rv",
                         "data_var": "SHData_rv",

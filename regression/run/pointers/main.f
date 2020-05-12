@@ -159,14 +159,14 @@ contains
     ! Returns global_array in pointers.c.
     nullify(iarray)
     call get_ptr_to_dynamic_array(iarray)
-    call assert_true( associated(iarray))
-    call assert_true( size(iarray) == 10 )
+    call assert_true(associated(iarray))
+    call assert_true(size(iarray) == 10)
 
     ! Returns global_array in pointers.c.
     nullify(iarray)
     call get_ptr_to_func_array(iarray)
-    call assert_true( associated(iarray))
-    call assert_true( size(iarray) == 10 )
+    call assert_true(associated(iarray))
+    call assert_true(size(iarray) == 10)
 
     call get_raw_ptr_to_scalar(cptr_scalar)
     call assert_true(c_associated(cptr_scalar))
@@ -186,6 +186,7 @@ contains
     void = return_address2(1)
     call assert_true(c_associated(void, cptr_scalar))
 
+    ! ***** Non-const results
     ! Return pointer to global_int as a fortran pointer.
     nullify(irvscalar)
     irvscalar => return_int_ptr_to_scalar()
@@ -194,8 +195,21 @@ contains
     ! Return pointer to global_fixed_int as a fortran pointer.
     nullify(irvarray)
     irvarray => return_int_ptr_to_fixed_array()
-    call assert_true( associated(irvarray))
-    call assert_true( size(irvarray) == 10 )
+    call assert_true(associated(irvarray))
+    call assert_true(size(irvarray) == 10)
+    call assert_true(associated(irvscalar, iscalar))
+
+    ! ***** const results
+    ! Return pointer to global_int as a fortran pointer.
+    nullify(irvscalar)
+    irvscalar => return_int_ptr_to_const_scalar()
+    call assert_true(associated(irvscalar, iscalar))
+
+    ! Return pointer to global_fixed_int as a fortran pointer.
+    nullify(irvarray)
+    irvarray => return_int_ptr_to_fixed_const_array()
+    call assert_true(associated(irvarray))
+    call assert_true(size(irvarray) == 10)
     call assert_true(associated(irvscalar, iscalar))
     
   end subroutine test_out_ptrs

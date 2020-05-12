@@ -917,6 +917,70 @@ fail:
     return nullptr;
 // splicer end function.return_int_ptr_to_fixed_array
 }
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToConstScalar
+// Exact:     py_native_result_dimension_numpy
+static char PY_returnIntPtrToConstScalar__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToConstScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_const_scalar
+    PyObject * SHTPy_rv = nullptr;
+
+    const int * SHCXX_rv = returnIntPtrToConstScalar();
+
+    // post_call
+    SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT,
+        const_cast<int *>(SHCXX_rv));
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end function.return_int_ptr_to_const_scalar
+}
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Exact:     py_native_result_dimension_numpy
+static char PY_returnIntPtrToFixedConstArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntPtrToFixedConstArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_ptr_to_fixed_const_array
+    npy_intp SHD_rv[1];
+    PyObject * SHTPy_rv = nullptr;
+
+    const int * SHCXX_rv = returnIntPtrToFixedConstArray();
+
+    // post_call
+    SHD_rv[0] = 10;
+    SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_rv, NPY_INT,
+        const_cast<int *>(SHCXX_rv));
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end function.return_int_ptr_to_fixed_const_array
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -951,6 +1015,11 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_returnIntPtrToScalar__doc__},
 {"returnIntPtrToFixedArray", (PyCFunction)PY_returnIntPtrToFixedArray,
     METH_NOARGS, PY_returnIntPtrToFixedArray__doc__},
+{"returnIntPtrToConstScalar", (PyCFunction)PY_returnIntPtrToConstScalar,
+    METH_NOARGS, PY_returnIntPtrToConstScalar__doc__},
+{"returnIntPtrToFixedConstArray",
+    (PyCFunction)PY_returnIntPtrToFixedConstArray, METH_NOARGS,
+    PY_returnIntPtrToFixedConstArray__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

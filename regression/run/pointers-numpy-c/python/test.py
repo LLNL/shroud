@@ -124,6 +124,27 @@ class Pointers(unittest.TestCase):
         void = pointers.returnAddress2(1)
         self.assertEqual('PyCapsule', void.__class__.__name__)
 
+    def test_return_ptr(self):
+        ptr = pointers.returnIntPtrToScalar()
+        self.assertIsInstance(ptr, np.ndarray)
+        self.assertEqual('int32', ptr.dtype.name)
+        self.assertEqual(1, ptr.size)
+        
+        ptr = pointers.returnIntPtrToFixedArray()
+        self.assertIsInstance(ptr, np.ndarray)
+        self.assertEqual('int32', ptr.dtype.name)
+        self.assertEqual(10, ptr.size)
+
+        ptr = pointers.returnIntPtrToConstScalar()
+        self.assertIsInstance(ptr, np.ndarray)
+        self.assertEqual('int32', ptr.dtype.name)
+        self.assertEqual(1, ptr.size)
+
+        ptr = pointers.returnIntPtrToFixedConstArray()
+        self.assertIsInstance(ptr, np.ndarray)
+        self.assertEqual('int32', ptr.dtype.name)
+        self.assertEqual(10, ptr.size)
+        
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

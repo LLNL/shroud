@@ -1388,7 +1388,7 @@ default_stmts = dict(
 # sgroup     "native", "string", "char"
 # spointer   "pointer" ""
 # intent     "in", "out", "inout", "result"
-# attribute  "allocatable"
+# deref      "allocatable", "pointer"
 
 fc_statements = [
     dict(
@@ -1442,11 +1442,11 @@ fc_statements = [
         buf_args=["context"],
         c_helper="ShroudTypeDefines",
         pre_call=[
-            "{cxx_type} *{cxx_var};",
+            "{c_const}{cxx_type} *{cxx_var};",
         ],
         arg_call=["&{cxx_var}"],
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",
@@ -1595,7 +1595,7 @@ fc_statements = [
         buf_args=["context"],
         c_helper="ShroudTypeDefines",
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_var};",
+            "{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};",
             "{c_var_context}->cxx.idtor = {idtor};",
             "{c_var_context}->addr.base = {cxx_var};",
             "{c_var_context}->type = {sh_type};",

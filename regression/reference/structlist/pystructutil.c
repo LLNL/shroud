@@ -123,7 +123,7 @@ int STR_SHROUD_fill_from_PyObject_int_list(PyObject *obj,
 
 // helper to_PyList_int
 // Convert int pointer to PyList of PyObjects.
-PyObject *STR_SHROUD_to_PyList_int(int *in, size_t size)
+PyObject *STR_SHROUD_to_PyList_int(const int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {

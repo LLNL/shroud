@@ -17,6 +17,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": null,
@@ -46,6 +47,7 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -111,6 +113,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": null,
@@ -501,6 +504,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": null,
@@ -775,6 +779,7 @@
                         "cxx_addr": "",
                         "cxx_alloc_decl": "std::vector<int> * SHCXX_rv",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
                         "cxx_type": "std::vector<int>",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",

@@ -1127,9 +1127,15 @@ rv = .false.
                 name=fmt_func.F_result_capsule,
                 intent="out",
             )
-        # Functions which return shadow classes are not pure
-        # since the result argument will be assigned to.
-        if result_typemap.base != "shadow" and subprogram == "function" and (
+        # Filter out non-pure functions.
+        if result_typemap.base == "shadow":
+            # Functions which return shadow classes are not pure
+            # since the result argument will be assigned to.
+            pass
+        elif "context" in c_result_blk.buf_args:
+            # The function context argument will be assigned to.
+            pass
+        elif subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
             fmt.F_C_pure_clause = "pure "

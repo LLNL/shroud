@@ -29,17 +29,42 @@ class References(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_ArrayWrapper(self):
-        arr1 = references.ArrayWrapper()
-        arr1.setSize(10)
-        self.assertEqual(10, arr1.getSize())
+        arrinst = references.ArrayWrapper()
+        arrinst.setSize(10)
+        self.assertEqual(10, arrinst.getSize())
 
-        arr1.allocate()
-        arr = arr1.getArray()
+        arrinst.allocate()
+        arr = arrinst.getArray()
         self.assertIsInstance(arr, np.ndarray)
         self.assertEqual('float64', arr.dtype.name)
         self.assertEqual(1, arr.ndim)
         self.assertEqual((10,), arr.shape)
         self.assertEqual(10, arr.size)
+
+        arrconst = arrinst.getArrayConst()
+        self.assertIsInstance(arrconst, np.ndarray)
+        self.assertEqual('float64', arrconst.dtype.name)
+        self.assertEqual(1, arrconst.ndim)
+        self.assertEqual((10,), arrconst.shape)
+        self.assertEqual(10, arrconst.size)
+
+        # Both getArray and getArrayConst return a NumPy array to the
+        # same pointer. But a new array is created each time.
+        self.assertIsNot(arr, arrconst)
+
+        arr3 = arrinst.getArrayC()
+        self.assertIsInstance(arr3, np.ndarray)
+        self.assertEqual('float64', arr3.dtype.name)
+        self.assertEqual(1, arr3.ndim)
+        self.assertEqual((10,), arr3.shape)
+        self.assertEqual(10, arr3.size)
+
+        arr4 = arrinst.getArrayConstC()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr4.dtype.name)
+        self.assertEqual(1, arr4.ndim)
+        self.assertEqual((10,), arr4.shape)
+        self.assertEqual(10, arr4.size)
 
 
 # creating a new test suite

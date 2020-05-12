@@ -37,6 +37,7 @@
                     },
                     "arginout": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int arginout",
                             "c_deref": "",
@@ -57,6 +58,7 @@
                     },
                     "argout": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int argout",
                             "c_deref": "",
@@ -150,6 +152,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -169,6 +172,7 @@
                     },
                     "out": {
                         "fmtpy": {
+                            "array_size": "PyArray_SIZE(SHPy_in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -183,7 +187,6 @@
                             "npy_intp_decl": "npy_intp SHD_out[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_DOUBLE",
-                            "pointer_shape": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
@@ -304,6 +307,7 @@
                 "_fmtargs": {
                     "in": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -323,6 +327,7 @@
                     },
                     "out": {
                         "fmtpy": {
+                            "array_size": "PyArray_SIZE(SHPy_in)",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -337,7 +342,6 @@
                             "npy_intp_decl": "npy_intp SHD_out[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "PyArray_SIZE(SHPy_in)",
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
@@ -458,6 +462,7 @@
                 "_fmtargs": {
                     "nvalues": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int nvalues",
                             "c_deref": "",
@@ -478,6 +483,7 @@
                     },
                     "values": {
                         "fmtpy": {
+                            "array_size": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -492,7 +498,6 @@
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
@@ -572,6 +577,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtpy": {
+                            "array_size": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -586,7 +592,6 @@
                             "npy_intp_decl": "npy_intp SHD_arg1[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
                             "py_var": "SHPy_arg1",
                             "rank": "1",
                             "size_var": "SHSize_arg1",
@@ -596,6 +601,7 @@
                     },
                     "arg2": {
                         "fmtpy": {
+                            "array_size": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -610,7 +616,6 @@
                             "npy_intp_decl": "npy_intp SHD_arg2[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
                             "py_var": "SHPy_arg2",
                             "rank": "1",
                             "size_var": "SHSize_arg2",
@@ -718,6 +723,7 @@
                     },
                     "values": {
                         "fmtpy": {
+                            "array_size": "nvar",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -732,7 +738,6 @@
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
@@ -826,6 +831,7 @@
                     },
                     "values": {
                         "fmtpy": {
+                            "array_size": "nvar",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -840,7 +846,6 @@
                             "npy_intp_decl": "npy_intp SHD_values[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "nvar",
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
@@ -932,6 +937,7 @@
                     },
                     "result": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int result",
                             "c_deref": "",
@@ -952,6 +958,7 @@
                     },
                     "values": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1047,6 +1054,7 @@
                 "_fmtargs": {
                     "out": {
                         "fmtpy": {
+                            "array_size": "3",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1061,7 +1069,6 @@
                             "npy_intp_decl": "npy_intp SHD_out[1];\n",
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
-                            "pointer_shape": "3",
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
@@ -1123,6 +1130,7 @@
                 "_fmtargs": {
                     "array": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1221,6 +1229,7 @@
                 "_fmtargs": {
                     "names": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -1347,6 +1356,7 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -1632,6 +1642,172 @@
             {
                 "ast": {
                     "declarator": {
+                        "name": "getPtrToConstScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "fmtdict": {
+                    "function_name": "getPtrToConstScalar",
+                    "underscore_name": "get_ptr_to_const_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "fmtdict": {
+                    "function_name": "getPtrToFixedConstArray",
+                    "underscore_name": "get_ptr_to_fixed_const_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToDynamicConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "ncount",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "ncount",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "fmtdict": {
+                    "function_name": "getPtrToDynamicConstArray",
+                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
                         "name": "getRawPtrToScalar",
                         "pointer": []
                     },
@@ -1748,10 +1924,12 @@
                 },
                 "_fmtresult": {
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -1826,10 +2004,12 @@
                 },
                 "_fmtresult": {
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "void",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -1884,10 +2064,12 @@
             {
                 "_fmtresult": {
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -1926,10 +2108,12 @@
             {
                 "_fmtresult": {
                     "fmtpy": {
+                        "array_size": "10",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
@@ -1938,7 +2122,6 @@
                         "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                         "npy_rank": "1",
                         "numpy_type": "NPY_INT",
-                        "pointer_shape": "10",
                         "py_var": "SHTPy_rv",
                         "rank": "1",
                         "size_var": "SHSize_rv",
@@ -1978,6 +2161,111 @@
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
                     "function_name": "returnIntPtrToFixedArray",
                     "underscore_name": "return_int_ptr_to_fixed_array"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "array_size": "1",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "(int *) SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result_dimension_numpy",
+                        "stmt1": "py_native_result_dimension_numpy"
+                    }
+                },
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "returnIntPtrToConstScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "const int *returnIntPtrToConstScalar()",
+                "declgen": "const int * returnIntPtrToConstScalar()",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnIntPtrToConstScalar",
+                    "function_name": "returnIntPtrToConstScalar",
+                    "underscore_name": "return_int_ptr_to_const_scalar"
+                },
+                "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtpy": {
+                        "array_size": "10",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "(int *) SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "npy_dims_var": "SHD_rv",
+                        "npy_intp_asgn": "SHD_rv[0] = 10;\n",
+                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                        "npy_rank": "1",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "rank": "1",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_result_dimension_numpy",
+                        "stmt1": "py_native_result_dimension_numpy"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "dimension": "10"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "returnIntPtrToFixedConstArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
+                "fmtdict": {
+                    "PY_name_impl": "PY_returnIntPtrToFixedConstArray",
+                    "function_name": "returnIntPtrToFixedConstArray",
+                    "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
                 "options": {}
             }

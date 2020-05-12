@@ -322,7 +322,7 @@ PyObject *STR_SHROUD_to_PyList_char(char * *in, size_t size)
 
 // helper to_PyList_double
 // Convert double pointer to PyList of PyObjects.
-PyObject *STR_SHROUD_to_PyList_double(double *in, size_t size)
+PyObject *STR_SHROUD_to_PyList_double(const double *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -333,7 +333,7 @@ PyObject *STR_SHROUD_to_PyList_double(double *in, size_t size)
 
 // helper to_PyList_int
 // Convert int pointer to PyList of PyObjects.
-PyObject *STR_SHROUD_to_PyList_int(int *in, size_t size)
+PyObject *STR_SHROUD_to_PyList_int(const int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {

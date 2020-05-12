@@ -196,6 +196,23 @@ void getPtrToFuncArray(int **count)
     *count = (int *) &global_fixed_array;
 }
 
+/**** Return a Fortran pointer for const argument*/
+void getPtrToConstScalar(const int **nitems)
+{
+    *nitems = &global_int;
+}
+
+void getPtrToFixedConstArray(const int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
+
+void getPtrToDynamicConstArray(const int **count, int *len)
+{
+    *count = (int *) &global_fixed_array;
+    *len = sizeof(global_fixed_array)/sizeof(int);
+}
+
 /**** Return a type(C_PTR) pointer */
 /* Return pointer to a scalar in the argument. */
 void getRawPtrToScalar(int **nitems)
@@ -226,6 +243,16 @@ int *returnIntPtrToScalar(void)
 }
 
 int *returnIntPtrToFixedArray(void)
+{
+    return (int *) &global_fixed_array;
+}
+
+const int *returnIntPtrToConstScalar(void)
+{
+    return &global_int;
+}
+
+const int *returnIntPtrToFixedConstArray(void)
 {
     return (int *) &global_fixed_array;
 }

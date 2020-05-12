@@ -237,6 +237,7 @@ array->rank = 0;  // scalar
     fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
     fmt.hname = "create_from_PyObject_char"
     CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
+    fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
@@ -637,6 +638,7 @@ def add_to_PyList_helper(fmt, ntypemap):
         fmt.Py_ctor = ntypemap.PY_ctor.format(
             c_deref="", c_var="in[i]",
             cxx_var="in[i]", cxx_member="X")
+        fmt.c_const="const "
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
 
@@ -900,7 +902,7 @@ def create_to_PyList(fmt):
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}to_PyList_{fcn_suffix}", fmt)
     fmt.hnameproto = wformat(
-        "PyObject *{hnamefunc}\t({c_type} *in, size_t size)", fmt)
+        "PyObject *{hnamefunc}\t({c_const}{c_type} *in, size_t size)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",

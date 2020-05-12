@@ -141,6 +141,20 @@ declarations:
   options:
     wrap_python: False
 
+- decl: void getPtrToConstScalar(
+             const int **nitems+intent(out))
+  options:
+    wrap_python: False
+- decl: void getPtrToFixedConstArray(
+             const int **count+intent(out)+dimension(10));
+  options:
+    wrap_python: False
+- decl: void getPtrToDynamicConstArray(
+             const int **count+intent(out)+dimension(ncount),
+             int *ncount+intent(out)+hidden)
+  options:
+    wrap_python: False
+
 - decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
   doxygen:
     description: |
@@ -167,3 +181,5 @@ declarations:
 
 - decl: int *returnIntPtrToScalar()
 - decl: int *returnIntPtrToFixedArray() +dimension(10)
+- decl: const int *returnIntPtrToConstScalar()
+- decl: const int *returnIntPtrToFixedConstArray() +dimension(10)

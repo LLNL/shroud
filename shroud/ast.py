@@ -627,6 +627,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_array_shape="",
             c_array_size="1",
 
+            f_array_allocate="",
             f_array_shape="",
             f_assumed_shape="",  # scalar
             f_declare_shape_prefix="SHAPE_",
@@ -677,6 +678,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_dimension="XXXc_var_dimension",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
+                cxx_nonconst_ptr="XXXcxx_nonconst_ptr",
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
                 f_type="XXXf_type",
