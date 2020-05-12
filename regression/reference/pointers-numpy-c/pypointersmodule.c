@@ -122,10 +122,10 @@ PY_intargs(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_numpy
+// Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_allocatable_numpy
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -194,10 +194,10 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_numpy
+// Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_allocatable_numpy
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -271,7 +271,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_pointer_numpy
 static char PY_get_values__doc__[] =
 "documentation"
 ;
@@ -326,10 +326,10 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_pointer_numpy
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_pointer_numpy
 static char PY_get_values2__doc__[] =
 "documentation"
 ;
@@ -396,7 +396,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_allocatable_numpy
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -449,7 +449,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_pointer_numpy
 static char PY_iota_dimension__doc__[] =
 "documentation"
 ;
@@ -498,7 +498,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * values +intent(in)+rank(1)
-// Exact:     py_native_in_dimension_numpy
+// Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  int * result +intent(out)
 // Requested: py_native_*_out
@@ -560,7 +560,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_pointer_numpy
 static char PY_fillIntArray__doc__[] =
 "documentation"
 ;
@@ -604,7 +604,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
-// Exact:     py_native_inout_dimension_numpy
+// Exact:     py_native_*_inout_pointer_numpy
 static char PY_incrementIntArray__doc__[] =
 "documentation"
 ;
@@ -839,7 +839,7 @@ PY_returnAddress2(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -869,7 +869,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -901,7 +901,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
 ;
@@ -932,7 +932,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
 ;

@@ -672,10 +672,10 @@ PP_verylongfunctionname2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
-// Exact:     py_native_in_dimension_numpy
+// Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
-// Exact:     py_native_out_dimension_numpy
+// Exact:     py_native_*_out_allocatable_numpy
 static char PP_cos_doubles__doc__[] =
 "documentation"
 ;

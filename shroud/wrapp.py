@@ -1255,9 +1255,12 @@ return 1;""",
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
             elif rank or dimension:
+                deref = attrs["deref"] or "pointer"
                 # ex. (int * arg1 +intent(in) +rank(1))
-                stmts = ["py", sgroup, intent, "dimension", options.PY_array_arg]
+                stmts = ["py", sgroup, spointer, intent, deref, options.PY_array_arg]
             else:
+                # Scalar argument
+                # ex. (int * arg1 +intent(in))
                 stmts = ["py", sgroup, spointer, intent]
             if stmts is not None:
                 if intent_blk is None:
@@ -1849,6 +1852,7 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
+        attrs = ast.attrs
         is_ctor = ast.is_ctor()
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
@@ -1906,7 +1910,10 @@ return 1;""",
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                stmts = ["py", sgroup, "result", "dimension", options.PY_array_arg]
+                spointer = ast.get_indirect_stmt()
+                deref = attrs["deref"] or "pointer"
+                stmts = ["py", sgroup, spointer, "result",
+                         deref, options.PY_array_arg]
             else:
                 stmts = ["py", sgroup, "result"]
             if stmts is not None:
@@ -3622,7 +3629,7 @@ py_statements = [
 ####################
 ## numpy
     dict(
-        name="py_native_in_dimension_numpy",
+        name="py_native_*_in_pointer_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3651,7 +3658,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_inout_dimension_numpy",
+        name="py_native_*_inout_pointer_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3678,7 +3685,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_out_dimension_numpy",
+        name="py_native_*_out_pointer_numpy",
         need_numpy=True,
         c_local_var="pointer",
         declare=[
@@ -3704,7 +3711,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_result_dimension_list",
+        name="py_native_*_result_pointer_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -3721,7 +3728,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_native_result_dimension_numpy",
+        name="py_native_*_result_pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -3743,11 +3750,19 @@ py_statements = [
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
     ),
+    dict(
+        name="py_native_&_result_pointer_numpy",
+        base="py_native_*_result_pointer_numpy",
+    ),
+    dict(
+        name="py_native_*_result_allocatable_numpy",
+        base="py_native_*_result_pointer_numpy",
+    ),
 
 ########################################
 ## list
     dict(
-        name="py_native_in_dimension_list",
+        name="py_native_*_in_pointer_list",
         c_helper="create_from_PyObject_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3772,7 +3787,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_inout_dimension_list",
+        name="py_native_*_inout_pointer_list",
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_format="O",
@@ -3804,7 +3819,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_out_dimension_list",
+        name="py_native_*_out_pointer_list",
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -3814,11 +3829,9 @@ py_statements = [
             "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         c_pre_call=[
-#            "{cxx_decl}[{array_size}];",
             "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
         ] + malloc_error,
         cxx_pre_call=[
-#            "{cxx_decl}[{array_size}];",
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
         ] + malloc_error,
         post_call=[
@@ -3840,32 +3853,12 @@ py_statements = [
 ########################################
 ## allocatable
     dict(
-        name="py_native_out_allocatable_list",
-        c_helper="to_PyList_{cxx_type}",
-        c_header=["<stdlib.h>"],  # malloc/free
-        cxx_header=["<cstdlib>"],  # malloc/free
-        c_local_var="pointer",
-        declare=[
-            "{cxx_type} * {cxx_var} = {nullptr};",
-        ],
-        c_pre_call=[
-            "{c_var} = malloc(sizeof({c_type}) * {size_var});",
-        ] + malloc_error,
-        cxx_pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
-        ] + malloc_error,
-        post_call=[
-            "PyObject *{py_var} = {hnamefunc0}\t({cxx_var},\t {size_var});",
-            "if ({py_var} == {nullptr}) goto fail;",
-        ],
-        object_created=True,
-        cleanup=[
-            "{stdlib}free({cxx_var});",
-        ],
-        fail=[
-            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
-        ],
-        goto_fail=True,
+        name="py_native_*_out_allocatable_list",
+        base="py_native_*_out_pointer_list",
+    ),
+    dict(
+        name="py_native_*_out_allocatable_numpy",
+        base="py_native_*_out_pointer_numpy",
     ),
 
 ########################################

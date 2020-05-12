@@ -62,7 +62,7 @@ PY_ReturnIntPtrScalar(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
 ;
@@ -92,7 +92,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
@@ -131,7 +131,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
@@ -170,7 +170,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
@@ -209,7 +209,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
@@ -248,7 +248,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out
@@ -287,7 +287,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
-// Exact:     py_native_result_dimension_numpy
+// Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Requested: py_native_*_out

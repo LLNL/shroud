@@ -9095,8 +9095,8 @@
                                             "py_var": "SHPy_in",
                                             "pytmp_var": "SHTPy_in",
                                             "size_var": "SHSize_in",
-                                            "stmt0": "py_native_in_dimension_numpy",
-                                            "stmt1": "py_native_in_dimension_numpy"
+                                            "stmt0": "py_native_*_in_pointer_numpy",
+                                            "stmt1": "py_native_*_in_pointer_numpy"
                                         }
                                     },
                                     "out": {
@@ -9162,8 +9162,8 @@
                                             "py_var": "SHPy_out",
                                             "rank": "1",
                                             "size_var": "SHSize_out",
-                                            "stmt0": "py_native_out_dimension_numpy",
-                                            "stmt1": "py_native_out_dimension_numpy"
+                                            "stmt0": "py_native_*_out_allocatable_numpy",
+                                            "stmt1": "py_native_*_out_allocatable_numpy"
                                         }
                                     },
                                     "sizein": {
