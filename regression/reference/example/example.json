@@ -189,6 +189,7 @@
                                                     "lua_var": "SH_Lua_name"
                                                 },
                                                 "fmtpy": {
+                                                    "array_size": "1",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_type": "char",
@@ -673,6 +674,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -870,6 +872,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -1717,6 +1720,7 @@
                                                     "lua_var": "SH_Lua_name"
                                                 },
                                                 "fmtpy": {
+                                                    "array_size": "1",
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_type": "char",
@@ -2033,6 +2037,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -2243,6 +2248,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -2448,6 +2454,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -2653,6 +2660,7 @@
                                                 "cxx_var": "SHCXX_rv"
                                             },
                                             "fmtpy": {
+                                                "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -2964,6 +2972,7 @@
                                                     "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                     "PyObject": "PP_ExClass1",
                                                     "PyTypeObject": "PP_ExClass1_Type",
+                                                    "array_size": "1",
                                                     "c_const": "const ",
                                                     "c_decl": "AA_example_nested_ExClass1 in",
                                                     "c_deref": "",
@@ -3019,6 +3028,7 @@
                                                 "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                 "PyObject": "PP_ExClass1",
                                                 "PyTypeObject": "PP_ExClass1_Type",
+                                                "array_size": "1",
                                                 "c_deref": "*",
                                                 "c_var": "SHCXX_rv",
                                                 "cxx_addr": "",
@@ -5221,6 +5231,7 @@
                                             "lua_var": "SH_Lua_name"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "const ",
                                             "c_deref": "",
                                             "c_type": "char",
@@ -5584,6 +5595,7 @@
                                             "lua_var": "SH_Lua_name"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "const ",
                                             "c_deref": "",
                                             "c_type": "char",
@@ -5828,6 +5840,7 @@
                                             "lua_var": "SH_Lua_name"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "const ",
                                             "c_deref": "",
                                             "c_type": "char",
@@ -6787,6 +6800,7 @@
                                             "lua_var": "SH_Lua_get"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "double * ( * get)(\t)",
                                             "c_deref": "*",
@@ -7428,6 +7442,7 @@
                                             "lua_var": "SH_Lua_verylongname1"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname1",
                                             "c_deref": "",
@@ -7487,6 +7502,7 @@
                                             "lua_var": "SH_Lua_verylongname10"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname10",
                                             "c_deref": "",
@@ -7546,6 +7562,7 @@
                                             "lua_var": "SH_Lua_verylongname2"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname2",
                                             "c_deref": "",
@@ -7605,6 +7622,7 @@
                                             "lua_var": "SH_Lua_verylongname3"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname3",
                                             "c_deref": "",
@@ -7664,6 +7682,7 @@
                                             "lua_var": "SH_Lua_verylongname4"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname4",
                                             "c_deref": "",
@@ -7723,6 +7742,7 @@
                                             "lua_var": "SH_Lua_verylongname5"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname5",
                                             "c_deref": "",
@@ -7782,6 +7802,7 @@
                                             "lua_var": "SH_Lua_verylongname6"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname6",
                                             "c_deref": "",
@@ -7841,6 +7862,7 @@
                                             "lua_var": "SH_Lua_verylongname7"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname7",
                                             "c_deref": "",
@@ -7900,6 +7922,7 @@
                                             "lua_var": "SH_Lua_verylongname8"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname8",
                                             "c_deref": "",
@@ -7959,6 +7982,7 @@
                                             "lua_var": "SH_Lua_verylongname9"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_decl": "int verylongname9",
                                             "c_deref": "",
@@ -9057,6 +9081,7 @@
                                             "lua_var": "SH_Lua_in"
                                         },
                                         "fmtpy": {
+                                            "array_size": "1",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_type": "double",
@@ -9119,6 +9144,7 @@
                                             "lua_var": "SH_Lua_out"
                                         },
                                         "fmtpy": {
+                                            "array_size": "shape(in)",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_type": "double",
@@ -9133,7 +9159,6 @@
                                             "npy_intp_decl": "npy_intp SHD_out[1];\n",
                                             "npy_rank": "1",
                                             "numpy_type": "NPY_DOUBLE",
-                                            "pointer_shape": "shape(in)",
                                             "py_var": "SHPy_out",
                                             "rank": "1",
                                             "size_var": "SHSize_out",

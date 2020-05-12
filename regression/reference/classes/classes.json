@@ -493,6 +493,7 @@
                                     "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                     "PyObject": "PY_Class1",
                                     "PyTypeObject": "PY_Class1_Type",
+                                    "array_size": "1",
                                     "c_const": "const ",
                                     "c_decl": "CLA_Class1 obj2",
                                     "c_deref": "",
@@ -1002,6 +1003,7 @@
                                 "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
+                                "array_size": "1",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -1093,6 +1095,7 @@
                                 "stmtc1": "c_string_scalar_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1778,6 +1781,7 @@
                                 "stmtc1": "c_string_scalar_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2013,6 +2017,7 @@
                                 "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
                                 "PyObject": "PY_Singleton",
                                 "PyTypeObject": "PY_Singleton_Type",
+                                "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2388,6 +2393,7 @@
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_decl": "CLA_Class1 arg",
                             "c_deref": "",
@@ -2602,6 +2608,7 @@
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -2753,6 +2760,7 @@
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                         "PyObject": "PY_Class1",
                         "PyTypeObject": "PY_Class1_Type",
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3128,6 +3136,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",

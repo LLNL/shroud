@@ -135,24 +135,23 @@ class Pointers(unittest.TestCase):
         void = pointers.returnAddress2(1)
         self.assertEqual('PyCapsule', void.__class__.__name__)
 
-    def XXXtest_return_ptr(self):
+    def test_return_ptr(self):
+        # Pointers return a list.
         ptr = pointers.returnIntPtrToScalar()
-        # Returning an int?
-#        print(type(ptr))
-#        self.assertIsInstance(ptr, list)
-#        self.assertEqual(1, len(ptr))
+        self.assertIsInstance(ptr, list)
+        self.assertEqual(1, len(ptr))
         
         ptr = pointers.returnIntPtrToFixedArray()
         self.assertIsInstance(ptr, list)
-        self.assertEqual(1, len(ptr))
+        self.assertEqual(10, len(ptr))
 
         ptr = pointers.returnIntPtrToConstScalar()
-#        self.assertIsInstance(ptr, list)
-#        self.assertEqual(1, len(ptr))
+        self.assertIsInstance(ptr, list)
+        self.assertEqual(1, len(ptr))
 
         ptr = pointers.returnIntPtrToFixedConstArray()
         self.assertIsInstance(ptr, list)
-        self.assertEqual(1, len(ptr))
+        self.assertEqual(10, len(ptr))
 
 
 # creating a new test suite

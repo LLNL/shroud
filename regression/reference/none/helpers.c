@@ -3811,7 +3811,7 @@ static PyObject *SHROUD_to_PyList_char(char * *in, size_t size)
 
 // helper to_PyList_double
 // Convert double pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
+static PyObject *SHROUD_to_PyList_double(const double *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3825,7 +3825,7 @@ static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
 
 // helper to_PyList_float
 // Convert float pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_float(float *in, size_t size)
+static PyObject *SHROUD_to_PyList_float(const float *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3839,7 +3839,7 @@ static PyObject *SHROUD_to_PyList_float(float *in, size_t size)
 
 // helper to_PyList_int
 // Convert int pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
+static PyObject *SHROUD_to_PyList_int(const int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3853,7 +3853,8 @@ static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
 
 // helper to_PyList_int16_t
 // Convert int16_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int16_t(int16_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_int16_t
+    (const int16_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3867,7 +3868,8 @@ static PyObject *SHROUD_to_PyList_int16_t(int16_t *in, size_t size)
 
 // helper to_PyList_int32_t
 // Convert int32_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int32_t(int32_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_int32_t
+    (const int32_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3881,7 +3883,8 @@ static PyObject *SHROUD_to_PyList_int32_t(int32_t *in, size_t size)
 
 // helper to_PyList_int64_t
 // Convert int64_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int64_t(int64_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_int64_t
+    (const int64_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3895,7 +3898,7 @@ static PyObject *SHROUD_to_PyList_int64_t(int64_t *in, size_t size)
 
 // helper to_PyList_int8_t
 // Convert int8_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int8_t(int8_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_int8_t(const int8_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3909,7 +3912,7 @@ static PyObject *SHROUD_to_PyList_int8_t(int8_t *in, size_t size)
 
 // helper to_PyList_long
 // Convert long pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_long(long *in, size_t size)
+static PyObject *SHROUD_to_PyList_long(const long *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3923,7 +3926,7 @@ static PyObject *SHROUD_to_PyList_long(long *in, size_t size)
 
 // helper to_PyList_short
 // Convert short pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_short(short *in, size_t size)
+static PyObject *SHROUD_to_PyList_short(const short *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3937,7 +3940,7 @@ static PyObject *SHROUD_to_PyList_short(short *in, size_t size)
 
 // helper to_PyList_size_t
 // Convert size_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_size_t(size_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_size_t(const size_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3951,7 +3954,8 @@ static PyObject *SHROUD_to_PyList_size_t(size_t *in, size_t size)
 
 // helper to_PyList_uint16_t
 // Convert uint16_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_uint16_t(uint16_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_uint16_t
+    (const uint16_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3965,7 +3969,8 @@ static PyObject *SHROUD_to_PyList_uint16_t(uint16_t *in, size_t size)
 
 // helper to_PyList_uint32_t
 // Convert uint32_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_uint32_t(uint32_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_uint32_t
+    (const uint32_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3979,7 +3984,8 @@ static PyObject *SHROUD_to_PyList_uint32_t(uint32_t *in, size_t size)
 
 // helper to_PyList_uint64_t
 // Convert uint64_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_uint64_t(uint64_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_uint64_t
+    (const uint64_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -3993,7 +3999,8 @@ static PyObject *SHROUD_to_PyList_uint64_t(uint64_t *in, size_t size)
 
 // helper to_PyList_uint8_t
 // Convert uint8_t pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_uint8_t(uint8_t *in, size_t size)
+static PyObject *SHROUD_to_PyList_uint8_t
+    (const uint8_t *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -4008,7 +4015,7 @@ static PyObject *SHROUD_to_PyList_uint8_t(uint8_t *in, size_t size)
 // helper to_PyList_unsigned_int
 // Convert unsigned int pointer to PyList of PyObjects.
 static PyObject *SHROUD_to_PyList_unsigned_int
-    (unsigned int *in, size_t size)
+    (const unsigned int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -4023,7 +4030,7 @@ static PyObject *SHROUD_to_PyList_unsigned_int
 // helper to_PyList_unsigned_long
 // Convert unsigned long pointer to PyList of PyObjects.
 static PyObject *SHROUD_to_PyList_unsigned_long
-    (unsigned long *in, size_t size)
+    (const unsigned long *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -4038,7 +4045,7 @@ static PyObject *SHROUD_to_PyList_unsigned_long
 // helper to_PyList_unsigned_short
 // Convert unsigned short pointer to PyList of PyObjects.
 static PyObject *SHROUD_to_PyList_unsigned_short
-    (unsigned short *in, size_t size)
+    (const unsigned short *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {

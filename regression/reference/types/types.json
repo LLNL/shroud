@@ -3344,6 +3344,7 @@
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int flag",
                             "c_deref": "",

@@ -45,8 +45,8 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
 int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
     STR_SHROUD_converter_value *value);
 PyObject *STR_SHROUD_to_PyList_char(char * *in, size_t size);
-PyObject *STR_SHROUD_to_PyList_double(double *in, size_t size);
-PyObject *STR_SHROUD_to_PyList_int(int *in, size_t size);
+PyObject *STR_SHROUD_to_PyList_double(const double *in, size_t size);
+PyObject *STR_SHROUD_to_PyList_int(const int *in, size_t size);
 
 // utility functions
 extern void PY_SHROUD_release_memory(int icontext, void *ptr);

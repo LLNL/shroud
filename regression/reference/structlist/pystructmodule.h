@@ -28,7 +28,7 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     char *in, Py_ssize_t insize);
 int STR_SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize);
-PyObject *STR_SHROUD_to_PyList_int(int *in, size_t size);
+PyObject *STR_SHROUD_to_PyList_int(const int *in, size_t size);
 
 // utility functions
 extern void PY_SHROUD_release_memory(int icontext, void *ptr);

@@ -1046,11 +1046,10 @@ class Declaration(Node):
         pointer or reference.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
-            if ptr.ptr:
-                nlevels += 1
+        if self.declarator:
+            for ptr in self.declarator.pointer:
+                if ptr.ptr:
+                    nlevels += 1
         return nlevels
 
     def is_array(self):

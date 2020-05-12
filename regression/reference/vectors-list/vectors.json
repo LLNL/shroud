@@ -17,6 +17,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": null,
@@ -113,6 +114,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": null,
@@ -501,6 +503,7 @@
                 "_fmtargs": {
                     "arg": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": null,

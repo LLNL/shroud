@@ -247,6 +247,7 @@
                                     "lua_var": "SH_Lua_arg"
                                 },
                                 "fmtpy": {
+                                    "array_size": "1",
                                     "c_const": "",
                                     "c_decl": "TUT_Class1 arg",
                                     "c_deref": "",
@@ -372,6 +373,7 @@
                                     "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
                                     "PyObject": "PY_Class3",
                                     "PyTypeObject": "PY_Class3_Type",
+                                    "array_size": "1",
                                     "c_const": "",
                                     "c_decl": "FOR_Class3 arg",
                                     "c_deref": "",

@@ -873,7 +873,6 @@ return 1;""",
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
                 fmt.npy_dims_var = "SHD_" + ast.name
-#            fmt.pointer_shape = dimension
             # Dimensions must be in npy_intp type array.
             # XXX - assumes 1-d
             fmt.npy_intp_decl = wformat("npy_intp {npy_dims_var}[1];\n", fmt)
@@ -905,9 +904,11 @@ return 1;""",
                 fmtsize.append("({})".format(dim))
             fmt.npy_intp_asgn = "\n".join(fmtdim)
             if len(fmtsize) > 1:
-                fmt.pointer_shape = "*\t".join(fmtsize)
+                fmt.array_size = "*\t".join(fmtsize)
             else:
-                fmt.pointer_shape = visitor.shape[0]
+                fmt.array_size = visitor.shape[0]
+        elif ast.is_indirect():
+            fmt.array_size = "1"  # assume scalar
 
 #        fmt.c_type = typemap.c_type
         fmt.cxx_type = wformat(typemap.cxx_type, fmt) # expand cxx_T
@@ -932,6 +933,14 @@ return 1;""",
             )
         else:
             fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
+
+    def set_fmt_hnamefunc(self, blk, fmt):
+        """process helper functions from py_statements.c_helper"""
+        if blk.c_helper:
+            c_helper = wformat(blk.c_helper, fmt)
+            for i, helper in enumerate(c_helper.split()):
+                setattr(fmt, "hnamefunc" + str(i),
+                    self.add_helper(helper))
 
     def implied_blk(self, node, arg, pre_call):
         """Add the implied attribute to the pre_call block.
@@ -1130,6 +1139,7 @@ return 1;""",
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(
                 stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+        self.set_fmt_hnamefunc(result_blk, fmt_result)
 
         PY_code = []
 
@@ -1262,12 +1272,7 @@ return 1;""",
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
-            # define helper functions
-            if intent_blk.c_helper:
-                c_helper = wformat(intent_blk.c_helper, fmt_arg)
-                for i, helper in enumerate(c_helper.split()):
-                    setattr(fmt_arg, "hnamefunc" + str(i),
-                            self.add_helper(helper))
+            self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             # local_var - 'funcptr', 'pointer', or 'scalar'
             if intent_blk.c_local_var:
@@ -3699,6 +3704,23 @@ py_statements = [
     ),
 
     dict(
+        name="py_native_result_dimension_list",
+        c_helper="to_PyList_{cxx_type}",
+        declare=[
+            "PyObject *{py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+        object_created=True,
+        # XXX - library owns memory, test on +owner attribute
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    dict(
         name="py_native_result_dimension_numpy",
         need_numpy=True,
         declare=[
@@ -3792,15 +3814,15 @@ py_statements = [
             "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         c_pre_call=[
-#            "{cxx_decl}[{pointer_shape}];",
-            "{c_var} = malloc(\tsizeof({c_type}) * ({pointer_shape}));",
+#            "{cxx_decl}[{array_size}];",
+            "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
         ] + malloc_error,
         cxx_pre_call=[
-#            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({pointer_shape})));",
+#            "{cxx_decl}[{array_size}];",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
         ] + malloc_error,
         post_call=[
-            "{py_var} = {hnamefunc0}\t({cxx_var},\t {pointer_shape});",
+            "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,

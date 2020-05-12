@@ -658,6 +658,7 @@
                             "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "STR_cstruct1 arg",
                             "c_deref": "",
@@ -739,6 +740,7 @@
                 "_fmtargs": {
                     "outbuf": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -762,6 +764,7 @@
                             "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "STR_cstruct1 s1",
                             "c_deref": "",
@@ -907,6 +910,7 @@
                             "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "STR_cstruct1 arg",
                             "c_deref": "",
@@ -1045,6 +1049,7 @@
                             "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "STR_cstruct1 arg",
                             "c_deref": "",
@@ -1385,6 +1390,7 @@
                         "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -1503,6 +1509,7 @@
                     },
                     "outbuf": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -1528,6 +1535,7 @@
                         "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                         "PyObject": "PY_Cstruct1",
                         "PyTypeObject": "PY_Cstruct1_Type",
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -1628,6 +1636,7 @@
                         "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
                         "PyObject": "PY_Cstruct_list",
                         "PyTypeObject": "PY_Cstruct_list_Type",
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",

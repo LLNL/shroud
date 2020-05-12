@@ -540,6 +540,7 @@
                             "stmt1": "c_string_in"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": "char",
@@ -815,6 +816,7 @@
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "char",
@@ -849,6 +851,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "int value",
                             "c_deref": "",

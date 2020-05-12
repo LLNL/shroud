@@ -321,6 +321,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -356,6 +357,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "char",
@@ -614,6 +616,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -812,6 +815,7 @@
                         "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -1011,6 +1015,7 @@
                         "stmtc1": "c_char_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -1201,6 +1206,7 @@
                         "stmt1": "c_char_result"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -2193,6 +2199,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -2394,6 +2401,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -2586,6 +2594,7 @@
                         "stmt1": "c_string_result"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -2845,6 +2854,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3044,6 +3054,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3235,6 +3246,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -3449,6 +3461,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -3640,6 +3653,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -3837,6 +3851,7 @@
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
+                        "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -4028,6 +4043,7 @@
                             "stmt1": "c_string_in"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": "char",
@@ -4217,6 +4233,7 @@
                             "stmt1": "c_string_out"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "char arg1",
                             "c_deref": "",
@@ -4406,6 +4423,7 @@
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "char",
@@ -4599,6 +4617,7 @@
                             "stmt1": "c_string_inout"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -4771,6 +4790,7 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "char arg1",
                             "c_deref": "",
@@ -4791,6 +4811,7 @@
                     },
                     "arg2": {
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_decl": "char arg2",
                             "c_deref": "",
@@ -4947,6 +4968,7 @@
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",

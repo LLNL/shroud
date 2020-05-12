@@ -370,6 +370,7 @@
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "self->obj->getSize()",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -383,7 +384,6 @@
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                                 "npy_rank": "1",
                                 "numpy_type": "NPY_DOUBLE",
-                                "pointer_shape": "self->obj->getSize()",
                                 "py_var": "SHTPy_rv",
                                 "rank": "1",
                                 "size_var": "SHSize_rv",
@@ -553,6 +553,7 @@
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "self->obj->getSize()",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -566,7 +567,6 @@
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                                 "npy_rank": "1",
                                 "numpy_type": "NPY_DOUBLE",
-                                "pointer_shape": "self->obj->getSize()",
                                 "py_var": "SHTPy_rv",
                                 "rank": "1",
                                 "size_var": "SHSize_rv",
@@ -738,6 +738,7 @@
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "self->obj->getSize()",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -751,7 +752,6 @@
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                                 "npy_rank": "1",
                                 "numpy_type": "NPY_DOUBLE",
-                                "pointer_shape": "self->obj->getSize()",
                                 "py_var": "SHTPy_rv",
                                 "rank": "1",
                                 "size_var": "SHSize_rv",
@@ -923,6 +923,7 @@
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
+                                "array_size": "self->obj->getSize()",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -936,7 +937,6 @@
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
                                 "npy_rank": "1",
                                 "numpy_type": "NPY_DOUBLE",
-                                "pointer_shape": "self->obj->getSize()",
                                 "py_var": "SHTPy_rv",
                                 "rank": "1",
                                 "size_var": "SHSize_rv",

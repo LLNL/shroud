@@ -123,7 +123,7 @@ static int SHROUD_create_from_PyObject_int(PyObject *obj,
 
 // helper to_PyList_double
 // Convert double pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
+static PyObject *SHROUD_to_PyList_double(const double *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -134,7 +134,7 @@ static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
 
 // helper to_PyList_int
 // Convert int pointer to PyList of PyObjects.
-static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
+static PyObject *SHROUD_to_PyList_int(const int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
     for (size_t i = 0; i < size; ++i) {
@@ -942,8 +942,7 @@ PY_returnAddress2(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Requested: py_native_result_dimension_list
-// Match:     py_default
+// Exact:     py_native_result_dimension_list
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -955,21 +954,25 @@ PY_returnIntPtrToScalar(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_to_scalar
-    PyObject * SHTPy_rv = NULL;
+    PyObject *SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntPtrToScalar();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+    SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 1);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_int_ptr_to_scalar
 }
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Requested: py_native_result_dimension_list
-// Match:     py_default
+// Exact:     py_native_result_dimension_list
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -981,21 +984,25 @@ PY_returnIntPtrToFixedArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_to_fixed_array
-    PyObject * SHTPy_rv = NULL;
+    PyObject *SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntPtrToFixedArray();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+    SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 10);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_int_ptr_to_fixed_array
 }
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Requested: py_native_result_dimension_list
-// Match:     py_default
+// Exact:     py_native_result_dimension_list
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
 ;
@@ -1007,21 +1014,25 @@ PY_returnIntPtrToConstScalar(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_to_const_scalar
-    PyObject * SHTPy_rv = NULL;
+    PyObject *SHTPy_rv = NULL;
 
     const int * SHCXX_rv = returnIntPtrToConstScalar();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+    SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 1);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_int_ptr_to_const_scalar
 }
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Requested: py_native_result_dimension_list
-// Match:     py_default
+// Exact:     py_native_result_dimension_list
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
 ;
@@ -1033,14 +1044,19 @@ PY_returnIntPtrToFixedConstArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_to_fixed_const_array
-    PyObject * SHTPy_rv = NULL;
+    PyObject *SHTPy_rv = NULL;
 
     const int * SHCXX_rv = returnIntPtrToFixedConstArray();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+    SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 10);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_int_ptr_to_fixed_const_array
 }
 static PyMethodDef PY_methods[] = {
