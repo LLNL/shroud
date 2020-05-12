@@ -2855,6 +2855,657 @@
                     "nitems": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(nitems)",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToConstScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "nitems",
+                    "C_name": "POI_get_ptr_to_const_scalar",
+                    "C_prototype": "const int * * nitems",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_const_scalar_bufferify",
+                    "F_C_name": "c_get_ptr_to_const_scalar",
+                    "F_arg_c_call": "Dnitems",
+                    "F_arguments": "nitems",
+                    "F_name_function": "get_ptr_to_const_scalar",
+                    "F_name_generic": "get_ptr_to_const_scalar",
+                    "F_name_impl": "get_ptr_to_const_scalar",
+                    "F_subprogram": "subroutine",
+                    "function_name": "getPtrToConstScalar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_const_scalar"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(nitems)",
+                            "cxx_type": "int",
+                            "cxx_var": "nitems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nitems",
+                            "c_var": "nitems",
+                            "c_var_context": "Dnitems",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nitems",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToConstScalar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dnitems",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +context(Dnitems)+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "&nitems",
+                    "C_name": "POI_get_ptr_to_const_scalar_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dnitems",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
+                    "function_name": "getPtrToConstScalar",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_const_scalar"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "count",
+                    "C_name": "POI_get_ptr_to_fixed_const_array",
+                    "C_prototype": "const int * * count",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_fixed_const_array_bufferify",
+                    "F_C_name": "c_get_ptr_to_fixed_const_array",
+                    "F_arg_c_call": "Dcount",
+                    "F_arguments": "count",
+                    "F_name_function": "get_ptr_to_fixed_const_array",
+                    "F_name_generic": "get_ptr_to_fixed_const_array",
+                    "F_name_impl": "get_ptr_to_fixed_const_array",
+                    "F_subprogram": "subroutine",
+                    "function_name": "getPtrToFixedConstArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_fixed_const_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nDcount->shape[0] = 10;",
+                            "c_array_size": "Dcount->shape[0]",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "c_var_dimension": "10",
+                            "f_array_allocate": "(10)",
+                            "f_array_shape": ", Dcount%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToFixedConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +context(Dcount)+dimension(10)+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "&count",
+                    "C_name": "POI_get_ptr_to_fixed_const_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
+                    "function_name": "getPtrToFixedConstArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_fixed_const_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out",
+                            "stmt1": "c_default"
+                        }
+                    },
+                    "ncount": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ncount",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToDynamicConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "ncount",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "ncount",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "count,\t ncount",
+                    "C_name": "POI_get_ptr_to_dynamic_const_array",
+                    "C_prototype": "const int * * count,\t int * ncount",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_ptr_to_dynamic_const_array_bufferify",
+                    "F_C_name": "c_get_ptr_to_dynamic_const_array",
+                    "F_arg_c_call": "Dcount,\t ncount",
+                    "F_arguments": "count",
+                    "F_name_function": "get_ptr_to_dynamic_const_array",
+                    "F_name_generic": "get_ptr_to_dynamic_const_array",
+                    "F_name_impl": "get_ptr_to_dynamic_const_array",
+                    "F_subprogram": "subroutine",
+                    "function_name": "getPtrToDynamicConstArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nDcount->shape[0] = *ncount;",
+                            "c_array_size": "Dcount->shape[0]",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_out_buf",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "c_var_context": "Dcount",
+                            "c_var_dimension": "ncount",
+                            "f_array_allocate": "(ncount)",
+                            "f_array_shape": ", Dcount%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_out",
+                            "stmt1": "f_native_**_out",
+                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    },
+                    "ncount": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ncount",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_ncount",
+                            "c_var": "ncount",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "ncount",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getPtrToDynamicConstArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Dcount",
+                                "dimension": "ncount",
+                                "intent": "out"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "ncount",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +context(Dcount)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "fmtdict": {
+                    "C_call_list": "&count,\t ncount",
+                    "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
+                    "function_name": "getPtrToDynamicConstArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "nitems": {
+                        "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

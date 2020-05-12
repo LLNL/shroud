@@ -32,11 +32,16 @@ void acceptCharArrayIn(char **names);
 
 void setGlobalInt(int value);
 int sumFixedArray(void);
+
 void getPtrToScalar(int **nitems);
 void getPtrToFixedArray(int **count);
 void getPtrToDynamicArray(int **count, int *len);
 int getLen(void);
 void getPtrToFuncArray(int **count);
+
+void getPtrToConstScalar(const int **nitems);
+void getPtrToFixedConstArray(const int **count);
+void getPtrToDynamicConstArray(const int **count, int *len);
 
 void getRawPtrToScalar(int **nitems);
 void getRawPtrToFixedArray(int **count);

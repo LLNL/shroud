@@ -608,6 +608,142 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 }
 // end POI_get_ptr_to_func_array_bufferify
 
+// ----------------------------------------
+// Function:  void getPtrToConstScalar
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * nitems +intent(out)
+// Requested: c_native_**_out
+// Match:     c_default
+// start POI_get_ptr_to_const_scalar
+void POI_get_ptr_to_const_scalar(const int * * nitems)
+{
+    // splicer begin function.get_ptr_to_const_scalar
+    getPtrToConstScalar(nitems);
+    // splicer end function.get_ptr_to_const_scalar
+}
+// end POI_get_ptr_to_const_scalar
+
+// ----------------------------------------
+// Function:  void getPtrToConstScalar
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * nitems +context(Dnitems)+intent(out)
+// Exact:     c_native_**_out_buf
+// start POI_get_ptr_to_const_scalar_bufferify
+void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
+{
+    // splicer begin function.get_ptr_to_const_scalar_bufferify
+    const int *nitems;
+    getPtrToConstScalar(&nitems);
+    Dnitems->cxx.addr  = const_cast<int *>(nitems);
+    Dnitems->cxx.idtor = 0;
+    Dnitems->addr.base = nitems;
+    Dnitems->type = SH_TYPE_INT;
+    Dnitems->elem_len = sizeof(int);
+    Dnitems->rank = 0;
+    Dnitems->size = 1;
+    // splicer end function.get_ptr_to_const_scalar_bufferify
+}
+// end POI_get_ptr_to_const_scalar_bufferify
+
+// ----------------------------------------
+// Function:  void getPtrToFixedConstArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * count +dimension(10)+intent(out)
+// Requested: c_native_**_out
+// Match:     c_default
+// start POI_get_ptr_to_fixed_const_array
+void POI_get_ptr_to_fixed_const_array(const int * * count)
+{
+    // splicer begin function.get_ptr_to_fixed_const_array
+    getPtrToFixedConstArray(count);
+    // splicer end function.get_ptr_to_fixed_const_array
+}
+// end POI_get_ptr_to_fixed_const_array
+
+// ----------------------------------------
+// Function:  void getPtrToFixedConstArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
+// Exact:     c_native_**_out_buf
+// start POI_get_ptr_to_fixed_const_array_bufferify
+void POI_get_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *Dcount)
+{
+    // splicer begin function.get_ptr_to_fixed_const_array_bufferify
+    const int *count;
+    getPtrToFixedConstArray(&count);
+    Dcount->cxx.addr  = const_cast<int *>(count);
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 1;
+    Dcount->shape[0] = 10;
+    Dcount->size = Dcount->shape[0];
+    // splicer end function.get_ptr_to_fixed_const_array_bufferify
+}
+// end POI_get_ptr_to_fixed_const_array_bufferify
+
+// ----------------------------------------
+// Function:  void getPtrToDynamicConstArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * count +dimension(ncount)+intent(out)
+// Requested: c_native_**_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * ncount +hidden+intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+// start POI_get_ptr_to_dynamic_const_array
+void POI_get_ptr_to_dynamic_const_array(const int * * count,
+    int * ncount)
+{
+    // splicer begin function.get_ptr_to_dynamic_const_array
+    getPtrToDynamicConstArray(count, ncount);
+    // splicer end function.get_ptr_to_dynamic_const_array
+}
+// end POI_get_ptr_to_dynamic_const_array
+
+// ----------------------------------------
+// Function:  void getPtrToDynamicConstArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
+// Exact:     c_native_**_out_buf
+// ----------------------------------------
+// Argument:  int * ncount +hidden+intent(out)
+// Requested: c_native_*_out_buf
+// Match:     c_default
+// start POI_get_ptr_to_dynamic_const_array_bufferify
+void POI_get_ptr_to_dynamic_const_array_bufferify(
+    POI_SHROUD_array *Dcount, int * ncount)
+{
+    // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
+    const int *count;
+    getPtrToDynamicConstArray(&count, ncount);
+    Dcount->cxx.addr  = const_cast<int *>(count);
+    Dcount->cxx.idtor = 0;
+    Dcount->addr.base = count;
+    Dcount->type = SH_TYPE_INT;
+    Dcount->elem_len = sizeof(int);
+    Dcount->rank = 1;
+    Dcount->shape[0] = *ncount;
+    Dcount->size = Dcount->shape[0];
+    // splicer end function.get_ptr_to_dynamic_const_array_bufferify
+}
+// end POI_get_ptr_to_dynamic_const_array_bufferify
+
 /**
  * Called directly via an interface.
  */

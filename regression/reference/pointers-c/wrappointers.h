@@ -32,6 +32,14 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount);
 
+void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems);
+
+void POI_get_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *Dcount);
+
+void POI_get_ptr_to_dynamic_const_array_bufferify(
+    POI_SHROUD_array *Dcount, int * ncount);
+
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems);
 
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount);
