@@ -93,7 +93,7 @@ PY_push_back(
 }
 
 // ----------------------------------------
-// Function:  double & at
+// Function:  double & at +deref(pointer)
 // Exact:     py_native_&_result_pointer_numpy
 // ----------------------------------------
 // Argument:  size_type n +intent(in)+value

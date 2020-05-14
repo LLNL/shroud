@@ -2081,6 +2081,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnIntPtrToScalar",
                         "pointer": [
@@ -2184,6 +2187,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "const": true,
                     "declarator": {
                         "name": "returnIntPtrToConstScalar",

@@ -4105,13 +4105,16 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result",
+                        "stmt0": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result_pointer",
                         "stmtc0": "c_native_*_result",
                         "stmtc1": "c_default"
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnIntPtrToScalar",
                         "pointer": [
@@ -4320,13 +4323,16 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result",
+                        "stmt0": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result_pointer",
                         "stmtc0": "c_native_*_result",
                         "stmtc1": "c_default"
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "const": true,
                     "declarator": {
                         "name": "returnIntPtrToConstScalar",

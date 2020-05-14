@@ -1825,13 +1825,16 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result",
+                        "stmt0": "f_struct_*_result_pointer",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result",
                         "stmtc1": "c_struct_result"
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -1980,13 +1983,16 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result",
+                        "stmt0": "f_struct_*_result_pointer",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -2189,6 +2195,9 @@
                 },
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -2301,13 +2310,16 @@
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result",
+                        "stmt0": "f_struct_*_result_pointer",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result",
                         "stmtc1": "c_struct_result"
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [

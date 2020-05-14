@@ -345,7 +345,7 @@ PY_returnConstStructByValue(
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
+// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Requested: py_struct_result_list
 // Match:     py_default
 // ----------------------------------------
@@ -394,7 +394,7 @@ PY_returnStructPtr1(
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: py_struct_result_list
 // Match:     py_default
 // ----------------------------------------
@@ -449,7 +449,7 @@ PY_returnStructPtr2(
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
+// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
 // Requested: py_struct_result_list
 // Match:     py_default
 static char PY_get_global_struct_list__doc__[] =

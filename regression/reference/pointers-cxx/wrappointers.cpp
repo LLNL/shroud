@@ -879,7 +879,7 @@ void * POI_return_address2(int flag)
 // end POI_return_address2
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int * returnIntPtrToScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_scalar
@@ -929,7 +929,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // end POI_return_int_ptr_to_fixed_array_bufferify
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int * returnIntPtrToConstScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_const_scalar

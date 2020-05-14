@@ -1556,7 +1556,7 @@ class Preprocess(object):
         # that have the template expanded.
         if not node.cxx_template:
             self.process_xxx(cls, node)
-            self.check_pointer(node, node.ast)
+            self.check_return_pointer(node, node.ast)
 
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper languages.
@@ -1610,12 +1610,12 @@ class Preprocess(object):
     #            raise RuntimeError("Unknown type {} in {}",
     #                               CXX_result_type, fmt_func.function_name)
 
-    def check_pointer(self, node, ast):
+    def check_return_pointer(self, node, ast):
         """Compute how to deal with a pointer function result.
 
         Args:
-            node -
-            ast -
+            node - ast.FunctionNode
+            ast - declast.Declaration
         """
         options = node.options
         attrs = ast.attrs
@@ -1636,7 +1636,10 @@ class Preprocess(object):
                 ast.return_pointer_as = attrs["deref"]
             else:
                 # Default strings to create a Fortran allocatable.
+                # XXX - do not deref a scalar.
                 ast.return_pointer_as = "allocatable"
+                if ast.is_indirect():
+                    attrs["deref"] = "allocatable"
         elif ast.is_indirect():
             # pointer to a POD  e.g. int *
             if attrs["deref"]:
@@ -1645,8 +1648,10 @@ class Preprocess(object):
                 ast.return_pointer_as = "pointer"
             elif options.return_scalar_pointer == "pointer":
                 ast.return_pointer_as = "pointer"
+                attrs["deref"] = "pointer"
             else:
                 ast.return_pointer_as = "scalar"
+                attrs["deref"] = "pointer"
         else:
             if attrs["deref"]:
                 raise RuntimeError(

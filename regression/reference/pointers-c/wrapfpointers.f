@@ -793,7 +793,7 @@ module pointers_mod
     ! end c_return_address2
 
     ! ----------------------------------------
-    ! Function:  int * returnIntPtrToScalar
+    ! Function:  int * returnIntPtrToScalar +deref(pointer)
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start c_return_int_ptr_to_scalar
@@ -842,7 +842,7 @@ module pointers_mod
     ! end c_return_int_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToConstScalar
+    ! Function:  const int * returnIntPtrToConstScalar +deref(pointer)
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start c_return_int_ptr_to_const_scalar
@@ -1315,9 +1315,9 @@ contains
     ! end return_address2
 
     ! ----------------------------------------
-    ! Function:  int * returnIntPtrToScalar
-    ! int * returnIntPtrToScalar
-    ! Exact:     f_native_*_result
+    ! Function:  int * returnIntPtrToScalar +deref(pointer)
+    ! int * returnIntPtrToScalar +deref(pointer)
+    ! Exact:     f_native_*_result_pointer
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start return_int_ptr_to_scalar
@@ -1355,9 +1355,9 @@ contains
     ! end return_int_ptr_to_fixed_array
 
     ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToConstScalar
-    ! const int * returnIntPtrToConstScalar
-    ! Exact:     f_native_*_result
+    ! Function:  const int * returnIntPtrToConstScalar +deref(pointer)
+    ! const int * returnIntPtrToConstScalar +deref(pointer)
+    ! Exact:     f_native_*_result_pointer
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! start return_int_ptr_to_const_scalar

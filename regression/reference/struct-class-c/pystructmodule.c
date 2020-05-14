@@ -374,7 +374,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
+// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Exact:     py_struct_result_class
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
@@ -427,7 +427,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Exact:     py_struct_result_class
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
@@ -488,7 +488,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
+// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
 // Exact:     py_struct_result_class
 static char PY_get_global_struct_list__doc__[] =
 "documentation"

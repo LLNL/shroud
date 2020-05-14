@@ -857,7 +857,7 @@ PY_returnAddress2(
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int * returnIntPtrToScalar +deref(pointer)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
@@ -919,7 +919,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int * returnIntPtrToConstScalar +deref(pointer)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
