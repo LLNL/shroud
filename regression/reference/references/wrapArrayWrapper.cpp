@@ -73,7 +73,7 @@ void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArray +dimension(getSize())
+// Function:  double * getArray +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
@@ -86,7 +86,7 @@ double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
+// Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
 double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *DSHC_rv)
@@ -107,7 +107,7 @@ double * REF_ArrayWrapper_get_array_bufferify(REF_ArrayWrapper * self,
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +dimension(getSize())
+// Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
 double * REF_ArrayWrapper_get_array_const(const REF_ArrayWrapper * self)
@@ -121,7 +121,7 @@ double * REF_ArrayWrapper_get_array_const(const REF_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
+// Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
 double * REF_ArrayWrapper_get_array_const_bufferify(
     const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv)
@@ -143,7 +143,7 @@ double * REF_ArrayWrapper_get_array_const_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +dimension(getSize())
+// Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
 const double * REF_ArrayWrapper_get_array_c(REF_ArrayWrapper * self)
@@ -156,7 +156,7 @@ const double * REF_ArrayWrapper_get_array_c(REF_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
+// Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
 const double * REF_ArrayWrapper_get_array_c_bufferify(
     REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv)
@@ -177,7 +177,7 @@ const double * REF_ArrayWrapper_get_array_c_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +dimension(getSize())
+// Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
 const double * REF_ArrayWrapper_get_array_const_c(
@@ -192,7 +192,7 @@ const double * REF_ArrayWrapper_get_array_const_c(
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
+// Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
 const double * REF_ArrayWrapper_get_array_const_c_bufferify(
     const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv)

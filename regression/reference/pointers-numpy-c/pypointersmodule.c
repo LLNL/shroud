@@ -868,7 +868,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
@@ -931,7 +931,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"

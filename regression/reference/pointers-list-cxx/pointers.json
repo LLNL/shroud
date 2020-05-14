@@ -2149,6 +2149,7 @@
                 },
                 "ast": {
                     "attrs": {
+                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "declarator": {
@@ -2258,6 +2259,7 @@
                 },
                 "ast": {
                     "attrs": {
+                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "const": true,

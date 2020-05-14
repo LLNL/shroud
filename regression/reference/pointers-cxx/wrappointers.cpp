@@ -893,7 +893,7 @@ int * POI_return_int_ptr_to_scalar()
 // end POI_return_int_ptr_to_scalar
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_array
@@ -907,7 +907,7 @@ int * POI_return_int_ptr_to_fixed_array()
 // end POI_return_int_ptr_to_fixed_array
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
+// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
@@ -943,7 +943,7 @@ const int * POI_return_int_ptr_to_const_scalar()
 // end POI_return_int_ptr_to_const_scalar
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_const_array
@@ -957,7 +957,7 @@ const int * POI_return_int_ptr_to_fixed_const_array()
 // end POI_return_int_ptr_to_fixed_const_array
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(

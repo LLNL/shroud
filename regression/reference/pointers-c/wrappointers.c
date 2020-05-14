@@ -331,7 +331,7 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // end POI_get_raw_ptr_to_fixed_array_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
+// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
@@ -353,7 +353,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // end POI_return_int_ptr_to_fixed_array_bufferify
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(

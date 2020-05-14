@@ -364,8 +364,8 @@
                                 "f_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_native_*_result",
-                                "stmt1": "f_native_*_result",
+                                "stmt0": "f_native_*_result_pointer",
+                                "stmt1": "f_native_*_result_pointer",
                                 "stmtc0": "c_native_*_result_buf",
                                 "stmtc1": "c_native_*_result_buf"
                             },
@@ -393,6 +393,7 @@
                         },
                         "ast": {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -470,6 +471,7 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -547,8 +549,8 @@
                                 "f_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_native_*_result",
-                                "stmt1": "f_native_*_result",
+                                "stmt0": "f_native_*_result_pointer",
+                                "stmt1": "f_native_*_result_pointer",
                                 "stmtc0": "c_native_*_result_buf",
                                 "stmtc1": "c_native_*_result_buf"
                             },
@@ -576,6 +578,7 @@
                         },
                         "ast": {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -654,6 +657,7 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -732,8 +736,8 @@
                                 "f_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_native_*_result",
-                                "stmt1": "f_native_*_result",
+                                "stmt0": "f_native_*_result_pointer",
+                                "stmt1": "f_native_*_result_pointer",
                                 "stmtc0": "c_native_*_result_buf",
                                 "stmtc1": "c_native_*_result_buf"
                             },
@@ -761,6 +765,7 @@
                         },
                         "ast": {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -839,6 +844,7 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -917,8 +923,8 @@
                                 "f_var": "SHT_rv",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_native_*_result",
-                                "stmt1": "f_native_*_result",
+                                "stmt0": "f_native_*_result_pointer",
+                                "stmt1": "f_native_*_result_pointer",
                                 "stmtc0": "c_native_*_result_buf",
                                 "stmtc1": "c_native_*_result_buf"
                             },
@@ -946,6 +952,7 @@
                         },
                         "ast": {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -1025,6 +1032,7 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
+                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
