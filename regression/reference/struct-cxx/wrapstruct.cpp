@@ -233,7 +233,7 @@ const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
  * Does not generate a bufferify C wrapper.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
+// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
@@ -260,7 +260,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
@@ -291,7 +291,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
 // ----------------------------------------
@@ -319,7 +319,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
+// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 STR_cstruct_list * STR_get_global_struct_list()

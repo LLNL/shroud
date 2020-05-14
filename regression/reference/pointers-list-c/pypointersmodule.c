@@ -837,7 +837,7 @@ PY_setGlobalInt(
 
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_sumFixedArray__doc__[] =
 "documentation"
@@ -941,7 +941,7 @@ PY_returnAddress2(
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int * returnIntPtrToScalar +deref(pointer)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
@@ -971,7 +971,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
@@ -1001,7 +1001,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int * returnIntPtrToConstScalar +deref(pointer)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
@@ -1031,7 +1031,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"

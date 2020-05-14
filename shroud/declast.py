@@ -971,7 +971,6 @@ class Declaration(Node):
         self.func_const = False
         self.typemap = None
 
-        self.return_pointer_as = None
         self.stmts_suffix = ''  # Used to find statements in typemap (ex. buf)
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
 

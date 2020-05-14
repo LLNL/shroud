@@ -41,7 +41,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
@@ -102,7 +102,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct1
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
@@ -163,7 +163,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct2
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
@@ -489,7 +489,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
+// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Exact:     py_struct_result_numpy
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
@@ -545,7 +545,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Exact:     py_struct_result_numpy
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
@@ -609,7 +609,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
+// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
 // Exact:     py_struct_result_numpy
 static char PY_get_global_struct_list__doc__[] =
 "documentation"

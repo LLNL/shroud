@@ -1591,7 +1591,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_scalar_result",
                         "stmt1": "py_default"
                     }
                 },
@@ -1674,7 +1674,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_scalar_result",
                         "stmt1": "py_default"
                     }
                 },
@@ -1780,7 +1780,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_scalar_result",
                         "stmt1": "py_default"
                     }
                 },
@@ -2386,6 +2386,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -2424,7 +2427,6 @@
                             "typemap_name": "double"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -2529,6 +2531,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -2585,7 +2590,6 @@
                             "typemap_name": "char"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -2628,6 +2632,9 @@
                     }
                 },
                 "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [
@@ -2637,7 +2644,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct_list"
                     ],

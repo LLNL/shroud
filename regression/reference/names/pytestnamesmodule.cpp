@@ -131,7 +131,7 @@ PY_function3a_1(
 
 // ----------------------------------------
 // Function:  int function4
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)
@@ -297,7 +297,7 @@ PY_FunctionTU_instantiation2(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_UseImplWorker_instantiation3__doc__[] =
 "documentation"

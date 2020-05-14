@@ -52,7 +52,7 @@ PY_NoReturnNoArguments(
 
 // ----------------------------------------
 // Function:  double PassByValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg1 +intent(in)+value
@@ -151,7 +151,7 @@ PY_ConcatenateStrings(
 
 // ----------------------------------------
 // Function:  double UseDefaultArguments
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +intent(in)+value
@@ -385,7 +385,7 @@ PY_FortranGenericOverloaded_1(
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
@@ -448,7 +448,7 @@ PY_UseDefaultOverload_num_offset_stride(
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double type +intent(in)+value
@@ -518,7 +518,7 @@ PY_UseDefaultOverload_5(
 
 // ----------------------------------------
 // Function:  TypeID typefunc
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  TypeID arg +intent(in)+value
@@ -556,7 +556,7 @@ PY_typefunc(
 
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  EnumTypeID arg +intent(in)+value
@@ -598,7 +598,7 @@ PY_enumfunc(
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Color arg +intent(in)+value

@@ -62,7 +62,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 }
 
 // ----------------------------------------
-// Function:  int & at
+// Function:  int & at +deref(pointer)
 // Requested: c_native_&_result
 // Match:     c_default
 // ----------------------------------------

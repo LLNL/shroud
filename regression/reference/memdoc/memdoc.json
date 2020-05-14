@@ -54,7 +54,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],

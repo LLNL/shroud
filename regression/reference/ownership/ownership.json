@@ -228,7 +228,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "raw",
                     "specifier": [
                         "int"
                     ],
@@ -290,7 +289,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_*_result_scalar_numpy",
                         "stmt1": "py_default"
                     }
                 },
@@ -307,7 +306,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "scalar",
                     "specifier": [
                         "int"
                     ],
@@ -393,7 +391,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -491,7 +488,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "raw",
                     "specifier": [
                         "int"
                     ],
@@ -650,7 +646,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -778,7 +773,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -939,7 +933,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -1067,7 +1060,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -1161,8 +1153,8 @@
                         "f_var": "SHT_rv",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result",
+                        "stmt0": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result_pointer",
                         "stmtc0": "c_native_*_result_buf",
                         "stmtc1": "c_native_*_result_buf"
                     },
@@ -1190,6 +1182,7 @@
                 },
                 "ast": {
                     "attrs": {
+                        "deref": "pointer",
                         "dimension": "len"
                     },
                     "declarator": {
@@ -1227,7 +1220,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1316,6 +1308,7 @@
                 "ast": {
                     "attrs": {
                         "context": "DSHC_rv",
+                        "deref": "pointer",
                         "dimension": "len"
                     },
                     "declarator": {
@@ -1354,7 +1347,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1421,6 +1413,7 @@
                 },
                 "ast": {
                     "attrs": {
+                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -1459,7 +1452,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1619,7 +1611,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1748,7 +1739,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1894,7 +1884,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -1986,8 +1975,8 @@
                         "f_var": "SHT_rv",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result",
-                        "stmt1": "f_native_*_result",
+                        "stmt0": "f_native_*_result_pointer",
+                        "stmt1": "f_native_*_result_pointer",
                         "stmtc0": "c_native_*_result_buf",
                         "stmtc1": "c_native_*_result_buf"
                     },
@@ -2015,6 +2004,7 @@
                 },
                 "ast": {
                     "attrs": {
+                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2053,7 +2043,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -2142,6 +2131,7 @@
                 "ast": {
                     "attrs": {
                         "context": "DSHC_rv",
+                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2181,7 +2171,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -2429,6 +2418,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "library"
@@ -2481,7 +2471,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefault(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefault",
                     "underscore_name": "int_ptr_dim_default"
@@ -2716,6 +2706,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "caller"
@@ -2768,7 +2759,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefaultNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefaultNew",
                     "underscore_name": "int_ptr_dim_default_new"

@@ -52,7 +52,7 @@ PY_NoReturnNoArguments(
 
 // ----------------------------------------
 // Function:  double PassByValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg1 +intent(in)+value
@@ -140,7 +140,7 @@ PY_PassByReference(
 
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int arg2 +intent(in)+value
@@ -479,7 +479,7 @@ PY_ImpliedTextLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLen
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const char * text +intent(in)
@@ -526,7 +526,7 @@ PY_ImpliedLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLenTrim
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const char * text +intent(in)

@@ -63,7 +63,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 }
 
 // ----------------------------------------
-// Function:  double & at
+// Function:  double & at +deref(pointer)
 // Requested: c_native_&_result
 // Match:     c_default
 // ----------------------------------------

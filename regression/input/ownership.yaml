@@ -86,8 +86,7 @@ declarations:
     dimension: len
   options:
     wrap_lua: False
-    # without deref attribute, return as a Fortran POINTER
-#    return_dimension_pointer: pointer
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
 
 ########################################
 # return dimension(len) owner(caller)
@@ -129,8 +128,7 @@ declarations:
 #    C_free_pattern: delete_int_array
   options:
     wrap_lua: False
-    # without deref attribute, return as a Fortran POINTER
-#    return_dimension_pointer: pointer
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
 
 ########################################
 # Function which return an array pointer via an argument
@@ -186,8 +184,7 @@ declarations:
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False
-    # without deref attribute, return as a Fortran POINTER
-#    return_dimension_pointer: pointer
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
 
 ########################################
 # intent(out) dimension(len) owner(caller)

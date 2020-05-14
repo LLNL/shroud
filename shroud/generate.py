@@ -284,13 +284,6 @@ class VerifyAttrs(object):
 
         is_ptr = arg.is_indirect()
 
-        allocatable = attrs["allocatable"]
-        if allocatable:
-            if not is_ptr:
-                raise RuntimeError(
-                    "Allocatable may only be used with pointer variables"
-                )
-
         # intent
         intent = attrs["intent"]
         if intent is None:
@@ -338,6 +331,17 @@ class VerifyAttrs(object):
             else:
                 attrs["value"] = True
 
+        # Set deref attribute for arguments which return values.
+        spointer = arg.get_indirect_stmt()
+        if attrs["deref"]:
+            # User defined.
+            pass
+        elif arg_typemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif spointer == "**" and intent == "out":
+            attrs["deref"] = "pointer"
+                
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
@@ -1556,7 +1560,7 @@ class Preprocess(object):
         # that have the template expanded.
         if not node.cxx_template:
             self.process_xxx(cls, node)
-            self.check_pointer(node, node.ast)
+            self.check_return_pointer(node, node.ast)
 
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper languages.
@@ -1610,22 +1614,20 @@ class Preprocess(object):
     #            raise RuntimeError("Unknown type {} in {}",
     #                               CXX_result_type, fmt_func.function_name)
 
-    def check_pointer(self, node, ast):
+    def check_return_pointer(self, node, ast):
         """Compute how to deal with a pointer function result.
 
         Args:
-            node -
-            ast -
+            node - ast.FunctionNode
+            ast - declast.Declaration
         """
         options = node.options
         attrs = ast.attrs
         result_typemap = node.CXX_result_typemap
-        ast.return_pointer_as = None
         if result_typemap.cxx_type == "void":
             # subprogram == subroutine
             # deref may be set when a string function is converted into a subroutine.
-            if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+            pass
         elif result_typemap.base == "shadow":
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
@@ -1633,20 +1635,20 @@ class Preprocess(object):
             pass
         elif result_typemap.base in ["string", "vector"]:
             if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+                pass
             else:
                 # Default strings to create a Fortran allocatable.
-                ast.return_pointer_as = "allocatable"
+                # XXX - do not deref a scalar.
+                if ast.is_indirect():
+                    attrs["deref"] = "allocatable"
         elif ast.is_indirect():
             # pointer to a POD  e.g. int *
             if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+                pass
             elif attrs["dimension"]:
-                ast.return_pointer_as = "pointer"
-            elif options.return_scalar_pointer == "pointer":
-                ast.return_pointer_as = "pointer"
+                attrs["deref"] = "pointer"
             else:
-                ast.return_pointer_as = "scalar"
+                attrs["deref"] = options.return_scalar_pointer
         else:
             if attrs["deref"]:
                 raise RuntimeError(

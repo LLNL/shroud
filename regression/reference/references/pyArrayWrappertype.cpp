@@ -94,7 +94,7 @@ PY_setSize(
 
 // ----------------------------------------
 // Function:  int getSize
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_getSize__doc__[] =
 "documentation"
@@ -138,7 +138,7 @@ PY_allocate(
 }
 
 // ----------------------------------------
-// Function:  double * getArray +dimension(getSize())
+// Function:  double * getArray +deref(pointer)+dimension(getSize())
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArray__doc__[] =
 "documentation"
@@ -171,7 +171,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +dimension(getSize())
+// Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConst__doc__[] =
 "documentation"
@@ -204,7 +204,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +dimension(getSize())
+// Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayC__doc__[] =
 "documentation"
@@ -237,7 +237,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +dimension(getSize())
+// Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConstC__doc__[] =
 "documentation"

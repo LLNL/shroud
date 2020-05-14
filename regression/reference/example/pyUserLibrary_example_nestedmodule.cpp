@@ -251,7 +251,7 @@ PP_testoptional_2(
 
 // ----------------------------------------
 // Function:  size_t test_size_t
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_test_size_t__doc__[] =
 "documentation"
@@ -570,7 +570,7 @@ PP_verylongfunctionname1(
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname1 +intent(in)+value

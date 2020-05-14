@@ -1013,7 +1013,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_scalar_result",
                         "stmt1": "py_default"
                     }
                 },
@@ -1129,7 +1129,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_result",
+                        "stmt0": "py_native_scalar_result",
                         "stmt1": "py_default"
                     }
                 },
@@ -1528,6 +1528,9 @@
                             },
                             {
                                 "ast": {
+                                    "attrs": {
+                                        "deref": "pointer"
+                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -1552,7 +1555,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "T"
                                     ],
@@ -1644,7 +1646,7 @@
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_INT",
-                                        "stmt0": "f_native_&_result",
+                                        "stmt0": "f_native_&_result_pointer",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result",
                                         "stmtc1": "c_default"
@@ -1668,6 +1670,9 @@
                                 },
                                 "_generated": "cxx_template",
                                 "ast": {
+                                    "attrs": {
+                                        "deref": "pointer"
+                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -1692,7 +1697,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "int"
                                     ],
@@ -2086,6 +2090,9 @@
                             },
                             {
                                 "ast": {
+                                    "attrs": {
+                                        "deref": "pointer"
+                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -2110,7 +2117,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "T"
                                     ],
@@ -2202,7 +2208,7 @@
                                         "f_type": "real(C_DOUBLE)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_DOUBLE",
-                                        "stmt0": "f_native_&_result",
+                                        "stmt0": "f_native_&_result_pointer",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result",
                                         "stmtc1": "c_default"
@@ -2226,6 +2232,9 @@
                                 },
                                 "_generated": "cxx_template",
                                 "ast": {
+                                    "attrs": {
+                                        "deref": "pointer"
+                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -2250,7 +2259,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "double"
                                     ],

@@ -1002,7 +1002,6 @@ rv = .false.
         subprogram = node.C_subprogram
         result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
-        return_pointer_as = ast.return_pointer_as
         is_ctor = ast.is_ctor()
         is_pure = ast.attrs["pure"]
         is_static = False
@@ -1081,16 +1080,16 @@ rv = .false.
             intent = attrs["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
-            deref_clause = attrs["deref"]
+            deref_attr = attrs["deref"]
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = arg.get_indirect_stmt()
             if attrs["_is_result"]:
                 c_stmts = ["c", sgroup, spointer, "result",
-                           generated_suffix, deref_clause]
+                           generated_suffix, deref_attr]
             else:
                 c_stmts = ["c", sgroup, spointer, intent,
-                           arg.stmts_suffix, deref_clause, cdesc]
+                           arg.stmts_suffix, deref_attr, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
             if options.debug:
@@ -1145,6 +1144,7 @@ rv = .false.
         )
 
         if fmt.F_C_subprogram == "function":
+            return_deref_attr = ast.attrs["deref"]
             if c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1154,7 +1154,7 @@ rv = .false.
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
-            elif return_pointer_as in ["pointer", "allocatable", "raw"]:
+            elif return_deref_attr in ["pointer", "allocatable", "raw"]:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
@@ -1494,13 +1494,13 @@ rv = .false.
                                 modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
-            result_deref_clause = ast.attrs["deref"]
+            return_deref_attr = ast.attrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
             else:
                 sintent = "result"
-                f_stmts = ["f", sgroup, spointer, "result", result_deref_clause]
+                f_stmts = ["f", sgroup, spointer, "result", return_deref_attr]
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
@@ -1626,19 +1626,19 @@ rv = .false.
                 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
-            c_deref_clause = c_attrs["deref"]
+            c_deref_attr = c_attrs["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
-            f_deref_clause = f_attrs["deref"]
+            f_deref_attr = f_attrs["deref"]
             if c_attrs["_is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_clause]
-#XXX            f_stmts = ["f", f_sgroup, f_spointer, "result", result_deref_clause]  # + generated_suffix
-                f_stmts = ["f", f_sgroup, f_spointer, "result", f_deref_clause]  # + generated_suffix
+                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
+#XXX            f_stmts = ["f", f_sgroup, f_spointer, "result", return_deref_attr]  # + generated_suffix
+                f_stmts = ["f", f_sgroup, f_spointer, "result", f_deref_attr]  # + generated_suffix
 
             else:
                 c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
-                f_stmts = ["f", f_sgroup, f_spointer, intent, f_deref_clause, cdesc]
+                f_stmts = ["f", f_sgroup, f_spointer, intent, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
@@ -1807,11 +1807,11 @@ rv = .false.
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        return_pointer_as = ast.return_pointer_as
+        return_deref_attr = ast.attrs["deref"]
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
-            if return_pointer_as == "raw":
+            if return_deref_attr == "raw":
                 arg_f_decl.append(
                     ast.gen_arg_as_fortran(
                         name=fmt_result.F_result, is_pointer=True
@@ -1819,18 +1819,18 @@ rv = .false.
                 )
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            elif return_pointer_as in ["allocatable", "pointer"]:
+            elif return_deref_attr in ["allocatable", "pointer"]:
                 if result_typemap.base == "vector":
                     ntypemap = ast.template_arguments[0].typemap
                 else:
                     ntypemap = result_typemap
-                if return_pointer_as == "allocatable":
+                if return_deref_attr == "allocatable":
                     f_type = ntypemap.f_type_allocatable or \
                              ntypemap.f_type
                 else:
                     f_type = ntypemap.f_type
                 arg_f_decl.append("{}, {} :: {}{}".format(
-                    f_type, return_pointer_as,
+                    f_type, return_deref_attr,
                     fmt_result.f_var, fmt_result.f_assumed_shape))
             else:
                 # result_as_arg or None
