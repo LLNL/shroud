@@ -1131,8 +1131,8 @@ return 1;""",
             result_blk = default_scope
             fmt_result.stmt0 = result_blk.name
             fmt_result.stmt1 = result_blk.name
+        stmts_comments = []
         if options.debug:
-            stmts_comments = []
             stmts_comments.append(
                 "// ----------------------------------------")
             stmts_comments.append(
@@ -1269,11 +1269,12 @@ return 1;""",
                 fmt_arg.stmt0 = typemap.compute_name(stmts)
                 fmt_arg.stmt1 = intent_blk.name
                 # Add some debug comments to function.
-                stmts_comments.append(
-                    "// ----------------------------------------")
-                stmts_comments.append("// Argument:  " + arg.gen_decl())
-                self.document_stmts(
-                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                if options.debug:
+                    stmts_comments.append(
+                        "// ----------------------------------------")
+                    stmts_comments.append("// Argument:  " + arg.gen_decl())
+                    self.document_stmts(
+                        stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
 
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
