@@ -1643,10 +1643,8 @@ class Preprocess(object):
                 pass
             elif attrs["dimension"]:
                 attrs["deref"] = "pointer"
-            elif options.return_scalar_pointer == "pointer":
-                attrs["deref"] = "pointer"
             else:
-                attrs["deref"] = "scalar"
+                attrs["deref"] = options.return_scalar_pointer
         else:
             if attrs["deref"]:
                 raise RuntimeError(
