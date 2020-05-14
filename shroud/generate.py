@@ -284,13 +284,6 @@ class VerifyAttrs(object):
 
         is_ptr = arg.is_indirect()
 
-        allocatable = attrs["allocatable"]
-        if allocatable:
-            if not is_ptr:
-                raise RuntimeError(
-                    "Allocatable may only be used with pointer variables"
-                )
-
         # intent
         intent = attrs["intent"]
         if intent is None:
@@ -338,6 +331,17 @@ class VerifyAttrs(object):
             else:
                 attrs["value"] = True
 
+        # Set deref attribute for arguments which return values.
+        spointer = arg.get_indirect_stmt()
+        if attrs["deref"]:
+            # User defined.
+            pass
+        elif arg_typemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif spointer == "**" and intent == "out":
+            attrs["deref"] = "pointer"
+                
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'

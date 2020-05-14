@@ -1399,6 +1399,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -1424,7 +1425,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +deref(pointer)+intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToScalar",
                     "underscore_name": "get_ptr_to_scalar"
@@ -1442,6 +1443,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -1475,7 +1477,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int * * count +deref(pointer)+dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -1496,6 +1498,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -1547,7 +1550,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -1593,6 +1596,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -1627,7 +1631,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
                 },
@@ -1648,6 +1652,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "const": true,
@@ -1674,7 +1679,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +deref(pointer)+intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToConstScalar",
                     "underscore_name": "get_ptr_to_const_scalar"
@@ -1692,6 +1697,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -1726,7 +1732,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +deref(pointer)+dimension(10)+intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToFixedConstArray",
                     "underscore_name": "get_ptr_to_fixed_const_array"
@@ -1744,6 +1750,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -1796,7 +1803,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToDynamicConstArray",
                     "underscore_name": "get_ptr_to_dynamic_const_array"

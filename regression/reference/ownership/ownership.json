@@ -2418,6 +2418,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "library"
@@ -2470,7 +2471,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefault(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefault",
                     "underscore_name": "int_ptr_dim_default"
@@ -2705,6 +2706,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "caller"
@@ -2757,7 +2759,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefaultNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefaultNew",
                     "underscore_name": "int_ptr_dim_default_new"
