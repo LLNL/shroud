@@ -1033,11 +1033,11 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                result_return_pointer_as = c_attrs["deref"]
+                return_deref_attr = c_attrs["deref"]
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", sgroup, spointer, "result",
-                    generated_suffix, result_return_pointer_as,
+                    generated_suffix, return_deref_attr,
                 ]
                 intent_blk = typemap.lookup_fc_stmts(stmts)
                 need_wrapper = True
@@ -1157,12 +1157,13 @@ class Wrapc(util.WrapperMixin):
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
+        return_deref_attr = ast.attrs["deref"]
         if node.return_this:
             fmt_func.C_return_type = "void"
         elif result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
-        elif ast.return_pointer_as == "scalar":
+        elif return_deref_attr == "scalar":
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True
             )
@@ -1249,7 +1250,7 @@ class Wrapc(util.WrapperMixin):
 
         if result_blk.ret:
             raw_return_code = result_blk.ret
-        elif ast.return_pointer_as == "scalar":
+        elif return_deref_attr == "scalar":
             # dereference pointer to return scalar
             raw_return_code = ["return *{cxx_var};"]
         elif result_arg is None and C_subprogram == "function":
