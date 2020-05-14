@@ -118,7 +118,7 @@ PP_ExClass1_tp_init_1(
 
 // ----------------------------------------
 // Function:  int incrementCount
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int incr +intent(in)+value
@@ -210,7 +210,7 @@ PP_getNameArg(
 
 // ----------------------------------------
 // Function:  int getValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int value +intent(in)+value
@@ -244,7 +244,7 @@ PP_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long value +intent(in)+value

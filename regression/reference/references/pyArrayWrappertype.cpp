@@ -94,7 +94,7 @@ PY_setSize(
 
 // ----------------------------------------
 // Function:  int getSize
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_getSize__doc__[] =
 "documentation"

@@ -33,7 +33,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  short short_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  short arg1 +intent(in)+value
@@ -71,7 +71,7 @@ PY_short_func(
 
 // ----------------------------------------
 // Function:  int int_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +intent(in)+value
@@ -109,7 +109,7 @@ PY_int_func(
 
 // ----------------------------------------
 // Function:  long long_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long arg1 +intent(in)+value
@@ -147,7 +147,7 @@ PY_long_func(
 
 // ----------------------------------------
 // Function:  long long long_long_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long long arg1 +intent(in)+value
@@ -185,7 +185,7 @@ PY_long_long_func(
 
 // ----------------------------------------
 // Function:  short int short_int_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  short int arg1 +intent(in)+value
@@ -223,7 +223,7 @@ PY_short_int_func(
 
 // ----------------------------------------
 // Function:  long int long_int_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long int arg1 +intent(in)+value
@@ -261,7 +261,7 @@ PY_long_int_func(
 
 // ----------------------------------------
 // Function:  long long int long_long_int_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long long int arg1 +intent(in)+value
@@ -299,7 +299,7 @@ PY_long_long_int_func(
 
 // ----------------------------------------
 // Function:  unsigned unsigned_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned arg1 +intent(in)+value
@@ -337,7 +337,7 @@ PY_unsigned_func(
 
 // ----------------------------------------
 // Function:  unsigned short ushort_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned short arg1 +intent(in)+value
@@ -375,7 +375,7 @@ PY_ushort_func(
 
 // ----------------------------------------
 // Function:  unsigned int uint_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned int arg1 +intent(in)+value
@@ -413,7 +413,7 @@ PY_uint_func(
 
 // ----------------------------------------
 // Function:  unsigned long ulong_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned long arg1 +intent(in)+value
@@ -451,7 +451,7 @@ PY_ulong_func(
 
 // ----------------------------------------
 // Function:  unsigned long long ulong_long_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned long long arg1 +intent(in)+value
@@ -489,7 +489,7 @@ PY_ulong_long_func(
 
 // ----------------------------------------
 // Function:  unsigned long int ulong_int_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  unsigned long int arg1 +intent(in)+value
@@ -527,7 +527,7 @@ PY_ulong_int_func(
 
 // ----------------------------------------
 // Function:  int8_t int8_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int8_t arg1 +intent(in)+value
@@ -565,7 +565,7 @@ PY_int8_func(
 
 // ----------------------------------------
 // Function:  int16_t int16_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int16_t arg1 +intent(in)+value
@@ -603,7 +603,7 @@ PY_int16_func(
 
 // ----------------------------------------
 // Function:  int32_t int32_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int32_t arg1 +intent(in)+value
@@ -641,7 +641,7 @@ PY_int32_func(
 
 // ----------------------------------------
 // Function:  int64_t int64_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int64_t arg1 +intent(in)+value
@@ -679,7 +679,7 @@ PY_int64_func(
 
 // ----------------------------------------
 // Function:  uint8_t uint8_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  uint8_t arg1 +intent(in)+value
@@ -717,7 +717,7 @@ PY_uint8_func(
 
 // ----------------------------------------
 // Function:  uint16_t uint16_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  uint16_t arg1 +intent(in)+value
@@ -755,7 +755,7 @@ PY_uint16_func(
 
 // ----------------------------------------
 // Function:  uint32_t uint32_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  uint32_t arg1 +intent(in)+value
@@ -793,7 +793,7 @@ PY_uint32_func(
 
 // ----------------------------------------
 // Function:  uint64_t uint64_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  uint64_t arg1 +intent(in)+value
@@ -831,7 +831,7 @@ PY_uint64_func(
 
 // ----------------------------------------
 // Function:  size_t size_func
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  size_t arg1 +intent(in)+value

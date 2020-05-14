@@ -855,7 +855,7 @@ PY_setGlobalInt(
 
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_sumFixedArray__doc__[] =
 "documentation"

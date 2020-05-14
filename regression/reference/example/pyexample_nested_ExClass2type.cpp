@@ -298,7 +298,7 @@ PP_getName4(
 
 // ----------------------------------------
 // Function:  int GetNameLength
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_GetNameLength__doc__[] =
 "documentation"
@@ -449,7 +449,7 @@ PP_destroyall(
 
 // ----------------------------------------
 // Function:  TypeID getTypeID
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_getTypeID__doc__[] =
 "documentation"
@@ -587,7 +587,7 @@ PP_setValue_double(
 
 // ----------------------------------------
 // Function:  int getValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static PyObject *
 PP_getValue_int(
@@ -609,7 +609,7 @@ PP_getValue_int(
 
 // ----------------------------------------
 // Function:  double getValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static PyObject *
 PP_getValue_double(

@@ -33,7 +33,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +intent(in)+value
@@ -115,7 +115,7 @@ PY_passClassByValue(
 
 // ----------------------------------------
 // Function:  int useclass
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Class1 * arg +intent(in)
@@ -236,7 +236,7 @@ PY_set_global_flag(
 
 // ----------------------------------------
 // Function:  int get_global_flag
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_get_global_flag__doc__[] =
 "documentation"

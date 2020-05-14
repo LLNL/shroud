@@ -1857,7 +1857,6 @@ return 1;""",
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
 
-        result_return_pointer_as = node.ast.return_pointer_as
         result_blk = default_scope
 
         if CXX_subprogram == "function":
@@ -1906,14 +1905,12 @@ return 1;""",
                 stmts = ["py", sgroup, "result", options.PY_struct_arg]
             elif result_typemap.base == "vector":
                 stmts = ["py", sgroup, "result", options.PY_array_arg]
-            elif (
-                    result_return_pointer_as in ["pointer", "allocatable"]
-                    and result_typemap.base != "string"
-            ):
+            elif sgroup == "native":
                 spointer = ast.get_indirect_stmt()
-                deref = attrs["deref"] or "pointer"
-                stmts = ["py", sgroup, spointer, "result",
-                         deref, options.PY_array_arg]
+                stmts = ["py", sgroup, spointer, "result"]
+                if spointer != "scalar":
+                    deref = attrs["deref"] or "pointer"
+                    stmts.extend([deref, options.PY_array_arg])
             else:
                 stmts = ["py", sgroup, "result"]
             if stmts is not None:

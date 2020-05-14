@@ -91,7 +91,7 @@ PY_Class1_tp_init_flag(
 
 // ----------------------------------------
 // Function:  int Method1
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_Method1__doc__[] =
 "documentation"
@@ -229,7 +229,7 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  DIRECTION arg +intent(in)+value

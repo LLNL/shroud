@@ -36,7 +36,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int passStructByValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
@@ -76,7 +76,7 @@ PY_passStructByValue(
 
 // ----------------------------------------
 // Function:  int passStruct1
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
@@ -116,7 +116,7 @@ PY_passStruct1(
 
 // ----------------------------------------
 // Function:  int passStruct2
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)

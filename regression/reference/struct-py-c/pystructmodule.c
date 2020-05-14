@@ -37,7 +37,7 @@ PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 
 // ----------------------------------------
 // Function:  int acceptBothStructs
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct_as_class * s1 +intent(in)

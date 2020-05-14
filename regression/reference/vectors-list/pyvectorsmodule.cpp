@@ -83,7 +83,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +intent(in)+rank(1)

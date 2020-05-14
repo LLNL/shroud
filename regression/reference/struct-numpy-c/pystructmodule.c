@@ -41,7 +41,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByValue
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
@@ -99,7 +99,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct1
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
@@ -157,7 +157,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct2
-// Requested: py_native_result
+// Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
