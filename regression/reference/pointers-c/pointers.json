@@ -4124,7 +4124,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -4206,7 +4205,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -4278,7 +4276,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -4345,7 +4342,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -4428,7 +4424,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -4501,7 +4496,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],

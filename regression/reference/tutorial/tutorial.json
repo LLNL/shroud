@@ -485,7 +485,6 @@
                             "typemap_name": "std::string"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -5048,7 +5047,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "std::string"
                     ],

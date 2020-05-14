@@ -228,7 +228,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "raw",
                     "specifier": [
                         "int"
                     ],
@@ -307,7 +306,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "scalar",
                     "specifier": [
                         "int"
                     ],
@@ -393,7 +391,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -491,7 +488,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "raw",
                     "specifier": [
                         "int"
                     ],
@@ -650,7 +646,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -778,7 +773,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -939,7 +933,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -1067,7 +1060,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -1228,7 +1220,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1356,7 +1347,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1462,7 +1452,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1622,7 +1611,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1751,7 +1739,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -1897,7 +1884,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "int"
                     ],
@@ -2057,7 +2043,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],
@@ -2186,7 +2171,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "int"
                     ],

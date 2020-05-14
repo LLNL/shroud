@@ -413,7 +413,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -491,7 +490,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -599,7 +597,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -678,7 +675,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -786,7 +782,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -865,7 +860,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -974,7 +968,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],
@@ -1054,7 +1047,6 @@
                                 ]
                             },
                             "params": [],
-                            "return_pointer_as": "pointer",
                             "specifier": [
                                 "double"
                             ],

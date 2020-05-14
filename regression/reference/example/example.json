@@ -705,7 +705,6 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "allocatable",
                                             "specifier": [
                                                 "string"
                                             ],
@@ -903,7 +902,6 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "result-as-arg",
                                             "specifier": [
                                                 "string"
                                             ],
@@ -2069,7 +2067,6 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "result-as-arg",
                                             "specifier": [
                                                 "string"
                                             ],
@@ -2278,7 +2275,6 @@
                                                 ]
                                             },
                                             "params": [],
-                                            "return_pointer_as": "allocatable",
                                             "specifier": [
                                                 "string"
                                             ],
@@ -2484,7 +2480,6 @@
                                             },
                                             "func_const": true,
                                             "params": [],
-                                            "return_pointer_as": "allocatable",
                                             "specifier": [
                                                 "string"
                                             ],
@@ -2689,7 +2684,6 @@
                                                 ]
                                             },
                                             "params": [],
-                                            "return_pointer_as": "allocatable",
                                             "specifier": [
                                                 "string"
                                             ],

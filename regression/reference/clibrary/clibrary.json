@@ -1046,7 +1046,6 @@
                             "typemap_name": "char"
                         }
                     ],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],

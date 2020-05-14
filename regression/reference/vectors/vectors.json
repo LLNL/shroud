@@ -1845,7 +1845,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::vector"
                     ],

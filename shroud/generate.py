@@ -1620,12 +1620,10 @@ class Preprocess(object):
         options = node.options
         attrs = ast.attrs
         result_typemap = node.CXX_result_typemap
-        ast.return_pointer_as = None
         if result_typemap.cxx_type == "void":
             # subprogram == subroutine
             # deref may be set when a string function is converted into a subroutine.
-            if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+            pass
         elif result_typemap.base == "shadow":
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
@@ -1633,25 +1631,21 @@ class Preprocess(object):
             pass
         elif result_typemap.base in ["string", "vector"]:
             if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+                pass
             else:
                 # Default strings to create a Fortran allocatable.
                 # XXX - do not deref a scalar.
-                ast.return_pointer_as = "allocatable"
                 if ast.is_indirect():
                     attrs["deref"] = "allocatable"
         elif ast.is_indirect():
             # pointer to a POD  e.g. int *
             if attrs["deref"]:
-                ast.return_pointer_as = attrs["deref"]
+                pass
             elif attrs["dimension"]:
-                ast.return_pointer_as = "pointer"
                 attrs["deref"] = "pointer"
             elif options.return_scalar_pointer == "pointer":
-                ast.return_pointer_as = "pointer"
                 attrs["deref"] = "pointer"
             else:
-                ast.return_pointer_as = "scalar"
                 attrs["deref"] = "scalar"
         else:
             if attrs["deref"]:

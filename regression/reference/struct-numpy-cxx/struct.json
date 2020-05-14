@@ -1445,7 +1445,6 @@
                             "typemap_name": "double"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -1609,7 +1608,6 @@
                             "typemap_name": "char"
                         }
                     ],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -1664,7 +1662,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "pointer",
                     "specifier": [
                         "Cstruct_list"
                     ],

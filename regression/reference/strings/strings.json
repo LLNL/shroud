@@ -845,7 +845,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "char"
                     ],
@@ -1046,7 +1045,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],
@@ -1236,7 +1234,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "char"
                     ],
@@ -1471,7 +1468,6 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "string"
                     ],
@@ -1647,7 +1643,6 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -1813,7 +1808,6 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -2042,7 +2036,6 @@
                         "pointer": []
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -2229,7 +2222,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "string"
                     ],
@@ -2432,7 +2424,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -2624,7 +2615,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -2885,7 +2875,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -3084,7 +3073,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -3277,7 +3265,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "result-as-arg",
                     "specifier": [
                         "string"
                     ],
@@ -3492,7 +3479,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -3684,7 +3670,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -3883,7 +3868,6 @@
                         ]
                     },
                     "params": [],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "std::string"
                     ],
@@ -4917,7 +4901,6 @@
                             "typemap_name": "int"
                         }
                     ],
-                    "return_pointer_as": "allocatable",
                     "specifier": [
                         "char"
                     ],

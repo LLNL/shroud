@@ -1555,7 +1555,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "T"
                                     ],
@@ -1698,7 +1697,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "int"
                                     ],
@@ -2119,7 +2117,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "T"
                                     ],
@@ -2262,7 +2259,6 @@
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
-                                    "return_pointer_as": "pointer",
                                     "specifier": [
                                         "double"
                                     ],

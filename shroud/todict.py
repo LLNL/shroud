@@ -90,8 +90,6 @@ class ToDict(visitor.Visitor):
             d["template_arguments"] = lst
         if node.stmts_suffix:
             d["stmts_suffix"] = node.stmts_suffix
-        if node.return_pointer_as is not None:
-            d["return_pointer_as"] = node.return_pointer_as
         if node.ftrim_char_in:
             d["ftrim_char_in"] = node.ftrim_char_in
         return d
@@ -279,7 +277,6 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
-                # #- 'return_pointer_as',
                 "statements",
                 # #- 'CXX_subprogram', 'C_subprogram', 'F_subprogram',
                 # #- 'CXX_return_type', 'C_return_type', 'F_return_type',
