@@ -322,6 +322,10 @@ if __name__ == "__main__":
                      "--yaml-types", "def_types.yaml",
                  ]),
         TestDesc("tutorial"),
+        TestDesc("debugfalse", yaml="tutorial",
+                 cmdline=[
+                     "--option", "debug=False",
+                 ]),
         TestDesc("types"),
         TestDesc("classes"),
 
