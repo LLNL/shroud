@@ -100,7 +100,7 @@ declarations:
 
 - decl: void setGlobalInt(int value)
 - decl: int sumFixedArray()
-  # (void)
+  # XXX (void)
   doxygen:
     description: |
       Used to test values global_array.
@@ -113,8 +113,6 @@ declarations:
   doxygen:
     description: |
       Return a Fortran pointer to an array which is always the same length.
-  options:
-    wrap_python: False
 
 - decl: void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount),
                                   int *ncount+intent(out)+hidden)
@@ -122,8 +120,6 @@ declarations:
     description: |
       Return a Fortran pointer to an array which is the length of
       the argument ncount.
-  options:
-    wrap_python: False
 
 - decl: int getLen()
   doxygen:
@@ -137,23 +133,17 @@ declarations:
       Return a Fortran pointer to an array which is the length
       is computed by C++ function getLen.
       getLen will be called from C/C++ to compute the shape.
-      Note that getLen will be wrapped in Fortran as get_len.
-  options:
-    wrap_python: False
 
 - decl: void getPtrToConstScalar(
              const int **nitems+intent(out))
   options:
     wrap_python: False
+#   XXX - Python as an array
 - decl: void getPtrToFixedConstArray(
              const int **count+intent(out)+dimension(10));
-  options:
-    wrap_python: False
 - decl: void getPtrToDynamicConstArray(
              const int **count+intent(out)+dimension(ncount),
              int *ncount+intent(out)+hidden)
-  options:
-    wrap_python: False
 
 - decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
   doxygen:

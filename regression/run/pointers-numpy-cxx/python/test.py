@@ -100,6 +100,75 @@ class Pointers(unittest.TestCase):
     def test_acceptCharArrayIn(self):
         pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
 
+    def test_out_ptrs(self):
+        # Functions which return a pointer in an argument.
+
+        pointers.setGlobalInt(0)
+#        ptr1 = pointers.getPtrToScalar()
+#        #        call assert_equals(0, iscalar)
+#
+#        # iscalar points to global_int in pointers.c.
+        pointers.setGlobalInt(5)
+#        #call assert_equals(5, iscalar)
+#
+        p = None
+        p = pointers.getPtrToFixedArray()
+        self.assertIsInstance(p, np.ndarray)
+        self.assertEqual('int32', p.dtype.name)
+        self.assertEqual(10, p.size)
+        self.assertEqual(0, pointers.sumFixedArray())
+        # Make sure we're assigning to global_array.
+        p[0] = 1
+        p[9] = 2
+        self.assertEqual(3, pointers.sumFixedArray())
+
+        # Returns global_array in pointers.c.
+        p = None
+        p = pointers.getPtrToDynamicArray()
+        self.assertIsInstance(p, np.ndarray)
+        self.assertEqual('int32', p.dtype.name)
+        self.assertEqual(10, p.size)
+        
+        # Returns global_array in pointers.c.
+        p = None
+        p = pointers.getPtrToFuncArray()
+        self.assertIsInstance(p, np.ndarray)
+        self.assertEqual('int32', p.dtype.name)
+        self.assertEqual(10, p.size)
+
+        
+#        p = None
+#        p = pointers.getPtrToConstScalar()
+#        self.assertIsInstance(p, np.ndarray)
+#        self.assertEqual('int32', p.dtype.name)
+#        self.assertEqual(10, p.size)
+
+        p = None
+        p = pointers.getPtrToFixedConstArray()
+        self.assertIsInstance(p, np.ndarray)
+        self.assertEqual('int32', p.dtype.name)
+        self.assertEqual(10, p.size)
+
+        p = None
+        p = pointers.getPtrToDynamicConstArray()
+        self.assertIsInstance(p, np.ndarray)
+        self.assertEqual('int32', p.dtype.name)
+        self.assertEqual(10, p.size)
+
+        p = None
+        p = pointers.getRawPtrToScalar()
+        self.assertEqual('PyCapsule', p.__class__.__name__)
+#        call assert_true(c_associated(cptr_scalar))
+#        # associated with global_int in pointers.c
+#        call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
+#
+        p = None
+        p = pointers.getRawPtrToFixedArray()
+        self.assertEqual('PyCapsule', p.__class__.__name__)
+#        call assert_true(c_associated(cptr_array))
+#        # associated with global_fixed_array in pointers.c
+#        call assert_true(c_associated(cptr_array, c_loc(iarray)))
+
     def test_void_ptr_func(self):
         void = None
         void = pointers.returnAddress1(1)

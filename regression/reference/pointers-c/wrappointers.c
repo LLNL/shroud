@@ -167,7 +167,6 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
- * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray

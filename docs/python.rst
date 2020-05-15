@@ -122,6 +122,7 @@ The template for a function is:
     {
         {declare}
 
+        // {parse_format}  {parse_args}
         if (!PyArg_ParseTupleAndKeywords(
             {PY_param_args}, {PY_param_kwds}, "{PyArg_format}",
             SH_kw_list, {PyArg_vargs})) {
@@ -200,6 +201,8 @@ The function associated with the helper will be named *hnamefunc0*,
 
 c_local_var
 ^^^^^^^^^^^
+
+A local variable for the argument has been declared in *declare*.
 
 As *pointer*, *none*
 

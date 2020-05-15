@@ -2186,9 +2186,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2425,9 +2423,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2720,7 +2716,7 @@
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
                 "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -2742,9 +2738,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_func_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2837,7 +2831,7 @@
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
                 "declgen": "void getPtrToFuncArray(int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&count",
@@ -3118,9 +3112,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3353,9 +3345,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

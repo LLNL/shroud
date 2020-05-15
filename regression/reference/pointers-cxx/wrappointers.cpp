@@ -557,7 +557,6 @@ int POI_get_len()
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
- * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
@@ -580,7 +579,6 @@ void POI_get_ptr_to_func_array(int * * count)
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
- * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray

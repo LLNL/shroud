@@ -3767,6 +3767,19 @@ py_statements = [
         base="py_native_*_result_pointer_numpy",
     ),
 
+    dict(
+        name="py_native_**_out_pointer_numpy",
+        base="py_native_*_result_pointer_numpy",
+        # Declare a local variable for the argument.
+        declare=[
+            "{c_const}{c_type} *{c_var};",
+            "{npy_intp_decl}"
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+    ),
+
 ########################################
 ## list
     dict(
@@ -3857,7 +3870,18 @@ py_statements = [
         ],
         goto_fail=True,
     ),
-
+    dict(
+        name="py_native_**_out_pointer_list",
+        base="py_native_*_result_pointer_list",
+        # Declare a local variable for the argument.
+        declare=[
+            "{c_const}{c_type} *{c_var};",
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+    ),
+    
 ########################################
 ## allocatable
     dict(

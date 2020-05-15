@@ -1473,6 +1473,34 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "count": {
+                        "fmtpy": {
+                            "array_size": "10",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_to_PyList_int",
+                            "npy_dims_var": "SHD_count",
+                            "npy_intp_asgn": "SHD_count[0] = 10;\n",
+                            "npy_intp_decl": "npy_intp SHD_count[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "rank": "1",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_**_out_pointer_list",
+                            "stmt1": "py_native_**_out_pointer_list"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -1520,14 +1548,63 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "fmtdict": {
+                    "PY_name_impl": "PY_getPtrToFixedArray",
                     "function_name": "getPtrToFixedArray",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
+                "_fmtargs": {
+                    "count": {
+                        "fmtpy": {
+                            "array_size": "ncount",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_to_PyList_int",
+                            "npy_dims_var": "SHD_count",
+                            "npy_intp_asgn": "SHD_count[0] = ncount;\n",
+                            "npy_intp_decl": "npy_intp SHD_count[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "rank": "1",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_**_out_pointer_list",
+                            "stmt1": "py_native_**_out_pointer_list"
+                        }
+                    },
+                    "ncount": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_decl": "int ncount",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_decl": "int ncount",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ncount",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "data_var": "SHData_ncount",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_ncount",
+                            "size_var": "SHSize_ncount",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -1593,12 +1670,11 @@
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
                 "fmtdict": {
+                    "PY_name_impl": "PY_getPtrToDynamicArray",
                     "function_name": "getPtrToDynamicArray",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "ast": {
@@ -1626,6 +1702,34 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "count": {
+                        "fmtpy": {
+                            "array_size": "getLen()",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_to_PyList_int",
+                            "npy_dims_var": "SHD_count",
+                            "npy_intp_asgn": "SHD_count[0] = getLen();\n",
+                            "npy_intp_decl": "npy_intp SHD_count[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "rank": "1",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_**_out_pointer_list",
+                            "stmt1": "py_native_**_out_pointer_list"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -1671,15 +1775,14 @@
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
                 "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "fmtdict": {
+                    "PY_name_impl": "PY_getPtrToFuncArray",
                     "function_name": "getPtrToFuncArray",
                     "underscore_name": "get_ptr_to_func_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "ast": {
@@ -1727,6 +1830,34 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "count": {
+                        "fmtpy": {
+                            "array_size": "10",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_to_PyList_int",
+                            "npy_dims_var": "SHD_count",
+                            "npy_intp_asgn": "SHD_count[0] = 10;\n",
+                            "npy_intp_decl": "npy_intp SHD_count[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "rank": "1",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_**_out_pointer_list",
+                            "stmt1": "py_native_**_out_pointer_list"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -1772,14 +1903,63 @@
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +deref(pointer)+dimension(10)+intent(out))",
                 "fmtdict": {
+                    "PY_name_impl": "PY_getPtrToFixedConstArray",
                     "function_name": "getPtrToFixedConstArray",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
+                "_fmtargs": {
+                    "count": {
+                        "fmtpy": {
+                            "array_size": "ncount",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_to_PyList_int",
+                            "npy_dims_var": "SHD_count",
+                            "npy_intp_asgn": "SHD_count[0] = ncount;\n",
+                            "npy_intp_decl": "npy_intp SHD_count[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "rank": "1",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_**_out_pointer_list",
+                            "stmt1": "py_native_**_out_pointer_list"
+                        }
+                    },
+                    "ncount": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_decl": "int ncount",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "ncount",
+                            "cxx_addr": "",
+                            "cxx_decl": "int ncount",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ncount",
+                            "cxx_type": "int",
+                            "cxx_var": "ncount",
+                            "data_var": "SHData_ncount",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_ncount",
+                            "size_var": "SHSize_ncount",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_default"
+                        }
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -1843,12 +2023,11 @@
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "fmtdict": {
+                    "PY_name_impl": "PY_getPtrToDynamicConstArray",
                     "function_name": "getPtrToDynamicConstArray",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
