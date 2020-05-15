@@ -29,3 +29,5 @@ declarations:
   - decl: double* getArrayConst() const +dimension(getSize())
   - decl: const double *getArrayC() +dimension(getSize())
   - decl: const double *getArrayConstC() const +dimension(getSize())
+  - decl: void fetchArray(double **array +intent(out)+dimension(isize),
+                          int &isize     +hidden)

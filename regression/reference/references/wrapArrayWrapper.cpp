@@ -229,4 +229,54 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
     // splicer end class.ArrayWrapper.method.get_array_const_c_bufferify
 }
 
+// ----------------------------------------
+// Function:  void fetchArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Requested: c_native_**_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
+    double * * array, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array
+    SH_this->fetchArray(array, *isize);
+    // splicer end class.ArrayWrapper.method.fetch_array
+}
+
+// ----------------------------------------
+// Function:  void fetchArray
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Exact:     c_native_**_out_buf
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in_buf
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_bufferify
+    double *array;
+    SH_this->fetchArray(&array, *isize);
+    Darray->cxx.addr  = array;
+    Darray->cxx.idtor = 0;
+    Darray->addr.base = array;
+    Darray->type = SH_TYPE_DOUBLE;
+    Darray->elem_len = sizeof(double);
+    Darray->rank = 1;
+    Darray->shape[0] = *isize;
+    Darray->size = Darray->shape[0];
+    // splicer end class.ArrayWrapper.method.fetch_array_bufferify
+}
+
 }  // extern "C"
