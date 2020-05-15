@@ -4,6 +4,7 @@ class ArrayWrapper
 C method ArrayWrapper()
 C method void setSize(int size +intent(in)+value)
 C method int getSize() const
+C method void fillSize(int & size +intent(out))
 C method void allocate()
 C method double * getArray() +dimension(getSize())
 C method double * getArray() +context(DSHC_rv)+dimension(getSize())
@@ -13,6 +14,8 @@ C method const double * getArrayC() +dimension(getSize())
 C method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
 C method const double * getArrayConstC() const +dimension(getSize())
 C method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
+C method void fetchArray(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
+C method void fetchArray(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -21,6 +24,7 @@ class ArrayWrapper
 C-interface, Fortran method ArrayWrapper()
 C-interface, Fortran method void setSize(int size +intent(in)+value)
 C-interface, Fortran method int getSize() const
+C-interface, Fortran method void fillSize(int & size +intent(out))
 C-interface, Fortran method void allocate()
 C-interface, Fortran method double * getArray() +dimension(getSize())
 C-interface method double * getArray() +context(DSHC_rv)+dimension(getSize())
@@ -30,16 +34,20 @@ C-interface, Fortran method const double * getArrayC() +dimension(getSize())
 C-interface method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
 C-interface, Fortran method const double * getArrayConstC() const +dimension(getSize())
 C-interface method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method void fetchArray(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
+C-interface method void fetchArray(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close wrapfreferences.f
 class ArrayWrapper
 Python method ArrayWrapper()
 Python method void setSize(int size +intent(in)+value)
 Python method int getSize() const
+Python method void fillSize(int & size +intent(out))
 Python method void allocate()
 Python method double * getArray() +dimension(getSize())
 Python method double * getArrayConst() const +dimension(getSize())
 Python method const double * getArrayC() +dimension(getSize())
 Python method const double * getArrayConstC() const +dimension(getSize())
+Python method void fetchArray(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close pyArrayWrappertype.cpp
 Close pyreferencesmodule.cpp
 Close pyreferencesutil.cpp

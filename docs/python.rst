@@ -177,6 +177,12 @@ The template for a getter is:
         return 0;
     }
 
+
+Fields listed in the order they generate code.
+C variables are created before the call to ``Py_ParseArgs``.
+C++ variables are then created in *post_parse* and *pre_call*.
+For example, creating a ``std::string`` from a ``char *``.
+
 allocate_local_var
 ^^^^^^^^^^^^^^^^^^
 
@@ -185,10 +191,11 @@ need to allocate a local variable which will be used to store the result.
 The Python object will maintain a pointer to the instance until it is
 deleted.
 
-arg_call
+c_header
 ^^^^^^^^
 
-Arguments to pass to function.
+cxx_header
+^^^^^^^^^^
 
 c_helper
 ^^^^^^^^
@@ -198,6 +205,23 @@ The name may contain format strings and will be expand before it is
 used.  ex. ``to_PyList_{cxx_type}``.
 The function associated with the helper will be named *hnamefunc0*,
 *hnamefunc1*, ... for each helper listed.
+
+need_numpy
+^^^^^^^^^^
+
+If *True*, add NumPy headers and initialize in the module.
+
+declare
+^^^^^^^
+
+Code needed to declare local variable.
+
+.. When defined, *typemap.PY_format* is append to the
+   format string for ``PyArg_ParseTupleAndKeywords`` and
+   *c_var* is used to hold the parsed.
+
+If the *declare* block is not defined, a local variable is defined of
+the same type as the function argument.
 
 c_local_var
 ^^^^^^^^^^^
@@ -218,63 +242,6 @@ Set when a C++ variable is created by post_parse.
 *scalar*
 
 Used to set format fields *cxx_member*
-
-declare
-^^^^^^^
-
-Code needed to declare local variable.
-
-.. When defined, *typemap.PY_format* is append to the
-   format string for ``PyArg_ParseTupleAndKeywords`` and
-   *c_var* is used to hold the parsed.
-
-If the *declare* block is not defined, a local variable is defined of
-the same type as the function argument.
-
-pre_call
-^^^^^^^^
-
-Location to allocate memory for output variables.
-All *intent(in)* variables have been processed by *post_parse* so
-their lengths are known.
-
-post_call
-^^^^^^^^^
-
-Convert result and *intent(out)* into ``PyObject``.
-
-post_parse
-^^^^^^^^^^
-Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.
-Used to convert C values into C++ values:
-
-.. code-block:: text
-
-    {var} = PyObject_IsTrue({var_obj});
-
-Will not be added for class constructor objects.
-since there is no need to build return values.
-
-
-Allow *intent(in)* arguments to be processed.
-For example, process ``PyObject`` into ``PyArrayObject``.
-
-cleanup
-^^^^^^^
-
-fail
-^^^^
-
-.. object conversion
-
-
-object_created
-^^^^^^^^^^^^^^
-
-Set to ``True`` when a ``PyObject`` is created by *post_call*.
-This prevents ``Py_BuildValue`` from converting it into an Object.
-For example, when a pointer is converted into a ``PyCapsule`` or
-when NumPy is used to create an object.
 
 parse_format
 ^^^^^^^^^^^^
@@ -318,13 +285,75 @@ Note that any Python object references which are provided to the
 caller (of `PyArg_Parse`) are borrowed references; do not decrement
 their reference count!
 
-
 parse_args
 ^^^^^^^^^^
 
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
     
+post_parse
+^^^^^^^^^^
+Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.
+Used to convert C values into C++ values:
+
+.. code-block:: text
+
+    {var} = PyObject_IsTrue({var_obj});
+
+Will not be added for class constructor objects.
+since there is no need to build return values.
+
+
+Allow *intent(in)* arguments to be processed.
+For example, process ``PyObject`` into ``PyArrayObject``.
+
+pre_call
+^^^^^^^^
+
+Location to allocate memory for output variables.
+All *intent(in)* variables have been processed by *post_parse* so
+their lengths are known.
+
+arg_call
+^^^^^^^^
+
+Arguments to pass to function.
+
+post_call
+^^^^^^^^^
+
+Convert result and *intent(out)* into ``PyObject``.
+
+
+cleanup
+^^^^^^^
+
+Code to remove any intermediate variables.
+
+fail
+^^^^
+
+Code to remove allocated memory and created objects.
+
+goto_fail
+^^^^^^^^^
+
+If *True*, one of the other blocks such as *post_parse*, *pre_call*,
+and *post_call* contain a call to ``fail``.
+If any statements block sets *goto_fail*, then the *fail* block will
+be inserted into the code/
+
+.. object conversion
+
+
+object_created
+^^^^^^^^^^^^^^
+
+Set to ``True`` when a ``PyObject`` is created by *post_call*.
+This prevents ``Py_BuildValue`` from converting it into an Object.
+For example, when a pointer is converted into a ``PyCapsule`` or
+when NumPy is used to create an object.
+
 
 Predefined Types
 ----------------

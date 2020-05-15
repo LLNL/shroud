@@ -23,8 +23,11 @@ declarations:
   - decl: ArrayWrapper()
   - decl: void setSize(int size)
   - decl: int getSize() const
+  - decl: void fillSize(int &size +intent(out))
   - decl: void allocate()
   - decl: double* getArray() +dimension(getSize())
   - decl: double* getArrayConst() const +dimension(getSize())
   - decl: const double *getArrayC() +dimension(getSize())
   - decl: const double *getArrayConstC() const +dimension(getSize())
+  - decl: void fetchArray(double **array +intent(out)+dimension(isize),
+                          int &isize     +hidden)

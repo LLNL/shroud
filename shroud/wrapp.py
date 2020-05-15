@@ -1317,6 +1317,8 @@ return 1;""",
             if implied:
                 # Argument is implied from other arguments.
                 pass
+            elif hidden and intent == "in":
+                append_format(declare_code, "{c_decl};", fmt_arg)
             elif intent in ["inout", "in"]:
                 # names to PyArg_ParseTupleAndKeywords
                 arg_names.append(arg_name)

@@ -26,6 +26,8 @@ public:
     /// Sets the size of the array
     int getSize() const { return sz; }
 
+    void fillSize(int &size) { size = sz; }
+    
     /// Allocates the array
     void allocate() 
     {
@@ -43,7 +45,7 @@ public:
     double *getArrayConst() const { return arr; }
     const double *getArrayC() { return arr; }
     const double *getArrayConstC() const { return arr; }
-
+    void fetchArray(double **array, int &isize) { *array = arr; isize = sz; }
 private:
     double* arr {nullptr};   
     int sz{0};

@@ -56,11 +56,13 @@ module references_mod
     contains
         procedure :: set_size => arraywrapper_set_size
         procedure :: get_size => arraywrapper_get_size
+        procedure :: fill_size => arraywrapper_fill_size
         procedure :: allocate => arraywrapper_allocate
         procedure :: get_array => arraywrapper_get_array
         procedure :: get_array_const => arraywrapper_get_array_const
         procedure :: get_array_c => arraywrapper_get_array_c
         procedure :: get_array_const_c => arraywrapper_get_array_const_c
+        procedure :: fetch_array => arraywrapper_fetch_array
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -121,6 +123,23 @@ module references_mod
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_arraywrapper_get_size
+
+        ! ----------------------------------------
+        ! Function:  void fillSize
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int & size +intent(out)
+        ! Requested: c_native_&_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fill_size(self, size) &
+                bind(C, name="REF_ArrayWrapper_fill_size")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            integer(C_INT), intent(OUT) :: size
+        end subroutine c_arraywrapper_fill_size
 
         ! ----------------------------------------
         ! Function:  void allocate
@@ -246,6 +265,51 @@ module references_mod
             type(C_PTR) SHT_rv
         end function c_arraywrapper_get_array_const_c_bufferify
 
+        ! ----------------------------------------
+        ! Function:  void fetchArray
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_**_out_pointer
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array(self, array, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array
+
+        ! ----------------------------------------
+        ! Function:  void fetchArray
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_**_out_buf_pointer
+        ! Match:     c_native_**_out_buf
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in_buf
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_bufferify(self, Darray, &
+                isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array, SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(INOUT) :: Darray
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_bufferify
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -308,6 +372,28 @@ contains
         SHT_rv = c_arraywrapper_get_size(obj%cxxmem)
         ! splicer end class.ArrayWrapper.method.get_size
     end function arraywrapper_get_size
+
+    ! ----------------------------------------
+    ! Function:  void fillSize
+    ! void fillSize
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int & size +intent(out)
+    ! Requested: f_native_&_out
+    ! Match:     f_default
+    ! Requested: c_native_&_out
+    ! Match:     c_default
+    subroutine arraywrapper_fill_size(obj, size)
+        use iso_c_binding, only : C_INT
+        class(arraywrapper) :: obj
+        integer(C_INT), intent(OUT) :: size
+        ! splicer begin class.ArrayWrapper.method.fill_size
+        call c_arraywrapper_fill_size(obj%cxxmem, size)
+        ! splicer end class.ArrayWrapper.method.fill_size
+    end subroutine arraywrapper_fill_size
 
     ! ----------------------------------------
     ! Function:  void allocate
@@ -406,6 +492,39 @@ contains
         call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const_c
     end function arraywrapper_get_array_const_c
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void fetchArray
+    ! void fetchArray
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
+    ! Requested: f_native_**_out_pointer
+    ! Match:     f_native_**_out
+    ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+    ! Exact:     c_native_**_out_buf
+    ! ----------------------------------------
+    ! Argument:  int & isize +hidden+intent(in)
+    ! Requested: f_native_&_in
+    ! Match:     f_default
+    ! Requested: c_native_&_in_buf
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_array(obj, array)
+        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        class(arraywrapper) :: obj
+        real(C_DOUBLE), intent(OUT), pointer :: array(:)
+        type(SHROUD_array) :: Darray
+        integer(C_INT) :: isize
+        ! splicer begin class.ArrayWrapper.method.fetch_array
+        call c_arraywrapper_fetch_array_bufferify(obj%cxxmem, Darray, &
+            isize)
+        call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
+        ! splicer end class.ArrayWrapper.method.fetch_array
+    end subroutine arraywrapper_fetch_array
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)

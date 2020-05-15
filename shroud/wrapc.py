@@ -1578,7 +1578,7 @@ class ToDimension(todict.PrintNode):
         else:
             deref = ''
             arg = self.fcn.ast.find_arg_by_name(argname)
-            if arg and arg.is_pointer():
+            if arg and arg.is_indirect():
                 # If argument is a pointer, then dereference it.
                 # i.e.  int *len +intent(out)
                 deref = '*'

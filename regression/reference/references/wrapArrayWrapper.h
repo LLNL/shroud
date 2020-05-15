@@ -33,6 +33,8 @@ void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size);
 
 int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self);
 
+void REF_ArrayWrapper_fill_size(REF_ArrayWrapper * self, int * size);
+
 void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self);
 
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self);
@@ -56,6 +58,12 @@ const double * REF_ArrayWrapper_get_array_const_c(
 
 const double * REF_ArrayWrapper_get_array_const_c_bufferify(
     const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
+
+void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
+    double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize);
 
 #ifdef __cplusplus
 }
