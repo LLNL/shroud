@@ -218,6 +218,12 @@ class Pointers(unittest.TestCase):
         self.assertIsInstance(ptr, list)
         self.assertEqual(10, len(ptr))
 
+        # +deref(scalar), list is not returned.
+        pointers.setGlobalInt(8)
+        val = pointers.returnIntScalar()
+        self.assertIsInstance(val, int)
+        self.assertEqual(8, val)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

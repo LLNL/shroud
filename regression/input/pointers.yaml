@@ -171,4 +171,5 @@ declarations:
 - decl: const int *returnIntPtrToConstScalar()
 - decl: const int *returnIntPtrToFixedConstArray() +dimension(10)
 
-- decl: int *returnIntScalar()
+- decl: int *returnIntScalar() +deref(scalar)
+  # Fortran: return scalar w/o POINTER attribute.

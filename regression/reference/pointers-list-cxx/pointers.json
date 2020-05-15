@@ -2532,17 +2532,16 @@
                         "cxx_type": "int",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
-                        "hnamefunc0": "SHROUD_to_PyList_int",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_*_result_pointer_list",
-                        "stmt1": "py_native_*_result_pointer_list"
+                        "stmt0": "py_native_*_result_scalar_list",
+                        "stmt1": "py_default"
                     }
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer"
+                        "deref": "scalar"
                     },
                     "declarator": {
                         "name": "returnIntScalar",
@@ -2558,8 +2557,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntScalar()",
-                "declgen": "int * returnIntScalar()",
+                "decl": "int *returnIntScalar() +deref(scalar)",
+                "declgen": "int * returnIntScalar() +deref(scalar)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntScalar",
                     "function_name": "returnIntScalar",

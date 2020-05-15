@@ -25,7 +25,7 @@ Python function int * returnIntPtrToScalar()
 Python function int * returnIntPtrToFixedArray() +dimension(10)
 Python function const int * returnIntPtrToConstScalar()
 Python function const int * returnIntPtrToFixedConstArray() +dimension(10)
-Python function int * returnIntScalar()
+Python function int * returnIntScalar() +deref(scalar)
 Close pypointersmodule.cpp
 Close pypointersmodule.hpp
 Close setup.py

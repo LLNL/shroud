@@ -1270,8 +1270,9 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntScalar +deref(pointer)
-// Exact:     py_native_*_result_pointer_numpy
+// Function:  int * returnIntScalar +deref(scalar)
+// Requested: py_native_*_result_scalar_numpy
+// Match:     py_default
 static char PY_returnIntScalar__doc__[] =
 "documentation"
 ;
@@ -1288,14 +1289,9 @@ PY_returnIntScalar(
     int * SHCXX_rv = returnIntScalar();
 
     // post_call
-    SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT, SHCXX_rv);
-    if (SHTPy_rv == nullptr) goto fail;
+    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return nullptr;
 // splicer end function.return_int_scalar
 }
 static PyMethodDef PY_methods[] = {

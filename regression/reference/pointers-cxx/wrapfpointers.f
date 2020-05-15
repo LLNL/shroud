@@ -882,20 +882,20 @@ module pointers_mod
     ! end c_return_int_ptr_to_fixed_const_array_bufferify
 
     ! ----------------------------------------
-    ! Function:  int * returnIntScalar +deref(pointer)
+    ! Function:  int * returnIntScalar +deref(scalar)
     ! Requested: c_native_*_result
     ! Match:     c_default
-    ! start c_return_int_scalar
+    ! start return_int_scalar
     interface
-        function c_return_int_scalar() &
+        function return_int_scalar() &
                 result(SHT_rv) &
                 bind(C, name="POI_return_int_scalar")
-            use iso_c_binding, only : C_PTR
+            use iso_c_binding, only : C_INT
             implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_scalar
+            integer(C_INT) :: SHT_rv
+        end function return_int_scalar
     end interface
-    ! end c_return_int_scalar
+    ! end return_int_scalar
 
     interface
         ! splicer begin additional_interfaces
@@ -1405,25 +1405,6 @@ contains
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntScalar +deref(pointer)
-    ! int * returnIntScalar +deref(pointer)
-    ! Exact:     f_native_*_result_pointer
-    ! Requested: c_native_*_result
-    ! Match:     c_default
-    ! start return_int_scalar
-    function return_int_scalar() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), pointer :: SHT_rv
-        ! splicer begin function.return_int_scalar
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_scalar()
-        call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end function.return_int_scalar
-    end function return_int_scalar
-    ! end return_int_scalar
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
