@@ -53,5 +53,5 @@ template<typename T>
 class user {
 public:
   template<typename U> void nested(T arg1, U arg2)
-  { };
+  { }
 };

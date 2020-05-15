@@ -60,7 +60,7 @@ CLIBS = -lstdc++
 CXX = pgc++
 CXXFLAGS = -g -std=c++11
 FC = pgf90
-FFLAGS = -g -Mfree -Mstandard
+FFLAGS = -g -Mfree -Mstandard -cpp
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
