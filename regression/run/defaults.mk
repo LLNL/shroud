@@ -71,7 +71,8 @@ ifeq ($(compiler),ibm)
 TCE = /usr/tce/packages/xl/xl-2019.08.20/
 CC = xlc
 CFLAGS = -g
-CXX = xlc
+CLIBS = -lstdc++
+CXX = xlC
 CXXFLAGS = -g -std=c++0x 
 FC = xlf2003
 FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
