@@ -136,7 +136,7 @@ The template for a function is:
         {               create scope before fail
           {pre_call}    pre_call declares variables for arguments
 
-          call
+          call  {arg_call}
           {post_call}
 
           per argument
@@ -184,6 +184,11 @@ need to allocate a local variable which will be used to store the result.
 The Python object will maintain a pointer to the instance until it is
 deleted.
 
+arg_call
+^^^^^^^^
+
+Arguments to pass to function.
+
 c_helper
 ^^^^^^^^
 
@@ -192,6 +197,24 @@ The name may contain format strings and will be expand before it is
 used.  ex. ``to_PyList_{cxx_type}``.
 The function associated with the helper will be named *hnamefunc0*,
 *hnamefunc1*, ... for each helper listed.
+
+c_local_var
+^^^^^^^^^^^
+
+As *pointer*, *none*
+
+create_out_decl
+^^^^^^^^^^^^^^^
+
+Used with *intent(inout)* and *intent(out)*.
+
+cxx_local_var
+^^^^^^^^^^^^^
+
+Set when a C++ variable is created by post_parse.
+*scalar*
+
+Used to set format fields *cxx_member*
 
 declare
 ^^^^^^^
@@ -208,9 +231,17 @@ the same type as the function argument.
 pre_call
 ^^^^^^^^
 
+Location to allocate memory for output variables.
+All *intent(in)* variables have been processed by *post_parse* so
+their lengths are known.
+
 post_call
 ^^^^^^^^^
 
+Convert result and *intent(out)* into ``PyObject``.
+
+post_parse
+^^^^^^^^^^
 Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.
 Used to convert C values into C++ values:
 
@@ -221,8 +252,9 @@ Used to convert C values into C++ values:
 Will not be added for class constructor objects.
 since there is no need to build return values.
 
-post_parse
-^^^^^^^^^^
+
+Allow *intent(in)* arguments to be processed.
+For example, process ``PyObject`` into ``PyArrayObject``.
 
 cleanup
 ^^^^^^^
@@ -238,7 +270,8 @@ object_created
 
 Set to ``True`` when a ``PyObject`` is created by *post_call*.
 This prevents ``Py_BuildValue`` from converting it into an Object.
-For example, when NumPy is used to create an object.
+For example, when a pointer is converted into a ``PyCapsule`` or
+when NumPy is used to create an object.
 
 parse_format
 ^^^^^^^^^^^^

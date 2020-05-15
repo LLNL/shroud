@@ -1239,6 +1239,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
+            deref = attrs["deref"] or "pointer"
             if intent_blk is not None:
                 pass
             elif implied:
@@ -1255,9 +1256,12 @@ return 1;""",
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
             elif rank or dimension:
-                deref = attrs["deref"] or "pointer"
                 # ex. (int * arg1 +intent(in) +rank(1))
-                stmts = ["py", sgroup, spointer, intent, deref, options.PY_array_arg]
+                stmts = ["py", sgroup, spointer, intent,
+                         deref, options.PY_array_arg]
+            elif deref == "raw":
+                # A single pointer.
+                stmts = ["py", sgroup, spointer, intent, deref]
             else:
                 # Scalar argument
                 # ex. (int * arg1 +intent(in))
@@ -1413,8 +1417,13 @@ return 1;""",
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
-            prefix = typemap.compute_return_prefix(arg, cxx_local_var or c_local_var)
-            cxx_call_list.append(prefix + pass_var)
+            if intent_blk.arg_call:
+                for arg in intent_blk.arg_call:
+                    append_format(cxx_call_list, arg, fmt_arg)
+            else:
+                prefix = typemap.compute_return_prefix(
+                    arg, cxx_local_var or c_local_var)
+                cxx_call_list.append(prefix + pass_var)
         # end for arg in args:
 
         # Add implied argument initialization to pre_call_code
@@ -3430,6 +3439,7 @@ class PyStmts(object):
         self,
         name="py_default",
         allocate_local_var=False,
+        arg_call=None,
         c_header=[], c_helper=[], c_local_var=None,
         create_out_decl=False,
         cxx_header=[], cxx_local_var=None,
@@ -3447,6 +3457,7 @@ class PyStmts(object):
     ):
         self.name = name
         self.allocate_local_var = allocate_local_var
+        self.arg_call = arg_call
         self.c_header = c_header
         self.c_helper = c_helper
         self.c_local_var = c_local_var
@@ -3857,6 +3868,22 @@ py_statements = [
         base="py_native_*_out_pointer_numpy",
     ),
 
+########################################
+## raw
+    dict(
+        # Declare a local pointer, pass address to library, convert to capsule.
+        name="py_native_**_out_raw",
+        declare=[
+            "{c_type} *{c_var};",
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);",
+        ],
+        object_created=True,
+    ),
 ########################################
 # char *
     dict(

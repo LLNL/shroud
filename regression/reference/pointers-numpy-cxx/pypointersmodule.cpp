@@ -781,6 +781,40 @@ PY_sumFixedArray(
 }
 
 // ----------------------------------------
+// Function:  void getRawPtrToFixedArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * count +deref(raw)+intent(out)
+// Exact:     py_native_**_out_raw
+static char PY_getRawPtrToFixedArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return a type(C_PTR) to an array which is always the same length.
+ * Called directly via an interface.
+ * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+ */
+static PyObject *
+PY_getRawPtrToFixedArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_raw_ptr_to_fixed_array
+    int *count;
+    PyObject *SHPy_count = nullptr;
+
+    getRawPtrToFixedArray(&count);
+
+    // post_call
+    SHPy_count = PyCapsule_New(count, NULL, NULL);
+
+    return (PyObject *) SHPy_count;
+// splicer end function.get_raw_ptr_to_fixed_array
+}
+
+// ----------------------------------------
 // Function:  void * returnAddress1
 // Requested: py_unknown_result
 // Match:     py_default
@@ -1007,6 +1041,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
     PY_sumFixedArray__doc__},
+{"getRawPtrToFixedArray", (PyCFunction)PY_getRawPtrToFixedArray,
+    METH_NOARGS, PY_getRawPtrToFixedArray__doc__},
 {"returnAddress1", (PyCFunction)PY_returnAddress1,
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress1__doc__},
 {"returnAddress2", (PyCFunction)PY_returnAddress2,

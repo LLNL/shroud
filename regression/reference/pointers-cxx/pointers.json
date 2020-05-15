@@ -3772,9 +3772,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

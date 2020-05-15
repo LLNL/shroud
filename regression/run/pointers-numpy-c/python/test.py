@@ -115,6 +115,50 @@ class Pointers(unittest.TestCase):
     def test_acceptCharArrayIn(self):
         pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
 
+    def test_out_ptrs(self):
+        # Functions which return a pointer in an argument.
+
+#        pointers.setGlobalInt(0)
+#        ptr1 = pointers.getPtrToScalar()
+#        #        call assert_equals(0, iscalar)
+#
+#        # iscalar points to global_int in pointers.c.
+#        pointers.setGlobalInt(5)
+#        #call assert_equals(5, iscalar)
+#
+#        nullify(iarray)
+#        call get_ptr_to_fixed_array(iarray)
+#        call assert_equals(10, size(iarray))
+#        iarray = 0
+#        call assert_equals(0, sum_fixed_array())
+#        # Make sure we're assigning to global_array.
+#        iarray(1) = 1
+#        iarray(10) = 2
+#        call assert_equals(3, sum_fixed_array())
+#
+#        # Returns global_array in pointers.c.
+#        nullify(iarray)
+#        call get_ptr_to_dynamic_array(iarray)
+#        call assert_true(associated(iarray))
+#        call assert_true(size(iarray) == 10)
+#        
+#        # Returns global_array in pointers.c.
+#        nullify(iarray)
+#        call get_ptr_to_func_array(iarray)
+#        call assert_true(associated(iarray))
+#        call assert_true(size(iarray) == 10)
+#
+#        call get_raw_ptr_to_scalar(cptr_scalar)
+#        call assert_true(c_associated(cptr_scalar))
+#        # associated with global_int in pointers.c
+#        call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
+#
+        p = pointers.getRawPtrToFixedArray()
+        self.assertEqual('PyCapsule', p.__class__.__name__)
+#        call assert_true(c_associated(cptr_array))
+#        # associated with global_fixed_array in pointers.c
+#        call assert_true(c_associated(cptr_array, c_loc(iarray)))
+
     def test_void_ptr_func(self):
         void = None
         void = pointers.returnAddress1(1)
