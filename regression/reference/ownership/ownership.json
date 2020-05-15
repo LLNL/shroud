@@ -289,7 +289,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_*_result_scalar_numpy",
+                        "stmt0": "py_native_*_result_scalar",
                         "stmt1": "py_default"
                     }
                 },

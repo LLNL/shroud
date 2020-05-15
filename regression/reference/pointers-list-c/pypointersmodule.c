@@ -1324,7 +1324,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Requested: py_native_*_result_scalar_list
+// Requested: py_native_*_result_scalar
 // Match:     py_default
 static char PY_returnIntScalar__doc__[] =
 "documentation"

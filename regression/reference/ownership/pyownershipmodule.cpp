@@ -36,7 +36,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
-// Requested: py_native_*_result_scalar_numpy
+// Requested: py_native_*_result_scalar
 // Match:     py_default
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
