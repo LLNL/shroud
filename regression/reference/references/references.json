@@ -148,6 +148,7 @@
                                     "cxx_addr": "&",
                                     "cxx_decl": "int size",
                                     "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&size",
                                     "cxx_type": "int",
                                     "cxx_var": "size",
                                     "data_var": "SHData_size",

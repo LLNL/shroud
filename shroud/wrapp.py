@@ -1212,6 +1212,7 @@ return 1;""",
             attrs = arg.attrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
+            self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             rank = arg.attrs["rank"]
