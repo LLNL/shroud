@@ -957,6 +957,20 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 }
 // end POI_return_int_ptr_to_fixed_const_array_bufferify
 
+// ----------------------------------------
+// Function:  int * returnIntScalar +deref(pointer)
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_scalar
+int * POI_return_int_scalar()
+{
+    // splicer begin function.return_int_scalar
+    int * SHC_rv = returnIntScalar();
+    return SHC_rv;
+    // splicer end function.return_int_scalar
+}
+// end POI_return_int_scalar
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
