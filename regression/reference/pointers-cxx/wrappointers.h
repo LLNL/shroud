@@ -69,8 +69,6 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
 void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
     int * ncount);
 
-int POI_get_len();
-
 void POI_get_ptr_to_func_array(int * * count);
 
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount);

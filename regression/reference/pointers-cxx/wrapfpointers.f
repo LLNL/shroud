@@ -501,22 +501,6 @@ module pointers_mod
     ! end c_get_ptr_to_dynamic_array_bufferify
 
     ! ----------------------------------------
-    ! Function:  int getLen
-    ! Requested: c_native_scalar_result
-    ! Match:     c_default
-    ! start get_len
-    interface
-        function get_len() &
-                result(SHT_rv) &
-                bind(C, name="POI_get_len")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT) :: SHT_rv
-        end function get_len
-    end interface
-    ! end get_len
-
-    ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
@@ -1204,7 +1188,6 @@ contains
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
     !! getLen will be called from C/C++ to compute the shape.
-    !! Note that getLen will be wrapped in Fortran as get_len.
     !<
     ! start get_ptr_to_func_array
     subroutine get_ptr_to_func_array(count)

@@ -762,6 +762,283 @@ PY_sumFixedArray(
 }
 
 // ----------------------------------------
+// Function:  void getPtrToFixedArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+static char PY_getPtrToFixedArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return a Fortran pointer to an array which is always the same length.
+ */
+static PyObject *
+PY_getPtrToFixedArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_ptr_to_fixed_array
+    int *count;
+    npy_intp SHD_count[1];
+    PyObject *SHPy_count = NULL;
+
+    getPtrToFixedArray(&count);
+
+    // post_call
+    SHD_count[0] = 10;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == NULL) goto fail;
+
+    return (PyObject *) SHPy_count;
+
+fail:
+    Py_XDECREF(SHPy_count);
+    return NULL;
+// splicer end function.get_ptr_to_fixed_array
+}
+
+// ----------------------------------------
+// Function:  void getPtrToDynamicArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int * ncount +hidden+intent(out)
+// Requested: py_native_*_out
+// Match:     py_default
+static char PY_getPtrToDynamicArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return a Fortran pointer to an array which is the length of
+ * the argument ncount.
+ */
+static PyObject *
+PY_getPtrToDynamicArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_ptr_to_dynamic_array
+    int *count;
+    npy_intp SHD_count[1];
+    PyObject *SHPy_count = NULL;
+
+    // pre_call
+    int ncount;  // intent(out)
+
+    getPtrToDynamicArray(&count, &ncount);
+
+    // post_call
+    SHD_count[0] = ncount;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == NULL) goto fail;
+
+    return (PyObject *) SHPy_count;
+
+fail:
+    Py_XDECREF(SHPy_count);
+    return NULL;
+// splicer end function.get_ptr_to_dynamic_array
+}
+
+// ----------------------------------------
+// Function:  void getPtrToFuncArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+static char PY_getPtrToFuncArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return a Fortran pointer to an array which is the length
+ * is computed by C++ function getLen.
+ * getLen will be called from C/C++ to compute the shape.
+ */
+static PyObject *
+PY_getPtrToFuncArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_ptr_to_func_array
+    int *count;
+    npy_intp SHD_count[1];
+    PyObject *SHPy_count = NULL;
+
+    getPtrToFuncArray(&count);
+
+    // post_call
+    SHD_count[0] = getLen();
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == NULL) goto fail;
+
+    return (PyObject *) SHPy_count;
+
+fail:
+    Py_XDECREF(SHPy_count);
+    return NULL;
+// splicer end function.get_ptr_to_func_array
+}
+
+// ----------------------------------------
+// Function:  void getPtrToFixedConstArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+static char PY_getPtrToFixedConstArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getPtrToFixedConstArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_ptr_to_fixed_const_array
+    const int *count;
+    npy_intp SHD_count[1];
+    PyObject *SHPy_count = NULL;
+
+    getPtrToFixedConstArray(&count);
+
+    // post_call
+    SHD_count[0] = 10;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        (int *) count);
+    if (SHPy_count == NULL) goto fail;
+
+    return (PyObject *) SHPy_count;
+
+fail:
+    Py_XDECREF(SHPy_count);
+    return NULL;
+// splicer end function.get_ptr_to_fixed_const_array
+}
+
+// ----------------------------------------
+// Function:  void getPtrToDynamicConstArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int * ncount +hidden+intent(out)
+// Requested: py_native_*_out
+// Match:     py_default
+static char PY_getPtrToDynamicConstArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getPtrToDynamicConstArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_ptr_to_dynamic_const_array
+    const int *count;
+    npy_intp SHD_count[1];
+    PyObject *SHPy_count = NULL;
+
+    // pre_call
+    int ncount;  // intent(out)
+
+    getPtrToDynamicConstArray(&count, &ncount);
+
+    // post_call
+    SHD_count[0] = ncount;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        (int *) count);
+    if (SHPy_count == NULL) goto fail;
+
+    return (PyObject *) SHPy_count;
+
+fail:
+    Py_XDECREF(SHPy_count);
+    return NULL;
+// splicer end function.get_ptr_to_dynamic_const_array
+}
+
+// ----------------------------------------
+// Function:  void getRawPtrToScalar
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * nitems +deref(raw)+intent(out)
+// Exact:     py_native_**_out_raw
+static char PY_getRawPtrToScalar__doc__[] =
+"documentation"
+;
+
+/**
+ * Called directly via an interface in Fortran.
+ */
+static PyObject *
+PY_getRawPtrToScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_raw_ptr_to_scalar
+    int *nitems;
+    PyObject *SHPy_nitems = NULL;
+
+    getRawPtrToScalar(&nitems);
+
+    // post_call
+    SHPy_nitems = PyCapsule_New(nitems, NULL, NULL);
+
+    return (PyObject *) SHPy_nitems;
+// splicer end function.get_raw_ptr_to_scalar
+}
+
+// ----------------------------------------
+// Function:  void getRawPtrToFixedArray
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * count +deref(raw)+intent(out)
+// Exact:     py_native_**_out_raw
+static char PY_getRawPtrToFixedArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return a type(C_PTR) to an array which is always the same length.
+ * Called directly via an interface in Fortran.
+ * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+ */
+static PyObject *
+PY_getRawPtrToFixedArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_raw_ptr_to_fixed_array
+    int *count;
+    PyObject *SHPy_count = NULL;
+
+    getRawPtrToFixedArray(&count);
+
+    // post_call
+    SHPy_count = PyCapsule_New(count, NULL, NULL);
+
+    return (PyObject *) SHPy_count;
+// splicer end function.get_raw_ptr_to_fixed_array
+}
+
+// ----------------------------------------
 // Function:  void * returnAddress1
 // Requested: py_unknown_result
 // Match:     py_default
@@ -988,6 +1265,20 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
     PY_sumFixedArray__doc__},
+{"getPtrToFixedArray", (PyCFunction)PY_getPtrToFixedArray, METH_NOARGS,
+    PY_getPtrToFixedArray__doc__},
+{"getPtrToDynamicArray", (PyCFunction)PY_getPtrToDynamicArray,
+    METH_NOARGS, PY_getPtrToDynamicArray__doc__},
+{"getPtrToFuncArray", (PyCFunction)PY_getPtrToFuncArray, METH_NOARGS,
+    PY_getPtrToFuncArray__doc__},
+{"getPtrToFixedConstArray", (PyCFunction)PY_getPtrToFixedConstArray,
+    METH_NOARGS, PY_getPtrToFixedConstArray__doc__},
+{"getPtrToDynamicConstArray", (PyCFunction)PY_getPtrToDynamicConstArray,
+    METH_NOARGS, PY_getPtrToDynamicConstArray__doc__},
+{"getRawPtrToScalar", (PyCFunction)PY_getRawPtrToScalar, METH_NOARGS,
+    PY_getRawPtrToScalar__doc__},
+{"getRawPtrToFixedArray", (PyCFunction)PY_getRawPtrToFixedArray,
+    METH_NOARGS, PY_getRawPtrToFixedArray__doc__},
 {"returnAddress1", (PyCFunction)PY_returnAddress1,
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress1__doc__},
 {"returnAddress2", (PyCFunction)PY_returnAddress2,

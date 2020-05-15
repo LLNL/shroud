@@ -1125,7 +1125,7 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result, result_blk = self.process_result(cls, node, fmt)
+            fmt_result, result_blk = self.process_function_result(cls, node, fmt)
         else:
             fmt_result = fmt
             result_blk = default_scope
@@ -1212,6 +1212,7 @@ return 1;""",
             attrs = arg.attrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
+            self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
             rank = arg.attrs["rank"]
@@ -1239,6 +1240,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
+            deref = attrs["deref"] or "pointer"
             if intent_blk is not None:
                 pass
             elif implied:
@@ -1255,9 +1257,12 @@ return 1;""",
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
             elif rank or dimension:
-                deref = attrs["deref"] or "pointer"
                 # ex. (int * arg1 +intent(in) +rank(1))
-                stmts = ["py", sgroup, spointer, intent, deref, options.PY_array_arg]
+                stmts = ["py", sgroup, spointer, intent,
+                         deref, options.PY_array_arg]
+            elif deref == "raw":
+                # A single pointer.
+                stmts = ["py", sgroup, spointer, intent, deref]
             else:
                 # Scalar argument
                 # ex. (int * arg1 +intent(in))
@@ -1413,8 +1418,13 @@ return 1;""",
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
-            prefix = typemap.compute_return_prefix(arg, cxx_local_var or c_local_var)
-            cxx_call_list.append(prefix + pass_var)
+            if intent_blk.arg_call:
+                for arg in intent_blk.arg_call:
+                    append_format(cxx_call_list, arg, fmt_arg)
+            else:
+                prefix = typemap.compute_return_prefix(
+                    arg, cxx_local_var or c_local_var)
+                cxx_call_list.append(prefix + pass_var)
         # end for arg in args:
 
         # Add implied argument initialization to pre_call_code
@@ -1843,8 +1853,8 @@ return 1;""",
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
-    def process_result(self, cls, node, fmt):
-        """Work on formatting for result values.
+    def process_function_result(self, cls, node, fmt):
+        """Work on formatting for function result values.
 
         Return fmt_result
         Args:
@@ -1855,70 +1865,68 @@ return 1;""",
         ast = node.ast
         attrs = ast.attrs
         is_ctor = ast.is_ctor()
-        CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
 
         result_blk = default_scope
 
-        if CXX_subprogram == "function":
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault(
-                "fmtpy", util.Scope(fmt)
-            )  # fmt_func
-            CXX_result = node.ast
+        fmt_result0 = node._fmtresult
+        fmt_result = fmt_result0.setdefault(
+            "fmtpy", util.Scope(fmt)
+        )  # fmt_func
+        CXX_result = node.ast
 
-            # Mangle result variable name to avoid possible conflict with arguments.
-            fmt_result.cxx_var = wformat(
-                "{CXX_local}{C_result}", fmt_result
-            )
+        # Mangle result variable name to avoid possible conflict with arguments.
+        fmt_result.cxx_var = wformat(
+            "{CXX_local}{C_result}", fmt_result
+        )
 
-            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None,
-                with_template_args=True, continuation=True
-            )
+        fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+            name=fmt_result.cxx_var, params=None,
+            with_template_args=True, continuation=True
+        )
 
-            if CXX_result.is_pointer():
-                fmt_result.c_deref = "*"
-                fmt_result.cxx_addr = ""
-                fmt_result.cxx_member = "->"
-            else:
-                fmt_result.c_deref = ""
-                fmt_result.cxx_addr = "&"
-                fmt_result.cxx_member = "."
-            fmt_result.c_var = fmt_result.cxx_var
-            fmt_result.py_var = fmt.PY_result
-            fmt_result.data_var = "SHData_" + fmt_result.C_result
-            fmt_result.size_var = "SHSize_" + fmt_result.C_result
-            fmt_result.numpy_type = result_typemap.PYN_typenum
-            #            fmt_pattern = fmt_result
-            update_fmt_from_typemap(fmt_result, result_typemap)
+        if CXX_result.is_pointer():
+            fmt_result.c_deref = "*"
+            fmt_result.cxx_addr = ""
+            fmt_result.cxx_member = "->"
+        else:
+            fmt_result.c_deref = ""
+            fmt_result.cxx_addr = "&"
+            fmt_result.cxx_member = "."
+        fmt_result.c_var = fmt_result.cxx_var
+        fmt_result.py_var = fmt.PY_result
+        fmt_result.data_var = "SHData_" + fmt_result.C_result
+        fmt_result.size_var = "SHSize_" + fmt_result.C_result
+        fmt_result.numpy_type = result_typemap.PYN_typenum
+        #            fmt_pattern = fmt_result
+        update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(cls, node, ast, fmt_result, True)
-            self.set_cxx_nonconst_ptr(ast, fmt_result)
-            sgroup = result_typemap.sgroup
-            stmts = None
-            if is_ctor:
-                # Code added by create_ctor_function.
-                result_blk = default_scope
-                fmt_result.stmt0 = result_blk.name
-                fmt_result.stmt1 = result_blk.name
-            elif result_typemap.base == "struct":
-                stmts = ["py", sgroup, "result", options.PY_struct_arg]
-            elif result_typemap.base == "vector":
-                stmts = ["py", sgroup, "result", options.PY_array_arg]
-            elif sgroup == "native":
-                spointer = ast.get_indirect_stmt()
-                stmts = ["py", sgroup, spointer, "result"]
-                if spointer != "scalar":
-                    deref = attrs["deref"] or "pointer"
-                    stmts.extend([deref, options.PY_array_arg])
-            else:
-                stmts = ["py", sgroup, "result"]
-            if stmts is not None:
-                result_blk = lookup_stmts(stmts)
-                # Useful for debugging.  Requested and found path.
-                fmt_result.stmt0 = typemap.compute_name(stmts)
-                fmt_result.stmt1 = result_blk.name
+        self.set_fmt_fields(cls, node, ast, fmt_result, True)
+        self.set_cxx_nonconst_ptr(ast, fmt_result)
+        sgroup = result_typemap.sgroup
+        stmts = None
+        if is_ctor:
+            # Code added by create_ctor_function.
+            result_blk = default_scope
+            fmt_result.stmt0 = result_blk.name
+            fmt_result.stmt1 = result_blk.name
+        elif result_typemap.base == "struct":
+            stmts = ["py", sgroup, "result", options.PY_struct_arg]
+        elif result_typemap.base == "vector":
+            stmts = ["py", sgroup, "result", options.PY_array_arg]
+        elif sgroup == "native":
+            spointer = ast.get_indirect_stmt()
+            stmts = ["py", sgroup, spointer, "result"]
+            if spointer != "scalar":
+                deref = attrs["deref"] or "pointer"
+                stmts.extend([deref, options.PY_array_arg])
+        else:
+            stmts = ["py", sgroup, "result"]
+        if stmts is not None:
+            result_blk = lookup_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_result.stmt0 = typemap.compute_name(stmts)
+            fmt_result.stmt1 = result_blk.name
                 
         return fmt_result, result_blk
 
@@ -3432,6 +3440,7 @@ class PyStmts(object):
         self,
         name="py_default",
         allocate_local_var=False,
+        arg_call=None,
         c_header=[], c_helper=[], c_local_var=None,
         create_out_decl=False,
         cxx_header=[], cxx_local_var=None,
@@ -3449,6 +3458,7 @@ class PyStmts(object):
     ):
         self.name = name
         self.allocate_local_var = allocate_local_var
+        self.arg_call = arg_call
         self.c_header = c_header
         self.c_helper = c_helper
         self.c_local_var = c_local_var
@@ -3757,6 +3767,19 @@ py_statements = [
         base="py_native_*_result_pointer_numpy",
     ),
 
+    dict(
+        name="py_native_**_out_pointer_numpy",
+        base="py_native_*_result_pointer_numpy",
+        # Declare a local variable for the argument.
+        declare=[
+            "{c_const}{c_type} *{c_var};",
+            "{npy_intp_decl}"
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+    ),
+
 ########################################
 ## list
     dict(
@@ -3847,7 +3870,18 @@ py_statements = [
         ],
         goto_fail=True,
     ),
-
+    dict(
+        name="py_native_**_out_pointer_list",
+        base="py_native_*_result_pointer_list",
+        # Declare a local variable for the argument.
+        declare=[
+            "{c_const}{c_type} *{c_var};",
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+    ),
+    
 ########################################
 ## allocatable
     dict(
@@ -3859,6 +3893,22 @@ py_statements = [
         base="py_native_*_out_pointer_numpy",
     ),
 
+########################################
+## raw
+    dict(
+        # Declare a local pointer, pass address to library, convert to capsule.
+        name="py_native_**_out_raw",
+        declare=[
+            "{c_type} *{c_var};",
+            "PyObject *{py_var} = {nullptr};"
+        ],
+        c_local_var="pointer",
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);",
+        ],
+        object_created=True,
+    ),
 ########################################
 # char *
     dict(

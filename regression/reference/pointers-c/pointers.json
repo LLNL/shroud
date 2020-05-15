@@ -2186,9 +2186,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2425,9 +2423,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2590,70 +2586,6 @@
                 }
             },
             {
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_native_scalar_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
-                        "stmtc1": "c_default"
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "getLen",
-                        "pointer": []
-                    },
-                    "params": [],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int getLen()",
-                "declgen": "int getLen()",
-                "doxygen": {
-                    "brief": "Return length of global_fixed_array."
-                },
-                "fmtdict": {
-                    "C_name": "getLen",
-                    "C_prototype": "",
-                    "C_return_type": "int",
-                    "F_C_call": "c_get_len",
-                    "F_C_name": "get_len",
-                    "F_arguments": "",
-                    "F_name_function": "get_len",
-                    "F_name_generic": "get_len",
-                    "F_name_impl": "get_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "getLen",
-                    "underscore_name": "get_len"
-                },
-                "options": {
-                    "wrap_python": false
-                }
-            },
-            {
                 "_fmtargs": {
                     "count": {
                         "fmtc": {
@@ -2720,7 +2652,7 @@
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
                 "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -2742,9 +2674,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_func_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -2837,7 +2767,7 @@
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
                 "declgen": "void getPtrToFuncArray(int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out))",
                 "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\nNote that getLen will be wrapped in Fortran as get_len.\n"
+                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&count",
@@ -3118,9 +3048,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3353,9 +3281,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3572,7 +3498,7 @@
                 "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Called directly via an interface.\n"
+                    "description": "Called directly via an interface in Fortran.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "nitems",
@@ -3594,9 +3520,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3672,7 +3596,7 @@
                 "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Called directly via an interface.\n"
+                    "description": "Called directly via an interface in Fortran.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&nitems",
@@ -3750,7 +3674,7 @@
                 "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -3772,9 +3696,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3850,7 +3772,7 @@
                 "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&count",

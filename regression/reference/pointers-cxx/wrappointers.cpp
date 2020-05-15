@@ -536,28 +536,9 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // end POI_get_ptr_to_dynamic_array_bufferify
 
 /**
- * \brief Return length of global_fixed_array.
- *
- */
-// ----------------------------------------
-// Function:  int getLen
-// Requested: c_native_scalar_result
-// Match:     c_default
-// start POI_get_len
-int POI_get_len()
-{
-    // splicer begin function.get_len
-    int SHC_rv = getLen();
-    return SHC_rv;
-    // splicer end function.get_len
-}
-// end POI_get_len
-
-/**
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
- * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
@@ -580,7 +561,6 @@ void POI_get_ptr_to_func_array(int * * count)
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
- * Note that getLen will be wrapped in Fortran as get_len.
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
@@ -744,7 +724,7 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 // end POI_get_ptr_to_dynamic_const_array_bufferify
 
 /**
- * Called directly via an interface.
+ * Called directly via an interface in Fortran.
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
@@ -764,7 +744,7 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 // end POI_get_raw_ptr_to_scalar
 
 /**
- * Called directly via an interface.
+ * Called directly via an interface in Fortran.
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
@@ -792,7 +772,7 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
- * Called directly via an interface.
+ * Called directly via an interface in Fortran.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
@@ -814,7 +794,7 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
- * Called directly via an interface.
+ * Called directly via an interface in Fortran.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 // ----------------------------------------
