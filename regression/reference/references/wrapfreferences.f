@@ -56,6 +56,7 @@ module references_mod
     contains
         procedure :: set_size => arraywrapper_set_size
         procedure :: get_size => arraywrapper_get_size
+        procedure :: fill_size => arraywrapper_fill_size
         procedure :: allocate => arraywrapper_allocate
         procedure :: get_array => arraywrapper_get_array
         procedure :: get_array_const => arraywrapper_get_array_const
@@ -121,6 +122,23 @@ module references_mod
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_arraywrapper_get_size
+
+        ! ----------------------------------------
+        ! Function:  void fillSize
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int & size +intent(out)
+        ! Requested: c_native_&_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fill_size(self, size) &
+                bind(C, name="REF_ArrayWrapper_fill_size")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            integer(C_INT), intent(OUT) :: size
+        end subroutine c_arraywrapper_fill_size
 
         ! ----------------------------------------
         ! Function:  void allocate
@@ -308,6 +326,28 @@ contains
         SHT_rv = c_arraywrapper_get_size(obj%cxxmem)
         ! splicer end class.ArrayWrapper.method.get_size
     end function arraywrapper_get_size
+
+    ! ----------------------------------------
+    ! Function:  void fillSize
+    ! void fillSize
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int & size +intent(out)
+    ! Requested: f_native_&_out
+    ! Match:     f_default
+    ! Requested: c_native_&_out
+    ! Match:     c_default
+    subroutine arraywrapper_fill_size(obj, size)
+        use iso_c_binding, only : C_INT
+        class(arraywrapper) :: obj
+        integer(C_INT), intent(OUT) :: size
+        ! splicer begin class.ArrayWrapper.method.fill_size
+        call c_arraywrapper_fill_size(obj%cxxmem, size)
+        ! splicer end class.ArrayWrapper.method.fill_size
+    end subroutine arraywrapper_fill_size
 
     ! ----------------------------------------
     ! Function:  void allocate

@@ -33,6 +33,9 @@ class References(unittest.TestCase):
         arrinst.setSize(10)
         self.assertEqual(10, arrinst.getSize())
 
+        isize = arrinst.fillSize()
+        self.assertEqual(10, isize)
+
         arrinst.allocate()
         arr = arrinst.getArray()
         self.assertIsInstance(arr, np.ndarray)

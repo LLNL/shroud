@@ -26,6 +26,8 @@ public:
     /// Sets the size of the array
     int getSize() const { return sz; }
 
+    void fillSize(int &size) { size = sz; }
+    
     /// Allocates the array
     void allocate() 
     {

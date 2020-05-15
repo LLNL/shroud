@@ -61,6 +61,22 @@ int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self)
 }
 
 // ----------------------------------------
+// Function:  void fillSize
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int & size +intent(out)
+// Requested: c_native_&_out
+// Match:     c_default
+void REF_ArrayWrapper_fill_size(REF_ArrayWrapper * self, int * size)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fill_size
+    SH_this->fillSize(*size);
+    // splicer end class.ArrayWrapper.method.fill_size
+}
+
+// ----------------------------------------
 // Function:  void allocate
 // Requested: c
 // Match:     c_default

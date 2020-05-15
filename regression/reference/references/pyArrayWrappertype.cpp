@@ -119,6 +119,38 @@ PY_getSize(
 }
 
 // ----------------------------------------
+// Function:  void fillSize
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int & size +intent(out)
+// Requested: py_native_&_out
+// Match:     py_default
+static char PY_fillSize__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fillSize(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fill_size
+    PyObject * SHPy_size = nullptr;
+
+    // pre_call
+    int size;  // intent(out)
+
+    self->obj->fillSize(size);
+
+    // post_call
+    SHPy_size = PyInt_FromLong(size);
+
+    return (PyObject *) SHPy_size;
+// splicer end class.ArrayWrapper.method.fill_size
+}
+
+// ----------------------------------------
 // Function:  void allocate
 // Exact:     py_default
 static char PY_allocate__doc__[] =
@@ -275,6 +307,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_setSize__doc__},
     {"getSize", (PyCFunction)PY_getSize, METH_NOARGS,
         PY_getSize__doc__},
+    {"fillSize", (PyCFunction)PY_fillSize, METH_NOARGS,
+        PY_fillSize__doc__},
     {"allocate", (PyCFunction)PY_allocate, METH_NOARGS,
         PY_allocate__doc__},
     {"getArray", (PyCFunction)PY_getArray, METH_NOARGS,

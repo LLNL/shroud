@@ -297,6 +297,117 @@
                         "options": {}
                     },
                     {
+                        "_fmtargs": {
+                            "size": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "size",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&size",
+                                    "cxx_type": "int",
+                                    "cxx_var": "size",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_native_&_out",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_size",
+                                    "c_var": "size",
+                                    "f_intent": "OUT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "size",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_&_out",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_&_out",
+                                    "stmtc1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "1",
+                                    "c_const": "",
+                                    "c_decl": "int size",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "size",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int size",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&size",
+                                    "cxx_type": "int",
+                                    "cxx_var": "size",
+                                    "data_var": "SHData_size",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_size",
+                                    "size_var": "SHSize_size",
+                                    "stmt0": "py_native_&_out",
+                                    "stmt1": "py_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "fillSize",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "declarator": {
+                                        "name": "size",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void fillSize(int &size +intent(out))",
+                        "declgen": "void fillSize(int & size +intent(out))",
+                        "fmtdict": {
+                            "C_call_list": "*size",
+                            "C_name": "REF_ArrayWrapper_fill_size",
+                            "C_prototype": "REF_ArrayWrapper * self,\t int * size",
+                            "C_return_type": "void",
+                            "F_C_call": "c_arraywrapper_fill_size",
+                            "F_C_name": "c_arraywrapper_fill_size",
+                            "F_arg_c_call": "obj%cxxmem,\t size",
+                            "F_arguments": "obj,\t size",
+                            "F_name_function": "fill_size",
+                            "F_name_generic": "fill_size",
+                            "F_name_impl": "arraywrapper_fill_size",
+                            "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_fillSize",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "fillSize",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "fill_size"
+                        },
+                        "options": {}
+                    },
+                    {
                         "ast": {
                             "declarator": {
                                 "name": "allocate",

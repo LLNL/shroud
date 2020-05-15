@@ -33,6 +33,8 @@ void REF_ArrayWrapper_set_size(REF_ArrayWrapper * self, int size);
 
 int REF_ArrayWrapper_get_size(const REF_ArrayWrapper * self);
 
+void REF_ArrayWrapper_fill_size(REF_ArrayWrapper * self, int * size);
+
 void REF_ArrayWrapper_allocate(REF_ArrayWrapper * self);
 
 double * REF_ArrayWrapper_get_array(REF_ArrayWrapper * self);
