@@ -307,15 +307,14 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
-    ! Requested: c_char_**_in
-    ! Match:     c_default
+    ! Exact:     c_char_**_in
     ! start c_accept_char_array_in
     interface
         subroutine c_accept_char_array_in(names) &
                 bind(C, name="POI_accept_char_array_in")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR), intent(IN) :: names
+            type(C_PTR), intent(IN) :: names(*)
         end subroutine c_accept_char_array_in
     end interface
     ! end c_accept_char_array_in

@@ -888,6 +888,7 @@ rv = .false.
                 elif ast.is_array() > 1:
                     # Treat too many pointers as a type(C_PTR)
                     # and let the wrapper sort it out.
+                    # 'char **' uses c_char_**_in as a special case.
                     intent = ast.attrs["intent"].upper()
                     arg_c_decl.append(
                         "type(C_PTR), intent({}) :: {}".format(

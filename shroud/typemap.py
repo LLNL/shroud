@@ -1727,6 +1727,18 @@ fc_statements = [
 
     #####
     dict(
+        # Treat as an assumed length array in Fortran interface.
+        name='c_char_**_in',
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "char **{c_var}",
+        ],
+        f_arg_decl=[
+            "type(C_PTR), intent(IN) :: {c_var}(*)",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
         name='c_char_**_in_buf',
         # arg_decl - argument is char *, not char **.
         buf_args=["arg_decl", "size", "len"],
