@@ -1349,6 +1349,32 @@ fail:
     return nullptr;
 // splicer end function.return_int_ptr_to_fixed_const_array
 }
+
+// ----------------------------------------
+// Function:  int * returnIntScalar +deref(scalar)
+// Requested: py_native_*_result_scalar
+// Match:     py_default
+static char PY_returnIntScalar__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnIntScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.return_int_scalar
+    PyObject * SHTPy_rv = nullptr;
+
+    int * SHCXX_rv = returnIntScalar();
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_scalar
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -1402,6 +1428,8 @@ static PyMethodDef PY_methods[] = {
 {"returnIntPtrToFixedConstArray",
     (PyCFunction)PY_returnIntPtrToFixedConstArray, METH_NOARGS,
     PY_returnIntPtrToFixedConstArray__doc__},
+{"returnIntScalar", (PyCFunction)PY_returnIntScalar, METH_NOARGS,
+    PY_returnIntScalar__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

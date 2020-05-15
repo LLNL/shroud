@@ -881,6 +881,22 @@ module pointers_mod
     end interface
     ! end c_return_int_ptr_to_fixed_const_array_bufferify
 
+    ! ----------------------------------------
+    ! Function:  int * returnIntScalar +deref(scalar)
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_scalar
+    interface
+        function return_int_scalar() &
+                result(SHT_rv) &
+                bind(C, name="POI_return_int_scalar")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function return_int_scalar
+    end interface
+    ! end return_int_scalar
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

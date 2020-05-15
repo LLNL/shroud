@@ -53,6 +53,7 @@ int *returnIntPtrToScalar(void);
 int *returnIntPtrToFixedArray(void);
 const int *returnIntPtrToConstScalar(void);
 const int *returnIntPtrToFixedConstArray(void);
+int *returnIntScalar(void);
 
 //void getPtrToArray(int **count+intent(out));
 

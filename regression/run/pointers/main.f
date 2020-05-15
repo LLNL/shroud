@@ -133,6 +133,7 @@ contains
   end subroutine test_char_arrays
 
   subroutine test_out_ptrs
+    integer(C_INT) :: ivalue
     integer(C_INT), pointer :: iscalar, irvscalar
     integer(C_INT), pointer :: iarray(:), irvarray(:)
     type(C_PTR) :: cptr_scalar, cptr_array
@@ -191,6 +192,13 @@ contains
     nullify(irvscalar)
     irvscalar => return_int_ptr_to_scalar()
     call assert_true(associated(irvscalar, iscalar))
+    call set_global_int(7)
+    call assert_equals(7, irvscalar)
+
+    ! ivalue is not a pointer.
+    call set_global_int(8)
+    ivalue = return_int_scalar()
+    call assert_equals(8, ivalue)
 
     ! Return pointer to global_fixed_int as a fortran pointer.
     nullify(irvarray)
@@ -211,6 +219,8 @@ contains
     call assert_true(associated(irvarray))
     call assert_true(size(irvarray) == 10)
     call assert_true(associated(irvscalar, iscalar))
+
+    ivalue = return_int_scalar()
     
   end subroutine test_out_ptrs
   

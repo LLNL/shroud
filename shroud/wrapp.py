@@ -1919,7 +1919,9 @@ return 1;""",
             stmts = ["py", sgroup, spointer, "result"]
             if spointer != "scalar":
                 deref = attrs["deref"] or "pointer"
-                stmts.extend([deref, options.PY_array_arg])
+                stmts.append(deref)
+                if deref != "scalar":
+                    stmts.append(options.PY_array_arg)
         else:
             stmts = ["py", sgroup, "result"]
         if stmts is not None:

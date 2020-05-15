@@ -114,6 +114,8 @@ const int * POI_return_int_ptr_to_fixed_const_array();
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
+int POI_return_int_scalar();
+
 #ifdef __cplusplus
 }
 #endif

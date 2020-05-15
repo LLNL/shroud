@@ -257,6 +257,12 @@ const int *returnIntPtrToFixedConstArray(void)
     return (int *) &global_fixed_array;
 }
 
+// Fortran wrapper has +deref(scalar)
+int *returnIntScalar(void)
+{
+    return &global_int;
+}
+
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {

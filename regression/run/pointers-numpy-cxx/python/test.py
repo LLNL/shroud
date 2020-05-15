@@ -198,7 +198,13 @@ class Pointers(unittest.TestCase):
         self.assertIsInstance(ptr, np.ndarray)
         self.assertEqual('int32', ptr.dtype.name)
         self.assertEqual(10, ptr.size)
-        
+
+        # +deref(scalar), NumPy array is not returned.
+        pointers.setGlobalInt(8)
+        val = pointers.returnIntScalar()
+        self.assertIsInstance(val, int)
+        self.assertEqual(8, val)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

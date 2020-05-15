@@ -1164,6 +1164,8 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
         elif return_deref_attr == "scalar":
+            # Need a wrapper since it will dereference the return pointer.
+            need_wrapper = True
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True
             )
