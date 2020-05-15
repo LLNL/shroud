@@ -11,8 +11,11 @@ Tests which can be compiled are in the `run` directory.
 
 Test C++ references.  Test pointers with classes.
 
-
 ### debugfalse
 
 Same as the tutorial test but with option debug set to False.
 All other tests have debug set to True to aid development.
+
+### clibrary
+
+Uses assumed type in a test.  Does not work with PGI.

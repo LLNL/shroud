@@ -1622,7 +1622,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_**_in",
-                            "stmt1": "c_default"
+                            "stmt1": "c_char_**_in"
                         }
                     }
                 },
@@ -1664,7 +1664,7 @@
                 "fmtdict": {
                     "C_call_list": "names",
                     "C_name": "acceptCharArrayIn",
-                    "C_prototype": "char * * names",
+                    "C_prototype": "char **names",
                     "C_return_type": "void",
                     "F_C_call": "c_accept_char_array_in_bufferify",
                     "F_C_name": "c_accept_char_array_in",

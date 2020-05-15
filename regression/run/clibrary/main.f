@@ -65,7 +65,8 @@ contains
     input = input + 20.5_C_DOUBLE
   end subroutine incr3b_double
 
-  subroutine set_alloc(tc, arr)
+  ! On Intel, bind(C) is required because of the VALUE attribute.
+  subroutine set_alloc(tc, arr) bind(C)
     use iso_c_binding, only : C_INT
     use clibrary_mod, only : array_info
     integer(C_INT), intent(IN), value :: tc

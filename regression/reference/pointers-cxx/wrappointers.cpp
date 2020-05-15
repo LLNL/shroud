@@ -324,10 +324,9 @@ void POI_increment_int_array(int * array, int sizein)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
-// Requested: c_char_**_in
-// Match:     c_default
+// Exact:     c_char_**_in
 // start POI_accept_char_array_in
-void POI_accept_char_array_in(char * * names)
+void POI_accept_char_array_in(char **names)
 {
     // splicer begin function.accept_char_array_in
     acceptCharArrayIn(names);
