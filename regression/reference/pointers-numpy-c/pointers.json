@@ -1662,31 +1662,6 @@
                 "options": {}
             },
             {
-                "ast": {
-                    "declarator": {
-                        "name": "getLen",
-                        "pointer": []
-                    },
-                    "params": [],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int getLen()",
-                "declgen": "int getLen()",
-                "doxygen": {
-                    "brief": "Return length of global_fixed_array."
-                },
-                "fmtdict": {
-                    "function_name": "getLen",
-                    "underscore_name": "get_len"
-                },
-                "options": {
-                    "wrap_python": false
-                }
-            },
-            {
                 "_fmtargs": {
                     "count": {
                         "fmtpy": {

@@ -121,11 +121,6 @@ declarations:
       Return a Fortran pointer to an array which is the length of
       the argument ncount.
 
-- decl: int getLen()
-  doxygen:
-    brief: Return length of global_fixed_array.
-  options:
-    wrap_python: False
 - decl: void getPtrToFuncArray(int **count+intent(out)
                                           +dimension(getLen()))
   doxygen:

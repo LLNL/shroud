@@ -536,24 +536,6 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // end POI_get_ptr_to_dynamic_array_bufferify
 
 /**
- * \brief Return length of global_fixed_array.
- *
- */
-// ----------------------------------------
-// Function:  int getLen
-// Requested: c_native_scalar_result
-// Match:     c_default
-// start POI_get_len
-int POI_get_len()
-{
-    // splicer begin function.get_len
-    int SHC_rv = getLen();
-    return SHC_rv;
-    // splicer end function.get_len
-}
-// end POI_get_len
-
-/**
  * Return a Fortran pointer to an array which is the length
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.

@@ -501,22 +501,6 @@ module pointers_mod
     ! end c_get_ptr_to_dynamic_array_bufferify
 
     ! ----------------------------------------
-    ! Function:  int getLen
-    ! Requested: c_native_scalar_result
-    ! Match:     c_default
-    ! start get_len
-    interface
-        function get_len() &
-                result(SHT_rv) &
-                bind(C, name="getLen")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT) :: SHT_rv
-        end function get_len
-    end interface
-    ! end get_len
-
-    ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default
