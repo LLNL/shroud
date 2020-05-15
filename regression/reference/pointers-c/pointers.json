@@ -3572,7 +3572,7 @@
                 "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Called directly via an interface.\n"
+                    "description": "Called directly via an interface in Fortran.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "nitems",
@@ -3594,9 +3594,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -3672,7 +3670,7 @@
                 "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToScalar(int * * nitems +context(Dnitems)+deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Called directly via an interface.\n"
+                    "description": "Called directly via an interface in Fortran.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&nitems",
@@ -3750,7 +3748,7 @@
                 "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "count",
@@ -3848,7 +3846,7 @@
                 "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
                 "declgen": "void getRawPtrToFixedArray(int * * count +context(Dcount)+deref(raw)+intent(out))",
                 "doxygen": {
-                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "&count",

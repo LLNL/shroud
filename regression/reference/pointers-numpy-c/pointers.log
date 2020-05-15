@@ -12,6 +12,7 @@ Python function void incrementIntArray(int * array +intent(inout)+rank(1), int s
 Python function void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 Python function void setGlobalInt(int value +intent(in)+value)
 Python function int sumFixedArray()
+Python function void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))
 Python function void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))
 Python function void * returnAddress1(int flag +intent(in)+value)
 Python function void * returnAddress2(int flag +intent(in)+value)

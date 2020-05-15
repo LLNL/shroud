@@ -148,11 +148,14 @@ class Pointers(unittest.TestCase):
 #        call assert_true(associated(iarray))
 #        call assert_true(size(iarray) == 10)
 #
-#        call get_raw_ptr_to_scalar(cptr_scalar)
+        p = None
+        p = pointers.getRawPtrToScalar()
+        self.assertEqual('PyCapsule', p.__class__.__name__)
 #        call assert_true(c_associated(cptr_scalar))
 #        # associated with global_int in pointers.c
 #        call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
 #
+        p = None
         p = pointers.getRawPtrToFixedArray()
         self.assertEqual('PyCapsule', p.__class__.__name__)
 #        call assert_true(c_associated(cptr_array))

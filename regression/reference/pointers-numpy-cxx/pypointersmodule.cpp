@@ -781,6 +781,38 @@ PY_sumFixedArray(
 }
 
 // ----------------------------------------
+// Function:  void getRawPtrToScalar
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * * nitems +deref(raw)+intent(out)
+// Exact:     py_native_**_out_raw
+static char PY_getRawPtrToScalar__doc__[] =
+"documentation"
+;
+
+/**
+ * Called directly via an interface in Fortran.
+ */
+static PyObject *
+PY_getRawPtrToScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.get_raw_ptr_to_scalar
+    int *nitems;
+    PyObject *SHPy_nitems = nullptr;
+
+    getRawPtrToScalar(&nitems);
+
+    // post_call
+    SHPy_nitems = PyCapsule_New(nitems, NULL, NULL);
+
+    return (PyObject *) SHPy_nitems;
+// splicer end function.get_raw_ptr_to_scalar
+}
+
+// ----------------------------------------
 // Function:  void getRawPtrToFixedArray
 // Exact:     py_default
 // ----------------------------------------
@@ -792,7 +824,7 @@ static char PY_getRawPtrToFixedArray__doc__[] =
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
- * Called directly via an interface.
+ * Called directly via an interface in Fortran.
  * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
  */
 static PyObject *
@@ -1041,6 +1073,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
     PY_sumFixedArray__doc__},
+{"getRawPtrToScalar", (PyCFunction)PY_getRawPtrToScalar, METH_NOARGS,
+    PY_getRawPtrToScalar__doc__},
 {"getRawPtrToFixedArray", (PyCFunction)PY_getRawPtrToFixedArray,
     METH_NOARGS, PY_getRawPtrToFixedArray__doc__},
 {"returnAddress1", (PyCFunction)PY_returnAddress1,
