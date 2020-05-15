@@ -74,7 +74,6 @@ class Typemap(object):
             None,
         ),  # Fortran modules needed for interface  (dictionary)
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
-        ("f_type_allocatable", None),
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
         ("f_to_c", None),  # Expression to convert from Fortran to C
@@ -672,7 +671,6 @@ def initialize():
             cxx_type="char",
             c_type="char",  # XXX - char *
             f_type="character(*)",
-            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -714,7 +712,6 @@ def initialize():
             c_type="char",  # XXX - char *
             impl_header="<string>",
             f_type="character(*)",
-            f_type_allocatable="character(len=:)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
@@ -1557,7 +1554,7 @@ fc_statements = [
         # return a type(C_PTR)
         name="f_unknown_*_result",
         arg_decl=[
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+            "type(C_PTR) :: {f_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
@@ -1766,6 +1763,9 @@ fc_statements = [
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
+        arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free"
@@ -1935,6 +1935,9 @@ fc_statements = [
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
+        arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call SHROUD_copy_string_and_free("
