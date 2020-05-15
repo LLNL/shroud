@@ -1125,7 +1125,7 @@ return 1;""",
         #        else:
         #            is_const = None
         if CXX_subprogram == "function":
-            fmt_result, result_blk = self.process_result(cls, node, fmt)
+            fmt_result, result_blk = self.process_function_result(cls, node, fmt)
         else:
             fmt_result = fmt
             result_blk = default_scope
@@ -1843,8 +1843,8 @@ return 1;""",
                       "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
-    def process_result(self, cls, node, fmt):
-        """Work on formatting for result values.
+    def process_function_result(self, cls, node, fmt):
+        """Work on formatting for function result values.
 
         Return fmt_result
         Args:
@@ -1855,70 +1855,68 @@ return 1;""",
         ast = node.ast
         attrs = ast.attrs
         is_ctor = ast.is_ctor()
-        CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
 
         result_blk = default_scope
 
-        if CXX_subprogram == "function":
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault(
-                "fmtpy", util.Scope(fmt)
-            )  # fmt_func
-            CXX_result = node.ast
+        fmt_result0 = node._fmtresult
+        fmt_result = fmt_result0.setdefault(
+            "fmtpy", util.Scope(fmt)
+        )  # fmt_func
+        CXX_result = node.ast
 
-            # Mangle result variable name to avoid possible conflict with arguments.
-            fmt_result.cxx_var = wformat(
-                "{CXX_local}{C_result}", fmt_result
-            )
+        # Mangle result variable name to avoid possible conflict with arguments.
+        fmt_result.cxx_var = wformat(
+            "{CXX_local}{C_result}", fmt_result
+        )
 
-            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None,
-                with_template_args=True, continuation=True
-            )
+        fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+            name=fmt_result.cxx_var, params=None,
+            with_template_args=True, continuation=True
+        )
 
-            if CXX_result.is_pointer():
-                fmt_result.c_deref = "*"
-                fmt_result.cxx_addr = ""
-                fmt_result.cxx_member = "->"
-            else:
-                fmt_result.c_deref = ""
-                fmt_result.cxx_addr = "&"
-                fmt_result.cxx_member = "."
-            fmt_result.c_var = fmt_result.cxx_var
-            fmt_result.py_var = fmt.PY_result
-            fmt_result.data_var = "SHData_" + fmt_result.C_result
-            fmt_result.size_var = "SHSize_" + fmt_result.C_result
-            fmt_result.numpy_type = result_typemap.PYN_typenum
-            #            fmt_pattern = fmt_result
-            update_fmt_from_typemap(fmt_result, result_typemap)
+        if CXX_result.is_pointer():
+            fmt_result.c_deref = "*"
+            fmt_result.cxx_addr = ""
+            fmt_result.cxx_member = "->"
+        else:
+            fmt_result.c_deref = ""
+            fmt_result.cxx_addr = "&"
+            fmt_result.cxx_member = "."
+        fmt_result.c_var = fmt_result.cxx_var
+        fmt_result.py_var = fmt.PY_result
+        fmt_result.data_var = "SHData_" + fmt_result.C_result
+        fmt_result.size_var = "SHSize_" + fmt_result.C_result
+        fmt_result.numpy_type = result_typemap.PYN_typenum
+        #            fmt_pattern = fmt_result
+        update_fmt_from_typemap(fmt_result, result_typemap)
 
-            self.set_fmt_fields(cls, node, ast, fmt_result, True)
-            self.set_cxx_nonconst_ptr(ast, fmt_result)
-            sgroup = result_typemap.sgroup
-            stmts = None
-            if is_ctor:
-                # Code added by create_ctor_function.
-                result_blk = default_scope
-                fmt_result.stmt0 = result_blk.name
-                fmt_result.stmt1 = result_blk.name
-            elif result_typemap.base == "struct":
-                stmts = ["py", sgroup, "result", options.PY_struct_arg]
-            elif result_typemap.base == "vector":
-                stmts = ["py", sgroup, "result", options.PY_array_arg]
-            elif sgroup == "native":
-                spointer = ast.get_indirect_stmt()
-                stmts = ["py", sgroup, spointer, "result"]
-                if spointer != "scalar":
-                    deref = attrs["deref"] or "pointer"
-                    stmts.extend([deref, options.PY_array_arg])
-            else:
-                stmts = ["py", sgroup, "result"]
-            if stmts is not None:
-                result_blk = lookup_stmts(stmts)
-                # Useful for debugging.  Requested and found path.
-                fmt_result.stmt0 = typemap.compute_name(stmts)
-                fmt_result.stmt1 = result_blk.name
+        self.set_fmt_fields(cls, node, ast, fmt_result, True)
+        self.set_cxx_nonconst_ptr(ast, fmt_result)
+        sgroup = result_typemap.sgroup
+        stmts = None
+        if is_ctor:
+            # Code added by create_ctor_function.
+            result_blk = default_scope
+            fmt_result.stmt0 = result_blk.name
+            fmt_result.stmt1 = result_blk.name
+        elif result_typemap.base == "struct":
+            stmts = ["py", sgroup, "result", options.PY_struct_arg]
+        elif result_typemap.base == "vector":
+            stmts = ["py", sgroup, "result", options.PY_array_arg]
+        elif sgroup == "native":
+            spointer = ast.get_indirect_stmt()
+            stmts = ["py", sgroup, spointer, "result"]
+            if spointer != "scalar":
+                deref = attrs["deref"] or "pointer"
+                stmts.extend([deref, options.PY_array_arg])
+        else:
+            stmts = ["py", sgroup, "result"]
+        if stmts is not None:
+            result_blk = lookup_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_result.stmt0 = typemap.compute_name(stmts)
+            fmt_result.stmt1 = result_blk.name
                 
         return fmt_result, result_blk
 
