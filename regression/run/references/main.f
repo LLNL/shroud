@@ -32,7 +32,7 @@ contains
     integer(C_INT) isize
     type(ArrayWrapper) arrinst  ! instance
     real(C_DOUBLE), pointer :: arr(:), arrconst(:)
-    real(C_DOUBLE), pointer :: arr3(:), arr4(:), arr5(:)
+    real(C_DOUBLE), pointer :: arr3(:), arr4(:), arr5(:), arr6(:)
 
     arrinst = ArrayWrapper_ctor()
     call arrinst%set_size(10)
@@ -61,6 +61,10 @@ contains
     call arrinst%fetch_array(arr5)
     call assert_true(associated(arr5, arr))
     call assert_equals(10, size(arr5))
+
+    call arrinst%fetch_array_ref(arr6)
+    call assert_true(associated(arr6, arr))
+    call assert_equals(10, size(arr6))
     
   end subroutine test_arraywrapper
     

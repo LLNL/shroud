@@ -65,6 +65,12 @@ void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
 void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize);
 
+void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
+    double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize);
+
 #ifdef __cplusplus
 }
 #endif

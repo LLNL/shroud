@@ -1454,6 +1454,11 @@ fc_statements = [
         # XXX - similar to c_native_*_result_buf
     ),
     dict(
+        name="c_native_*&_out_buf",
+        base="c_native_**_out_buf",
+        arg_call=["{cxx_var}"],
+    ),
+    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer to a scalar.
@@ -1491,6 +1496,10 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_c_call=["{f_var}"],
+    ),
+    dict(
+        name="f_native_*&_out",
+        base="f_native_**_out",
     ),
 
     # XXX only in buf?

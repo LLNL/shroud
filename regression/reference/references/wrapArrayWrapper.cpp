@@ -279,4 +279,54 @@ void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
     // splicer end class.ArrayWrapper.method.fetch_array_bufferify
 }
 
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Requested: c_native_*&_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
+    double * * array, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref
+    SH_this->fetchArrayRef(*array, isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ref
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Exact:     c_native_*&_out_buf
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in_buf
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref_bufferify
+    double *array;
+    SH_this->fetchArrayRef(array, isize);
+    Darray->cxx.addr  = array;
+    Darray->cxx.idtor = 0;
+    Darray->addr.base = array;
+    Darray->type = SH_TYPE_DOUBLE;
+    Darray->elem_len = sizeof(double);
+    Darray->rank = 1;
+    Darray->shape[0] = *isize;
+    Darray->size = Darray->shape[0];
+    // splicer end class.ArrayWrapper.method.fetch_array_ref_bufferify
+}
+
 }  // extern "C"

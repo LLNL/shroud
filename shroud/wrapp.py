@@ -3783,6 +3783,11 @@ py_statements = [
         c_local_var="pointer",
         arg_call=["&{cxx_var}"],
     ),
+    dict(
+        name="py_native_*&_out_pointer_numpy",
+        base="py_native_**_out_pointer_numpy",
+        arg_call=["{cxx_var}"],
+    ),
 
 ########################################
 ## list

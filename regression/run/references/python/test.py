@@ -76,6 +76,13 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr5.shape)
         self.assertEqual(10, arr5.size)
 
+        arr6 = arrinst.fetchArrayRef()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr6.dtype.name)
+        self.assertEqual(1, arr6.ndim)
+        self.assertEqual((10,), arr6.shape)
+        self.assertEqual(10, arr6.size)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -344,6 +344,50 @@ fail:
     return nullptr;
 // splicer end class.ArrayWrapper.method.fetch_array
 }
+
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Exact:     py_native_*&_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: py_native_*_in
+// Match:     py_default
+static char PY_fetchArrayRef__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchArrayRef(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_array_ref
+    double *array;
+    npy_intp SHD_array[1];
+    PyObject *SHPy_array = nullptr;
+    int isize;
+
+    {
+        self->obj->fetchArrayRef(array, &isize);
+
+        // post_call
+        SHD_array[0] = isize;
+        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+            array);
+        if (SHPy_array == nullptr) goto fail;
+
+        return (PyObject *) SHPy_array;
+    }
+
+fail:
+    Py_XDECREF(SHPy_array);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.fetch_array_ref
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -365,6 +409,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_getArrayConstC__doc__},
     {"fetchArray", (PyCFunction)PY_fetchArray, METH_NOARGS,
         PY_fetchArray__doc__},
+    {"fetchArrayRef", (PyCFunction)PY_fetchArrayRef, METH_NOARGS,
+        PY_fetchArrayRef__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

@@ -339,7 +339,7 @@ class VerifyAttrs(object):
         elif arg_typemap.name == "void":
             # void cannot be dereferenced.
             pass
-        elif spointer == "**" and intent == "out":
+        elif spointer in ["**", "*&"] and intent == "out":
             attrs["deref"] = "pointer"
                 
         # charlen
@@ -1050,7 +1050,7 @@ class GenFunctions(object):
                 # double **arg +intent(out)+rank(1)
                 if (arg.typemap.sgroup == "native" and
                     arg.attrs["intent"] == "out" and
-                    arg.get_indirect_stmt() == "**"):
+                    arg.get_indirect_stmt() in  ["**", "*&"]):
                     context_args[arg.name] = True
                 
         for argname in context_args.keys():
@@ -1217,7 +1217,7 @@ class GenFunctions(object):
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
                   arg.attrs["intent"] == "out" and
-                  arg.get_indirect_stmt() == "**"):
+                  arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 # double **values +intent(out) +dimension(nvalues)
                 has_buf_arg = True
@@ -1291,7 +1291,7 @@ class GenFunctions(object):
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
                   arg.attrs["intent"] == "out" and
-                  arg.get_indirect_stmt() == "**"):
+                  arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 attrs["context"] = True
             arg_typemap, sp = typemap.lookup_c_statements(arg)
