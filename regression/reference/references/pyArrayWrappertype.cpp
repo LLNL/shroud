@@ -308,8 +308,8 @@ fail:
 // Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: py_native_&_in
+// Argument:  int * isize +hidden+intent(in)
+// Requested: py_native_*_in
 // Match:     py_default
 static char PY_fetchArrayPtr__doc__[] =
 "documentation"
@@ -328,7 +328,7 @@ PY_fetchArrayPtr(
     int isize;
 
     {
-        self->obj->fetchArrayPtr(&array, isize);
+        self->obj->fetchArrayPtr(&array, &isize);
 
         // post_call
         SHD_array[0] = isize;
@@ -352,8 +352,8 @@ fail:
 // Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: py_native_*_in
+// Argument:  int & isize +hidden+intent(in)
+// Requested: py_native_&_in
 // Match:     py_default
 static char PY_fetchArrayRef__doc__[] =
 "documentation"
@@ -372,7 +372,7 @@ PY_fetchArrayRef(
     int isize;
 
     {
-        self->obj->fetchArrayRef(array, &isize);
+        self->obj->fetchArrayRef(array, isize);
 
         // post_call
         SHD_array[0] = isize;

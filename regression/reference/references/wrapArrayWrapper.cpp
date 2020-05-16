@@ -238,15 +238,15 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in
 // Match:     c_default
 void REF_ArrayWrapper_fetch_array_ptr(REF_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ptr
-    SH_this->fetchArrayPtr(array, *isize);
+    SH_this->fetchArrayPtr(array, isize);
     // splicer end class.ArrayWrapper.method.fetch_array_ptr
 }
 
@@ -258,8 +258,8 @@ void REF_ArrayWrapper_fetch_array_ptr(REF_ArrayWrapper * self,
 // Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in_buf
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in_buf
 // Match:     c_default
 void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize)
@@ -267,7 +267,7 @@ void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ptr_bufferify
     double *array;
-    SH_this->fetchArrayPtr(&array, *isize);
+    SH_this->fetchArrayPtr(&array, isize);
     Darray->cxx.addr  = array;
     Darray->cxx.idtor = 0;
     Darray->addr.base = array;
@@ -288,15 +288,15 @@ void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
 // Requested: c_native_*&_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in
 // Match:     c_default
 void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ref
-    SH_this->fetchArrayRef(*array, isize);
+    SH_this->fetchArrayRef(*array, *isize);
     // splicer end class.ArrayWrapper.method.fetch_array_ref
 }
 
@@ -308,8 +308,8 @@ void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
 // Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_*&_out_buf
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in_buf
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in_buf
 // Match:     c_default
 void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize)
@@ -317,7 +317,7 @@ void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ref_bufferify
     double *array;
-    SH_this->fetchArrayRef(array, isize);
+    SH_this->fetchArrayRef(array, *isize);
     Darray->cxx.addr  = array;
     Darray->cxx.idtor = 0;
     Darray->addr.base = array;

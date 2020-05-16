@@ -14,10 +14,10 @@ C method const double * getArrayC() +dimension(getSize())
 C method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
 C method const double * getArrayConstC() const +dimension(getSize())
 C method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
-C method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
-C method void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
-C method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
-C method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C method void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
+C method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -36,10 +36,10 @@ C-interface, Fortran method const double * getArrayC() +dimension(getSize())
 C-interface method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
 C-interface, Fortran method const double * getArrayConstC() const +dimension(getSize())
 C-interface method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
-C-interface, Fortran method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
-C-interface method void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
-C-interface, Fortran method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
-C-interface method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C-interface, Fortran method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C-interface method void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+C-interface, Fortran method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
+C-interface method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close wrapfreferences.f
 class ArrayWrapper
 Python method ArrayWrapper()
@@ -51,8 +51,8 @@ Python method double * getArray() +dimension(getSize())
 Python method double * getArrayConst() const +dimension(getSize())
 Python method const double * getArrayC() +dimension(getSize())
 Python method const double * getArrayConstC() const +dimension(getSize())
-Python method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
-Python method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+Python method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
+Python method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Close pyArrayWrappertype.cpp
 Close pyreferencesmodule.cpp
 Close pyreferencesutil.cpp
