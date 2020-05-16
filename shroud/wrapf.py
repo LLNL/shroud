@@ -1712,8 +1712,7 @@ rv = .false.
                     arg_f_names.append(fmt_arg.f_var)
                 else:
                     # Generate declaration from argument.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
-                        attributes=f_intent_blk.f_attribute))
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
                     arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.

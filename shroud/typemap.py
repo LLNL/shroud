@@ -1291,7 +1291,7 @@ def lookup_stmts_tree(tree, path):
 
 
 class CStmts(object):
-    """
+    """C Statements.
     arg_call    - List of arguments passed to C function.
 
     Used with buf_args = "arg_decl".
@@ -1338,14 +1338,14 @@ class CStmts(object):
         self.f_module = f_module
 
 class FStmts(object):
-    """
-    f_attribute - passed to gen_arg_as_fortran
+    """Fortran Statements.
+
     """
     def __init__(self,
         name="f_default",
         c_helper="",
         c_local_var=None,
-        f_attribute=[], f_helper="", f_module=None,
+        f_helper="", f_module=None,
         need_wrapper=False,
         arg_decl=None,
         arg_c_call=None,
@@ -1355,7 +1355,6 @@ class FStmts(object):
         self.name = name
         self.c_helper = c_helper
         self.c_local_var = c_local_var
-        self.f_attribute = f_attribute
         self.f_helper = f_helper
         self.f_module = f_module
 
