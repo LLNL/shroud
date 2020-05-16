@@ -1403,7 +1403,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int sumFixedArray()",
+                "decl": "int sumFixedArray(void)",
                 "declgen": "int sumFixedArray()",
                 "doxygen": {
                     "description": "Used to test values global_array.\n"
@@ -2323,7 +2323,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToScalar()",
+                "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar()",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToScalar",
@@ -2382,7 +2382,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
@@ -2429,7 +2429,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToConstScalar()",
+                "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar()",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToConstScalar",
@@ -2489,7 +2489,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToFixedConstArray",
@@ -2535,7 +2535,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntScalar() +deref(scalar)",
+                "decl": "int *returnIntScalar(void) +deref(scalar)",
                 "declgen": "int * returnIntScalar() +deref(scalar)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntScalar",

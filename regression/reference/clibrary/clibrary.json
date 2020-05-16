@@ -78,7 +78,7 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void NoReturnNoArguments()",
+                "decl": "void NoReturnNoArguments(void)",
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
                     "C_name": "NoReturnNoArguments",
@@ -3200,7 +3200,7 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void bindC1()",
+                "decl": "void bindC1(void)",
                 "declgen": "void bindC1()",
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
@@ -4182,7 +4182,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int callback1(int type, void (*incr)()+external)",
+                "decl": "int callback1(int type, void (*incr)(void)+external)",
                 "declgen": "int callback1(int type +intent(in)+value, void ( * incr)() +external+intent(in)+value)",
                 "doxygen": {
                     "brief": "Test function pointer"

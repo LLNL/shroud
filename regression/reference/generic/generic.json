@@ -53,7 +53,7 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double GetGlobalDouble()",
+                "decl": "double GetGlobalDouble(void)",
                 "declgen": "double GetGlobalDouble()",
                 "fmtdict": {
                     "C_name": "GetGlobalDouble",
