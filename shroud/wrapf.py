@@ -1815,14 +1815,6 @@ rv = .false.
                 # Explicit declarations from fc_statements.
                 for line in f_result_blk.arg_decl:
                     append_format(arg_f_decl, line, fmt_result)
-            elif return_deref_attr == "raw":
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_pointer=True
-                    )
-                )
-                arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_deref_attr in ["allocatable", "pointer"]:
                 if result_typemap.base == "vector":
                     ntypemap = ast.template_arguments[0].typemap
