@@ -279,7 +279,6 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_type": "character(*)",
-            "f_type_allocatable": "character(len=:)",
             "flat_name": "char",
             "sgroup": "char"
         },
@@ -591,7 +590,6 @@
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
             "f_type": "character(*)",
-            "f_type_allocatable": "character(len=:)",
             "flat_name": "std_string",
             "impl_header": [
                 "<string>"

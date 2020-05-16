@@ -69,7 +69,6 @@ typemap:
         iso_c_binding:
         - C_CHAR
       f_type: character(*)
-      f_type_allocatable: character(len=:)
       f_kind: C_CHAR
       f_c_type: character(kind=C_CHAR)
       f_cast: "{f_var}"
@@ -373,7 +372,6 @@ typemap:
         iso_c_binding:
         - C_CHAR
       f_type: character(*)
-      f_type_allocatable: character(len=:)
       f_kind: C_CHAR
       f_c_type: character(kind=C_CHAR)
       f_cast: "{f_var}"

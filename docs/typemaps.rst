@@ -5,13 +5,13 @@
    SPDX-License-Identifier: (BSD-3-Clause)
 
 
-Typemaps
-========
+Statements
+==========
 
 Typemaps are used to add code to the generated wrappers
 to replace the default code.
 
-The typemaps work together to pass variables and metadata between
+The statements work together to pass variables and metadata between
 Fortran and C.
 
 
@@ -73,15 +73,6 @@ Blank delimited list of helper function names to add to generated
 Fortran code.
 These functions are defined in whelper.py.
 There is no current way to add additional functions.
-
-f_attribute
-^^^^^^^^^^^
-
-Blank delimited list of attributes.
-Allow additional Fortran attributes to be added to the declaration.
-Since the declaration is outside the splicer, there is no other way
-for the user to add attributes.  For example, needed when C_LOC is
-used in *pre_call* since the argument must have the TARGET attribute.
 
 f_module
 ^^^^^^^^

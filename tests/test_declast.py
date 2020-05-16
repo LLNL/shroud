@@ -99,14 +99,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
-        self.assertEqual(
-            "integer(C_INT), pointer :: var1(:)",
-            r.gen_arg_as_fortran(attributes=["pointer"]),
-        )
-        self.assertEqual(
-            "integer(C_INT), pointer :: var1(:)",
-            r.gen_arg_as_fortran(is_pointer=True),
-        )
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")

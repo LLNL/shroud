@@ -1712,8 +1712,7 @@ rv = .false.
                     arg_f_names.append(fmt_arg.f_var)
                 else:
                     # Generate declaration from argument.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
-                        attributes=f_intent_blk.f_attribute))
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
                     arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.
@@ -1812,24 +1811,16 @@ rv = .false.
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
-            if return_deref_attr == "raw":
-                arg_f_decl.append(
-                    ast.gen_arg_as_fortran(
-                        name=fmt_result.F_result, is_pointer=True
-                    )
-                )
-                arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            if f_result_blk.arg_decl:
+                # Explicit declarations from fc_statements.
+                for line in f_result_blk.arg_decl:
+                    append_format(arg_f_decl, line, fmt_result)
             elif return_deref_attr in ["allocatable", "pointer"]:
                 if result_typemap.base == "vector":
                     ntypemap = ast.template_arguments[0].typemap
                 else:
                     ntypemap = result_typemap
-                if return_deref_attr == "allocatable":
-                    f_type = ntypemap.f_type_allocatable or \
-                             ntypemap.f_type
-                else:
-                    f_type = ntypemap.f_type
+                f_type = ntypemap.f_type
                 arg_f_decl.append("{}, {} :: {}{}".format(
                     f_type, return_deref_attr,
                     fmt_result.f_var, fmt_result.f_assumed_shape))

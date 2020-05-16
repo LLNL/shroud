@@ -1499,9 +1499,6 @@ class Declaration(Node):
         self,
         bindc=False,
         local=False,
-        is_pointer=False,
-        is_allocatable=False,
-        attributes=[],
         **kwargs
     ):
         """Geneate declaration for Fortran variable.
@@ -1509,18 +1506,16 @@ class Declaration(Node):
         bindc - Use C interoperable type. Used with hidden and implied arguments.
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
-        is_pointer - True/False - have POINTER attribute
-        is_allocatable - True/False - have ALLOCATABLE attribute
-        attributes - list of literal Fortran attributes to add to declaration.
-                     i.e. [ 'pointer' ]
         """
         t = []
         attrs = self.attrs
         ntypemap = self.typemap
         if self.template_arguments:
-            # If a template, use its type
+            # If a template, use its type (std::vector)
             ntypemap = self.template_arguments[0].typemap
 
+        is_allocatable = False
+        is_pointer = False
         deref = attrs["deref"]
         if deref == "allocatable":
             is_allocatable = True
@@ -1558,7 +1553,6 @@ class Declaration(Node):
             t.append("allocatable")
         if is_pointer:
             t.append("pointer")
-        t.extend(attributes)
 
         decl = []
         decl.append(", ".join(t))
@@ -1578,8 +1572,6 @@ class Declaration(Node):
                 # Assume 1-d.
                 decl.append("(:)")
             elif is_pointer:
-                decl.append("(:)")  # XXX - 1d only
-            elif "pointer" in attributes:
                 decl.append("(:)")  # XXX - 1d only
             else:
                 decl.append("(" + dimension + ")")
