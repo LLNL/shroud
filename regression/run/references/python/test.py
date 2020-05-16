@@ -83,11 +83,18 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr6.shape)
         self.assertEqual(10, arr6.size)
 
+        with self.assertRaises(ValueError) as context:
+            arrinst.checkPtr(None)
+        self.assertTrue("called with invalid PyCapsule object"
+                        in str(context.exception))
+
         voidptr = arrinst.fetchVoidPtr()
         self.assertEqual('PyCapsule', voidptr.__class__.__name__)
+        self.assertTrue(arrinst.checkPtr(voidptr))
 
         voidptr = arrinst.fetchVoidRef()
         self.assertEqual('PyCapsule', voidptr.__class__.__name__)
+        self.assertTrue(arrinst.checkPtr(voidptr))
 
 
 # creating a new test suite

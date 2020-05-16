@@ -69,11 +69,13 @@ contains
 
     voidptr = C_NULL_PTR
     call arrinst%fetch_void_ptr(voidptr)
-    call assert_true(c_associated(voidptr, c_loc(arr)))
+    call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidPtr")
+    call assert_true(arrinst%check_ptr(voidptr), "checkPtr")
 
     voidptr = C_NULL_PTR
     call arrinst%fetch_void_ref(voidptr)
-    call assert_true(c_associated(voidptr, c_loc(arr)))
+    call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidRef")
+    call assert_true(arrinst%check_ptr(voidptr), "checkPtr")
 
   end subroutine test_arraywrapper
     

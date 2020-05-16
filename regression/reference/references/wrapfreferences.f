@@ -66,6 +66,7 @@ module references_mod
         procedure :: fetch_array_ref => arraywrapper_fetch_array_ref
         procedure :: fetch_void_ptr => arraywrapper_fetch_void_ptr
         procedure :: fetch_void_ref => arraywrapper_fetch_void_ref
+        procedure :: check_ptr => arraywrapper_check_ptr
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -392,6 +393,25 @@ module references_mod
             type(C_PTR), intent(OUT) :: array
         end subroutine c_arraywrapper_fetch_void_ref
 
+        ! ----------------------------------------
+        ! Function:  bool checkPtr
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * array +intent(in)+value
+        ! Requested: c_unknown_*_in
+        ! Match:     c_default
+        function c_arraywrapper_check_ptr(self, array) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_check_ptr")
+            use iso_c_binding, only : C_BOOL, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: array
+            logical(C_BOOL) :: SHT_rv
+        end function c_arraywrapper_check_ptr
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -682,6 +702,29 @@ contains
         call c_arraywrapper_fetch_void_ref(obj%cxxmem, array)
         ! splicer end class.ArrayWrapper.method.fetch_void_ref
     end subroutine arraywrapper_fetch_void_ref
+
+    ! ----------------------------------------
+    ! Function:  bool checkPtr
+    ! bool checkPtr
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * array +intent(in)+value
+    ! Exact:     f_unknown_*_in
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
+    function arraywrapper_check_ptr(obj, array) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL, C_PTR
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(IN) :: array
+        logical :: SHT_rv
+        ! splicer begin class.ArrayWrapper.method.check_ptr
+        SHT_rv = c_arraywrapper_check_ptr(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.check_ptr
+    end function arraywrapper_check_ptr
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)

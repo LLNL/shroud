@@ -16,6 +16,9 @@
 #define WRAPARRAYWRAPPER_H
 
 #include "typesreferences.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin class.ArrayWrapper.CXX_declarations
 // splicer end class.ArrayWrapper.CXX_declarations
@@ -76,6 +79,8 @@ void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
 
 void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
     void * * array);
+
+bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array);
 
 #ifdef __cplusplus
 }

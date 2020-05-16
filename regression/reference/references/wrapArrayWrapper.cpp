@@ -363,4 +363,21 @@ void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
     // splicer end class.ArrayWrapper.method.fetch_void_ref
 }
 
+// ----------------------------------------
+// Function:  bool checkPtr
+// Requested: c_bool_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * array +intent(in)+value
+// Requested: c_unknown_*_in
+// Match:     c_default
+bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.check_ptr
+    bool SHC_rv = SH_this->checkPtr(array);
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.check_ptr
+}
+
 }  // extern "C"

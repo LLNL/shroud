@@ -1552,12 +1552,11 @@ fc_statements = [
 ########################################
 # void *
     dict(
-        name="f_unknown_*",
+        name="f_unknown_*_in",
+        f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
+            "type(C_PTR), intent(IN) :: {f_var}",
         ],
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        arg_c_call=["C_LOC({f_var})"],
     ),
     dict(
         # return a type(C_PTR)

@@ -2074,6 +2074,160 @@
                             "underscore_name": "fetch_void_ref"
                         },
                         "options": {}
+                    },
+                    {
+                        "_fmtargs": {
+                            "array": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "array",
+                                    "cxx_type": "void",
+                                    "cxx_var": "array",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_CPTR",
+                                    "stmt0": "c_unknown_*_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_array",
+                                    "c_var": "array",
+                                    "f_intent": "IN",
+                                    "f_type": "type(C_PTR)",
+                                    "f_var": "array",
+                                    "sh_type": "SH_TYPE_CPTR",
+                                    "stmt0": "f_unknown_*_in",
+                                    "stmt1": "f_unknown_*_in",
+                                    "stmtc0": "c_unknown_*_in",
+                                    "stmtc1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "1",
+                                    "c_const": "",
+                                    "c_decl": "void array",
+                                    "c_deref": "",
+                                    "c_type": "void",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_decl": "void array",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "array",
+                                    "cxx_type": "void",
+                                    "cxx_var": "array",
+                                    "data_var": "SHData_array",
+                                    "numpy_type": null,
+                                    "py_var": "SHPy_array",
+                                    "pytmp_var": "SHTPy_array",
+                                    "size_var": "SHSize_array",
+                                    "stmt0": "py_unknown_*_in",
+                                    "stmt1": "py_unknown_*_in"
+                                }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt0": "c_bool_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "bool",
+                                "f_type": "logical",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt0": "f_bool_scalar_result",
+                                "stmt1": "f_bool_result",
+                                "stmtc0": "c_bool_scalar_result",
+                                "stmtc1": "c_default"
+                            },
+                            "fmtpy": {
+                                "PyTypeObject": "PyBool_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_BOOL",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_bool_result",
+                                "stmt1": "py_bool_result"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "checkPtr",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "array",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                }
+                            ],
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        },
+                        "decl": "bool checkPtr(void *array)",
+                        "declgen": "bool checkPtr(void * array +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "array",
+                            "C_name": "REF_ArrayWrapper_check_ptr",
+                            "C_prototype": "REF_ArrayWrapper * self,\t void * array",
+                            "C_return_type": "bool",
+                            "F_C_call": "c_arraywrapper_check_ptr",
+                            "F_C_name": "c_arraywrapper_check_ptr",
+                            "F_arg_c_call": "obj%cxxmem,\t array",
+                            "F_arguments": "obj,\t array",
+                            "F_name_function": "check_ptr",
+                            "F_name_generic": "check_ptr",
+                            "F_name_impl": "arraywrapper_check_ptr",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "PY_name_impl": "PY_checkPtr",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "bool SHC_rv",
+                            "function_name": "checkPtr",
+                            "underscore_name": "check_ptr"
+                        },
+                        "options": {}
                     }
                 ],
                 "name": "ArrayWrapper",

@@ -446,6 +446,54 @@ PY_fetchVoidRef(
     return (PyObject *) SHPy_array;
 // splicer end class.ArrayWrapper.method.fetch_void_ref
 }
+
+// ----------------------------------------
+// Function:  bool checkPtr
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  void * array +intent(in)+value
+// Exact:     py_unknown_*_in
+static char PY_checkPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_checkPtr(
+  PY_ArrayWrapper *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ArrayWrapper.method.check_ptr
+    void *array;
+    PyObject *SHPy_array;
+    const char *SHT_kwlist[] = {
+        "array",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:checkPtr",
+        const_cast<char **>(SHT_kwlist), &SHPy_array))
+        return nullptr;
+
+    // post_parse
+    array = PyCapsule_GetPointer(SHPy_array, NULL);
+    if (PyErr_Occurred())
+        goto fail;
+    {
+        bool SHCXX_rv = self->obj->checkPtr(array);
+
+        // post_call
+        SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+        if (SHTPy_rv == nullptr) goto fail;
+
+        return (PyObject *) SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.check_ptr
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -473,6 +521,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_fetchVoidPtr__doc__},
     {"fetchVoidRef", (PyCFunction)PY_fetchVoidRef, METH_NOARGS,
         PY_fetchVoidRef__doc__},
+    {"checkPtr", (PyCFunction)PY_checkPtr, METH_VARARGS|METH_KEYWORDS,
+        PY_checkPtr__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
