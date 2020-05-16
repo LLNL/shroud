@@ -112,7 +112,7 @@ void STR_pass_char(char status)
 // Function:  char returnChar
 // Requested: c_schar_scalar_result
 // Match:     c_default
-char STR_return_char()
+char STR_return_char(void)
 {
     // splicer begin function.return_char
     char SHC_rv = returnChar();
@@ -253,7 +253,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr1
-const char * STR_get_char_ptr1()
+const char * STR_get_char_ptr1(void)
 {
     // splicer begin function.get_char_ptr1
     const char * SHC_rv = getCharPtr1();
@@ -299,7 +299,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr2
-const char * STR_get_char_ptr2()
+const char * STR_get_char_ptr2(void)
 {
     // splicer begin function.get_char_ptr2
     const char * SHC_rv = getCharPtr2();
@@ -339,7 +339,7 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
 // Requested: c_char_*_result
 // Match:     c_char_result
 // start STR_get_char_ptr3
-const char * STR_get_char_ptr3()
+const char * STR_get_char_ptr3(void)
 {
     // splicer begin function.get_char_ptr3
     const char * SHC_rv = getCharPtr3();
@@ -463,7 +463,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // Requested: c_string_&_result
 // Match:     c_string_result
 // start STR_get_const_string_ref_pure
-const char * STR_get_const_string_ref_pure()
+const char * STR_get_const_string_ref_pure(void)
 {
     // splicer begin function.get_const_string_ref_pure
     const std::string & SHCXX_rv = getConstStringRefPure();
@@ -506,7 +506,7 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
 // Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * STR_get_const_string_ref_len()
+const char * STR_get_const_string_ref_len(void)
 {
     // splicer begin function.get_const_string_ref_len
     const std::string & SHCXX_rv = getConstStringRefLen();
@@ -558,7 +558,7 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
 // Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * STR_get_const_string_ref_as_arg()
+const char * STR_get_const_string_ref_as_arg(void)
 {
     // splicer begin function.get_const_string_ref_as_arg
     const std::string & SHCXX_rv = getConstStringRefAsArg();
@@ -608,7 +608,7 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
 // Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * STR_get_const_string_ref_len_empty()
+const char * STR_get_const_string_ref_len_empty(void)
 {
     // splicer begin function.get_const_string_ref_len_empty
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
@@ -652,7 +652,7 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
 // Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * STR_get_const_string_ref_alloc()
+const char * STR_get_const_string_ref_alloc(void)
 {
     // splicer begin function.get_const_string_ref_alloc
     const std::string & SHCXX_rv = getConstStringRefAlloc();
@@ -689,7 +689,7 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
 // Requested: c_string_*_result
 // Match:     c_string_result
-const char * STR_get_const_string_ptr_len()
+const char * STR_get_const_string_ptr_len(void)
 {
     // splicer begin function.get_const_string_ptr_len
     const std::string * SHCXX_rv = getConstStringPtrLen();
@@ -735,7 +735,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 // Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
 // Requested: c_string_*_result
 // Match:     c_string_result
-const char * STR_get_const_string_ptr_alloc()
+const char * STR_get_const_string_ptr_alloc(void)
 {
     // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
@@ -771,7 +771,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
 // Requested: c_string_*_result
 // Match:     c_string_result
-const char * STR_get_const_string_ptr_owns_alloc()
+const char * STR_get_const_string_ptr_owns_alloc(void)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
@@ -811,7 +811,7 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // Requested: c_string_*_result
 // Match:     c_string_result
-const char * STR_get_const_string_ptr_owns_alloc_pattern()
+const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc_pattern
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();

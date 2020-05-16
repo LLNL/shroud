@@ -1910,7 +1910,7 @@
                 },
                 "fmtdict": {
                     "C_name": "POI_sum_fixed_array",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_sum_fixed_array",
                     "F_C_name": "sum_fixed_array",
@@ -4069,7 +4069,7 @@
                 "declgen": "int * returnIntPtrToScalar()",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_scalar",
                     "F_C_name": "c_return_int_ptr_to_scalar",
@@ -4150,7 +4150,7 @@
                 "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
@@ -4287,7 +4287,7 @@
                 "declgen": "const int * returnIntPtrToConstScalar()",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_const_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_const_scalar",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
@@ -4369,7 +4369,7 @@
                 "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
@@ -4505,7 +4505,7 @@
                 "declgen": "int * returnIntScalar() +deref(scalar)",
                 "fmtdict": {
                     "C_name": "POI_return_int_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_return_int_scalar",
                     "F_C_name": "return_int_scalar",

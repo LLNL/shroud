@@ -193,7 +193,7 @@ void CLA_set_global_flag(int arg)
 // Function:  int get_global_flag
 // Requested: c_native_scalar_result
 // Match:     c_default
-int CLA_get_global_flag()
+int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag
     int SHC_rv = classes::get_global_flag();
@@ -205,7 +205,7 @@ int CLA_get_global_flag()
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * CLA_last_function_called()
+const char * CLA_last_function_called(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = classes::LastFunctionCalled();

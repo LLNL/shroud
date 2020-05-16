@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin namespace.CAPI.C_declarations
 // splicer end namespace.CAPI.C_declarations
 
-void TES_capi_worker1();
+void TES_capi_worker1(void);
 
 #ifdef __cplusplus
 }

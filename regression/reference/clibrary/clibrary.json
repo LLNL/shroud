@@ -82,7 +82,7 @@
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
                     "C_name": "NoReturnNoArguments",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_no_return_no_arguments",
                     "F_C_name": "no_return_no_arguments",
@@ -3208,7 +3208,7 @@
                 },
                 "fmtdict": {
                     "C_name": "bindC1",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "fortran_bindc1b",
                     "F_C_name": "Fortran_bindC1a",

@@ -2335,7 +2335,7 @@
                 "declgen": "Cstruct_list * get_global_struct_list()",
                 "fmtdict": {
                     "C_name": "get_global_struct_list",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "Cstruct_list *",
                     "F_C_call": "c_get_global_struct_list",
                     "F_C_name": "c_get_global_struct_list",

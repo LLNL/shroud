@@ -34,9 +34,9 @@ enum TES_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void YYY_TES_function1();
+void YYY_TES_function1(void);
 
-void c_name_special();
+void c_name_special(void);
 
 void YYY_TES_function3a_0(int i);
 
@@ -46,7 +46,7 @@ int YYY_TES_function4(const char * rv);
 
 int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
-void YYY_TES_fiveplus();
+void YYY_TES_fiveplus(void);
 
 void TES_test_multiline_splicer(char * name, int * value);
 
@@ -57,7 +57,7 @@ void c_name_instantiation1(int arg1, long arg2);
 
 void TES_function_tu_instantiation2(float arg1, double arg2);
 
-int TES_use_impl_worker_instantiation3();
+int TES_use_impl_worker_instantiation3(void);
 
 #ifdef __cplusplus
 }

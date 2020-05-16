@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void NAM_afunction();
+void NAM_afunction(void);
 
 #ifdef __cplusplus
 }

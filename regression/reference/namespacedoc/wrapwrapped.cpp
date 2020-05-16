@@ -22,7 +22,7 @@ extern "C" {
 // Function:  void worker3
 // Requested: c
 // Match:     c_default
-void WWW_inner3_worker3()
+void WWW_inner3_worker3(void)
 {
     // splicer begin function.worker3
     outer::inner3::worker3();
@@ -33,7 +33,7 @@ void WWW_inner3_worker3()
 // Function:  void worker
 // Requested: c
 // Match:     c_default
-void WWW_worker()
+void WWW_worker(void)
 {
     // splicer begin function.worker
     outer::worker();

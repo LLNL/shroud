@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-const char * STR_get_const_string_ptr_alloc();
+const char * STR_get_const_string_ptr_alloc(void);
 
 void STR_get_const_string_ptr_alloc_bufferify(
     STR_SHROUD_array *DSHF_rv);

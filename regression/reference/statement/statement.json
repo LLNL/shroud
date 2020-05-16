@@ -62,7 +62,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STMT_get_name_length",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_get_name_length",
                     "F_C_name": "get_name_length",
@@ -140,7 +140,7 @@
                 "declgen": "const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())",
                 "fmtdict": {
                     "C_name": "STMT_get_name_error_pattern",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_name_error_pattern_bufferify",
                     "F_C_name": "c_get_name_error_pattern",

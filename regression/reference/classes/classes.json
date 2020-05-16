@@ -3093,7 +3093,7 @@
                 "declgen": "int get_global_flag()",
                 "fmtdict": {
                     "C_name": "CLA_get_global_flag",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_get_global_flag",
                     "F_C_name": "get_global_flag",
@@ -3181,7 +3181,7 @@
                 "declgen": "const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_name": "CLA_last_function_called",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",

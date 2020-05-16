@@ -118,7 +118,7 @@ void CDE_get_scalar1_bufferify(char * name, int Lname,
 // Function:  int getData
 // Requested: c_native_scalar_result
 // Match:     c_default
-int CDE_get_data_int()
+int CDE_get_data_int(void)
 {
     // splicer begin function.get_data_int
     int SHC_rv = getData<int>();
@@ -133,7 +133,7 @@ int CDE_get_data_int()
 // Function:  double getData
 // Requested: c_native_scalar_result
 // Match:     c_default
-double CDE_get_data_double()
+double CDE_get_data_double(void)
 {
     // splicer begin function.get_data_double
     double SHC_rv = getData<double>();

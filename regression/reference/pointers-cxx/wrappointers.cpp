@@ -378,7 +378,7 @@ void POI_set_global_int(int value)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start POI_sum_fixed_array
-int POI_sum_fixed_array()
+int POI_sum_fixed_array(void)
 {
     // splicer begin function.sum_fixed_array
     int SHC_rv = sumFixedArray();
@@ -862,7 +862,7 @@ void * POI_return_address2(int flag)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_scalar
-int * POI_return_int_ptr_to_scalar()
+int * POI_return_int_ptr_to_scalar(void)
 {
     // splicer begin function.return_int_ptr_to_scalar
     int * SHC_rv = returnIntPtrToScalar();
@@ -876,7 +876,7 @@ int * POI_return_int_ptr_to_scalar()
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_array
-int * POI_return_int_ptr_to_fixed_array()
+int * POI_return_int_ptr_to_fixed_array(void)
 {
     // splicer begin function.return_int_ptr_to_fixed_array
     int * SHC_rv = returnIntPtrToFixedArray();
@@ -912,7 +912,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_const_scalar
-const int * POI_return_int_ptr_to_const_scalar()
+const int * POI_return_int_ptr_to_const_scalar(void)
 {
     // splicer begin function.return_int_ptr_to_const_scalar
     const int * SHC_rv = returnIntPtrToConstScalar();
@@ -926,7 +926,7 @@ const int * POI_return_int_ptr_to_const_scalar()
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_const_array
-const int * POI_return_int_ptr_to_fixed_const_array()
+const int * POI_return_int_ptr_to_fixed_const_array(void)
 {
     // splicer begin function.return_int_ptr_to_fixed_const_array
     const int * SHC_rv = returnIntPtrToFixedConstArray();
@@ -962,7 +962,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_scalar
-int POI_return_int_scalar()
+int POI_return_int_scalar(void)
 {
     // splicer begin function.return_int_scalar
     int * SHC_rv = returnIntScalar();

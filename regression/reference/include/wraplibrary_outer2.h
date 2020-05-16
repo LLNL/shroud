@@ -23,7 +23,7 @@ extern "C" {
 #endif
 
 
-void LIB_outer2_outer_func();
+void LIB_outer2_outer_func(void);
 
 #ifdef __cplusplus
 }
