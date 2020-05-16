@@ -86,6 +86,9 @@ class References(unittest.TestCase):
         voidptr = arrinst.fetchVoidPtr()
         self.assertEqual('PyCapsule', voidptr.__class__.__name__)
 
+        voidptr = arrinst.fetchVoidRef()
+        self.assertEqual('PyCapsule', voidptr.__class__.__name__)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

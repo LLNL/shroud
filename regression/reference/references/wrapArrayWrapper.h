@@ -74,6 +74,9 @@ void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
 void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
     void * * array);
 
+void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
+    void * * array);
+
 #ifdef __cplusplus
 }
 #endif

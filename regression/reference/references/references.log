@@ -19,6 +19,7 @@ C method void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dim
 C method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 C method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 C method void fetchVoidPtr(void * * array +intent(out))
+C method void fetchVoidRef(void * & array +intent(out))
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -42,6 +43,7 @@ C-interface method void fetchArrayPtr(double * * array +context(Darray)+deref(po
 C-interface, Fortran method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 C-interface method void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 C-interface, Fortran method void fetchVoidPtr(void * * array +intent(out))
+C-interface, Fortran method void fetchVoidRef(void * & array +intent(out))
 Close wrapfreferences.f
 class ArrayWrapper
 Python method ArrayWrapper()
@@ -56,6 +58,7 @@ Python method const double * getArrayConstC() const +dimension(getSize())
 Python method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))
 Python method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))
 Python method void fetchVoidPtr(void * * array +intent(out))
+Python method void fetchVoidRef(void * & array +intent(out))
 Close pyArrayWrappertype.cpp
 Close pyreferencesmodule.cpp
 Close pyreferencesutil.cpp

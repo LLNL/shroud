@@ -346,4 +346,21 @@ void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
     // splicer end class.ArrayWrapper.method.fetch_void_ptr
 }
 
+// ----------------------------------------
+// Function:  void fetchVoidRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * & array +intent(out)
+// Requested: c_unknown_*&_out
+// Match:     c_default
+void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
+    void * * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_void_ref
+    SH_this->fetchVoidRef(*array);
+    // splicer end class.ArrayWrapper.method.fetch_void_ref
+}
+
 }  // extern "C"

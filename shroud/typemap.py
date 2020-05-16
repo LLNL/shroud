@@ -1549,7 +1549,8 @@ fc_statements = [
         base="f_native_*_cdesc",
     ),
 
-    # void *
+########################################
+# void *
     dict(
         name="f_unknown_*",
         arg_decl=[

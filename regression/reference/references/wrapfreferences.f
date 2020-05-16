@@ -65,6 +65,7 @@ module references_mod
         procedure :: fetch_array_ptr => arraywrapper_fetch_array_ptr
         procedure :: fetch_array_ref => arraywrapper_fetch_array_ref
         procedure :: fetch_void_ptr => arraywrapper_fetch_void_ptr
+        procedure :: fetch_void_ref => arraywrapper_fetch_void_ref
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -374,6 +375,23 @@ module references_mod
             type(C_PTR), intent(OUT) :: array
         end subroutine c_arraywrapper_fetch_void_ptr
 
+        ! ----------------------------------------
+        ! Function:  void fetchVoidRef
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * & array +intent(out)
+        ! Requested: c_unknown_*&_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_void_ref(self, array) &
+                bind(C, name="REF_ArrayWrapper_fetch_void_ref")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+        end subroutine c_arraywrapper_fetch_void_ref
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -643,6 +661,27 @@ contains
         call c_arraywrapper_fetch_void_ptr(obj%cxxmem, array)
         ! splicer end class.ArrayWrapper.method.fetch_void_ptr
     end subroutine arraywrapper_fetch_void_ptr
+
+    ! ----------------------------------------
+    ! Function:  void fetchVoidRef
+    ! void fetchVoidRef
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * & array +intent(out)
+    ! Requested: f_unknown_*&_out
+    ! Match:     f_default
+    ! Requested: c_unknown_*&_out
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_void_ref(obj, array)
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(OUT) :: array
+        ! splicer begin class.ArrayWrapper.method.fetch_void_ref
+        call c_arraywrapper_fetch_void_ref(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.fetch_void_ref
+    end subroutine arraywrapper_fetch_void_ref
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)

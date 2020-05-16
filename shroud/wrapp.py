@@ -3599,6 +3599,13 @@ py_statements = [
 #        ]
         c_local_var="scalar",  # XXX - not really a scalar
     ),
+    dict(
+        name="py_unknown_*&_out",
+        base="py_unknown_**_out",
+        arg_call=[
+            "{c_var}",
+        ]
+    ),
 
 ########################################
 # bool
