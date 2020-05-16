@@ -388,6 +388,35 @@ fail:
     return nullptr;
 // splicer end class.ArrayWrapper.method.fetch_array_ref
 }
+
+// ----------------------------------------
+// Function:  void fetchVoidPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void * * array +intent(out)
+// Exact:     py_unknown_**_out
+static char PY_fetchVoidPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchVoidPtr(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_void_ptr
+    void *array;
+    PyObject * SHPy_array = nullptr;
+
+    self->obj->fetchVoidPtr(&array);
+
+    // post_call
+    SHPy_array = PyCapsule_New(array, NULL, NULL);
+
+    return (PyObject *) SHPy_array;
+// splicer end class.ArrayWrapper.method.fetch_void_ptr
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -411,6 +440,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_fetchArrayPtr__doc__},
     {"fetchArrayRef", (PyCFunction)PY_fetchArrayRef, METH_NOARGS,
         PY_fetchArrayRef__doc__},
+    {"fetchVoidPtr", (PyCFunction)PY_fetchVoidPtr, METH_NOARGS,
+        PY_fetchVoidPtr__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

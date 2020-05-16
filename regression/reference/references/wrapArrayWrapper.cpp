@@ -329,4 +329,21 @@ void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
     // splicer end class.ArrayWrapper.method.fetch_array_ref_bufferify
 }
 
+// ----------------------------------------
+// Function:  void fetchVoidPtr
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * * array +intent(out)
+// Requested: c_unknown_**_out
+// Match:     c_default
+void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
+    void * * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_void_ptr
+    SH_this->fetchVoidPtr(array);
+    // splicer end class.ArrayWrapper.method.fetch_void_ptr
+}
+
 }  // extern "C"

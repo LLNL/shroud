@@ -3588,6 +3588,19 @@ fail_capsule=[
 py_statements = [
 
 ########################################
+# void
+    dict(
+        name="py_unknown_**_out",
+        declare=[
+            "void *{c_var};",
+        ],
+#        arg_call=[
+#            "&{c_var}",
+#        ]
+        c_local_var="scalar",  # XXX - not really a scalar
+    ),
+
+########################################
 # bool
     dict(
         name="py_bool_in",

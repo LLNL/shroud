@@ -1561,15 +1561,16 @@ fc_statements = [
     dict(
         # return a type(C_PTR)
         name="f_unknown_*_result",
+        f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_unknown_**_out",
+        f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
-            "{f_type}, intent(OUT), pointer :: {f_var}{f_assumed_shape}",
+            "type(C_PTR), intent(OUT) :: {f_var}",
         ],
     ),
     

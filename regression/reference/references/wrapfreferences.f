@@ -64,6 +64,7 @@ module references_mod
         procedure :: get_array_const_c => arraywrapper_get_array_const_c
         procedure :: fetch_array_ptr => arraywrapper_fetch_array_ptr
         procedure :: fetch_array_ref => arraywrapper_fetch_array_ref
+        procedure :: fetch_void_ptr => arraywrapper_fetch_void_ptr
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -356,6 +357,23 @@ module references_mod
             integer(C_INT), intent(IN) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_bufferify
 
+        ! ----------------------------------------
+        ! Function:  void fetchVoidPtr
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * * array +intent(out)
+        ! Requested: c_unknown_**_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_void_ptr(self, array) &
+                bind(C, name="REF_ArrayWrapper_fetch_void_ptr")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+        end subroutine c_arraywrapper_fetch_void_ptr
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -604,6 +622,27 @@ contains
         call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ref
     end subroutine arraywrapper_fetch_array_ref
+
+    ! ----------------------------------------
+    ! Function:  void fetchVoidPtr
+    ! void fetchVoidPtr
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * array +intent(out)
+    ! Exact:     f_unknown_**_out
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_void_ptr(obj, array)
+        use iso_c_binding, only : C_PTR
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(OUT) :: array
+        ! splicer begin class.ArrayWrapper.method.fetch_void_ptr
+        call c_arraywrapper_fetch_void_ptr(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.fetch_void_ptr
+    end subroutine arraywrapper_fetch_void_ptr
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)
