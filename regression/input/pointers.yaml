@@ -161,6 +161,7 @@ declarations:
 - decl: void *returnAddress2(int flag)
   options:
     F_force_wrapper: True
+- decl: void fetchVoidPtr(void **addr+intent(out))
 
 - decl: int *returnIntPtrToScalar()
   # Fortran: return pointer to scalar

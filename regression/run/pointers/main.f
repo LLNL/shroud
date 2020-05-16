@@ -181,10 +181,16 @@ contains
 
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface
+    void = C_NULL_PTR
     void = return_address1(1)
     call assert_true(c_associated(void, cptr_scalar))
     ! via wrapper
+    void = C_NULL_PTR
     void = return_address2(1)
+    call assert_true(c_associated(void, cptr_scalar))
+    ! via argument
+    void = C_NULL_PTR
+    call fetch_void_ptr(void)
     call assert_true(c_associated(void, cptr_scalar))
 
     ! ***** Non-const results
