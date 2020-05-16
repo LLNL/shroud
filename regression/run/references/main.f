@@ -58,7 +58,7 @@ contains
     call assert_true(associated(arr4, arr))
     call assert_equals(10, size(arr4))
 
-    call arrinst%fetch_array(arr5)
+    call arrinst%fetch_array_ptr(arr5)
     call assert_true(associated(arr5, arr))
     call assert_equals(10, size(arr5))
 

@@ -302,7 +302,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
@@ -311,24 +311,24 @@ fail:
 // Argument:  int & isize +hidden+intent(in)
 // Requested: py_native_&_in
 // Match:     py_default
-static char PY_fetchArray__doc__[] =
+static char PY_fetchArrayPtr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_fetchArray(
+PY_fetchArrayPtr(
   PY_ArrayWrapper *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array
+// splicer begin class.ArrayWrapper.method.fetch_array_ptr
     double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
     int isize;
 
     {
-        self->obj->fetchArray(&array, isize);
+        self->obj->fetchArrayPtr(&array, isize);
 
         // post_call
         SHD_array[0] = isize;
@@ -342,7 +342,7 @@ PY_fetchArray(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array
+// splicer end class.ArrayWrapper.method.fetch_array_ptr
 }
 
 // ----------------------------------------
@@ -407,8 +407,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_getArrayC__doc__},
     {"getArrayConstC", (PyCFunction)PY_getArrayConstC, METH_NOARGS,
         PY_getArrayConstC__doc__},
-    {"fetchArray", (PyCFunction)PY_fetchArray, METH_NOARGS,
-        PY_fetchArray__doc__},
+    {"fetchArrayPtr", (PyCFunction)PY_fetchArrayPtr, METH_NOARGS,
+        PY_fetchArrayPtr__doc__},
     {"fetchArrayRef", (PyCFunction)PY_fetchArrayRef, METH_NOARGS,
         PY_fetchArrayRef__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef

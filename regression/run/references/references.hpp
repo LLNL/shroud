@@ -45,7 +45,7 @@ public:
     double *getArrayConst() const { return arr; }
     const double *getArrayC() { return arr; }
     const double *getArrayConstC() const { return arr; }
-    void fetchArray(double **array, int &isize) { *array = arr; isize = sz; }
+    void fetchArrayPtr(double **array, int &isize) { *array = arr; isize = sz; }
     void fetchArrayRef(double *&array, int *isize) { array = arr; *isize = sz; }
 private:
     double* arr {nullptr};   

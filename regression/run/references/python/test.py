@@ -69,7 +69,7 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr4.shape)
         self.assertEqual(10, arr4.size)
 
-        arr5 = arrinst.fetchArray()
+        arr5 = arrinst.fetchArrayPtr()
         self.assertIsInstance(arr4, np.ndarray)
         self.assertEqual('float64', arr5.dtype.name)
         self.assertEqual(1, arr5.ndim)

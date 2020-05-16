@@ -230,7 +230,7 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
@@ -241,17 +241,17 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
 // Argument:  int & isize +hidden+intent(in)
 // Requested: c_native_&_in
 // Match:     c_default
-void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr(REF_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array
-    SH_this->fetchArray(array, *isize);
-    // splicer end class.ArrayWrapper.method.fetch_array
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr
+    SH_this->fetchArrayPtr(array, *isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
@@ -261,13 +261,13 @@ void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
 // Argument:  int & isize +hidden+intent(in)
 // Requested: c_native_&_in_buf
 // Match:     c_default
-void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_bufferify
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_bufferify
     double *array;
-    SH_this->fetchArray(&array, *isize);
+    SH_this->fetchArrayPtr(&array, *isize);
     Darray->cxx.addr  = array;
     Darray->cxx.idtor = 0;
     Darray->addr.base = array;
@@ -276,7 +276,7 @@ void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
     Darray->rank = 1;
     Darray->shape[0] = *isize;
     Darray->size = Darray->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_bufferify
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr_bufferify
 }
 
 // ----------------------------------------

@@ -1272,7 +1272,7 @@
                         },
                         "ast": {
                             "declarator": {
-                                "name": "fetchArray",
+                                "name": "fetchArrayPtr",
                                 "pointer": []
                             },
                             "params": [
@@ -1329,32 +1329,32 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void fetchArray(double **array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArray(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int &isize     +hidden)",
+                        "declgen": "void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ptr",
                             "C_prototype": "REF_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_call": "c_arraywrapper_fetch_array_bufferify",
-                            "F_C_name": "c_arraywrapper_fetch_array",
+                            "F_C_call": "c_arraywrapper_fetch_array_ptr_bufferify",
+                            "F_C_name": "c_arraywrapper_fetch_array_ptr",
                             "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
                             "F_arguments": "obj,\t array",
-                            "F_name_function": "fetch_array",
-                            "F_name_generic": "fetch_array",
-                            "F_name_impl": "arraywrapper_fetch_array",
+                            "F_name_function": "fetch_array_ptr",
+                            "F_name_generic": "fetch_array_ptr",
+                            "F_name_impl": "arraywrapper_fetch_array_ptr",
                             "F_subprogram": "subroutine",
-                            "PY_name_impl": "PY_fetchArray",
+                            "PY_name_impl": "PY_fetchArrayPtr",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "fetchArray",
+                            "function_name": "fetchArrayPtr",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
-                            "underscore_name": "fetch_array"
+                            "underscore_name": "fetch_array_ptr"
                         },
                         "options": {}
                     },
@@ -1434,7 +1434,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArray",
+                                "name": "fetchArrayPtr",
                                 "pointer": []
                             },
                             "params": [
@@ -1494,23 +1494,23 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void fetchArray(double **array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArray(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int &isize     +hidden)",
+                        "declgen": "void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "&array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_bufferify",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_bufferify",
                             "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_name": "c_arraywrapper_fetch_array_bufferify",
+                            "F_C_name": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "fetchArray",
+                            "function_name": "fetchArrayPtr",
                             "function_suffix": "_bufferify",
                             "stmt0": "c",
                             "stmt1": "c_default",
-                            "underscore_name": "fetch_array"
+                            "underscore_name": "fetch_array_ptr"
                         },
                         "options": {
                             "wrap_c": true,
