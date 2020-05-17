@@ -226,18 +226,6 @@ Code needed to declare local variable.
 If the *declare* block is not defined, a local variable is defined of
 the same type as the function argument.
 
-c_local_var
-^^^^^^^^^^^
-
-A local variable for the argument has been declared in *declare*.
-
-As *pointer*, *none*
-
-create_out_decl
-^^^^^^^^^^^^^^^
-
-Used with *intent(inout)* and *intent(out)*.
-
 cxx_local_var
 ^^^^^^^^^^^^^
 

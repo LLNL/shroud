@@ -1285,9 +1285,7 @@ return 1;""",
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             # local_var - 'funcptr', 'pointer', or 'scalar'
-            if intent_blk.c_local_var:
-                c_local_var = intent_blk.c_local_var
-            elif arg.is_function_pointer():
+            if arg.is_function_pointer():
                 fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
@@ -1387,8 +1385,6 @@ return 1;""",
                         # Explicit declarations from py_statements.
                         for line in intent_blk.arg_declare:
                             append_format(declare_code, line, fmt_arg)
-                    elif intent_blk.c_local_var:
-                        pass
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
                         append_format(
@@ -3451,7 +3447,6 @@ def lookup_stmts(path):
     return typemap.lookup_stmts_tree(py_tree, path)
 
 class PyStmts(object):
-    # c_local_var - "scalar", "pointer", "funcptr"
     def __init__(
         self,
         name="py_default",
@@ -3460,7 +3455,7 @@ class PyStmts(object):
             
         allocate_local_var=False,
         arg_call=None,
-        c_header=[], c_helper=[], c_local_var=None,
+        c_header=[], c_helper=[],
         cxx_header=[], cxx_local_var=None,
         need_numpy=False,
         object_created=False,
@@ -3482,7 +3477,6 @@ class PyStmts(object):
         self.arg_call = arg_call
         self.c_header = c_header
         self.c_helper = c_helper
-        self.c_local_var = c_local_var
         self.cxx_header = cxx_header
         self.cxx_local_var = cxx_local_var
         self.need_numpy = need_numpy
@@ -3519,7 +3513,6 @@ class PyStmts(object):
                 "arg_declare",
                 "c_header",
                 "c_helper",
-                "c_local_var",
                 "cxx_header",
                 "cxx_local_var",
                 "need_numpy",
@@ -3667,17 +3660,14 @@ py_statements = [
         ],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-#XXX        c_local_var="pointer",
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-#XXX            "{c_type} * {c_var} = PyArray_DATA({py_var});",
             "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-#XXX            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
             "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         arg_call=["{c_var}"],
