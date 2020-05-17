@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystringsmodule.hpp"
+#include <cstdlib>
 
 // splicer begin include
 // splicer end include
@@ -24,6 +25,37 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
+// helper create_from_PyObject_int
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_create_from_PyObject_int(PyObject *obj,
+    const char *name, int **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -996,6 +1028,65 @@ PY_CreturnChar(
     return (PyObject *) SHTPy_rv;
 // splicer end function.creturn_char
 }
+
+// ----------------------------------------
+// Function:  void PostDeclare
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * count +intent(in)+rank(1)
+// Exact:     py_native_*_in_pointer_list
+// ----------------------------------------
+// Argument:  std::string & name +intent(inout)
+// Requested: py_string_&_inout
+// Match:     py_string_inout
+static char PY_PostDeclare__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_PostDeclare(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.post_declare
+    PyObject *SHTPy_count = nullptr;
+    int * count = nullptr;
+    char * name;
+    const char *SHT_kwlist[] = {
+        "count",
+        "name",
+        nullptr };
+    PyObject * SHPy_name = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "Os:PostDeclare",
+        const_cast<char **>(SHT_kwlist), &SHTPy_count, &name))
+        return nullptr;
+
+    // post_parse
+    Py_ssize_t SHSize_count;
+    if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
+        &SHSize_count) == -1)
+        goto fail;
+    std::string SH_name(name);
+    {
+        PostDeclare(count, SH_name);
+
+        // post_call
+        SHPy_name = PyString_FromStringAndSize(SH_name.data(),
+            SH_name.size());
+
+        // cleanup
+        std::free(count);
+
+        return (PyObject *) SHPy_name;
+    }
+
+fail:
+    if (count != nullptr) std::free(count);
+    return nullptr;
+// splicer end function.post_declare
+}
 static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_passChar, METH_VARARGS|METH_KEYWORDS,
     PY_passChar__doc__},
@@ -1056,6 +1147,8 @@ static PyMethodDef PY_methods[] = {
     PY_CpassChar__doc__},
 {"CreturnChar", (PyCFunction)PY_CreturnChar, METH_NOARGS,
     PY_CreturnChar__doc__},
+{"PostDeclare", (PyCFunction)PY_PostDeclare, METH_VARARGS|METH_KEYWORDS,
+    PY_PostDeclare__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
