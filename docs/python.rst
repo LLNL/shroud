@@ -211,6 +211,9 @@ need_numpy
 
 If *True*, add NumPy headers and initialize in the module.
 
+arg_declare
+^^^^^^^^^^^
+
 declare
 ^^^^^^^
 

@@ -248,6 +248,7 @@ PY_acceptStructOutPtr(
   PyObject *kwds)
 {
 // splicer begin function.accept_struct_out_ptr
+    Cstruct1 *arg;
     PyArrayObject * SHPy_arg = NULL;
     int i;
     double d;
@@ -271,7 +272,7 @@ PY_acceptStructOutPtr(
     }
 
     // pre_call
-    Cstruct1 *arg = PyArray_DATA(SHPy_arg);
+    arg = PyArray_DATA(SHPy_arg);
 
     acceptStructOutPtr(arg, i, d);
     return (PyObject *) SHPy_arg;

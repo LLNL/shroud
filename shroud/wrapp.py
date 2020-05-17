@@ -1301,7 +1301,6 @@ return 1;""",
                 c_local_var = "scalar"
 
             cxx_local_var = intent_blk.cxx_local_var
-            create_out_decl = intent_blk.create_out_decl
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
@@ -1381,7 +1380,11 @@ return 1;""",
 
             if intent in ["inout", "out"]:
                 if intent == "out":
-                    if dimension or create_out_decl:
+                    if intent_blk.arg_declare:
+                        # Explicit declarations from py_statements.
+                        for line in intent_blk.arg_declare:
+                            append_format(declare_code, line, fmt_arg)
+                    elif dimension:
                         # If an array, a local NumPy array has already been defined.
                         pass
                     elif intent_blk.c_local_var:
@@ -3443,10 +3446,11 @@ class PyStmts(object):
     def __init__(
         self,
         name="py_default",
+        arg_declare=None,
+            
         allocate_local_var=False,
         arg_call=None,
         c_header=[], c_helper=[], c_local_var=None,
-        create_out_decl=False,
         cxx_header=[], cxx_local_var=None,
         need_numpy=False,
         object_created=False,
@@ -3461,12 +3465,12 @@ class PyStmts(object):
         setter=[], setter_helper=[],
     ):
         self.name = name
+        self.arg_declare = arg_declare
         self.allocate_local_var = allocate_local_var
         self.arg_call = arg_call
         self.c_header = c_header
         self.c_helper = c_helper
         self.c_local_var = c_local_var
-        self.create_out_decl = create_out_decl
         self.cxx_header = cxx_header
         self.cxx_local_var = cxx_local_var
         self.need_numpy = need_numpy
@@ -3500,10 +3504,10 @@ class PyStmts(object):
         for key in [
                 "name",
                 "allocate_local_var",
+                "arg_declare",
                 "c_header",
                 "c_helper",
                 "c_local_var",
-                "create_out_decl",
                 "cxx_header",
                 "cxx_local_var",
                 "need_numpy",
@@ -4066,8 +4070,10 @@ py_statements = [
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
-        create_out_decl=True,
         cxx_local_var="pointer",
+        arg_declare=[
+            "{cxx_type} *{cxx_var};", 
+        ],
         declare=[
 #            "{npy_intp_decl}"
             "PyArrayObject * {py_var} = {nullptr};",
@@ -4080,12 +4086,10 @@ py_statements = [
             "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
-#            "{cxx_decl} = PyArray_DATA({py_var});",
-            "{c_type} *{c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-#            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            "{cxx_type} *{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -4140,20 +4144,22 @@ py_statements = [
     ),
     dict(
         name="py_struct_out_class",
-        create_out_decl=True,
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
+        arg_declare=[
+            "{cxx_type} *{cxx_var} = {nullptr};", 
+        ],
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
         c_pre_call=[
-            "{c_type} * {c_var} = malloc(sizeof({c_type}));",
+            "{c_var} = malloc(sizeof({c_type}));",
         ],
         c_dealloc_capsule=[
             "free(ptr);",
         ],
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = new {cxx_type};",
+            "{cxx_var} = new {cxx_type};",
         ],
         cxx_dealloc_capsule=[
             "delete cxx_ptr;",

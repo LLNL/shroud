@@ -9121,10 +9121,12 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_deref": "*",
+                                            "c_decl": "double in",
+                                            "c_deref": "",
                                             "c_type": "double",
                                             "c_var": "in",
                                             "cxx_addr": "",
+                                            "cxx_decl": "double in",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "in",
                                             "cxx_type": "double",

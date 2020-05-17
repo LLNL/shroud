@@ -191,6 +191,7 @@ PY_acceptStructOutPtr(
   PyObject *kwds)
 {
 // splicer begin function.accept_struct_out_ptr
+    Cstruct1 *arg = NULL;
     PyObject *SHPy_arg = NULL;
     int i;
     double d;
@@ -204,7 +205,7 @@ PY_acceptStructOutPtr(
         return NULL;
 
     // pre_call
-    Cstruct1 * arg = malloc(sizeof(Cstruct1));
+    arg = malloc(sizeof(Cstruct1));
 
     acceptStructOutPtr(arg, i, d);
 

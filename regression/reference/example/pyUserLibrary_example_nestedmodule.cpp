@@ -691,6 +691,7 @@ PP_cos_doubles(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.cos_doubles
+    double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = nullptr;
     npy_intp SHD_out[1];
@@ -721,7 +722,7 @@ PP_cos_doubles(
     }
     {
         // pre_call
-        double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
+        in = static_cast<double *>(PyArray_DATA(SHPy_in));
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 
