@@ -134,7 +134,7 @@ PY_ConcatenateStrings(
         &arg2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
@@ -238,7 +238,7 @@ PY_OverloadedFunction_from_name(
         const_cast<char **>(SHT_kwlist), &name))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     tutorial::OverloadedFunction(SH_name);
@@ -375,7 +375,7 @@ PY_FortranGenericOverloaded_1(
         &name, &arg2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     tutorial::FortranGenericOverloaded(SH_name, arg2);

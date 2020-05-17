@@ -158,7 +158,7 @@ PY_function4(
         const_cast<char **>(SHT_kwlist), &rv))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_rv(rv);
 
     int ARG_rv = function4(SH_rv);

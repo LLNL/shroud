@@ -747,7 +747,7 @@ PY_acceptStringConstReference(
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_arg1(arg1);
 
     acceptStringConstReference(SH_arg1);
@@ -782,7 +782,7 @@ PY_acceptStringReferenceOut(
 // splicer begin function.accept_string_reference_out
     PyObject * SHPy_arg1 = nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1;
 
     acceptStringReferenceOut(SH_arg1);
@@ -831,7 +831,7 @@ PY_acceptStringReference(
         &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1(arg1);
 
     acceptStringReference(SH_arg1);
@@ -877,7 +877,7 @@ PY_acceptStringPointer(
         &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1(arg1);
 
     acceptStringPointer(&SH_arg1);
@@ -918,7 +918,7 @@ PY_returnStrings(
 // splicer begin function.return_strings
     PyObject *SHTPy_rv = nullptr;  // return value object
 
-    // post_parse
+    // post_declare
     std::string SH_arg1;
     std::string SH_arg2;
 
@@ -1063,12 +1063,14 @@ PY_PostDeclare(
         const_cast<char **>(SHT_kwlist), &SHTPy_count, &name))
         return nullptr;
 
+    // post_declare
+    std::string SH_name(name);
+
     // post_parse
     Py_ssize_t SHSize_count;
     if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
         &SHSize_count) == -1)
         goto fail;
-    std::string SH_name(name);
     {
         PostDeclare(count, SH_name);
 

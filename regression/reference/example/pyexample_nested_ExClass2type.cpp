@@ -175,7 +175,7 @@ PP_ExClass2_tp_init(
         const_cast<char **>(SHT_kwlist), &name))
         return -1;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass2(&SH_name);

@@ -293,7 +293,23 @@ parse_args
 
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
-    
+
+post_declare
+^^^^^^^^^^^^
+
+Declaration of C++ variables after calling
+``PyArg_ParseTupleAndKeywords``.  Usually involves object constructors
+such as ``std::string`` or ``std::vector``.  These declarations should
+not include ``goto fail``.  This allows them to be created without a
+"jump to label 'fail' crosses initialization of" error.
+
+"It is possible to transfer into a block, but not in a way that
+bypasses declarations with initialization. A program that jumps from a
+point where a local variable with automatic storage duration is not in
+scope to a point where it is in scope is ill-formed unless the
+variable has POD type (3.9) and is declared without an initializer."
+
+
 post_parse
 ^^^^^^^^^^
 Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.

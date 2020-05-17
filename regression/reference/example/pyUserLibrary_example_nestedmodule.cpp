@@ -81,7 +81,7 @@ PP_isNameValid(
         const_cast<char **>(SHT_kwlist), &name))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     bool SHCXX_rv = example::nested::isNameValid(SH_name);
@@ -151,7 +151,7 @@ PP_test_names(
         const_cast<char **>(SHT_kwlist), &name))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     example::nested::test_names(SH_name);
@@ -188,7 +188,7 @@ PP_test_names_flag(
         const_cast<char **>(SHT_kwlist), &name, &flag))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     example::nested::test_names(SH_name, flag);

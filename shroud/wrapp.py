@@ -1153,6 +1153,7 @@ return 1;""",
         # Code blocks
         # Accumulate code from statements.
         declare_code = []  # variables for function
+        post_declare_code = []
         post_parse_code = []
         pre_call_code = []
         post_call_code = []  # Create objects passed to PyBuildValue
@@ -1335,6 +1336,7 @@ return 1;""",
                     default_calls.append(
                         (
                             len(cxx_call_list),
+                            len(post_declare_code),
                             len(post_parse_code),
                             len(pre_call_code),
                             ",\t ".join(cxx_call_list),
@@ -1476,6 +1478,7 @@ return 1;""",
         default_calls.append(
             (
                 len(cxx_call_list),
+                len(post_declare_code),
                 len(post_parse_code),
                 len(pre_call_code),
                 ",\t ".join(cxx_call_list),
@@ -1512,7 +1515,7 @@ return 1;""",
         need_rv = False
 
         # build up code for a function
-        for nargs, post_parse_len, pre_call_len, call_list in default_calls:
+        for nargs, post_declare_len,  post_parse_len, pre_call_len, call_list in default_calls:
             if found_default:
                 PY_code.append("case %d:" % nargs)
                 PY_code.append(1)
@@ -1524,6 +1527,14 @@ return 1;""",
                     extra_scope = True
                 else:
                     extra_scope = False
+
+            if post_declare_len:
+                if options.debug:
+                    if need_blank:
+                        PY_code.append("")
+                    PY_code.append("// post_declare")
+                PY_code.extend(post_declare_code[:post_declare_len])
+                need_blank = True
 
             if post_parse_len:
                 if options.debug:
@@ -3392,7 +3403,7 @@ def update_code_blocks(symtab, stmts, fmt):
         stmts  - PyStmts
         fmt    - format dictionary (Scope)
     """
-    for clause in ["declare", "post_parse", "pre_call",
+    for clause in ["declare", "post_declare", "post_parse", "pre_call",
                    "post_call", "cleanup", "fail"]:
         lstout = symtab[clause + "_code"]
         for cmd in getattr(stmts, clause):
@@ -3444,6 +3455,7 @@ class PyStmts(object):
         self,
         name="py_default",
         arg_declare=None,
+        post_declare=[],
             
         allocate_local_var=False,
         arg_call=None,
@@ -3463,6 +3475,8 @@ class PyStmts(object):
     ):
         self.name = name
         self.arg_declare = arg_declare
+        self.post_declare = post_declare
+
         self.allocate_local_var = allocate_local_var
         self.arg_call = arg_call
         self.c_header = c_header
@@ -3512,6 +3526,7 @@ class PyStmts(object):
                 "parse_format",
                 "parse_args",
                 "declare",
+                "post_declare",
                 "post_parse",
                 "pre_call",
                 "post_call",
@@ -3977,19 +3992,19 @@ py_statements = [
         c_local_var="pointer",
         declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
-        post_parse=["{c_const}std::string {cxx_var}({c_var});"],
+        post_declare=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         name="py_string_inout",
         c_local_var="pointer",
         declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
-        post_parse=["{c_const}std::string {cxx_var}({c_var});"],
+        post_declare=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         name="py_string_out",
         cxx_local_var="scalar",
-        post_parse=["{c_const}std::string {cxx_var};"],
+        post_declare=["{c_const}std::string {cxx_var};"],
     ),
 
 ########################################
@@ -4265,8 +4280,10 @@ py_statements = [
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
-        pre_call=[
+        post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
+        ],
+        pre_call=[
             "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
@@ -4284,7 +4301,7 @@ py_statements = [
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
-        pre_call=[
+        post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
         ],
         post_call=[
