@@ -4208,7 +4208,7 @@ py_statements = [
     dict(
         name="py_shadow_in",
         cxx_local_var="pointer",
-        post_parse=[
+        post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],

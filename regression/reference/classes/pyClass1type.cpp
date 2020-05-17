@@ -151,7 +151,7 @@ PY_equivalent(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
 
     bool SHCXX_rv = self->obj->equivalent(*obj2);

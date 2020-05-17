@@ -83,7 +83,7 @@ PY_func1(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->func1(SH_arg);
@@ -118,7 +118,7 @@ PY_acceptClass3(
         const_cast<char **>(SHT_kwlist), &PY_Class3_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->acceptClass3(arg);

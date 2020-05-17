@@ -353,7 +353,7 @@ PP_get_class1(
         const_cast<char **>(SHT_kwlist), &PP_ExClass1_Type, &SHPy_in))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const example::nested::ExClass1 * in =
         SHPy_in ? SHPy_in->obj : nullptr;
 

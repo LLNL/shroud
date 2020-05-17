@@ -105,7 +105,7 @@ PY_passClassByValue(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     classes::passClassByValue(*arg);
@@ -142,7 +142,7 @@ PY_useclass(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = classes::useclass(arg);
