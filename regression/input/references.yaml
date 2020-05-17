@@ -33,6 +33,12 @@ declarations:
                              int *isize     +hidden)
   - decl: void fetchArrayRef(double *&array +intent(out)+dimension(isize),
                              int &isize     +hidden)
+  - decl: void fetchArrayPtrConst(
+                             const double **array +intent(out)+dimension(isize),
+                             int *isize     +hidden)
+  - decl: void fetchArrayRefConst(
+                             const double *&array +intent(out)+dimension(isize),
+                             int &isize     +hidden)
   - decl: void fetchVoidPtr(void **array +intent(out))
   - decl: void fetchVoidRef(void *&array +intent(out))
   - decl: bool checkPtr(void *array)

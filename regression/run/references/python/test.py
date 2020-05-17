@@ -83,6 +83,20 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr6.shape)
         self.assertEqual(10, arr6.size)
 
+        arr7 = arrinst.fetchArrayPtrConst()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr7.dtype.name)
+        self.assertEqual(1, arr7.ndim)
+        self.assertEqual((10,), arr7.shape)
+        self.assertEqual(10, arr7.size)
+
+        arr8 = arrinst.fetchArrayRefConst()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr8.dtype.name)
+        self.assertEqual(1, arr8.ndim)
+        self.assertEqual((10,), arr8.shape)
+        self.assertEqual(10, arr8.size)
+
         with self.assertRaises(ValueError) as context:
             arrinst.checkPtr(None)
         self.assertTrue("called with invalid PyCapsule object"

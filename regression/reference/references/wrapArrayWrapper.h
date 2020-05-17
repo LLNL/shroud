@@ -74,6 +74,18 @@ void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
 void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize);
 
+void REF_ArrayWrapper_fetch_array_ptr_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ptr_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize);
+
 void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
     void * * array);
 

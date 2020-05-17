@@ -47,6 +47,14 @@ public:
     const double *getArrayConstC() const { return arr; }
     void fetchArrayPtr(double **array, int *isize) { *array = arr; *isize = sz; }
     void fetchArrayRef(double *&array, int &isize) { array = arr; isize = sz; }
+    void fetchArrayPtrConst(const double **array, int *isize) {
+        *array = arr;
+        *isize = sz;
+    }
+    void fetchArrayRefConst(const double *&array, int &isize) {
+        array = arr;
+        isize = sz;
+    }
     void fetchVoidPtr(void **array) { *array = arr; }
     void fetchVoidRef(void *&array) { array = arr; }
     bool checkPtr(void *array) { return array == arr ? true : false; }

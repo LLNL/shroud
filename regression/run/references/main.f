@@ -32,7 +32,8 @@ contains
     integer(C_INT) isize
     type(ArrayWrapper) arrinst  ! instance
     real(C_DOUBLE), pointer :: arr(:), arrconst(:)
-    real(C_DOUBLE), pointer :: arr3(:), arr4(:), arr5(:), arr6(:)
+    real(C_DOUBLE), pointer :: arr3(:), arr4(:), arr5(:), arr6(:), &
+         arr7(:), arr8(:)
     type(C_PTR) :: voidptr
 
     arrinst = ArrayWrapper_ctor()
@@ -66,6 +67,14 @@ contains
     call arrinst%fetch_array_ref(arr6)
     call assert_true(associated(arr6, arr))
     call assert_equals(10, size(arr6))
+
+    call arrinst%fetch_array_ptr_const(arr7)
+    call assert_true(associated(arr7, arr))
+    call assert_equals(10, size(arr7))
+
+    call arrinst%fetch_array_ref_const(arr8)
+    call assert_true(associated(arr8, arr))
+    call assert_equals(10, size(arr8))
 
     voidptr = C_NULL_PTR
     call arrinst%fetch_void_ptr(voidptr)

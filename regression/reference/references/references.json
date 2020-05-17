@@ -1856,6 +1856,674 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "c_native_**_out",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "isize",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "data_var": "SHData_array",
+                                    "npy_dims_var": "SHD_array",
+                                    "npy_intp_asgn": "SHD_array[0] = isize;\n",
+                                    "npy_intp_decl": "npy_intp SHD_array[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_array",
+                                    "rank": "1",
+                                    "size_var": "SHSize_array",
+                                    "stmt0": "py_native_**_out_pointer_numpy",
+                                    "stmt1": "py_native_**_out_pointer_numpy"
+                                }
+                            },
+                            "isize": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "isize",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_native_*_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "1",
+                                    "c_const": "",
+                                    "c_decl": "int isize",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cxx_addr": "",
+                                    "cxx_decl": "int isize",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "data_var": "SHData_isize",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_isize",
+                                    "size_var": "SHSize_isize",
+                                    "stmt0": "py_native_*_in",
+                                    "stmt1": "py_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "fetchArrayPtrConst",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "deref": "pointer",
+                                        "dimension": "isize",
+                                        "intent": "out"
+                                    },
+                                    "const": true,
+                                    "declarator": {
+                                        "name": "array",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            },
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "isize",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "fmtdict": {
+                            "C_call_list": "array,\t isize",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_const",
+                            "C_prototype": "REF_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                            "C_return_type": "void",
+                            "F_C_call": "c_arraywrapper_fetch_array_ptr_const_bufferify",
+                            "F_C_name": "c_arraywrapper_fetch_array_ptr_const",
+                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arguments": "obj,\t array",
+                            "F_name_function": "fetch_array_ptr_const",
+                            "F_name_generic": "fetch_array_ptr_const",
+                            "F_name_impl": "arraywrapper_fetch_array_ptr_const",
+                            "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_fetchArrayPtrConst",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "fetchArrayPtrConst",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "fetch_array_ptr_const"
+                        },
+                        "options": {}
+                    },
+                    {
+                        "_fmtargs": {
+                            "array": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
+                                    "c_array_size": "Darray->shape[0]",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "array",
+                                    "c_var_context": "Darray",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "c_native_**_out_buf",
+                                    "stmt1": "c_native_**_out_buf"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_array",
+                                    "c_var": "array",
+                                    "c_var_context": "Darray",
+                                    "c_var_dimension": "isize",
+                                    "f_array_allocate": "(isize)",
+                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "f_native_**_out_pointer",
+                                    "stmt1": "f_native_**_out",
+                                    "stmtc0": "c_native_**_out_buf",
+                                    "stmtc1": "c_native_**_out_buf"
+                                }
+                            },
+                            "isize": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "isize",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_native_*_in_buf",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_isize",
+                                    "c_var": "isize",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_*_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_*_in_buf",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "_generated": "arg_to_buffer",
+                        "ast": {
+                            "declarator": {
+                                "name": "fetchArrayPtrConst",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "context": "Darray",
+                                        "deref": "pointer",
+                                        "dimension": "isize",
+                                        "intent": "out"
+                                    },
+                                    "const": true,
+                                    "declarator": {
+                                        "name": "array",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            },
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "stmts_suffix": "buf",
+                                    "typemap_name": "double"
+                                },
+                                {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "isize",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "stmts_suffix": "buf",
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "fmtdict": {
+                            "C_call_list": "&array,\t isize",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_const_bufferify",
+                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_return_type": "void",
+                            "F_C_name": "c_arraywrapper_fetch_array_ptr_const_bufferify",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "fetchArrayPtrConst",
+                            "function_suffix": "_bufferify",
+                            "stmt0": "c",
+                            "stmt1": "c_default",
+                            "underscore_name": "fetch_array_ptr_const"
+                        },
+                        "options": {
+                            "wrap_c": true,
+                            "wrap_fortran": false,
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "array": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "c_native_*&_out",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "isize",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "data_var": "SHData_array",
+                                    "npy_dims_var": "SHD_array",
+                                    "npy_intp_asgn": "SHD_array[0] = isize;\n",
+                                    "npy_intp_decl": "npy_intp SHD_array[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_array",
+                                    "rank": "1",
+                                    "size_var": "SHSize_array",
+                                    "stmt0": "py_native_*&_out_pointer_numpy",
+                                    "stmt1": "py_native_*&_out_pointer_numpy"
+                                }
+                            },
+                            "isize": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "isize",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_native_&_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtpy": {
+                                    "array_size": "1",
+                                    "c_const": "",
+                                    "c_decl": "int isize",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int isize",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "data_var": "SHData_isize",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_isize",
+                                    "size_var": "SHSize_isize",
+                                    "stmt0": "py_native_&_in",
+                                    "stmt1": "py_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "fetchArrayRefConst",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "deref": "pointer",
+                                        "dimension": "isize",
+                                        "intent": "out"
+                                    },
+                                    "const": true,
+                                    "declarator": {
+                                        "name": "array",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            },
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "isize",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "fmtdict": {
+                            "C_call_list": "*array,\t *isize",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ref_const",
+                            "C_prototype": "REF_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                            "C_return_type": "void",
+                            "F_C_call": "c_arraywrapper_fetch_array_ref_const_bufferify",
+                            "F_C_name": "c_arraywrapper_fetch_array_ref_const",
+                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arguments": "obj,\t array",
+                            "F_name_function": "fetch_array_ref_const",
+                            "F_name_generic": "fetch_array_ref_const",
+                            "F_name_impl": "arraywrapper_fetch_array_ref_const",
+                            "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_fetchArrayRefConst",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "fetchArrayRefConst",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "fetch_array_ref_const"
+                        },
+                        "options": {}
+                    },
+                    {
+                        "_fmtargs": {
+                            "array": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
+                                    "c_array_size": "Darray->shape[0]",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "array",
+                                    "c_var_context": "Darray",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "c_native_*&_out_buf",
+                                    "stmt1": "c_native_*&_out_buf"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_array",
+                                    "c_var": "array",
+                                    "c_var_context": "Darray",
+                                    "c_var_dimension": "isize",
+                                    "f_array_allocate": "(isize)",
+                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "f_native_*&_out_pointer",
+                                    "stmt1": "f_native_*&_out",
+                                    "stmtc0": "c_native_*&_out_buf",
+                                    "stmtc1": "c_native_*&_out_buf"
+                                }
+                            },
+                            "isize": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "isize",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_native_&_in_buf",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_isize",
+                                    "c_var": "isize",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_&_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_&_in_buf",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "_generated": "arg_to_buffer",
+                        "ast": {
+                            "declarator": {
+                                "name": "fetchArrayRefConst",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "context": "Darray",
+                                        "deref": "pointer",
+                                        "dimension": "isize",
+                                        "intent": "out"
+                                    },
+                                    "const": true,
+                                    "declarator": {
+                                        "name": "array",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            },
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "stmts_suffix": "buf",
+                                    "typemap_name": "double"
+                                },
+                                {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "isize",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "stmts_suffix": "buf",
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "fmtdict": {
+                            "C_call_list": "array,\t *isize",
+                            "C_name": "REF_ArrayWrapper_fetch_array_ref_const_bufferify",
+                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_return_type": "void",
+                            "F_C_name": "c_arraywrapper_fetch_array_ref_const_bufferify",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "fetchArrayRefConst",
+                            "function_suffix": "_bufferify",
+                            "stmt0": "c",
+                            "stmt1": "c_default",
+                            "underscore_name": "fetch_array_ref_const"
+                        },
+                        "options": {
+                            "wrap_c": true,
+                            "wrap_fortran": false,
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "array": {
+                                "fmtc": {
+                                    "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
